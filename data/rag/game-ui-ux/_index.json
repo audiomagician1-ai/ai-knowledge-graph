@@ -3203,8 +3203,51 @@
   ],
   "stats": {
     "total": 200,
+    "total_docs": 200,
     "total_chars": 327967,
     "avg_chars": 1639,
-    "domain": "game-ui-ux"
+    "domain": "game-ui-ux",
+    "by_subdomain": {
+      "accessibility": {
+        "count": 20,
+        "chars": 32031
+      },
+      "hud-design": {
+        "count": 20,
+        "chars": 33201
+      },
+      "icon-system": {
+        "count": 20,
+        "chars": 30818
+      },
+      "interaction-feedback": {
+        "count": 20,
+        "chars": 31845
+      },
+      "menu-system": {
+        "count": 20,
+        "chars": 36865
+      },
+      "motion-design": {
+        "count": 20,
+        "chars": 33454
+      },
+      "multiplatform": {
+        "count": 20,
+        "chars": 31343
+      },
+      "typography": {
+        "count": 20,
+        "chars": 32054
+      },
+      "ui-tech": {
+        "count": 20,
+        "chars": 36569
+      },
+      "usability-testing": {
+        "count": 20,
+        "chars": 29787
+      }
+    }
   }
 }

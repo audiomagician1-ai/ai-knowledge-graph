@@ -52,7 +52,7 @@
       "subdomain_id": "data-driven",
       "subdomain_name": "数据驱动",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "指标"
       ],
@@ -217,7 +217,7 @@
       "subdomain_id": "data-driven",
       "subdomain_name": "数据驱动",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -277,7 +277,7 @@
       "subdomain_id": "data-driven",
       "subdomain_name": "数据驱动",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "分析"
       ],
@@ -352,7 +352,7 @@
       "subdomain_id": "growth",
       "subdomain_name": "增长运营",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "框架"
       ],
@@ -457,7 +457,7 @@
       "subdomain_id": "growth",
       "subdomain_name": "增长运营",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -562,7 +562,7 @@
       "subdomain_id": "growth",
       "subdomain_name": "增长运营",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "激活"
       ],
@@ -667,7 +667,7 @@
       "subdomain_id": "interaction-design",
       "subdomain_name": "交互设计",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -682,7 +682,7 @@
       "subdomain_id": "interaction-design",
       "subdomain_name": "交互设计",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "IA"
       ],
@@ -793,7 +793,7 @@
       ],
       "file": "product-design/interaction-design/micro-interaction.md",
       "exists": true,
-      "char_count": 1302
+      "char_count": 2467
     },
     {
       "id": "search-design",
@@ -952,7 +952,7 @@
       "subdomain_id": "interaction-design",
       "subdomain_name": "交互设计",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "系统"
       ],
@@ -1087,7 +1087,7 @@
       "subdomain_id": "product-management",
       "subdomain_name": "产品管理",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "发布"
       ],
@@ -1162,7 +1162,7 @@
       "subdomain_id": "product-management",
       "subdomain_name": "产品管理",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1177,7 +1177,7 @@
       "subdomain_id": "product-management",
       "subdomain_name": "产品管理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "规划"
       ],
@@ -1432,7 +1432,7 @@
       "subdomain_id": "product-thinking",
       "subdomain_name": "产品思维",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "战略"
       ],
@@ -1447,7 +1447,7 @@
       "subdomain_id": "product-thinking",
       "subdomain_name": "产品思维",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1663,7 +1663,7 @@
       ],
       "file": "product-design/product-thinking/first-principles.md",
       "exists": true,
-      "char_count": 1299
+      "char_count": 2555
     },
     {
       "id": "lean-startup",
@@ -1717,7 +1717,7 @@
       "subdomain_id": "product-thinking",
       "subdomain_name": "产品思维",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "方法论"
       ],
@@ -1822,7 +1822,7 @@
       "subdomain_id": "prototyping",
       "subdomain_name": "原型与测试",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "测试"
       ],
@@ -1837,7 +1837,7 @@
       "subdomain_id": "prototyping",
       "subdomain_name": "原型与测试",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2032,7 +2032,7 @@
       "subdomain_id": "prototyping",
       "subdomain_name": "原型与测试",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "高保真"
       ],
@@ -2122,7 +2122,7 @@
       "subdomain_id": "user-research",
       "subdomain_name": "用户研究",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "测试"
       ],
@@ -2257,7 +2257,7 @@
       "subdomain_id": "user-research",
       "subdomain_name": "用户研究",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "工具"
       ],
@@ -2272,7 +2272,7 @@
       "subdomain_id": "user-research",
       "subdomain_name": "用户研究",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "建模"
       ],
@@ -2287,7 +2287,7 @@
       "subdomain_id": "user-research",
       "subdomain_name": "用户研究",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2452,7 +2452,7 @@
       "subdomain_id": "visual-design",
       "subdomain_name": "视觉设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "品牌"
       ],
@@ -2632,7 +2632,7 @@
       "subdomain_id": "visual-design",
       "subdomain_name": "视觉设计",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2662,7 +2662,7 @@
       "subdomain_id": "visual-design",
       "subdomain_name": "视觉设计",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2733,8 +2733,51 @@
   ],
   "stats": {
     "total": 182,
-    "total_chars": 387428,
-    "avg_chars": 2128,
-    "domain": "product-design"
+    "total_docs": 182,
+    "total_chars": 389849,
+    "avg_chars": 2142,
+    "domain": "product-design",
+    "by_subdomain": {
+      "behavioral-psychology": {
+        "count": 1,
+        "chars": 1453
+      },
+      "data-driven": {
+        "count": 22,
+        "chars": 45637
+      },
+      "growth": {
+        "count": 21,
+        "chars": 49324
+      },
+      "interaction-design": {
+        "count": 24,
+        "chars": 52310
+      },
+      "product-management": {
+        "count": 24,
+        "chars": 48752
+      },
+      "product-thinking": {
+        "count": 23,
+        "chars": 46308
+      },
+      "professional-writing": {
+        "count": 1,
+        "chars": 1457
+      },
+      "prototyping": {
+        "count": 20,
+        "chars": 46256
+      },
+      "user-research": {
+        "count": 24,
+        "chars": 51062
+      },
+      "visual-design": {
+        "count": 22,
+        "chars": 47290
+      }
+    }
   }
 }

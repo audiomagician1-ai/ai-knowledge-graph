@@ -36,7 +36,7 @@ import seedGameLiveOps from '../../data/seed/game-live-ops/seed_graph.json';
 import seedGameQa from '../../data/seed/game-qa/seed_graph.json';
 import seedGameProduction from '../../data/seed/game-production/seed_graph.json';
 // Multi-domain RAG index imports
-import ragAI from '../../data/rag/_index.json';
+import ragAI from '../../data/rag/ai-engineering/_index.json';
 import ragMath from '../../data/rag/mathematics/_index.json';
 import ragEnglish from '../../data/rag/english/_index.json';
 import ragPhysics from '../../data/rag/physics/_index.json';

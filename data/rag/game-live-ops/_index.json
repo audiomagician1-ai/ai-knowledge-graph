@@ -2343,8 +2343,47 @@
   ],
   "stats": {
     "total": 180,
+    "total_docs": 180,
     "total_chars": 297111,
     "avg_chars": 1650,
-    "domain": "game-live-ops"
+    "domain": "game-live-ops",
+    "by_subdomain": {
+      "ab-testing": {
+        "count": 20,
+        "chars": 33899
+      },
+      "customer-service": {
+        "count": 20,
+        "chars": 32892
+      },
+      "data-analytics": {
+        "count": 20,
+        "chars": 36054
+      },
+      "economy-monitoring": {
+        "count": 20,
+        "chars": 31148
+      },
+      "event-planning": {
+        "count": 20,
+        "chars": 30568
+      },
+      "monetization": {
+        "count": 20,
+        "chars": 34941
+      },
+      "season-ops": {
+        "count": 20,
+        "chars": 31130
+      },
+      "update-cadence": {
+        "count": 20,
+        "chars": 32435
+      },
+      "user-retention": {
+        "count": 20,
+        "chars": 34044
+      }
+    }
   }
 }

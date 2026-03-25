@@ -82,7 +82,7 @@
       "subdomain_id": "animation-blueprint",
       "subdomain_name": "动画蓝图",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -97,7 +97,7 @@
       "subdomain_id": "animation-blueprint",
       "subdomain_name": "动画蓝图",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "工具"
       ],
@@ -127,7 +127,7 @@
       "subdomain_id": "animation-blueprint",
       "subdomain_name": "动画蓝图",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "优化"
       ],
@@ -187,7 +187,7 @@
       "subdomain_id": "animation-blueprint",
       "subdomain_name": "动画蓝图",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -472,7 +472,7 @@
       "subdomain_id": "animation-principles",
       "subdomain_name": "动画原理",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -487,7 +487,7 @@
       "subdomain_id": "animation-principles",
       "subdomain_name": "动画原理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -517,7 +517,7 @@
       "subdomain_id": "animation-principles",
       "subdomain_name": "动画原理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -592,7 +592,7 @@
       "subdomain_id": "animation-principles",
       "subdomain_name": "动画原理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -652,7 +652,7 @@
       "subdomain_id": "blend-space",
       "subdomain_name": "BlendSpace",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -667,7 +667,7 @@
       "subdomain_id": "blend-space",
       "subdomain_name": "BlendSpace",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -697,7 +697,7 @@
       "subdomain_id": "blend-space",
       "subdomain_name": "BlendSpace",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "前沿"
       ],
@@ -832,7 +832,7 @@
       "subdomain_id": "blend-space",
       "subdomain_name": "BlendSpace",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -877,7 +877,7 @@
       "subdomain_id": "facial-animation",
       "subdomain_name": "面部动画",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -892,7 +892,7 @@
       "subdomain_id": "facial-animation",
       "subdomain_name": "面部动画",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -937,7 +937,7 @@
       "subdomain_id": "facial-animation",
       "subdomain_name": "面部动画",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1072,7 +1072,7 @@
       "subdomain_id": "facial-animation",
       "subdomain_name": "面部动画",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -1312,7 +1312,7 @@
       "subdomain_id": "ik-fk",
       "subdomain_name": "IK/FK",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1327,7 +1327,7 @@
       "subdomain_id": "ik-fk",
       "subdomain_name": "IK/FK",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1357,7 +1357,7 @@
       "subdomain_id": "ik-fk",
       "subdomain_name": "IK/FK",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1567,7 +1567,7 @@
       "subdomain_id": "keyframe-animation",
       "subdomain_name": "关键帧动画",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1582,7 +1582,7 @@
       "subdomain_id": "keyframe-animation",
       "subdomain_name": "关键帧动画",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1612,7 +1612,7 @@
       "subdomain_id": "keyframe-animation",
       "subdomain_name": "关键帧动画",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1657,7 +1657,7 @@
       "subdomain_id": "keyframe-animation",
       "subdomain_name": "关键帧动画",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1762,7 +1762,7 @@
       "subdomain_id": "motion-capture",
       "subdomain_name": "动作捕捉",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1777,7 +1777,7 @@
       "subdomain_id": "motion-capture",
       "subdomain_name": "动作捕捉",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -1852,7 +1852,7 @@
       "subdomain_id": "motion-capture",
       "subdomain_name": "动作捕捉",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1942,7 +1942,7 @@
       "subdomain_id": "physics-animation",
       "subdomain_name": "物理动画",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2017,7 +2017,7 @@
       "subdomain_id": "physics-animation",
       "subdomain_name": "物理动画",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2107,7 +2107,7 @@
       "subdomain_id": "physics-animation",
       "subdomain_name": "物理动画",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -2212,7 +2212,7 @@
       "subdomain_id": "skeletal-rigging",
       "subdomain_name": "骨骼绑定",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2242,7 +2242,7 @@
       "subdomain_id": "skeletal-rigging",
       "subdomain_name": "骨骼绑定",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -2302,7 +2302,7 @@
       "subdomain_id": "skeletal-rigging",
       "subdomain_name": "骨骼绑定",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2422,7 +2422,7 @@
       "subdomain_id": "skeletal-rigging",
       "subdomain_name": "骨骼绑定",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2602,7 +2602,7 @@
       "subdomain_id": "state-machine",
       "subdomain_name": "状态机",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -2632,7 +2632,7 @@
       "subdomain_id": "state-machine",
       "subdomain_name": "状态机",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2662,7 +2662,7 @@
       "subdomain_id": "state-machine",
       "subdomain_name": "状态机",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2703,8 +2703,51 @@
   ],
   "stats": {
     "total": 180,
+    "total_docs": 180,
     "total_chars": 371534,
     "avg_chars": 2064,
-    "domain": "animation"
+    "domain": "animation",
+    "by_subdomain": {
+      "animation-blueprint": {
+        "count": 18,
+        "chars": 34260
+      },
+      "animation-principles": {
+        "count": 25,
+        "chars": 46367
+      },
+      "blend-space": {
+        "count": 15,
+        "chars": 26296
+      },
+      "facial-animation": {
+        "count": 18,
+        "chars": 39788
+      },
+      "ik-fk": {
+        "count": 15,
+        "chars": 33419
+      },
+      "keyframe-animation": {
+        "count": 20,
+        "chars": 43828
+      },
+      "motion-capture": {
+        "count": 15,
+        "chars": 29957
+      },
+      "physics-animation": {
+        "count": 19,
+        "chars": 41667
+      },
+      "skeletal-rigging": {
+        "count": 20,
+        "chars": 43326
+      },
+      "state-machine": {
+        "count": 15,
+        "chars": 32626
+      }
+    }
   }
 }

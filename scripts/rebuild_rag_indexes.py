@@ -81,7 +81,7 @@ def build_index_for_domain(domain_dir):
             "subdomain_id": meta.get("subdomain", seed.get("subdomain_id", "")),
             "subdomain_name": meta.get("subdomain_name", seed.get("subdomain_name", "")),
             "difficulty": int(meta.get("difficulty", seed.get("difficulty", 1)) or 1),
-            "is_milestone": str(meta.get("is_milestone", seed.get("is_milestone", False))).lower() == "true",
+            "is_milestone": seed.get("is_milestone", False) or str(meta.get("is_milestone", False)).lower() == "true",
             "tags": seed.get("tags", []),
             "file": rel_path,
             "exists": True,
@@ -93,16 +93,98 @@ def build_index_for_domain(domain_dir):
     # Sort by subdomain then name
     documents.sort(key=lambda d: (d["subdomain_id"], d["name"]))
     
+    # Compute by_subdomain stats
+    by_subdomain = {}
+    for doc in documents:
+        sd = doc.get("subdomain_id", "unknown")
+        if sd not in by_subdomain:
+            by_subdomain[sd] = {"count": 0, "chars": 0}
+        by_subdomain[sd]["count"] += 1
+        by_subdomain[sd]["chars"] += doc.get("char_count", 0)
+    
     index = {
         "documents": documents,
         "stats": {
             "total": len(documents),
+            "total_docs": len(documents),
             "total_chars": total_chars,
             "avg_chars": total_chars // max(len(documents), 1),
             "domain": domain_name,
+            "by_subdomain": by_subdomain,
         }
     }
     return index
+
+def _build_composite_domain_index(domain_id):
+    """Build a composite _index.json for domains whose RAG data is split across subdomain dirs.
+    
+    ai-engineering has 400 concepts stored in 15 subdomain dirs (algorithms, llm-core, etc.)
+    This creates data/rag/ai-engineering/_index.json aggregating all of them.
+    """
+    seed_path = SEED_ROOT / domain_id / "seed_graph.json"
+    if not seed_path.exists():
+        return
+    with open(seed_path, "r", encoding="utf-8") as f:
+        sg = json.load(f)
+    
+    # Collect all subdomain IDs from seed
+    subdomain_ids = set()
+    for c in sg.get("concepts", []):
+        sd = c.get("subdomain_id", "")
+        if sd:
+            subdomain_ids.add(sd)
+    
+    # Aggregate docs from each subdomain dir's _index.json
+    all_docs = []
+    concept_ids = {c["id"] for c in sg.get("concepts", [])}
+    
+    for sd_id in sorted(subdomain_ids):
+        sd_dir = RAG_ROOT / sd_id
+        idx_path = sd_dir / "_index.json"
+        if not idx_path.exists():
+            continue
+        with open(idx_path, "r", encoding="utf-8") as f:
+            idx = json.load(f)
+        # Only include docs whose IDs are in this domain's seed
+        for doc in idx.get("documents", []):
+            if doc["id"] in concept_ids:
+                all_docs.append(doc)
+    
+    if not all_docs:
+        return
+    
+    total_chars = sum(d.get("char_count", 0) for d in all_docs)
+    all_docs.sort(key=lambda d: (d.get("subdomain_id", ""), d.get("name", "")))
+    
+    # Compute by_subdomain stats
+    by_subdomain = {}
+    for doc in all_docs:
+        sd = doc.get("subdomain_id", "unknown")
+        if sd not in by_subdomain:
+            by_subdomain[sd] = {"count": 0, "chars": 0}
+        by_subdomain[sd]["count"] += 1
+        by_subdomain[sd]["chars"] += doc.get("char_count", 0)
+    
+    composite_index = {
+        "documents": all_docs,
+        "stats": {
+            "total": len(all_docs),
+            "total_docs": len(all_docs),
+            "total_chars": total_chars,
+            "avg_chars": total_chars // max(len(all_docs), 1),
+            "domain": domain_id,
+            "by_subdomain": by_subdomain,
+        }
+    }
+    
+    # Create the domain dir if needed
+    out_dir = RAG_ROOT / domain_id
+    out_dir.mkdir(exist_ok=True)
+    with open(out_dir / "_index.json", "w", encoding="utf-8") as f:
+        json.dump(composite_index, f, ensure_ascii=False, indent=2)
+    
+    print(f"  {domain_id:<30} {len(all_docs):>4} docs (composite from {len(subdomain_ids)} subdirs)")
+
 
 def main():
     total_docs = 0
@@ -144,6 +226,9 @@ def main():
     }
     with open(RAG_ROOT / "_index.json", "w", encoding="utf-8") as f:
         json.dump(root_index, f, ensure_ascii=False, indent=2)
+    
+    # Build composite index for ai-engineering (aggregates from its subdomain dirs)
+    _build_composite_domain_index("ai-engineering")
     
     print(f"\n  TOTAL: {total_domains} domains, {total_docs} docs")
     print(f"  Root _index.json: {len(all_docs)} entries")

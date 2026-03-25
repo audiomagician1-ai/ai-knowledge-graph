@@ -280,12 +280,14 @@ _DEFAULT_RAG_DOMAIN = "ai-engineering"
 
 def _rag_index_path(domain_id: str) -> str:
     """Get the RAG index file path for a domain."""
+    # Check domain-specific path first (works for all domains including ai-engineering)
+    domain_path = os.path.join(RAG_BASE_DIR, domain_id, "_index.json")
+    if os.path.exists(domain_path):
+        return domain_path
     if domain_id == "ai-engineering":
-        # Legacy: flat index at data/rag/_index.json
+        # Legacy fallback: flat index at data/rag/_index.json
         return os.path.join(RAG_BASE_DIR, "_index.json")
-    else:
-        # New domains: data/rag/{domain_id}/_index.json
-        return os.path.join(RAG_BASE_DIR, domain_id, "_index.json")
+    return domain_path  # will not exist, _load_rag_index handles missing files
 
 
 def _load_rag_index(domain_id: str = "ai-engineering") -> dict:
@@ -353,7 +355,7 @@ async def get_rag_stats(domain: str = "ai-engineering"):
     index = _load_rag_index(domain)
     return {
         "domain": domain,
-        "total_docs": index.get("stats", {}).get("total_docs", 0) or index.get("total_concepts", 0),
+        "total_docs": index.get("stats", {}).get("total_docs", 0) or index.get("stats", {}).get("total", 0) or index.get("total_concepts", 0),
         "total_chars": index.get("stats", {}).get("total_chars", 0),
         "by_subdomain": index.get("stats", {}).get("by_subdomain", {}),
         "version": index.get("version", ""),

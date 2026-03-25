@@ -354,8 +354,15 @@
   ],
   "stats": {
     "total": 27,
+    "total_docs": 27,
     "total_chars": 61356,
     "avg_chars": 2272,
-    "domain": "web-backend"
+    "domain": "web-backend",
+    "by_subdomain": {
+      "web-backend": {
+        "count": 27,
+        "chars": 61356
+      }
+    }
   }
 }

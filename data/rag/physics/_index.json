@@ -82,7 +82,7 @@
       "subdomain_id": "astrophysics",
       "subdomain_name": "天体物理",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -217,7 +217,7 @@
       "subdomain_id": "classical-mechanics",
       "subdomain_name": "经典力学",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -322,7 +322,7 @@
       "subdomain_id": "classical-mechanics",
       "subdomain_name": "经典力学",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -502,7 +502,7 @@
       "subdomain_id": "classical-mechanics",
       "subdomain_name": "经典力学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -592,7 +592,7 @@
       "subdomain_id": "classical-mechanics",
       "subdomain_name": "经典力学",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -652,7 +652,7 @@
       "subdomain_id": "classical-mechanics",
       "subdomain_name": "经典力学",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -772,7 +772,7 @@
       "subdomain_id": "electromagnetism",
       "subdomain_name": "电磁学",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -802,7 +802,7 @@
       "subdomain_id": "electromagnetism",
       "subdomain_name": "电磁学",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -1072,7 +1072,7 @@
       "subdomain_id": "electromagnetism",
       "subdomain_name": "电磁学",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -1087,7 +1087,7 @@
       "subdomain_id": "electromagnetism",
       "subdomain_name": "电磁学",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -1102,7 +1102,7 @@
       "subdomain_id": "fluid-mechanics",
       "subdomain_name": "流体力学",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -1327,7 +1327,7 @@
       "subdomain_id": "modern-physics",
       "subdomain_name": "近代物理",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -1342,7 +1342,7 @@
       "subdomain_id": "modern-physics",
       "subdomain_name": "近代物理",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -1537,7 +1537,7 @@
       "subdomain_id": "modern-physics",
       "subdomain_name": "近代物理",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -1552,7 +1552,7 @@
       "subdomain_id": "modern-physics",
       "subdomain_name": "近代物理",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -1567,7 +1567,7 @@
       "subdomain_id": "modern-physics",
       "subdomain_name": "近代物理",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -1648,7 +1648,7 @@
       ],
       "file": "physics/nuclear-physics/nuclear-structure.md",
       "exists": true,
-      "char_count": 1592
+      "char_count": 2480
     },
     {
       "id": "antimatter",
@@ -1777,7 +1777,7 @@
       "subdomain_id": "nuclear-physics",
       "subdomain_name": "核物理",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -1927,7 +1927,7 @@
       "subdomain_id": "quantum-mechanics",
       "subdomain_name": "量子力学",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -1942,7 +1942,7 @@
       "subdomain_id": "quantum-mechanics",
       "subdomain_name": "量子力学",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -2227,7 +2227,7 @@
       "subdomain_id": "solid-state-physics",
       "subdomain_name": "固态物理",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -2407,7 +2407,7 @@
       "subdomain_id": "thermodynamics",
       "subdomain_name": "热力学",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -2437,7 +2437,7 @@
       "subdomain_id": "thermodynamics",
       "subdomain_name": "热力学",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -2512,7 +2512,7 @@
       "subdomain_id": "thermodynamics",
       "subdomain_name": "热力学",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -2677,7 +2677,7 @@
       "subdomain_id": "waves-and-optics",
       "subdomain_name": "波动与光学",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -2752,7 +2752,7 @@
       "subdomain_id": "waves-and-optics",
       "subdomain_name": "波动与光学",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -2857,7 +2857,7 @@
       "subdomain_id": "waves-and-optics",
       "subdomain_name": "波动与光学",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -2913,8 +2913,51 @@
   ],
   "stats": {
     "total": 194,
-    "total_chars": 487611,
-    "avg_chars": 2513,
-    "domain": "physics"
+    "total_docs": 194,
+    "total_chars": 488499,
+    "avg_chars": 2518,
+    "domain": "physics",
+    "by_subdomain": {
+      "astrophysics": {
+        "count": 13,
+        "chars": 30819
+      },
+      "classical-mechanics": {
+        "count": 35,
+        "chars": 86532
+      },
+      "electromagnetism": {
+        "count": 25,
+        "chars": 64650
+      },
+      "fluid-mechanics": {
+        "count": 14,
+        "chars": 35006
+      },
+      "modern-physics": {
+        "count": 20,
+        "chars": 48062
+      },
+      "nuclear-physics": {
+        "count": 13,
+        "chars": 33787
+      },
+      "quantum-mechanics": {
+        "count": 19,
+        "chars": 52445
+      },
+      "solid-state-physics": {
+        "count": 14,
+        "chars": 35173
+      },
+      "thermodynamics": {
+        "count": 22,
+        "chars": 52320
+      },
+      "waves-and-optics": {
+        "count": 19,
+        "chars": 49705
+      }
+    }
   }
 }

@@ -315,8 +315,19 @@
   ],
   "stats": {
     "total": 24,
+    "total_docs": 24,
     "total_chars": 67861,
     "avg_chars": 2827,
-    "domain": "oop"
+    "domain": "oop",
+    "by_subdomain": {
+      "oop": {
+        "count": 23,
+        "chars": 66237
+      },
+      "scripting-system": {
+        "count": 1,
+        "chars": 1624
+      }
+    }
   }
 }

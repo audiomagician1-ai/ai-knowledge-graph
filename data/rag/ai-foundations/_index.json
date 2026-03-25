@@ -393,8 +393,27 @@
   ],
   "stats": {
     "total": 30,
+    "total_docs": 30,
     "total_chars": 82573,
     "avg_chars": 2752,
-    "domain": "ai-foundations"
+    "domain": "ai-foundations",
+    "by_subdomain": {
+      "ai-foundations": {
+        "count": 26,
+        "chars": 73779
+      },
+      "deep-learning": {
+        "count": 1,
+        "chars": 2141
+      },
+      "optimization": {
+        "count": 1,
+        "chars": 1533
+      },
+      "statistics": {
+        "count": 2,
+        "chars": 5120
+      }
+    }
   }
 }

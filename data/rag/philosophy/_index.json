@@ -142,7 +142,7 @@
       "subdomain_id": "aesthetics",
       "subdomain_name": "美学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -217,7 +217,7 @@
       "subdomain_id": "aesthetics",
       "subdomain_name": "美学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -292,7 +292,7 @@
       "subdomain_id": "ancient-philosophy",
       "subdomain_name": "古代哲学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -367,7 +367,7 @@
       "subdomain_id": "ancient-philosophy",
       "subdomain_name": "古代哲学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -427,7 +427,7 @@
       "subdomain_id": "ancient-philosophy",
       "subdomain_name": "古代哲学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "东方"
       ],
@@ -547,7 +547,7 @@
       "subdomain_id": "ancient-philosophy",
       "subdomain_name": "古代哲学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -592,7 +592,7 @@
       "subdomain_id": "ancient-philosophy",
       "subdomain_name": "古代哲学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -712,7 +712,7 @@
       "subdomain_id": "epistemology",
       "subdomain_name": "认识论",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -787,7 +787,7 @@
       "subdomain_id": "epistemology",
       "subdomain_name": "认识论",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流派"
       ],
@@ -877,7 +877,7 @@
       "subdomain_id": "epistemology",
       "subdomain_name": "认识论",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流派"
       ],
@@ -937,7 +937,7 @@
       "subdomain_id": "epistemology",
       "subdomain_name": "认识论",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -982,7 +982,7 @@
       "subdomain_id": "ethics",
       "subdomain_name": "伦理学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1012,7 +1012,7 @@
       "subdomain_id": "ethics",
       "subdomain_name": "伦理学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1087,7 +1087,7 @@
       "subdomain_id": "ethics",
       "subdomain_name": "伦理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1207,7 +1207,7 @@
       "subdomain_id": "ethics",
       "subdomain_name": "伦理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1267,7 +1267,7 @@
       "subdomain_id": "ethics",
       "subdomain_name": "伦理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1357,7 +1357,7 @@
       "subdomain_id": "logic-reasoning",
       "subdomain_name": "逻辑与推理",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1393,7 +1393,7 @@
       ],
       "file": "philosophy/logic-reasoning/formal-fallacies.md",
       "exists": true,
-      "char_count": 1304
+      "char_count": 2162
     },
     {
       "id": "paradoxes",
@@ -1417,7 +1417,7 @@
       "subdomain_id": "logic-reasoning",
       "subdomain_name": "逻辑与推理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "实践"
       ],
@@ -1492,7 +1492,7 @@
       "subdomain_id": "logic-reasoning",
       "subdomain_name": "逻辑与推理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "推理"
       ],
@@ -1558,7 +1558,7 @@
       ],
       "file": "philosophy/logic-reasoning/philosophy-of-logic.md",
       "exists": true,
-      "char_count": 1302
+      "char_count": 2806
     },
     {
       "id": "logic-overview",
@@ -1567,7 +1567,7 @@
       "subdomain_id": "logic-reasoning",
       "subdomain_name": "逻辑与推理",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1732,7 +1732,7 @@
       "subdomain_id": "metaphysics",
       "subdomain_name": "形而上学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "概念"
       ],
@@ -1792,7 +1792,7 @@
       "subdomain_id": "metaphysics",
       "subdomain_name": "形而上学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1897,7 +1897,7 @@
       "subdomain_id": "metaphysics",
       "subdomain_name": "形而上学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1927,7 +1927,7 @@
       "subdomain_id": "modern-philosophy",
       "subdomain_name": "近现代哲学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1987,7 +1987,7 @@
       "subdomain_id": "modern-philosophy",
       "subdomain_name": "近现代哲学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2002,7 +2002,7 @@
       "subdomain_id": "modern-philosophy",
       "subdomain_name": "近现代哲学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流派"
       ],
@@ -2173,7 +2173,7 @@
       ],
       "file": "philosophy/modern-philosophy/philosophy-of-language.md",
       "exists": true,
-      "char_count": 1315
+      "char_count": 2730
     },
     {
       "id": "process-philosophy",
@@ -2197,7 +2197,7 @@
       "subdomain_id": "modern-philosophy",
       "subdomain_name": "近现代哲学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2347,7 +2347,7 @@
       "subdomain_id": "political-philosophy",
       "subdomain_name": "政治哲学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2368,7 +2368,7 @@
       ],
       "file": "philosophy/political-philosophy/anarchism.md",
       "exists": true,
-      "char_count": 1313
+      "char_count": 3023
     },
     {
       "id": "rights-theory",
@@ -2407,7 +2407,7 @@
       "subdomain_id": "political-philosophy",
       "subdomain_name": "政治哲学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2467,7 +2467,7 @@
       "subdomain_id": "political-philosophy",
       "subdomain_name": "政治哲学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2497,7 +2497,7 @@
       "subdomain_id": "political-philosophy",
       "subdomain_name": "政治哲学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流派"
       ],
@@ -2553,8 +2553,47 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 387661,
-    "avg_chars": 2280,
-    "domain": "philosophy"
+    "total_docs": 170,
+    "total_chars": 393148,
+    "avg_chars": 2312,
+    "domain": "philosophy",
+    "by_subdomain": {
+      "aesthetics": {
+        "count": 18,
+        "chars": 39897
+      },
+      "ancient-philosophy": {
+        "count": 25,
+        "chars": 55939
+      },
+      "epistemology": {
+        "count": 22,
+        "chars": 49870
+      },
+      "ethics": {
+        "count": 25,
+        "chars": 57157
+      },
+      "logic-reasoning": {
+        "count": 17,
+        "chars": 37483
+      },
+      "metaphysics": {
+        "count": 20,
+        "chars": 49263
+      },
+      "modern-philosophy": {
+        "count": 20,
+        "chars": 47980
+      },
+      "persuasive-writing": {
+        "count": 1,
+        "chars": 1337
+      },
+      "political-philosophy": {
+        "count": 22,
+        "chars": 54222
+      }
+    }
   }
 }

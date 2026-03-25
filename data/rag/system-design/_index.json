@@ -328,8 +328,15 @@
   ],
   "stats": {
     "total": 25,
+    "total_docs": 25,
     "total_chars": 63324,
     "avg_chars": 2532,
-    "domain": "system-design"
+    "domain": "system-design",
+    "by_subdomain": {
+      "system-design": {
+        "count": 25,
+        "chars": 63324
+      }
+    }
   }
 }

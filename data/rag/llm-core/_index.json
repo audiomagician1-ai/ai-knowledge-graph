@@ -471,8 +471,15 @@
   ],
   "stats": {
     "total": 36,
+    "total_docs": 36,
     "total_chars": 76670,
     "avg_chars": 2129,
-    "domain": "llm-core"
+    "domain": "llm-core",
+    "by_subdomain": {
+      "llm-core": {
+        "count": 36,
+        "chars": 76670
+      }
+    }
   }
 }

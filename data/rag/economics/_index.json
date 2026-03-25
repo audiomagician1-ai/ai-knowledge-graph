@@ -7,7 +7,7 @@
       "subdomain_id": "behavioral-econ",
       "subdomain_name": "行为经济学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -22,7 +22,7 @@
       "subdomain_id": "behavioral-econ",
       "subdomain_name": "行为经济学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "应用"
       ],
@@ -187,7 +187,7 @@
       "subdomain_id": "behavioral-econ",
       "subdomain_name": "行为经济学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -283,7 +283,7 @@
       ],
       "file": "economics/development-econ/health-economics-dev.md",
       "exists": true,
-      "char_count": 1635
+      "char_count": 2716
     },
     {
       "id": "agriculture-development",
@@ -307,7 +307,7 @@
       "subdomain_id": "development-econ",
       "subdomain_name": "发展经济学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "制度"
       ],
@@ -322,7 +322,7 @@
       "subdomain_id": "development-econ",
       "subdomain_name": "发展经济学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -472,7 +472,7 @@
       "subdomain_id": "development-econ",
       "subdomain_name": "发展经济学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "转型"
       ],
@@ -487,7 +487,7 @@
       "subdomain_id": "development-econ",
       "subdomain_name": "发展经济学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -517,7 +517,7 @@
       "subdomain_id": "development-econ",
       "subdomain_name": "发展经济学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "方法"
       ],
@@ -577,7 +577,7 @@
       "subdomain_id": "econometrics",
       "subdomain_name": "计量经济学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -592,7 +592,7 @@
       "subdomain_id": "econometrics",
       "subdomain_name": "计量经济学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "因果"
       ],
@@ -652,7 +652,7 @@
       "subdomain_id": "econometrics",
       "subdomain_name": "计量经济学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "因果"
       ],
@@ -757,7 +757,7 @@
       "subdomain_id": "econometrics",
       "subdomain_name": "计量经济学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -802,7 +802,7 @@
       "subdomain_id": "economic-thought",
       "subdomain_name": "经济思想史",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "古典"
       ],
@@ -817,7 +817,7 @@
       "subdomain_id": "economic-thought",
       "subdomain_name": "经济思想史",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "凯恩斯"
       ],
@@ -967,7 +967,7 @@
       "subdomain_id": "economic-thought",
       "subdomain_name": "经济思想史",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1087,7 +1087,7 @@
       "subdomain_id": "international-econ",
       "subdomain_name": "国际经济学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "现代"
       ],
@@ -1132,7 +1132,7 @@
       "subdomain_id": "international-econ",
       "subdomain_name": "国际经济学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1222,7 +1222,7 @@
       "subdomain_id": "international-econ",
       "subdomain_name": "国际经济学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "贸易"
       ],
@@ -1357,7 +1357,7 @@
       "subdomain_id": "international-econ",
       "subdomain_name": "国际经济学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "政策"
       ],
@@ -1552,7 +1552,7 @@
       "subdomain_id": "macroeconomics",
       "subdomain_name": "宏观经济学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1687,7 +1687,7 @@
       "subdomain_id": "macroeconomics",
       "subdomain_name": "宏观经济学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "增长"
       ],
@@ -1762,7 +1762,7 @@
       "subdomain_id": "macroeconomics",
       "subdomain_name": "宏观经济学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "政策"
       ],
@@ -1867,7 +1867,7 @@
       "subdomain_id": "microeconomics",
       "subdomain_name": "微观经济学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "分析工具"
       ],
@@ -1942,7 +1942,7 @@
       "subdomain_id": "microeconomics",
       "subdomain_name": "微观经济学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "市场结构"
       ],
@@ -2017,7 +2017,7 @@
       "subdomain_id": "microeconomics",
       "subdomain_name": "微观经济学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2212,7 +2212,7 @@
       "subdomain_id": "public-econ",
       "subdomain_name": "公共经济学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "支出"
       ],
@@ -2227,7 +2227,7 @@
       "subdomain_id": "public-econ",
       "subdomain_name": "公共经济学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2242,7 +2242,7 @@
       "subdomain_id": "public-econ",
       "subdomain_name": "公共经济学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "制度"
       ],
@@ -2263,7 +2263,7 @@
       ],
       "file": "economics/public-econ/pension-economics.md",
       "exists": true,
-      "char_count": 1536
+      "char_count": 2278
     },
     {
       "id": "healthcare-economics",
@@ -2452,7 +2452,7 @@
       "subdomain_id": "public-econ",
       "subdomain_name": "公共经济学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "税收"
       ],
@@ -2542,7 +2542,7 @@
       "subdomain_id": "statistics",
       "subdomain_name": "数理统计",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2553,8 +2553,55 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 377224,
-    "avg_chars": 2218,
-    "domain": "economics"
+    "total_docs": 170,
+    "total_chars": 379047,
+    "avg_chars": 2229,
+    "domain": "economics",
+    "by_subdomain": {
+      "behavioral-econ": {
+        "count": 16,
+        "chars": 32911
+      },
+      "development-econ": {
+        "count": 20,
+        "chars": 46733
+      },
+      "econometrics": {
+        "count": 16,
+        "chars": 36594
+      },
+      "economic-thought": {
+        "count": 20,
+        "chars": 44031
+      },
+      "international-econ": {
+        "count": 22,
+        "chars": 46142
+      },
+      "investment-basics": {
+        "count": 1,
+        "chars": 1513
+      },
+      "macroeconomics": {
+        "count": 25,
+        "chars": 54287
+      },
+      "microeconomics": {
+        "count": 25,
+        "chars": 60787
+      },
+      "player-psychology": {
+        "count": 1,
+        "chars": 1395
+      },
+      "public-econ": {
+        "count": 22,
+        "chars": 49849
+      },
+      "statistics": {
+        "count": 2,
+        "chars": 4805
+      }
+    }
   }
 }

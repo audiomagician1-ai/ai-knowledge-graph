@@ -2343,8 +2343,47 @@
   ],
   "stats": {
     "total": 180,
+    "total_docs": 180,
     "total_chars": 320681,
     "avg_chars": 1781,
-    "domain": "game-audio-sfx"
+    "domain": "game-audio-sfx",
+    "by_subdomain": {
+      "ambient-sound": {
+        "count": 20,
+        "chars": 36802
+      },
+      "audio-asset-management": {
+        "count": 20,
+        "chars": 30728
+      },
+      "audio-middleware": {
+        "count": 20,
+        "chars": 40659
+      },
+      "audio-optimization": {
+        "count": 20,
+        "chars": 37415
+      },
+      "dialogue-processing": {
+        "count": 20,
+        "chars": 38413
+      },
+      "dsp-effects": {
+        "count": 20,
+        "chars": 34443
+      },
+      "foley-recording": {
+        "count": 20,
+        "chars": 33270
+      },
+      "sound-design-theory": {
+        "count": 20,
+        "chars": 32015
+      },
+      "spatial-audio": {
+        "count": 20,
+        "chars": 36936
+      }
+    }
   }
 }

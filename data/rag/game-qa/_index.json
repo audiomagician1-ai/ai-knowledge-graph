@@ -180,7 +180,7 @@
       "tags": [],
       "file": "game-qa/qa-at-e2e-testing.md",
       "exists": true,
-      "char_count": 1283
+      "char_count": 2536
     },
     {
       "id": "qa-at-script-language",
@@ -1012,7 +1012,7 @@
       "tags": [],
       "file": "game-qa/qa-ft-boundary-value.md",
       "exists": true,
-      "char_count": 1280
+      "char_count": 2310
     },
     {
       "id": "qa-ft-audio-testing",
@@ -2083,8 +2083,43 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 268793,
-    "avg_chars": 1679,
-    "domain": "game-qa"
+    "total_docs": 160,
+    "total_chars": 271076,
+    "avg_chars": 1694,
+    "domain": "game-qa",
+    "by_subdomain": {
+      "automation-testing": {
+        "count": 20,
+        "chars": 37070
+      },
+      "bug-lifecycle": {
+        "count": 20,
+        "chars": 32720
+      },
+      "compatibility-testing": {
+        "count": 20,
+        "chars": 33623
+      },
+      "functional-testing": {
+        "count": 20,
+        "chars": 34111
+      },
+      "localization-testing": {
+        "count": 20,
+        "chars": 31113
+      },
+      "performance-testing": {
+        "count": 20,
+        "chars": 32244
+      },
+      "regression-testing": {
+        "count": 20,
+        "chars": 36271
+      },
+      "test-toolchain": {
+        "count": 20,
+        "chars": 33924
+      }
+    }
   }
 }

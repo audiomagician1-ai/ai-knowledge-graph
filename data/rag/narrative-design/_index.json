@@ -115,7 +115,7 @@
       "tags": [],
       "file": "narrative-design/nd-bn-delayed-consequence.md",
       "exists": true,
-      "char_count": 1297
+      "char_count": 2538
     },
     {
       "id": "nd-bn-flag-system",
@@ -1090,7 +1090,7 @@
       "tags": [],
       "file": "narrative-design/nd-es-level-as-story.md",
       "exists": true,
-      "char_count": 1285
+      "char_count": 2632
     },
     {
       "id": "nd-es-found-narrative",
@@ -1155,7 +1155,7 @@
       "tags": [],
       "file": "narrative-design/nd-es-contrast-juxtaposition.md",
       "exists": true,
-      "char_count": 1303
+      "char_count": 2260
     },
     {
       "id": "nd-es-corpse-storytelling",
@@ -2169,7 +2169,7 @@
       "tags": [],
       "file": "narrative-design/nd-wb-naming-convention.md",
       "exists": true,
-      "char_count": 1632
+      "char_count": 2410
     },
     {
       "id": "nd-wb-tone-mood",
@@ -2343,8 +2343,47 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 312714,
-    "avg_chars": 1737,
-    "domain": "narrative-design"
+    "total_docs": 180,
+    "total_chars": 317037,
+    "avg_chars": 1761,
+    "domain": "narrative-design",
+    "by_subdomain": {
+      "branching-narrative": {
+        "count": 20,
+        "chars": 39517
+      },
+      "character-writing": {
+        "count": 20,
+        "chars": 35322
+      },
+      "cinematics": {
+        "count": 20,
+        "chars": 35737
+      },
+      "dialogue-system": {
+        "count": 20,
+        "chars": 33334
+      },
+      "environmental-storytelling": {
+        "count": 20,
+        "chars": 33682
+      },
+      "localization": {
+        "count": 20,
+        "chars": 36737
+      },
+      "narrative-tools": {
+        "count": 20,
+        "chars": 30567
+      },
+      "quest-design": {
+        "count": 20,
+        "chars": 35136
+      },
+      "worldbuilding": {
+        "count": 20,
+        "chars": 37005
+      }
+    }
   }
 }

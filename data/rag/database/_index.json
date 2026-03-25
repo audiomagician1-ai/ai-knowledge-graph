@@ -11,7 +11,7 @@
       "tags": [],
       "file": "database/sql-cte.md",
       "exists": true,
-      "char_count": 1520
+      "char_count": 3355
     },
     {
       "id": "mvcc",
@@ -37,7 +37,7 @@
       "tags": [],
       "file": "database/mongodb-basics.md",
       "exists": true,
-      "char_count": 1530
+      "char_count": 3324
     },
     {
       "id": "nosql-intro",
@@ -315,8 +315,15 @@
   ],
   "stats": {
     "total": 24,
-    "total_chars": 54378,
-    "avg_chars": 2265,
-    "domain": "database"
+    "total_docs": 24,
+    "total_chars": 58007,
+    "avg_chars": 2416,
+    "domain": "database",
+    "by_subdomain": {
+      "database": {
+        "count": 24,
+        "chars": 58007
+      }
+    }
   }
 }

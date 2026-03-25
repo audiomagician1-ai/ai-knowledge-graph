@@ -52,7 +52,7 @@
       "subdomain_id": "asset-pipeline",
       "subdomain_name": "资产管线",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "优化"
       ],
@@ -778,7 +778,7 @@
       ],
       "file": "3d-art/3da-env-intro.md",
       "exists": true,
-      "char_count": 1492
+      "char_count": 2290
     },
     {
       "id": "3da-env-decals",
@@ -898,7 +898,7 @@
       ],
       "file": "3d-art/3da-hs-trim-sheet.md",
       "exists": true,
-      "char_count": 1509
+      "char_count": 2499
     },
     {
       "id": "3da-hs-bevel-edges",
@@ -967,7 +967,7 @@
       "subdomain_id": "hard-surface",
       "subdomain_name": "硬表面建模",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1672,7 +1672,7 @@
       "subdomain_id": "organic-modeling",
       "subdomain_name": "有机建模",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "实战"
       ],
@@ -1987,7 +1987,7 @@
       "subdomain_id": "retopology",
       "subdomain_name": "拓扑重构",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2662,7 +2662,7 @@
       "subdomain_id": "sculpting",
       "subdomain_name": "数字雕刻",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "技巧"
       ],
@@ -3283,7 +3283,7 @@
       ],
       "file": "3d-art/3da-uv-channels.md",
       "exists": true,
-      "char_count": 1517
+      "char_count": 2681
     },
     {
       "id": "3da-uv-unwrap-tools",
@@ -3414,7 +3414,7 @@
       "tags": [],
       "file": "agent-systems/ai-application-arch.md",
       "exists": true,
-      "char_count": 1547
+      "char_count": 3255
     },
     {
       "id": "agent-debugging",
@@ -4668,7 +4668,7 @@
       "subdomain_id": "animation-blueprint",
       "subdomain_name": "动画蓝图",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -4683,7 +4683,7 @@
       "subdomain_id": "animation-blueprint",
       "subdomain_name": "动画蓝图",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "工具"
       ],
@@ -4713,7 +4713,7 @@
       "subdomain_id": "animation-blueprint",
       "subdomain_name": "动画蓝图",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "优化"
       ],
@@ -4773,7 +4773,7 @@
       "subdomain_id": "animation-blueprint",
       "subdomain_name": "动画蓝图",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -5058,7 +5058,7 @@
       "subdomain_id": "animation-principles",
       "subdomain_name": "动画原理",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -5073,7 +5073,7 @@
       "subdomain_id": "animation-principles",
       "subdomain_name": "动画原理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -5103,7 +5103,7 @@
       "subdomain_id": "animation-principles",
       "subdomain_name": "动画原理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -5178,7 +5178,7 @@
       "subdomain_id": "animation-principles",
       "subdomain_name": "动画原理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -5238,7 +5238,7 @@
       "subdomain_id": "blend-space",
       "subdomain_name": "BlendSpace",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -5253,7 +5253,7 @@
       "subdomain_id": "blend-space",
       "subdomain_name": "BlendSpace",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -5283,7 +5283,7 @@
       "subdomain_id": "blend-space",
       "subdomain_name": "BlendSpace",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "前沿"
       ],
@@ -5418,7 +5418,7 @@
       "subdomain_id": "blend-space",
       "subdomain_name": "BlendSpace",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -5463,7 +5463,7 @@
       "subdomain_id": "facial-animation",
       "subdomain_name": "面部动画",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -5478,7 +5478,7 @@
       "subdomain_id": "facial-animation",
       "subdomain_name": "面部动画",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -5523,7 +5523,7 @@
       "subdomain_id": "facial-animation",
       "subdomain_name": "面部动画",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -5658,7 +5658,7 @@
       "subdomain_id": "facial-animation",
       "subdomain_name": "面部动画",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -5898,7 +5898,7 @@
       "subdomain_id": "ik-fk",
       "subdomain_name": "IK/FK",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -5913,7 +5913,7 @@
       "subdomain_id": "ik-fk",
       "subdomain_name": "IK/FK",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -5943,7 +5943,7 @@
       "subdomain_id": "ik-fk",
       "subdomain_name": "IK/FK",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -6153,7 +6153,7 @@
       "subdomain_id": "keyframe-animation",
       "subdomain_name": "关键帧动画",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -6168,7 +6168,7 @@
       "subdomain_id": "keyframe-animation",
       "subdomain_name": "关键帧动画",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -6198,7 +6198,7 @@
       "subdomain_id": "keyframe-animation",
       "subdomain_name": "关键帧动画",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -6243,7 +6243,7 @@
       "subdomain_id": "keyframe-animation",
       "subdomain_name": "关键帧动画",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -6348,7 +6348,7 @@
       "subdomain_id": "motion-capture",
       "subdomain_name": "动作捕捉",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -6363,7 +6363,7 @@
       "subdomain_id": "motion-capture",
       "subdomain_name": "动作捕捉",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -6438,7 +6438,7 @@
       "subdomain_id": "motion-capture",
       "subdomain_name": "动作捕捉",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -6528,7 +6528,7 @@
       "subdomain_id": "physics-animation",
       "subdomain_name": "物理动画",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -6603,7 +6603,7 @@
       "subdomain_id": "physics-animation",
       "subdomain_name": "物理动画",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -6693,7 +6693,7 @@
       "subdomain_id": "physics-animation",
       "subdomain_name": "物理动画",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -6798,7 +6798,7 @@
       "subdomain_id": "skeletal-rigging",
       "subdomain_name": "骨骼绑定",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -6828,7 +6828,7 @@
       "subdomain_id": "skeletal-rigging",
       "subdomain_name": "骨骼绑定",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -6888,7 +6888,7 @@
       "subdomain_id": "skeletal-rigging",
       "subdomain_name": "骨骼绑定",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -7008,7 +7008,7 @@
       "subdomain_id": "skeletal-rigging",
       "subdomain_name": "骨骼绑定",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -7188,7 +7188,7 @@
       "subdomain_id": "state-machine",
       "subdomain_name": "状态机",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -7218,7 +7218,7 @@
       "subdomain_id": "state-machine",
       "subdomain_name": "状态机",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -7248,7 +7248,7 @@
       "subdomain_id": "state-machine",
       "subdomain_name": "状态机",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -7308,7 +7308,7 @@
       "subdomain_id": "biological-psychology",
       "subdomain_name": "生物心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "系统"
       ],
@@ -7383,7 +7383,7 @@
       "subdomain_id": "botany-zoology",
       "subdomain_name": "植物与动物学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "动物"
       ],
@@ -7413,7 +7413,7 @@
       "subdomain_id": "botany-zoology",
       "subdomain_name": "植物与动物学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "行为"
       ],
@@ -7458,7 +7458,7 @@
       "subdomain_id": "botany-zoology",
       "subdomain_name": "植物与动物学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -7518,7 +7518,7 @@
       "subdomain_id": "botany-zoology",
       "subdomain_name": "植物与动物学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "植物"
       ],
@@ -7788,7 +7788,7 @@
       "subdomain_id": "cell-biology",
       "subdomain_name": "细胞生物学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "细胞器"
       ],
@@ -7803,7 +7803,7 @@
       "subdomain_id": "cell-biology",
       "subdomain_name": "细胞生物学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "通讯"
       ],
@@ -7848,7 +7848,7 @@
       "subdomain_id": "cell-biology",
       "subdomain_name": "细胞生物学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "增殖"
       ],
@@ -7893,7 +7893,7 @@
       "subdomain_id": "cell-biology",
       "subdomain_name": "细胞生物学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -7908,7 +7908,7 @@
       "subdomain_id": "cell-biology",
       "subdomain_name": "细胞生物学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "结构"
       ],
@@ -8118,7 +8118,7 @@
       "subdomain_id": "ecology",
       "subdomain_name": "生态学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -8163,7 +8163,7 @@
       "subdomain_id": "ecology",
       "subdomain_name": "生态学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "生态系统"
       ],
@@ -8178,7 +8178,7 @@
       "subdomain_id": "ecology",
       "subdomain_name": "生态学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "保护"
       ],
@@ -8223,7 +8223,7 @@
       "subdomain_id": "ecology",
       "subdomain_name": "生态学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "种群"
       ],
@@ -8253,7 +8253,7 @@
       "subdomain_id": "ecology",
       "subdomain_name": "生态学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "群落"
       ],
@@ -8418,7 +8418,7 @@
       "subdomain_id": "evolution",
       "subdomain_name": "进化生物学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "宏观"
       ],
@@ -8448,7 +8448,7 @@
       "subdomain_id": "evolution",
       "subdomain_name": "进化生物学",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "方法"
       ],
@@ -8463,7 +8463,7 @@
       "subdomain_id": "evolution",
       "subdomain_name": "进化生物学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -8523,13 +8523,13 @@
       "subdomain_id": "evolution",
       "subdomain_name": "进化生物学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
       "file": "biology/evolution/evolution-overview.md",
       "exists": true,
-      "char_count": 1521
+      "char_count": 2521
     },
     {
       "id": "evidence-evolution",
@@ -8673,7 +8673,7 @@
       "subdomain_id": "genetics",
       "subdomain_name": "遗传学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "经典"
       ],
@@ -8763,7 +8763,7 @@
       "subdomain_id": "genetics",
       "subdomain_name": "遗传学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "变异"
       ],
@@ -8793,7 +8793,7 @@
       "subdomain_id": "genetics",
       "subdomain_name": "遗传学",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "群体"
       ],
@@ -8868,7 +8868,7 @@
       "subdomain_id": "genetics",
       "subdomain_name": "遗传学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -8913,7 +8913,7 @@
       "subdomain_id": "human-physiology",
       "subdomain_name": "人体生理学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -8943,7 +8943,7 @@
       "subdomain_id": "human-physiology",
       "subdomain_name": "人体生理学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "系统"
       ],
@@ -9123,7 +9123,7 @@
       "subdomain_id": "human-physiology",
       "subdomain_name": "人体生理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "系统"
       ],
@@ -9138,7 +9138,7 @@
       "subdomain_id": "human-physiology",
       "subdomain_name": "人体生理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -9303,7 +9303,7 @@
       "subdomain_id": "microbiology",
       "subdomain_name": "微生物学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -9333,7 +9333,7 @@
       "subdomain_id": "microbiology",
       "subdomain_name": "微生物学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "医学"
       ],
@@ -9408,7 +9408,7 @@
       "subdomain_id": "microbiology",
       "subdomain_name": "微生物学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "医学"
       ],
@@ -9438,7 +9438,7 @@
       "subdomain_id": "microbiology",
       "subdomain_name": "微生物学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "病毒"
       ],
@@ -9573,7 +9573,7 @@
       "subdomain_id": "molecular-biology",
       "subdomain_name": "分子生物学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核酸"
       ],
@@ -9678,7 +9678,7 @@
       "subdomain_id": "molecular-biology",
       "subdomain_name": "分子生物学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -9708,7 +9708,7 @@
       "subdomain_id": "molecular-biology",
       "subdomain_name": "分子生物学",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "前沿"
       ],
@@ -9723,7 +9723,7 @@
       "subdomain_id": "molecular-biology",
       "subdomain_name": "分子生物学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "调控"
       ],
@@ -9828,7 +9828,7 @@
       "subdomain_id": "molecular-biology",
       "subdomain_name": "分子生物学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基因表达"
       ],
@@ -9903,7 +9903,7 @@
       "subdomain_id": "anti-aliasing",
       "subdomain_name": "抗锯齿",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "AI"
       ],
@@ -9948,7 +9948,7 @@
       "subdomain_id": "anti-aliasing",
       "subdomain_name": "抗锯齿",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -9963,7 +9963,7 @@
       "subdomain_id": "anti-aliasing",
       "subdomain_name": "抗锯齿",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -9993,7 +9993,7 @@
       "subdomain_id": "anti-aliasing",
       "subdomain_name": "抗锯齿",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -10098,7 +10098,7 @@
       "subdomain_id": "anti-aliasing",
       "subdomain_name": "抗锯齿",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -10173,7 +10173,7 @@
       "subdomain_id": "geometry-processing",
       "subdomain_name": "几何处理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -10188,7 +10188,7 @@
       "subdomain_id": "geometry-processing",
       "subdomain_name": "几何处理",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "前沿"
       ],
@@ -10218,7 +10218,7 @@
       "subdomain_id": "geometry-processing",
       "subdomain_name": "几何处理",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -10263,7 +10263,7 @@
       "subdomain_id": "geometry-processing",
       "subdomain_name": "几何处理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "优化"
       ],
@@ -10458,7 +10458,7 @@
       "subdomain_id": "geometry-processing",
       "subdomain_name": "几何处理",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "算法"
       ],
@@ -10533,7 +10533,7 @@
       "subdomain_id": "global-illumination",
       "subdomain_name": "全局光照",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -10584,7 +10584,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-lightmap-baking.md",
       "exists": true,
-      "char_count": 1546
+      "char_count": 2954
     },
     {
       "id": "cg-gi-intro",
@@ -10593,7 +10593,7 @@
       "subdomain_id": "global-illumination",
       "subdomain_name": "全局光照",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -10653,7 +10653,7 @@
       "subdomain_id": "global-illumination",
       "subdomain_name": "全局光照",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "架构"
       ],
@@ -10668,7 +10668,7 @@
       "subdomain_id": "global-illumination",
       "subdomain_name": "全局光照",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -10698,7 +10698,7 @@
       "subdomain_id": "global-illumination",
       "subdomain_name": "全局光照",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "实践"
       ],
@@ -10818,7 +10818,7 @@
       "subdomain_id": "gpu-architecture",
       "subdomain_name": "GPU架构",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -10848,7 +10848,7 @@
       "subdomain_id": "gpu-architecture",
       "subdomain_name": "GPU架构",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "前沿"
       ],
@@ -10863,7 +10863,7 @@
       "subdomain_id": "gpu-architecture",
       "subdomain_name": "GPU架构",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -10878,7 +10878,7 @@
       "subdomain_id": "gpu-architecture",
       "subdomain_name": "GPU架构",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "实践"
       ],
@@ -10893,7 +10893,7 @@
       "subdomain_id": "gpu-architecture",
       "subdomain_name": "GPU架构",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -10914,7 +10914,7 @@
       ],
       "file": "computer-graphics/gpu-architecture/cg-gpu-pipeline.md",
       "exists": true,
-      "char_count": 1501
+      "char_count": 2866
     },
     {
       "id": "cg-gpu-scheduling",
@@ -11133,7 +11133,7 @@
       "subdomain_id": "pbr-materials",
       "subdomain_name": "PBR材质",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -11148,7 +11148,7 @@
       "subdomain_id": "pbr-materials",
       "subdomain_name": "PBR材质",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -11163,7 +11163,7 @@
       "subdomain_id": "pbr-materials",
       "subdomain_name": "PBR材质",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -11238,7 +11238,7 @@
       "subdomain_id": "pbr-materials",
       "subdomain_name": "PBR材质",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -11463,7 +11463,7 @@
       "subdomain_id": "post-processing",
       "subdomain_name": "后处理",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "架构"
       ],
@@ -11478,7 +11478,7 @@
       "subdomain_id": "post-processing",
       "subdomain_name": "后处理",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -11538,7 +11538,7 @@
       "subdomain_id": "post-processing",
       "subdomain_name": "后处理",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "效果"
       ],
@@ -11643,7 +11643,7 @@
       "subdomain_id": "post-processing",
       "subdomain_name": "后处理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -11808,7 +11808,7 @@
       "subdomain_id": "rasterization",
       "subdomain_name": "光栅化",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -11838,7 +11838,7 @@
       "subdomain_id": "rasterization",
       "subdomain_name": "光栅化",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "架构"
       ],
@@ -11898,7 +11898,7 @@
       "subdomain_id": "rasterization",
       "subdomain_name": "光栅化",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "数学"
       ],
@@ -11913,7 +11913,7 @@
       "subdomain_id": "rasterization",
       "subdomain_name": "光栅化",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "架构"
       ],
@@ -12063,7 +12063,7 @@
       "subdomain_id": "ray-tracing",
       "subdomain_name": "光线追踪",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "算法"
       ],
@@ -12198,7 +12198,7 @@
       "subdomain_id": "ray-tracing",
       "subdomain_name": "光线追踪",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -12288,7 +12288,7 @@
       "subdomain_id": "ray-tracing",
       "subdomain_name": "光线追踪",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "实践"
       ],
@@ -12333,7 +12333,7 @@
       "subdomain_id": "ray-tracing",
       "subdomain_name": "光线追踪",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "架构"
       ],
@@ -12348,7 +12348,7 @@
       "subdomain_id": "ray-tracing",
       "subdomain_name": "光线追踪",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -12393,7 +12393,7 @@
       "subdomain_id": "render-optimization",
       "subdomain_name": "渲染优化",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -12444,7 +12444,7 @@
       ],
       "file": "computer-graphics/render-optimization/cg-vr-opt.md",
       "exists": true,
-      "char_count": 1522
+      "char_count": 2843
     },
     {
       "id": "cg-atlas-batching",
@@ -12513,7 +12513,7 @@
       "subdomain_id": "render-optimization",
       "subdomain_name": "渲染优化",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "方法论"
       ],
@@ -12543,7 +12543,7 @@
       "subdomain_id": "render-optimization",
       "subdomain_name": "渲染优化",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -12558,7 +12558,7 @@
       "subdomain_id": "render-optimization",
       "subdomain_name": "渲染优化",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "架构"
       ],
@@ -12633,7 +12633,7 @@
       "subdomain_id": "render-optimization",
       "subdomain_name": "渲染优化",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "技术"
       ],
@@ -12663,7 +12663,7 @@
       "subdomain_id": "render-optimization",
       "subdomain_name": "渲染优化",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -12738,7 +12738,7 @@
       "subdomain_id": "shader-programming",
       "subdomain_name": "Shader编程",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -12828,7 +12828,7 @@
       "subdomain_id": "shader-programming",
       "subdomain_name": "Shader编程",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "工具"
       ],
@@ -12843,7 +12843,7 @@
       "subdomain_id": "shader-programming",
       "subdomain_name": "Shader编程",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -12873,7 +12873,7 @@
       "subdomain_id": "shader-programming",
       "subdomain_name": "Shader编程",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "优化"
       ],
@@ -12933,7 +12933,7 @@
       "subdomain_id": "shader-programming",
       "subdomain_name": "Shader编程",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -12993,7 +12993,7 @@
       "subdomain_id": "texture-techniques",
       "subdomain_name": "纹理技术",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -13083,7 +13083,7 @@
       "subdomain_id": "texture-techniques",
       "subdomain_name": "纹理技术",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -13188,7 +13188,7 @@
       "subdomain_id": "texture-techniques",
       "subdomain_name": "纹理技术",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -13263,7 +13263,7 @@
       "subdomain_id": "texture-techniques",
       "subdomain_name": "纹理技术",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "前沿"
       ],
@@ -13353,7 +13353,7 @@
       "subdomain_id": "volume-rendering",
       "subdomain_name": "体积渲染",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -13368,7 +13368,7 @@
       "subdomain_id": "volume-rendering",
       "subdomain_name": "体积渲染",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "实践"
       ],
@@ -13413,7 +13413,7 @@
       "subdomain_id": "volume-rendering",
       "subdomain_name": "体积渲染",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -13593,7 +13593,7 @@
       "subdomain_id": "volume-rendering",
       "subdomain_name": "体积渲染",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "前沿"
       ],
@@ -13623,7 +13623,7 @@
       "subdomain_id": "anatomy-sketching",
       "subdomain_name": "人体解剖速写",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -13758,7 +13758,7 @@
       "subdomain_id": "anatomy-sketching",
       "subdomain_name": "人体解剖速写",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -13833,7 +13833,7 @@
       "subdomain_id": "anatomy-sketching",
       "subdomain_name": "人体解剖速写",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -14073,7 +14073,7 @@
       "subdomain_id": "character-design",
       "subdomain_name": "角色设计",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -14088,7 +14088,7 @@
       "subdomain_id": "character-design",
       "subdomain_name": "角色设计",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -14148,7 +14148,7 @@
       "subdomain_id": "character-design",
       "subdomain_name": "角色设计",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -14178,7 +14178,7 @@
       "subdomain_id": "character-design",
       "subdomain_name": "角色设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -14358,7 +14358,7 @@
       "subdomain_id": "color-theory",
       "subdomain_name": "色彩理论",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -14448,7 +14448,7 @@
       "subdomain_id": "color-theory",
       "subdomain_name": "色彩理论",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -14478,7 +14478,7 @@
       "subdomain_id": "color-theory",
       "subdomain_name": "色彩理论",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -14613,7 +14613,7 @@
       "subdomain_id": "composition",
       "subdomain_name": "构图",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -14628,7 +14628,7 @@
       "subdomain_id": "composition",
       "subdomain_name": "构图",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -14658,7 +14658,7 @@
       "subdomain_id": "composition",
       "subdomain_name": "构图",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -14748,7 +14748,7 @@
       "subdomain_id": "composition",
       "subdomain_name": "构图",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -14853,7 +14853,7 @@
       "subdomain_id": "environment-design",
       "subdomain_name": "环境设计",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -14883,7 +14883,7 @@
       "subdomain_id": "environment-design",
       "subdomain_name": "环境设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "实战"
       ],
@@ -14988,7 +14988,7 @@
       "subdomain_id": "environment-design",
       "subdomain_name": "环境设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -15048,7 +15048,7 @@
       "subdomain_id": "environment-design",
       "subdomain_name": "环境设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -15273,7 +15273,7 @@
       "subdomain_id": "light-shadow",
       "subdomain_name": "光影",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -15288,7 +15288,7 @@
       "subdomain_id": "light-shadow",
       "subdomain_name": "光影",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -15348,7 +15348,7 @@
       "subdomain_id": "light-shadow",
       "subdomain_name": "光影",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -15498,7 +15498,7 @@
       "subdomain_id": "moodboard-ref",
       "subdomain_name": "Moodboard与参考",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -15558,7 +15558,7 @@
       "subdomain_id": "moodboard-ref",
       "subdomain_name": "Moodboard与参考",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -15573,7 +15573,7 @@
       "subdomain_id": "moodboard-ref",
       "subdomain_name": "Moodboard与参考",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "学习"
       ],
@@ -15648,7 +15648,7 @@
       "subdomain_id": "moodboard-ref",
       "subdomain_name": "Moodboard与参考",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "学习"
       ],
@@ -15753,7 +15753,7 @@
       "subdomain_id": "perspective",
       "subdomain_name": "透视法",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -15798,7 +15798,7 @@
       "subdomain_id": "perspective",
       "subdomain_name": "透视法",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -15963,7 +15963,7 @@
       "subdomain_id": "perspective",
       "subdomain_name": "透视法",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -16128,7 +16128,7 @@
       "subdomain_id": "prop-design",
       "subdomain_name": "道具设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "实战"
       ],
@@ -16218,7 +16218,7 @@
       "subdomain_id": "prop-design",
       "subdomain_name": "道具设计",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -16278,7 +16278,7 @@
       "subdomain_id": "prop-design",
       "subdomain_name": "道具设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -16353,7 +16353,7 @@
       "subdomain_id": "style-guide",
       "subdomain_name": "风格指南",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -16383,7 +16383,7 @@
       "subdomain_id": "style-guide",
       "subdomain_name": "风格指南",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -16503,7 +16503,7 @@
       "subdomain_id": "style-guide",
       "subdomain_name": "风格指南",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "职业"
       ],
@@ -16578,7 +16578,7 @@
       "subdomain_id": "style-guide",
       "subdomain_name": "风格指南",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -16683,7 +16683,7 @@
       "subdomain_id": "visual-development",
       "subdomain_name": "视觉开发",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -16713,7 +16713,7 @@
       "subdomain_id": "visual-development",
       "subdomain_name": "视觉开发",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -16788,7 +16788,7 @@
       "subdomain_id": "visual-development",
       "subdomain_name": "视觉开发",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -16818,7 +16818,7 @@
       "subdomain_id": "visual-development",
       "subdomain_name": "视觉开发",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -17213,7 +17213,7 @@
       "tags": [],
       "file": "data-structures/bst.md",
       "exists": true,
-      "char_count": 1500
+      "char_count": 2101
     },
     {
       "id": "monotone-queue",
@@ -17499,7 +17499,7 @@
       "tags": [],
       "file": "database/sql-cte.md",
       "exists": true,
-      "char_count": 1520
+      "char_count": 3355
     },
     {
       "id": "mvcc",
@@ -17525,7 +17525,7 @@
       "tags": [],
       "file": "database/mongodb-basics.md",
       "exists": true,
-      "char_count": 1530
+      "char_count": 3324
     },
     {
       "id": "nosql-intro",
@@ -18093,7 +18093,7 @@
       "subdomain_id": "behavioral-econ",
       "subdomain_name": "行为经济学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -18108,7 +18108,7 @@
       "subdomain_id": "behavioral-econ",
       "subdomain_name": "行为经济学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "应用"
       ],
@@ -18273,7 +18273,7 @@
       "subdomain_id": "behavioral-econ",
       "subdomain_name": "行为经济学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -18369,7 +18369,7 @@
       ],
       "file": "economics/development-econ/health-economics-dev.md",
       "exists": true,
-      "char_count": 1635
+      "char_count": 2716
     },
     {
       "id": "agriculture-development",
@@ -18393,7 +18393,7 @@
       "subdomain_id": "development-econ",
       "subdomain_name": "发展经济学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "制度"
       ],
@@ -18408,7 +18408,7 @@
       "subdomain_id": "development-econ",
       "subdomain_name": "发展经济学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -18558,7 +18558,7 @@
       "subdomain_id": "development-econ",
       "subdomain_name": "发展经济学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "转型"
       ],
@@ -18573,7 +18573,7 @@
       "subdomain_id": "development-econ",
       "subdomain_name": "发展经济学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -18603,7 +18603,7 @@
       "subdomain_id": "development-econ",
       "subdomain_name": "发展经济学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "方法"
       ],
@@ -18663,7 +18663,7 @@
       "subdomain_id": "econometrics",
       "subdomain_name": "计量经济学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -18678,7 +18678,7 @@
       "subdomain_id": "econometrics",
       "subdomain_name": "计量经济学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "因果"
       ],
@@ -18738,7 +18738,7 @@
       "subdomain_id": "econometrics",
       "subdomain_name": "计量经济学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "因果"
       ],
@@ -18843,7 +18843,7 @@
       "subdomain_id": "econometrics",
       "subdomain_name": "计量经济学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -18888,7 +18888,7 @@
       "subdomain_id": "economic-thought",
       "subdomain_name": "经济思想史",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "古典"
       ],
@@ -18903,7 +18903,7 @@
       "subdomain_id": "economic-thought",
       "subdomain_name": "经济思想史",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "凯恩斯"
       ],
@@ -19053,7 +19053,7 @@
       "subdomain_id": "economic-thought",
       "subdomain_name": "经济思想史",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -19173,7 +19173,7 @@
       "subdomain_id": "international-econ",
       "subdomain_name": "国际经济学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "现代"
       ],
@@ -19218,7 +19218,7 @@
       "subdomain_id": "international-econ",
       "subdomain_name": "国际经济学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -19308,7 +19308,7 @@
       "subdomain_id": "international-econ",
       "subdomain_name": "国际经济学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "贸易"
       ],
@@ -19443,7 +19443,7 @@
       "subdomain_id": "international-econ",
       "subdomain_name": "国际经济学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "政策"
       ],
@@ -19638,7 +19638,7 @@
       "subdomain_id": "macroeconomics",
       "subdomain_name": "宏观经济学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -19773,7 +19773,7 @@
       "subdomain_id": "macroeconomics",
       "subdomain_name": "宏观经济学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "增长"
       ],
@@ -19848,7 +19848,7 @@
       "subdomain_id": "macroeconomics",
       "subdomain_name": "宏观经济学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "政策"
       ],
@@ -19953,7 +19953,7 @@
       "subdomain_id": "microeconomics",
       "subdomain_name": "微观经济学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "分析工具"
       ],
@@ -20028,7 +20028,7 @@
       "subdomain_id": "microeconomics",
       "subdomain_name": "微观经济学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "市场结构"
       ],
@@ -20103,7 +20103,7 @@
       "subdomain_id": "microeconomics",
       "subdomain_name": "微观经济学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -20298,7 +20298,7 @@
       "subdomain_id": "public-econ",
       "subdomain_name": "公共经济学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "支出"
       ],
@@ -20313,7 +20313,7 @@
       "subdomain_id": "public-econ",
       "subdomain_name": "公共经济学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -20328,7 +20328,7 @@
       "subdomain_id": "public-econ",
       "subdomain_name": "公共经济学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "制度"
       ],
@@ -20349,7 +20349,7 @@
       ],
       "file": "economics/public-econ/pension-economics.md",
       "exists": true,
-      "char_count": 1536
+      "char_count": 2278
     },
     {
       "id": "healthcare-economics",
@@ -20538,7 +20538,7 @@
       "subdomain_id": "public-econ",
       "subdomain_name": "公共经济学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "税收"
       ],
@@ -20628,7 +20628,7 @@
       "subdomain_id": "statistics",
       "subdomain_name": "数理统计",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -20724,7 +20724,7 @@
       ],
       "file": "english/advanced-grammar/causative-verbs.md",
       "exists": true,
-      "char_count": 1312
+      "char_count": 2798
     },
     {
       "id": "articles-advanced",
@@ -20853,7 +20853,7 @@
       "subdomain_id": "advanced-grammar",
       "subdomain_name": "高级语法",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -20913,7 +20913,7 @@
       "subdomain_id": "advanced-grammar",
       "subdomain_name": "高级语法",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "练习"
       ],
@@ -21003,7 +21003,7 @@
       "subdomain_id": "basic-grammar",
       "subdomain_name": "基础语法",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -21153,7 +21153,7 @@
       "subdomain_id": "basic-grammar",
       "subdomain_name": "基础语法",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -21243,7 +21243,7 @@
       "subdomain_id": "basic-grammar",
       "subdomain_name": "基础语法",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -21378,7 +21378,7 @@
       "subdomain_id": "idioms-culture",
       "subdomain_name": "习语与文化",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -21453,7 +21453,7 @@
       "subdomain_id": "idioms-culture",
       "subdomain_name": "习语与文化",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "文化"
       ],
@@ -21594,7 +21594,7 @@
       ],
       "file": "english/phonetics/schwa-sound.md",
       "exists": true,
-      "char_count": 1304
+      "char_count": 2521
     },
     {
       "id": "vowel-sounds",
@@ -21663,7 +21663,7 @@
       "subdomain_id": "phonetics",
       "subdomain_name": "语音",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -21783,7 +21783,7 @@
       "subdomain_id": "phonetics",
       "subdomain_name": "语音",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -21993,7 +21993,7 @@
       "subdomain_id": "reading",
       "subdomain_name": "阅读理解",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -22008,7 +22008,7 @@
       "subdomain_id": "reading",
       "subdomain_name": "阅读理解",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -22098,7 +22098,7 @@
       "subdomain_id": "reading",
       "subdomain_name": "阅读理解",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "策略"
       ],
@@ -22218,7 +22218,7 @@
       "subdomain_id": "sentence-patterns",
       "subdomain_name": "句型结构",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -22353,7 +22353,7 @@
       "subdomain_id": "sentence-patterns",
       "subdomain_name": "句型结构",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -22368,7 +22368,7 @@
       "subdomain_id": "sentence-patterns",
       "subdomain_name": "句型结构",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -22413,7 +22413,7 @@
       "subdomain_id": "sentence-patterns",
       "subdomain_name": "句型结构",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -22548,7 +22548,7 @@
       "subdomain_id": "speaking",
       "subdomain_name": "口语表达",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -22578,7 +22578,7 @@
       "subdomain_id": "speaking",
       "subdomain_name": "口语表达",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -22638,7 +22638,7 @@
       "subdomain_id": "speaking",
       "subdomain_name": "口语表达",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -22869,7 +22869,7 @@
       ],
       "file": "english/tenses/future-continuous.md",
       "exists": true,
-      "char_count": 1290
+      "char_count": 2445
     },
     {
       "id": "tense-consistency",
@@ -22893,7 +22893,7 @@
       "subdomain_id": "tenses",
       "subdomain_name": "时态系统",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -22938,7 +22938,7 @@
       "subdomain_id": "tenses",
       "subdomain_name": "时态系统",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -22974,7 +22974,7 @@
       ],
       "file": "english/tenses/present-for-future.md",
       "exists": true,
-      "char_count": 1293
+      "char_count": 2967
     },
     {
       "id": "present-continuous",
@@ -22998,7 +22998,7 @@
       "subdomain_id": "tenses",
       "subdomain_name": "时态系统",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -23208,7 +23208,7 @@
       "subdomain_id": "vocabulary",
       "subdomain_name": "核心词汇",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -23238,7 +23238,7 @@
       "subdomain_id": "vocabulary",
       "subdomain_name": "核心词汇",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -23433,7 +23433,7 @@
       "subdomain_id": "writing-en",
       "subdomain_name": "写作",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -23478,7 +23478,7 @@
       "subdomain_id": "writing-en",
       "subdomain_name": "写作",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "文体"
       ],
@@ -23613,7 +23613,7 @@
       "subdomain_id": "writing-fundamentals",
       "subdomain_name": "写作基础",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -23703,7 +23703,7 @@
       "subdomain_id": "corporate-finance",
       "subdomain_name": "公司金融",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -23883,7 +23883,7 @@
       "subdomain_id": "corporate-finance",
       "subdomain_name": "公司金融",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -23898,7 +23898,7 @@
       "subdomain_id": "corporate-finance",
       "subdomain_name": "公司金融",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "理论"
       ],
@@ -23913,7 +23913,7 @@
       "subdomain_id": "corporate-finance",
       "subdomain_name": "公司金融",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -24033,7 +24033,7 @@
       "subdomain_id": "fintech",
       "subdomain_name": "金融科技",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "区块链"
       ],
@@ -24138,7 +24138,7 @@
       "subdomain_id": "fintech",
       "subdomain_name": "金融科技",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "投资"
       ],
@@ -24228,7 +24228,7 @@
       "subdomain_id": "fintech",
       "subdomain_name": "金融科技",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -24288,7 +24288,7 @@
       "subdomain_id": "fixed-income",
       "subdomain_name": "固定收益",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -24408,7 +24408,7 @@
       "subdomain_id": "fixed-income",
       "subdomain_name": "固定收益",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -24468,7 +24468,7 @@
       "subdomain_id": "fixed-income",
       "subdomain_name": "固定收益",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -24558,7 +24558,7 @@
       "subdomain_id": "investment-basics",
       "subdomain_name": "投资基础",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "策略"
       ],
@@ -24678,7 +24678,7 @@
       "subdomain_id": "investment-basics",
       "subdomain_name": "投资基础",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -24768,7 +24768,7 @@
       "subdomain_id": "investment-basics",
       "subdomain_name": "投资基础",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -24828,7 +24828,7 @@
       "subdomain_id": "investment-basics",
       "subdomain_name": "投资基础",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -24843,7 +24843,7 @@
       "subdomain_id": "personal-finance",
       "subdomain_name": "个人理财",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -24933,7 +24933,7 @@
       "subdomain_id": "personal-finance",
       "subdomain_name": "个人理财",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -25038,7 +25038,7 @@
       "subdomain_id": "personal-finance",
       "subdomain_name": "个人理财",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "税务"
       ],
@@ -25083,7 +25083,7 @@
       "subdomain_id": "personal-finance",
       "subdomain_name": "个人理财",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "长期"
       ],
@@ -25128,7 +25128,7 @@
       "subdomain_id": "personal-finance",
       "subdomain_name": "个人理财",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "工具"
       ],
@@ -25188,7 +25188,7 @@
       "subdomain_id": "quantitative-finance",
       "subdomain_name": "量化金融",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "工具"
       ],
@@ -25203,7 +25203,7 @@
       "subdomain_id": "quantitative-finance",
       "subdomain_name": "量化金融",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "模型"
       ],
@@ -25293,7 +25293,7 @@
       "subdomain_id": "quantitative-finance",
       "subdomain_name": "量化金融",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "技术"
       ],
@@ -25368,7 +25368,7 @@
       "subdomain_id": "quantitative-finance",
       "subdomain_name": "量化金融",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -25458,7 +25458,7 @@
       "subdomain_id": "risk-management",
       "subdomain_name": "风险管理",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "工具"
       ],
@@ -25593,7 +25593,7 @@
       "subdomain_id": "risk-management",
       "subdomain_name": "风险管理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "衍生品"
       ],
@@ -25683,7 +25683,7 @@
       "subdomain_id": "risk-management",
       "subdomain_name": "风险管理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "工具"
       ],
@@ -25713,7 +25713,7 @@
       "subdomain_id": "risk-management",
       "subdomain_name": "风险管理",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -25773,7 +25773,7 @@
       "subdomain_id": "stock-market",
       "subdomain_name": "股票市场",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "策略"
       ],
@@ -25908,7 +25908,7 @@
       "subdomain_id": "stock-market",
       "subdomain_name": "股票市场",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "模型"
       ],
@@ -25968,7 +25968,7 @@
       "subdomain_id": "stock-market",
       "subdomain_name": "股票市场",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -25983,7 +25983,7 @@
       "subdomain_id": "stock-market",
       "subdomain_name": "股票市场",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -26028,7 +26028,7 @@
       "subdomain_id": "stock-market",
       "subdomain_name": "股票市场",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "分析"
       ],
@@ -26073,7 +26073,7 @@
       "subdomain_id": "adaptive-music",
       "subdomain_name": "自适应音乐",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -26103,7 +26103,7 @@
       "subdomain_id": "adaptive-music",
       "subdomain_name": "自适应音乐",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -26148,7 +26148,7 @@
       "subdomain_id": "adaptive-music",
       "subdomain_name": "自适应音乐",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -26238,7 +26238,7 @@
       "subdomain_id": "adaptive-music",
       "subdomain_name": "自适应音乐",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -26313,7 +26313,7 @@
       "subdomain_id": "adaptive-music",
       "subdomain_name": "自适应音乐",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -26343,7 +26343,7 @@
       "subdomain_id": "composition",
       "subdomain_name": "作曲编曲",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -26463,7 +26463,7 @@
       "subdomain_id": "composition",
       "subdomain_name": "作曲编曲",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -26493,7 +26493,7 @@
       "subdomain_id": "composition",
       "subdomain_name": "作曲编曲",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -26583,7 +26583,7 @@
       "subdomain_id": "composition",
       "subdomain_name": "作曲编曲",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -26598,7 +26598,7 @@
       "subdomain_id": "composition",
       "subdomain_name": "作曲编曲",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -26673,7 +26673,7 @@
       "subdomain_id": "daw",
       "subdomain_name": "编曲软件(DAW)",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -26703,7 +26703,7 @@
       "subdomain_id": "daw",
       "subdomain_name": "编曲软件(DAW)",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -26853,7 +26853,7 @@
       "subdomain_id": "daw",
       "subdomain_name": "编曲软件(DAW)",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -26868,7 +26868,7 @@
       "subdomain_id": "daw",
       "subdomain_name": "编曲软件(DAW)",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "高级"
       ],
@@ -26898,7 +26898,7 @@
       "subdomain_id": "daw",
       "subdomain_name": "编曲软件(DAW)",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -27003,7 +27003,7 @@
       "subdomain_id": "fmod-music",
       "subdomain_name": "FMOD音乐",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -27033,7 +27033,7 @@
       "subdomain_id": "fmod-music",
       "subdomain_name": "FMOD音乐",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -27138,7 +27138,7 @@
       "subdomain_id": "fmod-music",
       "subdomain_name": "FMOD音乐",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -27183,7 +27183,7 @@
       "subdomain_id": "fmod-music",
       "subdomain_name": "FMOD音乐",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -27198,7 +27198,7 @@
       "subdomain_id": "fmod-music",
       "subdomain_name": "FMOD音乐",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -27243,7 +27243,7 @@
       "subdomain_id": "interactive-score",
       "subdomain_name": "交互式配乐",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -27288,7 +27288,7 @@
       "subdomain_id": "interactive-score",
       "subdomain_name": "交互式配乐",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -27378,7 +27378,7 @@
       "subdomain_id": "interactive-score",
       "subdomain_name": "交互式配乐",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -27453,7 +27453,7 @@
       "subdomain_id": "interactive-score",
       "subdomain_name": "交互式配乐",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -27558,7 +27558,7 @@
       "subdomain_id": "leitmotif",
       "subdomain_name": "主题动机",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -27588,7 +27588,7 @@
       "subdomain_id": "leitmotif",
       "subdomain_name": "主题动机",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -27603,7 +27603,7 @@
       "subdomain_id": "leitmotif",
       "subdomain_name": "主题动机",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -27753,7 +27753,7 @@
       "subdomain_id": "leitmotif",
       "subdomain_name": "主题动机",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -27783,7 +27783,7 @@
       "subdomain_id": "leitmotif",
       "subdomain_name": "主题动机",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -28023,7 +28023,7 @@
       "subdomain_id": "music-theory",
       "subdomain_name": "音乐理论",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -28038,7 +28038,7 @@
       "subdomain_id": "music-theory",
       "subdomain_name": "音乐理论",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -28083,7 +28083,7 @@
       "subdomain_id": "music-theory",
       "subdomain_name": "音乐理论",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -28128,7 +28128,7 @@
       "subdomain_id": "music-theory",
       "subdomain_name": "音乐理论",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -28143,7 +28143,7 @@
       "subdomain_id": "style-study",
       "subdomain_name": "风格研究",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -28203,7 +28203,7 @@
       "subdomain_id": "style-study",
       "subdomain_name": "风格研究",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -28338,7 +28338,7 @@
       "subdomain_id": "style-study",
       "subdomain_name": "风格研究",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -28383,7 +28383,7 @@
       "subdomain_id": "style-study",
       "subdomain_name": "风格研究",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -28428,7 +28428,7 @@
       "subdomain_id": "style-study",
       "subdomain_name": "风格研究",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -28473,7 +28473,7 @@
       "subdomain_id": "wwise-music",
       "subdomain_name": "Wwise音乐系统",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -28488,7 +28488,7 @@
       "subdomain_id": "wwise-music",
       "subdomain_name": "Wwise音乐系统",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -28638,7 +28638,7 @@
       "subdomain_id": "wwise-music",
       "subdomain_name": "Wwise音乐系统",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -28653,7 +28653,7 @@
       "subdomain_id": "wwise-music",
       "subdomain_name": "Wwise音乐系统",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -28698,7 +28698,7 @@
       "subdomain_id": "wwise-music",
       "subdomain_name": "Wwise音乐系统",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -31098,7 +31098,7 @@
       "subdomain_id": "accessibility",
       "subdomain_name": "可达性设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "理念"
       ],
@@ -31173,7 +31173,7 @@
       "subdomain_id": "accessibility",
       "subdomain_name": "可达性设计",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -31263,7 +31263,7 @@
       "subdomain_id": "accessibility",
       "subdomain_name": "可达性设计",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "UI"
       ],
@@ -31413,7 +31413,7 @@
       "subdomain_id": "balance-design",
       "subdomain_name": "平衡性设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "PvP"
       ],
@@ -31563,7 +31563,7 @@
       "subdomain_id": "balance-design",
       "subdomain_name": "平衡性设计",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "数值"
       ],
@@ -31584,7 +31584,7 @@
       ],
       "file": "game-design/balance-design/data-driven-balance.md",
       "exists": true,
-      "char_count": 1296
+      "char_count": 2260
     },
     {
       "id": "tier-list",
@@ -31623,7 +31623,7 @@
       "subdomain_id": "balance-design",
       "subdomain_name": "平衡性设计",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -31698,7 +31698,7 @@
       "subdomain_id": "combat-design",
       "subdomain_name": "战斗设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "战斗"
       ],
@@ -31713,7 +31713,7 @@
       "subdomain_id": "combat-design",
       "subdomain_name": "战斗设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "系统"
       ],
@@ -31788,7 +31788,7 @@
       "subdomain_id": "combat-design",
       "subdomain_name": "战斗设计",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -32049,7 +32049,7 @@
       ],
       "file": "game-design/core-loop/action-game-loop.md",
       "exists": true,
-      "char_count": 1287
+      "char_count": 2213
     },
     {
       "id": "session-design",
@@ -32148,7 +32148,7 @@
       "subdomain_id": "core-loop",
       "subdomain_name": "核心循环",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "分析"
       ],
@@ -32229,7 +32229,7 @@
       ],
       "file": "game-design/core-loop/idle-game-loop.md",
       "exists": true,
-      "char_count": 1287
+      "char_count": 2230
     },
     {
       "id": "daily-loop",
@@ -32253,7 +32253,7 @@
       "subdomain_id": "core-loop",
       "subdomain_name": "核心循环",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -32283,7 +32283,7 @@
       "subdomain_id": "core-loop",
       "subdomain_name": "核心循环",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -32319,7 +32319,7 @@
       ],
       "file": "game-design/core-loop/strategy-game-loop.md",
       "exists": true,
-      "char_count": 1297
+      "char_count": 2296
     },
     {
       "id": "endgame-design",
@@ -32394,7 +32394,7 @@
       ],
       "file": "game-design/design-docs/content-design-doc.md",
       "exists": true,
-      "char_count": 1293
+      "char_count": 2436
     },
     {
       "id": "feature-spec",
@@ -32418,7 +32418,7 @@
       "subdomain_id": "design-docs",
       "subdomain_name": "设计文档",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "方法"
       ],
@@ -32613,7 +32613,7 @@
       "subdomain_id": "design-docs",
       "subdomain_name": "设计文档",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -32643,7 +32643,7 @@
       "subdomain_id": "design-docs",
       "subdomain_name": "设计文档",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -32838,7 +32838,7 @@
       "subdomain_id": "difficulty-curve",
       "subdomain_name": "难度曲线",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "动态"
       ],
@@ -32958,7 +32958,7 @@
       "subdomain_id": "difficulty-curve",
       "subdomain_name": "难度曲线",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -33108,7 +33108,7 @@
       "subdomain_id": "economy-design",
       "subdomain_name": "经济系统",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "商业"
       ],
@@ -33153,7 +33153,7 @@
       "subdomain_id": "economy-design",
       "subdomain_name": "经济系统",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -33174,7 +33174,7 @@
       ],
       "file": "game-design/economy-design/economy-metrics.md",
       "exists": true,
-      "char_count": 1296
+      "char_count": 2436
     },
     {
       "id": "economy-simulation",
@@ -33198,7 +33198,7 @@
       "subdomain_id": "economy-design",
       "subdomain_name": "经济系统",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "运营"
       ],
@@ -33288,7 +33288,7 @@
       "subdomain_id": "feedback-systems",
       "subdomain_name": "反馈系统",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "手感"
       ],
@@ -33363,7 +33363,7 @@
       "subdomain_id": "feedback-systems",
       "subdomain_name": "反馈系统",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -33618,7 +33618,7 @@
       "subdomain_id": "interaction-design",
       "subdomain_name": "交互设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "引导"
       ],
@@ -33738,7 +33738,7 @@
       "subdomain_id": "player-psychology",
       "subdomain_name": "玩家心理",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "情感"
       ],
@@ -33843,7 +33843,7 @@
       "subdomain_id": "player-psychology",
       "subdomain_name": "玩家心理",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -33918,7 +33918,7 @@
       "subdomain_id": "player-psychology",
       "subdomain_name": "玩家心理",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "伦理"
       ],
@@ -33948,7 +33948,7 @@
       "subdomain_id": "product-thinking",
       "subdomain_name": "产品思维",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -34023,7 +34023,7 @@
       "subdomain_id": "randomness-design",
       "subdomain_name": "随机性设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "设计"
       ],
@@ -34143,7 +34143,7 @@
       "subdomain_id": "randomness-design",
       "subdomain_name": "随机性设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "PCG"
       ],
@@ -34188,7 +34188,7 @@
       "subdomain_id": "randomness-design",
       "subdomain_name": "随机性设计",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -34209,7 +34209,7 @@
       ],
       "file": "game-design/randomness-design/rng-transparency.md",
       "exists": true,
-      "char_count": 1292
+      "char_count": 2455
     },
     {
       "id": "dice-mechanics",
@@ -34308,7 +34308,7 @@
       "subdomain_id": "social-systems",
       "subdomain_name": "社交系统",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "竞技"
       ],
@@ -34428,7 +34428,7 @@
       "subdomain_id": "social-systems",
       "subdomain_name": "社交系统",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -34638,7 +34638,7 @@
       "subdomain_id": "systems-design",
       "subdomain_name": "系统设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "成长"
       ],
@@ -34743,7 +34743,7 @@
       "subdomain_id": "systems-design",
       "subdomain_name": "系统设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "架构"
       ],
@@ -34998,7 +34998,7 @@
       "subdomain_id": "animation-system",
       "subdomain_name": "动画系统",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -35013,7 +35013,7 @@
       "subdomain_id": "animation-system",
       "subdomain_name": "动画系统",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "UE5"
       ],
@@ -35088,7 +35088,7 @@
       "subdomain_id": "animation-system",
       "subdomain_name": "动画系统",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "程序化"
       ],
@@ -35178,7 +35178,7 @@
       "subdomain_id": "audio-system",
       "subdomain_name": "音频系统",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "UE5"
       ],
@@ -35313,7 +35313,7 @@
       "subdomain_id": "audio-system",
       "subdomain_name": "音频系统",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "中间件"
       ],
@@ -35373,7 +35373,7 @@
       "subdomain_id": "audio-system",
       "subdomain_name": "音频系统",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -35613,7 +35613,7 @@
       "subdomain_id": "editor-extension",
       "subdomain_name": "编辑器扩展",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -35673,7 +35673,7 @@
       "subdomain_id": "editor-extension",
       "subdomain_name": "编辑器扩展",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "自动化"
       ],
@@ -35718,7 +35718,7 @@
       "subdomain_id": "editor-extension",
       "subdomain_name": "编辑器扩展",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "资产"
       ],
@@ -35868,7 +35868,7 @@
       "subdomain_id": "input-system",
       "subdomain_name": "输入系统",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "性能"
       ],
@@ -35898,7 +35898,7 @@
       "subdomain_id": "input-system",
       "subdomain_name": "输入系统",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "映射"
       ],
@@ -35913,7 +35913,7 @@
       "subdomain_id": "input-system",
       "subdomain_name": "输入系统",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -36063,7 +36063,7 @@
       "subdomain_id": "performance-profiling",
       "subdomain_name": "性能剖析",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "GPU"
       ],
@@ -36228,7 +36228,7 @@
       "subdomain_id": "performance-profiling",
       "subdomain_name": "性能剖析",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -36318,7 +36318,7 @@
       "subdomain_id": "performance-profiling",
       "subdomain_name": "性能剖析",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "自动化"
       ],
@@ -36438,7 +36438,7 @@
       "subdomain_id": "physics-engine",
       "subdomain_name": "物理引擎",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -36558,7 +36558,7 @@
       "subdomain_id": "physics-engine",
       "subdomain_name": "物理引擎",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "碰撞"
       ],
@@ -36588,7 +36588,7 @@
       "subdomain_id": "physics-engine",
       "subdomain_name": "物理引擎",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "角色"
       ],
@@ -36723,7 +36723,7 @@
       "subdomain_id": "platform-abstraction",
       "subdomain_name": "平台抽象",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "渲染"
       ],
@@ -36753,7 +36753,7 @@
       "subdomain_id": "platform-abstraction",
       "subdomain_name": "平台抽象",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "性能"
       ],
@@ -36783,7 +36783,7 @@
       "subdomain_id": "platform-abstraction",
       "subdomain_name": "平台抽象",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -36978,7 +36978,7 @@
       "subdomain_id": "plugin-development",
       "subdomain_name": "插件开发",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "UE5"
       ],
@@ -37083,7 +37083,7 @@
       "subdomain_id": "plugin-development",
       "subdomain_name": "插件开发",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -37218,7 +37218,7 @@
       "subdomain_id": "plugin-development",
       "subdomain_name": "插件开发",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "集成"
       ],
@@ -37383,7 +37383,7 @@
       "subdomain_id": "rendering-pipeline",
       "subdomain_name": "渲染管线",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "路径"
       ],
@@ -37443,7 +37443,7 @@
       "subdomain_id": "rendering-pipeline",
       "subdomain_name": "渲染管线",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "架构"
       ],
@@ -37458,7 +37458,7 @@
       "subdomain_id": "rendering-pipeline",
       "subdomain_name": "渲染管线",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -37638,7 +37638,7 @@
       "subdomain_id": "resource-management",
       "subdomain_name": "资源管理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "异步"
       ],
@@ -37728,7 +37728,7 @@
       "subdomain_id": "resource-management",
       "subdomain_name": "资源管理",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "分发"
       ],
@@ -37818,7 +37818,7 @@
       "subdomain_id": "resource-management",
       "subdomain_name": "资源管理",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -37983,7 +37983,7 @@
       "subdomain_id": "scene-management",
       "subdomain_name": "场景管理",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -38088,7 +38088,7 @@
       "subdomain_id": "scene-management",
       "subdomain_name": "场景管理",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "PCG"
       ],
@@ -38103,7 +38103,7 @@
       "subdomain_id": "scene-management",
       "subdomain_name": "场景管理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "索引"
       ],
@@ -38133,7 +38133,7 @@
       "subdomain_id": "scripting-system",
       "subdomain_name": "脚本系统",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "UE5"
       ],
@@ -38343,7 +38343,7 @@
       "subdomain_id": "scripting-system",
       "subdomain_name": "脚本系统",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "模式"
       ],
@@ -38373,7 +38373,7 @@
       "subdomain_id": "scripting-system",
       "subdomain_name": "脚本系统",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -38568,7 +38568,7 @@
       "subdomain_id": "serialization",
       "subdomain_name": "序列化",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "存档"
       ],
@@ -38613,7 +38613,7 @@
       "subdomain_id": "serialization",
       "subdomain_name": "序列化",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -38628,7 +38628,7 @@
       "subdomain_id": "serialization",
       "subdomain_name": "序列化",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "数据"
       ],
@@ -38733,7 +38733,7 @@
       "subdomain_id": "ue5-architecture",
       "subdomain_name": "UE5架构",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "架构"
       ],
@@ -38838,7 +38838,7 @@
       "subdomain_id": "ue5-architecture",
       "subdomain_name": "UE5架构",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "渲染"
       ],
@@ -39018,7 +39018,7 @@
       "subdomain_id": "ue5-architecture",
       "subdomain_name": "UE5架构",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -39078,7 +39078,7 @@
       "subdomain_id": "unity-architecture",
       "subdomain_name": "Unity架构",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "ECS"
       ],
@@ -39273,7 +39273,7 @@
       "subdomain_id": "unity-architecture",
       "subdomain_name": "Unity架构",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -42041,7 +42041,7 @@
       "tags": [],
       "file": "game-production/gp-bc-tracking.md",
       "exists": true,
-      "char_count": 1507
+      "char_count": 2643
     },
     {
       "id": "gp-bc-evm",
@@ -42210,7 +42210,7 @@
       "tags": [],
       "file": "game-production/gp-cd-handoff.md",
       "exists": true,
-      "char_count": 1501
+      "char_count": 2317
     },
     {
       "id": "gp-cd-meeting",
@@ -43718,7 +43718,7 @@
       "tags": [],
       "file": "game-production/gp-rk-assessment.md",
       "exists": true,
-      "char_count": 1504
+      "char_count": 2519
     },
     {
       "id": "gp-rk-identification",
@@ -45083,7 +45083,7 @@
       "tags": [],
       "file": "game-publishing/pub-pc-first-look-deal.md",
       "exists": true,
-      "char_count": 1540
+      "char_count": 3102
     },
     {
       "id": "pub-pc-creative-control",
@@ -45161,7 +45161,7 @@
       "tags": [],
       "file": "game-publishing/pub-pc-contract-exit.md",
       "exists": true,
-      "char_count": 1504
+      "char_count": 2649
     },
     {
       "id": "pub-pc-recoup-mechanism",
@@ -46266,7 +46266,7 @@
       "tags": [],
       "file": "game-qa/qa-at-e2e-testing.md",
       "exists": true,
-      "char_count": 1283
+      "char_count": 2536
     },
     {
       "id": "qa-at-script-language",
@@ -47098,7 +47098,7 @@
       "tags": [],
       "file": "game-qa/qa-ft-boundary-value.md",
       "exists": true,
-      "char_count": 1280
+      "char_count": 2310
     },
     {
       "id": "qa-ft-audio-testing",
@@ -51403,7 +51403,7 @@
       "subdomain_id": "blockout",
       "subdomain_name": "Blockout",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -51418,7 +51418,7 @@
       "subdomain_id": "blockout",
       "subdomain_name": "Blockout",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -51673,7 +51673,7 @@
       "subdomain_id": "combat-space",
       "subdomain_name": "战斗空间",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "Boss"
       ],
@@ -51763,7 +51763,7 @@
       "subdomain_id": "combat-space",
       "subdomain_name": "战斗空间",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -51808,7 +51808,7 @@
       "subdomain_id": "combat-space",
       "subdomain_name": "战斗空间",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "掩体"
       ],
@@ -52033,7 +52033,7 @@
       "subdomain_id": "guidance-design",
       "subdomain_name": "引导设计",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -52078,7 +52078,7 @@
       "subdomain_id": "guidance-design",
       "subdomain_name": "引导设计",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "教学"
       ],
@@ -52093,7 +52093,7 @@
       "subdomain_id": "guidance-design",
       "subdomain_name": "引导设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "教学"
       ],
@@ -52288,7 +52288,7 @@
       "subdomain_id": "ld-documentation",
       "subdomain_name": "LD文档",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -52303,7 +52303,7 @@
       "subdomain_id": "ld-documentation",
       "subdomain_name": "LD文档",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "职业"
       ],
@@ -52333,7 +52333,7 @@
       "subdomain_id": "ld-documentation",
       "subdomain_name": "LD文档",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "工具"
       ],
@@ -52543,7 +52543,7 @@
       "subdomain_id": "ld-documentation",
       "subdomain_name": "LD文档",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -52633,7 +52633,7 @@
       "subdomain_id": "level-editor",
       "subdomain_name": "关卡编辑器",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "UE5"
       ],
@@ -52648,7 +52648,7 @@
       "subdomain_id": "level-editor",
       "subdomain_name": "关卡编辑器",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "性能"
       ],
@@ -52723,7 +52723,7 @@
       "subdomain_id": "level-editor",
       "subdomain_name": "关卡编辑器",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -52759,7 +52759,7 @@
       ],
       "file": "level-design/level-editor/multi-user-editing.md",
       "exists": true,
-      "char_count": 1300
+      "char_count": 2966
     },
     {
       "id": "sublevel-management",
@@ -52858,7 +52858,7 @@
       "subdomain_id": "lighting-narrative",
       "subdomain_name": "光照叙事",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "特效"
       ],
@@ -52873,7 +52873,7 @@
       "subdomain_id": "lighting-narrative",
       "subdomain_name": "光照叙事",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -53173,7 +53173,7 @@
       "subdomain_id": "metrics-design",
       "subdomain_name": "Metric设计",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -53278,7 +53278,7 @@
       "subdomain_id": "metrics-design",
       "subdomain_name": "Metric设计",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "文档"
       ],
@@ -53449,7 +53449,7 @@
       ],
       "file": "level-design/metrics-design/audio-range.md",
       "exists": true,
-      "char_count": 1303
+      "char_count": 2541
     },
     {
       "id": "show-dont-tell",
@@ -53473,7 +53473,7 @@
       "subdomain_id": "pacing-curve",
       "subdomain_name": "节奏曲线",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "结构"
       ],
@@ -53713,7 +53713,7 @@
       "subdomain_id": "pacing-curve",
       "subdomain_name": "节奏曲线",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "分析"
       ],
@@ -53728,7 +53728,7 @@
       "subdomain_id": "pacing-curve",
       "subdomain_name": "节奏曲线",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -53818,7 +53818,7 @@
       "subdomain_id": "spatial-narrative",
       "subdomain_name": "空间叙事",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -53893,7 +53893,7 @@
       "subdomain_id": "spatial-narrative",
       "subdomain_name": "空间叙事",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "叙事"
       ],
@@ -53998,7 +53998,7 @@
       "subdomain_id": "spatial-narrative",
       "subdomain_name": "空间叙事",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "叙事"
       ],
@@ -54133,7 +54133,7 @@
       "subdomain_id": "terrain-design",
       "subdomain_name": "地形设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "性能"
       ],
@@ -54193,7 +54193,7 @@
       "subdomain_id": "terrain-design",
       "subdomain_name": "地形设计",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -54313,7 +54313,7 @@
       "subdomain_id": "terrain-design",
       "subdomain_name": "地形设计",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "环境"
       ],
@@ -54871,7 +54871,7 @@
       "subdomain_id": "algebra",
       "subdomain_name": "代数",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -54931,7 +54931,7 @@
       "subdomain_id": "algebra",
       "subdomain_name": "代数",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -55156,7 +55156,7 @@
       "subdomain_id": "algebra",
       "subdomain_name": "代数",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -55336,7 +55336,7 @@
       "subdomain_id": "analytic-geometry",
       "subdomain_name": "解析几何",
       "difficulty": 7,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -55426,7 +55426,7 @@
       "subdomain_id": "analytic-geometry",
       "subdomain_name": "解析几何",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -55621,7 +55621,7 @@
       "subdomain_id": "arithmetic",
       "subdomain_name": "算术基础",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -55831,7 +55831,7 @@
       "subdomain_id": "calculus",
       "subdomain_name": "微积分",
       "difficulty": 7,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -55906,7 +55906,7 @@
       "subdomain_id": "calculus",
       "subdomain_name": "微积分",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -55921,7 +55921,7 @@
       "subdomain_id": "calculus",
       "subdomain_name": "微积分",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -55996,7 +55996,7 @@
       "subdomain_id": "calculus",
       "subdomain_name": "微积分",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -56536,7 +56536,7 @@
       "subdomain_id": "discrete-math",
       "subdomain_name": "离散数学",
       "difficulty": 8,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -56581,7 +56581,7 @@
       "subdomain_id": "discrete-math",
       "subdomain_name": "离散数学",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -56686,7 +56686,7 @@
       "subdomain_id": "geometry",
       "subdomain_name": "几何",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -56866,7 +56866,7 @@
       "subdomain_id": "geometry",
       "subdomain_name": "几何",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -57046,7 +57046,7 @@
       "subdomain_id": "linear-algebra",
       "subdomain_name": "线性代数",
       "difficulty": 7,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -57211,7 +57211,7 @@
       "subdomain_id": "linear-algebra",
       "subdomain_name": "线性代数",
       "difficulty": 7,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -57331,7 +57331,7 @@
       "subdomain_id": "linear-algebra",
       "subdomain_name": "线性代数",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -57451,7 +57451,7 @@
       "subdomain_id": "number-theory",
       "subdomain_name": "数论",
       "difficulty": 7,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -57496,7 +57496,7 @@
       "subdomain_id": "number-theory",
       "subdomain_name": "数论",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -57811,7 +57811,7 @@
       "subdomain_id": "optimization",
       "subdomain_name": "最优化",
       "difficulty": 7,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -57841,7 +57841,7 @@
       "subdomain_id": "optimization",
       "subdomain_name": "最优化",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -57946,7 +57946,7 @@
       "subdomain_id": "probability",
       "subdomain_name": "概率论",
       "difficulty": 7,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -57982,7 +57982,7 @@
       ],
       "file": "mathematics/probability/chebyshev-inequality.md",
       "exists": true,
-      "char_count": 1286
+      "char_count": 2702
     },
     {
       "id": "multivariate-normal",
@@ -58036,7 +58036,7 @@
       "subdomain_id": "probability",
       "subdomain_name": "概率论",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -58066,7 +58066,7 @@
       "subdomain_id": "probability",
       "subdomain_name": "概率论",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -58216,7 +58216,7 @@
       "subdomain_id": "probability",
       "subdomain_name": "概率论",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -58351,7 +58351,7 @@
       "subdomain_id": "statistics",
       "subdomain_name": "统计学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -58441,7 +58441,7 @@
       "subdomain_id": "statistics",
       "subdomain_name": "数理统计",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -58486,7 +58486,7 @@
       "subdomain_id": "statistics",
       "subdomain_name": "数理统计",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -58711,7 +58711,7 @@
       "subdomain_id": "trigonometry",
       "subdomain_name": "三角学",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -58893,7 +58893,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ac-code-obfuscation.md",
       "exists": true,
-      "char_count": 1284
+      "char_count": 2534
     },
     {
       "id": "mn-ac-memory-scanning",
@@ -59764,7 +59764,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lr-anti-exploit.md",
       "exists": true,
-      "char_count": 1297
+      "char_count": 2853
     },
     {
       "id": "mn-lr-data-visualization",
@@ -59816,7 +59816,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lr-heat-map.md",
       "exists": true,
-      "char_count": 1283
+      "char_count": 2273
     },
     {
       "id": "mn-lr-player-stats",
@@ -59916,7 +59916,7 @@
       "subdomain_id": "lobby",
       "subdomain_name": "大厅",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [],
       "file": "multiplayer-network/mn-lb-friend-system.md",
       "exists": true,
@@ -59933,7 +59933,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lb-host-migration.md",
       "exists": true,
-      "char_count": 1291
+      "char_count": 2467
     },
     {
       "id": "mn-lb-clan-guild",
@@ -60245,7 +60245,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ls-late-join.md",
       "exists": true,
-      "char_count": 1283
+      "char_count": 2441
     },
     {
       "id": "mn-ls-sync-verification",
@@ -60479,7 +60479,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-mm-matchmaking-ticket.md",
       "exists": true,
-      "char_count": 1294
+      "char_count": 2478
     },
     {
       "id": "mn-mm-match-quality-metrics",
@@ -60505,7 +60505,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-mm-queue-system.md",
       "exists": true,
-      "char_count": 1586
+      "char_count": 2631
     },
     {
       "id": "mn-mm-eomm",
@@ -60557,7 +60557,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-mm-placement-matches.md",
       "exists": true,
-      "char_count": 1289
+      "char_count": 2159
     },
     {
       "id": "mn-mm-smurf-detection",
@@ -61051,7 +61051,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-sa-seamless-travel.md",
       "exists": true,
-      "char_count": 1295
+      "char_count": 3108
     },
     {
       "id": "mn-sa-service-discovery",
@@ -61207,7 +61207,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-sa-rate-limiting.md",
       "exists": true,
-      "char_count": 1284
+      "char_count": 2490
     },
     {
       "id": "mn-ss-rpc-replication",
@@ -61298,7 +61298,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ss-delta-compression.md",
       "exists": true,
-      "char_count": 1293
+      "char_count": 2490
     },
     {
       "id": "mn-ss-latency-hiding",
@@ -61402,7 +61402,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ss-physics-sync.md",
       "exists": true,
-      "char_count": 1285
+      "char_count": 2528
     },
     {
       "id": "mn-ss-state-replication",
@@ -61584,7 +61584,7 @@
       "tags": [],
       "file": "narrative-design/nd-bn-delayed-consequence.md",
       "exists": true,
-      "char_count": 1297
+      "char_count": 2538
     },
     {
       "id": "nd-bn-flag-system",
@@ -62559,7 +62559,7 @@
       "tags": [],
       "file": "narrative-design/nd-es-level-as-story.md",
       "exists": true,
-      "char_count": 1285
+      "char_count": 2632
     },
     {
       "id": "nd-es-found-narrative",
@@ -62624,7 +62624,7 @@
       "tags": [],
       "file": "narrative-design/nd-es-contrast-juxtaposition.md",
       "exists": true,
-      "char_count": 1303
+      "char_count": 2260
     },
     {
       "id": "nd-es-corpse-storytelling",
@@ -63638,7 +63638,7 @@
       "tags": [],
       "file": "narrative-design/nd-wb-naming-convention.md",
       "exists": true,
-      "char_count": 1632
+      "char_count": 2410
     },
     {
       "id": "nd-wb-tone-mood",
@@ -64263,7 +64263,7 @@
       "subdomain_id": "aesthetics",
       "subdomain_name": "美学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -64338,7 +64338,7 @@
       "subdomain_id": "aesthetics",
       "subdomain_name": "美学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -64413,7 +64413,7 @@
       "subdomain_id": "ancient-philosophy",
       "subdomain_name": "古代哲学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -64488,7 +64488,7 @@
       "subdomain_id": "ancient-philosophy",
       "subdomain_name": "古代哲学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -64548,7 +64548,7 @@
       "subdomain_id": "ancient-philosophy",
       "subdomain_name": "古代哲学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "东方"
       ],
@@ -64668,7 +64668,7 @@
       "subdomain_id": "ancient-philosophy",
       "subdomain_name": "古代哲学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -64713,7 +64713,7 @@
       "subdomain_id": "ancient-philosophy",
       "subdomain_name": "古代哲学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -64833,7 +64833,7 @@
       "subdomain_id": "epistemology",
       "subdomain_name": "认识论",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -64908,7 +64908,7 @@
       "subdomain_id": "epistemology",
       "subdomain_name": "认识论",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流派"
       ],
@@ -64998,7 +64998,7 @@
       "subdomain_id": "epistemology",
       "subdomain_name": "认识论",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流派"
       ],
@@ -65058,7 +65058,7 @@
       "subdomain_id": "epistemology",
       "subdomain_name": "认识论",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -65103,7 +65103,7 @@
       "subdomain_id": "ethics",
       "subdomain_name": "伦理学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -65133,7 +65133,7 @@
       "subdomain_id": "ethics",
       "subdomain_name": "伦理学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -65208,7 +65208,7 @@
       "subdomain_id": "ethics",
       "subdomain_name": "伦理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -65328,7 +65328,7 @@
       "subdomain_id": "ethics",
       "subdomain_name": "伦理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -65388,7 +65388,7 @@
       "subdomain_id": "ethics",
       "subdomain_name": "伦理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -65478,7 +65478,7 @@
       "subdomain_id": "logic-reasoning",
       "subdomain_name": "逻辑与推理",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -65514,7 +65514,7 @@
       ],
       "file": "philosophy/logic-reasoning/formal-fallacies.md",
       "exists": true,
-      "char_count": 1304
+      "char_count": 2162
     },
     {
       "id": "paradoxes",
@@ -65538,7 +65538,7 @@
       "subdomain_id": "logic-reasoning",
       "subdomain_name": "逻辑与推理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "实践"
       ],
@@ -65613,7 +65613,7 @@
       "subdomain_id": "logic-reasoning",
       "subdomain_name": "逻辑与推理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "推理"
       ],
@@ -65679,7 +65679,7 @@
       ],
       "file": "philosophy/logic-reasoning/philosophy-of-logic.md",
       "exists": true,
-      "char_count": 1302
+      "char_count": 2806
     },
     {
       "id": "logic-overview",
@@ -65688,7 +65688,7 @@
       "subdomain_id": "logic-reasoning",
       "subdomain_name": "逻辑与推理",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -65853,7 +65853,7 @@
       "subdomain_id": "metaphysics",
       "subdomain_name": "形而上学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "概念"
       ],
@@ -65913,7 +65913,7 @@
       "subdomain_id": "metaphysics",
       "subdomain_name": "形而上学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -66018,7 +66018,7 @@
       "subdomain_id": "metaphysics",
       "subdomain_name": "形而上学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -66048,7 +66048,7 @@
       "subdomain_id": "modern-philosophy",
       "subdomain_name": "近现代哲学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -66108,7 +66108,7 @@
       "subdomain_id": "modern-philosophy",
       "subdomain_name": "近现代哲学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -66123,7 +66123,7 @@
       "subdomain_id": "modern-philosophy",
       "subdomain_name": "近现代哲学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流派"
       ],
@@ -66294,7 +66294,7 @@
       ],
       "file": "philosophy/modern-philosophy/philosophy-of-language.md",
       "exists": true,
-      "char_count": 1315
+      "char_count": 2730
     },
     {
       "id": "process-philosophy",
@@ -66318,7 +66318,7 @@
       "subdomain_id": "modern-philosophy",
       "subdomain_name": "近现代哲学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -66468,7 +66468,7 @@
       "subdomain_id": "political-philosophy",
       "subdomain_name": "政治哲学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -66489,7 +66489,7 @@
       ],
       "file": "philosophy/political-philosophy/anarchism.md",
       "exists": true,
-      "char_count": 1313
+      "char_count": 3023
     },
     {
       "id": "rights-theory",
@@ -66528,7 +66528,7 @@
       "subdomain_id": "political-philosophy",
       "subdomain_name": "政治哲学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -66588,7 +66588,7 @@
       "subdomain_id": "political-philosophy",
       "subdomain_name": "政治哲学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -66618,7 +66618,7 @@
       "subdomain_id": "political-philosophy",
       "subdomain_name": "政治哲学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流派"
       ],
@@ -66753,7 +66753,7 @@
       "subdomain_id": "astrophysics",
       "subdomain_name": "天体物理",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -66888,7 +66888,7 @@
       "subdomain_id": "classical-mechanics",
       "subdomain_name": "经典力学",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -66993,7 +66993,7 @@
       "subdomain_id": "classical-mechanics",
       "subdomain_name": "经典力学",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -67173,7 +67173,7 @@
       "subdomain_id": "classical-mechanics",
       "subdomain_name": "经典力学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -67263,7 +67263,7 @@
       "subdomain_id": "classical-mechanics",
       "subdomain_name": "经典力学",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -67323,7 +67323,7 @@
       "subdomain_id": "classical-mechanics",
       "subdomain_name": "经典力学",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -67443,7 +67443,7 @@
       "subdomain_id": "electromagnetism",
       "subdomain_name": "电磁学",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -67473,7 +67473,7 @@
       "subdomain_id": "electromagnetism",
       "subdomain_name": "电磁学",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -67743,7 +67743,7 @@
       "subdomain_id": "electromagnetism",
       "subdomain_name": "电磁学",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -67758,7 +67758,7 @@
       "subdomain_id": "electromagnetism",
       "subdomain_name": "电磁学",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -67773,7 +67773,7 @@
       "subdomain_id": "fluid-mechanics",
       "subdomain_name": "流体力学",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -67998,7 +67998,7 @@
       "subdomain_id": "modern-physics",
       "subdomain_name": "近代物理",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -68013,7 +68013,7 @@
       "subdomain_id": "modern-physics",
       "subdomain_name": "近代物理",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -68208,7 +68208,7 @@
       "subdomain_id": "modern-physics",
       "subdomain_name": "近代物理",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -68223,7 +68223,7 @@
       "subdomain_id": "modern-physics",
       "subdomain_name": "近代物理",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -68238,7 +68238,7 @@
       "subdomain_id": "modern-physics",
       "subdomain_name": "近代物理",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -68319,7 +68319,7 @@
       ],
       "file": "physics/nuclear-physics/nuclear-structure.md",
       "exists": true,
-      "char_count": 1592
+      "char_count": 2480
     },
     {
       "id": "antimatter",
@@ -68448,7 +68448,7 @@
       "subdomain_id": "nuclear-physics",
       "subdomain_name": "核物理",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -68598,7 +68598,7 @@
       "subdomain_id": "quantum-mechanics",
       "subdomain_name": "量子力学",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -68613,7 +68613,7 @@
       "subdomain_id": "quantum-mechanics",
       "subdomain_name": "量子力学",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -68898,7 +68898,7 @@
       "subdomain_id": "solid-state-physics",
       "subdomain_name": "固态物理",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -69078,7 +69078,7 @@
       "subdomain_id": "thermodynamics",
       "subdomain_name": "热力学",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -69108,7 +69108,7 @@
       "subdomain_id": "thermodynamics",
       "subdomain_name": "热力学",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -69183,7 +69183,7 @@
       "subdomain_id": "thermodynamics",
       "subdomain_name": "热力学",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -69348,7 +69348,7 @@
       "subdomain_id": "waves-and-optics",
       "subdomain_name": "波动与光学",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -69423,7 +69423,7 @@
       "subdomain_id": "waves-and-optics",
       "subdomain_name": "波动与光学",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -69528,7 +69528,7 @@
       "subdomain_id": "waves-and-optics",
       "subdomain_name": "波动与光学",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -69633,7 +69633,7 @@
       "subdomain_id": "data-driven",
       "subdomain_name": "数据驱动",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "指标"
       ],
@@ -69798,7 +69798,7 @@
       "subdomain_id": "data-driven",
       "subdomain_name": "数据驱动",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -69858,7 +69858,7 @@
       "subdomain_id": "data-driven",
       "subdomain_name": "数据驱动",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "分析"
       ],
@@ -69933,7 +69933,7 @@
       "subdomain_id": "growth",
       "subdomain_name": "增长运营",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "框架"
       ],
@@ -70038,7 +70038,7 @@
       "subdomain_id": "growth",
       "subdomain_name": "增长运营",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -70143,7 +70143,7 @@
       "subdomain_id": "growth",
       "subdomain_name": "增长运营",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "激活"
       ],
@@ -70248,7 +70248,7 @@
       "subdomain_id": "interaction-design",
       "subdomain_name": "交互设计",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -70263,7 +70263,7 @@
       "subdomain_id": "interaction-design",
       "subdomain_name": "交互设计",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "IA"
       ],
@@ -70374,7 +70374,7 @@
       ],
       "file": "product-design/interaction-design/micro-interaction.md",
       "exists": true,
-      "char_count": 1302
+      "char_count": 2467
     },
     {
       "id": "search-design",
@@ -70533,7 +70533,7 @@
       "subdomain_id": "interaction-design",
       "subdomain_name": "交互设计",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "系统"
       ],
@@ -70668,7 +70668,7 @@
       "subdomain_id": "product-management",
       "subdomain_name": "产品管理",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "发布"
       ],
@@ -70743,7 +70743,7 @@
       "subdomain_id": "product-management",
       "subdomain_name": "产品管理",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -70758,7 +70758,7 @@
       "subdomain_id": "product-management",
       "subdomain_name": "产品管理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "规划"
       ],
@@ -71013,7 +71013,7 @@
       "subdomain_id": "product-thinking",
       "subdomain_name": "产品思维",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "战略"
       ],
@@ -71028,7 +71028,7 @@
       "subdomain_id": "product-thinking",
       "subdomain_name": "产品思维",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -71244,7 +71244,7 @@
       ],
       "file": "product-design/product-thinking/first-principles.md",
       "exists": true,
-      "char_count": 1299
+      "char_count": 2555
     },
     {
       "id": "lean-startup",
@@ -71298,7 +71298,7 @@
       "subdomain_id": "product-thinking",
       "subdomain_name": "产品思维",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "方法论"
       ],
@@ -71403,7 +71403,7 @@
       "subdomain_id": "prototyping",
       "subdomain_name": "原型与测试",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "测试"
       ],
@@ -71418,7 +71418,7 @@
       "subdomain_id": "prototyping",
       "subdomain_name": "原型与测试",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -71613,7 +71613,7 @@
       "subdomain_id": "prototyping",
       "subdomain_name": "原型与测试",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "高保真"
       ],
@@ -71703,7 +71703,7 @@
       "subdomain_id": "user-research",
       "subdomain_name": "用户研究",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "测试"
       ],
@@ -71838,7 +71838,7 @@
       "subdomain_id": "user-research",
       "subdomain_name": "用户研究",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "工具"
       ],
@@ -71853,7 +71853,7 @@
       "subdomain_id": "user-research",
       "subdomain_name": "用户研究",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "建模"
       ],
@@ -71868,7 +71868,7 @@
       "subdomain_id": "user-research",
       "subdomain_name": "用户研究",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -72033,7 +72033,7 @@
       "subdomain_id": "visual-design",
       "subdomain_name": "视觉设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "品牌"
       ],
@@ -72213,7 +72213,7 @@
       "subdomain_id": "visual-design",
       "subdomain_name": "视觉设计",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -72243,7 +72243,7 @@
       "subdomain_id": "visual-design",
       "subdomain_name": "视觉设计",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -73103,7 +73103,7 @@
       "subdomain_id": "behavioral-psychology",
       "subdomain_name": "行为心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -73178,7 +73178,7 @@
       "subdomain_id": "behavioral-psychology",
       "subdomain_name": "行为心理学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -73238,7 +73238,7 @@
       "subdomain_id": "behavioral-psychology",
       "subdomain_name": "行为心理学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -73253,7 +73253,7 @@
       "subdomain_id": "behavioral-psychology",
       "subdomain_name": "行为心理学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "应用"
       ],
@@ -73283,7 +73283,7 @@
       "subdomain_id": "behavioral-psychology",
       "subdomain_name": "行为心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -73328,7 +73328,7 @@
       "subdomain_id": "biological-psychology",
       "subdomain_name": "生物心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -73433,7 +73433,7 @@
       "subdomain_id": "biological-psychology",
       "subdomain_name": "生物心理学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -73478,7 +73478,7 @@
       "subdomain_id": "biological-psychology",
       "subdomain_name": "生物心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "神经"
       ],
@@ -73493,7 +73493,7 @@
       "subdomain_id": "biological-psychology",
       "subdomain_name": "生物心理学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "前沿"
       ],
@@ -73508,7 +73508,7 @@
       "subdomain_id": "biological-psychology",
       "subdomain_name": "生物心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "神经"
       ],
@@ -73628,7 +73628,7 @@
       "subdomain_id": "clinical-psychology",
       "subdomain_name": "临床心理学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -73793,7 +73793,7 @@
       "subdomain_id": "clinical-psychology",
       "subdomain_name": "临床心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "治疗"
       ],
@@ -73823,7 +73823,7 @@
       "subdomain_id": "clinical-psychology",
       "subdomain_name": "临床心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "障碍"
       ],
@@ -73868,7 +73868,7 @@
       "subdomain_id": "clinical-psychology",
       "subdomain_name": "临床心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "障碍"
       ],
@@ -73928,7 +73928,7 @@
       "subdomain_id": "clinical-psychology",
       "subdomain_name": "临床心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -73943,7 +73943,7 @@
       "subdomain_id": "clinical-psychology",
       "subdomain_name": "临床心理学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "治疗"
       ],
@@ -74108,7 +74108,7 @@
       "subdomain_id": "cognitive-psychology",
       "subdomain_name": "认知心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "记忆"
       ],
@@ -74168,7 +74168,7 @@
       "subdomain_id": "cognitive-psychology",
       "subdomain_name": "认知心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -74183,7 +74183,7 @@
       "subdomain_id": "cognitive-psychology",
       "subdomain_name": "认知心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "发展"
       ],
@@ -74228,7 +74228,7 @@
       "subdomain_id": "cognitive-psychology",
       "subdomain_name": "认知心理学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -74333,7 +74333,7 @@
       "subdomain_id": "cognitive-psychology",
       "subdomain_name": "认知心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "思维"
       ],
@@ -74348,7 +74348,7 @@
       "subdomain_id": "developmental-psychology",
       "subdomain_name": "发展心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -74378,7 +74378,7 @@
       "subdomain_id": "developmental-psychology",
       "subdomain_name": "发展心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -74423,7 +74423,7 @@
       "subdomain_id": "developmental-psychology",
       "subdomain_name": "发展心理学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -74663,7 +74663,7 @@
       "subdomain_id": "developmental-psychology",
       "subdomain_name": "发展心理学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "道德"
       ],
@@ -74708,7 +74708,7 @@
       "subdomain_id": "personality-psychology",
       "subdomain_name": "人格心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -74738,7 +74738,7 @@
       "subdomain_id": "personality-psychology",
       "subdomain_name": "人格心理学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -74798,7 +74798,7 @@
       "subdomain_id": "personality-psychology",
       "subdomain_name": "人格心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -74918,7 +74918,7 @@
       "subdomain_id": "personality-psychology",
       "subdomain_name": "人格心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -74993,7 +74993,7 @@
       "subdomain_id": "personality-psychology",
       "subdomain_name": "人格心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "动机"
       ],
@@ -75053,7 +75053,7 @@
       "subdomain_id": "research-methods",
       "subdomain_name": "研究方法",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "测量"
       ],
@@ -75113,7 +75113,7 @@
       "subdomain_id": "research-methods",
       "subdomain_name": "研究方法",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -75158,7 +75158,7 @@
       "subdomain_id": "research-methods",
       "subdomain_name": "研究方法",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "统计"
       ],
@@ -75218,7 +75218,7 @@
       "subdomain_id": "research-methods",
       "subdomain_name": "研究方法",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -75233,7 +75233,7 @@
       "subdomain_id": "research-methods",
       "subdomain_name": "研究方法",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "伦理"
       ],
@@ -75248,7 +75248,7 @@
       "subdomain_id": "research-methods",
       "subdomain_name": "研究方法",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -75374,7 +75374,7 @@
       ],
       "file": "psychology/social-psychology/prosocial-behavior.md",
       "exists": true,
-      "char_count": 1512
+      "char_count": 2656
     },
     {
       "id": "interpersonal-attraction",
@@ -75389,7 +75389,7 @@
       ],
       "file": "psychology/social-psychology/interpersonal-attraction.md",
       "exists": true,
-      "char_count": 1652
+      "char_count": 2707
     },
     {
       "id": "conformity",
@@ -75413,7 +75413,7 @@
       "subdomain_id": "social-psychology",
       "subdomain_name": "社会心理学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "群际"
       ],
@@ -75443,7 +75443,7 @@
       "subdomain_id": "social-psychology",
       "subdomain_name": "社会心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -75578,7 +75578,7 @@
       "subdomain_id": "social-psychology",
       "subdomain_name": "社会心理学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -75668,7 +75668,7 @@
       "subdomain_id": "social-psychology",
       "subdomain_name": "社会心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -75683,7 +75683,7 @@
       "subdomain_id": "social-psychology",
       "subdomain_name": "社会心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "影响"
       ],
@@ -76162,7 +76162,7 @@
       "subdomain_id": "architecture-patterns",
       "subdomain_name": "架构模式",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "分布式"
       ],
@@ -76723,7 +76723,7 @@
       ],
       "file": "software-engineering/ci-cd/se-gitops.md",
       "exists": true,
-      "char_count": 1301
+      "char_count": 2884
     },
     {
       "id": "se-jenkins",
@@ -76993,7 +76993,7 @@
       ],
       "file": "software-engineering/code-review/se-security-review.md",
       "exists": true,
-      "char_count": 1311
+      "char_count": 2949
     },
     {
       "id": "se-cr-tooling",
@@ -78358,7 +78358,7 @@
       ],
       "file": "software-engineering/memory-management/se-move-semantics.md",
       "exists": true,
-      "char_count": 1286
+      "char_count": 3189
     },
     {
       "id": "se-texture-memory",
@@ -78913,7 +78913,7 @@
       ],
       "file": "software-engineering/package-management/se-dep-resolution.md",
       "exists": true,
-      "char_count": 1289
+      "char_count": 3075
     },
     {
       "id": "se-publish-flow",
@@ -79642,7 +79642,7 @@
       "subdomain_id": "tdd",
       "subdomain_name": "测试驱动开发",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "单元"
       ],
@@ -80567,7 +80567,7 @@
       "subdomain_id": "art-standards",
       "subdomain_name": "美术标准制定",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "质量"
       ],
@@ -80603,7 +80603,7 @@
       ],
       "file": "technical-art/ta-std-template.md",
       "exists": true,
-      "char_count": 1291
+      "char_count": 2867
     },
     {
       "id": "ta-std-evolution",
@@ -80618,7 +80618,7 @@
       ],
       "file": "technical-art/ta-std-evolution.md",
       "exists": true,
-      "char_count": 1297
+      "char_count": 2455
     },
     {
       "id": "ta-texture-standard",
@@ -80672,7 +80672,7 @@
       "subdomain_id": "art-standards",
       "subdomain_name": "美术标准制定",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "规范"
       ],
@@ -80702,7 +80702,7 @@
       "subdomain_id": "automation",
       "subdomain_name": "自动化工作流",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -80732,7 +80732,7 @@
       "subdomain_id": "automation",
       "subdomain_name": "自动化工作流",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "管线"
       ],
@@ -80747,7 +80747,7 @@
       "subdomain_id": "automation",
       "subdomain_name": "自动化工作流",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -80807,7 +80807,7 @@
       "subdomain_id": "automation",
       "subdomain_name": "自动化工作流",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -80942,7 +80942,7 @@
       "subdomain_id": "lod-strategy",
       "subdomain_name": "LOD策略",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -81017,7 +81017,7 @@
       "subdomain_id": "lod-strategy",
       "subdomain_name": "LOD策略",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -81047,7 +81047,7 @@
       "subdomain_id": "lod-strategy",
       "subdomain_name": "LOD策略",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -81068,7 +81068,7 @@
       ],
       "file": "technical-art/ta-proxy-mesh.md",
       "exists": true,
-      "char_count": 1307
+      "char_count": 2514
     },
     {
       "id": "ta-lod-building",
@@ -81218,7 +81218,7 @@
       ],
       "file": "technical-art/ta-material-function.md",
       "exists": true,
-      "char_count": 1305
+      "char_count": 2918
     },
     {
       "id": "ta-material-layer",
@@ -81227,7 +81227,7 @@
       "subdomain_id": "material-system",
       "subdomain_name": "材质系统",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -81278,7 +81278,7 @@
       ],
       "file": "technical-art/ta-material-library.md",
       "exists": true,
-      "char_count": 1304
+      "char_count": 3199
     },
     {
       "id": "ta-material-complexity",
@@ -81317,7 +81317,7 @@
       "subdomain_id": "material-system",
       "subdomain_name": "材质系统",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -81338,7 +81338,7 @@
       ],
       "file": "technical-art/ta-procedural-material.md",
       "exists": true,
-      "char_count": 1296
+      "char_count": 3071
     },
     {
       "id": "ta-texture-compression",
@@ -81392,7 +81392,7 @@
       "subdomain_id": "material-system",
       "subdomain_name": "材质系统",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -81437,7 +81437,7 @@
       "subdomain_id": "memory-budget",
       "subdomain_name": "内存与预算",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -81557,7 +81557,7 @@
       "subdomain_id": "memory-budget",
       "subdomain_name": "内存与预算",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "管理"
       ],
@@ -81578,7 +81578,7 @@
       ],
       "file": "technical-art/ta-loading-screen.md",
       "exists": true,
-      "char_count": 1307
+      "char_count": 2587
     },
     {
       "id": "ta-anim-memory",
@@ -81662,7 +81662,7 @@
       "subdomain_id": "memory-budget",
       "subdomain_name": "内存与预算",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -81752,7 +81752,7 @@
       "subdomain_id": "pcg",
       "subdomain_name": "程序化生成",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "工具"
       ],
@@ -81797,7 +81797,7 @@
       "subdomain_id": "pcg",
       "subdomain_name": "程序化生成",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -81812,7 +81812,7 @@
       "subdomain_id": "pcg",
       "subdomain_name": "程序化生成",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -81833,7 +81833,7 @@
       ],
       "file": "technical-art/ta-scatter-system.md",
       "exists": true,
-      "char_count": 1291
+      "char_count": 2730
     },
     {
       "id": "ta-pcg-biome",
@@ -81872,7 +81872,7 @@
       "subdomain_id": "pcg",
       "subdomain_name": "程序化生成",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -81893,7 +81893,7 @@
       ],
       "file": "technical-art/ta-pcg-city.md",
       "exists": true,
-      "char_count": 1300
+      "char_count": 2623
     },
     {
       "id": "ta-pcg-building",
@@ -82067,7 +82067,7 @@
       "subdomain_id": "perf-optimization",
       "subdomain_name": "性能优化",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -82127,7 +82127,7 @@
       "subdomain_id": "perf-optimization",
       "subdomain_name": "性能优化",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "实战"
       ],
@@ -82232,7 +82232,7 @@
       "subdomain_id": "perf-optimization",
       "subdomain_name": "性能优化",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -82292,7 +82292,7 @@
       "subdomain_id": "perf-optimization",
       "subdomain_name": "性能优化",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -82352,7 +82352,7 @@
       "subdomain_id": "pipeline-build",
       "subdomain_name": "管线搭建",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "规范"
       ],
@@ -82373,7 +82373,7 @@
       ],
       "file": "technical-art/ta-outsource-pipeline.md",
       "exists": true,
-      "char_count": 1310
+      "char_count": 2577
     },
     {
       "id": "ta-multi-platform",
@@ -82382,7 +82382,7 @@
       "subdomain_id": "pipeline-build",
       "subdomain_name": "管线搭建",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -82508,7 +82508,7 @@
       ],
       "file": "technical-art/ta-folder-structure.md",
       "exists": true,
-      "char_count": 1310
+      "char_count": 3172
     },
     {
       "id": "ta-pipeline-doc",
@@ -82637,7 +82637,7 @@
       "subdomain_id": "shader-dev",
       "subdomain_name": "Shader开发",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -82667,7 +82667,7 @@
       "subdomain_id": "shader-dev",
       "subdomain_name": "Shader开发",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -82682,7 +82682,7 @@
       "subdomain_id": "shader-dev",
       "subdomain_name": "Shader开发",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -82742,7 +82742,7 @@
       "subdomain_id": "shader-dev",
       "subdomain_name": "Shader开发",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "优化"
       ],
@@ -82787,7 +82787,7 @@
       "subdomain_id": "shader-dev",
       "subdomain_name": "Shader开发",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "工具"
       ],
@@ -82877,7 +82877,7 @@
       "subdomain_id": "shader-dev",
       "subdomain_name": "Shader开发",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -82892,7 +82892,7 @@
       "subdomain_id": "shader-dev",
       "subdomain_name": "Shader开发",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -82997,7 +82997,7 @@
       "subdomain_id": "tool-dev",
       "subdomain_name": "工具开发",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -83027,7 +83027,7 @@
       "subdomain_id": "tool-dev",
       "subdomain_name": "工具开发",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -83117,7 +83117,7 @@
       "subdomain_id": "tool-dev",
       "subdomain_name": "工具开发",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "管线"
       ],
@@ -83222,7 +83222,7 @@
       "subdomain_id": "tool-dev",
       "subdomain_name": "工具开发",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "质量"
       ],
@@ -83282,7 +83282,7 @@
       "subdomain_id": "destruction",
       "subdomain_name": "破碎与销毁",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "高级"
       ],
@@ -83312,7 +83312,7 @@
       "subdomain_id": "destruction",
       "subdomain_name": "破碎与销毁",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -83372,7 +83372,7 @@
       "subdomain_id": "destruction",
       "subdomain_name": "破碎与销毁",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -83387,7 +83387,7 @@
       "subdomain_id": "destruction",
       "subdomain_name": "破碎与销毁",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -83522,7 +83522,7 @@
       "subdomain_id": "destruction",
       "subdomain_name": "破碎与销毁",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -83627,7 +83627,7 @@
       "subdomain_id": "flipbook",
       "subdomain_name": "序列帧特效",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -83687,7 +83687,7 @@
       "subdomain_id": "flipbook",
       "subdomain_name": "序列帧特效",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -83717,7 +83717,7 @@
       "subdomain_id": "flipbook",
       "subdomain_name": "序列帧特效",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -83777,7 +83777,7 @@
       "subdomain_id": "flipbook",
       "subdomain_name": "序列帧特效",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -83807,7 +83807,7 @@
       "subdomain_id": "flipbook",
       "subdomain_name": "序列帧特效",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "高级"
       ],
@@ -83828,7 +83828,7 @@
       ],
       "file": "vfx/vfx-fb-channel-pack.md",
       "exists": true,
-      "char_count": 1295
+      "char_count": 2810
     },
     {
       "id": "vfx-fluid-flip",
@@ -83882,7 +83882,7 @@
       "subdomain_id": "fluid-sim",
       "subdomain_name": "流体模拟",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "高级"
       ],
@@ -83957,7 +83957,7 @@
       "subdomain_id": "fluid-sim",
       "subdomain_name": "流体模拟",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "高级"
       ],
@@ -83987,7 +83987,7 @@
       "subdomain_id": "fluid-sim",
       "subdomain_name": "流体模拟",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -84032,7 +84032,7 @@
       "subdomain_id": "fluid-sim",
       "subdomain_name": "流体模拟",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "高级"
       ],
@@ -84077,7 +84077,7 @@
       "subdomain_id": "fluid-sim",
       "subdomain_name": "流体模拟",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -84152,7 +84152,7 @@
       "subdomain_id": "niagara",
       "subdomain_name": "Niagara系统",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "高级"
       ],
@@ -84197,7 +84197,7 @@
       "subdomain_id": "niagara",
       "subdomain_name": "Niagara系统",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -84242,7 +84242,7 @@
       "subdomain_id": "niagara",
       "subdomain_name": "Niagara系统",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -84317,7 +84317,7 @@
       "subdomain_id": "niagara",
       "subdomain_name": "Niagara系统",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -84377,7 +84377,7 @@
       "subdomain_id": "niagara",
       "subdomain_name": "Niagara系统",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -84467,7 +84467,7 @@
       "subdomain_id": "particle-physics",
       "subdomain_name": "粒子物理",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -84482,7 +84482,7 @@
       "subdomain_id": "particle-physics",
       "subdomain_name": "粒子物理",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -84563,7 +84563,7 @@
       ],
       "file": "vfx/vfx-particle-curve.md",
       "exists": true,
-      "char_count": 1305
+      "char_count": 2435
     },
     {
       "id": "vfx-particle-turbulence",
@@ -84602,7 +84602,7 @@
       "subdomain_id": "particle-physics",
       "subdomain_name": "粒子物理",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -84662,7 +84662,7 @@
       "subdomain_id": "particle-physics",
       "subdomain_name": "粒子物理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -84797,7 +84797,7 @@
       "subdomain_id": "post-process",
       "subdomain_name": "后处理特效",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -84848,7 +84848,7 @@
       ],
       "file": "vfx/vfx-pp-outline.md",
       "exists": true,
-      "char_count": 1296
+      "char_count": 2662
     },
     {
       "id": "vfx-pp-dof",
@@ -84857,7 +84857,7 @@
       "subdomain_id": "post-process",
       "subdomain_name": "后处理特效",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -84902,7 +84902,7 @@
       "subdomain_id": "post-process",
       "subdomain_name": "后处理特效",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -85007,7 +85007,7 @@
       "subdomain_id": "post-process",
       "subdomain_name": "后处理特效",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -85022,7 +85022,7 @@
       "subdomain_id": "post-process",
       "subdomain_name": "后处理特效",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -85037,7 +85037,7 @@
       "subdomain_id": "shader-vfx",
       "subdomain_name": "Shader特效",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "高级"
       ],
@@ -85052,7 +85052,7 @@
       "subdomain_id": "shader-vfx",
       "subdomain_name": "Shader特效",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -85097,7 +85097,7 @@
       "subdomain_id": "shader-vfx",
       "subdomain_name": "Shader特效",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -85202,7 +85202,7 @@
       "subdomain_id": "shader-vfx",
       "subdomain_name": "Shader特效",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -85247,7 +85247,7 @@
       "subdomain_id": "shader-vfx",
       "subdomain_name": "Shader特效",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -85262,7 +85262,7 @@
       "subdomain_id": "shader-vfx",
       "subdomain_name": "Shader特效",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -85412,7 +85412,7 @@
       "subdomain_id": "vfx-graph",
       "subdomain_name": "VFX Graph",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "高级"
       ],
@@ -85502,7 +85502,7 @@
       "subdomain_id": "vfx-graph",
       "subdomain_name": "VFX Graph",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -85562,7 +85562,7 @@
       "subdomain_id": "vfx-graph",
       "subdomain_name": "VFX Graph",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -85607,7 +85607,7 @@
       "subdomain_id": "vfx-graph",
       "subdomain_name": "VFX Graph",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -85652,7 +85652,7 @@
       "subdomain_id": "vfx-optimization",
       "subdomain_name": "特效优化",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -85682,7 +85682,7 @@
       "subdomain_id": "vfx-optimization",
       "subdomain_name": "特效优化",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -85817,7 +85817,7 @@
       "subdomain_id": "vfx-optimization",
       "subdomain_name": "特效优化",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -85832,7 +85832,7 @@
       "subdomain_id": "vfx-optimization",
       "subdomain_name": "特效优化",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -85922,7 +85922,7 @@
       "subdomain_id": "vfx-optimization",
       "subdomain_name": "特效优化",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -86762,7 +86762,7 @@
       "subdomain_id": "academic-writing",
       "subdomain_name": "学术写作",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "高级"
       ],
@@ -86792,7 +86792,7 @@
       "subdomain_id": "academic-writing",
       "subdomain_name": "学术写作",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -86822,7 +86822,7 @@
       "subdomain_id": "academic-writing",
       "subdomain_name": "学术写作",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "论证"
       ],
@@ -86852,7 +86852,7 @@
       "subdomain_id": "academic-writing",
       "subdomain_name": "学术写作",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "规范"
       ],
@@ -86912,7 +86912,7 @@
       "subdomain_id": "academic-writing",
       "subdomain_name": "学术写作",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "研究"
       ],
@@ -86972,7 +86972,7 @@
       "subdomain_id": "academic-writing",
       "subdomain_name": "学术写作",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "研究"
       ],
@@ -87098,7 +87098,7 @@
       ],
       "file": "writing/creative-writing/writing-prompts.md",
       "exists": true,
-      "char_count": 1293
+      "char_count": 2406
     },
     {
       "id": "publishing-basics",
@@ -87137,7 +87137,7 @@
       "subdomain_id": "creative-writing",
       "subdomain_name": "创意写作",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -87167,7 +87167,7 @@
       "subdomain_id": "creative-writing",
       "subdomain_name": "创意写作",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "类型"
       ],
@@ -87182,7 +87182,7 @@
       "subdomain_id": "creative-writing",
       "subdomain_name": "创意写作",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "诗歌"
       ],
@@ -87203,7 +87203,7 @@
       ],
       "file": "writing/creative-writing/experimental-writing.md",
       "exists": true,
-      "char_count": 1396
+      "char_count": 2253
     },
     {
       "id": "humor-writing",
@@ -87242,7 +87242,7 @@
       "subdomain_id": "creative-writing",
       "subdomain_name": "创意写作",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "技法"
       ],
@@ -87347,7 +87347,7 @@
       "subdomain_id": "creative-writing",
       "subdomain_name": "创意写作",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "诗歌"
       ],
@@ -87437,7 +87437,7 @@
       "subdomain_id": "expository-writing",
       "subdomain_name": "说明文写作",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "类型"
       ],
@@ -87458,7 +87458,7 @@
       ],
       "file": "writing/expository-writing/visual-aids-writing.md",
       "exists": true,
-      "char_count": 1476
+      "char_count": 2533
     },
     {
       "id": "definition-essay",
@@ -87572,7 +87572,7 @@
       "subdomain_id": "expository-writing",
       "subdomain_name": "说明文写作",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "应用"
       ],
@@ -87593,7 +87593,7 @@
       ],
       "file": "writing/expository-writing/explanatory-structure.md",
       "exists": true,
-      "char_count": 1403
+      "char_count": 2643
     },
     {
       "id": "review-writing",
@@ -87632,7 +87632,7 @@
       "subdomain_id": "expository-writing",
       "subdomain_name": "说明文写作",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -87647,7 +87647,7 @@
       "subdomain_id": "expository-writing",
       "subdomain_name": "说明文写作",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "类型"
       ],
@@ -87707,7 +87707,7 @@
       "subdomain_id": "narrative-writing",
       "subdomain_name": "叙事写作",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "人物"
       ],
@@ -87752,7 +87752,7 @@
       "subdomain_id": "narrative-writing",
       "subdomain_name": "叙事写作",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -87797,7 +87797,7 @@
       "subdomain_id": "narrative-writing",
       "subdomain_name": "叙事写作",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "技法"
       ],
@@ -87872,7 +87872,7 @@
       "subdomain_id": "narrative-writing",
       "subdomain_name": "叙事写作",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "技法"
       ],
@@ -87902,7 +87902,7 @@
       "subdomain_id": "narrative-writing",
       "subdomain_name": "叙事写作",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "结构"
       ],
@@ -87983,7 +87983,7 @@
       ],
       "file": "writing/narrative-writing/novel-structure.md",
       "exists": true,
-      "char_count": 1482
+      "char_count": 2522
     },
     {
       "id": "flashback-foreshadow",
@@ -87998,7 +87998,7 @@
       ],
       "file": "writing/narrative-writing/flashback-foreshadow.md",
       "exists": true,
-      "char_count": 1384
+      "char_count": 2302
     },
     {
       "id": "ethos-building",
@@ -88022,7 +88022,7 @@
       "subdomain_id": "persuasive-writing",
       "subdomain_name": "论说文写作",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "修辞"
       ],
@@ -88103,7 +88103,7 @@
       ],
       "file": "writing/persuasive-writing/critical-analysis-essay.md",
       "exists": true,
-      "char_count": 1496
+      "char_count": 2611
     },
     {
       "id": "proposal-writing",
@@ -88127,7 +88127,7 @@
       "subdomain_id": "persuasive-writing",
       "subdomain_name": "论说文写作",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "应用"
       ],
@@ -88202,7 +88202,7 @@
       "subdomain_id": "persuasive-writing",
       "subdomain_name": "论说文写作",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -88217,7 +88217,7 @@
       "subdomain_id": "persuasive-writing",
       "subdomain_name": "论说文写作",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "结构"
       ],
@@ -88232,7 +88232,7 @@
       "subdomain_id": "persuasive-writing",
       "subdomain_name": "论说文写作",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -88292,7 +88292,7 @@
       "subdomain_id": "persuasive-writing",
       "subdomain_name": "论说文写作",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "逻辑"
       ],
@@ -88418,7 +88418,7 @@
       ],
       "file": "writing/professional-writing/pitch-deck-narrative.md",
       "exists": true,
-      "char_count": 1390
+      "char_count": 2714
     },
     {
       "id": "business-email",
@@ -88427,7 +88427,7 @@
       "subdomain_id": "professional-writing",
       "subdomain_name": "职业写作",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "应用"
       ],
@@ -88457,7 +88457,7 @@
       "subdomain_id": "professional-writing",
       "subdomain_name": "职业写作",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "技术"
       ],
@@ -88472,7 +88472,7 @@
       "subdomain_id": "professional-writing",
       "subdomain_name": "职业写作",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "应用"
       ],
@@ -88538,7 +88538,7 @@
       ],
       "file": "writing/professional-writing/localization-writing.md",
       "exists": true,
-      "char_count": 1392
+      "char_count": 2771
     },
     {
       "id": "ux-writing",
@@ -88577,7 +88577,7 @@
       "subdomain_id": "professional-writing",
       "subdomain_name": "职业写作",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "职业"
       ],
@@ -88592,7 +88592,7 @@
       "subdomain_id": "professional-writing",
       "subdomain_name": "职业写作",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -88682,7 +88682,7 @@
       "subdomain_id": "revision-craft",
       "subdomain_name": "修改与文体",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -88817,7 +88817,7 @@
       "subdomain_id": "revision-craft",
       "subdomain_name": "修改与文体",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -88832,7 +88832,7 @@
       "subdomain_id": "revision-craft",
       "subdomain_name": "修改与文体",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "原则"
       ],
@@ -88847,7 +88847,7 @@
       "subdomain_id": "revision-craft",
       "subdomain_name": "修改与文体",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "层次"
       ],
@@ -88877,7 +88877,7 @@
       "subdomain_id": "revision-craft",
       "subdomain_name": "修改与文体",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "技法"
       ],
@@ -88952,7 +88952,7 @@
       "subdomain_id": "writing-fundamentals",
       "subdomain_name": "写作基础",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "修辞"
       ],
@@ -88997,7 +88997,7 @@
       "subdomain_id": "writing-fundamentals",
       "subdomain_name": "写作基础",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -89027,7 +89027,7 @@
       "subdomain_id": "writing-fundamentals",
       "subdomain_name": "写作基础",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -89042,7 +89042,7 @@
       "subdomain_id": "writing-fundamentals",
       "subdomain_name": "写作基础",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "语法"
       ],
@@ -89108,7 +89108,7 @@
       ],
       "file": "writing/writing-fundamentals/punctuation-usage.md",
       "exists": true,
-      "char_count": 1382
+      "char_count": 2089
     },
     {
       "id": "paragraph-structure",
@@ -89117,7 +89117,7 @@
       "subdomain_id": "writing-fundamentals",
       "subdomain_name": "写作基础",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "结构"
       ],
@@ -89237,7 +89237,7 @@
       "subdomain_id": "writing-fundamentals",
       "subdomain_name": "写作基础",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "结构"
       ],
@@ -89263,6 +89263,6 @@
   ],
   "stats": {
     "total": 6156,
-    "total_domains": 44
+    "total_domains": 45
   }
 }

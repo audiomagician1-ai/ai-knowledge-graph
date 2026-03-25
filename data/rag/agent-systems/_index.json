@@ -24,7 +24,7 @@
       "tags": [],
       "file": "agent-systems/ai-application-arch.md",
       "exists": true,
-      "char_count": 1547
+      "char_count": 3255
     },
     {
       "id": "agent-debugging",
@@ -354,8 +354,15 @@
   ],
   "stats": {
     "total": 27,
-    "total_chars": 54024,
-    "avg_chars": 2000,
-    "domain": "agent-systems"
+    "total_docs": 27,
+    "total_chars": 55732,
+    "avg_chars": 2064,
+    "domain": "agent-systems",
+    "by_subdomain": {
+      "agent-systems": {
+        "count": 27,
+        "chars": 55732
+      }
+    }
   }
 }

@@ -1337,7 +1337,7 @@
       "tags": [],
       "file": "game-publishing/pub-pc-first-look-deal.md",
       "exists": true,
-      "char_count": 1540
+      "char_count": 3102
     },
     {
       "id": "pub-pc-creative-control",
@@ -1415,7 +1415,7 @@
       "tags": [],
       "file": "game-publishing/pub-pc-contract-exit.md",
       "exists": true,
-      "char_count": 1504
+      "char_count": 2649
     },
     {
       "id": "pub-pc-recoup-mechanism",
@@ -2343,8 +2343,47 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 288539,
-    "avg_chars": 1602,
-    "domain": "game-publishing"
+    "total_docs": 180,
+    "total_chars": 291246,
+    "avg_chars": 1618,
+    "domain": "game-publishing",
+    "by_subdomain": {
+      "brand-building": {
+        "count": 20,
+        "chars": 34130
+      },
+      "community-ops": {
+        "count": 20,
+        "chars": 29478
+      },
+      "market-strategy": {
+        "count": 20,
+        "chars": 33777
+      },
+      "platform-rules": {
+        "count": 20,
+        "chars": 33731
+      },
+      "pr-media": {
+        "count": 20,
+        "chars": 30116
+      },
+      "publisher-collab": {
+        "count": 20,
+        "chars": 33925
+      },
+      "rating-compliance": {
+        "count": 20,
+        "chars": 30910
+      },
+      "regional-ops": {
+        "count": 20,
+        "chars": 33959
+      },
+      "user-acquisition": {
+        "count": 20,
+        "chars": 31220
+      }
+    }
   }
 }

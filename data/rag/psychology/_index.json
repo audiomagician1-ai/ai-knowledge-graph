@@ -142,7 +142,7 @@
       "subdomain_id": "behavioral-psychology",
       "subdomain_name": "行为心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -217,7 +217,7 @@
       "subdomain_id": "behavioral-psychology",
       "subdomain_name": "行为心理学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -277,7 +277,7 @@
       "subdomain_id": "behavioral-psychology",
       "subdomain_name": "行为心理学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -292,7 +292,7 @@
       "subdomain_id": "behavioral-psychology",
       "subdomain_name": "行为心理学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "应用"
       ],
@@ -322,7 +322,7 @@
       "subdomain_id": "behavioral-psychology",
       "subdomain_name": "行为心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -367,7 +367,7 @@
       "subdomain_id": "biological-psychology",
       "subdomain_name": "生物心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -472,7 +472,7 @@
       "subdomain_id": "biological-psychology",
       "subdomain_name": "生物心理学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -517,7 +517,7 @@
       "subdomain_id": "biological-psychology",
       "subdomain_name": "生物心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "神经"
       ],
@@ -532,7 +532,7 @@
       "subdomain_id": "biological-psychology",
       "subdomain_name": "生物心理学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "前沿"
       ],
@@ -547,7 +547,7 @@
       "subdomain_id": "biological-psychology",
       "subdomain_name": "生物心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "神经"
       ],
@@ -667,7 +667,7 @@
       "subdomain_id": "clinical-psychology",
       "subdomain_name": "临床心理学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -832,7 +832,7 @@
       "subdomain_id": "clinical-psychology",
       "subdomain_name": "临床心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "治疗"
       ],
@@ -862,7 +862,7 @@
       "subdomain_id": "clinical-psychology",
       "subdomain_name": "临床心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "障碍"
       ],
@@ -907,7 +907,7 @@
       "subdomain_id": "clinical-psychology",
       "subdomain_name": "临床心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "障碍"
       ],
@@ -967,7 +967,7 @@
       "subdomain_id": "clinical-psychology",
       "subdomain_name": "临床心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -982,7 +982,7 @@
       "subdomain_id": "clinical-psychology",
       "subdomain_name": "临床心理学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "治疗"
       ],
@@ -1147,7 +1147,7 @@
       "subdomain_id": "cognitive-psychology",
       "subdomain_name": "认知心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "记忆"
       ],
@@ -1207,7 +1207,7 @@
       "subdomain_id": "cognitive-psychology",
       "subdomain_name": "认知心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1222,7 +1222,7 @@
       "subdomain_id": "cognitive-psychology",
       "subdomain_name": "认知心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "发展"
       ],
@@ -1267,7 +1267,7 @@
       "subdomain_id": "cognitive-psychology",
       "subdomain_name": "认知心理学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1372,7 +1372,7 @@
       "subdomain_id": "cognitive-psychology",
       "subdomain_name": "认知心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "思维"
       ],
@@ -1387,7 +1387,7 @@
       "subdomain_id": "developmental-psychology",
       "subdomain_name": "发展心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1417,7 +1417,7 @@
       "subdomain_id": "developmental-psychology",
       "subdomain_name": "发展心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1462,7 +1462,7 @@
       "subdomain_id": "developmental-psychology",
       "subdomain_name": "发展心理学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1702,7 +1702,7 @@
       "subdomain_id": "developmental-psychology",
       "subdomain_name": "发展心理学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "道德"
       ],
@@ -1747,7 +1747,7 @@
       "subdomain_id": "personality-psychology",
       "subdomain_name": "人格心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1777,7 +1777,7 @@
       "subdomain_id": "personality-psychology",
       "subdomain_name": "人格心理学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1837,7 +1837,7 @@
       "subdomain_id": "personality-psychology",
       "subdomain_name": "人格心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1957,7 +1957,7 @@
       "subdomain_id": "personality-psychology",
       "subdomain_name": "人格心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2032,7 +2032,7 @@
       "subdomain_id": "personality-psychology",
       "subdomain_name": "人格心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "动机"
       ],
@@ -2092,7 +2092,7 @@
       "subdomain_id": "research-methods",
       "subdomain_name": "研究方法",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "测量"
       ],
@@ -2152,7 +2152,7 @@
       "subdomain_id": "research-methods",
       "subdomain_name": "研究方法",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2197,7 +2197,7 @@
       "subdomain_id": "research-methods",
       "subdomain_name": "研究方法",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "统计"
       ],
@@ -2257,7 +2257,7 @@
       "subdomain_id": "research-methods",
       "subdomain_name": "研究方法",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2272,7 +2272,7 @@
       "subdomain_id": "research-methods",
       "subdomain_name": "研究方法",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "伦理"
       ],
@@ -2287,7 +2287,7 @@
       "subdomain_id": "research-methods",
       "subdomain_name": "研究方法",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2413,7 +2413,7 @@
       ],
       "file": "psychology/social-psychology/prosocial-behavior.md",
       "exists": true,
-      "char_count": 1512
+      "char_count": 2656
     },
     {
       "id": "interpersonal-attraction",
@@ -2428,7 +2428,7 @@
       ],
       "file": "psychology/social-psychology/interpersonal-attraction.md",
       "exists": true,
-      "char_count": 1652
+      "char_count": 2707
     },
     {
       "id": "conformity",
@@ -2452,7 +2452,7 @@
       "subdomain_id": "social-psychology",
       "subdomain_name": "社会心理学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "群际"
       ],
@@ -2482,7 +2482,7 @@
       "subdomain_id": "social-psychology",
       "subdomain_name": "社会心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2617,7 +2617,7 @@
       "subdomain_id": "social-psychology",
       "subdomain_name": "社会心理学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2707,7 +2707,7 @@
       "subdomain_id": "social-psychology",
       "subdomain_name": "社会心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2722,7 +2722,7 @@
       "subdomain_id": "social-psychology",
       "subdomain_name": "社会心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "影响"
       ],
@@ -2748,8 +2748,43 @@
   ],
   "stats": {
     "total": 183,
-    "total_chars": 405249,
-    "avg_chars": 2214,
-    "domain": "psychology"
+    "total_docs": 183,
+    "total_chars": 407448,
+    "avg_chars": 2226,
+    "domain": "psychology",
+    "by_subdomain": {
+      "behavioral-psychology": {
+        "count": 22,
+        "chars": 42748
+      },
+      "biological-psychology": {
+        "count": 22,
+        "chars": 50788
+      },
+      "clinical-psychology": {
+        "count": 23,
+        "chars": 55288
+      },
+      "cognitive-psychology": {
+        "count": 25,
+        "chars": 58008
+      },
+      "developmental-psychology": {
+        "count": 23,
+        "chars": 52564
+      },
+      "personality-psychology": {
+        "count": 22,
+        "chars": 44996
+      },
+      "research-methods": {
+        "count": 23,
+        "chars": 51522
+      },
+      "social-psychology": {
+        "count": 23,
+        "chars": 51534
+      }
+    }
   }
 }

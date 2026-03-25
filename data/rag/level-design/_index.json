@@ -37,7 +37,7 @@
       "subdomain_id": "blockout",
       "subdomain_name": "Blockout",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -52,7 +52,7 @@
       "subdomain_id": "blockout",
       "subdomain_name": "Blockout",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -307,7 +307,7 @@
       "subdomain_id": "combat-space",
       "subdomain_name": "战斗空间",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "Boss"
       ],
@@ -397,7 +397,7 @@
       "subdomain_id": "combat-space",
       "subdomain_name": "战斗空间",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -442,7 +442,7 @@
       "subdomain_id": "combat-space",
       "subdomain_name": "战斗空间",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "掩体"
       ],
@@ -667,7 +667,7 @@
       "subdomain_id": "guidance-design",
       "subdomain_name": "引导设计",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -712,7 +712,7 @@
       "subdomain_id": "guidance-design",
       "subdomain_name": "引导设计",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "教学"
       ],
@@ -727,7 +727,7 @@
       "subdomain_id": "guidance-design",
       "subdomain_name": "引导设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "教学"
       ],
@@ -922,7 +922,7 @@
       "subdomain_id": "ld-documentation",
       "subdomain_name": "LD文档",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -937,7 +937,7 @@
       "subdomain_id": "ld-documentation",
       "subdomain_name": "LD文档",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "职业"
       ],
@@ -967,7 +967,7 @@
       "subdomain_id": "ld-documentation",
       "subdomain_name": "LD文档",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "工具"
       ],
@@ -1177,7 +1177,7 @@
       "subdomain_id": "ld-documentation",
       "subdomain_name": "LD文档",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -1267,7 +1267,7 @@
       "subdomain_id": "level-editor",
       "subdomain_name": "关卡编辑器",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "UE5"
       ],
@@ -1282,7 +1282,7 @@
       "subdomain_id": "level-editor",
       "subdomain_name": "关卡编辑器",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "性能"
       ],
@@ -1357,7 +1357,7 @@
       "subdomain_id": "level-editor",
       "subdomain_name": "关卡编辑器",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1393,7 +1393,7 @@
       ],
       "file": "level-design/level-editor/multi-user-editing.md",
       "exists": true,
-      "char_count": 1300
+      "char_count": 2966
     },
     {
       "id": "sublevel-management",
@@ -1492,7 +1492,7 @@
       "subdomain_id": "lighting-narrative",
       "subdomain_name": "光照叙事",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "特效"
       ],
@@ -1507,7 +1507,7 @@
       "subdomain_id": "lighting-narrative",
       "subdomain_name": "光照叙事",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1807,7 +1807,7 @@
       "subdomain_id": "metrics-design",
       "subdomain_name": "Metric设计",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1912,7 +1912,7 @@
       "subdomain_id": "metrics-design",
       "subdomain_name": "Metric设计",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "文档"
       ],
@@ -2083,7 +2083,7 @@
       ],
       "file": "level-design/metrics-design/audio-range.md",
       "exists": true,
-      "char_count": 1303
+      "char_count": 2541
     },
     {
       "id": "show-dont-tell",
@@ -2107,7 +2107,7 @@
       "subdomain_id": "pacing-curve",
       "subdomain_name": "节奏曲线",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "结构"
       ],
@@ -2347,7 +2347,7 @@
       "subdomain_id": "pacing-curve",
       "subdomain_name": "节奏曲线",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "分析"
       ],
@@ -2362,7 +2362,7 @@
       "subdomain_id": "pacing-curve",
       "subdomain_name": "节奏曲线",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2452,7 +2452,7 @@
       "subdomain_id": "spatial-narrative",
       "subdomain_name": "空间叙事",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2527,7 +2527,7 @@
       "subdomain_id": "spatial-narrative",
       "subdomain_name": "空间叙事",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "叙事"
       ],
@@ -2632,7 +2632,7 @@
       "subdomain_id": "spatial-narrative",
       "subdomain_name": "空间叙事",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "叙事"
       ],
@@ -2767,7 +2767,7 @@
       "subdomain_id": "terrain-design",
       "subdomain_name": "地形设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "性能"
       ],
@@ -2827,7 +2827,7 @@
       "subdomain_id": "terrain-design",
       "subdomain_name": "地形设计",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2947,7 +2947,7 @@
       "subdomain_id": "terrain-design",
       "subdomain_name": "地形设计",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "环境"
       ],
@@ -3003,8 +3003,55 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 459515,
-    "avg_chars": 2297,
-    "domain": "level-design"
+    "total_docs": 200,
+    "total_chars": 462419,
+    "avg_chars": 2312,
+    "domain": "level-design",
+    "by_subdomain": {
+      "blockout": {
+        "count": 20,
+        "chars": 44509
+      },
+      "combat-space": {
+        "count": 20,
+        "chars": 47536
+      },
+      "guidance-design": {
+        "count": 19,
+        "chars": 42665
+      },
+      "ld-documentation": {
+        "count": 20,
+        "chars": 47801
+      },
+      "level-editor": {
+        "count": 20,
+        "chars": 42432
+      },
+      "lighting-narrative": {
+        "count": 20,
+        "chars": 49444
+      },
+      "metrics-design": {
+        "count": 20,
+        "chars": 46180
+      },
+      "narrative-writing": {
+        "count": 1,
+        "chars": 1247
+      },
+      "pacing-curve": {
+        "count": 20,
+        "chars": 46156
+      },
+      "spatial-narrative": {
+        "count": 20,
+        "chars": 43117
+      },
+      "terrain-design": {
+        "count": 20,
+        "chars": 51332
+      }
+    }
   }
 }

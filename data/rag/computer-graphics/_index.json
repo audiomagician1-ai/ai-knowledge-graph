@@ -37,7 +37,7 @@
       "subdomain_id": "anti-aliasing",
       "subdomain_name": "抗锯齿",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "AI"
       ],
@@ -82,7 +82,7 @@
       "subdomain_id": "anti-aliasing",
       "subdomain_name": "抗锯齿",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -97,7 +97,7 @@
       "subdomain_id": "anti-aliasing",
       "subdomain_name": "抗锯齿",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -127,7 +127,7 @@
       "subdomain_id": "anti-aliasing",
       "subdomain_name": "抗锯齿",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -232,7 +232,7 @@
       "subdomain_id": "anti-aliasing",
       "subdomain_name": "抗锯齿",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -307,7 +307,7 @@
       "subdomain_id": "geometry-processing",
       "subdomain_name": "几何处理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -322,7 +322,7 @@
       "subdomain_id": "geometry-processing",
       "subdomain_name": "几何处理",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "前沿"
       ],
@@ -352,7 +352,7 @@
       "subdomain_id": "geometry-processing",
       "subdomain_name": "几何处理",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -397,7 +397,7 @@
       "subdomain_id": "geometry-processing",
       "subdomain_name": "几何处理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "优化"
       ],
@@ -592,7 +592,7 @@
       "subdomain_id": "geometry-processing",
       "subdomain_name": "几何处理",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "算法"
       ],
@@ -667,7 +667,7 @@
       "subdomain_id": "global-illumination",
       "subdomain_name": "全局光照",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -718,7 +718,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-lightmap-baking.md",
       "exists": true,
-      "char_count": 1546
+      "char_count": 2954
     },
     {
       "id": "cg-gi-intro",
@@ -727,7 +727,7 @@
       "subdomain_id": "global-illumination",
       "subdomain_name": "全局光照",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -787,7 +787,7 @@
       "subdomain_id": "global-illumination",
       "subdomain_name": "全局光照",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "架构"
       ],
@@ -802,7 +802,7 @@
       "subdomain_id": "global-illumination",
       "subdomain_name": "全局光照",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -832,7 +832,7 @@
       "subdomain_id": "global-illumination",
       "subdomain_name": "全局光照",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "实践"
       ],
@@ -952,7 +952,7 @@
       "subdomain_id": "gpu-architecture",
       "subdomain_name": "GPU架构",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -982,7 +982,7 @@
       "subdomain_id": "gpu-architecture",
       "subdomain_name": "GPU架构",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "前沿"
       ],
@@ -997,7 +997,7 @@
       "subdomain_id": "gpu-architecture",
       "subdomain_name": "GPU架构",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1012,7 +1012,7 @@
       "subdomain_id": "gpu-architecture",
       "subdomain_name": "GPU架构",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "实践"
       ],
@@ -1027,7 +1027,7 @@
       "subdomain_id": "gpu-architecture",
       "subdomain_name": "GPU架构",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1048,7 +1048,7 @@
       ],
       "file": "computer-graphics/gpu-architecture/cg-gpu-pipeline.md",
       "exists": true,
-      "char_count": 1501
+      "char_count": 2866
     },
     {
       "id": "cg-gpu-scheduling",
@@ -1267,7 +1267,7 @@
       "subdomain_id": "pbr-materials",
       "subdomain_name": "PBR材质",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1282,7 +1282,7 @@
       "subdomain_id": "pbr-materials",
       "subdomain_name": "PBR材质",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1297,7 +1297,7 @@
       "subdomain_id": "pbr-materials",
       "subdomain_name": "PBR材质",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1372,7 +1372,7 @@
       "subdomain_id": "pbr-materials",
       "subdomain_name": "PBR材质",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1597,7 +1597,7 @@
       "subdomain_id": "post-processing",
       "subdomain_name": "后处理",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "架构"
       ],
@@ -1612,7 +1612,7 @@
       "subdomain_id": "post-processing",
       "subdomain_name": "后处理",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1672,7 +1672,7 @@
       "subdomain_id": "post-processing",
       "subdomain_name": "后处理",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "效果"
       ],
@@ -1777,7 +1777,7 @@
       "subdomain_id": "post-processing",
       "subdomain_name": "后处理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1942,7 +1942,7 @@
       "subdomain_id": "rasterization",
       "subdomain_name": "光栅化",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1972,7 +1972,7 @@
       "subdomain_id": "rasterization",
       "subdomain_name": "光栅化",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "架构"
       ],
@@ -2032,7 +2032,7 @@
       "subdomain_id": "rasterization",
       "subdomain_name": "光栅化",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "数学"
       ],
@@ -2047,7 +2047,7 @@
       "subdomain_id": "rasterization",
       "subdomain_name": "光栅化",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "架构"
       ],
@@ -2197,7 +2197,7 @@
       "subdomain_id": "ray-tracing",
       "subdomain_name": "光线追踪",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "算法"
       ],
@@ -2332,7 +2332,7 @@
       "subdomain_id": "ray-tracing",
       "subdomain_name": "光线追踪",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2422,7 +2422,7 @@
       "subdomain_id": "ray-tracing",
       "subdomain_name": "光线追踪",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "实践"
       ],
@@ -2467,7 +2467,7 @@
       "subdomain_id": "ray-tracing",
       "subdomain_name": "光线追踪",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "架构"
       ],
@@ -2482,7 +2482,7 @@
       "subdomain_id": "ray-tracing",
       "subdomain_name": "光线追踪",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2527,7 +2527,7 @@
       "subdomain_id": "render-optimization",
       "subdomain_name": "渲染优化",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2578,7 +2578,7 @@
       ],
       "file": "computer-graphics/render-optimization/cg-vr-opt.md",
       "exists": true,
-      "char_count": 1522
+      "char_count": 2843
     },
     {
       "id": "cg-atlas-batching",
@@ -2647,7 +2647,7 @@
       "subdomain_id": "render-optimization",
       "subdomain_name": "渲染优化",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "方法论"
       ],
@@ -2677,7 +2677,7 @@
       "subdomain_id": "render-optimization",
       "subdomain_name": "渲染优化",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2692,7 +2692,7 @@
       "subdomain_id": "render-optimization",
       "subdomain_name": "渲染优化",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "架构"
       ],
@@ -2767,7 +2767,7 @@
       "subdomain_id": "render-optimization",
       "subdomain_name": "渲染优化",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "技术"
       ],
@@ -2797,7 +2797,7 @@
       "subdomain_id": "render-optimization",
       "subdomain_name": "渲染优化",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2872,7 +2872,7 @@
       "subdomain_id": "shader-programming",
       "subdomain_name": "Shader编程",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2962,7 +2962,7 @@
       "subdomain_id": "shader-programming",
       "subdomain_name": "Shader编程",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "工具"
       ],
@@ -2977,7 +2977,7 @@
       "subdomain_id": "shader-programming",
       "subdomain_name": "Shader编程",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -3007,7 +3007,7 @@
       "subdomain_id": "shader-programming",
       "subdomain_name": "Shader编程",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "优化"
       ],
@@ -3067,7 +3067,7 @@
       "subdomain_id": "shader-programming",
       "subdomain_name": "Shader编程",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -3127,7 +3127,7 @@
       "subdomain_id": "texture-techniques",
       "subdomain_name": "纹理技术",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -3217,7 +3217,7 @@
       "subdomain_id": "texture-techniques",
       "subdomain_name": "纹理技术",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -3322,7 +3322,7 @@
       "subdomain_id": "texture-techniques",
       "subdomain_name": "纹理技术",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -3397,7 +3397,7 @@
       "subdomain_id": "texture-techniques",
       "subdomain_name": "纹理技术",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "前沿"
       ],
@@ -3487,7 +3487,7 @@
       "subdomain_id": "volume-rendering",
       "subdomain_name": "体积渲染",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -3502,7 +3502,7 @@
       "subdomain_id": "volume-rendering",
       "subdomain_name": "体积渲染",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "实践"
       ],
@@ -3547,7 +3547,7 @@
       "subdomain_id": "volume-rendering",
       "subdomain_name": "体积渲染",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -3727,7 +3727,7 @@
       "subdomain_id": "volume-rendering",
       "subdomain_name": "体积渲染",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "前沿"
       ],
@@ -3753,8 +3753,59 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 540782,
-    "avg_chars": 2163,
-    "domain": "computer-graphics"
+    "total_docs": 250,
+    "total_chars": 544876,
+    "avg_chars": 2179,
+    "domain": "computer-graphics",
+    "by_subdomain": {
+      "anti-aliasing": {
+        "count": 20,
+        "chars": 43008
+      },
+      "geometry-processing": {
+        "count": 21,
+        "chars": 46024
+      },
+      "global-illumination": {
+        "count": 21,
+        "chars": 53005
+      },
+      "gpu-architecture": {
+        "count": 21,
+        "chars": 39459
+      },
+      "pbr-materials": {
+        "count": 20,
+        "chars": 42214
+      },
+      "post-processing": {
+        "count": 21,
+        "chars": 46203
+      },
+      "rasterization": {
+        "count": 22,
+        "chars": 45337
+      },
+      "ray-tracing": {
+        "count": 21,
+        "chars": 51198
+      },
+      "render-optimization": {
+        "count": 20,
+        "chars": 43266
+      },
+      "shader-programming": {
+        "count": 21,
+        "chars": 39190
+      },
+      "texture-techniques": {
+        "count": 21,
+        "chars": 43402
+      },
+      "volume-rendering": {
+        "count": 21,
+        "chars": 52570
+      }
+    }
   }
 }

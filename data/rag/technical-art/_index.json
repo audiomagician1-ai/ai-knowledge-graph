@@ -37,7 +37,7 @@
       "subdomain_id": "art-standards",
       "subdomain_name": "美术标准制定",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "质量"
       ],
@@ -73,7 +73,7 @@
       ],
       "file": "technical-art/ta-std-template.md",
       "exists": true,
-      "char_count": 1291
+      "char_count": 2867
     },
     {
       "id": "ta-std-evolution",
@@ -88,7 +88,7 @@
       ],
       "file": "technical-art/ta-std-evolution.md",
       "exists": true,
-      "char_count": 1297
+      "char_count": 2455
     },
     {
       "id": "ta-texture-standard",
@@ -142,7 +142,7 @@
       "subdomain_id": "art-standards",
       "subdomain_name": "美术标准制定",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "规范"
       ],
@@ -172,7 +172,7 @@
       "subdomain_id": "automation",
       "subdomain_name": "自动化工作流",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -202,7 +202,7 @@
       "subdomain_id": "automation",
       "subdomain_name": "自动化工作流",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "管线"
       ],
@@ -217,7 +217,7 @@
       "subdomain_id": "automation",
       "subdomain_name": "自动化工作流",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -277,7 +277,7 @@
       "subdomain_id": "automation",
       "subdomain_name": "自动化工作流",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -412,7 +412,7 @@
       "subdomain_id": "lod-strategy",
       "subdomain_name": "LOD策略",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -487,7 +487,7 @@
       "subdomain_id": "lod-strategy",
       "subdomain_name": "LOD策略",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -517,7 +517,7 @@
       "subdomain_id": "lod-strategy",
       "subdomain_name": "LOD策略",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -538,7 +538,7 @@
       ],
       "file": "technical-art/ta-proxy-mesh.md",
       "exists": true,
-      "char_count": 1307
+      "char_count": 2514
     },
     {
       "id": "ta-lod-building",
@@ -688,7 +688,7 @@
       ],
       "file": "technical-art/ta-material-function.md",
       "exists": true,
-      "char_count": 1305
+      "char_count": 2918
     },
     {
       "id": "ta-material-layer",
@@ -697,7 +697,7 @@
       "subdomain_id": "material-system",
       "subdomain_name": "材质系统",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -748,7 +748,7 @@
       ],
       "file": "technical-art/ta-material-library.md",
       "exists": true,
-      "char_count": 1304
+      "char_count": 3199
     },
     {
       "id": "ta-material-complexity",
@@ -787,7 +787,7 @@
       "subdomain_id": "material-system",
       "subdomain_name": "材质系统",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -808,7 +808,7 @@
       ],
       "file": "technical-art/ta-procedural-material.md",
       "exists": true,
-      "char_count": 1296
+      "char_count": 3071
     },
     {
       "id": "ta-texture-compression",
@@ -862,7 +862,7 @@
       "subdomain_id": "material-system",
       "subdomain_name": "材质系统",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -907,7 +907,7 @@
       "subdomain_id": "memory-budget",
       "subdomain_name": "内存与预算",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1027,7 +1027,7 @@
       "subdomain_id": "memory-budget",
       "subdomain_name": "内存与预算",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "管理"
       ],
@@ -1048,7 +1048,7 @@
       ],
       "file": "technical-art/ta-loading-screen.md",
       "exists": true,
-      "char_count": 1307
+      "char_count": 2587
     },
     {
       "id": "ta-anim-memory",
@@ -1132,7 +1132,7 @@
       "subdomain_id": "memory-budget",
       "subdomain_name": "内存与预算",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1222,7 +1222,7 @@
       "subdomain_id": "pcg",
       "subdomain_name": "程序化生成",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "工具"
       ],
@@ -1267,7 +1267,7 @@
       "subdomain_id": "pcg",
       "subdomain_name": "程序化生成",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1282,7 +1282,7 @@
       "subdomain_id": "pcg",
       "subdomain_name": "程序化生成",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1303,7 +1303,7 @@
       ],
       "file": "technical-art/ta-scatter-system.md",
       "exists": true,
-      "char_count": 1291
+      "char_count": 2730
     },
     {
       "id": "ta-pcg-biome",
@@ -1342,7 +1342,7 @@
       "subdomain_id": "pcg",
       "subdomain_name": "程序化生成",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1363,7 +1363,7 @@
       ],
       "file": "technical-art/ta-pcg-city.md",
       "exists": true,
-      "char_count": 1300
+      "char_count": 2623
     },
     {
       "id": "ta-pcg-building",
@@ -1537,7 +1537,7 @@
       "subdomain_id": "perf-optimization",
       "subdomain_name": "性能优化",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1597,7 +1597,7 @@
       "subdomain_id": "perf-optimization",
       "subdomain_name": "性能优化",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "实战"
       ],
@@ -1702,7 +1702,7 @@
       "subdomain_id": "perf-optimization",
       "subdomain_name": "性能优化",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1762,7 +1762,7 @@
       "subdomain_id": "perf-optimization",
       "subdomain_name": "性能优化",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1822,7 +1822,7 @@
       "subdomain_id": "pipeline-build",
       "subdomain_name": "管线搭建",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "规范"
       ],
@@ -1843,7 +1843,7 @@
       ],
       "file": "technical-art/ta-outsource-pipeline.md",
       "exists": true,
-      "char_count": 1310
+      "char_count": 2577
     },
     {
       "id": "ta-multi-platform",
@@ -1852,7 +1852,7 @@
       "subdomain_id": "pipeline-build",
       "subdomain_name": "管线搭建",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1978,7 +1978,7 @@
       ],
       "file": "technical-art/ta-folder-structure.md",
       "exists": true,
-      "char_count": 1310
+      "char_count": 3172
     },
     {
       "id": "ta-pipeline-doc",
@@ -2107,7 +2107,7 @@
       "subdomain_id": "shader-dev",
       "subdomain_name": "Shader开发",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -2137,7 +2137,7 @@
       "subdomain_id": "shader-dev",
       "subdomain_name": "Shader开发",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2152,7 +2152,7 @@
       "subdomain_id": "shader-dev",
       "subdomain_name": "Shader开发",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2212,7 +2212,7 @@
       "subdomain_id": "shader-dev",
       "subdomain_name": "Shader开发",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "优化"
       ],
@@ -2257,7 +2257,7 @@
       "subdomain_id": "shader-dev",
       "subdomain_name": "Shader开发",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "工具"
       ],
@@ -2347,7 +2347,7 @@
       "subdomain_id": "shader-dev",
       "subdomain_name": "Shader开发",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2362,7 +2362,7 @@
       "subdomain_id": "shader-dev",
       "subdomain_name": "Shader开发",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -2467,7 +2467,7 @@
       "subdomain_id": "tool-dev",
       "subdomain_name": "工具开发",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2497,7 +2497,7 @@
       "subdomain_id": "tool-dev",
       "subdomain_name": "工具开发",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2587,7 +2587,7 @@
       "subdomain_id": "tool-dev",
       "subdomain_name": "工具开发",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "管线"
       ],
@@ -2692,7 +2692,7 @@
       "subdomain_id": "tool-dev",
       "subdomain_name": "工具开发",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "质量"
       ],
@@ -2703,8 +2703,51 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 331499,
-    "avg_chars": 1841,
-    "domain": "technical-art"
+    "total_docs": 180,
+    "total_chars": 347894,
+    "avg_chars": 1932,
+    "domain": "technical-art",
+    "by_subdomain": {
+      "art-standards": {
+        "count": 10,
+        "chars": 22134
+      },
+      "automation": {
+        "count": 10,
+        "chars": 20802
+      },
+      "lod-strategy": {
+        "count": 20,
+        "chars": 33539
+      },
+      "material-system": {
+        "count": 20,
+        "chars": 41507
+      },
+      "memory-budget": {
+        "count": 20,
+        "chars": 39096
+      },
+      "pcg": {
+        "count": 20,
+        "chars": 34854
+      },
+      "perf-optimization": {
+        "count": 20,
+        "chars": 40190
+      },
+      "pipeline-build": {
+        "count": 20,
+        "chars": 41544
+      },
+      "shader-dev": {
+        "count": 20,
+        "chars": 38557
+      },
+      "tool-dev": {
+        "count": 20,
+        "chars": 35671
+      }
+    }
   }
 }

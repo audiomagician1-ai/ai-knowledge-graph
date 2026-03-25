@@ -88,7 +88,7 @@
       ],
       "file": "english/advanced-grammar/causative-verbs.md",
       "exists": true,
-      "char_count": 1312
+      "char_count": 2798
     },
     {
       "id": "articles-advanced",
@@ -217,7 +217,7 @@
       "subdomain_id": "advanced-grammar",
       "subdomain_name": "高级语法",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -277,7 +277,7 @@
       "subdomain_id": "advanced-grammar",
       "subdomain_name": "高级语法",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "练习"
       ],
@@ -367,7 +367,7 @@
       "subdomain_id": "basic-grammar",
       "subdomain_name": "基础语法",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -517,7 +517,7 @@
       "subdomain_id": "basic-grammar",
       "subdomain_name": "基础语法",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -607,7 +607,7 @@
       "subdomain_id": "basic-grammar",
       "subdomain_name": "基础语法",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -742,7 +742,7 @@
       "subdomain_id": "idioms-culture",
       "subdomain_name": "习语与文化",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -817,7 +817,7 @@
       "subdomain_id": "idioms-culture",
       "subdomain_name": "习语与文化",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "文化"
       ],
@@ -958,7 +958,7 @@
       ],
       "file": "english/phonetics/schwa-sound.md",
       "exists": true,
-      "char_count": 1304
+      "char_count": 2521
     },
     {
       "id": "vowel-sounds",
@@ -1027,7 +1027,7 @@
       "subdomain_id": "phonetics",
       "subdomain_name": "语音",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1147,7 +1147,7 @@
       "subdomain_id": "phonetics",
       "subdomain_name": "语音",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1357,7 +1357,7 @@
       "subdomain_id": "reading",
       "subdomain_name": "阅读理解",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1372,7 +1372,7 @@
       "subdomain_id": "reading",
       "subdomain_name": "阅读理解",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1462,7 +1462,7 @@
       "subdomain_id": "reading",
       "subdomain_name": "阅读理解",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "策略"
       ],
@@ -1582,7 +1582,7 @@
       "subdomain_id": "sentence-patterns",
       "subdomain_name": "句型结构",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1717,7 +1717,7 @@
       "subdomain_id": "sentence-patterns",
       "subdomain_name": "句型结构",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1732,7 +1732,7 @@
       "subdomain_id": "sentence-patterns",
       "subdomain_name": "句型结构",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -1777,7 +1777,7 @@
       "subdomain_id": "sentence-patterns",
       "subdomain_name": "句型结构",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1912,7 +1912,7 @@
       "subdomain_id": "speaking",
       "subdomain_name": "口语表达",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1942,7 +1942,7 @@
       "subdomain_id": "speaking",
       "subdomain_name": "口语表达",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -2002,7 +2002,7 @@
       "subdomain_id": "speaking",
       "subdomain_name": "口语表达",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2233,7 +2233,7 @@
       ],
       "file": "english/tenses/future-continuous.md",
       "exists": true,
-      "char_count": 1290
+      "char_count": 2445
     },
     {
       "id": "tense-consistency",
@@ -2257,7 +2257,7 @@
       "subdomain_id": "tenses",
       "subdomain_name": "时态系统",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -2302,7 +2302,7 @@
       "subdomain_id": "tenses",
       "subdomain_name": "时态系统",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -2338,7 +2338,7 @@
       ],
       "file": "english/tenses/present-for-future.md",
       "exists": true,
-      "char_count": 1293
+      "char_count": 2967
     },
     {
       "id": "present-continuous",
@@ -2362,7 +2362,7 @@
       "subdomain_id": "tenses",
       "subdomain_name": "时态系统",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2572,7 +2572,7 @@
       "subdomain_id": "vocabulary",
       "subdomain_name": "核心词汇",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2602,7 +2602,7 @@
       "subdomain_id": "vocabulary",
       "subdomain_name": "核心词汇",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2797,7 +2797,7 @@
       "subdomain_id": "writing-en",
       "subdomain_name": "写作",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2842,7 +2842,7 @@
       "subdomain_id": "writing-en",
       "subdomain_name": "写作",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "文体"
       ],
@@ -2977,7 +2977,7 @@
       "subdomain_id": "writing-fundamentals",
       "subdomain_name": "写作基础",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -3003,8 +3003,71 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 518232,
-    "avg_chars": 2591,
-    "domain": "english"
+    "total_docs": 200,
+    "total_chars": 523764,
+    "avg_chars": 2618,
+    "domain": "english",
+    "by_subdomain": {
+      "academic-writing": {
+        "count": 2,
+        "chars": 4747
+      },
+      "advanced-grammar": {
+        "count": 19,
+        "chars": 52887
+      },
+      "basic-grammar": {
+        "count": 22,
+        "chars": 55155
+      },
+      "expository-writing": {
+        "count": 2,
+        "chars": 4272
+      },
+      "idioms-culture": {
+        "count": 17,
+        "chars": 34005
+      },
+      "narrative-writing": {
+        "count": 1,
+        "chars": 1301
+      },
+      "phonetics": {
+        "count": 20,
+        "chars": 52608
+      },
+      "professional-writing": {
+        "count": 1,
+        "chars": 3183
+      },
+      "reading": {
+        "count": 20,
+        "chars": 55260
+      },
+      "sentence-patterns": {
+        "count": 19,
+        "chars": 48727
+      },
+      "speaking": {
+        "count": 19,
+        "chars": 54239
+      },
+      "tenses": {
+        "count": 20,
+        "chars": 55525
+      },
+      "vocabulary": {
+        "count": 18,
+        "chars": 44280
+      },
+      "writing-en": {
+        "count": 14,
+        "chars": 43673
+      },
+      "writing-fundamentals": {
+        "count": 6,
+        "chars": 13902
+      }
+    }
   }
 }

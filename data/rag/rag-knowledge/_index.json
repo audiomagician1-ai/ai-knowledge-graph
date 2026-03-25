@@ -302,8 +302,15 @@
   ],
   "stats": {
     "total": 23,
+    "total_docs": 23,
     "total_chars": 45569,
     "avg_chars": 1981,
-    "domain": "rag-knowledge"
+    "domain": "rag-knowledge",
+    "by_subdomain": {
+      "rag-knowledge": {
+        "count": 23,
+        "chars": 45569
+      }
+    }
   }
 }

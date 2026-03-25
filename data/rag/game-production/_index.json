@@ -375,7 +375,7 @@
       "tags": [],
       "file": "game-production/gp-bc-tracking.md",
       "exists": true,
-      "char_count": 1507
+      "char_count": 2643
     },
     {
       "id": "gp-bc-evm",
@@ -544,7 +544,7 @@
       "tags": [],
       "file": "game-production/gp-cd-handoff.md",
       "exists": true,
-      "char_count": 1501
+      "char_count": 2317
     },
     {
       "id": "gp-cd-meeting",
@@ -2052,7 +2052,7 @@
       "tags": [],
       "file": "game-production/gp-rk-assessment.md",
       "exists": true,
-      "char_count": 1504
+      "char_count": 2519
     },
     {
       "id": "gp-rk-identification",
@@ -2083,8 +2083,43 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 259123,
-    "avg_chars": 1619,
-    "domain": "game-production"
+    "total_docs": 160,
+    "total_chars": 262090,
+    "avg_chars": 1638,
+    "domain": "game-production",
+    "by_subdomain": {
+      "agile-scrum": {
+        "count": 20,
+        "chars": 34247
+      },
+      "budget-control": {
+        "count": 20,
+        "chars": 31961
+      },
+      "cross-department": {
+        "count": 20,
+        "chars": 33251
+      },
+      "milestone-planning": {
+        "count": 20,
+        "chars": 33493
+      },
+      "outsourcing": {
+        "count": 20,
+        "chars": 30890
+      },
+      "production-pipeline": {
+        "count": 20,
+        "chars": 31586
+      },
+      "resource-management": {
+        "count": 20,
+        "chars": 32420
+      },
+      "risk-management": {
+        "count": 20,
+        "chars": 34242
+      }
+    }
   }
 }

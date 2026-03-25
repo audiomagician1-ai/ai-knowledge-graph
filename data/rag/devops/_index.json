@@ -289,8 +289,15 @@
   ],
   "stats": {
     "total": 22,
+    "total_docs": 22,
     "total_chars": 47191,
     "avg_chars": 2145,
-    "domain": "devops"
+    "domain": "devops",
+    "by_subdomain": {
+      "devops": {
+        "count": 22,
+        "chars": 47191
+      }
+    }
   }
 }

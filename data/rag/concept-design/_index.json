@@ -7,7 +7,7 @@
       "subdomain_id": "anatomy-sketching",
       "subdomain_name": "人体解剖速写",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -142,7 +142,7 @@
       "subdomain_id": "anatomy-sketching",
       "subdomain_name": "人体解剖速写",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -217,7 +217,7 @@
       "subdomain_id": "anatomy-sketching",
       "subdomain_name": "人体解剖速写",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -457,7 +457,7 @@
       "subdomain_id": "character-design",
       "subdomain_name": "角色设计",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -472,7 +472,7 @@
       "subdomain_id": "character-design",
       "subdomain_name": "角色设计",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -532,7 +532,7 @@
       "subdomain_id": "character-design",
       "subdomain_name": "角色设计",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -562,7 +562,7 @@
       "subdomain_id": "character-design",
       "subdomain_name": "角色设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -742,7 +742,7 @@
       "subdomain_id": "color-theory",
       "subdomain_name": "色彩理论",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -832,7 +832,7 @@
       "subdomain_id": "color-theory",
       "subdomain_name": "色彩理论",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -862,7 +862,7 @@
       "subdomain_id": "color-theory",
       "subdomain_name": "色彩理论",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -997,7 +997,7 @@
       "subdomain_id": "composition",
       "subdomain_name": "构图",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1012,7 +1012,7 @@
       "subdomain_id": "composition",
       "subdomain_name": "构图",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1042,7 +1042,7 @@
       "subdomain_id": "composition",
       "subdomain_name": "构图",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -1132,7 +1132,7 @@
       "subdomain_id": "composition",
       "subdomain_name": "构图",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -1237,7 +1237,7 @@
       "subdomain_id": "environment-design",
       "subdomain_name": "环境设计",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1267,7 +1267,7 @@
       "subdomain_id": "environment-design",
       "subdomain_name": "环境设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "实战"
       ],
@@ -1372,7 +1372,7 @@
       "subdomain_id": "environment-design",
       "subdomain_name": "环境设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1432,7 +1432,7 @@
       "subdomain_id": "environment-design",
       "subdomain_name": "环境设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -1657,7 +1657,7 @@
       "subdomain_id": "light-shadow",
       "subdomain_name": "光影",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1672,7 +1672,7 @@
       "subdomain_id": "light-shadow",
       "subdomain_name": "光影",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1732,7 +1732,7 @@
       "subdomain_id": "light-shadow",
       "subdomain_name": "光影",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1882,7 +1882,7 @@
       "subdomain_id": "moodboard-ref",
       "subdomain_name": "Moodboard与参考",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1942,7 +1942,7 @@
       "subdomain_id": "moodboard-ref",
       "subdomain_name": "Moodboard与参考",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1957,7 +1957,7 @@
       "subdomain_id": "moodboard-ref",
       "subdomain_name": "Moodboard与参考",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "学习"
       ],
@@ -2032,7 +2032,7 @@
       "subdomain_id": "moodboard-ref",
       "subdomain_name": "Moodboard与参考",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "学习"
       ],
@@ -2137,7 +2137,7 @@
       "subdomain_id": "perspective",
       "subdomain_name": "透视法",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2182,7 +2182,7 @@
       "subdomain_id": "perspective",
       "subdomain_name": "透视法",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2347,7 +2347,7 @@
       "subdomain_id": "perspective",
       "subdomain_name": "透视法",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -2512,7 +2512,7 @@
       "subdomain_id": "prop-design",
       "subdomain_name": "道具设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "实战"
       ],
@@ -2602,7 +2602,7 @@
       "subdomain_id": "prop-design",
       "subdomain_name": "道具设计",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2662,7 +2662,7 @@
       "subdomain_id": "prop-design",
       "subdomain_name": "道具设计",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -2737,7 +2737,7 @@
       "subdomain_id": "style-guide",
       "subdomain_name": "风格指南",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2767,7 +2767,7 @@
       "subdomain_id": "style-guide",
       "subdomain_name": "风格指南",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2887,7 +2887,7 @@
       "subdomain_id": "style-guide",
       "subdomain_name": "风格指南",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "职业"
       ],
@@ -2962,7 +2962,7 @@
       "subdomain_id": "style-guide",
       "subdomain_name": "风格指南",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -3067,7 +3067,7 @@
       "subdomain_id": "visual-development",
       "subdomain_name": "视觉开发",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -3097,7 +3097,7 @@
       "subdomain_id": "visual-development",
       "subdomain_name": "视觉开发",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -3172,7 +3172,7 @@
       "subdomain_id": "visual-development",
       "subdomain_name": "视觉开发",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -3202,7 +3202,7 @@
       "subdomain_id": "visual-development",
       "subdomain_name": "视觉开发",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "流程"
       ],
@@ -3303,8 +3303,55 @@
   ],
   "stats": {
     "total": 220,
+    "total_docs": 220,
     "total_chars": 461351,
     "avg_chars": 2097,
-    "domain": "concept-design"
+    "domain": "concept-design",
+    "by_subdomain": {
+      "anatomy-sketching": {
+        "count": 20,
+        "chars": 38572
+      },
+      "character-design": {
+        "count": 20,
+        "chars": 45162
+      },
+      "color-theory": {
+        "count": 20,
+        "chars": 42110
+      },
+      "composition": {
+        "count": 20,
+        "chars": 43256
+      },
+      "environment-design": {
+        "count": 20,
+        "chars": 45887
+      },
+      "light-shadow": {
+        "count": 20,
+        "chars": 45857
+      },
+      "moodboard-ref": {
+        "count": 20,
+        "chars": 36189
+      },
+      "perspective": {
+        "count": 20,
+        "chars": 40310
+      },
+      "prop-design": {
+        "count": 20,
+        "chars": 41691
+      },
+      "style-guide": {
+        "count": 20,
+        "chars": 43597
+      },
+      "visual-development": {
+        "count": 20,
+        "chars": 38720
+      }
+    }
   }
 }

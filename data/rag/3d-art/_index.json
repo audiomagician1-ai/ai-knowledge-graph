@@ -52,7 +52,7 @@
       "subdomain_id": "asset-pipeline",
       "subdomain_name": "资产管线",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "优化"
       ],
@@ -778,7 +778,7 @@
       ],
       "file": "3d-art/3da-env-intro.md",
       "exists": true,
-      "char_count": 1492
+      "char_count": 2290
     },
     {
       "id": "3da-env-decals",
@@ -898,7 +898,7 @@
       ],
       "file": "3d-art/3da-hs-trim-sheet.md",
       "exists": true,
-      "char_count": 1509
+      "char_count": 2499
     },
     {
       "id": "3da-hs-bevel-edges",
@@ -967,7 +967,7 @@
       "subdomain_id": "hard-surface",
       "subdomain_name": "硬表面建模",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1672,7 +1672,7 @@
       "subdomain_id": "organic-modeling",
       "subdomain_name": "有机建模",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "实战"
       ],
@@ -1987,7 +1987,7 @@
       "subdomain_id": "retopology",
       "subdomain_name": "拓扑重构",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2662,7 +2662,7 @@
       "subdomain_id": "sculpting",
       "subdomain_name": "数字雕刻",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "技巧"
       ],
@@ -3283,7 +3283,7 @@
       ],
       "file": "3d-art/3da-uv-channels.md",
       "exists": true,
-      "char_count": 1517
+      "char_count": 2681
     },
     {
       "id": "3da-uv-unwrap-tools",
@@ -3393,8 +3393,59 @@
   ],
   "stats": {
     "total": 226,
-    "total_chars": 486059,
-    "avg_chars": 2150,
-    "domain": "3d-art"
+    "total_docs": 226,
+    "total_chars": 489011,
+    "avg_chars": 2163,
+    "domain": "3d-art",
+    "by_subdomain": {
+      "asset-pipeline": {
+        "count": 18,
+        "chars": 42609
+      },
+      "baking": {
+        "count": 16,
+        "chars": 31575
+      },
+      "environment-art": {
+        "count": 20,
+        "chars": 48341
+      },
+      "hard-surface": {
+        "count": 20,
+        "chars": 45504
+      },
+      "modeling-fundamentals": {
+        "count": 20,
+        "chars": 44740
+      },
+      "organic-modeling": {
+        "count": 20,
+        "chars": 45049
+      },
+      "prop-art": {
+        "count": 16,
+        "chars": 37507
+      },
+      "retopology": {
+        "count": 18,
+        "chars": 40858
+      },
+      "rigging": {
+        "count": 18,
+        "chars": 39553
+      },
+      "sculpting": {
+        "count": 20,
+        "chars": 37708
+      },
+      "texturing": {
+        "count": 22,
+        "chars": 40875
+      },
+      "uv-unwrapping": {
+        "count": 18,
+        "chars": 34692
+      }
+    }
   }
 }

@@ -263,8 +263,15 @@
   ],
   "stats": {
     "total": 20,
+    "total_docs": 20,
     "total_chars": 42024,
     "avg_chars": 2101,
-    "domain": "prompt-engineering"
+    "domain": "prompt-engineering",
+    "by_subdomain": {
+      "prompt-engineering": {
+        "count": 20,
+        "chars": 42024
+      }
+    }
   }
 }

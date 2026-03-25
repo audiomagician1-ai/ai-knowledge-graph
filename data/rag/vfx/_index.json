@@ -52,7 +52,7 @@
       "subdomain_id": "destruction",
       "subdomain_name": "破碎与销毁",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "高级"
       ],
@@ -82,7 +82,7 @@
       "subdomain_id": "destruction",
       "subdomain_name": "破碎与销毁",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -142,7 +142,7 @@
       "subdomain_id": "destruction",
       "subdomain_name": "破碎与销毁",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -157,7 +157,7 @@
       "subdomain_id": "destruction",
       "subdomain_name": "破碎与销毁",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -292,7 +292,7 @@
       "subdomain_id": "destruction",
       "subdomain_name": "破碎与销毁",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -397,7 +397,7 @@
       "subdomain_id": "flipbook",
       "subdomain_name": "序列帧特效",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -457,7 +457,7 @@
       "subdomain_id": "flipbook",
       "subdomain_name": "序列帧特效",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -487,7 +487,7 @@
       "subdomain_id": "flipbook",
       "subdomain_name": "序列帧特效",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -547,7 +547,7 @@
       "subdomain_id": "flipbook",
       "subdomain_name": "序列帧特效",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -577,7 +577,7 @@
       "subdomain_id": "flipbook",
       "subdomain_name": "序列帧特效",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "高级"
       ],
@@ -598,7 +598,7 @@
       ],
       "file": "vfx/vfx-fb-channel-pack.md",
       "exists": true,
-      "char_count": 1295
+      "char_count": 2810
     },
     {
       "id": "vfx-fluid-flip",
@@ -652,7 +652,7 @@
       "subdomain_id": "fluid-sim",
       "subdomain_name": "流体模拟",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "高级"
       ],
@@ -727,7 +727,7 @@
       "subdomain_id": "fluid-sim",
       "subdomain_name": "流体模拟",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "高级"
       ],
@@ -757,7 +757,7 @@
       "subdomain_id": "fluid-sim",
       "subdomain_name": "流体模拟",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -802,7 +802,7 @@
       "subdomain_id": "fluid-sim",
       "subdomain_name": "流体模拟",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "高级"
       ],
@@ -847,7 +847,7 @@
       "subdomain_id": "fluid-sim",
       "subdomain_name": "流体模拟",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -922,7 +922,7 @@
       "subdomain_id": "niagara",
       "subdomain_name": "Niagara系统",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "高级"
       ],
@@ -967,7 +967,7 @@
       "subdomain_id": "niagara",
       "subdomain_name": "Niagara系统",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1012,7 +1012,7 @@
       "subdomain_id": "niagara",
       "subdomain_name": "Niagara系统",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1087,7 +1087,7 @@
       "subdomain_id": "niagara",
       "subdomain_name": "Niagara系统",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1147,7 +1147,7 @@
       "subdomain_id": "niagara",
       "subdomain_name": "Niagara系统",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1237,7 +1237,7 @@
       "subdomain_id": "particle-physics",
       "subdomain_name": "粒子物理",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1252,7 +1252,7 @@
       "subdomain_id": "particle-physics",
       "subdomain_name": "粒子物理",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1333,7 +1333,7 @@
       ],
       "file": "vfx/vfx-particle-curve.md",
       "exists": true,
-      "char_count": 1305
+      "char_count": 2435
     },
     {
       "id": "vfx-particle-turbulence",
@@ -1372,7 +1372,7 @@
       "subdomain_id": "particle-physics",
       "subdomain_name": "粒子物理",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1432,7 +1432,7 @@
       "subdomain_id": "particle-physics",
       "subdomain_name": "粒子物理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1567,7 +1567,7 @@
       "subdomain_id": "post-process",
       "subdomain_name": "后处理特效",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1618,7 +1618,7 @@
       ],
       "file": "vfx/vfx-pp-outline.md",
       "exists": true,
-      "char_count": 1296
+      "char_count": 2662
     },
     {
       "id": "vfx-pp-dof",
@@ -1627,7 +1627,7 @@
       "subdomain_id": "post-process",
       "subdomain_name": "后处理特效",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1672,7 +1672,7 @@
       "subdomain_id": "post-process",
       "subdomain_name": "后处理特效",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1777,7 +1777,7 @@
       "subdomain_id": "post-process",
       "subdomain_name": "后处理特效",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1792,7 +1792,7 @@
       "subdomain_id": "post-process",
       "subdomain_name": "后处理特效",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1807,7 +1807,7 @@
       "subdomain_id": "shader-vfx",
       "subdomain_name": "Shader特效",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "高级"
       ],
@@ -1822,7 +1822,7 @@
       "subdomain_id": "shader-vfx",
       "subdomain_name": "Shader特效",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1867,7 +1867,7 @@
       "subdomain_id": "shader-vfx",
       "subdomain_name": "Shader特效",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1972,7 +1972,7 @@
       "subdomain_id": "shader-vfx",
       "subdomain_name": "Shader特效",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2017,7 +2017,7 @@
       "subdomain_id": "shader-vfx",
       "subdomain_name": "Shader特效",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2032,7 +2032,7 @@
       "subdomain_id": "shader-vfx",
       "subdomain_name": "Shader特效",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -2182,7 +2182,7 @@
       "subdomain_id": "vfx-graph",
       "subdomain_name": "VFX Graph",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "高级"
       ],
@@ -2272,7 +2272,7 @@
       "subdomain_id": "vfx-graph",
       "subdomain_name": "VFX Graph",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2332,7 +2332,7 @@
       "subdomain_id": "vfx-graph",
       "subdomain_name": "VFX Graph",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2377,7 +2377,7 @@
       "subdomain_id": "vfx-graph",
       "subdomain_name": "VFX Graph",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -2422,7 +2422,7 @@
       "subdomain_id": "vfx-optimization",
       "subdomain_name": "特效优化",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -2452,7 +2452,7 @@
       "subdomain_id": "vfx-optimization",
       "subdomain_name": "特效优化",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2587,7 +2587,7 @@
       "subdomain_id": "vfx-optimization",
       "subdomain_name": "特效优化",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2602,7 +2602,7 @@
       "subdomain_id": "vfx-optimization",
       "subdomain_name": "特效优化",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -2692,7 +2692,7 @@
       "subdomain_id": "vfx-optimization",
       "subdomain_name": "特效优化",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -2703,8 +2703,47 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 358808,
-    "avg_chars": 1993,
-    "domain": "vfx"
+    "total_docs": 180,
+    "total_chars": 362819,
+    "avg_chars": 2015,
+    "domain": "vfx",
+    "by_subdomain": {
+      "destruction": {
+        "count": 20,
+        "chars": 47076
+      },
+      "flipbook": {
+        "count": 20,
+        "chars": 42294
+      },
+      "fluid-sim": {
+        "count": 20,
+        "chars": 41893
+      },
+      "niagara": {
+        "count": 20,
+        "chars": 35537
+      },
+      "particle-physics": {
+        "count": 20,
+        "chars": 44670
+      },
+      "post-process": {
+        "count": 20,
+        "chars": 40979
+      },
+      "shader-vfx": {
+        "count": 20,
+        "chars": 35262
+      },
+      "vfx-graph": {
+        "count": 20,
+        "chars": 33838
+      },
+      "vfx-optimization": {
+        "count": 20,
+        "chars": 41270
+      }
+    }
   }
 }

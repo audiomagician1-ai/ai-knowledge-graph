@@ -24,7 +24,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ac-code-obfuscation.md",
       "exists": true,
-      "char_count": 1284
+      "char_count": 2534
     },
     {
       "id": "mn-ac-memory-scanning",
@@ -895,7 +895,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lr-anti-exploit.md",
       "exists": true,
-      "char_count": 1297
+      "char_count": 2853
     },
     {
       "id": "mn-lr-data-visualization",
@@ -947,7 +947,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lr-heat-map.md",
       "exists": true,
-      "char_count": 1283
+      "char_count": 2273
     },
     {
       "id": "mn-lr-player-stats",
@@ -1047,7 +1047,7 @@
       "subdomain_id": "lobby",
       "subdomain_name": "大厅",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [],
       "file": "multiplayer-network/mn-lb-friend-system.md",
       "exists": true,
@@ -1064,7 +1064,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lb-host-migration.md",
       "exists": true,
-      "char_count": 1291
+      "char_count": 2467
     },
     {
       "id": "mn-lb-clan-guild",
@@ -1376,7 +1376,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ls-late-join.md",
       "exists": true,
-      "char_count": 1283
+      "char_count": 2441
     },
     {
       "id": "mn-ls-sync-verification",
@@ -1610,7 +1610,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-mm-matchmaking-ticket.md",
       "exists": true,
-      "char_count": 1294
+      "char_count": 2478
     },
     {
       "id": "mn-mm-match-quality-metrics",
@@ -1636,7 +1636,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-mm-queue-system.md",
       "exists": true,
-      "char_count": 1586
+      "char_count": 2631
     },
     {
       "id": "mn-mm-eomm",
@@ -1688,7 +1688,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-mm-placement-matches.md",
       "exists": true,
-      "char_count": 1289
+      "char_count": 2159
     },
     {
       "id": "mn-mm-smurf-detection",
@@ -2182,7 +2182,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-sa-seamless-travel.md",
       "exists": true,
-      "char_count": 1295
+      "char_count": 3108
     },
     {
       "id": "mn-sa-service-discovery",
@@ -2338,7 +2338,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-sa-rate-limiting.md",
       "exists": true,
-      "char_count": 1284
+      "char_count": 2490
     },
     {
       "id": "mn-ss-rpc-replication",
@@ -2429,7 +2429,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ss-delta-compression.md",
       "exists": true,
-      "char_count": 1293
+      "char_count": 2490
     },
     {
       "id": "mn-ss-latency-hiding",
@@ -2533,7 +2533,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ss-physics-sync.md",
       "exists": true,
-      "char_count": 1285
+      "char_count": 2528
     },
     {
       "id": "mn-ss-state-replication",
@@ -2603,8 +2603,59 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 354359,
-    "avg_chars": 1771,
-    "domain": "multiplayer-network"
+    "total_docs": 200,
+    "total_chars": 369047,
+    "avg_chars": 1845,
+    "domain": "multiplayer-network",
+    "by_subdomain": {
+      "anti-cheat": {
+        "count": 20,
+        "chars": 37949
+      },
+      "cdn-hotpatch": {
+        "count": 20,
+        "chars": 33720
+      },
+      "database": {
+        "count": 1,
+        "chars": 1686
+      },
+      "database-design": {
+        "count": 19,
+        "chars": 34841
+      },
+      "leaderboard": {
+        "count": 20,
+        "chars": 40559
+      },
+      "lobby": {
+        "count": 1,
+        "chars": 1626
+      },
+      "lobby-system": {
+        "count": 19,
+        "chars": 40486
+      },
+      "lockstep-sync": {
+        "count": 20,
+        "chars": 36958
+      },
+      "matchmaking": {
+        "count": 20,
+        "chars": 34674
+      },
+      "network-architecture": {
+        "count": 20,
+        "chars": 31300
+      },
+      "server-architecture": {
+        "count": 20,
+        "chars": 37056
+      },
+      "state-synchronization": {
+        "count": 20,
+        "chars": 38192
+      }
+    }
   }
 }

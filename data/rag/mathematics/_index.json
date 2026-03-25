@@ -37,7 +37,7 @@
       "subdomain_id": "algebra",
       "subdomain_name": "代数",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -97,7 +97,7 @@
       "subdomain_id": "algebra",
       "subdomain_name": "代数",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -322,7 +322,7 @@
       "subdomain_id": "algebra",
       "subdomain_name": "代数",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -502,7 +502,7 @@
       "subdomain_id": "analytic-geometry",
       "subdomain_name": "解析几何",
       "difficulty": 7,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -592,7 +592,7 @@
       "subdomain_id": "analytic-geometry",
       "subdomain_name": "解析几何",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -787,7 +787,7 @@
       "subdomain_id": "arithmetic",
       "subdomain_name": "算术基础",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -997,7 +997,7 @@
       "subdomain_id": "calculus",
       "subdomain_name": "微积分",
       "difficulty": 7,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -1072,7 +1072,7 @@
       "subdomain_id": "calculus",
       "subdomain_name": "微积分",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -1087,7 +1087,7 @@
       "subdomain_id": "calculus",
       "subdomain_name": "微积分",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -1162,7 +1162,7 @@
       "subdomain_id": "calculus",
       "subdomain_name": "微积分",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -1702,7 +1702,7 @@
       "subdomain_id": "discrete-math",
       "subdomain_name": "离散数学",
       "difficulty": 8,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -1747,7 +1747,7 @@
       "subdomain_id": "discrete-math",
       "subdomain_name": "离散数学",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -1852,7 +1852,7 @@
       "subdomain_id": "geometry",
       "subdomain_name": "几何",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -2032,7 +2032,7 @@
       "subdomain_id": "geometry",
       "subdomain_name": "几何",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -2212,7 +2212,7 @@
       "subdomain_id": "linear-algebra",
       "subdomain_name": "线性代数",
       "difficulty": 7,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -2377,7 +2377,7 @@
       "subdomain_id": "linear-algebra",
       "subdomain_name": "线性代数",
       "difficulty": 7,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -2497,7 +2497,7 @@
       "subdomain_id": "linear-algebra",
       "subdomain_name": "线性代数",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -2617,7 +2617,7 @@
       "subdomain_id": "number-theory",
       "subdomain_name": "数论",
       "difficulty": 7,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -2662,7 +2662,7 @@
       "subdomain_id": "number-theory",
       "subdomain_name": "数论",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -2977,7 +2977,7 @@
       "subdomain_id": "optimization",
       "subdomain_name": "最优化",
       "difficulty": 7,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -3007,7 +3007,7 @@
       "subdomain_id": "optimization",
       "subdomain_name": "最优化",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -3112,7 +3112,7 @@
       "subdomain_id": "probability",
       "subdomain_name": "概率论",
       "difficulty": 7,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -3148,7 +3148,7 @@
       ],
       "file": "mathematics/probability/chebyshev-inequality.md",
       "exists": true,
-      "char_count": 1286
+      "char_count": 2702
     },
     {
       "id": "multivariate-normal",
@@ -3202,7 +3202,7 @@
       "subdomain_id": "probability",
       "subdomain_name": "概率论",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -3232,7 +3232,7 @@
       "subdomain_id": "probability",
       "subdomain_name": "概率论",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -3382,7 +3382,7 @@
       "subdomain_id": "probability",
       "subdomain_name": "概率论",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -3517,7 +3517,7 @@
       "subdomain_id": "statistics",
       "subdomain_name": "统计学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -3607,7 +3607,7 @@
       "subdomain_id": "statistics",
       "subdomain_name": "数理统计",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -3652,7 +3652,7 @@
       "subdomain_id": "statistics",
       "subdomain_name": "数理统计",
       "difficulty": 6,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -3877,7 +3877,7 @@
       "subdomain_id": "trigonometry",
       "subdomain_name": "三角学",
       "difficulty": 5,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "里程碑"
       ],
@@ -4038,8 +4038,71 @@
   ],
   "stats": {
     "total": 269,
-    "total_chars": 711109,
-    "avg_chars": 2643,
-    "domain": "mathematics"
+    "total_docs": 269,
+    "total_chars": 712525,
+    "avg_chars": 2648,
+    "domain": "mathematics",
+    "by_subdomain": {
+      "algebra": {
+        "count": 28,
+        "chars": 70279
+      },
+      "analytic-geometry": {
+        "count": 18,
+        "chars": 45995
+      },
+      "arithmetic": {
+        "count": 18,
+        "chars": 40788
+      },
+      "calculus": {
+        "count": 35,
+        "chars": 96570
+      },
+      "discrete-math": {
+        "count": 20,
+        "chars": 50632
+      },
+      "geometry": {
+        "count": 22,
+        "chars": 52858
+      },
+      "linear-algebra": {
+        "count": 28,
+        "chars": 80850
+      },
+      "logic-reasoning": {
+        "count": 2,
+        "chars": 6228
+      },
+      "number-theory": {
+        "count": 18,
+        "chars": 49173
+      },
+      "optimization": {
+        "count": 18,
+        "chars": 49221
+      },
+      "probability": {
+        "count": 22,
+        "chars": 59726
+      },
+      "research-methods": {
+        "count": 3,
+        "chars": 8427
+      },
+      "statistics": {
+        "count": 16,
+        "chars": 44372
+      },
+      "trigonometry": {
+        "count": 20,
+        "chars": 55944
+      },
+      "visual-design": {
+        "count": 1,
+        "chars": 1462
+      }
+    }
   }
 }

@@ -37,7 +37,7 @@
       "subdomain_id": "adaptive-music",
       "subdomain_name": "自适应音乐",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -67,7 +67,7 @@
       "subdomain_id": "adaptive-music",
       "subdomain_name": "自适应音乐",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -112,7 +112,7 @@
       "subdomain_id": "adaptive-music",
       "subdomain_name": "自适应音乐",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -202,7 +202,7 @@
       "subdomain_id": "adaptive-music",
       "subdomain_name": "自适应音乐",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -277,7 +277,7 @@
       "subdomain_id": "adaptive-music",
       "subdomain_name": "自适应音乐",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -307,7 +307,7 @@
       "subdomain_id": "composition",
       "subdomain_name": "作曲编曲",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -427,7 +427,7 @@
       "subdomain_id": "composition",
       "subdomain_name": "作曲编曲",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -457,7 +457,7 @@
       "subdomain_id": "composition",
       "subdomain_name": "作曲编曲",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -547,7 +547,7 @@
       "subdomain_id": "composition",
       "subdomain_name": "作曲编曲",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -562,7 +562,7 @@
       "subdomain_id": "composition",
       "subdomain_name": "作曲编曲",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -637,7 +637,7 @@
       "subdomain_id": "daw",
       "subdomain_name": "编曲软件(DAW)",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -667,7 +667,7 @@
       "subdomain_id": "daw",
       "subdomain_name": "编曲软件(DAW)",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -817,7 +817,7 @@
       "subdomain_id": "daw",
       "subdomain_name": "编曲软件(DAW)",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -832,7 +832,7 @@
       "subdomain_id": "daw",
       "subdomain_name": "编曲软件(DAW)",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "高级"
       ],
@@ -862,7 +862,7 @@
       "subdomain_id": "daw",
       "subdomain_name": "编曲软件(DAW)",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -967,7 +967,7 @@
       "subdomain_id": "fmod-music",
       "subdomain_name": "FMOD音乐",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -997,7 +997,7 @@
       "subdomain_id": "fmod-music",
       "subdomain_name": "FMOD音乐",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1102,7 +1102,7 @@
       "subdomain_id": "fmod-music",
       "subdomain_name": "FMOD音乐",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1147,7 +1147,7 @@
       "subdomain_id": "fmod-music",
       "subdomain_name": "FMOD音乐",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1162,7 +1162,7 @@
       "subdomain_id": "fmod-music",
       "subdomain_name": "FMOD音乐",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1207,7 +1207,7 @@
       "subdomain_id": "interactive-score",
       "subdomain_name": "交互式配乐",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1252,7 +1252,7 @@
       "subdomain_id": "interactive-score",
       "subdomain_name": "交互式配乐",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1342,7 +1342,7 @@
       "subdomain_id": "interactive-score",
       "subdomain_name": "交互式配乐",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1417,7 +1417,7 @@
       "subdomain_id": "interactive-score",
       "subdomain_name": "交互式配乐",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1522,7 +1522,7 @@
       "subdomain_id": "leitmotif",
       "subdomain_name": "主题动机",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1552,7 +1552,7 @@
       "subdomain_id": "leitmotif",
       "subdomain_name": "主题动机",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1567,7 +1567,7 @@
       "subdomain_id": "leitmotif",
       "subdomain_name": "主题动机",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1717,7 +1717,7 @@
       "subdomain_id": "leitmotif",
       "subdomain_name": "主题动机",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1747,7 +1747,7 @@
       "subdomain_id": "leitmotif",
       "subdomain_name": "主题动机",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -1987,7 +1987,7 @@
       "subdomain_id": "music-theory",
       "subdomain_name": "音乐理论",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -2002,7 +2002,7 @@
       "subdomain_id": "music-theory",
       "subdomain_name": "音乐理论",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -2047,7 +2047,7 @@
       "subdomain_id": "music-theory",
       "subdomain_name": "音乐理论",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2092,7 +2092,7 @@
       "subdomain_id": "music-theory",
       "subdomain_name": "音乐理论",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2107,7 +2107,7 @@
       "subdomain_id": "style-study",
       "subdomain_name": "风格研究",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -2167,7 +2167,7 @@
       "subdomain_id": "style-study",
       "subdomain_name": "风格研究",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -2302,7 +2302,7 @@
       "subdomain_id": "style-study",
       "subdomain_name": "风格研究",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -2347,7 +2347,7 @@
       "subdomain_id": "style-study",
       "subdomain_name": "风格研究",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -2392,7 +2392,7 @@
       "subdomain_id": "style-study",
       "subdomain_name": "风格研究",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2437,7 +2437,7 @@
       "subdomain_id": "wwise-music",
       "subdomain_name": "Wwise音乐系统",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -2452,7 +2452,7 @@
       "subdomain_id": "wwise-music",
       "subdomain_name": "Wwise音乐系统",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -2602,7 +2602,7 @@
       "subdomain_id": "wwise-music",
       "subdomain_name": "Wwise音乐系统",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2617,7 +2617,7 @@
       "subdomain_id": "wwise-music",
       "subdomain_name": "Wwise音乐系统",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -2662,7 +2662,7 @@
       "subdomain_id": "wwise-music",
       "subdomain_name": "Wwise音乐系统",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "进阶"
       ],
@@ -2703,8 +2703,47 @@
   ],
   "stats": {
     "total": 180,
+    "total_docs": 180,
     "total_chars": 309426,
     "avg_chars": 1719,
-    "domain": "game-audio-music"
+    "domain": "game-audio-music",
+    "by_subdomain": {
+      "adaptive-music": {
+        "count": 20,
+        "chars": 34064
+      },
+      "composition": {
+        "count": 20,
+        "chars": 33532
+      },
+      "daw": {
+        "count": 20,
+        "chars": 35910
+      },
+      "fmod-music": {
+        "count": 20,
+        "chars": 36823
+      },
+      "interactive-score": {
+        "count": 20,
+        "chars": 32076
+      },
+      "leitmotif": {
+        "count": 20,
+        "chars": 34299
+      },
+      "music-theory": {
+        "count": 20,
+        "chars": 32910
+      },
+      "style-study": {
+        "count": 20,
+        "chars": 33354
+      },
+      "wwise-music": {
+        "count": 20,
+        "chars": 36458
+      }
+    }
   }
 }

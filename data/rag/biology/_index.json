@@ -22,7 +22,7 @@
       "subdomain_id": "biological-psychology",
       "subdomain_name": "生物心理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "系统"
       ],
@@ -97,7 +97,7 @@
       "subdomain_id": "botany-zoology",
       "subdomain_name": "植物与动物学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "动物"
       ],
@@ -127,7 +127,7 @@
       "subdomain_id": "botany-zoology",
       "subdomain_name": "植物与动物学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "行为"
       ],
@@ -172,7 +172,7 @@
       "subdomain_id": "botany-zoology",
       "subdomain_name": "植物与动物学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -232,7 +232,7 @@
       "subdomain_id": "botany-zoology",
       "subdomain_name": "植物与动物学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "植物"
       ],
@@ -502,7 +502,7 @@
       "subdomain_id": "cell-biology",
       "subdomain_name": "细胞生物学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "细胞器"
       ],
@@ -517,7 +517,7 @@
       "subdomain_id": "cell-biology",
       "subdomain_name": "细胞生物学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "通讯"
       ],
@@ -562,7 +562,7 @@
       "subdomain_id": "cell-biology",
       "subdomain_name": "细胞生物学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "增殖"
       ],
@@ -607,7 +607,7 @@
       "subdomain_id": "cell-biology",
       "subdomain_name": "细胞生物学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -622,7 +622,7 @@
       "subdomain_id": "cell-biology",
       "subdomain_name": "细胞生物学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "结构"
       ],
@@ -832,7 +832,7 @@
       "subdomain_id": "ecology",
       "subdomain_name": "生态学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -877,7 +877,7 @@
       "subdomain_id": "ecology",
       "subdomain_name": "生态学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "生态系统"
       ],
@@ -892,7 +892,7 @@
       "subdomain_id": "ecology",
       "subdomain_name": "生态学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "保护"
       ],
@@ -937,7 +937,7 @@
       "subdomain_id": "ecology",
       "subdomain_name": "生态学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "种群"
       ],
@@ -967,7 +967,7 @@
       "subdomain_id": "ecology",
       "subdomain_name": "生态学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "群落"
       ],
@@ -1132,7 +1132,7 @@
       "subdomain_id": "evolution",
       "subdomain_name": "进化生物学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "宏观"
       ],
@@ -1162,7 +1162,7 @@
       "subdomain_id": "evolution",
       "subdomain_name": "进化生物学",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "方法"
       ],
@@ -1177,7 +1177,7 @@
       "subdomain_id": "evolution",
       "subdomain_name": "进化生物学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1237,13 +1237,13 @@
       "subdomain_id": "evolution",
       "subdomain_name": "进化生物学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
       "file": "biology/evolution/evolution-overview.md",
       "exists": true,
-      "char_count": 1521
+      "char_count": 2521
     },
     {
       "id": "evidence-evolution",
@@ -1387,7 +1387,7 @@
       "subdomain_id": "genetics",
       "subdomain_name": "遗传学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "经典"
       ],
@@ -1477,7 +1477,7 @@
       "subdomain_id": "genetics",
       "subdomain_name": "遗传学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "变异"
       ],
@@ -1507,7 +1507,7 @@
       "subdomain_id": "genetics",
       "subdomain_name": "遗传学",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "群体"
       ],
@@ -1582,7 +1582,7 @@
       "subdomain_id": "genetics",
       "subdomain_name": "遗传学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1627,7 +1627,7 @@
       "subdomain_id": "human-physiology",
       "subdomain_name": "人体生理学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1657,7 +1657,7 @@
       "subdomain_id": "human-physiology",
       "subdomain_name": "人体生理学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "系统"
       ],
@@ -1837,7 +1837,7 @@
       "subdomain_id": "human-physiology",
       "subdomain_name": "人体生理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "系统"
       ],
@@ -1852,7 +1852,7 @@
       "subdomain_id": "human-physiology",
       "subdomain_name": "人体生理学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2017,7 +2017,7 @@
       "subdomain_id": "microbiology",
       "subdomain_name": "微生物学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2047,7 +2047,7 @@
       "subdomain_id": "microbiology",
       "subdomain_name": "微生物学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "医学"
       ],
@@ -2122,7 +2122,7 @@
       "subdomain_id": "microbiology",
       "subdomain_name": "微生物学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "医学"
       ],
@@ -2152,7 +2152,7 @@
       "subdomain_id": "microbiology",
       "subdomain_name": "微生物学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "病毒"
       ],
@@ -2287,7 +2287,7 @@
       "subdomain_id": "molecular-biology",
       "subdomain_name": "分子生物学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核酸"
       ],
@@ -2392,7 +2392,7 @@
       "subdomain_id": "molecular-biology",
       "subdomain_name": "分子生物学",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2422,7 +2422,7 @@
       "subdomain_id": "molecular-biology",
       "subdomain_name": "分子生物学",
       "difficulty": 4,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "前沿"
       ],
@@ -2437,7 +2437,7 @@
       "subdomain_id": "molecular-biology",
       "subdomain_name": "分子生物学",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "调控"
       ],
@@ -2542,7 +2542,7 @@
       "subdomain_id": "molecular-biology",
       "subdomain_name": "分子生物学",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基因表达"
       ],
@@ -2583,8 +2583,51 @@
   ],
   "stats": {
     "total": 172,
-    "total_chars": 412251,
-    "avg_chars": 2396,
-    "domain": "biology"
+    "total_docs": 172,
+    "total_chars": 413251,
+    "avg_chars": 2402,
+    "domain": "biology",
+    "by_subdomain": {
+      "behavioral-psychology": {
+        "count": 1,
+        "chars": 2643
+      },
+      "biological-psychology": {
+        "count": 2,
+        "chars": 2889
+      },
+      "botany-zoology": {
+        "count": 20,
+        "chars": 47554
+      },
+      "cell-biology": {
+        "count": 22,
+        "chars": 53468
+      },
+      "ecology": {
+        "count": 22,
+        "chars": 53842
+      },
+      "evolution": {
+        "count": 19,
+        "chars": 46198
+      },
+      "genetics": {
+        "count": 22,
+        "chars": 53051
+      },
+      "human-physiology": {
+        "count": 22,
+        "chars": 50489
+      },
+      "microbiology": {
+        "count": 20,
+        "chars": 47617
+      },
+      "molecular-biology": {
+        "count": 22,
+        "chars": 55500
+      }
+    }
   }
 }

@@ -67,7 +67,7 @@
       "subdomain_id": "corporate-finance",
       "subdomain_name": "公司金融",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -247,7 +247,7 @@
       "subdomain_id": "corporate-finance",
       "subdomain_name": "公司金融",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -262,7 +262,7 @@
       "subdomain_id": "corporate-finance",
       "subdomain_name": "公司金融",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "理论"
       ],
@@ -277,7 +277,7 @@
       "subdomain_id": "corporate-finance",
       "subdomain_name": "公司金融",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -397,7 +397,7 @@
       "subdomain_id": "fintech",
       "subdomain_name": "金融科技",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "区块链"
       ],
@@ -502,7 +502,7 @@
       "subdomain_id": "fintech",
       "subdomain_name": "金融科技",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "投资"
       ],
@@ -592,7 +592,7 @@
       "subdomain_id": "fintech",
       "subdomain_name": "金融科技",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -652,7 +652,7 @@
       "subdomain_id": "fixed-income",
       "subdomain_name": "固定收益",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -772,7 +772,7 @@
       "subdomain_id": "fixed-income",
       "subdomain_name": "固定收益",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -832,7 +832,7 @@
       "subdomain_id": "fixed-income",
       "subdomain_name": "固定收益",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -922,7 +922,7 @@
       "subdomain_id": "investment-basics",
       "subdomain_name": "投资基础",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "策略"
       ],
@@ -1042,7 +1042,7 @@
       "subdomain_id": "investment-basics",
       "subdomain_name": "投资基础",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1132,7 +1132,7 @@
       "subdomain_id": "investment-basics",
       "subdomain_name": "投资基础",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1192,7 +1192,7 @@
       "subdomain_id": "investment-basics",
       "subdomain_name": "投资基础",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1207,7 +1207,7 @@
       "subdomain_id": "personal-finance",
       "subdomain_name": "个人理财",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1297,7 +1297,7 @@
       "subdomain_id": "personal-finance",
       "subdomain_name": "个人理财",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -1402,7 +1402,7 @@
       "subdomain_id": "personal-finance",
       "subdomain_name": "个人理财",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "税务"
       ],
@@ -1447,7 +1447,7 @@
       "subdomain_id": "personal-finance",
       "subdomain_name": "个人理财",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "长期"
       ],
@@ -1492,7 +1492,7 @@
       "subdomain_id": "personal-finance",
       "subdomain_name": "个人理财",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "工具"
       ],
@@ -1552,7 +1552,7 @@
       "subdomain_id": "quantitative-finance",
       "subdomain_name": "量化金融",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "工具"
       ],
@@ -1567,7 +1567,7 @@
       "subdomain_id": "quantitative-finance",
       "subdomain_name": "量化金融",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "模型"
       ],
@@ -1657,7 +1657,7 @@
       "subdomain_id": "quantitative-finance",
       "subdomain_name": "量化金融",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "技术"
       ],
@@ -1732,7 +1732,7 @@
       "subdomain_id": "quantitative-finance",
       "subdomain_name": "量化金融",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1822,7 +1822,7 @@
       "subdomain_id": "risk-management",
       "subdomain_name": "风险管理",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "工具"
       ],
@@ -1957,7 +1957,7 @@
       "subdomain_id": "risk-management",
       "subdomain_name": "风险管理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "衍生品"
       ],
@@ -2047,7 +2047,7 @@
       "subdomain_id": "risk-management",
       "subdomain_name": "风险管理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "工具"
       ],
@@ -2077,7 +2077,7 @@
       "subdomain_id": "risk-management",
       "subdomain_name": "风险管理",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2137,7 +2137,7 @@
       "subdomain_id": "stock-market",
       "subdomain_name": "股票市场",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "策略"
       ],
@@ -2272,7 +2272,7 @@
       "subdomain_id": "stock-market",
       "subdomain_name": "股票市场",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "模型"
       ],
@@ -2332,7 +2332,7 @@
       "subdomain_id": "stock-market",
       "subdomain_name": "股票市场",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "核心"
       ],
@@ -2347,7 +2347,7 @@
       "subdomain_id": "stock-market",
       "subdomain_name": "股票市场",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2392,7 +2392,7 @@
       "subdomain_id": "stock-market",
       "subdomain_name": "股票市场",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "分析"
       ],
@@ -2403,8 +2403,43 @@
   ],
   "stats": {
     "total": 160,
+    "total_docs": 160,
     "total_chars": 367514,
     "avg_chars": 2296,
-    "domain": "finance"
+    "domain": "finance",
+    "by_subdomain": {
+      "corporate-finance": {
+        "count": 20,
+        "chars": 50711
+      },
+      "fintech": {
+        "count": 20,
+        "chars": 45407
+      },
+      "fixed-income": {
+        "count": 20,
+        "chars": 46143
+      },
+      "investment-basics": {
+        "count": 20,
+        "chars": 47399
+      },
+      "personal-finance": {
+        "count": 20,
+        "chars": 44747
+      },
+      "quantitative-finance": {
+        "count": 20,
+        "chars": 42346
+      },
+      "risk-management": {
+        "count": 20,
+        "chars": 45266
+      },
+      "stock-market": {
+        "count": 20,
+        "chars": 45495
+      }
+    }
   }
 }

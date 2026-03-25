@@ -432,8 +432,19 @@
   ],
   "stats": {
     "total": 33,
+    "total_docs": 33,
     "total_chars": 74174,
     "avg_chars": 2247,
-    "domain": "web-frontend"
+    "domain": "web-frontend",
+    "by_subdomain": {
+      "interaction-design": {
+        "count": 1,
+        "chars": 1577
+      },
+      "web-frontend": {
+        "count": 32,
+        "chars": 72597
+      }
+    }
   }
 }

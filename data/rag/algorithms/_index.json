@@ -458,8 +458,19 @@
   ],
   "stats": {
     "total": 35,
+    "total_docs": 35,
     "total_chars": 80776,
     "avg_chars": 2307,
-    "domain": "algorithms"
+    "domain": "algorithms",
+    "by_subdomain": {
+      "algorithms": {
+        "count": 34,
+        "chars": 78034
+      },
+      "discrete-math": {
+        "count": 1,
+        "chars": 2742
+      }
+    }
   }
 }

@@ -63,7 +63,7 @@
       "tags": [],
       "file": "data-structures/bst.md",
       "exists": true,
-      "char_count": 1500
+      "char_count": 2101
     },
     {
       "id": "monotone-queue",
@@ -341,8 +341,19 @@
   ],
   "stats": {
     "total": 26,
-    "total_chars": 59569,
-    "avg_chars": 2291,
-    "domain": "data-structures"
+    "total_docs": 26,
+    "total_chars": 60170,
+    "avg_chars": 2314,
+    "domain": "data-structures",
+    "by_subdomain": {
+      "binary-tree": {
+        "count": 1,
+        "chars": 2653
+      },
+      "data-structures": {
+        "count": 25,
+        "chars": 57517
+      }
+    }
   }
 }

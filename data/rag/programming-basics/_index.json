@@ -393,8 +393,15 @@
   ],
   "stats": {
     "total": 30,
+    "total_docs": 30,
     "total_chars": 76140,
     "avg_chars": 2538,
-    "domain": "programming-basics"
+    "domain": "programming-basics",
+    "by_subdomain": {
+      "programming-basics": {
+        "count": 30,
+        "chars": 76140
+      }
+    }
   }
 }

@@ -172,7 +172,7 @@
       "subdomain_id": "animation-system",
       "subdomain_name": "动画系统",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -187,7 +187,7 @@
       "subdomain_id": "animation-system",
       "subdomain_name": "动画系统",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "UE5"
       ],
@@ -262,7 +262,7 @@
       "subdomain_id": "animation-system",
       "subdomain_name": "动画系统",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "程序化"
       ],
@@ -352,7 +352,7 @@
       "subdomain_id": "audio-system",
       "subdomain_name": "音频系统",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "UE5"
       ],
@@ -487,7 +487,7 @@
       "subdomain_id": "audio-system",
       "subdomain_name": "音频系统",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "中间件"
       ],
@@ -547,7 +547,7 @@
       "subdomain_id": "audio-system",
       "subdomain_name": "音频系统",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -787,7 +787,7 @@
       "subdomain_id": "editor-extension",
       "subdomain_name": "编辑器扩展",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -847,7 +847,7 @@
       "subdomain_id": "editor-extension",
       "subdomain_name": "编辑器扩展",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "自动化"
       ],
@@ -892,7 +892,7 @@
       "subdomain_id": "editor-extension",
       "subdomain_name": "编辑器扩展",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "资产"
       ],
@@ -1042,7 +1042,7 @@
       "subdomain_id": "input-system",
       "subdomain_name": "输入系统",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "性能"
       ],
@@ -1072,7 +1072,7 @@
       "subdomain_id": "input-system",
       "subdomain_name": "输入系统",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "映射"
       ],
@@ -1087,7 +1087,7 @@
       "subdomain_id": "input-system",
       "subdomain_name": "输入系统",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1237,7 +1237,7 @@
       "subdomain_id": "performance-profiling",
       "subdomain_name": "性能剖析",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "GPU"
       ],
@@ -1402,7 +1402,7 @@
       "subdomain_id": "performance-profiling",
       "subdomain_name": "性能剖析",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1492,7 +1492,7 @@
       "subdomain_id": "performance-profiling",
       "subdomain_name": "性能剖析",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "自动化"
       ],
@@ -1612,7 +1612,7 @@
       "subdomain_id": "physics-engine",
       "subdomain_name": "物理引擎",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -1732,7 +1732,7 @@
       "subdomain_id": "physics-engine",
       "subdomain_name": "物理引擎",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "碰撞"
       ],
@@ -1762,7 +1762,7 @@
       "subdomain_id": "physics-engine",
       "subdomain_name": "物理引擎",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "角色"
       ],
@@ -1897,7 +1897,7 @@
       "subdomain_id": "platform-abstraction",
       "subdomain_name": "平台抽象",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "渲染"
       ],
@@ -1927,7 +1927,7 @@
       "subdomain_id": "platform-abstraction",
       "subdomain_name": "平台抽象",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "性能"
       ],
@@ -1957,7 +1957,7 @@
       "subdomain_id": "platform-abstraction",
       "subdomain_name": "平台抽象",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2152,7 +2152,7 @@
       "subdomain_id": "plugin-development",
       "subdomain_name": "插件开发",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "UE5"
       ],
@@ -2257,7 +2257,7 @@
       "subdomain_id": "plugin-development",
       "subdomain_name": "插件开发",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2392,7 +2392,7 @@
       "subdomain_id": "plugin-development",
       "subdomain_name": "插件开发",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "集成"
       ],
@@ -2557,7 +2557,7 @@
       "subdomain_id": "rendering-pipeline",
       "subdomain_name": "渲染管线",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "路径"
       ],
@@ -2617,7 +2617,7 @@
       "subdomain_id": "rendering-pipeline",
       "subdomain_name": "渲染管线",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "架构"
       ],
@@ -2632,7 +2632,7 @@
       "subdomain_id": "rendering-pipeline",
       "subdomain_name": "渲染管线",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -2812,7 +2812,7 @@
       "subdomain_id": "resource-management",
       "subdomain_name": "资源管理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "异步"
       ],
@@ -2902,7 +2902,7 @@
       "subdomain_id": "resource-management",
       "subdomain_name": "资源管理",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "分发"
       ],
@@ -2992,7 +2992,7 @@
       "subdomain_id": "resource-management",
       "subdomain_name": "资源管理",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -3157,7 +3157,7 @@
       "subdomain_id": "scene-management",
       "subdomain_name": "场景管理",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -3262,7 +3262,7 @@
       "subdomain_id": "scene-management",
       "subdomain_name": "场景管理",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "PCG"
       ],
@@ -3277,7 +3277,7 @@
       "subdomain_id": "scene-management",
       "subdomain_name": "场景管理",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "索引"
       ],
@@ -3307,7 +3307,7 @@
       "subdomain_id": "scripting-system",
       "subdomain_name": "脚本系统",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "UE5"
       ],
@@ -3517,7 +3517,7 @@
       "subdomain_id": "scripting-system",
       "subdomain_name": "脚本系统",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "模式"
       ],
@@ -3547,7 +3547,7 @@
       "subdomain_id": "scripting-system",
       "subdomain_name": "脚本系统",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -3742,7 +3742,7 @@
       "subdomain_id": "serialization",
       "subdomain_name": "序列化",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "存档"
       ],
@@ -3787,7 +3787,7 @@
       "subdomain_id": "serialization",
       "subdomain_name": "序列化",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -3802,7 +3802,7 @@
       "subdomain_id": "serialization",
       "subdomain_name": "序列化",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "数据"
       ],
@@ -3907,7 +3907,7 @@
       "subdomain_id": "ue5-architecture",
       "subdomain_name": "UE5架构",
       "difficulty": 2,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "架构"
       ],
@@ -4012,7 +4012,7 @@
       "subdomain_id": "ue5-architecture",
       "subdomain_name": "UE5架构",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "渲染"
       ],
@@ -4192,7 +4192,7 @@
       "subdomain_id": "ue5-architecture",
       "subdomain_name": "UE5架构",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -4252,7 +4252,7 @@
       "subdomain_id": "unity-architecture",
       "subdomain_name": "Unity架构",
       "difficulty": 3,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "ECS"
       ],
@@ -4447,7 +4447,7 @@
       "subdomain_id": "unity-architecture",
       "subdomain_name": "Unity架构",
       "difficulty": 1,
-      "is_milestone": false,
+      "is_milestone": true,
       "tags": [
         "基础"
       ],
@@ -4503,8 +4503,71 @@
   ],
   "stats": {
     "total": 300,
+    "total_docs": 300,
     "total_chars": 689389,
     "avg_chars": 2297,
-    "domain": "game-engine"
+    "domain": "game-engine",
+    "by_subdomain": {
+      "animation-system": {
+        "count": 20,
+        "chars": 48676
+      },
+      "audio-system": {
+        "count": 20,
+        "chars": 51084
+      },
+      "editor-extension": {
+        "count": 20,
+        "chars": 43643
+      },
+      "input-system": {
+        "count": 20,
+        "chars": 47482
+      },
+      "performance-profiling": {
+        "count": 20,
+        "chars": 41595
+      },
+      "physics-engine": {
+        "count": 20,
+        "chars": 51251
+      },
+      "platform-abstraction": {
+        "count": 20,
+        "chars": 47787
+      },
+      "plugin-development": {
+        "count": 20,
+        "chars": 46689
+      },
+      "rendering-pipeline": {
+        "count": 20,
+        "chars": 40715
+      },
+      "resource-management": {
+        "count": 20,
+        "chars": 48141
+      },
+      "scene-management": {
+        "count": 20,
+        "chars": 47526
+      },
+      "scripting-system": {
+        "count": 20,
+        "chars": 48759
+      },
+      "serialization": {
+        "count": 20,
+        "chars": 50915
+      },
+      "ue5-architecture": {
+        "count": 20,
+        "chars": 38872
+      },
+      "unity-architecture": {
+        "count": 20,
+        "chars": 36254
+      }
+    }
   }
 }
