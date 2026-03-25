@@ -238,7 +238,7 @@
       ],
       "file": "physics/classical-mechanics/kinematics-2d.md",
       "exists": true,
-      "char_count": 1340
+      "char_count": 2659
     },
     {
       "id": "mechanical-waves-medium",
@@ -673,7 +673,7 @@
       ],
       "file": "physics/classical-mechanics/rotational-kinematics.md",
       "exists": true,
-      "char_count": 1592
+      "char_count": 2394
     },
     {
       "id": "damped-driven-oscillation",
@@ -958,7 +958,7 @@
       ],
       "file": "physics/electromagnetism/electromagnetic-radiation.md",
       "exists": true,
-      "char_count": 1517
+      "char_count": 2989
     },
     {
       "id": "power-transmission",
@@ -1168,7 +1168,7 @@
       ],
       "file": "physics/fluid-mechanics/vorticity.md",
       "exists": true,
-      "char_count": 1345
+      "char_count": 2741
     },
     {
       "id": "ideal-fluid-flow",
@@ -1408,7 +1408,7 @@
       ],
       "file": "physics/modern-physics/general-relativity-intro.md",
       "exists": true,
-      "char_count": 1612
+      "char_count": 2767
     },
     {
       "id": "compton-scattering",
@@ -2913,8 +2913,8 @@
   ],
   "stats": {
     "total": 194,
-    "total_chars": 450530,
-    "avg_chars": 2322,
+    "total_chars": 456674,
+    "avg_chars": 2353,
     "domain": "physics"
   }
 }

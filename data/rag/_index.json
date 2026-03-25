@@ -34674,7 +34674,7 @@
       ],
       "file": "game-design/systems-design/emergent-gameplay.md",
       "exists": true,
-      "char_count": 1254
+      "char_count": 2343
     },
     {
       "id": "game-state",
@@ -51379,7 +51379,7 @@
       ],
       "file": "level-design/blockout/bsp-blocking.md",
       "exists": true,
-      "char_count": 1281
+      "char_count": 2322
     },
     {
       "id": "blockout-annotation",
@@ -51424,7 +51424,7 @@
       ],
       "file": "level-design/blockout/blockout-intro.md",
       "exists": true,
-      "char_count": 1613
+      "char_count": 2514
     },
     {
       "id": "blockout-review",
@@ -52174,7 +52174,7 @@
       ],
       "file": "level-design/guidance-design/lost-player-recovery.md",
       "exists": true,
-      "char_count": 1275
+      "char_count": 2493
     },
     {
       "id": "gating-mechanic",
@@ -52354,7 +52354,7 @@
       ],
       "file": "level-design/ld-documentation/level-overview-doc.md",
       "exists": true,
-      "char_count": 1495
+      "char_count": 2426
     },
     {
       "id": "level-flowchart",
@@ -52714,7 +52714,7 @@
       ],
       "file": "level-design/level-editor/version-control-ld.md",
       "exists": true,
-      "char_count": 1290
+      "char_count": 2778
     },
     {
       "id": "level-editor-intro",
@@ -52984,7 +52984,7 @@
       ],
       "file": "level-design/lighting-narrative/post-process-ld.md",
       "exists": true,
-      "char_count": 1285
+      "char_count": 2813
     },
     {
       "id": "practical-light",
@@ -53179,7 +53179,7 @@
       ],
       "file": "level-design/metrics-design/metrics-intro.md",
       "exists": true,
-      "char_count": 1628
+      "char_count": 2525
     },
     {
       "id": "interaction-range",
@@ -53389,7 +53389,7 @@
       ],
       "file": "level-design/metrics-design/character-metrics.md",
       "exists": true,
-      "char_count": 1544
+      "char_count": 2591
     },
     {
       "id": "corridor-width",
@@ -53674,7 +53674,7 @@
       ],
       "file": "level-design/pacing-curve/mechanic-introduction.md",
       "exists": true,
-      "char_count": 1299
+      "char_count": 2291
     },
     {
       "id": "checkpoint-pacing",
@@ -54109,7 +54109,7 @@
       ],
       "file": "level-design/terrain-design/level-art-handoff.md",
       "exists": true,
-      "char_count": 1283
+      "char_count": 2515
     },
     {
       "id": "terrain-lod",
@@ -55792,7 +55792,7 @@
       ],
       "file": "mathematics/arithmetic/order-of-operations.md",
       "exists": true,
-      "char_count": 1557
+      "char_count": 1915
     },
     {
       "id": "epsilon-delta",
@@ -56002,7 +56002,7 @@
       ],
       "file": "mathematics/calculus/ftc.md",
       "exists": true,
-      "char_count": 1526
+      "char_count": 2745
     },
     {
       "id": "laplace-transform-intro",
@@ -57622,7 +57622,7 @@
       ],
       "file": "mathematics/number-theory/prime-distribution.md",
       "exists": true,
-      "char_count": 1248
+      "char_count": 3045
     },
     {
       "id": "bezout-identity",
@@ -58102,7 +58102,7 @@
       ],
       "file": "mathematics/probability/normal-distribution.md",
       "exists": true,
-      "char_count": 1535
+      "char_count": 2971
     },
     {
       "id": "poisson-process",
@@ -58687,7 +58687,7 @@
       ],
       "file": "mathematics/trigonometry/double-half-angle.md",
       "exists": true,
-      "char_count": 1489
+      "char_count": 3597
     },
     {
       "id": "fourier-intro",
@@ -64959,7 +64959,7 @@
       ],
       "file": "philosophy/epistemology/knowledge-definition.md",
       "exists": true,
-      "char_count": 1609
+      "char_count": 2211
     },
     {
       "id": "social-epistemology",
@@ -65154,7 +65154,7 @@
       ],
       "file": "philosophy/ethics/buddhist-ethics.md",
       "exists": true,
-      "char_count": 1243
+      "char_count": 2568
     },
     {
       "id": "confucian-ethics",
@@ -65184,7 +65184,7 @@
       ],
       "file": "philosophy/ethics/metaethics.md",
       "exists": true,
-      "char_count": 1252
+      "char_count": 2743
     },
     {
       "id": "care-ethics",
@@ -65349,7 +65349,7 @@
       ],
       "file": "philosophy/ethics/environmental-ethics.md",
       "exists": true,
-      "char_count": 1494
+      "char_count": 2760
     },
     {
       "id": "bioethics",
@@ -65889,7 +65889,7 @@
       ],
       "file": "philosophy/metaphysics/substance-metaphysics.md",
       "exists": true,
-      "char_count": 1252
+      "char_count": 2808
     },
     {
       "id": "realism-antirealism",
@@ -66204,7 +66204,7 @@
       ],
       "file": "philosophy/modern-philosophy/phenomenology.md",
       "exists": true,
-      "char_count": 1323
+      "char_count": 2963
     },
     {
       "id": "philosophy-of-science",
@@ -66909,7 +66909,7 @@
       ],
       "file": "physics/classical-mechanics/kinematics-2d.md",
       "exists": true,
-      "char_count": 1340
+      "char_count": 2659
     },
     {
       "id": "mechanical-waves-medium",
@@ -67344,7 +67344,7 @@
       ],
       "file": "physics/classical-mechanics/rotational-kinematics.md",
       "exists": true,
-      "char_count": 1592
+      "char_count": 2394
     },
     {
       "id": "damped-driven-oscillation",
@@ -67629,7 +67629,7 @@
       ],
       "file": "physics/electromagnetism/electromagnetic-radiation.md",
       "exists": true,
-      "char_count": 1517
+      "char_count": 2989
     },
     {
       "id": "power-transmission",
@@ -67839,7 +67839,7 @@
       ],
       "file": "physics/fluid-mechanics/vorticity.md",
       "exists": true,
-      "char_count": 1345
+      "char_count": 2741
     },
     {
       "id": "ideal-fluid-flow",
@@ -68079,7 +68079,7 @@
       ],
       "file": "physics/modern-physics/general-relativity-intro.md",
       "exists": true,
-      "char_count": 1612
+      "char_count": 2767
     },
     {
       "id": "compton-scattering",

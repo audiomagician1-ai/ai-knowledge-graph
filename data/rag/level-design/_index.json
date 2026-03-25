@@ -13,7 +13,7 @@
       ],
       "file": "level-design/blockout/bsp-blocking.md",
       "exists": true,
-      "char_count": 1281
+      "char_count": 2322
     },
     {
       "id": "blockout-annotation",
@@ -58,7 +58,7 @@
       ],
       "file": "level-design/blockout/blockout-intro.md",
       "exists": true,
-      "char_count": 1613
+      "char_count": 2514
     },
     {
       "id": "blockout-review",
@@ -808,7 +808,7 @@
       ],
       "file": "level-design/guidance-design/lost-player-recovery.md",
       "exists": true,
-      "char_count": 1275
+      "char_count": 2493
     },
     {
       "id": "gating-mechanic",
@@ -988,7 +988,7 @@
       ],
       "file": "level-design/ld-documentation/level-overview-doc.md",
       "exists": true,
-      "char_count": 1495
+      "char_count": 2426
     },
     {
       "id": "level-flowchart",
@@ -1348,7 +1348,7 @@
       ],
       "file": "level-design/level-editor/version-control-ld.md",
       "exists": true,
-      "char_count": 1290
+      "char_count": 2778
     },
     {
       "id": "level-editor-intro",
@@ -1618,7 +1618,7 @@
       ],
       "file": "level-design/lighting-narrative/post-process-ld.md",
       "exists": true,
-      "char_count": 1285
+      "char_count": 2813
     },
     {
       "id": "practical-light",
@@ -1813,7 +1813,7 @@
       ],
       "file": "level-design/metrics-design/metrics-intro.md",
       "exists": true,
-      "char_count": 1628
+      "char_count": 2525
     },
     {
       "id": "interaction-range",
@@ -2023,7 +2023,7 @@
       ],
       "file": "level-design/metrics-design/character-metrics.md",
       "exists": true,
-      "char_count": 1544
+      "char_count": 2591
     },
     {
       "id": "corridor-width",
@@ -2308,7 +2308,7 @@
       ],
       "file": "level-design/pacing-curve/mechanic-introduction.md",
       "exists": true,
-      "char_count": 1299
+      "char_count": 2291
     },
     {
       "id": "checkpoint-pacing",
@@ -2743,7 +2743,7 @@
       ],
       "file": "level-design/terrain-design/level-art-handoff.md",
       "exists": true,
-      "char_count": 1283
+      "char_count": 2515
     },
     {
       "id": "terrain-lod",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 416995,
-    "avg_chars": 2084,
+    "total_chars": 428270,
+    "avg_chars": 2141,
     "domain": "level-design"
   }
 }

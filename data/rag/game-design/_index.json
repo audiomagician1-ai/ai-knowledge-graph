@@ -3598,7 +3598,7 @@
       ],
       "file": "game-design/systems-design/emergent-gameplay.md",
       "exists": true,
-      "char_count": 1254
+      "char_count": 2343
     },
     {
       "id": "game-state",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 533076,
-    "avg_chars": 2132,
+    "total_chars": 534165,
+    "avg_chars": 2136,
     "domain": "game-design"
   }
 }

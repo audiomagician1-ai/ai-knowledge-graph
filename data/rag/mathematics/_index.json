@@ -958,7 +958,7 @@
       ],
       "file": "mathematics/arithmetic/order-of-operations.md",
       "exists": true,
-      "char_count": 1557
+      "char_count": 1915
     },
     {
       "id": "epsilon-delta",
@@ -1168,7 +1168,7 @@
       ],
       "file": "mathematics/calculus/ftc.md",
       "exists": true,
-      "char_count": 1526
+      "char_count": 2745
     },
     {
       "id": "laplace-transform-intro",
@@ -2788,7 +2788,7 @@
       ],
       "file": "mathematics/number-theory/prime-distribution.md",
       "exists": true,
-      "char_count": 1248
+      "char_count": 3045
     },
     {
       "id": "bezout-identity",
@@ -3268,7 +3268,7 @@
       ],
       "file": "mathematics/probability/normal-distribution.md",
       "exists": true,
-      "char_count": 1535
+      "char_count": 2971
     },
     {
       "id": "poisson-process",
@@ -3853,7 +3853,7 @@
       ],
       "file": "mathematics/trigonometry/double-half-angle.md",
       "exists": true,
-      "char_count": 1489
+      "char_count": 3597
     },
     {
       "id": "fourier-intro",
@@ -4038,8 +4038,8 @@
   ],
   "stats": {
     "total": 269,
-    "total_chars": 675180,
-    "avg_chars": 2509,
+    "total_chars": 682098,
+    "avg_chars": 2535,
     "domain": "mathematics"
   }
 }

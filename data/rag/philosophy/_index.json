@@ -838,7 +838,7 @@
       ],
       "file": "philosophy/epistemology/knowledge-definition.md",
       "exists": true,
-      "char_count": 1609
+      "char_count": 2211
     },
     {
       "id": "social-epistemology",
@@ -1033,7 +1033,7 @@
       ],
       "file": "philosophy/ethics/buddhist-ethics.md",
       "exists": true,
-      "char_count": 1243
+      "char_count": 2568
     },
     {
       "id": "confucian-ethics",
@@ -1063,7 +1063,7 @@
       ],
       "file": "philosophy/ethics/metaethics.md",
       "exists": true,
-      "char_count": 1252
+      "char_count": 2743
     },
     {
       "id": "care-ethics",
@@ -1228,7 +1228,7 @@
       ],
       "file": "philosophy/ethics/environmental-ethics.md",
       "exists": true,
-      "char_count": 1494
+      "char_count": 2760
     },
     {
       "id": "bioethics",
@@ -1768,7 +1768,7 @@
       ],
       "file": "philosophy/metaphysics/substance-metaphysics.md",
       "exists": true,
-      "char_count": 1252
+      "char_count": 2808
     },
     {
       "id": "realism-antirealism",
@@ -2083,7 +2083,7 @@
       ],
       "file": "philosophy/modern-philosophy/phenomenology.md",
       "exists": true,
-      "char_count": 1323
+      "char_count": 2963
     },
     {
       "id": "philosophy-of-science",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 301061,
-    "avg_chars": 1770,
+    "total_chars": 308941,
+    "avg_chars": 1817,
     "domain": "philosophy"
   }
 }
