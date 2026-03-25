@@ -313,7 +313,7 @@
       ],
       "file": "software-engineering/build-systems/se-bazel.md",
       "exists": true,
-      "char_count": 1265
+      "char_count": 3009
     },
     {
       "id": "se-cmake",
@@ -493,7 +493,7 @@
       ],
       "file": "software-engineering/build-systems/se-incremental-build.md",
       "exists": true,
-      "char_count": 1272
+      "char_count": 2549
     },
     {
       "id": "se-build-variant",
@@ -3478,7 +3478,7 @@
       ],
       "file": "software-engineering/refactoring/se-arch-refactor.md",
       "exists": true,
-      "char_count": 1273
+      "char_count": 2664
     },
     {
       "id": "se-refactor-game",
@@ -3913,7 +3913,7 @@
       ],
       "file": "software-engineering/version-control/se-cherry-pick.md",
       "exists": true,
-      "char_count": 1510
+      "char_count": 2594
     },
     {
       "id": "se-bisect",
@@ -4203,8 +4203,8 @@
   ],
   "stats": {
     "total": 280,
-    "total_chars": 520135,
-    "avg_chars": 1857,
+    "total_chars": 525631,
+    "avg_chars": 1877,
     "domain": "software-engineering"
   }
 }

@@ -206,7 +206,7 @@
       "tags": [],
       "file": "narrative-design/nd-bn-butterfly-effect.md",
       "exists": true,
-      "char_count": 1283
+      "char_count": 2410
     },
     {
       "id": "nd-bn-choice-consequence",
@@ -375,7 +375,7 @@
       "tags": [],
       "file": "narrative-design/nd-cw-redemption-arc.md",
       "exists": true,
-      "char_count": 1277
+      "char_count": 2498
     },
     {
       "id": "nd-cw-cultural-sensitivity",
@@ -1337,7 +1337,7 @@
       "tags": [],
       "file": "narrative-design/nd-lo-pseudolocalization.md",
       "exists": true,
-      "char_count": 1289
+      "char_count": 2416
     },
     {
       "id": "nd-lo-dynamic-text",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 299881,
-    "avg_chars": 1666,
+    "total_chars": 303356,
+    "avg_chars": 1685,
     "domain": "narrative-design"
   }
 }

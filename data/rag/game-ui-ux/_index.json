@@ -1310,7 +1310,7 @@
       ],
       "file": "game-ui-ux/guiux-menu-quest-log.md",
       "exists": true,
-      "char_count": 1599
+      "char_count": 2469
     },
     {
       "id": "guiux-menu-crafting",
@@ -1502,7 +1502,7 @@
       ],
       "file": "game-ui-ux/guiux-menu-social.md",
       "exists": true,
-      "char_count": 1618
+      "char_count": 2361
     },
     {
       "id": "guiux-menu-end-screen",
@@ -3203,8 +3203,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 323201,
-    "avg_chars": 1616,
+    "total_chars": 324814,
+    "avg_chars": 1624,
     "domain": "game-ui-ux"
   }
 }

@@ -1597,7 +1597,7 @@
       "tags": [],
       "file": "game-qa/qa-rt-full-regression.md",
       "exists": true,
-      "char_count": 1265
+      "char_count": 2143
     },
     {
       "id": "qa-rt-smoke-regression",
@@ -2013,7 +2013,7 @@
       "tags": [],
       "file": "game-qa/qa-tc-game-test-framework.md",
       "exists": true,
-      "char_count": 1536
+      "char_count": 2888
     },
     {
       "id": "qa-tc-version-control",
@@ -2083,8 +2083,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 264043,
-    "avg_chars": 1650,
+    "total_chars": 266273,
+    "avg_chars": 1664,
     "domain": "game-qa"
   }
 }

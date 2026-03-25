@@ -73,7 +73,7 @@
       ],
       "file": "game-engine/animation-system/pose-snapshot.md",
       "exists": true,
-      "char_count": 1268
+      "char_count": 2651
     },
     {
       "id": "root-motion",
@@ -958,7 +958,7 @@
       ],
       "file": "game-engine/input-system/accessibility-input.md",
       "exists": true,
-      "char_count": 1284
+      "char_count": 2979
     },
     {
       "id": "local-multiplayer-input",
@@ -1198,7 +1198,7 @@
       ],
       "file": "game-engine/input-system/mouse-cursor.md",
       "exists": true,
-      "char_count": 1267
+      "char_count": 3091
     },
     {
       "id": "cpu-profiling",
@@ -1708,7 +1708,7 @@
       ],
       "file": "game-engine/physics-engine/destruction-physics.md",
       "exists": true,
-      "char_count": 1291
+      "char_count": 2757
     },
     {
       "id": "collision-shapes",
@@ -2608,7 +2608,7 @@
       ],
       "file": "game-engine/rendering-pipeline/water-rendering.md",
       "exists": true,
-      "char_count": 1269
+      "char_count": 2800
     },
     {
       "id": "render-graph",
@@ -4503,8 +4503,8 @@
   ],
   "stats": {
     "total": 300,
-    "total_chars": 646146,
-    "avg_chars": 2153,
+    "total_chars": 654045,
+    "avg_chars": 2180,
     "domain": "game-engine"
   }
 }

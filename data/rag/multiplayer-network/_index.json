@@ -219,7 +219,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ac-aimbot-detection.md",
       "exists": true,
-      "char_count": 1276
+      "char_count": 2552
     },
     {
       "id": "mn-ac-false-positive",
@@ -1103,7 +1103,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lb-loading-screen.md",
       "exists": true,
-      "char_count": 1274
+      "char_count": 2537
     },
     {
       "id": "mn-lb-presence-system",
@@ -1779,7 +1779,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-mm-season-system.md",
       "exists": true,
-      "char_count": 1260
+      "char_count": 1942
     },
     {
       "id": "mn-mm-crossplay-matching",
@@ -2603,8 +2603,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 347217,
-    "avg_chars": 1736,
+    "total_chars": 350438,
+    "avg_chars": 1752,
     "domain": "multiplayer-network"
   }
 }

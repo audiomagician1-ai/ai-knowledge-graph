@@ -898,7 +898,7 @@
       ],
       "file": "technical-art/ta-decal-system.md",
       "exists": true,
-      "char_count": 1282
+      "char_count": 2483
     },
     {
       "id": "ta-mipmap-strategy",
@@ -2263,7 +2263,7 @@
       ],
       "file": "technical-art/ta-ue-material-editor.md",
       "exists": true,
-      "char_count": 1558
+      "char_count": 3623
     },
     {
       "id": "ta-unity-shadergraph",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 322293,
-    "avg_chars": 1790,
+    "total_chars": 325559,
+    "avg_chars": 1808,
     "domain": "technical-art"
   }
 }

@@ -14919,7 +14919,7 @@
       ],
       "file": "concept-design/cd-env-exterior.md",
       "exists": true,
-      "char_count": 1264
+      "char_count": 2225
     },
     {
       "id": "cd-env-scale-storytelling",
@@ -16449,7 +16449,7 @@
       ],
       "file": "concept-design/cd-style-painterly.md",
       "exists": true,
-      "char_count": 1269
+      "char_count": 2564
     },
     {
       "id": "cd-style-rendering-level",
@@ -16809,7 +16809,7 @@
       ],
       "file": "concept-design/cd-visdev-art-test.md",
       "exists": true,
-      "char_count": 1262
+      "char_count": 2269
     },
     {
       "id": "cd-visdev-industry-pipeline",
@@ -28704,7 +28704,7 @@
       ],
       "file": "game-audio-music/game-audio-music-wwise-interactive-demo.md",
       "exists": true,
-      "char_count": 1561
+      "char_count": 3051
     },
     {
       "id": "game-audio-music-wwise-meter",
@@ -34899,7 +34899,7 @@
       ],
       "file": "game-engine/animation-system/pose-snapshot.md",
       "exists": true,
-      "char_count": 1268
+      "char_count": 2651
     },
     {
       "id": "root-motion",
@@ -35784,7 +35784,7 @@
       ],
       "file": "game-engine/input-system/accessibility-input.md",
       "exists": true,
-      "char_count": 1284
+      "char_count": 2979
     },
     {
       "id": "local-multiplayer-input",
@@ -36024,7 +36024,7 @@
       ],
       "file": "game-engine/input-system/mouse-cursor.md",
       "exists": true,
-      "char_count": 1267
+      "char_count": 3091
     },
     {
       "id": "cpu-profiling",
@@ -36534,7 +36534,7 @@
       ],
       "file": "game-engine/physics-engine/destruction-physics.md",
       "exists": true,
-      "char_count": 1291
+      "char_count": 2757
     },
     {
       "id": "collision-shapes",
@@ -37434,7 +37434,7 @@
       ],
       "file": "game-engine/rendering-pipeline/water-rendering.md",
       "exists": true,
-      "char_count": 1269
+      "char_count": 2800
     },
     {
       "id": "render-graph",
@@ -41495,7 +41495,7 @@
       "tags": [],
       "file": "game-live-ops/ops-ur-win-back.md",
       "exists": true,
-      "char_count": 1592
+      "char_count": 2638
     },
     {
       "id": "ops-ur-push-notification",
@@ -47683,7 +47683,7 @@
       "tags": [],
       "file": "game-qa/qa-rt-full-regression.md",
       "exists": true,
-      "char_count": 1265
+      "char_count": 2143
     },
     {
       "id": "qa-rt-smoke-regression",
@@ -48099,7 +48099,7 @@
       "tags": [],
       "file": "game-qa/qa-tc-game-test-framework.md",
       "exists": true,
-      "char_count": 1536
+      "char_count": 2888
     },
     {
       "id": "qa-tc-version-control",
@@ -49476,7 +49476,7 @@
       ],
       "file": "game-ui-ux/guiux-menu-quest-log.md",
       "exists": true,
-      "char_count": 1599
+      "char_count": 2469
     },
     {
       "id": "guiux-menu-crafting",
@@ -49668,7 +49668,7 @@
       ],
       "file": "game-ui-ux/guiux-menu-social.md",
       "exists": true,
-      "char_count": 1618
+      "char_count": 2361
     },
     {
       "id": "guiux-menu-end-screen",
@@ -59088,7 +59088,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ac-aimbot-detection.md",
       "exists": true,
-      "char_count": 1276
+      "char_count": 2552
     },
     {
       "id": "mn-ac-false-positive",
@@ -59972,7 +59972,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lb-loading-screen.md",
       "exists": true,
-      "char_count": 1274
+      "char_count": 2537
     },
     {
       "id": "mn-lb-presence-system",
@@ -60648,7 +60648,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-mm-season-system.md",
       "exists": true,
-      "char_count": 1260
+      "char_count": 1942
     },
     {
       "id": "mn-mm-crossplay-matching",
@@ -61675,7 +61675,7 @@
       "tags": [],
       "file": "narrative-design/nd-bn-butterfly-effect.md",
       "exists": true,
-      "char_count": 1283
+      "char_count": 2410
     },
     {
       "id": "nd-bn-choice-consequence",
@@ -61844,7 +61844,7 @@
       "tags": [],
       "file": "narrative-design/nd-cw-redemption-arc.md",
       "exists": true,
-      "char_count": 1277
+      "char_count": 2498
     },
     {
       "id": "nd-cw-cultural-sensitivity",
@@ -62806,7 +62806,7 @@
       "tags": [],
       "file": "narrative-design/nd-lo-pseudolocalization.md",
       "exists": true,
-      "char_count": 1289
+      "char_count": 2416
     },
     {
       "id": "nd-lo-dynamic-text",
@@ -76318,7 +76318,7 @@
       ],
       "file": "software-engineering/build-systems/se-bazel.md",
       "exists": true,
-      "char_count": 1265
+      "char_count": 3009
     },
     {
       "id": "se-cmake",
@@ -76498,7 +76498,7 @@
       ],
       "file": "software-engineering/build-systems/se-incremental-build.md",
       "exists": true,
-      "char_count": 1272
+      "char_count": 2549
     },
     {
       "id": "se-build-variant",
@@ -79483,7 +79483,7 @@
       ],
       "file": "software-engineering/refactoring/se-arch-refactor.md",
       "exists": true,
-      "char_count": 1273
+      "char_count": 2664
     },
     {
       "id": "se-refactor-game",
@@ -79918,7 +79918,7 @@
       ],
       "file": "software-engineering/version-control/se-cherry-pick.md",
       "exists": true,
-      "char_count": 1510
+      "char_count": 2594
     },
     {
       "id": "se-bisect",
@@ -81428,7 +81428,7 @@
       ],
       "file": "technical-art/ta-decal-system.md",
       "exists": true,
-      "char_count": 1282
+      "char_count": 2483
     },
     {
       "id": "ta-mipmap-strategy",
@@ -82793,7 +82793,7 @@
       ],
       "file": "technical-art/ta-ue-material-editor.md",
       "exists": true,
-      "char_count": 1558
+      "char_count": 3623
     },
     {
       "id": "ta-unity-shadergraph",

@@ -2169,7 +2169,7 @@
       "tags": [],
       "file": "game-live-ops/ops-ur-win-back.md",
       "exists": true,
-      "char_count": 1592
+      "char_count": 2638
     },
     {
       "id": "ops-ur-push-notification",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 289465,
-    "avg_chars": 1608,
+    "total_chars": 290511,
+    "avg_chars": 1613,
     "domain": "game-live-ops"
   }
 }

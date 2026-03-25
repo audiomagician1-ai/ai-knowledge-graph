@@ -1303,7 +1303,7 @@
       ],
       "file": "concept-design/cd-env-exterior.md",
       "exists": true,
-      "char_count": 1264
+      "char_count": 2225
     },
     {
       "id": "cd-env-scale-storytelling",
@@ -2833,7 +2833,7 @@
       ],
       "file": "concept-design/cd-style-painterly.md",
       "exists": true,
-      "char_count": 1269
+      "char_count": 2564
     },
     {
       "id": "cd-style-rendering-level",
@@ -3193,7 +3193,7 @@
       ],
       "file": "concept-design/cd-visdev-art-test.md",
       "exists": true,
-      "char_count": 1262
+      "char_count": 2269
     },
     {
       "id": "cd-visdev-industry-pipeline",
@@ -3303,8 +3303,8 @@
   ],
   "stats": {
     "total": 220,
-    "total_chars": 432663,
-    "avg_chars": 1966,
+    "total_chars": 435926,
+    "avg_chars": 1981,
     "domain": "concept-design"
   }
 }

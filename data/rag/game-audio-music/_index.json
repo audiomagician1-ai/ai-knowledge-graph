@@ -2668,7 +2668,7 @@
       ],
       "file": "game-audio-music/game-audio-music-wwise-interactive-demo.md",
       "exists": true,
-      "char_count": 1561
+      "char_count": 3051
     },
     {
       "id": "game-audio-music-wwise-meter",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 306810,
-    "avg_chars": 1704,
+    "total_chars": 308300,
+    "avg_chars": 1712,
     "domain": "game-audio-music"
   }
 }
