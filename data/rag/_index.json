@@ -47826,7 +47826,7 @@
       "tags": [],
       "file": "game-qa/qa-rt-build-verification.md",
       "exists": true,
-      "char_count": 1518
+      "char_count": 2598
     },
     {
       "id": "qa-rt-test-suite-mgmt",
@@ -49460,7 +49460,7 @@
       ],
       "file": "game-ui-ux/guiux-menu-main.md",
       "exists": true,
-      "char_count": 1520
+      "char_count": 2267
     },
     {
       "id": "guiux-menu-quest-log",
@@ -50052,7 +50052,7 @@
       ],
       "file": "game-ui-ux/guiux-motion-chain-animation.md",
       "exists": true,
-      "char_count": 1520
+      "char_count": 2633
     },
     {
       "id": "guiux-motion-page-transition",
@@ -52609,7 +52609,7 @@
       ],
       "file": "level-design/level-editor/ue5-level-editor.md",
       "exists": true,
-      "char_count": 1504
+      "char_count": 3371
     },
     {
       "id": "unity-scene-editor",
@@ -52774,7 +52774,7 @@
       ],
       "file": "level-design/level-editor/sublevel-management.md",
       "exists": true,
-      "char_count": 1539
+      "char_count": 2975
     },
     {
       "id": "data-layer",
@@ -59179,7 +59179,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ch-dlc-delivery.md",
       "exists": true,
-      "char_count": 1534
+      "char_count": 2674
     },
     {
       "id": "mn-ch-live-ops-content",
@@ -63183,7 +63183,7 @@
       "tags": [],
       "file": "narrative-design/nd-nt-narrative-review.md",
       "exists": true,
-      "char_count": 1528
+      "char_count": 2672
     },
     {
       "id": "nd-nt-narrative-debug",
@@ -63365,7 +63365,7 @@
       "tags": [],
       "file": "narrative-design/nd-qd-quest-failure.md",
       "exists": true,
-      "char_count": 1516
+      "char_count": 2466
     },
     {
       "id": "nd-qd-quest-reward",
@@ -63378,7 +63378,7 @@
       "tags": [],
       "file": "narrative-design/nd-qd-quest-reward.md",
       "exists": true,
-      "char_count": 1514
+      "char_count": 2636
     },
     {
       "id": "nd-qd-quest-journal",
@@ -63755,7 +63755,7 @@
       "tags": [],
       "file": "narrative-design/nd-wb-economy-politics.md",
       "exists": true,
-      "char_count": 1531
+      "char_count": 2526
     },
     {
       "id": "nd-wb-setting-bible",
@@ -65694,7 +65694,7 @@
       ],
       "file": "philosophy/logic-reasoning/logic-overview.md",
       "exists": true,
-      "char_count": 1497
+      "char_count": 2384
     },
     {
       "id": "set-theory-phil",

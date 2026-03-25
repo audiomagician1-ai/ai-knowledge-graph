@@ -1243,7 +1243,7 @@
       ],
       "file": "level-design/level-editor/ue5-level-editor.md",
       "exists": true,
-      "char_count": 1504
+      "char_count": 3371
     },
     {
       "id": "unity-scene-editor",
@@ -1408,7 +1408,7 @@
       ],
       "file": "level-design/level-editor/sublevel-management.md",
       "exists": true,
-      "char_count": 1539
+      "char_count": 2975
     },
     {
       "id": "data-layer",
@@ -3004,8 +3004,8 @@
   "stats": {
     "total": 200,
     "total_docs": 200,
-    "total_chars": 462419,
-    "avg_chars": 2312,
+    "total_chars": 465722,
+    "avg_chars": 2328,
     "domain": "level-design",
     "by_subdomain": {
       "blockout": {
@@ -3026,7 +3026,7 @@
       },
       "level-editor": {
         "count": 20,
-        "chars": 42432
+        "chars": 45735
       },
       "lighting-narrative": {
         "count": 20,

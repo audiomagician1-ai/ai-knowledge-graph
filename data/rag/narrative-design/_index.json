@@ -1714,7 +1714,7 @@
       "tags": [],
       "file": "narrative-design/nd-nt-narrative-review.md",
       "exists": true,
-      "char_count": 1528
+      "char_count": 2672
     },
     {
       "id": "nd-nt-narrative-debug",
@@ -1896,7 +1896,7 @@
       "tags": [],
       "file": "narrative-design/nd-qd-quest-failure.md",
       "exists": true,
-      "char_count": 1516
+      "char_count": 2466
     },
     {
       "id": "nd-qd-quest-reward",
@@ -1909,7 +1909,7 @@
       "tags": [],
       "file": "narrative-design/nd-qd-quest-reward.md",
       "exists": true,
-      "char_count": 1514
+      "char_count": 2636
     },
     {
       "id": "nd-qd-quest-journal",
@@ -2286,7 +2286,7 @@
       "tags": [],
       "file": "narrative-design/nd-wb-economy-politics.md",
       "exists": true,
-      "char_count": 1531
+      "char_count": 2526
     },
     {
       "id": "nd-wb-setting-bible",
@@ -2344,8 +2344,8 @@
   "stats": {
     "total": 180,
     "total_docs": 180,
-    "total_chars": 317037,
-    "avg_chars": 1761,
+    "total_chars": 321248,
+    "avg_chars": 1784,
     "domain": "narrative-design",
     "by_subdomain": {
       "branching-narrative": {
@@ -2374,15 +2374,15 @@
       },
       "narrative-tools": {
         "count": 20,
-        "chars": 30567
+        "chars": 31711
       },
       "quest-design": {
         "count": 20,
-        "chars": 35136
+        "chars": 37208
       },
       "worldbuilding": {
         "count": 20,
-        "chars": 37005
+        "chars": 38000
       }
     }
   }

@@ -1573,7 +1573,7 @@
       ],
       "file": "philosophy/logic-reasoning/logic-overview.md",
       "exists": true,
-      "char_count": 1497
+      "char_count": 2384
     },
     {
       "id": "set-theory-phil",
@@ -2554,8 +2554,8 @@
   "stats": {
     "total": 170,
     "total_docs": 170,
-    "total_chars": 393148,
-    "avg_chars": 2312,
+    "total_chars": 394035,
+    "avg_chars": 2317,
     "domain": "philosophy",
     "by_subdomain": {
       "aesthetics": {
@@ -2576,7 +2576,7 @@
       },
       "logic-reasoning": {
         "count": 17,
-        "chars": 37483
+        "chars": 38370
       },
       "metaphysics": {
         "count": 20,
