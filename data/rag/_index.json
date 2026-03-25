@@ -1603,7 +1603,7 @@
       ],
       "file": "3d-art/3da-org-wrinkle-detail.md",
       "exists": true,
-      "char_count": 2542
+      "char_count": 2649
     },
     {
       "id": "3da-org-muscle-deform",
@@ -1693,7 +1693,7 @@
       ],
       "file": "3d-art/3da-org-face-topology.md",
       "exists": true,
-      "char_count": 2738
+      "char_count": 2618
     },
     {
       "id": "3da-org-stylized-char",
@@ -2788,7 +2788,7 @@
       ],
       "file": "3d-art/3da-sculpt-stylized.md",
       "exists": true,
-      "char_count": 2725
+      "char_count": 2308
     },
     {
       "id": "3da-tex-ao-map",
@@ -2983,7 +2983,7 @@
       ],
       "file": "3d-art/3da-tex-curvature.md",
       "exists": true,
-      "char_count": 2462
+      "char_count": 2840
     },
     {
       "id": "3da-tex-normal-map",
@@ -3298,7 +3298,7 @@
       ],
       "file": "3d-art/3da-uv-unwrap-tools.md",
       "exists": true,
-      "char_count": 2830
+      "char_count": 2692
     },
     {
       "id": "3da-uv-projection",
@@ -3388,7 +3388,7 @@
       ],
       "file": "3d-art/3da-uv-auto-uv.md",
       "exists": true,
-      "char_count": 2667
+      "char_count": 2744
     },
     {
       "id": "agent-overview",
@@ -4091,6 +4091,32 @@
       "file": "ai-foundations/neural-network-basics.md",
       "exists": true,
       "char_count": 2141
+    },
+    {
+      "id": "gradient-descent",
+      "name": "梯度下降",
+      "domain_id": "mathematics",
+      "subdomain_id": "optimization",
+      "subdomain_name": "最优化",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [],
+      "file": "ai-foundations/gradient-descent.md",
+      "exists": true,
+      "char_count": 1533
+    },
+    {
+      "id": "linear-regression",
+      "name": "线性回归",
+      "domain_id": "mathematics",
+      "subdomain_id": "statistics",
+      "subdomain_name": "数理统计",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [],
+      "file": "ai-foundations/linear-regression.md",
+      "exists": true,
+      "char_count": 2548
     },
     {
       "id": "logistic-regression",
@@ -7018,7 +7044,7 @@
       ],
       "file": "animation/anim-bone-naming.md",
       "exists": true,
-      "char_count": 3042
+      "char_count": 2865
     },
     {
       "id": "anim-skeleton-basics",
@@ -7274,6 +7300,36 @@
       "file": "biology/evolution/extinction.md",
       "exists": true,
       "char_count": 2643
+    },
+    {
+      "id": "endocrine-system",
+      "name": "内分泌系统",
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "系统"
+      ],
+      "file": "biology/human-physiology/endocrine-system.md",
+      "exists": true,
+      "char_count": 1490
+    },
+    {
+      "id": "autonomic-nervous-system",
+      "name": "自主神经系统",
+      "domain_id": "psychology",
+      "subdomain_id": "biological-psychology",
+      "subdomain_name": "生物心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "神经"
+      ],
+      "file": "biology/human-physiology/autonomic-nervous-system.md",
+      "exists": true,
+      "char_count": 1399
     },
     {
       "id": "biomimetics",
@@ -11653,7 +11709,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-lens-flare.md",
       "exists": true,
-      "char_count": 2466
+      "char_count": 1392
     },
     {
       "id": "cg-fog-pp",
@@ -12178,7 +12234,7 @@
       ],
       "file": "computer-graphics/ray-tracing/cg-rt-gi.md",
       "exists": true,
-      "char_count": 2884
+      "char_count": 1426
     },
     {
       "id": "cg-rt-reflection",
@@ -12478,7 +12534,7 @@
       ],
       "file": "computer-graphics/render-optimization/cg-streaming-opt.md",
       "exists": true,
-      "char_count": 2916
+      "char_count": 1422
     },
     {
       "id": "cg-optim-intro",
@@ -12928,7 +12984,7 @@
       ],
       "file": "computer-graphics/shader-programming/cg-vertex-shader.md",
       "exists": true,
-      "char_count": 2613
+      "char_count": 1415
     },
     {
       "id": "cg-mipmap",
@@ -13003,7 +13059,7 @@
       ],
       "file": "computer-graphics/texture-techniques/cg-aniso-filtering.md",
       "exists": true,
-      "char_count": 2392
+      "char_count": 1407
     },
     {
       "id": "cg-material-textures",
@@ -13048,7 +13104,7 @@
       ],
       "file": "computer-graphics/texture-techniques/cg-procedural-texture.md",
       "exists": true,
-      "char_count": 2382
+      "char_count": 1413
     },
     {
       "id": "cg-cube-mapping",
@@ -13498,7 +13554,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-fire-explosion.md",
       "exists": true,
-      "char_count": 2661
+      "char_count": 1395
     },
     {
       "id": "cg-smoke-sim",
@@ -13723,7 +13779,7 @@
       ],
       "file": "concept-design/cd-hand-foot-sketch.md",
       "exists": true,
-      "char_count": 2570
+      "char_count": 1397
     },
     {
       "id": "cd-construction-drawing",
@@ -14173,7 +14229,7 @@
       ],
       "file": "concept-design/cd-color-key.md",
       "exists": true,
-      "char_count": 2312
+      "char_count": 1365
     },
     {
       "id": "cd-color-in-light",
@@ -14263,7 +14319,7 @@
       ],
       "file": "concept-design/cd-gamut-mapping.md",
       "exists": true,
-      "char_count": 2536
+      "char_count": 1392
     },
     {
       "id": "cd-color-grading",
@@ -14908,7 +14964,7 @@
       ],
       "file": "concept-design/cd-env-vegetation-design.md",
       "exists": true,
-      "char_count": 2313
+      "char_count": 1408
     },
     {
       "id": "cd-env-modular-thinking",
@@ -17235,7 +17291,7 @@
       "tags": [],
       "file": "data-structures/trie.md",
       "exists": true,
-      "char_count": 2719
+      "char_count": 1417
     },
     {
       "id": "bloom-filter",
@@ -17950,7 +18006,7 @@
       "tags": [],
       "file": "devops/security-scanning.md",
       "exists": true,
-      "char_count": 3182
+      "char_count": 1437
     },
     {
       "id": "container-registry",
@@ -18002,7 +18058,7 @@
       "tags": [],
       "file": "devops/environment-variables.md",
       "exists": true,
-      "char_count": 3133
+      "char_count": 1414
     },
     {
       "id": "monitoring-alerting",
@@ -19441,6 +19497,21 @@
       "char_count": 1546
     },
     {
+      "id": "behavioral-finance",
+      "name": "行为金融学",
+      "domain_id": "finance",
+      "subdomain_id": "investment-basics",
+      "subdomain_name": "投资基础",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "金融"
+      ],
+      "file": "economics/behavioral-econ/behavioral-finance.md",
+      "exists": true,
+      "char_count": 1513
+    },
+    {
       "id": "gdp-measurement",
       "name": "GDP核算",
       "domain_id": "economics",
@@ -20191,6 +20262,21 @@
       "char_count": 2422
     },
     {
+      "id": "endowment-effect",
+      "name": "禀赋效应",
+      "domain_id": "game-design",
+      "subdomain_id": "player-psychology",
+      "subdomain_name": "玩家心理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "偏差"
+      ],
+      "file": "economics/behavioral-econ/endowment-effect.md",
+      "exists": true,
+      "char_count": 1395
+    },
+    {
       "id": "property-rights-econ",
       "name": "产权经济学",
       "domain_id": "economics",
@@ -20521,6 +20607,21 @@
       "char_count": 2814
     },
     {
+      "id": "maximum-likelihood",
+      "name": "最大似然估计详解",
+      "domain_id": "mathematics",
+      "subdomain_id": "statistics",
+      "subdomain_name": "数理统计",
+      "difficulty": 8,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "economics/econometrics/maximum-likelihood.md",
+      "exists": true,
+      "char_count": 1510
+    },
+    {
       "id": "linear-regression",
       "name": "线性回归",
       "domain_id": "mathematics",
@@ -20534,6 +20635,21 @@
       "file": "economics/econometrics/linear-regression.md",
       "exists": true,
       "char_count": 3295
+    },
+    {
+      "id": "citation-referencing",
+      "name": "引用与参考文献",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "学术"
+      ],
+      "file": "english/writing-en/citation-referencing.md",
+      "exists": true,
+      "char_count": 1281
     },
     {
       "id": "hedging-language",
@@ -21166,6 +21282,36 @@
       "char_count": 1358
     },
     {
+      "id": "summary-writing",
+      "name": "摘要写作",
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/writing-en/summary-writing.md",
+      "exists": true,
+      "char_count": 1157
+    },
+    {
+      "id": "review-writing",
+      "name": "评论写作",
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "english/writing-en/review-writing.md",
+      "exists": true,
+      "char_count": 3115
+    },
+    {
       "id": "global-english",
       "name": "世界英语",
       "domain_id": "english",
@@ -21419,6 +21565,21 @@
       "file": "english/idioms-culture/food-idioms.md",
       "exists": true,
       "char_count": 1389
+    },
+    {
+      "id": "storytelling-oral",
+      "name": "口头叙事",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/speaking/storytelling-oral.md",
+      "exists": true,
+      "char_count": 1301
     },
     {
       "id": "schwa-sound",
@@ -21719,6 +21880,21 @@
       "file": "english/phonetics/syllable-structure.md",
       "exists": true,
       "char_count": 2617
+    },
+    {
+      "id": "report-writing",
+      "name": "报告写作",
+      "domain_id": "writing",
+      "subdomain_id": "professional-writing",
+      "subdomain_name": "职业写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "english/writing-en/report-writing.md",
+      "exists": true,
+      "char_count": 3183
     },
     {
       "id": "main-idea",
@@ -22273,7 +22449,7 @@
       ],
       "file": "english/sentence-patterns/ellipsis-substitution.md",
       "exists": true,
-      "char_count": 2679
+      "char_count": 1421
     },
     {
       "id": "wish-subjunctive",
@@ -22303,7 +22479,7 @@
       ],
       "file": "english/sentence-patterns/restrictive-vs-non.md",
       "exists": true,
-      "char_count": 2972
+      "char_count": 1421
     },
     {
       "id": "accuracy-practice",
@@ -22678,7 +22854,7 @@
       ],
       "file": "english/tenses/future-perfect.md",
       "exists": true,
-      "char_count": 2555
+      "char_count": 1397
     },
     {
       "id": "future-continuous",
@@ -23371,6 +23547,36 @@
       "char_count": 2941
     },
     {
+      "id": "figurative-language",
+      "name": "修辞手法",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "文学"
+      ],
+      "file": "english/idioms-culture/figurative-language.md",
+      "exists": true,
+      "char_count": 1273
+    },
+    {
+      "id": "writing-process",
+      "name": "写作过程",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/writing-en/writing-process.md",
+      "exists": true,
+      "char_count": 1224
+    },
+    {
       "id": "sentence-variety",
       "name": "句式变化",
       "domain_id": "writing",
@@ -23384,6 +23590,21 @@
       "file": "english/writing-en/sentence-variety.md",
       "exists": true,
       "char_count": 3394
+    },
+    {
+      "id": "parallel-structure",
+      "name": "平行结构",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/sentence-patterns/parallel-structure.md",
+      "exists": true,
+      "char_count": 1283
     },
     {
       "id": "paragraph-structure",
@@ -23728,7 +23949,7 @@
       ],
       "file": "finance/fintech/credit-scoring-ai.md",
       "exists": true,
-      "char_count": 2390
+      "char_count": 1398
     },
     {
       "id": "nft-basics",
@@ -33391,6 +33612,21 @@
       "char_count": 2169
     },
     {
+      "id": "onboarding-design",
+      "name": "新手引导设计",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "引导"
+      ],
+      "file": "game-design/core-loop/onboarding-design.md",
+      "exists": true,
+      "char_count": 1436
+    },
+    {
       "id": "achievement-system",
       "name": "成就系统",
       "domain_id": "game-engine",
@@ -33691,6 +33927,21 @@
       "char_count": 2443
     },
     {
+      "id": "mvp-design",
+      "name": "MVP设计",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "方法论"
+      ],
+      "file": "game-design/systems-design/mvp-design.md",
+      "exists": true,
+      "char_count": 1243
+    },
+    {
       "id": "systems-thinking",
       "name": "系统思维",
       "domain_id": "product-design",
@@ -33974,6 +34225,36 @@
       "file": "game-design/randomness-design/dice-mechanics.md",
       "exists": true,
       "char_count": 2229
+    },
+    {
+      "id": "weather-system",
+      "name": "天气系统",
+      "domain_id": "game-engine",
+      "subdomain_id": "scene-management",
+      "subdomain_name": "场景管理",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "环境"
+      ],
+      "file": "game-design/systems-design/weather-system.md",
+      "exists": true,
+      "char_count": 1302
+    },
+    {
+      "id": "replay-system",
+      "name": "回放系统",
+      "domain_id": "game-engine",
+      "subdomain_id": "serialization",
+      "subdomain_name": "序列化",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "分享"
+      ],
+      "file": "game-design/social-systems/replay-system.md",
+      "exists": true,
+      "char_count": 2276
     },
     {
       "id": "elo-rating",
@@ -34529,6 +34810,21 @@
       "file": "game-design/systems-design/faction-system.md",
       "exists": true,
       "char_count": 2363
+    },
+    {
+      "id": "competitive-analysis",
+      "name": "竞品分析",
+      "domain_id": "product-design",
+      "subdomain_id": "user-research",
+      "subdomain_name": "用户研究",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "研究"
+      ],
+      "file": "game-design/design-docs/competitive-analysis.md",
+      "exists": true,
+      "char_count": 1339
     },
     {
       "id": "control-rig",
@@ -36554,6 +36850,21 @@
       "file": "game-engine/platform-abstraction/certification.md",
       "exists": true,
       "char_count": 1361
+    },
+    {
+      "id": "achievement-system",
+      "name": "成就系统",
+      "domain_id": "game-engine",
+      "subdomain_id": "platform-abstraction",
+      "subdomain_name": "平台抽象",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "平台"
+      ],
+      "file": "game-engine/platform-abstraction/achievement-system.md",
+      "exists": true,
+      "char_count": 2639
     },
     {
       "id": "hal-layer",
@@ -53141,6 +53452,21 @@
       "char_count": 2541
     },
     {
+      "id": "show-dont-tell",
+      "name": "展示而非告知",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "原则"
+      ],
+      "file": "level-design/guidance-design/show-dont-tell.md",
+      "exists": true,
+      "char_count": 1247
+    },
+    {
       "id": "three-act-level",
       "name": "三幕式关卡",
       "domain_id": "level-design",
@@ -56039,6 +56365,21 @@
       "char_count": 2282
     },
     {
+      "id": "graph-coloring",
+      "name": "图着色",
+      "domain_id": "mathematics",
+      "subdomain_id": "discrete-math",
+      "subdomain_name": "离散数学",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "经典"
+      ],
+      "file": "mathematics/discrete-math/graph-coloring.md",
+      "exists": true,
+      "char_count": 2362
+    },
+    {
       "id": "graph-theory-basics",
       "name": "图论基础",
       "domain_id": "mathematics",
@@ -57959,6 +58300,21 @@
       "char_count": 2791
     },
     {
+      "id": "descriptive-statistics",
+      "name": "描述统计",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/statistics/descriptive-statistics.md",
+      "exists": true,
+      "char_count": 2744
+    },
+    {
       "id": "bootstrap-methods",
       "name": "Bootstrap方法",
       "domain_id": "mathematics",
@@ -58124,6 +58480,21 @@
       "char_count": 2258
     },
     {
+      "id": "linear-regression",
+      "name": "线性回归",
+      "domain_id": "mathematics",
+      "subdomain_id": "statistics",
+      "subdomain_name": "数理统计",
+      "difficulty": 6,
+      "is_milestone": true,
+      "tags": [
+        "里程碑"
+      ],
+      "file": "mathematics/statistics/linear-regression.md",
+      "exists": true,
+      "char_count": 2904
+    },
+    {
       "id": "confidence-intervals",
       "name": "置信区间",
       "domain_id": "mathematics",
@@ -58152,6 +58523,21 @@
       "file": "mathematics/statistics/bayesian-statistics.md",
       "exists": true,
       "char_count": 2879
+    },
+    {
+      "id": "logistic-regression",
+      "name": "逻辑回归",
+      "domain_id": "mathematics",
+      "subdomain_id": "statistics",
+      "subdomain_name": "数理统计",
+      "difficulty": 7,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "mathematics/statistics/logistic-regression.md",
+      "exists": true,
+      "char_count": 1492
     },
     {
       "id": "nonparametric-tests",
@@ -58467,6 +58853,21 @@
       "file": "mathematics/trigonometry/product-sum-formulas.md",
       "exists": true,
       "char_count": 2449
+    },
+    {
+      "id": "data-visualization",
+      "name": "数据可视化",
+      "domain_id": "product-design",
+      "subdomain_id": "visual-design",
+      "subdomain_name": "视觉设计",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "mathematics/statistics/data-visualization.md",
+      "exists": true,
+      "char_count": 1462
     },
     {
       "id": "mn-ac-report-system",
@@ -63708,6 +64109,19 @@
       "char_count": 2980
     },
     {
+      "id": "command-pattern",
+      "name": "命令模式",
+      "domain_id": "game-engine",
+      "subdomain_id": "scripting-system",
+      "subdomain_name": "脚本系统",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [],
+      "file": "oop/command-pattern.md",
+      "exists": true,
+      "char_count": 1624
+    },
+    {
       "id": "chinese-aesthetics",
       "name": "中国传统美学",
       "domain_id": "philosophy",
@@ -65058,6 +65472,21 @@
       "char_count": 2634
     },
     {
+      "id": "propositional-logic",
+      "name": "命题逻辑",
+      "domain_id": "philosophy",
+      "subdomain_id": "logic-reasoning",
+      "subdomain_name": "逻辑与推理",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/logic-reasoning/propositional-logic.md",
+      "exists": true,
+      "char_count": 1580
+    },
+    {
       "id": "inductive-reasoning",
       "name": "归纳推理",
       "domain_id": "philosophy",
@@ -65206,6 +65635,21 @@
       "file": "philosophy/logic-reasoning/analogical-reasoning.md",
       "exists": true,
       "char_count": 2566
+    },
+    {
+      "id": "predicate-logic",
+      "name": "谓词逻辑",
+      "domain_id": "philosophy",
+      "subdomain_id": "logic-reasoning",
+      "subdomain_name": "逻辑与推理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/logic-reasoning/predicate-logic.md",
+      "exists": true,
+      "char_count": 2538
     },
     {
       "id": "dialectic",
@@ -65881,6 +66325,21 @@
       "file": "philosophy/modern-philosophy/modern-philosophy-overview.md",
       "exists": true,
       "char_count": 1529
+    },
+    {
+      "id": "argument-structure",
+      "name": "论证结构",
+      "domain_id": "writing",
+      "subdomain_id": "persuasive-writing",
+      "subdomain_name": "论说文写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "philosophy/logic-reasoning/argument-structure.md",
+      "exists": true,
+      "char_count": 1337
     },
     {
       "id": "cosmopolitanism",
@@ -69123,6 +69582,21 @@
       "char_count": 2440
     },
     {
+      "id": "behavioral-economics",
+      "name": "行为经济学",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "高级"
+      ],
+      "file": "product-design/product-thinking/behavioral-economics.md",
+      "exists": true,
+      "char_count": 1453
+    },
+    {
       "id": "ab-testing-analysis",
       "name": "A/B测试分析",
       "domain_id": "product-design",
@@ -69195,7 +69669,7 @@
       ],
       "file": "product-design/data-driven/analytics-tools.md",
       "exists": true,
-      "char_count": 3103
+      "char_count": 2936
     },
     {
       "id": "feature-flag",
@@ -70788,6 +71262,21 @@
       "char_count": 2884
     },
     {
+      "id": "systems-thinking",
+      "name": "系统思维",
+      "domain_id": "product-design",
+      "subdomain_id": "product-thinking",
+      "subdomain_name": "产品思维",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "思维"
+      ],
+      "file": "product-design/product-thinking/systems-thinking.md",
+      "exists": true,
+      "char_count": 2326
+    },
+    {
       "id": "blue-ocean-strategy",
       "name": "蓝海战略",
       "domain_id": "product-design",
@@ -70816,6 +71305,21 @@
       "file": "product-design/product-thinking/design-thinking.md",
       "exists": true,
       "char_count": 2586
+    },
+    {
+      "id": "content-marketing",
+      "name": "内容营销写作",
+      "domain_id": "writing",
+      "subdomain_id": "professional-writing",
+      "subdomain_name": "职业写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "获客"
+      ],
+      "file": "product-design/growth/content-marketing.md",
+      "exists": true,
+      "char_count": 1457
     },
     {
       "id": "ab-testing-design",
@@ -72608,6 +73112,21 @@
       "char_count": 1709
     },
     {
+      "id": "extinction",
+      "name": "消退",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "学习"
+      ],
+      "file": "psychology/behavioral-psychology/extinction.md",
+      "exists": true,
+      "char_count": 2556
+    },
+    {
       "id": "latent-learning",
       "name": "潜伏学习",
       "domain_id": "psychology",
@@ -73718,6 +74237,21 @@
       "char_count": 1705
     },
     {
+      "id": "cognitive-load",
+      "name": "认知负荷",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "学习"
+      ],
+      "file": "psychology/cognitive-psychology/cognitive-load.md",
+      "exists": true,
+      "char_count": 2521
+    },
+    {
       "id": "memory-encoding",
       "name": "记忆编码",
       "domain_id": "psychology",
@@ -73745,7 +74279,7 @@
       ],
       "file": "psychology/cognitive-psychology/language-cognition.md",
       "exists": true,
-      "char_count": 3061
+      "char_count": 2836
     },
     {
       "id": "selective-attention",
@@ -74360,7 +74894,7 @@
       ],
       "file": "psychology/personality-psychology/trait-theory.md",
       "exists": true,
-      "char_count": 2703
+      "char_count": 2637
     },
     {
       "id": "social-cognitive-personality",
@@ -74571,6 +75105,36 @@
       "file": "psychology/research-methods/replication-crisis.md",
       "exists": true,
       "char_count": 1403
+    },
+    {
+      "id": "experimental-design",
+      "name": "实验设计",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "psychology/research-methods/experimental-design.md",
+      "exists": true,
+      "char_count": 2380
+    },
+    {
+      "id": "sampling-methods",
+      "name": "抽样方法",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "方法"
+      ],
+      "file": "psychology/research-methods/sampling-methods.md",
+      "exists": true,
+      "char_count": 2558
     },
     {
       "id": "inferential-statistics",
@@ -78379,7 +78943,7 @@
       ],
       "file": "software-engineering/package-management/se-pkg-intro.md",
       "exists": true,
-      "char_count": 3076
+      "char_count": 2602
     },
     {
       "id": "se-container-deps",
@@ -80579,7 +81143,7 @@
       ],
       "file": "technical-art/ta-pbr-fundamentals.md",
       "exists": true,
-      "char_count": 3086
+      "char_count": 3238
     },
     {
       "id": "ta-substance-workflow",
@@ -83834,7 +84398,7 @@
       ],
       "file": "vfx/vfx-niagara-debug.md",
       "exists": true,
-      "char_count": 3039
+      "char_count": 3000
     },
     {
       "id": "vfx-niagara-neighbor-grid",
@@ -84269,7 +84833,7 @@
       ],
       "file": "vfx/vfx-pp-ssr.md",
       "exists": true,
-      "char_count": 2671
+      "char_count": 2682
     },
     {
       "id": "vfx-pp-outline",
@@ -85718,6 +86282,19 @@
       "char_count": 2755
     },
     {
+      "id": "design-system",
+      "name": "设计系统",
+      "domain_id": "product-design",
+      "subdomain_id": "interaction-design",
+      "subdomain_name": "交互设计",
+      "difficulty": 4,
+      "is_milestone": false,
+      "tags": [],
+      "file": "web-frontend/design-system.md",
+      "exists": true,
+      "char_count": 1577
+    },
+    {
       "id": "css-in-js",
       "name": "CSS-in-JS / TailwindCSS",
       "domain_id": "ai-engineering",
@@ -86359,6 +86936,21 @@
       "char_count": 2666
     },
     {
+      "id": "hedging-language",
+      "name": "模糊限制语",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "语言"
+      ],
+      "file": "writing/academic-writing/hedging-language.md",
+      "exists": true,
+      "char_count": 2522
+    },
+    {
       "id": "research-methodology",
       "name": "研究方法论写作",
       "domain_id": "writing",
@@ -86371,7 +86963,7 @@
       ],
       "file": "writing/academic-writing/research-methodology.md",
       "exists": true,
-      "char_count": 4191
+      "char_count": 1521
     },
     {
       "id": "research-question",
@@ -86821,7 +87413,7 @@
       ],
       "file": "writing/expository-writing/informative-writing.md",
       "exists": true,
-      "char_count": 3909
+      "char_count": 1522
     },
     {
       "id": "classification-essay",
@@ -86911,7 +87503,7 @@
       ],
       "file": "writing/expository-writing/descriptive-essay.md",
       "exists": true,
-      "char_count": 3664
+      "char_count": 1392
     },
     {
       "id": "summary-writing",
@@ -87706,7 +88298,7 @@
       ],
       "file": "writing/persuasive-writing/logical-reasoning-writing.md",
       "exists": true,
-      "char_count": 3841
+      "char_count": 1496
     },
     {
       "id": "logos-strategies",
@@ -87736,7 +88328,7 @@
       ],
       "file": "writing/persuasive-writing/logical-fallacies-writing.md",
       "exists": true,
-      "char_count": 3791
+      "char_count": 1413
     },
     {
       "id": "seo-writing",
@@ -87796,7 +88388,7 @@
       ],
       "file": "writing/professional-writing/crisis-communication.md",
       "exists": true,
-      "char_count": 3944
+      "char_count": 1506
     },
     {
       "id": "contract-legal-writing",
@@ -87976,7 +88568,7 @@
       ],
       "file": "writing/professional-writing/social-media-writing.md",
       "exists": true,
-      "char_count": 4081
+      "char_count": 1403
     },
     {
       "id": "resume-cover-letter",
@@ -88051,7 +88643,7 @@
       ],
       "file": "writing/revision-craft/ai-writing-tools.md",
       "exists": true,
-      "char_count": 3304
+      "char_count": 1573
     },
     {
       "id": "fact-verification",
@@ -88081,7 +88673,7 @@
       ],
       "file": "writing/revision-craft/portfolio-building.md",
       "exists": true,
-      "char_count": 3719
+      "char_count": 1492
     },
     {
       "id": "revision-overview",
@@ -88126,7 +88718,7 @@
       ],
       "file": "writing/revision-craft/style-guide.md",
       "exists": true,
-      "char_count": 4555
+      "char_count": 1352
     },
     {
       "id": "cutting-killing-darlings",
@@ -88141,7 +88733,7 @@
       ],
       "file": "writing/revision-craft/cutting-killing-darlings.md",
       "exists": true,
-      "char_count": 3969
+      "char_count": 1409
     },
     {
       "id": "developmental-editing",
@@ -88156,7 +88748,7 @@
       ],
       "file": "writing/revision-craft/developmental-editing.md",
       "exists": true,
-      "char_count": 3939
+      "char_count": 1491
     },
     {
       "id": "sentence-level-editing",
@@ -88261,7 +88853,7 @@
       ],
       "file": "writing/revision-craft/structural-revision.md",
       "exists": true,
-      "char_count": 3246
+      "char_count": 1440
     },
     {
       "id": "editor-author-relation",
@@ -88276,7 +88868,7 @@
       ],
       "file": "writing/revision-craft/editor-author-relation.md",
       "exists": true,
-      "char_count": 2671
+      "char_count": 2431
     },
     {
       "id": "self-editing",
@@ -88459,6 +89051,21 @@
       "char_count": 3069
     },
     {
+      "id": "sentence-variety",
+      "name": "句式变化",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "风格"
+      ],
+      "file": "writing/writing-fundamentals/sentence-variety.md",
+      "exists": true,
+      "char_count": 2328
+    },
+    {
       "id": "parallel-structure",
       "name": "平行结构",
       "domain_id": "writing",
@@ -88504,6 +89111,21 @@
       "char_count": 2089
     },
     {
+      "id": "paragraph-structure",
+      "name": "段落结构",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 1,
+      "is_milestone": true,
+      "tags": [
+        "结构"
+      ],
+      "file": "writing/writing-fundamentals/paragraph-structure.md",
+      "exists": true,
+      "char_count": 2303
+    },
+    {
       "id": "freewriting-techniques",
       "name": "自由写作技法",
       "domain_id": "writing",
@@ -88516,7 +89138,7 @@
       ],
       "file": "writing/writing-fundamentals/freewriting-techniques.md",
       "exists": true,
-      "char_count": 2515
+      "char_count": 2342
     },
     {
       "id": "vocabulary-building",
@@ -88532,6 +89154,21 @@
       "file": "writing/writing-fundamentals/vocabulary-building.md",
       "exists": true,
       "char_count": 2599
+    },
+    {
+      "id": "word-choice",
+      "name": "词语选择",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "语言"
+      ],
+      "file": "writing/writing-fundamentals/word-choice.md",
+      "exists": true,
+      "char_count": 2431
     },
     {
       "id": "tone-and-voice",
@@ -88625,7 +89262,7 @@
     }
   ],
   "stats": {
-    "total": 6113,
+    "total": 6156,
     "total_domains": 45
   }
 }

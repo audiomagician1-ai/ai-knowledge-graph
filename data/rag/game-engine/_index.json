@@ -2026,6 +2026,21 @@
       "char_count": 1361
     },
     {
+      "id": "achievement-system",
+      "name": "成就系统",
+      "domain_id": "game-engine",
+      "subdomain_id": "platform-abstraction",
+      "subdomain_name": "平台抽象",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "平台"
+      ],
+      "file": "game-engine/platform-abstraction/achievement-system.md",
+      "exists": true,
+      "char_count": 2639
+    },
+    {
       "id": "hal-layer",
       "name": "硬件抽象层",
       "domain_id": "game-engine",
@@ -4487,10 +4502,10 @@
     }
   ],
   "stats": {
-    "total": 299,
-    "total_docs": 299,
-    "total_chars": 686750,
-    "avg_chars": 2296,
+    "total": 300,
+    "total_docs": 300,
+    "total_chars": 689389,
+    "avg_chars": 2297,
     "domain": "game-engine",
     "by_subdomain": {
       "animation-system": {
@@ -4518,8 +4533,8 @@
         "chars": 51251
       },
       "platform-abstraction": {
-        "count": 19,
-        "chars": 45148
+        "count": 20,
+        "chars": 47787
       },
       "plugin-development": {
         "count": 20,

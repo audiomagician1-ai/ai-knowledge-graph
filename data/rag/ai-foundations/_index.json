@@ -352,6 +352,32 @@
       "char_count": 2141
     },
     {
+      "id": "gradient-descent",
+      "name": "梯度下降",
+      "domain_id": "mathematics",
+      "subdomain_id": "optimization",
+      "subdomain_name": "最优化",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [],
+      "file": "ai-foundations/gradient-descent.md",
+      "exists": true,
+      "char_count": 1533
+    },
+    {
+      "id": "linear-regression",
+      "name": "线性回归",
+      "domain_id": "mathematics",
+      "subdomain_id": "statistics",
+      "subdomain_name": "数理统计",
+      "difficulty": 6,
+      "is_milestone": false,
+      "tags": [],
+      "file": "ai-foundations/linear-regression.md",
+      "exists": true,
+      "char_count": 2548
+    },
+    {
       "id": "logistic-regression",
       "name": "逻辑回归",
       "domain_id": "mathematics",
@@ -366,10 +392,10 @@
     }
   ],
   "stats": {
-    "total": 28,
-    "total_docs": 28,
-    "total_chars": 78492,
-    "avg_chars": 2803,
+    "total": 30,
+    "total_docs": 30,
+    "total_chars": 82573,
+    "avg_chars": 2752,
     "domain": "ai-foundations",
     "by_subdomain": {
       "ai-foundations": {
@@ -380,9 +406,13 @@
         "count": 1,
         "chars": 2141
       },
-      "statistics": {
+      "optimization": {
         "count": 1,
-        "chars": 2572
+        "chars": 1533
+      },
+      "statistics": {
+        "count": 2,
+        "chars": 5120
       }
     }
   }

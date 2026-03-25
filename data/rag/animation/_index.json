@@ -2458,7 +2458,7 @@
       ],
       "file": "animation/anim-bone-naming.md",
       "exists": true,
-      "char_count": 3042
+      "char_count": 2865
     },
     {
       "id": "anim-skeleton-basics",
@@ -2704,8 +2704,8 @@
   "stats": {
     "total": 180,
     "total_docs": 180,
-    "total_chars": 375057,
-    "avg_chars": 2083,
+    "total_chars": 374880,
+    "avg_chars": 2082,
     "domain": "animation",
     "by_subdomain": {
       "animation-blueprint": {
@@ -2742,7 +2742,7 @@
       },
       "skeletal-rigging": {
         "count": 20,
-        "chars": 44927
+        "chars": 44750
       },
       "state-machine": {
         "count": 15,

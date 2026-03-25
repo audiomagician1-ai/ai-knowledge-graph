@@ -313,7 +313,7 @@
       ],
       "file": "finance/fintech/credit-scoring-ai.md",
       "exists": true,
-      "char_count": 2390
+      "char_count": 1398
     },
     {
       "id": "nft-basics",
@@ -2404,8 +2404,8 @@
   "stats": {
     "total": 160,
     "total_docs": 160,
-    "total_chars": 368506,
-    "avg_chars": 2303,
+    "total_chars": 367514,
+    "avg_chars": 2296,
     "domain": "finance",
     "by_subdomain": {
       "corporate-finance": {
@@ -2414,7 +2414,7 @@
       },
       "fintech": {
         "count": 20,
-        "chars": 46399
+        "chars": 45407
       },
       "fixed-income": {
         "count": 20,

@@ -2086,6 +2086,21 @@
       "char_count": 2541
     },
     {
+      "id": "show-dont-tell",
+      "name": "展示而非告知",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "原则"
+      ],
+      "file": "level-design/guidance-design/show-dont-tell.md",
+      "exists": true,
+      "char_count": 1247
+    },
+    {
       "id": "three-act-level",
       "name": "三幕式关卡",
       "domain_id": "level-design",
@@ -2987,10 +3002,10 @@
     }
   ],
   "stats": {
-    "total": 199,
-    "total_docs": 199,
-    "total_chars": 464065,
-    "avg_chars": 2331,
+    "total": 200,
+    "total_docs": 200,
+    "total_chars": 465312,
+    "avg_chars": 2326,
     "domain": "level-design",
     "by_subdomain": {
       "blockout": {
@@ -3020,6 +3035,10 @@
       "metrics-design": {
         "count": 20,
         "chars": 46180
+      },
+      "narrative-writing": {
+        "count": 1,
+        "chars": 1247
       },
       "pacing-curve": {
         "count": 20,

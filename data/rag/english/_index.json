@@ -1,6 +1,21 @@
 {
   "documents": [
     {
+      "id": "citation-referencing",
+      "name": "引用与参考文献",
+      "domain_id": "writing",
+      "subdomain_id": "academic-writing",
+      "subdomain_name": "学术写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "学术"
+      ],
+      "file": "english/writing-en/citation-referencing.md",
+      "exists": true,
+      "char_count": 1281
+    },
+    {
       "id": "hedging-language",
       "name": "模糊限制语",
       "domain_id": "writing",
@@ -631,6 +646,36 @@
       "char_count": 1358
     },
     {
+      "id": "summary-writing",
+      "name": "摘要写作",
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/writing-en/summary-writing.md",
+      "exists": true,
+      "char_count": 1157
+    },
+    {
+      "id": "review-writing",
+      "name": "评论写作",
+      "domain_id": "writing",
+      "subdomain_id": "expository-writing",
+      "subdomain_name": "说明文写作",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "english/writing-en/review-writing.md",
+      "exists": true,
+      "char_count": 3115
+    },
+    {
       "id": "global-english",
       "name": "世界英语",
       "domain_id": "english",
@@ -884,6 +929,21 @@
       "file": "english/idioms-culture/food-idioms.md",
       "exists": true,
       "char_count": 1389
+    },
+    {
+      "id": "storytelling-oral",
+      "name": "口头叙事",
+      "domain_id": "writing",
+      "subdomain_id": "narrative-writing",
+      "subdomain_name": "叙事写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/speaking/storytelling-oral.md",
+      "exists": true,
+      "char_count": 1301
     },
     {
       "id": "schwa-sound",
@@ -1184,6 +1244,21 @@
       "file": "english/phonetics/syllable-structure.md",
       "exists": true,
       "char_count": 2617
+    },
+    {
+      "id": "report-writing",
+      "name": "报告写作",
+      "domain_id": "writing",
+      "subdomain_id": "professional-writing",
+      "subdomain_name": "职业写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "应用"
+      ],
+      "file": "english/writing-en/report-writing.md",
+      "exists": true,
+      "char_count": 3183
     },
     {
       "id": "main-idea",
@@ -1738,7 +1813,7 @@
       ],
       "file": "english/sentence-patterns/ellipsis-substitution.md",
       "exists": true,
-      "char_count": 2679
+      "char_count": 1421
     },
     {
       "id": "wish-subjunctive",
@@ -1768,7 +1843,7 @@
       ],
       "file": "english/sentence-patterns/restrictive-vs-non.md",
       "exists": true,
-      "char_count": 2972
+      "char_count": 1421
     },
     {
       "id": "accuracy-practice",
@@ -2143,7 +2218,7 @@
       ],
       "file": "english/tenses/future-perfect.md",
       "exists": true,
-      "char_count": 2555
+      "char_count": 1397
     },
     {
       "id": "future-continuous",
@@ -2836,6 +2911,36 @@
       "char_count": 2941
     },
     {
+      "id": "figurative-language",
+      "name": "修辞手法",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "文学"
+      ],
+      "file": "english/idioms-culture/figurative-language.md",
+      "exists": true,
+      "char_count": 1273
+    },
+    {
+      "id": "writing-process",
+      "name": "写作过程",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 1,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/writing-en/writing-process.md",
+      "exists": true,
+      "char_count": 1224
+    },
+    {
       "id": "sentence-variety",
       "name": "句式变化",
       "domain_id": "writing",
@@ -2849,6 +2954,21 @@
       "file": "english/writing-en/sentence-variety.md",
       "exists": true,
       "char_count": 3394
+    },
+    {
+      "id": "parallel-structure",
+      "name": "平行结构",
+      "domain_id": "writing",
+      "subdomain_id": "writing-fundamentals",
+      "subdomain_name": "写作基础",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "english/sentence-patterns/parallel-structure.md",
+      "exists": true,
+      "char_count": 1283
     },
     {
       "id": "paragraph-structure",
@@ -2882,15 +3002,15 @@
     }
   ],
   "stats": {
-    "total": 192,
-    "total_docs": 192,
-    "total_chars": 513914,
-    "avg_chars": 2676,
+    "total": 200,
+    "total_docs": 200,
+    "total_chars": 523764,
+    "avg_chars": 2618,
     "domain": "english",
     "by_subdomain": {
       "academic-writing": {
-        "count": 1,
-        "chars": 3466
+        "count": 2,
+        "chars": 4747
       },
       "advanced-grammar": {
         "count": 19,
@@ -2900,13 +3020,25 @@
         "count": 22,
         "chars": 55155
       },
+      "expository-writing": {
+        "count": 2,
+        "chars": 4272
+      },
       "idioms-culture": {
         "count": 17,
         "chars": 34005
       },
+      "narrative-writing": {
+        "count": 1,
+        "chars": 1301
+      },
       "phonetics": {
         "count": 20,
         "chars": 52608
+      },
+      "professional-writing": {
+        "count": 1,
+        "chars": 3183
       },
       "reading": {
         "count": 20,
@@ -2914,7 +3046,7 @@
       },
       "sentence-patterns": {
         "count": 19,
-        "chars": 51536
+        "chars": 48727
       },
       "speaking": {
         "count": 19,
@@ -2922,7 +3054,7 @@
       },
       "tenses": {
         "count": 20,
-        "chars": 56683
+        "chars": 55525
       },
       "vocabulary": {
         "count": 18,
@@ -2933,8 +3065,8 @@
         "chars": 43673
       },
       "writing-fundamentals": {
-        "count": 3,
-        "chars": 10122
+        "count": 6,
+        "chars": 13902
       }
     }
   }

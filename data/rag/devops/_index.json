@@ -206,7 +206,7 @@
       "tags": [],
       "file": "devops/security-scanning.md",
       "exists": true,
-      "char_count": 3182
+      "char_count": 1437
     },
     {
       "id": "container-registry",
@@ -258,7 +258,7 @@
       "tags": [],
       "file": "devops/environment-variables.md",
       "exists": true,
-      "char_count": 3133
+      "char_count": 1414
     },
     {
       "id": "monitoring-alerting",
@@ -290,13 +290,13 @@
   "stats": {
     "total": 22,
     "total_docs": 22,
-    "total_chars": 50655,
-    "avg_chars": 2302,
+    "total_chars": 47191,
+    "avg_chars": 2145,
     "domain": "devops",
     "by_subdomain": {
       "devops": {
         "count": 22,
-        "chars": 50655
+        "chars": 47191
       }
     }
   }

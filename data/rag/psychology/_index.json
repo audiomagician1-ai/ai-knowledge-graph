@@ -151,6 +151,21 @@
       "char_count": 1709
     },
     {
+      "id": "extinction",
+      "name": "消退",
+      "domain_id": "psychology",
+      "subdomain_id": "behavioral-psychology",
+      "subdomain_name": "行为心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "学习"
+      ],
+      "file": "psychology/behavioral-psychology/extinction.md",
+      "exists": true,
+      "char_count": 2556
+    },
+    {
       "id": "latent-learning",
       "name": "潜伏学习",
       "domain_id": "psychology",
@@ -1261,6 +1276,21 @@
       "char_count": 1705
     },
     {
+      "id": "cognitive-load",
+      "name": "认知负荷",
+      "domain_id": "psychology",
+      "subdomain_id": "cognitive-psychology",
+      "subdomain_name": "认知心理学",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "学习"
+      ],
+      "file": "psychology/cognitive-psychology/cognitive-load.md",
+      "exists": true,
+      "char_count": 2521
+    },
+    {
       "id": "memory-encoding",
       "name": "记忆编码",
       "domain_id": "psychology",
@@ -1288,7 +1318,7 @@
       ],
       "file": "psychology/cognitive-psychology/language-cognition.md",
       "exists": true,
-      "char_count": 3061
+      "char_count": 2836
     },
     {
       "id": "selective-attention",
@@ -1903,7 +1933,7 @@
       ],
       "file": "psychology/personality-psychology/trait-theory.md",
       "exists": true,
-      "char_count": 2703
+      "char_count": 2637
     },
     {
       "id": "social-cognitive-personality",
@@ -2114,6 +2144,36 @@
       "file": "psychology/research-methods/replication-crisis.md",
       "exists": true,
       "char_count": 1403
+    },
+    {
+      "id": "experimental-design",
+      "name": "实验设计",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 2,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "psychology/research-methods/experimental-design.md",
+      "exists": true,
+      "char_count": 2380
+    },
+    {
+      "id": "sampling-methods",
+      "name": "抽样方法",
+      "domain_id": "psychology",
+      "subdomain_id": "research-methods",
+      "subdomain_name": "研究方法",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "方法"
+      ],
+      "file": "psychology/research-methods/sampling-methods.md",
+      "exists": true,
+      "char_count": 2558
     },
     {
       "id": "inferential-statistics",
@@ -2687,15 +2747,15 @@
     }
   ],
   "stats": {
-    "total": 179,
-    "total_docs": 179,
-    "total_chars": 401517,
-    "avg_chars": 2243,
+    "total": 183,
+    "total_docs": 183,
+    "total_chars": 411241,
+    "avg_chars": 2247,
     "domain": "psychology",
     "by_subdomain": {
       "behavioral-psychology": {
-        "count": 21,
-        "chars": 40192
+        "count": 22,
+        "chars": 42748
       },
       "biological-psychology": {
         "count": 22,
@@ -2706,8 +2766,8 @@
         "chars": 55288
       },
       "cognitive-psychology": {
-        "count": 24,
-        "chars": 57012
+        "count": 25,
+        "chars": 59308
       },
       "developmental-psychology": {
         "count": 23,
@@ -2715,11 +2775,11 @@
       },
       "personality-psychology": {
         "count": 22,
-        "chars": 46158
+        "chars": 46092
       },
       "research-methods": {
-        "count": 21,
-        "chars": 46584
+        "count": 23,
+        "chars": 51522
       },
       "social-psychology": {
         "count": 23,

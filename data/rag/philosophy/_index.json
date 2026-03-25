@@ -1351,6 +1351,21 @@
       "char_count": 2634
     },
     {
+      "id": "propositional-logic",
+      "name": "命题逻辑",
+      "domain_id": "philosophy",
+      "subdomain_id": "logic-reasoning",
+      "subdomain_name": "逻辑与推理",
+      "difficulty": 3,
+      "is_milestone": true,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/logic-reasoning/propositional-logic.md",
+      "exists": true,
+      "char_count": 1580
+    },
+    {
       "id": "inductive-reasoning",
       "name": "归纳推理",
       "domain_id": "philosophy",
@@ -1499,6 +1514,21 @@
       "file": "philosophy/logic-reasoning/analogical-reasoning.md",
       "exists": true,
       "char_count": 2566
+    },
+    {
+      "id": "predicate-logic",
+      "name": "谓词逻辑",
+      "domain_id": "philosophy",
+      "subdomain_id": "logic-reasoning",
+      "subdomain_name": "逻辑与推理",
+      "difficulty": 3,
+      "is_milestone": false,
+      "tags": [
+        "核心"
+      ],
+      "file": "philosophy/logic-reasoning/predicate-logic.md",
+      "exists": true,
+      "char_count": 2538
     },
     {
       "id": "dialectic",
@@ -2176,6 +2206,21 @@
       "char_count": 1529
     },
     {
+      "id": "argument-structure",
+      "name": "论证结构",
+      "domain_id": "writing",
+      "subdomain_id": "persuasive-writing",
+      "subdomain_name": "论说文写作",
+      "difficulty": 2,
+      "is_milestone": false,
+      "tags": [
+        "基础"
+      ],
+      "file": "philosophy/logic-reasoning/argument-structure.md",
+      "exists": true,
+      "char_count": 1337
+    },
+    {
       "id": "cosmopolitanism",
       "name": "世界主义",
       "domain_id": "philosophy",
@@ -2507,10 +2552,10 @@
     }
   ],
   "stats": {
-    "total": 167,
-    "total_docs": 167,
-    "total_chars": 392181,
-    "avg_chars": 2348,
+    "total": 170,
+    "total_docs": 170,
+    "total_chars": 397636,
+    "avg_chars": 2339,
     "domain": "philosophy",
     "by_subdomain": {
       "aesthetics": {
@@ -2530,8 +2575,8 @@
         "chars": 57157
       },
       "logic-reasoning": {
-        "count": 15,
-        "chars": 35468
+        "count": 17,
+        "chars": 39586
       },
       "metaphysics": {
         "count": 20,
@@ -2540,6 +2585,10 @@
       "modern-philosophy": {
         "count": 20,
         "chars": 49596
+      },
+      "persuasive-writing": {
+        "count": 1,
+        "chars": 1337
       },
       "political-philosophy": {
         "count": 22,

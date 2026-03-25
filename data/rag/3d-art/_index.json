@@ -1603,7 +1603,7 @@
       ],
       "file": "3d-art/3da-org-wrinkle-detail.md",
       "exists": true,
-      "char_count": 2542
+      "char_count": 2649
     },
     {
       "id": "3da-org-muscle-deform",
@@ -1693,7 +1693,7 @@
       ],
       "file": "3d-art/3da-org-face-topology.md",
       "exists": true,
-      "char_count": 2738
+      "char_count": 2618
     },
     {
       "id": "3da-org-stylized-char",
@@ -2788,7 +2788,7 @@
       ],
       "file": "3d-art/3da-sculpt-stylized.md",
       "exists": true,
-      "char_count": 2725
+      "char_count": 2308
     },
     {
       "id": "3da-tex-ao-map",
@@ -2983,7 +2983,7 @@
       ],
       "file": "3d-art/3da-tex-curvature.md",
       "exists": true,
-      "char_count": 2462
+      "char_count": 2840
     },
     {
       "id": "3da-tex-normal-map",
@@ -3298,7 +3298,7 @@
       ],
       "file": "3d-art/3da-uv-unwrap-tools.md",
       "exists": true,
-      "char_count": 2830
+      "char_count": 2692
     },
     {
       "id": "3da-uv-projection",
@@ -3388,13 +3388,13 @@
       ],
       "file": "3d-art/3da-uv-auto-uv.md",
       "exists": true,
-      "char_count": 2667
+      "char_count": 2744
     }
   ],
   "stats": {
     "total": 226,
     "total_docs": 226,
-    "total_chars": 496445,
+    "total_chars": 496332,
     "avg_chars": 2196,
     "domain": "3d-art",
     "by_subdomain": {
@@ -3420,7 +3420,7 @@
       },
       "organic-modeling": {
         "count": 20,
-        "chars": 47442
+        "chars": 47429
       },
       "prop-art": {
         "count": 16,
@@ -3436,15 +3436,15 @@
       },
       "sculpting": {
         "count": 20,
-        "chars": 39028
+        "chars": 38611
       },
       "texturing": {
         "count": 22,
-        "chars": 41916
+        "chars": 42294
       },
       "uv-unwrapping": {
         "count": 18,
-        "chars": 37372
+        "chars": 37311
       }
     }
   }
