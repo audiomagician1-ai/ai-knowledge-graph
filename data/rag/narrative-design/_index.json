@@ -76,7 +76,7 @@
       "tags": [],
       "file": "narrative-design/nd-bn-narrative-graph.md",
       "exists": true,
-      "char_count": 1483
+      "char_count": 2752
     },
     {
       "id": "nd-bn-multiple-endings",
@@ -193,7 +193,7 @@
       "tags": [],
       "file": "narrative-design/nd-bn-combinatorial-explosion.md",
       "exists": true,
-      "char_count": 1387
+      "char_count": 2429
     },
     {
       "id": "nd-bn-butterfly-effect",
@@ -895,7 +895,7 @@
       "tags": [],
       "file": "narrative-design/nd-ds-dialogue-tree.md",
       "exists": true,
-      "char_count": 1467
+      "char_count": 2181
     },
     {
       "id": "nd-ds-dialogue-state-machine",
@@ -934,7 +934,7 @@
       "tags": [],
       "file": "narrative-design/nd-ds-dialogue-camera.md",
       "exists": true,
-      "char_count": 1470
+      "char_count": 2373
     },
     {
       "id": "nd-ds-interrupt-system",
@@ -1350,7 +1350,7 @@
       "tags": [],
       "file": "narrative-design/nd-lo-dynamic-text.md",
       "exists": true,
-      "char_count": 1484
+      "char_count": 2855
     },
     {
       "id": "nd-lo-regional-rating",
@@ -1467,7 +1467,7 @@
       "tags": [],
       "file": "narrative-design/nd-lo-cultural-adaptation.md",
       "exists": true,
-      "char_count": 1390
+      "char_count": 2469
     },
     {
       "id": "nd-lo-text-expansion",
@@ -1961,7 +1961,7 @@
       "tags": [],
       "file": "narrative-design/nd-qd-quest-chain.md",
       "exists": true,
-      "char_count": 1481
+      "char_count": 2533
     },
     {
       "id": "nd-qd-dynamic-quest",
@@ -2182,7 +2182,7 @@
       "tags": [],
       "file": "narrative-design/nd-wb-tone-mood.md",
       "exists": true,
-      "char_count": 1471
+      "char_count": 2341
     },
     {
       "id": "nd-wb-culture-creation",
@@ -2260,7 +2260,7 @@
       "tags": [],
       "file": "narrative-design/nd-wb-tech-level.md",
       "exists": true,
-      "char_count": 1489
+      "char_count": 2547
     },
     {
       "id": "nd-wb-genre-convention",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 303356,
-    "avg_chars": 1685,
+    "total_chars": 312714,
+    "avg_chars": 1737,
     "domain": "narrative-design"
   }
 }

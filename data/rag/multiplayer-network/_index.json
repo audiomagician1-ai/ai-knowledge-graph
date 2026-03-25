@@ -1220,7 +1220,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lb-social-features.md",
       "exists": true,
-      "char_count": 1495
+      "char_count": 2365
     },
     {
       "id": "mn-lb-chat-system",
@@ -1272,7 +1272,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lb-invite-system.md",
       "exists": true,
-      "char_count": 1390
+      "char_count": 2798
     },
     {
       "id": "mn-lb-party-management",
@@ -1402,7 +1402,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ls-command-buffer.md",
       "exists": true,
-      "char_count": 1377
+      "char_count": 2440
     },
     {
       "id": "mn-ls-turn-based-sync",
@@ -2603,8 +2603,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 350438,
-    "avg_chars": 1752,
+    "total_chars": 353779,
+    "avg_chars": 1768,
     "domain": "multiplayer-network"
   }
 }

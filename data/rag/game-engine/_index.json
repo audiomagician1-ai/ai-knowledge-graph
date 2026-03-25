@@ -208,7 +208,7 @@
       ],
       "file": "game-engine/animation-system/anim-notify.md",
       "exists": true,
-      "char_count": 1304
+      "char_count": 2818
     },
     {
       "id": "animation-retargeting",
@@ -508,7 +508,7 @@
       ],
       "file": "game-engine/audio-system/audio-concurrency.md",
       "exists": true,
-      "char_count": 1309
+      "char_count": 2879
     },
     {
       "id": "audio-profiling",
@@ -583,7 +583,7 @@
       ],
       "file": "game-engine/audio-system/audio-debug.md",
       "exists": true,
-      "char_count": 1306
+      "char_count": 2987
     },
     {
       "id": "audio-occlusion",
@@ -1423,7 +1423,7 @@
       ],
       "file": "game-engine/performance-profiling/perf-regression.md",
       "exists": true,
-      "char_count": 1307
+      "char_count": 2835
     },
     {
       "id": "perf-budget",
@@ -1528,7 +1528,7 @@
       ],
       "file": "game-engine/physics-engine/navmesh-engine.md",
       "exists": true,
-      "char_count": 1293
+      "char_count": 3051
     },
     {
       "id": "ragdoll-physics",
@@ -1678,7 +1678,7 @@
       ],
       "file": "game-engine/physics-engine/physics-query.md",
       "exists": true,
-      "char_count": 1303
+      "char_count": 3157
     },
     {
       "id": "physics-debug",
@@ -1693,7 +1693,7 @@
       ],
       "file": "game-engine/physics-engine/physics-debug.md",
       "exists": true,
-      "char_count": 1298
+      "char_count": 2949
     },
     {
       "id": "destruction-physics",
@@ -1918,7 +1918,7 @@
       ],
       "file": "game-engine/platform-abstraction/crash-reporting.md",
       "exists": true,
-      "char_count": 1312
+      "char_count": 3314
     },
     {
       "id": "platform-scalability",
@@ -1978,7 +1978,7 @@
       ],
       "file": "game-engine/platform-abstraction/file-system-platform.md",
       "exists": true,
-      "char_count": 1307
+      "char_count": 3115
     },
     {
       "id": "platform-api-service",
@@ -2188,7 +2188,7 @@
       ],
       "file": "game-engine/plugin-development/anti-cheat-plugin.md",
       "exists": true,
-      "char_count": 1386
+      "char_count": 2896
     },
     {
       "id": "marketplace-plugin",
@@ -2518,7 +2518,7 @@
       ],
       "file": "game-engine/rendering-pipeline/forward-rendering.md",
       "exists": true,
-      "char_count": 1302
+      "char_count": 2640
     },
     {
       "id": "post-processing",
@@ -2788,7 +2788,7 @@
       ],
       "file": "game-engine/resource-management/compression-format.md",
       "exists": true,
-      "char_count": 1309
+      "char_count": 2763
     },
     {
       "id": "object-pool",
@@ -3208,7 +3208,7 @@
       ],
       "file": "game-engine/scene-management/minimap-system.md",
       "exists": true,
-      "char_count": 1269
+      "char_count": 2705
     },
     {
       "id": "day-night-system",
@@ -3223,7 +3223,7 @@
       ],
       "file": "game-engine/scene-management/day-night-system.md",
       "exists": true,
-      "char_count": 1293
+      "char_count": 2217
     },
     {
       "id": "environment-query",
@@ -3478,7 +3478,7 @@
       ],
       "file": "game-engine/scripting-system/testing-framework.md",
       "exists": true,
-      "char_count": 1286
+      "char_count": 2858
     },
     {
       "id": "profiling-marker",
@@ -3613,7 +3613,7 @@
       ],
       "file": "game-engine/serialization/json-serialization.md",
       "exists": true,
-      "char_count": 1295
+      "char_count": 2773
     },
     {
       "id": "protobuf-flatbuf",
@@ -3643,7 +3643,7 @@
       ],
       "file": "game-engine/serialization/schema-versioning.md",
       "exists": true,
-      "char_count": 1302
+      "char_count": 2655
     },
     {
       "id": "uasset-format",
@@ -3778,7 +3778,7 @@
       ],
       "file": "game-engine/serialization/serialization-perf.md",
       "exists": true,
-      "char_count": 1310
+      "char_count": 3063
     },
     {
       "id": "serialization-intro",
@@ -3898,7 +3898,7 @@
       ],
       "file": "game-engine/serialization/config-system.md",
       "exists": true,
-      "char_count": 1313
+      "char_count": 3094
     },
     {
       "id": "ue5-actor-component",
@@ -4503,8 +4503,8 @@
   ],
   "stats": {
     "total": 300,
-    "total_chars": 659424,
-    "avg_chars": 2198,
+    "total_chars": 689389,
+    "avg_chars": 2297,
     "domain": "game-engine"
   }
 }

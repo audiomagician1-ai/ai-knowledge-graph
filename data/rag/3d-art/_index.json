@@ -403,7 +403,7 @@
       ],
       "file": "3d-art/3da-bake-thickness.md",
       "exists": true,
-      "char_count": 1290
+      "char_count": 2410
     },
     {
       "id": "3da-bake-name-matching",
@@ -628,7 +628,7 @@
       ],
       "file": "3d-art/3da-env-material-blend.md",
       "exists": true,
-      "char_count": 1297
+      "char_count": 2804
     },
     {
       "id": "3da-env-vegetation",
@@ -2113,7 +2113,7 @@
       ],
       "file": "3d-art/3da-retopo-hard-surface.md",
       "exists": true,
-      "char_count": 1288
+      "char_count": 2606
     },
     {
       "id": "3da-retopo-auto",
@@ -2968,7 +2968,7 @@
       ],
       "file": "3d-art/3da-tex-scan-data.md",
       "exists": true,
-      "char_count": 1298
+      "char_count": 2526
     },
     {
       "id": "3da-tex-curvature",
@@ -3073,7 +3073,7 @@
       ],
       "file": "3d-art/3da-tex-color-theory.md",
       "exists": true,
-      "char_count": 1304
+      "char_count": 2844
     },
     {
       "id": "3da-tex-decal-texturing",
@@ -3393,8 +3393,8 @@
   ],
   "stats": {
     "total": 226,
-    "total_chars": 479346,
-    "avg_chars": 2121,
+    "total_chars": 486059,
+    "avg_chars": 2150,
     "domain": "3d-art"
   }
 }

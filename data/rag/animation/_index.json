@@ -43,7 +43,7 @@
       ],
       "file": "animation/anim-distance-lod.md",
       "exists": true,
-      "char_count": 1307
+      "char_count": 2743
     },
     {
       "id": "anim-anim-sharing",
@@ -58,7 +58,7 @@
       ],
       "file": "animation/anim-anim-sharing.md",
       "exists": true,
-      "char_count": 1295
+      "char_count": 2742
     },
     {
       "id": "anim-abp-variables",
@@ -628,7 +628,7 @@
       ],
       "file": "animation/anim-spacing.md",
       "exists": true,
-      "char_count": 1306
+      "char_count": 2230
     },
     {
       "id": "anim-anticipation",
@@ -1018,7 +1018,7 @@
       ],
       "file": "animation/anim-eye-animation.md",
       "exists": true,
-      "char_count": 1300
+      "char_count": 2243
     },
     {
       "id": "anim-crowd-face",
@@ -1048,7 +1048,7 @@
       ],
       "file": "animation/anim-speech-gesture.md",
       "exists": true,
-      "char_count": 1297
+      "char_count": 2483
     },
     {
       "id": "anim-face-overview",
@@ -1138,7 +1138,7 @@
       ],
       "file": "animation/anim-bone-face.md",
       "exists": true,
-      "char_count": 1301
+      "char_count": 2334
     },
     {
       "id": "anim-ik-fk-switch",
@@ -1228,7 +1228,7 @@
       ],
       "file": "animation/anim-ik-ground-adapt.md",
       "exists": true,
-      "char_count": 1294
+      "char_count": 2668
     },
     {
       "id": "anim-hand-ik",
@@ -1303,7 +1303,7 @@
       ],
       "file": "animation/anim-ik-weapon-hold.md",
       "exists": true,
-      "char_count": 1289
+      "char_count": 2381
     },
     {
       "id": "anim-procedural-ik",
@@ -1453,7 +1453,7 @@
       ],
       "file": "animation/anim-layer-system.md",
       "exists": true,
-      "char_count": 1301
+      "char_count": 2498
     },
     {
       "id": "anim-animation-clip",
@@ -1483,7 +1483,7 @@
       ],
       "file": "animation/anim-additive-anim.md",
       "exists": true,
-      "char_count": 1302
+      "char_count": 2642
     },
     {
       "id": "anim-run-cycle",
@@ -1528,7 +1528,7 @@
       ],
       "file": "animation/anim-idle-animation.md",
       "exists": true,
-      "char_count": 1288
+      "char_count": 2497
     },
     {
       "id": "anim-looping",
@@ -1543,7 +1543,7 @@
       ],
       "file": "animation/anim-looping.md",
       "exists": true,
-      "char_count": 1295
+      "char_count": 2399
     },
     {
       "id": "anim-attack-animation",
@@ -1603,7 +1603,7 @@
       ],
       "file": "animation/anim-death-animation.md",
       "exists": true,
-      "char_count": 1307
+      "char_count": 2720
     },
     {
       "id": "anim-walk-cycle",
@@ -1993,7 +1993,7 @@
       ],
       "file": "animation/anim-hair-sim.md",
       "exists": true,
-      "char_count": 1304
+      "char_count": 2703
     },
     {
       "id": "anim-water-interaction",
@@ -2443,7 +2443,7 @@
       ],
       "file": "animation/anim-nonhuman-rig.md",
       "exists": true,
-      "char_count": 1304
+      "char_count": 2413
     },
     {
       "id": "anim-bone-naming",
@@ -2623,7 +2623,7 @@
       ],
       "file": "animation/anim-state-debugging.md",
       "exists": true,
-      "char_count": 1293
+      "char_count": 2638
     },
     {
       "id": "anim-state-transitions",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 350859,
-    "avg_chars": 1949,
+    "total_chars": 370410,
+    "avg_chars": 2057,
     "domain": "animation"
   }
 }

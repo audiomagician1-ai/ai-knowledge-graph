@@ -1573,7 +1573,7 @@
       ],
       "file": "technical-art/ta-tri-budget.md",
       "exists": true,
-      "char_count": 1383
+      "char_count": 2901
     },
     {
       "id": "ta-lightmap-opt",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 329981,
-    "avg_chars": 1833,
+    "total_chars": 331499,
+    "avg_chars": 1841,
     "domain": "technical-art"
   }
 }

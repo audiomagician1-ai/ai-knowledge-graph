@@ -103,7 +103,7 @@
       ],
       "file": "concept-design/cd-animal-anatomy.md",
       "exists": true,
-      "char_count": 1301
+      "char_count": 2305
     },
     {
       "id": "cd-limb-joints",
@@ -178,7 +178,7 @@
       ],
       "file": "concept-design/cd-construction-drawing.md",
       "exists": true,
-      "char_count": 1311
+      "char_count": 2262
     },
     {
       "id": "cd-cloth-folds",
@@ -343,7 +343,7 @@
       ],
       "file": "concept-design/cd-char-fantasy.md",
       "exists": true,
-      "char_count": 1304
+      "char_count": 2445
     },
     {
       "id": "cd-char-age-variation",
@@ -418,7 +418,7 @@
       ],
       "file": "concept-design/cd-char-sci-fi.md",
       "exists": true,
-      "char_count": 1295
+      "char_count": 2670
     },
     {
       "id": "cd-char-expression-sheet",
@@ -973,7 +973,7 @@
       ],
       "file": "concept-design/cd-big-medium-small.md",
       "exists": true,
-      "char_count": 1285
+      "char_count": 2325
     },
     {
       "id": "cd-symmetry-asymmetry",
@@ -1288,7 +1288,7 @@
       ],
       "file": "concept-design/cd-env-interior.md",
       "exists": true,
-      "char_count": 1297
+      "char_count": 2252
     },
     {
       "id": "cd-env-exterior",
@@ -1318,7 +1318,7 @@
       ],
       "file": "concept-design/cd-env-scale-storytelling.md",
       "exists": true,
-      "char_count": 1299
+      "char_count": 2191
     },
     {
       "id": "cd-env-architecture-style",
@@ -1468,7 +1468,7 @@
       ],
       "file": "concept-design/cd-env-sci-fi-world.md",
       "exists": true,
-      "char_count": 1296
+      "char_count": 2461
     },
     {
       "id": "cd-env-natural-formation",
@@ -2173,7 +2173,7 @@
       ],
       "file": "concept-design/cd-multi-vp-scene.md",
       "exists": true,
-      "char_count": 1281
+      "char_count": 2330
     },
     {
       "id": "cd-atmospheric-perspective",
@@ -2428,7 +2428,7 @@
       ],
       "file": "concept-design/cd-prop-variation-exploration.md",
       "exists": true,
-      "char_count": 1295
+      "char_count": 2297
     },
     {
       "id": "cd-prop-readability-test",
@@ -2443,7 +2443,7 @@
       ],
       "file": "concept-design/cd-prop-readability-test.md",
       "exists": true,
-      "char_count": 1304
+      "char_count": 2539
     },
     {
       "id": "cd-prop-size-chart",
@@ -2473,7 +2473,7 @@
       ],
       "file": "concept-design/cd-prop-cultural-reference.md",
       "exists": true,
-      "char_count": 1292
+      "char_count": 2727
     },
     {
       "id": "cd-prop-everyday-objects",
@@ -2683,7 +2683,7 @@
       ],
       "file": "concept-design/cd-prop-kit-of-parts.md",
       "exists": true,
-      "char_count": 1282
+      "char_count": 2071
     },
     {
       "id": "cd-prop-magical-items",
@@ -2728,7 +2728,7 @@
       ],
       "file": "concept-design/cd-style-pixel-art.md",
       "exists": true,
-      "char_count": 1302
+      "char_count": 2433
     },
     {
       "id": "cd-style-realism-spectrum",
@@ -2788,7 +2788,7 @@
       ],
       "file": "concept-design/cd-style-flat-design.md",
       "exists": true,
-      "char_count": 1302
+      "char_count": 2141
     },
     {
       "id": "cd-style-anime",
@@ -2803,7 +2803,7 @@
       ],
       "file": "concept-design/cd-style-anime.md",
       "exists": true,
-      "char_count": 1293
+      "char_count": 2232
     },
     {
       "id": "cd-style-proportion-rules",
@@ -2818,7 +2818,7 @@
       ],
       "file": "concept-design/cd-style-proportion-rules.md",
       "exists": true,
-      "char_count": 1297
+      "char_count": 2351
     },
     {
       "id": "cd-style-painterly",
@@ -2863,7 +2863,7 @@
       ],
       "file": "concept-design/cd-style-texture-treatment.md",
       "exists": true,
-      "char_count": 1302
+      "char_count": 2244
     },
     {
       "id": "cd-style-line-quality",
@@ -2878,7 +2878,7 @@
       ],
       "file": "concept-design/cd-style-line-quality.md",
       "exists": true,
-      "char_count": 1297
+      "char_count": 2381
     },
     {
       "id": "cd-style-art-direction",
@@ -2908,7 +2908,7 @@
       ],
       "file": "concept-design/cd-style-color-identity.md",
       "exists": true,
-      "char_count": 1307
+      "char_count": 2418
     },
     {
       "id": "cd-style-western-cartoon",
@@ -3303,8 +3303,8 @@
   ],
   "stats": {
     "total": 220,
-    "total_chars": 440218,
-    "avg_chars": 2000,
+    "total_chars": 461351,
+    "avg_chars": 2097,
     "domain": "concept-design"
   }
 }

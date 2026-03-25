@@ -11,7 +11,7 @@
       "tags": [],
       "file": "devops/ci-cd.md",
       "exists": true,
-      "char_count": 1572
+      "char_count": 3224
     },
     {
       "id": "docker-compose-concept",
@@ -37,7 +37,7 @@
       "tags": [],
       "file": "devops/docker-basics.md",
       "exists": true,
-      "char_count": 1583
+      "char_count": 2875
     },
     {
       "id": "gitops",
@@ -289,8 +289,8 @@
   ],
   "stats": {
     "total": 22,
-    "total_chars": 44247,
-    "avg_chars": 2011,
+    "total_chars": 47191,
+    "avg_chars": 2145,
     "domain": "devops"
   }
 }

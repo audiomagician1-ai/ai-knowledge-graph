@@ -238,7 +238,7 @@
       ],
       "file": "vfx/vfx-destruct-constraint.md",
       "exists": true,
-      "char_count": 1477
+      "char_count": 2604
     },
     {
       "id": "vfx-destruct-network",
@@ -688,7 +688,7 @@
       ],
       "file": "vfx/vfx-fluid-realtime.md",
       "exists": true,
-      "char_count": 1502
+      "char_count": 2762
     },
     {
       "id": "vfx-fluid-lagrange",
@@ -1468,7 +1468,7 @@
       ],
       "file": "vfx/vfx-particle-random.md",
       "exists": true,
-      "char_count": 1496
+      "char_count": 2802
     },
     {
       "id": "vfx-particle-color",
@@ -1588,7 +1588,7 @@
       ],
       "file": "vfx/vfx-pp-pipeline.md",
       "exists": true,
-      "char_count": 1474
+      "char_count": 3227
     },
     {
       "id": "vfx-pp-ssr",
@@ -1948,7 +1948,7 @@
       ],
       "file": "vfx/vfx-shader-depth-fade.md",
       "exists": true,
-      "char_count": 1379
+      "char_count": 2785
     },
     {
       "id": "vfx-shader-blend-mode",
@@ -2518,7 +2518,7 @@
       ],
       "file": "vfx/vfx-opt-atlas-share.md",
       "exists": true,
-      "char_count": 1367
+      "char_count": 2907
     },
     {
       "id": "vfx-opt-benchmark",
@@ -2578,7 +2578,7 @@
       ],
       "file": "vfx/vfx-opt-lod-vfx.md",
       "exists": true,
-      "char_count": 1371
+      "char_count": 2489
     },
     {
       "id": "vfx-opt-overview",
@@ -2683,7 +2683,7 @@
       ],
       "file": "vfx/vfx-opt-budget-system.md",
       "exists": true,
-      "char_count": 1386
+      "char_count": 2529
     },
     {
       "id": "vfx-opt-precompute",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 348155,
-    "avg_chars": 1934,
+    "total_chars": 358808,
+    "avg_chars": 1993,
     "domain": "vfx"
   }
 }

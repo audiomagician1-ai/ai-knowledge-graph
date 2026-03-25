@@ -94,7 +94,7 @@
       ],
       "file": "game-ui-ux/guiux-a11y-subtitle-options.md",
       "exists": true,
-      "char_count": 1384
+      "char_count": 2485
     },
     {
       "id": "guiux-a11y-screen-reader",
@@ -1454,7 +1454,7 @@
       ],
       "file": "game-ui-ux/guiux-menu-pause.md",
       "exists": true,
-      "char_count": 1494
+      "char_count": 2526
     },
     {
       "id": "guiux-menu-tab-system",
@@ -1870,7 +1870,7 @@
       ],
       "file": "game-ui-ux/guiux-motion-parallax.md",
       "exists": true,
-      "char_count": 1493
+      "char_count": 2513
     },
     {
       "id": "guiux-motion-chain-animation",
@@ -3203,8 +3203,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 324814,
-    "avg_chars": 1624,
+    "total_chars": 327967,
+    "avg_chars": 1639,
     "domain": "game-ui-ux"
   }
 }

@@ -3103,7 +3103,7 @@
       ],
       "file": "software-engineering/performance-analysis/se-profiling-tools.md",
       "exists": true,
-      "char_count": 1502
+      "char_count": 2938
     },
     {
       "id": "se-startup-perf",
@@ -4203,8 +4203,8 @@
   ],
   "stats": {
     "total": 280,
-    "total_chars": 525631,
-    "avg_chars": 1877,
+    "total_chars": 527067,
+    "avg_chars": 1882,
     "domain": "software-engineering"
   }
 }

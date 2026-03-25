@@ -453,7 +453,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-aam-quality-tiers.md",
       "exists": true,
-      "char_count": 1286
+      "char_count": 3095
     },
     {
       "id": "sfx-aam-asset-database",
@@ -986,7 +986,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-ao-decode-cost.md",
       "exists": true,
-      "char_count": 1274
+      "char_count": 2270
     },
     {
       "id": "sfx-ao-occlusion-cost",
@@ -1298,7 +1298,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-dp-de-esser.md",
       "exists": true,
-      "char_count": 1269
+      "char_count": 2706
     },
     {
       "id": "sfx-dsp-eq-filtering",
@@ -1428,7 +1428,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-dsp-multiband.md",
       "exists": true,
-      "char_count": 1276
+      "char_count": 2628
     },
     {
       "id": "sfx-dsp-distortion",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 315087,
-    "avg_chars": 1750,
+    "total_chars": 320681,
+    "avg_chars": 1781,
     "domain": "game-audio-sfx"
   }
 }

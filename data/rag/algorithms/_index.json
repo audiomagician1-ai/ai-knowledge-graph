@@ -271,7 +271,7 @@
       "tags": [],
       "file": "algorithms/bfs.md",
       "exists": true,
-      "char_count": 1605
+      "char_count": 2630
     },
     {
       "id": "merge-sort",
@@ -362,7 +362,7 @@
       "tags": [],
       "file": "algorithms/dfs.md",
       "exists": true,
-      "char_count": 1577
+      "char_count": 2892
     },
     {
       "id": "sliding-window",
@@ -458,8 +458,8 @@
   ],
   "stats": {
     "total": 35,
-    "total_chars": 78436,
-    "avg_chars": 2241,
+    "total_chars": 80776,
+    "avg_chars": 2307,
     "domain": "algorithms"
   }
 }

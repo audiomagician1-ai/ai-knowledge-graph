@@ -596,7 +596,7 @@
       "tags": [],
       "file": "game-qa/qa-ct-resolution-aspect.md",
       "exists": true,
-      "char_count": 1485
+      "char_count": 2785
     },
     {
       "id": "qa-ct-locale-compat",
@@ -609,7 +609,7 @@
       "tags": [],
       "file": "game-qa/qa-ct-locale-compat.md",
       "exists": true,
-      "char_count": 1368
+      "char_count": 2588
     },
     {
       "id": "qa-ct-peripheral",
@@ -2083,8 +2083,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 266273,
-    "avg_chars": 1664,
+    "total_chars": 268793,
+    "avg_chars": 1679,
     "domain": "game-qa"
   }
 }

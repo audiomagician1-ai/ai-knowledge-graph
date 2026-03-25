@@ -50,7 +50,7 @@
       "tags": [],
       "file": "game-live-ops/ops-ab-feature-experiment.md",
       "exists": true,
-      "char_count": 1486
+      "char_count": 2577
     },
     {
       "id": "ops-ab-multivariate",
@@ -323,7 +323,7 @@
       "tags": [],
       "file": "game-live-ops/ops-cs-crisis-management.md",
       "exists": true,
-      "char_count": 1386
+      "char_count": 2504
     },
     {
       "id": "ops-cs-feedback-loop",
@@ -336,7 +336,7 @@
       "tags": [],
       "file": "game-live-ops/ops-cs-feedback-loop.md",
       "exists": true,
-      "char_count": 1377
+      "char_count": 2314
     },
     {
       "id": "ops-cs-localized-support",
@@ -778,7 +778,7 @@
       "tags": [],
       "file": "game-live-ops/ops-da-predictive-modeling.md",
       "exists": true,
-      "char_count": 1382
+      "char_count": 2598
     },
     {
       "id": "ops-em-real-money-trading",
@@ -856,7 +856,7 @@
       "tags": [],
       "file": "game-live-ops/ops-em-reward-balance.md",
       "exists": true,
-      "char_count": 1382
+      "char_count": 2325
     },
     {
       "id": "ops-em-gacha-economy",
@@ -1662,7 +1662,7 @@
       "tags": [],
       "file": "game-live-ops/ops-so-meta-shift.md",
       "exists": true,
-      "char_count": 1494
+      "char_count": 2789
     },
     {
       "id": "ops-so-season-theme",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 290511,
-    "avg_chars": 1613,
+    "total_chars": 297111,
+    "avg_chars": 1650,
     "domain": "game-live-ops"
   }
 }
