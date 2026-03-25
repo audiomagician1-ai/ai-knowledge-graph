@@ -133,7 +133,7 @@
       ],
       "file": "technical-art/ta-std-training.md",
       "exists": true,
-      "char_count": 1255
+      "char_count": 2515
     },
     {
       "id": "ta-poly-standard",
@@ -853,7 +853,7 @@
       ],
       "file": "technical-art/ta-detail-normal.md",
       "exists": true,
-      "char_count": 1259
+      "char_count": 2703
     },
     {
       "id": "ta-virtual-texturing",
@@ -988,7 +988,7 @@
       ],
       "file": "technical-art/ta-memory-pool.md",
       "exists": true,
-      "char_count": 1251
+      "char_count": 2776
     },
     {
       "id": "ta-mem-leak-detect",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 313634,
-    "avg_chars": 1742,
+    "total_chars": 317863,
+    "avg_chars": 1765,
     "domain": "technical-art"
   }
 }

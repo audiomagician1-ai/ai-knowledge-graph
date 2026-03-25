@@ -958,7 +958,7 @@
       ],
       "file": "3d-art/3da-hs-architecture.md",
       "exists": true,
-      "char_count": 1360
+      "char_count": 2856
     },
     {
       "id": "3da-hs-support-loops",
@@ -1513,7 +1513,7 @@
       ],
       "file": "3d-art/3da-org-edge-loops-organic.md",
       "exists": true,
-      "char_count": 1350
+      "char_count": 2189
     },
     {
       "id": "3da-org-intro",
@@ -1543,7 +1543,7 @@
       ],
       "file": "3d-art/3da-org-proportion-check.md",
       "exists": true,
-      "char_count": 1370
+      "char_count": 2289
     },
     {
       "id": "3da-org-hair-modeling",
@@ -1768,7 +1768,7 @@
       ],
       "file": "3d-art/3da-prop-breakable.md",
       "exists": true,
-      "char_count": 1367
+      "char_count": 2690
     },
     {
       "id": "3da-prop-fabric",
@@ -1783,7 +1783,7 @@
       ],
       "file": "3d-art/3da-prop-fabric.md",
       "exists": true,
-      "char_count": 1366
+      "char_count": 2620
     },
     {
       "id": "3da-prop-material-instance",
@@ -2323,7 +2323,7 @@
       ],
       "file": "3d-art/3da-rig-hand-setup.md",
       "exists": true,
-      "char_count": 1363
+      "char_count": 2443
     },
     {
       "id": "3da-rig-twist-bones",
@@ -4233,7 +4233,7 @@
       "tags": [],
       "file": "algorithms/np-completeness.md",
       "exists": true,
-      "char_count": 1368
+      "char_count": 2482
     },
     {
       "id": "rabin-karp",
@@ -4272,7 +4272,7 @@
       "tags": [],
       "file": "algorithms/bit-manipulation.md",
       "exists": true,
-      "char_count": 1353
+      "char_count": 2534
     },
     {
       "id": "bubble-sort",
@@ -17720,7 +17720,7 @@
       "tags": [],
       "file": "database/db-normalization.md",
       "exists": true,
-      "char_count": 1363
+      "char_count": 2652
     },
     {
       "id": "db-migration",
@@ -17733,7 +17733,7 @@
       "tags": [],
       "file": "database/db-migration.md",
       "exists": true,
-      "char_count": 1358
+      "char_count": 3235
     },
     {
       "id": "db-connection-tuning",
@@ -54520,7 +54520,7 @@
       "tags": [],
       "file": "llm-core/llm-inference.md",
       "exists": true,
-      "char_count": 1640
+      "char_count": 3374
     },
     {
       "id": "llm-watermarking",
@@ -54585,7 +54585,7 @@
       "tags": [],
       "file": "llm-core/lora-peft.md",
       "exists": true,
-      "char_count": 1733
+      "char_count": 2676
     },
     {
       "id": "mixture-of-experts",
@@ -63820,7 +63820,7 @@
       "tags": [],
       "file": "oop/mvc-pattern.md",
       "exists": true,
-      "char_count": 1347
+      "char_count": 2472
     },
     {
       "id": "solid-principles",
@@ -64067,7 +64067,7 @@
       "tags": [],
       "file": "oop/decorator-pattern.md",
       "exists": true,
-      "char_count": 1368
+      "char_count": 3202
     },
     {
       "id": "observer-pattern",
@@ -80255,7 +80255,7 @@
       "tags": [],
       "file": "system-design/cdn.md",
       "exists": true,
-      "char_count": 1350
+      "char_count": 2709
     },
     {
       "id": "cqrs-event-sourcing",
@@ -80663,7 +80663,7 @@
       ],
       "file": "technical-art/ta-std-training.md",
       "exists": true,
-      "char_count": 1255
+      "char_count": 2515
     },
     {
       "id": "ta-poly-standard",
@@ -81383,7 +81383,7 @@
       ],
       "file": "technical-art/ta-detail-normal.md",
       "exists": true,
-      "char_count": 1259
+      "char_count": 2703
     },
     {
       "id": "ta-virtual-texturing",
@@ -81518,7 +81518,7 @@
       ],
       "file": "technical-art/ta-memory-pool.md",
       "exists": true,
-      "char_count": 1251
+      "char_count": 2776
     },
     {
       "id": "ta-mem-leak-detect",
@@ -83438,7 +83438,7 @@
       ],
       "file": "vfx/vfx-destruct-cleanup.md",
       "exists": true,
-      "char_count": 1464
+      "char_count": 2947
     },
     {
       "id": "vfx-destruct-cluster",
@@ -83483,7 +83483,7 @@
       ],
       "file": "vfx/vfx-destruct-network.md",
       "exists": true,
-      "char_count": 1260
+      "char_count": 2787
     },
     {
       "id": "vfx-destruct-runtime",
@@ -84068,7 +84068,7 @@
       ],
       "file": "vfx/vfx-fluid-fire.md",
       "exists": true,
-      "char_count": 1453
+      "char_count": 2690
     },
     {
       "id": "vfx-fluid-smoke",
@@ -84113,7 +84113,7 @@
       ],
       "file": "vfx/vfx-fluid-blood.md",
       "exists": true,
-      "char_count": 1458
+      "char_count": 2670
     },
     {
       "id": "vfx-fluid-rain",
@@ -84548,7 +84548,7 @@
       ],
       "file": "vfx/vfx-particle-rotation.md",
       "exists": true,
-      "char_count": 1468
+      "char_count": 2613
     },
     {
       "id": "vfx-particle-curve",
@@ -84713,7 +84713,7 @@
       ],
       "file": "vfx/vfx-particle-color.md",
       "exists": true,
-      "char_count": 1255
+      "char_count": 2532
     },
     {
       "id": "vfx-particle-wind",
@@ -85208,7 +85208,7 @@
       ],
       "file": "vfx/vfx-shader-dissolve.md",
       "exists": true,
-      "char_count": 1536
+      "char_count": 2493
     },
     {
       "id": "vfx-shader-panning",

@@ -232,7 +232,7 @@
       "tags": [],
       "file": "database/db-normalization.md",
       "exists": true,
-      "char_count": 1363
+      "char_count": 2652
     },
     {
       "id": "db-migration",
@@ -245,7 +245,7 @@
       "tags": [],
       "file": "database/db-migration.md",
       "exists": true,
-      "char_count": 1358
+      "char_count": 3235
     },
     {
       "id": "db-connection-tuning",
@@ -315,8 +315,8 @@
   ],
   "stats": {
     "total": 24,
-    "total_chars": 49867,
-    "avg_chars": 2077,
+    "total_chars": 53033,
+    "avg_chars": 2209,
     "domain": "database"
   }
 }

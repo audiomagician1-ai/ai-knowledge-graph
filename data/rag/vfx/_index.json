@@ -208,7 +208,7 @@
       ],
       "file": "vfx/vfx-destruct-cleanup.md",
       "exists": true,
-      "char_count": 1464
+      "char_count": 2947
     },
     {
       "id": "vfx-destruct-cluster",
@@ -253,7 +253,7 @@
       ],
       "file": "vfx/vfx-destruct-network.md",
       "exists": true,
-      "char_count": 1260
+      "char_count": 2787
     },
     {
       "id": "vfx-destruct-runtime",
@@ -838,7 +838,7 @@
       ],
       "file": "vfx/vfx-fluid-fire.md",
       "exists": true,
-      "char_count": 1453
+      "char_count": 2690
     },
     {
       "id": "vfx-fluid-smoke",
@@ -883,7 +883,7 @@
       ],
       "file": "vfx/vfx-fluid-blood.md",
       "exists": true,
-      "char_count": 1458
+      "char_count": 2670
     },
     {
       "id": "vfx-fluid-rain",
@@ -1318,7 +1318,7 @@
       ],
       "file": "vfx/vfx-particle-rotation.md",
       "exists": true,
-      "char_count": 1468
+      "char_count": 2613
     },
     {
       "id": "vfx-particle-curve",
@@ -1483,7 +1483,7 @@
       ],
       "file": "vfx/vfx-particle-color.md",
       "exists": true,
-      "char_count": 1255
+      "char_count": 2532
     },
     {
       "id": "vfx-particle-wind",
@@ -1978,7 +1978,7 @@
       ],
       "file": "vfx/vfx-shader-dissolve.md",
       "exists": true,
-      "char_count": 1536
+      "char_count": 2493
     },
     {
       "id": "vfx-shader-panning",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 329976,
-    "avg_chars": 1833,
+    "total_chars": 338814,
+    "avg_chars": 1882,
     "domain": "vfx"
   }
 }

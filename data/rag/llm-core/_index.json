@@ -154,7 +154,7 @@
       "tags": [],
       "file": "llm-core/llm-inference.md",
       "exists": true,
-      "char_count": 1640
+      "char_count": 3374
     },
     {
       "id": "llm-watermarking",
@@ -219,7 +219,7 @@
       "tags": [],
       "file": "llm-core/lora-peft.md",
       "exists": true,
-      "char_count": 1733
+      "char_count": 2676
     },
     {
       "id": "mixture-of-experts",
@@ -471,8 +471,8 @@
   ],
   "stats": {
     "total": 36,
-    "total_chars": 73993,
-    "avg_chars": 2055,
+    "total_chars": 76670,
+    "avg_chars": 2129,
     "domain": "llm-core"
   }
 }

@@ -50,7 +50,7 @@
       "tags": [],
       "file": "system-design/cdn.md",
       "exists": true,
-      "char_count": 1350
+      "char_count": 2709
     },
     {
       "id": "cqrs-event-sourcing",
@@ -328,8 +328,8 @@
   ],
   "stats": {
     "total": 25,
-    "total_chars": 61965,
-    "avg_chars": 2478,
+    "total_chars": 63324,
+    "avg_chars": 2532,
     "domain": "system-design"
   }
 }

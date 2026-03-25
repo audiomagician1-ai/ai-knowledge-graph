@@ -11,7 +11,7 @@
       "tags": [],
       "file": "oop/mvc-pattern.md",
       "exists": true,
-      "char_count": 1347
+      "char_count": 2472
     },
     {
       "id": "solid-principles",
@@ -258,7 +258,7 @@
       "tags": [],
       "file": "oop/decorator-pattern.md",
       "exists": true,
-      "char_count": 1368
+      "char_count": 3202
     },
     {
       "id": "observer-pattern",
@@ -315,8 +315,8 @@
   ],
   "stats": {
     "total": 24,
-    "total_chars": 64902,
-    "avg_chars": 2704,
+    "total_chars": 67861,
+    "avg_chars": 2827,
     "domain": "oop"
   }
 }
