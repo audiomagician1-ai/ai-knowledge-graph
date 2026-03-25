@@ -193,7 +193,7 @@
       "tags": [],
       "file": "programming-basics/data-serialization.md",
       "exists": true,
-      "char_count": 1509
+      "char_count": 3460
     },
     {
       "id": "arrays-lists",
@@ -393,8 +393,8 @@
   ],
   "stats": {
     "total": 30,
-    "total_chars": 74189,
-    "avg_chars": 2472,
+    "total_chars": 76140,
+    "avg_chars": 2538,
     "domain": "programming-basics"
   }
 }

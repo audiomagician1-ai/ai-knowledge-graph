@@ -43,7 +43,7 @@
       ],
       "file": "vfx/vfx-destruct-damage.md",
       "exists": true,
-      "char_count": 1268
+      "char_count": 2796
     },
     {
       "id": "vfx-destruct-deform",
@@ -283,7 +283,7 @@
       ],
       "file": "vfx/vfx-destruct-anchor.md",
       "exists": true,
-      "char_count": 1285
+      "char_count": 2534
     },
     {
       "id": "vfx-destruct-prefracture",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 345378,
-    "avg_chars": 1918,
+    "total_chars": 348155,
+    "avg_chars": 1934,
     "domain": "vfx"
   }
 }

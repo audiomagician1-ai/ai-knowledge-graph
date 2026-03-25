@@ -598,7 +598,7 @@
       ],
       "file": "3d-art/3da-env-atmosphere.md",
       "exists": true,
-      "char_count": 1374
+      "char_count": 2847
     },
     {
       "id": "3da-env-rock-creation",
@@ -928,7 +928,7 @@
       ],
       "file": "3d-art/3da-hs-symmetry.md",
       "exists": true,
-      "char_count": 1382
+      "char_count": 2520
     },
     {
       "id": "3da-hs-boolean-workflow",
@@ -943,7 +943,7 @@
       ],
       "file": "3d-art/3da-hs-boolean-workflow.md",
       "exists": true,
-      "char_count": 1477
+      "char_count": 3047
     },
     {
       "id": "3da-hs-architecture",
@@ -1108,7 +1108,7 @@
       ],
       "file": "3d-art/3da-hs-panel-lines.md",
       "exists": true,
-      "char_count": 1466
+      "char_count": 2483
     },
     {
       "id": "3da-modeling-intro",
@@ -1408,7 +1408,7 @@
       ],
       "file": "3d-art/3da-mirror-modifier.md",
       "exists": true,
-      "char_count": 1388
+      "char_count": 2172
     },
     {
       "id": "3da-org-tpose-apose",
@@ -2083,7 +2083,7 @@
       ],
       "file": "3d-art/3da-retopo-validation.md",
       "exists": true,
-      "char_count": 1505
+      "char_count": 2689
     },
     {
       "id": "3da-retopo-game-pipeline",
@@ -3343,7 +3343,7 @@
       ],
       "file": "3d-art/3da-uv-checker-map.md",
       "exists": true,
-      "char_count": 1375
+      "char_count": 2126
     },
     {
       "id": "3da-uv-hard-surface-uv",
@@ -4467,7 +4467,7 @@
       "tags": [],
       "file": "algorithms/time-complexity.md",
       "exists": true,
-      "char_count": 1689
+      "char_count": 2386
     },
     {
       "id": "minimum-spanning-tree",
@@ -4519,7 +4519,7 @@
       "tags": [],
       "file": "algorithms/space-complexity.md",
       "exists": true,
-      "char_count": 1376
+      "char_count": 2762
     },
     {
       "id": "counting-sort",
@@ -6324,7 +6324,7 @@
       ],
       "file": "animation/anim-mocap-workflow.md",
       "exists": true,
-      "char_count": 1390
+      "char_count": 2380
     },
     {
       "id": "anim-mocap-library",
@@ -6594,7 +6594,7 @@
       ],
       "file": "animation/anim-water-interaction.md",
       "exists": true,
-      "char_count": 1388
+      "char_count": 2527
     },
     {
       "id": "anim-physics-blend",
@@ -6774,7 +6774,7 @@
       ],
       "file": "animation/anim-humanoid-rig.md",
       "exists": true,
-      "char_count": 1491
+      "char_count": 2983
     },
     {
       "id": "anim-corrective-shapes",
@@ -7179,7 +7179,7 @@
       ],
       "file": "animation/anim-state-machine-perf.md",
       "exists": true,
-      "char_count": 1392
+      "char_count": 2288
     },
     {
       "id": "anim-animation-sm-design",
@@ -11739,7 +11739,7 @@
       ],
       "file": "computer-graphics/rasterization/cg-blending.md",
       "exists": true,
-      "char_count": 1490
+      "char_count": 2702
     },
     {
       "id": "cg-early-z",
@@ -16927,7 +16927,7 @@
       "tags": [],
       "file": "cs-fundamentals/cpu-execution.md",
       "exists": true,
-      "char_count": 1478
+      "char_count": 2930
     },
     {
       "id": "dns-basics",
@@ -17343,7 +17343,7 @@
       "tags": [],
       "file": "data-structures/array-internals.md",
       "exists": true,
-      "char_count": 1375
+      "char_count": 2850
     },
     {
       "id": "stack",
@@ -18032,7 +18032,7 @@
       "tags": [],
       "file": "devops/secret-management.md",
       "exists": true,
-      "char_count": 1496
+      "char_count": 3418
     },
     {
       "id": "log-aggregation",
@@ -72504,7 +72504,7 @@
       "tags": [],
       "file": "programming-basics/data-serialization.md",
       "exists": true,
-      "char_count": 1509
+      "char_count": 3460
     },
     {
       "id": "arrays-lists",
@@ -75938,7 +75938,7 @@
       "tags": [],
       "file": "rag-knowledge/chunking-strategies.md",
       "exists": true,
-      "char_count": 1477
+      "char_count": 2938
     },
     {
       "id": "document-parsing",
@@ -82313,7 +82313,7 @@
       ],
       "file": "technical-art/ta-streaming.md",
       "exists": true,
-      "char_count": 1278
+      "char_count": 2953
     },
     {
       "id": "ta-shadow-perf",
@@ -82553,7 +82553,7 @@
       ],
       "file": "technical-art/ta-texture-pipeline.md",
       "exists": true,
-      "char_count": 1282
+      "char_count": 2799
     },
     {
       "id": "ta-asset-review",
@@ -83153,7 +83153,7 @@
       ],
       "file": "technical-art/ta-tool-testing.md",
       "exists": true,
-      "char_count": 1281
+      "char_count": 2511
     },
     {
       "id": "ta-tool-ux",
@@ -83273,7 +83273,7 @@
       ],
       "file": "vfx/vfx-destruct-damage.md",
       "exists": true,
-      "char_count": 1268
+      "char_count": 2796
     },
     {
       "id": "vfx-destruct-deform",
@@ -83513,7 +83513,7 @@
       ],
       "file": "vfx/vfx-destruct-anchor.md",
       "exists": true,
-      "char_count": 1285
+      "char_count": 2534
     },
     {
       "id": "vfx-destruct-prefracture",
@@ -86240,7 +86240,7 @@
       "tags": [],
       "file": "web-backend/pagination-cursor.md",
       "exists": true,
-      "char_count": 1502
+      "char_count": 2863
     },
     {
       "id": "caching-strategies",
@@ -86617,7 +86617,7 @@
       "tags": [],
       "file": "web-frontend/css-responsive.md",
       "exists": true,
-      "char_count": 1391
+      "char_count": 3401
     },
     {
       "id": "async-js",

@@ -310,7 +310,7 @@
       "tags": [],
       "file": "web-backend/pagination-cursor.md",
       "exists": true,
-      "char_count": 1502
+      "char_count": 2863
     },
     {
       "id": "caching-strategies",
@@ -354,8 +354,8 @@
   ],
   "stats": {
     "total": 27,
-    "total_chars": 59995,
-    "avg_chars": 2222,
+    "total_chars": 61356,
+    "avg_chars": 2272,
     "domain": "web-backend"
   }
 }

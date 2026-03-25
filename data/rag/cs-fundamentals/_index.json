@@ -11,7 +11,7 @@
       "tags": [],
       "file": "cs-fundamentals/cpu-execution.md",
       "exists": true,
-      "char_count": 1478
+      "char_count": 2930
     },
     {
       "id": "dns-basics",
@@ -237,8 +237,8 @@
   ],
   "stats": {
     "total": 18,
-    "total_chars": 41127,
-    "avg_chars": 2284,
+    "total_chars": 42579,
+    "avg_chars": 2365,
     "domain": "cs-fundamentals"
   }
 }

@@ -1738,7 +1738,7 @@
       ],
       "file": "animation/anim-mocap-workflow.md",
       "exists": true,
-      "char_count": 1390
+      "char_count": 2380
     },
     {
       "id": "anim-mocap-library",
@@ -2008,7 +2008,7 @@
       ],
       "file": "animation/anim-water-interaction.md",
       "exists": true,
-      "char_count": 1388
+      "char_count": 2527
     },
     {
       "id": "anim-physics-blend",
@@ -2188,7 +2188,7 @@
       ],
       "file": "animation/anim-humanoid-rig.md",
       "exists": true,
-      "char_count": 1491
+      "char_count": 2983
     },
     {
       "id": "anim-corrective-shapes",
@@ -2593,7 +2593,7 @@
       ],
       "file": "animation/anim-state-machine-perf.md",
       "exists": true,
-      "char_count": 1392
+      "char_count": 2288
     },
     {
       "id": "anim-animation-sm-design",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 346342,
-    "avg_chars": 1924,
+    "total_chars": 350859,
+    "avg_chars": 1949,
     "domain": "animation"
   }
 }

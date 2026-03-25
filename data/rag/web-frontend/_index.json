@@ -336,7 +336,7 @@
       "tags": [],
       "file": "web-frontend/css-responsive.md",
       "exists": true,
-      "char_count": 1391
+      "char_count": 3401
     },
     {
       "id": "async-js",
@@ -432,8 +432,8 @@
   ],
   "stats": {
     "total": 33,
-    "total_chars": 72164,
-    "avg_chars": 2186,
+    "total_chars": 74174,
+    "avg_chars": 2247,
     "domain": "web-frontend"
   }
 }

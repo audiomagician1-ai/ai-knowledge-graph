@@ -1873,7 +1873,7 @@
       ],
       "file": "computer-graphics/rasterization/cg-blending.md",
       "exists": true,
-      "char_count": 1490
+      "char_count": 2702
     },
     {
       "id": "cg-early-z",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 514125,
-    "avg_chars": 2056,
+    "total_chars": 515337,
+    "avg_chars": 2061,
     "domain": "computer-graphics"
   }
 }

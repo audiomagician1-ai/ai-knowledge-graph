@@ -336,7 +336,7 @@
       "tags": [],
       "file": "algorithms/time-complexity.md",
       "exists": true,
-      "char_count": 1689
+      "char_count": 2386
     },
     {
       "id": "minimum-spanning-tree",
@@ -388,7 +388,7 @@
       "tags": [],
       "file": "algorithms/space-complexity.md",
       "exists": true,
-      "char_count": 1376
+      "char_count": 2762
     },
     {
       "id": "counting-sort",
@@ -458,8 +458,8 @@
   ],
   "stats": {
     "total": 35,
-    "total_chars": 76353,
-    "avg_chars": 2181,
+    "total_chars": 78436,
+    "avg_chars": 2241,
     "domain": "algorithms"
   }
 }

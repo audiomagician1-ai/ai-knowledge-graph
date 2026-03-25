@@ -193,7 +193,7 @@
       "tags": [],
       "file": "data-structures/array-internals.md",
       "exists": true,
-      "char_count": 1375
+      "char_count": 2850
     },
     {
       "id": "stack",
@@ -341,8 +341,8 @@
   ],
   "stats": {
     "total": 26,
-    "total_chars": 58094,
-    "avg_chars": 2234,
+    "total_chars": 59569,
+    "avg_chars": 2291,
     "domain": "data-structures"
   }
 }

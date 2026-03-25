@@ -232,7 +232,7 @@
       "tags": [],
       "file": "devops/secret-management.md",
       "exists": true,
-      "char_count": 1496
+      "char_count": 3418
     },
     {
       "id": "log-aggregation",
@@ -289,8 +289,8 @@
   ],
   "stats": {
     "total": 22,
-    "total_chars": 42325,
-    "avg_chars": 1923,
+    "total_chars": 44247,
+    "avg_chars": 2011,
     "domain": "devops"
   }
 }

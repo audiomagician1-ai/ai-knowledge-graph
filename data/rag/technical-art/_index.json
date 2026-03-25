@@ -1783,7 +1783,7 @@
       ],
       "file": "technical-art/ta-streaming.md",
       "exists": true,
-      "char_count": 1278
+      "char_count": 2953
     },
     {
       "id": "ta-shadow-perf",
@@ -2023,7 +2023,7 @@
       ],
       "file": "technical-art/ta-texture-pipeline.md",
       "exists": true,
-      "char_count": 1282
+      "char_count": 2799
     },
     {
       "id": "ta-asset-review",
@@ -2623,7 +2623,7 @@
       ],
       "file": "technical-art/ta-tool-testing.md",
       "exists": true,
-      "char_count": 1281
+      "char_count": 2511
     },
     {
       "id": "ta-tool-ux",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 325559,
-    "avg_chars": 1808,
+    "total_chars": 329981,
+    "avg_chars": 1833,
     "domain": "technical-art"
   }
 }

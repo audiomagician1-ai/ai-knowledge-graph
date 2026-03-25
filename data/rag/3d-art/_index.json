@@ -598,7 +598,7 @@
       ],
       "file": "3d-art/3da-env-atmosphere.md",
       "exists": true,
-      "char_count": 1374
+      "char_count": 2847
     },
     {
       "id": "3da-env-rock-creation",
@@ -928,7 +928,7 @@
       ],
       "file": "3d-art/3da-hs-symmetry.md",
       "exists": true,
-      "char_count": 1382
+      "char_count": 2520
     },
     {
       "id": "3da-hs-boolean-workflow",
@@ -943,7 +943,7 @@
       ],
       "file": "3d-art/3da-hs-boolean-workflow.md",
       "exists": true,
-      "char_count": 1477
+      "char_count": 3047
     },
     {
       "id": "3da-hs-architecture",
@@ -1108,7 +1108,7 @@
       ],
       "file": "3d-art/3da-hs-panel-lines.md",
       "exists": true,
-      "char_count": 1466
+      "char_count": 2483
     },
     {
       "id": "3da-modeling-intro",
@@ -1408,7 +1408,7 @@
       ],
       "file": "3d-art/3da-mirror-modifier.md",
       "exists": true,
-      "char_count": 1388
+      "char_count": 2172
     },
     {
       "id": "3da-org-tpose-apose",
@@ -2083,7 +2083,7 @@
       ],
       "file": "3d-art/3da-retopo-validation.md",
       "exists": true,
-      "char_count": 1505
+      "char_count": 2689
     },
     {
       "id": "3da-retopo-game-pipeline",
@@ -3343,7 +3343,7 @@
       ],
       "file": "3d-art/3da-uv-checker-map.md",
       "exists": true,
-      "char_count": 1375
+      "char_count": 2126
     },
     {
       "id": "3da-uv-hard-surface-uv",
@@ -3393,8 +3393,8 @@
   ],
   "stats": {
     "total": 226,
-    "total_chars": 471429,
-    "avg_chars": 2085,
+    "total_chars": 479346,
+    "avg_chars": 2121,
     "domain": "3d-art"
   }
 }

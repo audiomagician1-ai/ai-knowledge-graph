@@ -232,7 +232,7 @@
       "tags": [],
       "file": "rag-knowledge/chunking-strategies.md",
       "exists": true,
-      "char_count": 1477
+      "char_count": 2938
     },
     {
       "id": "document-parsing",
@@ -302,8 +302,8 @@
   ],
   "stats": {
     "total": 23,
-    "total_chars": 44108,
-    "avg_chars": 1917,
+    "total_chars": 45569,
+    "avg_chars": 1981,
     "domain": "rag-knowledge"
   }
 }
