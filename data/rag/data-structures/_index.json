@@ -141,7 +141,7 @@
       "tags": [],
       "file": "data-structures/trie.md",
       "exists": true,
-      "char_count": 1417
+      "char_count": 2719
     },
     {
       "id": "bloom-filter",
@@ -342,8 +342,8 @@
   "stats": {
     "total": 26,
     "total_docs": 26,
-    "total_chars": 60170,
-    "avg_chars": 2314,
+    "total_chars": 61472,
+    "avg_chars": 2364,
     "domain": "data-structures",
     "by_subdomain": {
       "binary-tree": {
@@ -352,7 +352,7 @@
       },
       "data-structures": {
         "count": 25,
-        "chars": 57517
+        "chars": 58819
       }
     }
   }

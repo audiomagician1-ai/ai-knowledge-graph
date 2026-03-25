@@ -298,35 +298,18 @@
       "file": "oop/adapter-pattern.md",
       "exists": true,
       "char_count": 2980
-    },
-    {
-      "id": "command-pattern",
-      "name": "命令模式",
-      "domain_id": "game-engine",
-      "subdomain_id": "scripting-system",
-      "subdomain_name": "脚本系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [],
-      "file": "oop/command-pattern.md",
-      "exists": true,
-      "char_count": 1624
     }
   ],
   "stats": {
-    "total": 24,
-    "total_docs": 24,
-    "total_chars": 67861,
-    "avg_chars": 2827,
+    "total": 23,
+    "total_docs": 23,
+    "total_chars": 66237,
+    "avg_chars": 2879,
     "domain": "oop",
     "by_subdomain": {
       "oop": {
         "count": 23,
         "chars": 66237
-      },
-      "scripting-system": {
-        "count": 1,
-        "chars": 1624
       }
     }
   }

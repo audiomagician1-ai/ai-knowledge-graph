@@ -2536,21 +2536,6 @@
       "char_count": 2169
     },
     {
-      "id": "onboarding-design",
-      "name": "新手引导设计",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 3,
-      "is_milestone": true,
-      "tags": [
-        "引导"
-      ],
-      "file": "game-design/core-loop/onboarding-design.md",
-      "exists": true,
-      "char_count": 1436
-    },
-    {
       "id": "achievement-system",
       "name": "成就系统",
       "domain_id": "game-engine",
@@ -2851,21 +2836,6 @@
       "char_count": 2443
     },
     {
-      "id": "mvp-design",
-      "name": "MVP设计",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "方法论"
-      ],
-      "file": "game-design/systems-design/mvp-design.md",
-      "exists": true,
-      "char_count": 1243
-    },
-    {
       "id": "systems-thinking",
       "name": "系统思维",
       "domain_id": "product-design",
@@ -3149,36 +3119,6 @@
       "file": "game-design/randomness-design/dice-mechanics.md",
       "exists": true,
       "char_count": 2229
-    },
-    {
-      "id": "weather-system",
-      "name": "天气系统",
-      "domain_id": "game-engine",
-      "subdomain_id": "scene-management",
-      "subdomain_name": "场景管理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "环境"
-      ],
-      "file": "game-design/systems-design/weather-system.md",
-      "exists": true,
-      "char_count": 1302
-    },
-    {
-      "id": "replay-system",
-      "name": "回放系统",
-      "domain_id": "game-engine",
-      "subdomain_id": "serialization",
-      "subdomain_name": "序列化",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "分享"
-      ],
-      "file": "game-design/social-systems/replay-system.md",
-      "exists": true,
-      "char_count": 2276
     },
     {
       "id": "elo-rating",
@@ -3734,28 +3674,13 @@
       "file": "game-design/systems-design/faction-system.md",
       "exists": true,
       "char_count": 2363
-    },
-    {
-      "id": "competitive-analysis",
-      "name": "竞品分析",
-      "domain_id": "product-design",
-      "subdomain_id": "user-research",
-      "subdomain_name": "用户研究",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "研究"
-      ],
-      "file": "game-design/design-docs/competitive-analysis.md",
-      "exists": true,
-      "char_count": 1339
     }
   ],
   "stats": {
-    "total": 250,
-    "total_docs": 250,
-    "total_chars": 589292,
-    "avg_chars": 2357,
+    "total": 245,
+    "total_docs": 245,
+    "total_chars": 581696,
+    "avg_chars": 2374,
     "domain": "game-design",
     "by_subdomain": {
       "accessibility": {
@@ -3794,10 +3719,6 @@
         "count": 22,
         "chars": 52999
       },
-      "interaction-design": {
-        "count": 1,
-        "chars": 1436
-      },
       "platform-abstraction": {
         "count": 1,
         "chars": 2452
@@ -3807,20 +3728,12 @@
         "chars": 44479
       },
       "product-thinking": {
-        "count": 2,
-        "chars": 3676
+        "count": 1,
+        "chars": 2433
       },
       "randomness-design": {
         "count": 18,
         "chars": 42468
-      },
-      "scene-management": {
-        "count": 1,
-        "chars": 1302
-      },
-      "serialization": {
-        "count": 1,
-        "chars": 2276
       },
       "social-systems": {
         "count": 17,
@@ -3829,10 +3742,6 @@
       "systems-design": {
         "count": 20,
         "chars": 47821
-      },
-      "user-research": {
-        "count": 1,
-        "chars": 1339
       }
     }
   }

@@ -1531,21 +1531,6 @@
       "char_count": 2282
     },
     {
-      "id": "graph-coloring",
-      "name": "图着色",
-      "domain_id": "mathematics",
-      "subdomain_id": "discrete-math",
-      "subdomain_name": "离散数学",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "经典"
-      ],
-      "file": "mathematics/discrete-math/graph-coloring.md",
-      "exists": true,
-      "char_count": 2362
-    },
-    {
       "id": "graph-theory-basics",
       "name": "图论基础",
       "domain_id": "mathematics",
@@ -3466,21 +3451,6 @@
       "char_count": 2791
     },
     {
-      "id": "descriptive-statistics",
-      "name": "描述统计",
-      "domain_id": "psychology",
-      "subdomain_id": "research-methods",
-      "subdomain_name": "研究方法",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/statistics/descriptive-statistics.md",
-      "exists": true,
-      "char_count": 2744
-    },
-    {
       "id": "bootstrap-methods",
       "name": "Bootstrap方法",
       "domain_id": "mathematics",
@@ -3646,21 +3616,6 @@
       "char_count": 2258
     },
     {
-      "id": "linear-regression",
-      "name": "线性回归",
-      "domain_id": "mathematics",
-      "subdomain_id": "statistics",
-      "subdomain_name": "数理统计",
-      "difficulty": 6,
-      "is_milestone": true,
-      "tags": [
-        "里程碑"
-      ],
-      "file": "mathematics/statistics/linear-regression.md",
-      "exists": true,
-      "char_count": 2904
-    },
-    {
       "id": "confidence-intervals",
       "name": "置信区间",
       "domain_id": "mathematics",
@@ -3689,21 +3644,6 @@
       "file": "mathematics/statistics/bayesian-statistics.md",
       "exists": true,
       "char_count": 2879
-    },
-    {
-      "id": "logistic-regression",
-      "name": "逻辑回归",
-      "domain_id": "mathematics",
-      "subdomain_id": "statistics",
-      "subdomain_name": "数理统计",
-      "difficulty": 7,
-      "is_milestone": false,
-      "tags": [
-        "应用"
-      ],
-      "file": "mathematics/statistics/logistic-regression.md",
-      "exists": true,
-      "char_count": 1492
     },
     {
       "id": "nonparametric-tests",
@@ -4019,28 +3959,13 @@
       "file": "mathematics/trigonometry/product-sum-formulas.md",
       "exists": true,
       "char_count": 2449
-    },
-    {
-      "id": "data-visualization",
-      "name": "数据可视化",
-      "domain_id": "product-design",
-      "subdomain_id": "visual-design",
-      "subdomain_name": "视觉设计",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "基础"
-      ],
-      "file": "mathematics/statistics/data-visualization.md",
-      "exists": true,
-      "char_count": 1462
     }
   ],
   "stats": {
-    "total": 269,
-    "total_docs": 269,
-    "total_chars": 712525,
-    "avg_chars": 2648,
+    "total": 264,
+    "total_docs": 264,
+    "total_chars": 701561,
+    "avg_chars": 2657,
     "domain": "mathematics",
     "by_subdomain": {
       "algebra": {
@@ -4060,8 +3985,8 @@
         "chars": 96570
       },
       "discrete-math": {
-        "count": 20,
-        "chars": 50632
+        "count": 19,
+        "chars": 48270
       },
       "geometry": {
         "count": 22,
@@ -4088,20 +4013,16 @@
         "chars": 59726
       },
       "research-methods": {
-        "count": 3,
-        "chars": 8427
+        "count": 2,
+        "chars": 5683
       },
       "statistics": {
-        "count": 16,
-        "chars": 44372
+        "count": 14,
+        "chars": 39976
       },
       "trigonometry": {
         "count": 20,
         "chars": 55944
-      },
-      "visual-design": {
-        "count": 1,
-        "chars": 1462
       }
     }
   }

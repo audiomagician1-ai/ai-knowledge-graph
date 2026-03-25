@@ -1843,7 +1843,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-lens-flare.md",
       "exists": true,
-      "char_count": 1392
+      "char_count": 2466
     },
     {
       "id": "cg-fog-pp",
@@ -2368,7 +2368,7 @@
       ],
       "file": "computer-graphics/ray-tracing/cg-rt-gi.md",
       "exists": true,
-      "char_count": 1426
+      "char_count": 2884
     },
     {
       "id": "cg-rt-reflection",
@@ -2668,7 +2668,7 @@
       ],
       "file": "computer-graphics/render-optimization/cg-streaming-opt.md",
       "exists": true,
-      "char_count": 1422
+      "char_count": 2916
     },
     {
       "id": "cg-optim-intro",
@@ -3118,7 +3118,7 @@
       ],
       "file": "computer-graphics/shader-programming/cg-vertex-shader.md",
       "exists": true,
-      "char_count": 1415
+      "char_count": 2613
     },
     {
       "id": "cg-mipmap",
@@ -3193,7 +3193,7 @@
       ],
       "file": "computer-graphics/texture-techniques/cg-aniso-filtering.md",
       "exists": true,
-      "char_count": 1407
+      "char_count": 2392
     },
     {
       "id": "cg-material-textures",
@@ -3238,7 +3238,7 @@
       ],
       "file": "computer-graphics/texture-techniques/cg-procedural-texture.md",
       "exists": true,
-      "char_count": 1413
+      "char_count": 2382
     },
     {
       "id": "cg-cube-mapping",
@@ -3688,7 +3688,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-fire-explosion.md",
       "exists": true,
-      "char_count": 1395
+      "char_count": 2661
     },
     {
       "id": "cg-smoke-sim",
@@ -3754,8 +3754,8 @@
   "stats": {
     "total": 250,
     "total_docs": 250,
-    "total_chars": 548057,
-    "avg_chars": 2192,
+    "total_chars": 556501,
+    "avg_chars": 2226,
     "domain": "computer-graphics",
     "by_subdomain": {
       "anti-aliasing": {
@@ -3780,7 +3780,7 @@
       },
       "post-processing": {
         "count": 21,
-        "chars": 47258
+        "chars": 48332
       },
       "rasterization": {
         "count": 22,
@@ -3788,23 +3788,23 @@
       },
       "ray-tracing": {
         "count": 21,
-        "chars": 51198
+        "chars": 52656
       },
       "render-optimization": {
         "count": 20,
-        "chars": 43266
+        "chars": 44760
       },
       "shader-programming": {
         "count": 21,
-        "chars": 39190
+        "chars": 40388
       },
       "texture-techniques": {
         "count": 21,
-        "chars": 43402
+        "chars": 45356
       },
       "volume-rendering": {
         "count": 21,
-        "chars": 52570
+        "chars": 53836
       }
     }
   }

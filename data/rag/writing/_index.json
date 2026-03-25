@@ -226,21 +226,6 @@
       "char_count": 2666
     },
     {
-      "id": "hedging-language",
-      "name": "模糊限制语",
-      "domain_id": "writing",
-      "subdomain_id": "academic-writing",
-      "subdomain_name": "学术写作",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "语言"
-      ],
-      "file": "writing/academic-writing/hedging-language.md",
-      "exists": true,
-      "char_count": 2522
-    },
-    {
       "id": "research-methodology",
       "name": "研究方法论写作",
       "domain_id": "writing",
@@ -253,7 +238,7 @@
       ],
       "file": "writing/academic-writing/research-methodology.md",
       "exists": true,
-      "char_count": 1521
+      "char_count": 4191
     },
     {
       "id": "research-question",
@@ -703,7 +688,7 @@
       ],
       "file": "writing/expository-writing/informative-writing.md",
       "exists": true,
-      "char_count": 1522
+      "char_count": 3909
     },
     {
       "id": "classification-essay",
@@ -793,7 +778,7 @@
       ],
       "file": "writing/expository-writing/descriptive-essay.md",
       "exists": true,
-      "char_count": 1392
+      "char_count": 3664
     },
     {
       "id": "summary-writing",
@@ -1588,7 +1573,7 @@
       ],
       "file": "writing/persuasive-writing/logical-reasoning-writing.md",
       "exists": true,
-      "char_count": 1496
+      "char_count": 3841
     },
     {
       "id": "logos-strategies",
@@ -1618,7 +1603,7 @@
       ],
       "file": "writing/persuasive-writing/logical-fallacies-writing.md",
       "exists": true,
-      "char_count": 1413
+      "char_count": 3791
     },
     {
       "id": "seo-writing",
@@ -1678,7 +1663,7 @@
       ],
       "file": "writing/professional-writing/crisis-communication.md",
       "exists": true,
-      "char_count": 1506
+      "char_count": 3944
     },
     {
       "id": "contract-legal-writing",
@@ -1858,7 +1843,7 @@
       ],
       "file": "writing/professional-writing/social-media-writing.md",
       "exists": true,
-      "char_count": 1403
+      "char_count": 4081
     },
     {
       "id": "resume-cover-letter",
@@ -1933,7 +1918,7 @@
       ],
       "file": "writing/revision-craft/ai-writing-tools.md",
       "exists": true,
-      "char_count": 1573
+      "char_count": 3304
     },
     {
       "id": "fact-verification",
@@ -1963,7 +1948,7 @@
       ],
       "file": "writing/revision-craft/portfolio-building.md",
       "exists": true,
-      "char_count": 1492
+      "char_count": 3719
     },
     {
       "id": "revision-overview",
@@ -2008,7 +1993,7 @@
       ],
       "file": "writing/revision-craft/style-guide.md",
       "exists": true,
-      "char_count": 1352
+      "char_count": 4555
     },
     {
       "id": "cutting-killing-darlings",
@@ -2023,7 +2008,7 @@
       ],
       "file": "writing/revision-craft/cutting-killing-darlings.md",
       "exists": true,
-      "char_count": 1409
+      "char_count": 3969
     },
     {
       "id": "developmental-editing",
@@ -2038,7 +2023,7 @@
       ],
       "file": "writing/revision-craft/developmental-editing.md",
       "exists": true,
-      "char_count": 1491
+      "char_count": 3939
     },
     {
       "id": "sentence-level-editing",
@@ -2143,7 +2128,7 @@
       ],
       "file": "writing/revision-craft/structural-revision.md",
       "exists": true,
-      "char_count": 1440
+      "char_count": 3246
     },
     {
       "id": "editor-author-relation",
@@ -2158,7 +2143,7 @@
       ],
       "file": "writing/revision-craft/editor-author-relation.md",
       "exists": true,
-      "char_count": 2431
+      "char_count": 2671
     },
     {
       "id": "self-editing",
@@ -2341,21 +2326,6 @@
       "char_count": 3069
     },
     {
-      "id": "sentence-variety",
-      "name": "句式变化",
-      "domain_id": "writing",
-      "subdomain_id": "writing-fundamentals",
-      "subdomain_name": "写作基础",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "风格"
-      ],
-      "file": "writing/writing-fundamentals/sentence-variety.md",
-      "exists": true,
-      "char_count": 2328
-    },
-    {
       "id": "parallel-structure",
       "name": "平行结构",
       "domain_id": "writing",
@@ -2401,21 +2371,6 @@
       "char_count": 2089
     },
     {
-      "id": "paragraph-structure",
-      "name": "段落结构",
-      "domain_id": "writing",
-      "subdomain_id": "writing-fundamentals",
-      "subdomain_name": "写作基础",
-      "difficulty": 1,
-      "is_milestone": true,
-      "tags": [
-        "结构"
-      ],
-      "file": "writing/writing-fundamentals/paragraph-structure.md",
-      "exists": true,
-      "char_count": 2303
-    },
-    {
       "id": "freewriting-techniques",
       "name": "自由写作技法",
       "domain_id": "writing",
@@ -2428,7 +2383,7 @@
       ],
       "file": "writing/writing-fundamentals/freewriting-techniques.md",
       "exists": true,
-      "char_count": 2342
+      "char_count": 2515
     },
     {
       "id": "vocabulary-building",
@@ -2444,21 +2399,6 @@
       "file": "writing/writing-fundamentals/vocabulary-building.md",
       "exists": true,
       "char_count": 2599
-    },
-    {
-      "id": "word-choice",
-      "name": "词语选择",
-      "domain_id": "writing",
-      "subdomain_id": "writing-fundamentals",
-      "subdomain_name": "写作基础",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "语言"
-      ],
-      "file": "writing/writing-fundamentals/word-choice.md",
-      "exists": true,
-      "char_count": 2431
     },
     {
       "id": "tone-and-voice",
@@ -2552,15 +2492,15 @@
     }
   ],
   "stats": {
-    "total": 170,
-    "total_docs": 170,
-    "total_chars": 409197,
-    "avg_chars": 2407,
+    "total": 166,
+    "total_docs": 166,
+    "total_chars": 431169,
+    "avg_chars": 2597,
     "domain": "writing",
     "by_subdomain": {
       "academic-writing": {
-        "count": 22,
-        "chars": 54878
+        "count": 21,
+        "chars": 55026
       },
       "creative-writing": {
         "count": 22,
@@ -2568,7 +2508,7 @@
       },
       "expository-writing": {
         "count": 20,
-        "chars": 45939
+        "chars": 50598
       },
       "narrative-writing": {
         "count": 22,
@@ -2576,19 +2516,19 @@
       },
       "persuasive-writing": {
         "count": 22,
-        "chars": 54669
+        "chars": 59392
       },
       "professional-writing": {
         "count": 20,
-        "chars": 48003
+        "chars": 53119
       },
       "revision-craft": {
         "count": 20,
-        "chars": 43000
+        "chars": 57215
       },
       "writing-fundamentals": {
-        "count": 22,
-        "chars": 55259
+        "count": 19,
+        "chars": 48370
       }
     }
   }

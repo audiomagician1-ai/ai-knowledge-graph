@@ -1,21 +1,6 @@
 {
   "documents": [
     {
-      "id": "behavioral-economics",
-      "name": "行为经济学",
-      "domain_id": "psychology",
-      "subdomain_id": "behavioral-psychology",
-      "subdomain_name": "行为心理学",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "高级"
-      ],
-      "file": "product-design/product-thinking/behavioral-economics.md",
-      "exists": true,
-      "char_count": 1453
-    },
-    {
       "id": "ab-testing-analysis",
       "name": "A/B测试分析",
       "domain_id": "product-design",
@@ -88,7 +73,7 @@
       ],
       "file": "product-design/data-driven/analytics-tools.md",
       "exists": true,
-      "char_count": 2936
+      "char_count": 3103
     },
     {
       "id": "feature-flag",
@@ -1681,21 +1666,6 @@
       "char_count": 2884
     },
     {
-      "id": "systems-thinking",
-      "name": "系统思维",
-      "domain_id": "product-design",
-      "subdomain_id": "product-thinking",
-      "subdomain_name": "产品思维",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "思维"
-      ],
-      "file": "product-design/product-thinking/systems-thinking.md",
-      "exists": true,
-      "char_count": 2326
-    },
-    {
       "id": "blue-ocean-strategy",
       "name": "蓝海战略",
       "domain_id": "product-design",
@@ -1724,21 +1694,6 @@
       "file": "product-design/product-thinking/design-thinking.md",
       "exists": true,
       "char_count": 2586
-    },
-    {
-      "id": "content-marketing",
-      "name": "内容营销写作",
-      "domain_id": "writing",
-      "subdomain_id": "professional-writing",
-      "subdomain_name": "职业写作",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "获客"
-      ],
-      "file": "product-design/growth/content-marketing.md",
-      "exists": true,
-      "char_count": 1457
     },
     {
       "id": "ab-testing-design",
@@ -2732,19 +2687,15 @@
     }
   ],
   "stats": {
-    "total": 182,
-    "total_docs": 182,
-    "total_chars": 391243,
-    "avg_chars": 2149,
+    "total": 179,
+    "total_docs": 179,
+    "total_chars": 386174,
+    "avg_chars": 2157,
     "domain": "product-design",
     "by_subdomain": {
-      "behavioral-psychology": {
-        "count": 1,
-        "chars": 1453
-      },
       "data-driven": {
         "count": 22,
-        "chars": 47031
+        "chars": 47198
       },
       "growth": {
         "count": 21,
@@ -2759,12 +2710,8 @@
         "chars": 48752
       },
       "product-thinking": {
-        "count": 23,
-        "chars": 46308
-      },
-      "professional-writing": {
-        "count": 1,
-        "chars": 1457
+        "count": 22,
+        "chars": 43982
       },
       "prototyping": {
         "count": 20,

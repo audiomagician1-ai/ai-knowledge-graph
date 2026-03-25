@@ -1411,21 +1411,6 @@
       "char_count": 1546
     },
     {
-      "id": "behavioral-finance",
-      "name": "行为金融学",
-      "domain_id": "finance",
-      "subdomain_id": "investment-basics",
-      "subdomain_name": "投资基础",
-      "difficulty": 3,
-      "is_milestone": false,
-      "tags": [
-        "金融"
-      ],
-      "file": "economics/behavioral-econ/behavioral-finance.md",
-      "exists": true,
-      "char_count": 1513
-    },
-    {
       "id": "gdp-measurement",
       "name": "GDP核算",
       "domain_id": "economics",
@@ -2176,21 +2161,6 @@
       "char_count": 2422
     },
     {
-      "id": "endowment-effect",
-      "name": "禀赋效应",
-      "domain_id": "game-design",
-      "subdomain_id": "player-psychology",
-      "subdomain_name": "玩家心理",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "偏差"
-      ],
-      "file": "economics/behavioral-econ/endowment-effect.md",
-      "exists": true,
-      "char_count": 1395
-    },
-    {
       "id": "property-rights-econ",
       "name": "产权经济学",
       "domain_id": "economics",
@@ -2521,21 +2491,6 @@
       "char_count": 2814
     },
     {
-      "id": "maximum-likelihood",
-      "name": "最大似然估计详解",
-      "domain_id": "mathematics",
-      "subdomain_id": "statistics",
-      "subdomain_name": "数理统计",
-      "difficulty": 8,
-      "is_milestone": false,
-      "tags": [
-        "高级"
-      ],
-      "file": "economics/econometrics/maximum-likelihood.md",
-      "exists": true,
-      "char_count": 1510
-    },
-    {
       "id": "linear-regression",
       "name": "线性回归",
       "domain_id": "mathematics",
@@ -2552,10 +2507,10 @@
     }
   ],
   "stats": {
-    "total": 170,
-    "total_docs": 170,
-    "total_chars": 379047,
-    "avg_chars": 2229,
+    "total": 167,
+    "total_docs": 167,
+    "total_chars": 374629,
+    "avg_chars": 2243,
     "domain": "economics",
     "by_subdomain": {
       "behavioral-econ": {
@@ -2578,10 +2533,6 @@
         "count": 22,
         "chars": 46142
       },
-      "investment-basics": {
-        "count": 1,
-        "chars": 1513
-      },
       "macroeconomics": {
         "count": 25,
         "chars": 54287
@@ -2590,17 +2541,13 @@
         "count": 25,
         "chars": 60787
       },
-      "player-psychology": {
-        "count": 1,
-        "chars": 1395
-      },
       "public-econ": {
         "count": 22,
         "chars": 49849
       },
       "statistics": {
-        "count": 2,
-        "chars": 4805
+        "count": 1,
+        "chars": 3295
       }
     }
   }

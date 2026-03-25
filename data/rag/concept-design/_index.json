@@ -163,7 +163,7 @@
       ],
       "file": "concept-design/cd-hand-foot-sketch.md",
       "exists": true,
-      "char_count": 1397
+      "char_count": 2570
     },
     {
       "id": "cd-construction-drawing",
@@ -613,7 +613,7 @@
       ],
       "file": "concept-design/cd-color-key.md",
       "exists": true,
-      "char_count": 1365
+      "char_count": 2312
     },
     {
       "id": "cd-color-in-light",
@@ -703,7 +703,7 @@
       ],
       "file": "concept-design/cd-gamut-mapping.md",
       "exists": true,
-      "char_count": 1392
+      "char_count": 2536
     },
     {
       "id": "cd-color-grading",
@@ -1348,7 +1348,7 @@
       ],
       "file": "concept-design/cd-env-vegetation-design.md",
       "exists": true,
-      "char_count": 1408
+      "char_count": 2313
     },
     {
       "id": "cd-env-modular-thinking",
@@ -3304,13 +3304,13 @@
   "stats": {
     "total": 220,
     "total_docs": 220,
-    "total_chars": 461351,
-    "avg_chars": 2097,
+    "total_chars": 465520,
+    "avg_chars": 2116,
     "domain": "concept-design",
     "by_subdomain": {
       "anatomy-sketching": {
         "count": 20,
-        "chars": 38572
+        "chars": 39745
       },
       "character-design": {
         "count": 20,
@@ -3318,7 +3318,7 @@
       },
       "color-theory": {
         "count": 20,
-        "chars": 42110
+        "chars": 44201
       },
       "composition": {
         "count": 20,
@@ -3326,7 +3326,7 @@
       },
       "environment-design": {
         "count": 20,
-        "chars": 45887
+        "chars": 46792
       },
       "light-shadow": {
         "count": 20,

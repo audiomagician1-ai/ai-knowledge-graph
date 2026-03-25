@@ -16,36 +16,6 @@
       "char_count": 2643
     },
     {
-      "id": "endocrine-system",
-      "name": "内分泌系统",
-      "domain_id": "psychology",
-      "subdomain_id": "biological-psychology",
-      "subdomain_name": "生物心理学",
-      "difficulty": 2,
-      "is_milestone": true,
-      "tags": [
-        "系统"
-      ],
-      "file": "biology/human-physiology/endocrine-system.md",
-      "exists": true,
-      "char_count": 1490
-    },
-    {
-      "id": "autonomic-nervous-system",
-      "name": "自主神经系统",
-      "domain_id": "psychology",
-      "subdomain_id": "biological-psychology",
-      "subdomain_name": "生物心理学",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [
-        "神经"
-      ],
-      "file": "biology/human-physiology/autonomic-nervous-system.md",
-      "exists": true,
-      "char_count": 1399
-    },
-    {
       "id": "biomimetics",
       "name": "仿生学",
       "domain_id": "biology",
@@ -2582,19 +2552,15 @@
     }
   ],
   "stats": {
-    "total": 172,
-    "total_docs": 172,
-    "total_chars": 414452,
-    "avg_chars": 2409,
+    "total": 170,
+    "total_docs": 170,
+    "total_chars": 411563,
+    "avg_chars": 2420,
     "domain": "biology",
     "by_subdomain": {
       "behavioral-psychology": {
         "count": 1,
         "chars": 2643
-      },
-      "biological-psychology": {
-        "count": 2,
-        "chars": 2889
       },
       "botany-zoology": {
         "count": 20,

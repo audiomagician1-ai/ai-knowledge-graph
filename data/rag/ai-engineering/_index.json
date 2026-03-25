@@ -1506,7 +1506,7 @@
       "tags": [],
       "file": "data-structures/trie.md",
       "exists": true,
-      "char_count": 1417
+      "char_count": 2719
     },
     {
       "id": "bloom-filter",
@@ -2234,7 +2234,7 @@
       "tags": [],
       "file": "devops/security-scanning.md",
       "exists": true,
-      "char_count": 1437
+      "char_count": 3182
     },
     {
       "id": "container-registry",
@@ -2286,7 +2286,7 @@
       "tags": [],
       "file": "devops/environment-variables.md",
       "exists": true,
-      "char_count": 1414
+      "char_count": 3133
     },
     {
       "id": "monitoring-alerting",
@@ -2326,19 +2326,6 @@
       "file": "algorithms/graph-coloring.md",
       "exists": true,
       "char_count": 2742
-    },
-    {
-      "id": "design-system",
-      "name": "设计系统",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [],
-      "file": "web-frontend/design-system.md",
-      "exists": true,
-      "char_count": 1577
     },
     {
       "id": "bert-model",
@@ -3106,19 +3093,6 @@
       "file": "oop/adapter-pattern.md",
       "exists": true,
       "char_count": 2980
-    },
-    {
-      "id": "gradient-descent",
-      "name": "梯度下降",
-      "domain_id": "mathematics",
-      "subdomain_id": "optimization",
-      "subdomain_name": "最优化",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [],
-      "file": "ai-foundations/gradient-descent.md",
-      "exists": true,
-      "char_count": 1533
     },
     {
       "id": "hello-world",
@@ -4068,32 +4042,6 @@
       "file": "rag-knowledge/knowledge-graph-rag.md",
       "exists": true,
       "char_count": 2927
-    },
-    {
-      "id": "command-pattern",
-      "name": "命令模式",
-      "domain_id": "game-engine",
-      "subdomain_id": "scripting-system",
-      "subdomain_name": "脚本系统",
-      "difficulty": 2,
-      "is_milestone": false,
-      "tags": [],
-      "file": "oop/command-pattern.md",
-      "exists": true,
-      "char_count": 1624
-    },
-    {
-      "id": "linear-regression",
-      "name": "线性回归",
-      "domain_id": "mathematics",
-      "subdomain_id": "statistics",
-      "subdomain_name": "数理统计",
-      "difficulty": 6,
-      "is_milestone": false,
-      "tags": [],
-      "file": "ai-foundations/linear-regression.md",
-      "exists": true,
-      "char_count": 2548
     },
     {
       "id": "logistic-regression",
@@ -5202,10 +5150,10 @@
     }
   ],
   "stats": {
-    "total": 400,
-    "total_docs": 400,
-    "total_chars": 934146,
-    "avg_chars": 2335,
+    "total": 396,
+    "total_docs": 396,
+    "total_chars": 931630,
+    "avg_chars": 2352,
     "domain": "ai-engineering",
     "by_subdomain": {
       "agent-systems": {
@@ -5230,7 +5178,7 @@
       },
       "data-structures": {
         "count": 25,
-        "chars": 57517
+        "chars": 58819
       },
       "database": {
         "count": 24,
@@ -5242,15 +5190,11 @@
       },
       "devops": {
         "count": 22,
-        "chars": 47191
+        "chars": 50655
       },
       "discrete-math": {
         "count": 1,
         "chars": 2742
-      },
-      "interaction-design": {
-        "count": 1,
-        "chars": 1577
       },
       "llm-core": {
         "count": 36,
@@ -5259,10 +5203,6 @@
       "oop": {
         "count": 23,
         "chars": 66237
-      },
-      "optimization": {
-        "count": 1,
-        "chars": 1533
       },
       "programming-basics": {
         "count": 30,
@@ -5276,13 +5216,9 @@
         "count": 23,
         "chars": 45569
       },
-      "scripting-system": {
-        "count": 1,
-        "chars": 1624
-      },
       "statistics": {
-        "count": 2,
-        "chars": 5120
+        "count": 1,
+        "chars": 2572
       },
       "system-design": {
         "count": 25,

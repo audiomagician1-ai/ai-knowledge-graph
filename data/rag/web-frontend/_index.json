@@ -1,19 +1,6 @@
 {
   "documents": [
     {
-      "id": "design-system",
-      "name": "设计系统",
-      "domain_id": "product-design",
-      "subdomain_id": "interaction-design",
-      "subdomain_name": "交互设计",
-      "difficulty": 4,
-      "is_milestone": false,
-      "tags": [],
-      "file": "web-frontend/design-system.md",
-      "exists": true,
-      "char_count": 1577
-    },
-    {
       "id": "css-in-js",
       "name": "CSS-in-JS / TailwindCSS",
       "domain_id": "ai-engineering",
@@ -431,16 +418,12 @@
     }
   ],
   "stats": {
-    "total": 33,
-    "total_docs": 33,
-    "total_chars": 74174,
-    "avg_chars": 2247,
+    "total": 32,
+    "total_docs": 32,
+    "total_chars": 72597,
+    "avg_chars": 2268,
     "domain": "web-frontend",
     "by_subdomain": {
-      "interaction-design": {
-        "count": 1,
-        "chars": 1577
-      },
       "web-frontend": {
         "count": 32,
         "chars": 72597
