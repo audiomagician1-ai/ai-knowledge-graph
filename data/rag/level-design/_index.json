@@ -1048,7 +1048,7 @@
       ],
       "file": "level-design/ld-documentation/postmortem-ld.md",
       "exists": true,
-      "char_count": 1304
+      "char_count": 2230
     },
     {
       "id": "playtest-report",
@@ -1093,7 +1093,7 @@
       ],
       "file": "level-design/ld-documentation/pacing-chart.md",
       "exists": true,
-      "char_count": 1257
+      "char_count": 2287
     },
     {
       "id": "design-intent-doc",
@@ -1963,7 +1963,7 @@
       ],
       "file": "level-design/metrics-design/cover-height.md",
       "exists": true,
-      "char_count": 1298
+      "char_count": 2562
     },
     {
       "id": "camera-distance-ld",
@@ -2038,7 +2038,7 @@
       ],
       "file": "level-design/metrics-design/corridor-width.md",
       "exists": true,
-      "char_count": 1308
+      "char_count": 2499
     },
     {
       "id": "jump-metrics",
@@ -2458,7 +2458,7 @@
       ],
       "file": "level-design/spatial-narrative/ld-overview.md",
       "exists": true,
-      "char_count": 1583
+      "char_count": 2236
     },
     {
       "id": "point-of-interest",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 430418,
-    "avg_chars": 2152,
+    "total_chars": 435482,
+    "avg_chars": 2177,
     "domain": "level-design"
   }
 }

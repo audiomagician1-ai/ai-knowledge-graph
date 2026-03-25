@@ -133,7 +133,7 @@
       ],
       "file": "product-design/data-driven/experiment-design.md",
       "exists": true,
-      "char_count": 1602
+      "char_count": 2708
     },
     {
       "id": "attribution-model",
@@ -313,7 +313,7 @@
       ],
       "file": "product-design/data-driven/cohort-analysis.md",
       "exists": true,
-      "char_count": 1269
+      "char_count": 2422
     },
     {
       "id": "behavioral-analytics",
@@ -1153,7 +1153,7 @@
       ],
       "file": "product-design/product-management/product-communication.md",
       "exists": true,
-      "char_count": 1522
+      "char_count": 2622
     },
     {
       "id": "product-management-overview",
@@ -2008,7 +2008,7 @@
       ],
       "file": "product-design/prototyping/design-review-checklist.md",
       "exists": true,
-      "char_count": 1297
+      "char_count": 2250
     },
     {
       "id": "design-iteration",
@@ -2398,7 +2398,7 @@
       ],
       "file": "product-design/user-research/survey-design.md",
       "exists": true,
-      "char_count": 1472
+      "char_count": 2628
     },
     {
       "id": "3d-in-ui",
@@ -2733,8 +2733,8 @@
   ],
   "stats": {
     "total": 182,
-    "total_chars": 347565,
-    "avg_chars": 1909,
+    "total_chars": 353033,
+    "avg_chars": 1939,
     "domain": "product-design"
   }
 }

@@ -73,7 +73,7 @@
       ],
       "file": "mathematics/algebra/quadratic-functions.md",
       "exists": true,
-      "char_count": 1488
+      "char_count": 2000
     },
     {
       "id": "binomial-theorem",
@@ -1063,7 +1063,7 @@
       ],
       "file": "mathematics/calculus/curve-sketching.md",
       "exists": true,
-      "char_count": 1602
+      "char_count": 2513
     },
     {
       "id": "definite-integrals",
@@ -1483,7 +1483,7 @@
       ],
       "file": "mathematics/calculus/higher-derivatives.md",
       "exists": true,
-      "char_count": 1464
+      "char_count": 2762
     },
     {
       "id": "relations",
@@ -4038,8 +4038,8 @@
   ],
   "stats": {
     "total": 269,
-    "total_chars": 685236,
-    "avg_chars": 2547,
+    "total_chars": 687957,
+    "avg_chars": 2557,
     "domain": "mathematics"
   }
 }

@@ -58,7 +58,7 @@
       ],
       "file": "philosophy/aesthetics/sublime.md",
       "exists": true,
-      "char_count": 1263
+      "char_count": 2645
     },
     {
       "id": "tragedy-philosophy",
@@ -1543,7 +1543,7 @@
       ],
       "file": "philosophy/logic-reasoning/dialectic.md",
       "exists": true,
-      "char_count": 1284
+      "char_count": 2439
     },
     {
       "id": "philosophy-of-logic",
@@ -1708,7 +1708,7 @@
       ],
       "file": "philosophy/metaphysics/idealism.md",
       "exists": true,
-      "char_count": 1267
+      "char_count": 2735
     },
     {
       "id": "materialism-physicalism",
@@ -1873,7 +1873,7 @@
       ],
       "file": "philosophy/metaphysics/emergence.md",
       "exists": true,
-      "char_count": 1179
+      "char_count": 2897
     },
     {
       "id": "compatibilism",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 313478,
-    "avg_chars": 1843,
+    "total_chars": 319201,
+    "avg_chars": 1877,
     "domain": "philosophy"
   }
 }

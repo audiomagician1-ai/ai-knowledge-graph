@@ -19119,7 +19119,7 @@
       ],
       "file": "economics/economic-thought/monetarism.md",
       "exists": true,
-      "char_count": 1472
+      "char_count": 2671
     },
     {
       "id": "marginalism",
@@ -19599,7 +19599,7 @@
       ],
       "file": "economics/macroeconomics/unemployment.md",
       "exists": true,
-      "char_count": 1483
+      "char_count": 2695
     },
     {
       "id": "labor-market-macro",
@@ -20514,7 +20514,7 @@
       ],
       "file": "economics/public-econ/social-insurance.md",
       "exists": true,
-      "char_count": 1484
+      "char_count": 2588
     },
     {
       "id": "welfare-state",
@@ -52414,7 +52414,7 @@
       ],
       "file": "level-design/ld-documentation/postmortem-ld.md",
       "exists": true,
-      "char_count": 1304
+      "char_count": 2230
     },
     {
       "id": "playtest-report",
@@ -52459,7 +52459,7 @@
       ],
       "file": "level-design/ld-documentation/pacing-chart.md",
       "exists": true,
-      "char_count": 1257
+      "char_count": 2287
     },
     {
       "id": "design-intent-doc",
@@ -53329,7 +53329,7 @@
       ],
       "file": "level-design/metrics-design/cover-height.md",
       "exists": true,
-      "char_count": 1298
+      "char_count": 2562
     },
     {
       "id": "camera-distance-ld",
@@ -53404,7 +53404,7 @@
       ],
       "file": "level-design/metrics-design/corridor-width.md",
       "exists": true,
-      "char_count": 1308
+      "char_count": 2499
     },
     {
       "id": "jump-metrics",
@@ -53824,7 +53824,7 @@
       ],
       "file": "level-design/spatial-narrative/ld-overview.md",
       "exists": true,
-      "char_count": 1583
+      "char_count": 2236
     },
     {
       "id": "point-of-interest",
@@ -54907,7 +54907,7 @@
       ],
       "file": "mathematics/algebra/quadratic-functions.md",
       "exists": true,
-      "char_count": 1488
+      "char_count": 2000
     },
     {
       "id": "binomial-theorem",
@@ -55897,7 +55897,7 @@
       ],
       "file": "mathematics/calculus/curve-sketching.md",
       "exists": true,
-      "char_count": 1602
+      "char_count": 2513
     },
     {
       "id": "definite-integrals",
@@ -56317,7 +56317,7 @@
       ],
       "file": "mathematics/calculus/higher-derivatives.md",
       "exists": true,
-      "char_count": 1464
+      "char_count": 2762
     },
     {
       "id": "relations",
@@ -64179,7 +64179,7 @@
       ],
       "file": "philosophy/aesthetics/sublime.md",
       "exists": true,
-      "char_count": 1263
+      "char_count": 2645
     },
     {
       "id": "tragedy-philosophy",
@@ -65664,7 +65664,7 @@
       ],
       "file": "philosophy/logic-reasoning/dialectic.md",
       "exists": true,
-      "char_count": 1284
+      "char_count": 2439
     },
     {
       "id": "philosophy-of-logic",
@@ -65829,7 +65829,7 @@
       ],
       "file": "philosophy/metaphysics/idealism.md",
       "exists": true,
-      "char_count": 1267
+      "char_count": 2735
     },
     {
       "id": "materialism-physicalism",
@@ -65994,7 +65994,7 @@
       ],
       "file": "philosophy/metaphysics/emergence.md",
       "exists": true,
-      "char_count": 1179
+      "char_count": 2897
     },
     {
       "id": "compatibilism",
@@ -67869,7 +67869,7 @@
       ],
       "file": "physics/fluid-mechanics/pipe-flow.md",
       "exists": true,
-      "char_count": 1475
+      "char_count": 2662
     },
     {
       "id": "viscosity",
@@ -68439,7 +68439,7 @@
       ],
       "file": "physics/nuclear-physics/particle-physics-intro.md",
       "exists": true,
-      "char_count": 1614
+      "char_count": 2424
     },
     {
       "id": "binding-energy",
@@ -68814,7 +68814,7 @@
       ],
       "file": "physics/solid-state-physics/optical-properties-solid.md",
       "exists": true,
-      "char_count": 1602
+      "char_count": 2891
     },
     {
       "id": "phonons",
@@ -69714,7 +69714,7 @@
       ],
       "file": "product-design/data-driven/experiment-design.md",
       "exists": true,
-      "char_count": 1602
+      "char_count": 2708
     },
     {
       "id": "attribution-model",
@@ -69894,7 +69894,7 @@
       ],
       "file": "product-design/data-driven/cohort-analysis.md",
       "exists": true,
-      "char_count": 1269
+      "char_count": 2422
     },
     {
       "id": "behavioral-analytics",
@@ -70734,7 +70734,7 @@
       ],
       "file": "product-design/product-management/product-communication.md",
       "exists": true,
-      "char_count": 1522
+      "char_count": 2622
     },
     {
       "id": "product-management-overview",
@@ -71589,7 +71589,7 @@
       ],
       "file": "product-design/prototyping/design-review-checklist.md",
       "exists": true,
-      "char_count": 1297
+      "char_count": 2250
     },
     {
       "id": "design-iteration",
@@ -71979,7 +71979,7 @@
       ],
       "file": "product-design/user-research/survey-design.md",
       "exists": true,
-      "char_count": 1472
+      "char_count": 2628
     },
     {
       "id": "3d-in-ui",
@@ -73679,7 +73679,7 @@
       ],
       "file": "psychology/clinical-psychology/child-clinical.md",
       "exists": true,
-      "char_count": 1632
+      "char_count": 2840
     },
     {
       "id": "ptsd",
@@ -74609,7 +74609,7 @@
       ],
       "file": "psychology/developmental-psychology/vygotsky-theory.md",
       "exists": true,
-      "char_count": 1511
+      "char_count": 2420
     },
     {
       "id": "aging-psychology",
@@ -74939,7 +74939,7 @@
       ],
       "file": "psychology/personality-psychology/narcissism.md",
       "exists": true,
-      "char_count": 1185
+      "char_count": 2531
     },
     {
       "id": "self-actualization",
@@ -87338,7 +87338,7 @@
       ],
       "file": "writing/creative-writing/free-verse.md",
       "exists": true,
-      "char_count": 1261
+      "char_count": 2193
     },
     {
       "id": "poetry-basics",
@@ -87533,7 +87533,7 @@
       ],
       "file": "writing/expository-writing/data-presentation.md",
       "exists": true,
-      "char_count": 1472
+      "char_count": 2624
     },
     {
       "id": "news-writing",
@@ -88403,7 +88403,7 @@
       ],
       "file": "writing/professional-writing/contract-legal-writing.md",
       "exists": true,
-      "char_count": 1539
+      "char_count": 2567
     },
     {
       "id": "pitch-deck-narrative",
@@ -88553,7 +88553,7 @@
       ],
       "file": "writing/professional-writing/ux-writing.md",
       "exists": true,
-      "char_count": 1473
+      "char_count": 2533
     },
     {
       "id": "social-media-writing",
@@ -89183,7 +89183,7 @@
       ],
       "file": "writing/writing-fundamentals/tone-and-voice.md",
       "exists": true,
-      "char_count": 1460
+      "char_count": 2451
     },
     {
       "id": "grammar-essentials",

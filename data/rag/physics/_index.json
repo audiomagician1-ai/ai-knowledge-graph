@@ -1198,7 +1198,7 @@
       ],
       "file": "physics/fluid-mechanics/pipe-flow.md",
       "exists": true,
-      "char_count": 1475
+      "char_count": 2662
     },
     {
       "id": "viscosity",
@@ -1768,7 +1768,7 @@
       ],
       "file": "physics/nuclear-physics/particle-physics-intro.md",
       "exists": true,
-      "char_count": 1614
+      "char_count": 2424
     },
     {
       "id": "binding-energy",
@@ -2143,7 +2143,7 @@
       ],
       "file": "physics/solid-state-physics/optical-properties-solid.md",
       "exists": true,
-      "char_count": 1602
+      "char_count": 2891
     },
     {
       "id": "phonons",
@@ -2913,8 +2913,8 @@
   ],
   "stats": {
     "total": 194,
-    "total_chars": 459787,
-    "avg_chars": 2370,
+    "total_chars": 463073,
+    "avg_chars": 2386,
     "domain": "physics"
   }
 }

@@ -628,7 +628,7 @@
       ],
       "file": "writing/creative-writing/free-verse.md",
       "exists": true,
-      "char_count": 1261
+      "char_count": 2193
     },
     {
       "id": "poetry-basics",
@@ -823,7 +823,7 @@
       ],
       "file": "writing/expository-writing/data-presentation.md",
       "exists": true,
-      "char_count": 1472
+      "char_count": 2624
     },
     {
       "id": "news-writing",
@@ -1693,7 +1693,7 @@
       ],
       "file": "writing/professional-writing/contract-legal-writing.md",
       "exists": true,
-      "char_count": 1539
+      "char_count": 2567
     },
     {
       "id": "pitch-deck-narrative",
@@ -1843,7 +1843,7 @@
       ],
       "file": "writing/professional-writing/ux-writing.md",
       "exists": true,
-      "char_count": 1473
+      "char_count": 2533
     },
     {
       "id": "social-media-writing",
@@ -2473,7 +2473,7 @@
       ],
       "file": "writing/writing-fundamentals/tone-and-voice.md",
       "exists": true,
-      "char_count": 1460
+      "char_count": 2451
     },
     {
       "id": "grammar-essentials",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 336110,
-    "avg_chars": 1977,
+    "total_chars": 341273,
+    "avg_chars": 2007,
     "domain": "writing"
   }
 }

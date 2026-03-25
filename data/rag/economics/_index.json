@@ -1033,7 +1033,7 @@
       ],
       "file": "economics/economic-thought/monetarism.md",
       "exists": true,
-      "char_count": 1472
+      "char_count": 2671
     },
     {
       "id": "marginalism",
@@ -1513,7 +1513,7 @@
       ],
       "file": "economics/macroeconomics/unemployment.md",
       "exists": true,
-      "char_count": 1483
+      "char_count": 2695
     },
     {
       "id": "labor-market-macro",
@@ -2428,7 +2428,7 @@
       ],
       "file": "economics/public-econ/social-insurance.md",
       "exists": true,
-      "char_count": 1484
+      "char_count": 2588
     },
     {
       "id": "welfare-state",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 345435,
-    "avg_chars": 2031,
+    "total_chars": 348950,
+    "avg_chars": 2052,
     "domain": "economics"
   }
 }

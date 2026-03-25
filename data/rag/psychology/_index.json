@@ -718,7 +718,7 @@
       ],
       "file": "psychology/clinical-psychology/child-clinical.md",
       "exists": true,
-      "char_count": 1632
+      "char_count": 2840
     },
     {
       "id": "ptsd",
@@ -1648,7 +1648,7 @@
       ],
       "file": "psychology/developmental-psychology/vygotsky-theory.md",
       "exists": true,
-      "char_count": 1511
+      "char_count": 2420
     },
     {
       "id": "aging-psychology",
@@ -1978,7 +1978,7 @@
       ],
       "file": "psychology/personality-psychology/narcissism.md",
       "exists": true,
-      "char_count": 1185
+      "char_count": 2531
     },
     {
       "id": "self-actualization",
@@ -2748,8 +2748,8 @@
   ],
   "stats": {
     "total": 183,
-    "total_chars": 379236,
-    "avg_chars": 2072,
+    "total_chars": 382699,
+    "avg_chars": 2091,
     "domain": "psychology"
   }
 }
