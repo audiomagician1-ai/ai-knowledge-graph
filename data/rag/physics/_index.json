@@ -988,7 +988,7 @@
       ],
       "file": "physics/electromagnetism/electric-charge.md",
       "exists": true,
-      "char_count": 1373
+      "char_count": 2183
     },
     {
       "id": "dc-circuits",
@@ -1243,7 +1243,7 @@
       ],
       "file": "physics/fluid-mechanics/surface-tension.md",
       "exists": true,
-      "char_count": 1483
+      "char_count": 2753
     },
     {
       "id": "boundary-layer",
@@ -1438,7 +1438,7 @@
       ],
       "file": "physics/modern-physics/franck-hertz.md",
       "exists": true,
-      "char_count": 1362
+      "char_count": 2470
     },
     {
       "id": "spacetime-diagrams",
@@ -1483,7 +1483,7 @@
       ],
       "file": "physics/modern-physics/pair-production.md",
       "exists": true,
-      "char_count": 1478
+      "char_count": 2534
     },
     {
       "id": "lorentz-transformations",
@@ -1708,7 +1708,7 @@
       ],
       "file": "physics/nuclear-physics/nuclear-applications.md",
       "exists": true,
-      "char_count": 1499
+      "char_count": 2536
     },
     {
       "id": "nuclear-models",
@@ -1843,7 +1843,7 @@
       ],
       "file": "physics/quantum-mechanics/infinite-square-well.md",
       "exists": true,
-      "char_count": 1379
+      "char_count": 2697
     },
     {
       "id": "finite-square-well",
@@ -2913,8 +2913,8 @@
   ],
   "stats": {
     "total": 194,
-    "total_chars": 481012,
-    "avg_chars": 2479,
+    "total_chars": 487611,
+    "avg_chars": 2513,
     "domain": "physics"
   }
 }

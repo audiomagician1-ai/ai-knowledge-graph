@@ -66039,7 +66039,7 @@
       ],
       "file": "philosophy/modern-philosophy/philosophy-of-ai.md",
       "exists": true,
-      "char_count": 1386
+      "char_count": 2896
     },
     {
       "id": "analytic-philosophy",
@@ -66189,7 +66189,7 @@
       ],
       "file": "philosophy/modern-philosophy/new-confucianism.md",
       "exists": true,
-      "char_count": 1385
+      "char_count": 2420
     },
     {
       "id": "phenomenology",
@@ -67659,7 +67659,7 @@
       ],
       "file": "physics/electromagnetism/electric-charge.md",
       "exists": true,
-      "char_count": 1373
+      "char_count": 2183
     },
     {
       "id": "dc-circuits",
@@ -67914,7 +67914,7 @@
       ],
       "file": "physics/fluid-mechanics/surface-tension.md",
       "exists": true,
-      "char_count": 1483
+      "char_count": 2753
     },
     {
       "id": "boundary-layer",
@@ -68109,7 +68109,7 @@
       ],
       "file": "physics/modern-physics/franck-hertz.md",
       "exists": true,
-      "char_count": 1362
+      "char_count": 2470
     },
     {
       "id": "spacetime-diagrams",
@@ -68154,7 +68154,7 @@
       ],
       "file": "physics/modern-physics/pair-production.md",
       "exists": true,
-      "char_count": 1478
+      "char_count": 2534
     },
     {
       "id": "lorentz-transformations",
@@ -68379,7 +68379,7 @@
       ],
       "file": "physics/nuclear-physics/nuclear-applications.md",
       "exists": true,
-      "char_count": 1499
+      "char_count": 2536
     },
     {
       "id": "nuclear-models",
@@ -68514,7 +68514,7 @@
       ],
       "file": "physics/quantum-mechanics/infinite-square-well.md",
       "exists": true,
-      "char_count": 1379
+      "char_count": 2697
     },
     {
       "id": "finite-square-well",
@@ -69654,7 +69654,7 @@
       ],
       "file": "product-design/data-driven/sql-for-pm.md",
       "exists": true,
-      "char_count": 1375
+      "char_count": 3274
     },
     {
       "id": "analytics-tools",
@@ -70509,7 +70509,7 @@
       ],
       "file": "product-design/interaction-design/empty-state-design.md",
       "exists": true,
-      "char_count": 1378
+      "char_count": 2521
     },
     {
       "id": "form-design",
@@ -71199,7 +71199,7 @@
       ],
       "file": "product-design/product-thinking/opportunity-assessment.md",
       "exists": true,
-      "char_count": 1505
+      "char_count": 2555
     },
     {
       "id": "ecosystem-design",
@@ -71334,7 +71334,7 @@
       ],
       "file": "product-design/prototyping/ab-testing-design.md",
       "exists": true,
-      "char_count": 1466
+      "char_count": 2604
     },
     {
       "id": "figma-basics",
@@ -71364,7 +71364,7 @@
       ],
       "file": "product-design/prototyping/figma-advanced.md",
       "exists": true,
-      "char_count": 1493
+      "char_count": 2923
     },
     {
       "id": "interactive-prototype",
@@ -71379,7 +71379,7 @@
       ],
       "file": "product-design/prototyping/interactive-prototype.md",
       "exists": true,
-      "char_count": 1484
+      "char_count": 2398
     },
     {
       "id": "low-fi-prototype",
@@ -72054,7 +72054,7 @@
       ],
       "file": "product-design/visual-design/responsive-imagery.md",
       "exists": true,
-      "char_count": 1379
+      "char_count": 2777
     },
     {
       "id": "iconography",
@@ -73529,7 +73529,7 @@
       ],
       "file": "psychology/biological-psychology/psychopharmacology.md",
       "exists": true,
-      "char_count": 1500
+      "char_count": 2730
     },
     {
       "id": "brain-imaging",
@@ -73664,7 +73664,7 @@
       ],
       "file": "psychology/clinical-psychology/personality-disorders.md",
       "exists": true,
-      "char_count": 1387
+      "char_count": 2702
     },
     {
       "id": "child-clinical",
@@ -74729,7 +74729,7 @@
       ],
       "file": "psychology/personality-psychology/personality-culture.md",
       "exists": true,
-      "char_count": 1382
+      "char_count": 2878
     },
     {
       "id": "personality-overview",
@@ -75299,7 +75299,7 @@
       ],
       "file": "psychology/research-methods/power-analysis.md",
       "exists": true,
-      "char_count": 1505
+      "char_count": 2839
     },
     {
       "id": "observational-methods",

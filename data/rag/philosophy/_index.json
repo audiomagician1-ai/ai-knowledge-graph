@@ -1918,7 +1918,7 @@
       ],
       "file": "philosophy/modern-philosophy/philosophy-of-ai.md",
       "exists": true,
-      "char_count": 1386
+      "char_count": 2896
     },
     {
       "id": "analytic-philosophy",
@@ -2068,7 +2068,7 @@
       ],
       "file": "philosophy/modern-philosophy/new-confucianism.md",
       "exists": true,
-      "char_count": 1385
+      "char_count": 2420
     },
     {
       "id": "phenomenology",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 385116,
-    "avg_chars": 2265,
+    "total_chars": 387661,
+    "avg_chars": 2280,
     "domain": "philosophy"
   }
 }

@@ -568,7 +568,7 @@
       ],
       "file": "psychology/biological-psychology/psychopharmacology.md",
       "exists": true,
-      "char_count": 1500
+      "char_count": 2730
     },
     {
       "id": "brain-imaging",
@@ -703,7 +703,7 @@
       ],
       "file": "psychology/clinical-psychology/personality-disorders.md",
       "exists": true,
-      "char_count": 1387
+      "char_count": 2702
     },
     {
       "id": "child-clinical",
@@ -1768,7 +1768,7 @@
       ],
       "file": "psychology/personality-psychology/personality-culture.md",
       "exists": true,
-      "char_count": 1382
+      "char_count": 2878
     },
     {
       "id": "personality-overview",
@@ -2338,7 +2338,7 @@
       ],
       "file": "psychology/research-methods/power-analysis.md",
       "exists": true,
-      "char_count": 1505
+      "char_count": 2839
     },
     {
       "id": "observational-methods",
@@ -2748,8 +2748,8 @@
   ],
   "stats": {
     "total": 183,
-    "total_chars": 399874,
-    "avg_chars": 2185,
+    "total_chars": 405249,
+    "avg_chars": 2214,
     "domain": "psychology"
   }
 }
