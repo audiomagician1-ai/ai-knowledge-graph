@@ -298,7 +298,7 @@
       ],
       "file": "computer-graphics/anti-aliasing/cg-specular-aa.md",
       "exists": true,
-      "char_count": 1389
+      "char_count": 2994
     },
     {
       "id": "cg-lod",
@@ -583,7 +583,7 @@
       ],
       "file": "computer-graphics/geometry-processing/cg-mesh-streaming.md",
       "exists": true,
-      "char_count": 1394
+      "char_count": 2362
     },
     {
       "id": "cg-mesh-simplification",
@@ -658,7 +658,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-cloud-rendering.md",
       "exists": true,
-      "char_count": 1371
+      "char_count": 2737
     },
     {
       "id": "cg-voxel-gi",
@@ -763,7 +763,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-sky-atmosphere.md",
       "exists": true,
-      "char_count": 1488
+      "char_count": 3090
     },
     {
       "id": "cg-screen-space-gi",
@@ -778,7 +778,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-screen-space-gi.md",
       "exists": true,
-      "char_count": 1500
+      "char_count": 2496
     },
     {
       "id": "cg-gi-hybrid",
@@ -898,7 +898,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-irradiance-volume.md",
       "exists": true,
-      "char_count": 1395
+      "char_count": 2695
     },
     {
       "id": "cg-irradiance-map",
@@ -1063,7 +1063,7 @@
       ],
       "file": "computer-graphics/gpu-architecture/cg-gpu-scheduling.md",
       "exists": true,
-      "char_count": 1379
+      "char_count": 2997
     },
     {
       "id": "cg-rop",
@@ -1483,7 +1483,7 @@
       ],
       "file": "computer-graphics/pbr-materials/cg-fresnel.md",
       "exists": true,
-      "char_count": 1377
+      "char_count": 2206
     },
     {
       "id": "cg-iridescence",
@@ -2458,7 +2458,7 @@
       ],
       "file": "computer-graphics/ray-tracing/cg-mis.md",
       "exists": true,
-      "char_count": 1386
+      "char_count": 3097
     },
     {
       "id": "cg-hybrid-rendering",
@@ -2488,7 +2488,7 @@
       ],
       "file": "computer-graphics/ray-tracing/cg-path-tracing.md",
       "exists": true,
-      "char_count": 1472
+      "char_count": 2418
     },
     {
       "id": "cg-importance-sampling",
@@ -2638,7 +2638,7 @@
       ],
       "file": "computer-graphics/render-optimization/cg-perf-counter.md",
       "exists": true,
-      "char_count": 1387
+      "char_count": 3440
     },
     {
       "id": "cg-profiling-workflow",
@@ -2938,7 +2938,7 @@
       ],
       "file": "computer-graphics/shader-programming/cg-geometry-shader.md",
       "exists": true,
-      "char_count": 1391
+      "char_count": 2721
     },
     {
       "id": "cg-material-function",
@@ -3673,7 +3673,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-fluid-rendering.md",
       "exists": true,
-      "char_count": 1390
+      "char_count": 2815
     },
     {
       "id": "cg-fire-explosion",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 515337,
-    "avg_chars": 2061,
+    "total_chars": 533086,
+    "avg_chars": 2132,
     "domain": "computer-graphics"
   }
 }

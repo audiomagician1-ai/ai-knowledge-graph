@@ -76,7 +76,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-as-weather-system.md",
       "exists": true,
-      "char_count": 1371
+      "char_count": 2408
     },
     {
       "id": "sfx-as-interior-exterior",
@@ -219,7 +219,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-as-random-emitter.md",
       "exists": true,
-      "char_count": 1365
+      "char_count": 2417
     },
     {
       "id": "sfx-as-silence-technique",
@@ -2013,7 +2013,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-sdt-layering.md",
       "exists": true,
-      "char_count": 1368
+      "char_count": 2489
     },
     {
       "id": "sfx-sdt-sound-taxonomy",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 311877,
-    "avg_chars": 1732,
+    "total_chars": 315087,
+    "avg_chars": 1750,
     "domain": "game-audio-sfx"
   }
 }

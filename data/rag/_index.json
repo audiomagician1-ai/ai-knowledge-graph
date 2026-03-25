@@ -10164,7 +10164,7 @@
       ],
       "file": "computer-graphics/anti-aliasing/cg-specular-aa.md",
       "exists": true,
-      "char_count": 1389
+      "char_count": 2994
     },
     {
       "id": "cg-lod",
@@ -10449,7 +10449,7 @@
       ],
       "file": "computer-graphics/geometry-processing/cg-mesh-streaming.md",
       "exists": true,
-      "char_count": 1394
+      "char_count": 2362
     },
     {
       "id": "cg-mesh-simplification",
@@ -10524,7 +10524,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-cloud-rendering.md",
       "exists": true,
-      "char_count": 1371
+      "char_count": 2737
     },
     {
       "id": "cg-voxel-gi",
@@ -10629,7 +10629,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-sky-atmosphere.md",
       "exists": true,
-      "char_count": 1488
+      "char_count": 3090
     },
     {
       "id": "cg-screen-space-gi",
@@ -10644,7 +10644,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-screen-space-gi.md",
       "exists": true,
-      "char_count": 1500
+      "char_count": 2496
     },
     {
       "id": "cg-gi-hybrid",
@@ -10764,7 +10764,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-irradiance-volume.md",
       "exists": true,
-      "char_count": 1395
+      "char_count": 2695
     },
     {
       "id": "cg-irradiance-map",
@@ -10929,7 +10929,7 @@
       ],
       "file": "computer-graphics/gpu-architecture/cg-gpu-scheduling.md",
       "exists": true,
-      "char_count": 1379
+      "char_count": 2997
     },
     {
       "id": "cg-rop",
@@ -11349,7 +11349,7 @@
       ],
       "file": "computer-graphics/pbr-materials/cg-fresnel.md",
       "exists": true,
-      "char_count": 1377
+      "char_count": 2206
     },
     {
       "id": "cg-iridescence",
@@ -12324,7 +12324,7 @@
       ],
       "file": "computer-graphics/ray-tracing/cg-mis.md",
       "exists": true,
-      "char_count": 1386
+      "char_count": 3097
     },
     {
       "id": "cg-hybrid-rendering",
@@ -12354,7 +12354,7 @@
       ],
       "file": "computer-graphics/ray-tracing/cg-path-tracing.md",
       "exists": true,
-      "char_count": 1472
+      "char_count": 2418
     },
     {
       "id": "cg-importance-sampling",
@@ -12504,7 +12504,7 @@
       ],
       "file": "computer-graphics/render-optimization/cg-perf-counter.md",
       "exists": true,
-      "char_count": 1387
+      "char_count": 3440
     },
     {
       "id": "cg-profiling-workflow",
@@ -12804,7 +12804,7 @@
       ],
       "file": "computer-graphics/shader-programming/cg-geometry-shader.md",
       "exists": true,
-      "char_count": 1391
+      "char_count": 2721
     },
     {
       "id": "cg-material-function",
@@ -13539,7 +13539,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-fluid-rendering.md",
       "exists": true,
-      "char_count": 1390
+      "char_count": 2815
     },
     {
       "id": "cg-fire-explosion",
@@ -13869,7 +13869,7 @@
       ],
       "file": "concept-design/cd-contour-drawing.md",
       "exists": true,
-      "char_count": 1385
+      "char_count": 2285
     },
     {
       "id": "cd-foreshortening",
@@ -15099,7 +15099,7 @@
       ],
       "file": "concept-design/cd-env-natural-formation.md",
       "exists": true,
-      "char_count": 1391
+      "char_count": 2173
     },
     {
       "id": "cd-env-birds-eye-map",
@@ -15774,7 +15774,7 @@
       ],
       "file": "concept-design/cd-horizon-line.md",
       "exists": true,
-      "char_count": 1488
+      "char_count": 2156
     },
     {
       "id": "cd-multi-vp-scene",
@@ -16074,7 +16074,7 @@
       ],
       "file": "concept-design/cd-prop-size-chart.md",
       "exists": true,
-      "char_count": 1383
+      "char_count": 2417
     },
     {
       "id": "cd-prop-cultural-reference",
@@ -16884,7 +16884,7 @@
       ],
       "file": "concept-design/cd-visdev-design-brief.md",
       "exists": true,
-      "char_count": 1392
+      "char_count": 2300
     },
     {
       "id": "cd-visdev-cross-department",
@@ -27744,7 +27744,7 @@
       ],
       "file": "game-audio-music/game-audio-music-cultural-motif.md",
       "exists": true,
-      "char_count": 1380
+      "char_count": 2506
     },
     {
       "id": "game-audio-music-case-study-leitmotif",
@@ -28812,7 +28812,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-as-weather-system.md",
       "exists": true,
-      "char_count": 1371
+      "char_count": 2408
     },
     {
       "id": "sfx-as-interior-exterior",
@@ -28955,7 +28955,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-as-random-emitter.md",
       "exists": true,
-      "char_count": 1365
+      "char_count": 2417
     },
     {
       "id": "sfx-as-silence-technique",
@@ -30749,7 +30749,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-sdt-layering.md",
       "exists": true,
-      "char_count": 1368
+      "char_count": 2489
     },
     {
       "id": "sfx-sdt-sound-taxonomy",
@@ -34854,7 +34854,7 @@
       ],
       "file": "game-engine/animation-system/ik-system.md",
       "exists": true,
-      "char_count": 1344
+      "char_count": 2582
     },
     {
       "id": "montage-system",
@@ -35349,7 +35349,7 @@
       ],
       "file": "game-engine/audio-system/audio-profiling.md",
       "exists": true,
-      "char_count": 1377
+      "char_count": 3109
     },
     {
       "id": "audio-bus-mixing",
@@ -37869,7 +37869,7 @@
       ],
       "file": "game-engine/scene-management/world-composition.md",
       "exists": true,
-      "char_count": 1384
+      "char_count": 2609
     },
     {
       "id": "level-transition",
@@ -38334,7 +38334,7 @@
       ],
       "file": "game-engine/scripting-system/console-command.md",
       "exists": true,
-      "char_count": 1392
+      "char_count": 2576
     },
     {
       "id": "data-driven-design",

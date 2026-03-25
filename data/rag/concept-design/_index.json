@@ -253,7 +253,7 @@
       ],
       "file": "concept-design/cd-contour-drawing.md",
       "exists": true,
-      "char_count": 1385
+      "char_count": 2285
     },
     {
       "id": "cd-foreshortening",
@@ -1483,7 +1483,7 @@
       ],
       "file": "concept-design/cd-env-natural-formation.md",
       "exists": true,
-      "char_count": 1391
+      "char_count": 2173
     },
     {
       "id": "cd-env-birds-eye-map",
@@ -2158,7 +2158,7 @@
       ],
       "file": "concept-design/cd-horizon-line.md",
       "exists": true,
-      "char_count": 1488
+      "char_count": 2156
     },
     {
       "id": "cd-multi-vp-scene",
@@ -2458,7 +2458,7 @@
       ],
       "file": "concept-design/cd-prop-size-chart.md",
       "exists": true,
-      "char_count": 1383
+      "char_count": 2417
     },
     {
       "id": "cd-prop-cultural-reference",
@@ -3268,7 +3268,7 @@
       ],
       "file": "concept-design/cd-visdev-design-brief.md",
       "exists": true,
-      "char_count": 1392
+      "char_count": 2300
     },
     {
       "id": "cd-visdev-cross-department",
@@ -3303,8 +3303,8 @@
   ],
   "stats": {
     "total": 220,
-    "total_chars": 435926,
-    "avg_chars": 1981,
+    "total_chars": 440218,
+    "avg_chars": 2000,
     "domain": "concept-design"
   }
 }

@@ -28,7 +28,7 @@
       ],
       "file": "game-engine/animation-system/ik-system.md",
       "exists": true,
-      "char_count": 1344
+      "char_count": 2582
     },
     {
       "id": "montage-system",
@@ -523,7 +523,7 @@
       ],
       "file": "game-engine/audio-system/audio-profiling.md",
       "exists": true,
-      "char_count": 1377
+      "char_count": 3109
     },
     {
       "id": "audio-bus-mixing",
@@ -3043,7 +3043,7 @@
       ],
       "file": "game-engine/scene-management/world-composition.md",
       "exists": true,
-      "char_count": 1384
+      "char_count": 2609
     },
     {
       "id": "level-transition",
@@ -3508,7 +3508,7 @@
       ],
       "file": "game-engine/scripting-system/console-command.md",
       "exists": true,
-      "char_count": 1392
+      "char_count": 2576
     },
     {
       "id": "data-driven-design",
@@ -4503,8 +4503,8 @@
   ],
   "stats": {
     "total": 300,
-    "total_chars": 654045,
-    "avg_chars": 2180,
+    "total_chars": 659424,
+    "avg_chars": 2198,
     "domain": "game-engine"
   }
 }

@@ -1708,7 +1708,7 @@
       ],
       "file": "game-audio-music/game-audio-music-cultural-motif.md",
       "exists": true,
-      "char_count": 1380
+      "char_count": 2506
     },
     {
       "id": "game-audio-music-case-study-leitmotif",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 308300,
-    "avg_chars": 1712,
+    "total_chars": 309426,
+    "avg_chars": 1719,
     "domain": "game-audio-music"
   }
 }
