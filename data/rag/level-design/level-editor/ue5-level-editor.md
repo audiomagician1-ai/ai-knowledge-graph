@@ -24,69 +24,63 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
+
+
 # UE5关卡编辑器
 
 ## 概述
 
-UE5关卡编辑器（Level Editor）是Unreal Engine 5中用于构建、编辑和管理游戏世界的主界面工具，开发者通过它完成场景中所有Actor的摆放、变换、属性调节和逻辑连接。与UE4相比，UE5的关卡编辑器在2022年正式发布时引入了Outliner多层级筛选、One File Per Actor（OFPA）默认支持，以及与Lumen全局光照系统和Nanite虚拟化几何体的深度集成，从根本上改变了大型场景的协同编辑流程。
+UE5关卡编辑器（Level Editor）是Unreal Engine 5中用于构建和编辑游戏世界的主工作空间，通过一个统一的视口界面整合了场景摆放、光照设置、碰撞配置与Actor属性编辑等功能。与UE4相比，UE5关卡编辑器在默认布局中新增了Outliner的过滤和搜索增强功能，并将Lumen全局光照和Nanite虚拟几何体的相关开关直接集成到编辑器工具栏，使开发者无需进入Project Settings即可快速切换这两大核心渲染技术。
 
-关卡编辑器的操作对象称为**关卡（Level）**，其本质是一个`.umap`后缀的资产文件，存储了所有放置在该关卡中的Actor及其Transform、属性和组件信息。每个UE5项目默认从`/Content/Maps/`目录下的初始关卡启动，编辑器打开后的主窗口由视口（Viewport）、世界大纲视图（World Outliner）、细节面板（Details Panel）、内容浏览器（Content Browser）和工具栏（Toolbar）五大核心区域共同构成。
+UE5关卡编辑器于2022年4月随UE5正式版（5.0）发布，继承自UE4的关卡编辑器框架，但新增了One File Per Actor（OFPA）模式，将每个Actor的数据以独立文件存储在`__ExternalActors__`目录下，从根本上解决了大型团队在同一关卡文件上的版本控制冲突问题。
 
-关卡编辑器对关卡设计师而言是整个创作流程的起点：无论是稍后使用的地形工具、植被工具，还是通过蓝图脚本为对象添加交互逻辑，都必须先在关卡编辑器中完成基础场景的搭建与Actor的放置，理解编辑器各面板的功能分工是高效开发的前提。
+掌握UE5关卡编辑器的意义在于：它是所有关卡设计工作的起点——无论是摆放静态网格体、配置定向光源，还是引用子关卡或触发蓝图逻辑，都必须在关卡编辑器的上下文中完成。理解其界面布局和操作逻辑，是进行高效关卡迭代的前提。
 
 ---
 
 ## 核心原理
 
-### 视口（Viewport）操作与模式切换
+### 界面布局与主要面板
 
-UE5关卡编辑器默认提供单视口布局，按下快捷键 **Alt+G/H/J/K** 可分别切换为透视视图（Perspective）、正交俯视图（Top）、正交前视图（Front）和正交侧视图（Side）。透视视口中，按住鼠标右键配合 **W/A/S/D** 键实现摄像机飞行漫游，飞行速度通过视口右上角的速度滑块调节，数值范围为1到8档（对应现实场景中约每秒4cm到4096cm的移动步长）。
+UE5关卡编辑器默认界面由五个区域组成：顶部**菜单栏与工具栏**、中央**主视口（Viewport）**、左侧**放置Actor面板（Place Actors Panel）**、右侧**细节面板（Details Panel）**，以及右上角的**世界大纲视图（World Outliner）**。其中，主视口支持四分屏模式（Top、Front、Side、Perspective），快捷键为键盘数字键`1`至`4`配合`Alt`键切换。工具栏包含Play（`Alt+P`）、Simulate（`Alt+S`）和快速保存按钮，以及Lumen和Nanite的实时开关。
 
-视口工具栏的**显示模式（View Mode）**下拉菜单提供了超过20种渲染可视化选项，包括"光照（Lit）"、"无光照（Unlit）"、"线框（Wireframe）"以及UE5特有的"Nanite可视化"和"Lumen场景"模式，后两者允许设计师实时检查虚拟几何体的LOD切换和间接光照缓存状态，这是UE4中不存在的调试手段。
+### Actor放置与变换操作
 
-### Actor放置与变换系统
+在UE5关卡编辑器中，放置Actor的方式有三种：从Place Actors面板拖入场景、从内容浏览器（Content Browser）拖拽资产至视口、以及使用快捷键`Shift+1`（静态网格体）等快捷放置。选中Actor后，变换操作使用三轴Gizmo，对应快捷键为：`W`平移、`E`旋转、`R`缩放。精确对齐依赖视口右上角的网格吸附（Grid Snap），默认平移吸附单位为10cm，旋转吸附默认5°，可在编辑器设置中自定义。选中多个Actor时，按`Ctrl+G`可将其分组为一个Actor Group，便于整体变换而不改变层级关系。
 
-所有可放置对象统一称为**Actor**，通过**放置模式（Place Actors Panel）**或直接从内容浏览器拖拽到视口完成添加。选中Actor后，工具栏提供三种Gizmo工具：**移动（W键）**、**旋转（E键）**、**缩放（R键）**，对应的变换数据存储在Actor的`USceneComponent::RelativeLocation / RelativeRotation / RelativeScale3D`属性中。
+### World Outliner与One File Per Actor
 
-按住 **Ctrl+D** 复制Actor时，新Actor保持原始Actor的全部属性并在原位偏移10cm，这一偏移量在`Editor Preferences > Viewports > Grid Snapping`中可自定义。网格对齐（Grid Snapping）默认精度为10单位（1 UE单位 ≈ 1cm），在精密建筑级别场景中可降至1单位。多个Actor可通过先选中再按 **Ctrl+G** 进行**组合（Grouping）**，组合后的Actor集合作为整体进行变换，但组合内各成员仍保持独立属性。
+World Outliner不仅显示关卡内所有Actor的层级树，还支持文件夹分组——右键菜单中选择"Move to Folder"可将Actor归类，该文件夹结构仅存储于关卡元数据中，不影响运行时性能。当项目启用OFPA（One File Per Actor）模式时，World Outliner中每个Actor旁会显示锁定图标，反映该Actor对应外部文件的版本控制状态（已签出、修改、未签出）。这一机制要求配合Perforce或Git LFS等版本控制系统使用，是多人协作关卡制作的核心工作流基础。
 
-### 世界大纲视图与细节面板
+### 视口导航与渲染模式
 
-**World Outliner** 以树状层级显示关卡中所有Actor，UE5新增了**文件夹系统**，支持拖拽创建多层嵌套文件夹用于场景组织。Outliner顶部搜索栏支持按类型过滤，例如输入`type:StaticMeshActor`可快速定位场景内所有静态网格体实例。
-
-**Details Panel（细节面板）**在选中Actor时显示该Actor所有组件和属性的可编辑字段，分为变换（Transform）、静态网格（Static Mesh）、材质（Materials）、物理（Physics）、碰撞（Collision）等类别。对于Static Mesh Actor，`Mobility`属性的三个选项——Static、Stationary、Movable——直接决定Lumen和Nanite对该对象的处理方式：设置为Static时Nanite会将其纳入虚拟化几何体系统，设置为Movable时Lumen通过光线追踪实时计算其光照贡献，性能开销相差约3至5倍。
-
-### One File Per Actor（OFPA）协同机制
-
-UE5默认启用**One File Per Actor**模式，每个Actor的数据单独存储为`.uasset`文件而非集中写入`.umap`，存放路径为`__ExternalActors__`子目录。这意味着多人团队协作时，不同开发者编辑不同Actor不再产生版本控制冲突，Git或Perforce上的合并代价从整个关卡文件降低到单个Actor文件级别。启用OFPA后，关卡加载时间在大型场景中可能增加10%至20%，但协同收益远超该代价。
+主视口的导航采用"飞行模式"：按住右键的同时使用`W/A/S/D`键飞行，`Q/E`键上下移动，按住右键并滚动鼠标滚轮调整飞行速度（共8个速度档位，默认第4档）。视口左上角的下拉菜单可切换渲染模式，包括：Lit（完全光照，默认）、Unlit（无光照）、Wireframe（线框）、Detail Lighting、Buffer Visualization等约20种模式，其中Buffer Visualization下的BaseColor、Roughness、WorldNormal子模式对材质调试极为重要。
 
 ---
 
 ## 实际应用
 
-**场景原型搭建**：关卡设计师通常使用内置的**几何体笔刷（BSP Brush）**或**Modeling Tools（建模工具）**快速搭建房间、走廊等灰盒结构。在UE5中，`Create > Box Brush`生成的笔刷Actor可直接在Details面板调整X/Y/Z尺寸，完成灰盒验证后再替换为正式静态网格体资产，这是验证关卡动线的标准工作流。
+**搭建室外场景的典型工作流**：设计师首先使用快捷键`Shift+3`在视口中放置一盏Directional Light作为主光源，在Details面板中将其Intensity设为10 lux、勾选"Atmosphere Sun Light"使其与Sky Atmosphere组件联动；随后从Content Browser拖入若干静态网格体资产，利用Grid Snap的10cm吸附单位精确拼接地板模块；最后右键点击World Outliner空白处新建文件夹"Architecture"，将所有建筑类Actor拖入分类管理。
 
-**光源摆放与Lumen配置**：在关卡编辑器中放置`Directional Light`作为主光源，将其`Mobility`设置为Movable后，视口会立即显示Lumen全动态全局光照的效果。通过`Window > Env. Light Mixer`（环境光混合器，UE5.1引入）可在一个面板内同时管理Directional Light、Sky Light和Sky Atmosphere三个光源Actor的参数，避免反复在Outliner中切换选中对象。
+**利用Actor Group进行批量调整**：在关卡中摆放了30根路灯后，选中全部并按`Ctrl+G`创建组，此后整组可作为单一对象进行旋转或移动。若需修改组内单个Actor，双击进入组编辑模式（Group Edit Mode），修改完成后再次双击退出，避免意外移动其他组成员。
 
-**关卡测试与PIE**：点击工具栏的**Play（播放）**按钮进入**Play in Editor（PIE）**模式，角色将从`Player Start` Actor的位置生成并运行完整游戏逻辑。PIE支持**Simulate（模拟）**子模式，该模式下物理和蓝图逻辑运行但不生成玩家，适合调试物体掉落、粒子系统等不需要玩家输入的场景行为。
+**OFPA工作流下的团队协作**：在启用了OFPA的项目中，A设计师负责关卡北区，B设计师负责南区。由于每个Actor对应独立文件，两人同时工作时只需在版本控制系统中分别签出各自Actor的外部文件，合并时不会产生关卡主文件的二进制冲突。这在过去的UE4单文件关卡模式下是无法实现的。
 
 ---
 
 ## 常见误区
 
-**误区一：混淆"保存关卡"与"保存所有"的影响范围**
-在启用OFPA后，执行`Ctrl+S`只保存`.umap`文件本身，新放置或修改过的Actor的`.uasset`文件需要通过`File > Save All`（`Ctrl+Shift+S`）才能全部写入磁盘。许多初学者在仅按`Ctrl+S`后关闭编辑器，导致部分Actor修改丢失，误以为是软件Bug。
+**误区1：认为在编辑器中移动Actor等同于修改其碰撞**。在UE5关卡编辑器视口中通过Gizmo改变Actor的位置和旋转，仅修改该Actor的世界变换（World Transform），不会影响其静态网格体资产本身定义的碰撞形状。碰撞的编辑需要在静态网格体编辑器（Static Mesh Editor）中单独操作，或通过Details面板的Collision Preset下拉菜单选择预设碰撞类型。
 
-**误区二：认为Outliner文件夹结构影响游戏性能**
-World Outliner中的文件夹仅是编辑器组织工具，在打包后的游戏中不产生任何运行时开销，也不会影响Actor的加载顺序或批次。真正影响性能的是Actor的`Mobility`设置、碰撞复杂度和LOD配置，而非Outliner层级深度。
+**误区2：将World Outliner的文件夹与子关卡混淆**。World Outliner中创建的文件夹是纯粹的编辑器组织工具，所有文件夹内的Actor仍属于当前关卡（Persistent Level），在游戏运行时文件夹结构不存在。子关卡（Sub Level）是独立的`.umap`文件，拥有独立的流送状态和内存占用，两者用途完全不同，不可互换。
 
-**误区三：关卡编辑器视口中看到的即最终渲染结果**
-编辑器视口默认以`Editor Scalability`（编辑器可扩展性）质量级别渲染，该级别通常低于游戏打包后的默认质量。例如Lumen反射在编辑器中可能显示为低分辨率近似值，但执行PIE或打包后会根据`r.Lumen.Reflections.ScreenTraces`等控制台变量显示完整品质。应始终在PIE模式下验证最终视觉效果，而非单纯依赖编辑器视口判断。
+**误区3：误以为启用Lumen需要重建光照**。在UE5关卡编辑器中，Lumen是完全动态的实时全局光照方案，通过工具栏或`Project Settings > Rendering`启用后立即生效，不依赖Lightmass烘焙流程。若项目中同时存在已烘焙的Lightmap数据，启用Lumen后静态光照贴图数据会被忽略，但不会被自动删除——需手动运行"Build > Delete All Lightmap Data"清理冗余数据以节省包体大小。
 
 ---
 
 ## 知识关联
 
-**前置概念**：学习UE5关卡编辑器之前需要了解**关卡编辑器概述**中的通用概念——Actor、组件、坐标系和UE单位制度——这些是在UE5编辑器中进行任何操作的语言基础。
+学习UE5关卡编辑器需要具备**关卡编辑器概述**的基础认知，即了解什么是Actor、关卡（Level）作为容器的概念，以及视口导航的基本逻辑，这些知识在进入UE5具体界面操作之前提供了认知框架。
 
-**后续扩展**：掌握关卡编辑器的基础操作后，可进入以下几个方向：**蓝图脚本（LD）**在关卡编辑器的基础上为已放置的Actor添加交互逻辑，需要先在关卡中有实体对象才能设置蓝图引用；**关卡流式加载**和**子关卡管理**依赖对`.umap`文件结构和OFPA机制的理解，二者通过`World Composition`或`World Partition`系统将大世界拆分为可动态加载的子关卡；**地形工具**和**植被工具**作为关卡编辑器的专用模式面板，在切换至Landscape模式或Foliage模式后替换主工具栏，本质上仍在关卡编辑器的框架内运行。
+在掌握关卡编辑器的界面和基础操作后，下一步自然延伸到**蓝图脚本（LD）**——关卡编辑器中放置的Actor可以承载关卡蓝图（Level Blueprint）逻辑，例如通过Sequencer触发事件或设置Actor引用；进入**地形工具**和**植被工具**时，它们作为关卡编辑器的内置工具模式（Mode）出现在编辑器左侧的模式切换栏中，分别通过`Shift+3`和`Shift+4`激活，理解其与主编辑器视口共享工作空间的关系至关重要。**关卡流式加载**和**子关卡管理**则直接建立在对World Outliner和Persistent Level概念的理解之上——OFPA所建立的多文件结构正是流式加载框架中动态加载子关卡的技术前提。
