@@ -193,7 +193,7 @@
       ],
       "file": "philosophy/aesthetics/art-form.md",
       "exists": true,
-      "char_count": 1394
+      "char_count": 2665
     },
     {
       "id": "art-criticism",
@@ -493,7 +493,7 @@
       ],
       "file": "philosophy/ancient-philosophy/democritus.md",
       "exists": true,
-      "char_count": 1409
+      "char_count": 2299
     },
     {
       "id": "stoicism",
@@ -688,7 +688,7 @@
       ],
       "file": "philosophy/epistemology/foundationalism.md",
       "exists": true,
-      "char_count": 1326
+      "char_count": 2618
     },
     {
       "id": "pragmatist-epistemology",
@@ -913,7 +913,7 @@
       ],
       "file": "philosophy/epistemology/paradigm-shift.md",
       "exists": true,
-      "char_count": 1320
+      "char_count": 2618
     },
     {
       "id": "coherentism",
@@ -1813,7 +1813,7 @@
       ],
       "file": "philosophy/metaphysics/mind-body-problem.md",
       "exists": true,
-      "char_count": 1413
+      "char_count": 2764
     },
     {
       "id": "abstract-objects",
@@ -2128,7 +2128,7 @@
       ],
       "file": "philosophy/modern-philosophy/wittgenstein.md",
       "exists": true,
-      "char_count": 1406
+      "char_count": 2635
     },
     {
       "id": "deconstruction",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 328341,
-    "avg_chars": 1931,
+    "total_chars": 335672,
+    "avg_chars": 1974,
     "domain": "philosophy"
   }
 }

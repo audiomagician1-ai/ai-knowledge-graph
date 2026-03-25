@@ -568,7 +568,7 @@
       ],
       "file": "game-design/balance-design/level-scaling.md",
       "exists": true,
-      "char_count": 1322
+      "char_count": 2397
     },
     {
       "id": "intransitive-balance",
@@ -1558,7 +1558,7 @@
       ],
       "file": "game-design/design-docs/design-review.md",
       "exists": true,
-      "char_count": 1304
+      "char_count": 2288
     },
     {
       "id": "iteration-process",
@@ -1918,7 +1918,7 @@
       ],
       "file": "game-design/economy-design/battle-pass.md",
       "exists": true,
-      "char_count": 1594
+      "char_count": 2287
     },
     {
       "id": "trading-system",
@@ -2233,7 +2233,7 @@
       ],
       "file": "game-design/feedback-systems/ui-feedback.md",
       "exists": true,
-      "char_count": 1412
+      "char_count": 2408
     },
     {
       "id": "damage-numbers",
@@ -2893,7 +2893,7 @@
       ],
       "file": "game-design/randomness-design/roguelike-design.md",
       "exists": true,
-      "char_count": 1603
+      "char_count": 2717
     },
     {
       "id": "pseudo-random",
@@ -3343,7 +3343,7 @@
       ],
       "file": "game-design/social-systems/social-space.md",
       "exists": true,
-      "char_count": 1321
+      "char_count": 2328
     },
     {
       "id": "social-design-intro",
@@ -3373,7 +3373,7 @@
       ],
       "file": "game-design/social-systems/social-hooks.md",
       "exists": true,
-      "char_count": 1323
+      "char_count": 2387
     },
     {
       "id": "competitive-design",
@@ -3448,7 +3448,7 @@
       ],
       "file": "game-design/systems-design/quest-system.md",
       "exists": true,
-      "char_count": 1323
+      "char_count": 2126
     },
     {
       "id": "crafting-system",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 545946,
-    "avg_chars": 2183,
+    "total_chars": 553682,
+    "avg_chars": 2214,
     "domain": "game-design"
   }
 }

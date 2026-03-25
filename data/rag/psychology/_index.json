@@ -883,7 +883,7 @@
       ],
       "file": "psychology/clinical-psychology/mindfulness.md",
       "exists": true,
-      "char_count": 1329
+      "char_count": 2557
     },
     {
       "id": "therapeutic-relationship",
@@ -2748,8 +2748,8 @@
   ],
   "stats": {
     "total": 183,
-    "total_chars": 385056,
-    "avg_chars": 2104,
+    "total_chars": 386284,
+    "avg_chars": 2110,
     "domain": "psychology"
   }
 }

@@ -7824,7 +7824,7 @@
       ],
       "file": "biology/cell-biology/apoptosis.md",
       "exists": true,
-      "char_count": 1323
+      "char_count": 2495
     },
     {
       "id": "cell-differentiation",
@@ -19194,7 +19194,7 @@
       ],
       "file": "economics/international-econ/regional-integration.md",
       "exists": true,
-      "char_count": 1682
+      "char_count": 2416
     },
     {
       "id": "balance-of-payments",
@@ -19434,7 +19434,7 @@
       ],
       "file": "economics/international-econ/trade-wars.md",
       "exists": true,
-      "char_count": 1402
+      "char_count": 2623
     },
     {
       "id": "trade-policy",
@@ -20244,7 +20244,7 @@
       ],
       "file": "economics/microeconomics/factor-markets.md",
       "exists": true,
-      "char_count": 1397
+      "char_count": 2498
     },
     {
       "id": "marginal-analysis",
@@ -20739,7 +20739,7 @@
       ],
       "file": "english/advanced-grammar/articles-advanced.md",
       "exists": true,
-      "char_count": 1330
+      "char_count": 3412
     },
     {
       "id": "adverb-placement",
@@ -22209,7 +22209,7 @@
       ],
       "file": "english/sentence-patterns/infinitive-phrases.md",
       "exists": true,
-      "char_count": 1321
+      "char_count": 3483
     },
     {
       "id": "five-basic-patterns",
@@ -22794,7 +22794,7 @@
       ],
       "file": "english/tenses/simple-future.md",
       "exists": true,
-      "char_count": 1292
+      "char_count": 2691
     },
     {
       "id": "simple-present",
@@ -23199,7 +23199,7 @@
       ],
       "file": "english/vocabulary/latin-greek-roots.md",
       "exists": true,
-      "char_count": 1395
+      "char_count": 3244
     },
     {
       "id": "collocations",
@@ -24129,7 +24129,7 @@
       ],
       "file": "finance/fintech/smart-contracts.md",
       "exists": true,
-      "char_count": 1414
+      "char_count": 2380
     },
     {
       "id": "robo-advisor",
@@ -24264,7 +24264,7 @@
       ],
       "file": "finance/fixed-income/credit-spread.md",
       "exists": true,
-      "char_count": 1311
+      "char_count": 2419
     },
     {
       "id": "bond-etf",
@@ -24549,7 +24549,7 @@
       ],
       "file": "finance/investment-basics/capm-model.md",
       "exists": true,
-      "char_count": 1407
+      "char_count": 2554
     },
     {
       "id": "diversification",
@@ -25374,7 +25374,7 @@
       ],
       "file": "finance/quantitative-finance/quant-finance-overview.md",
       "exists": true,
-      "char_count": 1648
+      "char_count": 2713
     },
     {
       "id": "sentiment-analysis-finance",
@@ -25824,7 +25824,7 @@
       ],
       "file": "finance/stock-market/pb-ratio.md",
       "exists": true,
-      "char_count": 1319
+      "char_count": 2245
     },
     {
       "id": "market-sentiment",
@@ -31644,7 +31644,7 @@
       ],
       "file": "game-design/balance-design/level-scaling.md",
       "exists": true,
-      "char_count": 1322
+      "char_count": 2397
     },
     {
       "id": "intransitive-balance",
@@ -32634,7 +32634,7 @@
       ],
       "file": "game-design/design-docs/design-review.md",
       "exists": true,
-      "char_count": 1304
+      "char_count": 2288
     },
     {
       "id": "iteration-process",
@@ -32994,7 +32994,7 @@
       ],
       "file": "game-design/economy-design/battle-pass.md",
       "exists": true,
-      "char_count": 1594
+      "char_count": 2287
     },
     {
       "id": "trading-system",
@@ -33309,7 +33309,7 @@
       ],
       "file": "game-design/feedback-systems/ui-feedback.md",
       "exists": true,
-      "char_count": 1412
+      "char_count": 2408
     },
     {
       "id": "damage-numbers",
@@ -33969,7 +33969,7 @@
       ],
       "file": "game-design/randomness-design/roguelike-design.md",
       "exists": true,
-      "char_count": 1603
+      "char_count": 2717
     },
     {
       "id": "pseudo-random",
@@ -34419,7 +34419,7 @@
       ],
       "file": "game-design/social-systems/social-space.md",
       "exists": true,
-      "char_count": 1321
+      "char_count": 2328
     },
     {
       "id": "social-design-intro",
@@ -34449,7 +34449,7 @@
       ],
       "file": "game-design/social-systems/social-hooks.md",
       "exists": true,
-      "char_count": 1323
+      "char_count": 2387
     },
     {
       "id": "competitive-design",
@@ -34524,7 +34524,7 @@
       ],
       "file": "game-design/systems-design/quest-system.md",
       "exists": true,
-      "char_count": 1323
+      "char_count": 2126
     },
     {
       "id": "crafting-system",
@@ -52504,7 +52504,7 @@
       ],
       "file": "level-design/ld-documentation/asset-list.md",
       "exists": true,
-      "char_count": 1310
+      "char_count": 2317
     },
     {
       "id": "iteration-log",
@@ -52519,7 +52519,7 @@
       ],
       "file": "level-design/ld-documentation/iteration-log.md",
       "exists": true,
-      "char_count": 1412
+      "char_count": 2454
     },
     {
       "id": "encounter-doc",
@@ -53599,7 +53599,7 @@
       ],
       "file": "level-design/pacing-curve/macro-pacing.md",
       "exists": true,
-      "char_count": 1302
+      "char_count": 2302
     },
     {
       "id": "intensity-curve",
@@ -56167,7 +56167,7 @@
       ],
       "file": "mathematics/calculus/gradient-directional.md",
       "exists": true,
-      "char_count": 1408
+      "char_count": 3112
     },
     {
       "id": "differentiation-rules",
@@ -57067,7 +57067,7 @@
       ],
       "file": "mathematics/linear-algebra/null-column-row-spaces.md",
       "exists": true,
-      "char_count": 1648
+      "char_count": 2814
     },
     {
       "id": "basis-dimension",
@@ -57367,7 +57367,7 @@
       ],
       "file": "mathematics/linear-algebra/inverse-matrix.md",
       "exists": true,
-      "char_count": 1405
+      "char_count": 2755
     },
     {
       "id": "propositional-logic",
@@ -57472,7 +57472,7 @@
       ],
       "file": "mathematics/number-theory/quadratic-residues.md",
       "exists": true,
-      "char_count": 1327
+      "char_count": 3229
     },
     {
       "id": "pythagorean-triples",
@@ -64314,7 +64314,7 @@
       ],
       "file": "philosophy/aesthetics/art-form.md",
       "exists": true,
-      "char_count": 1394
+      "char_count": 2665
     },
     {
       "id": "art-criticism",
@@ -64614,7 +64614,7 @@
       ],
       "file": "philosophy/ancient-philosophy/democritus.md",
       "exists": true,
-      "char_count": 1409
+      "char_count": 2299
     },
     {
       "id": "stoicism",
@@ -64809,7 +64809,7 @@
       ],
       "file": "philosophy/epistemology/foundationalism.md",
       "exists": true,
-      "char_count": 1326
+      "char_count": 2618
     },
     {
       "id": "pragmatist-epistemology",
@@ -65034,7 +65034,7 @@
       ],
       "file": "philosophy/epistemology/paradigm-shift.md",
       "exists": true,
-      "char_count": 1320
+      "char_count": 2618
     },
     {
       "id": "coherentism",
@@ -65934,7 +65934,7 @@
       ],
       "file": "philosophy/metaphysics/mind-body-problem.md",
       "exists": true,
-      "char_count": 1413
+      "char_count": 2764
     },
     {
       "id": "abstract-objects",
@@ -66249,7 +66249,7 @@
       ],
       "file": "philosophy/modern-philosophy/wittgenstein.md",
       "exists": true,
-      "char_count": 1406
+      "char_count": 2635
     },
     {
       "id": "deconstruction",
@@ -68049,7 +68049,7 @@
       ],
       "file": "physics/modern-physics/twin-paradox.md",
       "exists": true,
-      "char_count": 1313
+      "char_count": 2439
     },
     {
       "id": "zeeman-effect",
@@ -71109,7 +71109,7 @@
       ],
       "file": "product-design/product-thinking/value-proposition.md",
       "exists": true,
-      "char_count": 1408
+      "char_count": 2779
     },
     {
       "id": "prioritization-frameworks",
@@ -71664,7 +71664,7 @@
       ],
       "file": "product-design/user-research/think-aloud-protocol.md",
       "exists": true,
-      "char_count": 1318
+      "char_count": 2190
     },
     {
       "id": "stakeholder-interview",
@@ -71814,7 +71814,7 @@
       ],
       "file": "product-design/user-research/ethnographic-research.md",
       "exists": true,
-      "char_count": 1326
+      "char_count": 2963
     },
     {
       "id": "focus-group",
@@ -73844,7 +73844,7 @@
       ],
       "file": "psychology/clinical-psychology/mindfulness.md",
       "exists": true,
-      "char_count": 1329
+      "char_count": 2557
     },
     {
       "id": "therapeutic-relationship",
@@ -87398,7 +87398,7 @@
       ],
       "file": "writing/expository-writing/fact-checking.md",
       "exists": true,
-      "char_count": 1321
+      "char_count": 2270
     },
     {
       "id": "informative-writing",
@@ -87863,7 +87863,7 @@
       ],
       "file": "writing/narrative-writing/dialogue-writing.md",
       "exists": true,
-      "char_count": 1319
+      "char_count": 2116
     },
     {
       "id": "show-dont-tell",
@@ -87938,7 +87938,7 @@
       ],
       "file": "writing/narrative-writing/travel-writing.md",
       "exists": true,
-      "char_count": 1313
+      "char_count": 2400
     },
     {
       "id": "short-story-craft",
@@ -87968,7 +87968,7 @@
       ],
       "file": "writing/narrative-writing/pacing-rhythm.md",
       "exists": true,
-      "char_count": 1309
+      "char_count": 2109
     },
     {
       "id": "novel-structure",
@@ -88163,7 +88163,7 @@
       ],
       "file": "writing/persuasive-writing/call-to-action.md",
       "exists": true,
-      "char_count": 1319
+      "char_count": 2628
     },
     {
       "id": "opinion-essay",
@@ -88313,7 +88313,7 @@
       ],
       "file": "writing/persuasive-writing/logos-strategies.md",
       "exists": true,
-      "char_count": 1509
+      "char_count": 2862
     },
     {
       "id": "logical-fallacies-writing",
@@ -88928,7 +88928,7 @@
       ],
       "file": "writing/revision-craft/style-consistency.md",
       "exists": true,
-      "char_count": 1492
+      "char_count": 2475
     },
     {
       "id": "active-passive-voice",

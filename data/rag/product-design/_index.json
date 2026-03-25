@@ -1528,7 +1528,7 @@
       ],
       "file": "product-design/product-thinking/value-proposition.md",
       "exists": true,
-      "char_count": 1408
+      "char_count": 2779
     },
     {
       "id": "prioritization-frameworks",
@@ -2083,7 +2083,7 @@
       ],
       "file": "product-design/user-research/think-aloud-protocol.md",
       "exists": true,
-      "char_count": 1318
+      "char_count": 2190
     },
     {
       "id": "stakeholder-interview",
@@ -2233,7 +2233,7 @@
       ],
       "file": "product-design/user-research/ethnographic-research.md",
       "exists": true,
-      "char_count": 1326
+      "char_count": 2963
     },
     {
       "id": "focus-group",
@@ -2733,8 +2733,8 @@
   ],
   "stats": {
     "total": 182,
-    "total_chars": 356588,
-    "avg_chars": 1959,
+    "total_chars": 360468,
+    "avg_chars": 1980,
     "domain": "product-design"
   }
 }

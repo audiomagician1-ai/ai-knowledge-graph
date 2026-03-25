@@ -1333,7 +1333,7 @@
       ],
       "file": "mathematics/calculus/gradient-directional.md",
       "exists": true,
-      "char_count": 1408
+      "char_count": 3112
     },
     {
       "id": "differentiation-rules",
@@ -2233,7 +2233,7 @@
       ],
       "file": "mathematics/linear-algebra/null-column-row-spaces.md",
       "exists": true,
-      "char_count": 1648
+      "char_count": 2814
     },
     {
       "id": "basis-dimension",
@@ -2533,7 +2533,7 @@
       ],
       "file": "mathematics/linear-algebra/inverse-matrix.md",
       "exists": true,
-      "char_count": 1405
+      "char_count": 2755
     },
     {
       "id": "propositional-logic",
@@ -2638,7 +2638,7 @@
       ],
       "file": "mathematics/number-theory/quadratic-residues.md",
       "exists": true,
-      "char_count": 1327
+      "char_count": 3229
     },
     {
       "id": "pythagorean-triples",
@@ -4038,8 +4038,8 @@
   ],
   "stats": {
     "total": 269,
-    "total_chars": 694133,
-    "avg_chars": 2580,
+    "total_chars": 700255,
+    "avg_chars": 2603,
     "domain": "mathematics"
   }
 }

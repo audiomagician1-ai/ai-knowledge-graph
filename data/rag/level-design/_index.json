@@ -1138,7 +1138,7 @@
       ],
       "file": "level-design/ld-documentation/asset-list.md",
       "exists": true,
-      "char_count": 1310
+      "char_count": 2317
     },
     {
       "id": "iteration-log",
@@ -1153,7 +1153,7 @@
       ],
       "file": "level-design/ld-documentation/iteration-log.md",
       "exists": true,
-      "char_count": 1412
+      "char_count": 2454
     },
     {
       "id": "encounter-doc",
@@ -2233,7 +2233,7 @@
       ],
       "file": "level-design/pacing-curve/macro-pacing.md",
       "exists": true,
-      "char_count": 1302
+      "char_count": 2302
     },
     {
       "id": "intensity-curve",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 438505,
-    "avg_chars": 2192,
+    "total_chars": 441554,
+    "avg_chars": 2207,
     "domain": "level-design"
   }
 }

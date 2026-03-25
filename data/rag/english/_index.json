@@ -103,7 +103,7 @@
       ],
       "file": "english/advanced-grammar/articles-advanced.md",
       "exists": true,
-      "char_count": 1330
+      "char_count": 3412
     },
     {
       "id": "adverb-placement",
@@ -1573,7 +1573,7 @@
       ],
       "file": "english/sentence-patterns/infinitive-phrases.md",
       "exists": true,
-      "char_count": 1321
+      "char_count": 3483
     },
     {
       "id": "five-basic-patterns",
@@ -2158,7 +2158,7 @@
       ],
       "file": "english/tenses/simple-future.md",
       "exists": true,
-      "char_count": 1292
+      "char_count": 2691
     },
     {
       "id": "simple-present",
@@ -2563,7 +2563,7 @@
       ],
       "file": "english/vocabulary/latin-greek-roots.md",
       "exists": true,
-      "char_count": 1395
+      "char_count": 3244
     },
     {
       "id": "collocations",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 488696,
-    "avg_chars": 2443,
+    "total_chars": 496188,
+    "avg_chars": 2480,
     "domain": "english"
   }
 }

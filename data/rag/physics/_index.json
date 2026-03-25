@@ -1378,7 +1378,7 @@
       ],
       "file": "physics/modern-physics/twin-paradox.md",
       "exists": true,
-      "char_count": 1313
+      "char_count": 2439
     },
     {
       "id": "zeeman-effect",
@@ -2913,8 +2913,8 @@
   ],
   "stats": {
     "total": 194,
-    "total_chars": 467435,
-    "avg_chars": 2409,
+    "total_chars": 468561,
+    "avg_chars": 2415,
     "domain": "physics"
   }
 }

@@ -493,7 +493,7 @@
       ],
       "file": "finance/fintech/smart-contracts.md",
       "exists": true,
-      "char_count": 1414
+      "char_count": 2380
     },
     {
       "id": "robo-advisor",
@@ -628,7 +628,7 @@
       ],
       "file": "finance/fixed-income/credit-spread.md",
       "exists": true,
-      "char_count": 1311
+      "char_count": 2419
     },
     {
       "id": "bond-etf",
@@ -913,7 +913,7 @@
       ],
       "file": "finance/investment-basics/capm-model.md",
       "exists": true,
-      "char_count": 1407
+      "char_count": 2554
     },
     {
       "id": "diversification",
@@ -1738,7 +1738,7 @@
       ],
       "file": "finance/quantitative-finance/quant-finance-overview.md",
       "exists": true,
-      "char_count": 1648
+      "char_count": 2713
     },
     {
       "id": "sentiment-analysis-finance",
@@ -2188,7 +2188,7 @@
       ],
       "file": "finance/stock-market/pb-ratio.md",
       "exists": true,
-      "char_count": 1319
+      "char_count": 2245
     },
     {
       "id": "market-sentiment",
@@ -2403,8 +2403,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 338267,
-    "avg_chars": 2114,
+    "total_chars": 343479,
+    "avg_chars": 2146,
     "domain": "finance"
   }
 }

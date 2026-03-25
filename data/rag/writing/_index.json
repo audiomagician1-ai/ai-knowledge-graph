@@ -688,7 +688,7 @@
       ],
       "file": "writing/expository-writing/fact-checking.md",
       "exists": true,
-      "char_count": 1321
+      "char_count": 2270
     },
     {
       "id": "informative-writing",
@@ -1153,7 +1153,7 @@
       ],
       "file": "writing/narrative-writing/dialogue-writing.md",
       "exists": true,
-      "char_count": 1319
+      "char_count": 2116
     },
     {
       "id": "show-dont-tell",
@@ -1228,7 +1228,7 @@
       ],
       "file": "writing/narrative-writing/travel-writing.md",
       "exists": true,
-      "char_count": 1313
+      "char_count": 2400
     },
     {
       "id": "short-story-craft",
@@ -1258,7 +1258,7 @@
       ],
       "file": "writing/narrative-writing/pacing-rhythm.md",
       "exists": true,
-      "char_count": 1309
+      "char_count": 2109
     },
     {
       "id": "novel-structure",
@@ -1453,7 +1453,7 @@
       ],
       "file": "writing/persuasive-writing/call-to-action.md",
       "exists": true,
-      "char_count": 1319
+      "char_count": 2628
     },
     {
       "id": "opinion-essay",
@@ -1603,7 +1603,7 @@
       ],
       "file": "writing/persuasive-writing/logos-strategies.md",
       "exists": true,
-      "char_count": 1509
+      "char_count": 2862
     },
     {
       "id": "logical-fallacies-writing",
@@ -2218,7 +2218,7 @@
       ],
       "file": "writing/revision-craft/style-consistency.md",
       "exists": true,
-      "char_count": 1492
+      "char_count": 2475
     },
     {
       "id": "active-passive-voice",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 349805,
-    "avg_chars": 2057,
+    "total_chars": 357083,
+    "avg_chars": 2100,
     "domain": "writing"
   }
 }

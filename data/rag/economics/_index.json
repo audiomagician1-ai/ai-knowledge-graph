@@ -1108,7 +1108,7 @@
       ],
       "file": "economics/international-econ/regional-integration.md",
       "exists": true,
-      "char_count": 1682
+      "char_count": 2416
     },
     {
       "id": "balance-of-payments",
@@ -1348,7 +1348,7 @@
       ],
       "file": "economics/international-econ/trade-wars.md",
       "exists": true,
-      "char_count": 1402
+      "char_count": 2623
     },
     {
       "id": "trade-policy",
@@ -2158,7 +2158,7 @@
       ],
       "file": "economics/microeconomics/factor-markets.md",
       "exists": true,
-      "char_count": 1397
+      "char_count": 2498
     },
     {
       "id": "marginal-analysis",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 351051,
-    "avg_chars": 2065,
+    "total_chars": 354107,
+    "avg_chars": 2082,
     "domain": "economics"
   }
 }

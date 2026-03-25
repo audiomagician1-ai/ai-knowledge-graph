@@ -538,7 +538,7 @@
       ],
       "file": "biology/cell-biology/apoptosis.md",
       "exists": true,
-      "char_count": 1323
+      "char_count": 2495
     },
     {
       "id": "cell-differentiation",
@@ -2583,8 +2583,8 @@
   ],
   "stats": {
     "total": 172,
-    "total_chars": 392416,
-    "avg_chars": 2281,
+    "total_chars": 393588,
+    "avg_chars": 2288,
     "domain": "biology"
   }
 }
