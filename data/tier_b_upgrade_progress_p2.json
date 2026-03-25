@@ -809,10 +809,30 @@
     "cd-outdoor-lighting",
     "cd-shadow-shapes",
     "cd-lighting-study",
-    "cd-char-villain"
+    "cd-char-villain",
+    "cd-env-callout-sheet",
+    "cd-env-exterior",
+    "cd-visdev-art-test",
+    "cd-style-painterly",
+    "game-audio-music-wwise-interactive-demo",
+    "water-rendering",
+    "destruction-physics",
+    "pose-snapshot",
+    "mouse-cursor",
+    "accessibility-input",
+    "ops-ur-win-back",
+    "qa-rt-full-regression",
+    "qa-tc-game-test-framework",
+    "guiux-menu-quest-log",
+    "guiux-menu-social",
+    "mn-mm-season-system",
+    "mn-ac-aimbot-detection",
+    "mn-lb-loading-screen",
+    "nd-cw-redemption-arc",
+    "nd-bn-butterfly-effect"
   ],
   "errors": [],
-  "total_upgraded": 810,
+  "total_upgraded": 830,
   "started_at": "2026-03-24T20:22:43.388321",
-  "last_updated": "2026-03-25T09:20:49.562035"
+  "last_updated": "2026-03-25T09:40:26.482492"
 }
