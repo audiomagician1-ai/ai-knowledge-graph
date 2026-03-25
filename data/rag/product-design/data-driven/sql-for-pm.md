@@ -20,72 +20,98 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-25
 ---
+
 # 产品经理SQL
 
 ## 概述
 
-产品经理SQL（Sql For Pm）是产品设计（Product Design）中数据驱动领域的重要概念。难度等级3/9（初级）。
+产品经理SQL是指产品经理在日常工作中用于提取、分析和验证产品数据的结构化查询语言技能集合。与后端工程师使用SQL进行数据库设计和性能优化不同，产品经理使用SQL的核心目的是快速回答业务问题——例如"本周新注册用户中有多少人在7天内完成了首次付款"或"用户在哪一步漏斗流失最多"。掌握这一技能意味着产品经理不再需要每次分析都向数据团队提交数据需求单，可以将数据获取周期从3天压缩至30分钟。
 
-产品分析常用SQL查询与数据提取。
+SQL最初由IBM研究员Donald Chamberlin和Raymond Boyce于1974年设计，1986年成为ANSI标准。对产品经理而言，最常接触的数据库环境是企业数仓（如Hive、BigQuery、Redshift）以及业务数据库（MySQL、PostgreSQL）。这些环境的SQL语法存在细微差异，但SELECT、WHERE、GROUP BY、JOIN、HAVING五类语句覆盖了产品分析90%以上的查询场景。
 
-在知识体系中，产品经理SQL建立在分析工具的基础之上，是理解可进入更高级主题的关键前置知识。为什么产品经理SQL如此重要？因为它在数据驱动中起到承上启下的作用，连接基础概念与高级应用。
+为什么产品经理必须掌握SQL而不是依赖BI工具？原因在于BI工具只能回答"已经被预定义"的问题，而产品迭代过程中会持续出现新假设需要验证。当一个新功能上线后，产品经理需要自主查询用户行为日志、事件埋点表、订单流水表来判断功能效果，这种即席查询（Ad-hoc Query）能力是BI拖拽操作无法替代的。
 
-## 核心知识点
+## 核心原理
 
-### 1. 产品分析常用SQL查询
+### 基础查询结构与产品场景映射
 
-产品分析常用SQL查询是产品经理SQL(Sql For Pm)的核心组成部分之一。在数据驱动的实践中，产品分析常用SQL查询决定了系统行为的关键特征。例如，当产品分析常用SQL查询参数或条件发生变化时，整体表现会产生显著差异。深入理解产品分析常用SQL查询需要结合产品设计的基本原理进行分析。
+产品分析的基础查询遵循以下固定执行顺序：FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT。理解这个顺序对于写出正确的过滤逻辑至关重要——WHERE在聚合前过滤行，HAVING在聚合后过滤组，两者不可互换。
 
-### 2. 数据提取
+典型的用户活跃度查询如下：
+```sql
+SELECT DATE(event_time) AS date,
+       COUNT(DISTINCT user_id) AS dau
+FROM user_events
+WHERE event_type = 'app_open'
+  AND event_time >= '2024-01-01'
+GROUP BY DATE(event_time)
+ORDER BY date;
+```
+其中`COUNT(DISTINCT user_id)`是计算DAU（日活跃用户数）的标准写法，去重是关键——同一用户当天多次打开APP只计一次。
 
-数据提取是产品经理SQL(Sql For Pm)的核心组成部分之一。在数据驱动的实践中，数据提取决定了系统行为的关键特征。例如，当数据提取参数或条件发生变化时，整体表现会产生显著差异。深入理解数据提取需要结合产品设计的基本原理进行分析。
+### 留存分析与窗口函数
 
+留存分析是产品经理最高频的SQL任务之一。计算次日留存率需要使用自连接（Self JOIN）或窗口函数。以下是基于用户注册日期计算7日留存的核心逻辑：
 
-### 关键原理分析
+```sql
+SELECT a.user_id,
+       a.register_date,
+       b.active_date
+FROM (SELECT user_id, DATE(create_time) AS register_date
+      FROM users) a
+LEFT JOIN (SELECT DISTINCT user_id, DATE(event_time) AS active_date
+           FROM user_events) b
+  ON a.user_id = b.user_id
+  AND DATEDIFF(b.active_date, a.register_date) = 7
+```
 
-产品经理SQL的核心在于产品分析常用SQL查询与数据提取。从理论角度看，该概念涉及以下层面：
+`DATEDIFF`函数计算两个日期之间的天数差，返回值为整数。7日留存率 = 注册后第7天仍有活跃记录的用户数 ÷ 当日注册用户总数 × 100%。产品团队通常将次日留存>40%、7日留存>20%视为健康指标的基准线。
 
-1. **定义层**：明确产品经理SQL的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解产品经理SQL内部各要素的相互作用方式
-3. **应用层**：将产品经理SQL的原理映射到产品设计的实际场景中
+窗口函数`ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY event_time)`可以标记每个用户的第N次行为，用于提取"用户首次购买"或"用户第三次登录"等关键节点数据。
 
-思考题：如何判断产品经理SQL的应用是否超出了其理论适用范围？
+### 漏斗分析与条件聚合
 
-## 关键要点
+漏斗转化分析要求在单次查询中统计不同步骤的用户数。条件聚合是实现这一目标的核心技巧：
 
-1. **核心定义**：产品经理SQL的本质是产品分析常用SQL查询与数据提取，这是理解整个概念的出发点
-2. **多维理解**：掌握产品经理SQL需要同时理解产品分析常用SQL查询和数据提取等关键维度
-3. **先修关系**：扎实的分析工具基础对理解产品经理SQL至关重要
-4. **进阶路径**：可广泛应用于产品设计各方面
-5. **实践标准**：真正掌握产品经理SQL的标志是能在具体场景中灵活运用并正确判断适用边界
+```sql
+SELECT 
+  COUNT(DISTINCT CASE WHEN step = 'view_product' THEN user_id END) AS step1_users,
+  COUNT(DISTINCT CASE WHEN step = 'add_to_cart' THEN user_id END) AS step2_users,
+  COUNT(DISTINCT CASE WHEN step = 'checkout' THEN user_id END) AS step3_users,
+  COUNT(DISTINCT CASE WHEN step = 'payment_success' THEN user_id END) AS step4_users
+FROM funnel_events
+WHERE event_date = '2024-03-15';
+```
+
+`CASE WHEN ... THEN ... END`结构嵌套在聚合函数内部，使得每一列对应漏斗的一个步骤，一行输出即呈现完整转化数据。各步骤转化率 = 下一步用户数 ÷ 上一步用户数。
+
+## 实际应用
+
+**场景一：验证A/B测试结果**
+产品上线新版首页后，需要对比实验组与对照组的关键指标差异。使用`GROUP BY experiment_group`配合`AVG(session_duration)`和`COUNT(DISTINCT user_id)`可以在一次查询中输出两组的人均时长和覆盖用户量，避免分两次查询导致的时间窗口不一致问题。
+
+**场景二：定位功能使用异常**
+当监控发现某功能的使用量突然下降30%，产品经理需要用SQL定位是哪个设备类型、哪个用户分群受影响。核心查询是在WHERE子句中锁定异常时间段，然后用`GROUP BY platform, user_segment`分组对比，通常5分钟内可以将问题范围缩小到具体维度。
+
+**场景三：用户分群导出**
+运营活动需要向"注册超过90天但从未付费"的用户推送优惠券。SQL查询逻辑为：在users表中筛选`DATEDIFF(CURDATE(), register_date) > 90`，再用`NOT EXISTS`或`LEFT JOIN ... WHERE order_id IS NULL`排除有付款记录的用户，最终导出user_id列表给运营系统。
 
 ## 常见误区
 
-1. **混淆概念边界**：将产品经理SQL与数据驱动中其他相近概念混为一谈。例如，产品分析常用SQL查询的适用条件与其他数据提取概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解分析工具就学习产品经理SQL，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：产品经理SQL虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：混淆COUNT(\*)与COUNT(DISTINCT user_id)**
+`COUNT(*)`统计的是表中符合条件的行数，`COUNT(DISTINCT user_id)`统计的是不重复的用户数。在事件日志表中，一个用户一天内触发100次点击事件，`COUNT(*)`返回100，`COUNT(DISTINCT user_id)`返回1。产品经理计算DAU、MAU必须使用`DISTINCT`，否则会严重高估用户规模，出现"日活数据比注册用户总数还高"的荒谬结果。
 
-## 知识衔接
+**误区二：WHERE中对NULL值使用等号判断**
+当字段存在NULL值时，`WHERE channel = NULL`永远不会返回任何行，正确写法是`WHERE channel IS NULL`。产品数据中NULL通常代表"未知渠道"或"未填写"，误用等号会导致这部分用户数据从分析中彻底消失，进而使渠道归因分析中各渠道之和小于总用户数，产生数据对不上的困惑。
 
-### 先修知识
-先修知识包括：
-- **分析工具** — 为产品经理SQL提供了必要的概念基础
+**误区三：用HAVING替代WHERE进行前置过滤**
+部分产品经理将所有过滤条件都写在HAVING中，例如`HAVING user_id = '12345'`。由于HAVING在GROUP BY之后执行，这会导致数据库先对全量数据进行分组聚合再过滤，查询速度可能比`WHERE user_id = '12345'`慢数十倍。在亿级数据量的用户行为表上，这一差异会让查询从3秒变为5分钟。
 
-### 后续学习
-掌握产品经理SQL后，学习者已具备该方向的核心能力，可将所学应用于实际项目或探索产品设计其他分支。
+## 知识关联
 
-## 学习建议
+产品经理SQL建立在**分析工具**基础认知之上——了解数据仓库与业务数据库的区别、理解埋点数据如何流入分析表，是写出正确SQL的前提。例如，知道用户行为数据存储在`dwd_event_log`分区表中，才能在WHERE子句中正确添加`dt = '2024-03-15'`分区条件，避免全表扫描导致集群超时。
 
-预计学习时间：1-2小时。建议采用以下策略：
-
-- **主动回忆**：学完后不看笔记复述产品经理SQL的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将产品经理SQL与产品设计中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释产品经理SQL，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于数据驱动的章节可作为深入参考
-- Wikipedia: [Sql For Pm](https://en.wikipedia.org/wiki/sql_for_pm) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Sql For Pm" 可找到配套视频教程
+在应用层面，SQL查询能力直接支撑了产品经理的数据驱动决策能力。留存率查询结果用于判断功能价值；漏斗查询结果指导转化优化的优先级；用户分群查询输出支持精细化运营实验设计。SQL是将业务问题转化为可验证数据结论的操作层工具，其掌握程度决定了产品经理能以多快速度、多低成本完成从假设到验证的闭环。
