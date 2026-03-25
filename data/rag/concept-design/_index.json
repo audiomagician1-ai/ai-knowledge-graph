@@ -328,7 +328,7 @@
       ],
       "file": "concept-design/cd-char-villain.md",
       "exists": true,
-      "char_count": 1282
+      "char_count": 2376
     },
     {
       "id": "cd-char-fantasy",
@@ -718,7 +718,7 @@
       ],
       "file": "concept-design/cd-color-grading.md",
       "exists": true,
-      "char_count": 1264
+      "char_count": 2859
     },
     {
       "id": "cd-color-storytelling",
@@ -988,7 +988,7 @@
       ],
       "file": "concept-design/cd-symmetry-asymmetry.md",
       "exists": true,
-      "char_count": 1284
+      "char_count": 2145
     },
     {
       "id": "cd-leading-lines",
@@ -1153,7 +1153,7 @@
       ],
       "file": "concept-design/cd-rhythm-pattern.md",
       "exists": true,
-      "char_count": 1275
+      "char_count": 2291
     },
     {
       "id": "cd-negative-space",
@@ -1453,7 +1453,7 @@
       ],
       "file": "concept-design/cd-env-callout-sheet.md",
       "exists": true,
-      "char_count": 1268
+      "char_count": 2508
     },
     {
       "id": "cd-env-sci-fi-world",
@@ -1513,7 +1513,7 @@
       ],
       "file": "concept-design/cd-lighting-study.md",
       "exists": true,
-      "char_count": 1277
+      "char_count": 2432
     },
     {
       "id": "cd-mood-through-light",
@@ -1648,7 +1648,7 @@
       ],
       "file": "concept-design/cd-outdoor-lighting.md",
       "exists": true,
-      "char_count": 1273
+      "char_count": 2421
     },
     {
       "id": "cd-form-shadow",
@@ -1723,7 +1723,7 @@
       ],
       "file": "concept-design/cd-core-shadow.md",
       "exists": true,
-      "char_count": 1273
+      "char_count": 2205
     },
     {
       "id": "cd-material-light-response",
@@ -1798,7 +1798,7 @@
       ],
       "file": "concept-design/cd-shadow-shapes.md",
       "exists": true,
-      "char_count": 1268
+      "char_count": 2333
     },
     {
       "id": "cd-mood-layout",
@@ -3303,8 +3303,8 @@
   ],
   "stats": {
     "total": 220,
-    "total_chars": 422557,
-    "avg_chars": 1920,
+    "total_chars": 432663,
+    "avg_chars": 1966,
     "domain": "concept-design"
   }
 }

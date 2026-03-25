@@ -208,7 +208,7 @@
       ],
       "file": "computer-graphics/anti-aliasing/cg-frame-generation.md",
       "exists": true,
-      "char_count": 1250
+      "char_count": 2510
     },
     {
       "id": "cg-jitter-pattern",
@@ -1573,7 +1573,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-pixel-art-filter.md",
       "exists": true,
-      "char_count": 1277
+      "char_count": 2618
     },
     {
       "id": "cg-pp-volume",
@@ -2653,7 +2653,7 @@
       ],
       "file": "computer-graphics/render-optimization/cg-profiling-workflow.md",
       "exists": true,
-      "char_count": 1576
+      "char_count": 2926
     },
     {
       "id": "cg-streaming-opt",
@@ -2953,7 +2953,7 @@
       ],
       "file": "computer-graphics/shader-programming/cg-material-function.md",
       "exists": true,
-      "char_count": 1283
+      "char_count": 2901
     },
     {
       "id": "cg-material-graph",
@@ -3148,7 +3148,7 @@
       ],
       "file": "computer-graphics/texture-techniques/cg-sdf-texture.md",
       "exists": true,
-      "char_count": 1282
+      "char_count": 2829
     },
     {
       "id": "cg-udim",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 507009,
-    "avg_chars": 2028,
+    "total_chars": 514125,
+    "avg_chars": 2056,
     "domain": "computer-graphics"
   }
 }

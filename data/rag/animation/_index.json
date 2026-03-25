@@ -658,7 +658,7 @@
       ],
       "file": "animation/anim-1d-blend.md",
       "exists": true,
-      "char_count": 1586
+      "char_count": 2740
     },
     {
       "id": "anim-2d-blend",
@@ -973,7 +973,7 @@
       ],
       "file": "animation/anim-micro-expression.md",
       "exists": true,
-      "char_count": 1272
+      "char_count": 2460
     },
     {
       "id": "anim-emotion-expression",
@@ -1198,7 +1198,7 @@
       ],
       "file": "animation/anim-full-body-ik.md",
       "exists": true,
-      "char_count": 1268
+      "char_count": 2779
     },
     {
       "id": "anim-two-bone-ik",
@@ -1633,7 +1633,7 @@
       ],
       "file": "animation/anim-emote-gesture.md",
       "exists": true,
-      "char_count": 1279
+      "char_count": 2495
     },
     {
       "id": "anim-jump-animation",
@@ -1648,7 +1648,7 @@
       ],
       "file": "animation/anim-jump-animation.md",
       "exists": true,
-      "char_count": 1279
+      "char_count": 2577
     },
     {
       "id": "anim-transition-anim",
@@ -1828,7 +1828,7 @@
       ],
       "file": "animation/anim-mocap-retarget.md",
       "exists": true,
-      "char_count": 1274
+      "char_count": 2554
     },
     {
       "id": "anim-mocap-budget",
@@ -1933,7 +1933,7 @@
       ],
       "file": "animation/anim-hit-reaction.md",
       "exists": true,
-      "char_count": 1288
+      "char_count": 2316
     },
     {
       "id": "anim-ragdoll",
@@ -2353,7 +2353,7 @@
       ],
       "file": "animation/anim-space-switching.md",
       "exists": true,
-      "char_count": 1289
+      "char_count": 2488
     },
     {
       "id": "anim-rig-testing",
@@ -2533,7 +2533,7 @@
       ],
       "file": "animation/anim-sub-state-machine.md",
       "exists": true,
-      "char_count": 1286
+      "char_count": 2690
     },
     {
       "id": "anim-hfsm",
@@ -2653,7 +2653,7 @@
       ],
       "file": "animation/anim-state-notifies.md",
       "exists": true,
-      "char_count": 1282
+      "char_count": 2499
     },
     {
       "id": "anim-locomotion-sm",
@@ -2698,13 +2698,13 @@
       ],
       "file": "animation/anim-transition-rules.md",
       "exists": true,
-      "char_count": 1282
+      "char_count": 2748
     }
   ],
   "stats": {
     "total": 180,
-    "total_chars": 332381,
-    "avg_chars": 1846,
+    "total_chars": 346342,
+    "avg_chars": 1924,
     "domain": "animation"
   }
 }

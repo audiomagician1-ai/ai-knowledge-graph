@@ -5244,7 +5244,7 @@
       ],
       "file": "animation/anim-1d-blend.md",
       "exists": true,
-      "char_count": 1586
+      "char_count": 2740
     },
     {
       "id": "anim-2d-blend",
@@ -5559,7 +5559,7 @@
       ],
       "file": "animation/anim-micro-expression.md",
       "exists": true,
-      "char_count": 1272
+      "char_count": 2460
     },
     {
       "id": "anim-emotion-expression",
@@ -5784,7 +5784,7 @@
       ],
       "file": "animation/anim-full-body-ik.md",
       "exists": true,
-      "char_count": 1268
+      "char_count": 2779
     },
     {
       "id": "anim-two-bone-ik",
@@ -6219,7 +6219,7 @@
       ],
       "file": "animation/anim-emote-gesture.md",
       "exists": true,
-      "char_count": 1279
+      "char_count": 2495
     },
     {
       "id": "anim-jump-animation",
@@ -6234,7 +6234,7 @@
       ],
       "file": "animation/anim-jump-animation.md",
       "exists": true,
-      "char_count": 1279
+      "char_count": 2577
     },
     {
       "id": "anim-transition-anim",
@@ -6414,7 +6414,7 @@
       ],
       "file": "animation/anim-mocap-retarget.md",
       "exists": true,
-      "char_count": 1274
+      "char_count": 2554
     },
     {
       "id": "anim-mocap-budget",
@@ -6519,7 +6519,7 @@
       ],
       "file": "animation/anim-hit-reaction.md",
       "exists": true,
-      "char_count": 1288
+      "char_count": 2316
     },
     {
       "id": "anim-ragdoll",
@@ -6939,7 +6939,7 @@
       ],
       "file": "animation/anim-space-switching.md",
       "exists": true,
-      "char_count": 1289
+      "char_count": 2488
     },
     {
       "id": "anim-rig-testing",
@@ -7119,7 +7119,7 @@
       ],
       "file": "animation/anim-sub-state-machine.md",
       "exists": true,
-      "char_count": 1286
+      "char_count": 2690
     },
     {
       "id": "anim-hfsm",
@@ -7239,7 +7239,7 @@
       ],
       "file": "animation/anim-state-notifies.md",
       "exists": true,
-      "char_count": 1282
+      "char_count": 2499
     },
     {
       "id": "anim-locomotion-sm",
@@ -7284,7 +7284,7 @@
       ],
       "file": "animation/anim-transition-rules.md",
       "exists": true,
-      "char_count": 1282
+      "char_count": 2748
     },
     {
       "id": "extinction",
@@ -10074,7 +10074,7 @@
       ],
       "file": "computer-graphics/anti-aliasing/cg-frame-generation.md",
       "exists": true,
-      "char_count": 1250
+      "char_count": 2510
     },
     {
       "id": "cg-jitter-pattern",
@@ -11439,7 +11439,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-pixel-art-filter.md",
       "exists": true,
-      "char_count": 1277
+      "char_count": 2618
     },
     {
       "id": "cg-pp-volume",
@@ -12519,7 +12519,7 @@
       ],
       "file": "computer-graphics/render-optimization/cg-profiling-workflow.md",
       "exists": true,
-      "char_count": 1576
+      "char_count": 2926
     },
     {
       "id": "cg-streaming-opt",
@@ -12819,7 +12819,7 @@
       ],
       "file": "computer-graphics/shader-programming/cg-material-function.md",
       "exists": true,
-      "char_count": 1283
+      "char_count": 2901
     },
     {
       "id": "cg-material-graph",
@@ -13014,7 +13014,7 @@
       ],
       "file": "computer-graphics/texture-techniques/cg-sdf-texture.md",
       "exists": true,
-      "char_count": 1282
+      "char_count": 2829
     },
     {
       "id": "cg-udim",
@@ -13944,7 +13944,7 @@
       ],
       "file": "concept-design/cd-char-villain.md",
       "exists": true,
-      "char_count": 1282
+      "char_count": 2376
     },
     {
       "id": "cd-char-fantasy",
@@ -14334,7 +14334,7 @@
       ],
       "file": "concept-design/cd-color-grading.md",
       "exists": true,
-      "char_count": 1264
+      "char_count": 2859
     },
     {
       "id": "cd-color-storytelling",
@@ -14604,7 +14604,7 @@
       ],
       "file": "concept-design/cd-symmetry-asymmetry.md",
       "exists": true,
-      "char_count": 1284
+      "char_count": 2145
     },
     {
       "id": "cd-leading-lines",
@@ -14769,7 +14769,7 @@
       ],
       "file": "concept-design/cd-rhythm-pattern.md",
       "exists": true,
-      "char_count": 1275
+      "char_count": 2291
     },
     {
       "id": "cd-negative-space",
@@ -15069,7 +15069,7 @@
       ],
       "file": "concept-design/cd-env-callout-sheet.md",
       "exists": true,
-      "char_count": 1268
+      "char_count": 2508
     },
     {
       "id": "cd-env-sci-fi-world",
@@ -15129,7 +15129,7 @@
       ],
       "file": "concept-design/cd-lighting-study.md",
       "exists": true,
-      "char_count": 1277
+      "char_count": 2432
     },
     {
       "id": "cd-mood-through-light",
@@ -15264,7 +15264,7 @@
       ],
       "file": "concept-design/cd-outdoor-lighting.md",
       "exists": true,
-      "char_count": 1273
+      "char_count": 2421
     },
     {
       "id": "cd-form-shadow",
@@ -15339,7 +15339,7 @@
       ],
       "file": "concept-design/cd-core-shadow.md",
       "exists": true,
-      "char_count": 1273
+      "char_count": 2205
     },
     {
       "id": "cd-material-light-response",
@@ -15414,7 +15414,7 @@
       ],
       "file": "concept-design/cd-shadow-shapes.md",
       "exists": true,
-      "char_count": 1268
+      "char_count": 2333
     },
     {
       "id": "cd-mood-layout",
