@@ -7479,7 +7479,7 @@
       ],
       "file": "biology/botany-zoology/plant-classification.md",
       "exists": true,
-      "char_count": 1602
+      "char_count": 2375
     },
     {
       "id": "plant-responses",
@@ -7614,7 +7614,7 @@
       ],
       "file": "biology/botany-zoology/vertebrate-biology.md",
       "exists": true,
-      "char_count": 1602
+      "char_count": 2550
     },
     {
       "id": "migration-hibernation",
@@ -9864,7 +9864,7 @@
       ],
       "file": "biology/molecular-biology/recombinant-dna.md",
       "exists": true,
-      "char_count": 1566
+      "char_count": 2468
     },
     {
       "id": "cg-aa-comparison",
@@ -21504,7 +21504,7 @@
       ],
       "file": "english/idioms-culture/english-word-origins.md",
       "exists": true,
-      "char_count": 1279
+      "char_count": 2753
     },
     {
       "id": "proverbs",
@@ -22989,7 +22989,7 @@
       ],
       "file": "english/tenses/present-continuous.md",
       "exists": true,
-      "char_count": 1271
+      "char_count": 2929
     },
     {
       "id": "passive-voice",
@@ -31524,7 +31524,7 @@
       ],
       "file": "game-design/balance-design/balance-philosophy.md",
       "exists": true,
-      "char_count": 1269
+      "char_count": 2249
     },
     {
       "id": "playtesting-balance",
@@ -32754,7 +32754,7 @@
       ],
       "file": "game-design/difficulty-curve/mastery-expression.md",
       "exists": true,
-      "char_count": 1272
+      "char_count": 2485
     },
     {
       "id": "enemy-scaling",
@@ -33219,7 +33219,7 @@
       ],
       "file": "game-design/economy-design/virtual-goods.md",
       "exists": true,
-      "char_count": 1282
+      "char_count": 2693
     },
     {
       "id": "subscription-model",
@@ -34119,7 +34119,7 @@
       ],
       "file": "game-design/randomness-design/shuffle-algorithm.md",
       "exists": true,
-      "char_count": 1279
+      "char_count": 2361
     },
     {
       "id": "seed-system",
@@ -53299,7 +53299,7 @@
       ],
       "file": "level-design/metrics-design/metric-validation.md",
       "exists": true,
-      "char_count": 1286
+      "char_count": 2373
     },
     {
       "id": "combat-range",
@@ -64164,7 +64164,7 @@
       ],
       "file": "philosophy/aesthetics/aesthetic-experience.md",
       "exists": true,
-      "char_count": 1274
+      "char_count": 2936
     },
     {
       "id": "sublime",
@@ -64284,7 +64284,7 @@
       ],
       "file": "philosophy/aesthetics/nature-of-beauty.md",
       "exists": true,
-      "char_count": 1272
+      "char_count": 2470
     },
     {
       "id": "institutional-theory",
@@ -65304,7 +65304,7 @@
       ],
       "file": "philosophy/ethics/tech-ethics.md",
       "exists": true,
-      "char_count": 1283
+      "char_count": 2814
     },
     {
       "id": "effective-altruism",
@@ -65364,7 +65364,7 @@
       ],
       "file": "philosophy/ethics/bioethics.md",
       "exists": true,
-      "char_count": 1274
+      "char_count": 2742
     },
     {
       "id": "trolley-problem",
@@ -65454,7 +65454,7 @@
       ],
       "file": "philosophy/ethics/moral-psychology.md",
       "exists": true,
-      "char_count": 1285
+      "char_count": 2590
     },
     {
       "id": "moral-relativism",
@@ -65784,7 +65784,7 @@
       ],
       "file": "philosophy/metaphysics/universals-particulars.md",
       "exists": true,
-      "char_count": 1282
+      "char_count": 2848
     },
     {
       "id": "determinism",
@@ -66354,7 +66354,7 @@
       ],
       "file": "philosophy/political-philosophy/cosmopolitanism.md",
       "exists": true,
-      "char_count": 1283
+      "char_count": 2485
     },
     {
       "id": "chinese-political-phil",
@@ -66399,7 +66399,7 @@
       ],
       "file": "philosophy/political-philosophy/global-justice.md",
       "exists": true,
-      "char_count": 1282
+      "char_count": 2903
     },
     {
       "id": "civil-society",
@@ -66519,7 +66519,7 @@
       ],
       "file": "philosophy/political-philosophy/power-theory.md",
       "exists": true,
-      "char_count": 1272
+      "char_count": 2812
     },
     {
       "id": "democracy-theory",
@@ -67194,7 +67194,7 @@
       ],
       "file": "physics/classical-mechanics/vectors-in-physics.md",
       "exists": true,
-      "char_count": 1627
+      "char_count": 2761
     },
     {
       "id": "physical-quantities",
@@ -70299,7 +70299,7 @@
       ],
       "file": "product-design/interaction-design/animation-principles.md",
       "exists": true,
-      "char_count": 1615
+      "char_count": 2787
     },
     {
       "id": "responsive-design",
@@ -70434,7 +70434,7 @@
       ],
       "file": "product-design/interaction-design/gestalt-principles.md",
       "exists": true,
-      "char_count": 1597
+      "char_count": 2338
     },
     {
       "id": "dark-mode-design",
@@ -87428,7 +87428,7 @@
       ],
       "file": "writing/expository-writing/classification-essay.md",
       "exists": true,
-      "char_count": 1377
+      "char_count": 2199
     },
     {
       "id": "cause-effect-essay",
@@ -87623,7 +87623,7 @@
       ],
       "file": "writing/expository-writing/instruction-manual.md",
       "exists": true,
-      "char_count": 1375
+      "char_count": 2625
     },
     {
       "id": "expository-overview",
@@ -88013,7 +88013,7 @@
       ],
       "file": "writing/persuasive-writing/ethos-building.md",
       "exists": true,
-      "char_count": 1357
+      "char_count": 2832
     },
     {
       "id": "rhetorical-appeals",
@@ -88073,7 +88073,7 @@
       ],
       "file": "writing/persuasive-writing/advertising-copywriting.md",
       "exists": true,
-      "char_count": 1360
+      "char_count": 2458
     },
     {
       "id": "pathos-techniques",
@@ -88493,7 +88493,7 @@
       ],
       "file": "writing/professional-writing/policy-writing.md",
       "exists": true,
-      "char_count": 1369
+      "char_count": 2413
     },
     {
       "id": "documentation-standards",
@@ -89213,7 +89213,7 @@
       ],
       "file": "writing/writing-fundamentals/reading-writing-connection.md",
       "exists": true,
-      "char_count": 1375
+      "char_count": 2263
     },
     {
       "id": "audience-awareness",

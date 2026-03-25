@@ -448,7 +448,7 @@
       ],
       "file": "game-design/balance-design/balance-philosophy.md",
       "exists": true,
-      "char_count": 1269
+      "char_count": 2249
     },
     {
       "id": "playtesting-balance",
@@ -1678,7 +1678,7 @@
       ],
       "file": "game-design/difficulty-curve/mastery-expression.md",
       "exists": true,
-      "char_count": 1272
+      "char_count": 2485
     },
     {
       "id": "enemy-scaling",
@@ -2143,7 +2143,7 @@
       ],
       "file": "game-design/economy-design/virtual-goods.md",
       "exists": true,
-      "char_count": 1282
+      "char_count": 2693
     },
     {
       "id": "subscription-model",
@@ -3043,7 +3043,7 @@
       ],
       "file": "game-design/randomness-design/shuffle-algorithm.md",
       "exists": true,
-      "char_count": 1279
+      "char_count": 2361
     },
     {
       "id": "seed-system",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 575612,
-    "avg_chars": 2302,
+    "total_chars": 580298,
+    "avg_chars": 2321,
     "domain": "game-design"
   }
 }

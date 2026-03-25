@@ -193,7 +193,7 @@
       ],
       "file": "biology/botany-zoology/plant-classification.md",
       "exists": true,
-      "char_count": 1602
+      "char_count": 2375
     },
     {
       "id": "plant-responses",
@@ -328,7 +328,7 @@
       ],
       "file": "biology/botany-zoology/vertebrate-biology.md",
       "exists": true,
-      "char_count": 1602
+      "char_count": 2550
     },
     {
       "id": "migration-hibernation",
@@ -2578,13 +2578,13 @@
       ],
       "file": "biology/molecular-biology/recombinant-dna.md",
       "exists": true,
-      "char_count": 1566
+      "char_count": 2468
     }
   ],
   "stats": {
     "total": 172,
-    "total_chars": 406990,
-    "avg_chars": 2366,
+    "total_chars": 409613,
+    "avg_chars": 2381,
     "domain": "biology"
   }
 }

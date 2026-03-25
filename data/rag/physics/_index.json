@@ -523,7 +523,7 @@
       ],
       "file": "physics/classical-mechanics/vectors-in-physics.md",
       "exists": true,
-      "char_count": 1627
+      "char_count": 2761
     },
     {
       "id": "physical-quantities",
@@ -2913,8 +2913,8 @@
   ],
   "stats": {
     "total": 194,
-    "total_chars": 479878,
-    "avg_chars": 2473,
+    "total_chars": 481012,
+    "avg_chars": 2479,
     "domain": "physics"
   }
 }

@@ -718,7 +718,7 @@
       ],
       "file": "writing/expository-writing/classification-essay.md",
       "exists": true,
-      "char_count": 1377
+      "char_count": 2199
     },
     {
       "id": "cause-effect-essay",
@@ -913,7 +913,7 @@
       ],
       "file": "writing/expository-writing/instruction-manual.md",
       "exists": true,
-      "char_count": 1375
+      "char_count": 2625
     },
     {
       "id": "expository-overview",
@@ -1303,7 +1303,7 @@
       ],
       "file": "writing/persuasive-writing/ethos-building.md",
       "exists": true,
-      "char_count": 1357
+      "char_count": 2832
     },
     {
       "id": "rhetorical-appeals",
@@ -1363,7 +1363,7 @@
       ],
       "file": "writing/persuasive-writing/advertising-copywriting.md",
       "exists": true,
-      "char_count": 1360
+      "char_count": 2458
     },
     {
       "id": "pathos-techniques",
@@ -1783,7 +1783,7 @@
       ],
       "file": "writing/professional-writing/policy-writing.md",
       "exists": true,
-      "char_count": 1369
+      "char_count": 2413
     },
     {
       "id": "documentation-standards",
@@ -2503,7 +2503,7 @@
       ],
       "file": "writing/writing-fundamentals/reading-writing-connection.md",
       "exists": true,
-      "char_count": 1375
+      "char_count": 2263
     },
     {
       "id": "audience-awareness",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 381794,
-    "avg_chars": 2245,
+    "total_chars": 388371,
+    "avg_chars": 2284,
     "domain": "writing"
   }
 }

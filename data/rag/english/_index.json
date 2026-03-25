@@ -868,7 +868,7 @@
       ],
       "file": "english/idioms-culture/english-word-origins.md",
       "exists": true,
-      "char_count": 1279
+      "char_count": 2753
     },
     {
       "id": "proverbs",
@@ -2353,7 +2353,7 @@
       ],
       "file": "english/tenses/present-continuous.md",
       "exists": true,
-      "char_count": 1271
+      "char_count": 2929
     },
     {
       "id": "passive-voice",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 512182,
-    "avg_chars": 2560,
+    "total_chars": 515314,
+    "avg_chars": 2576,
     "domain": "english"
   }
 }

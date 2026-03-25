@@ -43,7 +43,7 @@
       ],
       "file": "philosophy/aesthetics/aesthetic-experience.md",
       "exists": true,
-      "char_count": 1274
+      "char_count": 2936
     },
     {
       "id": "sublime",
@@ -163,7 +163,7 @@
       ],
       "file": "philosophy/aesthetics/nature-of-beauty.md",
       "exists": true,
-      "char_count": 1272
+      "char_count": 2470
     },
     {
       "id": "institutional-theory",
@@ -1183,7 +1183,7 @@
       ],
       "file": "philosophy/ethics/tech-ethics.md",
       "exists": true,
-      "char_count": 1283
+      "char_count": 2814
     },
     {
       "id": "effective-altruism",
@@ -1243,7 +1243,7 @@
       ],
       "file": "philosophy/ethics/bioethics.md",
       "exists": true,
-      "char_count": 1274
+      "char_count": 2742
     },
     {
       "id": "trolley-problem",
@@ -1333,7 +1333,7 @@
       ],
       "file": "philosophy/ethics/moral-psychology.md",
       "exists": true,
-      "char_count": 1285
+      "char_count": 2590
     },
     {
       "id": "moral-relativism",
@@ -1663,7 +1663,7 @@
       ],
       "file": "philosophy/metaphysics/universals-particulars.md",
       "exists": true,
-      "char_count": 1282
+      "char_count": 2848
     },
     {
       "id": "determinism",
@@ -2233,7 +2233,7 @@
       ],
       "file": "philosophy/political-philosophy/cosmopolitanism.md",
       "exists": true,
-      "char_count": 1283
+      "char_count": 2485
     },
     {
       "id": "chinese-political-phil",
@@ -2278,7 +2278,7 @@
       ],
       "file": "philosophy/political-philosophy/global-justice.md",
       "exists": true,
-      "char_count": 1282
+      "char_count": 2903
     },
     {
       "id": "civil-society",
@@ -2398,7 +2398,7 @@
       ],
       "file": "philosophy/political-philosophy/power-theory.md",
       "exists": true,
-      "char_count": 1272
+      "char_count": 2812
     },
     {
       "id": "democracy-theory",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 368279,
-    "avg_chars": 2166,
+    "total_chars": 381372,
+    "avg_chars": 2243,
     "domain": "philosophy"
   }
 }

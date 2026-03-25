@@ -1933,7 +1933,7 @@
       ],
       "file": "level-design/metrics-design/metric-validation.md",
       "exists": true,
-      "char_count": 1286
+      "char_count": 2373
     },
     {
       "id": "combat-range",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 454926,
-    "avg_chars": 2274,
+    "total_chars": 456013,
+    "avg_chars": 2280,
     "domain": "level-design"
   }
 }

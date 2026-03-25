@@ -718,7 +718,7 @@
       ],
       "file": "product-design/interaction-design/animation-principles.md",
       "exists": true,
-      "char_count": 1615
+      "char_count": 2787
     },
     {
       "id": "responsive-design",
@@ -853,7 +853,7 @@
       ],
       "file": "product-design/interaction-design/gestalt-principles.md",
       "exists": true,
-      "char_count": 1597
+      "char_count": 2338
     },
     {
       "id": "dark-mode-design",
@@ -2733,8 +2733,8 @@
   ],
   "stats": {
     "total": 182,
-    "total_chars": 376543,
-    "avg_chars": 2068,
+    "total_chars": 378456,
+    "avg_chars": 2079,
     "domain": "product-design"
   }
 }
