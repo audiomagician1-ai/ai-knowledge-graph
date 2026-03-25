@@ -62,11 +62,14 @@
 >   Batch 3 完成: 500篇Tier-B文档改写
 >   Batch P2 完成: 1000篇大域Tier-B改写
 >   Sprint 6 🔥进行中: **全量Tier-B升级** — `scripts/_batch_sprint6.py --max 3400`
->   进度: 597/3360完成 (17.8%), ~101/hr, 0错误, 后台进程PID 36196持续运行
->   累计结果: **S=430(7.0%) A=2,953(48.0%) B=2,773(45.1%) C=0(0.0%)** 均分64.7
->   vs Sprint 4结束: S=145 A=639 B=5,368 C=0 均分49.5 → **提升幅度: +15.2分, A+S从12.8%→55.0%**
+>   进度: 599/3360完成 (17.8%), ~60/hr, 0错误, 后台进程PID 37164重启运行中
+>   ⚠️ 旧PID 36196在~600进度处stalled(网络I/O hang), 已kill并重启(2026-03-26)
+>   累计结果: **S=431(7.0%) A=2,961(48.1%) B=2,764(44.9%) C=0(0.0%)** 均分64.8
+>   vs Sprint 4结束: S=145 A=639 B=5,368 C=0 均分49.5 → **提升幅度: +15.3分, A+S从12.8%→55.1%**
 >   瓶颈分析: Specificity(30.4/100)和Density(40.6/100)是Tier-B两大短板
->   下一步: 后台进程持续运行(预计还需~27小时), 定期commit+push
+>   已知问题: 42个跨域同名slug(如storytelling-oral在english和writing两域), 进度追踪为slug-based可能漏处理第二份
+>   已完成但仍Tier-B: 12篇(均分40-44), 需要第二轮强化改写
+>   下一步: 后台进程持续运行(预计还需~46小时), 定期commit+push
 **✅ Phase 37 完成**: 游戏开发全领域跨球体总验证 | 详见 `docs/EXPANSION_PLAN.md` 第十章
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
@@ -160,7 +163,7 @@
 > **Issue**: #32 (已关闭)
 
 ## Last Review
-**Date**: 2026-03-25 | **Scope**: Sprint 6 wave 20 (43 docs) + RAG index bug fix (28 pre-existing test failures) — graph.py total_docs/by_subdomain fallback + ai-engineering composite index + rebuild_rag_indexes.py by_subdomain stats + is_milestone seed priority + Workers import update. Total 1,126 tests (897 BE + 229 FE) all pass, avg 64.7, S=430/A=2953/B=2773/C=0 | **Result**: passed
+**Date**: 2026-03-26 | **Scope**: Sprint 6 process recovery — stalled PID 36196 killed, wave 21 committed (23 docs), RAG indexes rebuilt, process restarted PID 37164 (~60/hr). Quality audit: avg 64.8, S=431/A=2961/B=2764/C=0, 42 cross-domain duplicate slugs identified, 12 stubborn Tier-B docs found (completed but still <45). Total 1,126 tests (897 BE + 229 FE) all pass | **Result**: passed
 
 **FSRS-5 实现摘要** (间隔重复引擎):
 > **目标**: 实现ADR-007指定的FSRS-5间隔重复算法, 替代空占位stub
