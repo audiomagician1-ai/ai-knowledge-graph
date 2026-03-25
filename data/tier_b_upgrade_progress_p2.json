@@ -759,10 +759,30 @@
     "pub-ro-legal-compliance",
     "qa-at-bot-testing",
     "qa-rt-regression-report",
-    "mn-mm-latency-based"
+    "mn-mm-latency-based",
+    "mn-ac-wallhack-prevention",
+    "mn-sa-authentication",
+    "nd-bn-relationship-system",
+    "nd-ci-emotional-beats",
+    "nd-ci-vfx-in-cutscene",
+    "se-test-coverage",
+    "ta-material-instance",
+    "ta-export-pipeline",
+    "ta-cook-pipeline",
+    "vfx-particle-drag",
+    "vfx-particle-spring",
+    "vfx-fluid-waterfall",
+    "vfx-destruct-building",
+    "vfx-opt-collision-cost",
+    "3da-hs-floating-geo",
+    "3da-org-symmetry-break",
+    "3da-sculpt-projection",
+    "3da-retopo-symmetry",
+    "3da-env-scale-reference",
+    "3da-prop-medieval"
   ],
   "errors": [],
-  "total_upgraded": 760,
+  "total_upgraded": 780,
   "started_at": "2026-03-24T20:22:43.388321",
-  "last_updated": "2026-03-25T08:32:03.661316"
+  "last_updated": "2026-03-25T08:51:42.748036"
 }
