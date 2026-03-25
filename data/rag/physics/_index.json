@@ -2608,7 +2608,7 @@
       ],
       "file": "physics/thermodynamics/free-energy.md",
       "exists": true,
-      "char_count": 1356
+      "char_count": 2760
     },
     {
       "id": "maxwell-relations",
@@ -2623,7 +2623,7 @@
       ],
       "file": "physics/thermodynamics/maxwell-relations.md",
       "exists": true,
-      "char_count": 1365
+      "char_count": 3208
     },
     {
       "id": "optical-instruments",
@@ -2913,8 +2913,8 @@
   ],
   "stats": {
     "total": 194,
-    "total_chars": 476631,
-    "avg_chars": 2456,
+    "total_chars": 479878,
+    "avg_chars": 2473,
     "domain": "physics"
   }
 }

@@ -163,7 +163,7 @@
       ],
       "file": "writing/academic-writing/introduction-writing.md",
       "exists": true,
-      "char_count": 1371
+      "char_count": 2820
     },
     {
       "id": "abstract-writing",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 380345,
-    "avg_chars": 2237,
+    "total_chars": 381794,
+    "avg_chars": 2245,
     "domain": "writing"
   }
 }

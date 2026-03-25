@@ -2293,7 +2293,7 @@
       ],
       "file": "philosophy/political-philosophy/civil-society.md",
       "exists": true,
-      "char_count": 1353
+      "char_count": 2944
     },
     {
       "id": "rousseau",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 366688,
-    "avg_chars": 2156,
+    "total_chars": 368279,
+    "avg_chars": 2166,
     "domain": "philosophy"
   }
 }

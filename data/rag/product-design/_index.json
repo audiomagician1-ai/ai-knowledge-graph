@@ -748,7 +748,7 @@
       ],
       "file": "product-design/interaction-design/multi-platform-design.md",
       "exists": true,
-      "char_count": 1366
+      "char_count": 2917
     },
     {
       "id": "navigation-design",
@@ -1873,7 +1873,7 @@
       ],
       "file": "product-design/prototyping/rapid-prototyping.md",
       "exists": true,
-      "char_count": 1354
+      "char_count": 2282
     },
     {
       "id": "storyboard",
@@ -2733,8 +2733,8 @@
   ],
   "stats": {
     "total": 182,
-    "total_chars": 374064,
-    "avg_chars": 2055,
+    "total_chars": 376543,
+    "avg_chars": 2068,
     "domain": "product-design"
   }
 }
