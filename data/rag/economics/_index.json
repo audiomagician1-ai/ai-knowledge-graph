@@ -388,7 +388,7 @@
       ],
       "file": "economics/development-econ/foreign-aid.md",
       "exists": true,
-      "char_count": 1341
+      "char_count": 2558
     },
     {
       "id": "microfinance",
@@ -748,7 +748,7 @@
       ],
       "file": "economics/econometrics/autocorrelation-econ.md",
       "exists": true,
-      "char_count": 1341
+      "char_count": 2846
     },
     {
       "id": "econometrics-overview",
@@ -1378,7 +1378,7 @@
       ],
       "file": "economics/international-econ/terms-of-trade.md",
       "exists": true,
-      "char_count": 1325
+      "char_count": 2407
     },
     {
       "id": "heckscher-ohlin",
@@ -2473,7 +2473,7 @@
       ],
       "file": "economics/public-econ/tax-incidence.md",
       "exists": true,
-      "char_count": 1330
+      "char_count": 2382
     },
     {
       "id": "behavioral-public-policy",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 356276,
-    "avg_chars": 2095,
+    "total_chars": 361132,
+    "avg_chars": 2124,
     "domain": "economics"
   }
 }

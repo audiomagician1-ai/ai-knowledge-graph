@@ -178,7 +178,7 @@
       ],
       "file": "product-design/data-driven/dashboard-design.md",
       "exists": true,
-      "char_count": 1529
+      "char_count": 2434
     },
     {
       "id": "data-quality",
@@ -673,7 +673,7 @@
       ],
       "file": "product-design/interaction-design/interaction-design-overview.md",
       "exists": true,
-      "char_count": 1677
+      "char_count": 2714
     },
     {
       "id": "information-architecture",
@@ -898,7 +898,7 @@
       ],
       "file": "product-design/interaction-design/gamification.md",
       "exists": true,
-      "char_count": 1551
+      "char_count": 2631
     },
     {
       "id": "mobile-design-patterns",
@@ -1933,7 +1933,7 @@
       ],
       "file": "product-design/prototyping/component-library.md",
       "exists": true,
-      "char_count": 1530
+      "char_count": 2897
     },
     {
       "id": "wizard-of-oz",
@@ -2733,8 +2733,8 @@
   ],
   "stats": {
     "total": 182,
-    "total_chars": 360468,
-    "avg_chars": 1980,
+    "total_chars": 364857,
+    "avg_chars": 2004,
     "domain": "product-design"
   }
 }

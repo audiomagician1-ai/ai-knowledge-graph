@@ -133,7 +133,7 @@
       ],
       "file": "english/advanced-grammar/noun-modifiers.md",
       "exists": true,
-      "char_count": 1332
+      "char_count": 3074
     },
     {
       "id": "nominal-relative",
@@ -313,7 +313,7 @@
       ],
       "file": "english/advanced-grammar/ellipsis-advanced.md",
       "exists": true,
-      "char_count": 1331
+      "char_count": 3121
     },
     {
       "id": "be-verb",
@@ -838,7 +838,7 @@
       ],
       "file": "english/idioms-culture/english-humor.md",
       "exists": true,
-      "char_count": 1420
+      "char_count": 2881
     },
     {
       "id": "english-literature",
@@ -1678,7 +1678,7 @@
       ],
       "file": "english/sentence-patterns/run-on-fragments.md",
       "exists": true,
-      "char_count": 1432
+      "char_count": 2904
     },
     {
       "id": "appositive-phrases",
@@ -2143,7 +2143,7 @@
       ],
       "file": "english/tenses/used-to-would.md",
       "exists": true,
-      "char_count": 1350
+      "char_count": 2721
     },
     {
       "id": "simple-future",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 496188,
-    "avg_chars": 2480,
+    "total_chars": 504024,
+    "avg_chars": 2520,
     "domain": "english"
   }
 }

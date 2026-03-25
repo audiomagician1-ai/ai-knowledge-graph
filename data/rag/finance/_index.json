@@ -13,7 +13,7 @@
       ],
       "file": "finance/corporate-finance/esg-investing.md",
       "exists": true,
-      "char_count": 1425
+      "char_count": 2473
     },
     {
       "id": "ipo-process",
@@ -328,7 +328,7 @@
       ],
       "file": "finance/fintech/nft-basics.md",
       "exists": true,
-      "char_count": 1335
+      "char_count": 2723
     },
     {
       "id": "p2p-lending",
@@ -343,7 +343,7 @@
       ],
       "file": "finance/fintech/p2p-lending.md",
       "exists": true,
-      "char_count": 1428
+      "char_count": 2425
     },
     {
       "id": "cloud-banking",
@@ -2403,8 +2403,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 344561,
-    "avg_chars": 2153,
+    "total_chars": 347994,
+    "avg_chars": 2174,
     "domain": "finance"
   }
 }

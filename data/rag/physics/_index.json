@@ -2548,7 +2548,7 @@
       ],
       "file": "physics/thermodynamics/ideal-gas-law.md",
       "exists": true,
-      "char_count": 1525
+      "char_count": 2388
     },
     {
       "id": "phase-transitions",
@@ -2913,8 +2913,8 @@
   ],
   "stats": {
     "total": 194,
-    "total_chars": 468561,
-    "avg_chars": 2415,
+    "total_chars": 469424,
+    "avg_chars": 2419,
     "domain": "physics"
   }
 }

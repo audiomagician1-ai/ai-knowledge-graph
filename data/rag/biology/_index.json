@@ -703,7 +703,7 @@
       ],
       "file": "biology/ecology/urban-ecology.md",
       "exists": true,
-      "char_count": 1337
+      "char_count": 2335
     },
     {
       "id": "island-biogeography",
@@ -748,7 +748,7 @@
       ],
       "file": "biology/ecology/landscape-ecology.md",
       "exists": true,
-      "char_count": 1331
+      "char_count": 2877
     },
     {
       "id": "climate-change-ecology",
@@ -1288,7 +1288,7 @@
       ],
       "file": "biology/evolution/adaptive-radiation.md",
       "exists": true,
-      "char_count": 1352
+      "char_count": 2529
     },
     {
       "id": "human-genetics",
@@ -2218,7 +2218,7 @@
       ],
       "file": "biology/microbiology/bacterial-genetics.md",
       "exists": true,
-      "char_count": 1418
+      "char_count": 2505
     },
     {
       "id": "pathogenic-mechanisms",
@@ -2323,7 +2323,7 @@
       ],
       "file": "biology/molecular-biology/rna-interference.md",
       "exists": true,
-      "char_count": 1431
+      "char_count": 2895
     },
     {
       "id": "rna-types",
@@ -2583,8 +2583,8 @@
   ],
   "stats": {
     "total": 172,
-    "total_chars": 393588,
-    "avg_chars": 2288,
+    "total_chars": 399860,
+    "avg_chars": 2324,
     "domain": "biology"
   }
 }
