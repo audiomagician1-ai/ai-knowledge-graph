@@ -613,7 +613,7 @@
       ],
       "file": "animation/anim-weight-balance.md",
       "exists": true,
-      "char_count": 1422
+      "char_count": 2348
     },
     {
       "id": "anim-spacing",
@@ -1153,7 +1153,7 @@
       ],
       "file": "animation/anim-ik-fk-switch.md",
       "exists": true,
-      "char_count": 1410
+      "char_count": 2406
     },
     {
       "id": "anim-ik-overview",
@@ -2458,7 +2458,7 @@
       ],
       "file": "animation/anim-bone-naming.md",
       "exists": true,
-      "char_count": 1441
+      "char_count": 2865
     },
     {
       "id": "anim-skeleton-basics",
@@ -2704,8 +2704,8 @@
   "stats": {
     "total": 180,
     "total_docs": 180,
-    "total_chars": 371534,
-    "avg_chars": 2064,
+    "total_chars": 374880,
+    "avg_chars": 2082,
     "domain": "animation",
     "by_subdomain": {
       "animation-blueprint": {
@@ -2714,7 +2714,7 @@
       },
       "animation-principles": {
         "count": 25,
-        "chars": 46367
+        "chars": 47293
       },
       "blend-space": {
         "count": 15,
@@ -2726,7 +2726,7 @@
       },
       "ik-fk": {
         "count": 15,
-        "chars": 33419
+        "chars": 34415
       },
       "keyframe-animation": {
         "count": 20,
@@ -2742,7 +2742,7 @@
       },
       "skeletal-rigging": {
         "count": 20,
-        "chars": 43326
+        "chars": 44750
       },
       "state-machine": {
         "count": 15,

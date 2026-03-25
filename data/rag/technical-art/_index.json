@@ -613,7 +613,7 @@
       ],
       "file": "technical-art/ta-pbr-fundamentals.md",
       "exists": true,
-      "char_count": 1517
+      "char_count": 3238
     },
     {
       "id": "ta-substance-workflow",
@@ -2704,8 +2704,8 @@
   "stats": {
     "total": 180,
     "total_docs": 180,
-    "total_chars": 347894,
-    "avg_chars": 1932,
+    "total_chars": 349615,
+    "avg_chars": 1942,
     "domain": "technical-art",
     "by_subdomain": {
       "art-standards": {
@@ -2722,7 +2722,7 @@
       },
       "material-system": {
         "count": 20,
-        "chars": 41507
+        "chars": 43228
       },
       "memory-budget": {
         "count": 20,

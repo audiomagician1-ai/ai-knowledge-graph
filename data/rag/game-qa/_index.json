@@ -1740,7 +1740,7 @@
       "tags": [],
       "file": "game-qa/qa-rt-build-verification.md",
       "exists": true,
-      "char_count": 2598
+      "char_count": 2504
     },
     {
       "id": "qa-rt-test-suite-mgmt",
@@ -2084,7 +2084,7 @@
   "stats": {
     "total": 160,
     "total_docs": 160,
-    "total_chars": 272156,
+    "total_chars": 272062,
     "avg_chars": 1700,
     "domain": "game-qa",
     "by_subdomain": {
@@ -2114,7 +2114,7 @@
       },
       "regression-testing": {
         "count": 20,
-        "chars": 37351
+        "chars": 37257
       },
       "test-toolchain": {
         "count": 20,

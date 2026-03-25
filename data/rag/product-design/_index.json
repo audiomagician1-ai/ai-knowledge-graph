@@ -88,7 +88,7 @@
       ],
       "file": "product-design/data-driven/analytics-tools.md",
       "exists": true,
-      "char_count": 1542
+      "char_count": 2936
     },
     {
       "id": "feature-flag",
@@ -2734,8 +2734,8 @@
   "stats": {
     "total": 182,
     "total_docs": 182,
-    "total_chars": 389849,
-    "avg_chars": 2142,
+    "total_chars": 391243,
+    "avg_chars": 2149,
     "domain": "product-design",
     "by_subdomain": {
       "behavioral-psychology": {
@@ -2744,7 +2744,7 @@
       },
       "data-driven": {
         "count": 22,
-        "chars": 45637
+        "chars": 47031
       },
       "growth": {
         "count": 21,

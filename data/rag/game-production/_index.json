@@ -375,7 +375,7 @@
       "tags": [],
       "file": "game-production/gp-bc-tracking.md",
       "exists": true,
-      "char_count": 2643
+      "char_count": 2380
     },
     {
       "id": "gp-bc-evm",
@@ -544,7 +544,7 @@
       "tags": [],
       "file": "game-production/gp-cd-handoff.md",
       "exists": true,
-      "char_count": 2317
+      "char_count": 2334
     },
     {
       "id": "gp-cd-meeting",
@@ -2052,7 +2052,7 @@
       "tags": [],
       "file": "game-production/gp-rk-assessment.md",
       "exists": true,
-      "char_count": 2519
+      "char_count": 2360
     },
     {
       "id": "gp-rk-identification",
@@ -2084,8 +2084,8 @@
   "stats": {
     "total": 160,
     "total_docs": 160,
-    "total_chars": 262090,
-    "avg_chars": 1638,
+    "total_chars": 261685,
+    "avg_chars": 1635,
     "domain": "game-production",
     "by_subdomain": {
       "agile-scrum": {
@@ -2094,11 +2094,11 @@
       },
       "budget-control": {
         "count": 20,
-        "chars": 31961
+        "chars": 31698
       },
       "cross-department": {
         "count": 20,
-        "chars": 33251
+        "chars": 33268
       },
       "milestone-planning": {
         "count": 20,
@@ -2118,7 +2118,7 @@
       },
       "risk-management": {
         "count": 20,
-        "chars": 34242
+        "chars": 34083
       }
     }
   }

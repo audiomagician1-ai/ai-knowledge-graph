@@ -310,7 +310,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ch-dlc-delivery.md",
       "exists": true,
-      "char_count": 2674
+      "char_count": 2636
     },
     {
       "id": "mn-ch-live-ops-content",
@@ -2604,7 +2604,7 @@
   "stats": {
     "total": 200,
     "total_docs": 200,
-    "total_chars": 370187,
+    "total_chars": 370149,
     "avg_chars": 1850,
     "domain": "multiplayer-network",
     "by_subdomain": {
@@ -2614,7 +2614,7 @@
       },
       "cdn-hotpatch": {
         "count": 20,
-        "chars": 34860
+        "chars": 34822
       },
       "database": {
         "count": 1,

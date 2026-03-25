@@ -73,7 +73,7 @@
       ],
       "file": "computer-graphics/anti-aliasing/cg-fxaa.md",
       "exists": true,
-      "char_count": 1397
+      "char_count": 2483
     },
     {
       "id": "cg-msaa-detail",
@@ -163,7 +163,7 @@
       ],
       "file": "computer-graphics/anti-aliasing/cg-taa-ghosting.md",
       "exists": true,
-      "char_count": 1405
+      "char_count": 2445
     },
     {
       "id": "cg-xess",
@@ -1798,7 +1798,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-cel-shading.md",
       "exists": true,
-      "char_count": 1396
+      "char_count": 2451
     },
     {
       "id": "cg-motion-blur",
@@ -3754,13 +3754,13 @@
   "stats": {
     "total": 250,
     "total_docs": 250,
-    "total_chars": 544876,
-    "avg_chars": 2179,
+    "total_chars": 548057,
+    "avg_chars": 2192,
     "domain": "computer-graphics",
     "by_subdomain": {
       "anti-aliasing": {
         "count": 20,
-        "chars": 43008
+        "chars": 45134
       },
       "geometry-processing": {
         "count": 21,
@@ -3780,7 +3780,7 @@
       },
       "post-processing": {
         "count": 21,
-        "chars": 46203
+        "chars": 47258
       },
       "rasterization": {
         "count": 22,

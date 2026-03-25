@@ -1363,7 +1363,7 @@
       ],
       "file": "biology/genetics/gene-expression-regulation.md",
       "exists": true,
-      "char_count": 1419
+      "char_count": 2620
     },
     {
       "id": "polygenic-inheritance",
@@ -2584,8 +2584,8 @@
   "stats": {
     "total": 172,
     "total_docs": 172,
-    "total_chars": 413251,
-    "avg_chars": 2402,
+    "total_chars": 414452,
+    "avg_chars": 2409,
     "domain": "biology",
     "by_subdomain": {
       "behavioral-psychology": {
@@ -2614,7 +2614,7 @@
       },
       "genetics": {
         "count": 22,
-        "chars": 53051
+        "chars": 54252
       },
       "human-physiology": {
         "count": 22,

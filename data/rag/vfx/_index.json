@@ -1168,7 +1168,7 @@
       ],
       "file": "vfx/vfx-niagara-debug.md",
       "exists": true,
-      "char_count": 1509
+      "char_count": 3000
     },
     {
       "id": "vfx-niagara-neighbor-grid",
@@ -1603,7 +1603,7 @@
       ],
       "file": "vfx/vfx-pp-ssr.md",
       "exists": true,
-      "char_count": 1502
+      "char_count": 2682
     },
     {
       "id": "vfx-pp-outline",
@@ -2704,8 +2704,8 @@
   "stats": {
     "total": 180,
     "total_docs": 180,
-    "total_chars": 362819,
-    "avg_chars": 2015,
+    "total_chars": 365490,
+    "avg_chars": 2030,
     "domain": "vfx",
     "by_subdomain": {
       "destruction": {
@@ -2722,7 +2722,7 @@
       },
       "niagara": {
         "count": 20,
-        "chars": 35537
+        "chars": 37028
       },
       "particle-physics": {
         "count": 20,
@@ -2730,7 +2730,7 @@
       },
       "post-process": {
         "count": 20,
-        "chars": 40979
+        "chars": 42159
       },
       "shader-vfx": {
         "count": 20,

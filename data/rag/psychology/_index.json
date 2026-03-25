@@ -343,7 +343,7 @@
       ],
       "file": "psychology/biological-psychology/endocrine-system.md",
       "exists": true,
-      "char_count": 2603
+      "char_count": 4000
     },
     {
       "id": "cerebral-lateralization",
@@ -1318,7 +1318,7 @@
       ],
       "file": "psychology/cognitive-psychology/language-cognition.md",
       "exists": true,
-      "char_count": 1536
+      "char_count": 2836
     },
     {
       "id": "selective-attention",
@@ -1933,7 +1933,7 @@
       ],
       "file": "psychology/personality-psychology/trait-theory.md",
       "exists": true,
-      "char_count": 1541
+      "char_count": 2637
     },
     {
       "id": "social-cognitive-personality",
@@ -2749,8 +2749,8 @@
   "stats": {
     "total": 183,
     "total_docs": 183,
-    "total_chars": 407448,
-    "avg_chars": 2226,
+    "total_chars": 411241,
+    "avg_chars": 2247,
     "domain": "psychology",
     "by_subdomain": {
       "behavioral-psychology": {
@@ -2759,7 +2759,7 @@
       },
       "biological-psychology": {
         "count": 22,
-        "chars": 50788
+        "chars": 52185
       },
       "clinical-psychology": {
         "count": 23,
@@ -2767,7 +2767,7 @@
       },
       "cognitive-psychology": {
         "count": 25,
-        "chars": 58008
+        "chars": 59308
       },
       "developmental-psychology": {
         "count": 23,
@@ -2775,7 +2775,7 @@
       },
       "personality-psychology": {
         "count": 22,
-        "chars": 44996
+        "chars": 46092
       },
       "research-methods": {
         "count": 23,

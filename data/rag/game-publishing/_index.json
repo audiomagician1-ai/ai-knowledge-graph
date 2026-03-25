@@ -1415,7 +1415,7 @@
       "tags": [],
       "file": "game-publishing/pub-pc-contract-exit.md",
       "exists": true,
-      "char_count": 2649
+      "char_count": 2477
     },
     {
       "id": "pub-pc-recoup-mechanism",
@@ -2344,8 +2344,8 @@
   "stats": {
     "total": 180,
     "total_docs": 180,
-    "total_chars": 291246,
-    "avg_chars": 1618,
+    "total_chars": 291074,
+    "avg_chars": 1617,
     "domain": "game-publishing",
     "by_subdomain": {
       "brand-building": {
@@ -2370,7 +2370,7 @@
       },
       "publisher-collab": {
         "count": 20,
-        "chars": 33925
+        "chars": 33753
       },
       "rating-compliance": {
         "count": 20,

@@ -2398,7 +2398,7 @@
       ],
       "file": "physics/thermodynamics/temperature-heat.md",
       "exists": true,
-      "char_count": 1514
+      "char_count": 2449
     },
     {
       "id": "first-law-thermo",
@@ -2914,8 +2914,8 @@
   "stats": {
     "total": 194,
     "total_docs": 194,
-    "total_chars": 488499,
-    "avg_chars": 2518,
+    "total_chars": 489434,
+    "avg_chars": 2522,
     "domain": "physics",
     "by_subdomain": {
       "astrophysics": {
@@ -2952,7 +2952,7 @@
       },
       "thermodynamics": {
         "count": 22,
-        "chars": 52320
+        "chars": 53255
       },
       "waves-and-optics": {
         "count": 19,

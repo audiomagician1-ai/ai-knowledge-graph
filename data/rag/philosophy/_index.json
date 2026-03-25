@@ -1513,7 +1513,7 @@
       ],
       "file": "philosophy/logic-reasoning/analogical-reasoning.md",
       "exists": true,
-      "char_count": 1397
+      "char_count": 2566
     },
     {
       "id": "predicate-logic",
@@ -1573,7 +1573,7 @@
       ],
       "file": "philosophy/logic-reasoning/logic-overview.md",
       "exists": true,
-      "char_count": 2384
+      "char_count": 2431
     },
     {
       "id": "set-theory-phil",
@@ -1633,7 +1633,7 @@
       ],
       "file": "philosophy/metaphysics/chinese-metaphysics.md",
       "exists": true,
-      "char_count": 1384
+      "char_count": 2153
     },
     {
       "id": "dualism",
@@ -1978,7 +1978,7 @@
       ],
       "file": "philosophy/modern-philosophy/feminist-philosophy.md",
       "exists": true,
-      "char_count": 1395
+      "char_count": 3011
     },
     {
       "id": "existentialism",
@@ -2554,8 +2554,8 @@
   "stats": {
     "total": 170,
     "total_docs": 170,
-    "total_chars": 394035,
-    "avg_chars": 2317,
+    "total_chars": 397636,
+    "avg_chars": 2339,
     "domain": "philosophy",
     "by_subdomain": {
       "aesthetics": {
@@ -2576,15 +2576,15 @@
       },
       "logic-reasoning": {
         "count": 17,
-        "chars": 38370
+        "chars": 39586
       },
       "metaphysics": {
         "count": 20,
-        "chars": 49263
+        "chars": 50032
       },
       "modern-philosophy": {
         "count": 20,
-        "chars": 47980
+        "chars": 49596
       },
       "persuasive-writing": {
         "count": 1,

@@ -1294,7 +1294,7 @@
       ],
       "file": "game-ui-ux/guiux-menu-main.md",
       "exists": true,
-      "char_count": 2267
+      "char_count": 2528
     },
     {
       "id": "guiux-menu-quest-log",
@@ -1886,7 +1886,7 @@
       ],
       "file": "game-ui-ux/guiux-motion-chain-animation.md",
       "exists": true,
-      "char_count": 2633
+      "char_count": 2657
     },
     {
       "id": "guiux-motion-page-transition",
@@ -3204,8 +3204,8 @@
   "stats": {
     "total": 200,
     "total_docs": 200,
-    "total_chars": 329827,
-    "avg_chars": 1649,
+    "total_chars": 330112,
+    "avg_chars": 1650,
     "domain": "game-ui-ux",
     "by_subdomain": {
       "accessibility": {
@@ -3226,11 +3226,11 @@
       },
       "menu-system": {
         "count": 20,
-        "chars": 37612
+        "chars": 37873
       },
       "motion-design": {
         "count": 20,
-        "chars": 34567
+        "chars": 34591
       },
       "multiplatform": {
         "count": 20,

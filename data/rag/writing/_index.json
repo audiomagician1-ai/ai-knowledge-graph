@@ -1108,7 +1108,7 @@
       ],
       "file": "writing/narrative-writing/storytelling-oral.md",
       "exists": true,
-      "char_count": 2165
+      "char_count": 3662
     },
     {
       "id": "memoir-writing",
@@ -1348,7 +1348,7 @@
       ],
       "file": "writing/persuasive-writing/propaganda-analysis.md",
       "exists": true,
-      "char_count": 1415
+      "char_count": 3351
     },
     {
       "id": "advertising-copywriting",
@@ -2158,7 +2158,7 @@
       ],
       "file": "writing/revision-craft/editor-author-relation.md",
       "exists": true,
-      "char_count": 1539
+      "char_count": 2431
     },
     {
       "id": "self-editing",
@@ -2368,7 +2368,7 @@
       ],
       "file": "writing/writing-fundamentals/parallel-structure.md",
       "exists": true,
-      "char_count": 2562
+      "char_count": 4231
     },
     {
       "id": "outline-planning",
@@ -2428,7 +2428,7 @@
       ],
       "file": "writing/writing-fundamentals/freewriting-techniques.md",
       "exists": true,
-      "char_count": 1534
+      "char_count": 2342
     },
     {
       "id": "vocabulary-building",
@@ -2554,8 +2554,8 @@
   "stats": {
     "total": 170,
     "total_docs": 170,
-    "total_chars": 402395,
-    "avg_chars": 2367,
+    "total_chars": 409197,
+    "avg_chars": 2407,
     "domain": "writing",
     "by_subdomain": {
       "academic-writing": {
@@ -2572,11 +2572,11 @@
       },
       "narrative-writing": {
         "count": 22,
-        "chars": 52972
+        "chars": 54469
       },
       "persuasive-writing": {
         "count": 22,
-        "chars": 52733
+        "chars": 54669
       },
       "professional-writing": {
         "count": 20,
@@ -2584,11 +2584,11 @@
       },
       "revision-craft": {
         "count": 20,
-        "chars": 42108
+        "chars": 43000
       },
       "writing-fundamentals": {
         "count": 22,
-        "chars": 52782
+        "chars": 55259
       }
     }
   }

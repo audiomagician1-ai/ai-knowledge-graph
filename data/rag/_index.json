@@ -1603,7 +1603,7 @@
       ],
       "file": "3d-art/3da-org-wrinkle-detail.md",
       "exists": true,
-      "char_count": 1398
+      "char_count": 2649
     },
     {
       "id": "3da-org-muscle-deform",
@@ -1693,7 +1693,7 @@
       ],
       "file": "3d-art/3da-org-face-topology.md",
       "exists": true,
-      "char_count": 1489
+      "char_count": 2618
     },
     {
       "id": "3da-org-stylized-char",
@@ -2788,7 +2788,7 @@
       ],
       "file": "3d-art/3da-sculpt-stylized.md",
       "exists": true,
-      "char_count": 1405
+      "char_count": 2308
     },
     {
       "id": "3da-tex-ao-map",
@@ -2983,7 +2983,7 @@
       ],
       "file": "3d-art/3da-tex-curvature.md",
       "exists": true,
-      "char_count": 1421
+      "char_count": 2840
     },
     {
       "id": "3da-tex-normal-map",
@@ -3298,7 +3298,7 @@
       ],
       "file": "3d-art/3da-uv-unwrap-tools.md",
       "exists": true,
-      "char_count": 1421
+      "char_count": 2692
     },
     {
       "id": "3da-uv-projection",
@@ -3388,7 +3388,7 @@
       ],
       "file": "3d-art/3da-uv-auto-uv.md",
       "exists": true,
-      "char_count": 1396
+      "char_count": 2744
     },
     {
       "id": "agent-overview",
@@ -5199,7 +5199,7 @@
       ],
       "file": "animation/anim-weight-balance.md",
       "exists": true,
-      "char_count": 1422
+      "char_count": 2348
     },
     {
       "id": "anim-spacing",
@@ -5739,7 +5739,7 @@
       ],
       "file": "animation/anim-ik-fk-switch.md",
       "exists": true,
-      "char_count": 1410
+      "char_count": 2406
     },
     {
       "id": "anim-ik-overview",
@@ -7044,7 +7044,7 @@
       ],
       "file": "animation/anim-bone-naming.md",
       "exists": true,
-      "char_count": 1441
+      "char_count": 2865
     },
     {
       "id": "anim-skeleton-basics",
@@ -8649,7 +8649,7 @@
       ],
       "file": "biology/genetics/gene-expression-regulation.md",
       "exists": true,
-      "char_count": 1419
+      "char_count": 2620
     },
     {
       "id": "polygenic-inheritance",
@@ -9939,7 +9939,7 @@
       ],
       "file": "computer-graphics/anti-aliasing/cg-fxaa.md",
       "exists": true,
-      "char_count": 1397
+      "char_count": 2483
     },
     {
       "id": "cg-msaa-detail",
@@ -10029,7 +10029,7 @@
       ],
       "file": "computer-graphics/anti-aliasing/cg-taa-ghosting.md",
       "exists": true,
-      "char_count": 1405
+      "char_count": 2445
     },
     {
       "id": "cg-xess",
@@ -11664,7 +11664,7 @@
       ],
       "file": "computer-graphics/post-processing/cg-cel-shading.md",
       "exists": true,
-      "char_count": 1396
+      "char_count": 2451
     },
     {
       "id": "cg-motion-blur",
@@ -42041,7 +42041,7 @@
       "tags": [],
       "file": "game-production/gp-bc-tracking.md",
       "exists": true,
-      "char_count": 2643
+      "char_count": 2380
     },
     {
       "id": "gp-bc-evm",
@@ -42210,7 +42210,7 @@
       "tags": [],
       "file": "game-production/gp-cd-handoff.md",
       "exists": true,
-      "char_count": 2317
+      "char_count": 2334
     },
     {
       "id": "gp-cd-meeting",
@@ -43718,7 +43718,7 @@
       "tags": [],
       "file": "game-production/gp-rk-assessment.md",
       "exists": true,
-      "char_count": 2519
+      "char_count": 2360
     },
     {
       "id": "gp-rk-identification",
@@ -45161,7 +45161,7 @@
       "tags": [],
       "file": "game-publishing/pub-pc-contract-exit.md",
       "exists": true,
-      "char_count": 2649
+      "char_count": 2477
     },
     {
       "id": "pub-pc-recoup-mechanism",
@@ -47826,7 +47826,7 @@
       "tags": [],
       "file": "game-qa/qa-rt-build-verification.md",
       "exists": true,
-      "char_count": 2598
+      "char_count": 2504
     },
     {
       "id": "qa-rt-test-suite-mgmt",
@@ -49460,7 +49460,7 @@
       ],
       "file": "game-ui-ux/guiux-menu-main.md",
       "exists": true,
-      "char_count": 2267
+      "char_count": 2528
     },
     {
       "id": "guiux-menu-quest-log",
@@ -50052,7 +50052,7 @@
       ],
       "file": "game-ui-ux/guiux-motion-chain-animation.md",
       "exists": true,
-      "char_count": 2633
+      "char_count": 2657
     },
     {
       "id": "guiux-motion-page-transition",
@@ -52609,7 +52609,7 @@
       ],
       "file": "level-design/level-editor/ue5-level-editor.md",
       "exists": true,
-      "char_count": 3371
+      "char_count": 3185
     },
     {
       "id": "unity-scene-editor",
@@ -52774,7 +52774,7 @@
       ],
       "file": "level-design/level-editor/sublevel-management.md",
       "exists": true,
-      "char_count": 2975
+      "char_count": 2751
     },
     {
       "id": "data-layer",
@@ -59179,7 +59179,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ch-dlc-delivery.md",
       "exists": true,
-      "char_count": 2674
+      "char_count": 2636
     },
     {
       "id": "mn-ch-live-ops-content",
@@ -63183,7 +63183,7 @@
       "tags": [],
       "file": "narrative-design/nd-nt-narrative-review.md",
       "exists": true,
-      "char_count": 2672
+      "char_count": 2516
     },
     {
       "id": "nd-nt-narrative-debug",
@@ -63365,7 +63365,7 @@
       "tags": [],
       "file": "narrative-design/nd-qd-quest-failure.md",
       "exists": true,
-      "char_count": 2466
+      "char_count": 2623
     },
     {
       "id": "nd-qd-quest-reward",
@@ -63378,7 +63378,7 @@
       "tags": [],
       "file": "narrative-design/nd-qd-quest-reward.md",
       "exists": true,
-      "char_count": 2636
+      "char_count": 2548
     },
     {
       "id": "nd-qd-quest-journal",
@@ -63755,7 +63755,7 @@
       "tags": [],
       "file": "narrative-design/nd-wb-economy-politics.md",
       "exists": true,
-      "char_count": 2526
+      "char_count": 2601
     },
     {
       "id": "nd-wb-setting-bible",
@@ -65634,7 +65634,7 @@
       ],
       "file": "philosophy/logic-reasoning/analogical-reasoning.md",
       "exists": true,
-      "char_count": 1397
+      "char_count": 2566
     },
     {
       "id": "predicate-logic",
@@ -65694,7 +65694,7 @@
       ],
       "file": "philosophy/logic-reasoning/logic-overview.md",
       "exists": true,
-      "char_count": 2384
+      "char_count": 2431
     },
     {
       "id": "set-theory-phil",
@@ -65754,7 +65754,7 @@
       ],
       "file": "philosophy/metaphysics/chinese-metaphysics.md",
       "exists": true,
-      "char_count": 1384
+      "char_count": 2153
     },
     {
       "id": "dualism",
@@ -66099,7 +66099,7 @@
       ],
       "file": "philosophy/modern-philosophy/feminist-philosophy.md",
       "exists": true,
-      "char_count": 1395
+      "char_count": 3011
     },
     {
       "id": "existentialism",
@@ -69069,7 +69069,7 @@
       ],
       "file": "physics/thermodynamics/temperature-heat.md",
       "exists": true,
-      "char_count": 1514
+      "char_count": 2449
     },
     {
       "id": "first-law-thermo",
@@ -69669,7 +69669,7 @@
       ],
       "file": "product-design/data-driven/analytics-tools.md",
       "exists": true,
-      "char_count": 1542
+      "char_count": 2936
     },
     {
       "id": "feature-flag",
@@ -73304,7 +73304,7 @@
       ],
       "file": "psychology/biological-psychology/endocrine-system.md",
       "exists": true,
-      "char_count": 2603
+      "char_count": 4000
     },
     {
       "id": "cerebral-lateralization",
@@ -74279,7 +74279,7 @@
       ],
       "file": "psychology/cognitive-psychology/language-cognition.md",
       "exists": true,
-      "char_count": 1536
+      "char_count": 2836
     },
     {
       "id": "selective-attention",
@@ -74894,7 +74894,7 @@
       ],
       "file": "psychology/personality-psychology/trait-theory.md",
       "exists": true,
-      "char_count": 1541
+      "char_count": 2637
     },
     {
       "id": "social-cognitive-personality",
@@ -78943,7 +78943,7 @@
       ],
       "file": "software-engineering/package-management/se-pkg-intro.md",
       "exists": true,
-      "char_count": 1508
+      "char_count": 2602
     },
     {
       "id": "se-container-deps",
@@ -81143,7 +81143,7 @@
       ],
       "file": "technical-art/ta-pbr-fundamentals.md",
       "exists": true,
-      "char_count": 1517
+      "char_count": 3238
     },
     {
       "id": "ta-substance-workflow",
@@ -84398,7 +84398,7 @@
       ],
       "file": "vfx/vfx-niagara-debug.md",
       "exists": true,
-      "char_count": 1509
+      "char_count": 3000
     },
     {
       "id": "vfx-niagara-neighbor-grid",
@@ -84833,7 +84833,7 @@
       ],
       "file": "vfx/vfx-pp-ssr.md",
       "exists": true,
-      "char_count": 1502
+      "char_count": 2682
     },
     {
       "id": "vfx-pp-outline",
@@ -87818,7 +87818,7 @@
       ],
       "file": "writing/narrative-writing/storytelling-oral.md",
       "exists": true,
-      "char_count": 2165
+      "char_count": 3662
     },
     {
       "id": "memoir-writing",
@@ -88058,7 +88058,7 @@
       ],
       "file": "writing/persuasive-writing/propaganda-analysis.md",
       "exists": true,
-      "char_count": 1415
+      "char_count": 3351
     },
     {
       "id": "advertising-copywriting",
@@ -88868,7 +88868,7 @@
       ],
       "file": "writing/revision-craft/editor-author-relation.md",
       "exists": true,
-      "char_count": 1539
+      "char_count": 2431
     },
     {
       "id": "self-editing",
@@ -89078,7 +89078,7 @@
       ],
       "file": "writing/writing-fundamentals/parallel-structure.md",
       "exists": true,
-      "char_count": 2562
+      "char_count": 4231
     },
     {
       "id": "outline-planning",
@@ -89138,7 +89138,7 @@
       ],
       "file": "writing/writing-fundamentals/freewriting-techniques.md",
       "exists": true,
-      "char_count": 1534
+      "char_count": 2342
     },
     {
       "id": "vocabulary-building",
