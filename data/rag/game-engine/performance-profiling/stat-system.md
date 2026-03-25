@@ -20,68 +20,103 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-26
 ---
-# 统计系统
+
+
+
+# 统计系统（Stat System）
 
 ## 概述
 
-统计系统（Stat System）是游戏引擎（Game Engine）中性能剖析领域的重要概念。难度等级2/9（基础级）。
+统计系统是游戏引擎中用于实时收集、聚合和展示运行数据的基础设施，其三大核心构件为 **Stat Group（统计组）**、**Stat Counter（统计计数器）** 和 **Stat Timer（统计计时器）**。这三类构件分别负责不同粒度的性能数据：Group 提供分类容器，Counter 记录事件次数或数值，Timer 测量代码块的耗时。以 Unreal Engine 为例，其统计系统通过 `DECLARE_STATS_GROUP`、`DECLARE_CYCLE_STAT` 等宏在编译期注册所有统计项，运行时通过 `stat [GroupName]` 指令在屏幕上实时叠加显示。
 
-Stat Group/Counter/Timer。
+统计系统的设计思路可追溯至 1990 年代的游戏开发实践——开发者最初用手写日志文件记录帧率，后逐渐演化为内置于引擎的标准化测量框架。现代引擎（如 Unreal Engine 4/5、Unity）均将统计系统作为性能剖析的第一层入口：它的开销极低（Unreal 的 Cycle Stat 在 shipping 构建中默认被完全剔除），且不依赖外部工具即可工作，这使得它在开发阶段的日常迭代中比 GPU 捕获或完整 Profiler Session 更频繁地被使用。
 
-在知识体系中，统计系统建立在性能剖析概述的基础之上，是理解可进入更高级主题的关键前置知识。为什么统计系统如此重要？因为它在性能剖析中起到承上启下的作用，连接基础概念与高级应用。
+统计系统的重要性体现在它能够在不中断游戏运行的情况下持续输出数据。一个正确配置的 Stat Timer 可以让你在 30 秒内定位某个每帧调用的函数是否突然从 0.1 ms 飙升到 3 ms，而无需暂停进程或重启引擎。
 
-## 核心知识点
+---
 
-### 1. Stat Group/Counter/Timer
+## 核心原理
 
-Stat Group/Counter/Timer是统计系统(Stat System)的核心组成部分之一。在性能剖析的实践中，Stat Group/Counter/Timer决定了系统行为的关键特征。例如，当Stat Group/Counter/Timer参数或条件发生变化时，整体表现会产生显著差异。深入理解Stat Group/Counter/Timer需要结合游戏引擎的基本原理进行分析。
+### Stat Group：统计分组容器
 
+Stat Group 是统计系统的命名空间机制。在 Unreal Engine 中，声明一个组的语法为：
 
-### 关键原理分析
+```cpp
+DECLARE_STATS_GROUP(TEXT("MySystem"), STATGROUP_MySystem, STATCAT_Advanced);
+```
 
-统计系统的核心在于Stat Group/Counter/Timer。从理论角度看，该概念涉及以下层面：
+第三个参数 `STATCAT_Advanced` 控制该组是否在默认情况下可见（`STATCAT_Advanced` 表示需要手动启用）。一个 Group 可以包含任意数量的 Counter 和 Timer，但通常按子系统划分，例如 `STATGROUP_AI`、`STATGROUP_Particles`。当你在控制台输入 `stat AI` 时，引擎会渲染该 Group 下所有已注册的统计项，而不会显示其他 Group 的数据，从而避免信息过载。
 
-1. **定义层**：明确统计系统的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解统计系统内部各要素的相互作用方式
-3. **应用层**：将统计系统的原理映射到游戏引擎的实际场景中
+### Stat Counter：事件与数值计数
 
-思考题：如何判断统计系统的应用是否超出了其理论适用范围？
+Stat Counter 分为两类：**整型计数器**（`DECLARE_DWORD_COUNTER_STAT`）和**浮点计数器**（`DECLARE_FLOAT_COUNTER_STAT`）。其典型用途是记录每帧的对象数量、内存分配次数、Draw Call 总数等离散指标。在代码中更新计数器使用：
 
-## 关键要点
+```cpp
+INC_DWORD_STAT(STAT_MyObjectCount);       // 递增 1
+SET_DWORD_STAT(STAT_MyObjectCount, 42);   // 直接设置绝对值
+```
 
-1. **核心定义**：统计系统的本质是Stat Group/Counter/Timer，这是理解整个概念的出发点
-2. **多维理解**：掌握统计系统需要同时理解Stat Group/Counter/Timer等关键维度
-3. **先修关系**：扎实的性能剖析概述基础对理解统计系统至关重要
-4. **进阶路径**：可广泛应用于游戏引擎各方面
-5. **实践标准**：真正掌握统计系统的标志是能在具体场景中灵活运用并正确判断适用边界
+Counter 的数值在每帧结束时**不会自动清零**，除非统计项被声明为 `STAT_TYPE_COUNT_DELTA`（增量模式）。这一细节是初学者最常踩的陷阱之一：若错误地对一个累积型 Counter 调用 `INC`，会看到数值持续增长而非每帧的新增量。
+
+### Stat Timer：代码块耗时测量
+
+Stat Timer 基于 CPU 周期（Cycle）计数，其核心宏为：
+
+```cpp
+DECLARE_CYCLE_STAT(TEXT("MyFunction"), STAT_MyFunction, STATGROUP_MySystem);
+
+void MyFunction()
+{
+    SCOPE_CYCLE_COUNTER(STAT_MyFunction);
+    // ... 被测量的代码 ...
+}
+```
+
+`SCOPE_CYCLE_COUNTER` 利用 RAII 机制，在构造时记录 `FPlatformTime::Cycles()` 的起始值，在析构时计算差值并转换为毫秒。公式为：
+
+$$T_{ms} = \frac{C_{end} - C_{start}}{F_{cpu}} \times 1000$$
+
+其中 $C$ 为 CPU 周期数，$F_{cpu}$ 为平台的 CPU 频率（Hz）。Unreal 通过 `FPlatformTime::GetSecondsPerCycle()` 预先缓存频率倒数，避免每帧除法运算带来的开销。
+
+Stat Timer 支持嵌套调用，父级 Timer 的时间包含所有子级 Timer 的耗时，这与 Unreal Insights 中的调用栈层级一一对应。
+
+---
+
+## 实际应用
+
+**场景一：诊断 AI 更新性能**
+
+在一个有 200 个 AI 单位的关卡中，开发者怀疑 AI Tick 导致帧率下降。只需在 AI 的 `Tick` 函数中添加 `SCOPE_CYCLE_COUNTER(STAT_AITick)`，并在控制台输入 `stat AI`，即可实时看到该计时器的每帧耗时、调用次数和平均值。若显示 `AITick: 8.3 ms (calls: 200)`，则可进一步用更细粒度的 Timer 划分 Pathfinding、Perception、Behavior Tree 三个子阶段。
+
+**场景二：监控粒子系统 Sprite 数量**
+
+在粒子系统管理器中声明一个 `DWORD_COUNTER_STAT(STAT_ActiveSpriteCount)`，每次生成粒子时调用 `INC_DWORD_STAT`，每次销毁时调用 `DEC_DWORD_STAT`。运行时 `stat Particles` 会实时展示当前场景中活跃 Sprite 的绝对数量，帮助验证粒子发射器的预算是否超限（例如策划规定最多 5000 个 Sprite）。
+
+**场景三：多线程环境下的统计**
+
+在 Unreal 的渲染线程中，统计系统提供了线程安全版本的宏：`SCOPE_CYCLE_COUNTER` 在任意线程上均可安全调用，因为每个线程持有独立的 `FThreadStats` 实例，主线程在帧末汇总时才合并数据。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将统计系统与性能剖析中其他相近概念混为一谈。例如，Stat Group/Counter/Timer的适用条件与其他同类概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解性能剖析概述就学习统计系统，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：统计系统虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：认为 Stat Timer 的精度足以替代专业 Profiler**
 
-## 知识衔接
+Stat Timer 的时间分辨率依赖平台的 `QueryPerformanceCounter`（Windows）或 `clock_gettime`（Linux），精度通常在 **100 纳秒级别**，这对于测量耗时 5 ms 以上的函数非常可靠。但对于耗时不足 10 微秒的热路径函数，多次调用的测量累积误差可能超过真实耗时，此时应改用 Intel VTune 或 Unreal Insights 的采样模式。
 
-### 先修知识
-先修知识包括：
-- **性能剖析概述** — 为统计系统提供了必要的概念基础
+**误区二：在 Shipping 构建中留有统计代码**
 
-### 后续学习
-掌握统计系统后，学习者已具备该方向的核心能力，可将所学应用于实际项目或探索游戏引擎其他分支。
+Unreal 的 `SCOPE_CYCLE_COUNTER` 宏在 `STATS` 宏未定义时会展开为空语句。`STATS` 宏在 `Debug` 和 `Development` 构建中默认启用，在 `Shipping` 构建中默认禁用。如果开发者手动在项目的 `Build.cs` 中为 Shipping 构建开启 `bWithStats = true`，会导致发布版本的额外性能开销，这不是统计系统的设计意图。
 
-## 学习建议
+**误区三：混淆 Counter 的累积模式与增量模式**
 
-预计学习时间：30-60分钟。建议采用以下策略：
+使用 `SET_DWORD_STAT` 设置的是**当前帧的绝对值**，而 `INC_DWORD_STAT` 是在上一帧数值基础上累加。若要统计"每帧新增的网络包数量"，应使用增量 Counter 并在帧开始时重置，而非直接用 `INC` 而不重置，否则 stat 面板显示的数值会随时间无限增长，完全失去诊断意义。
 
-- **主动回忆**：学完后不看笔记复述统计系统的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将统计系统与游戏引擎中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释统计系统，检验理解深度
+---
 
-## 延伸阅读
+## 知识关联
 
-- 相关教科书中关于性能剖析的章节可作为深入参考
-- Wikipedia: [Stat System](https://en.wikipedia.org/wiki/stat_system) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Stat System" 可找到配套视频教程
+统计系统建立在**性能剖析概述**所介绍的"最小化测量干扰"原则之上——Stat Timer 的 RAII 设计正是为了确保即使函数提前返回也不遗漏计时结束点。掌握统计系统后，可以进一步学习 **Unreal Insights**：Stat Timer 产生的 Cycle 数据是 Insights 中 CPU Track 的数据来源之一，理解统计系统的注册机制和线程模型，有助于在 Insights 的时间轴视图中正确解读各 Track 的层级结构。此外，统计系统中的 **Stat Group 概念**与 RenderDoc 中的 GPU Marker 分组机制高度类似，两者都通过命名空间将海量性能数据归类，降低认知负担。

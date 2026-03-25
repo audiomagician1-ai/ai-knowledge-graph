@@ -20,73 +20,118 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-26
 ---
+
 # 省略与替代
 
 ## 概述
 
-省略与替代（Ellipsis Substitution）是英语（English Language）中句型结构领域的重要概念。难度等级5/9（中高级）。
+省略（Ellipsis）与替代（Substitution）是英语中避免重复、保持语言精练的两种核心句法手段。省略指删去可从语境中恢复的成分，替代则是用一个简短的替代词（如 *so*、*not*、*do so*、*one*）来代替前文提及的词语或小句。两者的根本区别在于：省略留下"空位"，替代则用一个具体词项填充该空位。
 
-so/not/do so/one等替代和省略。
+这两种现象在语言学研究中由 M.A.K. Halliday 与 Ruqaiya Hasan 在其 1976 年著作《Cohesion in English》中系统归纳，分为名词性、动词性和小句性三大类别。理解这一分类对于分析英语的衔接（cohesion）机制至关重要。
 
-在知识体系中，省略与替代建立在复合句的基础之上，是理解高级省略的关键前置知识。为什么省略与替代如此重要？因为它在句型结构中起到承上启下的作用，连接基础概念与高级应用。
+在实际英语考试和写作中，省略与替代的误用是中高级学习者最常见的错误来源之一——尤其在使用 *so/not* 替代从句、或 *one/ones* 替代名词短语时，选词不当或省略范围判断有误会直接导致歧义甚至语法错误。
 
-## 核心知识点
+---
 
-### 1. so/not/do so/one等替代
+## 核心原理
 
-so/not/do so/one等替代是省略与替代(Ellipsis Substitution)的核心组成部分之一。在句型结构的实践中，so/not/do so/one等替代决定了系统行为的关键特征。例如，当so/not/do so/one等替代参数或条件发生变化时，整体表现会产生显著差异。深入理解so/not/do so/one等替代需要结合英语的基本原理进行分析。
+### 一、名词性替代：*one / ones*
 
-### 2. 省略
+*one/ones* 只能替代**可数名词**，且必须保留原名词的中心词属性。例如：
 
-省略是省略与替代(Ellipsis Substitution)的核心组成部分之一。在句型结构的实践中，省略决定了系统行为的关键特征。例如，当省略参数或条件发生变化时，整体表现会产生显著差异。深入理解省略需要结合英语的基本原理进行分析。
+> I need a pen. Do you have **one**?（替代 *a pen*）
 
+> These books are better than the **ones** on the shelf.（替代 *the books*）
 
-### 关键原理分析
+关键限制：*one* 不能替代不可数名词（不能说 "I want some water, do you have **one**?"），也不能替代整个名词短语中含有专有名词的结构。当原名词前有限定词时，替代词 *one* 仍可搭配新的限定词，如 *the red one*、*a bigger one*，但不能说 *ones* 单独作主语（需说 *the ones*）。
 
-省略与替代的核心在于so/not/do so/one等替代和省略。从理论角度看，该概念涉及以下层面：
+### 二、动词性替代：*do so / do it / do that*
 
-1. **定义层**：明确省略与替代的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解省略与替代内部各要素的相互作用方式
-3. **应用层**：将省略与替代的原理映射到英语的实际场景中
+动词性替代用于代替动词短语（VP），三个替代词用法有别：
 
-思考题：如何判断省略与替代的应用是否超出了其理论适用范围？
+- **do so**：最正式，替代整个 VP，主语须为有意识动作的施事，且动词须为行为动词。如：
+  > She promised to leave early, and she **did so** at 9 p.m.
 
-## 关键要点
+- **do it / do that**：较为口语化，*do that* 暗含说话人对前文动作的评价距离（如批评或惊讶），而 *do it* 则更中性。
+  > "He quit his job."  "I can't believe he **did that**."
 
-1. **核心定义**：省略与替代的本质是so/not/do so/one等替代和省略，这是理解整个概念的出发点
-2. **多维理解**：掌握省略与替代需要同时理解so/not/do so/one等替代和省略等关键维度
-3. **先修关系**：扎实的复合句基础对理解省略与替代至关重要
-4. **进阶路径**：掌握后可继续深入高级省略等进阶主题
-5. **实践标准**：真正掌握省略与替代的标志是能在具体场景中灵活运用并正确判断适用边界
+注意：*do so* 不能替代系动词短语（be + 表语），不能说 "She is happy and he **does so** too."，此时应使用省略形式或 *so is he*。
+
+### 三、小句性替代：*so / not*
+
+*so* 和 *not* 用于替代整个小句（clause），常出现在以下动词之后：*think, believe, hope, expect, suppose, imagine, fear, say, tell* 等。
+
+> "Will it rain tomorrow?"  "I **think so**."（= I think it will rain tomorrow.）
+
+> "Is she coming?"  "I **hope not**."（= I hope she is not coming.）
+
+使用规则：
+- *so* 替代**肯定小句**，*not* 替代**否定小句**
+- *fear, be afraid* 可接 *so* 表达消极预期（"I'm afraid **so**."）
+- *say* 构成的替代结构为 *say so*，*tell* 后不能用此结构（不说 "He told so"）
+- *believe, think* 的否定有两种方式：*I don't think so* 与 *I think not*，前者更口语化，后者更正式且语气更强硬
+
+### 四、省略的三种类型
+
+**名词性省略**：省去名词中心词，保留修饰成分。
+> Which dress do you prefer? The **red** [dress]. → "The red."
+
+**动词性省略（VP ellipsis）**：用助动词保留时态/情态信息，省去主动词及其补语。
+> She can swim faster than he **can** [swim fast].
+
+**小句性省略**：常见于回答问句或并列结构中。
+> "Are you coming?"  "**Yes**." / "If possible [I will come]."
+
+---
+
+## 实际应用
+
+**场景一：书面写作中的替代**
+
+学术写作中频繁使用 *do so* 避免重复动词短语，例如：
+> Researchers must validate their models. Those who fail to **do so** risk publishing unreliable results.
+
+**场景二：口语对话中的 so/not**
+
+日常对话中 *so/not* 替代结构极为高频：
+> "Is the meeting cancelled?"  "It **seems so**." / "I **suppose not**."
+
+注意此处不可写成 "It seems it."——*so/not* 是固定的小句替代形式，不能随意替换。
+
+**场景三：比较结构中的 VP 省略**
+
+比较句 *than/as...as* 后频繁发生 VP 省略：
+> He works harder than his colleagues **do**.（省略 *work hard*）
+
+若误写为 "than his colleagues work hard"，虽意义可理解，但属冗余，且在正式书面语中被视为不规范。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将省略与替代与句型结构中其他相近概念混为一谈。例如，so/not/do so/one等替代的适用条件与其他省略概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解复合句就学习省略与替代，导致基础不牢**。建议先确认先修知识扎实
-3. **过度简化：省略与替代的复杂度为5/9，初学者容易忽略其中的细微但关键的区别**
+**误区一：用 *one* 替代不可数名词**
 
-## 知识衔接
+学习者常将 *one* 泛化使用，写出 "I need some advice. Can you give me **one**?" 这样的错句。不可数名词的替代只能通过省略（"Can you give me **some**?"）或改写实现，没有对应的 *one* 形式。
 
-### 先修知识
-先修知识包括：
-- **复合句** — 为省略与替代提供了必要的概念基础
+**误区二：混淆 *do so* 与 *so do I* 的结构**
 
-### 后续学习
-掌握省略与替代后可继续学习：
-- **高级省略** — 在省略与替代基础上进一步拓展
+*do so* 是动词性替代，位于主语之后；*so do I / so does she* 是倒装结构，表示"同样如此"，二者语序完全不同，意义也不同：
+> "I enjoy hiking."  "**So do I**."（我也是——倒装）
+> "He said he would call, and he **did so** promptly."（他确实这样做了——动词性替代）
 
-## 学习建议
+混用会导致严重的语法错误。
 
-预计学习时间：3-5小时。建议采用以下策略：
+**误区三：认为省略和替代可以跨句随意使用**
 
-- **主动回忆**：学完后不看笔记复述省略与替代的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将省略与替代与英语中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释省略与替代，检验理解深度
+省略与替代都要求**结构可恢复性**（recoverability），即读者/听者必须能从上下文中准确还原被省略或替代的成分。如果替代词所指不明确（如 *one* 在文中对应多个名词候选），则违反了省略与替代的基本使用前提，产生歧义。
 
-## 延伸阅读
+---
 
-- 相关教科书中关于句型结构的章节可作为深入参考
-- Wikipedia: [Ellipsis Substitution](https://en.wikipedia.org/wiki/ellipsis_substitution) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Ellipsis Substitution" 可找到配套视频教程
+## 知识关联
+
+学习省略与替代需要先掌握**复合句**结构，因为许多替代操作（尤其是小句性替代 *so/not* 和 VP 省略）都发生在主从句或并列句的边界处——只有能准确识别从句边界，才能判断替代的覆盖范围是否正确。
+
+掌握本章内容后，可以进阶学习**高级省略**，包括：语篇层面的零形式回指（zero anaphora）、*gapping*（并列句中谓语的省略，如 "John likes coffee and Mary [likes] tea"）、以及 *stripping* 结构（"Mary came, and John too"）。这些结构在句法复杂度上远超基础的 *one/so/do so* 替代，但都建立在能够准确区分替代域与省略域的基础之上。
