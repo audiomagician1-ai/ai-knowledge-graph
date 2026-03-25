@@ -103,7 +103,7 @@
       ],
       "file": "vfx/vfx-destruct-building.md",
       "exists": true,
-      "char_count": 1353
+      "char_count": 2823
     },
     {
       "id": "vfx-destruct-decal",
@@ -823,7 +823,7 @@
       ],
       "file": "vfx/vfx-fluid-waterfall.md",
       "exists": true,
-      "char_count": 1369
+      "char_count": 2473
     },
     {
       "id": "vfx-fluid-fire",
@@ -1288,7 +1288,7 @@
       ],
       "file": "vfx/vfx-particle-spring.md",
       "exists": true,
-      "char_count": 1365
+      "char_count": 2701
     },
     {
       "id": "vfx-particle-interpolation",
@@ -1453,7 +1453,7 @@
       ],
       "file": "vfx/vfx-particle-drag.md",
       "exists": true,
-      "char_count": 1367
+      "char_count": 2704
     },
     {
       "id": "vfx-particle-random",
@@ -2623,7 +2623,7 @@
       ],
       "file": "vfx/vfx-opt-collision-cost.md",
       "exists": true,
-      "char_count": 1354
+      "char_count": 2671
     },
     {
       "id": "vfx-opt-mobile",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 338814,
-    "avg_chars": 1882,
+    "total_chars": 345378,
+    "avg_chars": 1918,
     "domain": "vfx"
   }
 }

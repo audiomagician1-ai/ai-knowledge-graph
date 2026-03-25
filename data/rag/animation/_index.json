@@ -1498,7 +1498,7 @@
       ],
       "file": "animation/anim-run-cycle.md",
       "exists": true,
-      "char_count": 1269
+      "char_count": 2058
     },
     {
       "id": "anim-pose-library",
@@ -1558,7 +1558,7 @@
       ],
       "file": "animation/anim-attack-animation.md",
       "exists": true,
-      "char_count": 1280
+      "char_count": 2780
     },
     {
       "id": "anim-graph-editor",
@@ -2233,7 +2233,7 @@
       ],
       "file": "animation/anim-joint-orient.md",
       "exists": true,
-      "char_count": 1277
+      "char_count": 2678
     },
     {
       "id": "anim-retargeting",
@@ -2383,7 +2383,7 @@
       ],
       "file": "animation/anim-rig-pipeline.md",
       "exists": true,
-      "char_count": 1268
+      "char_count": 2793
     },
     {
       "id": "anim-rig-constraints",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 327166,
-    "avg_chars": 1817,
+    "total_chars": 332381,
+    "avg_chars": 1846,
     "domain": "animation"
   }
 }

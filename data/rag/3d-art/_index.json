@@ -673,7 +673,7 @@
       ],
       "file": "3d-art/3da-env-scale-reference.md",
       "exists": true,
-      "char_count": 1269
+      "char_count": 2269
     },
     {
       "id": "3da-env-water",
@@ -1033,7 +1033,7 @@
       ],
       "file": "3d-art/3da-hs-floating-geo.md",
       "exists": true,
-      "char_count": 1281
+      "char_count": 2332
     },
     {
       "id": "3da-hs-game-ready",
@@ -1483,7 +1483,7 @@
       ],
       "file": "3d-art/3da-org-symmetry-break.md",
       "exists": true,
-      "char_count": 1286
+      "char_count": 2210
     },
     {
       "id": "3da-org-hand-foot",
@@ -1738,7 +1738,7 @@
       ],
       "file": "3d-art/3da-prop-medieval.md",
       "exists": true,
-      "char_count": 1272
+      "char_count": 2719
     },
     {
       "id": "3da-prop-interactable",
@@ -1903,7 +1903,7 @@
       ],
       "file": "3d-art/3da-prop-variation.md",
       "exists": true,
-      "char_count": 1270
+      "char_count": 2636
     },
     {
       "id": "3da-prop-intro",
@@ -2008,7 +2008,7 @@
       ],
       "file": "3d-art/3da-retopo-symmetry.md",
       "exists": true,
-      "char_count": 1273
+      "char_count": 2471
     },
     {
       "id": "3da-retopo-manual",
@@ -2653,7 +2653,7 @@
       ],
       "file": "3d-art/3da-sculpt-projection.md",
       "exists": true,
-      "char_count": 1280
+      "char_count": 2513
     },
     {
       "id": "3da-sculpt-detailing",
@@ -3393,8 +3393,8 @@
   ],
   "stats": {
     "total": 226,
-    "total_chars": 463210,
-    "avg_chars": 2049,
+    "total_chars": 471429,
+    "avg_chars": 2085,
     "domain": "3d-art"
   }
 }

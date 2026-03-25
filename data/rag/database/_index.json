@@ -141,7 +141,7 @@
       "tags": [],
       "file": "database/db-transactions.md",
       "exists": true,
-      "char_count": 1553
+      "char_count": 2898
     },
     {
       "id": "full-text-search",
@@ -315,8 +315,8 @@
   ],
   "stats": {
     "total": 24,
-    "total_chars": 53033,
-    "avg_chars": 2209,
+    "total_chars": 54378,
+    "avg_chars": 2265,
     "domain": "database"
   }
 }

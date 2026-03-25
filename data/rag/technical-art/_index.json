@@ -733,7 +733,7 @@
       ],
       "file": "technical-art/ta-material-instance.md",
       "exists": true,
-      "char_count": 1369
+      "char_count": 2785
     },
     {
       "id": "ta-material-library",
@@ -1888,7 +1888,7 @@
       ],
       "file": "technical-art/ta-export-pipeline.md",
       "exists": true,
-      "char_count": 1366
+      "char_count": 3066
     },
     {
       "id": "ta-scale-reference",
@@ -2068,7 +2068,7 @@
       ],
       "file": "technical-art/ta-cook-pipeline.md",
       "exists": true,
-      "char_count": 1367
+      "char_count": 2681
     },
     {
       "id": "ta-pipeline-overview",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 317863,
-    "avg_chars": 1765,
+    "total_chars": 322293,
+    "avg_chars": 1790,
     "domain": "technical-art"
   }
 }

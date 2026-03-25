@@ -102,7 +102,7 @@
       "tags": [],
       "file": "narrative-design/nd-bn-relationship-system.md",
       "exists": true,
-      "char_count": 1368
+      "char_count": 2525
     },
     {
       "id": "nd-bn-delayed-consequence",
@@ -648,7 +648,7 @@
       "tags": [],
       "file": "narrative-design/nd-ci-emotional-beats.md",
       "exists": true,
-      "char_count": 1359
+      "char_count": 2453
     },
     {
       "id": "nd-ci-shot-composition",
@@ -713,7 +713,7 @@
       "tags": [],
       "file": "narrative-design/nd-ci-vfx-in-cutscene.md",
       "exists": true,
-      "char_count": 1354
+      "char_count": 2546
     },
     {
       "id": "nd-ci-cutscene-types",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 296438,
-    "avg_chars": 1646,
+    "total_chars": 299881,
+    "avg_chars": 1666,
     "domain": "narrative-design"
   }
 }

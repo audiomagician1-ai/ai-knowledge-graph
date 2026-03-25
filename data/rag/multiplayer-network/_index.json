@@ -258,7 +258,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-ac-wallhack-prevention.md",
       "exists": true,
-      "char_count": 1358
+      "char_count": 2376
     },
     {
       "id": "mn-ch-a-b-testing",
@@ -2325,7 +2325,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-sa-authentication.md",
       "exists": true,
-      "char_count": 1365
+      "char_count": 2730
     },
     {
       "id": "mn-sa-rate-limiting",
@@ -2603,8 +2603,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 344834,
-    "avg_chars": 1724,
+    "total_chars": 347217,
+    "avg_chars": 1736,
     "domain": "multiplayer-network"
   }
 }

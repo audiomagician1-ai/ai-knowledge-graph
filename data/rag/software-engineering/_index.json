@@ -3808,7 +3808,7 @@
       ],
       "file": "software-engineering/tdd/se-test-coverage.md",
       "exists": true,
-      "char_count": 1362
+      "char_count": 2478
     },
     {
       "id": "se-test-pyramid",
@@ -4203,8 +4203,8 @@
   ],
   "stats": {
     "total": 280,
-    "total_chars": 519019,
-    "avg_chars": 1853,
+    "total_chars": 520135,
+    "avg_chars": 1857,
     "domain": "software-engineering"
   }
 }
