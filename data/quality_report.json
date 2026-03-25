@@ -1,12 +1,12 @@
 {
-  "_generated": "2026-03-25T13:21:29.626760",
+  "_generated": "2026-03-25T23:47:32.113023",
   "_version": "scorer-v2.0",
   "total_docs": 6156,
-  "avg_score": 61.3,
+  "avg_score": 64.6,
   "tier_distribution": {
-    "S": 359,
-    "A": 2426,
-    "B": 3371,
+    "S": 429,
+    "A": 2936,
+    "B": 2791,
     "C": 0
   },
   "domain_summary": {
@@ -60,13 +60,13 @@
     },
     "biology": {
       "count": 169,
-      "avg_score": 68.3,
-      "min_score": 42.6,
+      "avg_score": 74.1,
+      "min_score": 44.3,
       "max_score": 99.9,
       "tiers": {
-        "S": 16,
-        "A": 104,
-        "B": 49,
+        "S": 17,
+        "A": 132,
+        "B": 20,
         "C": 0
       }
     },
@@ -108,37 +108,37 @@
     },
     "economics": {
       "count": 166,
-      "avg_score": 58.7,
-      "min_score": 42.6,
+      "avg_score": 68.9,
+      "min_score": 44.3,
       "max_score": 99.9,
       "tiers": {
-        "S": 19,
-        "A": 43,
-        "B": 104,
+        "S": 31,
+        "A": 78,
+        "B": 57,
         "C": 0
       }
     },
     "english": {
       "count": 188,
-      "avg_score": 67.0,
-      "min_score": 42.5,
+      "avg_score": 73.4,
+      "min_score": 44.4,
       "max_score": 100.0,
       "tiers": {
         "S": 9,
-        "A": 112,
-        "B": 67,
+        "A": 146,
+        "B": 33,
         "C": 0
       }
     },
     "finance": {
       "count": 161,
-      "avg_score": 64.8,
+      "avg_score": 73.9,
       "min_score": 42.1,
       "max_score": 99.9,
       "tiers": {
-        "S": 18,
-        "A": 76,
-        "B": 67,
+        "S": 23,
+        "A": 113,
+        "B": 25,
         "C": 0
       }
     },
@@ -168,13 +168,13 @@
     },
     "game-design": {
       "count": 243,
-      "avg_score": 69.1,
-      "min_score": 42.5,
+      "avg_score": 77.4,
+      "min_score": 44.4,
       "max_score": 99.9,
       "tiers": {
-        "S": 17,
-        "A": 159,
-        "B": 67,
+        "S": 20,
+        "A": 214,
+        "B": 9,
         "C": 0
       }
     },
@@ -216,25 +216,25 @@
     },
     "game-publishing": {
       "count": 180,
-      "avg_score": 50.7,
-      "min_score": 44.2,
+      "avg_score": 50.9,
+      "min_score": 44.3,
       "max_score": 79.6,
       "tiers": {
         "S": 0,
-        "A": 20,
-        "B": 160,
+        "A": 21,
+        "B": 159,
         "C": 0
       }
     },
     "game-qa": {
       "count": 160,
-      "avg_score": 52.2,
-      "min_score": 44.2,
+      "avg_score": 52.6,
+      "min_score": 44.3,
       "max_score": 82.9,
       "tiers": {
         "S": 1,
-        "A": 27,
-        "B": 132,
+        "A": 29,
+        "B": 130,
         "C": 0
       }
     },
@@ -252,145 +252,145 @@
     },
     "level-design": {
       "count": 199,
-      "avg_score": 65.3,
-      "min_score": 42.5,
+      "avg_score": 73.5,
+      "min_score": 44.3,
       "max_score": 92.6,
       "tiers": {
-        "S": 7,
-        "A": 118,
-        "B": 74,
+        "S": 10,
+        "A": 162,
+        "B": 27,
         "C": 0
       }
     },
     "mathematics": {
       "count": 269,
-      "avg_score": 74.0,
-      "min_score": 42.5,
+      "avg_score": 78.2,
+      "min_score": 42.6,
       "max_score": 99.9,
       "tiers": {
-        "S": 40,
-        "A": 181,
-        "B": 48,
+        "S": 46,
+        "A": 205,
+        "B": 18,
         "C": 0
       }
     },
     "multiplayer-network": {
       "count": 200,
-      "avg_score": 56.4,
-      "min_score": 44.2,
+      "avg_score": 58.4,
+      "min_score": 44.3,
       "max_score": 92.6,
       "tiers": {
-        "S": 5,
-        "A": 57,
-        "B": 138,
+        "S": 6,
+        "A": 68,
+        "B": 126,
         "C": 0
       }
     },
     "narrative-design": {
       "count": 180,
-      "avg_score": 56.2,
-      "min_score": 44.2,
+      "avg_score": 57.0,
+      "min_score": 44.3,
       "max_score": 92.6,
       "tiers": {
         "S": 2,
-        "A": 47,
-        "B": 131,
+        "A": 51,
+        "B": 127,
         "C": 0
       }
     },
     "philosophy": {
       "count": 171,
-      "avg_score": 56.7,
-      "min_score": 42.6,
+      "avg_score": 71.7,
+      "min_score": 44.1,
       "max_score": 92.6,
       "tiers": {
-        "S": 7,
-        "A": 53,
-        "B": 111,
+        "S": 18,
+        "A": 112,
+        "B": 41,
         "C": 0
       }
     },
     "physics": {
       "count": 194,
-      "avg_score": 70.2,
-      "min_score": 42.6,
+      "avg_score": 76.1,
+      "min_score": 43.5,
       "max_score": 95.9,
       "tiers": {
-        "S": 21,
-        "A": 122,
-        "B": 51,
+        "S": 24,
+        "A": 152,
+        "B": 18,
         "C": 0
       }
     },
     "product-design": {
       "count": 186,
-      "avg_score": 58.5,
+      "avg_score": 67.4,
       "min_score": 41.1,
       "max_score": 92.6,
       "tiers": {
-        "S": 8,
-        "A": 63,
-        "B": 115,
+        "S": 12,
+        "A": 106,
+        "B": 68,
         "C": 0
       }
     },
     "psychology": {
       "count": 191,
-      "avg_score": 62.9,
+      "avg_score": 69.2,
       "min_score": 40.2,
       "max_score": 99.9,
       "tiers": {
-        "S": 13,
-        "A": 83,
-        "B": 95,
+        "S": 15,
+        "A": 115,
+        "B": 61,
         "C": 0
       }
     },
     "software-engineering": {
       "count": 280,
-      "avg_score": 58.8,
-      "min_score": 44.2,
-      "max_score": 92.6,
+      "avg_score": 59.4,
+      "min_score": 44.3,
+      "max_score": 96.6,
       "tiers": {
-        "S": 20,
-        "A": 78,
-        "B": 182,
+        "S": 22,
+        "A": 80,
+        "B": 178,
         "C": 0
       }
     },
     "technical-art": {
       "count": 180,
-      "avg_score": 54.8,
-      "min_score": 44.2,
+      "avg_score": 56.8,
+      "min_score": 44.3,
       "max_score": 82.9,
       "tiers": {
-        "S": 2,
-        "A": 48,
-        "B": 130,
+        "S": 3,
+        "A": 58,
+        "B": 119,
         "C": 0
       }
     },
     "vfx": {
       "count": 180,
-      "avg_score": 60.4,
-      "min_score": 44.2,
+      "avg_score": 61.0,
+      "min_score": 44.3,
       "max_score": 82.9,
       "tiers": {
-        "S": 6,
-        "A": 72,
-        "B": 102,
+        "S": 8,
+        "A": 73,
+        "B": 99,
         "C": 0
       }
     },
     "writing": {
       "count": 185,
-      "avg_score": 61.0,
+      "avg_score": 75.5,
       "min_score": 40.1,
       "max_score": 95.9,
       "tiers": {
-        "S": 17,
-        "A": 69,
-        "B": 99,
+        "S": 31,
+        "A": 127,
+        "B": 27,
         "C": 0
       }
     }
@@ -553,60 +553,60 @@
       "domain": "writing"
     },
     {
-      "file": "writing\\creative-writing\\publishing-basics.md",
-      "concept": "出版入门",
-      "score": 42.4,
+      "file": "economics\\econometrics\\maximum-likelihood.md",
+      "concept": "最大似然估计详解",
+      "score": 42.6,
+      "tier": "B",
+      "domain": "mathematics"
+    },
+    {
+      "file": "english\\writing-en\\citation-referencing.md",
+      "concept": "引用与参考文献",
+      "score": 42.6,
       "tier": "B",
       "domain": "writing"
     },
     {
-      "file": "writing\\professional-writing\\documentation-standards.md",
-      "concept": "文档标准",
-      "score": 42.4,
+      "file": "biology\\human-physiology\\autonomic-nervous-system.md",
+      "concept": "自主神经系统",
+      "score": 42.8,
+      "tier": "B",
+      "domain": "psychology"
+    },
+    {
+      "file": "english\\idioms-culture\\figurative-language.md",
+      "concept": "修辞手法",
+      "score": 42.9,
       "tier": "B",
       "domain": "writing"
     },
     {
-      "file": "writing\\writing-fundamentals\\writing-overview.md",
-      "concept": "写作概述",
-      "score": 42.4,
+      "file": "mathematics\\statistics\\logistic-regression.md",
+      "concept": "逻辑回归",
+      "score": 43.2,
+      "tier": "B",
+      "domain": "mathematics"
+    },
+    {
+      "file": "english\\writing-en\\writing-process.md",
+      "concept": "写作过程",
+      "score": 43.5,
       "tier": "B",
       "domain": "writing"
     },
     {
-      "file": "english\\idioms-culture\\idiom-usage-practice.md",
-      "concept": "习语运用练习",
-      "score": 42.5,
+      "file": "physics\\fluid-mechanics\\navier-stokes-intro.md",
+      "concept": "纳维-斯托克斯方程简介",
+      "score": 43.5,
       "tier": "B",
-      "domain": "english"
+      "domain": "physics"
     },
     {
-      "file": "finance\\investment-basics\\portfolio-theory.md",
-      "concept": "投资组合理论",
-      "score": 42.5,
+      "file": "philosophy\\logic-reasoning\\argument-structure.md",
+      "concept": "论证结构",
+      "score": 43.6,
       "tier": "B",
-      "domain": "finance"
-    },
-    {
-      "file": "finance\\quantitative-finance\\risk-factor-analysis.md",
-      "concept": "风险因子分析",
-      "score": 42.5,
-      "tier": "B",
-      "domain": "finance"
-    },
-    {
-      "file": "game-design\\accessibility\\accessibility-testing.md",
-      "concept": "可达性测试",
-      "score": 42.5,
-      "tier": "B",
-      "domain": "game-design"
-    },
-    {
-      "file": "game-design\\design-docs\\tech-design-doc.md",
-      "concept": "技术设计文档",
-      "score": 42.5,
-      "tier": "B",
-      "domain": "game-design"
+      "domain": "writing"
     }
   ]
 }

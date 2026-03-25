@@ -20,68 +20,116 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-25
 ---
+
 # 使役动词
 
 ## 概述
 
-使役动词（Causative Verbs）是英语（English Language）中高级语法领域的重要概念。难度等级4/9（中级）。
+使役动词是英语中一类特殊的及物动词，表达"使/让某人做某事"的语义，其句法结构为：**使役动词 + 宾语 + 宾语补足语**。英语中最核心的四个使役动词为 **make、have、let、get**，它们共同构成了一套完整的"致使"语义体系，但各自在语气强度、使用场合和补语形式上存在显著差别。
 
-make/have/let/get+宾语+补语。
+使役结构在英语语法史上属于复合宾语（Complex Object）范畴，最早可追溯至古英语时期的"causative construction"。现代英语语法学家将其归入第五种基本句型（SVOC），即主语 + 谓语 + 宾语 + 补语，因此学习本概念需要对五种基本句型已有扎实掌握。
 
-在知识体系中，使役动词建立在五种基本句型的基础之上，是理解可进入更高级主题的关键前置知识。为什么使役动词如此重要？因为它在高级语法中起到承上启下的作用，连接基础概念与高级应用。
+为什么使役动词重要？因为中文的"让/叫/使"语义在英语中并非总能用 let 替代——力度不同、语境不同，选词就不同。许多中国学习者将"我让他打扫房间"一律译为 *I let him clean the room*，但若含有强迫意味则应用 *I made him clean the room*，差之毫厘，语义天差地别。
 
-## 核心知识点
+---
 
-### 1. make/have/let/get+宾语+补语
+## 核心原理
 
-make/have/let/get+宾语+补语是使役动词(Causative Verbs)的核心组成部分之一。在高级语法的实践中，make/have/let/get+宾语+补语决定了系统行为的关键特征。例如，当make/have/let/get+宾语+补语参数或条件发生变化时，整体表现会产生显著差异。深入理解make/have/let/get+宾语+补语需要结合英语的基本原理进行分析。
+### 一、四个使役动词的补语形式规则
 
+四个使役动词对宾语补足语的形式要求**不完全相同**，这是最关键的语法规则：
 
-### 关键原理分析
+| 使役动词 | 补语形式 | 示例 |
+|---|---|---|
+| make | **不带 to 的不定式（裸不定式）** | He made me cry. |
+| have | **不带 to 的不定式（裸不定式）** | She had the students recite the poem. |
+| let | **不带 to 的不定式（裸不定式）** | Let him go. |
+| get | **带 to 的不定式** | She got him to wash the dishes. |
 
-使役动词的核心在于make/have/let/get+宾语+补语。从理论角度看，该概念涉及以下层面：
+**get 是四者中唯一要求 to + 动词原形的使役动词**，这是最高频考点。记忆口诀：make/have/let 用裸不定式，get 用完整不定式。
 
-1. **定义层**：明确使役动词的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解使役动词内部各要素的相互作用方式
-3. **应用层**：将使役动词的原理映射到英语的实际场景中
+### 二、被动语态中的形式变化
 
-思考题：如何判断使役动词的应用是否超出了其理论适用范围？
+当 make 用于被动语态时，宾语补足语必须**恢复 to**，这是使役动词中一条极具迷惑性的规则：
 
-## 关键要点
+- 主动：They made him sign the contract.  
+- 被动：**He was made to sign the contract.**（to 必须出现）
 
-1. **核心定义**：使役动词的本质是make/have/let/get+宾语+补语，这是理解整个概念的出发点
-2. **多维理解**：掌握使役动词需要同时理解make/have/let/get+宾语+补语等关键维度
-3. **先修关系**：扎实的五种基本句型基础对理解使役动词至关重要
-4. **进阶路径**：可广泛应用于英语各方面
-5. **实践标准**：真正掌握使役动词的标志是能在具体场景中灵活运用并正确判断适用边界
+have 和 let 的被动形式在日常英语中极少使用；get 的被动形式（be got to do）也基本不用，通常改写为其他结构。
+
+### 三、使役动词 + 过去分词表被动义
+
+make、have、get 后的宾语补足语还可以是**过去分词**，此时表示宾语"被某人/某事施加动作"，即**宾语与补语之间是被动关系**：
+
+- I had my hair **cut** yesterday.（我昨天去剪了头发——头发被剪）
+- She got her phone **repaired**.（她把手机修好了——手机被修）
+- The noise made itself **heard** throughout the building.（噪音传遍了整栋楼）
+
+判断用现在分词还是过去分词的逻辑：若宾语是动作的**执行者**，用现在分词（doing）；若宾语是动作的**承受者**，用过去分词（done）。例如：*I heard him playing the piano*（他在弹琴）vs. *I had the piano tuned*（钢琴被调音）。
+
+### 四、语气强度与语用差异
+
+四个使役动词的语气强度排列为：**make > have ≈ get > let**。
+
+- **make**：含强迫或不可抗拒之意。*The teacher made the student stand in the corner.*（强制性）
+- **have**：中性，通常指上级对下级安排任务，或雇用关系。*I'll have my assistant send you the file.*（安排、委托）
+- **get**：含有说服、努力争取之意，语气比 have 更口语化。*How did you get him to agree?*（劝说成功）
+- **let**：许可、允许，不含强迫义。*Let the children play outside.*（允许）
+
+---
+
+## 实际应用
+
+**场景一：翻译题中的辨析**
+
+中文"我叫人修了屋顶"最准确的英译是 *I had the roof repaired* 或 *I got the roof repaired*，而非 *I made the roof repaired*（make + 过去分词主要用于抽象或特定搭配，如 make oneself understood）。
+
+**场景二：高考/四六级常见考法**
+
+四六级和高考选择题中频繁出现以下考查模式：
+> The boss made his employees \_\_\_ overtime last weekend.  
+> A. work  B. to work  C. worked  D. working  
+> 答案：A（make + 裸不定式）
+
+**场景三：口语表达层次**
+
+在商务邮件中，*I'll have my colleague contact you*（我让同事联系您）比 *I'll make my colleague contact you* 更礼貌，因为 have 不暗示强迫，而 make 语气过强。
+
+**场景四：get 的特殊口语用法**
+
+美式口语中 *get* 使役用法极为高频，如 *Can you get the kids to bed by 9?*（能让孩子在9点前上床吗？）此句不可换用 *make* 或 *let*，因为语义截然不同。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将使役动词与高级语法中其他相近概念混为一谈。例如，make/have/let/get+宾语+补语的适用条件与其他同类概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解五种基本句型就学习使役动词，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：使役动词虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：let 后面加 to**
 
-## 知识衔接
+错误：*My parents let me to go to the concert.*  
+正确：*My parents let me go to the concert.*  
+let 后面必须接裸不定式，即使翻译成中文"让我去"似乎应该有"去"这个完整动词，但英语中 to 不出现。混淆来源是 allow，而 *allow sb. to do* 才带 to。
 
-### 先修知识
-先修知识包括：
-- **五种基本句型** — 为使役动词提供了必要的概念基础
+**误区二：get 的补语忘记加 to**
 
-### 后续学习
-掌握使役动词后，学习者已具备该方向的核心能力，可将所学应用于实际项目或探索英语其他分支。
+错误：*She finally got him apologize.*  
+正确：*She finally got him to apologize.*  
+get 是四个使役动词中**唯一要求 to 不定式**的，但因为其余三个均为裸不定式，学习者常受负迁移影响而漏掉 to。
 
-## 学习建议
+**误区三：被动句中 make 后 to 的丢失**
 
-预计学习时间：2-3小时。建议采用以下策略：
+错误：*He was made sign the documents.*  
+正确：*He was made to sign the documents.*  
+这是中国学生失分率极高的错误点。主动句中 make 后不带 to，但变为被动句后，to 必须补回，规则完全相反。
 
-- **主动回忆**：学完后不看笔记复述使役动词的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将使役动词与英语中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释使役动词，检验理解深度
+---
 
-## 延伸阅读
+## 知识关联
 
-- 相关教科书中关于高级语法的章节可作为深入参考
-- Wikipedia: [Causative Verbs](https://en.wikipedia.org/wiki/causative_verbs) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Causative Verbs" 可找到配套视频教程
+**与前置概念"五种基本句型"的连接**：使役动词结构本质上是第五种句型（SVOC）的典型实例，宾语与补足语之间存在逻辑上的主谓关系（即 *I made him leave* 可理解为 *he left* 这层隐含意义），这正是 SVOC 句型的核心特征。若对 SVOC 与 SVO 的区别不清晰，会导致将补语误判为双宾语。
+
+**与感官动词的对比**：感官动词（see/hear/watch/feel 等）同样可后接裸不定式或现在分词作宾补，结构与使役动词高度相似，但语义上属于"感知"而非"致使"。例如 *I saw him cross the street*（裸不定式，强调动作完整发生）vs. *I saw him crossing the street*（现在分词，强调动作进行中），这一对比有助于系统性理解宾语补足语的形式选择逻辑。
+
+**与不定式/分词专题的衔接**：掌握使役动词后，学习者对"裸不定式 vs. 带 to 不定式"的分布规律已有具体案例支撑，为后续深入学习非谓语动词（尤其是不定式在复合宾语中的完整用法）奠定了基于实例的语感基础。
