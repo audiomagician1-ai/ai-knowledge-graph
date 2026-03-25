@@ -1798,7 +1798,7 @@
       ],
       "file": "animation/anim-mocap-editing.md",
       "exists": true,
-      "char_count": 1353
+      "char_count": 2431
     },
     {
       "id": "anim-mocap-acting",
@@ -2578,7 +2578,7 @@
       ],
       "file": "animation/anim-fsm-basics.md",
       "exists": true,
-      "char_count": 1364
+      "char_count": 2515
     },
     {
       "id": "anim-state-machine-perf",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 324937,
-    "avg_chars": 1805,
+    "total_chars": 327166,
+    "avg_chars": 1817,
     "domain": "animation"
   }
 }

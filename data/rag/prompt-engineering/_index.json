@@ -258,13 +258,13 @@
       "tags": [],
       "file": "prompt-engineering/zero-shot.md",
       "exists": true,
-      "char_count": 1346
+      "char_count": 2364
     }
   ],
   "stats": {
     "total": 20,
-    "total_chars": 41006,
-    "avg_chars": 2050,
+    "total_chars": 42024,
+    "avg_chars": 2101,
     "domain": "prompt-engineering"
   }
 }

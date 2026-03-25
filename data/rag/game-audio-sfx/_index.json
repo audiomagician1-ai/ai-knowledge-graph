@@ -1350,7 +1350,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-dsp-convolution-reverb.md",
       "exists": true,
-      "char_count": 1356
+      "char_count": 2255
     },
     {
       "id": "sfx-dsp-automation",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 310978,
-    "avg_chars": 1727,
+    "total_chars": 311877,
+    "avg_chars": 1732,
     "domain": "game-audio-sfx"
   }
 }

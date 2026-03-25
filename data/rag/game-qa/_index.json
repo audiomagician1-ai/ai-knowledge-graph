@@ -24,7 +24,7 @@
       "tags": [],
       "file": "game-qa/qa-at-bot-testing.md",
       "exists": true,
-      "char_count": 1359
+      "char_count": 2595
     },
     {
       "id": "qa-at-ci-integration",
@@ -1649,7 +1649,7 @@
       "tags": [],
       "file": "game-qa/qa-rt-regression-report.md",
       "exists": true,
-      "char_count": 1362
+      "char_count": 2665
     },
     {
       "id": "qa-rt-schedule-planning",
@@ -2083,8 +2083,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 261504,
-    "avg_chars": 1634,
+    "total_chars": 264043,
+    "avg_chars": 1650,
     "domain": "game-qa"
   }
 }

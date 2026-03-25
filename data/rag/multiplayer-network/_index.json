@@ -1714,7 +1714,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-mm-latency-based.md",
       "exists": true,
-      "char_count": 1350
+      "char_count": 2510
     },
     {
       "id": "mn-mm-sbmm",
@@ -2603,8 +2603,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 343674,
-    "avg_chars": 1718,
+    "total_chars": 344834,
+    "avg_chars": 1724,
     "domain": "multiplayer-network"
   }
 }

@@ -28,7 +28,7 @@
       ],
       "file": "concept-design/cd-life-drawing.md",
       "exists": true,
-      "char_count": 1350
+      "char_count": 2125
     },
     {
       "id": "cd-body-proportion",
@@ -733,7 +733,7 @@
       ],
       "file": "concept-design/cd-color-storytelling.md",
       "exists": true,
-      "char_count": 1362
+      "char_count": 2410
     },
     {
       "id": "cd-color-harmony",
@@ -1918,7 +1918,7 @@
       ],
       "file": "concept-design/cd-mood-purpose.md",
       "exists": true,
-      "char_count": 1361
+      "char_count": 2295
     },
     {
       "id": "cd-mood-source-finding",
@@ -2368,7 +2368,7 @@
       ],
       "file": "concept-design/cd-perspective-grid.md",
       "exists": true,
-      "char_count": 1366
+      "char_count": 2544
     },
     {
       "id": "cd-camera-lens",
@@ -3043,7 +3043,7 @@
       ],
       "file": "concept-design/cd-visdev-beat-boards.md",
       "exists": true,
-      "char_count": 1366
+      "char_count": 2587
     },
     {
       "id": "cd-visdev-look-dev",
@@ -3253,7 +3253,7 @@
       ],
       "file": "concept-design/cd-visdev-refinement.md",
       "exists": true,
-      "char_count": 1362
+      "char_count": 2736
     },
     {
       "id": "cd-visdev-design-brief",
@@ -3303,8 +3303,8 @@
   ],
   "stats": {
     "total": 220,
-    "total_chars": 416027,
-    "avg_chars": 1891,
+    "total_chars": 422557,
+    "avg_chars": 1920,
     "domain": "concept-design"
   }
 }

@@ -6384,7 +6384,7 @@
       ],
       "file": "animation/anim-mocap-editing.md",
       "exists": true,
-      "char_count": 1353
+      "char_count": 2431
     },
     {
       "id": "anim-mocap-acting",
@@ -7164,7 +7164,7 @@
       ],
       "file": "animation/anim-fsm-basics.md",
       "exists": true,
-      "char_count": 1364
+      "char_count": 2515
     },
     {
       "id": "anim-state-machine-perf",
@@ -10119,7 +10119,7 @@
       ],
       "file": "computer-graphics/anti-aliasing/cg-temporal-stability.md",
       "exists": true,
-      "char_count": 1371
+      "char_count": 2726
     },
     {
       "id": "cg-upscaling",
@@ -10569,7 +10569,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-light-probes.md",
       "exists": true,
-      "char_count": 1352
+      "char_count": 2541
     },
     {
       "id": "cg-lightmap-baking",
@@ -10794,7 +10794,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-indirect-specular.md",
       "exists": true,
-      "char_count": 1370
+      "char_count": 2800
     },
     {
       "id": "cg-bindless",
@@ -11094,7 +11094,7 @@
       ],
       "file": "computer-graphics/gpu-architecture/cg-texture-unit.md",
       "exists": true,
-      "char_count": 1350
+      "char_count": 2660
     },
     {
       "id": "cg-tmu-cache",
@@ -11154,7 +11154,7 @@
       ],
       "file": "computer-graphics/pbr-materials/cg-disney-brdf.md",
       "exists": true,
-      "char_count": 1660
+      "char_count": 3292
     },
     {
       "id": "cg-pbr-intro",
@@ -13479,7 +13479,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-medical-vis.md",
       "exists": true,
-      "char_count": 1367
+      "char_count": 2651
     },
     {
       "id": "cg-participating-media",
@@ -13644,7 +13644,7 @@
       ],
       "file": "concept-design/cd-life-drawing.md",
       "exists": true,
-      "char_count": 1350
+      "char_count": 2125
     },
     {
       "id": "cd-body-proportion",
@@ -14349,7 +14349,7 @@
       ],
       "file": "concept-design/cd-color-storytelling.md",
       "exists": true,
-      "char_count": 1362
+      "char_count": 2410
     },
     {
       "id": "cd-color-harmony",
@@ -15534,7 +15534,7 @@
       ],
       "file": "concept-design/cd-mood-purpose.md",
       "exists": true,
-      "char_count": 1361
+      "char_count": 2295
     },
     {
       "id": "cd-mood-source-finding",
@@ -15984,7 +15984,7 @@
       ],
       "file": "concept-design/cd-perspective-grid.md",
       "exists": true,
-      "char_count": 1366
+      "char_count": 2544
     },
     {
       "id": "cd-camera-lens",
@@ -16659,7 +16659,7 @@
       ],
       "file": "concept-design/cd-visdev-beat-boards.md",
       "exists": true,
-      "char_count": 1366
+      "char_count": 2587
     },
     {
       "id": "cd-visdev-look-dev",
@@ -16869,7 +16869,7 @@
       ],
       "file": "concept-design/cd-visdev-refinement.md",
       "exists": true,
-      "char_count": 1362
+      "char_count": 2736
     },
     {
       "id": "cd-visdev-design-brief",
@@ -18019,7 +18019,7 @@
       "tags": [],
       "file": "devops/container-registry.md",
       "exists": true,
-      "char_count": 1734
+      "char_count": 3109
     },
     {
       "id": "secret-management",
@@ -30086,7 +30086,7 @@
       "tags": [],
       "file": "game-audio-sfx/sfx-dsp-convolution-reverb.md",
       "exists": true,
-      "char_count": 1356
+      "char_count": 2255
     },
     {
       "id": "sfx-dsp-automation",
@@ -35274,7 +35274,7 @@
       ],
       "file": "game-engine/audio-system/spatial-audio.md",
       "exists": true,
-      "char_count": 1346
+      "char_count": 2820
     },
     {
       "id": "footstep-system",
@@ -37329,7 +37329,7 @@
       ],
       "file": "game-engine/rendering-pipeline/global-illumination.md",
       "exists": true,
-      "char_count": 1377
+      "char_count": 2964
     },
     {
       "id": "forward-rendering",
@@ -38079,7 +38079,7 @@
       ],
       "file": "game-engine/scene-management/spawn-system.md",
       "exists": true,
-      "char_count": 1361
+      "char_count": 3186
     },
     {
       "id": "procedural-placement",
@@ -38499,7 +38499,7 @@
       ],
       "file": "game-engine/serialization/undo-redo-serialization.md",
       "exists": true,
-      "char_count": 1402
+      "char_count": 2755
     },
     {
       "id": "binary-serialization",
@@ -41508,7 +41508,7 @@
       "tags": [],
       "file": "game-live-ops/ops-ur-push-notification.md",
       "exists": true,
-      "char_count": 1705
+      "char_count": 2754
     },
     {
       "id": "ops-ur-onboarding",
@@ -43874,7 +43874,7 @@
       "tags": [],
       "file": "game-publishing/pub-bb-brand-positioning.md",
       "exists": true,
-      "char_count": 1355
+      "char_count": 2625
     },
     {
       "id": "pub-bb-brand-measurement",
@@ -45798,7 +45798,7 @@
       "tags": [],
       "file": "game-publishing/pub-ro-legal-compliance.md",
       "exists": true,
-      "char_count": 1364
+      "char_count": 2667
     },
     {
       "id": "pub-ro-translation-management",
@@ -46110,7 +46110,7 @@
       "tags": [],
       "file": "game-qa/qa-at-bot-testing.md",
       "exists": true,
-      "char_count": 1359
+      "char_count": 2595
     },
     {
       "id": "qa-at-ci-integration",
@@ -47735,7 +47735,7 @@
       "tags": [],
       "file": "game-qa/qa-rt-regression-report.md",
       "exists": true,
-      "char_count": 1362
+      "char_count": 2665
     },
     {
       "id": "qa-rt-schedule-planning",
@@ -60583,7 +60583,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-mm-latency-based.md",
       "exists": true,
-      "char_count": 1350
+      "char_count": 2510
     },
     {
       "id": "mn-mm-sbmm",
@@ -72959,7 +72959,7 @@
       "tags": [],
       "file": "prompt-engineering/zero-shot.md",
       "exists": true,
-      "char_count": 1346
+      "char_count": 2364
     },
     {
       "id": "learned-helplessness",

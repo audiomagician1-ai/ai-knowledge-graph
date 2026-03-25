@@ -253,7 +253,7 @@
       ],
       "file": "computer-graphics/anti-aliasing/cg-temporal-stability.md",
       "exists": true,
-      "char_count": 1371
+      "char_count": 2726
     },
     {
       "id": "cg-upscaling",
@@ -703,7 +703,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-light-probes.md",
       "exists": true,
-      "char_count": 1352
+      "char_count": 2541
     },
     {
       "id": "cg-lightmap-baking",
@@ -928,7 +928,7 @@
       ],
       "file": "computer-graphics/global-illumination/cg-indirect-specular.md",
       "exists": true,
-      "char_count": 1370
+      "char_count": 2800
     },
     {
       "id": "cg-bindless",
@@ -1228,7 +1228,7 @@
       ],
       "file": "computer-graphics/gpu-architecture/cg-texture-unit.md",
       "exists": true,
-      "char_count": 1350
+      "char_count": 2660
     },
     {
       "id": "cg-tmu-cache",
@@ -1288,7 +1288,7 @@
       ],
       "file": "computer-graphics/pbr-materials/cg-disney-brdf.md",
       "exists": true,
-      "char_count": 1660
+      "char_count": 3292
     },
     {
       "id": "cg-pbr-intro",
@@ -3613,7 +3613,7 @@
       ],
       "file": "computer-graphics/volume-rendering/cg-medical-vis.md",
       "exists": true,
-      "char_count": 1367
+      "char_count": 2651
     },
     {
       "id": "cg-participating-media",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 498809,
-    "avg_chars": 1995,
+    "total_chars": 507009,
+    "avg_chars": 2028,
     "domain": "computer-graphics"
   }
 }

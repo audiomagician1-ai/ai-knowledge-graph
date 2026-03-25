@@ -219,7 +219,7 @@
       "tags": [],
       "file": "devops/container-registry.md",
       "exists": true,
-      "char_count": 1734
+      "char_count": 3109
     },
     {
       "id": "secret-management",
@@ -289,8 +289,8 @@
   ],
   "stats": {
     "total": 22,
-    "total_chars": 40950,
-    "avg_chars": 1861,
+    "total_chars": 42325,
+    "avg_chars": 1923,
     "domain": "devops"
   }
 }

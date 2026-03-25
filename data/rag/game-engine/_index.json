@@ -448,7 +448,7 @@
       ],
       "file": "game-engine/audio-system/spatial-audio.md",
       "exists": true,
-      "char_count": 1346
+      "char_count": 2820
     },
     {
       "id": "footstep-system",
@@ -2503,7 +2503,7 @@
       ],
       "file": "game-engine/rendering-pipeline/global-illumination.md",
       "exists": true,
-      "char_count": 1377
+      "char_count": 2964
     },
     {
       "id": "forward-rendering",
@@ -3253,7 +3253,7 @@
       ],
       "file": "game-engine/scene-management/spawn-system.md",
       "exists": true,
-      "char_count": 1361
+      "char_count": 3186
     },
     {
       "id": "procedural-placement",
@@ -3673,7 +3673,7 @@
       ],
       "file": "game-engine/serialization/undo-redo-serialization.md",
       "exists": true,
-      "char_count": 1402
+      "char_count": 2755
     },
     {
       "id": "binary-serialization",
@@ -4503,8 +4503,8 @@
   ],
   "stats": {
     "total": 300,
-    "total_chars": 639907,
-    "avg_chars": 2133,
+    "total_chars": 646146,
+    "avg_chars": 2153,
     "domain": "game-engine"
   }
 }

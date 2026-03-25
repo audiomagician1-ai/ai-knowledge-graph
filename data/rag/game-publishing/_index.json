@@ -128,7 +128,7 @@
       "tags": [],
       "file": "game-publishing/pub-bb-brand-positioning.md",
       "exists": true,
-      "char_count": 1355
+      "char_count": 2625
     },
     {
       "id": "pub-bb-brand-measurement",
@@ -2052,7 +2052,7 @@
       "tags": [],
       "file": "game-publishing/pub-ro-legal-compliance.md",
       "exists": true,
-      "char_count": 1364
+      "char_count": 2667
     },
     {
       "id": "pub-ro-translation-management",
@@ -2343,8 +2343,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 282372,
-    "avg_chars": 1568,
+    "total_chars": 284945,
+    "avg_chars": 1583,
     "domain": "game-publishing"
   }
 }
