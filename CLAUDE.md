@@ -59,13 +59,14 @@
 >   脚本: `scripts/_batch_tier_b_upgrade.py` + `scripts/_batch_tier_b_parallel.py` (并行)
 >   Batch 1 完成: 210篇最低分Tier-B文档改写, 0错误, 63篇/小时
 >   Batch 2 完成: 655篇Tier-B文档改写, 0错误 (2026-03-24 commit 9dd35deb)
->   Batch 3 进行中: 500篇Tier-B文档改写, 91/500完成 (~55/hr)
->   Batch P2 并行进行中: 1000篇大域Tier-B改写, 10/1000完成 (~53/hr)
->   效果验证: 已完成745篇改写均分78.9 (A=635/S=92), 改写成功率99%
->   累计结果: **S=250(4.1%) A=1,302(21.2%) B=4,604(74.8%) C=0(0.0%)** 均分54.2
->   综合吞吐: ~108/hr (两进程并行), 预计2天内处理完全部4,604篇Tier-B
+>   Batch 3 完成: 500篇Tier-B文档改写
+>   Batch P2 完成: 1000篇大域Tier-B改写
+>   Sprint 6 🔥进行中: **全量Tier-B升级** — `scripts/_batch_sprint6.py --max 3400`
+>   进度: 597/3360完成 (17.8%), ~101/hr, 0错误, 后台进程PID 36196持续运行
+>   累计结果: **S=430(7.0%) A=2,953(48.0%) B=2,773(45.1%) C=0(0.0%)** 均分64.7
+>   vs Sprint 4结束: S=145 A=639 B=5,368 C=0 均分49.5 → **提升幅度: +15.2分, A+S从12.8%→55.0%**
 >   瓶颈分析: Specificity(30.4/100)和Density(40.6/100)是Tier-B两大短板
->   下一步: 两个后台进程持续运行, 定期提交push
+>   下一步: 后台进程持续运行(预计还需~27小时), 定期commit+push
 **✅ Phase 37 完成**: 游戏开发全领域跨球体总验证 | 详见 `docs/EXPANSION_PLAN.md` 第十章
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
@@ -159,7 +160,7 @@
 > **Issue**: #32 (已关闭)
 
 ## Last Review
-**Date**: 2026-03-24 | **Scope**: Sprint 5 Tier-B Batch 2+3 — 655 docs committed+pushed (9dd35deb), 500 more running in background. Total 865+ upgraded, avg 51.1→53.8, S=243/A=1241/B=4672/C=0, 0 errors, 1126 tests pass | **Result**: passed
+**Date**: 2026-03-25 | **Scope**: Sprint 6 wave 20 (43 docs) + RAG index bug fix (28 pre-existing test failures) — graph.py total_docs/by_subdomain fallback + ai-engineering composite index + rebuild_rag_indexes.py by_subdomain stats + is_milestone seed priority + Workers import update. Total 1,126 tests (897 BE + 229 FE) all pass, avg 64.7, S=430/A=2953/B=2773/C=0 | **Result**: passed
 
 **FSRS-5 实现摘要** (间隔重复引擎):
 > **目标**: 实现ADR-007指定的FSRS-5间隔重复算法, 替代空占位stub
