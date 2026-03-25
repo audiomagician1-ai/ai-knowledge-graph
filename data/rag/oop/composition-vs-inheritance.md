@@ -25,70 +25,96 @@ updated_at: 2026-03-26
 ---
 
 
+
 # 组合优于继承
 
 ## 概述
 
-"组合优于继承"（Composition Over Inheritance）是面向对象设计中的经典原则，最早由GoF（Gang of Four）在1994年出版的《设计模式：可复用面向对象软件的基础》中明确提出。其核心主张是：当需要复用功能时，优先通过将多个对象组合在一起来实现，而不是通过建立父子类的继承关系。
+"组合优于继承"（Composition over Inheritance）是面向对象设计中的一条重要原则，最早由 Gang of Four（GoF）在 1994 年出版的《设计模式：可复用面向对象软件的基础》中明确提出。其核心主张是：在需要复用代码或扩展功能时，优先选择将功能封装在独立对象中并通过引用来使用，而不是通过建立父子继承关系来实现。
 
-继承是一种"is-a"关系（狗是动物），组合是一种"has-a"关系（狗拥有行为能力）。继承会在编译时固定类之间的耦合关系，而组合允许在运行时动态替换对象的组成部分。当一个系统频繁使用多层继承时，往往会出现"脆弱基类问题"：修改父类可能无意间破坏所有子类的行为，这是继承的结构性缺陷。
+这一原则的产生背景是工程界对"深层继承树"所带来的脆弱性和耦合度问题的反思。当继承层次超过 2~3 层时，修改父类往往会在子类中引发意想不到的连锁反应，导致代码难以维护。组合方式通过"has-a"（拥有）关系替代"is-a"（是一种）关系，使得各功能模块可以独立变化、独立测试，大幅降低了模块间的耦合度。
 
-在AI工程的实践中，模型pipeline、Agent框架和数据处理组件的构建高度依赖组合模式。一个LLM推理服务可能需要同时具备"缓存能力""限流能力""日志能力"，若用继承实现，三者的排列组合会爆炸式产生大量子类，而组合只需三个独立组件按需装配。
+在 AI 工程领域，模型管道、数据预处理器、特征工程组件等通常需要频繁替换和组合，继承结构会严重限制这种灵活性。组合方式允许在运行时动态切换组件，例如在同一推理流水线中轻松替换不同的向量化策略或评分模块，这正是该原则在实际工程中价值最突出的场景。
+
+---
 
 ## 核心原理
 
-### 继承的结构性问题：菱形问题与脆弱基类
+### 1. "has-a" 关系与委托机制
 
-继承的最根本局限在于它将"类型层级"与"行为复用"强行绑定。当Python类`C`同时继承`A`和`B`，而`A`和`B`都继承`Base`时，`C`面临菱形继承问题（Diamond Problem），Python通过MRO（Method Resolution Order，C3线性化算法）解决调用顺序，但逻辑上的歧义依然存在。更严重的是脆弱基类问题：若父类`Animal`新增一个方法`breathe()`，所有子类（`Dog`、`Fish`、`Bird`）都会继承这个实现，即使`Fish`的呼吸逻辑完全不同，子类也很容易因为忘记覆盖而静默产生错误行为。
-
-### 组合的实现机制：依赖注入与接口隔离
-
-组合的典型实现方式是**依赖注入**：一个类不自己创建所依赖的对象，而是通过构造函数或方法参数将其传入。以AI推理服务为例：
+组合的实现依赖于**对象委托**（Delegation）：一个类持有另一个类的实例，并将特定行为的调用转发给该实例。以 Python 为例：
 
 ```python
-class InferenceService:
-    def __init__(self, model, cache, logger):
-        self.model = model      # 可替换为任意模型对象
-        self.cache = cache      # 可替换为Redis或内存缓存
-        self.logger = logger    # 可替换为不同日志后端
+class TextVectorizer:
+    def vectorize(self, text): ...
+
+class DocumentProcessor:
+    def __init__(self, vectorizer: TextVectorizer):
+        self.vectorizer = vectorizer  # 组合关系
     
-    def predict(self, input_data):
-        self.logger.log(input_data)
-        if self.cache.exists(input_data):
-            return self.cache.get(input_data)
-        result = self.model.run(input_data)
-        self.cache.set(input_data, result)
-        return result
+    def process(self, doc):
+        return self.vectorizer.vectorize(doc)
 ```
 
-`InferenceService`本身不继承任何`Model`或`Cache`，它通过持有这些对象的引用来获得其功能。更换底层模型时，只需传入不同的`model`对象，`InferenceService`的代码完全不变。这种灵活性是继承无法提供的。
+`DocumentProcessor` 不继承 `TextVectorizer`，而是持有其引用。当需要更换向量化策略时，只需在构造时传入不同实现，而无需修改 `DocumentProcessor` 本身。这一模式直接对应 GoF 书中"针对接口编程，而非针对实现编程"的设计准则。
 
-### 组合与继承的选择判据：里氏替换原则检验
+### 2. 脆弱基类问题（Fragile Base Class Problem）
 
-判断应该用继承还是组合，最直接的判据是**里氏替换原则（LSP）**：若B是A的子类，那么任何使用A的地方都必须能无感知地替换为B。若无法满足LSP，说明这个继承关系是错误的，应改用组合。一个典型反例是`Stack`继承`Vector`（Java早期标准库的设计错误）：`Stack`是一种受限的`Vector`，但继承使得`Stack`对象可以调用`insertElementAt()`在任意位置插入元素，破坏了栈的LIFO语义。正确做法是`Stack`内部持有一个`Vector`或`ArrayList`对象（组合），只对外暴露`push`、`pop`、`peek`三个方法。
+继承的最大风险之一是**脆弱基类问题**：父类的任何修改都可能无意中破坏所有子类的行为。例如，若 `BaseModel` 的 `fit()` 方法内部调用顺序从 `preprocess → train` 改为 `train → preprocess`，则所有重写了 `fit()` 的子类可能全部失效。这一问题在大型 AI 工程项目中尤为严重，因为基类往往由不同团队维护。
 
-### 组合的行为扩展：策略模式与装饰器模式
+组合方式将功能分散在独立的小对象中，每个对象只对自身的行为负责，父子依赖链被彻底消除，修改某个功能模块不会影响其他模块。
 
-组合是许多设计模式的底层基础。**策略模式**将算法封装成独立对象，运行时通过组合切换：AI模型评估系统可以将`accuracy_fn`、`f1_fn`、`bleu_fn`作为不同策略对象注入评估器，无需为每种指标建立子类。**装饰器模式**则通过层层包裹同接口的对象来叠加功能，Python的`@lru_cache`本质上就是用组合对原函数进行包装，而不是修改函数所属类的继承链。
+### 3. 里氏替换原则（LSP）的天然满足
+
+里氏替换原则（Liskov Substitution Principle，1987 年由 Barbara Liskov 提出）要求子类必须能在任何使用父类的场合透明替换父类。继承关系极容易违反 LSP——例如 `Square` 继承 `Rectangle` 时，`setWidth` 的语义就会产生冲突。组合不建立父子类型关系，因此从根本上规避了违反 LSP 的风险，接口的契约由显式定义的协议（Protocol）或抽象基类保证，而非隐式的继承链。
+
+### 4. 开放-封闭原则的支持方式
+
+组合模式天然契合**开放-封闭原则（OCP）**：通过注入不同的组件对象来扩展行为，而无需修改已有类的代码。以 AI 流水线为例，若需新增一种特征归一化策略，只需实现新的 `Normalizer` 类并注入 `Pipeline`，`Pipeline` 自身代码不做任何改动。继承方式则需要新增子类并可能重写多个方法，风险面更大。
+
+---
 
 ## 实际应用
 
-**LangChain的链式组件设计**：LangChain框架中`LLMChain`并不继承`LLM`，而是将`llm`、`prompt`、`memory`、`output_parser`作为成员对象持有。用户可以自由替换其中任意一个组件，例如将`OpenAI`替换为`Anthropic`，将`ConversationBufferMemory`替换为`VectorStoreMemory`，无需修改`LLMChain`本身，也无需创建新的子类。
+### AI 推理流水线的动态组装
 
-**PyTorch的模型组合**：`nn.Module`鼓励通过将子模块赋值给成员变量来组合网络层，而不是继承已有的网络架构。一个`TransformerBlock`通过组合持有`MultiHeadAttention`和`FeedForward`模块，可以在不同的Transformer变体中被重复组合，而无需建立`BertTransformerBlock`继承`TransformerBlock`这样的继承链。
+在 Scikit-learn 的 `Pipeline` 类中，每个处理步骤（如 `TfidfVectorizer`、`StandardScaler`、`LogisticRegression`）都是独立对象，通过组合方式嵌入流水线。用户可以在不修改 `Pipeline` 源码的情况下，任意替换或增删步骤，这正是组合原则的经典实现。
 
-**AI Agent的能力扩展**：构建一个具备搜索、代码执行、记忆三种能力的Agent时，用继承需要创建`SearchAgent`→`SearchCodeAgent`→`SearchCodeMemoryAgent`三级继承；用组合则是一个`Agent`类持有一个`tools: List[Tool]`列表，在构造时注入所需工具，运行时动态增删工具而不需要修改任何类定义。
+```python
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+
+pipe = Pipeline([
+    ('scaler', StandardScaler()),   # 组合：持有 StandardScaler 实例
+    ('clf', LogisticRegression())   # 组合：持有 LogisticRegression 实例
+])
+```
+
+### 强化学习环境包装器
+
+OpenAI Gym 的 `Wrapper` 体系使用**装饰器模式**（本质上是组合），通过 `ObservationWrapper`、`RewardWrapper` 等类持有原始 `env` 对象的引用，而非继承具体环境类。这使得研究人员可以将多个包装器嵌套叠加（如先归一化观察值，再裁剪奖励），而每个包装器逻辑保持独立可测试。
+
+---
 
 ## 常见误区
 
-**误区一：认为"永远不要用继承"。** 组合优于继承并非"禁止继承"。当类之间确实存在严格的LSP关系时，继承是合理的。`HTTPException`继承`Exception`是正确的，因为它在所有需要`Exception`的地方都能被合法替换。真正应该避免的是"为了复用代码而继承"，例如为了让`Dog`能使用`Animal`的`eat()`方法而建立继承，此时用组合更清晰。
+### 误区一：组合意味着完全不能用继承
 
-**误区二：认为组合会导致"接口爆炸"，代码更复杂。** 初学者常认为组合需要写大量的委托代码（`self.cache.get()`、`self.logger.log()`），不如继承直接调用父类方法简洁。但这种"复杂性"是必要的显式依赖声明，继承的"简洁"实际上隐藏了类之间的强耦合。Python的`__getattr__`和`dataclasses`，以及多数语言的接口/协议机制，都可以有效减少组合中的样板代码量。
+组合优于继承并非禁止继承，而是限制其适用范围。继承应仅在**真正存在"is-a"语义**时使用，例如 `Dog` 确实是 `Animal` 的一种。当继承仅仅是为了复用某几个方法时，就应改用组合。经验法则是：若子类需要重写父类超过 50% 的方法，几乎可以确定这是滥用继承。
 
-**误区三：混淆"接口继承"与"实现继承"。** 继承一个抽象基类（ABC）或Protocol来声明"本类实现了某种接口"是完全合理的设计，这叫做接口继承。组合优于继承反对的是**实现继承**：从父类继承具体的方法实现。Python中`class MyModel(nn.Module)`是接口继承（声明本类是一个Module），而`class MyModel(ResNet)`只是为了复用ResNet的forward实现则是应该避免的实现继承。
+### 误区二：组合会导致代码冗长，委托调用太繁琐
+
+Python 的 `__getattr__` 魔法方法和现代语言的 Mixin 机制可以大幅减少委托代码的重复性。此外，Python 3.10+ 的结构化模式匹配和 Protocol 类型提示使组合关系的表达更加简洁。代码量略有增加换来的是模块独立可测试的巨大工程收益，这笔账在中大型项目中始终是合算的。
+
+### 误区三：继承的多态性无法用组合实现
+
+组合配合**策略模式**（Strategy Pattern）可以完整实现继承的多态效果。将可变行为抽象为接口（或 Python 的 Protocol），不同实现类满足该接口，通过依赖注入传入，就可以在运行时实现行为切换。与继承多态不同的是，组合多态可以在不修改调用方代码的情况下，在**运行时**而非**编译时**完成切换，灵活性更高。
+
+---
 
 ## 知识关联
 
-理解组合优于继承需要以**继承**为前提：必须先清楚继承中`super()`调用链、方法覆盖和属性查找的具体机制，才能识别出哪些场景下继承会产生脆弱基类问题。MRO和多重继承的复杂性是组合优于继承原则存在价值的直接原因——正是因为继承在多重行为组合场景下的复杂度呈指数增长，组合的线性复杂度才显得尤为重要。
+理解**继承**（包括单继承与多重继承的机制、MRO 方法解析顺序）是掌握本原则的必要前提——只有清楚继承在什么情况下会带来脆弱基类问题和菱形继承冲突，才能真正感受到组合方案的优越性。
 
-本原则与**依赖倒置原则**（Depend on abstractions, not concretions）紧密配合：组合时应依赖接口而非具体类，才能真正实现运行时可替换性。它也是**策略模式**、**装饰器模式**、**依赖注入容器**等高级设计模式的共同理论基础，掌握本原则后，这些模式的动机和结构会变得非常直观。
+组合优于继承与**策略模式**、**装饰器模式**、**依赖注入**等设计模式高度关联：这些模式都是该原则的具体实现形态。在 AI 工程中，**面向接口编程**（通过 Python `abc.ABC` 或 `typing.Protocol` 定义契约）是安全使用组合的技术基础，确保注入的组件能够被正确替换而不破坏调用方逻辑。

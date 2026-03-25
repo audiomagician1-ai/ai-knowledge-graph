@@ -1,239 +1,611 @@
 {
-  "_generated": "2026-03-26T00:57:26.168213",
+  "_generated": "2026-03-26T05:44:59.214944",
   "_version": "scorer-v2.0",
-  "total_docs": 170,
-  "avg_score": 77.7,
+  "total_docs": 6156,
+  "avg_score": 66.6,
   "tier_distribution": {
-    "S": 34,
-    "A": 120,
-    "B": 16,
+    "S": 476,
+    "A": 3244,
+    "B": 2436,
     "C": 0
   },
   "domain_summary": {
-    "writing": {
-      "count": 170,
+    "3d-art": {
+      "count": 226,
+      "avg_score": 67.5,
+      "min_score": 44.8,
+      "max_score": 100.0,
+      "tiers": {
+        "S": 6,
+        "A": 147,
+        "B": 73,
+        "C": 0
+      }
+    },
+    "ai-engineering": {
+      "count": 392,
+      "avg_score": 67.0,
+      "min_score": 44.6,
+      "max_score": 100.0,
+      "tiers": {
+        "S": 69,
+        "A": 158,
+        "B": 165,
+        "C": 0
+      }
+    },
+    "ai-foundations": {
+      "count": 1,
+      "avg_score": 92.6,
+      "min_score": 92.6,
+      "max_score": 92.6,
+      "tiers": {
+        "S": 1,
+        "A": 0,
+        "B": 0,
+        "C": 0
+      }
+    },
+    "animation": {
+      "count": 180,
+      "avg_score": 67.2,
+      "min_score": 44.8,
+      "max_score": 82.9,
+      "tiers": {
+        "S": 6,
+        "A": 113,
+        "B": 61,
+        "C": 0
+      }
+    },
+    "biology": {
+      "count": 169,
+      "avg_score": 74.9,
+      "min_score": 44.8,
+      "max_score": 99.9,
+      "tiers": {
+        "S": 18,
+        "A": 135,
+        "B": 16,
+        "C": 0
+      }
+    },
+    "computer-graphics": {
+      "count": 250,
+      "avg_score": 67.0,
+      "min_score": 44.8,
+      "max_score": 96.6,
+      "tiers": {
+        "S": 17,
+        "A": 141,
+        "B": 92,
+        "C": 0
+      }
+    },
+    "concept-design": {
+      "count": 220,
+      "avg_score": 70.6,
+      "min_score": 44.8,
+      "max_score": 92.6,
+      "tiers": {
+        "S": 7,
+        "A": 163,
+        "B": 50,
+        "C": 0
+      }
+    },
+    "data-structures": {
+      "count": 1,
+      "avg_score": 89.3,
+      "min_score": 89.3,
+      "max_score": 89.3,
+      "tiers": {
+        "S": 1,
+        "A": 0,
+        "B": 0,
+        "C": 0
+      }
+    },
+    "economics": {
+      "count": 166,
+      "avg_score": 70.0,
+      "min_score": 44.8,
+      "max_score": 99.9,
+      "tiers": {
+        "S": 32,
+        "A": 82,
+        "B": 52,
+        "C": 0
+      }
+    },
+    "english": {
+      "count": 188,
+      "avg_score": 74.1,
+      "min_score": 44.8,
+      "max_score": 100.0,
+      "tiers": {
+        "S": 9,
+        "A": 150,
+        "B": 29,
+        "C": 0
+      }
+    },
+    "finance": {
+      "count": 161,
+      "avg_score": 74.9,
+      "min_score": 42.1,
+      "max_score": 99.9,
+      "tiers": {
+        "S": 24,
+        "A": 117,
+        "B": 20,
+        "C": 0
+      }
+    },
+    "game-audio-music": {
+      "count": 180,
+      "avg_score": 52.6,
+      "min_score": 44.8,
+      "max_score": 82.9,
+      "tiers": {
+        "S": 1,
+        "A": 20,
+        "B": 159,
+        "C": 0
+      }
+    },
+    "game-audio-sfx": {
+      "count": 180,
+      "avg_score": 57.9,
+      "min_score": 44.8,
+      "max_score": 82.9,
+      "tiers": {
+        "S": 2,
+        "A": 60,
+        "B": 118,
+        "C": 0
+      }
+    },
+    "game-design": {
+      "count": 243,
       "avg_score": 77.7,
-      "min_score": 44.4,
-      "max_score": 95.9,
+      "min_score": 44.8,
+      "max_score": 99.9,
+      "tiers": {
+        "S": 20,
+        "A": 216,
+        "B": 7,
+        "C": 0
+      }
+    },
+    "game-engine": {
+      "count": 304,
+      "avg_score": 67.4,
+      "min_score": 41.8,
+      "max_score": 99.9,
       "tiers": {
         "S": 34,
-        "A": 120,
+        "A": 163,
+        "B": 107,
+        "C": 0
+      }
+    },
+    "game-live-ops": {
+      "count": 180,
+      "avg_score": 52.5,
+      "min_score": 44.8,
+      "max_score": 82.9,
+      "tiers": {
+        "S": 1,
+        "A": 25,
+        "B": 154,
+        "C": 0
+      }
+    },
+    "game-production": {
+      "count": 160,
+      "avg_score": 52.9,
+      "min_score": 44.8,
+      "max_score": 99.9,
+      "tiers": {
+        "S": 2,
+        "A": 22,
+        "B": 136,
+        "C": 0
+      }
+    },
+    "game-publishing": {
+      "count": 180,
+      "avg_score": 54.9,
+      "min_score": 44.8,
+      "max_score": 79.6,
+      "tiers": {
+        "S": 0,
+        "A": 43,
+        "B": 137,
+        "C": 0
+      }
+    },
+    "game-qa": {
+      "count": 160,
+      "avg_score": 56.7,
+      "min_score": 44.8,
+      "max_score": 82.9,
+      "tiers": {
+        "S": 2,
+        "A": 48,
+        "B": 110,
+        "C": 0
+      }
+    },
+    "game-ui-ux": {
+      "count": 200,
+      "avg_score": 51.5,
+      "min_score": 44.8,
+      "max_score": 79.6,
+      "tiers": {
+        "S": 0,
+        "A": 21,
+        "B": 179,
+        "C": 0
+      }
+    },
+    "level-design": {
+      "count": 199,
+      "avg_score": 75.2,
+      "min_score": 44.8,
+      "max_score": 92.6,
+      "tiers": {
+        "S": 10,
+        "A": 172,
+        "B": 17,
+        "C": 0
+      }
+    },
+    "mathematics": {
+      "count": 269,
+      "avg_score": 78.4,
+      "min_score": 42.6,
+      "max_score": 99.9,
+      "tiers": {
+        "S": 46,
+        "A": 207,
         "B": 16,
+        "C": 0
+      }
+    },
+    "multiplayer-network": {
+      "count": 200,
+      "avg_score": 62.9,
+      "min_score": 44.8,
+      "max_score": 92.6,
+      "tiers": {
+        "S": 10,
+        "A": 90,
+        "B": 100,
+        "C": 0
+      }
+    },
+    "narrative-design": {
+      "count": 180,
+      "avg_score": 59.7,
+      "min_score": 44.7,
+      "max_score": 92.6,
+      "tiers": {
+        "S": 4,
+        "A": 63,
+        "B": 113,
+        "C": 0
+      }
+    },
+    "philosophy": {
+      "count": 171,
+      "avg_score": 75.0,
+      "min_score": 44.8,
+      "max_score": 92.6,
+      "tiers": {
+        "S": 23,
+        "A": 122,
+        "B": 26,
+        "C": 0
+      }
+    },
+    "physics": {
+      "count": 194,
+      "avg_score": 76.5,
+      "min_score": 43.5,
+      "max_score": 95.9,
+      "tiers": {
+        "S": 24,
+        "A": 154,
+        "B": 16,
+        "C": 0
+      }
+    },
+    "product-design": {
+      "count": 186,
+      "avg_score": 68.6,
+      "min_score": 41.1,
+      "max_score": 92.6,
+      "tiers": {
+        "S": 13,
+        "A": 112,
+        "B": 61,
+        "C": 0
+      }
+    },
+    "psychology": {
+      "count": 191,
+      "avg_score": 71.7,
+      "min_score": 40.2,
+      "max_score": 99.9,
+      "tiers": {
+        "S": 16,
+        "A": 128,
+        "B": 47,
+        "C": 0
+      }
+    },
+    "software-engineering": {
+      "count": 280,
+      "avg_score": 60.7,
+      "min_score": 44.6,
+      "max_score": 96.6,
+      "tiers": {
+        "S": 24,
+        "A": 89,
+        "B": 167,
+        "C": 0
+      }
+    },
+    "technical-art": {
+      "count": 180,
+      "avg_score": 60.2,
+      "min_score": 44.6,
+      "max_score": 82.9,
+      "tiers": {
+        "S": 5,
+        "A": 74,
+        "B": 101,
+        "C": 0
+      }
+    },
+    "vfx": {
+      "count": 180,
+      "avg_score": 63.0,
+      "min_score": 44.6,
+      "max_score": 96.6,
+      "tiers": {
+        "S": 10,
+        "A": 81,
+        "B": 89,
+        "C": 0
+      }
+    },
+    "writing": {
+      "count": 185,
+      "avg_score": 77.7,
+      "min_score": 40.1,
+      "max_score": 96.0,
+      "tiers": {
+        "S": 39,
+        "A": 128,
+        "B": 18,
         "C": 0
       }
     }
   },
   "top10_best": [
     {
-      "file": "writing\\professional-writing\\professional-overview.md",
-      "concept": "职业写作概述",
-      "score": 95.9,
+      "file": "3d-art\\3da-pipe-validation.md",
+      "concept": "资产验证",
+      "score": 100.0,
       "tier": "S",
-      "domain": "writing"
+      "domain": "3d-art"
     },
     {
-      "file": "writing\\revision-craft\\revision-overview.md",
-      "concept": "修改概述",
-      "score": 95.9,
+      "file": "ai-foundations\\attention-variants.md",
+      "concept": "注意力机制变体",
+      "score": 100.0,
       "tier": "S",
-      "domain": "writing"
+      "domain": "ai-engineering"
     },
     {
-      "file": "writing\\writing-fundamentals\\paragraph-structure.md",
-      "concept": "段落结构",
-      "score": 95.9,
+      "file": "ai-foundations\\decision-tree.md",
+      "concept": "决策树",
+      "score": 100.0,
       "tier": "S",
-      "domain": "writing"
+      "domain": "ai-engineering"
     },
     {
-      "file": "writing\\academic-writing\\conclusion-writing.md",
-      "concept": "结论写作",
-      "score": 93.3,
+      "file": "ai-foundations\\ml-basics.md",
+      "concept": "机器学习基础",
+      "score": 100.0,
       "tier": "S",
-      "domain": "writing"
+      "domain": "ai-engineering"
     },
     {
-      "file": "writing\\academic-writing\\academic-book-review.md",
-      "concept": "学术书评",
-      "score": 92.6,
+      "file": "algorithms\\binary-search.md",
+      "concept": "二分查找",
+      "score": 100.0,
       "tier": "S",
-      "domain": "writing"
+      "domain": "ai-engineering"
     },
     {
-      "file": "writing\\academic-writing\\academic-overview.md",
-      "concept": "学术写作概述",
-      "score": 92.6,
+      "file": "algorithms\\quick-sort.md",
+      "concept": "快速排序",
+      "score": 100.0,
       "tier": "S",
-      "domain": "writing"
+      "domain": "ai-engineering"
     },
     {
-      "file": "writing\\creative-writing\\world-building.md",
-      "concept": "世界构建",
-      "score": 92.6,
+      "file": "data-structures\\hash-table.md",
+      "concept": "哈希表",
+      "score": 100.0,
       "tier": "S",
-      "domain": "writing"
+      "domain": "ai-engineering"
     },
     {
-      "file": "writing\\expository-writing\\expository-overview.md",
-      "concept": "说明文概述",
-      "score": 92.6,
+      "file": "english\\phonetics\\word-stress.md",
+      "concept": "单词重音",
+      "score": 100.0,
       "tier": "S",
-      "domain": "writing"
+      "domain": "english"
     },
     {
-      "file": "writing\\expository-writing\\fact-checking.md",
-      "concept": "事实核查",
-      "score": 92.6,
+      "file": "ai-foundations\\backpropagation.md",
+      "concept": "反向传播",
+      "score": 99.9,
       "tier": "S",
-      "domain": "writing"
+      "domain": "ai-engineering"
     },
     {
-      "file": "writing\\expository-writing\\visual-aids-writing.md",
-      "concept": "图文配合写作",
-      "score": 92.6,
+      "file": "ai-foundations\\feature-engineering.md",
+      "concept": "特征工程",
+      "score": 99.9,
       "tier": "S",
-      "domain": "writing"
+      "domain": "ai-engineering"
     }
   ],
   "top20_worst": [
     {
-      "file": "writing\\persuasive-writing\\propaganda-analysis.md",
-      "concept": "宣传手法分析",
-      "score": 44.4,
+      "file": "english\\sentence-patterns\\parallel-structure.md",
+      "concept": "平行结构",
+      "score": 40.1,
       "tier": "B",
       "domain": "writing"
     },
     {
-      "file": "writing\\professional-writing\\social-media-writing.md",
-      "concept": "社交媒体写作",
-      "score": 44.4,
+      "file": "english\\speaking\\storytelling-oral.md",
+      "concept": "口头叙事",
+      "score": 40.1,
       "tier": "B",
       "domain": "writing"
     },
     {
-      "file": "writing\\revision-craft\\ai-writing-tools.md",
-      "concept": "AI写作工具",
-      "score": 44.6,
+      "file": "biology\\human-physiology\\endocrine-system.md",
+      "concept": "内分泌系统",
+      "score": 40.2,
+      "tier": "B",
+      "domain": "psychology"
+    },
+    {
+      "file": "mathematics\\statistics\\data-visualization.md",
+      "concept": "数据可视化",
+      "score": 41.1,
+      "tier": "B",
+      "domain": "product-design"
+    },
+    {
+      "file": "english\\writing-en\\summary-writing.md",
+      "concept": "摘要写作",
+      "score": 41.4,
       "tier": "B",
       "domain": "writing"
     },
     {
-      "file": "writing\\revision-craft\\structural-revision.md",
-      "concept": "结构修改",
-      "score": 44.8,
+      "file": "game-design\\systems-design\\weather-system.md",
+      "concept": "天气系统",
+      "score": 41.8,
+      "tier": "B",
+      "domain": "game-engine"
+    },
+    {
+      "file": "game-design\\design-docs\\competitive-analysis.md",
+      "concept": "竞品分析",
+      "score": 42.0,
+      "tier": "B",
+      "domain": "product-design"
+    },
+    {
+      "file": "oop\\command-pattern.md",
+      "concept": "命令模式",
+      "score": 42.0,
+      "tier": "B",
+      "domain": "game-engine"
+    },
+    {
+      "file": "economics\\behavioral-econ\\behavioral-finance.md",
+      "concept": "行为金融学",
+      "score": 42.1,
+      "tier": "B",
+      "domain": "finance"
+    },
+    {
+      "file": "game-design\\core-loop\\onboarding-design.md",
+      "concept": "新手引导设计",
+      "score": 42.1,
+      "tier": "B",
+      "domain": "product-design"
+    },
+    {
+      "file": "game-design\\systems-design\\mvp-design.md",
+      "concept": "MVP设计",
+      "score": 42.1,
+      "tier": "B",
+      "domain": "product-design"
+    },
+    {
+      "file": "level-design\\guidance-design\\show-dont-tell.md",
+      "concept": "展示而非告知",
+      "score": 42.4,
       "tier": "B",
       "domain": "writing"
     },
     {
-      "file": "writing\\revision-craft\\style-guide.md",
-      "concept": "写作风格指南",
-      "score": 44.8,
+      "file": "economics\\econometrics\\maximum-likelihood.md",
+      "concept": "最大似然估计详解",
+      "score": 42.6,
+      "tier": "B",
+      "domain": "mathematics"
+    },
+    {
+      "file": "english\\writing-en\\citation-referencing.md",
+      "concept": "引用与参考文献",
+      "score": 42.6,
       "tier": "B",
       "domain": "writing"
     },
     {
-      "file": "writing\\academic-writing\\research-methodology.md",
-      "concept": "研究方法论写作",
-      "score": 45.1,
+      "file": "biology\\human-physiology\\autonomic-nervous-system.md",
+      "concept": "自主神经系统",
+      "score": 42.8,
+      "tier": "B",
+      "domain": "psychology"
+    },
+    {
+      "file": "english\\idioms-culture\\figurative-language.md",
+      "concept": "修辞手法",
+      "score": 42.9,
       "tier": "B",
       "domain": "writing"
     },
     {
-      "file": "writing\\expository-writing\\informative-writing.md",
-      "concept": "信息型写作",
-      "score": 45.5,
+      "file": "mathematics\\statistics\\logistic-regression.md",
+      "concept": "逻辑回归",
+      "score": 43.2,
+      "tier": "B",
+      "domain": "mathematics"
+    },
+    {
+      "file": "english\\writing-en\\writing-process.md",
+      "concept": "写作过程",
+      "score": 43.5,
       "tier": "B",
       "domain": "writing"
     },
     {
-      "file": "writing\\persuasive-writing\\logical-reasoning-writing.md",
-      "concept": "逻辑推理写作",
-      "score": 46.4,
+      "file": "physics\\fluid-mechanics\\navier-stokes-intro.md",
+      "concept": "纳维-斯托克斯方程简介",
+      "score": 43.5,
       "tier": "B",
-      "domain": "writing"
+      "domain": "physics"
     },
     {
-      "file": "writing\\professional-writing\\crisis-communication.md",
-      "concept": "危机沟通写作",
-      "score": 47.1,
+      "file": "philosophy\\logic-reasoning\\argument-structure.md",
+      "concept": "论证结构",
+      "score": 43.6,
       "tier": "B",
-      "domain": "writing"
-    },
-    {
-      "file": "writing\\revision-craft\\developmental-editing.md",
-      "concept": "发展性编辑",
-      "score": 47.1,
-      "tier": "B",
-      "domain": "writing"
-    },
-    {
-      "file": "writing\\revision-craft\\portfolio-building.md",
-      "concept": "作品集建设",
-      "score": 47.1,
-      "tier": "B",
-      "domain": "writing"
-    },
-    {
-      "file": "writing\\expository-writing\\descriptive-essay.md",
-      "concept": "描述型说明文",
-      "score": 47.2,
-      "tier": "B",
-      "domain": "writing"
-    },
-    {
-      "file": "writing\\persuasive-writing\\logical-fallacies-writing.md",
-      "concept": "逻辑谬误识别",
-      "score": 47.2,
-      "tier": "B",
-      "domain": "writing"
-    },
-    {
-      "file": "writing\\revision-craft\\cutting-killing-darlings.md",
-      "concept": "删减与割爱",
-      "score": 47.2,
-      "tier": "B",
-      "domain": "writing"
-    },
-    {
-      "file": "writing\\academic-writing\\academic-presentation.md",
-      "concept": "学术报告",
-      "score": 47.6,
-      "tier": "B",
-      "domain": "writing"
-    },
-    {
-      "file": "writing\\creative-writing\\horror-suspense-writing.md",
-      "concept": "恐怖悬疑写作",
-      "score": 48.9,
-      "tier": "B",
-      "domain": "writing"
-    },
-    {
-      "file": "writing\\creative-writing\\classical-poetry-forms.md",
-      "concept": "古典诗词",
-      "score": 73.0,
-      "tier": "A",
-      "domain": "writing"
-    },
-    {
-      "file": "writing\\narrative-writing\\pacing-rhythm.md",
-      "concept": "节奏控制",
-      "score": 73.0,
-      "tier": "A",
-      "domain": "writing"
-    },
-    {
-      "file": "writing\\professional-writing\\meeting-minutes.md",
-      "concept": "会议纪要",
-      "score": 73.0,
-      "tier": "A",
-      "domain": "writing"
-    },
-    {
-      "file": "writing\\writing-fundamentals\\writing-confidence.md",
-      "concept": "写作自信",
-      "score": 73.0,
-      "tier": "A",
       "domain": "writing"
     }
   ]
