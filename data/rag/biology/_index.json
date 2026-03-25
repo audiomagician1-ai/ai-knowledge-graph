@@ -373,7 +373,7 @@
       ],
       "file": "biology/cell-biology/endomembrane-system.md",
       "exists": true,
-      "char_count": 1325
+      "char_count": 2722
     },
     {
       "id": "endoplasmic-reticulum",
@@ -1273,7 +1273,7 @@
       ],
       "file": "biology/evolution/adaptation.md",
       "exists": true,
-      "char_count": 1322
+      "char_count": 2445
     },
     {
       "id": "adaptive-radiation",
@@ -1498,7 +1498,7 @@
       ],
       "file": "biology/genetics/alleles-genotype.md",
       "exists": true,
-      "char_count": 1593
+      "char_count": 2475
     },
     {
       "id": "population-genetics",
@@ -2583,8 +2583,8 @@
   ],
   "stats": {
     "total": 172,
-    "total_chars": 378822,
-    "avg_chars": 2202,
+    "total_chars": 382224,
+    "avg_chars": 2222,
     "domain": "biology"
   }
 }

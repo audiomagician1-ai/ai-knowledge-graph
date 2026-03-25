@@ -808,7 +808,7 @@
       ],
       "file": "game-design/combat-design/hybrid-combat.md",
       "exists": true,
-      "char_count": 1248
+      "char_count": 2390
     },
     {
       "id": "status-effects",
@@ -1423,7 +1423,7 @@
       ],
       "file": "game-design/design-docs/case-study-writing.md",
       "exists": true,
-      "char_count": 1276
+      "char_count": 2781
     },
     {
       "id": "living-doc",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 530429,
-    "avg_chars": 2121,
+    "total_chars": 533076,
+    "avg_chars": 2132,
     "domain": "game-design"
   }
 }

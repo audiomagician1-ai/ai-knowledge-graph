@@ -418,7 +418,7 @@
       ],
       "file": "english/basic-grammar/articles.md",
       "exists": true,
-      "char_count": 1235
+      "char_count": 2512
     },
     {
       "id": "adverbs",
@@ -718,7 +718,7 @@
       ],
       "file": "english/idioms-culture/slang-informal.md",
       "exists": true,
-      "char_count": 1337
+      "char_count": 2604
     },
     {
       "id": "euphemisms",
@@ -1018,7 +1018,7 @@
       ],
       "file": "english/phonetics/sentence-stress.md",
       "exists": true,
-      "char_count": 1321
+      "char_count": 3025
     },
     {
       "id": "ipa-basics",
@@ -1273,7 +1273,7 @@
       ],
       "file": "english/reading/main-idea.md",
       "exists": true,
-      "char_count": 1325
+      "char_count": 3032
     },
     {
       "id": "fact-vs-opinion",
@@ -1798,7 +1798,7 @@
       ],
       "file": "english/sentence-patterns/adverb-clauses.md",
       "exists": true,
-      "char_count": 1253
+      "char_count": 3539
     },
     {
       "id": "ellipsis-substitution",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 471278,
-    "avg_chars": 2356,
+    "total_chars": 479519,
+    "avg_chars": 2397,
     "domain": "english"
   }
 }

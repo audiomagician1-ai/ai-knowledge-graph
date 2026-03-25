@@ -3598,7 +3598,7 @@
       ],
       "file": "mathematics/statistics/maximum-likelihood.md",
       "exists": true,
-      "char_count": 1571
+      "char_count": 3708
     },
     {
       "id": "point-estimation",
@@ -4038,8 +4038,8 @@
   ],
   "stats": {
     "total": 269,
-    "total_chars": 673043,
-    "avg_chars": 2502,
+    "total_chars": 675180,
+    "avg_chars": 2509,
     "domain": "mathematics"
   }
 }

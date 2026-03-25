@@ -7659,7 +7659,7 @@
       ],
       "file": "biology/cell-biology/endomembrane-system.md",
       "exists": true,
-      "char_count": 1325
+      "char_count": 2722
     },
     {
       "id": "endoplasmic-reticulum",
@@ -8559,7 +8559,7 @@
       ],
       "file": "biology/evolution/adaptation.md",
       "exists": true,
-      "char_count": 1322
+      "char_count": 2445
     },
     {
       "id": "adaptive-radiation",
@@ -8784,7 +8784,7 @@
       ],
       "file": "biology/genetics/alleles-genotype.md",
       "exists": true,
-      "char_count": 1593
+      "char_count": 2475
     },
     {
       "id": "population-genetics",
@@ -18384,7 +18384,7 @@
       ],
       "file": "economics/development-econ/agriculture-development.md",
       "exists": true,
-      "char_count": 1516
+      "char_count": 2512
     },
     {
       "id": "institutions-development",
@@ -18774,7 +18774,7 @@
       ],
       "file": "economics/econometrics/regression-discontinuity.md",
       "exists": true,
-      "char_count": 1492
+      "char_count": 2644
     },
     {
       "id": "time-series-econ",
@@ -18789,7 +18789,7 @@
       ],
       "file": "economics/econometrics/time-series-econ.md",
       "exists": true,
-      "char_count": 1487
+      "char_count": 3123
     },
     {
       "id": "limited-dependent",
@@ -18924,7 +18924,7 @@
       ],
       "file": "economics/economic-thought/institutional-economics.md",
       "exists": true,
-      "char_count": 1510
+      "char_count": 3026
     },
     {
       "id": "development-thought",
@@ -19209,7 +19209,7 @@
       ],
       "file": "economics/international-econ/balance-of-payments.md",
       "exists": true,
-      "char_count": 1567
+      "char_count": 2164
     },
     {
       "id": "international-econ-overview",
@@ -19329,7 +19329,7 @@
       ],
       "file": "economics/international-econ/exchange-rate-systems.md",
       "exists": true,
-      "char_count": 1556
+      "char_count": 2556
     },
     {
       "id": "migration-economics",
@@ -19659,7 +19659,7 @@
       ],
       "file": "economics/macroeconomics/open-economy-macro.md",
       "exists": true,
-      "char_count": 1499
+      "char_count": 2637
     },
     {
       "id": "aggregate-demand-supply",
@@ -19839,7 +19839,7 @@
       ],
       "file": "economics/macroeconomics/monetary-transmission.md",
       "exists": true,
-      "char_count": 1514
+      "char_count": 2798
     },
     {
       "id": "monetary-policy",
@@ -19989,7 +19989,7 @@
       ],
       "file": "economics/microeconomics/monopolistic-competition.md",
       "exists": true,
-      "char_count": 1514
+      "char_count": 2566
     },
     {
       "id": "externalities",
@@ -20004,7 +20004,7 @@
       ],
       "file": "economics/microeconomics/externalities.md",
       "exists": true,
-      "char_count": 1570
+      "char_count": 2181
     },
     {
       "id": "contract-theory",
@@ -20289,7 +20289,7 @@
       ],
       "file": "economics/public-econ/property-rights-econ.md",
       "exists": true,
-      "char_count": 1480
+      "char_count": 2723
     },
     {
       "id": "public-expenditure",
@@ -20394,7 +20394,7 @@
       ],
       "file": "economics/public-econ/pigouvian-tax.md",
       "exists": true,
-      "char_count": 1337
+      "char_count": 2236
     },
     {
       "id": "cost-benefit-analysis",
@@ -20469,7 +20469,7 @@
       ],
       "file": "economics/public-econ/optimal-taxation.md",
       "exists": true,
-      "char_count": 1498
+      "char_count": 2523
     },
     {
       "id": "consumption-tax",
@@ -20589,7 +20589,7 @@
       ],
       "file": "economics/public-econ/regulation-economics.md",
       "exists": true,
-      "char_count": 1489
+      "char_count": 2757
     },
     {
       "id": "fiscal-federalism",
@@ -21054,7 +21054,7 @@
       ],
       "file": "english/basic-grammar/articles.md",
       "exists": true,
-      "char_count": 1235
+      "char_count": 2512
     },
     {
       "id": "adverbs",
@@ -21354,7 +21354,7 @@
       ],
       "file": "english/idioms-culture/slang-informal.md",
       "exists": true,
-      "char_count": 1337
+      "char_count": 2604
     },
     {
       "id": "euphemisms",
@@ -21654,7 +21654,7 @@
       ],
       "file": "english/phonetics/sentence-stress.md",
       "exists": true,
-      "char_count": 1321
+      "char_count": 3025
     },
     {
       "id": "ipa-basics",
@@ -21909,7 +21909,7 @@
       ],
       "file": "english/reading/main-idea.md",
       "exists": true,
-      "char_count": 1325
+      "char_count": 3032
     },
     {
       "id": "fact-vs-opinion",
@@ -22434,7 +22434,7 @@
       ],
       "file": "english/sentence-patterns/adverb-clauses.md",
       "exists": true,
-      "char_count": 1253
+      "char_count": 3539
     },
     {
       "id": "ellipsis-substitution",
@@ -25239,7 +25239,7 @@
       ],
       "file": "finance/quantitative-finance/market-microstructure.md",
       "exists": true,
-      "char_count": 1490
+      "char_count": 2725
     },
     {
       "id": "time-series-analysis",
@@ -25764,7 +25764,7 @@
       ],
       "file": "finance/stock-market/macd-indicator.md",
       "exists": true,
-      "char_count": 1594
+      "char_count": 2192
     },
     {
       "id": "value-investing",
@@ -31884,7 +31884,7 @@
       ],
       "file": "game-design/combat-design/hybrid-combat.md",
       "exists": true,
-      "char_count": 1248
+      "char_count": 2390
     },
     {
       "id": "status-effects",
@@ -32499,7 +32499,7 @@
       ],
       "file": "game-design/design-docs/case-study-writing.md",
       "exists": true,
-      "char_count": 1276
+      "char_count": 2781
     },
     {
       "id": "living-doc",
@@ -58432,7 +58432,7 @@
       ],
       "file": "mathematics/statistics/maximum-likelihood.md",
       "exists": true,
-      "char_count": 1571
+      "char_count": 3708
     },
     {
       "id": "point-estimation",

@@ -1603,7 +1603,7 @@
       ],
       "file": "finance/quantitative-finance/market-microstructure.md",
       "exists": true,
-      "char_count": 1490
+      "char_count": 2725
     },
     {
       "id": "time-series-analysis",
@@ -2128,7 +2128,7 @@
       ],
       "file": "finance/stock-market/macd-indicator.md",
       "exists": true,
-      "char_count": 1594
+      "char_count": 2192
     },
     {
       "id": "value-investing",
@@ -2403,8 +2403,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 324497,
-    "avg_chars": 2028,
+    "total_chars": 326330,
+    "avg_chars": 2039,
     "domain": "finance"
   }
 }
