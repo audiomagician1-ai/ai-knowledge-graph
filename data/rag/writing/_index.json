@@ -73,7 +73,7 @@
       ],
       "file": "writing/academic-writing/academic-book-review.md",
       "exists": true,
-      "char_count": 1369
+      "char_count": 2158
     },
     {
       "id": "academic-overview",
@@ -2248,7 +2248,7 @@
       ],
       "file": "writing/writing-fundamentals/figurative-language.md",
       "exists": true,
-      "char_count": 2449
+      "char_count": 2387
     },
     {
       "id": "writing-genres-overview",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 335383,
-    "avg_chars": 1972,
+    "total_chars": 336110,
+    "avg_chars": 1977,
     "domain": "writing"
   }
 }

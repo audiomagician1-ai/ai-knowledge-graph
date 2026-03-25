@@ -208,7 +208,7 @@
       ],
       "file": "economics/behavioral-econ/cognitive-biases-econ.md",
       "exists": true,
-      "char_count": 1596
+      "char_count": 2623
     },
     {
       "id": "overconfidence-econ",
@@ -2518,7 +2518,7 @@
       ],
       "file": "economics/public-econ/fiscal-federalism.md",
       "exists": true,
-      "char_count": 1622
+      "char_count": 2814
     },
     {
       "id": "maximum-likelihood",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 343216,
-    "avg_chars": 2018,
+    "total_chars": 345435,
+    "avg_chars": 2031,
     "domain": "economics"
   }
 }

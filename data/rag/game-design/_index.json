@@ -1108,7 +1108,7 @@
       ],
       "file": "game-design/core-loop/loop-iteration.md",
       "exists": true,
-      "char_count": 1261
+      "char_count": 2632
     },
     {
       "id": "progression-loop",
@@ -1213,7 +1213,7 @@
       ],
       "file": "game-design/core-loop/gd-overview.md",
       "exists": true,
-      "char_count": 1582
+      "char_count": 2566
     },
     {
       "id": "retention-design",
@@ -1408,7 +1408,7 @@
       ],
       "file": "game-design/design-docs/version-control-docs.md",
       "exists": true,
-      "char_count": 1400
+      "char_count": 2439
     },
     {
       "id": "case-study-writing",
@@ -1783,7 +1783,7 @@
       ],
       "file": "game-design/difficulty-curve/pacing-design.md",
       "exists": true,
-      "char_count": 1257
+      "char_count": 2407
     },
     {
       "id": "puzzle-difficulty",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 535011,
-    "avg_chars": 2140,
+    "total_chars": 539555,
+    "avg_chars": 2158,
     "domain": "game-design"
   }
 }

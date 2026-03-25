@@ -2458,7 +2458,7 @@
       ],
       "file": "physics/thermodynamics/thermodynamic-processes.md",
       "exists": true,
-      "char_count": 1663
+      "char_count": 2326
     },
     {
       "id": "heat-engines",
@@ -2913,8 +2913,8 @@
   ],
   "stats": {
     "total": 194,
-    "total_chars": 459124,
-    "avg_chars": 2366,
+    "total_chars": 459787,
+    "avg_chars": 2370,
     "domain": "physics"
   }
 }

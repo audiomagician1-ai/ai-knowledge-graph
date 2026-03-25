@@ -2743,7 +2743,7 @@
       ],
       "file": "mathematics/number-theory/euler-theorem.md",
       "exists": true,
-      "char_count": 1352
+      "char_count": 3059
     },
     {
       "id": "arithmetic-functions",
@@ -3088,7 +3088,7 @@
       ],
       "file": "mathematics/optimization/network-flows.md",
       "exists": true,
-      "char_count": 1364
+      "char_count": 2795
     },
     {
       "id": "stochastic-optimization",
@@ -4038,8 +4038,8 @@
   ],
   "stats": {
     "total": 269,
-    "total_chars": 682098,
-    "avg_chars": 2535,
+    "total_chars": 685236,
+    "avg_chars": 2547,
     "domain": "mathematics"
   }
 }

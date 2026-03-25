@@ -1288,7 +1288,7 @@
       ],
       "file": "product-design/product-management/product-metrics-review.md",
       "exists": true,
-      "char_count": 1412
+      "char_count": 2513
     },
     {
       "id": "kanban-method",
@@ -2728,13 +2728,13 @@
       ],
       "file": "product-design/visual-design/motion-design.md",
       "exists": true,
-      "char_count": 1361
+      "char_count": 2506
     }
   ],
   "stats": {
     "total": 182,
-    "total_chars": 345319,
-    "avg_chars": 1897,
+    "total_chars": 347565,
+    "avg_chars": 1909,
     "domain": "product-design"
   }
 }

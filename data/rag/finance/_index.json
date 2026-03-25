@@ -793,7 +793,7 @@
       ],
       "file": "finance/fixed-income/fixed-income-portfolio.md",
       "exists": true,
-      "char_count": 1509
+      "char_count": 2802
     },
     {
       "id": "government-bonds",
@@ -1933,7 +1933,7 @@
       ],
       "file": "finance/risk-management/greeks.md",
       "exists": true,
-      "char_count": 1597
+      "char_count": 2785
     },
     {
       "id": "operational-risk",
@@ -2403,8 +2403,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 329322,
-    "avg_chars": 2058,
+    "total_chars": 331803,
+    "avg_chars": 2073,
     "domain": "finance"
   }
 }

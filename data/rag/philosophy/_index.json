@@ -1048,7 +1048,7 @@
       ],
       "file": "philosophy/ethics/confucian-ethics.md",
       "exists": true,
-      "char_count": 1349
+      "char_count": 2487
     },
     {
       "id": "metaethics",
@@ -2038,7 +2038,7 @@
       ],
       "file": "philosophy/modern-philosophy/critical-theory.md",
       "exists": true,
-      "char_count": 1368
+      "char_count": 2264
     },
     {
       "id": "philosophy-of-technology",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 311444,
-    "avg_chars": 1832,
+    "total_chars": 313478,
+    "avg_chars": 1843,
     "domain": "philosophy"
   }
 }

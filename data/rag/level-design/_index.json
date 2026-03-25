@@ -298,7 +298,7 @@
       ],
       "file": "level-design/blockout/trigger-volume.md",
       "exists": true,
-      "char_count": 1390
+      "char_count": 2343
     },
     {
       "id": "boss-arena",
@@ -1183,7 +1183,7 @@
       ],
       "file": "level-design/ld-documentation/milestone-criteria.md",
       "exists": true,
-      "char_count": 1412
+      "char_count": 2607
     },
     {
       "id": "gameplay-ability-ld",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 428270,
-    "avg_chars": 2141,
+    "total_chars": 430418,
+    "avg_chars": 2152,
     "domain": "level-design"
   }
 }

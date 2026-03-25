@@ -1453,7 +1453,7 @@
       ],
       "file": "psychology/developmental-psychology/critical-periods.md",
       "exists": true,
-      "char_count": 1397
+      "char_count": 2381
     },
     {
       "id": "developmental-overview",
@@ -2748,8 +2748,8 @@
   ],
   "stats": {
     "total": 183,
-    "total_chars": 378252,
-    "avg_chars": 2066,
+    "total_chars": 379236,
+    "avg_chars": 2072,
     "domain": "psychology"
   }
 }

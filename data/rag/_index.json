@@ -7404,7 +7404,7 @@
       ],
       "file": "biology/botany-zoology/animal-physiology-comp.md",
       "exists": true,
-      "char_count": 1321
+      "char_count": 2663
     },
     {
       "id": "animal-behavior",
@@ -8124,7 +8124,7 @@
       ],
       "file": "biology/ecology/ecology-overview.md",
       "exists": true,
-      "char_count": 1570
+      "char_count": 2266
     },
     {
       "id": "ecological-succession",
@@ -8874,7 +8874,7 @@
       ],
       "file": "biology/genetics/genetics-overview.md",
       "exists": true,
-      "char_count": 1575
+      "char_count": 2398
     },
     {
       "id": "genetic-engineering",
@@ -9294,7 +9294,7 @@
       ],
       "file": "biology/microbiology/industrial-microbiology.md",
       "exists": true,
-      "char_count": 1519
+      "char_count": 2761
     },
     {
       "id": "microbiology-overview",
@@ -9399,7 +9399,7 @@
       ],
       "file": "biology/microbiology/biofilm.md",
       "exists": true,
-      "char_count": 1262
+      "char_count": 2682
     },
     {
       "id": "vaccine-biology",
@@ -18294,7 +18294,7 @@
       ],
       "file": "economics/behavioral-econ/cognitive-biases-econ.md",
       "exists": true,
-      "char_count": 1596
+      "char_count": 2623
     },
     {
       "id": "overconfidence-econ",
@@ -20604,7 +20604,7 @@
       ],
       "file": "economics/public-econ/fiscal-federalism.md",
       "exists": true,
-      "char_count": 1622
+      "char_count": 2814
     },
     {
       "id": "maximum-likelihood",
@@ -24429,7 +24429,7 @@
       ],
       "file": "finance/fixed-income/fixed-income-portfolio.md",
       "exists": true,
-      "char_count": 1509
+      "char_count": 2802
     },
     {
       "id": "government-bonds",
@@ -25569,7 +25569,7 @@
       ],
       "file": "finance/risk-management/greeks.md",
       "exists": true,
-      "char_count": 1597
+      "char_count": 2785
     },
     {
       "id": "operational-risk",
@@ -32184,7 +32184,7 @@
       ],
       "file": "game-design/core-loop/loop-iteration.md",
       "exists": true,
-      "char_count": 1261
+      "char_count": 2632
     },
     {
       "id": "progression-loop",
@@ -32289,7 +32289,7 @@
       ],
       "file": "game-design/core-loop/gd-overview.md",
       "exists": true,
-      "char_count": 1582
+      "char_count": 2566
     },
     {
       "id": "retention-design",
@@ -32484,7 +32484,7 @@
       ],
       "file": "game-design/design-docs/version-control-docs.md",
       "exists": true,
-      "char_count": 1400
+      "char_count": 2439
     },
     {
       "id": "case-study-writing",
@@ -32859,7 +32859,7 @@
       ],
       "file": "game-design/difficulty-curve/pacing-design.md",
       "exists": true,
-      "char_count": 1257
+      "char_count": 2407
     },
     {
       "id": "puzzle-difficulty",
@@ -51664,7 +51664,7 @@
       ],
       "file": "level-design/blockout/trigger-volume.md",
       "exists": true,
-      "char_count": 1390
+      "char_count": 2343
     },
     {
       "id": "boss-arena",
@@ -52549,7 +52549,7 @@
       ],
       "file": "level-design/ld-documentation/milestone-criteria.md",
       "exists": true,
-      "char_count": 1412
+      "char_count": 2607
     },
     {
       "id": "gameplay-ability-ld",
@@ -57577,7 +57577,7 @@
       ],
       "file": "mathematics/number-theory/euler-theorem.md",
       "exists": true,
-      "char_count": 1352
+      "char_count": 3059
     },
     {
       "id": "arithmetic-functions",
@@ -57922,7 +57922,7 @@
       ],
       "file": "mathematics/optimization/network-flows.md",
       "exists": true,
-      "char_count": 1364
+      "char_count": 2795
     },
     {
       "id": "stochastic-optimization",
@@ -65169,7 +65169,7 @@
       ],
       "file": "philosophy/ethics/confucian-ethics.md",
       "exists": true,
-      "char_count": 1349
+      "char_count": 2487
     },
     {
       "id": "metaethics",
@@ -66159,7 +66159,7 @@
       ],
       "file": "philosophy/modern-philosophy/critical-theory.md",
       "exists": true,
-      "char_count": 1368
+      "char_count": 2264
     },
     {
       "id": "philosophy-of-technology",
@@ -69129,7 +69129,7 @@
       ],
       "file": "physics/thermodynamics/thermodynamic-processes.md",
       "exists": true,
-      "char_count": 1663
+      "char_count": 2326
     },
     {
       "id": "heat-engines",
@@ -70869,7 +70869,7 @@
       ],
       "file": "product-design/product-management/product-metrics-review.md",
       "exists": true,
-      "char_count": 1412
+      "char_count": 2513
     },
     {
       "id": "kanban-method",
@@ -72309,7 +72309,7 @@
       ],
       "file": "product-design/visual-design/motion-design.md",
       "exists": true,
-      "char_count": 1361
+      "char_count": 2506
     },
     {
       "id": "hello-world",
@@ -74414,7 +74414,7 @@
       ],
       "file": "psychology/developmental-psychology/critical-periods.md",
       "exists": true,
-      "char_count": 1397
+      "char_count": 2381
     },
     {
       "id": "developmental-overview",
@@ -86783,7 +86783,7 @@
       ],
       "file": "writing/academic-writing/academic-book-review.md",
       "exists": true,
-      "char_count": 1369
+      "char_count": 2158
     },
     {
       "id": "academic-overview",
@@ -88958,7 +88958,7 @@
       ],
       "file": "writing/writing-fundamentals/figurative-language.md",
       "exists": true,
-      "char_count": 2449
+      "char_count": 2387
     },
     {
       "id": "writing-genres-overview",
