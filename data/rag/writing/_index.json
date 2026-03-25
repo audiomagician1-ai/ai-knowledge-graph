@@ -193,7 +193,7 @@
       ],
       "file": "writing/academic-writing/data-visualization-writing.md",
       "exists": true,
-      "char_count": 1588
+      "char_count": 2794
     },
     {
       "id": "literature-review",
@@ -313,7 +313,7 @@
       ],
       "file": "writing/academic-writing/conclusion-writing.md",
       "exists": true,
-      "char_count": 1428
+      "char_count": 2556
     },
     {
       "id": "plagiarism-avoidance",
@@ -373,7 +373,7 @@
       ],
       "file": "writing/creative-writing/writing-workshop.md",
       "exists": true,
-      "char_count": 1338
+      "char_count": 2468
     },
     {
       "id": "writing-prompts",
@@ -988,7 +988,7 @@
       ],
       "file": "writing/narrative-writing/theme-development.md",
       "exists": true,
-      "char_count": 1333
+      "char_count": 2709
     },
     {
       "id": "character-creation",
@@ -1138,7 +1138,7 @@
       ],
       "file": "writing/narrative-writing/setting-description.md",
       "exists": true,
-      "char_count": 1424
+      "char_count": 2539
     },
     {
       "id": "dialogue-writing",
@@ -1543,7 +1543,7 @@
       ],
       "file": "writing/persuasive-writing/persuasive-ethics.md",
       "exists": true,
-      "char_count": 1346
+      "char_count": 2386
     },
     {
       "id": "persuasive-techniques",
@@ -1633,7 +1633,7 @@
       ],
       "file": "writing/professional-writing/seo-writing.md",
       "exists": true,
-      "char_count": 1338
+      "char_count": 2466
     },
     {
       "id": "meeting-minutes",
@@ -1903,7 +1903,7 @@
       ],
       "file": "writing/professional-writing/newsletter-writing.md",
       "exists": true,
-      "char_count": 1350
+      "char_count": 2629
     },
     {
       "id": "grant-report",
@@ -1918,7 +1918,7 @@
       ],
       "file": "writing/professional-writing/grant-report.md",
       "exists": true,
-      "char_count": 1349
+      "char_count": 2224
     },
     {
       "id": "ai-writing-tools",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 360434,
-    "avg_chars": 2120,
+    "total_chars": 370711,
+    "avg_chars": 2180,
     "domain": "writing"
   }
 }

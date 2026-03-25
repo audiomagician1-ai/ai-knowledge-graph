@@ -163,7 +163,7 @@
       ],
       "file": "product-design/data-driven/data-storytelling.md",
       "exists": true,
-      "char_count": 1338
+      "char_count": 2287
     },
     {
       "id": "dashboard-design",
@@ -883,7 +883,7 @@
       ],
       "file": "product-design/interaction-design/progressive-disclosure.md",
       "exists": true,
-      "char_count": 1348
+      "char_count": 2438
     },
     {
       "id": "gamification",
@@ -2188,7 +2188,7 @@
       ],
       "file": "product-design/user-research/contextual-inquiry.md",
       "exists": true,
-      "char_count": 1340
+      "char_count": 2073
     },
     {
       "id": "accessibility-research",
@@ -2203,7 +2203,7 @@
       ],
       "file": "product-design/user-research/accessibility-research.md",
       "exists": true,
-      "char_count": 1438
+      "char_count": 2367
     },
     {
       "id": "diary-study",
@@ -2353,7 +2353,7 @@
       ],
       "file": "product-design/user-research/research-synthesis.md",
       "exists": true,
-      "char_count": 1417
+      "char_count": 2627
     },
     {
       "id": "research-planning",
@@ -2713,7 +2713,7 @@
       ],
       "file": "product-design/visual-design/design-token.md",
       "exists": true,
-      "char_count": 1334
+      "char_count": 2857
     },
     {
       "id": "motion-design",
@@ -2733,8 +2733,8 @@
   ],
   "stats": {
     "total": 182,
-    "total_chars": 364857,
-    "avg_chars": 2004,
+    "total_chars": 371291,
+    "avg_chars": 2040,
     "domain": "product-design"
   }
 }

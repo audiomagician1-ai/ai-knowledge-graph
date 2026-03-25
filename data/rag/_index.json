@@ -7839,7 +7839,7 @@
       ],
       "file": "biology/cell-biology/cell-differentiation.md",
       "exists": true,
-      "char_count": 1380
+      "char_count": 2580
     },
     {
       "id": "cell-cycle",
@@ -8079,7 +8079,7 @@
       ],
       "file": "biology/ecology/freshwater-ecology.md",
       "exists": true,
-      "char_count": 1446
+      "char_count": 2457
     },
     {
       "id": "nutrient-cycling",
@@ -9624,7 +9624,7 @@
       ],
       "file": "biology/molecular-biology/rna-types.md",
       "exists": true,
-      "char_count": 1564
+      "char_count": 2791
     },
     {
       "id": "central-dogma",
@@ -9774,7 +9774,7 @@
       ],
       "file": "biology/molecular-biology/protein-modification.md",
       "exists": true,
-      "char_count": 1481
+      "char_count": 2682
     },
     {
       "id": "proteomics",
@@ -58747,7 +58747,7 @@
       ],
       "file": "mathematics/trigonometry/inverse-trig.md",
       "exists": true,
-      "char_count": 1586
+      "char_count": 3009
     },
     {
       "id": "sum-difference-formulas",
@@ -67104,7 +67104,7 @@
       ],
       "file": "physics/classical-mechanics/lagrangian-mechanics.md",
       "exists": true,
-      "char_count": 1569
+      "char_count": 3174
     },
     {
       "id": "friction",
@@ -67809,7 +67809,7 @@
       ],
       "file": "physics/fluid-mechanics/fluid-statics.md",
       "exists": true,
-      "char_count": 1430
+      "char_count": 2543
     },
     {
       "id": "buoyancy",
@@ -68844,7 +68844,7 @@
       ],
       "file": "physics/solid-state-physics/transistors-intro.md",
       "exists": true,
-      "char_count": 1571
+      "char_count": 2664
     },
     {
       "id": "crystal-structure",
@@ -69744,7 +69744,7 @@
       ],
       "file": "product-design/data-driven/data-storytelling.md",
       "exists": true,
-      "char_count": 1338
+      "char_count": 2287
     },
     {
       "id": "dashboard-design",
@@ -70464,7 +70464,7 @@
       ],
       "file": "product-design/interaction-design/progressive-disclosure.md",
       "exists": true,
-      "char_count": 1348
+      "char_count": 2438
     },
     {
       "id": "gamification",
@@ -71769,7 +71769,7 @@
       ],
       "file": "product-design/user-research/contextual-inquiry.md",
       "exists": true,
-      "char_count": 1340
+      "char_count": 2073
     },
     {
       "id": "accessibility-research",
@@ -71784,7 +71784,7 @@
       ],
       "file": "product-design/user-research/accessibility-research.md",
       "exists": true,
-      "char_count": 1438
+      "char_count": 2367
     },
     {
       "id": "diary-study",
@@ -71934,7 +71934,7 @@
       ],
       "file": "product-design/user-research/research-synthesis.md",
       "exists": true,
-      "char_count": 1417
+      "char_count": 2627
     },
     {
       "id": "research-planning",
@@ -72294,7 +72294,7 @@
       ],
       "file": "product-design/visual-design/design-token.md",
       "exists": true,
-      "char_count": 1334
+      "char_count": 2857
     },
     {
       "id": "motion-design",
@@ -75014,7 +75014,7 @@
       ],
       "file": "psychology/personality-psychology/dark-triad.md",
       "exists": true,
-      "char_count": 1440
+      "char_count": 2802
     },
     {
       "id": "apa-style",
@@ -75539,7 +75539,7 @@
       ],
       "file": "psychology/social-psychology/love-psychology.md",
       "exists": true,
-      "char_count": 1426
+      "char_count": 2671
     },
     {
       "id": "social-media-psychology",
@@ -86903,7 +86903,7 @@
       ],
       "file": "writing/academic-writing/data-visualization-writing.md",
       "exists": true,
-      "char_count": 1588
+      "char_count": 2794
     },
     {
       "id": "literature-review",
@@ -87023,7 +87023,7 @@
       ],
       "file": "writing/academic-writing/conclusion-writing.md",
       "exists": true,
-      "char_count": 1428
+      "char_count": 2556
     },
     {
       "id": "plagiarism-avoidance",
@@ -87083,7 +87083,7 @@
       ],
       "file": "writing/creative-writing/writing-workshop.md",
       "exists": true,
-      "char_count": 1338
+      "char_count": 2468
     },
     {
       "id": "writing-prompts",
@@ -87698,7 +87698,7 @@
       ],
       "file": "writing/narrative-writing/theme-development.md",
       "exists": true,
-      "char_count": 1333
+      "char_count": 2709
     },
     {
       "id": "character-creation",
@@ -87848,7 +87848,7 @@
       ],
       "file": "writing/narrative-writing/setting-description.md",
       "exists": true,
-      "char_count": 1424
+      "char_count": 2539
     },
     {
       "id": "dialogue-writing",
@@ -88253,7 +88253,7 @@
       ],
       "file": "writing/persuasive-writing/persuasive-ethics.md",
       "exists": true,
-      "char_count": 1346
+      "char_count": 2386
     },
     {
       "id": "persuasive-techniques",
@@ -88343,7 +88343,7 @@
       ],
       "file": "writing/professional-writing/seo-writing.md",
       "exists": true,
-      "char_count": 1338
+      "char_count": 2466
     },
     {
       "id": "meeting-minutes",
@@ -88613,7 +88613,7 @@
       ],
       "file": "writing/professional-writing/newsletter-writing.md",
       "exists": true,
-      "char_count": 1350
+      "char_count": 2629
     },
     {
       "id": "grant-report",
@@ -88628,7 +88628,7 @@
       ],
       "file": "writing/professional-writing/grant-report.md",
       "exists": true,
-      "char_count": 1349
+      "char_count": 2224
     },
     {
       "id": "ai-writing-tools",

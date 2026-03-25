@@ -3913,7 +3913,7 @@
       ],
       "file": "mathematics/trigonometry/inverse-trig.md",
       "exists": true,
-      "char_count": 1586
+      "char_count": 3009
     },
     {
       "id": "sum-difference-formulas",
@@ -4038,8 +4038,8 @@
   ],
   "stats": {
     "total": 269,
-    "total_chars": 703117,
-    "avg_chars": 2613,
+    "total_chars": 704540,
+    "avg_chars": 2619,
     "domain": "mathematics"
   }
 }

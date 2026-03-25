@@ -433,7 +433,7 @@
       ],
       "file": "physics/classical-mechanics/lagrangian-mechanics.md",
       "exists": true,
-      "char_count": 1569
+      "char_count": 3174
     },
     {
       "id": "friction",
@@ -1138,7 +1138,7 @@
       ],
       "file": "physics/fluid-mechanics/fluid-statics.md",
       "exists": true,
-      "char_count": 1430
+      "char_count": 2543
     },
     {
       "id": "buoyancy",
@@ -2173,7 +2173,7 @@
       ],
       "file": "physics/solid-state-physics/transistors-intro.md",
       "exists": true,
-      "char_count": 1571
+      "char_count": 2664
     },
     {
       "id": "crystal-structure",
@@ -2913,8 +2913,8 @@
   ],
   "stats": {
     "total": 194,
-    "total_chars": 469424,
-    "avg_chars": 2419,
+    "total_chars": 473235,
+    "avg_chars": 2439,
     "domain": "physics"
   }
 }

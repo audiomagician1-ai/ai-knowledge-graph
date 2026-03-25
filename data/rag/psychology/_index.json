@@ -2053,7 +2053,7 @@
       ],
       "file": "psychology/personality-psychology/dark-triad.md",
       "exists": true,
-      "char_count": 1440
+      "char_count": 2802
     },
     {
       "id": "apa-style",
@@ -2578,7 +2578,7 @@
       ],
       "file": "psychology/social-psychology/love-psychology.md",
       "exists": true,
-      "char_count": 1426
+      "char_count": 2671
     },
     {
       "id": "social-media-psychology",
@@ -2748,8 +2748,8 @@
   ],
   "stats": {
     "total": 183,
-    "total_chars": 387086,
-    "avg_chars": 2115,
+    "total_chars": 389693,
+    "avg_chars": 2129,
     "domain": "psychology"
   }
 }

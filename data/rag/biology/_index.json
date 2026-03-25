@@ -553,7 +553,7 @@
       ],
       "file": "biology/cell-biology/cell-differentiation.md",
       "exists": true,
-      "char_count": 1380
+      "char_count": 2580
     },
     {
       "id": "cell-cycle",
@@ -793,7 +793,7 @@
       ],
       "file": "biology/ecology/freshwater-ecology.md",
       "exists": true,
-      "char_count": 1446
+      "char_count": 2457
     },
     {
       "id": "nutrient-cycling",
@@ -2338,7 +2338,7 @@
       ],
       "file": "biology/molecular-biology/rna-types.md",
       "exists": true,
-      "char_count": 1564
+      "char_count": 2791
     },
     {
       "id": "central-dogma",
@@ -2488,7 +2488,7 @@
       ],
       "file": "biology/molecular-biology/protein-modification.md",
       "exists": true,
-      "char_count": 1481
+      "char_count": 2682
     },
     {
       "id": "proteomics",
@@ -2583,8 +2583,8 @@
   ],
   "stats": {
     "total": 172,
-    "total_chars": 399860,
-    "avg_chars": 2324,
+    "total_chars": 404499,
+    "avg_chars": 2351,
     "domain": "biology"
   }
 }
