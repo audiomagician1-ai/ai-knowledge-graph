@@ -62,14 +62,18 @@
 >   Batch 3 完成: 500篇Tier-B文档改写
 >   Batch P2 完成: 1000篇大域Tier-B改写
 >   Sprint 6 🔥进行中: **全量Tier-B升级** — `scripts/_batch_sprint6.py --max 3400`
->   进度: 599/3360完成 (17.8%), ~60/hr, 0错误, 后台进程PID 37164重启运行中
->   ⚠️ 旧PID 36196在~600进度处stalled(网络I/O hang), 已kill并重启(2026-03-26)
->   累计结果: **S=431(7.0%) A=2,961(48.1%) B=2,764(44.9%) C=0(0.0%)** 均分64.8
->   vs Sprint 4结束: S=145 A=639 B=5,368 C=0 均分49.5 → **提升幅度: +15.3分, A+S从12.8%→55.1%**
->   瓶颈分析: Specificity(30.4/100)和Density(40.6/100)是Tier-B两大短板
->   已知问题: 42个跨域同名slug(如storytelling-oral在english和writing两域), 进度追踪为slug-based可能漏处理第二份
->   已完成但仍Tier-B: 12篇(均分40-44), 需要第二轮强化改写
->   下一步: 后台进程持续运行(预计还需~46小时), 定期commit+push
+>   进度: 599/3360完成 (17.8%), ~60/hr, 0错误, 后台进程PID 41804运行中
+>   ⚠️ 旧PID 36196在~600处stalled, kill+重启PID 37164, 37164又stalled, kill+重启PID 41804(2026-03-26)
+>   累计结果: **S=436(7.1%) A=2,964(48.1%) B=2,756(44.8%) C=0(0.0%)** 均分64.8
+>   vs Sprint 4结束: S=145 A=639 B=5,368 C=0 均分49.5 → **提升幅度: +15.3分, A+S从12.8%→55.2%**
+>   瓶颈分析: Specificity(31.5/100)和Density(40.5/100)是Tier-B两大短板(chars仅1364 vs 高质量2889)
+>   已知问题: 42个跨域同名slug, 进度追踪为slug-based可能漏处理第二份
+>   Sprint 7 🔥进行中: **Tier-S Booster** — 二次精写顽固低分文档(score<50)
+>   脚本: `scripts/_batch_tier_s_booster.py` | 增强提示词: 强制2000+字/公式/代码/引用/6+节
+>   试点结果: **口头叙事 40.1→83.0, 平行结构 40.1→82.9, 内分泌系统 40.2→95.9** — 平均+47分!
+>   维度提升: spec 25→100, density 30→100, structure 70→100, teaching 66→99
+>   目标: 1053篇score<46文档全部提升到60+(Tier-A), 后台进程PID 39628运行中(max=200)
+>   下一步: Sprint 6后台持续, Sprint 7并行处理最低分文档, 定期commit+push
 **✅ Phase 37 完成**: 游戏开发全领域跨球体总验证 | 详见 `docs/EXPANSION_PLAN.md` 第十章
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
@@ -163,7 +167,7 @@
 > **Issue**: #32 (已关闭)
 
 ## Last Review
-**Date**: 2026-03-26 | **Scope**: Sprint 6 process recovery — stalled PID 36196 killed, wave 21 committed (23 docs), RAG indexes rebuilt, process restarted PID 37164 (~60/hr). Quality audit: avg 64.8, S=431/A=2961/B=2764/C=0, 42 cross-domain duplicate slugs identified, 12 stubborn Tier-B docs found (completed but still <45). Total 1,126 tests (897 BE + 229 FE) all pass | **Result**: passed
+**Date**: 2026-03-26 | **Scope**: Sprint 7 Tier-S Booster launch — created enhanced prompt for stubborn docs (<46 score). Pilot: 3 docs avg +47pts (40→88). Diagnostic: 1053 docs <46 share pattern (spec=31.5, density=40.5, chars=1364). Booster produces 2500-4500ch docs (spec=100, density=100, structure=100, teaching=99). Sprint 6 PID 37164 stalled→killed→restarted PID 41804. Two parallel pipelines: PID 41804 (Sprint 6 bulk) + PID 39628 (Sprint 7 booster max=200). Committed wave 22 (22 docs) + wave 22b (30 docs) + booster pilot. Pushed. Quality: avg 64.8, S=436/A=2964/B=2756/C=0. 1,126 tests pass | **Result**: passed
 
 **FSRS-5 实现摘要** (间隔重复引擎):
 > **目标**: 实现ADR-007指定的FSRS-5间隔重复算法, 替代空占位stub
