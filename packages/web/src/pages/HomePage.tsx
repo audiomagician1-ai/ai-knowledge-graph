@@ -93,6 +93,9 @@ const INITIAL_PAN_Y = 25;     // shift grid down for header
 const FRICTION = 0.93;
 const VEL_THRESHOLD = 0.3;
 const VEL_CAP = 35;
+const TAP_THRESHOLD_DESKTOP = 6;
+const TAP_THRESHOLD_MOBILE = 20;
+const TAP_HIT_PADDING_MOBILE = 8; // extra px added to bubble radius for easier tap on mobile
 
 /* ─── Helpers ─── */
 function completeness(c: number, e: number, s: number) { return c + e * 0.5 + s * 5; }
@@ -360,7 +363,8 @@ export function HomePage() {
     };
 
     const onUp = (e: PointerEvent) => {
-      const wasDrag = Math.abs(e.clientX - s.dragStartX) > 6 || Math.abs(e.clientY - s.dragStartY) > 6;
+      const tapThreshold = e.pointerType === 'touch' ? TAP_THRESHOLD_MOBILE : TAP_THRESHOLD_DESKTOP;
+      const wasDrag = Math.abs(e.clientX - s.dragStartX) > tapThreshold || Math.abs(e.clientY - s.dragStartY) > tapThreshold;
       s.dragging = false;
       cvs.releasePointerCapture(e.pointerId);
       // Cap velocity
@@ -405,9 +409,11 @@ export function HomePage() {
         }
         hits.sort((a, b) => b.sr - a.sr); // biggest first
 
+        const hitPad = e.pointerType === 'touch' ? TAP_HIT_PADDING_MOBILE : 0;
         for (const h of hits) {
           const dx = tapX - h.sx, dy = tapY - h.sy;
-          if (dx * dx + dy * dy <= h.sr * h.sr) {
+          const hitR = h.sr + hitPad;
+          if (dx * dx + dy * dy <= hitR * hitR) {
             const d = sorted[h.idx % N];
             setTrans({ id: d.id, cx: rect.left + h.sx, cy: rect.top + h.sy, color: d.color });
             timerRef.current = setTimeout(() => { if (alive.current) navRef.current('/domain/' + d.id); }, TRANSITION_MS);
