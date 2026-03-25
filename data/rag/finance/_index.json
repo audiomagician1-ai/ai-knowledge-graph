@@ -208,7 +208,7 @@
       ],
       "file": "finance/corporate-finance/working-capital.md",
       "exists": true,
-      "char_count": 1491
+      "char_count": 2451
     },
     {
       "id": "financial-distress",
@@ -1723,7 +1723,7 @@
       ],
       "file": "finance/quantitative-finance/quant-programming.md",
       "exists": true,
-      "char_count": 1393
+      "char_count": 2851
     },
     {
       "id": "quant-finance-overview",
@@ -2403,8 +2403,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 365096,
-    "avg_chars": 2281,
+    "total_chars": 367514,
+    "avg_chars": 2296,
     "domain": "finance"
   }
 }

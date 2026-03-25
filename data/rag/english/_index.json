@@ -793,7 +793,7 @@
       ],
       "file": "english/idioms-culture/internet-english.md",
       "exists": true,
-      "char_count": 1397
+      "char_count": 2725
     },
     {
       "id": "holiday-culture",
@@ -2398,7 +2398,7 @@
       ],
       "file": "english/tenses/past-perfect-cont.md",
       "exists": true,
-      "char_count": 1357
+      "char_count": 2947
     },
     {
       "id": "past-continuous",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 515314,
-    "avg_chars": 2576,
+    "total_chars": 518232,
+    "avg_chars": 2591,
     "domain": "english"
   }
 }

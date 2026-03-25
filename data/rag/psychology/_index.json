@@ -1693,7 +1693,7 @@
       ],
       "file": "psychology/developmental-psychology/language-development.md",
       "exists": true,
-      "char_count": 1269
+      "char_count": 2415
     },
     {
       "id": "moral-development",
@@ -2748,8 +2748,8 @@
   ],
   "stats": {
     "total": 183,
-    "total_chars": 398728,
-    "avg_chars": 2178,
+    "total_chars": 399874,
+    "avg_chars": 2185,
     "domain": "psychology"
   }
 }

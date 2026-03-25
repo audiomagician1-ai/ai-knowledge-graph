@@ -2383,7 +2383,7 @@
       ],
       "file": "mathematics/linear-algebra/eigenvalues-eigenvectors.md",
       "exists": true,
-      "char_count": 1545
+      "char_count": 2829
     },
     {
       "id": "matrix-multiplication",
@@ -2803,7 +2803,7 @@
       ],
       "file": "mathematics/number-theory/bezout-identity.md",
       "exists": true,
-      "char_count": 1482
+      "char_count": 2672
     },
     {
       "id": "fermats-little-theorem",
@@ -2938,7 +2938,7 @@
       ],
       "file": "mathematics/optimization/calculus-of-variations.md",
       "exists": true,
-      "char_count": 1383
+      "char_count": 2967
     },
     {
       "id": "multi-objective-opt",
@@ -4038,8 +4038,8 @@
   ],
   "stats": {
     "total": 269,
-    "total_chars": 707051,
-    "avg_chars": 2628,
+    "total_chars": 711109,
+    "avg_chars": 2643,
     "domain": "mathematics"
   }
 }

@@ -1738,7 +1738,7 @@
       ],
       "file": "game-design/difficulty-curve/rubber-band-difficulty.md",
       "exists": true,
-      "char_count": 1395
+      "char_count": 2325
     },
     {
       "id": "hardcore-difficulty",
@@ -2533,7 +2533,7 @@
       ],
       "file": "game-design/feedback-systems/hit-stop.md",
       "exists": true,
-      "char_count": 1383
+      "char_count": 2169
     },
     {
       "id": "onboarding-design",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 580298,
-    "avg_chars": 2321,
+    "total_chars": 582014,
+    "avg_chars": 2328,
     "domain": "game-design"
   }
 }

@@ -7434,7 +7434,7 @@
       ],
       "file": "biology/botany-zoology/developmental-biology.md",
       "exists": true,
-      "char_count": 1385
+      "char_count": 2857
     },
     {
       "id": "invertebrate-biology",
@@ -8214,7 +8214,7 @@
       ],
       "file": "biology/ecology/population-dynamics.md",
       "exists": true,
-      "char_count": 1390
+      "char_count": 2556
     },
     {
       "id": "population-ecology",
@@ -18129,7 +18129,7 @@
       ],
       "file": "economics/behavioral-econ/heuristics-econ.md",
       "exists": true,
-      "char_count": 1382
+      "char_count": 2228
     },
     {
       "id": "experimental-economics",
@@ -18159,7 +18159,7 @@
       ],
       "file": "economics/behavioral-econ/mental-accounting.md",
       "exists": true,
-      "char_count": 1381
+      "char_count": 2456
     },
     {
       "id": "time-inconsistency-behav",
@@ -18234,7 +18234,7 @@
       ],
       "file": "economics/behavioral-econ/social-preferences.md",
       "exists": true,
-      "char_count": 1493
+      "char_count": 2484
     },
     {
       "id": "neuroeconomics",
@@ -18249,7 +18249,7 @@
       ],
       "file": "economics/behavioral-econ/neuroeconomics.md",
       "exists": true,
-      "char_count": 1506
+      "char_count": 2443
     },
     {
       "id": "herding-behavior",
@@ -18519,7 +18519,7 @@
       ],
       "file": "economics/development-econ/gender-economics.md",
       "exists": true,
-      "char_count": 1502
+      "char_count": 2814
     },
     {
       "id": "technology-transfer",
@@ -18624,7 +18624,7 @@
       ],
       "file": "economics/development-econ/informal-economy.md",
       "exists": true,
-      "char_count": 1500
+      "char_count": 2515
     },
     {
       "id": "propensity-score",
@@ -18654,7 +18654,7 @@
       ],
       "file": "economics/econometrics/hypothesis-testing-econ.md",
       "exists": true,
-      "char_count": 1485
+      "char_count": 2900
     },
     {
       "id": "endogeneity",
@@ -18864,7 +18864,7 @@
       ],
       "file": "economics/econometrics/panel-data.md",
       "exists": true,
-      "char_count": 1482
+      "char_count": 3164
     },
     {
       "id": "chinese-economic-thought",
@@ -19044,7 +19044,7 @@
       ],
       "file": "economics/economic-thought/ecological-economics.md",
       "exists": true,
-      "char_count": 1513
+      "char_count": 2533
     },
     {
       "id": "economic-thought-overview",
@@ -19584,7 +19584,7 @@
       ],
       "file": "economics/macroeconomics/national-debt.md",
       "exists": true,
-      "char_count": 1514
+      "char_count": 2583
     },
     {
       "id": "unemployment",
@@ -21429,7 +21429,7 @@
       ],
       "file": "english/idioms-culture/internet-english.md",
       "exists": true,
-      "char_count": 1397
+      "char_count": 2725
     },
     {
       "id": "holiday-culture",
@@ -23034,7 +23034,7 @@
       ],
       "file": "english/tenses/past-perfect-cont.md",
       "exists": true,
-      "char_count": 1357
+      "char_count": 2947
     },
     {
       "id": "past-continuous",
@@ -23844,7 +23844,7 @@
       ],
       "file": "finance/corporate-finance/working-capital.md",
       "exists": true,
-      "char_count": 1491
+      "char_count": 2451
     },
     {
       "id": "financial-distress",
@@ -25359,7 +25359,7 @@
       ],
       "file": "finance/quantitative-finance/quant-programming.md",
       "exists": true,
-      "char_count": 1393
+      "char_count": 2851
     },
     {
       "id": "quant-finance-overview",
@@ -32814,7 +32814,7 @@
       ],
       "file": "game-design/difficulty-curve/rubber-band-difficulty.md",
       "exists": true,
-      "char_count": 1395
+      "char_count": 2325
     },
     {
       "id": "hardcore-difficulty",
@@ -33609,7 +33609,7 @@
       ],
       "file": "game-design/feedback-systems/hit-stop.md",
       "exists": true,
-      "char_count": 1383
+      "char_count": 2169
     },
     {
       "id": "onboarding-design",
@@ -51469,7 +51469,7 @@
       ],
       "file": "level-design/blockout/kit-bashing.md",
       "exists": true,
-      "char_count": 1405
+      "char_count": 2333
     },
     {
       "id": "proxy-asset",
@@ -52789,7 +52789,7 @@
       ],
       "file": "level-design/level-editor/data-layer.md",
       "exists": true,
-      "char_count": 1373
+      "char_count": 2406
     },
     {
       "id": "foliage-tool",
@@ -54154,7 +54154,7 @@
       ],
       "file": "level-design/terrain-design/terrain-data.md",
       "exists": true,
-      "char_count": 1488
+      "char_count": 3029
     },
     {
       "id": "terrain-material",
@@ -57217,7 +57217,7 @@
       ],
       "file": "mathematics/linear-algebra/eigenvalues-eigenvectors.md",
       "exists": true,
-      "char_count": 1545
+      "char_count": 2829
     },
     {
       "id": "matrix-multiplication",
@@ -57637,7 +57637,7 @@
       ],
       "file": "mathematics/number-theory/bezout-identity.md",
       "exists": true,
-      "char_count": 1482
+      "char_count": 2672
     },
     {
       "id": "fermats-little-theorem",
@@ -57772,7 +57772,7 @@
       ],
       "file": "mathematics/optimization/calculus-of-variations.md",
       "exists": true,
-      "char_count": 1383
+      "char_count": 2967
     },
     {
       "id": "multi-objective-opt",
@@ -64524,7 +64524,7 @@
       ],
       "file": "philosophy/ancient-philosophy/skepticism-ancient.md",
       "exists": true,
-      "char_count": 1504
+      "char_count": 2689
     },
     {
       "id": "mozi",
@@ -64869,7 +64869,7 @@
       ],
       "file": "philosophy/epistemology/virtue-epistemology.md",
       "exists": true,
-      "char_count": 1491
+      "char_count": 2814
     },
     {
       "id": "skepticism",
@@ -65469,7 +65469,7 @@
       ],
       "file": "philosophy/ethics/moral-relativism.md",
       "exists": true,
-      "char_count": 1398
+      "char_count": 2634
     },
     {
       "id": "propositional-logic",
@@ -74654,7 +74654,7 @@
       ],
       "file": "psychology/developmental-psychology/language-development.md",
       "exists": true,
-      "char_count": 1269
+      "char_count": 2415
     },
     {
       "id": "moral-development",
@@ -87068,7 +87068,7 @@
       ],
       "file": "writing/creative-writing/childrens-writing.md",
       "exists": true,
-      "char_count": 1288
+      "char_count": 2221
     },
     {
       "id": "writing-workshop",
@@ -87473,7 +87473,7 @@
       ],
       "file": "writing/expository-writing/definition-essay.md",
       "exists": true,
-      "char_count": 1277
+      "char_count": 2419
     },
     {
       "id": "technical-description",
@@ -87563,7 +87563,7 @@
       ],
       "file": "writing/expository-writing/comparison-contrast.md",
       "exists": true,
-      "char_count": 1280
+      "char_count": 2479
     },
     {
       "id": "science-writing",

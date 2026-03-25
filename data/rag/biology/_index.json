@@ -148,7 +148,7 @@
       ],
       "file": "biology/botany-zoology/developmental-biology.md",
       "exists": true,
-      "char_count": 1385
+      "char_count": 2857
     },
     {
       "id": "invertebrate-biology",
@@ -928,7 +928,7 @@
       ],
       "file": "biology/ecology/population-dynamics.md",
       "exists": true,
-      "char_count": 1390
+      "char_count": 2556
     },
     {
       "id": "population-ecology",
@@ -2583,8 +2583,8 @@
   ],
   "stats": {
     "total": 172,
-    "total_chars": 409613,
-    "avg_chars": 2381,
+    "total_chars": 412251,
+    "avg_chars": 2396,
     "domain": "biology"
   }
 }

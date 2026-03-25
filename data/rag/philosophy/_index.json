@@ -403,7 +403,7 @@
       ],
       "file": "philosophy/ancient-philosophy/skepticism-ancient.md",
       "exists": true,
-      "char_count": 1504
+      "char_count": 2689
     },
     {
       "id": "mozi",
@@ -748,7 +748,7 @@
       ],
       "file": "philosophy/epistemology/virtue-epistemology.md",
       "exists": true,
-      "char_count": 1491
+      "char_count": 2814
     },
     {
       "id": "skepticism",
@@ -1348,7 +1348,7 @@
       ],
       "file": "philosophy/ethics/moral-relativism.md",
       "exists": true,
-      "char_count": 1398
+      "char_count": 2634
     },
     {
       "id": "propositional-logic",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 381372,
-    "avg_chars": 2243,
+    "total_chars": 385116,
+    "avg_chars": 2265,
     "domain": "philosophy"
   }
 }

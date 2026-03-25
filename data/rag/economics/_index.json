@@ -43,7 +43,7 @@
       ],
       "file": "economics/behavioral-econ/heuristics-econ.md",
       "exists": true,
-      "char_count": 1382
+      "char_count": 2228
     },
     {
       "id": "experimental-economics",
@@ -73,7 +73,7 @@
       ],
       "file": "economics/behavioral-econ/mental-accounting.md",
       "exists": true,
-      "char_count": 1381
+      "char_count": 2456
     },
     {
       "id": "time-inconsistency-behav",
@@ -148,7 +148,7 @@
       ],
       "file": "economics/behavioral-econ/social-preferences.md",
       "exists": true,
-      "char_count": 1493
+      "char_count": 2484
     },
     {
       "id": "neuroeconomics",
@@ -163,7 +163,7 @@
       ],
       "file": "economics/behavioral-econ/neuroeconomics.md",
       "exists": true,
-      "char_count": 1506
+      "char_count": 2443
     },
     {
       "id": "herding-behavior",
@@ -433,7 +433,7 @@
       ],
       "file": "economics/development-econ/gender-economics.md",
       "exists": true,
-      "char_count": 1502
+      "char_count": 2814
     },
     {
       "id": "technology-transfer",
@@ -538,7 +538,7 @@
       ],
       "file": "economics/development-econ/informal-economy.md",
       "exists": true,
-      "char_count": 1500
+      "char_count": 2515
     },
     {
       "id": "propensity-score",
@@ -568,7 +568,7 @@
       ],
       "file": "economics/econometrics/hypothesis-testing-econ.md",
       "exists": true,
-      "char_count": 1485
+      "char_count": 2900
     },
     {
       "id": "endogeneity",
@@ -778,7 +778,7 @@
       ],
       "file": "economics/econometrics/panel-data.md",
       "exists": true,
-      "char_count": 1482
+      "char_count": 3164
     },
     {
       "id": "chinese-economic-thought",
@@ -958,7 +958,7 @@
       ],
       "file": "economics/economic-thought/ecological-economics.md",
       "exists": true,
-      "char_count": 1513
+      "char_count": 2533
     },
     {
       "id": "economic-thought-overview",
@@ -1498,7 +1498,7 @@
       ],
       "file": "economics/macroeconomics/national-debt.md",
       "exists": true,
-      "char_count": 1514
+      "char_count": 2583
     },
     {
       "id": "unemployment",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 365862,
-    "avg_chars": 2152,
+    "total_chars": 377224,
+    "avg_chars": 2218,
     "domain": "economics"
   }
 }

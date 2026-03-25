@@ -103,7 +103,7 @@
       ],
       "file": "level-design/blockout/kit-bashing.md",
       "exists": true,
-      "char_count": 1405
+      "char_count": 2333
     },
     {
       "id": "proxy-asset",
@@ -1423,7 +1423,7 @@
       ],
       "file": "level-design/level-editor/data-layer.md",
       "exists": true,
-      "char_count": 1373
+      "char_count": 2406
     },
     {
       "id": "foliage-tool",
@@ -2788,7 +2788,7 @@
       ],
       "file": "level-design/terrain-design/terrain-data.md",
       "exists": true,
-      "char_count": 1488
+      "char_count": 3029
     },
     {
       "id": "terrain-material",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 456013,
-    "avg_chars": 2280,
+    "total_chars": 459515,
+    "avg_chars": 2297,
     "domain": "level-design"
   }
 }

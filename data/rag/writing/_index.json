@@ -358,7 +358,7 @@
       ],
       "file": "writing/creative-writing/childrens-writing.md",
       "exists": true,
-      "char_count": 1288
+      "char_count": 2221
     },
     {
       "id": "writing-workshop",
@@ -763,7 +763,7 @@
       ],
       "file": "writing/expository-writing/definition-essay.md",
       "exists": true,
-      "char_count": 1277
+      "char_count": 2419
     },
     {
       "id": "technical-description",
@@ -853,7 +853,7 @@
       ],
       "file": "writing/expository-writing/comparison-contrast.md",
       "exists": true,
-      "char_count": 1280
+      "char_count": 2479
     },
     {
       "id": "science-writing",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 388371,
-    "avg_chars": 2284,
+    "total_chars": 391645,
+    "avg_chars": 2303,
     "domain": "writing"
   }
 }
