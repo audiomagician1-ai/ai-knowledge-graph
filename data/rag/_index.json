@@ -24159,7 +24159,7 @@
       ],
       "file": "finance/fintech/regtech.md",
       "exists": true,
-      "char_count": 1330
+      "char_count": 2504
     },
     {
       "id": "mobile-payment",
@@ -24504,7 +24504,7 @@
       ],
       "file": "finance/fixed-income/abs-mbs.md",
       "exists": true,
-      "char_count": 1429
+      "char_count": 2763
     },
     {
       "id": "inflation-linked-bonds",
@@ -24789,7 +24789,7 @@
       ],
       "file": "finance/investment-basics/fee-impact.md",
       "exists": true,
-      "char_count": 1328
+      "char_count": 2528
     },
     {
       "id": "asset-classes",
@@ -25104,7 +25104,7 @@
       ],
       "file": "finance/personal-finance/inflation-hedging.md",
       "exists": true,
-      "char_count": 1350
+      "char_count": 2057
     },
     {
       "id": "estate-planning",
@@ -25674,7 +25674,7 @@
       ],
       "file": "finance/risk-management/systemic-risk.md",
       "exists": true,
-      "char_count": 1346
+      "char_count": 2701
     },
     {
       "id": "derivatives-overview",
@@ -31494,7 +31494,7 @@
       ],
       "file": "game-design/balance-design/co-op-balance.md",
       "exists": true,
-      "char_count": 1321
+      "char_count": 2553
     },
     {
       "id": "symmetric-balance",
@@ -32064,7 +32064,7 @@
       ],
       "file": "game-design/core-loop/session-design.md",
       "exists": true,
-      "char_count": 1420
+      "char_count": 2265
     },
     {
       "id": "engagement-loop",
@@ -32709,7 +32709,7 @@
       ],
       "file": "game-design/difficulty-curve/fail-state.md",
       "exists": true,
-      "char_count": 1421
+      "char_count": 2185
     },
     {
       "id": "learning-curve",
@@ -33504,7 +33504,7 @@
       ],
       "file": "game-design/feedback-systems/social-feedback.md",
       "exists": true,
-      "char_count": 1426
+      "char_count": 2505
     },
     {
       "id": "visual-feedback",
@@ -33669,7 +33669,7 @@
       ],
       "file": "game-design/player-psychology/decision-fatigue.md",
       "exists": true,
-      "char_count": 1334
+      "char_count": 2465
     },
     {
       "id": "variable-reward",
@@ -52189,7 +52189,7 @@
       ],
       "file": "level-design/guidance-design/gating-mechanic.md",
       "exists": true,
-      "char_count": 1427
+      "char_count": 2227
     },
     {
       "id": "implicit-vs-explicit",
@@ -52249,7 +52249,7 @@
       ],
       "file": "level-design/guidance-design/audio-guidance.md",
       "exists": true,
-      "char_count": 1334
+      "char_count": 2241
     },
     {
       "id": "bug-report-ld",
@@ -53554,7 +53554,7 @@
       ],
       "file": "level-design/pacing-curve/narrative-pacing.md",
       "exists": true,
-      "char_count": 1427
+      "char_count": 2314
     },
     {
       "id": "backtracking-design",
@@ -53974,7 +53974,7 @@
       ],
       "file": "level-design/spatial-narrative/env-storytelling.md",
       "exists": true,
-      "char_count": 1346
+      "char_count": 2448
     },
     {
       "id": "looping-path",
@@ -56662,7 +56662,7 @@
       ],
       "file": "mathematics/geometry/congruent-triangles.md",
       "exists": true,
-      "char_count": 1443
+      "char_count": 2445
     },
     {
       "id": "geometric-proofs",
@@ -64329,7 +64329,7 @@
       ],
       "file": "philosophy/aesthetics/art-criticism.md",
       "exists": true,
-      "char_count": 1354
+      "char_count": 2404
     },
     {
       "id": "definition-of-art",
@@ -64359,7 +64359,7 @@
       ],
       "file": "philosophy/aesthetics/expression-theory.md",
       "exists": true,
-      "char_count": 1341
+      "char_count": 2792
     },
     {
       "id": "taste-theory",
@@ -64404,7 +64404,7 @@
       ],
       "file": "philosophy/ancient-philosophy/plato-republic.md",
       "exists": true,
-      "char_count": 1436
+      "char_count": 2197
     },
     {
       "id": "aristotle",
@@ -64659,7 +64659,7 @@
       ],
       "file": "philosophy/ancient-philosophy/sophists.md",
       "exists": true,
-      "char_count": 1430
+      "char_count": 2414
     },
     {
       "id": "plato",
@@ -65199,7 +65199,7 @@
       ],
       "file": "philosophy/ethics/care-ethics.md",
       "exists": true,
-      "char_count": 1341
+      "char_count": 2707
     },
     {
       "id": "utilitarianism",
@@ -65529,7 +65529,7 @@
       ],
       "file": "philosophy/logic-reasoning/paradoxes.md",
       "exists": true,
-      "char_count": 1347
+      "char_count": 2745
     },
     {
       "id": "critical-thinking",
@@ -65709,7 +65709,7 @@
       ],
       "file": "philosophy/logic-reasoning/set-theory-phil.md",
       "exists": true,
-      "char_count": 1328
+      "char_count": 2592
     },
     {
       "id": "informal-fallacies",
@@ -65844,7 +65844,7 @@
       ],
       "file": "philosophy/metaphysics/materialism-physicalism.md",
       "exists": true,
-      "char_count": 1375
+      "char_count": 2394
     },
     {
       "id": "causation",
@@ -88223,7 +88223,7 @@
       ],
       "file": "writing/persuasive-writing/argument-structure.md",
       "exists": true,
-      "char_count": 1748
+      "char_count": 2662
     },
     {
       "id": "persuasive-overview",

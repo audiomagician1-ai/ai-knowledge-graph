@@ -1513,7 +1513,7 @@
       ],
       "file": "writing/persuasive-writing/argument-structure.md",
       "exists": true,
-      "char_count": 1748
+      "char_count": 2662
     },
     {
       "id": "persuasive-overview",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 359520,
-    "avg_chars": 2114,
+    "total_chars": 360434,
+    "avg_chars": 2120,
     "domain": "writing"
   }
 }

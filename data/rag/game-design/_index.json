@@ -418,7 +418,7 @@
       ],
       "file": "game-design/balance-design/co-op-balance.md",
       "exists": true,
-      "char_count": 1321
+      "char_count": 2553
     },
     {
       "id": "symmetric-balance",
@@ -988,7 +988,7 @@
       ],
       "file": "game-design/core-loop/session-design.md",
       "exists": true,
-      "char_count": 1420
+      "char_count": 2265
     },
     {
       "id": "engagement-loop",
@@ -1633,7 +1633,7 @@
       ],
       "file": "game-design/difficulty-curve/fail-state.md",
       "exists": true,
-      "char_count": 1421
+      "char_count": 2185
     },
     {
       "id": "learning-curve",
@@ -2428,7 +2428,7 @@
       ],
       "file": "game-design/feedback-systems/social-feedback.md",
       "exists": true,
-      "char_count": 1426
+      "char_count": 2505
     },
     {
       "id": "visual-feedback",
@@ -2593,7 +2593,7 @@
       ],
       "file": "game-design/player-psychology/decision-fatigue.md",
       "exists": true,
-      "char_count": 1334
+      "char_count": 2465
     },
     {
       "id": "variable-reward",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 559059,
-    "avg_chars": 2236,
+    "total_chars": 564110,
+    "avg_chars": 2256,
     "domain": "game-design"
   }
 }

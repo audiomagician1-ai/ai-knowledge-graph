@@ -1828,7 +1828,7 @@
       ],
       "file": "mathematics/geometry/congruent-triangles.md",
       "exists": true,
-      "char_count": 1443
+      "char_count": 2445
     },
     {
       "id": "geometric-proofs",
@@ -4038,8 +4038,8 @@
   ],
   "stats": {
     "total": 269,
-    "total_chars": 702115,
-    "avg_chars": 2610,
+    "total_chars": 703117,
+    "avg_chars": 2613,
     "domain": "mathematics"
   }
 }

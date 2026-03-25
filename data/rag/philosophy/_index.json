@@ -208,7 +208,7 @@
       ],
       "file": "philosophy/aesthetics/art-criticism.md",
       "exists": true,
-      "char_count": 1354
+      "char_count": 2404
     },
     {
       "id": "definition-of-art",
@@ -238,7 +238,7 @@
       ],
       "file": "philosophy/aesthetics/expression-theory.md",
       "exists": true,
-      "char_count": 1341
+      "char_count": 2792
     },
     {
       "id": "taste-theory",
@@ -283,7 +283,7 @@
       ],
       "file": "philosophy/ancient-philosophy/plato-republic.md",
       "exists": true,
-      "char_count": 1436
+      "char_count": 2197
     },
     {
       "id": "aristotle",
@@ -538,7 +538,7 @@
       ],
       "file": "philosophy/ancient-philosophy/sophists.md",
       "exists": true,
-      "char_count": 1430
+      "char_count": 2414
     },
     {
       "id": "plato",
@@ -1078,7 +1078,7 @@
       ],
       "file": "philosophy/ethics/care-ethics.md",
       "exists": true,
-      "char_count": 1341
+      "char_count": 2707
     },
     {
       "id": "utilitarianism",
@@ -1408,7 +1408,7 @@
       ],
       "file": "philosophy/logic-reasoning/paradoxes.md",
       "exists": true,
-      "char_count": 1347
+      "char_count": 2745
     },
     {
       "id": "critical-thinking",
@@ -1588,7 +1588,7 @@
       ],
       "file": "philosophy/logic-reasoning/set-theory-phil.md",
       "exists": true,
-      "char_count": 1328
+      "char_count": 2592
     },
     {
       "id": "informal-fallacies",
@@ -1723,7 +1723,7 @@
       ],
       "file": "philosophy/metaphysics/materialism-physicalism.md",
       "exists": true,
-      "char_count": 1375
+      "char_count": 2394
     },
     {
       "id": "causation",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 338798,
-    "avg_chars": 1992,
+    "total_chars": 348091,
+    "avg_chars": 2047,
     "domain": "philosophy"
   }
 }

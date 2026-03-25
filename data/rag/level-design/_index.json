@@ -823,7 +823,7 @@
       ],
       "file": "level-design/guidance-design/gating-mechanic.md",
       "exists": true,
-      "char_count": 1427
+      "char_count": 2227
     },
     {
       "id": "implicit-vs-explicit",
@@ -883,7 +883,7 @@
       ],
       "file": "level-design/guidance-design/audio-guidance.md",
       "exists": true,
-      "char_count": 1334
+      "char_count": 2241
     },
     {
       "id": "bug-report-ld",
@@ -2188,7 +2188,7 @@
       ],
       "file": "level-design/pacing-curve/narrative-pacing.md",
       "exists": true,
-      "char_count": 1427
+      "char_count": 2314
     },
     {
       "id": "backtracking-design",
@@ -2608,7 +2608,7 @@
       ],
       "file": "level-design/spatial-narrative/env-storytelling.md",
       "exists": true,
-      "char_count": 1346
+      "char_count": 2448
     },
     {
       "id": "looping-path",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 444721,
-    "avg_chars": 2223,
+    "total_chars": 448417,
+    "avg_chars": 2242,
     "domain": "level-design"
   }
 }
