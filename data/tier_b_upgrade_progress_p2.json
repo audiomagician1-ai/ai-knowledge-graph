@@ -859,10 +859,30 @@
     "pagination-cursor",
     "secret-management",
     "anim-humanoid-rig",
-    "anim-mocap-workflow"
+    "anim-mocap-workflow",
+    "anim-state-machine-perf",
+    "anim-water-interaction",
+    "cg-blending",
+    "cg-path-tracing",
+    "cg-mis",
+    "cg-fresnel",
+    "cg-screen-space-gi",
+    "cg-irradiance-volume",
+    "cg-sky-atmosphere",
+    "cg-cloud-rendering",
+    "cg-gpu-scheduling",
+    "cg-geometry-shader",
+    "cg-mesh-streaming",
+    "cg-fluid-rendering",
+    "cg-specular-aa",
+    "cg-perf-counter",
+    "cd-contour-drawing",
+    "cd-horizon-line",
+    "cd-env-natural-formation",
+    "cd-prop-size-chart"
   ],
   "errors": [],
-  "total_upgraded": 860,
+  "total_upgraded": 880,
   "started_at": "2026-03-24T20:22:43.388321",
-  "last_updated": "2026-03-25T10:08:52.102474"
+  "last_updated": "2026-03-25T10:27:43.843306"
 }
