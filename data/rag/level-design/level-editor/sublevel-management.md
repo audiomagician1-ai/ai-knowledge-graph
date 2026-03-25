@@ -27,70 +27,71 @@ updated_at: 2026-03-26
 
 
 
+
 # 子关卡管理
 
 ## 概述
 
-子关卡管理（Sub-level Management）是UE5关卡编辑器中将单个持久关卡（Persistent Level）拆分为多个可独立加载的子关卡（Sub-level）并对其进行组织、控制加载状态与协作权限的工作流体系。其核心数据结构体现在 `.umap` 文件中，每个子关卡本质上是一个独立的地图文件，通过持久关卡的 World Composition 或 Level Streaming 机制动态关联。
+子关卡管理（Sub-level Management）是虚幻引擎5关卡编辑器中用于将单一大型游戏世界拆分为多个独立 `.umap` 文件并集中调度的技术体系。其核心工作面板位于编辑器菜单 **Window → Levels**，在这个面板中，开发者可以看到持久关卡（Persistent Level）作为根节点，以及挂载于其下的所有子关卡列表。每个子关卡本质上是一个独立的 ULevel 资产，可单独保存、单独加载，并拥有各自的 Actor 集合。
 
-子关卡概念最早在UE3时代以"Level Streaming"名义引入，目的是突破单关卡Actor数量上限以及解决大世界加载瓶颈。进入UE5之后，World Partition系统在一定程度上自动化了流式加载，但对于需要精细手工控制加载边界、团队多人协作或保留UE4工作流的项目，传统子关卡管理依然是首选方案。
+这一机制最早在虚幻引擎3时代以 Streaming Level 的形式出现，UE5 中通过 World Partition 对其进行了补充，但传统子关卡工作流仍广泛应用于需要精细手工控制加载时机的项目，尤其是多人协作开发场景。当两名设计师同时工作于同一游戏世界时，将地形放入 `Level_Terrain.umap`、将建筑放入 `Level_Buildings.umap` 可彻底避免 `.umap` 文件的 Git 冲突。
 
-在实际项目中，子关卡管理的价值体现在三个层面：其一是**内存控制**，可按需加载局部场景资产；其二是**协作隔离**，不同美术或关卡设计师各自持有独立的 `.umap` 文件，避免多人编辑同一文件时的版本冲突；其三是**逻辑分层**，例如将地形、植被、音效触发体、Gameplay Actor分别放置于独立子关卡，便于按类别管理与调试。
+子关卡管理对性能影响直接且可量化：通过将玩家当前视野范围内的区域对应的子关卡标记为"流送加载"，可将单帧内驻留内存的 Actor 数量控制在合理范围，而非一次性将整个世界加载进内存。
 
 ---
 
 ## 核心原理
 
-### 子关卡的层级结构与 Levels 面板
+### 子关卡的三种显示状态
 
-UE5编辑器中通过菜单 **Window → Levels** 打开关卡管理面板。面板以树状列表显示持久关卡及其挂载的所有子关卡。每个子关卡条目左侧有一个眼睛图标（控制编辑器视口可见性）和一把锁图标（控制写入权限）。持久关卡始终常驻内存，子关卡可被标记为以下四种流式加载类型：
+在 Levels 面板中，每个子关卡右侧有三个状态图标，对应不同的编辑器可见性与运行时行为：
 
-- **Always Loaded**：随持久关卡同步加载，不可在运行时卸载；
-- **Blueprint**：由蓝图或 `UGameplayStatics::LoadStreamLevel()` 函数手动触发加载；
-- **Level Streaming Volume**：通过放置在场景中的 `ALevelStreamingVolume` Actor，当玩家摄像机进入/离开体积时自动触发加载或卸载；
-- **World Partition**（UE5新增）：由系统自动管理，通常不与传统子关卡混用。
+- **Visible（眼睛图标）**：该子关卡的 Actor 在视口中可见，但这仅影响编辑时预览，不影响打包后的加载逻辑。
+- **Locked（锁头图标）**：锁定后该子关卡中的 Actor 无法被选中或修改，常用于将已完成的区域锁定防误操作。
+- **Current Level（铅笔图标，蓝色高亮）**：任何新放置的 Actor 都会被写入当前激活的子关卡，而非持久关卡。初学者最常犯的错误就是忘记切换 Current Level，导致所有 Actor 堆积在持久关卡内。
 
-子关卡在 `UWorld` 对象内部以 `TArray<ULevelStreaming*>` 形式存储，每个 `ULevelStreaming` 实例维护自身的加载状态机，状态值包括 `Unloaded`、`Loading`、`Loaded`、`MakingVisible`、`LoadedVisible` 和 `Unloading`，状态转换在帧间异步完成。
+### 加载方式：Always Loaded 与 Blueprint 流送
 
-### 子关卡的加载与卸载流程
+子关卡有两种根本性的加载策略，在 Levels 面板中通过右键菜单 **Change Streaming Method** 切换：
 
-调用 `UGameplayStatics::LoadStreamLevel(WorldContextObject, LevelName, bMakeVisibleAfterLoad, bShouldBlockOnLoad, LatentInfo)` 时，引擎会在后台线程启动 `.umap` 包的异步反序列化，完成后在主线程执行 Actor 的 `BeginPlay` 并触发 `OnLevelLoaded` 委托。参数 `bShouldBlockOnLoad` 若设为 `true`，则在同一帧阻塞完成加载，适用于过场动画切换等场景，但会造成明显卡顿。
+1. **Always Loaded**：随持久关卡一同加载，在内存中始终存在。适用于全局共用的系统性内容，例如游戏模式 Actor、全局光照设置子关卡（通常命名为 `Level_Lighting`）。
 
-对应的卸载函数为 `UGameplayStatics::UnloadStreamLevel()`，该调用不会立即释放内存，引擎会等待当前帧渲染完毕、确认无引用残留后，在垃圾回收（GC）周期内才真正释放资产。因此在卸载后立刻查询子关卡状态仍可能返回 `Loaded`，需监听 `OnLevelUnloaded` 委托而非轮询。
+2. **Blueprint**（即 Level Streaming Volume / 蓝图控制）：通过节点 `Load Stream Level`（输入参数为子关卡名称字符串，如 `"Level_Zone_A"`）和 `Unload Stream Level` 在运行时动态装卸。`Load Stream Level` 节点有一个关键布尔引脚 **Make Visible After Load**，若设为 `false`，关卡会加载进内存但不渲染，可用于预热资源。
 
-### 协作权限控制：Checkout 与锁定机制
+### 权限控制与版本管理
 
-当项目接入 Perforce 或 Git LFS 等版本控制系统后，Levels 面板中每个子关卡右键菜单会出现 **Check Out** 选项，成功 Checkout 后锁图标变为解锁状态，该设计师方可移动或修改该子关卡内的 Actor。未被 Checkout 的子关卡默认处于只读状态，尝试修改时编辑器会弹出警告"Level is read-only"并拒绝写入。
-
-在无版本控制的本地协作场景中，可在子关卡右键菜单选择 **Make Current Level** 将其设为活跃编辑目标，再通过 **Lock** 功能手动锁定其他子关卡，防止误操作。活跃子关卡的名称会以**粗体**显示在 Levels 面板中，新放置的 Actor 将自动归属于当前活跃子关卡。
+UE5 与 Perforce 或 Git LFS 集成后，子关卡的文件级独立性直接转化为权限控制粒度。在 Levels 面板中右键子关卡选择 **Check Out** 即可通过 Source Control Provider 锁定该 `.umap` 文件，其他协作者的编辑器会将该子关卡显示为只读并呈现锁头标记。这意味着关卡划分方案本身就是一种团队权限规划——一个 30 人团队通常将子关卡按功能域切分：`Level_Gameplay`、`Level_Audio`、`Level_VFX` 分别由对应职能人员持有编辑权。
 
 ---
 
 ## 实际应用
 
-**开放世界场景分区加载**：以一张2km×2km的城镇地图为例，可将地图划分为16个500m×500m的网格子关卡，配合 `ALevelStreamingVolume` 设置触发半径为750m，确保玩家移动时周围3×3格子区域始终保持加载，其余区域卸载。这种方案在UE4时代被广泛采用，在UE5中仍适用于不开启World Partition的项目。
+**多区域开放世界的分区加载**：假设制作一个包含 6 个独立区域的 RPG 世界，每个区域对应一个子关卡（如 `Zone_Forest`、`Zone_Desert`）。在过渡走廊处放置 Level Streaming Volume，当玩家的 Camera 进入该 Volume 时，引擎自动触发相邻区域子关卡的 `Load Stream Level` 调用，预计加载时间控制在 0.5 秒以内（取决于子关卡内 Actor 复杂度和磁盘 IO 速率）。
 
-**多人协作分层管理**：在一个有5名关卡设计师的项目中，通常按以下子关卡命名约定分工：`L_Town_Terrain`（地形负责人）、`L_Town_Props`（场景美术）、`L_Town_Lighting`（灯光美术）、`L_Town_Gameplay`（关卡设计师）、`L_Town_Audio`（音频设计师）。每个子关卡单独提交Perforce，日常合并冲突率可降低至接近零。
+**光照子关卡的独立构建**：将所有光源和 Sky Atmosphere Actor 集中到一个独立的 `Level_Lighting.umap` 并设为 Always Loaded。这样在光照美术迭代时，只需对这一个 `.umap` 执行 **Build Lighting Only**，而不会因关卡加载顺序问题影响其他子关卡的光照贴图 ID 一致性。
 
-**编辑器调试用临时子关卡**：开发阶段可创建名为 `L_Debug_Overlay` 的专用子关卡，将碰撞可视化辅助线、导航网格可视化Actor统一放入其中，在打包发布前将该子关卡设为 `Always Loaded = false` 并从持久关卡引用中移除，实现零侵入式调试资产管理。
+**编辑器内的协作分工**：关卡设计师 A 持有 `Level_Blockout.umap` 的 Check Out，程序员 B 同时在 `Level_GameLogic.umap` 中放置 Trigger 和 Game Mode Override Actor，两人的修改完全独立，合并时不存在二进制冲突。
 
 ---
 
 ## 常见误区
 
-**误区一：认为子关卡坐标是独立的**
-部分初学者以为每个子关卡拥有自己的本地坐标系，实际上所有子关卡共享同一个世界空间（World Space），子关卡内的Actor坐标均为世界坐标。`ULevelStreaming` 提供了 `LevelTransform` 属性可整体偏移子关卡，但这是平移整个关卡的工具，不代表子关卡有独立坐标原点。误用此属性会导致碰撞与视觉位置错位。
+**误区一：将所有 Actor 放入持久关卡**
 
-**误区二：Always Loaded 等同于直接放入持久关卡**
-将子关卡设为 `Always Loaded` 后，该子关卡仍然以独立 `.umap` 文件存在，在编辑器协作、版本控制和内容分析（Reference Viewer）层面依然与持久关卡保持分离。与直接将Actor放入持久关卡相比，`Always Loaded` 子关卡的Actor在运行时略晚一帧完成初始化，若在 `GameMode::InitGame` 中直接查询这些Actor可能返回空指针。
+新手常常忽略切换 Current Level，导致持久关卡积累了数百个本应归属各子关卡的 Actor。这不仅破坏了流送加载的效果（持久关卡永远不会被卸载），还会造成协作冲突。正确做法是持久关卡只保留 World Settings、Player Start 和流送控制蓝图，业务 Actor 一律分配至对应子关卡。
 
-**误区三：子关卡卸载后资产立即释放**
-调用 `UnloadStreamLevel` 后立刻检查内存，会发现显存和内存占用并未下降。UE5的资产引用计数机制要求垃圾回收运行后才释放纹理和网格体。若需要强制立即释放，需在卸载委托触发后手动调用 `GEngine->ForceGarbageCollection(true)`，但这会导致当帧卡顿，生产环境中应谨慎使用。
+**误区二：混淆编辑器可见性与运行时加载状态**
+
+在 Levels 面板中关闭一个子关卡的眼睛图标，仅隐藏其在编辑器视口中的显示，**不会**改变该子关卡在打包游戏中的加载策略。若子关卡被设为 Always Loaded，无论编辑器里是否可见，运行时它都会加载。这两个维度完全独立，必须分别配置。
+
+**误区三：子关卡名称与路径的混用**
+
+`Load Stream Level` 节点接收的是子关卡的**短名称**（不含路径和扩展名），如填入 `"/Game/Maps/Zone_Forest"` 会导致加载失败并在输出日志中打印 `Warning: Failed to find streaming level`。正确输入应为 `"Zone_Forest"`，与 Levels 面板中显示的名称完全一致。
 
 ---
 
 ## 知识关联
 
-**前置知识**：使用子关卡管理需要熟悉UE5关卡编辑器的基本操作，包括Outliner面板中Actor的层级管理、持久关卡的创建流程，以及 `.umap` 与 `.uasset` 文件在Content Browser中的组织方式。没有这些基础，难以理解为何子关卡之间的Actor引用（Cross-Level Reference）需要特别注意——跨关卡引用会导致被引用关卡无法单独卸载，形成隐式依赖。
+子关卡管理建立在 **UE5 关卡编辑器** 基础操作之上——需要熟悉 `.umap` 的保存机制、Outliner 中的 Actor 归属显示，以及 Source Control 集成的配置方法，这些前置知识决定了能否正确识别 Current Level 指示器和 Check Out 状态。
 
-**延伸方向**：掌握子关卡管理后，可进一步学习UE5的 **World Partition** 系统——它本质上是对传统子关卡流式加载的自动化封装，以HLOD（Hierarchical Level of Detail）和Data Layers替代了手工划分的子关卡网格。此外，**Level Instance**（关卡实例）特性允许将子关卡以实例化方式多次放置于场景中，是传统子关卡管理体系的重要补充，适用于可复用的模块化场景单元（如重复出现的房间或关卡段落）。
+从子关卡管理出发，可以延伸至 **World Partition** 系统：后者是 UE5 对传统子关卡流送的自动化重构，将手动划分的子关卡替换为基于坐标网格的自动单元（Cell），流送决策由 World Partition Streaming Source 驱动。理解传统子关卡的手动加载/卸载逻辑，是评估何时应迁移到 World Partition、何时应保留手工子关卡控制的判断依据。此外，子关卡管理与 **Level Blueprint** 存在作用域绑定关系：每个子关卡拥有独立的 Level Blueprint，其中的事件和变量仅对本子关卡内的 Actor 生效，跨子关卡通信需借助 Game Instance 或 Event Dispatcher 实现。
