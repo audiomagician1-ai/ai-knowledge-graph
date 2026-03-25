@@ -51529,7 +51529,7 @@
       ],
       "file": "level-design/blockout/playable-path.md",
       "exists": true,
-      "char_count": 1544
+      "char_count": 2610
     },
     {
       "id": "navmesh-basics",
@@ -52324,7 +52324,7 @@
       ],
       "file": "level-design/ld-documentation/handoff-doc.md",
       "exists": true,
-      "char_count": 1223
+      "char_count": 2258
     },
     {
       "id": "top-down-map",
@@ -53809,7 +53809,7 @@
       ],
       "file": "level-design/spatial-narrative/theme-variation.md",
       "exists": true,
-      "char_count": 1232
+      "char_count": 2298
     },
     {
       "id": "ld-overview",
@@ -55762,7 +55762,7 @@
       ],
       "file": "mathematics/arithmetic/natural-numbers.md",
       "exists": true,
-      "char_count": 1523
+      "char_count": 2215
     },
     {
       "id": "negative-numbers",
@@ -58822,7 +58822,7 @@
       ],
       "file": "mathematics/trigonometry/law-of-sines.md",
       "exists": true,
-      "char_count": 1194
+      "char_count": 2362
     },
     {
       "id": "spherical-trig",
@@ -66264,7 +66264,7 @@
       ],
       "file": "philosophy/modern-philosophy/deconstruction.md",
       "exists": true,
-      "char_count": 1237
+      "char_count": 2726
     },
     {
       "id": "hermeneutics",
@@ -66279,7 +66279,7 @@
       ],
       "file": "philosophy/modern-philosophy/hermeneutics.md",
       "exists": true,
-      "char_count": 1247
+      "char_count": 2884
     },
     {
       "id": "philosophy-of-language",

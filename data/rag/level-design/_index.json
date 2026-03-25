@@ -163,7 +163,7 @@
       ],
       "file": "level-design/blockout/playable-path.md",
       "exists": true,
-      "char_count": 1544
+      "char_count": 2610
     },
     {
       "id": "navmesh-basics",
@@ -958,7 +958,7 @@
       ],
       "file": "level-design/ld-documentation/handoff-doc.md",
       "exists": true,
-      "char_count": 1223
+      "char_count": 2258
     },
     {
       "id": "top-down-map",
@@ -2443,7 +2443,7 @@
       ],
       "file": "level-design/spatial-narrative/theme-variation.md",
       "exists": true,
-      "char_count": 1232
+      "char_count": 2298
     },
     {
       "id": "ld-overview",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 441554,
-    "avg_chars": 2207,
+    "total_chars": 444721,
+    "avg_chars": 2223,
     "domain": "level-design"
   }
 }

@@ -2143,7 +2143,7 @@
       ],
       "file": "philosophy/modern-philosophy/deconstruction.md",
       "exists": true,
-      "char_count": 1237
+      "char_count": 2726
     },
     {
       "id": "hermeneutics",
@@ -2158,7 +2158,7 @@
       ],
       "file": "philosophy/modern-philosophy/hermeneutics.md",
       "exists": true,
-      "char_count": 1247
+      "char_count": 2884
     },
     {
       "id": "philosophy-of-language",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 335672,
-    "avg_chars": 1974,
+    "total_chars": 338798,
+    "avg_chars": 1992,
     "domain": "philosophy"
   }
 }

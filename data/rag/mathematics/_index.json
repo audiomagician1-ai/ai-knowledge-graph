@@ -928,7 +928,7 @@
       ],
       "file": "mathematics/arithmetic/natural-numbers.md",
       "exists": true,
-      "char_count": 1523
+      "char_count": 2215
     },
     {
       "id": "negative-numbers",
@@ -3988,7 +3988,7 @@
       ],
       "file": "mathematics/trigonometry/law-of-sines.md",
       "exists": true,
-      "char_count": 1194
+      "char_count": 2362
     },
     {
       "id": "spherical-trig",
@@ -4038,8 +4038,8 @@
   ],
   "stats": {
     "total": 269,
-    "total_chars": 700255,
-    "avg_chars": 2603,
+    "total_chars": 702115,
+    "avg_chars": 2610,
     "domain": "mathematics"
   }
 }
