@@ -118,7 +118,7 @@
       ],
       "file": "economics/behavioral-econ/framing-effects.md",
       "exists": true,
-      "char_count": 1232
+      "char_count": 2299
     },
     {
       "id": "sunk-cost-fallacy",
@@ -928,7 +928,7 @@
       ],
       "file": "economics/economic-thought/new-institutional.md",
       "exists": true,
-      "char_count": 1526
+      "char_count": 2628
     },
     {
       "id": "neoclassical-synthesis",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 354107,
-    "avg_chars": 2082,
+    "total_chars": 356276,
+    "avg_chars": 2095,
     "domain": "economics"
   }
 }

@@ -2353,7 +2353,7 @@
       ],
       "file": "finance/stock-market/stock-market-overview.md",
       "exists": true,
-      "char_count": 1516
+      "char_count": 2598
     },
     {
       "id": "stock-screening",
@@ -2403,8 +2403,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 343479,
-    "avg_chars": 2146,
+    "total_chars": 344561,
+    "avg_chars": 2153,
     "domain": "finance"
   }
 }

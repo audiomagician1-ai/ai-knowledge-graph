@@ -1408,7 +1408,7 @@
       ],
       "file": "writing/persuasive-writing/proposal-writing.md",
       "exists": true,
-      "char_count": 1318
+      "char_count": 2488
     },
     {
       "id": "speech-writing",
@@ -2323,7 +2323,7 @@
       ],
       "file": "writing/writing-fundamentals/writing-process.md",
       "exists": true,
-      "char_count": 2325
+      "char_count": 2379
     },
     {
       "id": "sentence-structure",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 357083,
-    "avg_chars": 2100,
+    "total_chars": 358307,
+    "avg_chars": 2107,
     "domain": "writing"
   }
 }

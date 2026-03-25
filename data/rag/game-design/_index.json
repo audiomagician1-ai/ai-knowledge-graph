@@ -403,7 +403,7 @@
       ],
       "file": "game-design/balance-design/power-curve.md",
       "exists": true,
-      "char_count": 1236
+      "char_count": 2461
     },
     {
       "id": "co-op-balance",
@@ -1303,7 +1303,7 @@
       ],
       "file": "game-design/design-docs/one-pager.md",
       "exists": true,
-      "char_count": 1220
+      "char_count": 2176
     },
     {
       "id": "content-design-doc",
@@ -1483,7 +1483,7 @@
       ],
       "file": "game-design/design-docs/pitch-deck.md",
       "exists": true,
-      "char_count": 1233
+      "char_count": 2397
     },
     {
       "id": "user-story",
@@ -1528,7 +1528,7 @@
       ],
       "file": "game-design/design-docs/design-pillars.md",
       "exists": true,
-      "char_count": 1237
+      "char_count": 2219
     },
     {
       "id": "design-doc-intro",
@@ -2608,7 +2608,7 @@
       ],
       "file": "game-design/player-psychology/variable-reward.md",
       "exists": true,
-      "char_count": 1225
+      "char_count": 2275
     },
     {
       "id": "bartle-types",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 553682,
-    "avg_chars": 2214,
+    "total_chars": 559059,
+    "avg_chars": 2236,
     "domain": "game-design"
   }
 }
