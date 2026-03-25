@@ -1090,7 +1090,7 @@
       "tags": [],
       "file": "multiplayer-network/mn-lb-ready-check.md",
       "exists": true,
-      "char_count": 1378
+      "char_count": 1958
     },
     {
       "id": "mn-lb-loading-screen",
@@ -2603,8 +2603,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 353779,
-    "avg_chars": 1768,
+    "total_chars": 354359,
+    "avg_chars": 1771,
     "domain": "multiplayer-network"
   }
 }

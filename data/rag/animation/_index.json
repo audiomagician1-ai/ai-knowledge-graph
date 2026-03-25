@@ -313,7 +313,7 @@
       ],
       "file": "animation/anim-force-motion.md",
       "exists": true,
-      "char_count": 1295
+      "char_count": 2419
     },
     {
       "id": "anim-silhouette",
@@ -2703,8 +2703,8 @@
   ],
   "stats": {
     "total": 180,
-    "total_chars": 370410,
-    "avg_chars": 2057,
+    "total_chars": 371534,
+    "avg_chars": 2064,
     "domain": "animation"
   }
 }
