@@ -1,12 +1,12 @@
 {
-  "_generated": "2026-03-26T00:04:06.936841",
+  "_generated": "2026-03-26T00:34:18.255451",
   "_version": "scorer-v2.0",
   "total_docs": 6156,
-  "avg_score": 64.7,
+  "avg_score": 64.8,
   "tier_distribution": {
-    "S": 430,
-    "A": 2953,
-    "B": 2773,
+    "S": 433,
+    "A": 2962,
+    "B": 2761,
     "C": 0
   },
   "domain_summary": {
@@ -204,7 +204,7 @@
     },
     "game-production": {
       "count": 160,
-      "avg_score": 51.2,
+      "avg_score": 51.3,
       "min_score": 44.5,
       "max_score": 99.9,
       "tiers": {
@@ -240,25 +240,25 @@
     },
     "game-ui-ux": {
       "count": 200,
-      "avg_score": 50.1,
-      "min_score": 44.3,
-      "max_score": 79.6,
+      "avg_score": 50.3,
+      "min_score": 44.4,
+      "max_score": 82.9,
       "tiers": {
-        "S": 0,
+        "S": 1,
         "A": 12,
-        "B": 188,
+        "B": 187,
         "C": 0
       }
     },
     "level-design": {
       "count": 199,
-      "avg_score": 73.5,
-      "min_score": 44.3,
+      "avg_score": 73.8,
+      "min_score": 44.4,
       "max_score": 92.6,
       "tiers": {
         "S": 10,
-        "A": 162,
-        "B": 27,
+        "A": 164,
+        "B": 25,
         "C": 0
       }
     },
@@ -276,37 +276,37 @@
     },
     "multiplayer-network": {
       "count": 200,
-      "avg_score": 58.4,
-      "min_score": 44.3,
+      "avg_score": 58.5,
+      "min_score": 44.4,
       "max_score": 92.6,
       "tiers": {
         "S": 6,
-        "A": 68,
-        "B": 126,
+        "A": 69,
+        "B": 125,
         "C": 0
       }
     },
     "narrative-design": {
       "count": 180,
-      "avg_score": 57.0,
-      "min_score": 44.3,
+      "avg_score": 57.7,
+      "min_score": 44.4,
       "max_score": 92.6,
       "tiers": {
         "S": 2,
-        "A": 51,
-        "B": 127,
+        "A": 55,
+        "B": 123,
         "C": 0
       }
     },
     "philosophy": {
       "count": 171,
-      "avg_score": 71.7,
-      "min_score": 44.1,
+      "avg_score": 72.6,
+      "min_score": 44.4,
       "max_score": 92.6,
       "tiers": {
-        "S": 18,
-        "A": 112,
-        "B": 41,
+        "S": 20,
+        "A": 114,
+        "B": 37,
         "C": 0
       }
     },
