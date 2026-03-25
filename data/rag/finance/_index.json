@@ -1063,7 +1063,7 @@
       ],
       "file": "finance/investment-basics/portfolio-theory.md",
       "exists": true,
-      "char_count": 1420
+      "char_count": 2477
     },
     {
       "id": "index-investing",
@@ -1783,7 +1783,7 @@
       ],
       "file": "finance/quantitative-finance/risk-factor-analysis.md",
       "exists": true,
-      "char_count": 1386
+      "char_count": 2867
     },
     {
       "id": "high-frequency-trading",
@@ -2403,8 +2403,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 321959,
-    "avg_chars": 2012,
+    "total_chars": 324497,
+    "avg_chars": 2028,
     "domain": "finance"
   }
 }

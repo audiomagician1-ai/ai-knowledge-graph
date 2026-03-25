@@ -88,7 +88,7 @@
       ],
       "file": "game-design/accessibility/accessibility-testing.md",
       "exists": true,
-      "char_count": 1374
+      "char_count": 2565
     },
     {
       "id": "accessibility-intro",
@@ -1378,7 +1378,7 @@
       ],
       "file": "game-design/design-docs/tech-design-doc.md",
       "exists": true,
-      "char_count": 1363
+      "char_count": 2414
     },
     {
       "id": "balance-doc",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 528187,
-    "avg_chars": 2112,
+    "total_chars": 530429,
+    "avg_chars": 2121,
     "domain": "game-design"
   }
 }

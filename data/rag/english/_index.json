@@ -703,7 +703,7 @@
       ],
       "file": "english/idioms-culture/idiom-usage-practice.md",
       "exists": true,
-      "char_count": 1376
+      "char_count": 2414
     },
     {
       "id": "slang-informal",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 470240,
-    "avg_chars": 2351,
+    "total_chars": 471278,
+    "avg_chars": 2356,
     "domain": "english"
   }
 }

@@ -418,7 +418,7 @@
       ],
       "file": "level-design/combat-space/combat-space-review.md",
       "exists": true,
-      "char_count": 1384
+      "char_count": 2439
     },
     {
       "id": "sightline-combat",
@@ -463,7 +463,7 @@
       ],
       "file": "level-design/combat-space/enemy-spawn-area.md",
       "exists": true,
-      "char_count": 1377
+      "char_count": 2464
     },
     {
       "id": "wave-arena",
@@ -1078,7 +1078,7 @@
       ],
       "file": "level-design/ld-documentation/script-event-doc.md",
       "exists": true,
-      "char_count": 1367
+      "char_count": 2569
     },
     {
       "id": "pacing-chart",
@@ -1108,7 +1108,7 @@
       ],
       "file": "level-design/ld-documentation/design-intent-doc.md",
       "exists": true,
-      "char_count": 1383
+      "char_count": 2230
     },
     {
       "id": "ld-review-process",
@@ -1828,7 +1828,7 @@
       ],
       "file": "level-design/metrics-design/interaction-range.md",
       "exists": true,
-      "char_count": 1362
+      "char_count": 2222
     },
     {
       "id": "spawn-distance",
@@ -2893,7 +2893,7 @@
       ],
       "file": "level-design/terrain-design/open-world-terrain.md",
       "exists": true,
-      "char_count": 1376
+      "char_count": 2538
     },
     {
       "id": "cliff-cave",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 410782,
-    "avg_chars": 2053,
+    "total_chars": 416995,
+    "avg_chars": 2084,
     "domain": "level-design"
   }
 }

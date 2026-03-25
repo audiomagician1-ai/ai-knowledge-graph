@@ -133,7 +133,7 @@
       ],
       "file": "writing/academic-writing/academic-tone.md",
       "exists": true,
-      "char_count": 1412
+      "char_count": 2521
     },
     {
       "id": "citation-referencing",
@@ -148,7 +148,7 @@
       ],
       "file": "writing/academic-writing/citation-referencing.md",
       "exists": true,
-      "char_count": 1784
+      "char_count": 2380
     },
     {
       "id": "introduction-writing",
@@ -403,7 +403,7 @@
       ],
       "file": "writing/creative-writing/publishing-basics.md",
       "exists": true,
-      "char_count": 1536
+      "char_count": 2787
     },
     {
       "id": "creative-process",
@@ -973,7 +973,7 @@
       ],
       "file": "writing/narrative-writing/unreliable-narrator.md",
       "exists": true,
-      "char_count": 1371
+      "char_count": 2392
     },
     {
       "id": "theme-development",
@@ -1108,7 +1108,7 @@
       ],
       "file": "writing/narrative-writing/storytelling-oral.md",
       "exists": true,
-      "char_count": 1365
+      "char_count": 2165
     },
     {
       "id": "memoir-writing",
@@ -1798,7 +1798,7 @@
       ],
       "file": "writing/professional-writing/documentation-standards.md",
       "exists": true,
-      "char_count": 1478
+      "char_count": 2313
     },
     {
       "id": "press-release",
@@ -2293,7 +2293,7 @@
       ],
       "file": "writing/writing-fundamentals/writing-overview.md",
       "exists": true,
-      "char_count": 1508
+      "char_count": 2450
     },
     {
       "id": "writing-confidence",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 323294,
-    "avg_chars": 1901,
+    "total_chars": 329848,
+    "avg_chars": 1940,
     "domain": "writing"
   }
 }

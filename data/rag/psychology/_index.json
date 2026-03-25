@@ -343,7 +343,7 @@
       ],
       "file": "psychology/biological-psychology/endocrine-system.md",
       "exists": true,
-      "char_count": 2429
+      "char_count": 2603
     },
     {
       "id": "cerebral-lateralization",
@@ -2748,8 +2748,8 @@
   ],
   "stats": {
     "total": 183,
-    "total_chars": 369365,
-    "avg_chars": 2018,
+    "total_chars": 369539,
+    "avg_chars": 2019,
     "domain": "psychology"
   }
 }

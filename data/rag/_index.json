@@ -21339,7 +21339,7 @@
       ],
       "file": "english/idioms-culture/idiom-usage-practice.md",
       "exists": true,
-      "char_count": 1376
+      "char_count": 2414
     },
     {
       "id": "slang-informal",
@@ -24699,7 +24699,7 @@
       ],
       "file": "finance/investment-basics/portfolio-theory.md",
       "exists": true,
-      "char_count": 1420
+      "char_count": 2477
     },
     {
       "id": "index-investing",
@@ -25419,7 +25419,7 @@
       ],
       "file": "finance/quantitative-finance/risk-factor-analysis.md",
       "exists": true,
-      "char_count": 1386
+      "char_count": 2867
     },
     {
       "id": "high-frequency-trading",
@@ -31164,7 +31164,7 @@
       ],
       "file": "game-design/accessibility/accessibility-testing.md",
       "exists": true,
-      "char_count": 1374
+      "char_count": 2565
     },
     {
       "id": "accessibility-intro",
@@ -32454,7 +32454,7 @@
       ],
       "file": "game-design/design-docs/tech-design-doc.md",
       "exists": true,
-      "char_count": 1363
+      "char_count": 2414
     },
     {
       "id": "balance-doc",
@@ -51784,7 +51784,7 @@
       ],
       "file": "level-design/combat-space/combat-space-review.md",
       "exists": true,
-      "char_count": 1384
+      "char_count": 2439
     },
     {
       "id": "sightline-combat",
@@ -51829,7 +51829,7 @@
       ],
       "file": "level-design/combat-space/enemy-spawn-area.md",
       "exists": true,
-      "char_count": 1377
+      "char_count": 2464
     },
     {
       "id": "wave-arena",
@@ -52444,7 +52444,7 @@
       ],
       "file": "level-design/ld-documentation/script-event-doc.md",
       "exists": true,
-      "char_count": 1367
+      "char_count": 2569
     },
     {
       "id": "pacing-chart",
@@ -52474,7 +52474,7 @@
       ],
       "file": "level-design/ld-documentation/design-intent-doc.md",
       "exists": true,
-      "char_count": 1383
+      "char_count": 2230
     },
     {
       "id": "ld-review-process",
@@ -53194,7 +53194,7 @@
       ],
       "file": "level-design/metrics-design/interaction-range.md",
       "exists": true,
-      "char_count": 1362
+      "char_count": 2222
     },
     {
       "id": "spawn-distance",
@@ -54259,7 +54259,7 @@
       ],
       "file": "level-design/terrain-design/open-world-terrain.md",
       "exists": true,
-      "char_count": 1376
+      "char_count": 2538
     },
     {
       "id": "cliff-cave",
@@ -55852,7 +55852,7 @@
       ],
       "file": "mathematics/calculus/second-order-ode.md",
       "exists": true,
-      "char_count": 1361
+      "char_count": 2819
     },
     {
       "id": "ivt-evt",
@@ -71964,7 +71964,7 @@
       ],
       "file": "product-design/user-research/competitive-analysis.md",
       "exists": true,
-      "char_count": 1400
+      "char_count": 2245
     },
     {
       "id": "survey-design",
@@ -72174,7 +72174,7 @@
       ],
       "file": "product-design/visual-design/data-visualization.md",
       "exists": true,
-      "char_count": 1519
+      "char_count": 2447
     },
     {
       "id": "dark-light-theme",
@@ -73304,7 +73304,7 @@
       ],
       "file": "psychology/biological-psychology/endocrine-system.md",
       "exists": true,
-      "char_count": 2429
+      "char_count": 2603
     },
     {
       "id": "cerebral-lateralization",
@@ -86843,7 +86843,7 @@
       ],
       "file": "writing/academic-writing/academic-tone.md",
       "exists": true,
-      "char_count": 1412
+      "char_count": 2521
     },
     {
       "id": "citation-referencing",
@@ -86858,7 +86858,7 @@
       ],
       "file": "writing/academic-writing/citation-referencing.md",
       "exists": true,
-      "char_count": 1784
+      "char_count": 2380
     },
     {
       "id": "introduction-writing",
@@ -87113,7 +87113,7 @@
       ],
       "file": "writing/creative-writing/publishing-basics.md",
       "exists": true,
-      "char_count": 1536
+      "char_count": 2787
     },
     {
       "id": "creative-process",
@@ -87683,7 +87683,7 @@
       ],
       "file": "writing/narrative-writing/unreliable-narrator.md",
       "exists": true,
-      "char_count": 1371
+      "char_count": 2392
     },
     {
       "id": "theme-development",
@@ -87818,7 +87818,7 @@
       ],
       "file": "writing/narrative-writing/storytelling-oral.md",
       "exists": true,
-      "char_count": 1365
+      "char_count": 2165
     },
     {
       "id": "memoir-writing",
@@ -88508,7 +88508,7 @@
       ],
       "file": "writing/professional-writing/documentation-standards.md",
       "exists": true,
-      "char_count": 1478
+      "char_count": 2313
     },
     {
       "id": "press-release",
@@ -89003,7 +89003,7 @@
       ],
       "file": "writing/writing-fundamentals/writing-overview.md",
       "exists": true,
-      "char_count": 1508
+      "char_count": 2450
     },
     {
       "id": "writing-confidence",

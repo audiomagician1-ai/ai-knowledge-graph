@@ -1018,7 +1018,7 @@
       ],
       "file": "mathematics/calculus/second-order-ode.md",
       "exists": true,
-      "char_count": 1361
+      "char_count": 2819
     },
     {
       "id": "ivt-evt",
@@ -4038,8 +4038,8 @@
   ],
   "stats": {
     "total": 269,
-    "total_chars": 671585,
-    "avg_chars": 2496,
+    "total_chars": 673043,
+    "avg_chars": 2502,
     "domain": "mathematics"
   }
 }

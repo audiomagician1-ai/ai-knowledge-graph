@@ -2383,7 +2383,7 @@
       ],
       "file": "product-design/user-research/competitive-analysis.md",
       "exists": true,
-      "char_count": 1400
+      "char_count": 2245
     },
     {
       "id": "survey-design",
@@ -2593,7 +2593,7 @@
       ],
       "file": "product-design/visual-design/data-visualization.md",
       "exists": true,
-      "char_count": 1519
+      "char_count": 2447
     },
     {
       "id": "dark-light-theme",
@@ -2733,8 +2733,8 @@
   ],
   "stats": {
     "total": 182,
-    "total_chars": 336779,
-    "avg_chars": 1850,
+    "total_chars": 338552,
+    "avg_chars": 1860,
     "domain": "product-design"
   }
 }
