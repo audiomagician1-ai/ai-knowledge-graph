@@ -223,7 +223,7 @@
       ],
       "file": "biology/botany-zoology/plant-hormones.md",
       "exists": true,
-      "char_count": 1444
+      "char_count": 2411
     },
     {
       "id": "plant-physiology",
@@ -2083,7 +2083,7 @@
       ],
       "file": "biology/microbiology/prions.md",
       "exists": true,
-      "char_count": 1163
+      "char_count": 2674
     },
     {
       "id": "environmental-microbiology",
@@ -2583,8 +2583,8 @@
   ],
   "stats": {
     "total": 172,
-    "total_chars": 382224,
-    "avg_chars": 2222,
+    "total_chars": 384702,
+    "avg_chars": 2236,
     "domain": "biology"
   }
 }

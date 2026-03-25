@@ -3493,7 +3493,7 @@
       ],
       "file": "game-design/systems-design/upgrade-system.md",
       "exists": true,
-      "char_count": 1433
+      "char_count": 2279
     },
     {
       "id": "map-system",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 534165,
-    "avg_chars": 2136,
+    "total_chars": 535011,
+    "avg_chars": 2140,
     "domain": "game-design"
   }
 }

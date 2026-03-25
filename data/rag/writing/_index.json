@@ -583,7 +583,7 @@
       ],
       "file": "writing/creative-writing/literary-devices.md",
       "exists": true,
-      "char_count": 1555
+      "char_count": 2667
     },
     {
       "id": "song-lyrics",
@@ -898,7 +898,7 @@
       ],
       "file": "writing/expository-writing/review-writing.md",
       "exists": true,
-      "char_count": 1434
+      "char_count": 2446
     },
     {
       "id": "instruction-manual",
@@ -1078,7 +1078,7 @@
       ],
       "file": "writing/narrative-writing/narrative-essay.md",
       "exists": true,
-      "char_count": 1251
+      "char_count": 2484
     },
     {
       "id": "point-of-view",
@@ -1183,7 +1183,7 @@
       ],
       "file": "writing/narrative-writing/micro-fiction.md",
       "exists": true,
-      "char_count": 1340
+      "char_count": 2822
     },
     {
       "id": "plot-structure",
@@ -2233,7 +2233,7 @@
       ],
       "file": "writing/writing-fundamentals/active-passive-voice.md",
       "exists": true,
-      "char_count": 1502
+      "char_count": 2198
     },
     {
       "id": "figurative-language",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 329848,
-    "avg_chars": 1940,
+    "total_chars": 335383,
+    "avg_chars": 1972,
     "domain": "writing"
   }
 }

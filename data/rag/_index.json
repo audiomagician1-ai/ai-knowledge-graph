@@ -7509,7 +7509,7 @@
       ],
       "file": "biology/botany-zoology/plant-hormones.md",
       "exists": true,
-      "char_count": 1444
+      "char_count": 2411
     },
     {
       "id": "plant-physiology",
@@ -9369,7 +9369,7 @@
       ],
       "file": "biology/microbiology/prions.md",
       "exists": true,
-      "char_count": 1163
+      "char_count": 2674
     },
     {
       "id": "environmental-microbiology",
@@ -20109,7 +20109,7 @@
       ],
       "file": "economics/microeconomics/microeconomics-overview.md",
       "exists": true,
-      "char_count": 1665
+      "char_count": 2752
     },
     {
       "id": "cost-theory",
@@ -22074,7 +22074,7 @@
       ],
       "file": "english/reading/skimming.md",
       "exists": true,
-      "char_count": 1147
+      "char_count": 2467
     },
     {
       "id": "text-structure",
@@ -22749,7 +22749,7 @@
       ],
       "file": "english/speaking/small-talk.md",
       "exists": true,
-      "char_count": 1155
+      "char_count": 2894
     },
     {
       "id": "interview-english",
@@ -24054,7 +24054,7 @@
       ],
       "file": "finance/fintech/defi.md",
       "exists": true,
-      "char_count": 1460
+      "char_count": 2368
     },
     {
       "id": "embedded-finance",
@@ -24099,7 +24099,7 @@
       ],
       "file": "finance/fintech/digital-currency.md",
       "exists": true,
-      "char_count": 1409
+      "char_count": 2429
     },
     {
       "id": "digital-banking",
@@ -24114,7 +24114,7 @@
       ],
       "file": "finance/fintech/digital-banking.md",
       "exists": true,
-      "char_count": 1346
+      "char_count": 2410
     },
     {
       "id": "smart-contracts",
@@ -34569,7 +34569,7 @@
       ],
       "file": "game-design/systems-design/upgrade-system.md",
       "exists": true,
-      "char_count": 1433
+      "char_count": 2279
     },
     {
       "id": "map-system",
@@ -65574,7 +65574,7 @@
       ],
       "file": "philosophy/logic-reasoning/modal-logic.md",
       "exists": true,
-      "char_count": 1445
+      "char_count": 2816
     },
     {
       "id": "fuzzy-logic-phil",
@@ -66084,7 +66084,7 @@
       ],
       "file": "philosophy/modern-philosophy/postmodernism.md",
       "exists": true,
-      "char_count": 1454
+      "char_count": 2586
     },
     {
       "id": "feminist-philosophy",
@@ -68724,7 +68724,7 @@
       ],
       "file": "physics/quantum-mechanics/quantum-computing-intro.md",
       "exists": true,
-      "char_count": 1510
+      "char_count": 2340
     },
     {
       "id": "quantum-harmonic-oscillator",
@@ -68739,7 +68739,7 @@
       ],
       "file": "physics/quantum-mechanics/quantum-harmonic-oscillator.md",
       "exists": true,
-      "char_count": 1512
+      "char_count": 3132
     },
     {
       "id": "quantum-tunneling",
@@ -69999,7 +69999,7 @@
       ],
       "file": "product-design/growth/marketplace-growth.md",
       "exists": true,
-      "char_count": 1497
+      "char_count": 2784
     },
     {
       "id": "monetization-strategy",
@@ -70599,7 +70599,7 @@
       ],
       "file": "product-design/interaction-design/error-handling-ux.md",
       "exists": true,
-      "char_count": 1488
+      "char_count": 2508
     },
     {
       "id": "okr-method",
@@ -70674,7 +70674,7 @@
       ],
       "file": "product-design/product-management/product-launch.md",
       "exists": true,
-      "char_count": 1570
+      "char_count": 2668
     },
     {
       "id": "team-building",
@@ -71439,7 +71439,7 @@
       ],
       "file": "product-design/prototyping/multivariate-testing.md",
       "exists": true,
-      "char_count": 1288
+      "char_count": 2489
     },
     {
       "id": "rapid-prototyping",
@@ -71949,7 +71949,7 @@
       ],
       "file": "product-design/user-research/research-planning.md",
       "exists": true,
-      "char_count": 1495
+      "char_count": 2593
     },
     {
       "id": "competitive-analysis",
@@ -72264,7 +72264,7 @@
       ],
       "file": "product-design/visual-design/design-consistency.md",
       "exists": true,
-      "char_count": 1505
+      "char_count": 2568
     },
     {
       "id": "design-handoff",
@@ -73364,7 +73364,7 @@
       ],
       "file": "psychology/biological-psychology/psychoneuroimmunology.md",
       "exists": true,
-      "char_count": 1304
+      "char_count": 2646
     },
     {
       "id": "sexual-behavior-biology",
@@ -73559,7 +73559,7 @@
       ],
       "file": "psychology/biological-psychology/autonomic-nervous-system.md",
       "exists": true,
-      "char_count": 1490
+      "char_count": 2307
     },
     {
       "id": "epigenetics-behavior",
@@ -73769,7 +73769,7 @@
       ],
       "file": "psychology/clinical-psychology/evidence-based-practice.md",
       "exists": true,
-      "char_count": 1502
+      "char_count": 2427
     },
     {
       "id": "psychodynamic-therapy",
@@ -73784,7 +73784,7 @@
       ],
       "file": "psychology/clinical-psychology/psychodynamic-therapy.md",
       "exists": true,
-      "char_count": 1570
+      "char_count": 2531
     },
     {
       "id": "psychotherapy-overview",
@@ -74579,7 +74579,7 @@
       ],
       "file": "psychology/developmental-psychology/play-development.md",
       "exists": true,
-      "char_count": 1491
+      "char_count": 2646
     },
     {
       "id": "socioemotional-development",
@@ -74984,7 +74984,7 @@
       ],
       "file": "psychology/personality-psychology/defense-mechanisms.md",
       "exists": true,
-      "char_count": 1563
+      "char_count": 2221
     },
     {
       "id": "maslow-hierarchy",
@@ -75344,7 +75344,7 @@
       ],
       "file": "psychology/research-methods/qualitative-methods.md",
       "exists": true,
-      "char_count": 1493
+      "char_count": 3015
     },
     {
       "id": "random-assignment",
@@ -75524,7 +75524,7 @@
       ],
       "file": "psychology/social-psychology/obedience.md",
       "exists": true,
-      "char_count": 1255
+      "char_count": 2588
     },
     {
       "id": "love-psychology",
@@ -87293,7 +87293,7 @@
       ],
       "file": "writing/creative-writing/literary-devices.md",
       "exists": true,
-      "char_count": 1555
+      "char_count": 2667
     },
     {
       "id": "song-lyrics",
@@ -87608,7 +87608,7 @@
       ],
       "file": "writing/expository-writing/review-writing.md",
       "exists": true,
-      "char_count": 1434
+      "char_count": 2446
     },
     {
       "id": "instruction-manual",
@@ -87788,7 +87788,7 @@
       ],
       "file": "writing/narrative-writing/narrative-essay.md",
       "exists": true,
-      "char_count": 1251
+      "char_count": 2484
     },
     {
       "id": "point-of-view",
@@ -87893,7 +87893,7 @@
       ],
       "file": "writing/narrative-writing/micro-fiction.md",
       "exists": true,
-      "char_count": 1340
+      "char_count": 2822
     },
     {
       "id": "plot-structure",
@@ -88943,7 +88943,7 @@
       ],
       "file": "writing/writing-fundamentals/active-passive-voice.md",
       "exists": true,
-      "char_count": 1502
+      "char_count": 2198
     },
     {
       "id": "figurative-language",

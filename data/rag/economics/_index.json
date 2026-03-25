@@ -2023,7 +2023,7 @@
       ],
       "file": "economics/microeconomics/microeconomics-overview.md",
       "exists": true,
-      "char_count": 1665
+      "char_count": 2752
     },
     {
       "id": "cost-theory",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 342129,
-    "avg_chars": 2012,
+    "total_chars": 343216,
+    "avg_chars": 2018,
     "domain": "economics"
   }
 }

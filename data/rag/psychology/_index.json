@@ -403,7 +403,7 @@
       ],
       "file": "psychology/biological-psychology/psychoneuroimmunology.md",
       "exists": true,
-      "char_count": 1304
+      "char_count": 2646
     },
     {
       "id": "sexual-behavior-biology",
@@ -598,7 +598,7 @@
       ],
       "file": "psychology/biological-psychology/autonomic-nervous-system.md",
       "exists": true,
-      "char_count": 1490
+      "char_count": 2307
     },
     {
       "id": "epigenetics-behavior",
@@ -808,7 +808,7 @@
       ],
       "file": "psychology/clinical-psychology/evidence-based-practice.md",
       "exists": true,
-      "char_count": 1502
+      "char_count": 2427
     },
     {
       "id": "psychodynamic-therapy",
@@ -823,7 +823,7 @@
       ],
       "file": "psychology/clinical-psychology/psychodynamic-therapy.md",
       "exists": true,
-      "char_count": 1570
+      "char_count": 2531
     },
     {
       "id": "psychotherapy-overview",
@@ -1618,7 +1618,7 @@
       ],
       "file": "psychology/developmental-psychology/play-development.md",
       "exists": true,
-      "char_count": 1491
+      "char_count": 2646
     },
     {
       "id": "socioemotional-development",
@@ -2023,7 +2023,7 @@
       ],
       "file": "psychology/personality-psychology/defense-mechanisms.md",
       "exists": true,
-      "char_count": 1563
+      "char_count": 2221
     },
     {
       "id": "maslow-hierarchy",
@@ -2383,7 +2383,7 @@
       ],
       "file": "psychology/research-methods/qualitative-methods.md",
       "exists": true,
-      "char_count": 1493
+      "char_count": 3015
     },
     {
       "id": "random-assignment",
@@ -2563,7 +2563,7 @@
       ],
       "file": "psychology/social-psychology/obedience.md",
       "exists": true,
-      "char_count": 1255
+      "char_count": 2588
     },
     {
       "id": "love-psychology",
@@ -2748,8 +2748,8 @@
   ],
   "stats": {
     "total": 183,
-    "total_chars": 369539,
-    "avg_chars": 2019,
+    "total_chars": 378252,
+    "avg_chars": 2066,
     "domain": "psychology"
   }
 }

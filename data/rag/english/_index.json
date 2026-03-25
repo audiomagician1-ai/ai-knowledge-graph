@@ -1438,7 +1438,7 @@
       ],
       "file": "english/reading/skimming.md",
       "exists": true,
-      "char_count": 1147
+      "char_count": 2467
     },
     {
       "id": "text-structure",
@@ -2113,7 +2113,7 @@
       ],
       "file": "english/speaking/small-talk.md",
       "exists": true,
-      "char_count": 1155
+      "char_count": 2894
     },
     {
       "id": "interview-english",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 479519,
-    "avg_chars": 2397,
+    "total_chars": 482578,
+    "avg_chars": 2412,
     "domain": "english"
   }
 }

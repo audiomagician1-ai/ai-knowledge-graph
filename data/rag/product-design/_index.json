@@ -418,7 +418,7 @@
       ],
       "file": "product-design/growth/marketplace-growth.md",
       "exists": true,
-      "char_count": 1497
+      "char_count": 2784
     },
     {
       "id": "monetization-strategy",
@@ -1018,7 +1018,7 @@
       ],
       "file": "product-design/interaction-design/error-handling-ux.md",
       "exists": true,
-      "char_count": 1488
+      "char_count": 2508
     },
     {
       "id": "okr-method",
@@ -1093,7 +1093,7 @@
       ],
       "file": "product-design/product-management/product-launch.md",
       "exists": true,
-      "char_count": 1570
+      "char_count": 2668
     },
     {
       "id": "team-building",
@@ -1858,7 +1858,7 @@
       ],
       "file": "product-design/prototyping/multivariate-testing.md",
       "exists": true,
-      "char_count": 1288
+      "char_count": 2489
     },
     {
       "id": "rapid-prototyping",
@@ -2368,7 +2368,7 @@
       ],
       "file": "product-design/user-research/research-planning.md",
       "exists": true,
-      "char_count": 1495
+      "char_count": 2593
     },
     {
       "id": "competitive-analysis",
@@ -2683,7 +2683,7 @@
       ],
       "file": "product-design/visual-design/design-consistency.md",
       "exists": true,
-      "char_count": 1505
+      "char_count": 2568
     },
     {
       "id": "design-handoff",
@@ -2733,8 +2733,8 @@
   ],
   "stats": {
     "total": 182,
-    "total_chars": 338552,
-    "avg_chars": 1860,
+    "total_chars": 345319,
+    "avg_chars": 1897,
     "domain": "product-design"
   }
 }

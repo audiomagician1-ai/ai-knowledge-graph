@@ -2053,7 +2053,7 @@
       ],
       "file": "physics/quantum-mechanics/quantum-computing-intro.md",
       "exists": true,
-      "char_count": 1510
+      "char_count": 2340
     },
     {
       "id": "quantum-harmonic-oscillator",
@@ -2068,7 +2068,7 @@
       ],
       "file": "physics/quantum-mechanics/quantum-harmonic-oscillator.md",
       "exists": true,
-      "char_count": 1512
+      "char_count": 3132
     },
     {
       "id": "quantum-tunneling",
@@ -2913,8 +2913,8 @@
   ],
   "stats": {
     "total": 194,
-    "total_chars": 456674,
-    "avg_chars": 2353,
+    "total_chars": 459124,
+    "avg_chars": 2366,
     "domain": "physics"
   }
 }

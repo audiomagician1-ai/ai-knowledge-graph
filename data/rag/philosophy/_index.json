@@ -1453,7 +1453,7 @@
       ],
       "file": "philosophy/logic-reasoning/modal-logic.md",
       "exists": true,
-      "char_count": 1445
+      "char_count": 2816
     },
     {
       "id": "fuzzy-logic-phil",
@@ -1963,7 +1963,7 @@
       ],
       "file": "philosophy/modern-philosophy/postmodernism.md",
       "exists": true,
-      "char_count": 1454
+      "char_count": 2586
     },
     {
       "id": "feminist-philosophy",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 308941,
-    "avg_chars": 1817,
+    "total_chars": 311444,
+    "avg_chars": 1832,
     "domain": "philosophy"
   }
 }
