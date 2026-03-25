@@ -838,7 +838,7 @@
       ],
       "file": "level-design/guidance-design/implicit-vs-explicit.md",
       "exists": true,
-      "char_count": 1467
+      "char_count": 2597
     },
     {
       "id": "difficulty-communication",
@@ -1033,7 +1033,7 @@
       ],
       "file": "level-design/ld-documentation/naming-convention.md",
       "exists": true,
-      "char_count": 1263
+      "char_count": 2781
     },
     {
       "id": "postmortem-ld",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 448417,
-    "avg_chars": 2242,
+    "total_chars": 451065,
+    "avg_chars": 2255,
     "domain": "level-design"
   }
 }

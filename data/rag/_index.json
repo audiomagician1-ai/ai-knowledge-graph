@@ -19134,7 +19134,7 @@
       ],
       "file": "economics/economic-thought/marginalism.md",
       "exists": true,
-      "char_count": 1478
+      "char_count": 2540
     },
     {
       "id": "karl-marx-econ",
@@ -19539,7 +19539,7 @@
       ],
       "file": "economics/macroeconomics/is-lm-model.md",
       "exists": true,
-      "char_count": 1410
+      "char_count": 2295
     },
     {
       "id": "supply-side-economics",
@@ -20259,7 +20259,7 @@
       ],
       "file": "economics/microeconomics/marginal-analysis.md",
       "exists": true,
-      "char_count": 1470
+      "char_count": 2422
     },
     {
       "id": "endowment-effect",
@@ -20889,7 +20889,7 @@
       ],
       "file": "english/advanced-grammar/discourse-markers.md",
       "exists": true,
-      "char_count": 1478
+      "char_count": 3453
     },
     {
       "id": "grammar-in-context",
@@ -21879,7 +21879,7 @@
       ],
       "file": "english/phonetics/syllable-structure.md",
       "exists": true,
-      "char_count": 1452
+      "char_count": 2617
     },
     {
       "id": "report-writing",
@@ -22284,7 +22284,7 @@
       ],
       "file": "english/sentence-patterns/gerund-phrases.md",
       "exists": true,
-      "char_count": 1239
+      "char_count": 3200
     },
     {
       "id": "sentence-combining",
@@ -23499,7 +23499,7 @@
       ],
       "file": "english/writing-en/narrative-writing.md",
       "exists": true,
-      "char_count": 1246
+      "char_count": 2898
     },
     {
       "id": "expository-writing",
@@ -24069,7 +24069,7 @@
       ],
       "file": "finance/fintech/embedded-finance.md",
       "exists": true,
-      "char_count": 1266
+      "char_count": 2346
     },
     {
       "id": "open-banking",
@@ -24339,7 +24339,7 @@
       ],
       "file": "finance/fixed-income/bond-ladder.md",
       "exists": true,
-      "char_count": 1255
+      "char_count": 2410
     },
     {
       "id": "corporate-bonds",
@@ -24489,7 +24489,7 @@
       ],
       "file": "finance/fixed-income/money-market.md",
       "exists": true,
-      "char_count": 1450
+      "char_count": 2467
     },
     {
       "id": "abs-mbs",
@@ -24579,7 +24579,7 @@
       ],
       "file": "finance/investment-basics/benchmark-index.md",
       "exists": true,
-      "char_count": 1472
+      "char_count": 2623
     },
     {
       "id": "apt-model",
@@ -24609,7 +24609,7 @@
       ],
       "file": "finance/investment-basics/dollar-cost-averaging.md",
       "exists": true,
-      "char_count": 1476
+      "char_count": 2335
     },
     {
       "id": "market-efficiency",
@@ -24669,7 +24669,7 @@
       ],
       "file": "finance/investment-basics/investment-horizon.md",
       "exists": true,
-      "char_count": 1256
+      "char_count": 2195
     },
     {
       "id": "investment-overview",
@@ -25044,7 +25044,7 @@
       ],
       "file": "finance/personal-finance/tax-basics.md",
       "exists": true,
-      "char_count": 1465
+      "char_count": 2612
     },
     {
       "id": "financial-goal-setting",
@@ -25494,7 +25494,7 @@
       ],
       "file": "finance/risk-management/insurance-products.md",
       "exists": true,
-      "char_count": 1461
+      "char_count": 2186
     },
     {
       "id": "credit-risk",
@@ -25809,7 +25809,7 @@
       ],
       "file": "finance/stock-market/chart-patterns.md",
       "exists": true,
-      "char_count": 1470
+      "char_count": 2497
     },
     {
       "id": "pb-ratio",
@@ -31899,7 +31899,7 @@
       ],
       "file": "game-design/combat-design/status-effects.md",
       "exists": true,
-      "char_count": 1262
+      "char_count": 2388
     },
     {
       "id": "class-design",
@@ -32694,7 +32694,7 @@
       ],
       "file": "game-design/difficulty-curve/optional-challenge.md",
       "exists": true,
-      "char_count": 1257
+      "char_count": 2248
     },
     {
       "id": "fail-state",
@@ -33339,7 +33339,7 @@
       ],
       "file": "game-design/feedback-systems/feedback-hierarchy.md",
       "exists": true,
-      "char_count": 1253
+      "char_count": 2397
     },
     {
       "id": "feedback-fatigue",
@@ -33429,7 +33429,7 @@
       ],
       "file": "game-design/feedback-systems/delayed-feedback.md",
       "exists": true,
-      "char_count": 1244
+      "char_count": 2644
     },
     {
       "id": "camera-feedback",
@@ -34374,7 +34374,7 @@
       ],
       "file": "game-design/social-systems/leaderboard.md",
       "exists": true,
-      "char_count": 1248
+      "char_count": 2165
     },
     {
       "id": "toxicity-management",
@@ -34389,7 +34389,7 @@
       ],
       "file": "game-design/social-systems/toxicity-management.md",
       "exists": true,
-      "char_count": 1461
+      "char_count": 2555
     },
     {
       "id": "ugc-system",
@@ -52204,7 +52204,7 @@
       ],
       "file": "level-design/guidance-design/implicit-vs-explicit.md",
       "exists": true,
-      "char_count": 1467
+      "char_count": 2597
     },
     {
       "id": "difficulty-communication",
@@ -52399,7 +52399,7 @@
       ],
       "file": "level-design/ld-documentation/naming-convention.md",
       "exists": true,
-      "char_count": 1263
+      "char_count": 2781
     },
     {
       "id": "postmortem-ld",

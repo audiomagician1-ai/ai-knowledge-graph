@@ -823,7 +823,7 @@
       ],
       "file": "game-design/combat-design/status-effects.md",
       "exists": true,
-      "char_count": 1262
+      "char_count": 2388
     },
     {
       "id": "class-design",
@@ -1618,7 +1618,7 @@
       ],
       "file": "game-design/difficulty-curve/optional-challenge.md",
       "exists": true,
-      "char_count": 1257
+      "char_count": 2248
     },
     {
       "id": "fail-state",
@@ -2263,7 +2263,7 @@
       ],
       "file": "game-design/feedback-systems/feedback-hierarchy.md",
       "exists": true,
-      "char_count": 1253
+      "char_count": 2397
     },
     {
       "id": "feedback-fatigue",
@@ -2353,7 +2353,7 @@
       ],
       "file": "game-design/feedback-systems/delayed-feedback.md",
       "exists": true,
-      "char_count": 1244
+      "char_count": 2644
     },
     {
       "id": "camera-feedback",
@@ -3298,7 +3298,7 @@
       ],
       "file": "game-design/social-systems/leaderboard.md",
       "exists": true,
-      "char_count": 1248
+      "char_count": 2165
     },
     {
       "id": "toxicity-management",
@@ -3313,7 +3313,7 @@
       ],
       "file": "game-design/social-systems/toxicity-management.md",
       "exists": true,
-      "char_count": 1461
+      "char_count": 2555
     },
     {
       "id": "ugc-system",
@@ -3753,8 +3753,8 @@
   ],
   "stats": {
     "total": 250,
-    "total_chars": 564110,
-    "avg_chars": 2256,
+    "total_chars": 570782,
+    "avg_chars": 2283,
     "domain": "game-design"
   }
 }

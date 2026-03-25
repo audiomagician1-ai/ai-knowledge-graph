@@ -433,7 +433,7 @@
       ],
       "file": "finance/fintech/embedded-finance.md",
       "exists": true,
-      "char_count": 1266
+      "char_count": 2346
     },
     {
       "id": "open-banking",
@@ -703,7 +703,7 @@
       ],
       "file": "finance/fixed-income/bond-ladder.md",
       "exists": true,
-      "char_count": 1255
+      "char_count": 2410
     },
     {
       "id": "corporate-bonds",
@@ -853,7 +853,7 @@
       ],
       "file": "finance/fixed-income/money-market.md",
       "exists": true,
-      "char_count": 1450
+      "char_count": 2467
     },
     {
       "id": "abs-mbs",
@@ -943,7 +943,7 @@
       ],
       "file": "finance/investment-basics/benchmark-index.md",
       "exists": true,
-      "char_count": 1472
+      "char_count": 2623
     },
     {
       "id": "apt-model",
@@ -973,7 +973,7 @@
       ],
       "file": "finance/investment-basics/dollar-cost-averaging.md",
       "exists": true,
-      "char_count": 1476
+      "char_count": 2335
     },
     {
       "id": "market-efficiency",
@@ -1033,7 +1033,7 @@
       ],
       "file": "finance/investment-basics/investment-horizon.md",
       "exists": true,
-      "char_count": 1256
+      "char_count": 2195
     },
     {
       "id": "investment-overview",
@@ -1408,7 +1408,7 @@
       ],
       "file": "finance/personal-finance/tax-basics.md",
       "exists": true,
-      "char_count": 1465
+      "char_count": 2612
     },
     {
       "id": "financial-goal-setting",
@@ -1858,7 +1858,7 @@
       ],
       "file": "finance/risk-management/insurance-products.md",
       "exists": true,
-      "char_count": 1461
+      "char_count": 2186
     },
     {
       "id": "credit-risk",
@@ -2173,7 +2173,7 @@
       ],
       "file": "finance/stock-market/chart-patterns.md",
       "exists": true,
-      "char_count": 1470
+      "char_count": 2497
     },
     {
       "id": "pb-ratio",
@@ -2403,8 +2403,8 @@
   ],
   "stats": {
     "total": 160,
-    "total_chars": 353764,
-    "avg_chars": 2211,
+    "total_chars": 362864,
+    "avg_chars": 2267,
     "domain": "finance"
   }
 }

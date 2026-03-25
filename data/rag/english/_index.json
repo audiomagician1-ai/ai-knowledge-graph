@@ -253,7 +253,7 @@
       ],
       "file": "english/advanced-grammar/discourse-markers.md",
       "exists": true,
-      "char_count": 1478
+      "char_count": 3453
     },
     {
       "id": "grammar-in-context",
@@ -1243,7 +1243,7 @@
       ],
       "file": "english/phonetics/syllable-structure.md",
       "exists": true,
-      "char_count": 1452
+      "char_count": 2617
     },
     {
       "id": "report-writing",
@@ -1648,7 +1648,7 @@
       ],
       "file": "english/sentence-patterns/gerund-phrases.md",
       "exists": true,
-      "char_count": 1239
+      "char_count": 3200
     },
     {
       "id": "sentence-combining",
@@ -2863,7 +2863,7 @@
       ],
       "file": "english/writing-en/narrative-writing.md",
       "exists": true,
-      "char_count": 1246
+      "char_count": 2898
     },
     {
       "id": "expository-writing",
@@ -3003,8 +3003,8 @@
   ],
   "stats": {
     "total": 200,
-    "total_chars": 504024,
-    "avg_chars": 2520,
+    "total_chars": 510777,
+    "avg_chars": 2553,
     "domain": "english"
   }
 }

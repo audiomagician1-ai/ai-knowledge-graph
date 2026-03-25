@@ -1048,7 +1048,7 @@
       ],
       "file": "economics/economic-thought/marginalism.md",
       "exists": true,
-      "char_count": 1478
+      "char_count": 2540
     },
     {
       "id": "karl-marx-econ",
@@ -1453,7 +1453,7 @@
       ],
       "file": "economics/macroeconomics/is-lm-model.md",
       "exists": true,
-      "char_count": 1410
+      "char_count": 2295
     },
     {
       "id": "supply-side-economics",
@@ -2173,7 +2173,7 @@
       ],
       "file": "economics/microeconomics/marginal-analysis.md",
       "exists": true,
-      "char_count": 1470
+      "char_count": 2422
     },
     {
       "id": "endowment-effect",
@@ -2553,8 +2553,8 @@
   ],
   "stats": {
     "total": 170,
-    "total_chars": 361132,
-    "avg_chars": 2124,
+    "total_chars": 364031,
+    "avg_chars": 2141,
     "domain": "economics"
   }
 }
