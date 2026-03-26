@@ -20,68 +20,84 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-26
 ---
+
 # Sequencer扩展
 
 ## 概述
 
-Sequencer扩展（Sequencer Extension）是游戏引擎（Game Engine）中编辑器扩展领域的重要概念。难度等级3/9（初级）。
+Unreal Engine 的 Sequencer 是引擎内置的非线性动画编辑器，负责过场动画、关卡序列和时间轴驱动的游戏事件。Sequencer扩展允许开发者通过 C++ 注册自定义的 Track（轨道）、Section（片段）和 Channel（通道），从而让 Sequencer 能够驱动任意游戏逻辑——不仅限于引擎内置的变换、骨骼动画或音频播放。
 
-自定义Track/Section/Channel。
+这套扩展机制在 Unreal Engine 4.15 版本前后逐步成熟，官方将 Sequencer 的内部架构向第三方开放，允许插件和项目以与原生 Track（如 `UMovieSceneTransformTrack`）完全相同的方式集成进编辑器。其核心价值在于：当项目需要在过场动画中精确控制自定义属性（例如技能冷却、UI 渐变、游戏流程触发）时，无需编写独立的时间轴系统，可直接复用 Sequencer 的关键帧编辑、混合、循环和预览基础设施。
 
-在知识体系中，Sequencer扩展建立在编辑器扩展概述的基础之上，是理解可进入更高级主题的关键前置知识。为什么Sequencer扩展如此重要？因为它在编辑器扩展中起到承上启下的作用，连接基础概念与高级应用。
+对非线性叙事游戏、开放世界剧情演出或需要设计师可视化调试的项目而言，Sequencer扩展能显著降低技术美术与程序员之间的协作摩擦，所有可交互的参数都可在 Sequencer 编辑器内直接打关键帧。
 
-## 核心知识点
+---
 
-### 1. 自定义Track/Section/Channel
+## 核心原理
 
-自定义Track/Section/Channel是Sequencer扩展(Sequencer Extension)的核心组成部分之一。在编辑器扩展的实践中，自定义Track/Section/Channel决定了系统行为的关键特征。例如，当自定义Track/Section/Channel参数或条件发生变化时，整体表现会产生显著差异。深入理解自定义Track/Section/Channel需要结合游戏引擎的基本原理进行分析。
+### Track、Section 与 Channel 的层级关系
 
+三者构成严格的包含层次：一个 `UMovieSceneTrack` 可以包含多个 `UMovieSceneSection`，每个 Section 再包含若干 `FMovieSceneChannel`。Track 决定"这条轨道控制什么"，Section 表示时间轴上的一段区间（带起止时间），Channel 存储实际的关键帧数据曲线。
 
-### 关键原理分析
+自定义时，至少需要同时实现三个 C++ 类型：继承 `UMovieSceneTrack` 的 Track 类、继承 `UMovieSceneSection` 的 Section 类，以及一个实现 `TMovieSceneChannelTraits` 特化的 Channel 结构体。Channel 通常直接复用引擎提供的 `FMovieSceneFloatChannel`、`FMovieSceneBoolChannel` 或 `FMovieSceneByteChannel`，也可从零实现满足 `FMovieSceneChannel` 接口要求的自定义类型。
 
-Sequencer扩展的核心在于自定义Track/Section/Channel。从理论角度看，该概念涉及以下层面：
+### 求值管线与 EvalTemplate
 
-1. **定义层**：明确Sequencer扩展的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解Sequencer扩展内部各要素的相互作用方式
-3. **应用层**：将Sequencer扩展的原理映射到游戏引擎的实际场景中
+Sequencer 在运行时通过 `FMovieSceneEvalTemplate` 执行轨道求值。每个自定义 Track 需要提供一个 `UMovieSceneSection::GenerateTemplate()` 的重写，返回对应的 `FMovieSceneEvalTemplate` 子类实例。该模板的 `Evaluate()` 方法在每一帧被调用，接收插值后的通道值并写入 `FMovieSceneExecutionTokens`，最终由 Token 在 Game Thread 上统一应用到目标对象。
 
-思考题：如何判断Sequencer扩展的应用是否超出了其理论适用范围？
+这套两阶段设计（生成模板 → 求值 Token）允许 Sequencer 在编辑器预览和运行时使用同一套求值逻辑，同时保持线程安全。关键公式为：
 
-## 关键要点
+```
+ChannelValue(t) = Interpolate(KeyA, KeyB, (t - tA) / (tB - tA))
+```
 
-1. **核心定义**：Sequencer扩展的本质是自定义Track/Section/Channel，这是理解整个概念的出发点
-2. **多维理解**：掌握Sequencer扩展需要同时理解自定义Track/Section/Channel等关键维度
-3. **先修关系**：扎实的编辑器扩展概述基础对理解Sequencer扩展至关重要
-4. **进阶路径**：可广泛应用于游戏引擎各方面
-5. **实践标准**：真正掌握Sequencer扩展的标志是能在具体场景中灵活运用并正确判断适用边界
+其中插值方式由每个关键帧的 `ERichCurveInterpMode` 枚举控制（`RCIM_Cubic`、`RCIM_Linear`、`RCIM_Constant`）。
+
+### 编辑器侧的 TrackEditor 注册
+
+运行时 Track 类需要配套一个仅存在于编辑器模块中的 `ISequencerTrackEditor` 子类，负责处理轨道在 Sequencer UI 中的外观、右键菜单和关键帧拖拽行为。注册语句写在编辑器模块的 `StartupModule()` 中：
+
+```cpp
+ISequencerModule& SequencerModule = FModuleManager::LoadModuleChecked<ISequencerModule>("Sequencer");
+TrackEditorHandle = SequencerModule.RegisterTrackEditor(
+    FOnCreateTrackEditor::CreateStatic(&FMyCustomTrackEditor::CreateTrackEditor)
+);
+```
+
+在 `ShutdownModule()` 中必须调用 `SequencerModule.UnRegisterTrackEditor(TrackEditorHandle)` 释放句柄，否则引擎关闭时会触发断言。
+
+---
+
+## 实际应用
+
+**自定义浮点属性动画**：假设项目中存在 `ASpellCaster` 角色，其 `ManaRegen` 属性需要在过场中随时间曲线变化。创建 `UManaRegenTrack`（继承 `UMovieSceneTrack`）和 `UManaRegenSection`（包含一个 `FMovieSceneFloatChannel ManaRegenChannel`），在 EvalTemplate 的 `Evaluate()` 内将求值结果调用 `SpellCaster->SetManaRegen(Value)` 即可让设计师直接在 Sequencer 中打曲线关键帧。
+
+**事件触发式 Channel**：使用 `FMovieSceneBoolChannel` 搭配 Section 的 `Evaluate()` 检测从 `false` 到 `true` 的边沿跳变，可实现精确帧对齐的游戏事件触发，误差在 Sequencer 的子帧精度（默认 `EMovieScenePlayerStatus` 以 `1/DisplayRate` 为最小步长，通常为 1/24 秒或 1/30 秒）范围内。
+
+**多 Channel 混合**：一个 `UColorGradingSection` 可在内部持有四个 `FMovieSceneFloatChannel`（分别对应 R、G、B、Intensity），在 TrackEditor 中为每条通道绘制不同颜色的曲线，让美术人员直观调整。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将Sequencer扩展与编辑器扩展中其他相近概念混为一谈。例如，自定义Track/Section/Channel的适用条件与其他同类概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解编辑器扩展概述就学习Sequencer扩展，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：Sequencer扩展虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：将 TrackEditor 代码放入运行时模块**
+`ISequencerTrackEditor` 及所有 Sequencer 编辑器 API 只存在于 `SequencerModule`（编辑器模块），若在运行时模块（`Runtime` 或 `Developer` 类型）中引用，打包时会因模块不存在而链接失败。正确做法是在 `.uproject` 或插件的 `Build.cs` 中将 Sequencer 依赖加在 `Editor` 条件块内，并将 TrackEditor 类隔离在独立的编辑器模块中。
 
-## 知识衔接
+**误区二：忘记实现 `GetTrackName()` 和 `SupportsType()` 导致轨道无法出现在添加菜单**
+`UMovieSceneTrack` 要求重写 `SupportsType(TSubclassOf<UMovieSceneSection> SectionClass)` 返回 `true` 才能被 Sequencer 识别为可添加的轨道类型；`FMyCustomTrackEditor::SupportsSequence()` 也必须明确返回支持的 Sequence 类型，否则右键菜单中始终不显示该轨道选项，初学者常误以为注册失败。
 
-### 先修知识
-先修知识包括：
-- **编辑器扩展概述** — 为Sequencer扩展提供了必要的概念基础
+**误区三：Channel 数据不声明 `UPROPERTY` 导致序列化丢失**
+`FMovieSceneFloatChannel` 等 Channel 结构体必须在其所属的 `UMovieSceneSection` 子类中以 `UPROPERTY()` 标记，且需通过 `FMovieSceneChannelProxyData` 正确注册到 Channel Proxy。若仅作为普通成员变量存储，保存关卡序列并重载后所有关键帧数据将全部丢失。
 
-### 后续学习
-掌握Sequencer扩展后，学习者已具备该方向的核心能力，可将所学应用于实际项目或探索游戏引擎其他分支。
+---
 
-## 学习建议
+## 知识关联
 
-预计学习时间：1-2小时。建议采用以下策略：
+**前置知识**：编辑器扩展概述中的模块系统（`IModuleInterface`、`StartupModule/ShutdownModule` 生命周期）和 Slate UI 框架是实现 TrackEditor 的直接基础；理解 `UObject` 的序列化机制是避免 Channel 数据丢失问题的必要条件。
 
-- **主动回忆**：学完后不看笔记复述Sequencer扩展的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将Sequencer扩展与游戏引擎中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释Sequencer扩展，检验理解深度
+**横向关联**：自定义 Sequencer Track 与蓝图可调用的 `Timeline` 节点解决同类问题，但 Sequencer Track 支持编辑器内非破坏性预览和多镜头混合，适合演出级精度需求；而 `FTimeline` 更轻量，适合纯运行时逻辑。自定义 Track 还可与 **Sequencer 的 Spawnables** 机制结合，在特定 Section 区间内动态生成并销毁被控制的 Actor。
 
-## 延伸阅读
-
-- 相关教科书中关于编辑器扩展的章节可作为深入参考
-- Wikipedia: [Sequencer Extension](https://en.wikipedia.org/wiki/sequencer_extension) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Sequencer Extension" 可找到配套视频教程
+**深化方向**：在掌握基础 Track/Section/Channel 实现后，可进一步研究 `FMovieSceneBlendingAccumulator` 实现多轨道混合权重叠加，以及 `IMovieScenePlayer` 接口以在自定义播放器（非 `ALevelSequenceActor`）中驱动序列求值。
