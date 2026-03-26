@@ -20,77 +20,89 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-27
 ---
+
 # Agent部署与监控
 
 ## 概述
 
-Agent部署与监控（Agent Deployment）是AI工程（AI Engineering）中Agent系统领域的重要概念。难度等级7/9（进阶级）。
+Agent部署与监控是将AI Agent系统从开发环境推送至生产环境、并持续追踪其运行状态与行为质量的工程实践。与普通微服务部署不同，Agent部署必须处理**非确定性输出**（same input → different output）和**长时间运行任务**（单次调用可能持续数分钟甚至数小时）两个核心挑战，这决定了它需要专门的监控指标体系。
 
-掌握Agent部署与监控的核心概念和应用。
+该领域在2023年随着LangChain、AutoGPT等框架的生产化使用而快速成熟。早期团队将Agent当作普通REST API部署，导致大量"幽灵任务"——任务状态显示运行中，但实际已因工具调用超时或LLM token上限而静默失败。这一教训催生了专属的Agent可观测性（Agent Observability）规范，包括LangSmith、Langfuse、Arize等专用监控平台的诞生。
 
-在知识体系中，Agent部署与监控建立在Agent编排与工作流、CI/CD持续集成的基础之上，是理解可进入更高级主题的关键前置知识。为什么Agent部署与监控如此重要？因为它在Agent系统中起到承上启下的作用，连接基础概念与高级应用。
+Agent部署的核心价值在于将实验室中的链式调用转化为可靠、可回滚、可审计的生产服务。一个未经正确监控的生产Agent可能在每次调用中消耗数千个token而无人察觉，直到月底账单爆炸，或在某个边缘用户输入下陷入无限工具调用循环，耗尽API配额。
 
-## 核心知识点
+---
 
-### 1. 掌握Agent部署
+## 核心原理
 
-掌握Agent部署是Agent部署与监控(Agent Deployment)的核心组成部分之一。在Agent系统的实践中，掌握Agent部署决定了系统行为的关键特征。例如，当掌握Agent部署参数或条件发生变化时，整体表现会产生显著差异。深入理解掌握Agent部署需要结合AI工程的基本原理进行分析。
+### 1. Agent状态机与生命周期管理
 
-### 2. 监控的核心概念
+生产环境中每个Agent任务实例应建模为**有限状态机**，最小化状态集合为：`PENDING → RUNNING → (COMPLETED | FAILED | TIMED_OUT | CANCELLED)`。这要求部署系统为每个任务分配唯一的`run_id`，并将状态转换事件持久化到数据库，而非仅保留在内存中。
 
-监控的核心概念是Agent部署与监控(Agent Deployment)的核心组成部分之一。在Agent系统的实践中，监控的核心概念决定了系统行为的关键特征。例如，当监控的核心概念参数或条件发生变化时，整体表现会产生显著差异。深入理解监控的核心概念需要结合AI工程的基本原理进行分析。
+关键参数是**最大步数限制（max_iterations）**与**全局超时（wall_clock_timeout）**的双重保险。典型配置为`max_iterations=25`，`wall_clock_timeout=300s`。仅设置其中一个是不够的：若LLM响应极慢，25步可能耗时20分钟；若工具调用瞬间完成，300秒内可能已循环500次。
 
-### 3. 应用
+### 2. 追踪（Tracing）与Span结构
 
-应用是Agent部署与监控(Agent Deployment)的核心组成部分之一。在Agent系统的实践中，应用决定了系统行为的关键特征。例如，当应用参数或条件发生变化时，整体表现会产生显著差异。深入理解应用需要结合AI工程的基本原理进行分析。
+Agent监控的数据基础是**分布式追踪**，但Agent的Span树结构与普通服务不同。一次Agent运行的典型Span层次为：
 
+```
+AgentRun (root span)
+  ├── LLMCall #1  [latency: 1.2s, input_tokens: 512, output_tokens: 128]
+  │     └── ToolCall: search_web [latency: 0.8s, status: success]
+  ├── LLMCall #2  [latency: 0.9s, input_tokens: 680, output_tokens: 45]
+  │     └── ToolCall: code_executor [latency: 3.1s, status: error]
+  └── LLMCall #3  [latency: 1.1s, input_tokens: 750, output_tokens: 210]
+```
 
-### 关键原理分析
+每个LLM Span必须记录`input_tokens`和`output_tokens`，以便按调用链计算**累计token消耗**（Cumulative Token Usage）。OpenTelemetry社区在2024年推出了GenAI Semantic Conventions，定义了`gen_ai.usage.input_tokens`等标准属性名称，建议生产系统遵循该规范以保持工具互操作性。
 
-Agent部署与监控的核心在于掌握Agent部署与监控的核心概念和应用。从理论角度看，该概念涉及以下层面：
+### 3. 关键监控指标体系
 
-1. **定义层**：明确Agent部署与监控的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解Agent部署与监控内部各要素的相互作用方式
-3. **应用层**：将Agent部署与监控的原理映射到AI工程的实际场景中
+Agent监控指标分三层：
 
-思考题：如何判断Agent部署与监控的应用是否超出了其理论适用范围？
+**基础设施层**：
+- `agent_task_duration_seconds`（Histogram）：追踪完整任务耗时分布，P95超过120s通常意味着某个工具存在性能问题
+- `agent_task_failure_rate`：按失败类型分桶统计（LLM错误、工具超时、上下文长度超限）
 
-## 关键要点
+**行为质量层**：
+- `agent_iterations_per_task`（Histogram）：步数分布。若P50超过10步，Agent的规划能力可能存在问题，可能陷入重复尝试循环
+- `tool_call_error_rate_by_tool`：分工具统计错误率，可精准定位是哪个外部依赖拉低整体成功率
 
-1. **核心定义**：Agent部署与监控的本质是掌握Agent部署与监控的核心概念和应用，这是理解整个概念的出发点
-2. **多维理解**：掌握Agent部署与监控需要同时理解掌握Agent部署和应用等关键维度
-3. **先修关系**：扎实的Agent编排与工作流基础对理解Agent部署与监控至关重要
-4. **进阶路径**：可广泛应用于AI工程各方面
-5. **实践标准**：真正掌握Agent部署与监控的标志是能在具体场景中灵活运用并正确判断适用边界
+**成本层**：
+- `llm_cost_per_task_usd`：按任务类型统计单次任务的API成本，GPT-4o每百万input token约$2.50，cost spike往往是Agent循环的最早信号
+
+### 4. 金丝雀部署与回滚策略
+
+Agent系统的金丝雀部署需特殊处理：由于Agent输出的非确定性，不能简单用HTTP 5xx率作为回滚信号。推荐做法是引入**影子评估（Shadow Evaluation）**——在金丝雀流量上，同时运行一个自动化评估Agent（Eval Agent），对输出打分（相关性、工具使用合理性、最终答案质量），将评估分数的下降作为回滚触发条件。具体阈值：若连续100个任务的平均质量分低于前版本基线的85%，自动触发回滚。
+
+---
+
+## 实际应用
+
+**客服Agent的生产部署案例**：某电商平台部署了一个多工具客服Agent（含订单查询、退款处理、商品搜索三个工具），初期将`max_iterations`设为默认50，两周后发现约3%的用户触发了订单查询→确认失败→再次查询的无限循环，单次任务消耗token超过32,000，月成本超预算40%。通过在Langfuse中分析`agent_iterations_per_task`的P99（高达47步），定位到订单查询工具在订单不存在时返回空对象而非明确错误，导致Agent无法理解失败信号。修复工具的错误返回格式并将`max_iterations`调整为15后，P99降至6步，月成本下降62%。
+
+**蓝绿部署中的状态迁移问题**：当Agent使用外部记忆存储（如Redis中的对话历史）时，蓝绿切换不能在任务执行中间进行。解决方案是实现**任务边界感知的流量切换**：在负载均衡层标记每个进行中的`run_id`，蓝绿切换时等待所有标记任务完成（或超过300s强制迁移）后再将流量切至绿色环境。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将Agent部署与监控与Agent系统中其他相近概念混为一谈。例如，掌握Agent部署的适用条件与其他监控的核心概念概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解Agent编排与工作流就学习Agent部署与监控，导致基础不牢**。建议先确认先修知识扎实
-3. **过度简化：Agent部署与监控的复杂度为7/9，初学者容易忽略其中的细微但关键的区别**
+**误区一：将LLM延迟作为Agent延迟的代理指标**
+许多团队只监控LLM API的P95延迟，忽略工具调用耗时。实际上在多步Agent中，工具调用总耗时常常占整体任务时长的60%~80%，特别是涉及外部API或代码执行的场景。正确做法是分别追踪`llm_latency`和`tool_latency`，并在Span中记录每个工具的独立耗时。
 
-## 知识衔接
+**误区二：认为Agent日志等同于Agent追踪**
+传统日志（Logger.info("Tool called: search")）缺乏父子关系和时序上下文，无法重建一次完整Agent运行的决策链路。Agent追踪要求每个LLM调用和工具调用都挂载在同一`run_id`下的Span树中，才能回放"Agent在第3步为何选择调用code_executor而非直接回答"这类关键问题。
 
-### 先修知识
-先修知识包括：
-- **Agent编排与工作流** — 为Agent部署与监控提供了必要的概念基础
-- **CI/CD持续集成** — 为Agent部署与监控提供了必要的概念基础
+**误区三：部署后不设置成本告警**
+成本指标在Agent系统中是一等公民，而非可选的FinOps工作。一个有bug的Agent若无token消耗速率告警，可在数小时内耗尽整月API配额。推荐设置双重告警：单任务成本超过阈值（如$0.50）触发即时告警；每小时累计成本超过滚动均值的200%触发紧急告警。
 
-### 后续学习
-掌握Agent部署与监控后，学习者已具备该方向的核心能力，可将所学应用于实际项目或探索AI工程其他分支。
+---
 
-## 学习建议
+## 知识关联
 
-预计学习时间：1-2周。建议采用以下策略：
+**来自Agent编排与工作流的依赖**：编排层定义了Agent的DAG（有向无环图）结构和工具调用协议，部署层需将这些逻辑映射为可独立扩缩容的服务单元。例如，LangGraph中定义的`StateGraph`节点可以对应Kubernetes中独立的Pod，允许对高负载节点（如代码执行节点）单独扩容，而不影响LLM调用节点。
 
-- **主动回忆**：学完后不看笔记复述Agent部署与监控的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将Agent部署与监控与AI工程中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释Agent部署与监控，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于Agent系统的章节可作为深入参考
-- Wikipedia: [Agent Deployment](https://en.wikipedia.org/wiki/agent_deployment) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Agent Deployment" 可找到配套视频教程
+**来自CI/CD持续集成的依赖**：Agent部署流水线在标准CI/CD基础上增加了两个Agent专属阶段：①**Prompt回归测试**（对比新旧prompt在基准数据集上的输出质量分）和②**工具集成测试**（用mock server验证每个工具在边界输入下的行为）。这两个阶段必须在merge到main分支之前通过，才能防止prompt变更导致的生产质量退化。部署频率受限于这两个测试阶段的执行时间，典型耗时为5~15分钟，决定了Agent系统的最小发布周期。

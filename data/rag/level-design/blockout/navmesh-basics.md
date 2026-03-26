@@ -24,64 +24,51 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-27
 ---
 
+
 # 导航网格基础
 
 ## 概述
 
-导航网格（Navigation Mesh，简称NavMesh）是一种将游戏世界中AI可行走区域抽象为多边形集合的数据结构，每个多边形单元描述一块平坦且可通行的地面区域。与传统的路点（Waypoint）系统不同，NavMesh以连续的面覆盖地形，使AI角色能在面内任意位置行走，而不是只能沿固定节点连线移动。
+导航网格（Navigation Mesh，简称 NavMesh）是一种将游戏关卡中AI可行走区域抽象为多边形集合的数据结构。引擎通过分析场景几何体，自动烘焙生成一张覆盖可行走表面的网格，AI角色在寻路时不再逐像素检测碰撞，而是在这张多边形网格上计算从A点到B点的最短路径。NavMesh技术最早在2000年代初随Unreal Engine 3和Unity引擎的普及而成为关卡设计的标准工具，极大降低了AI寻路的运算复杂度。
 
-NavMesh技术在2000年代初期随《半条命2》和Havok AI等中间件的普及而被广泛采用。在此之前，大多数游戏使用稀疏路点图处理AI寻路，这导致AI在障碍物附近表现僵硬。NavMesh的引入让AI能够平滑绕过复杂几何体，大幅提升了关卡中NPC的可信度。
-
-对关卡设计师而言，理解NavMesh的生成逻辑直接影响Blockout阶段的几何构建决策：一个未能正确生成NavMesh的关卡，无论视觉效果多精良，AI都将无法正常在其中活动，导致战斗、巡逻或追逐等核心玩法失效。
-
----
+NavMesh的核心价值在于它将三维几何碰撞问题简化为二维图搜索问题。传统射线检测寻路需要每帧发射数十条射线来验证路径可行性，而NavMesh只需在预烘焙的多边形图上运行A*算法（A-star），时间复杂度从O(n²)降至接近O(n log n)。对于关卡设计师而言，NavMesh的生成质量直接决定了AI是否能够到达关卡中每个预设的战术位置，因此在Blockout阶段就必须配合碰撞体积同步检验NavMesh覆盖范围。
 
 ## 核心原理
 
-### NavMesh的生成流程
+### NavMesh的生成参数
 
-引擎（以Unreal Engine 5为例）通过体素化（Voxelization）流程生成NavMesh。系统首先将场景几何体切割为小型立方体体素，默认体素尺寸（Cell Size）为**19cm**，Cell Height为**10cm**。体素化完成后，引擎识别出顶部开放且水平的体素面，将其合并为凸多边形区域，最终构成可供寻路使用的NavMesh面片。
+NavMesh烘焙依赖若干关键参数，其中最重要的是**Agent Radius（代理半径）**和**Max Slope（最大坡度角）**。以Unity引擎为例，默认Agent Radius为0.5单位，意味着宽度小于1.0单位的通道将被NavMesh排除，AI无法通过。Max Slope默认值为45度，超过该角度的斜面不会被烘焙为可行走区域。**Step Height（台阶高度）**参数控制AI能翻越的最大垂直落差，Unity默认值为0.4单位，低于此高度的台阶边缘NavMesh会自动连接，高于此值则产生断裂。
 
-这一流程的关键参数包括：
-- **Agent Radius（代理半径）**：决定AI角色距离墙壁或障碍物的最小通行间距，默认值34cm对应人形角色
-- **Agent Height（代理高度）**：NavMesh不会在低于此高度的空间（如低矮洞穴顶部）下方生成，默认144cm
-- **Max Slope（最大坡度）**：超过此角度的斜面不会被标记为可行走区域，默认44°
+Unreal Engine 5中的NavMesh参数集中在`RecastNavMesh`组件内，其中`Cell Size`（体素单元尺寸）默认为19cm，该值越小生成的NavMesh边界越精确但烘焙耗时越长；`Cell Height`默认为10cm，控制垂直方向的采样精度。关卡设计师在Blockout阶段通常将这些参数调至粗糙值以加快迭代速度，在关卡几何确定后再精细化烘焙。
 
-### 碰撞体积与NavMesh的依赖关系
+### 多边形网格的寻路逻辑
 
-NavMesh生成完全依赖场景中物体的**碰撞几何体（Collision Geometry）**，而非可见的渲染网格。一个有视觉细节但缺少碰撞体积的装饰物，不会对NavMesh产生任何阻挡效果，AI将直接穿过它行走。反之，一个隐藏的碰撞盒若放置在地面以上约30cm高度，可能意外截断该区域的NavMesh生成，造成AI无法进入某个本应可通行的房间。
+NavMesh生成后，每个可行走区域被分解为若干凸多边形（Convex Polygon）。AI寻路时首先定位起点和终点各属于哪个多边形节点，再以多边形为节点运行A*算法找到跨多边形路径，最后通过**漏斗算法（Funnel Algorithm）**将多边形序列平滑为实际的移动折线路径。这一流程意味着NavMesh的多边形数量越少，A*的搜索空间越小，寻路越高效——这也是为什么引擎会尽量将相邻平坦区域合并为更大的凸多边形。
 
-在Blockout阶段，设计师通常使用BSP体或简单Box Mesh构建空间，这些物体的碰撞体积与外形一致，NavMesh生成最为可靠。当引入带有复杂碰撞形状的美术资产时，必须重新验证NavMesh覆盖区域是否符合设计意图。
+NavMesh上相邻多边形之间的共享边称为**Portal Edge（门户边）**，漏斗算法正是沿着这些Portal Edge收紧路径。当关卡中存在门洞、拱廊等窄口时，Portal Edge的宽度直接影响AI通过时的移动轨迹平滑程度。若Portal Edge过窄（小于Agent Radius的2倍），AI可能在通过时产生卡边现象。
 
-### NavMesh Link与垂直连通性
+### NavMesh Link与动态障碍物
 
-水平地面之间的NavMesh面片由引擎自动连接，但**垂直位移**（如跳跃、攀爬、从平台落下）无法自动生成连接关系。设计师需手动放置**NavMesh Link（导航网格链接）**组件，在两个不相连的NavMesh区域之间建立逻辑通道，并在链接上标注AI是否能双向通行。例如，一个高度差为200cm的平台跳落动作，可设置为单向NavLink（仅允许AI向下跳，不允许向上）。忽略NavLink配置是Blockout阶段最常见的AI寻路失效原因之一。
+标准NavMesh只覆盖静态几何体，无法自动处理跳跃、攀爬或传送等非连续移动。引擎提供**NavMesh Link（导航链接）**组件来手动连接两段不相邻的NavMesh区域，例如将一段平台跳跃的起跳点与落点用Off-Mesh Link连接，并标注该连接需要播放跳跃动画。在Unreal Engine中，这类连接通过`NavLinkProxy` Actor实现，设计师可以为其设置触发距离和双向/单向属性。
 
----
+动态障碍物（如可移动的箱子或关门的大门）通过**NavMesh Obstacle**组件实时修改NavMesh局部区域，在Unity中对应`NavMeshObstacle`组件，其`Carve`属性开启后引擎每帧重新裁剪被遮挡区域的NavMesh。频繁Carve操作有性能代价，因此设计师应在Blockout阶段明确哪些障碍物是动态的，提前规划NavMesh的动态区域范围。
 
 ## 实际应用
 
-**仓库关卡巡逻区域调试**：设计师在Unreal中按P键可视化当前NavMesh覆盖范围（绿色区域代表AI可行走）。当发现某排货架之间的过道（宽度约80cm）未生成NavMesh时，检查后发现Agent Radius（34cm × 2 = 68cm）加上容错间距导致该通道被判定为过窄。解决方案是将通道宽度调整至**100cm以上**，或针对体型更小的AI角色单独配置一个Agent Radius为20cm的NavMesh配置文件。
+在第一人称射击游戏的室内关卡Blockout阶段，设计师搭建走廊后需立即检查NavMesh是否覆盖所有巡逻路点。若走廊宽度为80cm但Agent Radius设为50cm，NavMesh宽度仅剩负数，该走廊对AI完全不可通行。正确做法是关卡走廊净宽至少保证`Agent Radius × 2 + 30cm`的余量，即至少130cm宽才能保障单个AI流畅通过。
 
-**楼梯的NavMesh处理**：楼梯在NavMesh生成中是高频问题点。当单级台阶高度超过Agent Step Height（默认35cm）时，楼梯将被视为不可行走的坡面，NavMesh断开。Blockout阶段建议将楼梯坡度保持在45°以内，或直接在楼梯下方放置一个隐形斜坡碰撞体以辅助NavMesh连通，待美术阶段再替换为正式楼梯资产。
-
----
+在开放世界关卡中，NavMesh通常以**分块（Tiled NavMesh）**方式烘焙，Unreal Engine默认每块Tile大小为1000cm×1000cm。设计师应确保关键战斗区域的地面高度差不超过Max Slope限制，否则山坡顶部将出现NavMesh空洞，导致AI无法登上预设的狙击位。通过在编辑器中开启NavMesh可视化（Unity的Scene视图绿色叠加层，或UE5的`P`键显示导航网格），可以在Blockout阶段直观发现这类覆盖缺口。
 
 ## 常见误区
 
-**误区一：NavMesh会跟随场景几何体实时自动更新**
-静态场景中NavMesh在编辑器中预计算并烘焙，运行时不会因为关卡中添加了新的静态障碍物而自动重算。若需要动态障碍物（如可推动的箱子）影响AI寻路，必须使用**NavMesh Obstacle（导航网格障碍组件）**，该组件会在运行时动态挖除其覆盖区域的NavMesh。将普通静态碰撞盒误当动态障碍使用，会导致AI穿越可见障碍物。
+**误区一：认为碰撞体积与NavMesh完全同步。** 碰撞体积的存在不代表NavMesh一定覆盖该表面。NavMesh烘焙时还会受到Agent Radius、Max Slope、Step Height等参数约束，一个玩家可以行走的斜坡（因为玩家不受NavMesh约束），AI可能完全无法通行。设计师必须在为玩家设计通道后，额外验证对应的NavMesh生成结果，而不能假设两者一致。
 
-**误区二：NavMesh覆盖意味着AI一定能到达该区域**
-NavMesh描述的是"物理上可行走的区域"，但AI的实际寻路还受到**NavMesh区域过滤（Area Filter）**的限制。危险区域（如熔岩地面）可能在NavMesh上被标记为Cost极高的区域（默认危险区域Cost为1.0，普通地面为1.0，水面为2.0），AI将主动绕开，即使该区域在NavMesh覆盖范围内。设计师不能仅凭NavMesh可视化为绿色就断定AI会使用该路径。
+**误区二：NavMesh面积越大越好。** 部分设计师会将NavMesh烘焙范围最大化，覆盖所有几何体表面，包括屋顶、橱柜顶部等非预期区域。这不仅增加了A*搜索空间，还会导致AI出现翻越障碍物、站在玩家无法预期的位置等行为异常。正确做法是通过NavMesh Volume（Unreal中的`NavMeshBoundsVolume`）精确限制烘焙范围，并对不应可行走的表面添加`NavModifierVolume`设置为`Null Area`（完全不可行走区域）。
 
-**误区三：Blockout几何体可以随意使用非凸多边形碰撞**
-NavMesh生成算法对凸多边形碰撞处理效率远高于非凸多边形。在Blockout阶段使用L形或U形的单一碰撞体（Concave Mesh Collision）会显著增加NavMesh烘焙时间，有时还会造成NavMesh面片在凹陷处出现异常孔洞，应将复杂形状拆分为多个凸多边形碰撞体叠加。
-
----
+**误区三：Off-Mesh Link可以替代完整的几何过渡设计。** 有些设计师在发现两段NavMesh无法连接时，直接添加Off-Mesh Link了事，而不检查断裂原因。若NavMesh断裂是因为台阶高度超出Step Height参数，正确的修复是调整台阶几何形状或修改Step Height，而非依赖Off-Mesh Link。Over-Link会让AI的移动看起来像传送，破坏游戏表现的可信度。
 
 ## 知识关联
 
-**前置概念——碰撞体积设计**：NavMesh的生成质量直接取决于场景碰撞体积的精确程度。在学习碰撞体积设计时掌握的Simple Collision与Complex Collision区别，在NavMesh调试中具有直接应用价值：NavMesh生成默认使用Simple Collision，若某物体仅设置了Complex Collision而未设置Simple Collision，该物体对NavMesh完全透明。
+NavMesh基础直接依赖**碰撞体积设计**的质量：NavMesh烘焙时以碰撞体（Collider/Collision Mesh）为输入源，若碰撞体网格存在穿模、悬空或漏洞，NavMesh会在对应位置产生不可预测的覆盖错误。确保碰撞体积在Blockout阶段贴合几何体表面，是获得干净NavMesh的前提条件。
 
-**后续概念——AI巡逻范围**：AI巡逻范围的设计建立在合法NavMesh区域之上——巡逻路点必须放置在有效的NavMesh面片内，超出NavMesh边界的巡逻点会导致AI原地静止或产生寻路错误。掌握NavMesh的覆盖规律，能帮助设计师预判哪些空间适合设置巡逻回路，哪些区域需要额外NavLink才能纳入巡逻范围。
+掌握NavMesh基础后，下一步是设计**AI巡逻范围**：巡逻路点（Patrol Point）必须全部落在NavMesh覆盖区域内，巡逻路径的每段连接都需要NavMesh多边形支撑。设计巡逻范围时还需考虑NavMesh的连通性——若两个巡逻点分属互不连通的NavMesh岛屿，AI将在两点之间陷入寻路失败状态，这是AI巡逻设计中最常见的关卡结构问题之一。
