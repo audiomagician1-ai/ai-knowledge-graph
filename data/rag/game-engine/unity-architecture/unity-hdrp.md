@@ -24,52 +24,57 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # HDRP渲染管线
 
 ## 概述
 
-HDRP（High Definition Render Pipeline，高清渲染管线）是Unity于2018年随Unity 2018.1版本推出的可编程渲染管线，专门针对高端PC、主机平台（PlayStation 4/5、Xbox One/Series）等具备较强GPU算力的硬件设计。它基于SRP（Scriptable Render Pipeline）框架构建，通过物理正确的光照模型、体积雾、屏幕空间效果等技术，实现接近影视级的实时渲染效果。
+HDRP（High Definition Render Pipeline，高清渲染管线）是Unity于2018年随Unity 2018.1版本引入的可脚本化渲染管线（SRP）实现，专为高端PC、主机平台设计，目标是实现电影级视觉质量。与通用渲染管线URP不同，HDRP放弃了移动端兼容性，转而提供物理精确的光照、体积雾、次表面散射等渲染特性，支持DirectX 12、Vulkan、Metal等现代图形API。
 
-HDRP的诞生背景是Unity对高端图形需求的回应。传统的Built-in渲染管线沿用多年，无法高效利用现代GPU的并行计算能力，也难以支持基于物理的完整渲染工作流。HDRP采用延迟渲染（Deferred Rendering）作为主要渲染路径，并配合前向渲染（Forward Rendering）处理透明物体，使开发者能够在同一场景中放置数百个实时光源而不产生过大的性能瓶颈。
+HDRP的架构设计基于物理正确渲染（Physically Based Rendering，PBR）原则，所有光照单位均采用真实世界的物理量。点光源的亮度单位是坎德拉（Candela），面光源使用尼特（Nit），太阳光使用勒克斯（Lux）。这种设计意味着开发者必须了解真实世界照明参数才能正确设置场景，例如室内日光灯约为500–1000勒克斯，而正午阳光可达100,000勒克斯。
 
-HDRP的重要性体现在它将游戏视觉表现推向了全新标准。《地铁：离乡》（Metro Exodus Enhanced Edition）和Unity官方演示项目《异教徒》（Heretic）均采用HDRP制作，证明了其在商业级项目中的可行性。对于追求AAA级画质的开发团队，HDRP提供了一套完整的物理基础渲染工作流，是URP无法替代的选择。
+HDRP在AAA游戏开发领域被广泛采用，典型案例包括《奥比与精灵火焰》（Ori and the Will of the Wisps）的部分特效验证，以及Unity自身的演示项目《Enemies》（2022年发布）中展示的皮肤次表面散射与头发渲染。其核心价值在于将原本需要自定义渲染引擎才能实现的电影级效果，集成进Unity标准工作流程。
 
 ## 核心原理
 
-### 物理正确的光照系统
+### 延迟渲染与前向渲染混合架构
 
-HDRP的光照计算基于BSDF（双向散射分布函数）模型，材质系统完全遵循能量守恒定律。其PBR材质使用金属度（Metallic）和感知光滑度（Perceptual Smoothness）两个核心参数，并通过Cook-Torrance微表面模型计算镜面反射：
+HDRP默认采用延迟渲染路径（Deferred Rendering），将场景几何信息写入GBuffer后统一计算光照，支持大量动态光源。GBuffer包含四个渲染目标（Render Target）：RT0存储漫反射颜色与自发光遮罩，RT1存储法线与粗糙度，RT2存储金属度与环境遮挡，RT3存储光照贴图UV与材质特性标志位。对于透明物体和特殊材质（如头发、眼睛），HDRP自动切换到前向渲染路径处理，形成混合管线架构。
 
-**f(l, v) = D(h) · G(l, v, h) · F(v, h) / (4 · (n·l) · (n·v))**
+### 体积光照与大气散射
 
-其中D为法线分布函数（GGX分布），G为几何遮蔽函数，F为菲涅耳方程。HDRP还内置了次表面散射（Subsurface Scattering）着色模型，专门用于皮肤、玉石等半透明材质的渲染，采样精度由漫射轮廓（Diffusion Profile）资产控制。
+HDRP集成了基于物理的体积雾系统（Volumetric Fog），使用3D纹理存储体积数据，默认分辨率为视口的1/4（64×64×64体素）。体积光照计算采用Henyey-Greenstein相函数模拟丁达尔效应，公式为：
 
-### 光照架构与延迟渲染
+**p(θ) = (1 - g²) / [4π × (1 + g² - 2g·cosθ)^(3/2)]**
 
-HDRP默认使用分块延迟渲染（Tiled Deferred Rendering），将屏幕划分为16×16像素的小块，每个块独立计算影响它的光源列表，从而避免对每个光源重新遍历全部像素。在支持光线追踪的硬件上（需要DirectX 12及支持DXR的NVIDIA或AMD显卡），HDRP 7.x版本起引入了混合光线追踪模式，允许光线追踪阴影、反射与光栅化混合使用。
+其中g为各向异性系数（范围-1到1），θ为散射角。g=0表示各向同性散射，g趋近1表示强前向散射（如烟雾），g趋近-1表示强后向散射。HDRP的太阳光射线（Ray March）步进次数默认为64步，可在HDRP Asset中调整以平衡质量与性能。
 
-HDRP还引入了曝光控制系统，支持物理曝光单位（EV100），相机的ISO、快门速度和光圈值直接影响场景亮度，这与摄影摄像的真实参数完全对应，使美术师可以用真实相机知识调整画面。
+### 次表面散射（SSS）
 
-### 体积光照与大气效果
+HDRP的次表面散射实现基于屏幕空间散射算法，使用预积分皮肤BRDF模型。材质系统提供专用的Subsurface Scattering着色器图，开发者需配置散射距离（Scattering Distance）：皮肤的典型散射距离为红色通道2.5mm、绿色通道1.0mm、蓝色通道0.3mm，这反映了真实皮肤中光在不同颜色通道的穿透深度差异。SSS配置文件（DiffusionProfile）通过HDRP Global Settings统一管理，整个项目最多支持15个独立配置文件。
 
-HDRP的体积系统（Volume System）采用3D纹理存储体积雾的散射和消光系数，分辨率通常为屏幕分辨率的1/8（可配置）。体积光照通过Voxel化场景并在体素空间中积分光照贡献实现，支持局部和全局Volume叠加：局部Volume使用Blend Distance参数控制混合半径，全局Volume则对整个场景生效。天空系统支持物理天空（Physically Based Sky）模型，基于Rayleigh散射和Mie散射方程模拟大气层，可以精确再现不同时段的天空颜色变化。
+### 光线追踪集成
+
+从Unity 2019.3起，HDRP开始集成硬件光线追踪（Ray Tracing）支持，要求显卡支持DirectX Raytracing（DXR）1.0接口（如NVIDIA RTX系列）。HDRP的光线追踪功能涵盖光线追踪环境遮挡（RTAO）、光线追踪全局光照（RTGI）、光线追踪反射（RTR）和光线追踪阴影（RTS）。每帧光线追踪反射默认每像素发射1条光线，通过时间抗锯齿（TAA）累积多帧结果降低噪点。
 
 ## 实际应用
 
-在角色渲染场景中，HDRP的皮肤渲染工作流要求开发者创建Diffusion Profile资产，在其中设置散射半径（单位为毫米，真实皮肤约为10mm）和散射颜色（红色通道衰减最慢）。配合高分辨率法线贴图和Detail Map（HDRP专属的四通道细节贴图，存储Albedo、Normal XY、Smoothness），可以实现毛孔级别的皮肤细节。
+**角色皮肤渲染**：在制作写实人物时，将角色面部材质设置为HDRP的Lit着色器并启用Subsurface Scattering模式，导入皮肤的DiffusionProfile配置文件。Thickness Map（厚度贴图）控制光线穿透量，耳廓、鼻翼等薄处设置高厚度值（接近1.0），前额、下巴等厚处设置低值（接近0）。
 
-在场景渲染中，HDRP的去噪反射探针（Reflection Probe）支持实时更新，但性能代价较高，通常配合Screen Space Reflection（SSR）使用：SSR负责摄像机可见表面的反射，探针负责SSR无法覆盖的区域回退。全局光照方面，HDRP支持Lumen风格的Screen Space Global Illumination（SSGI）以及预计算的光照探针（Adaptive Probe Volumes，APV），APV在HDRP 2022.2版本中成为正式功能，解决了旧版Light Probe Group在大场景中密度不均的问题。
+**室内建筑可视化**：HDRP的IES光源支持直接导入真实灯具制造商提供的IES文件，精确模拟灯具配光曲线。结合HDRP的Probe Volume（探针体积）系统，室内间接光照可以细粒度分布在整个空间，而不是依赖传统的单点反射探针。
+
+**天空与大气**：使用HDRP内置的Physically Based Sky着色器，通过设置行星半径（默认6,360km）、大气层厚度（默认60km）及瑞利散射系数，自动生成随太阳高度角变化的真实天空颜色。日落时天空呈现橙红色是因为蓝光（短波）发生更多散射，这一效果HDRP会基于参数自动计算。
 
 ## 常见误区
 
-**误区一：HDRP与URP可以在同一项目中混用。** 实际上，HDRP和URP各自拥有独立的着色器库和材质系统，HDRP的Lit着色器与URP的Lit着色器不兼容，不能在同一Unity项目中同时启用。迁移项目时需要使用Unity提供的材质升级工具（Edit > Rendering > Materials > Convert All Materials），但这一工具仍需手动修复次表面散射等特殊材质。
+**误区一：HDRP与URP共享相同材质**。HDRP与URP使用完全不同的着色器体系，URP的Lit材质无法直接在HDRP项目中使用，反之亦然。在切换管线时，Unity提供了材质升级工具（Edit > Rendering > Materials > Convert All Built-in Materials to HDRP），但需要手工检查Subsurface Scattering、折射等HDRP专有属性。Legacy内置管线的Standard Shader同样无法在HDRP中产生正确效果。
 
-**误区二：HDRP在移动端性能与URP相当。** HDRP的最低硬件要求是支持Compute Shader的GPU（Metal、Vulkan或DirectX 11.1），延迟渲染路径对带宽要求高，在大多数移动设备上帧率会严重下降。Unity官方明确声明HDRP不支持iOS和Android平台，这与URP广泛的移动端支持形成本质差异。
+**误区二：HDRP可以通过降低设置在移动端运行**。HDRP架构依赖Compute Shader和多渲染目标（MRT），这是移动GPU通常不支持或性能极差的特性。Unity官方明确表示HDRP不支持Android和iOS平台，移动端高画质需求应使用URP。即使是低端PC（如核显），HDRP的GBuffer内存占用与Compute着色器开销也可能导致严重性能问题。
 
-**误区三：HDRP场景的光照强度可以使用0~1的归一化值。** HDRP完全基于物理单位：点光源和聚光灯的强度单位为流明（Lumen），方向光为勒克斯（Lux，晴天太阳约100,000 Lux），区域光为坎德拉每平方米（nit）。使用传统的0~1强度值会导致场景过暗或曝光异常。
+**误区三：HDRP的曝光设置与传统后处理相同**。HDRP使用物理相机曝光模型，Exposure组件的值代表EV100（曝光值），而非传统后处理的线性亮度倍数。EV100每增加1，场景亮度降低一半（即感光量减半或快门速度翻倍）。错误地将物理光照参数与EV100自动曝光混用，会导致场景亮度在运动时产生不可预期的剧烈变化。
 
 ## 知识关联
 
-学习HDRP的前提是掌握URP渲染管线的基本概念，包括SRP框架的Volume系统设计思想和Render Feature扩展机制——这两个概念在HDRP中以更复杂的形式重现（HDRP的自定义Pass对应URP的Render Feature，但API层面差异显著）。URP中学到的Shader Graph可视化着色器编辑经验也可以迁移，因为HDRP支持相同的Shader Graph工具，但节点库中多出HDRP专属节点如HD Scene Color和Diffusion Profile。
+学习HDRP需要已掌握URP渲染管线的基础概念，包括SRP（可脚本化渲染管线）的Asset配置方式、Renderer Feature机制，以及Shader Graph的节点编辑工作流。URP中的Lit着色器与HDRP的Lit着色器在输入参数命名上有部分重叠（如BaseColor、Metallic、Smoothness），但HDRP额外引入了各向异性（Anisotropy）、涂层（Clear Coat）等BRDF层，因此URP经验有助于理解材质输入逻辑，但不能直接迁移。
 
-HDRP与光线追踪技术（DirectX Raytracing，DXR）有直接的技术延伸关系：在HDRP项目中启用Ray Tracing功能后，可以逐特效替换光栅化效果，例如将SSR替换为光线追踪反射（Ray-Traced Reflections），将阴影贴图替换为光线追踪阴影（Ray-Traced Shadows），实现渐进式提升画质的工作流。HDRP也与Unity的VFX Graph深度集成，VFX Graph粒子系统可以接收HDRP的光照并参与体积雾计算，这是Built-in和URP管线下的粒子系统无法原生支持的特性。
+在技术深度方面，HDRP的光照计算涉及球谐函数（SH）用于间接漫反射、GGX分布函数用于镜面反射，以及BTDF（双向透射分布函数）用于折射材质。理解这些数学基础有助于解释为何HDRP中金属度为1的材质在粗糙度为0时会出现极亮高光，以及为何Clearcoat层需要独立的法线贴图控制汽车漆面的橘皮质感。后续深入方向可延伸至自定义HDRP Pass编写与Render Graph API，Unity从HDRP 12.0起将渲染管线执行逻辑迁移至Render Graph框架，以自动化资源生命周期管理和并行渲染优化。
