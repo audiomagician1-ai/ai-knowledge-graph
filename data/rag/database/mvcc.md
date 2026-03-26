@@ -24,84 +24,79 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # MVCC多版本并发控制
 
 ## 概述
 
-MVCC（Multi-Version Concurrency Control，多版本并发控制）是一种通过保存数据的多个历史版本来实现事务并发访问的机制。其核心思想是：读操作访问数据的历史快照版本，而不是当前最新版本，从而避免读写操作之间相互阻塞。这与基于锁的并发控制形成鲜明对比——锁机制中读操作需要等待写操作释放锁，而MVCC让读写操作在大多数情况下可以并行执行。
+MVCC（Multi-Version Concurrency Control，多版本并发控制）是一种通过保存数据的多个历史版本来实现并发读写操作互不阻塞的数据库并发控制机制。与传统的基于锁的并发控制不同，MVCC允许读操作访问数据的某个历史快照，从而避免了读写锁争用——**读操作不阻塞写操作，写操作不阻塞读操作**。
 
-MVCC的概念最早在1979年由David Reed在其博士论文中提出，后来在PostgreSQL（1987年首次实现）和Oracle中得到广泛采用。MySQL的InnoDB存储引擎在其5.0版本后也完整实现了MVCC。Oracle使用Undo段来存储旧版本，PostgreSQL将所有版本存储在堆表中（称为"heap tuple"），InnoDB则通过回滚日志（Undo Log）构建版本链。三种实现路径各有取舍，但核心逻辑一致。
+MVCC的思想最早可追溯至1978年David Reed在MIT的博士论文，后被Oracle、PostgreSQL、MySQL InnoDB等主流数据库广泛采用。PostgreSQL从1.0版本起即使用MVCC，而MySQL InnoDB引擎则在5.0版本后将MVCC作为默认并发策略。在OLTP（在线事务处理）场景下，读操作往往占总操作量的70%~80%，MVCC通过消除读锁显著提升了系统吞吐量。
 
-MVCC在AI工程的数据库场景中至关重要。训练数据管道、特征存储系统往往存在大量并发读取需求（如批量数据加载）与少量写入操作（如特征更新）并存的情况。若使用悲观锁，读操作将因等待写锁而产生严重延迟；MVCC允许读操作读取写操作提交前的稳定快照，吞吐量可提升数倍。
-
----
+MVCC的核心价值在于它直接决定了数据库能实现哪些事务隔离级别。可重复读（Repeatable Read）和读已提交（Read Committed）这两种最常用的隔离级别，在InnoDB中完全依赖MVCC的快照读机制实现，而非依赖行级锁。
 
 ## 核心原理
 
 ### 版本链与隐藏字段
 
-InnoDB中每行数据包含两个对用户不可见的隐藏字段：`DB_TRX_ID`（最近修改该行的事务ID，6字节）和`DB_ROLL_PTR`（回滚指针，7字节，指向Undo Log中的旧版本）。当事务修改某行时，InnoDB不会直接覆盖旧数据，而是将旧版本写入Undo Log，并让新版本的`DB_ROLL_PTR`指向旧版本。多次修改后，各版本通过回滚指针串联成一条**版本链**（Version Chain）。
+InnoDB为每行数据在物理层面添加三个隐藏字段来支撑MVCC：
+- **DB_TRX_ID**（6字节）：最近一次修改该行的事务ID
+- **DB_ROLL_PTR**（7字节）：回滚指针，指向undo log中该行的上一个版本
+- **DB_ROW_ID**（6字节）：行ID，在无主键时作为隐式主键
 
-例如：事务T1将某行值从A改为B，事务T2再将其从B改为C，则版本链为：`C(T2) → B(T1) → A(初始)`。读操作需要沿版本链回溯，找到对当前事务可见的版本。
+每次对某行进行UPDATE或DELETE时，数据库不会原地覆盖，而是将旧版本写入undo log，并通过DB_ROLL_PTR将新旧版本串联成一条**版本链**。例如，事务100将某行的值从"A"改为"B"，事务200再将其改为"C"，则该行版本链为：`C(TRX_ID=200) → B(TRX_ID=100) → A(TRX_ID=...)`，每个节点都存储于undo log中。
 
-### ReadView与可见性判断
+### ReadView快照机制
 
-MVCC通过**ReadView（读视图）**决定当前事务能看到哪个版本。ReadView包含以下关键信息：
-- `m_ids`：创建ReadView时，所有**活跃未提交**事务的ID列表
+读操作通过创建**ReadView**来决定应当读取版本链中的哪个版本。ReadView包含四个关键数据结构：
+
+- `m_ids`：创建ReadView时，系统中所有**活跃（未提交）**事务的ID集合
 - `min_trx_id`：`m_ids`中的最小值
-- `max_trx_id`：创建ReadView时，系统即将分配的下一个事务ID（即已分配最大事务ID+1）
-- `creator_trx_id`：创建此ReadView的当前事务ID
+- `max_trx_id`：系统已分配的最大事务ID + 1（即下一个将分配的ID）
+- `creator_trx_id`：创建本ReadView的事务自身ID
 
-可见性判断规则如下：对于版本链中某版本的事务ID `trx_id`：
-1. 若 `trx_id == creator_trx_id`：该版本是当前事务自己修改的，**可见**
-2. 若 `trx_id < min_trx_id`：该事务在ReadView创建前已提交，**可见**
-3. 若 `trx_id >= max_trx_id`：该事务在ReadView创建后才开始，**不可见**
-4. 若 `min_trx_id <= trx_id < max_trx_id`：检查`trx_id`是否在`m_ids`中——在则**不可见**（未提交），不在则**可见**（已提交）
+版本可见性判断规则如下（按顺序检查版本链中每个版本的DB_TRX_ID，记为`trx_id`）：
+1. 若`trx_id == creator_trx_id`：该版本是当前事务自己修改的，**可见**
+2. 若`trx_id < min_trx_id`：该版本在ReadView创建前已提交，**可见**
+3. 若`trx_id >= max_trx_id`：该版本在ReadView创建后才开始，**不可见**
+4. 若`min_trx_id <= trx_id < max_trx_id`：检查`trx_id`是否在`m_ids`中——在则**不可见**（未提交），不在则**可见**（已提交）
 
-### MVCC与事务隔离级别的绑定关系
+沿版本链向旧版本回溯，直到找到第一个可见版本即为最终读取结果。
 
-MVCC的行为直接由事务隔离级别控制，关键差异在于**ReadView的创建时机**：
+### 隔离级别与ReadView创建时机
 
-- **READ COMMITTED（读已提交）**：每次执行`SELECT`语句时都创建一个新的ReadView。因此，同一事务中两次读取可能看到不同结果——第一次读后若另一事务提交了修改，第二次读会看到新值，产生**不可重复读**问题。
+MVCC实现不同事务隔离级别的关键在于**何时创建ReadView**：
 
-- **REPEATABLE READ（可重复读，InnoDB默认）**：只在事务第一次执行`SELECT`时创建ReadView，此后整个事务期间复用同一个ReadView。无论其他事务如何提交，当前事务始终读取同一快照，解决了不可重复读问题。InnoDB还通过Gap Lock（间隙锁）配合MVCC解决了幻读问题，这是标准REPEATABLE READ定义之外的额外保证。
+- **读已提交（Read Committed）**：每次执行SELECT语句都重新创建一个新的ReadView。这意味着在同一事务内，两次相同的SELECT可能看到不同结果——第一次执行时某并发事务未提交（不可见），第二次执行时该事务已提交（可见），这正是**不可重复读**现象的来源。
 
-- **SERIALIZABLE**：InnoDB在此级别会对所有读操作加共享锁，退化为锁机制，不再使用MVCC的快照读。
+- **可重复读（Repeatable Read）**：仅在事务内**第一次执行SELECT时**创建ReadView，后续所有SELECT复用同一个ReadView。由于`m_ids`固定不变，并发事务提交前后对本事务的可见性不变，从而消除了不可重复读。InnoDB在可重复读级别下还通过间隙锁（Gap Lock）配合MVCC来防止幻读。
 
-**快照读（Snapshot Read）**与**当前读（Current Read）**的区别也至关重要：普通`SELECT`使用快照读，依赖MVCC；而`SELECT ... FOR UPDATE`、`SELECT ... LOCK IN SHARE MODE`以及`INSERT/UPDATE/DELETE`使用当前读，读取最新版本并加锁，绕过MVCC版本链。
-
----
+需要注意的是，MVCC仅对**快照读**（普通SELECT）生效。当使用`SELECT ... FOR UPDATE`或`SELECT ... LOCK IN SHARE MODE`时，触发的是**当前读**，会直接读取最新版本并加锁，绕过MVCC版本链。
 
 ## 实际应用
 
-**特征存储的并发更新场景**：在机器学习特征平台（如Feast）中，特征值每隔几分钟批量写入数据库，同时在线推理服务持续高频读取特征。在REPEATABLE READ隔离级别下，推理服务的读操作获取一个稳定的ReadView快照，批量写入事务不会阻塞任何读操作。写入完成提交后，新的读事务自然看到最新特征值。这使得特征写入的平均耗时不受读并发量影响。
+**AI训练数据管理平台**：在特征存储（Feature Store）系统中，多个训练任务并发读取特征数据，同时数据工程师在更新特征值。借助MVCC，训练任务可以基于任务启动时的快照读取一致的特征版本，不会因为工程师的写操作而中断或读到中间状态。Feast等开源Feature Store的离线存储层即利用了数据库MVCC特性保证特征一致性。
 
-**长事务导致Undo Log膨胀**：一个常见的生产问题——若某个数据分析查询开启了一个持续30分钟的长事务（即使只读），InnoDB无法清理该ReadView创建时刻之后的所有Undo Log版本，因为长事务的ReadView可能需要回溯到这些旧版本。结果是Undo表空间急剧膨胀，版本链变长导致读操作变慢。监控`information_schema.INNODB_TRX`表中的`trx_started`字段可发现此类长事务。
+**模型版本管理数据库**：MLflow等工具在PostgreSQL中记录实验运行记录时，并发写入多个实验结果（INSERT）的同时，分析师进行聚合查询（SELECT AVG(metrics)）。由于PostgreSQL的MVCC采用与InnoDB类似的快照隔离，聚合查询基于快照执行，不会读到尚未提交的半完整实验记录，确保统计结果的准确性。
 
-**MVCC在分布式数据库中的扩展**：TiDB使用全局授时服务（PD的TSO，Timestamp Oracle）生成单调递增的时间戳作为事务版本号，替代InnoDB的自增事务ID，以此在分布式节点间实现一致的快照读。CockroachDB采用HLC（Hybrid Logical Clock）实现类似功能。这说明MVCC的版本编号机制可以被替换，但可见性判断的逻辑框架保持不变。
-
----
+**高并发推荐系统的用户行为记录**：以每秒数万次并发写入用户点击行为为场景，MySQL InnoDB利用MVCC使读操作（模型推理时读取用户画像）与写操作（记录新行为）完全并行，实测显示开启MVCC的InnoDB在读写混合负载下比纯锁机制的吞吐量高出3~5倍。
 
 ## 常见误区
 
-**误区一：MVCC完全消除了锁的需求**
+**误区一：MVCC可以解决所有幻读问题**
 
-MVCC只让**读-写**之间不阻塞，但**写-写**冲突仍然需要锁来解决。两个事务同时修改同一行时，后到的写操作必须等待先到的写操作提交或回滚后才能继续。此外，InnoDB在REPEATABLE READ下对写操作使用Next-Key Lock，防止幻读，这些锁与MVCC是并存而非互斥的关系。
+许多人认为InnoDB可重复读级别下MVCC完全防止了幻读。实际上，MVCC只对快照读（普通SELECT）防止幻读——因为读取的是固定快照，不会看到新插入的行。但若在同一事务内先执行快照读再执行当前读（如`SELECT ... FOR UPDATE`），当前读会读取最新数据，此时确实可能看到其他事务新插入的行，出现幻读。InnoDB针对此场景需要通过间隙锁来补充防护。
 
-**误区二：REPEATABLE READ完全消除了幻读**
+**误区二：MVCC不占用额外存储空间**
 
-标准SQL规范中，REPEATABLE READ隔离级别不要求解决幻读。InnoDB的实现通过Gap Lock额外解决了**快照读场景**下的幻读，但在**混合当前读与快照读**的场景下仍可能出现幻读。例如：事务A先用快照读确认某范围无数据，事务B插入并提交，事务A再用`SELECT ... FOR UPDATE`（当前读）查询，此时会看到事务B新插入的行——这是实际存在的幻读场景。
+MVCC的历史版本存储在undo log中，这部分空间不会因事务提交而立刻释放。只有当系统中所有活跃ReadView都不再需要某个版本时，后台的**Purge线程**才会异步清理。若存在长事务（如一个事务持续30分钟未提交），其ReadView会阻止所有早于该事务的undo log被回收，导致undo log段急剧膨胀，这是MySQL生产环境中undo tablespace异常增大的主要原因之一。
 
-**误区三：旧版本数据会立即被清理**
+**误区三：MVCC下写操作之间不存在冲突**
 
-Undo Log中的旧版本不会在事务提交后立即删除。InnoDB的后台**Purge线程**负责清理不再被任何ReadView引用的旧版本。若系统中存在活跃的长事务，Purge线程无法推进清理进度，导致旧版本数据长期占用磁盘空间，这是高并发写入场景中磁盘空间异常增长的常见原因。
-
----
+MVCC消除的是读写冲突，写写冲突依然存在且依然通过锁来解决。当两个事务同时UPDATE同一行时，后到的事务需要等待前一个事务释放行锁（X锁），MVCC在此过程中不起作用。MVCC与锁机制是互补关系：前者处理读写并发，后者处理写写并发。
 
 ## 知识关联
 
-**依赖事务ACID特性**：MVCC是实现事务**隔离性（Isolation）**的具体技术手段。理解事务的ACID属性，特别是原子性如何通过Undo Log实现，是理解MVCC版本链构建方式的前提——Undo Log既服务于事务回滚（原子性），也服务于历史版本存储（隔离性）。
+**与ACID事务的关系**：MVCC是实现ACID中"隔离性（Isolation）"的核心手段。事务的原子性仍依赖undo log（MVCC为undo log的建立提供了基础设施，两者共享同一套undo段），持久性依赖redo log，而隔离性中的可重复读和读已提交级别正是通过本文描述的ReadView机制实现的。
 
-**依赖数据库锁机制**：MVCC并不替代锁，而是与锁机制分工协作。锁机制中的行锁（Record Lock）和间隙锁（Gap Lock）解决写-写冲突与幻读，MVCC解决读-写并发问题。彻底理解InnoDB的并发控制，需要同时掌握这两套机制的边界：快照读走MVCC版本链，当前读走加锁路径。
-
-**向分布式事务延伸**：单机MVCC的版本号基于本地自增事务ID，而分布式数据库需要全局一致的版本号（如TiDB的TSO、Google Spanner的TrueTime API）。掌握单机MVCC原理后，分布式MVCC的核心挑战从"如何判断可见性"变为"如何在多节点间生成全局单调时间戳"，两者的可见性判断逻辑本质相同。
+**与数据库锁机制的协同**：MVCC并非取代锁，而是与行锁、间隙锁共同构成InnoDB的并发控制体系。理解了MVCC后，可以更准确地判断哪些SQL触发快照读（走MVCC）、哪些触发当前读（走锁），从而在设计高并发数据库应用时精确控制并发行为，避免不必要的锁等待和死锁。
