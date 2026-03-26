@@ -24,74 +24,55 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # Lumen全局光照
 
 ## 概述
 
-Lumen是Epic Games随Unreal Engine 5（2022年4月正式发布）一同推出的全动态全局光照与反射系统，旨在完全取代UE4时代需要预计算的Lightmass烘焙方案。它的核心设计目标是让开发者在无需任何预计算的前提下，实时呈现间接漫反射光照、间接高光反射以及天空遮蔽（Sky Occlusion）效果，使昼夜循环、门窗开关等动态场景变化能够即时反映在光照上。
+Lumen是虚幻引擎5（Unreal Engine 5）中内置的全动态全局光照与反射系统，由Epic Games于2022年随UE5正式版发布。它能够实时计算间接漫反射光照、天空遮蔽以及高质量镜面反射，无需预烘焙光照贴图或手动放置反射捕获球。Lumen的诞生直接解决了UE4时代开发者必须依赖Lightmass烘焙静态光照的工作流瓶颈，使得动态时间循环、可破坏环境等场景的全局光照变得可行。
 
-Lumen的名称来自拉丁语"光"，由Epic研发团队主导开发，最初随UE5"Early Access"版本（2021年5月）亮相。其设计灵感来源于软光线追踪（Software Ray Tracing）与屏幕空间技术的结合——在不强制要求RTX显卡的前提下，通过有向距离场（Signed Distance Field，SDF）和网格距离场（Mesh Distance Fields）模拟光线弹射，从而在主机及中高端PC上达到可信的全局光照效果。
+Lumen采用"软件光追"与"硬件光追"两条路径的混合架构。软件光追基于有向距离场（Signed Distance Field，SDF）和屏幕空间技术，可在不支持DXR扩展的GPU上运行，最低适配DirectX 11显卡；硬件光追则调用DXR（DirectX Raytracing）API，利用GPU的RT Core单元获得更精确的几何细节与玻璃材质支持。两种路径可以在同一项目的不同平台配置中独立启用，开发者通过`r.Lumen.HardwareRayTracing 1`控制台变量切换。
 
-从工程意义上看，Lumen彻底改变了游戏关卡迭代的工作流：美术人员调整灯光或移动物体后，光照变化可在编辑器视口中以秒级速度更新，而Lightmass烘焙有时需要数小时。这使得大型开放世界项目（如官方示例《Valley of the Ancient》）能够在运行时呈现准确的室内外光照过渡。
-
----
+Lumen的重要意义在于它将全局光照的"即时反馈"带入了编辑器工作流——设计师移动一盏灯或修改材质反照率，场景光照会在数帧内收敛到新的稳定状态，而非等待数分钟乃至数小时的烘焙。
 
 ## 核心原理
 
-### 软件光追与硬件光追双后端
+### 场景表示：Lumen场景与距离场
 
-Lumen提供两条追踪路径，可通过控制台变量 `r.Lumen.HardwareRayTracing 1` 切换到硬件路径。
+Lumen维护了一套独立于UE5渲染管线的"Lumen场景（Lumen Scene）"缓存，其中包含网格体的**有向距离场（Mesh Distance Fields）**和**表面缓存（Surface Cache）**。表面缓存以卡片（Card）的形式存储网格体六个轴向投影的辐射度、法线和材质属性，每张Card的默认分辨率为128×128纹素。Lumen会根据摄像机距离对Card执行LOD降级，远处网格体的Card分辨率可低至16×16，以控制显存占用。
 
-**软件光追**模式依赖网格距离场（Mesh Distance Fields）进行光线求交。每个静态网格在构建时生成一个3D SDF体积，光线与场景的求交通过在SDF上步进（Sphere Tracing）来近似，误差控制在约8 cm精度内。此模式无需光追GPU，适用于PS5、Xbox Series X等次世代主机。
+软件光追模式下，光线从屏幕上的着色点出发，首先在屏幕空间内步进2~4步，若未命中则切换至全局SDF（Global Distance Field）加速结构，以较大步长快速穿越空旷区域，最终在距离场梯度接近0时判定命中并查询表面缓存中的辐照度。
 
-**硬件光追**模式调用DXR/Vulkan Ray Tracing接口对几何体做精确求交，精度显著更高，但要求NVIDIA RTX 20系列及以上或AMD RX 6000系列及以上GPU，并需在项目设置中启用"Support Hardware Ray Tracing"选项。
+### 辐照度缓存：探针与时间累积
 
-### Radiance Cache 与 Surface Cache
+Lumen在场景中自动放置**辐照度探针（Radiance Cache Probes）**，以`64×64×64`的世界空间体素网格分布，每个探针存储半球面辐照度的球谐系数（2阶SH，共9个系数×3通道）。每帧仅更新探针总数的约1/8，通过时间累积（Temporal Accumulation）在多帧间平摊计算开销，这是Lumen能够在实时帧率下运行的关键策略。当摄像机或光源快速移动时，探针的历史权重被削减，收敛速度加快，但代价是短暂出现闪烁（Flickering）。
 
-Lumen不逐像素追踪完整路径，而是建立两层缓存加速：
+### 屏幕空间与Lumen的协作
 
-- **Surface Cache**：将场景中可见网格表面的材质属性（Albedo、Normal、Emissive）预先光栅化并存入Atlas纹理。光线命中某表面时直接查询该Cache获取材质信息，避免重复着色计算。
-- **Radiance Cache**：在世界空间以稀疏体素网格（默认分辨率约8 m间距）存储每个位置的入射辐射度（Radiance），供后续光线弹射快速采样。Radiance Cache每帧以异步方式逐步更新，时间累积延迟约1帧。
+Lumen并不孤立运行，它与UE5的**屏幕空间全局光照（SSGI）**协同工作。对于屏幕内可见的近距离几何细节，SSGI以像素精度补充短距离间接光，而Lumen辐照度探针负责处理超出屏幕范围或被遮挡的中远距离间接光照。两者的混合阈值由`r.Lumen.ScreenProbeGather.ScreenSpaceReconstruction`系列参数控制。反射方面，Lumen在软件光追模式下使用**反射捕获**与光线步进的混合体，硬件光追模式则可追踪真实镜面光线，支持多层玻璃和液体材质的焦散近似。
 
-两者联合工作时，一次漫反射弹射的完整流程为：屏幕像素 → 追踪光线命中Surface Cache → 查询命中点处的Radiance Cache → 积累间接光照贡献。
+### 硬件光追路径的额外能力
 
-### 屏幕空间与世界空间的混合策略
-
-Lumen优先使用屏幕空间层（Screen Traces）对近距离遮蔽和反射做低成本的二维查询，只有当屏幕空间查询失败（即命中点超出屏幕边界或被遮挡）时，才退回到SDF/硬件光追的世界空间查询。这一"短程屏幕空间 + 长程世界空间"分层策略使得85%以上的光线可由屏幕空间层解决，大幅降低GPU负担。最终结果通过时序降噪（Temporal Denoiser）以每帧追踪约1/4分辨率的稀疏采样实现接近全分辨率的品质。
-
-### 发光物体与自发光传播
-
-Lumen原生支持将Emissive材质作为光源参与全局光照传播，无需手动添加Point Light来模拟发光效果。Surface Cache会捕获网格表面的自发光值，并将其注入Radiance Cache完成间接光传播，这是Lightmass方案在实时模式下不具备的特性。
-
----
+启用硬件光追后，Lumen可以对**实例化静态网格体（Instanced Static Mesh）**的实际三角形执行精确命中测试，消除SDF在薄壁结构（如铁网、叶片）上的漏光伪影。硬件光追路径还支持**World Position Offset（WPO）动画**的精确遮挡，这对植被随风摆动时的自遮蔽计算有明显改善，代价是每帧TLAS（顶层加速结构）重建的额外GPU开销约为0.5~2ms（视场景复杂度）。
 
 ## 实际应用
 
-**开放世界昼夜循环**：在《Fortnite》Chapter 4及Epic官方示例《Lyra Starter Game》中，定向光（Directional Light）角度实时变化时，Lumen能在0.5秒内将光照变化传播至室内阴影区域，无需重新烘焙。
+**动态时间循环场景**：在开放世界游戏中，太阳位置每帧变化，Lumen的探针更新机制使天空光照的间接弹射在约8~16帧内完成收敛，玩家几乎察觉不到过渡延迟。《黑神话：悟空》和Epic官方演示《Valley of the Ancient》均采用Lumen实现昼夜动态光照。
 
-**室内外明暗过渡**：玩家从强烈日光室外进入窑洞等室内场景时，Lumen的间接光照能正确呈现"眼睛适应"式的亮度差异，这依赖Radiance Cache对室外天光遮蔽的准确采样，而不是UE4中常见的假AO补丁。
+**室内场景的颜色渗色**：传统烘焙光照贴图若物体移动则渗色失效，Lumen的表面缓存与探针系统会实时重新计算红色地毯对白色墙壁的颜色出血（Color Bleeding），开发者无需额外设置任何参数。
 
-**动态物体反射**：硬件光追路径下，Lumen反射可追踪角色、载具等Skeletal Mesh，而软件光追路径由于SDF不支持骨骼网格形变，Skeletal Mesh在反射与间接光照中会回退到屏幕空间或胶囊体近似。这是选择软/硬件路径时必须权衡的关键差异。
-
-**移动平台限制**：Lumen在UE5.1之前不支持移动平台（iOS/Android），UE5.2开始通过"Lumen Mobile"提供有限子集支持，仅包含漫反射间接光照，不包含高光反射追踪。
-
----
+**控制台平台适配**：PlayStation 5和Xbox Series X支持Lumen软件光追路径；Nintendo Switch等移动/低端平台则自动降级为UE5内置的**屏幕空间全局光照**，通过`Scalability`配置文件中的`r.Lumen.Supported 0`彻底禁用Lumen并回退到传统方案。
 
 ## 常见误区
 
-**误区一：Lumen需要光追显卡才能运行**
-这是最常见的误解。Lumen的软件光追路径基于SDF，在无光追硬件支持的GPU（如GTX 1080、PS5内置GPU）上同样可运行，只是精度低于硬件路径。开启硬件光追是可选优化，而非必须条件。
+**误区一：Lumen软件光追等于路径追踪**。Lumen软件光追本质上是基于距离场的近似光线步进，加速结构是SDF而非BVH三角形，因此无法准确处理凹面体内部的反射细节，也不支持透明材质的折射。真正的路径追踪需要在UE5中另外启用`Path Tracer`模式，两者互不替代。
 
-**误区二：Lumen完全替代了所有光照烘焙需求**
-Lumen不支持移动平台的完整特性，对极低端硬件（低于推荐的RX 5700/RTX 2070性能等级）性能消耗较大，且在超大规模室外场景中Radiance Cache的间距限制（8 m默认值）可能导致室内细小区域漏光。对于性能预算极严格的移动游戏，Lightmass预计算或Distance Field AO仍是合理选择。
+**误区二：硬件光追一定优于软件光追**。硬件光追提供更准确的几何命中，但TLAS重建与着色成本使其在高多边形场景中反而慢于软件路径。Epic官方建议仅在目标平台GPU具备RT Core（Nvidia Turing架构/AMD RDNA 2以上）且场景存在明显薄壁漏光问题时才切换至硬件光追，否则软件路径的性能/质量比更优。
 
-**误区三：调高Lumen质量参数即可解决所有漏光问题**
-漏光（Light Leaking）通常源于SDF精度不足，与质量参数（如 `r.Lumen.DiffuseIndirect.Allow 1` 的采样数）关系不大。正确解法是为薄墙网格开启"Generate Distance Field As If Two Sided"选项，或将问题区域的薄墙厚度增加到4 cm以上以满足SDF分辨率要求。
-
----
+**误区三：Lumen可以完全取代静态光照贴图**。Lumen的间接光照噪点和时间稳定性在强烈明暗对比下仍不及高质量烘焙光照贴图，对于VR等对帧率和稳定性极为敏感的应用，以及移动平台，静态烘焙依然是更可靠的选择。
 
 ## 知识关联
 
-**前置概念**：理解Lumen需要掌握UE5模块系统的渲染管线结构，特别是`Renderer`模块中延迟渲染（Deferred Shading）的GBuffer布局——Lumen的Surface Cache本质上是对GBuffer可见表面属性的场景级扩展缓存。同时需要了解UE5中`MeshDistanceFields`子系统，因为它是软件光追的几何求交基础。
+学习Lumen前需理解**UE5模块系统**，特别是渲染模块（`Renderer`模块）如何通过`ILumenSceneSubsystem`子系统注册Lumen场景数据，以及`RDG（Render Dependency Graph）`如何调度Lumen的各阶段Pass。Lumen的SDF生成依赖`DistanceField`模块在网格体导入时自动构建的离线资产，这一过程受`Build Settings > Generate Mesh Distance Field`选项控制。
 
-**后续概念**：掌握Lumen后，可进一步学习更广义的全局光照（Global Illumination）理论，包括路径追踪（Path Tracing）的无偏蒙特卡洛积分原理（Lumen的参考模式即调用UE5内置Path Tracer）、辐射度缓存（Irradiance Cache）在离线渲染中的对应设计，以及ReSTIR等现代实时GI算法——这些知识有助于理解Lumen在设计上的权衡取舍与未来演进方向。
+Lumen是学习**全局光照**大类概念的一个具体工程实现案例。掌握Lumen后，开发者可以对比路径追踪（Path Tracing）、辐射度缓存（Radiance Cache）等理论方法，理解Lumen在精度与实时性之间所做的具体工程权衡：例如用2阶球谐（9系数）替代完整光谱分布、用SDF步进替代精确三角形相交测试，以及用时间累积替代每帧全量采样。这些取舍共同构成了Lumen能够在消费级GPU上以30~60fps运行的技术基础。

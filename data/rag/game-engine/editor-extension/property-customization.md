@@ -20,68 +20,93 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-26
 ---
+
 # 属性面板定制
 
 ## 概述
 
-属性面板定制（Property Customization）是游戏引擎（Game Engine）中编辑器扩展领域的重要概念。难度等级2/9（基础级）。
+属性面板定制（Detail Panel Customization）是指在 Unreal Engine 编辑器中，通过 C++ 代码修改特定类或结构体在 Details Panel 中的显示方式与交互行为。默认情况下，UE 的反射系统会自动将 `UPROPERTY` 宏标记的成员变量以标准控件形式列出，而属性面板定制允许开发者完全替换或增强这些默认行为，例如隐藏某些属性、合并多个属性为一行，或插入自定义按钮和预览图。
 
-Detail Panel/Custom Row/Widget。
+属性面板定制功能最早在 Unreal Engine 4 初期版本中随 `IDetailCustomization` 接口一同引入，配套的模块为 `PropertyEditor`，需在 `.Build.cs` 文件的 `PrivateDependencyModuleNames` 中显式添加此模块名称。这一机制解决了插件和工具开发者长期面临的问题：对于复杂的数据资产或组件，默认的线性属性列表会让用户产生信息过载，而定制化面板可以将相关属性分组、折叠并配以说明文字，显著提升编辑器的可用性。
 
-在知识体系中，属性面板定制建立在编辑器扩展概述的基础之上，是理解可进入更高级主题的关键前置知识。为什么属性面板定制如此重要？因为它在编辑器扩展中起到承上启下的作用，连接基础概念与高级应用。
+属性面板定制在游戏项目的编辑器工具链中至关重要。当团队需要为程序化生成系统、关卡规则资产或角色配置对象提供美术师友好的界面时，仅靠 `UPROPERTY` 的 `meta` 标签（如 `ClampMin`、`EditCondition`）已无法满足需求，此时必须借助 `IDetailCustomization` 或 `IPropertyTypeCustomization` 来实现更复杂的布局与逻辑。
 
-## 核心知识点
+---
 
-### 1. Detail Panel/Custom Row/Widget
+## 核心原理
 
-Detail Panel/Custom Row/Widget是属性面板定制(Property Customization)的核心组成部分之一。在编辑器扩展的实践中，Detail Panel/Custom Row/Widget决定了系统行为的关键特征。例如，当Detail Panel/Custom Row/Widget参数或条件发生变化时，整体表现会产生显著差异。深入理解Detail Panel/Custom Row/Widget需要结合游戏引擎的基本原理进行分析。
+### IDetailCustomization 与类级定制
 
+`IDetailCustomization` 接口用于定制整个 UObject 子类在 Details Panel 中的显示。开发者需继承该接口并实现唯一的纯虚函数：
 
-### 关键原理分析
+```cpp
+virtual void CustomizeDetails(IDetailLayoutBuilder& DetailBuilder) override;
+```
 
-属性面板定制的核心在于Detail Panel/Custom Row/Widget。从理论角度看，该概念涉及以下层面：
+在 `CustomizeDetails` 内部，可通过 `DetailBuilder.EditCategory("CategoryName")` 获取一个 `IDetailCategoryBuilder` 引用，再调用其 `AddCustomRow(FText::FromString("RowName"))` 添加完全自定义的行。一个自定义行由左侧的 NameContent 和右侧的 ValueContent 两个槽位组成，两者均接受标准的 Slate 控件。完成类的定制器编写后，必须在模块的 `StartupModule()` 函数中调用：
 
-1. **定义层**：明确属性面板定制的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解属性面板定制内部各要素的相互作用方式
-3. **应用层**：将属性面板定制的原理映射到游戏引擎的实际场景中
+```cpp
+FPropertyEditorModule& PropertyModule = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
+PropertyModule.RegisterCustomClassLayout(
+    UMyClass::StaticClass()->GetFName(),
+    FOnGetDetailCustomizationInstance::CreateStatic(&FMyClassCustomization::MakeInstance)
+);
+```
 
-思考题：如何判断属性面板定制的应用是否超出了其理论适用范围？
+若不注册，定制器永远不会被激活，这是初学者最常遗漏的步骤。
 
-## 关键要点
+### IPropertyTypeCustomization 与类型级定制
 
-1. **核心定义**：属性面板定制的本质是Detail Panel/Custom Row/Widget，这是理解整个概念的出发点
-2. **多维理解**：掌握属性面板定制需要同时理解Detail Panel/Custom Row/Widget等关键维度
-3. **先修关系**：扎实的编辑器扩展概述基础对理解属性面板定制至关重要
-4. **进阶路径**：可广泛应用于游戏引擎各方面
-5. **实践标准**：真正掌握属性面板定制的标志是能在具体场景中灵活运用并正确判断适用边界
+当需要定制的是某个特定结构体类型（如 `FMyStruct`）而非整个类时，应使用 `IPropertyTypeCustomization` 接口。该接口要求实现两个函数：`CustomizeHeader` 负责折叠时显示的单行摘要，`CustomizeChildren` 负责展开后各子属性的布局。
+
+```cpp
+virtual void CustomizeHeader(TSharedRef<IPropertyHandle> PropertyHandle,
+    FDetailWidgetRow& HeaderRow,
+    IPropertyTypeCustomizationUtils& CustomizationUtils) override;
+
+virtual void CustomizeChildren(TSharedRef<IPropertyHandle> PropertyHandle,
+    IDetailChildrenBuilder& ChildBuilder,
+    IPropertyTypeCustomizationUtils& CustomizationUtils) override;
+```
+
+通过 `PropertyHandle->GetChildHandle("MemberName")` 可访问结构体内的具体成员句柄，再用 `MakePropertyWidget()` 生成该属性的默认控件，从而实现"只重排版面，保留默认编辑控件"的轻量级定制。注册方式同样在 `StartupModule` 中调用 `RegisterCustomPropertyTypeLayout`，传入结构体名称字符串。
+
+### 自定义 Widget 与回调绑定
+
+在 `AddCustomRow` 或 `HeaderRow` 的 ValueContent 槽中，可以嵌入任意 Slate 控件，例如 `SButton`、`SImage` 或 `SComboBox`。按钮点击回调通常通过 `FOnClicked::CreateSP(this, &FMyCustomization::OnButtonClicked)` 绑定，其中 `CreateSP` 使用弱指针以避免定制器对象被销毁后回调仍被触发导致崩溃。
+
+若需要在按钮回调中修改被选中对象的属性，正确做法是通过 `IPropertyHandle::SetValue` 或直接访问 `TWeakObjectPtr<UMyClass>` 持有的对象指针并标记 `Modify()`，这样修改才会被 Undo/Redo 系统记录，符合编辑器事务管理规范。
+
+---
+
+## 实际应用
+
+**颜色渐变预览条**：为一个包含 `StartColor`、`EndColor` 和 `Steps` 三个成员的结构体 `FGradientSetting` 编写 `IPropertyTypeCustomization`，在 `CustomizeHeader` 中用 `SImage` 绘制实时渐变条，让美术师无需展开结构体即可直观看到渐变效果。
+
+**一键生成按钮**：为程序化关卡资产 `UProceduralLevelAsset` 实现 `IDetailCustomization`，在 Details 面板顶部插入一个"立即生成预览"的 `SButton`，点击后调用资产的 `GeneratePreview()` 方法并触发视口刷新。这种做法比在蓝图中暴露函数调用更快捷，无需打开单独的工具窗口。
+
+**条件隐藏属性**：通过 `DetailBuilder.HideProperty("InternalCache")` 可在定制器中完全隐藏特定属性，避免美术师误操作引擎内部缓存字段，同时该字段仍然会被序列化保存，不影响运行时数据完整性。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将属性面板定制与编辑器扩展中其他相近概念混为一谈。例如，Detail Panel/Custom Row/Widget的适用条件与其他同类概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解编辑器扩展概述就学习属性面板定制，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：属性面板定制虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：忘记在模块卸载时反注册定制器**
+许多教程只展示 `RegisterCustomClassLayout` 的调用，却忽略在 `ShutdownModule()` 中调用 `UnregisterCustomClassLayout`。当插件被热重载或编辑器关闭时，未反注册的定制器会导致 `PropertyEditorModule` 持有悬空引用，引发编辑器崩溃。正确做法是在 `ShutdownModule` 中用同名的 Unregister 函数对称注销。
 
-## 知识衔接
+**误区二：混淆 IDetailCustomization 与 IPropertyTypeCustomization 的适用场景**
+`IDetailCustomization` 针对的是"某个 UObject 类型被选中时整个 Details Panel 的布局"，而 `IPropertyTypeCustomization` 针对的是"某种结构体类型无论出现在哪个对象的属性里都采用统一的显示方式"。将两者颠倒使用会导致定制效果只在特定对象上生效，或反复对同一数据类型重写相同代码。
 
-### 先修知识
-先修知识包括：
-- **编辑器扩展概述** — 为属性面板定制提供了必要的概念基础
+**误区三：直接修改 CDO 而非使用 PropertyHandle**
+在定制器回调中直接修改 `GetDefaultObject<UMyClass>()` 返回的 CDO 数据，不会触发 Undo/Redo 记录，也不会通知其他监听该属性变化的系统。必须通过 `IPropertyHandle::SetValue` 或在修改对象前调用 `MyObject->Modify()`，才能正确接入 UE 的事务系统（`FScopedTransaction`）。
 
-### 后续学习
-掌握属性面板定制后，学习者已具备该方向的核心能力，可将所学应用于实际项目或探索游戏引擎其他分支。
+---
 
-## 学习建议
+## 知识关联
 
-预计学习时间：30-60分钟。建议采用以下策略：
+属性面板定制以**编辑器扩展概述**中介绍的 `IModuleInterface` 生命周期和 `FPropertyEditorModule` 模块访问方式为前提。若不了解模块的 `StartupModule`/`ShutdownModule` 机制，无法正确完成定制器的注册与反注册。
 
-- **主动回忆**：学完后不看笔记复述属性面板定制的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将属性面板定制与游戏引擎中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释属性面板定制，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于编辑器扩展的章节可作为深入参考
-- Wikipedia: [Property Customization](https://en.wikipedia.org/wiki/property_customization) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Property Customization" 可找到配套视频教程
+在横向关联上，属性面板定制与 **自定义编辑器工具窗口**（`FWorkspaceItem`、`SDockTab`）相互补充：属性面板定制适合在现有 Details Panel 内嵌入轻量级控件，而独立工具窗口适合需要完整布局和多视图的复杂操作场景；选择哪种方案取决于功能复杂度和用户操作频率。此外，`SButton`、`STextBlock` 等 Slate 控件的使用在属性面板定制中大量出现，深入学习 **Slate UI 框架**将有助于在定制器中构建更丰富的交互界面。
