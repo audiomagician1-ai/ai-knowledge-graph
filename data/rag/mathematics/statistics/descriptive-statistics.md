@@ -1,9 +1,9 @@
 ---
 id: "descriptive-statistics"
 concept: "描述统计"
-domain: "psychology"
-subdomain: "research-methods"
-subdomain_name: "研究方法"
+domain: "mathematics"
+subdomain: "statistics"
+subdomain_name: "数理统计"
 difficulty: 2
 is_milestone: false
 tags: ["统计"]
@@ -20,6 +20,7 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
+updated_at: "2026-03-26"
 ---
 # 描述性统计
 

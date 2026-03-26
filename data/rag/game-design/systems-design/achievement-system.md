@@ -1,9 +1,9 @@
 ---
 id: "achievement-system"
 concept: "成就系统"
-domain: "game-engine"
-subdomain: "platform-abstraction"
-subdomain_name: "平台抽象"
+domain: "game-design"
+subdomain: "systems-design"
+subdomain_name: "系统设计"
 difficulty: 2
 is_milestone: false
 tags: ["平台"]
@@ -20,6 +20,7 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
+updated_at: "2026-03-26"
 ---
 # 成就系统
 

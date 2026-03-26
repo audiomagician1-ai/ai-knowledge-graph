@@ -1,9 +1,9 @@
 ---
 id: "linear-regression"
 concept: "线性回归"
-domain: "mathematics"
-subdomain: "statistics"
-subdomain_name: "数理统计"
+domain: "economics"
+subdomain: "econometrics"
+subdomain_name: "计量经济学"
 difficulty: 6
 is_milestone: false
 tags: ["里程碑"]
@@ -20,6 +20,7 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
+updated_at: "2026-03-26"
 ---
 # 线性回归
 

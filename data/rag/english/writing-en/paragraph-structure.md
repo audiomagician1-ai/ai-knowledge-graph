@@ -1,9 +1,9 @@
 ---
 id: "paragraph-structure"
 concept: "段落结构"
-domain: "writing"
-subdomain: "writing-fundamentals"
-subdomain_name: "写作基础"
+domain: "english"
+subdomain: "writing-en"
+subdomain_name: "写作"
 difficulty: 1
 is_milestone: false
 tags: ["结构"]
@@ -20,6 +20,7 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
+updated_at: "2026-03-26"
 ---
 # 段落结构
 

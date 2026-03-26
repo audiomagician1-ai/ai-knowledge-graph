@@ -1,9 +1,9 @@
 ---
 id: "graph-coloring"
 concept: "图着色"
-domain: "mathematics"
-subdomain: "discrete-math"
-subdomain_name: "离散数学"
+domain: "ai-engineering"
+subdomain: "algorithms"
+subdomain_name: "算法"
 difficulty: 7
 is_milestone: false
 tags: ["经典"]
@@ -20,6 +20,7 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+updated_at: "2026-03-26"
 ---
 # 图着色
 

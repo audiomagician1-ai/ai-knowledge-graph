@@ -1,9 +1,9 @@
 ---
 id: "binary-tree"
 concept: "二叉树"
-domain: "data-structures"
-subdomain: "binary-tree"
-subdomain_name: "二叉树"
+domain: "ai-engineering"
+subdomain: "data-structures"
+subdomain_name: "数据结构"
 difficulty: 2
 is_milestone: false
 tags: ["树", "数据结构", "递归"]
@@ -21,6 +21,7 @@ sources:
   - type: "textbook"
     name: "Knuth, The Art of Computer Programming, Vol. 1"
 scorer_version: "scorer-v2.0"
+updated_at: "2026-03-26"
 ---
 # 二叉树
 

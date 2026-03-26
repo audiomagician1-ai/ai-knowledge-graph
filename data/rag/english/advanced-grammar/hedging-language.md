@@ -1,9 +1,9 @@
 ---
 id: "hedging-language"
 concept: "模糊限制语"
-domain: "writing"
-subdomain: "academic-writing"
-subdomain_name: "学术写作"
+domain: "english"
+subdomain: "advanced-grammar"
+subdomain_name: "高级语法"
 difficulty: 3
 is_milestone: false
 tags: ["语言"]
@@ -20,6 +20,7 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
+updated_at: "2026-03-26"
 ---
 # 模糊表达
 

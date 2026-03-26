@@ -1,9 +1,9 @@
 ---
 id: "systems-thinking"
 concept: "系统思维"
-domain: "product-design"
-subdomain: "product-thinking"
-subdomain_name: "产品思维"
+domain: "game-design"
+subdomain: "systems-design"
+subdomain_name: "系统设计"
 difficulty: 3
 is_milestone: false
 tags: ["思维"]
@@ -20,6 +20,7 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
+updated_at: "2026-03-26"
 ---
 # 系统思维
 

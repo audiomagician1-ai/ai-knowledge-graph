@@ -24,78 +24,76 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # 性能标记
 
 ## 概述
 
-性能标记（Performance Marking）是游戏引擎脚本系统中用于在代码特定位置插入计时探针的技术机制，其核心目的是测量某段代码的执行耗时，并将这些数据以可视化形式呈现给开发者。在Unreal Engine中，性能标记通过两套主要宏系统实现：`STAT`系列宏和`SCOPE_CYCLE_COUNTER`宏，二者配合Unreal Insights工具形成完整的性能分析工作流。
+性能标记（Performance Markers）是游戏引擎脚本系统中用于精确测量代码段执行时间和资源消耗的标注机制。在虚幻引擎中，性能标记以 `SCOPE_CYCLE_COUNTER`、`DECLARE_CYCLE_STAT`、`SCOPE_SECONDS_COUNTER` 等宏的形式存在，它们在代码特定位置插入计时探针，将执行数据传递至 Unreal Insights 或内置的 `stat` 命令系统进行可视化分析。
 
-这一技术最早在Unreal Engine 3时代以`STAT`宏的形式出现，目标是让程序员无需借助外部性能分析器（如Visual Studio Profiler）即可在引擎内部直接获取函数级别的耗时数据。Unreal Engine 4引入了`Unreal Frontend`的性能分析视图，而到了Unreal Engine 5.0发布时，`Unreal Insights`成为官方推荐的独立性能分析应用，支持录制超过数GB的帧时间轨迹数据。
+性能标记的概念最早随 CPU 硬件性能计数器（Hardware Performance Counter）的普及而进入游戏开发领域，约在2000年代初期被引擎开发商系统化。虚幻引擎3时代引入了 `STAT` 宏体系，虚幻引擎4在此基础上形成了完整的 Stat Group 分类机制，并在虚幻引擎5中配合 Unreal Insights 工具链实现了毫秒级甚至微秒级的帧时间追踪。
 
-性能标记在脚本系统中的实用价值在于：蓝图虚拟机（Blueprint VM）的每次节点执行本身存在解释开销，如果不在关键蓝图函数或原生C++调用点插入`SCOPE_CYCLE_COUNTER`，开发者无法区分是蓝图逻辑本身慢还是被调用的C++函数慢，从而无法精准优化。
+在脚本系统的日常开发中，性能标记是定位 Blueprint 逻辑瓶颈的首要手段。当一帧的 CPU 时间超出目标预算（如16.67ms对应60fps）时，单靠代码审查无法确定是蓝图事件图（Event Graph）中的循环调用、还是某个自定义 C++ 函数绑定拖慢了整体执行，此时性能标记提供的精确数据是优化决策的唯一可靠依据。
 
 ---
 
 ## 核心原理
 
-### STAT宏的声明与注册
+### DECLARE_CYCLE_STAT 与 SCOPE_CYCLE_COUNTER 的工作机制
 
-使用性能标记的第一步是声明一个统计量。在Unreal Engine C++代码中，需要使用`DECLARE_CYCLE_STAT`宏在`.cpp`或头文件中完成注册：
-
-```cpp
-DECLARE_CYCLE_STAT(TEXT("MyFunction"), STAT_MyFunction, STATGROUP_Game);
-```
-
-三个参数分别为：显示名称（出现在Unreal Insights时间线上的字符串）、标记的唯一枚举标识符、以及所属的统计组（StatGroup）。统计组需要提前用`DECLARE_STATS_GROUP`声明，如`STATGROUP_Game`是引擎内置组，也可以自定义分组以便在分析工具中按模块过滤。
-
-### SCOPE_CYCLE_COUNTER的工作机制
-
-`SCOPE_CYCLE_COUNTER(STAT_MyFunction)` 本质上是一个RAII（Resource Acquisition Is Initialization）对象：当程序进入该宏所在的作用域时，构造函数记录当前CPU时钟周期（通过`FPlatformTime::Cycles64()`读取硬件计数器）；当作用域结束、对象析构时，再次读取时钟周期并计算差值。这个差值以微秒为单位累积到对应`STAT`标记的统计槽中。
+虚幻引擎的 Cycle Stat 系统依赖两个配对宏才能完整工作。首先在 `.cpp` 或头文件中使用 `DECLARE_CYCLE_STAT` 声明一个统计槽（Stat Slot）：
 
 ```cpp
-void UMyComponent::TickComponent(float DeltaTime, ...)
-{
-    SCOPE_CYCLE_COUNTER(STAT_MyComponentTick);
-    // 实际逻辑...
-}
+DECLARE_CYCLE_STAT(TEXT("MyActor Tick"), STAT_MyActorTick, STATGROUP_Game);
 ```
 
-由于使用了硬件时钟而非`FDateTime`等高层API，单次计时开销通常低于50纳秒，对被测代码的影响可以忽略不计。
+三个参数分别是：可读名称（显示在 Insights 中的标签）、唯一标识符（宏名）、所属的 Stat Group。随后在需要测量的代码块入口处插入：
 
-### Unreal Insights的轨迹捕获原理
+```cpp
+SCOPE_CYCLE_COUNTER(STAT_MyActorTick);
+```
 
-Unreal Insights以独立进程运行，通过TCP端口（默认1980端口）从目标应用接收二进制事件流。每当一个`SCOPE_CYCLE_COUNTER`作用域完成，引擎的`FStatsThread`（一个独立的统计线程）将该事件序列化为紧凑的二进制格式并推送到环形缓冲区，Insights客户端实时读取并重建调用层级。在Unreal Engine 5.3中，Insights新增了`Asset Load Time`和`RHI命令`的内置标记分组，使得GPU与CPU侧的时间轴可以在同一界面对齐比较。
+该宏利用 RAII 原理，在构造时记录 CPU 周期数（通过 `FPlatformTime::Cycles64()` 读取 TSC 或等效计数器），在作用域结束时计算差值并累加至对应的 Stat Slot。整个采集过程的自身开销约为 **20~50纳秒**，对被测逻辑的影响极小。
+
+### Stat Group 分类与命令行查看
+
+所有性能标记必须归属于一个 Stat Group，引擎内置组包括 `STATGROUP_Game`、`STATGROUP_Anim`、`STATGROUP_Blueprint` 等。在运行时输入控制台命令 `stat game` 可展示 `STATGROUP_Game` 下所有标记的实时数据，每行数据包含：调用次数（Calls）、单帧最大值（Max ms）、平均值（Avg ms）三列。`STATGROUP_Blueprint` 专门追踪蓝图虚拟机的各类操作，如 `Blueprint Function Call`、`Blueprint Event` 的执行耗时，是排查蓝图性能问题的第一入口。
+
+### Unreal Insights 中的 Timing Insights 面板
+
+Unreal Insights 是虚幻引擎5附带的独立分析程序（可执行文件位于 `Engine/Binaries/Win64/UnrealInsights.exe`），通过 `-tracehost` 参数或在编辑器中启用 Trace 录制后，性能标记数据会以 **Timing Events** 的形式写入 `.utrace` 文件。在 Timing Insights 面板中，每个 `SCOPE_CYCLE_COUNTER` 标注的代码块显示为时间轴上一段彩色区间，区间宽度直接对应执行时长，嵌套调用形成层级结构（CPU Track）。通过点击某一区间可查看该标记在选定帧范围内的 **P99 延迟**（第99百分位），这对发现偶发性帧刺（Frame Spike）比平均值更有价值。
+
+### SCOPE_SECONDS_COUNTER 与浮点计时的差异
+
+与基于 CPU 周期的 `SCOPE_CYCLE_COUNTER` 不同，`SCOPE_SECONDS_COUNTER(double& Seconds)` 将经过时间以秒为单位累加至一个外部 `double` 变量。这种方式适合跨帧累计统计（例如统计某个 AI 决策树在过去1秒内总共消耗了多少时间），但无法直接与 Unreal Insights 的时间轴集成，仅适用于自定义日志或 HUD 调试显示场景。
 
 ---
 
 ## 实际应用
 
-**蓝图节点耗时定位**：当项目中某个`UFunction`被蓝图频繁调用导致帧率下降时，在该函数的C++实现体顶部插入`SCOPE_CYCLE_COUNTER`，在Unreal Insights的`Timing Insights`视图中即可看到该函数在每一帧中的起止时间条。如果发现某帧中该函数耗时从正常的0.1ms突增到3ms，可以结合同帧的蓝图调用栈判断是否因条件分支触发了大量Actor迭代。
+**定位蓝图 Tick 过载**：在一个开放世界项目中，若 `stat blueprint` 命令显示 `Blueprint Tick` 单帧耗时超过 3ms，可对可疑蓝图的 `ReceiveTick` 实现对应的 C++ `Tick` 函数，并在其中添加 `SCOPE_CYCLE_COUNTER(STAT_SuspectActorTick)`。录制 Unreal Insights Trace 后，在时间轴中筛选该标记，即可确认具体哪个 Actor 类贡献了最多耗时。
 
-**多线程脚本任务标记**：Unreal Engine的`TaskGraph`系统中，异步蓝图任务可通过`DECLARE_CYCLE_STAT`配合`STATGROUP_TaskGraphTasks`注册，在Insights的多线程时间线中区分该任务被分配到`GameThread`还是`BackgroundThread`上执行，从而判断是否需要用`AsyncTask(ENamedThreads::AnyBackgroundThreadNormalTask, ...)`将其卸载到后台线程。
+**脚本函数的C++绑定性能验证**：当蓝图通过 `UFUNCTION(BlueprintCallable)` 调用一个 C++ 函数时，在该函数体内添加 `SCOPE_CYCLE_COUNTER` 可分离"蓝图虚拟机调度开销"与"C++逻辑执行开销"。若 Insights 显示 C++ 函数本身仅耗时 0.02ms，但蓝图层调用链显示 0.3ms，则问题在于蓝图侧的对象迭代或事件分发逻辑，而非 C++ 实现。
 
-**移动平台热点筛查**：在Android和iOS平台，`FPlatformTime::Cycles64()`底层调用`clock_gettime(CLOCK_MONOTONIC)`，硬件精度为纳秒级。通过在蓝图Native Event的`_Implementation`函数插入标记，可以在移动设备的Insights轨迹中直接定位哪些蓝图重写函数在移动GPU渲染线程同步点前后造成了CPU侧等待气泡。
+**多线程任务标记**：在使用 `AsyncTask(ENamedThreads::AnyBackgroundThreadNormalTask, ...)` 分发的后台脚本任务中，仍可使用 `SCOPE_CYCLE_COUNTER`，Unreal Insights 的 CPU Track 会在对应的工作线程泳道中显示该标记，从而判断后台脚本任务是否与游戏线程存在时间重叠或资源竞争。
 
 ---
 
 ## 常见误区
 
-**误区一：认为性能标记会在发布版本中被自动移除**
+**误区一：认为性能标记在 Shipping 构建中无开销，因此可以随意添加**
+实际上，`SCOPE_CYCLE_COUNTER` 在 `UE_BUILD_SHIPPING` 配置下**并非零开销**——虽然数据不会上报至 Insights，但宏展开后仍会生成条件判断和内存写入指令（约 5~10 纳秒）。大规模添加（如在每帧调用数千次的函数中）会产生可测量的累计开销。针对纯 Shipping 性能分析，应使用 `QUICK_SCOPE_CYCLE_COUNTER` 或在 `#if !UE_BUILD_SHIPPING` 块内有选择地启用。
 
-`SCOPE_CYCLE_COUNTER`和`DECLARE_CYCLE_STAT`在默认的`Shipping`构建配置下确实会被宏条件编译为空操作（no-op），但这依赖于`UE_BUILD_SHIPPING`宏被正确定义。若团队使用自定义构建脚本且未正确传递该宏，则统计代码会残留在发布版本中，导致每帧额外数千次函数调用的开销。因此在提交发布版本前需用`stat none`命令行参数验证统计系统已关闭。
+**误区二：直接用 `stat fps` 和帧率下降判断瓶颈位置**
+`stat fps` 仅反映整帧耗时，无法区分游戏线程、渲染线程或 GPU 的贡献。性能标记的意义在于为**游戏线程的脚本逻辑**提供精细计时，若帧率下降来自渲染线程（如 DrawCall 过多），脚本层的性能标记数据完全正常，此时应转向 `stat scenerendering` 或 GPU Insights Track。
 
-**误区二：把`SCOPE_CYCLE_COUNTER`放在高频内联函数中以为无开销**
-
-若将`SCOPE_CYCLE_COUNTER`插入一个每帧被调用数万次的内联函数（例如粒子系统的单粒子更新函数），统计线程的写入操作会导致缓存行竞争（cache line contention）。正确做法是将标记放在外层循环函数上，用`FStatsThreadState::GetLocalState()`的聚合统计替代逐次计时，否则测量行为本身会使帧时间增加超过30%，造成"测量者效应"（Observer Effect）式的性能失真。
-
-**误区三：以为`stat fps`显示的数据等同于Insights的标记数据**
-
-`stat fps`控制台命令显示的帧时间是通过`FApp::GetDeltaTime()`采样的游戏线程帧间隔，而`SCOPE_CYCLE_COUNTER`记录的是特定代码块的CPU周期净时间。两者之间的差值包含了线程切换、等待渲染线程同步（`FRenderCommandFence`）以及垃圾回收暂停的时间，这些时间不会出现在任何单一的`STAT`标记中，必须在Insights的`Frame`轨道中综合分析。
+**误区三：以为 Stat Group 名称只是显示用途，对数据无影响**
+将性能标记归入不同 Stat Group 会影响 `stat <groupname>` 命令的过滤结果，也会影响 Unreal Insights 中 Asset Track 的分类聚合。若将蓝图脚本标记错误归入 `STATGROUP_Anim`，在使用 Insights 的 Asset Investigation 功能分析动画系统时会引入噪音数据，导致误判动画系统的实际开销。
 
 ---
 
 ## 知识关联
 
-学习性能标记需要先掌握**脚本系统概述**中关于蓝图虚拟机执行流程的内容，特别是`UFunction`的调用栈结构——因为`SCOPE_CYCLE_COUNTER`的插入位置必须与VM的函数分发边界对齐，否则会将蓝图解释开销和原生C++开销混在同一个统计槽中，导致分析结果误导优化方向。
+**前置概念**：脚本系统概述中介绍的蓝图虚拟机（Blueprint VM）执行模型是理解性能标记测量对象的基础——性能标记捕获的正是 VM 字节码解释、C++ thunk 函数调用等具体步骤的 CPU 周期。理解 `UObject` 的 `Tick` 调度链路（`FTickTaskManager` → `AActor::TickActor`），有助于判断在调用链的哪一层插入标记最具分析价值。
 
-在Unreal Engine脚本系统的更广泛调试体系中，性能标记与**蓝图调试器**（Blueprint Debugger）形成互补：蓝图调试器提供断点和变量监视，而`STAT`标记提供时序数据；两者在Unreal Insights的`Counters`面板中可以叠加显示，当调试器断点触发时对应的帧时间棒会在Insights时间线中出现异常峰值，这是识别"调试断点对帧时间影响"的直接依据。此外，性能标记数据可通过`FStatsUtils::ExportStatsToCSV()`导出为CSV格式，供Python脚本进行跨版本的回归性能测试对比。
+**横向关联**：性能标记与 **内存追踪标记**（`LLM_SCOPE`，即 Low-Level Memory Tracker 宏）属于同一层级的代码注解工具，但前者度量时间维度，后者度量空间维度，两者在 Unreal Insights 的不同面板中分别展示，联合使用可同时定位脚本逻辑的时间与内存双重瓶颈。

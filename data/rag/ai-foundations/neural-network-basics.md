@@ -1,9 +1,9 @@
 ---
 id: "neural-network-basics"
 concept: "神经网络基础"
-domain: "ai-foundations"
-subdomain: "deep-learning"
-subdomain_name: "深度学习"
+domain: "ai-engineering"
+subdomain: "ai-foundations"
+subdomain_name: "AI基础"
 difficulty: 4
 is_milestone: false
 tags: ["核心"]
@@ -23,6 +23,7 @@ sources:
   - type: "academic"
     ref: "Hornik, Kurt. Approximation capabilities of multilayer feedforward networks, Neural Networks, 1991"
 scorer_version: "scorer-v2.0"
+updated_at: "2026-03-26"
 ---
 # 神经网络基础
 

@@ -1,9 +1,9 @@
 ---
 id: "predicate-logic"
 concept: "谓词逻辑"
-domain: "philosophy"
-subdomain: "logic-reasoning"
-subdomain_name: "逻辑与推理"
+domain: "mathematics"
+subdomain: "discrete-math"
+subdomain_name: "离散数学"
 difficulty: 3
 is_milestone: false
 tags: ["核心"]
@@ -20,6 +20,7 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
+updated_at: "2026-03-26"
 ---
 # 谓词逻辑
 

@@ -1,9 +1,9 @@
 ---
 id: "replay-system"
 concept: "回放系统"
-domain: "game-engine"
-subdomain: "serialization"
-subdomain_name: "序列化"
+domain: "game-design"
+subdomain: "social-systems"
+subdomain_name: "社交系统"
 difficulty: 3
 is_milestone: false
 tags: ["回放"]
@@ -20,6 +20,7 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
+updated_at: "2026-03-26"
 ---
 # 回放系统
 

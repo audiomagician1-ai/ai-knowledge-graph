@@ -1,9 +1,9 @@
 ---
 id: "report-writing"
 concept: "报告写作"
-domain: "writing"
-subdomain: "professional-writing"
-subdomain_name: "职业写作"
+domain: "english"
+subdomain: "writing-en"
+subdomain_name: "写作"
 difficulty: 2
 is_milestone: false
 tags: ["应用"]
@@ -20,6 +20,7 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
+updated_at: "2026-03-26"
 ---
 # 报告写作
 

@@ -1,9 +1,9 @@
 ---
 id: "extinction"
 concept: "消退"
-domain: "psychology"
-subdomain: "behavioral-psychology"
-subdomain_name: "行为心理学"
+domain: "biology"
+subdomain: "evolution"
+subdomain_name: "进化生物学"
 difficulty: 2
 is_milestone: false
 tags: ["学习"]
@@ -20,6 +20,7 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
+updated_at: "2026-03-26"
 ---
 # 灭绝
 

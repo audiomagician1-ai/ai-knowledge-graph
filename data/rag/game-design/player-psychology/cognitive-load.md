@@ -1,9 +1,9 @@
 ---
 id: "cognitive-load"
 concept: "认知负荷"
-domain: "psychology"
-subdomain: "cognitive-psychology"
-subdomain_name: "认知心理学"
+domain: "game-design"
+subdomain: "player-psychology"
+subdomain_name: "玩家心理"
 difficulty: 2
 is_milestone: false
 tags: ["学习"]
@@ -20,6 +20,7 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
+updated_at: "2026-03-26"
 ---
 # 认知负荷
 
