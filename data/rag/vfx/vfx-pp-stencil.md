@@ -25,76 +25,63 @@ updated_at: 2026-03-26
 ---
 
 
+
 # 模板缓冲应用
 
 ## 概述
 
-模板缓冲（Stencil Buffer）是GPU帧缓冲区中的一个8位整数通道，每像素可存储0到255之间的整数标记值。在后处理特效管线中，模板缓冲充当空间选择器——它允许开发者在不同渲染Pass之间传递像素归属信息，从而让后处理着色器只对特定像素区域生效，而非盲目处理全屏幕4K分辨率的所有像素。
+模板缓冲（Stencil Buffer）是GPU渲染管线中与深度缓冲共享同一块内存的8位整数缓冲区，每个像素可存储0至255之间的整数标记值。在后处理特效流程中，模板缓冲的核心价值在于它能够在屏幕空间内精确划定"哪些像素参与某种后处理运算"，从而实现对特定物体或区域的局部后处理，而非对全屏统一执行同一Pass。
 
-该技术最早在光栅化管线确立初期就作为硬件功能存在，但真正被广泛用于后处理选择性遮罩是在延迟渲染（Deferred Rendering）普及之后。延迟管线的GBuffer天然会执行几何Pass，这一Pass正好可以同步写入模板值，零额外带宽成本地为后续后处理Pass划分像素类别，例如UE4/UE5就在其延迟管线中将模板缓冲的特定比特位保留给头发、皮肤、自发光对象等材质类型。
+模板缓冲的硬件规范可追溯至OpenGL 1.0时代（1992年），但将其用于局部后处理遮罩是延迟渲染（Deferred Rendering）普及后才被游戏业界广泛采用的技术。以《战地3》（2011年）为代表的现代延迟管线开始系统性地利用模板缓冲在G-Buffer阶段给不同材质类别（角色皮肤、植被、金属）写入不同的Stencil标记值，使后续光照Pass只对对应材质类别的像素运行特定着色逻辑，节省了大量无效像素的计算开销。
 
-模板缓冲后处理之所以重要，在于它能以硬件Early-Z/Early-Stencil机制提前剔除不需要处理的像素，从而大幅降低昂贵后处理着色器（如景深、辉光、SSAO）的实际执行像素数。若一个场景中角色仅占屏幕面积的15%，使用模板剔除后景深Pass的片元着色器调用量可降低约85%。
+在后处理特效场景中，模板缓冲的关键优势在于它的测试与写入操作完全由硬件固定功能单元执行，几乎不产生额外的Shader指令开销。相比使用Clip或discard指令在Pixel Shader内丢弃像素，Stencil Test在光栅化阶段就可以提前剔除不参与处理的像素，从而避免无谓的Shader Invocation，对于需要多Pass叠加的复杂后处理链条来说性能优势明显。
 
 ---
 
 ## 核心原理
 
-### 模板缓冲的写入阶段
+### 模板缓冲的写入与测试机制
 
-模板值写入发生在几何Pass中，通过设置`StencilOp`和`StencilWriteMask`控制。最常见的做法是在材质的渲染状态中指定`StencilRef`（参考值），并将写入操作设置为`REPLACE`，使通过深度测试的像素将其`StencilRef`值直接覆写到模板缓冲对应位置。例如，为皮肤材质指定`StencilRef = 2`，为金属材质指定`StencilRef = 4`，为植被指定`StencilRef = 8`。若需同时标记多类材质，可利用位掩码——`StencilRef = 3`（二进制`00000011`）同时表示两种属性的叠加。
-
-模板测试函数由三个参数定义：比较函数（如`EQUAL`、`NOTEQUAL`、`ALWAYS`）、参考值（StencilRef）、读取掩码（StencilReadMask）。判断公式为：
+Stencil操作由两个独立阶段组成：**写入阶段（Stencil Write）** 在几何渲染时将标记值刻入缓冲；**测试阶段（Stencil Test）** 在后处理Pass中按照比较函数决定像素是否通过。测试函数的完整表达式为：
 
 ```
-通过条件：(StencilBufferValue & StencilReadMask) [CompareFunc] (StencilRef & StencilReadMask)
+(ref & mask) OP (stencil & mask)
 ```
 
-当`CompareFunc = EQUAL`、`StencilRef = 2`、`StencilReadMask = 0xFF`时，只有缓冲中值恰好为2的像素才会通过测试，其他像素被硬件直接丢弃，连片元着色器都不会执行。
+其中`ref`是CPU/Shader设定的参考值，`stencil`是缓冲中已有的值，`mask`是位掩码，`OP`可选EQUAL、NOTEQUAL、GREATER等比较运算符。仅当表达式为真时，像素才会进入后续Fragment Shader处理。通过设置`mask`的不同位段，一张Stencil Buffer可以同时承载多类独立的遮罩信息，最多8个互不干扰的逻辑通道。
 
-### 多层次模板区域划分
+### 局部后处理的Pass构建方式
 
-8位模板缓冲可以通过位域（Bit Field）技术同时编码多种分类信息。Unity HDRP采用的一种典型分配方案是：
-- Bit 0–1：光照模型类别（标准/次表面散射/各向异性）
-- Bit 2–3：接收阴影类型
-- Bit 7：是否参与屏幕空间反射
+实现局部后处理需要至少两个Pass：第一个Pass为**标记Pass**，以`ColorMask 0`（关闭颜色写入）和`ZWrite Off`渲染目标物体轮廓，仅将Stencil值写为约定的标记（例如`ref=2, op=Replace`）；第二个Pass为**效果Pass**，绑定全屏三角形或Quad，并将Stencil Test设置为`ref=2, comp=Equal`，此时只有被标记的像素会进入Bloom、色差（Chromatic Aberration）或描边等后处理着色器。Unity URP中通过`StencilState`结构体在C#侧动态配置这两个Pass，`RenderStateBlock`允许在不修改Shader代码的前提下运行时替换Stencil配置。
 
-在后处理Pass读取时，通过不同的`StencilReadMask`来过滤目标像素——例如`StencilReadMask = 0x03`只读低两位来区分光照模型，`StencilReadMask = 0x80`只检查最高位来判断是否执行SSR。这样一次几何Pass写入的信息可在多个后处理Pass中被分别利用，避免重复渲染几何体。
+### 遮罩的边缘精度与MSAA兼容问题
 
-### Early-Stencil 硬件剔除机制
-
-现代GPU（如NVIDIA Maxwell架构后的所有显卡）在光栅化阶段实现了Early-Stencil测试，与Early-Z测试协同工作。当后处理全屏三角形（Full-Screen Triangle）的绘制调用到达光栅器时，GPU会在执行片元着色器之前就查询模板缓冲并剔除不满足条件的像素。这意味着被剔除的像素不仅跳过着色器执行，还避免了纹理采样、带宽消耗和ALU运算。实测数据表明，在4K分辨率下对占屏幕20%面积的区域执行SSAO，使用模板剔除比全屏SSAO节省约78%的GPU时间（根据目标区域复杂度有所浮动）。
+Stencil Buffer的精度边界与光栅化采样点一一对应。在前向渲染下配合MSAA 4x时，每个像素存在4个子采样点，但Stencil Buffer只有**每采样点一个8位值**，因此标记边缘在子采样级别是精确的。然而在延迟渲染管线中，G-Buffer阶段通常以1x采样率写入Stencil，此时边缘会出现明显的块状锯齿。解决方案是在标记Pass后对Stencil边缘区域执行一次膨胀（Dilation）操作：使用Compute Shader以3×3邻域采样，将任意邻居含有目标Stencil值的像素也标记为目标值，以1~2像素的代价换取边缘处后处理效果的软化衔接。
 
 ---
 
 ## 实际应用
 
-**角色专属轮廓描边**：在几何Pass中为所有角色网格写入`StencilRef = 1`。描边后处理Pass启用模板测试`EQUAL 1`，只在角色像素上执行Sobel边缘检测并叠加描边颜色。背景与UI像素完全不参与计算，避免产生误描边。
+**角色轮廓描边（Outline Effect）**：对玩家角色写入`Stencil=1`，在后处理Pass中先以`Stencil≠1`剔除人物区域，再通过边缘检测算子（Sobel或Roberts Cross）对1/0边界采样，在人物轮廓处叠加描边颜色。此方式与屏幕空间法线描边不同，完全不依赖法线信息，适用于风格化卡通渲染。
 
-**局部景深与聚焦区域保护**：将玩家角色用`StencilRef = 3`标记，景深模糊Pass使用`NOTEQUAL 3`使角色像素跳过模糊采样，实现"角色始终清晰、背景虚化"的效果，无需额外的alpha混合Pass。
+**Portal效果与局部折射**：在VR或Portal类游戏中，传送门矩形几何体写入`Stencil=3`，只有传送门内部像素才会执行UV偏移折射采样，门框外的场景完全不受影响。Half-Life: Alyx（2020年）的Portal效果正是基于这一原理，折射Pass的Stencil Ref被精确限制在Portal矩形投影区域。
 
-**次表面散射局部后处理**：皮肤材质写入`StencilRef = 2`，后处理阶段在模板测试为`EQUAL 2`的条件下执行高斯横向+纵向两Pass的次表面散射卷积。该卷积核宽度通常为15–25像素，仅在皮肤区域执行可避免将次表面颜色渗漏到背景像素。
-
-**UI与3D场景的精确隔离**：在某些HUD层叠方案中，模板缓冲被设置为标记所有3D场景像素为`StencilRef = 255`，UI全屏后处理（如护盾受击全屏扭曲）使用`NOTEQUAL 255`仅在无3D内容的HUD区域叠加特效，防止游戏画面被UI特效污染。
+**UI与3D世界的交互遮蔽**：在HUD元素需要透过特定3D物体可见（X光透视效果）的场景中，目标3D物体写入`Stencil=5`，UI层的透视Shader以`Stencil=5, comp=Equal`只在目标物体遮挡区域显示透视叠加层，实现精准的局部UI混合而非全局混合。
 
 ---
 
 ## 常见误区
 
-**误区一：认为模板缓冲可以无代价地无限细分区域**
-8位模板缓冲总共只有256个可用整数值，且多个Pass共用同一模板缓冲，各系统必须提前协商好位域分配。如果Unity HDRP已占用前4位、自定义特效系统又独立占用全8位，两套系统会互相覆写导致渲染错误。实际工程中需要一套全局的StencilBit注册表来管理位域分配，否则难以维护。
+**误区一：认为Stencil Buffer是独立的Render Texture**。Stencil Buffer与Depth Buffer共用同一个`D24_S8`或`D32_S8`格式纹理的不同位段，无法独立绑定或单独采样。如果试图在Shader中将Stencil作为普通纹理读取，需要通过平台特定扩展（DX11的`ID3D11ShaderResourceView`绑定Stencil面）才能实现，而非直接在HLSL中`sample`一张Stencil纹理。
 
-**误区二：模板测试与深度测试完全等价，可以互换使用**
-深度缓冲存储的是浮点深度值，而模板缓冲存储的是整数标记，两者服务于完全不同的目的。深度测试解决的是可见性（哪个物体更近），模板测试解决的是分类（这个像素属于哪种类别）。用深度范围来模拟模板分类不仅精度差，还会在物体重叠时产生错误归类，且无法实现位域多重分类。
+**误区二：多Pass后处理中Stencil状态会自动重置**。Stencil Buffer的内容在整个帧内持续存在，后续Pass如果没有显式执行`Clear Stencil`或设置`StencilOp=Zero`，前序Pass写入的标记值依然有效。这会导致在多摄像机、多后处理Volume共存时产生错误的遮罩叠加。正确做法是在每个独立后处理链的起始Pass统一清除Stencil或使用`WriteMask`隔离各自占用的位段。
 
-**误区三：在前向渲染中模板后处理与延迟渲染完全相同**
-前向渲染没有独立的GBuffer Pass，模板值必须在每个物体的正常渲染Pass中写入，且如果场景中物体绘制顺序混乱（如透明物体插入不透明物体之间），模板值可能被后续绘制调用错误覆写。相比之下，延迟渲染的GBuffer Pass天然是所有不透明物体的统一写入阶段，模板值更加可控，这是两种渲染路径在模板后处理工程实现上的本质差异。
+**误区三：Stencil Test比Alpha Test性能更差**。部分开发者误以为Stencil需要额外内存带宽。实际上Stencil Buffer随Depth Buffer同批次读取，Modern GPU（如RDNA 2和Turing架构）在Early-Z阶段同时执行Depth和Stencil剔除，被剔除的像素完全不进入Shader，综合开销通常低于在Shader中执行`clip()`的Alpha Test方式。
 
 ---
 
 ## 知识关联
 
-**依赖前置：自定义后处理**
-模板缓冲后处理需要开发者掌握自定义后处理Pass的创建方式——包括如何通过`RenderStateBlock`或材质的`Stencil{}`块指定测试条件，以及如何在`ScriptableRenderPass`的`Execute`函数中通过`CoreUtils.SetRenderTarget`正确传递模板附件。若不理解自定义后处理的Pass注入机制，则无法在正确的时间节点读取几何Pass写入的模板值。
+模板缓冲应用建立在**自定义后处理**的Pass管理与`ScriptableRenderPass`注入机制之上，理解`RenderStateBlock`如何在运行时覆盖材质的Stencil State是使用局部后处理的前提。已掌握G-Buffer写入阶段的开发者可以更自然地在几何Pass中同步写入Stencil标记，而不必增加额外的标记Pass。
 
-**衔接后续：TAA与时域滤波**
-TAA（时域抗锯齿）在处理模板划定的局部区域时面临一个特殊挑战：当模板边界像素在相机运动时发生亚像素偏移，时域重投影会将来自不同模板区域的历史帧颜色混合，导致局部后处理（如SSS、轮廓描边）在边缘产生"鬼影"（Ghosting）。解决方案通常是在TAA的历史帧混合阶段加入模板一致性检查——仅当当前帧与历史帧对应像素的模板值相同时才进行时域混合，否则降低历史帧权重或直接使用当前帧颜色。这一策略是TAA与模板后处理系统联合设计的核心问题之一。
+向后延伸至**TAA与时域滤波**时，模板缓冲提供的精确像素分类能力同样不可缺少：TAA需要对透明物体、运动物体、HUD元素等不同区域采用差异化的混合系数（Blend Factor），这正是通过Stencil标记值区分像素类别来实现的。Unreal Engine 5的TSR（Temporal Super Resolution）中就使用了Stencil Channel来标记需要特殊处理的半透明像素，避免时域累积引入的鬼影（Ghosting）扩散到不应受影响的区域。
