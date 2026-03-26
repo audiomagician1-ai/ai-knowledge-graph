@@ -25,67 +25,51 @@ updated_at: 2026-03-26
 ---
 
 
+
 # GPU剔除
 
 ## 概述
 
-GPU剔除（GPU-side Culling）是将传统由CPU执行的视锥体剔除、遮挡剔除等判断逻辑，全部迁移到GPU端，通过Compute Shader并行处理场景中所有物体的可见性判断，并直接在GPU上构建最终的DrawCall列表的技术方案。与CPU剔除相比，GPU剔除消除了CPU→GPU之间的数据回读瓶颈，整个可见性判断结果留存在GPU显存中，直接驱动后续渲染。
+GPU剔除是指将传统由CPU执行的可见性判断任务完全迁移至GPU端，通过Compute Shader对成千上万个渲染对象并行执行视锥剔除、遮挡剔除等操作，并直接在GPU内存中生成最终的间接绘制指令缓冲区（Indirect Draw Buffer），从而彻底规避CPU与GPU之间的回读（Readback）延迟。这一技术在2015年前后随着DirectX 12和Vulkan等现代图形API的普及而逐渐成为主流，Ubisoft在《刺客信条：起源》中公开分享的GPU Culling管线是业界最早的详细实现案例之一。
 
-该技术随着DirectX 11中Compute Shader的普及而逐渐成熟，并在DirectX 12和Vulkan引入`ExecuteIndirect`（DX12）与`vkCmdDrawIndirect`（Vulkan）之后获得了决定性的基础设施支持——这两个API允许GPU直接消费存储在Buffer中的DrawCall参数，无需CPU介入，从而使GPU剔除的完整闭环成为可能。虚幻引擎5的Nanite系统和Unity HDRP的GPU Driven管线均以此为核心思路构建。
-
-在场景包含数万乃至数十万独立网格体的情况下，CPU剔除受限于单线程或有限并行度，往往成为帧时间的主要瓶颈。GPU剔除利用数千个Compute Shader线程同时处理物体包围盒，可在0.1~0.5ms内完成CPU需要3~10ms才能完成的剔除工作，极大释放了CPU资源，使CPU可以专注于游戏逻辑和物理计算。
-
----
+传统CPU端剔除的瓶颈在于：当场景物件数量超过10万时，CPU遍历所有物件的包围盒、执行视锥平面测试的时间开销会挤占主线程帧预算。GPU剔除通过一个Dispatch Call替代数万次CPU循环，将每个物件的AABB测试分配给一个独立的GPU线程，测试通过的物件ID被原子写入间接参数缓冲区，整个过程不涉及任何GPU→CPU的数据回传。
 
 ## 核心原理
 
-### Compute Shader并行剔除流程
+### Compute Shader调度模型
 
-GPU剔除的典型流程分为三个阶段。**第一阶段**：CPU每帧将场景中所有物体的包围球或AABB上传到一个结构化缓冲区（StructuredBuffer），格式通常为每对象16~32字节，包含中心点、半径/尺寸及物体索引。**第二阶段**：Dispatch一个Compute Shader，线程组配置通常为`[numthreads(64, 1, 1)]`，每个线程负责判断一个物体是否通过视锥体的6个平面测试（Frustum-Plane Test）：
+GPU剔除的Dispatch通常以每个线程处理一个渲染实例的方式组织。假设场景有N个物件，则调度线程数为`ceil(N / 64)`个线程组，每组64个线程（这是NVIDIA和AMD共同推荐的波前/Warp友好尺寸）。每个线程读取对应物件的变换矩阵和包围盒数据，执行剔除逻辑后，通过`InterlockedAdd`原子操作向间接参数缓冲区写入Draw参数并递增实例计数器，最终由`DrawMeshTasksIndirect`或`DrawIndexedInstancedIndirect`消耗该缓冲区。
 
-```
-distance = dot(plane.normal, sphere.center) + plane.d
-visible = (distance > -sphere.radius)
-```
+### 视锥剔除的GPU实现
 
-六个平面全部通过则标记为可见，将该物体的DrawCall参数（顶点数、实例数、起始偏移）写入`AppendStructuredBuffer`。**第三阶段**：调用`ExecuteIndirect`，以上一步填充的Buffer直接驱动绘制，CPU完全不参与DrawCall数量的决策。
+视锥剔除在Shader内的标准做法是将物件的AABB 8个顶点变换至裁剪空间，判断是否与视锥的6个平面均不相交。更高效的方案是使用球形包围体（Bounding Sphere）：将球心变换至视图空间后，逐一与6个平面做点面距离测试，若球心距离某平面的有符号距离小于`-radius`，则该物件在该平面外侧，可以剔除。这一测试只需6次点积运算，相较AABB方法节省约60%的ALU指令。
 
-### 两遍式遮挡剔除（Two-Pass Occlusion Culling）
+### Hi-Z遮挡剔除集成
 
-仅做视锥体剔除无法处理被遮挡的物体，GPU剔除通常结合Hierarchical Z-Buffer（HZB）实现遮挡剔除。具体分两遍执行：
+GPU剔除管线通常将Hi-Z（Hierarchical Z-Buffer）遮挡剔除作为视锥剔除之后的第二阶段。具体流程为：先渲染上一帧的深度缓冲，用Compute Shader生成其完整Mip链（每个Mip层取4个子像素的最大深度值），再在当前帧的剔除Shader中将物件包围球投影为屏幕空间矩形，根据矩形尺寸选取对应的Hi-Z Mip层级，采样该层级的最小深度值，若物件的近端深度大于采样深度（即被遮挡），则标记为不可见。这种方案的关键参数是Mip层级选择公式：`mip = ceil(log2(max(rect_width, rect_height)))`，确保单次采样即可覆盖整个投影矩形。
 
-**第一遍（Early Pass）**：使用上一帧的HZB作为遮挡参考（称为"时间重用"），对当前帧所有物体做剔除，渲染通过测试的物体并生成当前帧的深度图，随后将深度图降采样构建新的HZB。HZB是一个完整的Mip链，第0级为原始深度图，每个后续Mip为前一级的2×2最大深度值取max（保守性），典型分辨率从1080p深度图降采样至1×1约需10~11级Mip。
+### 间接绘制缓冲区构建
 
-**第二遍（Late Pass）**：将第一遍中被剔除的物体，再次用当前帧的最新HZB进行测试，通过测试的"新可见物体"追加绘制。这样处理的目的是避免因使用上一帧数据导致的错误剔除（尤其是快速移动摄像机时），保证当帧画面正确性，代价是两次Dispatch开销，通常总计增加约0.2~0.8ms。
-
-### Instance Compaction与DrawCall合并
-
-GPU剔除的输出通常是一个稀疏的可见实例索引列表，需要通过**波前前缀和（Prefix Sum / Wave Scan）**将其压缩（Compaction）为连续的DrawCall参数Buffer。HLSL SM6.0引入的`WavePrefixCountBits()`内置函数可在单个Wave（通常32或64个线程）内完成局部前缀和，多Wave间通过原子操作（`InterlockedAdd`）完成全局计数。这一步决定了最终`ExecuteIndirect`所需的`DrawIndexedInstancedArguments`缓冲区的内容，每条记录为5个UINT（IndexCountPerInstance, InstanceCount, StartIndexLocation, BaseVertexLocation, StartInstanceLocation）。
-
----
+Compute Shader输出的间接参数缓冲区格式由图形API严格规定。以`DrawIndexedInstancedIndirect`为例，每条绘制命令占用20字节，包含`IndexCountPerInstance`、`InstanceCount`、`StartIndexLocation`、`BaseVertexLocation`、`StartInstanceLocation`五个字段。多DrawCall场景下，GPU剔除Shader需维护一个全局原子计数器数组，每类网格对应一个计数器，通过`InterlockedAdd`安全地累积同类型物件的实例数量。
 
 ## 实际应用
 
-**UE5 GPU Scene与Nanite前身**：虚幻引擎4.26引入的GPU Scene功能，即将每个Primitive的变换矩阵和包围盒维护在GPU端，配合`FParallelMeshDrawCommandPass`中的Compute Shader剔除，使得实例化渲染的剔除完全在GPU上完成。这是Nanite可见性管线的前期技术积累。
+在《战地》系列使用的Frostbite引擎中，GPU剔除管线将室外场景10万+草丛和植被实例的剔除时间从CPU端的约2ms压缩至GPU端不足0.3ms（GTX 1080级别硬件），帧同步开销几乎为零。
 
-**Unity HDRP的GPU Occlusion**：Unity 2022 LTS的HDRP中，`GPU Resident Drawer`功能将场景中符合条件的Renderer持久存储在GPU上，每帧通过名为`OcclusionCulling.compute`的Shader进行两遍式剔除。其HZB构建采用CS Shader以`8×8`线程组降采样深度，相比传统的像素着色器降采样减少约40%的带宽消耗。
+在移动端（如Mali G77 GPU），GPU剔除同样可行，但需注意将间接绘制参数缓冲区声明为`COHERENT`或使用显式内存屏障（`vkCmdPipelineBarrier`），确保Compute阶段写入的数据在后续Draw阶段可见，这一同步步骤是移动端GPU剔除最常见的调试难点。
 
-**移动端GPU剔除的折中方案**：移动端（如Adreno 740、Mali-G715）虽支持Compute Shader，但`ExecuteIndirect`等价API（OpenGL ES无原生支持，需Vulkan）的适配成本较高。常见做法是GPU完成剔除、结果回读到CPU、由CPU发出DrawCall，回读引入约1~2帧延迟，可见性判断精度略有下降，但相比纯CPU剔除仍可节省约60%的CPU剔除时间。
-
----
+Unity的GPU Driven Rendering（HDRP 12.0版本引入实验性支持）将所有StaticBatch物件迁入GPU剔除管线，要求物件必须提前烘焙至Cluster结构，每个Cluster包含64个三角面，以Cluster为单位执行剔除而非以物件为单位，进一步提升剔除粒度。
 
 ## 常见误区
 
-**误区一：认为GPU剔除可以完全替代LOD系统**。GPU剔除仅判断物体"是否绘制"，不改变绘制时的几何复杂度。一个通过剔除测试的高面数Mesh仍会提交所有三角形进入光栅化阶段。正确做法是GPU剔除与GPU LOD选择同时进行——在同一个Compute Pass中，根据物体到相机的距离`d`和屏幕投影面积阈值，写入对应LOD级别的IndexBuffer偏移，两者结合才能真正控制渲染负载。
+**误区一：GPU剔除可以完全取代CPU剔除层级结构**。实际上GPU剔除仍需依赖CPU预先构建的空间数据结构（如BVH或Octree）来缩小输入物件集合。若将全场景百万物件不加过滤地全部提交给GPU剔除Shader，Compute Dispatch本身的调度开销和显存带宽消耗会抵消剔除收益。正确做法是CPU做粗粒度的空间裁剪（如只提交摄像机所在区块及相邻区块），GPU做细粒度的逐实例精确测试。
 
-**误区二：认为GPU剔除对所有场景都有收益**。当场景物体数量少于约500个时，Dispatch Compute Shader的固定开销（约0.05~0.15ms）加上Buffer同步屏障（Pipeline Barrier）的代价，可能超过剔除本身节省的时间。GPU剔除的收益临界点通常在1000~3000个独立DrawCall以上，小型室内场景使用CPU剔除效率更高。
+**误区二：Hi-Z遮挡剔除结果与CPU遮挡查询结果等价，可以互换使用**。Hi-Z遮挡剔除使用的是上一帧的深度缓冲，因此对于快速移动的遮挡物会存在一帧的误判延迟，可能错误剔除实际可见物件（漏剔）。这种Ghost Culling现象在高速运动场景下需要通过保守剔除（将包围盒略微放大1%~2%）或双缓冲深度图来缓解，而不能假设其正确性与CPU同步查询相同。
 
-**误区三：以为使用上一帧HZB不会产生错误剔除**。当摄像机快速旋转或场景物体高速移动时，上一帧HZB中某区域的遮挡关系在当前帧已不成立，可能错误剔除本帧实际可见的物体（Ghost Culling）。这正是两遍式方案中Late Pass存在的根本原因——第一遍可以错误剔除，第二遍必须用当帧深度图修正，代价是部分物体产生一帧闪烁，实践中需要在剔除激进度和鬼影风险之间设置保守性系数（通常让包围盒膨胀2%~5%）。
-
----
+**误区三：GPU剔除在任何平台上只需一次Dispatch即可完成全部工作**。多Pass渲染（如阴影Map多个方向光）要求每个Pass独立执行一次GPU剔除，使用不同的视锥参数缓冲区。若共用同一个间接绘制缓冲区而不清空，会导致前一帧或前一个Pass的绘制指令残留，产生鬼影或崩溃。
 
 ## 知识关联
 
-GPU剔除以**遮挡剔除**为前提知识：传统CPU端遮挡剔除（如软件光栅化遮挡体、硬件遮挡查询`GL_SAMPLES_PASSED`）建立了HZB和包围体可见性判断的核心概念，GPU剔除本质上是将这套判断逻辑的执行位置从CPU搬移到GPU Compute Shader，并借助Indirect Draw完成输出。理解CPU遮挡剔除中"保守性测试"和"时间一致性假设"的含义，是正确配置GPU剔除保守性参数的基础。
+GPU剔除以遮挡剔除中的Hi-Z缓冲概念为基础，将原本在CPU端读回深度纹理进行查询的流程改为在Compute Shader内直接采样GPU端Hi-Z Mip链，避免了PCIe带宽瓶颈。理解遮挡剔除的视锥平面方程和深度比较逻辑，是正确编写GPU剔除Shader的前提。
 
-从渲染管线演进角度，GPU剔除是**GPU Driven Rendering**（GPU驱动渲染管线）的核心子系统，向上支撑Bindless渲染、Meshlet可见性管线（如DirectX 12 Mesh Shader中的Amplification Shader阶段，其本质即逐Meshlet的GPU剔除）和虚拟几何体技术（Nanite）。掌握GPU剔除中的Indirect Draw参数格式、HZB构建方法和Prefix Sum Compaction算法，是进入GPU Driven Rendering领域的必要技术储备。
+在实现层面，GPU剔除与间接渲染（Indirect Rendering）技术高度耦合：GPU剔除产出的间接参数缓冲区必须配合`DrawIndirect`系列API才能在不回传CPU的前提下驱动后续渲染，这要求开发者对Modern Graphics API的命令缓冲区和资源屏障机制有扎实掌握。进阶方向包括Mesh Shader管线下的Amplification Shader（DirectX 12 Ultimate），其本质是将GPU剔除逻辑内嵌至可编程网格着色器阶段，进一步减少流水线中的中间数据量。
