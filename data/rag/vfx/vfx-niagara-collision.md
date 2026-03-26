@@ -24,64 +24,92 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-27
 ---
 
+
 # 碰撞检测
 
 ## 概述
 
-碰撞检测（Collision Detection）是Niagara粒子系统中用于判断粒子是否与场景几何体发生接触的计算过程。在Unreal Engine 5的Niagara框架中，碰撞检测通过粒子位置与场景深度缓冲（Depth Buffer）或物理碰撞体（Physics Collider）的比对，实现粒子在撞击地面、墙壁或动态物体时产生真实的弹跳、滑动或消亡效果。
+碰撞检测（Collision Detection）是Niagara粒子系统中用于判断粒子是否与场景几何体或其他物理对象发生接触的计算机制。与传统物理模拟中的刚体碰撞不同，Niagara的碰撞检测专为高并发粒子设计——单个特效场景中可能同时有数千乃至数万个粒子需要进行碰撞查询，因此系统在精度和性能之间进行了专门的工程权衡。
 
-Niagara碰撞系统在UE4.26引入GPU碰撞方案之后得到显著扩展，允许数十万个粒子同时进行场景碰撞计算而不完全依赖CPU。这一能力使得火花飞溅、雨滴打地、沙尘爆炸等需要大量粒子与场景互动的效果得以实现。与旧版Cascade系统相比，Niagara的碰撞模块是以独立的模块（Module）形式插入粒子更新阶段（Particle Update Stage），具有更高的可定制性。
+Niagara碰撞检测功能在UE4.20版本引入Niagara体系后随即成为粒子行为模块的标准组件，取代了旧版Cascade系统中相对粗糙的Collision模块。新系统通过GPU光线投射（Raycast）和深度缓冲（Depth Buffer Scene Depth）两种截然不同的技术路径实现碰撞，每种路径适用于不同的平台与精度需求。
 
-碰撞检测的重要性不仅在于视觉真实感，更在于它作为事件触发的前置条件——粒子碰撞到表面后可以产生Collision Event，进而驱动二次粒子发射、贴花生成或声音播放等后续逻辑。
+掌握碰撞检测对于制作雨滴打在地面溅起水花、火星碰墙后改变方向、烟雾在障碍物边缘绕流等真实感特效至关重要。错误配置碰撞检测模块会导致粒子穿透地面、在空中异常停顿，或触发不必要的大量物理开销，这些问题在量产特效制作中极为常见。
+
+---
 
 ## 核心原理
 
-### 场景深度碰撞（Scene Depth Collision）
+### 两种检测模式的底层差异
 
-Niagara中最常用的碰撞方式是基于场景深度缓冲的GPU碰撞。其工作原理是：每帧将粒子的世界空间位置投影到屏幕空间，然后与GBuffer中的深度值（Depth Value）进行比较。若粒子的投影深度大于场景深度，说明粒子已"穿入"几何体，触发碰撞响应。
+Niagara提供**Scene Depth Collision**和**Ray Traced Collision**两种检测模式，两者的计算方式根本不同。
 
-此方法的核心参数包括 **Radius Bias**（半径偏移，默认值约10单位，防止粒子穿透）和 **Depth Buffer Thickness**（深度缓冲厚度，控制薄表面双面碰撞检测范围）。其基本判断公式为：
+**Scene Depth Collision** 利用已经渲染完成的深度缓冲图像进行碰撞判断：每帧读取GBuffer中的深度值，将粒子的世界坐标重投影到屏幕空间，与深度图中存储的场景深度值对比。若粒子深度超过场景深度，即判定为碰撞。这种方式的优点是完全在GPU上执行，开销极低，但存在一个关键限制：**仅限于摄像机可见的几何体**，处于屏幕外或被遮挡的表面无法被检测到。
 
-> **碰撞条件**：`depth_particle > depth_scene + RadiusBias`
+**Ray Traced Collision** 从粒子当前位置向其运动方向发射射线，利用场景的加速结构（BVH树）精确查询交叉点。每次射线查询的精度更高，可检测屏幕外的几何体，但每条射线的计算代价约为Scene Depth方式的5到10倍，因此通常限制在粒子数量较少（建议低于2000个）的特效中使用。
 
-场景深度碰撞的局限性在于仅能检测相机可见区域内的几何体，粒子一旦离开屏幕便失去碰撞参考，适合特写特效而非全局模拟。
+### 碰撞响应计算公式
 
-### 物理Actor碰撞（Physics Actor Collision）
+粒子发生碰撞后，新的速度向量由反弹系数（Restitution）和摩擦系数（Friction）共同决定。
 
-CPU粒子可以使用Niagara的 **Collision Query** 模块，通过向物理世界发射射线（Line Trace）或形状扫描（Shape Sweep）来检测碰撞体。每个粒子每帧发出一条从上一帧位置到当前位置的射线，若命中UPhysicsBodyComponent或StaticMesh的碰撞通道，则记录碰撞法线（Hit Normal）和碰撞点位置（Hit Location）。
+反弹后速度的法向分量计算如下：
 
-这种方式支持动态物体（如移动的车辆、角色布娃娃）的碰撞检测，且不受摄像机视野限制，但每个粒子每帧产生一次物理查询，对于超过1万个粒子的系统会造成显著的CPU性能开销。因此建议将射线长度（Trace Length）限制在粒子速度的1.2倍以内，避免不必要的长距离查询。
+$$V_{n}' = -e \cdot V_{n}$$
 
-### 碰撞响应计算
+其中 $V_{n}$ 为碰撞前速度在表面法线方向的分量，$e$ 为恢复系数（Restitution），范围0到1，值为0时粒子完全不弹起（如沙粒落地），值为1时完全弹性碰撞（如理想弹球）。
 
-粒子碰撞后的速度反射基于物理反弹公式：
+切向分量受摩擦影响：
 
-> **V_reflect = V - 2 × (V · N) × N × Restitution**
+$$V_{t}' = (1 - f) \cdot V_{t}$$
 
-其中 `V` 为碰撞前速度向量，`N` 为碰撞面法线，`Restitution`（弹性系数，范围0.0~1.0）决定能量保留比例。Niagara还提供 **Friction** 参数，用于在切线方向衰减速度，模拟粒子沿表面滑动的摩擦效果。当Restitution设为0时粒子完全贴合表面，适合模拟泥土或水滴；设为0.8以上则产生明显弹跳，适合金属火花。
+其中 $f$ 为摩擦系数（Friction），范围0到1。Niagara的`Collision`模块在**Particle Update**阶段执行上述计算，并将修正后的速度写回`Particles.Velocity`属性。
+
+### Collision模块的关键参数
+
+在Niagara编辑器中，`Collision`模块暴露以下参数供美术调整：
+
+- **Collision Preset**：指定参与碰撞的物理通道，通常设为`Visibility`以命中所有可见几何体，或自定义通道仅与特定对象类型碰撞
+- **Radius Scale**：粒子碰撞球半径相对于`Particles.SpriteSize`的缩放比例，默认值0.5意味着使用精灵尺寸的一半作为碰撞半径
+- **Kill On Contact**：布尔值，开启后粒子在首次碰撞时立即进入Dead状态，常用于制作子弹击中效果
+- **Response**：枚举值，包括Bounce（弹跳）、Stop（停止）、Kill（销毁）三种基础响应类型
+
+---
 
 ## 实际应用
 
-**雨滴打地效果**：将粒子系统的Collision模块设置为Scene Depth模式，Restitution设为0.05（近乎无弹跳），在碰撞事件触发后生成溅射贴花（Decal Spawner）和短暂的环形波纹粒子。深度碰撞的Radius Bias调整为5单位确保雨滴紧贴地面而不悬浮。
+### 雨滴打地面效果
 
-**金属火花碰撞**：使用GPU粒子配合Scene Depth Collision，Restitution设为0.6~0.75，同时开启 **Kill On Contact** 选项的反面——保留粒子并在碰撞后切换渲染材质（从发光橙色渐变为暗红色），模拟火花落地后逐渐熄灭的过程。
+制作雨水特效时，将粒子的`Collision Mode`设为`Scene Depth Collision`，`Restitution`设为0.05（几乎不弹跳），`Friction`设为0.8。在`Collision`模块的**On Collision**事件针脚处连接`Spawn Particles at Location`，在碰撞坐标处生成第二个粒子系统（水花溅射）。整套设置可在不超过0.3ms的GPU时间内处理约8000个雨滴的碰撞。
 
-**爆炸碎片与动态物体交互**：当需要碎片粒子打中可破坏物体时，必须使用CPU模式的Physics Actor Collision，并将碰撞通道（Collision Channel）设置为 `ECC_Destructible`，确保射线查询只命中可破坏Actor而非地面静态网格，减少无效查询数量。
+### 火焰粒子沿斜面滑落
 
-**雪地足迹积雪效果**：利用碰撞检测记录的Hit Location，结合Niagara的Persistent ID系统，将粒子碰撞点坐标写入Render Target纹理，驱动雪地材质的置换贴图，实现粒子与地形的持久性交互痕迹。
+熔岩流或火星特效需要粒子在碰撞后沿表面方向继续运动。此时将`Restitution`设为0，`Friction`设为0.1，并在碰撞后通过`Apply Force Along Normal`的**负值**实现粒子"贴附"表面，同时在Spawn时启用`Alignment`到碰撞法线，使Sprite朝向与表面垂直，避免粒子悬浮在斜面上方的视觉错误。
+
+### 与特定物理Actor交互
+
+若需要粒子只与玩家角色胶囊体碰撞而忽略场景静态网格，需在项目设置的`Collision Channels`中新建自定义通道（如`ParticleHit`），为角色胶囊体的Response设为`Block`，为`WorldStatic`设为`Ignore`，再在Niagara的`Collision Preset`中指定该自定义通道。
+
+---
 
 ## 常见误区
 
-**误区一：认为GPU碰撞（Scene Depth）可以检测所有场景几何体**。实际上Scene Depth碰撞只能检测当前帧GBuffer中渲染的表面，对于半透明材质（Translucent Material）的网格，由于它们不写入深度缓冲，粒子会直接穿透。需要对这类物体额外添加不可见的Opaque碰撞代理网格。
+### 误区一：Scene Depth碰撞在主机平台完全可用
 
-**误区二：Restitution越高模拟越真实**。高弹性系数（如0.95）在多次弹跳后粒子速度衰减极慢，配合重力模拟时粒子会出现无法静止的"永动"抖动问题（Jittering Artifact）。解决方法是当粒子速度低于阈值（建议50单位/秒）时强制将Restitution临时降为0，或直接销毁粒子。
+部分开发者将Scene Depth Collision视为"万能低开销方案"，但该模式要求深度缓冲在粒子更新阶段已完成写入。在移动平台（iOS/Android）的Forward Rendering管线下，深度预通道的时序与延迟渲染不同，常导致碰撞检测失效或出现一帧延迟偏移。正确做法是在移动端改用Ray Traced Collision并严格控制粒子数量在500以下。
 
-**误区三：对数万GPU粒子同时开启物理Actor碰撞**。GPU粒子的物理射线查询需要回读GPU数据到CPU，这一过程在Niagara中会引发 **GPU Readback** 同步等待，导致主线程卡顿。GPU粒子必须使用Scene Depth碰撞；仅在CPU粒子数量可控（通常低于5000个）时才使用物理Actor碰撞。
+### 误区二：Radius Scale越小碰撞越精确
+
+将`Radius Scale`设为接近0的值并不会让碰撞"更准确"，反而会导致粒子在数值计算时穿透薄壁网格。这是因为当粒子的碰撞半径趋近于零时，单帧内粒子移动距离可能超过整个碰撞球直径（即"隧道穿透"问题），Niagara默认不进行子步长的连续碰撞检测（CCD）。建议`Radius Scale`最小值保持在0.2以上，或对高速粒子减小`Simulation Update Rate`。
+
+### 误区三：碰撞事件与事件系统自动连通
+
+`Collision`模块内的**On Collision**针脚并不等同于Niagara事件系统中的`Collision Event`。前者仅在同一Emitter内部触发局部逻辑，后者才能跨Emitter或通知蓝图。若需要在粒子碰撞时通知外部蓝图执行游戏逻辑，必须额外添加`Collision Event`模块并在`System`级别的`Event Handler`中配置接收方。
+
+---
 
 ## 知识关联
 
-碰撞检测建立在**力场与运动**模块的基础之上：粒子必须先拥有速度向量（Velocity）和位置更新逻辑，碰撞检测才能计算出有意义的反射速度。若粒子在运动模块中使用了自定义积分器（Custom Integrator），需确保积分步长与碰撞检测的采样频率一致，否则高速粒子会出现穿透（Tunneling）问题。
+**前置概念——力场与运动**：碰撞检测模块在`Particle Update`阶段执行，时序位于重力、风场等力场计算之后。粒子在碰撞发生时的速度向量直接来源于前一帧力场积分的结果，因此理解`Particles.Velocity`如何被力场模块逐帧修改，是正确预判碰撞响应结果的必要基础——若力场施加了异常大的加速度，碰撞的弹跳计算结果也会失真。
 
-碰撞检测完成后，自然衔接到**事件系统（Event System）**：Niagara的Collision Event Handler可以捕获每次碰撞并作为事件源，向其他发射器（Emitter）广播碰撞数据，如Hit Location和Hit Normal，用于二次特效生成。
+**后续概念——事件系统**：碰撞是触发Niagara事件最常见的来源之一。`Collision Event`模块将每次碰撞的位置、法线、速度打包成事件载荷（Payload），可被同一系统内其他Emitter订阅，用于在碰撞点生成次级粒子（如火花、烟尘），这一机制构成了复杂层级特效的核心联动手段。
 
-在更进阶的**碰撞物理**学习中，将涉及连续碰撞检测（CCD，Continuous Collision Detection）防止穿透，以及基于位置的动力学（PBD）在Niagara Fluids中的碰撞约束求解，这些内容是本节反射向量计算的数学扩展。
+**后续概念——碰撞物理**：当特效需要与物理模拟的刚体（如可破坏物体）产生真实的力交换时，仅靠Niagara内置碰撞检测已不足够，需要借助`Chaos Physics`体系中的粒子-刚体力传递接口，将Niagara粒子的动量转化为可作用于物理场景的冲量（Impulse）。
