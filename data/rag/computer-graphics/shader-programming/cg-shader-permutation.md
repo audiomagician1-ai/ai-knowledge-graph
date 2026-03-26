@@ -21,18 +21,19 @@ sources:
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
 quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-03-26
+updated_at: 2026-03-27
 ---
+
 
 # 着色器变体
 
 ## 概述
 
-着色器变体（Shader Variant）是指同一个着色器源文件通过不同的宏定义组合编译出来的多个独立的二进制程序。当你在HLSL或GLSL中使用 `#pragma multi_compile` 或 `#pragma shader_feature` 声明多组宏时，编译器会将每种宏的开关组合分别编译一次，每个结果就是一个变体。假设一个着色器声明了8组独立的 `multi_compile` 宏，每组有2个关键字，理论上最多产生 2⁸ = 256 个变体。
+着色器变体（Shader Variant）是指从同一份源代码（通常称为 Uber Shader）通过预处理宏的不同组合，编译生成的多份独立 SPIR-V 字节码或平台特定二进制程序。每一个宏的开关状态（定义或未定义）构成一个维度，若 Uber Shader 中存在 N 个独立的 `#pragma multi_compile` 宏，理论上会产生 2^N 个变体。Unity 引擎中一个典型的标准 PBR Shader 可能包含超过 400 个关键字，导致变体总数理论上超过数十亿，这种指数级膨胀被称为**变体爆炸**（Variant Explosion）。
 
-着色器变体的概念随着"Uber Shader"设计模式的普及而出现。Uber Shader将大量条件逻辑集中在一个文件中，用宏控制不同的光照模型、特性开关，避免维护数十个相似的独立着色器。然而这种方式的代价是，编译时需要覆盖所有宏组合，从而催生了"变体爆炸"（Variant Explosion）问题——变体数量呈指数级增长，构建时间、内存占用和运行时PSO缓存开销全面膨胀。
+着色器变体机制起源于早期 GLSL 预处理器的宏替换能力，随着可编程管线的普及，开发者发现用一套代码覆盖所有渲染路径比维护多份独立 Shader 更易管理。DirectX 11 时代引入的 `D3D_COMPILE_STANDARD_FILE_INCLUDE` 工具链和 Vulkan 时代的 glslangValidator 都支持在编译阶段将 `#define` 宏注入源码，使变体编译流程得以自动化。
 
-对于现代图形API（Vulkan、DirectX 12、Metal），着色器变体直接关联到**管线状态对象（Pipeline State Object，PSO）**的构建。错误的变体管理策略会导致运行时PSO缓存未命中，触发实时编译，造成游戏中的帧率卡顿（Pipeline Stall）。理解变体的生成机制是优化构建时间与避免运行时卡顿的前提。
+变体管理直接影响以下三个可测量指标：**包体大小**（每个变体独立存储二进制）、**运行时内存**（GPU 驱动需在 PSO 缓存中保存活跃变体的编译结果）、**首帧卡顿**（PSO 编译发生在渲染线程时会阻塞提交）。理解变体生命周期是解决移动端和主机平台卡帧问题的直接手段。
 
 ---
 
@@ -40,53 +41,62 @@ updated_at: 2026-03-26
 
 ### 宏驱动的变体生成机制
 
-Unity的 `#pragma multi_compile A B` 和 `#pragma shader_feature A B` 是最典型的变体声明方式，两者有本质区别：`multi_compile` 的所有变体无论是否被材质使用都会被打包进构建，而 `shader_feature` 只打包被场景内至少一个材质实际引用的变体。这一区别使得 `shader_feature` 适合用于材质级别的特性开关（如 `_NORMALMAP`），而 `multi_compile` 适合运行时动态切换的全局特性（如 `FOG_LINEAR`、`FOG_EXP2`）。
+着色器源码中通过两类指令声明变体维度：
 
-变体的数量公式为：
+- `#pragma multi_compile A B C`：编译器为 A、B、C 分别生成独立变体，总枚举数 = 3。
+- `#pragma shader_feature A`：仅编译材质实际使用到的分支，未引用的关键字对应变体在构建时被剔除。
 
-$$N_{total} = \prod_{i=1}^{k} |S_i|$$
+两者的核心区别在于**剔除时机**：`shader_feature` 在打包阶段静态剔除，而 `multi_compile` 强制保留全部组合。若有 3 个独立的 `multi_compile`，每个有 2 个关键字，则变体数 = 2³ = 8；若引入一个 3 选项的 `multi_compile`，则变体数 = 2² × 3 = 12。变体数量的实际计算公式为：
 
-其中 $k$ 是宏组的数量，$|S_i|$ 是第 $i$ 组宏集合的关键字数量（含"全部关闭"状态）。例如，3组宏分别有 {A, B}、{C, D, E}、{F, _} 共3个集合，变体总数为 2 × 3 × 2 = 12。
+$$V = \prod_{i=1}^{N} k_i$$
 
-### 变体剥离（Variant Stripping）
+其中 $k_i$ 为第 $i$ 个 `multi_compile` 指令的关键字数量，$N$ 为指令总数。
 
-变体剥离是在构建阶段主动删除不会被使用的变体的技术。在Unity中可以通过实现 `IPreprocessShaders` 接口，在 `OnProcessShader` 回调中检查每个 `ShaderSnippetData` 和 `ShaderCompilerData`，根据项目实际使用的关键字集合过滤掉冗余变体。一个实际项目中未经剥离的角色着色器可能产生超过4096个变体，经过针对性剥离后可压缩至64个以内，构建时间缩短70%以上。
+### PSO 缓存与着色器变体的绑定关系
 
-Unreal Engine通过 `FShaderPermutationParameters` 和 `ShouldCompilePermutation()` 静态函数实现类似功能——在每个着色器类中重写该函数，返回 `false` 即可在编译时排除不符合条件的排列组合。
+在 Vulkan 和 DirectX 12 中，着色器变体本身只是 SPIR-V 或 DXIL 字节码，必须与管线状态（顶点输入布局、光栅化状态、混合状态等）组合成 **Pipeline State Object（PSO）** 才能提交 GPU 执行。同一个变体与不同的 RenderState 组合，会生成多份不同的 PSO 条目。
 
-### PSO缓存与变体预热
+PSO 缓存（PSO Cache / Pipeline Cache）以文件或内存 Blob 的形式持久化每个 `<变体字节码哈希, 渲染状态哈希>` 键值对的编译结果。Android Vulkan 驱动中，`VkPipelineCache` 对象可通过 `vkCreatePipelineCache` 加载磁盘上已有的缓存文件，避免重复的驱动内部 GLSL→ 硬件指令的翻译开销，这一过程在高通骁龙设备上实测可节省单个 PSO 20–200ms 的编译时间。
 
-在Vulkan和DX12中，每个着色器变体与一组固定的渲染状态（混合模式、深度测试、顶点布局）结合构成一个PSO。PSO的编译在GPU驱动层发生，耗时可达数百毫秒。如果在游戏运行时首次遇到某个变体与状态组合，会触发实时PSO编译，产生明显卡顿。
+### 变体收集与剔除策略
 
-解决方案是**PSO预缓存**：在加载界面期间根据已知的变体和渲染状态组合提前创建所有PSO并写入磁盘缓存。Unity的 `ShaderWarmup.WarmupAllShaders()` 和 Unreal的 `FPipelineFileCache` 都是实现这一策略的具体API。PSO缓存文件通常以 `.upipelinecache`（Unreal）或平台特定格式存储，首次运行后二次启动可直接加载，将PSO构建时间从数秒压缩至毫秒级。
+常用的三种变体剔除手段各有其具体操作方式：
+
+1. **静态变体剔除**：将 `multi_compile` 改为 `shader_feature`，配合 Unity 的 `IPreprocessShaders` 接口或 URP 的 `ShaderVariantStripper`，在 `OnProcessShader` 回调中移除特定 `ShaderCompilerData`，可将变体数从数千降低到数十。
+
+2. **运行时变体预热（Warm-up）**：在加载屏或过场动画期间，提前触发目标场景所需变体的 PSO 编译。Unity 6 引入的 `ShaderWarmup.WarmupShader` API 和 Unreal Engine 的 `r.Shader.PSOPrecache` CVar 均支持此策略。
+
+3. **变体分包（Variant Stripping at Build）**：通过记录运行时实际激活的关键字组合（Variant Collection），构建时只编译白名单内的变体。Unity 的 `ShaderVariantCollection.asset` 文件即实现此功能，结合 `Shader.WarmupAllShaders()` 可做到精确的变体预加载。
 
 ---
 
 ## 实际应用
 
-**移动端变体优化案例**：某手游的角色着色器原始声明了12组 `multi_compile`，总变体数达到 2¹² = 4096。通过分析发现，其中4组宏（动态阴影、屏幕空间反射、次表面散射、头发高光）在移动端永不启用，直接用 `shader_feature` 替代并在 `IPreprocessShaders` 中强制剥离，最终变体数降至256，包体内着色器内存从180MB降至12MB。
+**移动端优化案例**：某 MMORPG 项目原始 Uber Shader 含 18 个 `multi_compile` 关键字，理论变体数达 262,144 个，APK 中 Shader 包体占用 1.2GB。将其中 11 个改为 `shader_feature` 并添加变体剔除脚本后，实际打包变体减少至 384 个，包体降至 14MB，首场景进入时 PSO 编译卡顿从 3.2s 降至 0.4s。
 
-**PSO预热的实现时机**：正确的做法是在关卡加载时通过 `ShaderVariantCollection`（Unity）收集目标场景所有材质引用的变体，调用 `ShaderVariantCollection.WarmUp()` 触发预编译，而非在 `Start()` 或首帧渲染时随机触发。Unreal中在 `GameInstance::Init()` 阶段调用 `FShaderPipelineCache::SetBatchMode(FShaderPipelineCache::BatchMode::Fast)` 可以在后台线程异步构建PSO。
+**主机平台 PSO 预编译**：PlayStation 5 的 GNM/GNMX API 要求开发者在标题安装阶段完成全部 PSO 编译并写入 Pipeline Binary Cache。若变体数量过多导致预编译时间超过平台限制（通常为安装包大小的函数），索尼认证会失败。实践中需将 PSO 总数控制在 5000 以内以通过 TRC（Technical Requirements Checklist）检查。
 
-**关键字全局污染问题**：`Shader.EnableKeyword()` 设置的是全局关键字，会影响场景内所有使用该着色器的材质，导致意外激活非预期变体。正确做法是通过 `Material.EnableKeyword()` 设置局部关键字，将变体切换的作用域限制在单个材质实例上。
+**WebGPU 场景**：由于浏览器无法持久化 PSO 缓存，变体数量必须严格控制。WebGPU 的 `GPUDevice.createRenderPipeline()` 每次调用若传入新组合均会触发同步编译（异步版本需用 `createRenderPipelineAsync()`），因此 Web 端 Uber Shader 通常将关键字数量限制在 6 个以内，确保最多 64 个变体。
 
 ---
 
 ## 常见误区
 
-**误区一：multi_compile 和 shader_feature 可以互换使用**
-很多开发者将所有宏都声明为 `multi_compile`，导致构建包含大量从未被材质使用的变体。事实上，任何与材质属性绑定的特性开关（法线贴图、金属度贴图、自发光等）都应使用 `shader_feature`，只有运行时通过 `Shader.EnableKeyword` 全局切换的功能才需要 `multi_compile`。将法线贴图开关从 `multi_compile` 改为 `shader_feature` 这一步骤单独就能使一个典型PBR着色器的变体数减半。
+**误区一：关键字数量等于变体数量**
+许多开发者误认为 10 个关键字就是 10 个变体。实际上变体数量是各指令选项数的**乘积**而非之和。3 条各含 2 个选项的 `multi_compile` 产生 8 个变体，而非 6 个。当关键字来自不同 `multi_compile` 指令时，组合爆炸远比直觉严重。
 
-**误区二：变体数量越少越好，无需考虑分支**
-与变体方案相对的是在着色器内部使用 `if` 动态分支（Dynamic Branching）。对于GPU上的 uniform 条件（整个 draw call 内条件值不变），现代GPU可以有效地执行动态分支而无需两条执行路径。但对于逐像素变化的条件，动态分支会导致 warp divergence，性能反而差于静态编译的变体。因此，是否使用变体取决于条件是否为 uniform，而非一律追求减少变体数量。
+**误区二：PSO 缓存命中等于零开销**
+PSO 缓存的作用是跳过驱动层的 Shader 编译，但 `vkCreateGraphicsPipelines` 读取缓存并验证哈希本身仍有 1–5ms 的 CPU 开销。若在每帧渲染热路径中动态切换变体并触发 PSO 查找，即便有缓存也会产生可见的性能抖动。正确做法是在帧开始前完成所有 PSO Bind，渲染循环内只做 `vkCmdBindPipeline`。
 
-**误区三：PSO缓存只需要在PC端管理**
-实际上，iOS的Metal后端和Android的Vulkan后端同样存在PSO实时编译问题，且移动端GPU驱动的PSO编译耗时比桌面端更不稳定，波动范围可达50ms至800ms。忽略移动端PSO预热是导致移动游戏首次进入关卡时出现明显卡顿帧的常见原因之一。
+**误区三：`shader_feature` 永远优于 `multi_compile`**
+`shader_feature` 的变体在运行时无法通过 `Shader.EnableKeyword` 动态开关，因为未被材质引用的变体已在构建时删除。若某功能需要在运行时根据设备能力（如是否支持光线追踪）动态切换，必须使用 `multi_compile` 保留全部变体，否则运行时关键字设置会被忽略，导致渲染结果错误。
 
 ---
 
 ## 知识关联
 
-着色器变体的设计前提是**Uber Shader**模式——正是因为将多种功能集中在一个着色器源文件中，才需要宏开关来裁剪功能集，从而产生变体。学习变体之前需要掌握 `#ifdef`/`#pragma multi_compile` 的语法以及HLSL/GLSL的预处理器机制。
+**前置概念——Uber Shader**：着色器变体的存在以 Uber Shader 为前提，Uber Shader 通过条件编译分支（`#if defined(FEATURE_X)`）将多种渲染路径合并为单一源文件。变体系统将这些分支在编译期展开，确保每个最终变体中不含任何分支判断，从而消除 GPU 上的动态分支开销。若不理解 Uber Shader 的宏注入机制，就无法正确设计 `multi_compile` 的拆分粒度。
 
-从变体管理延伸出去，需要进一步学习**着色器缓存（Shader Cache）系统**的完整架构，包括离线编译工具链（如 `glslangValidator`、`dxc`）如何将变体组织为二进制缓存文件，以及**渲染管线状态管理**中PSO的生命周期、缓存键的构成（着色器哈希 + 渲染状态哈希）。掌握变体管理也是理解**着色器包（Shader Bundle）**热更新方案的基础，因为热更新时需要精确控制哪些变体需要重新下载，哪些可以复用本地缓存。
+**横向关联——渲染管线状态管理**：PSO 缓存管理与变体管理紧密耦合，但两者是不同层次的概念。变体是 Shader 代码层面的多态，PSO 是将变体与固定管线状态绑定后的执行单元。开发者需要同时控制两个维度的组合爆炸——Shader 变体数 × RenderState 组合数，才能将总 PSO 条目控制在合理范围内。
+
+**工程延伸——Shader 编译流水线自动化**：掌握变体收集和剔除策略后，自然会接触到 CI/CD 中的 Shader 编译缓存（如 Unity Cloud Build 的 Shader 缓存服务或自建的 Shader Compiler Server），这些系统以变体哈希为键进行增量编译，直接减少每次构建中重复编译的变体数量，是大型项目工程化的必要环节。
