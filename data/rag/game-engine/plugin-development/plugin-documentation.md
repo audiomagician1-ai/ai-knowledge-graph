@@ -24,77 +24,88 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # 插件文档编写
 
 ## 概述
 
-插件文档编写是指为游戏引擎插件（Plugin）提供结构化的技术说明材料，主要涵盖三类内容：API参考文档、使用示例代码，以及版本迁移指南（Migration Guide）。文档不是代码本身的附属品，而是插件能否被其他开发者正确使用的决定性因素——即使功能完善的插件，若缺乏文档，其实际可用性与未发布无异。
+插件文档编写是指为游戏引擎插件创建面向使用者的技术文档体系，涵盖API参考手册、代码示例集和版本迁移指南（Migration Guide）三大主要文档类型。优质的插件文档能将插件的采用周期从数天压缩至数小时，直接影响插件在开发者社区的传播速度和口碑。
 
-插件文档规范在游戏引擎生态中逐渐系统化。Unity Asset Store 于 2013 年起要求提交者附带文档，Unreal Engine 的插件市场 Fab（前身 Marketplace）也要求 API 文档覆盖所有公开类与函数。这一历史背景说明，文档编写已从个人习惯演变为行业标准。
+插件文档的标准化实践兴起于2000年代初，随着Javadoc（1995年随Java 1.0发布）和后来的Doxygen工具普及，"文档与代码共存"的理念逐渐成为开放源码插件生态的基本规范。Unreal Engine的插件市场（Fab，前身为UE Marketplace）和Unity Asset Store均明确要求上架插件提供结构化文档，违反规范将导致审核不通过。
 
-文档写作的价值体现在两个具体层面：其一，减少 Issue 提交数量——据 GitHub 统计，拥有完整 README 和 API 文档的开源插件，重复性问题报告平均减少 40%；其二，降低版本升级的破坏性影响，Migration Guide 使用户能在 Breaking Change 发生时自主完成代码迁移，而不依赖作者的一对一支持。
+对于游戏引擎插件而言，文档的特殊性在于目标读者往往是游戏程序员而非库的维护者，他们关注的是"如何在项目截止日前快速集成功能"，而非内部实现细节。因此，插件文档必须在API精确性和上手速度之间取得平衡，Quick Start部分应在500字以内引导读者完成第一个可运行示例。
 
 ---
 
 ## 核心原理
 
-### API 文档的结构规范
+### API文档的结构规范
 
-API 文档的最小单元是**函数签名 + 参数说明 + 返回值 + 示例**，缺少任何一项都会导致理解断层。以 Unreal Engine C++ 插件为例，一个标准的公开函数文档应如下书写：
+API文档须对插件暴露的每个公共接口进行完整描述，缺一不可。每条API条目应包含五个固定字段：**功能说明**（一句话，动词开头）、**参数列表**（含类型和默认值）、**返回值**（含可能的null/错误状态）、**调用示例**（最短可运行代码）和**注意事项**（线程安全、调用顺序等约束）。
 
-```cpp
-/**
- * 加载关卡流数据块并异步写入缓存
- * @param ChunkID    数据块的唯一整数标识符，范围 [0, 65535]
- * @param Priority   加载优先级，0 = 低，1 = 普通，2 = 高
- * @return           返回 FAsyncHandle，可用于轮询加载状态
- */
-FAsyncHandle LoadChunkAsync(int32 ChunkID, uint8 Priority);
+以Unity插件为例，若插件暴露一个音频管理类，其API条目应写为：
+
+```
+AudioManager.PlayClip(AudioClip clip, float volume = 1.0f, bool loop = false)
+// 返回值：AudioHandle（可用于后续停止/淡出操作，失败时返回 AudioHandle.Invalid）
+// 注意：必须在主线程调用；clip不可为null，否则抛出 ArgumentNullException
 ```
 
-其中 `@param` 必须注明取值范围或枚举值，仅写"数据块ID"是不够的——用户无法判断传入 -1 或 100000 是否合法。Unity 插件使用 XML 注释风格（`/// <summary>`），而 Godot 插件采用 GDScript 的 `##` 注释格式，三者语法不同，但信息要素一致。
+对于C#插件，推荐使用XML文档注释（`///`）配合DocFX工具自动生成HTML文档站点；对于C++插件（如UE插件），推荐使用Doxygen语法，配合`@param`、`@return`、`@warning`标签。
 
-### 示例代码的编写原则
+### 代码示例的分层设计
 
-示例代码应遵循**最小可运行原则**：每段示例只展示一个具体功能点，不引入与当前功能无关的依赖。例如演示插件的网格生成函数时，不应在示例中同时初始化物理系统或 UI 管理器，这会使读者误以为这些初始化是必要步骤。
+代码示例应按复杂度分为三层：**最小示例**（Minimal Example）、**完整场景示例**（Scenario Example）和**进阶用法示例**（Advanced Example）。
 
-示例代码分为两类：**快速入门示例（Quick Start）**和**完整场景示例（Full Example）**。Quick Start 通常控制在 10-20 行，完成从初始化到第一次调用的最短路径；Full Example 则展示与其他系统协作的真实用法，例如插件与 Unity 的 Addressables 系统联动时的完整工作流。两者都必须标注测试通过的引擎版本号，如 `// Tested: Unity 2022.3.15f1`。
+最小示例只展示单一功能点，代码行数控制在10行以内，确保读者能复制粘贴后立即运行。完整场景示例模拟真实游戏需求，例如"在玩家受伤时播放特定音效并淡出背景音乐"，代码量在30至80行之间，需标注每个关键步骤的注释。进阶用法示例则展示性能优化写法或与其他系统（如Unity的Job System）的集成方式，适合已掌握基础用法的读者。
 
-### Migration Guide 的编写方法
+每个示例必须注明其**测试环境**：引擎版本（如`Unity 2022.3 LTS`）、插件版本（如`v2.1.0`）和目标平台（如`Windows/Android`），避免读者在不兼容版本上浪费排查时间。
 
-Migration Guide 针对**Breaking Change**而存在——即旧版代码在新版中无法直接编译或行为发生静默改变的情况。每条迁移说明必须包含三列信息：
+### Migration Guide的编写规范
 
-| 旧版写法（v1.x） | 新版写法（v2.0+） | 变更原因 |
-|---|---|---|
-| `plugin.Init(config)` | `await plugin.InitAsync(config)` | 初始化改为异步以支持流式加载 |
-| `MeshData.vertCount` | `MeshData.VertexCount` | 命名规范统一为 PascalCase |
+迁移指南专门解决插件版本升级时的兼容性断裂问题，对每一处**Breaking Change**必须提供三要素：变更原因、旧API写法、新API写法。
 
-变更原因一栏是最容易被遗漏的，但它直接影响用户能否理解为何需要迁移，以及迁移后的行为预期。语义变更（函数名相同但行为改变）比签名变更更危险，必须在 Migration Guide 中用显著标记（如 `⚠️ 行为变更`）单独列出。
+遵循语义化版本规范（Semantic Versioning），主版本号（Major Version）变更才允许引入Breaking Change。因此Migration Guide的章节应以主版本为单位组织，例如"从v1.x迁移到v2.0"。典型的条目格式如下：
+
+```
+【Breaking Change】PlaySound() 已重命名为 PlayClip()
+原因：统一与Unity AudioClip命名规范保持一致
+旧写法：AudioManager.PlaySound("bgm", 0.8f);
+新写法：AudioManager.PlayClip(bgmClip, 0.8f);
+迁移工具：运行菜单 Tools > AudioPlugin > MigrateLegacyAPI 可自动转换项目内所有调用
+```
+
+提供自动化迁移脚本（如Unity的`IApiUpdater`接口实现）能大幅降低用户升级成本，这应当在Migration Guide的首段明确说明是否提供此类工具。
 
 ---
 
 ## 实际应用
 
-**Spine Unity 插件文档**是游戏行业中 API 文档与示例结合的典型案例。Spine-Unity 的官方文档将骨骼动画的 `AnimationState` API 按事件类型（Start、Complete、End、Dispose）逐一举例，每个事件都附有订阅和取消订阅的完整代码片段，并明确说明哪些事件在同一帧内触发、哪些延迟一帧——这类时序细节正是用户最容易出错的地方，也是文档最有价值的部分。
+**UE插件上架文档要求**：Fab市场要求上架的UE插件必须提供Overview页、Quick Start视频或图文、完整Blueprint节点截图（含引脚说明），以及支持的引擎版本列表。若插件定价超过50美元，还建议提供可搜索的在线API文档站点，否则退款率会显著上升。
 
-**Photon PUN 2 的 Migration Guide** 是 Breaking Change 文档的参考范例。从 PUN 1 升级至 PUN 2 时，文档列出了超过 30 处 API 重命名，并专门标注了 `PhotonNetwork.player`（PUN 1）→ `PhotonNetwork.LocalPlayer`（PUN 2）这类易被忽略的属性名变化，同时提供了可直接使用的正则表达式批量替换命令，将迁移成本从数小时缩短至数分钟。
+**Unity Package Manager兼容文档**：通过UPM分发的插件，其文档通常放置于`Documentation~`文件夹（波浪号使Unity导入时忽略此目录），主文件命名为`TableOfContents.md`，Unity 2021.2+会在Package Manager窗口的"Documentation"按钮中直接调用此路径。
 
-在自制插件开发中，可使用 **DocFX**（适用于 C#/Unity）或 **Doxygen**（适用于 C++/Unreal）从代码注释自动生成 HTML API 文档站点，避免手写与代码脱节的问题。Godot 插件则常将文档直接嵌入 `.xml` 格式的类描述文件，通过引擎内置的帮助系统展示。
+**开源插件的README结构**：发布在GitHub上的游戏引擎插件，README的首屏（fold以上）应包含：一句话功能描述、安装命令（如`openupm add com.example.plugin`）、最小示例代码块和版本兼容性徽章，这四项内容缺失任意一项都会降低Star转化率。
 
 ---
 
 ## 常见误区
 
-**误区一：把注释当文档**。内联注释（inline comment）解释"这段代码做什么"，而 API 文档解释"调用者如何使用这个接口"，两者目的不同。将函数内部的实现注释直接暴露给用户，往往包含大量内部术语和实现细节，反而造成困惑。API 文档应以调用者视角书写，隐藏实现细节，仅暴露契约（合法输入、保证输出、可能的异常）。
+**误区一：API文档用"自说明"替代真实描述**
+许多开发者为函数写的注释是`// 播放音频`，参数名为`clip`——这与不写没有区别，因为读者直接看函数签名也能得到同样信息。有效的API描述必须比签名提供更多信息，例如说明`volume`参数超过1.0时会触发软限幅而非报错，或说明在`AudioListener`未激活时调用会静默失败。
 
-**误区二：Migration Guide 只写新增功能**。新增功能应写在 Changelog 或 Release Notes 中，Migration Guide 专门针对"升级后旧代码会出错或行为改变"的场景。把两者混写会导致用户在 Migration Guide 中搜索某个被删除的旧 API 时找不到信息，误以为升级兼容，最终在运行时才发现错误。
+**误区二：Migration Guide只写"删除了旧API"**
+若迁移指南只列出"v2.0移除了PlaySound方法"而不提供对应新写法，用户面对编译错误时仍然无从下手。Breaking Change条目必须"新旧对照"格式呈现，且对于复杂的架构变更（如从单例模式改为组件模式），需提供带前后对比的完整代码块，而不是仅靠文字描述说明设计动机。
 
-**误区三：示例代码不同步更新**。这是最常见的长期维护问题：插件 API 在 v1.5 版本重构后，Quick Start 文档依然展示 v1.2 的写法，导致新用户复制示例代码后立即遇到编译错误。解决方案是将示例代码作为插件仓库的实际子项目纳入 CI 流程，每次发布前自动编译验证，而非作为独立的文本文件维护。
+**误区三：示例代码与当前版本不同步**
+插件迭代时忘记更新示例代码是最常见的文档问题，会导致新用户按照官方示例操作却得到编译错误，产生极差的第一印象。解决方案是将示例代码作为插件仓库中的独立可测试项目（如`Samples~`文件夹），在CI/CD流水线（如GitHub Actions）中对每次提交自动构建示例项目，确保文档示例始终可以编译通过。
 
 ---
 
 ## 知识关联
 
-本主题以**插件开发概述**为前置知识——了解插件的模块边界、公开接口与内部接口的区分，才能判断哪些内容需要写入 API 文档、哪些属于不应暴露的实现细节。在概述阶段学习的插件入口点（Entry Point）和生命周期钩子（Lifecycle Hook）概念，正是 API 文档中最优先需要覆盖的说明对象。
+**前置概念衔接**：插件文档编写以"插件开发概述"中的插件架构知识为基础——只有清楚插件的公共接口边界（Public API）与内部实现的区分，才能判断哪些接口需要文档覆盖、哪些是内部细节无需暴露。插件的Entry Point设计直接决定了Quick Start文档的切入角度。
 
-从文档类型的覆盖顺序来看，建议按 **Quick Start → API Reference → Migration Guide** 的顺序逐步完善：Quick Start 覆盖 80% 的初级用户需求，API Reference 服务于有具体接口查询需求的中级用户，Migration Guide 则在插件发布第二个含 Breaking Change 的主版本时才真正被需要。三类文档服务于不同阶段的用户，不可相互替代。
+**工具链关联**：DocFX用于Unity/C#插件的文档站点生成，输入为XML注释代码；Doxygen用于UE/C++插件；Markdown配合MkDocs或Docusaurus适合中小型插件的独立文档站点。熟悉这些工具能将文档维护成本降低60%以上，因为文档从源码注释自动生成，无需手动同步。
+
+**版本管理关联**：Migration Guide的编写与Git标签（Tag）和CHANGELOG.md的维护紧密相连。推荐在每次打Major/Minor版本标签时，将对应的Migration条目和CHANGELOG更新作为发布检查清单（Release Checklist）的强制步骤，从流程上杜绝文档滞后于代码版本的问题。

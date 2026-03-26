@@ -24,52 +24,55 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # 商店集成
 
 ## 概述
 
-商店集成（Store Integration）是指游戏引擎或游戏应用程序通过官方SDK与数字发行平台进行对接，实现成就系统、DLC购买、好友列表、排行榜、反盗版验证等功能的技术实现过程。主流平台包括Valve的Steam、Epic Games Store、索尼的PlayStation Network（PSN）、微软的Xbox Live以及苹果/谷歌的App Store/Google Play。
+商店集成（Store Integration）是指游戏引擎或游戏应用通过平台抽象层对接各大数字发行平台的技术体系，涵盖Steam、Epic Games Store、PlayStation Network（PSN）、Xbox Live/Microsoft Store以及Apple App Store等主流渠道。其核心职责是将平台独有的成就系统、DLC购买、云存档、好友列表、成就统计（Stats）等服务封装为统一的API接口，使游戏代码无需针对每个平台单独编写逻辑。
 
-Steam SDK最早于2003年随Half-Life 2的发行计划被开发，其现代版本Steamworks SDK提供了C++头文件接口，主要入口为`SteamAPI_Init()`函数，调用失败时需要游戏安全退出。Epic Online Services（EOS）SDK则在2019年随Epic Games Store推出，其特殊之处在于它支持跨平台使用，即开发者可以在非Epic商店的游戏中免费调用EOS的成就和好友功能。
+从历史角度看，Valve于2003年推出Steam平台并随后发布Steamworks SDK，这是PC端游戏商店集成的事实起点。随着移动端兴起，Apple在2008年发布StoreKit框架，Google Play Billing Library紧随其后，迫使引擎厂商在2010年代将商店集成从"可选插件"升级为"必要基础设施"。Epic Games在2019年推出Epic Online Services（EOS）并将其作为独立SDK开放，进一步推动了跨平台商店抽象的标准化。
 
-商店集成的重要性在于现代游戏发行的商业逻辑：平台方通常从每笔销售中抽取15%到30%的分成（Steam标准税率为30%，收入超过1000万美元后降至25%，超过5000万美元降至20%），作为交换，平台提供身份验证、支付处理和防盗版机制。正确集成这些系统，是游戏在目标平台合法上架并通过认证审核（如Sony的Technical Requirements Checklist，即TRC）的必要条件。
+商店集成对于发行策略和收益直接相关：Steam对每笔交易默认抽取30%分成（销售额超过1000万美元后降至25%，超过5000万美元后降至20%），而Epic Games Store则固定抽取12%。游戏开发商必须为每个平台分别完成集成认证才能上架，这使得商店集成层的质量直接决定了多平台发行的工程成本。
 
 ## 核心原理
 
-### Steamworks SDK 的初始化与回调机制
+### 认证与授权流程
 
-Steamworks SDK使用基于轮询的回调（Callback）模型而非事件驱动模型。开发者需要在游戏主循环中每帧调用`SteamAPI_RunCallbacks()`，SDK内部才会将网络事件分发到已注册的回调函数。每个回调通过`STEAM_CALLBACK`宏绑定到特定的回调ID，例如成就解锁的响应回调ID为`UserStatsReceived_t`。忘记在主循环中调用`SteamAPI_RunCallbacks()`是初学者最常见的错误，导致成就永远无法触发。
+商店集成的第一步是平台身份认证。以Steamworks为例，游戏启动时需调用`SteamAPI_Init()`，该函数会读取本地Steam客户端的票据（Ticket）并向Valve服务器验证用户是否持有合法授权的AppID。Xbox Live则使用基于OAuth 2.0的XSTS（Xbox Secure Token Service）令牌体系，游戏客户端通过`XUserAddAsync()`获取用户句柄后，再用该句柄申请特定服务的访问令牌。PSN采用np_account_id配合np_service_label的两级标识，认证失败时会返回SCE_NP_ERROR_NOT_SIGNED_IN（错误码0x80550001）等平台专属错误码，开发者必须逐一处理。
 
-Steamworks还区分两类异步操作：`CallResult`用于一对一的异步请求响应（如排行榜查询），`Callback`用于全局广播事件（如好友状态变化）。两者在宏层面语法相似，但混用会导致内存访问异常。
+### 内购与DLC管理
 
-### 成就系统与统计数据存储
+IAP（In-App Purchase）在不同平台的实现差异极大。StoreKit 2（iOS 15+）引入了基于Swift async/await的`Product.purchase()`接口，并将收据验证从本地客户端迁移到服务端验证的AppTransaction模型。Google Play Billing Library 5.0起废弃了`launchBillingFlow()`的旧式回调，改用`queryProductDetailsAsync()`的协程风格。Steam的DLC管理通过`SteamApps()->BIsDlcInstalled(AppId_t dlcAppID)`这一单一布尔查询完成，相对简洁。Unreal Engine的在线子系统（Online Subsystem）通过`IOnlinePurchase`接口将上述差异统一抽象，但仍需每个平台安装对应的OSS插件（如OSSNull、OSSEpic、OSSPlayFab）。
 
-各平台的成就系统在数据流向上存在根本差异。Steam的成就数据存储于Valve服务器，本地通过`ISteamUserStats::SetAchievement("ACH_WIN_100_GAMES")`标记，再调用`StoreStats()`才会真正提交。PSN的Trophy系统要求游戏必须有一个铂金奖杯（Platinum Trophy），且其他奖杯总分值必须精确等于1290分，这一硬性要求直接影响设计阶段的奖杯数量规划。Xbox的成就系统则通过Xbox Services API（XSAPI）操作，成就配置文件以JSON格式定义并提前上传至开发者门户，运行时仅发送解锁事件。
+### 成就与统计系统
 
-### 平台DLC与应用内购买
+成就系统是商店集成中频繁使用的模块，各平台的数据存储方式不同。Steam通过`SteamUserStats()->SetAchievement("ACH_WIN_100_GAMES")`用字符串键解锁成就，并在本地缓存后通过`StoreStats()`同步上传，支持离线累计。PSN的Trophy系统则强制要求游戏内必须包含一个白金奖杯（Platinum Trophy），并规定除白金奖杯外必须至少有一个金奖杯，不满足此结构的游戏无法通过TRC（Technical Requirements Checklist）认证。Xbox的成就系统自2013年Xbox One起切换为基于事件驱动（Event-based Achievements）的模式，通过`XblAchievementsUpdateAchievementAsync()`传递统计事件而非直接解锁，与Steam的直接调用模式截然不同。
 
-App Store和Google Play的应用内购买（IAP）采用完全不同的验证架构。苹果的StoreKit 2（iOS 15+引入）使用JWS（JSON Web Signature）格式的收据，服务器端验证通过调用`https://api.storekit.itunes.apple.com/inApps/v1/transactions/{transactionId}`完成。Google Play Billing Library 5.0（2022年起必须使用）强制要求所有购买在用户确认后24小时内通过服务器端`acknowledge`操作确认，否则系统自动退款。Steam的DLC检查则相对简单：调用`ISteamApps::IsDlcInstalled(AppId_t appID)`即可实时查询。
+### 平台抽象层设计模式
 
-### 平台认证与技术要求
-
-发布到主机平台需要通过各自的技术要求审核。索尼的TRC（Technical Requirements Checklist）包含数百条强制规则，例如游戏必须在收到系统关机信号后的特定时间内（通常为几秒钟内）完成存档并退出。微软的XR（Xbox Requirements）同样包含强制性的"存档提醒"显示规则。违反任何一条强制规则将导致认证失败，需要重新提交版本，成本高昂。
+在引擎层面，商店集成通常采用Facade模式加Strategy模式组合实现。外层定义`IStoreInterface`，内部包含`QueryEntitlements()`、`PurchaseOffer()`、`UnlockAchievement()`等纯虚函数；编译时通过预处理宏（如`#if PLATFORM_STEAM`）或运行时通过工厂函数注入具体的平台实现类。Unity的Gaming Services SDK（原Unity IAP）和Unreal的Online Subsystem均采用此设计，但前者将所有平台实现打包在单一NuGet包内，后者则以独立模块形式分离，二者在包体大小和热更新灵活性上有明显取舍差异。
 
 ## 实际应用
 
-**Unity项目中的Steamworks集成**：Unity开发者常用Steamworks.NET这一C#封装库，其`SteamManager`预制体包含`Awake()`中的`SteamAPI.Init()`调用和`Update()`中的`SteamAPI.RunCallbacks()`调用，整体架构即对应上述C++ SDK的初始化流程。
+**多平台同时发行**：《赛博朋克2077》的开发商CD Projekt RED在PC端同时上架Steam和GOG（自有平台），需要维护两套成就ID映射表和两套DLC清单，其技术博客披露他们使用了一套内部"商店路由层"在运行时根据环境变量判断调用哪个SDK。
 
-**Unreal Engine的在线子系统**：Unreal Engine提供了`OnlineSubsystem`抽象层，插件`OnlineSubsystemSteam`和`OnlineSubsystemEOS`各自实现相同的`IOnlineAchievements`接口。蓝图节点`Write Achievement Progress`在底层会根据当前激活的子系统自动路由到Steam或EOS的对应API，使得同一份代码可以跨平台编译。
+**移动端订阅制**：《原神》PC版使用Steamworks的小额交易API，而iOS版使用StoreKit的Auto-Renewable Subscriptions处理月卡。由于苹果禁止App内引导用户前往外部支付，两套代码路径在UI层面也必须有差异处理，违反此规定的应用会在App Review阶段直接被拒（违反Guideline 3.1.1）。
 
-**多平台同时上架的管理策略**：大型工作室通常维护一个"平台抽象层"（Platform Abstraction Layer），将`UnlockAchievement(id)`等功能封装为引擎内部接口，编译时通过预处理器宏（如`#if PLATFORM_PS5`）切换底层实现。这样在添加新平台支持时，核心游戏逻辑代码无需改动。
+**主机认证流程**：索尼的TRC文档（每代主机均会更新，PS5版本称为PS5 Technical Requirements）包含数百条关于商店集成的强制要求，例如要求游戏在PSN断线后30秒内给予用户明确提示，且离线模式下禁止调用在线商店购买接口而不加错误处理。未通过TRC的游戏会被Lot Check流程打回，导致发行日期延误。
 
 ## 常见误区
 
-**误区一：认为各平台SDK可以直接互换**。Steam、EOS和PSN的SDK不仅API命名完全不同，其线程模型也存在差异。例如，PSN的某些网络回调需要在专用的网络线程中处理，而Steamworks的回调必须在调用`SteamAPI_RunCallbacks()`的线程（通常是主线程）中执行。直接将一个平台的集成模式复制到另一个平台，极易引发线程安全问题。
+**误区一：认为商店集成只需处理购买流程**。实际上，许多平台的用户协议或技术规范要求在游戏启动时强制初始化商店SDK，即便该会话中用户不会进行任何购买。Steam要求在游戏运行全程保持`SteamAPI_RunCallbacks()`的轮询调用（通常每帧执行一次），否则成就上传和好友状态更新会悄无声息地失效，但不会抛出错误，这是新手开发者最容易忽视的问题。
 
-**误区二：将平台登录视为可选功能**。在PC平台（如Steam），用户离线运行游戏是有效使用场景，`SteamAPI_Init()`可能失败（Steam客户端未运行时），游戏需要优雅降级而非崩溃。但在PS5平台，PSN账号登录是TRC强制要求，游戏必须处理账号切换和登录失败的每一种状态，开发者不能假设用户永远处于已登录状态。
+**误区二：沙盒测试环境与线上行为完全一致**。StoreKit提供Sandbox账号测试IAP，但Sandbox环境下订阅的续费间隔会被压缩（年订阅变为1小时自动续费一次），且App Receipt中的`is-retryable`字段行为与生产环境不同。Google Play也提供测试账号机制，但许可验证响应（License Verification）在测试账号下默认返回`LICENSED`，无法测试到未购买用户的真实反馈。
 
-**误区三：认为客户端收据验证足够安全**。对于App Store和Google Play的购买，仅在客户端本地校验收据是不安全的，因为收据可以被伪造工具（如历史上的iAP Cracker）篡改。正确做法是将收据发送至开发者自有服务器，由服务器调用平台API进行二次验证后再发放游戏内容。
+**误区三：平台抽象层能完全消除平台差异**。Unreal的Online Subsystem虽然提供统一接口，但Xbox Live的成就系统因其事件驱动特性，无法被`IOnlineAchievements::WriteAchievements()`完整覆盖，实际上EOS文档明确标注该接口在Xbox平台下为"Partial Support"。彻底依赖抽象层而不阅读各平台原生SDK文档，往往导致认证阶段才发现功能缺失的被动局面。
 
 ## 知识关联
 
-商店集成建立在**平台抽象概述**所讲授的平台差异化思维之上：理解了"不同平台有不同系统接口"这一前提后，商店集成就是该思维在发行层面的具体实践——每个商店的SDK代表一套独立的接口契约。设计良好的商店集成层本身就是平台抽象层的一部分，其封装的`UnlockAchievement`、`PurchaseDLC`等接口正是平台抽象中"统一接口、差异实现"原则的典型案例。掌握商店集成后，开发者在处理其他平台差异（如输入系统、存档系统）时，可以复用同样的接口封装策略。
+商店集成建立在**平台抽象概述**所介绍的条件编译与运行时分发机制之上——理解`#if PLATFORM_IOS`与`#if WITH_STEAMWORKS`的组织方式，是正确分离各商店实现的前提。
+
+在技术依赖链上，商店集成与**网络通信层**（处理SDK内部的HTTP请求超时与重试）、**本地存储**（缓存离线成就数据等待网络恢复）以及**用户界面系统**（渲染平台原生的购买确认弹窗）均有接口边界，但商店集成层本身不负责这些模块的具体实现，而是通过回调或Future对象与其协作。
+
+对于准备向主机平台投入的团队，建议在引擎选型阶段即确认目标平台的DevKit申请条件：索尼和微软均要求开发商签署NDA后才能获得PSN SDK或GDK（Game Development Kit for Xbox），而Steam与Epic的SDK均为公开下载，这一差异决定了商店集成工作能否在获得主机授权前提前推进。

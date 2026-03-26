@@ -24,70 +24,92 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # Steam Input
 
 ## 概述
 
-Steam Input 是 Valve 公司于 2016 年随 Steam Controller 发布时推出的输入抽象层系统，后续版本扩展为通用控制器配置框架，支持 Xbox 手柄、PlayStation DualShock/DualSense、Nintendo Switch Pro Controller 以及 Steam Deck 内置手柄等数十种设备。它的核心功能是在操作系统原生驱动层与游戏应用层之间插入一个中间层，让玩家可以在 Steam 客户端界面中为任意游戏重新映射按键、摇杆和触摸板，而游戏本身只需接收经过翻译后的统一输入信号。
+Steam Input 是 Valve 于 2016 年随 Steam Controller 一同正式推出的输入抽象层系统，最初称为 Steam Controller API，后更名为 Steam Input API。其核心职能是在游戏与物理输入设备之间插入一个统一的翻译层，使开发者无需为每种手柄单独编写适配代码——无论玩家使用 Xbox 手柄、PlayStation DualSense、任天堂 Pro Controller，还是 Steam Deck 的内置控制器，游戏只需调用同一套 API。
 
-Steam Input API（SIAPI）与传统的 XInput/DirectInput 路径截然不同。传统路径下，游戏直接向操作系统查询设备原始状态；而 SIAPI 路径下，Steam 进程拦截设备信号，应用开发者在游戏代码中调用 `SteamInput()->GetAnalogActionData()` 或 `SteamInput()->GetDigitalActionData()` 这类接口，获取的是已经过配置层处理的"动作"数据，而非原始按钮编号。这种设计使得 Steam Deck 上的触摸板、陀螺仪等非标准输入源可以无缝模拟传统手柄输入。
+该系统的设计动机源于 Steam Controller 独特的双触控板硬件：传统手柄 API（如 XInput）无法表达触控板的连续坐标输入，Valve 因此设计了一套"动作集（Action Set）"抽象，将物理按键与游戏逻辑动作解耦。2018 年，Steam Input 扩展为支持所有主流手柄，并在 Steam 客户端中内置了通用配置界面，俗称"Big Picture 控制器配置"。
 
-对游戏开发者而言，集成 Steam Input 的实际意义在于：Steamworks SDK 中的 Steam Input API 允许游戏注册具名动作集（Action Set），例如将"游泳"状态和"战斗"状态分别定义为两个不同的动作集，并在运行时切换，从而让同一个物理按键在不同游戏情境下触发不同行为，而无需在游戏代码层面硬编码这种切换逻辑。
+对游戏引擎开发者而言，Steam Input 的重要性在于：它允许玩家在 Steam 客户端层面重映射任意按键，甚至将陀螺仪、触控板映射为鼠标或摇杆输出，而无需游戏自身提供这些功能。这意味着如果游戏直接使用 XInput 或 SDL，玩家的 Steam Input 配置会在游戏看到输入之前完成转换，形成一条完整的虚拟化链路。
 
 ---
 
 ## 核心原理
 
-### 动作与动作集（Actions & Action Sets）
+### 动作集与动作层（Action Sets & Action Layers）
 
-Steam Input 的映射单元不是"按下A键"这样的物理描述，而是开发者自定义的语义化动作名称，例如 `"jump"`、`"fire"`、`"move"`。开发者在 VDF（Valve Data Format）格式的动作配置文件 `game_actions_APPID.vdf` 中声明所有动作及其所属动作集，然后在代码中通过 `SteamInput()->GetActionSetHandle("InGameControls")` 获取句柄，再用 `SteamInput()->ActivateActionSet(inputHandle, setHandle)` 在运行时激活指定集合。数字动作（Digital Action）代表布尔值输入，模拟动作（Analog Action）代表二维向量输入，二者完全独立于底层设备类型。
+Steam Input 的基本单元不是"按键"，而是"动作（Action）"。开发者在游戏的 `game_actions_X.vdf` 配置文件中声明动作集，例如：
 
-### 输入信号转换流水线
+```
+"ActionSet_InGame"
+{
+    "Button"   "Jump"
+    "Button"   "Attack"
+    "AnalogTrigger" "Accelerate"
+    "StickPadGyro"  "Move"
+}
+```
 
-物理设备的原始信号经过以下流水线处理：
-1. **设备驱动采集**：Steam 客户端通过 HID 协议以约 1000Hz 轮询设备（Steam Controller 和 Steam Deck 内置手柄）或使用系统 API 采集其他手柄数据。
-2. **配置层变换**：应用玩家自定义配置，包括死区形状（圆形/十字/自定义）、灵敏度曲线、陀螺仪到摇杆的映射参数等。
-3. **模式映射**：触摸板可配置为"摇杆模式"、"鼠标模式"或"按钮板模式"，同一硬件在不同模式下产生完全不同的语义输出。
-4. **动作分发**：最终结果通过共享内存或命名管道传递给游戏进程，游戏调用 SIAPI 接口读取。
+每个动作集代表一种游戏状态下的完整输入语义。动作层（Action Layer）则是叠加在动作集之上的增量覆盖，例如"载具模式层"只覆盖移动相关动作，其余动作继承基础集，避免重复配置。游戏运行时调用 `ActivateActionSet(inputHandle, actionSetHandle)` 切换当前活跃集。
 
-### 陀螺仪输入与运动控制
+### 输入信号的虚拟化路径
 
-Steam Input 对陀螺仪的处理尤为精细，这是其区别于纯 XInput 的重要特性。陀螺仪原始数据单位为弧度/秒（rad/s），Steam 配置界面允许设置"陀螺仪灵敏度"（实质上是 rad/s 到像素/帧的比例系数）、"稳定"功能（低速运动时应用额外死区）以及"陀螺仪激活条件"（例如右摇杆推入触发陀螺仪辅助瞄准）。DualSense 和 Switch Pro Controller 的陀螺仪数据通过 Steam Input 统一封装后，游戏代码只需调用 `SteamInput()->GetMotionData()` 即可获取，无需针对不同厂商的陀螺仪协议分别适配。
+Steam Input 有两种工作模式：**Native 模式**（游戏主动调用 Steam Input API）和 **Legacy 模式**（Steam 将手柄输出伪装成 XInput 或 DirectInput 设备）。在 Legacy 模式下，Steam 的 Virtual Controller 驱动在操作系统层面注册一个虚拟手柄，真实设备信号经 Steam 处理后由虚拟设备转发。这意味着游戏通过 XInput 轮询时，实际读取的是经过重映射的虚拟数据，而非原始硬件数据。这套机制解释了为何 PlayStation 手柄可以在只支持 XInput 的游戏中正常工作。
 
-### Steam Deck 专项适配
+### Steam Deck 专项特性
 
-Steam Deck 的物理布局包含两个触摸板、两个摇杆、四个背键（L4/L5/R4/R5）和陀螺仪，这些在 XInput 标准中均无对应定义。Steam Input 为 Deck 提供了专属的"Steam Deck"控制器配置模板，开发者可以在 VDF 文件中针对 `controller_steamdeck` 设备类型单独定义配置，而不影响其他手柄设备的配置。Deck 的触摸板默认在游戏运行时作为鼠标操控，但 SIAPI 集成的游戏可将其配置为径向菜单或自定义虚拟摇杆。
+Steam Deck 运行 SteamOS，其内置控制器通过 Steam Input 原生接入，提供以下 Deck 专属输入源：
+
+- **左右触控板**：分辨率约为 1920×1080 的电容式触控板，可输出绝对坐标或模拟摇杆
+- **陀螺仪（6轴 IMU）**：支持俯仰（Pitch）、偏航（Yaw）、滚转（Roll）三轴，常用于瞄准辅助
+- **触控板触觉反馈（Haptics）**：通过 `TriggerRepeatedHapticPulse` API 控制脉冲频率（单位：微秒）
+
+Steam Deck 默认以 Native Steam Input 模式运行，如游戏未集成 API，则自动降级为 XInput 仿真。开发者可在 Steamworks 后台的"Steam Input 默认配置"中上传官方推荐映射，玩家首次连接时自动应用。
+
+### API 调用流程
+
+集成 Steam Input API 的最小流程如下：
+
+1. 调用 `SteamInput()->Init(false)` 初始化（参数 `false` 表示不显示手柄图标覆盖层）
+2. 每帧调用 `SteamInput()->RunFrame()` 驱动数据更新
+3. 调用 `GetConnectedControllers(handles)` 枚举当前连接设备
+4. 用 `GetAnalogActionData` / `GetDigitalActionData` 读取动作状态
+
+数字动作返回 `InputDigitalActionData_t`，其中 `bState`（bool）表示当前是否按下；模拟动作返回 `InputAnalogActionData_t`，`x`/`y` 为 -1.0 到 1.0 的浮点值。
 
 ---
 
 ## 实际应用
 
-**《赛博朋克 2077》的 Steam Deck 优化**：CD Projekt Red 在 1.6 补丁中为 Steam Deck 单独提供了 Steam Input 配置，将左触摸板配置为快速物品轮盘（径向菜单模式），右触摸板配置为鼠标模式用于精准瞄准，同时启用右摇杆按压触发的陀螺仪辅助。这套配置通过 Steam Workshop 共享，玩家无需修改任何游戏内设置即可体验。
+**Unity 集成示例**：Unity 项目若通过 Steamworks.NET 插件使用 Steam Input，需在 `Assets/StreamingAssets` 目录放置 `controller_config` 文件夹并包含 `.vdf` 动作配置文件。Unity 的 Input System 包本身不直接集成 Steam Input，开发者通常编写适配器将 `GetDigitalActionData` 的结果转发至自定义 `InputAction`。
 
-**独立游戏集成示例**：在 Unity 项目中集成 Steamworks.NET 后，只需在 `Awake()` 中调用 `SteamInput.Init(false)`（参数表示不明确显示 Steam Input 覆盖提示），然后在 `Update()` 中每帧调用 `SteamInput.RunFrame()` 刷新状态，再通过动作句柄读取输入。整套集成代码量不超过 50 行，相比为每种手柄设备单独处理输入事件要精简得多。
+**Godot 4 与 Steam Deck**：Godot 4 通过 GodotSteam 插件暴露 Steam Input API。由于 Godot 的 Input Map 系统与 Steam Input 动作集是平行独立的结构，推荐做法是在 Steam Input 层定义高层语义动作（如 `ui_confirm`），游戏内 Godot 的 InputMap 只处理非 Steam 平台的回退逻辑。
 
-**手柄图标自动适配**：SIAPI 提供 `SteamInput()->GetGlyphForActionOrigin()` 接口，可根据当前连接的实际手柄类型返回对应按键图标（例如 Xbox 的ABXY或 PlayStation 的△○×□），游戏 UI 无需硬编码图标判断逻辑，Valve 的图标资源库已包含主流手柄的完整图标集。
+**在线游戏的手柄图标提示**：Steam Input API 提供 `GetGlyphSVGForActionOrigin` 函数，根据当前控制器类型返回对应按键图标的 SVG 数据，分辨率无关。这使得 UI 可以自动在 Xbox A 键图标与 PlayStation ✕ 键图标之间切换，无需硬编码图片资源。
 
 ---
 
 ## 常见误区
 
-**误区一：Steam Input 会覆盖游戏内的键位设置**
+**误区一：Steam Input 与 XInput 可以同时读取同一设备**
 
-许多开发者误以为启用 Steam Input 后玩家的游戏内键位设置会失效。实际上，Steam Input 默认只在游戏未调用 SIAPI 初始化时以"兼容模式"运行，此时 Steam 将手柄信号模拟为 XInput 或键鼠输出，游戏内设置仍然有效。只有游戏主动调用 `SteamInput()->Init()` 声明使用 SIAPI 后，Steam Input 层才会完全接管并通过动作系统工作，两种模式不会同时激活。
+许多开发者在集成 Steam Input API 后，同时保留了 XInput 轮询代码，以为二者互补。实际上，当 Steam Input 以 Native 模式运行时，Valve 建议将 XInput 手柄加入屏蔽名单（通过 `EnableDeviceCallbacks` 监听）。若不加区分地同时读取，Xbox 手柄的输入会被 Steam Input 拦截导致 XInput 端读取到空数据，而开发者误以为是设备兼容性问题。
 
-**误区二：所有 Steam 游戏都自动获得 Steam Input 支持**
+**误区二：所有 Steam Deck 游戏必须集成 Steam Input API**
 
-Steam 客户端确实会对所有游戏默认启用手柄兼容层（将手柄模拟为 XInput），但"兼容模式"与"原生 SIAPI 集成"是本质不同的两件事。兼容模式下，陀螺仪无法传递给游戏，触摸板只能模拟摇杆，动作集切换功能完全不可用。要获得完整 Steam Input 功能，开发者必须显式集成 Steamworks SDK 并提交 VDF 动作配置文件。
+Steam Deck 的验证标准（Deck Verified）并不强制要求 Native Steam Input 集成。Legacy 模式下 Steam 的 XInput 仿真可让绝大多数游戏正常运行。强制集成的场景只有当游戏需要读取触控板原始坐标或陀螺仪数据时，因为这两类输入无法通过 XInput 仿真传递。
 
-**误区三：Steam Input 仅适用于 Steam Deck**
+**误区三：Steam Input 配置保存在游戏本地**
 
-虽然 Steam Deck 是 Steam Input 功能最受益的平台，但 Steam Input API 同样在 Windows/Linux/macOS 桌面端有效，且对 PlayStation DualSense 的触摸板和自适应扳机的支持（通过 Steam Input 抽象后）甚至早于许多游戏引擎的原生 DualSense 支持。2020 年 Steam 客户端更新后，DualSense 的触觉反馈参数也可通过 `SteamInput()->TriggerHapticPulse()` 在非 Deck 设备上调用。
+Steam Input 的控制器配置存储在 Steam 云端，路径格式为 `userdata/<steamid>/241100/remote/controller_config/`，其中 `241100` 是 Steam Input 配置应用的 AppID。这意味着玩家换机后配置自动同步，但也意味着游戏无法在自身存档目录中找到或修改这份配置，必须通过 Steamworks API 或 Steam 客户端界面操作。
 
 ---
 
 ## 知识关联
 
-**前置概念——输入映射**：理解输入映射中"物理键→逻辑动作"的转换思路是学习 Steam Input 动作集设计的直接基础。Steam Input 的 VDF 配置文件本质上是一个更加复杂的输入映射表，只是映射规则由运行时的 Steam 客户端解析而非游戏引擎内部系统处理。掌握了"动作名"与"绑定"分离的基本思想后，Steam Input 的 Action Set 分层设计会更易理解。
+Steam Input 以**输入映射（Input Mapping）**为基础：理解抽象动作与物理按键的绑定关系是使用 Steam Input 动作集的前提，Steam Input 的 Action Set 机制本质上是将状态机式的上下文切换引入输入映射系统。与传统引擎内置的输入映射不同，Steam Input 的映射发生在引擎之外的 Steam 层，两套系统共存时需要明确各自的职责边界。
 
-**延伸方向——Steamworks SDK 其他模块**：Steam Input API 是 Steamworks SDK 的子集，深入使用时会涉及到 Steam 的云存储（用于同步玩家自定义配置）、Steam Workshop（用于共享社区手柄配置）以及 Steam Remote Play（Steam Input 是 Remote Play Together 多人共享控制的底层基础）。理解这些模块的协作方式有助于构建完整的 Steam 平台游戏发行方案。
+在 Steam Deck 开发实践中，Steam Input 与 **Steamworks SDK** 深度绑定——所有 API 调用均通过 `ISteamInput` 接口完成，该接口在 Steamworks SDK 1.50 版本后才稳定支持完整的 Deck 输入特性（包括触觉反馈 API `TriggerSimpleHapticEvent`）。若项目面向 PC 多平台发布，还需考虑与 SDL3 的 `SDL_GameController` API 的兼容策略，两者在抽象层次上相似但互不依赖。
