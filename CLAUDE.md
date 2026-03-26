@@ -62,18 +62,19 @@
 >   Batch 3 完成: 500篇Tier-B文档改写
 >   Batch P2 完成: 1000篇大域Tier-B改写
 >   Sprint 6 🔥进行中: **全量Tier-B升级** — `scripts/_batch_sprint6.py --max 3400`
->   进度: 1117/2754完成 (40.6%), ~60/hr, 0错误, 后台进程PID 23200运行中(2026-03-26重启)
->   ⚠️ 旧PID 36196→37164→41804 均stalled, 最新PID 23200(2026-03-26 08:58)
->   累计结果: **S=496(8.1%) A=3,414(55.5%) B=2,246(36.5%) C=0(0.0%)** 均分67.6
->   vs Sprint 4结束: S=145 A=639 B=5,368 C=0 均分49.5 → **提升幅度: +18.1分, A+S从12.8%→63.5%**
+>   进度: 1128/2754完成 (41.0%), ~60/hr, 0错误, 后台进程PID 42652运行中(2026-03-26 09:14)
+>   ⚠️ 旧PID 36196→37164→41804→23200 均stalled(内网API超时), 最新PID 42652(2026-03-26 09:14)
+>   ⚠️ 内网API(llm-open-ai.mihoyo.com)间歇性超时, 后台进程频繁stall, 需定期重启
+>   累计结果: **S=501(8.1%) A=3,460(56.2%) B=2,195(35.7%) C=0(0.0%)** 均分67.9
+>   vs Sprint 4结束: S=145 A=639 B=5,368 C=0 均分49.5 → **提升幅度: +18.4分, A+S从12.8%→64.3%**
 >   瓶颈分析: Specificity(31.5/100)和Density(40.5/100)是Tier-B两大短板(chars仅1364 vs 高质量2889)
->   已知问题: 42个跨域同名slug, 进度追踪为slug-based可能漏处理第二份
+>   ✅ 跨域去重修复: 42个同名slug中24个低分副本已通过内容复制+frontmatter修正升级(d1e0204e)
 >   Sprint 7 🔥进行中: **Tier-S Booster** — 二次精写顽固低分文档(score<50)
 >   脚本: `scripts/_batch_tier_s_booster.py` | 增强提示词: 强制2000+字/公式/代码/引用/6+节
 >   试点结果: **口头叙事 40.1→83.0, 平行结构 40.1→82.9, 内分泌系统 40.2→95.9** — 平均+47分!
 >   维度提升: spec 25→100, density 30→100, structure 70→100, teaching 66→99
->   目标: 1053篇score<46文档全部提升到60+(Tier-A), 后台进程PID 39628运行中(max=200)
->   下一步: Sprint 6后台持续, Sprint 7并行处理最低分文档, 定期commit+push
+>   目标: 1053篇score<46文档全部提升到60+(Tier-A), 后台进程PID 39628已死(API超时)
+>   下一步: Sprint 6后台持续(API恢复后自动处理), 跨域去重已完成, 定期commit+push
 **✅ Phase 37 完成**: 游戏开发全领域跨球体总验证 | 详见 `docs/EXPANSION_PLAN.md` 第十章
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
@@ -167,7 +168,7 @@
 > **Issue**: #32 (已关闭)
 
 ## Last Review
-**Date**: 2026-03-26 | **Scope**: Sprint 6 wave 28 commit + process restart. Both PIDs (41804+39628) dead — committed 57 modified files as wave 28 (509305a3). Quality: avg 67.6, S=496/A=3414/B=2246/C=0 (A+S=63.5%, up from 55.2%). Sprint 6 restarted PID 23200 (--max 2300) for remaining 2246 Tier-B docs. 0 open GitHub issues. Pushed to remote. 1,126 tests pass | **Result**: passed
+**Date**: 2026-03-26 | **Scope**: Wave 29 commit + cross-domain duplicate upgrade. PID 23200 stalled (API timeout) — killed, committed 11 modified files as wave 29 (80088958). Fixed 24 low-scoring cross-domain duplicates by copying high-quality body + correcting frontmatter (d1e0204e). Quality: avg 67.9, S=501/A=3460/B=2195/C=0 (A+S=64.3%, up from 63.5%). Sprint 6 restarted PID 42652 (--max 2300). 0 open GitHub issues. Pushed to remote. | **Result**: passed
 
 **FSRS-5 实现摘要** (间隔重复引擎):
 > **目标**: 实现ADR-007指定的FSRS-5间隔重复算法, 替代空占位stub
