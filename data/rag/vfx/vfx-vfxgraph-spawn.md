@@ -24,78 +24,78 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-27
 ---
 
+
 # 生成系统
 
 ## 概述
 
-生成系统（Spawn System）是 VFX Graph 中负责决定"何时、以何种速率、在什么条件下"向粒子池注入新粒子的模块。在 VFX Graph 的节点图中，生成系统以专用的 **Spawn Context**（生成上下文）节点块存在，与 Initialize、Update、Output 等 Context 并列，但处于整个粒子生命周期的最前端——它输出的粒子数量和触发信号直接决定后续 Initialize Context 被执行多少次。
+VFX Graph 的生成系统（Spawn System）负责控制粒子何时、以何种数量被创建并送入模拟流程。不同于传统粒子系统中写死在时间轴上的发射逻辑，VFX Graph 将生成行为抽象为独立的 **Spawn Context**，允许多种生成模式并行存在于同一个 VFX Asset 中。每个 Spawn Context 的输出直接连接到 Initialize Particle Context，形成"生成 → 初始化 → 更新 → 输出"这条数据流的起点。
 
-生成系统的概念来源于粒子系统设计中最根本的问题：是每帧稳定地"滴水"式产生粒子，还是在某个瞬间"爆炸"式全量释放，还是等待某个 GPU 端事件再触发下一批？Unity 从 VFX Graph 正式进入 Package Manager（2019.3 版本）起，就将这三种主流生成策略——Rate、Burst、GPU Event——封装为相互独立但可叠加使用的 Block，允许开发者在同一个 Spawn Context 中混合配置多套生成规则。
+生成系统的设计思路来自 Unity 在 2018 年随 HDRP 推出 VFX Graph 时的架构决策：把粒子生命周期的每个阶段都显式化为可视节点，而不是隐藏在属性面板背后。这意味着生成速率本身可以被其他节点计算、曲线驱动或事件触发，具备与 Shader Graph 类似的可编程灵活性。
 
-理解生成系统的意义在于：粒子数量×粒子生命周期≈粒子池容量上限，而粒子池容量是在 VFX Asset 的 **Capacity** 属性中静态预分配在 GPU 显存里的。如果生成速率计算错误，要么粒子池溢出导致新粒子被无声地丢弃，要么显存浪费严重。因此准确配置生成系统是控制性能开销的第一道关卡。
+对于特效艺术家而言，生成系统的重要性在于它直接决定粒子池（Particle Pool）的消耗节奏。错误配置 Rate 或 Burst 会导致粒子容量（Capacity）在瞬间耗尽，或产生持续空跑的性能浪费。因此理解各生成模式的精确行为是优化 VFX 性能的第一步。
 
 ---
 
 ## 核心原理
 
-### Rate（持续速率生成）
+### Rate（持续速率）
 
-Rate Block 的工作方式是将目标速率（单位：**粒子/秒** 或 **粒子/帧**）除以当前帧的时间步长，计算出本帧应生成的粒子数。其核心公式为：
+Rate 模式以"每秒 N 个粒子"的恒定速率连续生成粒子，是最基础的生成方式。在 Spawn Context 内添加 **Set Rate** Block，将 Rate 设为浮点数即可激活此模式。Rate = 100 表示每帧（假设 60 fps）约生成 1.67 个粒子，VFX Graph 内部使用**小数累积（Fractional Accumulation）**机制：每帧将 `Rate × deltaTime` 累加到一个内部计数器，当计数器超过 1.0 时生成一个粒子并将其减 1，保证长期平均值精确吻合设定值。该机制使 Rate 在低帧率下仍维持粒子密度，而非漏帧。
 
-> **本帧生成数 = Rate × Δt**（当模式为 Per Second 时）
+Rate 的数值可通过连接外部属性（Exposed Property）或绑定到 Blackboard 上的曲线动态变化，例如将 Rate 与角色速度绑定，实现奔跑时烟尘浓度随速度线性增长。
 
-由于 Δt 是浮点数，本帧计算结果通常不是整数。VFX Graph 内部维护一个**小数累加器**（Fractional Accumulator），将余量保留到下一帧，确保长期平均速率精确等于设定值。例如设定 Rate = 100 粒子/秒，在 60fps 下每帧应生成 1.6667 个粒子：第1帧生成1个，余0.6667；第2帧累计1.3333，生成1个，余0.3333；第3帧累计1.0000，生成1个——三帧共5个，等于 100÷60×3≈5，与理论值完全吻合。
+### Burst（瞬时爆发）
 
-Rate Block 还提供 **Rate Over Distance** 变体，此时 Δt 被替换为发射器在两帧之间的位移量，适合拖尾、轮胎烟雾等需要均匀铺设粒子的效果。
+Burst 模式在特定时刻一次性生成固定数量的粒子，适用于爆炸、碰撞火花、技能释放等瞬态效果。在 Spawn Context 中添加 **Set Burst** Block，需要配置三个参数：
 
-### Burst（瞬发批量生成）
+- **Count**：单次爆发数量（整数）
+- **Delay**：距 Spawn Context 激活后多少秒触发，默认 0
+- **Repeat**：重复次数，值为 -1 表示无限循环，值为 0 表示仅触发一次
 
-Burst Block 在指定的 **延迟时间**（Delay）之后，一次性向粒子池注入固定数量的粒子，注入完成后可选择是否**循环**（Loop）并等待指定间隔再次触发。其配置参数包含四个关键字段：
+若设置 Count = 500、Delay = 0.1、Repeat = 3，效果是：激活后 0.1 秒、1.1 秒、2.1 秒各爆发 500 个粒子（重复间隔由 **Period** 属性控制，默认 1 秒）。多个 Burst Block 可叠加在同一 Spawn Context 中，产生多阶段爆发时序。
 
-- **Count**：单次爆发数量（支持随机范围，如 Min=50, Max=100）
-- **Delay**：首次触发前的等待时间（秒）
-- **Loop**：是否重复，填 `-1` 表示无限循环
-- **Delay Between Bursts**：每两次爆发之间的间隔（秒）
+### GPU Event（GPU 驱动的二次生成）
 
-与 Rate 不同，Burst 的触发由 Spawn Context 内部的**事件时钟**管理，和帧率无关，因此在低帧率下不会产生额外粒子。多个 Burst Block 可堆叠在同一 Spawn Context 中，分别设置不同 Delay，从而实现烟花多重爆炸的时序编排。
+GPU Event 是 VFX Graph 特有的高级生成机制，允许 GPU 上正在运行的粒子触发新粒子的生成，整个过程无需 CPU 介入。其工作流程如下：
 
-### GPU Event（GPU 端事件驱动生成）
+1. 在"父"系统的 Update Context 中添加 **Trigger Event On Die** 或 **Trigger Event Rate** Block，将生成信号写入一个 `GPUEvent` 类型的端口。
+2. 将该 GPUEvent 端口连接到新 Spawn Context 的 **GPU Event** 输入端。
+3. 新 Spawn Context 的粒子继承父粒子的属性（位置、速度等），通过 **Inherit Attribute** Block 提取。
 
-GPU Event 是 VFX Graph 独有的生成机制，它允许一个粒子在 GPU 上"死亡"或满足某条件时，直接在 GPU 端触发另一批粒子的生成，**全程无需回读到 CPU**。实现路径为：
+典型应用：子弹粒子在死亡时触发 16 个弹孔火花粒子，整个链路在 GPU 内闭环执行，CPU 只需在每帧提交一次 DrawCall，无论场景中有多少子弹同时消亡，生成开销均不随数量增长。这是 GPU Event 与普通 Burst 的本质区别。
 
-1. 在父粒子的 Update Context 中添加 **Trigger Event On Die**（或 **Trigger Event Rate** / **Trigger Event On Collision**）Block；
-2. 将该 Block 的输出端口连接到子系统的 **GPUEvent Spawn Context**；
-3. 子系统的 Spawn Context 类型选择 **GPU Event**，其生成数量由 **Count** 属性决定，可为每个触发粒子生成 1 至 N 个子粒子。
+### Spawn Context 的激活控制
 
-GPU Event 的性能关键点在于：子粒子的 Capacity 必须 ≥ 父粒子最大存活数 × 每次触发的 Count，否则超出部分静默丢弃。例如父粒子 Capacity=500、每粒子死亡触发 Count=3，则子粒子 Capacity 至少需设置为 1500。
+每个 Spawn Context 拥有 **Start** 和 **Stop** 事件输入端口，默认由 VFX Asset 挂载时自动发送 `OnPlay` / `OnStop` 事件驱动。通过 C# 调用 `visualEffect.SendEvent("EventName")` 可手动控制单个 Spawn Context 的开启与关闭，实现同一 VFX 资产中多个生成系统的异步调度。
 
 ---
 
 ## 实际应用
 
-**营火火花效果**：主系统用 Rate=80 粒子/秒持续生成向上漂移的火焰粒子；当火焰粒子生命结束时，通过 GPU Event（Count=2~4，随机范围）触发更小的火花粒子向四周散射。整个链路在 GPU 内封闭执行，CPU 帧消耗几乎为零。
+**技能连段特效**：一个法术效果 VFX Asset 中同时包含三个 Spawn Context：第一个使用 Rate = 50 持续生成法阵光粒子；第二个使用 Burst（Count = 200，Delay = 0）在施法瞬间爆发；第三个通过 GPU Event 让光粒子在屏幕边缘消亡时触发细碎反弹粒子。三者共享同一个 Initialize Context，以不同颜色属性区分。
 
-**爆炸冲击波**：使用单个 Burst Block，Delay=0，Count=360，Loop=1，Delay Between Bursts=99999（实际上只触发一次），一次性在球面上均匀生成360个碎片粒子，配合 Initialize Context 中的球面分布初始化速度。
+**载具尾迹**：赛车排气尾迹将引擎转速（0–8000 RPM）映射为 Rate 值（0–300），通过 Exposed Float Property 每帧由 C# 脚本更新，粒子密度实时反映发动机负荷，无需在 CPU 端每帧批量生成粒子对象。
 
-**子弹轨迹拖尾**：Rate Block 切换为 **Per Distance** 模式，Rate=5，即子弹每移动1单位产生5个烟雾粒子，无论子弹速度快慢，轨迹密度始终均匀，不受帧率波动影响。
+**链式爆炸**：主爆炸使用 Burst（Count = 1，代表中心火球），火球粒子通过 GPU Event On Die 触发 30 个碎片粒子，碎片再通过第二级 GPU Event 各自触发 5 个火星，形成三层 GPU 驱动的链式结构，总计 1 + 30 + 150 = 181 个粒子，CPU 负担仅为单次事件触发。
 
 ---
 
 ## 常见误区
 
-**误区一：认为 Burst 的 Count 是精确值**
-当 Burst Count 设为随机范围（如 Min=50, Max=100）时，每次循环触发都会重新随机取值，而不是在效果播放开始时固定一次。如果需要整个效果生命周期内 Burst 数量保持一致，应改用 Constant 绑定或将随机采样移至外部属性传入。
+**误区一：Burst Count 不受 Capacity 限制**
+很多初学者认为 Burst Count 只要设置了就一定会全部生成。实际上，VFX Graph 中每个 System 的 Capacity（在 Initialize Context 右键菜单设置）是粒子池的硬上限。若 Capacity = 100 而 Burst Count = 500，实际只会生成 100 个粒子，多余的请求被静默丢弃，不会有任何警告。正确做法是将 Capacity 设为粒子生命周期内理论同屏最大量：`Capacity ≥ Rate × MaxLifetime + 所有Burst总量`。
 
-**误区二：混淆 Rate 的 Per Second 与 Per Frame 模式**
-Per Frame 模式下本帧生成数 = Rate（无 Δt 乘法），不存在小数累加器。这意味着在 120fps 下使用 Per Frame Rate=2 会比 60fps 多出一倍粒子，而 Per Second 模式则与帧率无关。对于需要固定帧率表现的主机游戏可使用 Per Frame，跨平台项目应优先使用 Per Second。
+**误区二：GPU Event 继承属性无需额外配置**
+有人以为 GPU Event 子粒子会自动继承父粒子的全部属性。实际上，子 Spawn Context 连接到 GPU Event 后，必须在子系统的 Initialize Context 中**手动添加 Inherit Source Attribute Block**，并逐一指定需要继承的属性（如 Position、Velocity）。未添加该 Block 时，子粒子将在世界原点以零速度生成，与预期效果完全不同。
 
-**误区三：GPU Event 子系统的 Capacity 不需要单独计算**
-很多开发者复制父系统的 Capacity 给子系统，导致当父粒子大量同时死亡时子粒子严重丢失。子系统的实际峰值粒子数取决于"同一时刻最多有多少父粒子同时死亡 × Count"，而非父粒子的总 Capacity，需要结合父粒子的寿命分布单独估算。
+**误区三：Rate 和 Burst 可以在 Update Context 中控制**
+生成逻辑（Rate / Burst）只能存在于 **Spawn Context** 中，不能放入 Update Context。Update Context 仅处理已存活粒子的逐帧更新。若要在粒子存活期间改变生成速率，应通过 Blackboard 属性从外部驱动 Spawn Context 中的 Rate Block，而不是试图在 Update 阶段插入生成节点。
 
 ---
 
 ## 知识关联
 
-生成系统直接依赖 **Block 与节点**的概念：Rate、Burst、GPU Event 本质上都是挂载在 Spawn Context 下的 Block，理解 Block 的堆叠规则（同一 Context 内多个 Block 顺序执行并累加输出）才能正确组合多种生成策略。
+生成系统建立在 **Block 与节点**的操作基础上——Rate、Burst、Trigger Event 等都是具体的 Block 类型，需要熟悉向 Context 添加 Block、连接端口的基本操作才能配置生成逻辑。GPU Event 的端口连接尤其要求理解 Context 之间的数据流向规则。
 
-生成系统向下衔接 **属性系统**：Spawn Context 计算出的粒子数量会以 **SpawnEvent** 数据包的形式传递给 Initialize Context，其中可携带自定义属性（如触发位置、颜色种子），这些携带的属性值正是属性系统中 **Spawn Attribute** 类别的来源，初学者在学习属性系统时会频繁回头参考生成系统的事件传递机制。
+掌握生成系统后，下一个关键主题是**属性系统（Property System）**。生成系统决定"何时生成多少粒子"，而属性系统决定"这些粒子初始携带哪些数据"——Rate 的动态驱动依赖 Exposed Property，GPU Event 子粒子的属性继承依赖 Source Attribute，两者紧密协作才能构建出参数化、可复用的完整粒子效果。
