@@ -24,76 +24,71 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # 云服务基础（AWS/GCP）
 
 ## 概述
 
-Amazon Web Services（AWS）于2006年正式推出S3存储服务和EC2计算服务，被公认为现代云计算的起点。Google Cloud Platform（GCP）于2008年推出App Engine，随后在2012年全面扩展为完整的云平台。两者均采用"按使用量付费"（Pay-as-you-go）模型，彻底改变了AI工程师获取计算资源的方式——从需要数周采购物理服务器，变为数分钟内启动数百台虚拟机进行模型训练。
+AWS（Amazon Web Services）于2006年正式推出，是全球最早的商业化公有云平台，目前在全球云计算市场占据约32%的份额；GCP（Google Cloud Platform）于2011年发布，依托Google自身数据中心基础设施，在AI/ML工作负载和大数据处理上具有独特优势。两者均提供按需付费（Pay-as-you-go）的计费模式，以小时或秒为计费单位，用户无需预先购置物理服务器。
 
-对AI工程领域而言，云服务的核心价值在于提供弹性GPU/TPU算力。AWS的`p4d.24xlarge`实例搭载8块NVIDIA A100 GPU，单实例算力峰值达400 TFLOPS；GCP的TPU v4 Pod则包含4096个TPU核心，专为TensorFlow和JAX框架优化。这意味着AI工程师无需自建昂贵的GPU集群，即可按需访问训练大型语言模型所需的算力。
-
-云服务在AI工程中的重要性还体现在生态系统完整性上。AWS提供SageMaker作为端到端ML平台，GCP提供Vertex AI，两者均集成了数据存储、模型训练、超参数调优、模型部署和监控的完整流水线，显著降低了MLOps的工程复杂度。
-
----
+在AI工程领域，云服务的核心价值在于弹性伸缩（Elasticity）：训练一个大型语言模型时，可临时申请数百张GPU，训练完成后立即释放，仅需为实际使用的小时数付费。这与传统本地服务器（On-Premises）模式相比，可将基础设施成本降低40%–70%（根据工作负载类型而定）。AWS和GCP均提供全球分布的可用区（Availability Zone）机制，AWS目前拥有33个地理区域（Region）、105个可用区，GCP拥有40个以上的区域。
 
 ## 核心原理
 
-### 计算资源抽象：虚拟机与容器实例
+### 计算服务：EC2 vs Compute Engine
 
-AWS通过EC2（Elastic Compute Cloud）提供虚拟机实例，实例类型命名遵循`[系列][代际].[规格]`格式，例如`g5.4xlarge`表示第5代GPU优化实例的4xlarge规格。GCP的等价产品是Compute Engine，实例类型采用`[前缀]-[CPU数量]`格式，如`n2-standard-32`表示32核通用计算实例。
+AWS的弹性计算服务称为EC2（Elastic Compute Cloud），GCP对应产品为Compute Engine。两者均以**实例类型**（Instance Type）划分计算规格。以AI训练常用的GPU实例为例：AWS的`p4d.24xlarge`搭载8张NVIDIA A100 40GB，GCP的`a2-megagpu-16g`则搭载16张A100 40GB。
 
-对于AI推理场景，AWS的`inf2`实例搭载Inferentia2芯片，每美元推理成本比通用GPU实例低约40%。GCP的`a2-ultragpu`实例则搭载A100 80GB显存版本，适合需要大显存的LLM推理。选择实例类型时，AI工程师必须权衡内存带宽（Memory Bandwidth）、显存容量和每小时价格三个维度。
+实例的选型直接影响成本。AWS EC2按需实例（On-Demand）价格固定但较贵；**Spot实例**（AWS）/ **Preemptible VM**（GCP）利用云服务商的闲置资源，价格可低至按需实例的10%–30%，但可能被随时中断（AWS Spot中断前会提供2分钟警告）。对于可以checkpoint的模型训练任务，使用Spot/Preemptible实例是降低成本的标准策略。
 
-### 对象存储：S3与GCS的工作机制
+### 存储体系：S3 vs Cloud Storage
 
-AWS S3（Simple Storage Service）使用扁平命名空间，对象通过`s3://bucket-name/prefix/object-key`格式寻址。S3的PUT操作具有强一致性（Strong Consistency），自2020年12月起所有区域生效，意味着写入后立即可读，消除了AI训练数据管道中的数据竞争问题。
+AWS S3（Simple Storage Service）是对象存储（Object Storage）的事实标准，GCP的对应产品为Cloud Storage。两者均采用**Bucket → Object**的两级层级结构，对象通过唯一的URI访问，例如`s3://my-bucket/data/train.csv`或`gs://my-bucket/data/train.csv`。
 
-GCP的Cloud Storage（GCS）与S3功能对等，使用`gs://bucket-name/object-path`格式。两者均支持多存储类别：标准存储（热数据，训练集）、近线存储（30天未访问降级，适合检查点文件）和冷线存储（90天未访问，适合归档模型版本）。在AI工程实践中，训练数据通常存放在与计算实例同区域的S3/GCS桶中，以避免跨区域传输费用（AWS跨区域出口费约$0.02/GB）。
+对象存储与传统文件系统的根本区别在于：S3/Cloud Storage中不存在真正的目录，`data/train.csv`中的`data/`只是键名（Key）的前缀，并非真实路径。这在AI工程中会影响数据集的批量读取效率——直接列举大量小文件时延迟较高，通常需将数据打包为TFRecord（TensorFlow）或Parquet格式后再上传。S3的标准存储层99.999999999%（11个9）耐久性保证来自跨可用区的多副本机制。
 
-### IAM权限模型：身份与访问管理
+### IAM权限模型
 
-AWS IAM（Identity and Access Management）基于JSON格式的Policy文档控制权限，核心结构为：
+AWS的IAM（Identity and Access Management）和GCP的Cloud IAM均采用**基于角色的访问控制（RBAC）**，但实现方式有所不同。AWS IAM通过**策略（Policy）**JSON文件精确控制权限，例如：
 
 ```json
 {
   "Effect": "Allow",
   "Action": ["s3:GetObject", "s3:PutObject"],
-  "Resource": "arn:aws:s3:::my-training-bucket/*"
+  "Resource": "arn:aws:s3:::my-ml-bucket/*"
 }
 ```
 
-GCP使用基于角色的访问控制（RBAC），通过`roles/storage.objectViewer`等预定义角色或自定义角色绑定到服务账号（Service Account）。在AI工程中，SageMaker训练任务通过IAM角色获取S3数据读取权限；Vertex AI训练任务通过服务账号获取GCS访问权限。权限配置错误是AI训练任务启动失败最常见的原因之一，必须确保执行角色同时拥有计算资源权限和存储资源权限。
+GCP则通过**服务账号（Service Account）**为计算资源分配身份，再将预定义角色（如`roles/storage.objectViewer`）绑定到该账号。AI工程中常见的安全问题是将密钥硬编码到训练脚本中——正确做法是为EC2实例附加IAM Role或为GCP VM绑定Service Account，令计算资源通过元数据服务自动获取临时凭证，无需明文密钥。
 
-### 托管ML服务：SageMaker与Vertex AI
+### 托管AI/ML服务
 
-AWS SageMaker的训练任务通过`CreateTrainingJob` API提交，需指定`AlgorithmSpecification`（包含训练容器镜像URI）、`ResourceConfig`（实例类型和数量）和`InputDataConfig`（S3数据路径）。SageMaker会自动将数据从S3拉取到实例的`/opt/ml/input/data/`目录，训练完成后将模型产物上传至`/opt/ml/model/`对应的S3路径。
-
-GCP Vertex AI的等价操作是`CustomJob`，使用`worker_pool_specs`定义多机多卡训练配置，支持通过`CLUSTER_SPEC`环境变量自动注入分布式训练所需的节点信息，与TensorFlow的`tf.distribute.MultiWorkerMirroredStrategy`原生集成。
-
----
+AWS提供SageMaker作为端到端ML平台，内置训练、调参（Hyperparameter Tuning Job）、部署（SageMaker Endpoint）等功能，最低部署延迟可达毫秒级。GCP提供Vertex AI，原生集成TensorFlow、PyTorch和JAX，其**Vertex AI Pipelines**基于Kubeflow Pipelines规范，适合构建可重复的MLOps流水线。相比自建Kubernetes集群，使用这些托管服务可减少约60%的运维配置工作。
 
 ## 实际应用
 
-**大模型微调场景**：在AWS上微调一个7B参数的LLaMA模型，通常选择`ml.p3.16xlarge`实例（8块V100 16GB）或`ml.g5.12xlarge`实例（4块A10G 24GB）。数据集存放在S3，通过SageMaker Experiments追踪实验，最终模型推送至SageMaker Model Registry。完整流程通过SageMaker Pipelines编排，确保可复现性。
+**场景一：模型训练数据管道**
+将训练数据存储于S3或Cloud Storage，通过AWS DataSync或gsutil进行批量传输，再使用`torch.utils.data.DataLoader`配合`s3fs`或`gcsfs`库直接流式读取云端数据，避免将整个数据集下载到本地磁盘。
 
-**批量推理场景**：使用AWS Batch或GCP Batch提交数千个推理任务，每个任务处理一个数据分片。结合Spot实例（AWS）或Spot VM（GCP），可将推理成本降低60-90%。需设置检查点机制应对Spot实例被回收（AWS提供2分钟回收警告，GCP提供30秒回收警告）。
+**场景二：推理服务部署**
+在GCP上，可将训练好的模型导出为SavedModel格式，推送到Cloud Storage，再通过Vertex AI Endpoints一键部署，系统自动根据QPS（每秒查询数）进行自动扩缩容（Auto-scaling），并支持A/B测试流量分割（Traffic Split）。
 
-**实时推理部署**：SageMaker Endpoints支持多模型端点（Multi-Model Endpoint），单个端点可托管数千个模型，适合多租户AI服务场景。GCP的Vertex AI Endpoints支持流量分割（Traffic Splitting），可将5%流量路由至新模型版本进行A/B测试。
-
----
+**场景三：成本优化**
+使用AWS的Cost Explorer分析GPU实例的利用率，若训练任务占空比低于40%，可将按需实例替换为Savings Plans（承诺使用1年或3年可节省约40%费用），或将批量推理任务迁移到Lambda无服务器架构（适合推理延迟要求≥100ms的场景）。
 
 ## 常见误区
 
-**误区一：认为相同规格实例在AWS和GCP上性能完全等同**。实际上，GCP的TPU v4使用BF16（bfloat16）格式存储激活值，在训练Transformer模型时相比NVIDIA GPU的FP16有独特的数值稳定性优势，但部分使用FP16优化的PyTorch模型需要修改才能在TPU上高效运行。不能简单地将PyTorch训练代码迁移到TPU而不做任何适配。
+**误区一：认为同一地区内数据传输是免费的**
+AWS在同一区域（Region）内跨可用区的数据传输并非完全免费，EC2实例与S3之间的出站流量（Egress）在免费额度（每月100GB）用尽后按$0.09/GB计费。大规模模型训练中，数据加载产生的传输费用可能超过计算费用，因此应将训练实例与数据Bucket部署在同一Region。
 
-**误区二：将S3/GCS视为本地文件系统使用**。S3和GCS是对象存储，不支持原地修改（In-place Modification），每次"修改"实际上是覆盖写入整个对象。在AI训练中，频繁将小批量梯度检查点（如每100步保存一次）直接写入S3会产生大量API请求费用（S3 PUT请求$0.005/1000次）并引入I/O延迟，正确做法是先写入本地EBS/本地SSD，定期批量同步至S3。
+**误区二：Spot/Preemptible实例不适合训练任务**
+很多工程师因为担心中断而完全回避Spot实例。实际上，通过在训练代码中每隔N步保存Checkpoint到S3/Cloud Storage，即使实例被回收，重新申请后也能从断点续训，整体成本节省可高达70%。PyTorch Lightning内置了`on_save_checkpoint`回调，可自动完成此操作。
 
-**误区三：忽视数据传输费用导致账单超支**。AWS的出口流量（Egress）从EC2传输到互联网的费用为$0.09/GB（前10TB/月），但同区域内EC2到S3的传输免费。若训练集群在`us-east-1`而数据桶在`us-west-2`，每次训练Epoch都会产生跨区域传输费用。GCP同样对跨区域流量收费，同大洲跨区域约$0.01/GB，跨大洲约$0.08/GB。
-
----
+**误区三：GCP与AWS的"区域"概念等价**
+GCP的Zone（区域）对应AWS的Availability Zone（可用区），GCP的Region与AWS的Region才是同一层级的概念。在GCP中，单个VM默认部署在单个Zone，跨Zone部署需要手动配置实例组（Managed Instance Group），而AWS的Auto Scaling Group默认支持跨多个AZ的高可用部署。
 
 ## 知识关联
 
-学习本概念需要具备服务器基础概念（CPU/GPU架构、网络协议、Linux文件系统），因为理解EC2实例类型选择需要知道vCPU与物理核心的关系，理解S3性能调优需要知道TCP连接数与吞吐量的关系。
+掌握**服务器基础概念**（CPU/内存/磁盘/网络带宽的物理含义）是理解EC2实例类型（如`c5.4xlarge`代表计算优化型、16 vCPU、32GB内存）的前提，否则无法有效选型。虚拟化原理（Hypervisor）解释了为何云实例的vCPU性能与物理核心存在差异，以及为何网络I/O会有"Burst"限制。
 
-在AI工程的开发运维实践中，云服务基础是容器化部署（Docker/Kubernetes on EKS/GKE）、CI/CD流水线（AWS CodePipeline/GCP Cloud Build）和分布式训练编排的前提条件。掌握AWS IAM和GCP IAM的权限模型后，才能安全地构建跨服务的ML工作流，避免将凭证（Credentials）硬编码在训练脚本中——这是AI工程安全实践的基本要求。熟悉S3/GCS的数据管理后，可进一步学习数据版本控制工具DVC（Data Version Control）与云存储的集成方案。
+在此基础上，云服务知识直接支撑**Docker与容器化**（AWS ECS/EKS、GCP Cloud Run/GKE均以容器为部署单元）、**CI/CD流水线**（GitHub Actions可直接调用AWS CLI或gcloud命令触发云端训练任务）以及**分布式训练**（多机多卡训练依赖VPC网络配置和IAM权限管理）等后续AI工程实践。
