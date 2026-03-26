@@ -62,10 +62,10 @@
 >   Batch 3 完成: 500篇Tier-B文档改写
 >   Batch P2 完成: 1000篇大域Tier-B改写
 >   Sprint 6 🔥进行中: **全量Tier-B升级** — `scripts/_batch_sprint6.py --max 3400`
->   进度: 599/3360完成 (17.8%), ~60/hr, 0错误, 后台进程PID 41804运行中
->   ⚠️ 旧PID 36196在~600处stalled, kill+重启PID 37164, 37164又stalled, kill+重启PID 41804(2026-03-26)
->   累计结果: **S=436(7.1%) A=2,964(48.1%) B=2,756(44.8%) C=0(0.0%)** 均分64.8
->   vs Sprint 4结束: S=145 A=639 B=5,368 C=0 均分49.5 → **提升幅度: +15.3分, A+S从12.8%→55.2%**
+>   进度: 1117/2754完成 (40.6%), ~60/hr, 0错误, 后台进程PID 23200运行中(2026-03-26重启)
+>   ⚠️ 旧PID 36196→37164→41804 均stalled, 最新PID 23200(2026-03-26 08:58)
+>   累计结果: **S=496(8.1%) A=3,414(55.5%) B=2,246(36.5%) C=0(0.0%)** 均分67.6
+>   vs Sprint 4结束: S=145 A=639 B=5,368 C=0 均分49.5 → **提升幅度: +18.1分, A+S从12.8%→63.5%**
 >   瓶颈分析: Specificity(31.5/100)和Density(40.5/100)是Tier-B两大短板(chars仅1364 vs 高质量2889)
 >   已知问题: 42个跨域同名slug, 进度追踪为slug-based可能漏处理第二份
 >   Sprint 7 🔥进行中: **Tier-S Booster** — 二次精写顽固低分文档(score<50)
@@ -167,7 +167,7 @@
 > **Issue**: #32 (已关闭)
 
 ## Last Review
-**Date**: 2026-03-26 | **Scope**: Sprint 7 Tier-S Booster launch — created enhanced prompt for stubborn docs (<46 score). Pilot: 3 docs avg +47pts (40→88). Diagnostic: 1053 docs <46 share pattern (spec=31.5, density=40.5, chars=1364). Booster produces 2500-4500ch docs (spec=100, density=100, structure=100, teaching=99). Sprint 6 PID 37164 stalled→killed→restarted PID 41804. Two parallel pipelines: PID 41804 (Sprint 6 bulk) + PID 39628 (Sprint 7 booster max=200). Committed wave 22 (22 docs) + wave 22b (30 docs) + booster pilot. Pushed. Quality: avg 64.8, S=436/A=2964/B=2756/C=0. 1,126 tests pass | **Result**: passed
+**Date**: 2026-03-26 | **Scope**: Sprint 6 wave 28 commit + process restart. Both PIDs (41804+39628) dead — committed 57 modified files as wave 28 (509305a3). Quality: avg 67.6, S=496/A=3414/B=2246/C=0 (A+S=63.5%, up from 55.2%). Sprint 6 restarted PID 23200 (--max 2300) for remaining 2246 Tier-B docs. 0 open GitHub issues. Pushed to remote. 1,126 tests pass | **Result**: passed
 
 **FSRS-5 实现摘要** (间隔重复引擎):
 > **目标**: 实现ADR-007指定的FSRS-5间隔重复算法, 替代空占位stub
