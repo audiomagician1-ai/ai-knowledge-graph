@@ -20,73 +20,106 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-26
 ---
+
 # LangChain基础
 
 ## 概述
 
-LangChain基础（Langchain Basics）是AI工程（AI Engineering）中RAG与知识库领域的重要概念。难度等级5/9（中高级）。
+LangChain是由Harrison Chase于2022年10月首次发布的开源框架，专为构建基于大型语言模型（LLM）的应用程序而设计。其核心设计理念是"链式组合"（Chaining）——将LLM调用与外部数据源、工具、记忆模块通过标准化接口串联起来，使开发者无需从零搭建复杂的LLM管线。截至2024年，LangChain在GitHub上已积累超过85,000颗星，成为AI工程领域最广泛采用的LLM应用框架之一。
 
-掌握LangChain基础的核心概念和应用。
+LangChain在RAG（检索增强生成）工程实践中扮演重要角色。它通过`DocumentLoader`、`TextSplitter`、`VectorStore`和`Retriever`四大组件，为构建知识库问答系统提供了完整的端到端工具链。相比手工调用OpenAI API再拼接检索结果，LangChain将这些步骤抽象为可复用的模块，显著降低了RAG系统的开发复杂度。
 
-在知识体系中，LangChain基础建立在RAG检索增强生成概述的基础之上，是理解LlamaIndex基础的关键前置知识。为什么LangChain基础如此重要？因为它在RAG与知识库中起到承上启下的作用，连接基础概念与高级应用。
+框架分为两个主要包：`langchain-core`定义基础抽象接口，`langchain`提供具体实现和集成。2024年发布的LangChain v0.2版本进一步将第三方集成拆分为独立包（如`langchain-openai`、`langchain-community`），避免依赖膨胀。理解这一包结构，有助于在实际项目中按需安装，而不是引入整个生态的所有依赖。
 
-## 核心知识点
+---
 
-### 1. 掌握LangChain基础的核心概念
+## 核心原理
 
-掌握LangChain基础的核心概念是LangChain基础(Langchain Basics)的核心组成部分之一。在RAG与知识库的实践中，掌握LangChain基础的核心概念决定了系统行为的关键特征。例如，当掌握LangChain基础的核心概念参数或条件发生变化时，整体表现会产生显著差异。深入理解掌握LangChain基础的核心概念需要结合AI工程的基本原理进行分析。
+### 1. LCEL：LangChain表达式语言
 
-### 2. 应用
+LangChain Expression Language（LCEL）是2023年引入的核心语法，使用管道符`|`连接各组件，实现声明式链式调用：
 
-应用是LangChain基础(Langchain Basics)的核心组成部分之一。在RAG与知识库的实践中，应用决定了系统行为的关键特征。例如，当应用参数或条件发生变化时，整体表现会产生显著差异。深入理解应用需要结合AI工程的基本原理进行分析。
+```python
+chain = prompt | llm | output_parser
+result = chain.invoke({"question": "什么是RAG？"})
+```
 
+LCEL背后实现了`Runnable`协议——每个组件都必须实现`invoke`、`batch`、`stream`三个方法。`batch`支持并发处理多个输入，`stream`支持流式输出token。通过`RunnableParallel`可以并行执行多个子链，通过`RunnablePassthrough`可以透传输入数据不做修改。这一协议设计使得任意符合`Runnable`接口的对象都可以插入链中，极大提升了组件的可替换性。
 
-### 关键原理分析
+### 2. Prompt模板系统
 
-LangChain基础的核心在于掌握LangChain基础的核心概念和应用。从理论角度看，该概念涉及以下层面：
+LangChain提供三种Prompt类：`PromptTemplate`（纯文本）、`ChatPromptTemplate`（多轮对话消息列表）和`FewShotPromptTemplate`（含示例的少样本提示）。`ChatPromptTemplate`将消息拆分为`SystemMessage`、`HumanMessage`和`AIMessage`三类，与OpenAI Chat API的角色划分直接对应：
 
-1. **定义层**：明确LangChain基础的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解LangChain基础内部各要素的相互作用方式
-3. **应用层**：将LangChain基础的原理映射到AI工程的实际场景中
+```python
+from langchain_core.prompts import ChatPromptTemplate
 
-思考题：如何判断LangChain基础的应用是否超出了其理论适用范围？
+prompt = ChatPromptTemplate.from_messages([
+    ("system", "你是一个知识库助手，仅根据以下上下文回答：\n{context}"),
+    ("human", "{question}")
+])
+```
 
-## 关键要点
+在RAG场景中，`{context}`占位符接收检索到的文档片段，`{question}`接收用户查询——这是LangChain RAG链最基础的Prompt结构。
 
-1. **核心定义**：LangChain基础的本质是掌握LangChain基础的核心概念和应用，这是理解整个概念的出发点
-2. **多维理解**：掌握LangChain基础需要同时理解掌握LangChain基础的核心概念和应用等关键维度
-3. **先修关系**：扎实的RAG检索增强生成概述基础对理解LangChain基础至关重要
-4. **进阶路径**：掌握后可继续深入LlamaIndex基础等进阶主题
-5. **实践标准**：真正掌握LangChain基础的标志是能在具体场景中灵活运用并正确判断适用边界
+### 3. 文档处理管线：Loader → Splitter → Embedder
+
+LangChain的RAG数据准备分三步：
+
+**DocumentLoader**：支持40+种数据源，包括`PyPDFLoader`、`WebBaseLoader`、`CSVLoader`等，统一输出`Document`对象（含`page_content`字符串和`metadata`字典）。
+
+**TextSplitter**：最常用的是`RecursiveCharacterTextSplitter`，按`["\n\n", "\n", " ", ""]`顺序递归分割，优先在段落边界断开。关键参数：`chunk_size`（每块最大字符数，常设512或1000）和`chunk_overlap`（相邻块重叠字符数，常设50-200，防止语义截断）。
+
+**Embeddings + VectorStore**：`OpenAIEmbeddings`默认使用`text-embedding-ada-002`模型（1536维向量）。`Chroma`、`FAISS`、`Pinecone`等VectorStore封装了向量存储和相似度搜索，调用`similarity_search(query, k=4)`返回最相关的k个`Document`对象。
+
+### 4. RetrievalQA与LCEL RAG链
+
+LangChain有两种构建RAG链的方式：旧版`RetrievalQA`链和新版LCEL写法。推荐的LCEL RAG链结构如下：
+
+```python
+from langchain_core.runnables import RunnablePassthrough
+
+rag_chain = (
+    {"context": retriever, "question": RunnablePassthrough()}
+    | prompt
+    | llm
+    | StrOutputParser()
+)
+```
+
+此处`retriever`实现了`Runnable`接口，自动将问题字符串转换为检索结果并格式化为上下文字符串。整条链的数据流：用户问题 → 并行执行（检索器获取context + PassThrough传递question）→ 注入Prompt → LLM生成 → 解析输出。
+
+---
+
+## 实际应用
+
+**企业知识库问答系统**：将公司内部PDF文档用`PyPDFLoader`加载，`RecursiveCharacterTextSplitter`按`chunk_size=500, chunk_overlap=100`切割，存入本地`Chroma`向量库。查询时通过`MMR`（最大边际相关性）检索策略（`search_type="mmr"`）获取多样性结果，避免返回重复内容。
+
+**对话式RAG**：使用`ConversationBufferMemory`或`ChatMessageHistory`保存历史对话，配合`create_history_aware_retriever`将多轮问题压缩为独立查询，解决"它是什么意思"这类指代不明的问题。
+
+**工具调用Agent**：通过`create_react_agent`创建ReAct模式的Agent，传入`TavilySearchResults`（网络搜索）和自定义的向量库检索工具，让LLM自主决策何时检索内部知识库、何时联网搜索。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将LangChain基础与RAG与知识库中其他相近概念混为一谈。例如，掌握LangChain基础的核心概念的适用条件与其他应用概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解RAG检索增强生成概述就学习LangChain基础，导致基础不牢**。建议先确认先修知识扎实
-3. **过度简化：LangChain基础的复杂度为5/9，初学者容易忽略其中的细微但关键的区别**
+**误区1：认为`chunk_size`越大越好**
+增大`chunk_size`会提升单块语义完整性，但也导致注入Prompt的上下文过长、超出模型context window，且检索精度下降（大块中无关内容稀释相关信息）。实践中应根据具体模型的context limit（如GPT-3.5的4096 tokens）和文档类型调整，技术文档通常用512-800，叙述性文档可用1000-1500。
 
-## 知识衔接
+**误区2：混淆`similarity_search`和`as_retriever`的默认行为差异**
+直接调用`vectorstore.similarity_search(query, k=4)`返回`Document`列表；而`vectorstore.as_retriever(search_kwargs={"k": 4})`返回`Retriever`对象，可接入LCEL链。两者检索结果相同，但后者才能正确插入`|`管道。误用前者会导致链无法正确处理输入输出类型，抛出`TypeError`。
 
-### 先修知识
-先修知识包括：
-- **RAG检索增强生成概述** — 为LangChain基础提供了必要的概念基础
+**误区3：将LangChain版本混用**
+LangChain在v0.1至v0.2期间经历了大规模API重构，许多旧版接口（如`LLMChain`、`load_chain`）已被废弃。在同一项目中混用`from langchain.chains import LLMChain`（旧）和`langchain_core`（新）会导致行为不一致。应统一使用`langchain>=0.2`的LCEL写法，通过`LangChainDeprecationWarning`排查遗留代码。
 
-### 后续学习
-掌握LangChain基础后可继续学习：
-- **LlamaIndex基础** — 在LangChain基础基础上进一步拓展
+---
 
-## 学习建议
+## 知识关联
 
-预计学习时间：3-5小时。建议采用以下策略：
+**前置知识衔接**：RAG检索增强生成的概念奠定了"检索+生成"两阶段架构的认知基础，LangChain将这一架构具体实现为`Retriever → Prompt → LLM`的LCEL链，每个RAG概念在LangChain中都有对应的具体类和方法。
 
-- **主动回忆**：学完后不看笔记复述LangChain基础的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将LangChain基础与AI工程中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释LangChain基础，检验理解深度
+**向量数据库**：LangChain的`VectorStore`抽象层统一封装了Chroma、FAISS、Pinecone等向量库的操作接口，学习LangChain后理解各向量库的选型差异（本地vs云端、内存vs持久化）将更具实践指导意义。
 
-## 延伸阅读
-
-- 相关教科书中关于RAG与知识库的章节可作为深入参考
-- Wikipedia: [Langchain Basics](https://en.wikipedia.org/wiki/langchain_basics) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Langchain Basics" 可找到配套视频教程
+**下一步：LlamaIndex**：LlamaIndex（原GPT Index）与LangChain定位有所不同——LlamaIndex更专注于数据索引和查询引擎，提供了`SentenceWindowNodeParser`、`HierarchicalNodeParser`等更精细的文档切分策略，以及`QueryEngine`和`SubQuestionQueryEngine`等高级查询分解机制。学习LlamaIndex时，可以将LangChain的`TextSplitter`与LlamaIndex的`NodeParser`对比理解：前者以字符数为主要切分依据，后者支持基于语义单元（句子、段落）的结构化切分。

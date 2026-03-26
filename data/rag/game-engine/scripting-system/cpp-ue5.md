@@ -24,100 +24,110 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
-# C++在UE5中的使用
+
+# C++在UE5中的使用：UCLASS/UPROPERTY/UFUNCTION宏体系
 
 ## 概述
 
-Unreal Engine 5 采用 C++ 作为底层脚本语言，并通过一套称为 **Unreal Header Tool（UHT）** 的代码生成系统扩展了标准 C++。开发者在普通 C++ 类上方添加特定宏（Macro），UHT 在编译前扫描这些宏并自动生成 `.generated.h` 文件，最终将 C++ 类型信息注册到 UE5 的反射系统（Reflection System）中。这套机制使引擎可以在运行时查询类的属性和方法，而不依赖标准 C++ 的 RTTI。
+虚幻引擎5（UE5）通过一套被称为"虚幻头文件工具（UHT，Unreal Header Tool）"的代码生成机制，将标准C++扩展为一套具备运行时反射能力的语言系统。开发者在普通C++类上标注特定宏，UHT在编译前扫描这些宏并自动生成`.generated.h`文件，最终将类型信息注册进UE5的反射系统（UObject系统）。这一机制使C++代码能够与蓝图编辑器、序列化、网络复制和垃圾回收等引擎子系统无缝协作。
 
-UE5 的宏体系起源于 UE3 时代（约2006年），随 UnrealScript 被逐步废弃而发展壮大，到 UE4（2014年）时全面取代脚本语言成为主要逻辑载体，并在 UE5 中进一步与 Blueprints 深度集成。当前版本（UE 5.3+）的 C++ 宏体系已能实现属性热重载（Hot Reload）和 Live Coding，允许在不重启编辑器的情况下重新编译部分 C++ 模块。
+宏体系的核心由三个主宏构成：`UCLASS`用于声明类，`UPROPERTY`用于声明属性，`UFUNCTION`用于声明函数。这套体系自UE3时代（约2006年）便已存在雏形，到UE4/UE5中逐步规范化。每个使用了`UCLASS`宏的类都必须继承自`UObject`或其子类，并且头文件末尾必须包含`#include "ClassName.generated.h"`，否则编译会报错。
 
-理解这套宏体系至关重要，原因在于 UE5 中几乎所有引擎功能——从 GC（垃圾回收）到 Editor 可视化再到网络同步——都依赖反射数据驱动。若不使用这些宏，C++ 对象将无法被垃圾回收器追踪，也无法在 Blueprint 中调用，更无法通过 `SaveGame` 序列化。
+理解这套宏体系至关重要，因为UE5中几乎所有引擎功能——包括蓝图暴露、属性面板显示、`SaveGame`序列化、RPC网络调用——都依赖反射元数据的存在。没有正确标注宏的C++类，无法被蓝图继承，也无法通过`Cast<T>()`进行安全类型转换。
 
 ---
 
 ## 核心原理
 
-### UCLASS 宏：将 C++ 类注册到引擎
+### UCLASS宏与类声明
 
-`UCLASS()` 宏放置在类声明上方，紧接着必须在类体首行写 `GENERATED_BODY()`。这两者缺一不可——`UCLASS` 告诉 UHT 此类需要生成反射代码，而 `GENERATED_BODY()` 是 UHT 插入构造函数辅助代码的占位符。
+`UCLASS`宏放置在C++类定义的正上方，其括号内可以填写说明符（Specifier）来控制类的行为。常用说明符包括：
+
+- `Blueprintable`：允许该类在编辑器中被蓝图继承
+- `BlueprintType`：允许该类作为蓝图变量类型使用
+- `Abstract`：标记为抽象类，不可在编辑器中直接实例化
+- `NotBlueprintable`：显式禁止蓝图继承
+
+类体内部必须紧跟`GENERATED_BODY()`宏（UE4之前为`GENERATED_UCLASS_BODY()`），该宏由UHT展开为构造函数声明、反射注册代码等自动生成内容。例如：
 
 ```cpp
 UCLASS(Blueprintable, BlueprintType)
 class MYGAME_API AMyActor : public AActor
 {
     GENERATED_BODY()
-public:
-    AMyActor();
+    // ...
 };
 ```
 
-`UCLASS` 的说明符（Specifier）控制类的行为：`Blueprintable` 允许在 Blueprint 编辑器中以该类为父类派生子类；`Abstract` 标记类为抽象类，禁止直接在关卡中放置实例；`NotBlueprintable` 则明确阻止 Blueprint 继承。`MYGAME_API` 是模块导出宏，确保该类在 DLL 边界可见，这是 UE5 模块化构建系统的要求。
+注意`MYGAME_API`是DLL导出宏，与项目名称绑定，在模块构建时自动生成。
 
-### UPROPERTY 宏：属性反射与编辑器集成
+### UPROPERTY宏与属性反射
 
-`UPROPERTY()` 标记成员变量，使其进入反射系统，最直接的效果是该变量会被 UE5 的垃圾回收器追踪。对于指向 `UObject` 派生类的指针，若不加 `UPROPERTY()`，GC 可能在持有该指针时销毁对象，产生悬空指针（Dangling Pointer）崩溃。
+`UPROPERTY`宏标注成员变量，使其进入UE5反射系统，从而支持蓝图读写、编辑器面板显示、垃圾回收追踪和网络复制。常用说明符：
+
+- `EditAnywhere`：在编辑器中（实例和默认值）均可修改
+- `EditDefaultsOnly`：仅在类默认值面板修改，不允许对单个实例修改
+- `BlueprintReadWrite`：蓝图可读可写
+- `BlueprintReadOnly`：蓝图只读
+- `Replicated`：该属性参与网络复制（需配合`GetLifetimeReplicatedProps`使用）
+- `Category = "分类名"`：控制属性在编辑器Details面板中的分组显示
+
+对于指向`UObject`的指针，**必须**标注`UPROPERTY`，否则垃圾回收器（GC）不会追踪该引用，可能导致指针悬挂（Dangling Pointer）。这是UE5内存安全的关键规则：
 
 ```cpp
 UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
-float MaxHealth = 100.0f;
+float Health = 100.0f;
 
-UPROPERTY(VisibleInstanceOnly, Replicated)
-int32 CurrentScore;
+UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+TObjectPtr<UStaticMeshComponent> MeshComponent;
 ```
 
-常用说明符含义如下：
-- `EditAnywhere`：在编辑器的类默认值（CDO）和实例上均可编辑
-- `EditDefaultsOnly`：仅在 CDO 中可编辑，实例只读
-- `BlueprintReadWrite` / `BlueprintReadOnly`：控制 Blueprint 的读写权限
-- `Replicated`：将属性标记为需要通过网络同步，需配合 `GetLifetimeReplicatedProps` 使用
-- `SaveGame`：标记该属性参与 `USaveGame` 序列化
+UE5.0起推荐使用`TObjectPtr<T>`替代裸指针`T*`，前者在编辑器构建中提供额外的空指针访问检测。
 
-### UFUNCTION 宏：方法暴露与 RPC
+### UFUNCTION宏与函数暴露
 
-`UFUNCTION()` 将 C++ 方法注册到反射系统，使其可从 Blueprint 调用、作为委托绑定目标，或作为网络远程过程调用（RPC）。
+`UFUNCTION`宏标注成员函数，将函数元数据注册进反射系统。常用说明符：
+
+- `BlueprintCallable`：函数可在蓝图中作为节点调用
+- `BlueprintPure`：函数无副作用，在蓝图中显示为无执行引脚的纯函数节点
+- `BlueprintNativeEvent`：C++提供默认实现，蓝图可覆写；C++实现函数名需加`_Implementation`后缀
+- `BlueprintImplementableEvent`：C++只声明，实现完全由蓝图提供
+- `Server`/`Client`/`NetMulticast`：RPC网络函数标识符，需配合`Reliable`或`Unreliable`使用
 
 ```cpp
-UFUNCTION(BlueprintCallable, Category = "Combat")
-void ApplyDamage(float DamageAmount, AActor* DamageCauser);
-
-UFUNCTION(BlueprintNativeEvent, Category = "Events")
-void OnDeath();
-virtual void OnDeath_Implementation();
-
-UFUNCTION(Server, Reliable, WithValidation)
-void ServerFire(FVector Direction);
+UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Combat")
+void OnDamaged(float DamageAmount);
+// C++中实现时函数名为：
+void AMyActor::OnDamaged_Implementation(float DamageAmount) { ... }
 ```
 
-`BlueprintNativeEvent` 是一个重要模式：它在 Blueprint 中生成可覆盖的事件节点，同时 C++ 侧提供 `_Implementation` 后缀的默认实现。`Server`、`Client`、`NetMulticast` 说明符将函数变为 RPC，`Reliable` 保证数据包不丢失（基于 TCP 语义），`Unreliable` 则用于高频低优先级调用（如位置同步）。`WithValidation` 要求同时实现 `_Validate` 函数用于服务器端作弊检测。
+`BlueprintNativeEvent`的`_Implementation`命名约定是UHT强制要求的，命名错误会导致链接错误而非编译错误，初学者需特别注意。
 
 ---
 
 ## 实际应用
 
-**角色属性系统**：在 `ACharacter` 派生类中，用 `UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Stats")` 声明基础属性（如移速、跳跃高度），美术和策划无需改动 C++ 即可在编辑器的 Blueprint 子类中调整数值。
+在制作一个具有血量系统的`ACharacter`子类时，典型的宏标注流程如下：将`MaxHealth`和`CurrentHealth`用`UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Replicated)`标注，使策划可在蓝图默认值面板调整数值，同时在多人游戏中自动同步给客户端。受伤函数`TakeDamage`用`UFUNCTION(BlueprintNativeEvent)`标注，允许蓝图子类在C++基础逻辑之上添加粒子效果或UI更新，而无需修改C++源文件。
 
-**网络射击游戏的开火逻辑**：客户端调用 `ServerFire(Direction)`（标记为 `Server, Reliable`），服务器验证后广播 `NetMulticast_PlayFireEffect()`（标记为 `NetMulticast, Unreliable`），实现逻辑权威在服务器、表现效果全端播放的标准架构。
-
-**编辑器工具扩展**：将函数标记 `UFUNCTION(CallInEditor, Category="Tools")` 后，该函数会在选中 Actor 时出现在 Details 面板的按钮中，策划可直接点击执行，例如批量刷新关卡中的寻路数据。
+UE5的`GameplayAbilitySystem`（GAS）插件本身就大量依赖`UPROPERTY`标注的`FGameplayAttributeSet`来追踪角色数值，所有`Attribute`（如`Health.Value`）都必须通过`UPROPERTY`注册才能被GAS的`Modifier`系统识别和修改。
 
 ---
 
 ## 常见误区
 
-**误区一：认为 `UPROPERTY` 只是用来在编辑器显示变量**
-许多初学者以为去掉 `UPROPERTY` 只是让变量"在编辑器中不可见"，实际上对 `UObject*` 指针而言这会导致 GC 不追踪该引用。当引擎在下一次垃圾回收周期（默认每帧检查，阈值约60,000个追踪对象）运行时，该对象可能被销毁，裸指针变为野指针，在之后访问时触发访问违规崩溃（Access Violation）。
+**误区一：忘记包含`.generated.h`或包含位置错误。**  
+`#include "ClassName.generated.h"`必须是该头文件中**最后一个**`#include`语句，否则UHT生成代码中的前置声明会引用到未定义的类型，产生难以追踪的编译错误。
 
-**误区二：`BlueprintNativeEvent` 与 `BlueprintImplementableEvent` 混淆**
-`BlueprintImplementableEvent` 完全由 Blueprint 实现，C++ 侧**不能**提供默认实现（只有声明）；而 `BlueprintNativeEvent` 的 C++ 侧**必须**提供 `_Implementation` 函数作为默认逻辑，Blueprint 可以选择覆盖。若在 `BlueprintImplementableEvent` 函数上写 `_Implementation` 方法体，将导致链接错误（Linker Error LNK2005）。
+**误区二：认为`UPROPERTY`对基础类型（如`float`、`int32`）可以省略。**  
+对于非指针的基础类型，省略`UPROPERTY`不会导致崩溃，但会使该属性无法在编辑器中显示、无法被蓝图访问、无法被`SaveGame`序列化，功能静默缺失。只有`UObject`指针省略`UPROPERTY`才会立即造成GC崩溃。
 
-**误区三：误以为 `UCLASS` 可以用于非 `UObject` 派生类**
-`UCLASS` 只能标注继承自 `UObject`（或其子类如 `AActor`、`UActorComponent`）的类。对于纯数据结构应使用 `USTRUCT()`，对于枚举使用 `UENUM()`。强行在非 `UObject` 类上使用 `UCLASS` 会在 UHT 阶段报错，而不是在编译阶段，这让初学者容易困惑错误来源。
+**误区三：混淆`BlueprintPure`与`BlueprintCallable`的适用场景。**  
+`BlueprintPure`函数在蓝图中没有执行流引脚（白色箭头），每次被引用时都会被重新求值，在同一帧内多次引用`BlueprintPure`函数可能导致重复计算开销。有副作用的函数（如修改状态、播放音效）若误标为`BlueprintPure`，会产生难以调试的逻辑问题。
 
 ---
 
 ## 知识关联
 
-**前置概念——脚本系统概述**：UE5 的脚本系统包含 C++ 和 Blueprint 两层，本文所描述的 `UCLASS/UPROPERTY/UFUNCTION` 宏体系正是两层之间的桥梁接口，理解脚本系统的双层结构有助于明白为何需要这套显式注解机制。
+本文所述宏体系建立在**脚本系统概述**中介绍的"反射与元数据"概念之上——UHT正是UE5脚本系统中将静态C++类型转换为运行时可查询元数据的具体实现机制。
 
-**后续概念——原生绑定（Native Binding）**：掌握本文的宏体系后，下一步是学习如何将 C++ 中注册的属性和函数与 Blueprint 图表中的节点、动画蓝图的通知（AnimNotify）以及 UMG 控件绑定。原生绑定依赖本文所讲的 `UPROPERTY` 和 `UFUNCTION` 反射数据，若没有正确的宏标记，绑定操作在运行时会静默失败或找不到对应字段。
+掌握`UCLASS/UPROPERTY/UFUNCTION`宏标注规则后，下一步是学习**原生绑定（Native Binding）**：即如何在C++中通过`BindUFunction`、委托（`DECLARE_DYNAMIC_MULTICAST_DELEGATE`）和`FTimerHandle`等机制，让反射系统中已注册的函数响应引擎事件，从而实现C++逻辑与蓝图事件系统的双向通信。

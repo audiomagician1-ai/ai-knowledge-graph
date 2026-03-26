@@ -24,55 +24,67 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # Houdini流体导出
 
 ## 概述
 
-Houdini流体导出是指将Houdini中完成模拟计算的流体结果（包括VDB体积数据、粒子系统和网格序列）转换为游戏引擎可直接读取的序列资产的离线处理流程。不同于实时GPU流体仅能在运行时计算单帧状态，Houdini流体导出的目的是将高精度离线模拟的每一帧结果"冻结"成静态资产序列，从而在游戏中以极低的运行时开销播放复杂的流体效果。
+Houdini流体导出是指将Houdini中完成模拟的流体（FLIP Solver或Pyro Solver生成的粒子/体积场）转换为游戏引擎可直接读取的序列化资产的工作流程。这一过程将高精度的物理模拟结果"冻结"为逐帧的静态数据，使游戏引擎无需在运行时执行任何物理计算，即可还原流体的视觉效果。
 
-该工作流最早随Houdini 16.5版本中Pyro FX与FLIP Solver的成熟而在游戏特效行业普及。在此之前，游戏中的爆炸、烟雾等流体效果主要依赖贴图手绘或简单粒子模拟，视觉质量受限。Houdini流体导出使制作团队能够利用离线求解器（如FLIP Fluid、Pyro Solver）生成高达数千万多边形的流体帧数据，再经过降采样和格式转换输出到游戏引擎。
+Houdini流体导出工作流随Houdini 16.5版本引入Karma渲染器及Apprentice版本的VDB支持而逐步成熟。在此之前，TD通常需要手工编写Python脚本批量导出.bgeo.sc缓存文件，再在外部工具中转换格式。现代管线以OpenVDB格式（.vdb）作为体积场的标准容器，以Alembic（.abc）承载粒子与网格数据，最终在引擎端由专属插件驱动序列播放。
 
-在游戏特效流程中，Houdini流体导出解决的核心矛盾是：离线模拟的物理精度与游戏运行时性能预算之间的冲突。一个典型的Houdini烟雾模拟可能产生每帧200MB以上的VDB原始数据，而最终交付给引擎的序列帧通常需要压缩至5MB以内，这一压缩比的实现正是导出流程的技术价值所在。
+对游戏特效而言，Houdini流体导出解决了实时物理与视觉保真度之间不可调和的矛盾。一段3秒钟的FLIP水花模拟，在高端工作站上离线计算需要40分钟以上，而将其导出为逐帧的顶点动画纹理（Vertex Animation Texture，VAT）后，GPU在运行时仅需采样两张贴图即可完整重现几百个粒子的轨迹，帧开销极低。
+
+---
 
 ## 核心原理
 
-### VDB转网格序列（Mesh Sequence）
+### VDB体积场导出流程
 
-Houdini流体导出最常见的路径是将VDB体积数据通过`VDB Convert` SOP节点转换为多边形网格，再逐帧导出为FBX或Alembic格式的网格序列。具体参数中，`Isovalue`（等值面阈值）直接决定流体表面提取的密度边界，对于水体模拟通常设置为0.1至0.3之间；对于烟雾则需要将Volume数据烘焙为顶点颜色或UV序列贴图。网格序列每帧的顶点数量直接影响GPU蒙皮带宽，商业项目中通常将单帧流体网格顶点数控制在10,000至30,000之间。
+Pyro模拟产生的烟、火等效果以OpenVDB网格存储，每个时间步包含density、temperature、velocity等多个命名通道。导出时，在Houdini的ROP（Render Output Operator）网络中放置**Geometry ROP**节点，将输出格式指定为`.vdb`，并在"Frame Range"参数中锁定模拟帧范围（例如1–120帧）。关键参数`Compress float values`应设为`16-bit`以将单帧文件大小从典型的80MB压缩至约35MB，同时视觉损失在阈值0.001以内可忽略不计。导出序列命名规范必须遵循`filename.$F4.vdb`格式，其中`$F4`代表4位零填充帧号，确保引擎端按序索引。
 
-### 贴图序列导出（Flipbook / Texture Sheet）
+### FLIP粒子转顶点动画纹理（VAT）
 
-另一种主流导出方式是将流体模拟渲染为翻页贴图（Texture Sheet），也称为Flipbook序列。在Houdini的`Karma`或`Mantra`渲染器中，将流体分解为漫反射、自发光、深度等多个通道分别输出，最终合并为一张包含8×8或16×16子帧的PNG图集。这种方式完全绕过了几何体传输，单张4K图集可以承载64帧流体数据，文件总量约为8至16MB，是目前手游和移动端项目最常用的Houdini流体导出形式。
+VAT是将粒子位移数据烘焙进UV坐标空间的浮点纹理的技术，是Houdini流体导出中最常见的游戏化方案。具体流程为：在Houdini Labs工具集（需安装SideFX Labs插件，最低版本19.0）中使用**Labs Vertex Animation Textures** SOP节点，选择`Soft Body`或`Fluid`模式。该节点将每帧的顶点位置编码进Position贴图（HDR格式，通常为EXR 16-bit），同时生成一张Normal贴图用于光照还原。位置数据的编码公式为：
 
-### VDB序列直接导出（用于UE5 Niagara / Unity VFX Graph）
+```
+UV.x = particleIndex / textureWidth
+UV.y = frameNumber / totalFrames
+```
 
-Houdini 19.0及以后版本支持将VDB序列直接通过`.vdb`文件格式导出，配合Unreal Engine 5的Niagara流体网格（Fluid Mesh Renderer）和SparseVolumeTexture节点实现引擎内实时播放。导出流程通过`ROP Output Driver` > `Geometry ROP`完成，需要在`Frame Range`参数中指定模拟起止帧，并将`Output File`路径设置为含`$F4`帧号变量的序列路径（如`/sim/smoke.$F4.vdb`）。VDB体积的分辨率由`voxelsize`参数控制，典型的游戏级烟雾VDB使用0.05至0.1单位的体素尺寸，对应引擎内约64³至128³的体积分辨率。
+输出纹理分辨率由粒子数量决定：若模拟包含4096个粒子，跨越60帧，则Position贴图尺寸为**4096×64**（64为不小于60的最近2次幂）。
 
-### 粒子缓存导出（Particle Cache）
+### Alembic网格序列导出
 
-FLIP Fluid模拟的粒子系统可通过`.bgeo.sc`格式或转换为`.abc`（Alembic）文件导出粒子序列。Alembic格式支持保存粒子的位置（P）、速度（v）、半径（pscale）等属性，这些属性在Unreal Engine的Niagara中可通过`Niagara Houdini Uplink`插件直接映射为粒子行为参数。每帧粒子数量需控制在100,000以内以保证引擎读取性能，超出限制时应在Houdini的`Particle Fluid Surface` SOP中进行粒子降采样处理。
+当流体需要保留拓扑完整的三角网格（例如通过VDB Convert转换为Polygon Mesh后的水面），应使用**Alembic ROP**导出。需在"Build From Path"中将`name`属性设为路径层级，例如`/fluid/surface`，以便在Maya或虚幻引擎的Alembic导入器中定位对象。时间缩放因子`Time Scale`参数默认值为1.0，若模拟以24fps录制但目标引擎以30fps播放，需将此值设为`24/30 = 0.8`以匹配时间映射，否则会出现流体播放速率偏慢的问题。导出前必须在SOP层级执行**Fuse SOP**合并重叠点，否则Alembic文件中的法线插值会产生接缝撕裂。
+
+---
 
 ## 实际应用
 
-在《赛博朋克2077》等高端PC游戏的过场特效制作中，制作团队使用Houdini Pyro Solver模拟爆炸烟雾，最终以Alembic网格序列的形式导出至引擎，单个爆炸资产的序列帧数约为60至90帧（按24fps约2.5至3.75秒），网格文件总量控制在300MB以内。
+**游戏水坑溅射效果**：美术师在Houdini中模拟FLIP粒子碰撞地面的溅射过程，约800–1200个粒子规模，使用Labs VAT节点导出为两张512×512 EXR贴图（Position + Normal）。在Unreal Engine 5中创建材质，从Houdini Niagara插件读取VAT数据，单个GPU粒子系统的渲染开销稳定在0.3ms以内，满足移动平台预算。
 
-在移动端游戏特效中，Houdini流体导出通常采用Flipbook贴图序列方案。以角色技能水流特效为例：在Houdini中完成FLIP模拟后，使用`Karma XPU`渲染器输出16×8的贴图图集（共128帧），输出分辨率为2048×1024，最终以PNG格式交付，引擎侧使用Sprite Renderer按序列UV偏移播放，GPU消耗几乎可以忽略不计。
+**过场动画大规模爆炸**：Pyro模拟的爆炸烟雾体积场，每帧.vdb文件约120MB，导出120帧序列后总量约14GB。通过Houdini的**Karma CPU**渲染器预合成，或将.vdb序列直接导入虚幻引擎的**Heterogeneous Volume**组件，在过场动画触发时流式加载，利用引擎的异步IO确保不卡顿主线程。
 
-在Unreal Engine 5与Houdini Engine插件配合的工作流中，艺术家可以在Houdini中修改模拟参数后，通过Houdini Engine HDA节点自动触发重新烘焙并更新引擎内的VDB资产，实现"参数化流体导出"，将单次流体资产的迭代周期从数小时缩短至20至40分钟。
+**手机游戏技能特效**：受限于移动端GPU内存（通常限制单贴图不超过2048px），将流体帧数压缩至32帧，Position贴图限制在1024×32，并对EXR进行ASTC 4×4压缩。此场景下需在Houdini中提前以`/obj/fluidShape/export_settings`路径锁定导出精度，避免压缩失真导致粒子位置跳变。
+
+---
 
 ## 常见误区
 
-**误区一：导出精度越高越好**
-许多初学者会将VDB的`voxelsize`设置得极小（如0.01），或将网格序列的面数保持在原始模拟级别，导致单帧文件超过100MB，引擎加载卡顿甚至内存溢出。正确做法是在`Resample` SOP或`VDB Resample` SOP中明确降采样至目标精度，以引擎的实际显示分辨率为导出标准，而非追求模拟原始精度。
+**误区一：将VDB序列直接当作游戏运行时资产**
+VDB文件是科学/影视级体积格式，单帧可达数百MB，游戏引擎无法在运行时实时流式读取。正确做法是在Houdini中将VDB序列先烘焙为Flipbook序列（2D图像序列）或转换为VAT，才能满足游戏实时渲染需求。混淆"导出供引擎预渲染使用"与"导出供引擎实时渲染使用"是新手最常见的路径错误。
 
-**误区二：Flipbook序列的帧率与游戏帧率必须一致**
-实际上Flipbook序列的采样帧率（通常为12fps至24fps）与游戏运行帧率（60fps或120fps）是完全独立的。游戏引擎通过在材质中使用`时间参数 × 每秒帧数`的计算控制UV偏移速率，与游戏主循环帧率无关。将两者混淆会导致导出帧数过多（按60fps导出128帧仅覆盖2秒），造成贴图资源的严重浪费。
+**误区二：忽略坐标系转换导致流体方向翻转**
+Houdini使用右手Y轴向上坐标系，而Unity使用左手Y轴向上，Unreal Engine使用左手Z轴向上。在Alembic导出设置中，若未勾选`Convert to Y-up`或在引擎导入时未正确设置`Import Rotation`（UE5中通常需在X轴旋转-90°），流体网格会出现整体翻转或轴向错位。VAT方案同样需要在着色器中手动调换`position.y`与`position.z`分量。
 
-**误区三：Alembic格式保留了完整流体物理数据**
-Alembic导出的流体网格序列仅保存几何形状（顶点位置和法线），速度场、密度场、温度场等体积属性在标准网格Alembic导出中会丢失。若后续需要在引擎中使用速度属性驱动粒子或扭曲效果，必须在导出时额外勾选`Velocity`属性通道，或改用包含体积属性支持的VDB序列格式。
+**误区三：帧范围与模拟预热帧混入导出**
+FLIP Solver通常需要5–10帧的预热（warm-up）来稳定流体状态，这些帧不应纳入最终导出范围。若将预热帧一并导出，引擎播放时会在特效起始处出现粒子从原点瞬间弹出的视觉穿帮。正确做法是在Geometry ROP的"Frame Range"中将起始帧设为预热结束后的第一帧（例如模拟从第1帧开始预热，实际特效从第11帧开始，则导出设置为`11–120`）。
+
+---
 
 ## 知识关联
 
-Houdini流体导出建立在GPU流体计算的基础上：GPU加速的FLIP Solver（如Houdini中利用OpenCL加速的求解器）缩短了模拟时间，使离线高精度模拟在商业项目的时间预算内成为可能，这是流体导出流程能够应用于量产项目的前提条件。
+**前置概念——GPU流体计算**：理解GPU流体计算中粒子属性（position、velocity、id）在显存中的存储布局，有助于在设计VAT导出方案时合理规划纹理分辨率与通道分配。GPU计算阶段产生的粒子ID一致性直接影响VAT逐帧粒子追踪的稳定性；若粒子在模拟过程中发生ID重新排序（re-indexing），导出的Position贴图会产生帧间跳跃噪点。
 
-完成流体导出之后，下一步通常进入Houdini烘焙环节，包括对导出的VDB序列进行二次体积烘焙（如烟雾阴影贴图烘焙、SDF距离场生成）或对网格序列进行UV展开与法线烘焙，将最终资产规格对齐引擎材质系统的输入要求，使流体资产具备完整的渲染能力。两个阶段共同构成从Houdini离线模拟到引擎实时渲染的完整资产化管线。
+**后续概念——Houdini烘焙**：流体导出完成后，Houdini烘焙阶段负责将VAT贴图、材质参数、LOD设置打包为引擎专用资产包（如Unreal的`.uasset`或Unity的`.asset`）。烘焙阶段会对Position贴图执行范围归一化，将世界空间坐标压缩至[0,1]区间，并将实际坐标范围存储于材质的`BoundsMin`/`BoundsMax`标量参数中，此参数必须与导出阶段在Houdini中记录的包围盒数值严格对应，否则还原出的粒子位置将发生整体偏移。

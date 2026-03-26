@@ -24,54 +24,79 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # Module脚本
 
 ## 概述
 
-Module脚本（模块脚本）是Niagara系统中用于定义粒子具体行为逻辑的可视化脚本单元。每个Module脚本本质上是一段封装好的HLSL逻辑，通过Niagara的节点图（Node Graph）方式呈现，可以被插入到Emitter的执行堆栈（Execution Stack）中的特定阶段，如Particle Spawn、Particle Update、Emitter Update等。Module脚本与Blueprint不同，它直接运行于GPU或CPU粒子模拟管线中，每帧对每个粒子独立执行一次。
+Module脚本（模块脚本）是Niagara系统中用于定义单一粒子行为逻辑的最小可复用单元。每个Module脚本本质上是一段HLSL代码的可视化封装，通过Niagara的节点图（Node Graph）编辑器呈现，负责读取粒子属性、执行计算、再将结果写回属性。一个典型的Module脚本只做一件事——比如"施加重力"或"按速度旋转粒子"——这种单一职责设计使其可以在不同Emitter之间自由拖拽复用。
 
-Module脚本的概念随虚幻引擎4.20版本（2018年）Niagara正式作为Beta功能引入而出现，并在UE4.26之后随Niagara转为正式功能而趋于稳定。在此之前，Cascade系统中的粒子行为是通过固定模块（如Required、Spawn、Color over Life等预设模块）实现的，用户几乎无法编写自定义逻辑。Niagara的Module脚本彻底改变了这一局面，赋予美术师和技术美术师直接编写粒子逻辑的能力，而无需修改引擎C++源码。
+Module脚本的概念随UE4.26版本中Niagara正式脱离实验性阶段而成熟定型。在此之前，Cascade特效系统的行为逻辑是硬编码在C++模块里的，美术人员无法自行扩展。Niagara将这部分逻辑暴露为可视化脚本，Module脚本正是这次开放的核心产物，它让TA（技术美术）无需修改引擎源码即可创建全新的粒子行为。
 
-Module脚本的重要性在于它是Niagara系统"可组合性"设计哲学的直接体现。一个Emitter的粒子行为完全由其堆栈中若干Module脚本叠加决定，例如将"Solve Forces and Velocity"模块与自定义的"Curl Noise Force"模块同时插入Update阶段，两者各自写入或读取粒子属性，最终合并成复杂的运动表现。
+Module脚本的重要性体现在Niagara执行栈（Execution Stack）的组织方式上。Emitter的每个执行阶段（Emitter Spawn、Emitter Update、Particle Spawn、Particle Update）都由一组有序的Module脚本构成，引擎按照栈中从上到下的顺序逐一调用这些脚本。因此，Module脚本的编写质量和执行顺序直接决定粒子系统最终的视觉表现与性能开销。
+
+---
 
 ## 核心原理
 
-### Module脚本的执行上下文
+### Module脚本的文件结构与执行上下文
 
-每个Module脚本在创建时必须指定其**执行上下文（Script Usage）**，共有以下几类：`Particle Spawn Script`、`Particle Update Script`、`Emitter Spawn Script`、`Emitter Update Script`、`System Spawn Script`、`System Update Script`，以及`Particle Event Handler Script`。上下文决定了该脚本在哪个阶段被调用，以及它能访问哪些命名空间下的变量。例如，一个标记为`Particle Update Script`的模块，只能在粒子存活的每一帧被执行，无法访问`Emitter.SpawnRate`这类Emitter级别的只写属性。
+每个Module脚本保存为`.uasset`格式，内部包含两部分：一是**输入映射（Input Map）**，声明该模块对外暴露的参数接口；二是**节点图**，定义实际的运算逻辑。节点图的入口固定为`Map Get`节点，出口固定为`Map Set`节点——`Map Get`从当前粒子的数据集（Parameter Store）读取数值，`Map Set`将计算结果写回。这种读-计算-写的结构保证了每个模块的副作用是明确且可追踪的。
 
-### 输入（Input）与Map Get/Set节点
+Module脚本有四种执行上下文（Execution Context），对应Niagara的四个执行阶段：
+- **System Spawn / System Update**：每个System实例只执行一次或每帧执行一次，适合写全局参数
+- **Emitter Spawn / Emitter Update**：每个Emitter实例级别的逻辑
+- **Particle Spawn**：粒子诞生时执行一次，适合初始化位置、颜色、大小
+- **Particle Update**：每帧对所有存活粒子执行，适合持续性行为如阻力、颜色渐变
 
-Module脚本的数据流通过**Map Get**和**Map Set**节点实现。Map Get节点从当前粒子的属性映射表（Attribute Map）中读取数值，如`Particles.Position`（粒子位置，Vector3类型）或`Particles.Age`（粒子年龄，Float类型）；Map Set节点则将计算结果写回属性映射表。关键规则是：**一个Module脚本必须以Map Set节点结尾**，否则该脚本不会对粒子状态产生任何修改。此外，Module脚本的对外暴露参数通过**Input节点**定义，这些Input在Emitter堆栈中以可调节的参数形式显示，允许在不修改脚本内部逻辑的情况下调整行为，例如将"Force Strength"设为Float类型的Input，默认值设为`100.0`，技术美术师可在Emitter面板直接覆盖此值。
+一个Module脚本在创建时必须指定其允许被放置的上下文，若尝试将`Particle Spawn`阶段的模块拖入`Emitter Update`栈，编辑器会报出上下文不匹配错误。
 
-### 内置函数与HLSL转译
+### 模块的输入参数与Namespace规则
 
-Niagara Module脚本的节点图最终会被引擎编译转译为HLSL代码。节点图中提供了大量内置函数节点，如`Normalize`、`Cross Product`、`Lerp`、`Random Range Float`等。其中`Seeded Random Range Float`节点尤为特殊，它接受一个`NiagaraRandInfo`结构体作为种子输入，保证在CPU和GPU两种模拟模式下随机数结果的确定性一致。若需要编写节点图无法表达的复杂逻辑，可以使用**Custom HLSL节点**，在节点内部直接书写HLSL片段，变量通过`{InputName}`语法与节点引脚绑定。例如：
-```
-Output = sin({Phase} * 6.28318) * {Amplitude};
-```
-这段代码实现了一个正弦波偏移，`6.28318`即`2π`的近似值，用于将归一化的Phase值（0~1）映射为完整的正弦周期。
+Module脚本通过**Namespace（命名空间）**区分数据的归属与生命周期。常见的命名空间包括：
 
-### 模块的堆栈顺序与依赖关系
+| 命名空间 | 含义 | 示例 |
+|---|---|---|
+| `Particles.` | 单个粒子的属性 | `Particles.Position`、`Particles.Velocity` |
+| `Emitter.` | 当前Emitter级别数据 | `Emitter.Age`、`Emitter.SpawnRate` |
+| `System.` | System级别全局数据 | `System.ElapsedTime` |
+| `Module.` | 模块私有输入参数 | `Module.GravityStrength` |
 
-在Emitter的执行堆栈中，Module脚本按照从上至下的顺序依次执行，且前一个模块的Map Set结果可以被后续模块的Map Get读取。因此模块顺序直接影响结果：若"Apply Velocity"模块在"Drag Force"模块之前执行，则当帧的阻力计算将作用于未应用速度的旧值，反之亦然。Niagara提供了依赖（Dependency）标签系统，允许模块声明自身需要在某类模块之前（`Pre Dependency`）或之后（`Post Dependency`）执行，以此在多人协作或资产复用时自动保证顺序正确。
+`Module.`命名空间下的变量会自动在Emitter编辑器的该模块条目中显示为可调节的输入槽，这是Module脚本向外暴露用户接口的标准方式。例如，一个自定义重力模块会声明`Module.GravityScale`（float类型，默认值980.0，单位cm/s²），用户无需打开脚本内部即可直接修改此值。
+
+### 节点图中的关键运算节点
+
+在Module脚本的节点图内，除了基本的数学运算节点（Add、Multiply、Lerp等），有几类节点是Niagara特有的：
+
+- **`Simulation Stage Index`**：在GPU Simulation Stage（计算着色器阶段）中返回当前粒子的线程索引，用于实现粒子间交互（如流体模拟）
+- **`Engine.DeltaTime`**：获取本帧的时间步长（秒），在`Particle Update`阶段实现帧率无关的物理积分时必须乘以此值；典型写法为 `NewVelocity = OldVelocity + Acceleration * Engine.DeltaTime`
+- **`Transient`命名空间变量**：在单次模块调用内临时存在、不写入持久粒子数据集的中间变量，用于优化内存访问
+
+---
 
 ## 实际应用
 
-**自定义吸引力模块**：在一个火焰Emitter中，需要让粒子在生命周期末尾（Age接近Lifetime）向中心点收拢。具体做法是创建一个`Particle Update Script`类型的Module脚本，使用Map Get读取`Particles.Position`和`Particles.Age`/`Particles.NormalizedAge`，用`Lerp`节点将粒子位置向目标点插值，插值权重由`NormalizedAge`的平方驱动（即越老的粒子越快收拢），最后Map Set写回`Particles.Position`。将此模块插入Emitter Update堆栈"Solve Forces"之后，可确保吸引力在物理解算完成后叠加。
+**自定义螺旋运动模块**：创建一个名为`SpiralMotion`的Particle Update模块，在节点图中读取`Particles.Age`（粒子存活时间），乘以`Module.AngularSpeed`（角速度，单位rad/s），通过`Sin`/`Cos`节点计算偏移量，加回`Particles.Position`。将该模块放置在`Particle Update`栈中`Solve Forces and Velocity`模块的之后，确保螺旋偏移叠加在物理速度积分之上。此模块可直接拖入任意其他Emitter复用，无需修改内部逻辑，只需在外部调整`Module.AngularSpeed`和`Module.Radius`两个输入槽。
 
-**GPU与CPU双模式兼容**：当Emitter设置为`GPU Simulation`模式时，Module脚本中不能使用`Spawn Info`或某些CPU独有的函数节点（如`Get Actor from Tag`）。因此在编写通用模块时，需在节点图中使用`Script Condition`节点区分模拟模式，或在模块描述中明确标注`CPU Only`，防止被错误插入GPU模拟的Emitter中。
+**颜色随生命周期渐变模块**：在`Particle Update`阶段，读取`Particles.NormalizedAge`（范围0到1的归一化年龄，引擎内置属性），通过`Curve for Floats`节点采样一条自定义渐变曲线，输出至`Particles.Color`的RGB通道。这比直接使用内置`Color by Life`模块更灵活，因为可在曲线节点上叠加`Module.ColorMultiplier`参数，实现运行时动态调色。
+
+**与Scratch Pad Module的区别**：Scratch Pad Module是临时写在Emitter资产内部、不可跨Emitter复用的一次性脚本，适合快速原型验证。一旦逻辑稳定，应将其"提升"（Promote to Asset）为独立的Module脚本`.uasset`，以便项目范围内共享。
+
+---
 
 ## 常见误区
 
-**误区一：认为Module脚本与Blueprint功能等同**。许多初学者将Niagara Module脚本理解为粒子版的Blueprint，实际上两者机制完全不同。Blueprint是基于对象的事件驱动脚本，运行于游戏线程；Module脚本是数据并行的粒子运算脚本，在粒子模拟线程（甚至GPU线程）上对数千粒子并行执行，不能调用Actor方法、不能访问UObject，也不能包含分支循环等控制流（GPU模式下HLSL不支持动态循环）。
+**误区一：认为Module脚本的执行顺序不重要**
+Niagara执行栈是严格顺序执行的，靠后的模块能读到靠前模块的写入结果。若将`Apply Initial Forces`（施加初始力）放置在`Initialize Particle`（初始化质量）之前，前者读到的`Particles.Mass`将是未初始化的默认值0，导致力的计算结果为无穷大，粒子瞬间飞出视野。正确做法是严格遵守"初始化类模块 → 行为类模块 → 求解器模块"的排列顺序。
 
-**误区二：以为修改Input默认值等于修改了所有Emitter**。Module脚本中定义的Input默认值仅是"提案值"，一旦某个Emitter在其堆栈中覆盖（Override）了该Input的值，脚本默认值便不再生效。因此当多个Emitter共享同一Module脚本资产，但表现不同时，首先应检查各Emitter堆栈中该模块的Input绑定值，而非去修改Module脚本本身——修改脚本的默认值只会影响尚未覆盖该参数的Emitter。
+**误区二：在Particle Update阶段直接赋值位置而不乘DeltaTime**
+新手常在`Particle Update`模块中写 `Particles.Position = Particles.Position + Velocity`，未乘`Engine.DeltaTime`。这导致粒子的移动距离随帧率线性变化：60fps时速度是30fps时的两倍。正确写法必须包含时间步长：`Particles.Position += Velocity * Engine.DeltaTime`，这是实现帧率无关运动的唯一正确方式。
 
-**误区三：Map Set节点可以写入任意自定义属性名**。向属性映射表写入一个新命名的属性时，必须先在Emitter的**Emitter Properties**或**Add Attribute**处声明该属性，否则该属性虽然在本模块内可写，但在后续模块或Renderer中将无法被正确读取，甚至在GPU模式下直接导致编译错误。`Particles.MyCustomFloat`这类自定义属性的类型和名称需要在Emitter级别统一注册。
+**误区三：混淆Module输入参数与Particle属性的修改范围**
+`Module.`命名空间的变量是该模块的**输入配置**，它对整个Emitter下所有粒子共享同一个值；而`Particles.`命名空间的变量则**每个粒子独立存储**。若希望每个粒子有不同的旋转速度，必须在`Particle Spawn`阶段将随机值写入一个自定义的`Particles.RandomAngularSpeed`属性，而非在`Module.AngularSpeed`上做随机——后者只会让所有粒子共享同一个随机结果。
+
+---
 
 ## 知识关联
 
-学习Module脚本需要先理解**Emitter与System**的层级关系，因为Module脚本总是被放置在某个Emitter的执行堆栈中，其执行上下文（Particle/Emitter/System级别）直接对应Emitter-System的三层架构。不清楚执行堆栈的层级，就无法判断一个Module脚本应该写成Particle Update类型还是Emitter Update类型。
-
-Module脚本中的Input节点，以及Map Get/Set读写的`Particles.*`、`Emitter.*`、`System.*`命名空间变量，正是下一个核心主题**参数与属性**的具体内容。理解了Module脚本如何通过节点图读写这些属性后，再学习参数绑定、Dynamic Input、用户暴露参数等概念，就能完整掌握Niagara数据流的全貌——即数据从System参数流入Emitter参数，再通过Module脚本中的Map Get被每个粒子读取并计算，最终通过Map Set写回属性，供Renderer采样渲染。
+理解Module脚本需要先掌握**Emitter与System**的层级关系——System包含Emitter，Emitter的执行栈才是Module脚本的"容器"，不清楚Particle Spawn与Particle Update阶段的区别就无法正确放置模块。Module脚本的Namespace规则（`Particles.`、`Module.`、`Emitter.`）与下一个主题**参数与属性**直接衔接：参数与属性系统详细定义了每种命名空间变量的生命周期、数据类型（float、Vector3、Color等）以及如何在System蓝图中从外部绑定动态数值。Module脚本是编写单个行为逻辑的场所，而参数与属性系统则决定了这些逻辑能读写哪些数据、数据如何在模块间流动。
