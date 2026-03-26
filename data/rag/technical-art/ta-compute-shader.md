@@ -24,100 +24,76 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # Compute Shader
 
 ## 概述
 
-Compute Shader 是 DirectX 11（2009年随 Direct3D 11 引入）和 OpenGL 4.3（2012年）中加入的着色器阶段，其本质是一个**不绑定渲染管线**的 GPU 程序。与 Vertex Shader 或 Fragment Shader 不同，Compute Shader 没有固定的输入（顶点属性、插值器）和固定的输出（颜色缓冲区），它通过 **UAV（Unordered Access View，无序访问视图）** 对任意缓冲区进行读写，使 GPU 成为通用并行计算设备（GPGPU）。
+Compute Shader（计算着色器）是一种运行在GPU上、但不参与传统渲染管线的可编程着色阶段，专门用于执行通用并行计算任务（GPGPU，General-Purpose GPU Computing）。与顶点着色器或片元着色器不同，Compute Shader 没有固定的输入（顶点、纹理坐标）和固定的输出（颜色缓冲），而是通过可读写的 UAV（Unordered Access View，无序访问视图）自由读写任意缓冲区或纹理。
 
-Compute Shader 的出现填补了 GPU 在图形之外的应用空白。在此之前，开发者要做 GPGPU 必须把计算任务"伪装"成渲染调用（Render To Texture），极为繁琐。Compute Shader 使得粒子模拟、物理求解、图像处理、神经网络推理等任务可以直接在 GPU 上以原生方式执行。在技术美术领域，它是实现程序化内容生成、GPU 粒子系统、FFT 海浪等效果的核心工具。
+Compute Shader 在 DirectX 11（2009年随 Direct3D 11 发布）中作为正式特性引入，HLSL 中的 Shader Model 5.0 规范定义了其完整语义。OpenGL 对应的是 Compute Shader（4.3版本，2012年）；Vulkan 和 Metal 也有等价实现。在技术美术领域，Compute Shader 被广泛用于 GPU 粒子系统、程序化纹理生成、物理模拟预计算、后处理特效以及蒙皮动画计算等场景，将原本在 CPU 端串行执行的逻辑迁移到 GPU 的数千个并行核心上。
 
-在 Unity 中 Compute Shader 以 `.compute` 文件形式存在，使用 HLSL 语法编写；在 Unreal Engine 中通过 `GlobalShader` 或插件 API 提交；在 GLSL 环境中对应的是 `GL_COMPUTE_SHADER` 类型。
+理解 Compute Shader 的关键在于掌握 GPU 的线程分组模型：GPU 并不像 CPU 那样顺序执行指令，而是将任务拆分为数量庞大的轻量级线程，由硬件调度器同时执行。Compute Shader 让开发者可以直接控制这种并行结构，而不必将计算"伪装"成渲染操作（旧时代常用的"渲染到纹理"黑客技巧）。
 
 ---
 
 ## 核心原理
 
-### 线程分组模型：Thread / Group / Dispatch
+### 线程层次结构：Thread、Group 与 Dispatch
 
-Compute Shader 的并发单位由三层层级组成。最小单位是**线程（Thread）**，线程按三维方式组织成**线程组（Thread Group）**，线程组的数量由 CPU 端的 `Dispatch(X, Y, Z)` 调用决定。
+Compute Shader 的执行单位是**线程（Thread）**，线程被组织为**线程组（Thread Group）**，线程组再由 CPU 端的 `Dispatch(X, Y, Z)` 调用来批量启动。在 HLSL 中，每个线程组的线程数量通过 `[numthreads(X, Y, Z)]` 属性声明，三维结构最大为 `[numthreads(1024, 1, 1)]` 或 `[numthreads(32, 32, 1)]` 等（总数上限为 1024）。实际执行时，NVIDIA GPU 以 32 个线程为一组（称为 **Warp**）调度，AMD GPU 以 64 个线程为一组（称为 **Wavefront**）调度；`numthreads` 应尽量是这两个数字的倍数，否则会出现空闲线程浪费带宽。
 
-在 HLSL 中，每个线程组的维度由属性 `[numthreads(Tx, Ty, Tz)]` 声明，例如：
+每个线程可通过以下系统语义值定位自身：
+- `SV_GroupID`：当前线程组在 Dispatch 网格中的三维坐标
+- `SV_GroupThreadID`：线程在当前线程组内的局部坐标
+- `SV_DispatchThreadID`：全局线程坐标，等于 `SV_GroupID * numthreads + SV_GroupThreadID`
+- `SV_GroupIndex`：线程在组内的一维扁平化下标
 
-```hlsl
-[numthreads(8, 8, 1)]
-void CSMain(uint3 id : SV_DispatchThreadID) { ... }
-```
+### UAV 读写与 RWTexture/RWStructuredBuffer
 
-此时每个线程组包含 8×8×1 = 64 个线程。若调用 `Dispatch(4, 4, 1)`，则总线程数为 4×4×64 = 1024 个。`SV_DispatchThreadID` 的计算公式为：
+Compute Shader 最核心的 I/O 机制是 UAV。在 HLSL 中声明为 `RWTexture2D<float4>`、`RWStructuredBuffer<MyStruct>` 或 `RWByteAddressBuffer` 等类型，支持任意线程的随机读写。与之对比，普通的 `Texture2D` 在 Compute Shader 中仍可绑定为 SRV（只读视图）。需要注意：**多个线程同时写同一地址会产生竞争（race condition）**，因此 HLSL 提供了原子操作函数，如 `InterlockedAdd`、`InterlockedMax`、`InterlockedCompareExchange` 等，用于安全地累加计数器或进行无锁算法实现。
 
-> **SV_DispatchThreadID = SV_GroupID × numthreads + SV_GroupThreadID**
+### 共享内存（GroupShared Memory）
 
-`numthreads` 的乘积必须是 **Warp/Wave 大小的整数倍**（NVIDIA GPU 上 Warp = 32，AMD 上 Wave = 64），否则会产生空闲线程造成浪费。常见推荐值为 `[numthreads(64,1,1)]`（线性任务）或 `[numthreads(8,8,1)]`（纹理/图像任务）。
-
-### UAV 与 RWBuffer 读写
-
-Compute Shader 通过 **UAV** 绕过渲染管线直接读写 GPU 资源。在 HLSL 中，对应的绑定类型包括：
-
-- `RWTexture2D<float4>` —— 读写纹理
-- `RWStructuredBuffer<MyStruct>` —— 读写结构体数组
-- `RWByteAddressBuffer` —— 按字节寻址的原始缓冲区
-- `AppendStructuredBuffer` / `ConsumeStructuredBuffer` —— 生产-消费队列
-
-UAV 是**无序**的，即不同线程对同一内存位置的写入顺序不保证。若多个线程需要安全地累加同一计数器，必须使用原子操作：
+线程组内的线程可以共享一块高速的片上 SRAM，即 `groupshared` 内存（NVIDIA 架构中称为 Shared Memory 或 L1 Cache 的可配置部分）。典型声明如下：
 
 ```hlsl
-InterlockedAdd(buffer[0], 1);  // 原子加，保证无竞态
+groupshared float sharedData[64];
 ```
 
-常用原子操作包括 `InterlockedAdd`、`InterlockedMin`、`InterlockedMax`、`InterlockedCompareExchange`，均定义在 HLSL 内置函数库中。
-
-### 组内共享内存（Group Shared Memory）
-
-线程组内部可以声明**共享内存（Shared Memory / LDS）**，在 HLSL 中使用 `groupshared` 关键字：
-
-```hlsl
-groupshared float4 sharedData[64];
-```
-
-NVIDIA Turing 架构中每个线程组最多可用 **48KB** 的共享内存（可配置为最大 96KB，但会减少寄存器）。共享内存的访问延迟约为全局显存的 **100倍以上更快**（~1-4 个时钟周期 vs ~600 时钟周期），因此将高频访问数据先加载进 `groupshared` 再计算（即 Tiling 策略）是 Compute Shader 性能优化的标准手段。
-
-线程组内部的同步通过 `GroupMemoryBarrierWithGroupSync()` 完成，它确保所有线程到达该点后才继续执行，防止读脏数据。
+其大小上限通常为 **32KB**（DX11 规范保证最低 32KB）。访问 `groupshared` 内存的延迟约为全局显存的 **1/100**，因此前缀和（Prefix Sum/Scan）、直方图统计、卷积核缓存等算法都依赖它来减少全局内存带宽压力。使用 `GroupMemoryBarrierWithGroupSync()` 可在线程组内设置同步屏障，确保所有线程写入完成后再进行读取。
 
 ---
 
 ## 实际应用
 
-**GPU 粒子系统**：CPU 仅提交一次 `Dispatch` 调用，所有粒子的位置、速度更新均在 Compute Shader 的 `RWStructuredBuffer` 中完成。Unity URP 的 VFX Graph 正是以 Compute Shader 作为底层驱动，支持数百万粒子实时模拟。
+**GPU 粒子系统**：在 Unity/UE 中，粒子的位置、速度、生命周期存储在 `RWStructuredBuffer<ParticleData>` 中。每帧 Dispatch 一个线程处理一个粒子的物理积分（速度 += 重力 * dt，位置 += 速度 * dt），完全绕过 CPU 数组遍历，百万粒子仍可实时运行。
 
-**屏幕空间环境光遮蔽（HBAO+）**：深度图采样、方向遮蔽计算、模糊降噪三个阶段均可用 Compute Shader 实现，利用 `groupshared` 缓存深度列，避免重复从全局显存读取，减少 60% 以上的显存带宽消耗。
+**屏幕空间环境遮蔽（SSAO）的模糊 Pass**：SSAO 生成的噪点遮蔽图需要做分离式高斯模糊。Compute Shader 先在横向 Pass 中将一行像素的采样值缓存到 `groupshared float`，再做纵向 Pass，相比两个全屏四边形 Draw Call 减少了约 40% 的纹理采样次数。
 
-**FFT 海浪（Gerstner Wave / IFFT）**：Phillips 频谱初始化 → 时域演化 → 2D FFT → 法线生成，全部在 Compute Shader 中完成。Cooley-Tukey FFT 算法中 Butterfly 操作的共享内存访问模式是 Compute Shader 的经典教学案例。海面大小通常为 512×512，使用 `[numthreads(512,1,1)]` 对每行/列做水平/垂直 FFT 各一趟。
+**蒙皮动画预计算（GPU Skinning）**：角色的骨骼矩阵调色板传入 StructuredBuffer，Compute Shader 对每个顶点并行执行蒙皮混合矩阵乘法，结果写入 `RWByteAddressBuffer`，后续顶点着色器直接读取，避免 CPU 端的顶点流操作。
 
-**Hi-Z GPU Culling**：在 `RWByteAddressBuffer` 中写入可见物体的 DrawCall 参数，配合 `DrawMeshInstancedIndirect`，将视锥体剔除和遮挡剔除完全搬至 GPU，CPU 端几乎零开销。
+**直方图生成**：后处理自动曝光需要统计帧画面的亮度直方图（通常 256 个桶）。Compute Shader 利用 `groupshared uint histogram[256]` 在组内累加，再用 `InterlockedAdd` 合并到全局 UAV，整帧只需一次 Dispatch，无需 CPU 回读。
 
 ---
 
 ## 常见误区
 
-**误区一：`numthreads` 越大越好**
+**误区一：认为 Dispatch 的线程数越多越快**
+实际上，过多的线程组会导致 GPU 资源争抢（寄存器、共享内存溢出），反而降低 Occupancy（占用率）。例如将 `numthreads` 设为 `[numthreads(1024, 1, 1)]` 时，每个线程组需要占用更多寄存器，可能使 SM（Streaming Multiprocessor）上同时驻留的 Warp 数量从 8 降至 2，GPU 利用率反而下降。应使用 NVIDIA Nsight 或 RenderDoc 的 Occupancy 分析工具校验。
 
-很多人认为将线程数设到最大（如 `[numthreads(1024,1,1)]`）会使 GPU 更"忙"从而更快。事实是，线程数过多会导致每个线程可用的寄存器数量减少（寄存器压力上升），GPU 被迫在 Warp 之间频繁切换（Occupancy 虽高但 IPC 下降）。最优 `numthreads` 需要结合具体算法的寄存器用量和共享内存用量通过 Nsight / RenderDoc 的 Occupancy 分析工具来确定，并无通用最大值。
+**误区二：把 UAV 写入当作同步操作**
+Compute Shader 中的全局内存写入在不同线程组之间**没有顺序保证**，也没有跨 Dispatch 的自动同步。若需要上一个 Dispatch 的写入结果在下一个 Dispatch 中可见，必须在 CPU 端使用 `ID3D11DeviceContext::Dispatch` + UAV 资源屏障（DX12/Vulkan 中的 `ResourceBarrier` 或 `vkCmdPipelineBarrier`），而不是依赖代码编写的先后顺序。
 
-**误区二：UAV 写入顺序无所谓**
-
-Compute Shader 的 UAV 是"无序"的，但"无序"不代表"无害"。多线程写入同一地址如果不使用 `InterlockedAdd` 等原子操作，结果是**未定义行为**，在不同硬件、不同驱动版本上结果可能不一致。很多初学者在写粒子计数器时直接做 `buffer[0]++` 而忽略原子性，导致粒子数目随机丢失。
-
-**误区三：Compute Shader 可以替代所有渲染阶段**
-
-Compute Shader 没有硬件光栅化、深度测试、混合等固定功能，若要输出渲染结果必须额外写入纹理并在后续 Pass 采样。纯 Compute Shader 渲染管线（Visibility Buffer + Compute Shading）虽然可行，但实现复杂度和调试成本远高于传统 Deferred/Forward，在通用游戏项目中并非默认选择。
+**误区三：在 Compute Shader 中使用大量分支会自动优化**
+GPU 的 Warp/Wavefront 机制要求同一组 32/64 个线程执行相同的指令路径。若 `if-else` 分支导致组内线程分歧（Divergence），两个分支会被串行执行，吞吐量降至理论峰值的 1/2 甚至更低。应尽量将分支条件设计为 **组内一致**（Group-Uniform），或使用位掩码、查找表替代复杂条件判断。
 
 ---
 
 ## 知识关联
 
-**前置知识——HLSL 基础**：Compute Shader 的语法直接沿用 HLSL 的数据类型（`float4`、`uint3`）、内置函数（`sin`、`mul`）和绑定语义（`:register(u0)`），掌握 HLSL 基础是理解 UAV 绑定槽位（`u0-u7`）和 SRV 绑定（`t0-tN`）的前提。不了解 HLSL 寄存器语义直接写 Compute Shader 会导致绑定错误难以排查。
+**前置知识**：学习 Compute Shader 前需要具备 HLSL 基础，包括变量类型（`float4`、`uint3`）、寄存器绑定（`register(u0)`、`register(t0)`）以及内置函数（`dot`、`lerp`、`GroupMemoryBarrierWithGroupSync`）的用法，否则无法理解 UAV 的声明语法和线程同步语义。
 
-**后续概念——程序化网格（Procedural Mesh）**：Compute Shader 可将顶点数据写入 `RWStructuredBuffer<float3>`，CPU 端通过 `GraphicsBuffer` 将其绑定为顶点缓冲区，从而实现**完全在 GPU 端生成和变形的网格**。这是理解程序化网格 GPU 化实现的关键桥梁。
+**后续延伸——程序化网格**：掌握 Compute Shader 后，可进一步学习程序化网格生成。通过 Compute Shader 输出顶点/索引数据到 `RWByteAddressBuffer`，再绑定为顶点缓冲区，可实现完全在 GPU 上生成 Marching Cubes 等地形网格，无需 CPU 端的几何数据上传。
 
-**后续概念——异步计算（Async Compute）**：现代 GPU（如 AMD GCN 及后续架构）拥有独立的 Compute Queue 和 Graphics Queue。将 Compute Shader 提交至 Compute Queue 可与渲染管线**并行执行**，隐藏 GPU 闲置时间。理解 Compute Shader 的线程调度和资源依赖是使用异步计算做帧内 overlap 的直接基础。
+**后续延伸——异步计算**：DX12 和 Vulkan 支持将 Compute Shader 放在独立的**异步计算队列（Async Compute Queue）**中执行，与图形队列并行运行，充分利用 GPU 中专用的 Compute CU（Compute Unit）。理解 Compute Shader 的资源绑定模型和同步机制，是进一步掌握异步计算的前提，因为异步计算的难点正是正确管理跨队列的资源竞争与信号量同步。

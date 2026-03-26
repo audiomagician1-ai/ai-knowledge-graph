@@ -20,68 +20,75 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-26
 ---
+
 # 程序化网格
 
 ## 概述
 
-程序化网格（Ta Pcg Mesh）是技术美术（Technical Art）中程序化生成领域的重要概念。难度等级3/9（初级）。
+程序化网格（Procedural Mesh）是指通过算法在运行时（Runtime）或离线预处理阶段自动生成三角形或四边形几何体的技术，而非依赖美术人员手工建模的静态网格资产。其输出是一组顶点坐标（Vertex Buffer）和索引列表（Index Buffer），可以直接送入 GPU 渲染管线。与导入 `.fbx` 文件的方式不同，程序化网格的拓扑结构在代码执行时才最终确定，因此能够响应游戏逻辑、玩家操作或物理模拟等动态输入。
 
-运行时或离线生成几何体——Marching Cubes/Dual Contouring。
+这一领域的关键里程碑是 1987 年 Lorensen 和 Cline 在 SIGGRAPH 上发表的论文《Marching Cubes: A High Resolution 3D Surface Construction Algorithm》，首次为体素（Voxel）数据到三角网格的转换提供了系统化方案。此后 Dual Contouring 算法于 2002 年由 Ju 等人提出，针对 Marching Cubes 无法保留锐利边缘（Sharp Features）的缺陷做出了本质性改进。今天，从《我的世界》风格的体素地形到地质模拟可视化，程序化网格已成为实时三维应用中处理动态形状的标准手段。
 
-在知识体系中，程序化网格建立在Compute Shader的基础之上，是理解可进入更高级主题的关键前置知识。为什么程序化网格如此重要？因为它在程序化生成中起到承上启下的作用，连接基础概念与高级应用。
+程序化网格的重要性在于它能以极低的存储成本表达几乎无限细节的几何变体。一个仅 64³ 体素分辨率的地形块，若全部手工建模则需要数千个独立模型，但程序化方法只需一个几 KB 的密度场（Density Field）数组加上生成代码即可覆盖所有变体。
 
-## 核心知识点
+---
 
-### 1. 运行时或离线生成几何体——Marching Cubes/Dual Contouring
+## 核心原理
 
-运行时或离线生成几何体——Marching Cubes/Dual Contouring是程序化网格(Ta Pcg Mesh)的核心组成部分之一。在程序化生成的实践中，运行时或离线生成几何体——Marching Cubes/Dual Contouring决定了系统行为的关键特征。例如，当运行时或离线生成几何体——Marching Cubes/Dual Contouring参数或条件发生变化时，整体表现会产生显著差异。深入理解运行时或离线生成几何体——Marching Cubes/Dual Contouring需要结合技术美术的基本原理进行分析。
+### Marching Cubes 算法
 
+Marching Cubes 将三维空间划分为均匀的立方体格（Cube Cell），每个格的 8 个顶角都采样一个标量值（通常是 SDF 有符号距离场或密度值）。根据每个角是否超过等值面阈值（Isovalue），8 个角形成 2⁸ = 256 种二值模式，利用对称性可化简为 15 种基本拓扑类型，预存于一张 **三角查找表（Triangulation Lookup Table）** 中。对于每条与等值面相交的棱，通过线性插值计算交点位置：
 
-### 关键原理分析
+$$
+p = p_0 + \frac{v_{iso} - v_0}{v_1 - v_0}(p_1 - p_0)
+$$
 
-程序化网格的核心在于运行时或离线生成几何体——Marching Cubes/Dual Contouring。从理论角度看，该概念涉及以下层面：
+其中 $v_0, v_1$ 是棱两端的标量值，$v_{iso}$ 是等值面阈值，$p_0, p_1$ 是棱端点的世界坐标。该公式确保生成的顶点精确落在等值面上而非格子边界。Marching Cubes 的缺点是对于 90° 锐角（如建筑墙角）会产生圆润化现象，因为它每个 Cell 最多产生 5 个三角形，无法在单 Cell 内表达锐利的特征线。
 
-1. **定义层**：明确程序化网格的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解程序化网格内部各要素的相互作用方式
-3. **应用层**：将程序化网格的原理映射到技术美术的实际场景中
+### Dual Contouring 算法
 
-思考题：如何判断程序化网格的应用是否超出了其理论适用范围？
+Dual Contouring 采用"对偶"策略：不在 Cell 的棱上放置顶点，而是在每个与等值面相交的 Cell **内部**放置一个顶点，称为 QEF 顶点（Quadratic Error Function Vertex）。其最小化目标为：
 
-## 关键要点
+$$
+\text{QEF}(x) = \sum_i \left( n_i \cdot (x - p_i) \right)^2
+$$
 
-1. **核心定义**：程序化网格的本质是运行时或离线生成几何体——Marching Cubes/Dual Contouring，这是理解整个概念的出发点
-2. **多维理解**：掌握程序化网格需要同时理解运行时或离线生成几何体——Marching Cubes/Dual Contouring等关键维度
-3. **先修关系**：扎实的Compute Shader基础对理解程序化网格至关重要
-4. **进阶路径**：可广泛应用于技术美术各方面
-5. **实践标准**：真正掌握程序化网格的标志是能在具体场景中灵活运用并正确判断适用边界
+其中 $p_i$ 是等值面与第 $i$ 条棱的交点，$n_i$ 是该交点处的法线（通过对 SDF 求梯度得到）。求解这个最小二乘问题（通常用 SVD 分解）得到的点 $x$ 自然会被"吸引"到锐利特征处，从而复现 90° 乃至更尖锐的边缘。连接相邻 Cell 的 QEF 顶点即生成最终四边形（Quad）网格，通常再细分为三角形。
+
+### Compute Shader 并行加速
+
+在 Compute Shader 中实现程序化网格时，每个线程组（Thread Group）负责处理一个 Cell。以 Unity HDRP 为例，典型的 Dispatch 尺寸为 `(ChunkSize/8, ChunkSize/8, ChunkSize/8)`，每个线程处理一个 8³ 子块。Marching Cubes 的并行瓶颈在于**顶点去重**——相邻 Cell 共享棱上的顶点，GPU 端通常使用 `AppendStructuredBuffer` + 原子计数器，或预分配固定大小的顶点池（每个 Cell 最多 5 个三角形 × 3 顶点 = 15 个顶点）来规避竞争写入问题，代价是内存浪费约 30%–50%。
+
+---
+
+## 实际应用
+
+**体素地形破坏系统**：游戏中炸弹爆炸产生坑洞时，只需将爆炸半径内的 SDF 值加上球形 SDF（使密度降低），然后对受影响的 Chunk 重新运行 Marching Cubes。由于每个 16³ Chunk 的重生成时间在现代 GPU 上约为 0.2–0.5 ms，可以在单帧内同步完成多个 Chunk 的网格更新，实现真实感破坏而不需预烘焙任何变体。
+
+**医学可视化**：CT/MRI 扫描输出的三维体素数据天然适合等值面提取。将 HU（Hounsfield Unit）骨骼阈值（约 400 HU）作为等值面，直接对扫描数据跑 Marching Cubes 即可重建骨骼三维模型，用于术前规划。医疗场景对锐利特征要求较低，因此 Marching Cubes 的圆润化反而无害。
+
+**程序化洞穴生成**：使用三维 Perlin Noise 或 Worley Noise 生成密度场，密度低于 0 的区域为空气，高于 0 为岩石。通过调整噪声参数（频率、振幅、八度数）即可生成风格迥异的地下洞穴系统，Dual Contouring 在此能保留岩石表面的棱角感。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将程序化网格与程序化生成中其他相近概念混为一谈。例如，运行时或离线生成几何体——Marching Cubes/Dual Contouring的适用条件与其他同类概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解Compute Shader就学习程序化网格，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：程序化网格虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：Marching Cubes 的 256 种情况都需要手工编写三角查找表。**
+实际上只需手工定义基础的 15 种拓扑类型，其余 241 种通过旋转（Rotation）和镜像（Reflection）变换自动生成。Paul Bourke 于 1994 年发布的公开实现给出了完整的 256 项查找表，现已成为工业界标准参考，几乎所有实现都直接引用或复制该表格。
 
-## 知识衔接
+**误区二：Dual Contouring 总是优于 Marching Cubes。**
+Dual Contouring 的 QEF 求解依赖准确的法线信息；若 SDF 的梯度噪声较大（例如来自低精度体素的手工绘制密度场），SVD 分解可能产生 QEF 顶点飞出 Cell 范围外的"顶点爆炸"问题，需要额外做顶点夹取（Clamping）。对于没有锐利特征需求的有机形状（如角色皮肤、自然地形），Marching Cubes 的实现简单、鲁棒性更高。
 
-### 先修知识
-先修知识包括：
-- **Compute Shader** — 为程序化网格提供了必要的概念基础
+**误区三：程序化网格运行时生成就意味着不需要 UV 坐标。**
+GPU 渲染仍然需要 UV 用于贴图采样。程序化网格通常采用**三平面投影（Triplanar Mapping）**，根据顶点法线分量的绝对值混合 XY、YZ、XZ 三个投影方向的贴图，从而绕过传统 UV 展开步骤。但这会使 Shader 中的贴图采样次数翻 3 倍，是性能权衡。
 
-### 后续学习
-掌握程序化网格后，学习者已具备该方向的核心能力，可将所学应用于实际项目或探索技术美术其他分支。
+---
 
-## 学习建议
+## 知识关联
 
-预计学习时间：1-2小时。建议采用以下策略：
+**依赖 Compute Shader**：程序化网格生成的核心计算量——遍历所有 Cell、查表、插值——全部在 Compute Shader 中以 GPU 并行方式执行。若不使用 Compute Shader 而改用 CPU 单线程，一个 64³ 的 Chunk 生成耗时可从 < 1 ms 升至 30–100 ms，完全无法满足实时破坏的需求。理解 `StructuredBuffer`、`AppendStructuredBuffer` 及线程组索引（`SV_DispatchThreadID`）的用法是实现 GPU 端 Marching Cubes 的必要前提。
 
-- **主动回忆**：学完后不看笔记复述程序化网格的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将程序化网格与技术美术中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释程序化网格，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于程序化生成的章节可作为深入参考
-- Wikipedia: [Ta Pcg Mesh](https://en.wikipedia.org/wiki/ta_pcg_mesh) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Ta Pcg Mesh" 可找到配套视频教程
+**延伸方向**：掌握程序化网格后可进一步探索 **Transvoxel 算法**（由 Eric Lengyel 于 2010 年专为 LOD 无缝过渡设计，解决不同分辨率 Chunk 交界处的裂缝问题）、**Surface Nets**（另一种对偶方法，顶点稳定性优于 Dual Contouring）、以及基于神经网络的隐式表面重建（Neural SDF），后者正在成为实时重建真实世界场景的新兴方向。

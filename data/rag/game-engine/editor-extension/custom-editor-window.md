@@ -20,73 +20,84 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-26
 ---
+
 # 自定义编辑器窗口
 
 ## 概述
 
-自定义编辑器窗口（Custom Editor Window）是游戏引擎（Game Engine）中编辑器扩展领域的重要概念。难度等级2/9（基础级）。
+自定义编辑器窗口（Custom Editor Window）是游戏引擎编辑器扩展中的一种机制，允许开发者创建可停靠（Dockable）、可浮动的独立面板，用于承载工具界面、数据可视化或工作流辅助功能。与仅在 Inspector 中显示的自定义Inspector不同，编辑器窗口拥有独立的生命周期和窗口句柄，可以脱离任何选中对象独立存在。
 
-Tab/Panel/Window的创建与注册。
+在 Unity 中，自定义编辑器窗口的历史可追溯到 Unity 3.x 时代的 `EditorWindow` 基类，该类至今仍是 Unity 编辑器扩展的核心 API。Unreal Engine 则通过 Slate UI 框架和 `SDockTab` 体系实现类似功能，两套体系在注册方式和渲染管线上有本质区别。自定义编辑器窗口的价值在于：它能够将重复性的手工操作（如批量资产处理、场景分析报告）封装为一套持久化的工具界面，而不依赖任何特定游戏对象的选中状态。
 
-在知识体系中，自定义编辑器窗口建立在编辑器扩展概述的基础之上，是理解内容浏览器扩展的关键前置知识。为什么自定义编辑器窗口如此重要？因为它在编辑器扩展中起到承上启下的作用，连接基础概念与高级应用。
+## 核心原理
 
-## 核心知识点
+### Unity EditorWindow 的创建与注册
 
-### 1. Tab/Panel/Window的创建
+在 Unity 中，创建自定义窗口需要继承 `UnityEditor.EditorWindow` 类，并使用静态方法 `GetWindow<T>()` 完成实例化与注册。典型的最小实现如下：
 
-Tab/Panel/Window的创建是自定义编辑器窗口(Custom Editor Window)的核心组成部分之一。在编辑器扩展的实践中，Tab/Panel/Window的创建决定了系统行为的关键特征。例如，当Tab/Panel/Window的创建参数或条件发生变化时，整体表现会产生显著差异。深入理解Tab/Panel/Window的创建需要结合游戏引擎的基本原理进行分析。
+```csharp
+using UnityEditor;
 
-### 2. 注册
+public class MyToolWindow : EditorWindow
+{
+    [MenuItem("Tools/My Tool Window")]
+    public static void ShowWindow()
+    {
+        GetWindow<MyToolWindow>("My Tool");
+    }
 
-注册是自定义编辑器窗口(Custom Editor Window)的核心组成部分之一。在编辑器扩展的实践中，注册决定了系统行为的关键特征。例如，当注册参数或条件发生变化时，整体表现会产生显著差异。深入理解注册需要结合游戏引擎的基本原理进行分析。
+    private void OnGUI()
+    {
+        EditorGUILayout.LabelField("窗口内容区域");
+    }
+}
+```
 
+`[MenuItem]` 属性负责在编辑器菜单栏注册入口，路径格式为 `"顶级菜单/子菜单"`。`GetWindow<T>()` 会检查是否已有同类型窗口实例存在——若存在则聚焦，若不存在则新建，从而保证窗口单例行为。若需要允许多实例，应改用 `CreateWindow<T>()`，该方法在 Unity 2019.1 版本起可用。
 
-### 关键原理分析
+### 窗口生命周期回调
 
-自定义编辑器窗口的核心在于Tab/Panel/Window的创建与注册。从理论角度看，该概念涉及以下层面：
+`EditorWindow` 提供了一套专属于编辑器窗口的生命周期方法，与 `MonoBehaviour` 的运行时生命周期完全分离：
 
-1. **定义层**：明确自定义编辑器窗口的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解自定义编辑器窗口内部各要素的相互作用方式
-3. **应用层**：将自定义编辑器窗口的原理映射到游戏引擎的实际场景中
+- `OnEnable()`：窗口被创建或重新加载时触发，适合初始化数据和订阅编辑器事件（如 `Selection.selectionChanged`）。
+- `OnGUI()`：每帧（或每次重绘请求）调用，所有 UI 绘制代码必须在此方法内执行，不可在其他方法中调用 `GUI.*` 系列函数。
+- `OnDisable()`：窗口关闭或编辑器重编译前触发，必须在此处取消订阅所有事件，否则会导致空引用异常。
+- `Update()`：以编辑器帧率（非固定60fps，取决于编辑器活跃状态）调用，适合轮询数据变化并调用 `Repaint()` 刷新界面。
 
-思考题：如何判断自定义编辑器窗口的应用是否超出了其理论适用范围？
+若在 `Update()` 中无条件调用 `Repaint()`，会导致编辑器持续重绘，消耗不必要的CPU资源，应加入脏标记（Dirty Flag）判断。
 
-## 关键要点
+### Unreal Engine 中的 SDockTab 注册
 
-1. **核心定义**：自定义编辑器窗口的本质是Tab/Panel/Window的创建与注册，这是理解整个概念的出发点
-2. **多维理解**：掌握自定义编辑器窗口需要同时理解Tab/Panel/Window的创建和注册等关键维度
-3. **先修关系**：扎实的编辑器扩展概述基础对理解自定义编辑器窗口至关重要
-4. **进阶路径**：掌握后可继续深入内容浏览器扩展等进阶主题
-5. **实践标准**：真正掌握自定义编辑器窗口的标志是能在具体场景中灵活运用并正确判断适用边界
+在 Unreal Engine 5 中，自定义编辑器窗口通过 `FGlobalTabmanager::Get()->RegisterNomadTabSpawner()` 注册为一个 **Nomad Tab**（游牧标签页）。Nomad Tab 的特点是全局唯一且不属于任何特定编辑器布局，适合独立工具窗口。注册时需提供 `FTabId`（字符串标识符）和一个返回 `TSharedRef<SDockTab>` 的委托：
+
+```cpp
+FGlobalTabmanager::Get()->RegisterNomadTabSpawner(
+    FName("MyToolTab"),
+    FOnSpawnTab::CreateRaw(this, &FMyToolModule::OnSpawnTab)
+).SetDisplayName(LOCTEXT("MyToolTabTitle", "My Tool"));
+```
+
+注册通常在模块的 `StartupModule()` 中执行，并在 `ShutdownModule()` 中调用 `UnregisterNomadTabSpawner()` 完成反注册，防止引擎关闭时崩溃。
+
+## 实际应用
+
+**批量资产重命名工具**：一个典型的自定义编辑器窗口用例是资产批量重命名面板。该窗口在 `OnEnable()` 中订阅 `Selection.selectionChanged` 事件，当用户在 Project 面板选中多个资产时，窗口自动列出所选资产的当前名称。用户输入前缀/后缀规则后，点击按钮调用 `AssetDatabase.RenameAsset()` 完成批量操作，最后调用 `AssetDatabase.SaveAssets()` 持久化更改。
+
+**场景对象统计面板**：在大型场景优化阶段，可创建一个编辑器窗口，在 `OnGUI()` 中使用 `EditorGUILayout.BeginScrollView()` 展示场景内所有 MeshRenderer 的面数统计，并按降序排列。此窗口可通过 `SceneView.duringSceneGui` 事件与场景视图联动，在用户点击列表项时自动定位并高亮对应物体。
 
 ## 常见误区
 
-1. **混淆概念边界**：将自定义编辑器窗口与编辑器扩展中其他相近概念混为一谈。例如，Tab/Panel/Window的创建的适用条件与其他注册概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解编辑器扩展概述就学习自定义编辑器窗口，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：自定义编辑器窗口虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：在 OnGUI 之外调用 GUI 绘制方法**。`EditorGUILayout.TextField()` 等方法依赖 `Event.current` 对象，该对象只在 `OnGUI()` 执行期间有效。如果在 `Update()` 或外部回调中调用这些方法，Unity 会抛出 `ArgumentException: Getting control X's position in a group with only X controls`，且难以追踪根源。所有 UI 状态变量应存储在字段中，在 `OnGUI()` 中统一读写。
 
-## 知识衔接
+**误区二：混淆 GetWindow 与 CreateInstance**。部分开发者习惯用 `ScriptableObject.CreateInstance<T>()` 的思维来理解编辑器窗口创建，直接 `new MyToolWindow()` 或手动调用构造函数。`EditorWindow` 实例必须通过 `GetWindow<T>()` 或 `CreateWindow<T>()` 创建，由编辑器底层管理其与本地窗口句柄的绑定，手动实例化的窗口对象无法正确渲染且会导致编辑器状态异常。
 
-### 先修知识
-先修知识包括：
-- **编辑器扩展概述** — 为自定义编辑器窗口提供了必要的概念基础
+**误区三：忽视编辑器重编译时的状态丢失**。Unity 每次脚本重编译后都会重建 AppDomain，`EditorWindow` 的 C# 字段会丢失。若需要跨编译保留窗口数据（如用户输入的文本），必须使用 `[SerializeField]` 标记字段，或将数据存入 `EditorPrefs`，否则每次修改代码后窗口都会重置为初始状态。
 
-### 后续学习
-掌握自定义编辑器窗口后可继续学习：
-- **内容浏览器扩展** — 在自定义编辑器窗口基础上进一步拓展
+## 知识关联
 
-## 学习建议
+学习自定义编辑器窗口之前，需要掌握**编辑器扩展概述**中的 `[MenuItem]` 属性用法和 `AssetDatabase` 基本操作，因为这两者构成了编辑器窗口注册入口和数据操作的基础调用方式。
 
-预计学习时间：30-60分钟。建议采用以下策略：
-
-- **主动回忆**：学完后不看笔记复述自定义编辑器窗口的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将自定义编辑器窗口与游戏引擎中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释自定义编辑器窗口，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于编辑器扩展的章节可作为深入参考
-- Wikipedia: [Custom Editor Window](https://en.wikipedia.org/wiki/custom_editor_window) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Custom Editor Window" 可找到配套视频教程
+完成本节后，可以进入**内容浏览器扩展**（Content Browser Extension）的学习。内容浏览器扩展在 Unreal Engine 中需要将自定义菜单项和资产操作面板嵌入已有的内容浏览器标签页，其 `FContentBrowserModule` 的委托注册模式与本节的 Tab 注册机制高度相似，但面向的是子面板而非独立 Nomad Tab，理解二者的注册位置差异是进阶的关键。
