@@ -24,88 +24,110 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # 命令行工具（UE Commandlet / Unity CLI）
 
 ## 概述
 
-命令行工具是指通过终端或脚本调用引擎功能、无需启动图形界面即可完成批量资产处理的技术手段。在虚幻引擎中，这类工具被称为 **Commandlet**，以 `UCommandlet` 为基类实现；而在 Unity 中，则通过 `-batchmode` 与 `-executeMethod` 参数组合调用编辑器的静态方法来实现类似的无头（Headless）执行模式。其本质是将引擎的编辑器功能解耦于用户界面，允许 CI/CD 流水线或离线渲染服务器在无显示器环境中自动化地执行任务。
+命令行工具是指在无图形界面（无头模式，Headless Mode）下驱动游戏引擎执行批量任务的机制。在 Unreal Engine 中，这类工具以 **Commandlet** 的形式存在，本质上是继承自 `UCommandlet` 的 C++ 或蓝图类，通过在启动参数中传入 `-run=YourCommandlet` 来触发执行，引擎不会打开编辑器 UI，而是直接调用 `Main()` 函数并在完成后退出进程。Unity 侧则提供了 **批处理模式（Batch Mode）**，通过 `-batchmode -executeMethod ClassName.MethodName` 的命令行语法，让 Unity Editor 以无窗口方式调用指定的静态方法。
 
-Commandlet 的概念在 UE3 时代（约 2006 年）已经存在，当时主要用于内容烘焙（Cook）和本地化导出。进入 UE4/UE5 之后，官方内置了数十个 Commandlet，包括 `ResavePackagesCommandlet`（批量重保存包）、`DiffPackagesCommandlet`（资产差异比较）以及 `GenerateDistillFileSets`（分发文件集生成）等，涵盖从资产验证到着色器预编译的整个内容管线。
+这一机制诞生于持续集成（CI/CD）流水线的需求。随着项目规模扩大，手动在编辑器中进行资产烘焙、贴图压缩、数据验证等操作无法满足自动化要求。UE 的内置 Commandlet 如 `ResavePackagesCommandlet`、`DiffAssetRegistriesCommandlet` 已经服务于引擎自身的构建管线多年，技术美术通过自定义 Commandlet 可以将同样的能力扩展到项目特定的工作流中。
 
-在技术美术的工具开发场景中，命令行工具的价值在于可以把耗时数小时的纹理重导入、LOD 生成或材质验证任务从艺术家的工作站上解放出来，转移到构建服务器的夜间批次中执行，显著减少等待时间并保证流程可重复性。
+对于技术美术而言，命令行工具的核心价值在于**可重复性与无人值守执行**：一次编写的 Commandlet 可在构建服务器（如 Jenkins、TeamCity）上每夜自动运行，对数千个资产执行一致的处理逻辑，消除人工操作引入的误差。
 
 ---
 
 ## 核心原理
 
-### UE Commandlet 的调用结构
+### UE Commandlet 的生命周期与入口点
 
-UE Commandlet 的最小调用格式为：
-
-```
-UnrealEditor.exe [ProjectPath].uproject -run=CommandletName [参数列表] -unattended -nopause -nosplash
-```
-
-其中 `-run=CommandletName` 是触发 Commandlet 的关键参数，`CommandletName` 对应 C++ 类名去掉 `Commandlet` 后缀的部分（例如类 `UResavePackagesCommandlet` 对应参数 `-run=ResavePackages`）。`-unattended` 标志会抑制所有弹出对话框，`-nopause` 确保进程执行完毕后立即退出，这两个参数对自动化流水线至关重要。
-
-自定义 Commandlet 需要继承 `UCommandlet`，并重写 `Main(const FString& Params)` 方法，返回值为 `int32`：返回 `0` 表示成功，非零值会被 CI 系统识别为失败并触发报警。在 `Main` 函数内部，可以通过 `GEditor->GetEditorSubsystem<UAssetEditorSubsystem>()` 等方式访问所有编辑器功能。
-
-### Unity CLI 的 `-batchmode` 机制
-
-Unity 命令行模式的典型调用格式为：
-
-```
-Unity -batchmode -quit -projectPath [路径] -executeMethod MyClass.MyStaticMethod -logFile build.log
-```
-
-`-batchmode` 强制 Unity 在无 GPU 渲染循环的情况下启动，内部跳过了 `SceneView` 和 `GameView` 的绘制调用；`-quit` 确保 `executeMethod` 执行完毕后进程自动退出。被调用的方法**必须是静态方法**，且必须位于 `Editor` 程序集中（即放置于 `Assets/Editor/` 目录下的脚本），否则 Unity 会报 `Method not found` 错误并以退出码 `1` 退出。
-
-值得注意的是，Unity 的 `-batchmode` 默认**不初始化音频设备**，同时 `Awake`/`Start` 等 MonoBehaviour 生命周期方法不会自动执行，这意味着不能依赖场景中对象的运行时初始化逻辑。
-
-### 参数解析与日志输出规范
-
-UE Commandlet 通过 `FCommandLine::Get()` 获取完整参数字符串，再结合 `FParse::Value()` 和 `FParse::Param()` 进行解析。例如：
+在 UE5 中，一个最小 Commandlet 的定义如下：
 
 ```cpp
-FString OutputDir;
-FParse::Value(FCommandLine::Get(), TEXT("OutputDir="), OutputDir);
-bool bDryRun = FParse::Param(FCommandLine::Get(), TEXT("DryRun"));
+UCLASS()
+class UMyBatchCommandlet : public UCommandlet
+{
+    GENERATED_BODY()
+public:
+    virtual int32 Main(const FString& Params) override;
+};
 ```
 
-日志输出应使用 `UE_LOG(LogMyCommandlet, Display, TEXT(...))` 而非 `GLog->Log()`，因为 `-unattended` 模式下 `UE_LOG` 的输出会同时写入 `.log` 文件和标准输出流，便于 CI 系统抓取。Unity CLI 则推荐使用 `Debug.Log` 加 `-logFile` 参数将日志重定向到指定文件，同时 `Application.isBatchMode` 属性可在运行时判断当前是否处于无头模式，方便条件性跳过 UI 相关代码。
+引擎通过 `UCommandlet::Main(const FString& Params)` 作为唯一入口，返回值 `0` 表示成功，非零表示错误码。启动命令形如：
+
+```
+UnrealEditor.exe MyProject.uproject -run=MyBatch -map=/Game/Maps/World01 -log
+```
+
+其中 `-log` 参数强制将日志输出到控制台，否则日志只写入 `Saved/Logs/` 目录。`Params` 字符串包含所有自定义参数，需用 `FParse::Value()`、`FParse::Param()` 手动解析。
+
+### Python Commandlet 与 UE Python 脚本的衔接
+
+由于前置知识为 UE Python 脚本，技术美术最常见的做法是使用内置的 **`PythonScriptCommandlet`**，命令如下：
+
+```
+UnrealEditor.exe MyProject.uproject -run=pythonscript -script="D:/scripts/batch_reimport.py" -log -stdout
+```
+
+`-stdout` 参数将 `print()` 输出重定向到标准输出流，使 CI 系统可直接捕获。Python 脚本在此模式下可完整访问 `unreal` 模块，调用 `unreal.AssetRegistryHelpers`、`unreal.EditorAssetLibrary` 等 API，与在编辑器内运行的行为完全一致，但不依赖任何 GUI 线程。
+
+### Unity 批处理模式的退出机制
+
+Unity 的 `-batchmode` 有一个容易被忽略的关键规则：**静态方法必须显式调用 `EditorApplication.Exit(int returnCode)`**，否则 Unity 进程会在方法返回后挂起，导致 CI 流水线超时。典型的安全写法为：
+
+```csharp
+public static class BatchProcessor
+{
+    public static void RunTextureCompress()
+    {
+        try
+        {
+            // 执行资产处理逻辑
+            AssetDatabase.Refresh();
+            // ... 压缩、打包等操作
+            EditorApplication.Exit(0);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError(e.Message);
+            EditorApplication.Exit(1);
+        }
+    }
+}
+```
+
+此外，Unity `-batchmode` 下异步操作（如 `AssetBundleBuild`）不会自动等待，必须使用协程轮询或 `while (!operation.isDone)` 阻塞循环来确保任务完成再退出。
 
 ---
 
 ## 实际应用
 
-**场景一：批量纹理压缩格式校验**
-在 UE5 项目中，可编写 `UTextureAuditCommandlet`，遍历指定目录下所有 `UTexture2D` 资产，检查其 `LODGroup`、`CompressionSettings` 是否符合项目规范（例如 UI 纹理必须为 `TC_EditorIcon`，角色漫反射必须为 `TC_BC7`）。该 Commandlet 可在每次 P4 提交后由 Perforce 触发器自动调用，不合规资产的路径列表输出到 JSON 报告文件，再由 Slack Bot 推送给对应艺术家。
+**场景一：批量重新导入并验证贴图规格**
+技术美术可编写 Python Commandlet，遍历 `/Game/Characters/` 路径下所有 `UTexture2D` 资产，检查其分辨率是否为 2 的幂次、压缩格式是否为 `BC7`，不合规的资产输出到 CSV 报告。整个流程在夜间构建时自动运行，次日早晨团队即可看到不合规资产列表，而无需任何人工检查。
 
-**场景二：Unity Addressables 资产打包**
-在 Unity CI 流程中，`-executeMethod AddressableAssetSettings.BuildPlayerContent` 可触发 Addressables 的增量打包，整个过程不需要打开编辑器界面，在一台 Linux 构建服务器上完成 Android 和 iOS 双平台的资产包生成，典型耗时从手动操作的 25 分钟缩短至 8 分钟。
+**场景二：UE Cook 前的材质参数一致性检查**
+在 `cook` 命令执行前，先运行自定义 Commandlet 扫描所有 `UMaterialInstance`，验证关键参数（如 `EmissiveMultiplier`）不超过项目规定的上限值 `10.0f`，若超出则以非零退出码阻断 CI 流水线，防止过曝材质进入打包结果。
 
-**场景三：着色器预热**
-调用 UE 内置的 `DeriveDataCache` 相关 Commandlet 配合 `-run=ShaderCompileWorker`，可在正式打包前将 DDC（Derived Data Cache）填充完毕，避免玩家首次进入关卡时发生实时着色器编译卡顿。
+**场景三：Unity 自动化图集打包**
+在 Unity 项目中，通过 `-batchmode -executeMethod AtlasPacker.BuildAtlas` 调用图集打包逻辑，将散图合并为 `2048×2048` 的图集并更新 `Sprite Atlas` 资产，打包完成后通过 `EditorApplication.Exit(0)` 干净退出，整个过程耗时通常比在编辑器内手动操作快 40%~60%，因为省去了 UI 渲染和资产预览加载的开销。
 
 ---
 
 ## 常见误区
 
-**误区一：认为 Commandlet 运行时不加载引擎模块**
-许多开发者以为 `-run=` 模式是"轻量级"启动，实际上 UE Commandlet 仍然会完整初始化引擎子系统，包括资产注册表（AssetRegistry）和插件系统。一个包含大量第三方插件的项目，其 Commandlet 启动时间可能高达 **60~90 秒**。如果需要真正的轻量级处理，应考虑使用独立的 Python 脚本配合 UE 的 `unreal.AssetRegistryHelper` API，而非 Commandlet。
+**误区一：认为 Commandlet 完全不加载引擎模块**
+实际上，UE Commandlet 仍会初始化完整的引擎子系统，包括资产注册表（Asset Registry）和对象系统，启动时间通常在 30 秒到 2 分钟之间，具体取决于项目资产数量。这与真正的"轻量级"命令行程序有本质区别。对启动时间敏感的任务（如检查单个文件），应考虑使用 UE 的 `UnrealBuildTool` 或外部 Python 脚本，而非 Commandlet。
 
-**误区二：Unity `-batchmode` 可以执行所有 Editor 功能**
-`-batchmode` 下 Unity 不会初始化 OpenGL/Vulkan 上下文，因此任何依赖 `RenderTexture.active`、`Graphics.Blit` 或 `Camera.Render()` 的截图或图像处理逻辑都会静默失败或返回空白结果。正确做法是改用 `AssetPreviewUpdater.ProcessScheduledChanges()` 等不依赖 GPU 上下文的 API，或切换到专门的离线渲染服务。
+**误区二：Unity `-batchmode` 可以直接使用所有 Editor API**
+部分依赖 `EditorWindow` 或 `SceneView` 的 API 在 `-batchmode` 下会抛出异常或静默失败，因为这些类要求 GUI 上下文存在。例如 `EditorUtility.DisplayProgressBar()` 在批处理模式下无任何效果，而 `Selection.activeObject` 始终为 `null`。应优先使用 `AssetDatabase`、`BuildPipeline` 等不依赖窗口上下文的 API。
 
-**误区三：用退出码 0 判断 Commandlet 是否成功**
-UE Commandlet 在遭遇部分资产加载失败时，`Main()` 内部的异常可能被 engine 层捕获而不传播给调用方，进程仍以 `0` 退出。可靠的成功判断应结合日志中是否出现 `Error:` 或 `Fatal:` 前缀的关键词，建议在 CI 脚本中对输出日志做二次 grep 检查。
+**误区三：返回值或退出码可以忽略**
+CI 系统（Jenkins、GitHub Actions）依赖进程退出码判断步骤是否成功。UE Commandlet 的 `Main()` 返回非零值不会自动导致进程以非零码退出，必须配合启动参数或在 Commandlet 内部调用 `FPlatformMisc::RequestExitWithStatus(true, ErrorCode)` 来确保正确传递失败状态。
 
 ---
 
 ## 知识关联
 
-**依赖前置概念——UE Python 脚本：**
-在编写 UE Commandlet 之前，通常已经用 Python 脚本验证过业务逻辑（例如通过 `unreal.EditorAssetLibrary.rename_asset()` 测试批量重命名流程）。将 Python 脚本迁移为 Commandlet 的主要动机是**性能与可分发性**：C++ Commandlet 的资产迭代速度比 Python 快约 3~5 倍，且不依赖编辑器内置的 Python 插件，更适合构建服务器部署。因此 Python 脚本是 Commandlet 开发的原型验证阶段，两者服务于同一批处理目标但处于不同的成熟度和性能层级。
+本概念直接依赖 **UE Python 脚本**：通过 `PythonScriptCommandlet` 桥接，已有的 Python 资产处理脚本无需改写即可升级为无头模式批量任务，是将交互式脚本工程化的最直接路径。掌握 `unreal.AssetRegistryHelpers.get_asset_registry()` 等 Python API 后，在 Commandlet 中的用法与编辑器内完全相同，学习迁移成本极低。
 
-**横向关联——构建管线与 CI/CD：**
-命令行工具是连接资产制作与自动化构建管线的接口层。Commandlet 的标准化调用格式与 Jenkins、TeamCity 或 GitHub Actions 的 shell step 天然兼容，使得技术美术编写的资产验证逻辑可以直接嵌入工程的持续集成流程，与程序员的代码编译步骤并行执行，形成完整的"内容质量门禁"体系。
+在工具开发的完整链条中，命令行工具代表了从"手动触发的脚本"到"自动化流水线节点"的转变。后续可延伸到 UE 的 **BuildGraph XML 脚本**（将多个 Commandlet 编排为有向无环图任务流）以及 Unity 的 **Addressables Build Script** 定制化，这两者都以本文介绍的批处理入口为基础执行单元。

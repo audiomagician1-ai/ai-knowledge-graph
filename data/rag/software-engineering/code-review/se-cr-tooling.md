@@ -24,61 +24,51 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # 审查工具
 
 ## 概述
 
-代码审查工具是软件工程团队用于组织、执行和追踪代码审查流程的专用平台，其核心功能包括：展示代码差异（diff）、允许行内评论、管理审查状态以及与版本控制系统集成。三款最具代表性的工具分别是 **GitHub Pull Request Review**、**Gerrit** 和 **Atlassian Crucible**，它们诞生于不同背景，各自针对不同团队规模和工作流程设计。
+代码审查工具是专门用于辅助开发团队进行代码审阅、批注和合并决策的软件平台。与简单地用邮件互传diff文件相比，现代审查工具提供了内联评论（inline comment）、自动化检查触发、审批状态跟踪等功能，使得审查过程可追溯、可量化。当前主流的三类工具分别是：集成在Git托管平台上的**GitHub Pull Request Review**、谷歌开源的**Gerrit**，以及Atlassian旗下已停止更新的**Crucible**。
 
-GitHub Pull Request 功能于 2008 年随 GitHub 平台推出，最初目的是为开源社区提供贡献代码的标准化渠道。Gerrit 由 Shawn Pearce 于 2008 年为 Android 开源项目（AOSP）开发，专为需要严格门控提交的大型项目设计。Crucible 则由 Atlassian 于 2007 年发布，与 Jira 和 Bitbucket 深度集成，面向企业级团队。了解这三款工具的差异，能帮助团队根据自身规模、审查严格度需求和现有技术栈做出正确选型决策。
+这三种工具的诞生背景各不相同。GitHub PR Review随GitHub平台于2008年上线，以社交化协作为设计理念；Gerrit由谷歌内部工具Mondrian演化而来，2008年由Shawn Pearce开源，专为Android项目大规模协作设计；Crucible则是Atlassian在2007年推出的商业产品，与Jira和Confluence深度整合，但自2020年起Atlassian已宣布该产品进入维护模式，不再新增功能。选择不同工具直接影响团队的审查流程设计、与CI/CD系统的集成方式和权限管控粒度。
 
 ## 核心原理
 
 ### GitHub Pull Request Review 的工作机制
 
-GitHub PR 采用**基于分支的异步审查模型**。开发者从主分支创建特性分支，推送若干提交后，向目标分支发起 Pull Request。审查者可在具体代码行添加评论，评论会以线程形式组织，支持对话回复。当所有 Reviewer 点击"Approve"且通过必要的 CI 检查后，PR 可被合并。
+GitHub PR Review 基于**分支合并请求**模型。开发者从主干创建特性分支，完成开发后发起 Pull Request，整个diff在浏览器中可视化呈现。审查者可在具体代码行添加 `line comment`，也可发起 `review` 并选择三种状态之一：`Comment`（仅评论）、`Approve`（批准）或 `Request changes`（要求修改）。只有收到足够数量的 `Approve` 且通过所有必需的 Status Check 后，PR才可合并。
 
-GitHub 支持三种审查状态：**Comment（仅评论）**、**Approve（批准）**、**Request Changes（要求修改）**。仓库管理员可在分支保护规则中设置最少需要 N 名审查者批准才能合并，此数字通常设为 1 或 2。PR 的评论直接附加在 diff 视图中，支持建议性修改（Suggested Change），审查者可直接提议替换代码片段，作者一键即可接受。
+GitHub提供的 **Branch Protection Rules** 可配置"至少需要N名审查者批准"（N可设为1至6），以及"代码所有者（CODEOWNERS文件中指定的人员）必须审查"等策略。整个审查历史以 conversation thread 形式保留在PR页面，每个thread可被单独标记为 `Resolved`，方便追踪修改落实情况。
 
-### Gerrit 的提交门控模型
+### Gerrit 的变更集审查模型
 
-Gerrit 采用与 GitHub 截然不同的**单提交（patchset）门控模型**。每个提交在合并前必须独立通过审查，Gerrit 引入了两个独立的投票维度：**Code-Review（代码质量）** 和 **Verified（验证/CI通过）**，各自使用 -2 到 +2 的评分制度。只有当提交获得至少一个 Code-Review +2 并且 Verified +1 时，才允许提交到主线，即"Submit"操作。
+Gerrit 采用完全不同的**变更集（Change）**模型，而非分支模型。开发者通过特殊的 `git push refs/for/<branch>` 命令将提交推送到 Gerrit 服务器，每个提交形成一个独立的 Change，拥有唯一的 Change-Id（写入commit message的形如 `I3b3a5e...` 的哈希串）。
 
-Gerrit 强制执行"一个提交一次审查"原则，避免大批量代码同时进入主线。若开发者修改代码后重新上传，Gerrit 会将其识别为同一变更的新 **Patchset**（如 Patchset 2、Patchset 3），保留完整的修改历史。Gerrit 使用专有的 `git push refs/for/master` 语法将提交推送到审查队列，而非直接推送到目标分支，这是它与普通 Git 工作流最大的操作差异。
+Gerrit 的评分系统是其最显著特征：每个 Change 需要在两个维度上同时满足条件才能合并。`Code-Review` 维度评分范围为 **-2 到 +2**，`Verified` 维度评分范围为 **-1 到 +1**。任何 -2 评分均构成一票否决，即使其他所有人打了+2也无法合并。这种设计来源于谷歌的工程文化，强调单个资深工程师有权独立阻止不符合标准的代码合入主干。Gerrit 还原生支持**主题（Topic）**功能，允许将跨仓库的多个相关 Change 分组，这对于需要同时修改多个微服务仓库的场景非常实用。
 
-### Crucible 的特色能力
+### Crucible 的审查会话模型
 
-Crucible 支持**计划内审查（Pre-commit Review）和事后审查（Post-commit Review）**两种模式，这是 GitHub PR 和 Gerrit 均不原生支持的能力。团队可以对已经提交到代码库的历史代码发起审查，适合合规审计或遗留代码改进场景。
-
-Crucible 与 Jira 的集成允许将代码审查缺陷直接转化为 Jira Issue，审查评论与任务追踪系统之间的关联是其企业场景的核心优势。Crucible 还提供审查统计报告，如每位审查者的平均响应时间、缺陷发现率等度量数据，支持管理层监控审查流程质量。然而，Atlassian 已于 **2020 年 4 月宣布 Crucible 进入维护模式**，不再开发新功能，因此新项目不建议选用。
-
-### 三款工具关键参数对比
-
-| 维度 | GitHub PR | Gerrit | Crucible |
-|---|---|---|---|
-| 合并粒度 | PR（含多个提交） | 单提交 | 灵活 |
-| 评分机制 | Approve/Request Changes | -2 至 +2 分制 | 通过/拒绝 |
-| 离线审查支持 | 不支持 | 不支持 | 支持 |
-| 典型用户规模 | 中小型到大型开源 | 超大型（如 AOSP） | 中型企业 |
+Crucible 将代码审查组织为**审查会话（Review Session）**，支持对 SVN、Git、Mercurial 等多种版本控制系统的diff进行审查，也支持对任意文件集合发起临时性（pre-commit）审查——这在Git工作流尚未普及的2007年至2015年期间是重要优势。Crucible 与 Fisheye（代码搜索工具）配套使用，通过 Fisheye 的提交索引来触发自动审查工作流。每个审查有明确的 `Moderator`（主持人）、`Author`（作者）和 `Reviewer` 三种角色，主持人负责关闭审查会话并记录最终结论（`Summarize`）。
 
 ## 实际应用
 
-**Android 开源项目（AOSP）** 是 Gerrit 最典型的真实案例。AOSP 代码库包含数百万行代码，每天有来自 Google 和全球设备厂商的大量提交，Gerrit 的 +2 门控机制确保只有经过双重独立审查的代码才能进入主线，单个提交的审查周期有时长达数周。
+**开源项目首选 GitHub PR Review**：Linux内核子系统之外的绝大多数开源项目（如React、Vue、Kubernetes）均使用GitHub PR Review，原因是其零摩擦的 fork-and-PR 工作流降低了外部贡献者的参与门槛，且 GitHub Actions 可直接在PR上运行lint、测试。
 
-**Facebook（现 Meta）** 早年使用内部工具 Phabricator（其差异审查功能 Differential 与 Gerrit 类似），后逐步向 GitHub PR 迁移，这一案例说明随着团队开源协作比重增加，工具选型会相应调整。
+**Android和大型企业单体仓库首选 Gerrit**：Android Open Source Project（AOSP）至今使用 Gerrit 管理所有代码合入，其变更集模型特别适合需要强制每次提交都经过独立审查的场景，以及基于 Repo 工具管理多仓库的 monorepo 架构。谷歌内部使用的 Piper 系统也采用类似的评分机制。
 
-初创公司和开源项目通常首选 **GitHub PR**，因为其学习成本低，开发者只需掌握标准 `git push` 和网页操作即可参与审查，而无需学习 Gerrit 的 `refs/for/` 推送协议。
+**Jira重度用户团队的历史选择**：2010至2018年间，使用 Atlassian 技术栈（Jira+Confluence+Bamboo）的企业团队普遍选用 Crucible，因为它能将 Jira Issue 与具体审查会话双向关联，在 Jira 的看板上直接显示代码审查状态，无需切换工具。
 
 ## 常见误区
 
-**误区一：Gerrit 的 +2 等同于"两个人各打 +1"**。事实上，Gerrit 的 +2 和 +1 不能相加，一个 +2 高于两个 +1 之和，+2 代表该提交获得项目核心维护者的完全认可，通常只有少数拥有该权限的人才能打出。普通贡献者的最高评分权限往往被限制在 +1，无法单独放行提交。
+**误区一：认为 Gerrit 的 +2 等同于 GitHub 的 Approve**。实际上两者语义不同。GitHub 的 Approve 表示"我认可这段代码可以合并"，是一种相对主观的判断；而 Gerrit 的 `Code-Review +2` 在大多数团队的配置中意味着"这段代码符合项目的编码规范和架构要求，具有合并资格"，且通常只有 Maintainer 级别的成员才有权打出 +2。混淆两者会导致团队在迁移工具时错误地将所有开发者都赋予 +2 权限，削弱门控效果。
 
-**误区二：GitHub PR Review 与 GitHub PR 是同一概念**。Pull Request 是代码合并请求的容器，而 PR Review 是对该容器内代码进行正式审查的动作，一个 PR 可以在没有任何正式 Review 的情况下被强制合并（前提是没有设置分支保护规则）。理解这一区别对配置正确的分支保护策略至关重要。
+**误区二：认为 Crucible 已完全不可用**。Atlassian 虽已停止新功能开发，但 Crucible 仍在安全修复支持范围内（截至官方公告，支持期至2024年）。部分仍在使用 SVN 或混合版本控制系统的老旧企业项目，短期内迁移成本极高，Crucible 依然是其可用选项。但对于新建项目，不应再选择 Crucible 作为主要审查工具。
 
-**误区三：选择更复杂的工具意味着更高审查质量**。Gerrit 的严格门控确实能拦截更多问题，但其陡峭的学习曲线（尤其是 `git push refs/for/master` 语法和 Change-Id hook 配置）会增加新人上手时间。团队规模在 10 人以下时，Gerrit 的配置和维护成本往往超过其带来的质量收益，此时 GitHub PR 配合两人审查规则是更实用的选择。
+**误区三：认为 GitHub PR Review 不适合大规模团队**。GitHub 的 `CODEOWNERS` 文件配合 Branch Protection Rules 可以实现细粒度的权限控制，如指定 `/src/auth/` 目录的改动必须由 `@security-team` 审查。Meta、Microsoft等公司均在 GitHub 上管理数百人协作的大型项目，通过自动化机器人（如 Meta 的 ReviewBot）补充 Gerrit 式的强制审查能力。
 
 ## 知识关联
 
-学习审查工具需要预先理解**代码审查概述**中建立的基础概念，例如为何需要正式审查流程、审查的质量目标是什么，只有在此基础上才能理解三款工具各自的设计权衡——Gerrit 的复杂性服务于"零缺陷入库"目标，GitHub PR 的简洁性服务于"快速迭代协作"目标。
+学习审查工具需要以**代码审查概述**中的概念为前提，包括审查目的（质量门控、知识共享）、审查粒度（提交级 vs 功能级）以及同步审查与异步审查的区别——理解这些概念后才能判断 Gerrit 的 Change 模型和 GitHub 的 PR 模型各自适用于何种团队纪律。
 
-从工具层面向上延伸，审查工具的选型直接影响**持续集成（CI）流水线**的接入方式：GitHub PR 通过 GitHub Actions 或第三方 CI 以状态检查（Status Check）形式集成，而 Gerrit 通过其内置的 Verified 投票维度接受 CI 系统的自动评分，两者接入逻辑有本质差异。掌握审查工具的操作机制，也是理解 **GitFlow** 和 **Trunk-Based Development** 等分支策略在实际团队中如何落地的前提。
+在横向关联上，审查工具的选型与**持续集成（CI）系统**紧密耦合：GitHub PR Review 原生对接 GitHub Actions，Gerrit 通过 `Verified` 标签与 Jenkins 或 Zuul CI 集成，而 Crucible 依赖 Bamboo 的 post-build 步骤触发审查通知。此外，**分支管理策略**（如 Trunk-Based Development 或 GitFlow）也直接影响工具选择：Trunk-Based Development 的极短特性分支与 GitHub PR Review 配合自然，而 Gerrit 强制的逐提交审查则天然契合直接推送主干的开发模式。
