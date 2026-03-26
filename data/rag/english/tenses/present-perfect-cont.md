@@ -20,69 +20,91 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-26
 ---
+
 # 现在完成进行时
 
 ## 概述
 
-现在完成进行时（Present Perfect Cont）是英语（English Language）中时态系统领域的重要概念。难度等级5/9（中高级）。
+现在完成进行时（Present Perfect Continuous Tense）是英语时态系统中兼具"完成"与"进行"双重体态特征的时态，其结构固定为 **have/has been + V-ing**。它描述一个从过去某一时间点开始、持续到现在的动作，强调该动作的**持续过程本身**，而非仅仅是结果。例如"I have been studying English for three hours"不只说明学习已经发生，更突出三小时不间断学习的过程感。
 
-have been+V-ing强调持续过程。
+这一时态在英语语法体系中的正式确立可追溯至18世纪晚期的英语规范化运动。早期语法学家将"完成"助动词 *have* 与进行体结构 *be + -ing* 结合，形成了专门表达"跨越一段时间的持续行为"的复合时态。它的出现弥补了现在完成时（have + done）只能表达完成结果、现在进行时（am/is/are + -ing）只能表达当下瞬间的语义空缺。
 
-在知识体系中，现在完成进行时建立在现在完成时的基础之上，是理解体态细微差别的关键前置知识。为什么现在完成进行时如此重要？因为它在时态系统中起到承上启下的作用，连接基础概念与高级应用。
+理解这一时态的关键价值在于：它能够精确传达**情感色彩**与**持续强度**。当说话者说"You've been eating my cookies!"时，语气中隐含着对持续行为的不满或惊讶——这种表达效果是"You ate my cookies"所无法实现的。
 
-## 核心知识点
+---
 
-### 1. have been+V-ing强调持续过程
+## 核心原理
 
-have been+V-ing强调持续过程是现在完成进行时(Present Perfect Cont)的核心组成部分之一。在时态系统的实践中，have been+V-ing强调持续过程决定了系统行为的关键特征。例如，当have been+V-ing强调持续过程参数或条件发生变化时，整体表现会产生显著差异。深入理解have been+V-ing强调持续过程需要结合英语的基本原理进行分析。
+### 结构构成与变化形式
 
+现在完成进行时的构成公式为：
 
-### 关键原理分析
+> **主语 + have/has + been + 现在分词（V-ing）**
 
-现在完成进行时的核心在于have been+V-ing强调持续过程。从理论角度看，该概念涉及以下层面：
+- 第三人称单数主语用 **has been + V-ing**，其余用 **have been + V-ing**。
+- 否定式：在 have/has 后加 **not**，即 *have not (haven't) been doing* 或 *has not (hasn't) been doing*。
+- 疑问式：将 have/has 提至句首，即 *Have you been waiting long?*
 
-1. **定义层**：明确现在完成进行时的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解现在完成进行时内部各要素的相互作用方式
-3. **应用层**：将现在完成进行时的原理映射到英语的实际场景中
+动词变为 V-ing 形式时，需遵守与现在进行时相同的拼写规则：以单个辅音字母结尾且前一个元音为短音时，双写辅音后加 -ing（如 run → running；sit → sitting）。
 
-思考题：如何判断现在完成进行时的应用是否超出了其理论适用范围？
+### 时间状语的搭配规律
 
-## 关键要点
+现在完成进行时常与以下时间标记词连用，这是区分它与其他时态的重要线索：
 
-1. **核心定义**：现在完成进行时的本质是have been+V-ing强调持续过程，这是理解整个概念的出发点
-2. **多维理解**：掌握现在完成进行时需要同时理解have been+V-ing强调持续过程等关键维度
-3. **先修关系**：扎实的现在完成时基础对理解现在完成进行时至关重要
-4. **进阶路径**：掌握后可继续深入体态细微差别等进阶主题
-5. **实践标准**：真正掌握现在完成进行时的标志是能在具体场景中灵活运用并正确判断适用边界
+- **for + 时间段**：for two hours, for six months（表示持续时长）
+- **since + 时间点**：since 2019, since last Monday（表示起始时间）
+- **all morning / all day / all week**：强调整段时间内的持续
+
+值得注意的是，*for* 与 *since* 也可与现在完成时连用，但加上进行体后，句子额外传递出"动作仍在继续"或"刚刚停止"的信号。例如，"She has lived here for ten years"（她已住了十年，可能还住）与"She has been living here for ten years"（她一直住在这里，强调持续状态，暗示可能还未结束）的语感存在细微差别。
+
+### 瞬时动词的不可用性
+
+现在完成进行时**不能与状态动词（stative verbs）的核心词汇搭配**，这是其重要的语法限制。动词如 *know、believe、own、consist、belong、mean* 等描述静态状态，而非可持续的动态过程，因此不能构成 *have been knowing* 或 *have been believing* 这类形式——这在语法上是错误的。
+
+相比之下，*live、work、study、wait、rain、try* 等**动态动词**（dynamic verbs）可以自由使用此时态，因为它们天然描述可延续的过程。部分动词如 *think、have* 在不同语义下身份切换：*I have been thinking about you*（思考，动态）✓，但 *I have been having a car*（拥有，静态）✗。
+
+---
+
+## 实际应用
+
+**场景一：解释当下状态的成因**
+"My eyes are red because I have been crying."——哭泣的持续过程（crying）直接解释了当前眼睛发红的状态，现在完成进行时在此充当"因果链中的持续因"。
+
+**场景二：表达近期反复发生的行为**
+"She has been calling you all afternoon."——这里并非一次通话，而是整个下午多次拨打的行为。此用法在口语中常带有抱怨、担忧或强调的语气色彩。
+
+**场景三：雅思与托福写作中的精准表达**
+在雅思学术写作Task 2中，考生可用"Researchers have been debating this issue since the 1990s"代替简单过去时，体现该辩题持续至今的学术相关性，给考官留下时态运用成熟的印象。
+
+**场景四：区分结果导向与过程导向**
+比较以下两句：
+- "I have painted the wall."（墙已经刷好了——强调**完成结果**）
+- "I have been painting the wall."（我一直在刷墙——强调**持续过程**，墙不一定刷完）
+
+第二句甚至可以隐含"所以我累了、所以手上有油漆"等背景语境。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将现在完成进行时与时态系统中其他相近概念混为一谈。例如，have been+V-ing强调持续过程的适用条件与其他同类概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解现在完成时就学习现在完成进行时，导致基础不牢**。建议先确认先修知识扎实
-3. **过度简化：现在完成进行时的复杂度为5/9，初学者容易忽略其中的细微但关键的区别**
+**误区一：认为现在完成进行时等于"更强调"的现在完成时**
+许多学习者以为 *have been doing* 仅仅是 *have done* 的"加强版"，其实两者语义焦点根本不同。"I have read the book"意味着书已读完（结果存在）；"I have been reading the book"侧重阅读行为一直在发生，书不一定读完。用错时态会导致逻辑矛盾：若说"I have been finishing my homework"，在语法上极为生硬，因为 *finish* 是一个终止性动词，与强调过程的进行体相冲突。
 
-## 知识衔接
+**误区二：滥用于不可数行为或一次性动作**
+学习者有时会说 *"I have been arriving in Beijing"*，这是错误的。*Arrive* 是瞬时动词（punctual verb），表示一个即刻完成的点状动作，没有可供延续的过程，因此无法使用现在完成进行时。判断依据：该动作是否可以合理地描述为"持续了X小时/分钟"？若不能，则禁止使用此时态。
 
-### 先修知识
-先修知识包括：
-- **现在完成时** — 为现在完成进行时提供了必要的概念基础
+**误区三：混淆 since 引导的时间从句主句时态**
+在使用 since 引导从句时，不少学习者会写出 *"Since I was learning English, I have been making progress"* 这样错误的句子。正确用法是：since 从句通常用**一般过去时**（"Since I started learning English..."），而主句才用现在完成（进行）时。两个子句的时态分工不能颠倒。
 
-### 后续学习
-掌握现在完成进行时后可继续学习：
-- **体态细微差别** — 在现在完成进行时基础上进一步拓展
+---
 
-## 学习建议
+## 知识关联
 
-预计学习时间：3-5小时。建议采用以下策略：
+**前置知识：现在完成时（have + done）**
+学习者需先掌握现在完成时的"过去发生、与现在相关"核心逻辑，才能理解为何在其基础上嵌入进行体 *been + V-ing* 后，语义重心从"结果"转移到"持续过程"。现在完成时是理解此时态的必要语法支架——它提供了 have/has 助动词框架与时间轴定位。
 
-- **主动回忆**：学完后不看笔记复述现在完成进行时的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将现在完成进行时与英语中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释现在完成进行时，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于时态系统的章节可作为深入参考
-- Wikipedia: [Present Perfect Cont](https://en.wikipedia.org/wiki/present_perfect_cont) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Present Perfect Cont" 可找到配套视频教程
+**后续发展：体态细微差别（Aspect Nuances）**
+掌握现在完成进行时之后，学习者将进入对英语"体"（aspect）系统更精微的探索：为何某些上下文中 *have been doing* 与 *have done* 可互换，而在另一些语境中却不能？这涉及**完成体**（perfective aspect）与**进行体**（progressive aspect）的语义张力，以及英式英语与美式英语对此时态使用频率的显著差异——美式英语更倾向于用简单过去时替代现在完成（进行）时，而英式英语则严格区分两者。这一对比将学习者引向更高阶的语体与语域分析能力。

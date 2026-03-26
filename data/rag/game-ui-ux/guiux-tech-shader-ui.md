@@ -24,50 +24,83 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # UI Shader效果
 
 ## 概述
 
-UI Shader效果是指专门为游戏界面元素编写的着色器程序，用于在GPU上实现模糊、溶解、渐变、流光、描边等视觉特效，与3D渲染Shader的主要区别在于UI Shader必须工作在屏幕空间坐标系内，且通常需要配合Unity的Canvas渲染管线或Unreal的UMG材质系统使用。这类Shader作用于Sprite、RawImage、Image等2D UI组件，通过修改片元着色器（Fragment Shader）对每个像素的颜色、透明度和混合方式进行精确控制。
+UI Shader效果是专门针对游戏用户界面元素设计的GPU着色程序，用于实现标准UI系统无法达成的视觉效果，包括高斯模糊、溶解消散、颜色渐变叠加、流光扫光等动态效果。与3D模型使用的Shader不同，UI Shader运行在屏幕空间的2D四边形上，顶点数据极为简单（通常只有4个顶点），几乎所有的计算压力都集中在片元着色器（Fragment Shader）阶段。
 
-UI Shader的概念随着2010年代移动游戏爆发而得到广泛实践。早期游戏界面几乎只能使用固定的图片资源，无法实现动态视觉效果，直到Unity 4.6引入uGUI系统并暴露`Material`属性接口后，开发者才开始系统性地为UI组件挂载自定义Shader。相比直接使用预渲染图片，UI Shader能将一张64×64像素的纯色纹理扩展出丰富的动态效果，内存占用减少90%以上，这在移动端资源预算极度有限的环境中具有决定性优势。
+UI Shader作为独立技术方向兴起于2010年代移动游戏爆发期。Unity的uGUI（2014年随Unity 4.6发布）和Unreal的UMG系统推动了自定义UI材质的普及，开发者开始系统性地为按钮、血条、技能图标等元素编写专用Shader，取代此前依赖美术预渲染贴图的低效方式。预渲染贴图无法响应运行时状态（如血量百分比），而UI Shader可以通过传入`_FillAmount`等uniform变量实时驱动视觉变化。
+
+UI Shader的核心价值在于将视觉状态与游戏逻辑直接绑定：技能冷却圆形遮罩、角色受伤时的屏幕红色晕染、传送门的流光旋转，这些效果如果用序列帧动画实现，每个效果需要数十张贴图，而一个Shader仅需几KB的代码即可实现完全程序化的动态效果。
 
 ## 核心原理
 
-### 顶点与片元着色器在UI中的分工
+### 高斯模糊Shader的实现机制
 
-UI Shader的顶点着色器（Vertex Shader）负责将UI元素的四个顶点从局部空间变换到裁剪空间，通常使用Unity内置的`UnityObjectToClipPos()`函数完成MVP矩阵变换，同时将UV坐标和顶点颜色传递给片元阶段。片元着色器才是UI特效的核心执行层：对于每一个屏幕像素，它接收插值后的UV坐标，对目标纹理采样，再执行颜色运算后输出最终RGBA值。UI Shader必须保留`Blend SrcAlpha OneMinusSrcAlpha`混合模式，否则半透明UI元素会出现错误的遮挡关系，这是UI Shader与不透明3D Shader最显著的语法差异。
+UI高斯模糊不能像3D场景后处理那样直接对全屏BufferDownsample，因为UI层需要选择性模糊特定控件（如背包弹窗背景）而不影响其他UI元素。标准做法是使用**两Pass分离卷积**：第一个Pass沿水平方向采样，第二个Pass沿垂直方向采样，将O(n²)的卷积计算降为O(2n)。对于半径为5的高斯模糊，权重数组通常为`[0.0625, 0.25, 0.375, 0.25, 0.0625]`（即1/16的帕斯卡三角形第4行），总共采样9次（含中心点）即可获得视觉上可接受的模糊效果。
 
-### 模糊效果的实现原理
+在Unity UGUI中实现背景模糊的常见方案是：在目标UI元素渲染前将当前屏幕内容Blit到RenderTexture，对该Texture执行模糊处理，再将结果作为UI面板的背景贴图使用。这个过程需要在`Camera.onPreRender`回调中精确控制执行时机，否则会出现一帧延迟的"鬼影"问题。
 
-高斯模糊UI Shader的核心是多次采样（Multi-tap Sampling）。最简单的3×3高斯核需要对目标纹理进行9次`tex2D()`采样，每次采样偏移量为`offset = blurSize / textureSize`，将9个采样结果按权重`[1,2,1; 2,4,2; 1,2,1]/16`加权求和。标准高斯模糊需要两个Pass分别执行水平方向和垂直方向的卷积，这种两趟式实现将计算复杂度从O(n²)降低到O(2n)，其中n为模糊半径的像素数。更高级的Kawase模糊使用逐步递增的偏移距离进行4次角点采样，经4次Pass后可模拟半径为8像素的高斯效果，GPU采样次数仅为16次而非传统的64次。
+### 溶解Shader的噪声采样原理
 
-### 溶解效果的噪声采样机制
+溶解效果（Dissolve）的核心是将一张灰度噪声贴图的像素值与时间驱动的阈值`_Threshold`（范围0到1）进行比较：当噪声值小于`_Threshold`时，对应片元被`discard`丢弃。GLSL/HLSL的关键代码为：
 
-溶解Shader使用一张噪声纹理（Noise Texture）驱动像素消失的顺序。片元着色器采样噪声图得到灰度值`n ∈ [0,1]`，将其与外部传入的溶解阈值`_Threshold`比较：当`n < _Threshold`时该像素完全透明，实现从噪声低值区域向高值区域扩散的溶解动画。边缘发光效果通过额外判断`n < _Threshold + _EdgeWidth`来绘制一条过渡带，并将该区域颜色替换为`_EdgeColor`，典型的边缘宽度设置为0.05到0.1之间，颜色常取橙红色模拟燃烧感。溶解Shader的片元函数代码量通常不超过15行，却能产生极具表现力的UI转场动画。
+```hlsl
+float noise = tex2D(_NoiseTex, i.uv).r;
+if (noise < _Threshold) discard;
+// 边缘发光：在阈值附近0.05范围内叠加高亮颜色
+float edge = step(noise, _Threshold + 0.05) * step(_Threshold, noise);
+col.rgb += edge * _EdgeColor.rgb * _EdgeIntensity;
+```
 
-### 流光效果的UV动画
+噪声贴图的频率决定溶解的颗粒感。技能消失通常使用中频Perlin噪声（贴图分辨率64×64即可），而卷轴展开效果则使用低频的水平渐变噪声以保证有序的方向性消失。`_Threshold`从0驱动到1的时长控制了动画速度，通常技能CD的溶解动画为0.3秒到0.5秒之间。
 
-流光Shader通过在片元着色器中对UV坐标施加时间偏移来模拟光线扫过的视觉效果。将一张对角线渐变纹理（Diagonal Gradient Texture）的U坐标每帧增加`_Speed * _Time.y`，使该纹理在UI元素表面持续滑动，再将采样结果以`Additive`（加法混合 `Blend One One`）或乘法方式叠加到原始UI纹理上。精确控制流光范围需要使用Mask纹理限制效果区域，例如只在按钮的高光区域显示流光，Mask纹理的R通道存储权重，最终颜色计算公式为：`finalColor = baseColor + glowColor * maskValue * glowIntensity`。
+### 流光（扫光）Shader的UV动画原理
+
+流光效果通过在基础贴图上叠加一张斜向高光贴图，并随时间偏移其UV坐标实现。核心代码如下：
+
+```hlsl
+float2 lightUV = i.uv + float2(_Time.y * _Speed, 0);
+float light = tex2D(_LightTex, lightUV).r;
+col.rgb += light * _LightColor.rgb * _Intensity;
+// 使用Alpha遮罩防止流光超出UI边界
+col.a = baseAlpha;
+```
+
+`_Time.y`是Unity内置的以秒为单位的运行时间。流光贴图通常是45度倾斜的白色线条，宽度约占整体宽度的20%至30%。为避免流光在图标边缘"溢出"，需要将流光强度乘以基础贴图的Alpha通道值作为遮罩。多个图标使用相同Shader时，可以通过给每个图标的材质实例设置不同的`_TimeOffset`参数，使流光在不同图标上错开出现，避免视觉单调感。
+
+### 径向填充（圆形进度条）Shader
+
+技能CD的扇形遮罩使用`atan2`函数将UV坐标转换为角度，再与填充百分比比较：
+
+```hlsl
+float2 centered = i.uv - float2(0.5, 0.5);
+float angle = atan2(centered.x, centered.y) / (3.14159 * 2.0) + 0.5;
+if (angle > _FillAmount) discard;
+```
+
+`_FillAmount`从0到1对应0到360度，由游戏逻辑层每帧写入。这种方案比使用序列帧减少约95%的贴图内存占用，且可以任意调整起始角度和旋转方向。
 
 ## 实际应用
 
-在MMORPG类游戏的角色属性界面中，稀有装备图标通常使用流光Shader，`_GlowSpeed`参数设为0.8至1.2时流光看起来最自然。技能冷却完成提示常采用溶解Shader的逆向播放——将`_Threshold`从1.0动画到0.0，使技能图标从碎裂状态重新完整地"浮现"。
+**血条受击闪白效果**：角色受到伤害时，血条Shader在0.1秒内将`_WhiteFlashAmount`从1线性插值回0，在Fragment Shader中用`lerp(texColor, float4(1,1,1,1), _WhiteFlashAmount)`实现。这个时序由动画系统或Tween库控制，Shader本身只负责混合。
 
-背包物品悬停时的毛玻璃背景效果使用Grab Pass抓取当前屏幕帧缓冲，再对其执行低通模糊，Unity中通过`GrabPass { "_GrabTexture" }`声明抓帧，但注意GrabPass在移动端性能开销极高，每次GrabPass会强制CPU与GPU同步，实际项目通常改为渲染到RT（RenderTexture）的间接方案。
+**技能图标三联态Shader**：许多RPG游戏的技能图标需要表达"可释放（正常）/冷却中（扇形遮罩+灰度）/不可释放（全灰+锁定图标）"三种状态。使用一个Shader通过`_State`参数（0/1/2）驱动条件分支，比为每种状态维护独立材质更易于管理，且在支持Shader动态分支的移动GPU（如Adreno 640+）上性能差异可忽略不计。
 
-战斗结算界面的数字增长常配合渐变Shader使用，将数字Image的颜色从灰色插值到金色，渐变方向沿Y轴从下向上，对应UV的V分量：`outputColor = lerp(_BottomColor, _TopColor, i.uv.y)`。
+**背包弹窗毛玻璃效果**：在《原神》等现代手游中，弹窗背景使用实时模糊+噪声叠加实现磨砂玻璃感，模糊半径通常为8到12像素，并在上层叠加约15%透明度的白色噪声贴图以模拟玻璃颗粒感。
 
 ## 常见误区
 
-**误区一：UI Shader可以直接使用3D Shader代替**。3D Shader默认开启深度测试（ZTest）和深度写入（ZWrite），会导致UI元素遮挡关系混乱，且缺少`Stencil`模板测试支持会破坏Mask组件的裁切功能。UI Shader必须声明`Stencil { Comp Equal Ref [_Stencil] Pass Keep }`等一整套模板测试语句才能与Unity的Masking系统兼容，这套代码在Unity内置的UI/Default Shader中有完整的参考实现。
+**误区一：为每个UI控件创建独立的材质实例必然造成DrawCall暴增。** 实际上，只有打断了Atlas合批的材质切换才会新增DrawCall。如果多个使用相同Shader的图标均来自同一张图集，且除`_TimeOffset`之外其他参数相同，可以通过`MaterialPropertyBlock`注入每个控件的差异参数，在部分引擎（如Unity SRP）中维持合批。但要注意UGUI的原生合批系统不支持`MaterialPropertyBlock`，需要使用第三方库如FairyGUI或手动管理。
 
-**误区二：模糊效果只需一个Shader即可完成**。实际上屏幕空间模糊如果只使用单一Material实例，多个模糊UI元素会共享同一模糊纹理，导致所有模糊程度相同。正确做法是为不同模糊强度的UI元素分配独立的RenderTexture，并在C#脚本层控制模糊Pass的迭代次数，迭代4次与迭代8次的视觉差异明显，但GPU耗时近乎成比例增长。
+**误区二：UI Shader中可以自由使用`discard`指令而无性能代价。** `discard`会禁用GPU的Early-Z深度裁剪优化，强迫GPU执行完整的片元着色后才丢弃像素。在包含大量透明UI叠层的场景（如聊天气泡列表）中，滥用`discard`的溶解效果会使GPU的Overdraw从原本的2-3层变为5层以上，在中低端移动设备上可能造成3-5ms的额外帧时间消耗。
 
-**误区三：流光Shader中`_Time.y`可以直接控制速度**。`_Time.y`是自游戏启动后的累计秒数，当其数值很大时（例如运行1小时后约等于3600），UV偏移值溢出浮点精度范围会导致流光抖动或闪烁。正确的做法是在C#脚本中用`Shader.SetGlobalFloat("_CustomTime", Time.time % 100f)`将时间值重置在可控范围内，或在Shader内部对偏移量取小数部分`frac()`。
+**误区三：模糊半径越大视觉效果越好。** 高斯模糊的采样次数与半径成正比，半径从5像素增加到10像素时，Fragment Shader的采样次数从9次增加到19次。在1080P分辨率的全屏UI面板上，将模糊半径从8增加到16，片元总计算量翻倍，在Adreno 530等GPU上可能导致帧率从60fps跌破45fps，而视觉差异对玩家来说并不明显。
 
 ## 知识关联
 
-UI Shader效果建立在**字体渲染技术**的理解之上：SDF（Signed Distance Field）字体渲染本质上也是一种Fragment Shader技术，其中的平滑阈值函数`smoothstep(0.5 - smoothing, 0.5 + smoothing, dist)`和UI溶解Shader的边缘处理逻辑高度相似，掌握SDF渲染有助于理解UI Shader中的反走样思路。**富文本实现**中对顶点颜色插值的理解直接对应UI Shader顶点着色器传递颜色数据的机制，两者共用同一套uGUI顶点数据结构`UIVertex`。
+UI Shader效果建立在**字体渲染技术**的SDF（Signed Distance Field）基础之上——SDF字体本质上也是一种UI Shader应用，通过在Fragment Shader中对距离场纹理执行阈值采样实现无锯齿缩放，理解SDF的`smoothstep`边缘处理逻辑有助于编写溶解效果的边缘发光代码。**富文本实现**中的顶点色注入机制（Vertex Color）是UI渐变Shader的数据来源——UGUI的`VertexHelper`填充的顶点颜色数组可以直接在Shader的`i.color`中读取，从而实现文字逐字变色等效果。
 
-学习UI Shader效果之后，进入**UI性能优化**阶段时会面临直接的权衡：自定义Shader会打断Unity的批处理（Batching），两个使用相同Shader但不同Material参数的Image无法合并Draw Call，因此需要通过MaterialPropertyBlock或GPU Instancing等技术在保留视觉效果的同时恢复批处理能力，这是UI性能优化章节的核心挑战之一。
+向前连接的**UI性能优化**课题中，UI Shader的批处理策略（Atlas合批、Shader变体裁剪）、RenderTexture的内存管理（模糊效果的RT尺寸缩放至1/2或1/4分辨率）以及移动端GPU的Tile-Based架构对多Pass Shader的额外带宽开销，都是从Shader效果向性能优化
