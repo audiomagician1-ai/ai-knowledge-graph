@@ -24,87 +24,82 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-27
 ---
 
+
 # 替换条件逻辑
 
 ## 概述
 
-替换条件逻辑（Replace Conditional with Polymorphism）是一种软件重构技术，专门针对代码中冗长的 `switch` 语句或 `if-else if-else` 链，将其替换为面向对象中的多态（Polymorphism）机制。其核心思想是：与其在一个地方用条件分支判断"这是哪种类型然后做什么"，不如让每个子类自己负责描述"我这种类型该做什么"。
+替换条件逻辑（Replace Conditional with Polymorphism）是重构领域中一种将冗长的 `switch/case` 语句或 `if-else` 链转换为面向对象多态调用的手法。其核心思想是：将"根据类型判断执行什么"的判断逻辑，分散到各个子类或策略对象中，让每个类"自己知道自己该做什么"，从而消除集中式的类型枚举代码。
 
-这一重构手法最早由 Martin Fowler 在其1999年出版的《Refactoring: Improving the Design of Existing Code》一书中系统化整理，编号为"Replace Conditional with Polymorphism"。书中明确指出，当同一个 `switch` 块出现在多个地方，或者 `if-else` 链的判断条件依赖于对象的"类型标志字段"（type code）时，这种代码就是引入多态的强烈信号。
+这一手法由 Martin Fowler 在 1999 年出版的《重构：改善既有代码的设计》（*Refactoring: Improving the Design of Existing Code*）中系统化整理，编号为第 327 页的核心重构手法之一。Fowler 明确指出，`switch` 语句是"坏味道"的典型代表，尤其当同一组条件在代码库中重复出现两次以上时，就是应用此手法的强烈信号。
 
-替换条件逻辑之所以重要，是因为它直接解决了"开闭原则"（Open/Closed Principle）的违反问题。每次新增一种类型，使用条件分支的代码需要找到所有相关的 `switch` 或 `if-else` 块并逐一修改；而使用多态后，只需新增一个子类并实现对应方法，原有代码无需改动。
+该手法直接解决了"散弹式修改"（Shotgun Surgery）问题——每当增加一种新类型时，必须找遍所有 `switch` 分支逐一添加 `case`，极易遗漏。改用多态后，新增类型只需新建一个子类并覆写对应方法，修改范围严格限定在单一文件内。
 
 ## 核心原理
 
-### 类型标志字段与分支判断的识别
+### 识别适用场景
 
-这种重构的触发条件通常是：类中存在一个"类型字段"（如 `String type`、`int category` 或枚举 `enum BirdType`），然后在多个方法中对这个字段做 `switch` 或 `if-else` 判断。以鸟类为例：
+并非所有条件逻辑都应被多态替换。Fowler 给出了明确的判断标准：当你发现条件表达式的每个分支都在做**相同名称但不同实现**的操作，且条件变量本质上代表一种"类型"或"角色"时，才是典型的适用场景。例如，以下代码按 `bird.type` 决定 `getSpeed()` 的计算方式：
 
 ```java
-// 重构前：基于 type 字段的条件分支
-double getSpeed(Bird bird) {
+// 替换前：典型的 switch 坏味道
+double getSpeed() {
     switch (bird.type) {
-        case EUROPEAN: return baseSpeed();
-        case AFRICAN: return baseSpeed() - loadFactor() * bird.numberOfCoconuts;
-        case NORWEGIAN_BLUE: return bird.isNailed ? 0 : baseSpeed(bird.voltage);
+        case "EUROPEAN":   return baseSpeed();
+        case "AFRICAN":    return baseSpeed() - loadFactor() * bird.numberOfCoconuts;
+        case "NORWEGIAN_BLUE": return (bird.isNailed) ? 0 : baseSpeed(bird.voltage);
+        default: throw new RuntimeException("Unknown type: " + bird.type);
     }
 }
 ```
 
-这段代码中，`switch` 每个分支对应一种鸟的具体行为，这正是多态本应承担的职责。
+该 `switch` 中，每个分支都在回答同一个问题（"速度是多少"），但答案因类型不同而异，正是多态替换的目标对象。
 
-### 提取子类并上移接口
+### 三步重构手法
 
-重构的步骤是：首先为每个 `case` 分支创建一个子类（`EuropeanBird`、`AfricanBird`、`NorwegianBlueParrot`），在父类或接口中声明 `getSpeed()` 抽象方法，然后将各分支的逻辑分别移入对应子类的 `getSpeed()` 实现中。重构后：
+替换条件逻辑的标准步骤如下：
+
+**第一步：建立超类/接口**。提取一个包含条件逻辑所在方法的抽象基类（或接口），声明 `getSpeed()` 为抽象方法或提供默认实现。
+
+**第二步：为每个分支建立子类**。针对 `switch` 的每个 `case`，创建对应的子类（`EuropeanSwallow`、`AfricanSwallow`、`NorwegianBlueParrot`），并在各子类中覆写 `getSpeed()` 方法，将原分支的计算逻辑迁入。
+
+**第三步：引入工厂方法，删除 `switch`**。原始的类型创建逻辑集中到一个工厂方法中（通常仍保留一个 `switch`，但仅负责对象构建，不再承载业务计算），最终删除原始的条件分支。
+
+重构后的代码结构中，调用方只需调用 `bird.getSpeed()`，完全不感知具体类型——这正是开闭原则（Open/Closed Principle）的体现：对扩展开放，对修改关闭。
+
+### 变体：使用策略模式替代继承
+
+当被替换的条件逻辑所在类**无法被继承**（如是第三方库类、或需要在运行时切换类型），可改用策略模式（Strategy Pattern）。将各分支逻辑封装为独立的策略类，通过组合而非继承实现多态。例如 Java 中将策略存入 `Map<String, BirdStrategy>`，以类型字符串为键查找对应策略执行，完全绕过 `switch`：
 
 ```java
-// 重构后：每个子类重写自己的行为
-class AfricanBird extends Bird {
-    @Override
-    double getSpeed() {
-        return baseSpeed() - loadFactor() * this.numberOfCoconuts;
-    }
-}
+Map<String, BirdStrategy> strategies = Map.of(
+    "EUROPEAN",       new EuropeanStrategy(),
+    "AFRICAN",        new AfricanStrategy(),
+    "NORWEGIAN_BLUE", new NorwegianBlueStrategy()
+);
+// 调用时：strategies.get(bird.type).getSpeed(bird)
 ```
 
-调用方只需持有 `Bird` 类型引用并调用 `getSpeed()`，运行时多态自动分发到正确的子类实现，整个 `switch` 块彻底消失。
-
-### 工厂方法替代类型字段的实例化
-
-完成子类提取后，原来通过设置 `type` 字段来区分类型的构造逻辑，需要改写为工厂方法（Factory Method）。例如：
-
-```java
-Bird createBird(String type) {
-    switch(type) {
-        case "European": return new EuropeanBird();
-        case "African": return new AfricanBird();
-        case "NorwegianBlue": return new NorwegianBlueParrot();
-    }
-}
-```
-
-注意：这里保留了一个 `switch`，但它被限制在唯一一处的对象创建逻辑中，而不是散落在业务逻辑的多个方法里。这是合理的，符合"只有一处条件分支"的设计目标。
+这一变体在 JavaScript、Python 等语言中因一等函数支持，常直接以函数字典（function map）实现，无需专门定义策略类。
 
 ## 实际应用
 
-**电商系统折扣计算**：假设系统有普通用户、VIP用户、企业用户三种类型，原代码在 `calculateDiscount()` 中用 `if-else` 对 `user.type` 做三路判断。重构后创建 `RegularUser`、`VipUser`、`CorporateUser` 三个子类，各自实现 `calculateDiscount()` 方法。当市场部门要新增"学生用户"类型时，只需新建 `StudentUser` 子类，不需要打开任何已有代码。
+**电商订单折扣计算**：系统需要根据用户类型（普通用户、VIP、企业客户）计算不同折扣率，原始实现往往是一条 `if-else` 链，散布在多个服务类中。应用替换条件逻辑后，建立 `Customer` 抽象类及三个子类，各自覆写 `getDiscount()` 方法，新增"超级VIP"级别只需新建子类，全部已有服务代码无需改动。
 
-**游戏角色技能系统**：RPG游戏中战士、法师、弓手的攻击逻辑各不相同，若用 `switch(role.classType)` 集中处理，每新增职业都要修改核心攻击方法。改为多态后，`Warrior`、`Mage`、`Archer` 各自覆写 `attack()` 方法，核心游戏循环只调用 `character.attack()`，职业扩展完全隔离。
+**游戏角色行为**：角色扮演游戏中，战士、法师、弓手的攻击方式截然不同，若以 `switch (role)` 实现，每次新增职业都必须修改战斗系统核心类。重构为多态后，新职业的加入对战斗引擎完全透明，测试范围也缩小为仅对新类编写单元测试。
 
-**报表生成格式**：一个报表服务根据 `format` 字段判断生成 PDF、Excel 还是 CSV，相同的分支判断散落在 `generate()`、`preview()`、`getFileExtension()` 三个方法中。这正是 Fowler 所说的"在多处出现的相同 switch"场景，每种格式提取为独立子类后，三个方法的分支同时消除。
+**编译器 AST 节点处理**：编译器对不同语法节点（加法节点、变量节点、函数调用节点）进行求值时，若用 `instanceof` 链判断，每次添加新节点类型都需修改求值逻辑。改为在每个节点类上定义 `evaluate()` 虚方法，是该手法在编译器工程中的经典应用。
 
 ## 常见误区
 
-**误区一：所有 if-else 都应该替换为多态**。事实上，这个重构只适用于"基于类型做分支"的场景。如果 `if` 判断的是业务条件（如 `if (price > 100)`、`if (user.age < 18)`），这些条件并不代表对象的"类型"，强行提取子类只会制造不必要的类爆炸。Fowler 本人强调，触发条件是分支逻辑依赖于对象的固有分类，而非临时的运行时条件。
+**误区一：认为所有条件都应被多态替换**。Fowler 本人明确提醒，对于"每个分支在做完全不同事情"的条件（例如权限判断中的 `if (isAdmin)`），并不适合多态替换——因为这里条件变量并非类型区分，强行引入子类反而增加了不必要的类层次。只有当条件的各分支在语义上回答同一问题时，多态替换才有价值。
 
-**误区二：多态替换后，原来的类型字段也必须删除**。在重构过程中，类型字段（如 `BirdType type`）可能在过渡阶段仍然存在于父类中，但一旦所有分支逻辑都迁移到子类，父类的 `type` 字段就失去了意义，应当随之删除。遗留该字段会让接手代码的开发者误以为它仍在被使用，产生理解负担。
+**误区二：工厂方法中的 `switch` 也被视为坏味道**。很多初学者在完成替换后，看到工厂方法中仍存在 `switch (type)` 便感到困惑。实际上这是正常且合理的——工厂方法中的 `switch` 专职负责"根据类型创建对象"，职责单一，不会因业务逻辑变化而膨胀，与散布在业务方法中的 `switch` 性质完全不同。
 
-**误区三：认为多态方案的性能比 switch 差**。在现代 JVM（Java 8+）或 .NET CLR 的虚方法分发机制下，虚函数调用与 `switch` 语句的性能差距在绝大多数业务场景中可以忽略不计（通常在纳秒级别）。以性能为由拒绝这一重构，在没有实际性能测量数据支撑的情况下，是典型的过早优化。
+**误区三：多态替换必然导致类数量爆炸难以维护**。当类型枚举只有 2-3 个值且变化极低频时，引入继承层次的复杂度可能确实超过直接写 `if-else` 的成本。重构时机的判断标准是：同一条件在代码库中出现 **3 次以上**，且有增加新类型的预期，此时多态替换的收益才明显超过成本。
 
 ## 知识关联
 
-**与"提取子类"重构的关系**：替换条件逻辑几乎总是依赖"提取子类（Extract Subclass）"或"提取接口（Extract Interface）"作为前置步骤。在没有合适的继承层次或接口之前，无法完成多态分发的搭建。
+替换条件逻辑的前置知识是面向对象的继承与方法覆写机制，以及基本的"坏味道"识别能力（尤其是识别重复的 `switch` 语句）。掌握这一手法是理解**开闭原则**在代码层面如何落地的最直观路径——每一次成功的多态替换，都是一次开闭原则的具体实践。
 
-**与"以卫语句替换嵌套条件"的区别**：另一种处理条件分支的重构手法"以卫语句替换嵌套条件（Replace Nested Conditional with Guard Clauses）"处理的是单方法内的复杂嵌套逻辑，重构后仍是 `if` 语句，只是结构更清晰。而替换条件逻辑是跨方法、跨类的结构性变化，两者解决的问题层次不同。
-
-**与开闭原则的联系**：完成这一重构后，新增类型变为"对扩展开放，对修改关闭"——这直接满足了 Robert C. Martin 在《敏捷软件开发》中对开闭原则的经典表述。理解这一重构手法，有助于在设计阶段就主动识别哪些地方应预先设计为多态，而不是等到代码腐化后再补救。
+在重构技术体系中，该手法常与**提炼方法**（Extract Method）和**引入参数对象**配合使用：在执行多态替换之前，通常需要先用提炼方法将 `switch` 的各分支逻辑整理干净，再进行类层次的构建。理解该手法之后，自然引出了**策略模式**、**访问者模式**（Visitor Pattern）等设计模式的动机——它们本质上都是将条件分发逻辑通过结构化手段消除的系统化方案。
