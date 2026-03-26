@@ -20,73 +20,94 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-27
 ---
+
 # Docker Compose
 
 ## 概述
 
-Docker Compose（Docker Compose Concept）是AI工程（AI Engineering）中开发运维领域的重要概念。难度等级5/9（中高级）。
+Docker Compose 是 Docker 官方提供的多容器编排工具，通过单一 YAML 配置文件（默认命名为 `docker-compose.yml`）定义和运行多个相互协作的容器服务。它于 2014 年作为 Fig 项目被 Docker 公司收购后重新发布，最初版本使用 Python 编写，Docker Compose V2 版本（2021年发布）改用 Go 语言重写，并以 `docker compose`（无连字符）子命令的形式集成进 Docker CLI。
 
-掌握Docker Compose的核心概念和应用。
+在 AI 工程场景中，一个典型的机器学习服务往往需要同时运行模型推理服务器、Redis 缓存、PostgreSQL 数据库和 Nginx 反向代理四个组件。如果用纯 Docker 命令逐一启动，不仅命令冗长，还需手动管理网络连接和依赖顺序。Docker Compose 将这些服务的镜像、端口、挂载卷、环境变量和启动依赖关系全部声明在一个文件里，用 `docker compose up -d` 一条命令即可完整拉起整个栈。
 
-在知识体系中，Docker Compose建立在Docker基础的基础之上，是理解Kubernetes入门的关键前置知识。为什么Docker Compose如此重要？因为它在开发运维中起到承上启下的作用，连接基础概念与高级应用。
+## 核心原理
 
-## 核心知识点
+### YAML 服务定义结构
 
-### 1. 掌握Docker Compose的核心概念
+`docker-compose.yml` 的顶层结构分为四个关键字段：`services`、`networks`、`volumes` 和 `configs`。其中 `services` 是必填项，每个 service 对应一个容器定义。以下是一个 AI 推理服务的典型配置片段：
 
-掌握Docker Compose的核心概念是Docker Compose(Docker Compose Concept)的核心组成部分之一。在开发运维的实践中，掌握Docker Compose的核心概念决定了系统行为的关键特征。例如，当掌握Docker Compose的核心概念参数或条件发生变化时，整体表现会产生显著差异。深入理解掌握Docker Compose的核心概念需要结合AI工程的基本原理进行分析。
+```yaml
+version: "3.9"
+services:
+  inference:
+    image: pytorch/torchserve:0.9.0-cpu
+    ports:
+      - "8080:8080"
+    volumes:
+      - model_store:/home/model-server/model-store
+    environment:
+      - TS_NUMBER_OF_NETTY_THREADS=4
+    depends_on:
+      redis:
+        condition: service_healthy
+  redis:
+    image: redis:7.2-alpine
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      retries: 3
+volumes:
+  model_store:
+```
 
-### 2. 应用
+`version: "3.9"` 指定 Compose 文件格式版本，不同版本支持的字段集合不同，3.x 系列对应 Docker Engine 19.03 及以上。
 
-应用是Docker Compose(Docker Compose Concept)的核心组成部分之一。在开发运维的实践中，应用决定了系统行为的关键特征。例如，当应用参数或条件发生变化时，整体表现会产生显著差异。深入理解应用需要结合AI工程的基本原理进行分析。
+### depends_on 与健康检查的协作机制
 
+`depends_on` 字段控制容器启动顺序，但仅凭 `depends_on` 只能保证容器**启动**顺序，无法保证依赖服务**就绪**。要实现真正的就绪等待，必须在被依赖服务上配置 `healthcheck`，并在依赖方使用 `condition: service_healthy`。上例中 Redis 容器每 5 秒执行一次 `redis-cli ping`，连续 3 次失败才判定为不健康，inference 容器只有在 Redis 健康检查通过后才会启动。
 
-### 关键原理分析
+### 网络隔离与服务发现
 
-Docker Compose的核心在于掌握Docker Compose的核心概念和应用。从理论角度看，该概念涉及以下层面：
+Docker Compose 默认为每个项目创建一个独立的桥接网络，网络名称格式为 `{项目名}_default`。同一 Compose 文件中的服务可以直接用服务名作为主机名互相访问，例如 inference 容器可以通过 `redis:6379` 直接连接 Redis，无需知道容器 IP。这一机制基于 Docker 内置的 DNS 解析，DNS 服务运行在 `127.0.0.11`。多个 Compose 项目之间默认网络隔离，若需跨项目通信，需要在 `networks` 字段中声明 `external: true` 引用已存在的外部网络。
 
-1. **定义层**：明确Docker Compose的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解Docker Compose内部各要素的相互作用方式
-3. **应用层**：将Docker Compose的原理映射到AI工程的实际场景中
+### 环境变量与 .env 文件
 
-思考题：如何判断Docker Compose的应用是否超出了其理论适用范围？
+Compose 自动读取与 `docker-compose.yml` 同目录下的 `.env` 文件，文件中的变量可在 YAML 内用 `${VAR_NAME}` 语法引用。例如将模型路径、GPU 数量等配置提取到 `.env` 文件，可实现开发环境与生产环境的配置切换，而无需修改主配置文件。运行时也可通过 `docker compose --env-file ./prod.env up` 显式指定不同的环境文件。
 
-## 关键要点
+## 实际应用
 
-1. **核心定义**：Docker Compose的本质是掌握Docker Compose的核心概念和应用，这是理解整个概念的出发点
-2. **多维理解**：掌握Docker Compose需要同时理解掌握Docker Compose的核心概念和应用等关键维度
-3. **先修关系**：扎实的Docker基础基础对理解Docker Compose至关重要
-4. **进阶路径**：掌握后可继续深入Kubernetes入门等进阶主题
-5. **实践标准**：真正掌握Docker Compose的标志是能在具体场景中灵活运用并正确判断适用边界
+**AI 模型开发环境一键搭建**：在本地开发 NLP 服务时，通常需要 JupyterLab、FastAPI 推理服务、MinIO 对象存储（用于存放模型文件）和 MLflow 实验跟踪四个组件。用一份 `docker-compose.yml` 定义这四个 service，挂载本地代码目录到容器，开发者执行 `docker compose up` 后立即获得完整开发环境，团队成员共享同一配置文件确保环境一致性。
+
+**GPU 资源分配**：在需要 GPU 的 AI 训练场景中，Compose 文件可以通过 `deploy.resources.reservations.devices` 字段为特定服务分配 GPU：
+
+```yaml
+services:
+  trainer:
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 2
+              capabilities: [gpu]
+```
+
+这要求宿主机安装 NVIDIA Container Toolkit，并使用 Docker Engine 19.03 以上版本。
+
+**滚动配置更新**：修改 `docker-compose.yml` 后执行 `docker compose up -d --no-recreate` 可以只重建配置发生变化的容器，保持其余容器继续运行，适合在不中断 Redis 缓存的前提下更新推理服务镜像。
 
 ## 常见误区
 
-1. **混淆概念边界**：将Docker Compose与开发运维中其他相近概念混为一谈。例如，掌握Docker Compose的核心概念的适用条件与其他应用概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解Docker基础就学习Docker Compose，导致基础不牢**。建议先确认先修知识扎实
-3. **过度简化：Docker Compose的复杂度为5/9，初学者容易忽略其中的细微但关键的区别**
+**误区一：认为 Compose 的 `scale` 等同于生产级负载均衡**。`docker compose up --scale inference=3` 确实能启动 3 个 inference 容器实例，但 Compose 默认的 DNS 轮询并不具备健康感知能力——某个实例崩溃后，DNS 仍可能将请求路由到该实例，导致请求失败。Compose 的扩缩容适合开发测试验证并发行为，生产环境需要 Kubernetes 或 Docker Swarm 的服务编排。
 
-## 知识衔接
+**误区二：将 `version` 字段视为当前安装的 Compose 版本**。`docker-compose.yml` 中的 `version` 字段声明的是 **Compose 文件格式规范版本**，而非工具本身的版本。Docker Compose V2 已将该字段标记为过时（deprecated），新版本中即使省略 `version` 字段也能正常解析，混淆两者会导致无谓的版本排查。
 
-### 先修知识
-先修知识包括：
-- **Docker基础** — 为Docker Compose提供了必要的概念基础
+**误区三：误以为 `docker compose down` 会删除挂载卷**。`docker compose down` 默认只删除容器和网络，具名卷（named volumes）会被保留，数据不会丢失。只有执行 `docker compose down -v` 才会同时删除具名卷。在 AI 项目中误用 `-v` 参数可能导致训练好的模型文件或数据库数据永久丢失。
 
-### 后续学习
-掌握Docker Compose后可继续学习：
-- **Kubernetes入门** — 在Docker Compose基础上进一步拓展
+## 知识关联
 
-## 学习建议
+**前置知识衔接**：Docker Compose 建立在 Docker 单容器操作的基础之上。理解 `docker run` 的 `-p`、`-v`、`-e`、`--network` 等参数，有助于直接对应 `docker-compose.yml` 中的 `ports`、`volumes`、`environment`、`networks` 字段——Compose 本质上是将这些命令行参数结构化为声明式配置。Dockerfile 的编写能力同样不可或缺，因为 Compose 的 `build` 字段直接引用 Dockerfile 来构建自定义镜像。
 
-预计学习时间：3-5小时。建议采用以下策略：
-
-- **主动回忆**：学完后不看笔记复述Docker Compose的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将Docker Compose与AI工程中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释Docker Compose，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于开发运维的章节可作为深入参考
-- Wikipedia: [Docker Compose Concept](https://en.wikipedia.org/wiki/docker_compose_concept) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Docker Compose Concept" 可找到配套视频教程
+**通往 Kubernetes 的过渡**：Compose 的服务定义概念与 Kubernetes 的 Pod、Service、Deployment 存在明确的对应关系。`kompose convert` 工具可以将 `docker-compose.yml` 自动转换为 Kubernetes YAML 清单文件，虽然转换结果通常需要手动调整，但这一映射关系有助于理解 K8s 的资源模型。Kubernetes 在多节点调度、自动扩缩容（HPA）、滚动更新策略等方面提供了 Compose 所不具备的生产级能力，是 AI 服务从单机部署迈向集群部署的下一个核心工具。
