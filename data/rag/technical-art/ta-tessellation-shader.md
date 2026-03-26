@@ -24,65 +24,76 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # 曲面细分着色器
 
 ## 概述
 
-曲面细分着色器（Tessellation Shader）是GPU渲染管线中一组专门用于在运行时动态增加网格面数的可编程阶段，由DirectX 11（2009年发布）正式引入图形API标准。与在CPU端预先生成高密度网格不同，曲面细分着色器能够根据摄像机距离、视角等运行时条件，在GPU内部将低多边形网格实时细化为高密度几何体，从而大幅降低内存占用并提升渲染灵活性。
+曲面细分着色器（Tessellation Shader）是DirectX 11和OpenGL 4.0于2009-2010年引入的可编程管线阶段，专门负责在GPU上动态增加网格的三角形数量，从而在运行时提升几何细节。与离线烘焙的高模不同，曲面细分着色器可以根据摄像机距离、屏幕像素密度等条件实时调整细分级别，使同一个低面模型在近处呈现出极高的几何精度。
 
-这组着色器在标准渲染管线中位于顶点着色器之后、几何着色器之前，由三个独立阶段协同工作：Hull Shader（外壳着色器）、固定功能的曲面细分器（Tessellator）以及Domain Shader（域着色器）。其中Hull Shader和Domain Shader是开发者可编程的部分，而Tessellator是GPU硬件内置的固定逻辑，无法直接编程但受Hull Shader输出参数的控制。在地形渲染、角色皮肤、车辆表面等需要LOD平滑过渡的场景中，曲面细分着色器能在不切换网格资产的前提下实现从粗糙到精细的连续几何变化。
+该阶段由两个独立的着色器程序构成：**Hull Shader（壳着色器）**和**Domain Shader（域着色器）**，中间夹着一个固定功能的**Tessellator（细分器）**硬件单元。三者共同构成完整的曲面细分管线，缺一不可。在DirectX的术语体系中，Hull Shader对应HLSL的`hull`关键字，Domain Shader对应`domain`关键字；在OpenGL中则称为Tessellation Control Shader（TCS）和Tessellation Evaluation Shader（TES）。
+
+曲面细分着色器的核心价值在于**位移贴图（Displacement Mapping）**的实现——通过在Domain Shader中采样高度图并沿法线方向偏移顶点位置，可以将贴图中存储的几何细节还原为真实的三维顶点，使岩石、地形、皮肤等表面呈现出视差效果无法实现的真实轮廓遮挡。
+
+---
 
 ## 核心原理
 
-### Hull Shader：控制点与细分因子
+### Hull Shader的职责
 
-Hull Shader的输入是一个"Patch"（面片），每个Patch由固定数量的控制点构成，常见配置为3个控制点（三角形Patch）或4个控制点（四边形Patch）。Hull Shader分两部分运行：**每控制点阶段**（per-control-point phase）负责变换并输出各控制点的属性；**Patch常量阶段**（patch-constant phase）则计算该Patch的细分因子（Tessellation Factor）。
+Hull Shader每个调用处理一个**Patch**（图元块），默认Patch为三角形，但也可以设置为4点四边形Patch（`quad`）或最多32点的等参Patch（`isoline`）。Hull Shader的输出分为两部分：
 
-细分因子包含**边缘细分因子**（Edge Tessellation Factor）和**内部细分因子**（Inside Tessellation Factor）两类。以四边形Patch为例，HLSL中的输出结构体如下：
+1. **逐控制点输出**：对输入的每个控制点进行变换，输出新的控制点数据，通常直接透传或做世界空间转换。
+2. **Patch常量输出**：通过`[patchconstantfunc]`属性标记的函数计算**细分因子（Tessellation Factor）**，包括内部细分因子`InsideTessFactor`和边缘细分因子`EdgeTessFactor`。
 
-```hlsl
-struct PatchTessFactors {
-    float EdgeTessFactor[4] : SV_TessFactor;
-    float InsideTessFactor[2] : SV_InsideTessFactor;
-};
-```
+在HLSL中，细分因子封装在`SV_TessFactor`和`SV_InsideTessFactor`系统语义中。边缘细分因子决定三角形每条边被分割成多少段，内部细分因子决定三角形内部的细分密度。当任意一条边的`SV_TessFactor`设置为0时，该Patch会被完全剔除，这是曲面细分视锥剔除优化的基础。
 
-EdgeTessFactor决定Patch四条边各自被细分成多少段，InsideTessFactor决定内部网格密度。若相邻两个Patch的共享边EdgeTessFactor不一致，则会产生T形接缝（T-junction），导致裂缝（crack）瑕疵，因此同一条共享边的细分因子必须在相邻Patch间保持一致。
+### 固定功能Tessellator的工作
 
-### 固定功能曲面细分器：UV坐标生成
+固定功能的Tessellator根据Hull Shader输出的细分因子，在**参数空间（Parametric Space）**内生成新的顶点坐标`(u, v, w)`，对于三角形Patch使用重心坐标，满足`u + v + w = 1`。细分因子的有效范围在DirectX 11中为**1到64的浮点数**，支持小数值以实现平滑过渡。Tessellator自身不可编程，但其分割模式可以在Hull Shader中通过`[partitioning]`属性选择：`integer`（整数取整）、`fractional_odd`（奇数分数）或`fractional_even`（偶数分数），其中`fractional_odd`和`fractional_even`可避免细分级别切换时的几何跳变。
 
-Hull Shader输出细分因子后，硬件Tessellator根据这些参数在Patch内部生成大量新顶点的**重心坐标**（对三角形Patch）或**UV参数坐标**（对四边形Patch）。Tessellator本身不处理世界空间位置，它只产生归一化的参数坐标（u, v）并将其传递给Domain Shader。细分模式支持`integer`（整数）、`fractional_even`（偶数分数）和`fractional_odd`（奇数分数）三种，后两种能在细分因子连续变化时产生平滑过渡，避免网格突变。
+### Domain Shader的职责
 
-### Domain Shader：顶点位置重建与位移贴图
-
-Domain Shader对Tessellator生成的每一个新顶点运行一次，接收参数坐标（u, v）以及Hull Shader输出的控制点数据，负责将参数空间的点映射回世界空间的最终顶点位置。这是实现**位移贴图（Displacement Mapping）**的关键环节：Domain Shader可以在计算出基础插值位置后，沿法线方向按位移贴图的采样值偏移顶点，公式为：
+Domain Shader对Tessellator生成的每个新顶点执行一次，接收重心坐标`(u, v, w)`和原始Patch的控制点，通过插值计算出该顶点的最终世界坐标。最常见的插值方式是**线性插值**（Phong Tessellation使用的是法线空间插值），公式为：
 
 ```
-finalPos = basePos + normal * displacementTex.SampleLevel(sampler, uv, 0) * displacementScale;
+P = u * P0 + v * P1 + w * P2
 ```
 
-注意Domain Shader中必须使用`SampleLevel`而非`Sample`，因为该阶段没有隐式的Mip级别梯度信息，直接调用`Sample`会导致编译错误。Domain Shader最终输出的是裁剪空间坐标，后续流程与普通顶点着色器输出完全一致。
+其中P0、P1、P2为原始三角形的三个顶点坐标。在此基础上叠加位移：
+
+```
+P_displaced = P + N * (height_map.Sample(...) * displacement_scale)
+```
+
+`N`为插值后的法线，`displacement_scale`为位移强度系数，通常在0到1之间调节，对应贴图中高度值的实际偏移量（单位：引擎世界单位）。Domain Shader输出裁剪空间坐标`SV_Position`，随后进入光栅化阶段。
+
+---
 
 ## 实际应用
 
-**地形渲染**是曲面细分着色器最经典的应用场景。以虚幻引擎的地形系统为例，远处地形Patch的细分因子可设为1（不细分），近处设为64，配合高度图作为位移贴图，使摄像机近处地形呈现真实的起伏细节，而远处维持低面数，整个过程无需切换地形Mesh资产。
+**地形渲染**是曲面细分着色器最典型的应用场景。UE4的Landscape系统在PC平台上使用曲面细分将地形基础网格（通常为每块8×8顶点）细分至数百个三角形，配合16位精度的高度图进行顶点位移，实现公里级地形的厘米级表面细节，同时不需要在内存中存储高密度静态网格。
 
-**角色细节增强**方面，《孤岛危机3》（Crysis 3，2013年）大量使用曲面细分配合皮肤位移贴图，在近景中为角色增加肌肉纹理的几何凸起，而非依赖法线贴图的光照近似。这一做法使光线在掠射角度下依然能产生正确的几何自阴影，是法线贴图无法替代的效果。
+**角色皮肤与布料**中，使用PN Triangles（Point-Normal Triangles）算法的Hull Shader可以基于顶点法线构建曲面控制点，使低面模型的硬边轮廓在细分后弯曲成光滑曲面，人物肩膀、脸颊等位置的锯齿感显著减少，这一技术在AMD的TressFX技术文档（2012年）中有详细描述。
 
-**汽车与机械硬表面**渲染中，设计师可在DCC软件（如Maya）中为模型标注Crease（折痕）权重，Hull Shader读取折痕信息后在锐利边缘处降低内部细分因子并保留尖锐轮廓，在圆滑面则提高细分密度以逼近Catmull-Clark细分曲面的效果。
+**海浪模拟**中，Domain Shader结合Gerstner Wave函数对水面Patch进行实时位移，细分因子根据与摄像机的距离从1动态变化至64，波谷与波峰处形成真实的几何遮挡与折射效果，而非单纯依赖法线贴图的视觉欺骗。
+
+在Unity（HDRP）中，开启曲面细分需要在Shader的SubShader中添加`#pragma hull hs_main`和`#pragma domain ds_main`，并将Topology设置为Patch拓扑模式（`topology Triangles`不够，需专用Patch Input Layout）。
+
+---
 
 ## 常见误区
 
-**误区一：认为细分因子越高渲染质量越好**。实际上，当细分后的三角形面积小于单个像素时，继续提高细分因子只会增加GPU计算负担，视觉上毫无改善。业界通用经验是将细分因子控制在使最终三角形边长约等于2到8个像素的范围内，超过这一阈值后应通过LOD系统降低细分因子而非继续叠加。
+**误区一：曲面细分着色器等同于法线贴图的升级**。法线贴图仅欺骗光照计算，在轮廓处会暴露出平坦的几何体；曲面细分配合位移贴图是真实移动顶点，在所有视角下（包括轮廓、阴影投射）都有正确的几何形状。两者面向的问题层次不同，并非简单的替代关系。
 
-**误区二：混淆位移贴图与法线贴图的效果范围**。法线贴图只改变光照计算中使用的法线向量，不产生任何真实几何偏移，因此在轮廓边、自阴影和接触阴影处无法产生正确效果。Domain Shader中实现的位移贴图是真实移动顶点坐标，能影响几何轮廓和自遮蔽，但代价是需要足够的细分密度（通常细分因子至少为8到16）才能让位移细节分辨率匹配贴图分辨率。
+**误区二：细分因子越高性能越好只要硬件够强**。过高的细分因子会导致细分后的三角形面积小于单个像素（亚像素三角形），此时光栅化效率急剧下降，因为每个微小三角形仍消耗完整的光栅化开销。业界经验表明，细分后的单个三角形覆盖像素数不应低于8-16个，否则应降低细分因子或切换至普通网格。
 
-**误区三：认为Hull Shader和顶点着色器可以互相替代**。顶点着色器无法改变网格拓扑，只能移动已有顶点；Hull Shader的细分操作是在几何拓扑层面新增顶点，两者在管线中独立运行，Hull Shader的控制点阶段实际上类似于一个作用于Patch控制点的"二次顶点着色器"，但其输出直接服务于后续的参数空间细分，而非最终的光栅化坐标。
+**误区三：Hull Shader和Domain Shader可以独立使用**。两者在管线中必须成对存在——有Hull Shader就必须有Domain Shader，且中间的固定功能Tessellator无法跳过。如果只需要Hull Shader的Patch处理能力而不想细分，需将所有细分因子设置为1（而非0，因为0会触发剔除）。
+
+---
 
 ## 知识关联
 
-掌握顶点着色器中的坐标变换（MVP矩阵、裁剪空间）是理解Domain Shader输出要求的直接前提，Domain Shader的最终输出格式与顶点着色器完全相同，均需输出`SV_Position`语义的裁剪坐标。
+**前置知识（顶点着色器编写）**：Hull Shader的控制点处理逻辑与顶点着色器的顶点变换高度相似——都在处理顶点的位置、法线、UV，但Hull Shader的输入为Patch内的控制点数组，而非单个顶点。Domain Shader的插值输出同样需要送往像素着色器，UV坐标、切线空间法线的插值方式与顶点着色器到像素着色器的插值规则一致。理解顶点着色器中`SV_Position`的语义，有助于正确在Domain Shader的最后阶段完成MVP矩阵变换。
 
-曲面细分着色器的下一个进阶课题是**曲面细分LOD**，其核心问题是如何根据摄像机距离、屏幕空间投影面积或法线角度动态计算出平滑变化的细分因子，以避免细分因子突变导致的"几何弹跳"（geometry popping）。Hull Shader中的Patch常量阶段正是LOD算法的实现位置，而`fractional_odd`或`fractional_even`细分模式是消除弹跳的硬件支持机制。
-
-此外，曲面细分着色器与**网格着色器**（Mesh Shader，DirectX 12 Ultimate引入）在功能上存在一定重叠，后者以更灵活的方式替代了包括曲面细分在内的传统几何处理管线，但在当前主流项目中曲面细分仍因其广泛的硬件兼容性（DirectX 11级别硬件）而保持重要地位。
+**后续概念（曲面细分LOD）**：当前的固定细分因子会在不同距离下表现出效率浪费或质量不足，曲面细分LOD正是在Hull Shader的`[patchconstantfunc]`函数中引入基于**屏幕空间投影尺寸**的自适应因子计算，使近处细分因子接近64、远处降至1，并处理相邻Patch边缘细分不匹配导致的**T形缝（T-junction）**裂缝问题，这是曲面细分实用化的关键工程步骤。
