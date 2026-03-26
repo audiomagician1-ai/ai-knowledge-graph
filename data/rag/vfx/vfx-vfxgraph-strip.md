@@ -24,55 +24,53 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # Strip粒子
 
 ## 概述
 
-Strip粒子（条带粒子）是VFX Graph中一种特殊的粒子输出类型，它将同一粒子系统中按生命周期顺序排列的粒子顶点连接成连续的四边形条带网格，而非独立渲染每个粒子精灵。这种连接机制使得每两个相邻粒子之间自动生成一个四边形面片，从而在视觉上形成平滑的轨迹、拖尾、丝带或闪电等效果。
+Strip粒子（条带粒子）是VFX Graph中一种特殊的粒子输出类型，其核心机制是将同一粒子系统中按时间顺序发射的粒子连接成连续的多边形条带网格，而不是渲染独立的四边形面片。每个Strip由一系列顶点按发射顺序串联而成，Unity在GPU端实时计算相邻粒子之间的连接关系，生成拉伸的四边形带状几何体。
 
-Strip粒子的概念源自传统粒子系统中的"Trail Renderer"思路，但在VFX Graph中通过GPU实例化重新实现，性能大幅提升。Unity在VFX Graph 7.x版本（对应Unity 2019.3）中正式将`Output ParticleStrip`节点作为稳定功能推出，允许开发者在Shader Graph中访问条带的`stripIndex`和`particleIndexInStrip`等专属属性。
+Strip粒子的概念源自游戏引擎对"轨迹渲染"的长期需求。早期引擎依赖Trail Renderer组件在CPU端逐帧记录对象位置来模拟拖尾，而VFX Graph从Unity 2018.3版本引入Strip输出后，将这一计算完全迁移至GPU，支持同时运行数万条独立Strip而不造成显著的CPU开销。
 
-Strip粒子之所以在特效制作中具有独特价值，在于它能够保留粒子的运动历史——普通Quad粒子每帧独立绘制，而Strip粒子会将粒子在空间中走过的路径"物化"为几何体。这使得导弹尾焰、魔法能量束、刀光剑影等需要展现运动轨迹的特效成为可能，且所有运算均在GPU上完成。
+Strip粒子的核心价值在于它能够精确表达"具有历史路径的运动体"，包括闪电、刀光、飞弹轨迹、烟雾卷须等效果。与普通粒子系统在粒子死亡后立即消失不同，Strip保留了粒子从诞生到消亡的整段空间路径，使视觉效果具有时间连续性。
 
 ## 核心原理
 
-### 条带的拓扑结构与粒子容量（Capacity）
+### Strip的数据结构与容量
 
-在VFX Graph中创建Strip系统时，必须在`Initialize Strip`上下文中设置`Strip Capacity`（条带容量）和`Particle Per Strip Capacity`（每条带粒子数）两个独立参数，而非普通系统中的单一Capacity值。每条Strip由最少2个粒子节点构成，N个粒子节点会生成`(N-1) × 2`个三角形。条带的宽度由每个粒子的`Size`属性控制，方向垂直于相机视角或由自定义切线向量决定。
+VFX Graph中每条Strip在内存中以一段连续的粒子数组形式存储，数组索引顺序即为Strip的顶点顺序。在VFX Asset属性中需要设置`Strip Capacity`（条带容量）和`Max Strip Count`（最大条带数量）两个关键参数。Strip Capacity决定单条Strip最多能包含多少个粒子节点，超过容量后新粒子会复用最旧的位置。举例来说，若将Strip Capacity设为32，则每条Strip最多由32个四边形片段首尾相接构成，形成31段连续的几何体。
 
-### stripIndex与particleIndexInStrip属性
+### 顶点展开与UV计算
 
-Strip粒子拥有两个专属内置属性：`stripIndex`标识当前粒子所属的条带编号（从0开始计数），`particleIndexInStrip`标识粒子在该条带内的序号位置。这两个属性可在`Output ParticleStrip`的Shader Graph材质中通过`VFXAttribute`节点访问，常用于实现沿条带的渐变效果。例如，将`particleIndexInStrip / (particlePerStripCount - 1)`的归一化值输入Alpha通道，可精确控制条带头部到尾部的透明度渐变，无需任何CPU干预。
+在输出阶段，Strip中每个粒子节点会展开为两个顶点（左右各一），两顶点沿粒子的`tangent`（切线方向）向两侧偏移，偏移距离由粒子的`size`属性决定。沿Strip长度方向的UV坐标默认通过`Strip Progress`属性计算，取值范围为0到1，代表该节点在Strip中的相对位置（0为Strip头部，1为尾部）。开发者可利用此属性配合渐变纹理实现头部透明、尾部显现的经典刀光效果，公式为：`Alpha = Gradient.Sample(stripProgress)`。
 
-### Update Strip上下文与粒子顺序
+### 粒子属性在Strip中的特殊行为
 
-普通粒子系统的Update上下文可任意修改粒子属性而不影响渲染顺序，但Strip粒子的`Update Strip`上下文中粒子的**索引顺序直接决定条带的连接顺序**。粒子按照出生时间（age从小到大）在条带内排列，最新诞生的粒子位于条带"头部"（`particleIndexInStrip = 0`），最老的粒子在"尾部"。这意味着如果在Initialize阶段将所有粒子同时生成（burst模式），条带将退化为静态丝带形状，而非动态拖尾——必须使用`Constant Rate`或`Variable Rate`逐帧生成才能形成追踪轨迹。
+在Strip模式下，`Particle Attribute`（粒子属性）分为两类：**逐粒子属性**（Per-Particle）和**逐Strip属性**（Per-Strip）。颜色、大小、旋转等属性属于逐粒子属性，每个节点独立存储，可随时间插值变化。而初始发射位置、Strip ID等属于逐Strip属性，由该条Strip的第一个粒子决定，后续粒子共享。在`Initialize Strip`上下文中设置的属性会作用于整条Strip的初始状态，而`Update Particle`上下文中对每帧每个节点的修改则产生逐节点的形状变化。
 
-### 纹理UV映射模式
+### 与噪声函数的结合
 
-`Output ParticleStrip`节点提供三种UV映射模式：`Stretch`（拉伸模式，纹理均匀铺满整条条带）、`RepeatPerSegment`（每段重复模式，纹理在每两个粒子之间完整重复一次）和`Custom`（自定义模式，由`texIndex`属性控制）。选择`Stretch`时，条带总长度变化会导致纹理随之压缩或拉伸，适合能量束类效果；`RepeatPerSegment`则保持单段纹理比例恒定，适合锁链或绳索效果。
+Strip粒子的形态控制高度依赖噪声函数。在`Update Particle`上下文中，对每个节点的位置叠加Curl Noise或Perlin Noise位移，会使整条Strip呈现有机弯曲的形态，而非僵硬直线。关键参数是噪声的`Field Transform`中的`Frequency`（频率），较低频率（如0.1~0.3）产生平滑弯曲的卷须状，较高频率（如2.0以上）则产生破碎闪烁的电弧感。由于噪声计算在GPU端进行，即使同时运行10,000条Strip，帧率损耗也远低于CPU端等效计算。
 
 ## 实际应用
 
-**刀光拖尾效果**：在`Initialize Strip`中设置Strip Capacity为1（单条带），Particle Per Strip Capacity为32。在`Update Strip`中添加`Age over Lifetime`节点驱动粒子Alpha衰减，并在Shader Graph中将`particleIndexInStrip`归一化值连接到Emission强度，使刀光头部最亮、尾部渐暗。配合`Orient: Along Velocity`朝向模式，条带宽度随速度变化而动态收窄。
+**刀光与武器轨迹**：在角色攻击动画中，可将Strip Capacity设为16，将Strip的生命周期（`lifetime`）设置为约0.15秒，每帧在武器骨骼位置发射新粒子节点，配合`Strip Progress`驱动不透明度渐变纹理，使轨迹头部清晰、尾部快速消散。
 
-**闪电链特效**：利用噪声函数（Perlin Noise）在`Update Strip`中每帧偏移粒子的Position属性，但仅对`particleIndexInStrip`在1到N-2范围内的中间粒子施加扰动（通过Step节点过滤首尾粒子），保持闪电两端锚点固定，中间段随机抖动，形成高频闪烁的放电视觉效果。
+**闪电效果**：单条Strip从起点到终点发射约20~30个粒子，在`Update Particle`中对每个节点施加高频Curl Noise（Frequency ≈ 3.0，Intensity ≈ 0.5米），使条带在空间中剧烈扭曲。在`Output Strip Quad`中使用发光（Emissive）材质，并在每帧随机重置节点噪声偏移的seed值，即可模拟闪电颤抖的视觉效果。
 
-**角色运动残影**：将Strip粒子的生成位置绑定到角色骨骼的世界坐标（通过`Position (Skinned Mesh)`采样器），设置粒子生命周期为0.15秒，Constant Rate为60/秒，使残影条带密度与帧率一致，在高速移动时留下清晰的运动轨迹切片。
+**烟雾飘带**：将单条Strip的粒子数量设为64，生命周期设为3~5秒，在Update阶段叠加低频噪声（Frequency ≈ 0.05）以及向上的Drag力，配合按`Age over Lifetime`渐变的透明度，可生成随风飘动的香烟烟雾拖尾。
 
 ## 常见误区
 
-**误区一：将Strip系统的Capacity理解为普通粒子总数**
-Strip系统的容量由`Strip Capacity × Particle Per Strip Capacity`共同决定，总粒子槽位数等于两者之积。若设置Strip Capacity为10、Particle Per Strip Capacity为20，则系统支持最多10条独立条带，每条带最多20个粒子（共200个粒子槽），而非直接设置200个粒子。混淆这两个参数会导致条带数量超限后新条带无法生成，但不会有报错提示。
+**误区一：将Strip Capacity设得过大导致内存浪费**。许多开发者在不了解Strip内存机制的情况下，将Strip Capacity设为128甚至256。实际上，VFX Graph会按照`Max Strip Count × Strip Capacity`预分配GPU显存，若有1000条Strip且容量为256，则预分配256,000个粒子的存储空间。大多数轨迹效果使用16~32的容量已足够，过大的容量会造成数倍的显存开销。
 
-**误区二：在Output中修改Position来控制条带形状**
-条带的几何形状完全由粒子在`Update Strip`上下文中的Position属性决定，在`Output ParticleStrip`的Shader Graph中修改顶点位置仅影响视觉偏移，不改变条带的物理骨架。很多初学者尝试在Output的Vertex Shader中做扭曲变形，发现条带宽度方向的扭曲正常，但条带走向无法改变，根本原因就在于骨架拓扑已在Update阶段固化。
+**误区二：在Initialize Particle而非Initialize Strip中设置Strip级属性**。Strip的起始位置、颜色等若在`Initialize Particle`中设置，则仅对第一个粒子节点生效，后续节点会使用默认值导致条带出现错误的跳变。需明确区分：控制整条Strip特征的属性必须放在`Initialize Strip`上下文中，控制单个节点随时间变化的属性才放在`Initialize Particle`和`Update Particle`中。
 
-**误区三：Strip粒子可以与粒子碰撞系统配合使用**
-VFX Graph目前（Unity 2022 LTS）的碰撞块（Collide with Depth Buffer / Collide with Sphere等）仅对`Output Particle Quad`类型的标准粒子有效，`Output ParticleStrip`不支持内置碰撞响应。若要实现条带与场景几何体的交互，需通过C# Script读取碰撞信息后以`VFXEventAttribute`形式回传给VFX Graph，手动更新锚点粒子的位置。
+**误区三：混淆Strip Progress与粒子Age**。`Strip Progress`描述的是粒子在整条Strip中的空间位置（0到1），与时间无关；而`Age over Lifetime`描述的是单个粒子节点自身的生命进度。用`Age over Lifetime`来控制Strip尾部渐隐会导致整条Strip同步淡出，而非从尾到头的渐进消失效果，正确做法是用`Strip Progress`驱动不透明度曲线。
 
 ## 知识关联
 
-Strip粒子的随机形变效果高度依赖**噪声函数**——在Update Strip上下文中，Curl Noise或Value Noise节点为条带中间节点提供逐粒子的位置扰动，使原本笔直的条带呈现有机的弯曲感。没有对噪声函数采样频率和幅度的理解，Strip的形态控制将缺乏精确性。
+Strip粒子的形态控制直接依赖**噪声函数**：Curl Noise的散度特性使Strip节点位移在空间上保持连续性而不产生断裂，这是普通Perlin Noise难以替代的。理解噪声的Frequency、Octave参数含义，是调出自然感Strip轨迹的必要前提。
 
-Strip粒子系统的预烘焙输出与**Point Cache**工作流紧密相连：通过Point Cache Bake Tool可以将复杂Strip动画的关键帧粒子位置序列烘焙为`.pcache`文件，在运行时直接从缓存中驱动条带形态，彻底绕过实时物理计算，在移动端等性能受限平台上实现高质量拖尾特效。
+Strip粒子的静态烘焙版本可通过**Point Cache**系统实现。当需要在场景中放置预先录制好的Strip轨迹路径（如固定的魔法阵纹路），可将Strip的粒子位置序列烘焙为Point Cache资产，供其他VFX Graph系统读取重放，从而将动态Strip转化为可复用的静态数据资源。
