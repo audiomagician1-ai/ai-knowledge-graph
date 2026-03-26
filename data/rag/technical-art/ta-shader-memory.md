@@ -24,59 +24,53 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # Shader内存
 
 ## 概述
 
-Shader内存是指GPU和CPU在运行时为存储已编译着色器程序、Shader变体字节码、Pipeline State Object（PSO）缓存及相关元数据所占用的内存空间。与普通纹理或网格内存不同，Shader内存分布在多个存储层级：CPU端的字节码缓冲区、驱动层的PSO缓存、以及GPU显存中的可执行着色器程序本体。
+Shader内存是指GPU和CPU为存储、缓存及执行着色器程序所占用的内存资源总和，涵盖已编译Shader字节码、Pipeline State Object（PSO）缓存、变体哈希表以及运行时驱动层的内部数据结构。与纹理或网格内存不同，Shader内存的消耗往往分散在多个内存池中，难以用单一的内存分析工具直接观察全貌。
 
-Shader内存问题在移动平台GPU架构（如Adreno、Mali、PowerVR）上尤为突出。这些GPU使用基于分块延迟渲染（TBDR）的架构，驱动程序需要在着色器执行前完成额外的本地编译和二进制链接，导致每个Shader变体在内存中实际占用的空间远超其SPIR-V或GLSL源码大小——在Adreno GPU上，单个复杂片元着色器编译后的驱动缓存可能达到原始字节码的3至5倍。
+Shader内存问题在2015年前后随着移动图形API的普及而引发广泛关注。OpenGL ES时代，驱动程序负责在运行时将GLSL源码编译成设备特定的二进制，这导致着名的"首帧卡顿"现象，同时已编译的二进制也需驻留在GPU可访问内存中。2018年Vulkan和Metal的推广，以及2020年Unity引入Shader预热系统（Shader Warmup），使开发者开始更系统地管理PSO编译与Shader内存分配。
 
-理解Shader内存的实际意义在于：未管理好的Shader变体数量会引发"变体爆炸"，一个包含10个关键字（keyword）的Shader理论上可生成1024个变体，每个变体在首次使用时触发运行时编译，造成卡顿（hitching），并累积占用数十MB的内存。这不仅影响帧率，更直接压缩了纹理、模型等其他资源的可用内存预算。
+在项目预算层面，一款中等规模移动游戏的Shader变体集合（ShaderVariantCollection）编译后在Android上可轻松超过50MB的设备内存占用，而主机项目的PSO缓存文件有时达到数百MB。若不加控制，Shader内存会直接挤压纹理流送池和音频缓冲区，导致全局OOM（Out of Memory）崩溃。
 
 ## 核心原理
 
-### Shader变体的内存分布结构
+### 编译后字节码的存储结构
 
-一个编译后的Shader变体在内存中并非单一对象。以Unity的渲染管线为例，单个ShaderLab文件在经过变体编译后，会生成`.shader`资产引用的**变体数据块（Shader Data Chunk）**，其中包含所有平台字节码的压缩包；加载到内存后，字节码解压至CPU RAM；最终当该变体首次渲染时，由驱动编译成GPU可执行二进制，写入驱动管理的**GPU Program Cache**。这三层结构（磁盘压缩→CPU字节码→GPU二进制）各自独立占用内存，技术美术需要同时关注CPU端内存（常驻字节码）和GPU端内存（已激活的可执行程序）两个维度。
+一个Shader程序在打包流程中经过以下转换：HLSL/GLSL源码 → 平台字节码（DXBC/DXIL/MSL/SPIR-V）→ 驱动内部二进制。每个平台字节码通常以Blob形式存储在AssetBundle或构建产物中，Unity的`.shader`资源在加载后，其CPU侧字节码以`ShaderData`对象形式保存在Managed堆与Native堆的混合区域。一个含有512个变体的Shader，即使单个变体字节码仅8KB，仅字节码部分就需要4MB内存，还未计入驱动层的编译开销。
 
-### PSO缓存与内存开销的量化关系
+GPU侧的Shader内存（Shader程序对象）由驱动程序管理，使用`glProgramBinary` / `vkShaderModule`创建后驻留在VRAM或统一内存（UMA架构下）。在Adreno和Mali GPU上，一个中等复杂度的Fragment Shader编译后的GPU指令缓存大小通常在16KB到256KB之间，乘以变体数量后增长极为显著。
 
-Pipeline State Object（PSO）是Direct3D 12、Vulkan和Metal中用于封装着色器程序、光栅化状态、混合状态等整套渲染状态的对象。每个唯一的PSO组合在首次创建时触发一次完整的着色器链接与优化，耗时可达数百毫秒，并将结果缓存在驱动的PSO缓存中。在Vulkan上，单个PSO对象的内存占用通常在64KB至2MB之间；一款中等规模的移动游戏若不加以管理，PSO缓存总量可轻松超过150MB。Unity的**Shader Prewarming API**（`ShaderWarmup.WarmupAllShaders()`）和Unreal的**PSO Caching系统**（`r.ShaderPipelineCache.Enabled=1`）均通过预热机制将PSO编译移至加载阶段，以内存换取运行时零卡顿。
+### PSO缓存与管道状态内存
 
-### 运行时编译与惰性加载的内存时序
+Pipeline State Object（PSO）将Shader程序与渲染状态（混合模式、深度测试、顶点布局等）绑定为一个不可变对象。PSO的内存开销远大于单纯的Shader字节码，因为每种状态组合都是独立的PSO实例。以DirectX 12为例，每个`ID3D12PipelineState`对象在驱动层占用的内存可从数十KB到数MB不等，具体取决于GPU厂商的内部表示。
 
-Shader内存的一个关键特性是其**惰性分配（Lazy Allocation）**时序：着色器资产加载到CPU内存时不立即触发GPU端分配，只有当包含该变体的Draw Call首次提交时，GPU驱动才完成最终编译并分配显存。这意味着使用内存分析工具（如Xcode Metal Debugger或Android GPU Inspector）观察到的Shader内存在游戏进行中会持续增长，直至所有可能的变体组合均被触发。技术美术可通过在场景加载后立即执行一次**覆盖渲染（Coverage Render）**——在屏幕外对所有材质进行一次不可见的Draw Call——来强制GPU端分配提前完成，使内存占用趋于稳定。
+PSO磁盘缓存（如Unity的`GraphicsDeviceInterface.pipelineStateCacheFile`，或UE4的Pipeline State Cache / PSO Cache系统）将已编译的PSO序列化到本地文件，首次安装后的运行仅从缓存加载而无需重新编译，但这些缓存文件本身在加载时需要全部或部分映射到内存。UE4的PSO缓存文件在大型项目中可达400MB以上，推荐使用稳定PSO（Stable PSO）功能将其拆分为分块加载。
 
-### 关键字对内存的指数级影响
+### 变体哈希表与CPU内存
 
-每新增一个`multi_compile`关键字，理论变体数量翻倍，对应的字节码内存亦线性增加。公式如下：
-
-**变体总数 = ∏(每个multi_compile的关键字分支数)**
-
-例如，4个各含2分支的`multi_compile`指令产生 2⁴ = 16 个变体；5个同类指令产生 2⁵ = 32 个变体。在Unity中，单个变体的字节码大小通常在8KB至60KB之间（依复杂度而定），因此32个变体仅此一项即可消耗近2MB CPU内存。使用`shader_feature`替代`multi_compile`可将未被材质使用的分支从构建包中剔除，是控制Shader内存最直接有效的手段。
+Shader变体系统在运行时维护一张哈希表，将关键字组合（keyword bitmask）映射到已编译的变体句柄。Unity的`ShaderKeywordState`内部使用128位或256位的位掩码标识关键字集合，每条哈希表记录约占64字节。当项目存在2000个活跃变体时，仅哈希表本身就需要约128KB，但更重要的是查找和加载变体时引发的按需编译会产生尖峰式内存分配。Shader.WarmupAllShaders()接口在Unity中会强制一次性编译所有变体并将其加载到GPU，若在内存紧张设备上调用，可触发200MB以上的瞬时内存峰值。
 
 ## 实际应用
 
-**移动平台Shader内存预算分配**：在针对高通骁龙8系列的手游项目中，典型的Shader内存预算为总显存的5%~8%（256MB显存设备约为13~20MB）。技术美术需通过Unity的**Shader Variant Collection**工具录制实际游戏中触发的变体，排除冗余变体后进行精简打包，确保加载到内存的字节码总量不超过预算。
+**移动项目Shader预热分帧策略**：针对内存限制在2GB以下的Android设备，推荐将ShaderVariantCollection拆分为多个小集合（每集合不超过50个变体），在Loading场景中通过协程逐帧调用`ShaderVariantCollection.WarmUp()`，每帧处理10-15个变体，将GPU内存分配峰值控制在30MB以内。
 
-**Unreal Engine的PSO预烘焙流程**：在UE5项目中，开发者在真机上运行一次完整流程以生成`*.rec.upipelinecache`记录文件，再通过构建系统将其转换为`*.stable.upipelinecache`预烘焙文件，随游戏包体发布。这样目标设备在首次加载时即可从文件中恢复PSO，避免运行时重新编译，同时将PSO缓存内存开销从动态增长转变为可预测的固定值。
+**PSO剔除与按需加载**：在UE4/UE5中，通过录制实际游戏路径生成`rec.upipelinecache`后，使用`-logpso`日志过滤掉仅在特定低概率场景触发的PSO（例如某些特效的透明叠加状态），可将PSO缓存文件体积减少40%-60%，对应减少运行时映射内存。
 
-**使用RenderDoc分析Shader显存**：RenderDoc的"Pipeline State"面板可列出当前帧所有已绑定的着色器程序及其在GPU端的字节大小。技术美术可通过对比不同场景的Shader绑定列表，识别出哪些材质组合触发了非预期的高开销变体，从而针对性地合并或精简。
+**Shader剥离（Shader Stripping）降低总内存基线**：Unity的`IPreprocessShaders`接口允许在构建时根据项目实际使用的渲染路径剔除无用变体。一个典型案例是将URP项目中未使用的`_SHADOWS_SOFT`和`_MAIN_LIGHT_SHADOWS_CASCADE`变体组合剥离后，Shader内存从67MB降至28MB，同时AssetBundle体积减少约35%。
 
 ## 常见误区
 
-**误区一：Shader文件体积小等于内存占用小**
-`.shader`文件在磁盘上可能只有几十KB，但经过平台编译后，其包含的所有变体字节码在CPU内存中的总占用可能是原始文件的数十倍。一个含有128个变体的移动端Shader，CPU字节码总量轻易超过5MB，而GPU端执行后的驱动缓存还会在此之外额外叠加。仅凭资产文件大小判断Shader内存消耗是典型的认知误差。
+**误区一：Shader内存等于Shader文件大小**。.shader源文件或ShaderLab文本文件通常只有几KB，开发者因此低估了运行时内存。实际上，一个具有10个关键字（理论上最多1024个变体）的Shader，经过平台编译后的内存占用与源文件大小毫无线性关系，已编译变体的GPU内存总量可能是源文件的1000倍以上。
 
-**误区二：PSO缓存越大性能越好**
-PSO缓存确实消除了运行时编译卡顿，但无限制地累积PSO缓存会挤占其他资源的显存。在低端设备（2GB RAM以下）上，PSO缓存超出驱动的内部阈值后，操作系统会触发LRU淘汰，导致被驱逐的PSO在下次使用时重新编译——反而造成更难预测的卡顿。应以实际触发的PSO数量而非全量预热作为预算基准。
+**误区二：调用`Resources.UnloadUnusedAssets()`可以释放Shader内存**。由于Shader对象通常被Material引用，而Material又被场景中的Renderer持有，Shader内存极少通过常规卸载流程释放。GPU侧的已编译程序对象由驱动完全控制，C#侧调用`Shader.Destroy()`也不能保证立即回收GPU内存，驱动可能将其保留在内部缓存中直至内存压力触发驱逐。
 
-**误区三：变体剥离（Stripping）在编辑器中等效于真机**
-Unity编辑器模式下报告的变体数量包含所有平台的编译路径，而实机构建仅包含目标平台的变体。技术美术应始终以**Build Report**（`Library/LastBuild.buildreport`）中的数据为准，而非依赖编辑器内的变体计数器，两者差异可能高达4至10倍。
+**误区三：PSO缓存越大越好**。PSO缓存体积与加载时的内存映射需求成正比，过大的缓存文件在低内存设备上反而可能因无法完整映射而引发加载失败或降级到无缓存的实时编译路径，反而造成更严重的卡顿和内存峰值。应定期通过Profile日志审查并裁剪PSO缓存中实际命中率低于5%的条目。
 
 ## 知识关联
 
-**前置依赖——Shader变体管理**：Shader内存的控制策略直接建立在变体管理的实践上。理解`multi_compile`与`shader_feature`的区别、关键字剥离规则，以及Shader Variant Collection的录制方法，是量化和优化Shader内存占用的前提。未经变体管理的项目在分析Shader内存时往往面临数量庞大、来源不明的变体，无从下手。
+Shader内存管理以**Shader变体管理**为直接前置，变体管理阶段决定了需要编译和缓存的变体总数，是Shader内存规模的根本决定因素——变体裁剪做得越彻底，内存上限越低。理解Shader变体的keyword体系（Global Keywords、Local Keywords）是估算内存峰值的必要基础，因为PSO数量等于变体数量与渲染状态组合数量的乘积。
 
-**横向关联——渲染状态管理与Draw Call合批**：PSO的唯一性由着色器程序、渲染目标格式、混合状态等共同决定。过度追求Draw Call合批有时会引入更多PSO组合，反而增加Shader内存。技术美术在做批次优化时需同步评估PSO多样性，避免两个方向的优化相互抵消，这在Vulkan和DX12后端项目中尤为重要。
+在项目预算全局视角中，Shader内存与**纹理内存**、**网格内存**共同竞争GPU可用内存池。在UMA（统一内存架构）移动设备上，三者共享同一物理内存，Shader内存的超支将直接导致纹理流送可用带宽缩减，引发贴图降级（Mip降级）。技术美术应将Shader内存纳入项目内存预算表，通常为其分配总GPU预算的5%-15%上限，并在每次大型版本迭代后使用`RenderDoc`的Resource面板或Xcode GPU Frame Capture的Shader Library视图进行专项核查。

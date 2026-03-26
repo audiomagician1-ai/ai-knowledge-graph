@@ -24,67 +24,45 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # 光追硬件单元
 
 ## 概述
 
-光追硬件单元是GPU芯片上专门负责加速光线与场景求交运算的固定功能硬件模块。NVIDIA将其称为**RT Core**（首次出现于2018年的Turing架构，型号RTX 2080），AMD则称之为**Ray Accelerator**（首次出现于2020年的RDNA 2架构），两者在功能上都承担同一核心任务：在不占用着色器（Shader Core/SIMD单元）计算资源的情况下，独立完成BVH节点遍历与光线-三角形求交测试。
+光追硬件单元是现代GPU中专门负责加速光线与场景几何体求交计算的固定功能电路模块。NVIDIA将其命名为RT Core，AMD将其称为Ray Accelerator，两者的核心任务相同：在硬件层面执行BVH（层次包围盒）树的节点遍历与光线-三角形求交测试，从而将这部分计算从着色器程序中卸载出来，让CUDA核心或流处理器专注于光照计算。NVIDIA于2018年随Turing架构（RTX 20系列）首次将RT Core引入消费级GPU，这是图形硬件史上首次为光线追踪专设独立功能单元。
 
-在没有光追硬件单元的时代，光线追踪必须完全依赖通用着色器来执行BVH遍历与求交，这会消耗大量可编程计算资源，导致帧率极低。Turing架构的RT Core使得实时光追在游戏中首次商业可行，RTX 2080 Ti拥有68个RT Core，每个RT Core能够在单个时钟周期内完成一次AABB（轴对齐包围盒）与光线的求交判断，而同等操作在Shader Core上需要消耗若干个时钟周期的ALU运算。
-
-光追硬件单元的重要性在于它将原本属于算法层面的**BVH遍历状态机**固化进了硅片逻辑，使得遍历栈管理、子节点排序等控制逻辑完全脱离可编程流水线，实现了计算资源的解耦与并行度的最大化。
-
----
+在没有光追硬件单元之前，软件光线追踪必须用通用着色器遍历BVH树，每次光线-AABB（轴对齐包围盒）测试都要占用着色器指令槽，导致GPU利用率极低。以RTX 2080为例，其RT Core在光线-盒子测试吞吐量上比纯着色器实现快约10倍，使实时光线追踪在消费级硬件上首次具备可行性。光追硬件单元的引入从根本上改变了实时渲染管线的分工逻辑。
 
 ## 核心原理
 
-### BVH遍历的硬件状态机
+### BVH遍历的硬件流水线
 
-RT Core内部实现了一个固定的BVH遍历状态机，其工作流程包含以下阶段：**光线变换 → 节点读取 → AABB求交测试 → 子节点入栈 → 三角形求交测试 → 结果返回**。当着色器通过`TraceRay()`或`vkCmdTraceRaysKHR()`等API发射一条光线后，RT Core接管该光线的所有遍历工作，着色器线程进入等待状态，此时GPU调度器可以切换到其他线程继续执行，从而隐藏遍历延迟。
+RT Core内部实现了一条专用的BVH遍历状态机。当着色器通过`TraceRay()`（DXR/DirectX Raytracing API）或`optixTrace()`（OptiX框架）发起光线追踪调用时，RT Core接管该光线，维护一个节点栈（node stack），按照深度优先顺序测试BVH的内部节点。每个内部节点包含两个子节点的AABB信息，RT Core同时对两个子AABB执行光线-盒子求交（即Slab方法：计算光线参数 $t_{min} = \max(\frac{x_{min}-o_x}{d_x}, \frac{y_{min}-o_y}{d_y}, \frac{z_{min}-o_z}{d_z})$，$t_{max} = \min(...)$，若 $t_{min} \leq t_{max}$ 则相交），并根据结果决定是否进入子树。这一遍历逻辑完全固化在硬件中，无需消耗着色器指令。
 
-遍历过程中，RT Core维护一个**遍历栈（Traversal Stack）**，记录待访问的BVH节点。NVIDIA第二代RT Core（Ampere，RTX 3080，2020年）将每个光线的栈深度上限设定为与BVH层级数匹配，并在硬件中缓存了最近访问的BVH节点，减少重复的显存读取。
+### 光线-三角形求交单元
 
-### 光线-AABB与光线-三角形求交
+当BVH遍历到达叶子节点时，RT Core中的三角形求交单元执行Möller–Trumbore算法的硬件实现。该算法将求交问题转化为求解线性方程组：令 $\mathbf{e}_1 = V_1 - V_0$，$\mathbf{e}_2 = V_2 - V_0$，$\mathbf{h} = \mathbf{d} \times \mathbf{e}_2$，则重心坐标 $u = \frac{(\mathbf{o}-V_0)\cdot\mathbf{h}}{\mathbf{e}_1 \cdot \mathbf{h}}$，硬件以单时钟周期或极低延迟完成上述浮点运算并返回命中参数 $t$、重心坐标 $(u, v)$。AMD RDNA 2架构的Ray Accelerator每个Shader Engine包含一个专用的光线-三角形相交单元，其最大支持同时处理的光线数与Shader Engine中的CU数量直接绑定。
 
-RT Core硬件中内置了两种固定精度的求交电路：
+### 与着色器的协同调度
 
-1. **光线-AABB求交**（用于BVH内部节点测试）：采用slab方法计算光线与三个轴对齐平面对的交点，公式为：
-   $$t_{min} = \max\!\left(\frac{b_{min} - o}{\vec{d}}\right),\quad t_{max} = \min\!\left(\frac{b_{max} - o}{\vec{d}}\right)$$
-   若 $t_{min} \leq t_{max}$ 且 $t_{max} > 0$，则光线击中该AABB。此电路在硬件中以**单时钟周期**完成一对轴的计算，三对轴并行，整体延迟极低。
-
-2. **光线-三角形求交**（用于BVH叶节点测试）：采用Möller–Trumbore算法的硬件实现，计算重心坐标 $(u, v)$ 并判断是否位于三角形内部，同时输出交点深度 $t$，供后续着色使用。
-
-### RT Core与Shader Core的协作模型
-
-RT Core并不独立完成完整的光追渲染，它只负责几何求交阶段，着色逻辑（任意命中着色器 Any-Hit Shader、最近命中着色器 Closest-Hit Shader）仍在Shader Core上执行。两者通过**异步协作**工作：Shader Core发射光线 → RT Core遍历返回命中结果 → Shader Core执行命中着色器 → 着色器可能再次调用`TraceRay()`发射次级光线 → RT Core再次接管。NVIDIA Ada Lovelace架构（RTX 4090，2022年）的第三代RT Core加入了对**不透明几何体快速路径**的优化，跳过Any-Hit着色器调用，可将遍历速度提升约2倍。
-
----
+RT Core并非独立运行，而是与着色器管线紧耦合。NVIDIA Ampere（RTX 30系列）中每个SM配备1个RT Core，Ada Lovelace（RTX 40系列）将RT Core的遍历吞吐量提升了约2倍，并新增了对不透明度微图（Opacity Micromaps）的硬件支持，允许以次三角形精度标记透明区域，减少着色器调用。当RT Core发现命中一个标记为非透明的三角形时，它可以在不唤醒着色器的情况下直接跳过该图元，极大减少了植被、栅栏等场景的性能瓶颈。RT Core完成求交后，将结果写回光线payload，再由GPU调度器触发相应的任意命中着色器（Any Hit Shader）或最近命中着色器（Closest Hit Shader）。
 
 ## 实际应用
 
-**游戏中的实时阴影与反射**：《赛博朋克2077》使用DXR（DirectX Raytracing）API，依赖RT Core加速光线追踪阴影与反射，在RTX 3080上4K分辨率下启用完整光追可维持约30 FPS，若全部回退至Shader Core软件模拟则帧率将骤降至个位数。
+**游戏中的阴影与反射加速**：在《赛博朋克2077》的光线追踪反射实现中，GPU每帧需要发射数亿条次级光线。RT Core将BVH遍历从着色器时钟中解耦，使RTX 3080在4K分辨率下的光追反射帧率相比纯软件实现提升约3-4倍。没有专用硬件，实时光追反射在该场景规模下完全不可行。
 
-**NVIDIA DLSS与光追的协同**：由于RT Core产生的噪声图像仍需降噪，实际流程是RT Core每像素仅发射极少数光线（如1条或0.5条/像素的稀疏采样），RT Core快速完成求交，然后由Tensor Core上运行的DLSS神经网络进行时间累积降噪与超分辨率重建，三类专用硬件各司其职。
+**离线渲染与DCC工具集成**：Pixar的RenderMan 24及以后版本支持通过OptiX 7调用RT Core执行GPU离线渲染，将原本需要数小时的帧渲染时间缩短至分钟级。在这一工作流中，RT Core负责所有BVH遍历，CUDA核心执行路径积分（Path Integration）的蒙特卡洛采样计算，两者并行运行，互不阻塞。
 
-**ProRender与离线渲染加速**：AMD的Ray Accelerator不仅服务于游戏，也被AMD ProRender等离线渲染工具调用。RX 6900 XT的Ray Accelerator吞吐量达到约**61亿次光线-三角形求交/秒**，可直接通过Vulkan `VK_KHR_ray_tracing_pipeline`扩展访问。
-
----
+**AI降噪与光追协同**：现代光追管线通常仅每像素发射1-4条光线（欠采样），再由Tensor Core运行的DLSS或XeSS进行降噪重建。RT Core在此流程中的角色是以极低延迟完成稀疏光线的高质量求交，保证降噪器获得准确的几何命中信息（世界坐标、法线、材质ID），这些信息质量直接影响降噪输出的正确性。
 
 ## 常见误区
 
-**误区1：RT Core可以独立完成整个光线追踪渲染流程**
-RT Core只负责BVH遍历和几何求交，不能执行任何着色计算。纹理采样、光照计算、材质求值均发生在Shader Core。若场景使用了大量Any-Hit着色器（如半透明植被），遍历工作会频繁回到Shader Core，RT Core的加速效果会被着色开销部分抵消。
+**误区一：RT Core可以独立执行完整的光线追踪渲染**。RT Core仅处理BVH遍历和几何求交两个步骤，不执行任何光照计算、纹理采样或材质求值。着色器（Closest Hit Shader、Miss Shader等）仍运行在普通的流处理器上。对于简单场景，RT Core空转等待着色器的时间甚至可能成为瓶颈，这时启用硬件光追未必比软件光追快。
 
-**误区2：光追硬件单元处理的BVH是应用层直接构建的原始BVH**
-实际上，驱动和硬件层会对应用通过`vkBuildAccelerationStructureKHR()`提交的BVH执行**内部重新打包（refit/rebuild）**，将其转换为适合RT Core内存访问模式的内部格式。应用层构建的BLAS/TLAS结构与RT Core实际读取的内存布局并不完全一致，开发者无法直接查看RT Core的内部BVH格式。
+**误区二：更多RT Core数量等于更好的光追性能**。RTX 4090拥有128个RT Core（每个SM一个），但实际光追性能瓶颈往往是着色器吞吐量或内存带宽，而非RT Core本身。当场景BVH质量差（如频繁动态更新导致BVH退化）时，RT Core处理的节点测试数量会急剧增加，此时优化BVH构建算法（如SAH启发式，Surface Area Heuristic）比增加RT Core数量更有效。
 
-**误区3：更多RT Core数量等比例提升性能**
-RT Core数量与性能提升并非线性关系。RTX 3090拥有82个RT Core，但其光追性能相比RTX 3080（68个RT Core）的提升幅度远小于12/82的比例差距，因为瓶颈通常在于BVH数据的显存带宽（RT Core需要持续读取加速结构数据），以及着色阶段回到Shader Core后的计算延迟。
-
----
+**误区三：软件BVH遍历与RT Core遍历的行为完全一致**。RT Core使用的BVH格式是厂商私有的，NVIDIA的压缩宽BVH（Compressed Wide BVH，有资料显示Turing使用BVH8结构）与标准二叉BVH的遍历顺序和剪枝策略存在差异，直接用CPU端生成的BVH结构传入GPU并不能得到最优性能——驱动层或构建库（如OptiX的`optixAccelBuild`）会自动将用户提供的三角形数据重新构建为硬件最优格式。
 
 ## 知识关联
 
-学习光追硬件单元需要掌握**BVH加速结构**的原理，包括BLAS（底层加速结构）与TLAS（顶层加速结构）的两级层次划分——RT Core的遍历正是按照先TLAS后BLAS的顺序进行，实例变换（Instance Transform）也在TLAS-to-BLAS跳转时由RT Core内部的矩阵变换单元完成，而非在Shader Core上计算。理解slab法AABB求交和Möller–Trumbore三角形求交算法的数学推导，有助于判断为何RT Core能将这两个操作设计为单周期电路而非可编程指令流。
-
-此外，RT Core与**DirectX Raytracing（DXR）**和**Vulkan Ray Tracing**的API调用链紧密耦合：`TraceRay()`指令在DXIL字节码层面会被驱动翻译为特定的硬件调用序列，触发RT Core接管光线。理解这一软硬件接口有助于在性能分析工具（如NVIDIA Nsight Graphics的光追分析视图）中正确解读RT Core利用率与Shader Core利用率的关系。
+光追硬件单元的前置知识是BVH加速结构：理解BVH如何将场景几何体组织为层次AABB树，是理解RT Core内部状态机和节点栈操作的必要基础。SAH（表面积启发式）构建策略决定了BVH树的质量，直接影响RT Core每条光线平均需要测试的节点数量，而TLAS（顶层加速结构）与BLAS（底层加速结构）的两级BVH设计是DXR和Vulkan Ray Tracing API中RT Core工作的标准模式，BLAS对应单个网格的几何体BVH，TLAS对应场景实例化层级，RT Core按先TLAS后BLAS的顺序递归遍历。掌握光追硬件单元的工作方式，是进一步理解光追降噪管线、DLSS 3.5光线重建以及下一代全局光照算法（如硬件加速的Lumen HWRT模式）如何调度GPU资源的关键出发点。
