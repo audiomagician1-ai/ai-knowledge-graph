@@ -24,49 +24,78 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # LOD与流送
 
 ## 概述
 
-LOD与流送（LOD with Streaming）是将多细节层次技术与关卡流送机制深度整合的渲染优化策略，专门应对开放世界场景中数以千计的资产在运行时的动态加载与精度管理问题。在Unreal Engine 5的World Partition系统正式引入之前，大型地图依赖手动划分的Level Streaming Cell来控制哪些区域的几何体被加载进内存；World Partition将这一过程自动化，并以64m×64m（可配置）的网格单元为单位进行流送，使得LOD与流送的协同设计从可选优化变为强制性的架构决策。
+LOD（Level of Detail，细节层次）与流送（Streaming）的结合，是现代大世界游戏中管理渲染资源的核心技术手段。单独使用LOD可以根据摄像机距离切换网格精度，但当场景规模超过单个关卡所能容纳的范围时，必须引入流送机制将世界分块按需加载，两者协同才能支撑数平方公里乃至更大规模的开放世界实时渲染。
 
-该技术组合的重要性在于：流送负责控制**资产是否存在于内存**，而LOD负责控制**已存在资产的几何精度**，两者在不同维度上降低GPU和CPU的开销。若仅有流送而无LOD，玩家视野边缘的全精度模型会在单帧内产生巨大渲染负担；若仅有LOD而无流送，即便是LOD3的低精度网格也会在超大地图上累积到数十万个Draw Call。二者缺一不可，且切换时机必须精确配合。
+Unreal Engine 5引入的World Partition系统将传统手动分割的Level Streaming自动化，把世界空间划分为固定尺寸的Cell（默认大小为128米×128米），每个Cell独立管理其内部Actor的加载与卸载。与此同时，HLOD（Hierarchical LOD）系统为这些Cell提供跨区域的低精度代理网格，使得未加载Cell也能以极低的面数出现在可见范围内，避免远景空洞。
+
+理解LOD与流送的结合之所以重要，在于二者若配置不当会产生相互抵消的效果：LOD切换距离若大于流送加载距离，高精度LOD0网格会在对应Cell尚未加载时被请求，导致资源缺失或卡顿；反之若流送距离远大于LOD切换距离，大量Cell已加载但全部以LOD2渲染，造成内存浪费而无性能收益。
+
+---
 
 ## 核心原理
 
-### World Partition的流送距离与LOD屏幕尺寸的耦合
+### World Partition中的LOD分层架构
 
-World Partition通过`Streaming Source`（通常为玩家Pawn）向外扩展加载半径，默认的`Loading Range`约为128m，`Visual Loading Range`可单独设置得更大。关键在于：当一个流送单元进入加载范围时，其中的静态网格Actor会以**LOD0**完整加载进显存；当流送单元处于`Visual`边界（已可见但未完全加载物理）时，同一Actor可配置为仅在内存中保留LOD2或LOD3。这意味着技术美术需要在`StaticMesh`的`LOD Screen Size`阈值与流送单元的半径之间做联合调参——若LOD0切换到LOD1的屏幕尺寸阈值为0.3（约对应100m视距），而流送单元的卸载距离为90m，那么玩家永远不会在LOD0下看到该物体从流送中卸载，从而避免了精度跳变。
+World Partition将Actor的运行时表现分为三个层次：Runtime Cell负责物理加载范围（默认加载半径约为512米）；Streaming Source（通常为玩家Pawn或摄像机Actor）驱动哪些Cell进入加载队列；HLOD Layer则在已卸载Cell的位置提供代理几何体。
 
-### Level Streaming Cell与HLOD的分层替代关系
+HLOD0层代理通常由多个相邻Cell的静态网格合并生成，面数压缩比可达原始几何体的1:50甚至更高。引擎在构建HLOD时会自动合并材质并烘焙光照，生成的代理网格以Nanite或传统LOD链的形式存储于HLOD Actor资产中，切换判断依赖`HLODLayerTransitionScreenSize`参数（默认值0.1），即当代理网格的屏幕占比低于10%时保持显示HLOD代理，高于此值则触发对应Cell的完整加载流程。
 
-传统Level Streaming（非World Partition）与LOD配合时，未加载的关卡整体不可见。而World Partition引入了`HLOD Layer`机制，当一个流送单元超出加载范围被卸载后，系统会自动用预烘焙的HLOD代理网格（通常多边形数降至原始LOD0的0.5%~2%）替换该区域。这形成了三层精度架构：**流送单元内LOD0/1/2** → **流送边界处LOD3** → **流送单元外HLOD代理**。技术美术在设置LOD链时，必须保证LOD3的外观与HLOD代理的外观过渡自然，否则在流送边界处会产生视觉跳变（Popping）。HLOD代理的生成参数`Merge Proxy Distance`与LOD3的`Screen Size`之间的差值建议不超过0.05，以控制过渡区间。
+### 流送距离与LOD距离的协调计算
 
-### 流送优先级与LOD加载顺序
+在World Partition中，推荐将流送加载距离（`LoadingRange`）与LOD切换距离（`ScreenSize`阈值对应的世界空间距离）保持如下关系：
 
-Unreal Engine的Asset Streaming系统支持`Streaming Priority`，LOD贴图（Mip）和LOD几何体遵循相同的异步加载队列。当玩家快速移动时（如载具速度超过20m/s），新进入流送范围的Actor可能在LOD0几何体完全加载之前就已经出现在屏幕上。引擎通过`r.StaticMesh.LODDistanceScale`全局缩放因子控制LOD切换的保守程度，较大的值（如1.5）会让引擎在更近距离处保持LOD0，但会增加内存压力，需与流送带宽预算（通常设定为200~400MB/s的流送吞吐量）协调取舍。`World Settings`中的`Cell Loading Hysteresis`参数（迟滞范围，默认约32m）可防止在流送边界附近频繁触发加载/卸载，但此迟滞范围与LOD切换距离之间若不协调，会导致短暂的"无HLOD且无流送模型"的穿帮空洞。
+```
+LoadingRange ≥ LOD0_WorldDistance × 1.5
+```
+
+其中`LOD0_WorldDistance`可通过公式近似估算：
+
+```
+D = (ScreenHeight × MeshDiameter) / (2 × tan(FOV/2) × ScreenSizeThreshold)
+```
+
+例如，对于直径10米的建筑、FOV=90°、目标屏幕尺寸阈值0.3，计算得`LOD0_WorldDistance ≈ 53米`。若`LoadingRange`设为128米，满足1.5倍关系，则LOD0在Cell加载完成后有足够的缓冲距离切换，避免加载瞬间直接显示LOD0引发的面数突增帧率抖动。
+
+### Streaming Priority与LOD请求优先级
+
+Unreal Engine的异步加载队列会根据`StreamingPriority`对Cell请求排序，数值越高越优先完成加载。在LOD与流送结合的场景中，技术美术需要将高频可见的前景Cell（玩家即将进入区域）的`Priority`设为较高值（如4或5），而仅用于HLOD代理显示的远景Cell保持默认值0，避免后台预加载占用带宽干扰近景Cell的LOD精度响应速度。
+
+此外，Level Streaming Volume（传统流送方式）中的`MinTimeBetweenVolumeUnloadRequests`参数（默认2秒）决定了Cell从可见到触发卸载的最短间隔，与LOD切换的瞬时性形成节奏上的差异，需要在关卡设计时预留足够的过渡缓冲区域。
+
+---
 
 ## 实际应用
 
-**《黑神话：悟空》大型场景策略**：在山地和寺庙等大型开放区域，制作团队将场景按功能分层配置流送单元，近景建筑使用LOD0（约2万面）至LOD2（约800面）的过渡，而远景山体直接由HLOD代理表示，避免加载整座山的几何数据，整体流送内存预算控制在单帧800MB GPU显存以内。
+### 大世界道路与建筑的分层策略
 
-**赛车游戏的高速流送适配**：在赛道宽度约30m、载具速度达90m/s的场景下，传统128m加载半径不够，需将流送Loading Range扩展至512m以上，同时将LOD0→LOD1的切换屏幕尺寸从0.3下调至0.15，让更远处的物体更早降级，以补偿更大流送范围带来的内存压力。此时技术美术需重新测量每个资产在512m视距处的实际屏幕占比，使用`ProfileGPU`和`Stat Streaming`命令对加载吞吐量实时监测。
+在《黑神话：悟空》类型的线性大场景或《Fortnite》类型的开放世界中，技术美术通常将沿路建筑分为三类处理：核心可交互建筑设置独立Cell并配置完整LOD0-LOD3链；背景装饰建筑合并入HLOD Layer并设置为仅HLOD显示，不触发完整Cell加载；地形本身使用Landscape LOD系统独立于World Partition的网格LOD，通过`LandscapeLODBias`参数在1到7之间调整分辨率。
 
-**植被系统的LOD与流送整合**：使用`Hierarchical Instanced Static Mesh（HISM）`时，Cull Distance（裁剪距离，通常配置为5000cm）与流送单元半径的关系决定了是否存在"已加载但被Cull的实例"浪费内存的情况。建议Cull Distance不超过流送单元Loading Range的80%，从而确保超出可见范围的实例已被流送系统先行卸载。
+### Nanite与流送的协同
+
+启用Nanite的网格理论上不需要手动制作LOD链，引擎根据屏幕像素预算自动裁减三角形。但在World Partition流送场景中，Nanite网格所在的Cell在未加载状态下仍需HLOD代理，因此HLOD构建流程依然不可省略。技术美术需在HLOD Layer设置中指定代理生成方式为`MergeActors`或`SimplifyMesh`，后者面数更低，适合距离超过500米的HLOD1层级使用。
+
+---
 
 ## 常见误区
 
-**误区1：LOD切换距离与流送距离可以独立设置**
-许多初学者在`StaticMesh Editor`中调整LOD Screen Size时，未考虑该资产所在流送单元的卸载距离。若LOD2的切换距离（如150m）远大于流送单元的卸载距离（如80m），则LOD2从未被玩家看到——引擎在模型降级到LOD2之前就已将整个流送单元卸载，LOD2的制作工时被完全浪费，且HLOD代理接管时因LOD1与HLOD代理面数差距过大而产生明显跳变。
+**误区一：认为开启Nanite后无需配置LOD与流送的协调关系。**
+Nanite解决的是已加载网格的屏幕空间精度问题，但它无法替代Cell级别的流送加载判断。若不设置HLOD Layer，已卸载Cell区域将出现空白，Nanite对此无任何补救能力。
 
-**误区2：启用World Partition后不再需要手动优化LOD**
-World Partition的自动流送只解决了"哪些资产需要加载"的问题，并不会自动生成或优化LOD链。引擎内置的`Auto LOD Generation`（基于Simplygon或Nanite Fallback Mesh）只提供几何简化，无法自动判断与流送边界协调的最优Screen Size参数。对于超大地图，技术美术仍需对场景中超过500面的非Nanite静态网格逐类型配置LOD，并在`World Settings > HLOD`面板中手动绑定每一层HLOD与对应LOD层的过渡参数。
+**误区二：将流送加载距离设置为与LOD0切换距离完全相同。**
+若二者相等，玩家移动至LOD0触发距离的瞬间Cell恰好开始加载，由于异步加载存在几帧到数十帧的延迟（在机械硬盘上可达500毫秒以上），这段时间内网格显示为空或以HLOD代理填充，产生明显的视觉弹出（Popping）。正确做法是保持1.5倍以上的安全余量。
 
-**误区3：Nanite网格无需考虑LOD与流送的协同**
-Nanite会自动管理三角形的微多边形剔除，但Nanite并不绕过流送系统——Nanite网格的Page数据（每页约128KB）仍然需要通过异步流送加载。在快速移动场景中，Nanite Page的流送延迟（典型值2~4帧）会导致近距离的Nanite资产暂时以低精度渲染，与LOD的屏幕尺寸错误视觉效果相似。监测此问题应使用`r.Nanite.Visualize.OverdrawTiledScaled`和`Stat NaniteStreaming`命令，而非LOD统计命令。
+**误区三：认为HLOD代理只需生成一层。**
+对于视距超过1公里的场景，建议配置至少两层HLOD：HLOD0代理覆盖200-600米范围，面数约为原始的2%；HLOD1代理覆盖600米以上，面数约为原始的0.1%。单层HLOD在远景会导致代理网格面数过高，反而使GPU在远景三角形排队上浪费时间。
+
+---
 
 ## 知识关联
 
-本文建立在**HLOD系统**的基础上：HLOD代理网格正是LOD链在流送边界之外的延伸，理解HLOD的代理生成参数（如`Merge Distance`、`Proxy LOD Screen Size`）是配置LOD与流送协同过渡的前提条件。没有HLOD的LOD链在流送卸载后会直接消失，产生视觉空洞，因此HLOD充当了LOD3与流送卸载状态之间的缓冲层。
+本概念直接以HLOD系统为前提：HLOD的分层构建逻辑和`HLODLayerAsset`的配置方式是理解World Partition如何在未加载区域维持视觉连续性的基础。HLOD生成的代理网格质量直接决定了流送边界处视觉弹出的严重程度，因此HLOD构建参数（如`ProxyMeshVoxelSize`和`MergeDistance`）需要与流送加载半径联合调试，而非独立优化。
 
-在技术美术的LOD策略体系中，LOD与流送是整个策略链的终端执行层——它将静态LOD参数、动态HLOD代理、流送半径、内存预算四个维度统一纳入一个运行时决策框架。掌握这一协同配置后，技术美术可以在`r.LOD.ForcedLODLevel`、`r.Streaming.PoolSize`和`World Partition Debug`三套工具之间灵活切换，针对不同平台（如PS5的12GB显存预算 vs PC的8GB显存目标）制定差异化的LOD-流送联合参数方案。
+在LOD策略体系中，LOD与流送处于实际大世界项目落地的末端整合阶段，综合运用了静态网格LOD、HLOD、World Partition Cell管理以及异步加载队列等多项子系统的协调配置能力，是技术美术在开放世界项目中最终交付性能目标时必须掌握的工程化实践节点。

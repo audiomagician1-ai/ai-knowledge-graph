@@ -24,105 +24,88 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # 渲染目标内存
 
 ## 概述
 
-渲染目标（Render Target，RT）是GPU在渲染管线中用于临时写入和读取像素数据的特殊纹理，与普通贴图不同，它在每帧运行时动态分配并由GPU直接写入。渲染目标内存专指这些RT所占用的显存空间，包含GBuffer、Shadow Map、Post-Process缓冲区等多种类型，其总量通常与屏幕分辨率、格式位深及采样数成正比关系。
+渲染目标（Render Target，RT）是GPU在渲染管线中用于中间写入的特殊纹理缓冲区，与普通纹理不同，它必须分配在显存的可写区域（ESRAM或主显存），且生命周期通常仅限于单帧或当前Pass。渲染目标内存指所有此类缓冲区在GPU显存中占用的总量，包括GBuffer各层、阴影贴图（Shadow Map）、后处理链（Post-Process Chain）以及深度缓冲区（Depth Buffer）。
 
-渲染目标内存的管理意识在延迟渲染（Deferred Rendering）普及之后变得尤为关键。2007年前后，主机游戏开始广泛采用延迟渲染，GBuffer的引入使单帧渲染目标占用从不足50MB激增至100MB以上。在当代主机和移动端平台上，渲染目标内存往往占据整体GPU内存预算的20%～40%，是技术美术必须精确核算的开销来源。
+渲染目标内存的概念随延迟渲染（Deferred Rendering）的普及而变得关键。2007年前后，《孤岛危机》等游戏将延迟光照引入主机平台，单帧需要同时维护4至5张全屏GBuffer，使渲染目标内存在整个VRAM预算中的占比从早期前向渲染时代的5%以下跃升至30%甚至更高。现代PC游戏在1080p分辨率下，仅GBuffer组合就可轻易超过100MB显存占用。
 
-与普通纹理内存不同，渲染目标内存通常无法压缩存储（ASTC/BCn等压缩格式仅适用于只读纹理），且RT必须以完整分辨率驻留显存，无法通过Mipmap降级节省空间。这两个特点共同决定了渲染目标内存的单位面积成本远高于普通贴图。
+与纹理内存由CPU端打包上传不同，渲染目标的内存分配发生在帧开始时由渲染器自动完成，且在帧内可能以别名（Aliasing/Transient Resource）方式复用同一块物理地址。这使得渲染目标内存的统计和优化逻辑与普通纹理预算完全分离，需要专门的分析工具（如RenderDoc的资源视图或Unreal Insights的内存标签）进行追踪。
 
 ---
 
 ## 核心原理
 
-### 渲染目标内存计算公式
+### GBuffer 内存计算方式
 
-单张RT的内存开销由以下公式精确计算：
+GBuffer由多张渲染目标拼合而成，每张的内存开销由以下公式计算：
 
-```
-RT内存 (bytes) = 宽 × 高 × 像素字节数 × MSAA采样数
-```
+**内存（字节）= 宽度 × 高度 × 超采样倍数 × 每像素字节数 × 切片数**
 
-其中**像素字节数**取决于纹理格式：
-- `R8G8B8A8_UNORM`：4 bytes/pixel
-- `R16G16B16A16_FLOAT`：8 bytes/pixel
-- `R32G32B32A32_FLOAT`：16 bytes/pixel
-- `D24S8`（深度+模板）：4 bytes/pixel
-- `D32_FLOAT`：4 bytes/pixel
+以Unreal Engine 5默认GBuffer布局为例，在1920×1080分辨率、无MSAA的条件下：
+- SceneColor（HDR颜色）：R11G11B10F格式，每像素4字节 → 约**8.3 MB**
+- GBufferA（法线 + 粗糙度）：RGBA8格式，每像素4字节 → 约**8.3 MB**
+- GBufferB（金属度 + 高光 + 材质ID）：RGBA8格式 → 约**8.3 MB**
+- GBufferC（基础色 + AO）：RGBA8格式 → 约**8.3 MB**
+- SceneDepth：D32F格式，每像素4字节 → 约**8.3 MB**
 
-以1920×1080分辨率下一张`R16G16B16A16_FLOAT`格式的RT为例：
-1920 × 1080 × 8 = **约15.75 MB**。若开启4x MSAA，则直接扩大为**63 MB**。
+仅以上五张，1080p下GBuffer合计约**41.5 MB**，如启用速度缓冲（Velocity Buffer）或自定义材质数据层则进一步增加。
 
-### GBuffer的多RT叠加开销
+### Shadow Map 的内存开销特性
 
-延迟渲染的GBuffer通常由3～5张RT同时存在于显存中。以Unreal Engine 5的典型GBuffer布局为例：
-- GBufferA（BaseColor + ShadingModel）：`R8G8B8A8_UNORM`，≈7.9 MB @ 1080p
-- GBufferB（Normal packed + Roughness + Metallic）：`R8G8B8A8_UNORM`，≈7.9 MB
-- GBufferC（自发光/间接光遮蔽）：`R8G8B8A8_UNORM`，≈7.9 MB
-- GBufferD（自定义数据）：`R8G8B8A8_UNORM`，≈7.9 MB
-- SceneDepth：`D32_FLOAT`，≈7.9 MB
+阴影贴图的内存主要受分辨率、层级数（CSM级联数）和格式共同决定。以常见的4级联CSM（Cascade Shadow Map）为例：
+- 每张分辨率2048×2048，R16格式（每像素2字节）
+- 单张约**8 MB**，4级联共**32 MB**
+- 若使用R32F格式精度则翻倍至**64 MB**
 
-仅GBuffer本身合计已超过**39 MB**，这还不包含任何后处理或阴影RT。
+点光源使用CubeMap阴影时，需分配6面，开销是同分辨率平行光阴影的6倍。动态阴影的渲染目标通常不可在帧间复用，必须每帧重新写入，无法通过资源别名（Resource Aliasing）节省物理显存。
 
-### Shadow Map的分辨率与级联开销
+### 后处理链的内存叠加效应
 
-Shadow Map是另一主要的渲染目标内存消耗源。级联阴影贴图（CSM，Cascaded Shadow Maps）通常包含4个级联，每个级联独立维护一张深度RT：
+后处理每一个Pass通常需要独立的渲染目标，且多数Pass需要Ping-Pong模式（即同时持有输入和输出两张RT）。一个典型的后处理链在1080p下的内存快照：
 
-- 单张2048×2048 `D16_UNORM` Shadow Map：2048 × 2048 × 2 = **8 MB**
-- 4级CSM合计：**32 MB**
-- 若使用4096×4096规格：单张升至32 MB，4级达**128 MB**
+| Pass | 格式 | 单张大小 |
+|---|---|---|
+| Bloom Downsample × 5级 | R11G11B10F | 约8+2+0.5+... MB |
+| Temporal AA 历史帧 | RGBA16F | 约16.6 MB × 2张 |
+| Depth of Field CoC | R16F | 约4.2 MB |
+| Tonemapping输出 | RGBA8 | 约8.3 MB |
 
-点光源阴影使用Cubemap Shadow（6面），每面均为独立RT，内存开销是平行光CSM的数倍。
-
-### 后处理链的中间缓冲开销
-
-后处理链（Post-Process Chain）中每一个Pass都可能产生一张临时RT，这些RT通常以全分辨率或1/2、1/4下采样分辨率存在。典型后处理RT清单：
-
-| Pass | 格式 | 分辨率比例 | 1080p开销 |
-|------|------|-----------|---------|
-| HDR Scene Color | `R16G16B16A16_FLOAT` | 1x | ~15.75 MB |
-| Bloom Downsample | `R11G11B10_FLOAT` | 1/2 | ~2.5 MB |
-| SSAO | `R8_UNORM` | 1/2 | ~0.5 MB |
-| Temporal AA History | `R16G16B16A16_FLOAT` | 1x | ~15.75 MB |
-| Depth of Field | `R16G16B16A16_FLOAT` | 1/2 | ~4 MB |
-
-后处理链若不做资源复用（Aliasing），多个Pass同时驻留显存时总量轻易超过**50 MB**。
+其中TAA历史帧（History Buffer）因必须保留上一帧数据，无法参与别名复用，是后处理中固定占用最高的单项，仅此一项在1080p RGBA16F下即占**约33 MB**。
 
 ---
 
 ## 实际应用
 
-**移动端分辨率降级策略**：在iOS/Android平台，目标帧率30fps、显存预算150MB的项目中，通常将渲染分辨率设置为屏幕分辨率的75%（即渲染至1440×810再上采样），GBuffer四张RT从约31.6 MB直降至约17.8 MB，节省近**44%**的GBuffer内存。
+**动态分辨率对渲染目标内存的影响**：动态分辨率（Dynamic Resolution Scaling）在降低分辨率时并不会立即缩小RT内存，因为渲染目标通常以最高目标分辨率（如1440p峰值）预分配，仅填充实际分辨率对应的像素范围。这意味着即使运行时分辨率降至1080p，显存中仍占用1440p的RT分配，内存节省需在渲染器层面专门实现。
 
-**RT内存复用（Transient Resource）**：Unreal Engine的Transient Resource Pool和Unity的`RenderGraph`系统会分析Pass依赖关系，在不重叠的Pass之间共享同一块物理显存。例如，SSAO输出RT与Bloom Downsample RT在时间上不重叠，可映射到同一显存地址，有效减少峰值占用约15～25 MB。
+**移动端分块渲染（TBDR）的特殊行为**：在iOS/Android的TBDR架构（如Apple A系列GPU、Adreno、Mali）中，GBuffer数据实际上保存在Tile的片上内存（On-Chip Memory）中，不会写入主显存（System Memory）。这意味着在正确使用Subpass机制的情况下，延迟渲染的GBuffer在移动端几乎不消耗主显存带宽，但若错误地调用`glInvalidateFramebuffer`失败，则GBuffer会被强制写入主显存，造成不必要的内存占用和带宽消耗。
 
-**主机平台的ESRAM/Tile Memory优化**：PlayStation 5和Xbox Series X支持Tile-Based渲染扩展（TBDR），GBuffer数据可在GPU片内Tile Memory中完成读写，只有最终结果需要写回主显存，GBuffer本身的主显存占用可降至接近零。这使主机版本GBuffer的实际显存开销远低于理论计算值，是PC与主机内存预算差异巨大的主要原因。
-
-**Shadow Atlas合并**：将多个动态光源的Shadow Map合并为一张大型Shadow Atlas（例如4096×4096的`D16`格式，约32 MB）可避免每盏灯单独分配RT带来的碎片化开销。项目中若有8盏使用独立1024×1024 Shadow Map的动态点光源，独立分配需要8 × 2 MB × 6面 = **96 MB**，而Atlas方案仅需**32 MB**。
+**渲染目标别名（RT Aliasing/Transient）**：UE5的RDG（Render Dependency Graph）和Unity的RenderGraph系统均支持瞬态资源（Transient Resource）机制，对帧内生命周期不重叠的渲染目标自动复用同一块物理显存。例如，GBuffer写入完成后，该内存区域可立即被后处理的中间RT复用，实际峰值显存小于所有RT单独分配的总和。在UE5中，通过`r.RDG.TransientResourceCache=1`开启后，帧内RT物理内存可缩减约15%~25%。
 
 ---
 
 ## 常见误区
 
-**误区一：RT分辨率与游戏渲染分辨率一定相同**
+**误区1：分辨率翻倍，渲染目标内存翻倍**
 
-部分开发者默认所有RT均以全屏分辨率存在。实际上，SSAO、Bloom等效果在半分辨率（1/2x）甚至四分之一分辨率（1/4x）下计算质量损失极小，但内存和带宽分别降低至1/4和1/16。将SSAO从全分辨率降至半分辨率，在1440p下可节省约**6 MB**显存并显著降低带宽压力。
+实际上分辨率翻倍导致像素数量为4倍（宽×高），因此渲染目标内存增加到原来的**4倍**而非2倍。从1080p升级到4K（3840×2160），同样格式的RT内存精确增长为4倍。这一点在制定主机4K与1080p双模式预算时极易出错，很多项目将4K模式的RT预算仅预留2倍而导致显存溢出。
 
-**误区二：关闭某个后处理效果就释放了它的RT内存**
+**误区2：后处理RT可随时释放节省内存**
 
-许多引擎（如Unreal Engine 4）在RT分配策略上并非按需分配，而是在场景加载时预分配Post-Process相关RT的内存池。即使在编辑器中将Bloom强度设为0，对应RT的显存依然被占用。真正释放需要禁用对应Pass的**Shader编译开关**（如`r.BloomQuality 0`）或修改引擎的RenderGraph配置，仅调整参数值不等于释放内存。
+部分开发者认为后处理Pass结束后RT即可释放。但TAA的历史帧RT必须在整个帧序列中持续存在（生命周期跨帧），是持久资源（Persistent Resource），无法纳入别名池。若错误地将其标记为瞬态资源（Transient），将导致每帧重新分配，产生画面鬼影（Ghosting）或分配失败崩溃。
 
-**误区三：MSAA仅影响最终输出RT**
+**误区3：MSAA仅增加颜色缓冲内存**
 
-开启4x MSAA后，所有参与MSAA解析的RT（包括SceneColor和SceneDepth）均需扩大至4倍，而GBuffer在延迟渲染下无法直接使用MSAA（需改用FXAA或TAA）。因此在延迟渲染管线中强行开启MSAA，实际上仅对SceneColor和Depth产生扩增（2张×4倍），而非所有GBuffer一起扩大，但仍可带来约**60～100 MB**额外开销。
+启用4xMSAA时，不仅颜色RT扩大为4倍，深度/模板缓冲同样扩大为4倍。在1080p启用4xMSAA后，仅深度缓冲一项从8.3 MB变为约33 MB，许多项目统计MSAA开销时遗漏了深度缓冲的倍增，导致实际内存超预算。
 
 ---
 
 ## 知识关联
 
-渲染目标内存建立在**纹理内存预算**的基础上：纹理内存预算介绍了格式、分辨率与内存的对应关系（如R8G8B8A8=4 bytes/pixel），这些计算规则在RT中同样适用，区别仅在于RT不可压缩且不可Mipmap。掌握纹理内存预算的计算方法是精确核算渲染目标开销的前提。
+渲染目标内存与**纹理内存预算**共同构成GPU显存预算的主要组成部分，但两者有本质区别：纹理内存由CPU侧提交、生命周期可跨多帧；渲染目标内存由渲染管线驱动分配，需在帧内峰值时刻统计。在实际项目预算规划中，需将两者分开统计，分别设定水位线，通常建议渲染目标内存控制在总VRAM的20%~35%以内（视平台而定，PS5建议不超过512 MB用于RT，XBOX Series X类似）。
 
-在分析整体GPU内存时，渲染目标内存、纹理内存、顶点/索引缓冲区构成三大支出类别。优化渲染目标内存通常需要与**帧缓冲带宽**（Bandwidth）协同考量，因为RT不仅消耗显存容量，每帧的读写操作同样产生带宽压力——在移动端，GBuffer带宽开销甚至比其显存占用更早成为瓶颈。理解了渲染目标内存的静态占用和动态带宽两个维度，才能在实际项目中做出有效的渲染预算决策。
+了解渲染目标内存后，可进一步研究**带宽优化**（Bandwidth Optimization）方向——RT的写入和采样带宽消耗通常远超RT本身的静态内存占用，是移动端性能瓶颈的主要来源之一。同时，**渲染管线重构**（如从延迟渲染切换至Forward+或Visibility Buffer）会从根本上改变RT的数量和格式组合，是降低渲染目标内存的最根本手段。
