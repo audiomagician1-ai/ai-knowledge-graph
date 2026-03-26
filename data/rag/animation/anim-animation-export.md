@@ -25,71 +25,78 @@ updated_at: 2026-03-26
 ---
 
 
+
 # 动画导出
 
 ## 概述
 
-动画导出是将三维软件（如Blender、Maya、3ds Max）中制作完成的关键帧动画数据打包成通用文件格式的过程，主要输出格式为FBX（Filmbox）和glTF（GL Transmission Format）。这两种格式在导出时需要针对帧率、采样密度、骨骼层级和场景单位进行精确配置，配置不当会导致动画在目标引擎中播放速度错误、骨骼扭曲或缩放异常。
+动画导出是将三维软件内部制作完成的关键帧动画数据，以标准化格式输出为可供游戏引擎、渲染软件或其他工具读取的文件的操作流程。最常用的导出格式包括 **FBX**（Autodesk Filmbox）和 **glTF**（GL Transmission Format 2.0），两者在骨骼绑定、变换矩阵、动画曲线的存储方式上存在根本性差异。
 
-FBX格式由Kaydara公司于1996年开发，后被Autodesk收购，目前版本为FBX 2020，是游戏引擎（Unity、Unreal）与DCC工具之间最常用的交换格式。glTF 2.0由Khronos Group于2017年发布，专为Web和实时渲染设计，内置PBR材质支持，动画数据存储在`.animations`数组中，每个动画通道（channel）对应一根骨骼的平移、旋转或缩放曲线。
+FBX 格式由 Autodesk 于1996年收购 FilmBox 软件时随之推广，目前仍是游戏工业管线（如 Unity 和 Unreal Engine）中传递骨骼动画的事实标准；glTF 2.0 由 Khronos Group 于2017年正式发布，专为 WebGL 和实时渲染设计，JSON 元数据与二进制缓冲分离存储，体积通常比同内容的 FBX 文件小 40%–70%。
 
-正确配置导出参数直接决定动画能否在目标平台正常播放。一段在Blender中以24fps制作的角色行走动画，若导出到Unity（默认30fps项目）时未启用"采样所有帧"选项，贝塞尔切线信息会丢失，插值结果将与原始动画出现明显偏差，尤其在快速旋转的关节处最为突出。
+选择正确的导出参数直接决定动画在目标平台的播放精度。帧率不匹配会造成时间轴拉伸，采样精度不足会丢失高频曲线细节，骨骼命名冲突会导致蒙皮权重错乱，单位错误则会让角色在引擎中缩放为原来的 100 倍或 1/100 倍——这四类问题几乎涵盖了动画导出失败的绝大多数案例。
 
 ---
 
 ## 核心原理
 
-### 帧率设置与转换
+### 帧率（Frame Rate）设置
 
-导出时的帧率参数（FPS）必须与目标引擎或播放环境的帧率匹配。FBX格式在文件头部的`FBXHeaderExtension`区块中存储帧率值，常见枚举值包括：`24`（电影）、`25`（PAL电视）、`30`（NTSC/游戏）、`60`（高帧率游戏）。
+导出时的帧率必须与**制作时的时间轴帧率**和**目标引擎的项目帧率**三者保持一致。Blender 默认 24 fps，Unity 默认 30 fps，Unreal Engine 默认也是 30 fps。若在 24 fps 的 Blender 场景中制作了一段 48 帧的动画（原始时长 2 秒），以 FBX 格式导出并导入 Unity 30 fps 项目后，Unity 会将其解析为 `48 ÷ 30 = 1.6 秒`，动作整体加速约 25%。
 
-当源帧率与目标帧率不同时，导出器有两种处理策略：**直接重映射**（将关键帧时间戳按比例缩放）和**重新采样**（在目标帧率下逐帧烘焙曲线值）。直接重映射速度快但不改变关键帧数量；重新采样会显著增大文件体积，但能精确保留曲线形态。Blender导出FBX时对应选项为"Force Start/End Keying"和"Sampling Rate"，采样率设为`1`表示每帧都烘焙一个关键帧。
+FBX 文件内部以 `FBXHeaderExtension.Creator` 字段记录时间协议（`Time::Mode`），支持的枚举值包括 `eFrames24`、`eFrames30`、`eFrames60` 等；导出时若不显式指定，软件可能回退为默认值，造成隐性帧率漂移。
 
-### 采样与曲线烘焙
+### 采样（Bake / Sample）精度
 
-三维软件中的动画曲线通常以贝塞尔曲线或Hermite样条存储切线信息，而FBX和glTF的大多数接收端（如Unity的Animator）会将这些曲线重新解算。glTF 2.0仅支持三种插值模式：`LINEAR`（线性）、`STEP`（阶跃）和`CUBICSPLINE`（三次样条，使用切线数据）。若导出器不支持`CUBICSPLINE`转换，贝塞尔曲线必须被烘焙为`LINEAR`关键帧序列，此时建议将采样间隔设置为源帧率的倒数（例如30fps下为0.0333秒/帧），以保证曲线还原精度。
+三维软件内的动画曲线是由贝塞尔或 Hermite 样条描述的连续函数，而 FBX 和 glTF 均以**离散关键帧**存储动画数据。"烘焙采样"（Bake Animation）操作将曲线在每个整数帧处求值，生成密集的线性关键帧序列。
 
-Maya的FBX导出器提供"Bake Animation"选项，勾选后会按设定的`Bake Resample All`频率对所有动画层进行合并烘焙，这对含有动画层叠加（Animation Layers）的复杂动画至关重要——不烘焙直接导出时，部分引擎无法识别多层动画数据。
+- **Blender FBX 导出**提供 `Simplify` 参数（0.0–1.0），数值越高表示允许越大的误差容忍度，减少输出关键帧数量；设为 `0` 则强制输出每帧一个关键帧，文件体积最大但曲线保真度最高。
+- **Maya FBX 导出**提供 `Bake Animation` 选项，并可设定 `Step`（采样间隔），`Step = 1` 表示逐帧采样，`Step = 2` 则每隔一帧采样一次。
+- glTF 格式的动画通道（`animation.samplers`）只支持线性（`LINEAR`）、步进（`STEP`）和三次样条（`CUBICSPLINE`）三种插值方式，不支持 Bezier 切线权重，因此从 Bezier 曲线转换为 glTF 时必须适当提高采样密度，否则弧形轨迹会退化为折线。
 
-### 骨骼（Armature）导出配置
+### 骨骼（Skeleton / Armature）导出规则
 
-FBX中骨骼以`LimbNode`或`Root`节点类型存储，骨骼的绑定姿势（Bind Pose）记录在`Pose`区块中。导出时需注意以下三点：
+FBX 中骨骼以 `FbxSkeleton` 节点存储，glTF 中骨骼以 `skin.joints` 数组存储，两者均要求骨骼层级在导出前已经**Apply 所有静态变换**（即根骨骼的位移、旋转、缩放归零或单位化）。
 
-1. **骨骼根节点命名**：Unity要求骨骼根节点必须命名为`Armature`或自定义名称，否则Humanoid重定向会失败；Unreal则建议根骨骼命名为`root`并保持零变换。
-2. **Rest Pose vs. Bind Pose**：Blender导出FBX时，"Add Leaf Bones"选项会在每根末端骨骼后附加一个零长度叶骨，用于兼容Maya的骨骼末端节点约定，若目标引擎不需要该兼容性应取消勾选以减少骨骼数量。
-3. **骨骼轴向**：FBX规范使用右手坐标系Y轴朝上，而Blender内部使用Z轴朝上；导出时必须启用"Apply Transform"或选择"FBX Units Scale"以正确转换轴向，否则骨骼旋转值会出现-90度偏移。
+Blender 中必须在导出前对 Armature 对象执行 `Object → Apply → All Transforms`，否则骨骼的 Rest Pose 矩阵会携带额外偏移，导致引擎中蒙皮网格出现撕裂或扭曲。此外，骨骼名称不得含有空格或特殊字符（部分 FBX SDK 版本会将空格替换为 `_`，造成目标端找不到同名骨骼而蒙皮失效）。
 
-### 场景单位与缩放
+### 单位（Units）换算
 
-glTF 2.0规范明确规定场景单位为**米（meter）**，1个glTF单位 = 1米。FBX则通过文件头中的`UnitScaleFactor`字段声明单位，常见值为`1.0`（厘米，Maya默认）或`100.0`（表示1单位=1厘米，需乘100才换算为米）。
+FBX 文件在 `GlobalSettings` 节点中以 `UnitScaleFactor` 字段记录场景单位。Blender 默认单位为**米（1 BU = 1 m）**，导出 FBX 时 `UnitScaleFactor = 1.0`；3ds Max 默认单位为**厘米**，其 FBX 导出的 `UnitScaleFactor = 0.01`（相对于引擎标准米单位的缩放比）。Unity 读取 FBX 时会自动应用此系数，但 Unreal Engine 5 默认场景单位为厘米，导入时若不勾选 `Convert Scene Unit`，一个 Blender 中 1.8 m 高的角色在 UE5 中会被渲染为 1.8 cm 高。
 
-从Maya（1单位=1厘米）导出FBX到Unity（1单位=1米）时，若不勾选"Automatic Units"，模型会缩小到1/100，角色会变成1厘米高的微型人物。Blender导出到glTF时，若场景单位设置为"厘米"而未勾选"Apply Unit"，输出的glTF文件中所有位移动画的数值都会偏大100倍。
+glTF 规范明确规定所有线性单位均为**米**，无需额外缩放字段；但部分工具链导出时仍可能在根节点附加一个 `scale: [0.01, 0.01, 0.01]` 的变换节点来"模拟厘米"，接收端需注意消除这一冗余缩放。
 
 ---
 
 ## 实际应用
 
-**角色动画导出到Unity**：在Blender中完成一个包含行走、跑步、跳跃三个动画片段的角色时，应在"动画片段管理"阶段用NLA编辑器将三个片段标记为独立的Action，导出FBX时勾选"NLA Strips"选项，Unity会自动将其识别为三个独立的AnimationClip资产。帧率统一设置为30fps，骨骼不添加叶骨，坐标轴选择"-Y Forward, Z Up"以匹配Unity的坐标系。
+**游戏角色导出到 Unity 的完整参数配置示例（Blender FBX）：**
 
-**Web端glTF动画导出**：使用Three.js播放角色动画时，应从Blender导出glTF 2.0格式（`.glb`二进制封装），勾选"Export Animations"并将插值模式设为支持`CUBICSPLINE`的选项，可将一个800帧的动画文件体积从直接烘焙的线性关键帧版本（约1.2MB）压缩至约150KB。
+1. `Sampling Rate`：设为 `1`（逐帧烘焙），确保 IK 链和约束驱动的骨骼运动完整记录。
+2. `Scale`：设为 `0.01`，将 Blender 米单位换算为 Unity 厘米惯例（或在 Unity 导入设置中将 `Scale Factor` 改为 `100`，效果等价）。
+3. `Armature → Add Leaf Bones`：取消勾选，否则每根骨骼末端会额外生成虚拟叶骨，导致 Unity 动画重定向时骨骼数量不匹配。
+4. `Bake Animation → NLA Strips`：勾选，以便将 NLA 编辑器中堆叠的动画片段全部展开导出。
+
+**glTF 导出到 Three.js Web 场景：**
+使用 Blender 的 `glTF 2.0 (.glb/.gltf)` 导出器，选择 `.glb`（二进制单文件），勾选 `Include → Animations → Active Actions Only`，确保只导出当前激活动作而非场景中所有 Object 的动作。导出后用 `gltf-validator`（Khronos 官方工具）检查 `animation.samplers` 的插值类型是否符合预期。
 
 ---
 
 ## 常见误区
 
-**误区一：认为帧率不匹配只影响播放速度**
-帧率不匹配除了导致速度错误外，还会影响关键帧的时间戳精度。在30fps的项目中导入24fps烘焙的FBX时，每一帧的时间戳（0.0417秒）不能被30fps的帧间隔（0.0333秒）整除，引擎会对关键帧进行额外插值，导致微妙的"抖动"现象在循环动画中尤为明显。
+**误区一：认为"导出成功"等于"动画正确"**
+FBX/glTF 导出不报错，仅说明文件格式合法，不代表动画数据语义正确。最典型的陷阱是骨骼旋转轴顺序（Euler Order）：Blender 默认 `XYZ`，Maya 默认 `XYZ` 但部分节点使用 `ZXY`，FBX 中 `EulerXYZ` 与 `EulerZXY` 是不同枚举值，混淆后角色肢体会出现异常翻转，而文件本身完全有效。
 
-**误区二：导出时"Apply Transform"总是必须勾选**
-Blender的"Apply Transform"会在导出时将对象的变换烘焙进顶点数据，对于已绑定蒙皮的骨骼网格体，这一操作会破坏蒙皮权重与骨骼的相对关系，导致角色在T-Pose之外的所有姿势下产生严重形变。正确做法是在建模阶段就应用变换，导出时保持该选项关闭。
+**误区二：把"采样率"和"帧率"混为一谈**
+采样率（Sample Rate）是导出时对动画曲线求值的频率，可以独立于场景帧率设置。例如在 30 fps 场景中以 `Step = 2` 导出，实际只在第 0、2、4… 帧处采样，等效于 15 fps 的关键帧密度，但时间轴总长度仍然按 30 fps 计算——这会造成高速动作（如手指快速弯曲）的曲线失真，而不影响慢速动作。
 
-**误区三：glTF的CUBICSPLINE插值等同于贝塞尔曲线**
-glTF的`CUBICSPLINE`使用的是Hermite样条，切线数据格式为`[inTangent, value, outTangent]`三元组，与Blender贝塞尔曲线的控制点格式不同。Blender的glTF导出插件会自动转换切线格式，但第三方导出工具若直接写入贝塞尔控制点坐标，会导致动画曲线完全错误。
+**误区三：glTF 和 FBX 可以随意互换**
+glTF 不支持 Blend Shape（Shape Key）动画的骨骼权重叠加混合（MorphTarget 和 Skin 是分离通道），FBX 则支持将变形目标绑定在骨骼层级下。对于同时包含骨骼动画和表情 Blend Shape 的角色，FBX 能在一个文件内完整表达，而 glTF 需要在引擎层通过 `AnimationMixer` 同时驱动两个独立通道，配置更复杂。
 
 ---
 
 ## 知识关联
 
-动画导出依赖**动画片段管理**阶段的正确组织：每个片段必须在导出前明确起止帧范围，并在NLA编辑器或时间轴中正确命名，导出时才能生成符合预期的独立AnimationClip资产。若片段管理阶段存在帧范围重叠或命名冲突，FBX导出的`AnimStack`区块会包含错误的时间范围，在引擎中表现为动画片段长度异常。
+**前置概念——动画片段管理：** 动画导出依赖片段管理中定义的**片段起止帧范围**和**命名规则**。导出器通过读取片段的 `Start Frame` 和 `End Frame` 决定输出哪段时间范围；若片段管理阶段未正确分割动作（如 Idle、Walk、Run 混存于同一时间轴），导出时需要手动指定帧范围，极易出现帧偏移错误。
 
-从技术链路来看，动画导出是整个关键帧动画制作流程的最终输出节点，也是DCC工具与游戏引擎或Web渲染器之间的数据接口。掌握FBX的`UnitScaleFactor`、`LimbNode`层级结构以及glTF的`animations`通道格式，能够在出现导入异常时直接检查文件的二进制或JSON内容定位根本原因，而不必依赖软件界面的反复试错。
+**格式选择对后续工作流的影响：** FBX 导出后通常进入 DCC 软件（Unity、UE）的导入管线，可在引擎内对动画压缩格式（如 U

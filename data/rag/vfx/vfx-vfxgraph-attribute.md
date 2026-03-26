@@ -25,56 +25,75 @@ updated_at: 2026-03-26
 ---
 
 
+
 # 属性系统
 
 ## 概述
 
-属性系统（Attribute System）是 Unity VFX Graph 中用于描述每个粒子状态的数据结构体系。每一个粒子在其生命周期内都携带一组属性，包括内置属性（Built-in Attributes）如 `position`、`velocity`、`color`、`size`、`age`、`lifetime` 等，以及用户自定义的自定义属性（Custom Attributes）。这些属性本质上是 GPU 端的结构化缓冲区字段，VFX Graph 的所有模块（Initialize、Update、Output）都通过读写这些属性来实现粒子行为。
+属性系统（Attribute System）是 Unity VFX Graph 中用于描述和驱动每个粒子状态的数据机制。每个粒子在生命周期内携带一组独立的属性值，例如 `position`、`velocity`、`color`、`size` 和 `lifetime`，这些值在粒子诞生时初始化，并在每帧的 Update 阶段被读取或修改，最终传递给输出阶段完成渲染。属性本质上是存储在 GPU 显存粒子缓冲区（Particle Buffer）中的逐粒子数据，VFX Graph 的所有计算都围绕这些属性展开。
 
-属性系统的设计源于 Unity 在 2018 年推出 VFX Graph 时对 GPU 粒子计算管线的重新架构。传统 CPU 粒子系统（如 Shuriken）将粒子数据存储在主内存中，而 VFX Graph 的属性直接存储在 GPU 显存的 StructuredBuffer 中，单帧可处理百万级粒子而无需 CPU-GPU 数据回传。属性系统的意义在于：它定义了"粒子知道自己什么"，而 Block 和 Operator 定义了"粒子用这些信息做什么"，二者协作构成了整个特效的计算逻辑。
+属性系统随 VFX Graph 于 Unity 2018.3 正式引入，取代了旧版 Shuriken 粒子系统的 CPU 端属性模型。旧模型中属性修改发生在主线程，每帧面临大量数据拷贝开销；新属性系统将数据完全保留在 GPU 端，避免了 CPU-GPU 之间的往返传输，使百万级粒子的属性并行更新成为可能。
+
+理解属性系统的意义在于：VFX Graph 的节点本质上是读写属性的操作符。无论是 Set Velocity、Set Color 还是 Turbulence，它们的功能都归结为读取某些属性并将计算结果写回另一些属性。掌握属性的类型、作用域和数据流向，才能准确预判节点组合的行为，并有效调试粒子运动或渲染异常。
+
+---
 
 ## 核心原理
 
-### 内置属性与数据类型
+### 内置属性与自定义属性
 
-VFX Graph 提供约 20 个内置属性，每个属性都有固定类型。`position` 和 `velocity` 为 `Vector3`，`color` 为 `Vector4`（含 alpha），`size` 为 `float`，`alive` 为 `bool`，`age` 和 `lifetime` 均为 `float`（单位：秒）。在 HLSL 层面，这些属性被编译为一个名为 `VFXAttributes` 的结构体，在 Compute Shader 中以 `attributeBuffer` 的形式存储，每个粒子占用一个连续的内存槽位（Slot）。`age` 属性每帧自动递增 `deltaTime`，当 `age >= lifetime` 时 `alive` 被置为 `false`，粒子被标记为死亡——这一机制完全由 VFX Graph 内部的 Update Context 自动处理，无需手动编写逻辑。
+VFX Graph 提供了一套内置属性集合，这些属性名称固定且具有特殊含义。最常用的内置属性包括：
 
-### 属性的读写阶段与作用域
+- `position`（Vector3）：粒子在世界或局部空间的坐标
+- `velocity`（Vector3）：每帧位移驱动量
+- `age` / `lifetime`（float）：粒子当前年龄与总寿命，比值 `age/lifetime` 即归一化生命进度
+- `size`（float）或 `size3`（Vector3）：粒子的缩放尺寸
+- `color`（Vector4，RGBA）：粒子颜色与透明度
 
-VFX Graph 将属性操作划分为三个 Context 阶段，每个阶段的读写权限不同：
+除内置属性外，用户可在 Graph 的 Blackboard 面板中创建自定义属性（Custom Attribute）。自定义属性支持 float、Vector2、Vector3、Vector4、int、uint、bool 共 7 种数据类型，命名遵循 HLSL 标识符规则（不可使用空格或连字符）。自定义属性一经创建即占用粒子缓冲区中固定的每粒子内存槽位。
 
-- **Initialize Context**：仅在粒子出生时执行一次，可读写所有属性。常用于设置初始 `position`、`velocity`、`lifetime`。
-- **Update Context**：每帧对所有存活粒子执行，可读写除 `particleId` 之外的大多数属性。力、碰撞、噪声等逻辑均在此阶段修改属性。
-- **Output Context**：仅用于渲染，只能**读取**属性，不可写入。这一限制防止了渲染阶段对粒子状态的意外修改。
+### 作用域：粒子属性 vs. 系统属性
 
-在节点图中，属性通过 **Get Attribute** 和 **Set Attribute** 节点访问。Get 节点输出该属性当前值，Set 节点将计算结果写回缓冲区。同一帧内对同一属性的多次 Set 操作会按 Block 的上下顺序依次覆盖，最终值由最后一个 Set 决定。
+属性系统区分两种作用域。**粒子属性（Particle Attribute）** 是逐粒子存储的值，每个粒子独立持有一份，数量等于粒子池（Particle Capacity）上限，因此 Capacity 设置为 100 万时，一个 Vector3 粒子属性将占用约 12 MB 显存。**系统属性（System / Exposed Property）** 则是整个 VFX Graph 实例共享的单一值，存储在常量缓冲区（CBuffer）中，可通过 C# 脚本以 `vfxComponent.SetFloat("MyParam", value)` 实时修改，常用于传递风向、颜色主题等全局参数。
 
-### 自定义属性（Custom Attributes）
+两种作用域的根本区别在于读写时机：粒子属性在 Initialize、Update、Output 三个 Context 中以计算着色器（Compute Shader）分派方式并行读写；系统属性在 CPU 端设置后通过 CBuffer 注入，所有粒子共享同一值。
 
-当内置属性不足以描述特效需求时，可通过 VFX Graph 的 **Blackboard** 面板创建自定义属性。支持的类型包括 `float`、`Vector2`、`Vector3`、`Vector4`、`int`、`uint`、`bool` 和 `Matrix4x4`。自定义属性与内置属性共同存储在同一个 attributeBuffer 中，因此增加自定义属性会直接增大每个粒子的内存占用。例如，为 10 万个粒子添加一个 `Vector3` 类型的自定义属性，额外显存消耗为 `100000 × 12 bytes = 1.2 MB`。自定义属性的典型用途是存储粒子的"出生位置"（spawn position）供后续 Update 阶段引用，实现粒子始终围绕出生点运动的效果。
+### 数据流：Initialize → Update → Output
 
-### 属性继承与 Spawn Context 传递
+属性的生命周期严格遵循三阶段数据流。在 **Initialize Context** 中，属性被首次赋值——例如 Set Position (Sphere) 节点将 `position` 写入随机球面坐标。Initialize 只在粒子诞生时执行一次，适合设置初始状态。在 **Update Context** 中，属性以每帧为单位被反复读写——例如 Add Velocity 节点每帧将重力向量加到 `velocity` 上，再由引擎内置的 Integrate 操作用 `velocity × deltaTime` 更新 `position`。在 **Output Context** 中，属性被读取用于渲染决策，但通常不写回粒子缓冲区——例如将 `age/lifetime` 映射到一条渐变曲线来采样最终 `color`。
 
-Spawn Context 可以通过 **SpawnEvent Attribute** 机制向 Initialize Context 传递数据。在 Spawn Context 中使用 `Set SpawnEvent Attribute` 节点将值附加到生成事件上，Initialize Context 使用 `Get Attribute: sourceIndex` 和对应的 Get 节点接收这些值。这使得不同 Spawner 产生的粒子可以携带差异化的初始属性，例如从多个不同颜色的发射源生成的粒子在出生时即持有各自的颜色信息。
+如果在 Update 中写入某个属性，但在同一 Update 块中后续节点又读取同一属性，VFX Graph 会按节点的垂直排列顺序确定执行先后，因此节点的上下位置直接影响读到的是旧值还是新值。
+
+---
 
 ## 实际应用
 
-**轨迹残影效果**：在 Initialize Context 中使用 `Set Attribute: position`（source: `Transform`）将粒子出生位置记录到自定义属性 `spawnPos`（Vector3 类型）。在 Update Context 中，每帧将 `position` 与 `spawnPos` 做插值（`Lerp`），实现粒子向出生点回弹的拖尾感。
+**场景一：基于寿命的颜色渐变**
+在 Output Particle Quad Context 中，添加 `Set Color over Life` 节点，该节点内部计算 `age / lifetime` 得到 0–1 的进度值，再通过 Gradient 类型的系统属性采样颜色，最终写入渲染用的 `color` 属性。这一做法将颜色控制完全交给 GPU，无需任何 CPU 干预，万级粒子的颜色插值开销可忽略不计。
 
-**基于年龄的颜色变化**：使用 `age / lifetime` 计算归一化年龄（值域 0~1），将其输入 `Sample Gradient` Operator，输出结果通过 `Set Attribute: color` 写入。粒子从出生（蓝色）到死亡（红色）自动插值，整个逻辑仅需 3 个节点，无需脚本。
+**场景二：C# 驱动动态参数**
+在 Blackboard 中创建一个 Exposed 的 Vector3 属性 `WindDirection`，在 Update 中用 `Force from Field` 节点读取该属性施加力。在 C# 脚本中每帧调用 `vfxAsset.SetVector3("WindDirection", windVector)`，实现风向随游戏逻辑实时变化的火焰或烟雾效果，而不需要重新编译 VFX Graph。
 
-**与 C# 脚本交互**：通过 `VisualEffect.SetVector3("属性名", value)` 在 CPU 端写入 Exposed Property（暴露属性），这类属性属于 Graph-level 的全局参数而非粒子级属性，二者需要明确区分。粒子级属性只存在于 GPU 缓冲区，C# 无法直接逐粒子读写。
+**场景三：自定义属性传递碰撞状态**
+创建一个 uint 类型自定义属性 `bounceCount`，在 Update 的碰撞事件块中每次检测到碰撞时执行 `bounceCount += 1`。Output 阶段根据 `bounceCount` 的值用 Branch 节点选择不同贴图，从而实现反弹次数越多粒子颜色越暗的视觉反馈。
+
+---
 
 ## 常见误区
 
-**误区一：混淆 Exposed Property 与粒子属性**。Exposed Property 是整个 VFX Graph 的全局参数，在 Inspector 面板可见，类似 Shader 的 Property；而粒子属性是每个粒子独立持有的数据。两者都出现在 Blackboard 中，但粒子属性图标为菱形，Exposed Property 图标为圆形，初学者常因界面相似而混淆，导致误以为可以通过 `VisualEffect.SetFloat` 修改单个粒子的 `size`。
+**误区一：认为 Initialize 中的属性赋值在后续帧会保留**
+Initialize Context 仅在粒子诞生的第一帧执行。如果希望某个值在粒子整个生命内持续生效（例如一个随机的初始旋转速度），必须在 Initialize 中将其写入一个自定义粒子属性，然后在 Update 中读取该属性使用。直接在 Update 中用 Random 节点生成值则会导致每帧重新随机，产生抖动而非持续旋转。
 
-**误区二：认为 Output Context 可以写入属性**。部分开发者尝试在 Output Context 中通过 Set Attribute 修改 `color` 或 `size` 以实现渲染时的变化，但 VFX Graph 不允许在 Output 阶段写回 attributeBuffer。正确做法是将颜色/大小计算逻辑移至 Update Context，或使用 Output 阶段专有的 **Composition** 模式（如 `Multiply`、`Over`）对属性进行非破坏性的渲染覆盖。
+**误区二：将 Exposed Property 与 Particle Attribute 混用**
+Exposed Property 是全局单值，所有粒子读到相同结果；Particle Attribute 是逐粒子值，每个粒子独立。若希望每个粒子有不同的初始颜色，必须使用 Particle Attribute 而非 Exposed Property——将全局颜色参数误用为逐粒子颜色，会让所有粒子同时变色，而非各自独立渐变。
 
-**误区三：无限增加自定义属性不影响性能**。由于所有自定义属性均存储在 GPU 显存的连续缓冲区中，粒子容量（Capacity）在创建时固定分配。若 Capacity 设为 1,000,000 且添加了 3 个 Vector3 自定义属性，仅这部分额外显存即达 `1,000,000 × 3 × 12 = 36 MB`，在移动端或显存有限的平台上会造成严重压力。
+**误区三：忽视自定义属性对 Particle Capacity 的显存影响**
+每增加一个 Vector3 自定义属性，在 Capacity 为 100 万的系统中将额外消耗约 12 MB 显存（100万 × 12 字节）。过度添加不必要的自定义属性，尤其是 Vector4 类型，会快速耗尽 GPU 资源。应当在设计阶段评估是否可以复用内置属性（例如用 `color.a` 存储辅助标志位）来减少自定义属性数量。
+
+---
 
 ## 知识关联
 
-属性系统依赖**生成系统**（Spawn Context）作为数据入口——正是 Spawn Context 触发 Initialize Context 执行，粒子属性才得以完成首次赋值。没有生成系统产生的粒子实例，属性系统的字段虽然存在于 Buffer 定义中，但不会有任何有效数据被写入。
+**前置概念——生成系统**：生成系统（Spawn System）决定了何时创建粒子以及初始属性值从何而来。Spawn Rate、Burst 等参数控制粒子进入 Initialize Context 的时机，而 Initialize Context 正是属性系统数据流的起点。不理解生成系统，就无法知道属性被赋初值的触发条件。
 
-属性系统是**力与运动**模块的直接操作对象。VFX Graph 中所有力（Gravity、Drag、Turbulence 等）的本质都是在 Update Context 中读取 `velocity` 属性、施加加速度、再将新的 `velocity` 写回——即对粒子属性的连续帧修改。理解属性的读写机制和阶段限制，是正确实现力与运动效果、避免属性覆盖冲突的前提条件。
+**后续概念——力与运动**：力与运动（Force & Motion）系统的核心是在 Update Context 中读取 `velocity` 和 `position` 这两个内置粒子属性，并按物理规则修改它们。例如 Gravity 节点将 `(0, -9.8, 0) × deltaTime` 累加到 `velocity`，Linear Drag 节点以系数乘以 `velocity` 实现阻尼——这些操作都是属性系统读写机制的直接应用。掌握属性的数据流后，力学节点的行为便可从数学层面完整推导。

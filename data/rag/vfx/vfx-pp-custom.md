@@ -25,61 +25,86 @@ updated_at: 2026-03-26
 ---
 
 
+
 # 自定义后处理
 
 ## 概述
 
-自定义后处理（Custom Post Processing Pass）是指在渲染管线的屏幕空间阶段，通过开发者自编写的着色器逻辑，对已完成光栅化的帧缓冲图像执行全屏变换操作。与内置后处理效果不同，自定义后处理允许开发者绕过预设参数限制，直接操控每个像素的颜色、深度或法线数据，实现引擎内置效果无法覆盖的视觉结果——例如基于自定义噪声函数的像素化溶解、非真实感渲染（NPR）的手绘描边，或逐帧累积的屏幕空间运动模糊变体。
+自定义后处理（Custom Post Processing Pass）是指在渲染管线的图像空间阶段，由开发者编写代码插入自定义的全屏图像处理逻辑，对已完成光栅化的帧缓冲纹理进行二次加工的技术手段。与引擎内置的Bloom、景深等后处理效果不同，自定义后处理允许开发者以Material（材质）或Compute Shader两种方式，将任意图像算法注入到后处理栈（Post Process Stack）中，输出最终呈现给玩家的画面。
 
-在 Unreal Engine 5 中，自定义后处理通过两种主要方式实现：**Material 方式**使用后处理材质球（Post Process Material），将 `Blendable Location` 设置为 `Before/After Tonemapping` 等节点位置；**Compute 方式**则通过 `FScreenPassTexture` 和 `AddPass` 函数族在 C++ 渲染线程中调度 Compute Shader，以获得更精细的资源控制权。自 UE4.22 引入 Render Dependency Graph（RDG）框架后，两种方式的资源生命周期管理均需遵循 RDG 的 Pass 注册与执行模型。
+在Unreal Engine 4.22版本之前，自定义后处理主要依赖`Blendable`接口和Post Process Volume中的材质槽实现；从4.22和5.x系列起，官方引入了`FSceneViewExtension`扩展类和`AddPass`/`AddFullscreenPass`系列渲染函数，使Compute方式的自定义Pass得以高效融入延迟渲染管线（Deferred Rendering Pipeline）的特定阶段，如`PostProcessing_BeforeBloom`、`PostProcessing_AfterTonemapping`等具名插入点。
 
-掌握自定义后处理的意义在于：屏幕空间后处理的计算成本与场景复杂度完全解耦，一个全屏 Compute Pass 的开销仅取决于分辨率，而与场景中的三角面数无关。这使其成为实现高性价比视觉风格化的首选技术路径，尤其在移动端或主机平台需要固定帧率时，用后处理模拟三维效果是常见的性能优化策略。
+掌握自定义后处理的核心价值在于突破引擎预设效果的边界——例如在角色轮廓检测、热成像滤镜、屏幕空间雨滴模拟等需要访问GBuffer（深度、法线、粗糙度等通道）的场景中，内置节点无法满足跨Pass数据访问需求，而自定义Post Process Material可通过`SceneTexture`表达式节点直接采样`SceneDepth`、`GBufferA`（世界法线）等缓冲区内容。
 
 ---
 
 ## 核心原理
 
-### Material 方式：后处理材质（Post Process Material）
+### Material方式：Post Process Material
 
-创建后处理材质时，必须将材质域（Material Domain）设置为 `Post Process`，并将混合位置（Blendable Location）配置为以下五个阶段之一：`Before Translucency`、`Before Tonemapping`、`After Tonemapping`、`Replacing the Tonemapper`、`SSR Input`。选择阶段决定了材质读取到的 `SceneTexture` 是否已经过色调映射（Tonemapping），`After Tonemapping` 阶段的颜色值范围被压缩至 [0, 1]，而 `Before Tonemapping` 则保留 HDR 线性值（可超过 1.0）。
+在材质编辑器中将材质域（Material Domain）设置为`Post Process`，混合模式（Blend Mode）设置为`Opaque`，即可创建一个后处理材质。该材质会以全屏四边形（Fullscreen Quad）覆盖的方式执行，顶点着色器由引擎自动生成，开发者只需编写片元（像素）着色阶段的逻辑。
 
-材质中使用 `SceneTexture` 节点获取屏幕图像，其 `Scene Texture Id` 参数可选择 `SceneColor`、`SceneDepth`、`GBufferA`（法线）、`GBufferB`（金属度/粗糙度）等。UV 采样使用 `ScreenPosition` 节点输出的视口 UV，偏移采样时需将像素偏移量换算为 UV 步长：`UV_offset = pixel_count / ViewportSize`，其中 `ViewportSize` 通过 `ViewProperty` 节点获取。将材质拖入 Camera 或 Post Process Volume 的 `Blendables` 数组后，引擎会自动在渲染管线对应阶段插入一个全屏 Quad Draw Call。
+关键节点是`SceneTexture`，其`Scene Texture Id`参数枚举了可采样的缓冲区类型，常用的包括：
+- **PostProcessInput0**：上一个Pass的输出颜色，即当前后处理栈的输入
+- **SceneDepth**：线性深度（单位：厘米），值域为`[NearClipPlane, FarClipPlane]`
+- **GBufferA**（世界空间法线，xyz分量范围-1到1，w通道存储Per-Object Data）
+- **GBufferB**（金属度Metallic、高光度Specular、粗糙度Roughness、着色模型ShadingModelID）
 
-### Compute 方式：RDG Compute Shader
+材质被放置到Post Process Volume的`Blendable Materials`数组后，引擎在`r.PostProcessAAQuality`控制的阶段自动执行。通过`Blendable Weight`参数（0.0到1.0）可实现多个后处理材质之间的线性混合，适合制作可渐变的特效过渡。
 
-Compute 方式需要在 C++ 中声明一个继承自 `FGlobalShader` 的 Compute Shader 类，并通过 `IMPLEMENT_GLOBAL_SHADER` 宏绑定 `.usf` 文件中的 Kernel 入口函数（通常命名为 `MainCS`）。在渲染线程中，使用 `FRDGBuilder` 注册 Pass 的标准流程如下：首先调用 `GraphBuilder.CreateTexture()` 创建 `FRDGTextureRef` 输出纹理，然后声明 `FParameters` 结构体并填入 `SceneColorTexture`（`FRDGTextureSRVRef`）和 `OutputTexture`（`FRDGTextureUAVRef`），最后调用 `FComputeShaderUtils::AddPass()` 提交 Pass，传入 Dispatch 线程组数量。
+### Compute Shader方式：FSceneViewExtension
 
-线程组尺寸的选择直接影响 GPU 占用率（Occupancy）。对于全屏图像处理，常用的线程组配置为 `[numthreads(8, 8, 1)]`，总线程数 64 在大多数 GPU 架构（NVIDIA Ampere、AMD RDNA2）上能有效填满一个 Warp/Wavefront。Dispatch 数量公式为：`DispatchX = ceil(ViewportWidth / 8)`，`DispatchY = ceil(ViewportHeight / 8)`。在 `.usf` 文件中，通过 `SV_DispatchThreadID` 获取当前线程对应的像素坐标，并用 `Texture2D.SampleLevel()` 采样输入，用 `RWTexture2D[float4]` 的 `operator[]` 写入输出。
+当效果需要随机写入、原子操作或读取当前帧的UAV（Unordered Access View）时，Material方式受限于片元着色器的随机写禁止，必须改用Compute Shader。实现路径为：
 
-### Pass 插入位置与 Blendable Priority
+1. 继承`FSceneViewExtensionBase`，重写`SubscribeToPostProcessingPass`函数，向对应的`EPostProcessingPass`枚举阶段（如`EPostProcessingPass::MotionBlur`之后）注册回调委托。
+2. 在回调函数内调用`FRDGBuilder::AddPass`，描述符（`FRDGPassDesc`）中设置`ERDGPassFlags::Compute`标志，并在Lambda内通过`RHICmdList.SetComputeShader`绑定编译后的`.usf`着色器。
+3. 全局着色器以`IMPLEMENT_GLOBAL_SHADER(FMyPostProcessCS, "/Plugin/MyPlugin/Private/MyPostProcess.usf", "MainCS", SF_Compute)`宏完成注册，Dispatch尺寸通常设为`FMath::DivideAndRoundUp(ViewRect.Width(), 8)`乘以`Height/8`的二维线程组。
 
-无论哪种方式，多个自定义后处理 Pass 的执行顺序由 `Blendable Priority` 控制，数值越小越先执行（默认值为 0，内置 Bloom 约在优先级 100 附近）。在 C++ Compute 方式中，Pass 执行位置通过在 `FSceneRenderer` 子类的渲染函数（如 `RenderFinish` 或 `AddPostProcessingPasses`）内调用来手动指定，需要精确理解 UE 渲染管线中 `RenderVelocities → SSAO → Bloom → Tonemap → UI` 的流程顺序，错误的插入点会导致效果与预期阶段的图像数据不匹配。
+RDG（Render Dependency Graph）系统负责自动推导Pass间的纹理屏障和内存别名，开发者通过`FRDGTexture*`句柄而非裸RHI指针操作资源，避免手动插入`TransitionResource`调用。
+
+### 着色器中访问GBuffer的坐标系约定
+
+无论Material还是Compute方式，采样屏幕空间坐标时必须注意UE使用的UV原点在左上角，而OpenGL约定为左下角。在`.usf`文件中，通过`SvPosition.xy / View.ViewSizeAndInvSize.xy`计算归一化UV（0到1范围），再乘以`View.BufferSizeAndInvSize.xy`得到缓冲区像素坐标，两者在非全屏视口（如分屏）情况下并不等价，混淆会导致采样偏移。
+
+深度重建世界坐标公式为：
+
+```
+float4 ClipPos = float4(UV * float2(2, -2) + float2(-1, 1), DeviceZ, 1);
+float4 WorldPos = mul(ClipPos, View.ScreenToWorld);
+WorldPos /= WorldPos.w;
+```
+
+其中`DeviceZ`从`SceneDepthTexture`采样得到，`View.ScreenToWorld`是引擎每帧上传到GPU的逆视图投影矩阵。
 
 ---
 
 ## 实际应用
 
-**NPR 手绘描边**：通过在 `Before Tonemapping` 阶段的后处理材质中，对 `SceneDepth` 和 `GBufferA`（世界法线）分别执行 Sobel 卷积（采样 8 个相邻像素），将深度梯度和法线梯度叠加后作为描边强度蒙版，与 SceneColor 合并。描边宽度通过调整 Sobel 采样步长（单位：像素）实时控制，无需修改场景中任何网格体。
+**热成像滤镜**：在后处理材质中通过`SceneTexture:WorldNormal`与`SceneTexture:SceneDepth`重建世界坐标，计算像素距光源的距离映射到冷暖色调（蓝→红）的渐变，再叠加噪声纹理模拟CCD传感器颗粒。整个效果可由一张256×1的渐变LUT纹理和约30个材质节点完成。
 
-**屏幕空间扫描线特效**：在 Compute Shader 中，根据 `SV_DispatchThreadID.y` 对 2 取模决定奇偶行，对奇数行像素亮度乘以系数 0.6，模拟 CRT 显示器的扫描线间隙。这种效果若用传统材质方式实现，需要通过 `fmod(ScreenUV.y * ScreenHeight, 2.0)` 达到相同目的，但 Compute 方式可以更直接地基于整数像素坐标判断，避免浮点精度误差导致的锯齿感。
+**屏幕空间角色轮廓检测**：在Post Process Material中，对`SceneTexture:CustomDepth`进行Sobel算子卷积，采样当前像素及其上下左右相邻四像素（偏移由`View.ViewSizeAndInvSize.zw`提供像素大小）的深度值，相差超过阈值（如5.0厘米）则输出轮廓颜色。此方案无需额外Pass，在单个Material内完成，移动端也适用。
 
-**渐进式热浪扭曲**：结合 `Time` 节点驱动 UV 偏移，用 Noise 函数（`MF_SimpleNoise` 或自定义 FBM）生成每帧变化的扰动量，对 `SceneColor` 执行非均匀 UV 偏移采样。偏移量通常限制在 ±0.01 UV 单位（对应 1080p 下约 ±10 像素）以内，超出此范围会产生明显的纹理拉伸伪影。
+**屏幕空间雨滴**：Compute Pass在每帧以Dispatch(1, 1, 1)的单线程组运行粒子模拟，将200个雨滴粒子的位置和速度写入Structured Buffer，下一个材质Pass读取该Buffer执行SDF（符号距离场）混合渲染，展示了Material Pass与Compute Pass在同一特效中协同工作的典型架构。
 
 ---
 
 ## 常见误区
 
-**误区一：在 After Tonemapping 阶段进行 HDR 运算**
-部分开发者将需要保留高光溢出（Bloom 前）的效果错误地放置于 `After Tonemapping` 阶段。此阶段的 SceneColor 已被 ACES 或自定义 Tonemapper 压缩到 [0, 1]，对亮度超过 1.0 的光源区域进行的任何基于亮度阈值的处理（如提取高光区域）都会静默失效，因为该阶段根本不存在超出范围的亮度值。正确做法是将此类效果置于 `Before Tonemapping` 并直接操作 HDR 线性颜色值。
+**误区一：将后处理材质的输出误以为会自动写回PostProcessInput0**
+后处理材质的输出结果会替换当前颜色缓冲，但如果材质中没有将`PostProcessInput0`颜色混入计算结果，原始场景颜色将被完全丢弃。正确做法是在材质的最终输出节点中，将自定义效果颜色与`PostProcessInput0`颜色进行`Lerp`或叠加混合，除非刻意需要全屏替换效果。
 
-**误区二：Compute 方式不需要处理输入输出纹理格式**
-使用 `RWTexture2D` 写入 SceneColor 时，必须确认目标纹理的像素格式（`PF_FloatRGBA` 对应 `float4`，`PF_B8G8R8A8` 对应 `unorm4`）与 UAV 声明类型完全匹配。将 HDR 浮点纹理的 UAV 声明为整数格式，在 DX12 下会触发 Validation Layer 报错，在部分移动端 GPU 上则会产生静默的颜色截断（Clamp）而非错误提示，极难排查。
+**误区二：以为Compute Post Process Pass可以在任意渲染阶段自由插入**
+`EPostProcessingPass`枚举只提供了约10个预定义插入点（截至UE5.3），无法插入到GBuffer写入阶段之前，也无法在TAA（Temporal Anti-Aliasing）重投影之后、Tone Mapping之前的任意位置自由插入。如果需要在Tone Mapping前访问线性HDR颜色而非Tone Mapped的LDR颜色，必须明确选用`EPostProcessingPass::BeforeTonemap`而非默认的`AfterTonemap`，两者的颜色值域差异可达数十倍（HDR场景高光区域值可超过100.0）。
 
-**误区三：材质方式的性能开销可以忽略不计**
-每个 Post Process Material 实例在对应渲染阶段都会触发一次独立的全屏 Draw Call，并强制刷新渲染状态（Render State）。在 1080p 分辨率下，一个简单的颜色校正材质的 GPU 时间约为 0.1～0.3ms，但若堆叠 10 个不同的后处理材质，累积开销可达 1～3ms，完全不可忽视。对于逻辑上可以合并的多步操作，应在单一材质中使用自定义 HLSL 节点（`Custom` 节点）串联处理，而非拆分为多个独立材质球。
+**误区三：认为Material方式与Compute方式的性能差异可忽略**
+Material方式在像素着色器阶段执行，受限于光栅化流水线，无法利用GPU的共享内存（Shared Memory）和Wave指令。对于需要横跨16×16像素块进行平均亮度统计的操作，Compute方式可在线程组内使用`groupshared float`累加，避免多次全屏纹理读取，性能差距在4K分辨率下实测可达3到5倍。将本应使用Compute的算法强行用Material实现，往往会产生大量冗余采样。
 
 ---
 
 ## 知识关联
 
-本概念建立在**镜头光晕**（Lens Flare）的基础上——镜头光晕本身就是一个后处理效果，其在 `SceneColor` 上叠加散射图案的机制揭示了后处理阶段图像合成的基本模式：读取
+**前置概念：镜头光晕（Lens Flare）**
+镜头光晕作为内置后处理特效，本质上是引擎在`PostProcessing_BeforeBloom`阶段对亮斑进行Scatter绘制后合并到颜色缓冲的操作。理解其内部Bloom提取阈值（默认`r.BloomThreshold = -1`代表自动计算）和双边高斯模糊Pass的执行顺序，有助于在自定义Post Process中正确选择插入点——若效果需要在光晕叠加之前介入（如改变光晕颜色），必须注册到Bloom之前的阶段，否则采样到的`PostProcessInput0`已包含光晕叠加结果。
+
+**后续概念：模板缓冲应用（Stencil Buffer）**
+自定义后处理的逐像素选择性执行（仅处理特定物体所在区域）常借助模板缓冲实现——物体在Base Pass中以`r.CustomDepth.Stencil`写入自定义模板值（0-255），后处理Pass中通过`SceneTex

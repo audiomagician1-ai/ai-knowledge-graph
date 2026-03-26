@@ -25,111 +25,74 @@ updated_at: 2026-03-26
 ---
 
 
+
 # 自定义数据
 
 ## 概述
 
-自定义数据（Custom Data）是Unity粒子系统中一种将每粒子自定义数值从CPU端传递至GPU Shader的专用管线机制。通过在粒子系统的**Custom Data**模块中配置最多两组数据流（CustomData1和CustomData2），开发者可以为每个粒子附加最多8个浮点数（每组4个分量，以Vector或Float形式存储），这些数值在粒子生命周期内随时间曲线动态变化，并最终通过顶点属性流（Vertex Streams）注入到Shader的输入结构中。
+自定义数据（Custom Data）是Unity粒子系统中一套专用的数据传递管线，允许开发者将每个粒子的个性化数值（最多两组Vector4，即8个float通道）通过粒子渲染器直接写入Shader的顶点数据流。与粒子的内置属性（位置、颜色、生命周期）不同，Custom Data完全由开发者定义语义，可以驱动UV动画偏移、溶解阈值、发光强度等任意视觉效果。
 
-该机制的引入是为了解决粒子Shader中"纹理UV动画参数、溶解强度、自定义颜色混合权重"等无法通过内置属性表达的个性化控制需求。Unity 5.5版本正式将Custom Data模块纳入粒子系统标准功能集，配合同版本引入的Vertex Streams系统，形成完整的粒子自定义数据传输闭环。在此之前，开发者只能通过修改粒子颜色的Alpha通道"夹带"额外信息，极大限制了Shader的表达能力。
+这一功能自Unity 5.5版本引入，解决了此前只能通过MaterialPropertyBlock或脚本逐帧SetFloat来修改粒子材质属性的性能瓶颈问题。旧方式每帧需要CPU向GPU发起独立的Draw Call参数更新，而Custom Data将数据打包进粒子的顶点流，使得GPU可以在同一个实例化批次内读取每个粒子的差异化参数，批渲染效率大幅提升。
 
-理解自定义数据管线对Shader特效开发至关重要：一个粒子特效中的每个粒子可能处于完全不同的生命周期阶段，若不借助Custom Data逐粒子传递差异化参数，Shader中的材质参数（如`_DissolveAmount`）只能是全局统一值，导致所有粒子同步变化，无法实现错位溶解、分散翻页等复杂效果。
+理解自定义数据管线的关键在于它涉及三个配置层的联动：粒子系统的**Custom Data模块**、粒子渲染器（Particle System Renderer）的**Custom Vertex Streams**，以及Shader中对应的**顶点输入语义**。三者任意一环配置不匹配，数据就会静默失效或写入错误通道，这是初学者最常踩到的陷阱。
 
 ---
 
 ## 核心原理
 
-### Custom Data模块的数据结构
+### Custom Data模块的两个槽位
 
-Custom Data模块提供两个独立的数据槽：**CustomData1**和**CustomData2**，均可配置为以下两种模式之一：
+粒子系统的Custom Data模块提供**Custom1**和**Custom2**两个独立槽位，每个槽位可设置为**Vector**或**Color**模式。Vector模式下可分别为X、Y、Z、W四个分量配置曲线或常量，Color模式则将RGBA映射为4个float写入同一槽位。每个槽位本质上是一个XYZW四元组，合计8个独立float通道，在Shader中对应`float4 custom1`和`float4 custom2`两个变量。
 
-- **Vector模式**：输出XYZW四个分量，每个分量可绑定独立的曲线（MinMaxCurve）或常量，粒子在其生命周期（0~1归一化时间）内按曲线采样当前值。
-- **Float模式**：仅输出单个浮点值，等效于Vector的X分量。
+若将Custom1设置为Vector模式并仅激活XY两个分量，则Z和W通道会写入0值占位，Shader端仍能接收到完整的float4，只是后两个分量无实际意义。
 
-数据在CPU粒子更新阶段写入每粒子的结构体缓冲区，随后由粒子渲染器在提交Draw Call时将这些数值打包进顶点流，以每顶点属性的形式送往GPU。
+### Custom Vertex Streams的绑定机制
 
-### Vertex Streams的绑定配置
-
-要让Shader收到Custom Data，必须在粒子系统渲染器（Renderer）组件的**Vertex Streams**列表中显式添加对应项：
-
-| Vertex Stream名称 | 对应HLSL语义 | 数据内容 |
-|---|---|---|
-| Custom1.xyzw | TEXCOORD1 | CustomData1的四个分量 |
-| Custom2.xyzw | TEXCOORD2 | CustomData2的四个分量 |
-
-在Shader的顶点输入结构体中，需声明匹配的语义绑定，例如：
+粒子渲染器组件中的**Custom Vertex Streams**是连接粒子数据与Shader顶点输入的桥梁。在Renderer组件的Custom Vertex Streams列表中，可将`Custom1.xyzw`或`Custom1.xy`等分量拖入流列表，Unity会将其打包进顶点属性。Shader端需要用**TEXCOORD**语义接收这些数据，例如：
 
 ```hlsl
 struct appdata {
     float4 vertex   : POSITION;
     float4 color    : COLOR;
-    float4 texcoord : TEXCOORD0;  // 粒子UV
-    float4 custom1  : TEXCOORD1;  // CustomData1
-    float4 custom2  : TEXCOORD2;  // CustomData2
+    float4 texcoord : TEXCOORD0;   // UV + Custom1.xy
+    float4 custom1  : TEXCOORD1;   // Custom1.zw + Custom2.xy
 };
 ```
 
-语义序号必须与Vertex Streams列表中的实际排列顺序严格对应，顺序错位会导致数据被映射到错误的变量，这是初学者最常见的配置失误。
+注意Unity的顶点流是**顺序打包**的，即流列表中靠上的项先填充TEXCOORD的x分量，依次向下填充y、z、w。如果TEXCOORD0已被UV占用了xy，那么Custom1.xy就会自动对齐到zw，而不是另起一个新的TEXCOORD语义。此打包顺序必须与Shader结构体完全一致，否则数据偏移。
 
-### 数据在粒子生命周期内的动态采样
+### 数据类型与精度限制
 
-Custom Data的每个分量绑定的曲线以粒子**归一化生命时间（0=出生，1=消亡）**作为横轴进行采样，采样结果实时写入当前帧该粒子的顶点数据。这意味着同一批粒子在同一帧中，年龄不同的粒子其Custom Data值完全独立——例如配置CustomData1.x为从0到1的线性曲线，则出生时间0.3秒、总寿命1秒的粒子在该帧的custom1.x值为0.3，而出生时间0.7秒的粒子custom1.x值为0.7。这一逐粒子差异化特性是Custom Data区别于材质全局参数的本质优势。
+Custom Data中所有通道均以**float32**精度存储在粒子的模拟数据中，但经过顶点流传递到Shader后，精度受顶点格式限制。如果渲染器的顶点压缩选项开启了`UV Channels`的半精度（float16），则Custom Data如果复用了TEXCOORD通道，其精度会降至16位，适合0~1范围的归一化值，但不适合大数值坐标。若需要传递世界空间坐标等大值，需要在Project Settings → Player → Vertex Compression中关闭对应通道的压缩。
+
+### 脚本驱动Custom Data
+
+除模块曲线外，还可通过C#脚本用`ParticleSystem.SetCustomParticleData(List<Vector4>, ParticleSystemCustomData.Custom1)`在运行时为每个粒子写入差异化的Vector4值，配合`GetCustomParticleData`读取。此接口每帧操作整个粒子数组，时间复杂度为O(n)，适合粒子数量在1000以内的场景，超过该量级建议改用Compute Shader方案。
 
 ---
 
 ## 实际应用
 
-### 逐粒子溶解效果
+**UV序列帧动画的帧索引传递**：将Custom1.x配置为0到15的曲线（代表4×4序列帧的帧编号），在Shader中用`floor(custom1.x)`取整后计算UV偏移量`float2(col/4.0, row/4.0)`，实现每个粒子独立的序列帧播放进度，避免所有粒子同步切帧。
 
-在火焰消散特效中，将CustomData1.x配置为"生命后半段从0线性升至1"的曲线，在片元Shader中将该值作为溶解噪声纹理的阈值：
+**溶解特效的阈值控制**：Custom1.y存储每个粒子从0到1的溶解进度曲线，Shader中将其与噪声贴图采样值做比较：`clip(noiseVal - custom1.y)`，粒子在生命周期末尾时custom1.y接近1，溶解面积扩大至完全消失，每个粒子的溶解速率可以通过曲线独立控制。
 
-```hlsl
-float dissolveThreshold = i.custom1.x;
-float noiseVal = tex2D(_NoiseTex, i.uv).r;
-clip(noiseVal - dissolveThreshold);
-```
-
-每个粒子根据自身年龄独立溶解，新生粒子完整显示，老化粒子逐步镂空，整体呈现出有机的扩散消亡感，而非所有粒子同时消失。
-
-### 序列帧UV动画的帧索引传递
-
-粒子Shader播放Flipbook序列帧动画时，可用CustomData1.x存储当前帧索引（0~15对应4×4图集的16帧），在Shader中将该值换算为UV偏移量：
-
-```hlsl
-float frameIndex = floor(i.custom1.x * 16.0);
-float2 frameUV = float2(
-    fmod(frameIndex, 4.0) / 4.0,
-    floor(frameIndex / 4.0) / 4.0
-);
-float2 finalUV = i.uv / 4.0 + frameUV;
-```
-
-这样每个粒子可以从图集的不同帧起播，避免所有粒子同帧同步的视觉规律感。
-
-### 颜色混合权重控制
-
-在技能命中特效中，用CustomData2.xyzw分别携带四种颜色状态（普通/暴击/元素/格挡）的混合权重，在Shader中执行加权混合，同一特效池的粒子可通过Custom Data区分命中类型，无需创建多套材质。
+**颜色渐变叠加**：Custom2设置为Color模式，在粒子生命周期内定义一条从蓝色到橙色的渐变，Shader中将Custom2.rgba与主颜色相乘后叠加自发光，实现与粒子颜色模块颜色独立的双层颜色动画效果。
 
 ---
 
 ## 常见误区
 
-### 误区一：认为Custom Data可以不配置Vertex Streams直接使用
+**误区一：认为Custom Data可以不配置Vertex Streams直接在Shader中读取**。Custom Data模块只负责计算和存储每个粒子的数据，如果不在Renderer的Custom Vertex Streams中显式添加对应条目，这些数据就不会被写入顶点缓冲区，Shader中读到的将是未定义数值（通常为0或上一帧的残留数据）。两个面板必须同时配置。
 
-Custom Data模块中的数值**不会自动**传入Shader。必须在渲染器的Vertex Streams列表中手动添加Custom1/Custom2条目，且Shader输入结构中的TEXCOORD语义序号必须与Vertex Streams列表的实际物理排列顺序一致，而非名称一致。如果Vertex Streams列表中UV在TEXCOORD0、Color在TEXCOORD1、Custom1在TEXCOORD2，则Shader中`TEXCOORD1`接收到的是Color数据而非Custom1。
+**误区二：Shader中TEXCOORD语义编号可以任意指定**。Unity粒子顶点流是线性顺序填充的，开发者无法控制某项数据"跳过"填充到TEXCOORD3。如果流列表中前四项数据恰好填满了TEXCOORD0，第五项数据会自动进入TEXCOORD1的x分量。Shader结构体中的语义声明必须严格按照这个顺序，若随意跳跃语义编号会导致数据错位，且Unity不会给出任何编译报错。
 
-### 误区二：将Custom Data与材质的`SetFloat`等同
-
-通过`Material.SetFloat("_Param", value)`设置的材质属性是**全局常量**，同一批次所有粒子读取同一数值。Custom Data则是**逐顶点属性**，每个粒子携带独立数值。两者的传输路径完全不同：材质属性走Constant Buffer（cbuffer），Custom Data走顶点属性流（vertex attribute stream）。在需要粒子间差异化参数时错误地使用材质属性，无论如何调整曲线都只会得到全局统一的效果。
-
-### 误区三：超过8个浮点数限制时试图增加第三组Custom Data
-
-Unity粒子系统仅提供CustomData1和CustomData2共**2组×4分量=8个浮点数**的上限，不存在CustomData3。当参数需求超出此限制时，正确做法是将部分参数编码压缩（如将两个0~1范围的值打包进一个浮点数的整数部和小数部），或将静态参数改由纹理采样传递，而非期望系统提供更多数据槽。
+**误区三：Custom Data与材质属性块（MaterialPropertyBlock）等价**。MaterialPropertyBlock的SetFloat作用于整个渲染器组件，所有粒子共用同一个材质参数值；Custom Data则为粒子系统中**每一个独立粒子**存储不同的值，两者粒度根本不同。用MaterialPropertyBlock无法实现同一粒子系统中不同粒子各自具有不同溶解阈值的效果。
 
 ---
 
 ## 知识关联
 
-**前置知识衔接**：自定义数据管线依赖**渲染器类型**的选择——Billboard渲染器与Mesh渲染器的顶点数量不同，Vertex Streams中相同的Custom Data条目在两种渲染器下写入顶点缓冲区的行为相同，但Mesh渲染器的每个顶点都会收到**该粒子**的同一Custom Data值（非每三角面独立）。拖尾Shader（Trail Shader）中Custom Data的接入方式与普通粒子Shader完全相同，但拖尾的每个历史节点会保存各自捕获时刻的Custom Data快照，这导致一条拖尾上不同位置的节点可能携带不同的Custom Data值，是拖尾渐变效果的数据基础。
+学习自定义数据之前，需要理解**渲染器类型**的选择逻辑——Billboard、Mesh、Stretched Billboard等渲染器类型决定了顶点流中Position、Normal等内置语义的存在形式，这会影响Custom Data实际占用的TEXCOORD编号起始位置。此外，**拖尾Shader**中已经演示了如何在粒子相关材质中手写顶点输入结构体，该基础使开发者能够理解appdata中增加TEXCOORD1声明的语法规范。
 
-**后续知识延伸**：掌握Custom Data管线后，**混合模式**的学习将直接利用Custom Data携带的权重值——通过在Shader的Blend指令中搭配Custom Data分量作为动态混合系数，可以实现加法、乘法、Alpha混合在粒子生命周期内的动态过渡，而非固定使用某一种混合模式。Custom Data本质上是将混合控制权从材质级别下沉到了粒子个体级别。
+掌握Custom Data管线之后，自然过渡到**混合模式**的深入配置——当Custom Data驱动透明度或溶解系数时，必须根据溶解边缘的半透明需求选择Additive、Alpha Blend或Premultiplied等混合模式，才能让Custom Data控制的视觉效果在最终合成中呈现正确的叠加关系。
