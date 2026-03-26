@@ -24,102 +24,94 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # SDF光线步进
 
 ## 概述
 
-SDF光线步进（Sphere Tracing）是一种利用有符号距离场（Signed Distance Field，SDF）进行光线与隐式曲面求交的算法，由John C. Hart于1996年在论文 *Sphere Tracing: A Geometric Method for the Antialiased Ray Tracing of Implicit Surfaces* 中正式提出。与传统光线追踪中解析求交不同，Sphere Tracing不需要代数方程的显式解，而是通过反复查询场景SDF函数来逼近交点位置。
+SDF光线步进（Sphere Tracing）是一种利用有符号距离场（Signed Distance Field，SDF）进行光线与隐式几何体求交的算法，由John C. Hart在1996年的论文《Sphere Tracing: A Geometric Method for the Antialiased Ray Tracing of Implicit Surfaces》中正式提出。与传统光线-三角形求交不同，该算法不需要显式的网格数据，而是通过对空间中每一点查询"到最近几何表面的最短距离"来驱动光线推进。
 
-有符号距离场是一个标量函数 `f(p)`，对空间中任意点 `p` 返回该点到场景中最近表面的有符号距离：曲面外部返回正值，内部返回负值，恰好在表面上返回零。正是这个"到最近表面的距离"的语义，使得Sphere Tracing得以安全、高效地推进光线，而不必担心步进过头穿透表面。
+有符号距离场是一个标量函数 `f(p)`，其中 `p` 为空间中任意一点。当 `f(p) < 0` 时，点在物体内部；`f(p) = 0` 时，点恰好在物体表面；`f(p) > 0` 时，点在物体外部。Sphere Tracing的核心思路正是：在任意位置 `p`，以 `f(p)` 的绝对值作为安全步进距离，因为该半径内不可能存在任何表面，从而保证步进不会越过物体。
 
-Sphere Tracing在实时图形领域（尤其是Shadertoy社区）和光线行进渲染器中极为流行，因为只需一个SDF函数便可定义任意复杂的隐式几何体，并天然支持平滑融合（smooth union）等操作，这是多边形网格难以实现的。
+Sphere Tracing在实时图形学领域尤为重要，Shadertoy平台上大量的实时渲染Demo正是基于该算法，它也是现代程序化生成渲染、体积云和环境光遮蔽（SSAO替代方案AO from SDF）的底层技术之一。
 
 ---
 
 ## 核心原理
 
-### 安全步长的几何意义
+### 步进公式与收敛条件
 
-Sphere Tracing的核心思想可以用一句话表达：**当前点处的SDF值即为"安全步长"**。在位置 `p` 处，若 `f(p) = d`，则以 `p` 为球心、`d` 为半径的球体内部不包含任何表面。因此，沿任意方向（包括光线方向）移动最多 `d` 的距离，都不会穿过表面。算法利用这一保证，每步精确地迈出尽可能大的安全步长。
-
-算法的迭代公式为：
+设光线起点为 `o`，方向为单位向量 `d`，第 `n` 步的位置为 `p_n`。步进迭代公式为：
 
 ```
-t_{n+1} = t_n + f(ro + t_n * rd)
+p_{n+1} = p_n + f(p_n) * d
 ```
 
-其中 `ro` 为光线起点（ray origin），`rd` 为单位化的光线方向（ray direction），`t_n` 为第 `n` 步时沿光线的累积距离。当 `f(ro + t_n * rd) < ε`（通常 ε 取 `0.001` 到 `0.0001`）时，认为光线已到达表面，求交成功。
+每一步的步长等于当前点的SDF值 `f(p_n)`，即以该值为半径的"安全球体"不与任何表面相交。算法终止条件有两个：
+- **命中**：`f(p_n) < ε`，通常 `ε` 取 `0.001` 到 `0.0001` 之间；
+- **未命中**：累计步进距离 `t` 超过最大距离 `t_max`（如 `100.0`），或迭代次数超过上限（通常为64到256次）。
 
-### 收敛条件与终止判断
+### 基本SDF图元的解析公式
 
-Sphere Tracing需要两个终止条件：
+Sphere Tracing的威力来源于SDF函数可以用解析公式构造基本图元，然后通过布尔运算组合：
 
-1. **命中**：`f(p) < ε`，其中 ε 是用户定义的表面厚度阈值。
-2. **未命中**：累积步长 `t` 超过最大场景深度（如 `t > 100.0`），或迭代次数超过最大步数限制（常用64至256步）。
+- **球体**（圆心在原点，半径 `r`）：`f(p) = |p| - r`
+- **轴对齐盒子**（半尺寸为 `b`）：`f(p) = |max(|p| - b, 0)|`（分量wise操作后取模长）
+- **圆环**（大半径 `R`，管半径 `r`）：`f(p) = |(√(p.x²+p.z²) - R, p.y)| - r`
 
-迭代步数上限是性能关键。对于光滑的简单SDF，通常64步即可收敛；而细密几何或掠射角（grazing angle）入射时，由于每步SDF值趋近于零（光线几乎与表面相切），步数可能急剧增加，这是Sphere Tracing最主要的性能瓶颈。
+这些公式能保证Lipschitz常数为1，是Sphere Tracing收敛的数学前提。
 
-### 法线的计算
+### SDF布尔运算与软融合
 
-求交成功后，表面法线可以通过对SDF函数进行数值梯度估计（gradient estimation）得到。最常用的方法是中心差分：
+多个SDF图元可以通过布尔运算组合成复杂场景，对应操作如下：
 
-```
-n = normalize(vec3(
-    f(p + vec3(ε,0,0)) - f(p - vec3(ε,0,0)),
-    f(p + vec3(0,ε,0)) - f(p - vec3(0,ε,0)),
-    f(p + vec3(0,0,ε)) - f(p - vec3(0,0,ε))
-))
-```
+- **并集**（Union）：`f_union(p) = min(f_A(p), f_B(p))`
+- **交集**（Intersection）：`f_inter(p) = max(f_A(p), f_B(p))`
+- **差集**（Subtraction）：`f_diff(p) = max(-f_A(p), f_B(p))`
 
-这需要对SDF额外调用6次，计算代价固定且与几何复杂度无关。另有四面体差分方法（Tetrahedron method，由Inigo Quilez推广）仅需4次SDF调用，且数值稳定性相当。
-
-### SDF的构造与组合
-
-Sphere Tracing的灵活性来自SDF的可组合性。常见基元包括：
-- **球体**：`f(p) = length(p - center) - radius`
-- **无限平面**：`f(p) = dot(p, normal) + d`
-- **长方体**：通过分量最大值构造，形式为 `length(max(abs(p-b)-b, 0.0))`
-
-组合操作包括并集（`min(f1,f2)`）、交集（`max(f1,f2)`）、差集（`max(f1,-f2)`），以及平滑并集（smooth union），其公式为：
+此外，Inigo Quilez（iq）推广了**平滑并集**（Smooth Union）操作：
 
 ```
-smin(a, b, k) = -log(exp(-k*a) + exp(-k*b)) / k
+f_smin(a, b, k) = min(a, b) - k²/(4*max(k - |a-b|, 0)) 
+```
+（polynomial smooth版本），参数 `k` 控制融合半径，使两个物体边界产生有机的"融合"过渡效果，这是传统多边形网格几乎无法实时实现的。
+
+### 法线估算
+
+Sphere Tracing渲染中，表面法线不直接存储，而是通过SDF的梯度数值近似计算：
+
+```
+n = normalize( f(p + ε*x̂) - f(p - ε*x̂),
+               f(p + ε*ŷ) - f(p - ε*ŷ),
+               f(p + ε*ẑ) - f(p - ε*ẑ) )
 ```
 
-其中 `k` 控制融合半径，`k` 越大融合越尖锐。
+这是一次中心差分近似，需要对SDF函数额外调用6次，`ε` 通常取 `0.0001`。
 
 ---
 
 ## 实际应用
 
-**Shadertoy实时渲染**：Shadertoy平台上大量视觉效果直接基于Sphere Tracing，典型作品如Inigo Quilez的"Slisesix"（2008年）在单个片段着色器中渲染出带阴影、环境光遮蔽的完整三维场景。开发者只需在GPU上并行执行每像素的Sphere Tracing循环即可。
+**Shadertoy实时渲染**：在WebGL/GLSL着色器中，整个场景由一个`map(vec3 p)`函数定义，每帧对每个像素执行Sphere Tracing，结合法线估算、软阴影（沿阴影光线累计最小SDF值）、环境光遮蔽（步进若干步累加SDF值的倒数）完成完整光照。Inigo Quilez的"Protean Clouds"在2015年仅用约200行GLSL实现了全程序化云层渲染。
 
-**软阴影（Soft Shadow）**：Sphere Tracing天然支持廉价的软阴影近似。在向光源行进的阴影光线上，记录每步 `f(p)/t` 的最小值（称为"半影因子"），该值趋近于0表示被遮挡，趋近于1表示完全照亮，中间值产生平滑过渡的软阴影，整体代价仅为额外一次光线步进。
+**软阴影**：沿阴影光线步进时，记录路径上的最小惩罚值 `min(k * f(p) / t)`，其中 `k` 为软化系数（典型值 `8` 到 `32`），可产生柔和阴影半影，时间复杂度与主光线步进相同，无需光源的几何信息。
 
-**环境光遮蔽（AO）**：由于SDF直接编码了到表面的距离，可以在表面法线方向采样少量（通常5步）固定步长处的SDF值，与期望距离之差即反映遮蔽程度，无需蒙特卡洛采样。
-
-**程序化地形与体积云**：将高度场或密度场包装成SDF后，Sphere Tracing可以渲染地形侵蚀、云层等体积效果，也可与传统光栅化管线混合使用（先光栅化不透明物体，再对深度缓冲可见区域执行光线步进）。
+**字体与UI的SDF渲染**：Valve在2007年发表的技术报告《Improved Alpha-Tested Magnification for Vector Textures and Special Effects》中提出将字体预烘焙为SDF纹理，着色时对SDF值做阈值处理，即可在任意分辨率下渲染无锯齿字体，这是Sphere Tracing思想在2D领域的变体。
 
 ---
 
 ## 常见误区
 
-**误区一：SDF必须精确，近似SDF会导致算法失败**
+**误区一：步长越大收敛越快**。部分初学者试图将步长乘以一个大于1的加速因子（如 `1.5 * f(p)`），以期减少迭代次数。然而Sphere Tracing的正确性依赖于"步长不超过SDF值"这一安全保证。若SDF函数的Lipschitz常数正好为1（即精确SDF），步长超过`f(p)`会导致光线穿过表面，产生漏洞（artifacts）。只有在SDF是"保守近似"（Lipschitz < 1的超保守SDF）时，适度加速才可能安全。
 
-实际上，Sphere Tracing要求的是SDF满足"Lipschitz常数 ≤ 1"的条件（即1-Lipschitz函数），而不要求绝对精确。只要函数值不超过真实距离（即"under-estimated SDF"），算法仍然安全。许多复杂操作（如空间扭曲 `twist`、弯曲 `bend`）会破坏精确距离性质，此时通常通过除以已知的Lipschitz常数进行修正，牺牲一定步进效率但不会穿透表面。
+**误区二：SDF布尔运算结果仍是精确SDF**。`min(f_A, f_B)` 的并集操作在远离交界区域时确实是精确SDF，但在两个物体的"竞争区域"附近，结果函数的Lipschitz常数可能超过1，导致步进可能略微越过表面。实践中通常可以接受，但在精确渲染中应将 `ε` 适当放宽，或限制最大步长。
 
-**误区二：步数越多精度越高，应尽量增大最大步数**
-
-最大步数增加并不等比例提升精度，步进精度主要由收敛阈值 ε 决定。增大步数上限主要是为了处理掠射角或深度较大场景中步进速度缓慢的情况。在实践中，128步搭配合理的ε（如 `0.001 * t`，随深度自适应的相对误差）通常优于512步搭配固定ε，且帧率更高。
-
-**误区三：Sphere Tracing等同于Ray Marching**
-
-Ray Marching泛指一切沿光线逐步前进的算法，包括固定步长推进（常用于体积渲染）。Sphere Tracing是Ray Marching的一种特殊形式，其独特之处在于步长由SDF自适应决定，而非固定值。固定步长Ray Marching存在漏洞（可能穿透薄表面），Sphere Tracing则在1-Lipschitz条件下保证不漏洞。
+**误区三：Sphere Tracing与光线行进（Ray Marching）是同一概念**。Ray Marching泛指所有沿光线按固定步长推进的算法族（包括体积渲染的固定步长积分），而Sphere Tracing特指利用SDF自适应确定步长的特定算法。两者的本质区别在于步长策略：固定步长的Ray Marching效率低且容易漏步，而Sphere Tracing的步长由几何信息驱动，自适应且有理论收敛保证。
 
 ---
 
 ## 知识关联
 
-**前置概念——光线求交**：传统光线求交（如光线与三角形的Möller–Trumbore算法）给出了解析精确解，而Sphere Tracing是其在隐式曲面场景下的数值替代方案。理解光线参数化表示 `p = ro + t*rd` 是阅读Sphere Tracing代码的直接前提，两者共享相同的光线数据结构，但求交策略完全不同——前者依赖几何图元的代数性质，后者依赖场景整体的距离场信息。
+**前置知识**：光线求交提供了"光线参数化"的基础思想，即将光线写为 `r(t) = o + t*d`，Sphere Tracing正是对参数 `t` 的迭代推进。与传统光线-三角形求交相比，Sphere Tracing放弃了解析求交，转而用迭代逼近换取对任意隐式几何的统一处理能力。
 
-**隐式曲面建模**：Sphere Tracing是隐式建模工作流的渲染端。SDF的设计（如Inigo Quilez整理的数十种基元SDF公式库）与Sphere Tracing算法解耦，两者共同构成完整的隐式建模渲染管线。掌握Sphere Tracing后，自然引出对更复杂SDF表示（如神经SDF、带符号距离场纹理SDFT）的探索需求。
+**延伸方向**：掌握Sphere Tracing后，可以自然过渡到**SDF场景的全局光照**（通过路径追踪结合Sphere Tracing的混合方法）、**动态SDF形变动画**（对多个SDF做时间插值）、以及**神经隐式表面**（NeRF和NeuS等方法用神经网络代替解析SDF函数，步进逻辑相同但需要网络推断）。Inigo Quilez在其个人网站 `iquilezles.org` 上维护了超过60种SDF图元的解析公式，是该领域最权威的参考资料。

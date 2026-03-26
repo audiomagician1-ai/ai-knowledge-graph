@@ -24,71 +24,65 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # Cook-Torrance模型
 
 ## 概述
 
-Cook-Torrance模型是由Robert Cook和Kenneth Torrance于1982年在论文《A Reflectance Model for Computer Graphics》中提出的微表面双向反射分布函数（BRDF）。该模型将宏观表面建模为由无数微小完美镜面（microfacets）组成的集合，每个微面的法线方向不同，整体表面的反射特性由这些微面法线的统计分布决定。这一思想直接来源于光学和热辐射领域的物理测量数据，是首个将物理光学引入实时渲染的工业级模型。
+Cook-Torrance模型是由Robert Cook和Kenneth Torrance于1982年在论文《A Reflectance Model for Computer Graphics》中提出的微表面双向反射分布函数（BRDF）。它是第一个将物理光学中的微表面理论系统性地引入计算机图形学的光照模型，将表面视为由无数微小镜面（microfacet）组成的集合，每个微表面仅在其法线方向等于半角向量（half-vector）时才对观察方向产生镜面反射贡献。
 
-Cook-Torrance在发表时解决了Phong模型无法表达金属质感和掠射角高光拉伸等问题。它不依赖经验调参，而是将材质属性分解为可测量的物理量，因此成为现代PBR（基于物理的渲染）工作流的理论基础，被Unreal Engine 4、Unity HDRP等主流引擎直接采用。
-
-## 核心原理
-
-### 完整公式结构
-
-Cook-Torrance镜面反射BRDF的完整形式为：
+该模型的完整公式为：
 
 $$f_r = \frac{D(\mathbf{h}) \cdot F(\mathbf{v}, \mathbf{h}) \cdot G(\mathbf{l}, \mathbf{v}, \mathbf{h})}{4(\mathbf{n} \cdot \mathbf{l})(\mathbf{n} \cdot \mathbf{v})}$$
 
-其中 $\mathbf{h}$ 是半程向量（halfway vector），$\mathbf{l}$ 是光源方向，$\mathbf{v}$ 是视线方向，$\mathbf{n}$ 是宏观法线。分母中的 $4(\mathbf{n} \cdot \mathbf{l})(\mathbf{n} \cdot \mathbf{v})$ 是将微面几何转换到宏观表面积时产生的雅可比修正项，并非经验值。
+其中 $D$ 为法线分布函数，$F$ 为菲涅尔项，$G$ 为几何遮蔽项，分母中的 $4(\mathbf{n} \cdot \mathbf{l})(\mathbf{n} \cdot \mathbf{v})$ 是将微表面坐标变换回宏观表面的归一化因子。Cook-Torrance模型之所以重要，在于它替代了此前图形学中广泛使用的Phong模型——后者完全基于经验而非物理，无法正确模拟掠射角下的高光拉伸现象，也不满足能量守恒。
 
-### D项：法线分布函数（NDF）
+## 核心原理
 
-D项（Normal Distribution Function）描述了微面法线朝向半程向量 $\mathbf{h}$ 方向的统计概率密度。Cook-Torrance原论文使用Beckmann分布，但现代引擎普遍改用Trowbridge-Reitz GGX分布：
+### D项：法线分布函数（Normal Distribution Function）
 
-$$D_{GGX}(\mathbf{h}) = \frac{\alpha^2}{\pi\left[(\mathbf{n} \cdot \mathbf{h})^2(\alpha^2 - 1) + 1\right]^2}$$
+D项描述微表面法线在半角向量 $\mathbf{h}$ 方向的统计分布密度，决定高光的形状与尖锐程度。Cook和Torrance在原始论文中使用的是Beckmann分布：
 
-其中 $\alpha = roughness^2$（粗糙度的平方映射）。GGX相比Beckmann拥有更长的"尾部"，能再现金属表面边缘的光晕扩散，这一差异在掠射角下尤为明显。D项必须满足归一化条件：$\int_\Omega D(\mathbf{h})(\mathbf{n} \cdot \mathbf{h})d\omega_h = 1$。
+$$D_{Beckmann}(\mathbf{h}) = \frac{1}{\pi \alpha^2 \cos^4\theta_h} \exp\left(-\frac{\tan^2\theta_h}{\alpha^2}\right)$$
 
-### F项：菲涅尔方程近似
+其中 $\alpha$ 是表面粗糙度参数，$\theta_h$ 是半角向量与宏观法线的夹角。在现代PBR流程中，Disney于2012年推广的GGX（Trowbridge-Reitz）分布因其更长的高光尾部而取代Beckmann成为主流，但两者都是D项的具体实现。D项必须满足归一化条件：$\int_{\Omega} D(\mathbf{h})(\mathbf{n} \cdot \mathbf{h}) d\omega_h = 1$，即所有微表面面积投影之和等于宏观表面面积。
 
-F项（Fresnel Term）描述光在微面界面处反射与折射的能量分配比例，依赖于视角与法线夹角。Cook-Torrance中常用Schlick近似（1994年由Christophe Schlick提出）：
+### F项：菲涅尔方程（Fresnel Equation）
 
-$$F(\mathbf{v}, \mathbf{h}) = F_0 + (1 - F_0)(1 - \mathbf{v} \cdot \mathbf{h})^5$$
+F项计算光在微表面上发生反射的比例，依赖于入射光与微表面法线的夹角 $\theta_d$（即视线与半角向量的夹角）。Cook-Torrance模型中使用精确的Fresnel方程，但1994年Schlick给出了计算成本更低的近似：
 
-$F_0$ 是垂直入射时的基础反射率，对于非金属材质通常在0.02–0.05之间，对于铜等金属则高达0.95以上且带有色彩偏移。当视线与半程向量夹角趋近90°时，任何材质反射率都趋向1.0，这正是"菲涅尔边缘发光"效果的物理来源。
+$$F_{Schlick}(\mathbf{v}, \mathbf{h}) = F_0 + (1 - F_0)(1 - \mathbf{v} \cdot \mathbf{h})^5$$
 
-### G项：几何遮蔽/阴影函数
+$F_0$ 是材质在垂直入射时的基础反射率，对于非金属通常在0.02–0.05之间，对于金属则直接为彩色反射率（如金的 $F_0 \approx (1.0, 0.77, 0.34)$）。F项的物理意义是：即使一块非常粗糙的非金属，在掠射角（$\theta_d \to 90°$）时反射率也趋近于1，这是Phong模型无法解释的现象。
 
-G项（Geometry Function）统计了因微面之间相互遮挡导致的能量损失，分为"阴影"（shadowing，光线被遮挡）和"遮蔽"（masking，反射光被遮挡）两种情形。Smith分离近似将其拆解为：
+### G项：几何遮蔽函数（Geometry Function）
 
-$$G(\mathbf{l}, \mathbf{v}) = G_1(\mathbf{l}) \cdot G_1(\mathbf{v})$$
+G项对微表面间的自遮蔽（shadowing）和自遮挡（masking）进行建模，修正那些因被相邻微表面阻挡而无法对出射辐亮度产生贡献的区域。Cook-Torrance原始论文中使用的是基于V形槽假设的几何项：
 
-每个 $G_1$ 项通常采用Schlick-GGX形式：$G_1(\mathbf{x}) = \frac{\mathbf{n} \cdot \mathbf{x}}{(\mathbf{n} \cdot \mathbf{x})(1-k) + k}$，其中 $k = \alpha/2$（直接光照）或 $k = (\alpha+1)^2/8$（IBL环境光），粗糙度越高，G项损耗越大，防止了能量不守恒的过亮高光。
+$$G_{Cook-Torrance} = \min\left(1,\ \frac{2(\mathbf{n}\cdot\mathbf{h})(\mathbf{n}\cdot\mathbf{v})}{\mathbf{v}\cdot\mathbf{h}},\ \frac{2(\mathbf{n}\cdot\mathbf{h})(\mathbf{n}\cdot\mathbf{l})}{\mathbf{v}\cdot\mathbf{h}}\right)$$
+
+G项取值在 $[0, 1]$ 之间，当光线方向或视线方向趋近于切线平面（掠射）时，G项趋近于0，从而压低掠射角高光，避免物理上不可能的"亮边"伪影。现代实现中，Smith's G函数因与D项在数学上更一致而被优先采用。
+
+### 分母的几何意义
+
+分母 $4(\mathbf{n} \cdot \mathbf{l})(\mathbf{n} \cdot \mathbf{v})$ 并非凑数的经验系数，而是从微表面立体角 $d\omega_h$ 转换到出射方向立体角 $d\omega_o$ 时产生的Jacobian行列式，其推导依赖于 $d\omega_o = 4(\mathbf{v} \cdot \mathbf{h})d\omega_h$ 这一几何关系。这个因子确保了整个BRDF在物理上符合赫姆霍兹互易原理（Helmholtz reciprocity），即交换入射和出射方向后BRDF值不变。
 
 ## 实际应用
 
-在虚幻引擎4的材质系统中，Cook-Torrance被用于实现"金属度-粗糙度"工作流。美术师设置 Metallic=1.0 时，$F_0$ 直接从BaseColor中读取（彩色反射率）；Metallic=0.0 时，$F_0$ 固定为0.04，BaseColor转为漫反射颜色。这种两分法直接建立在Cook-Torrance的F项物理含义上。
+在Unreal Engine 4的PBR流程中，Cook-Torrance镜面项与Lambert漫反射项共同构成完整的材质响应：引擎默认使用GGX作为D项、Schlick近似作为F项、Smith-GGX Height-Correlated作为G项。Epic Games在2013年SIGGRAPH上的分享表明，这套组合相比原始Cook-Torrance公式在实时渲染中能减少约40%的视觉误差，同时保持实时可计算性。
 
-在离线渲染（如Arnold、RenderMan）中，Cook-Torrance通常与多散射微面模型（Multi-scattering BRDF）配合，修正当粗糙度>0.5时能量因G项过度衰减而产生的暗化问题，代表性工作为Heitz等人2016年的"Multiple-Scattering Microfacet BSDFs"。
-
-游戏《荒野大镖客：救赎2》的材质系统通过在Cook-Torrance基础上叠加各向异性NDF（拉伸 $\alpha$ 为椭圆形），还原了皮革纤维和马毛的定向高光效果，这是标准各向同性Cook-Torrance无法实现的。
+Unity的HDRP也采用同样的D-F-G分解，但将G项拆分为 $G = G_1(\mathbf{l}) \cdot G_1(\mathbf{v})$（Smith分解），使得遮蔽与阴影两个效果可以独立计算。在离线渲染器（如Arnold、RenderMan）中，Cook-Torrance模型被直接用于路径追踪的重要性采样，采样分布正比于 $D(\mathbf{h}) \cos\theta_h$，以降低渲染方差。
 
 ## 常见误区
 
-**误区一：认为Cook-Torrance天然满足能量守恒**
-标准单散射Cook-Torrance实际上不满足能量守恒。当粗糙度增大时，G项会吸收大量能量，但这些能量在现实中应通过微面间多次弹射重新射出。因此粗糙金属球在标准Cook-Torrance下会比真实情况更暗，必须叠加能量补偿项才能物理正确。
+**误区一：将粗糙度参数 $\alpha$ 与感知粗糙度直接等同。** 在Disney PBR工作流中，美术师使用的roughness滑条值 $r$ 与实际输入D项的 $\alpha$ 是平方关系：$\alpha = r^2$。这种重映射是为了让粗糙度在视觉上呈线性分布，直接将滑条值代入Beckmann或GGX公式会导致粗糙度低端区域高光过于尖锐。
 
-**误区二：D项等于高光强度**
-D项只是描述微面法线分布的概率密度函数，它可以在某些方向取大于1的值（因为是密度而非概率）。高光的最终亮度是D、F、G三项与分母共同决定的结果，单独调大D项（即降低粗糙度）同时也会因G项变化而改变高光形状。
+**误区二：认为Cook-Torrance模型是完整的BRDF。** Cook-Torrance公式仅描述镜面反射（specular lobe）部分，完整的PBR材质BRDF还需要加上漫反射项 $f_{diffuse}$，通常写作：$f = f_{diffuse} + f_{specular}$，且漫反射项通过 $(1 - F)$ 进行能量守恒修正，即非金属材质未被反射的光才进入漫反射。
 
-**误区三：半程向量与法线在任何情况下都可互换**
-Cook-Torrance的所有三项都依赖半程向量 $\mathbf{h} = \text{normalize}(\mathbf{l} + \mathbf{v})$，而非宏观表面法线 $\mathbf{n}$。将 $\mathbf{h}$ 替换为 $\mathbf{n}$ 会使模型退化为各向同性Phong反射，失去微表面的物理意义，典型错误出现在初学者手写shader时误用 $(\mathbf{n} \cdot \mathbf{l})$ 代替 $(\mathbf{n} \cdot \mathbf{h})$ 计算D项。
+**误区三：G项可以随意省略或用常数1代替。** 在掠射角（$\mathbf{n} \cdot \mathbf{l}$ 或 $\mathbf{n} \cdot \mathbf{v}$ 接近0）时，分母趋近于0，若没有G项的压制，Cook-Torrance公式的值将趋向无穷大，产生严重的高光爆炸（specular blowout）。G项与分母的趋零速度相互抵消，保证了最终结果的有界性。
 
 ## 知识关联
 
-学习Cook-Torrance需要先掌握BRDF的基本定义（辐射率比辐照度）和Helmholtz互易性原则，这两条性质可以验证Cook-Torrance公式在交换 $\mathbf{l}$ 与 $\mathbf{v}$ 后保持对称。
+学习Cook-Torrance模型需要先掌握BRDF的基本定义——即辐亮度与辐照度之比 $f_r = dL_o / dE_i$，以及能量守恒（反射率积分不超过1）的基本约束，否则无法理解D-F-G各项为何必须存在。
 
-向上延伸时，D项引出法线分布函数（NDF）的完整理论，包括各向异性GGX与Beckmann之间的差异选择；F项直接连接到菲涅尔效应在导体与电介质中的不同物理机制；G项则展开为Smith联合遮蔽阴影函数的推导细节。
-
-在更复杂的材质建模中，Cook-Torrance作为单层镜面高光层嵌入清漆层（Clearcoat）模型——清漆层实质上是在标准Cook-Torrance基础上叠加第二个低粗糙度、固定 $F_0=0.04$ 的Cook-Torrance镜面瓣。而次表面散射处理的是透射进入材质内部的那部分光，即1减去F项之后的折射份额，两者合并才构成完整的皮肤、蜡烛等半透明材质BSDF。
+在此基础上，三个子项各自演化为独立的研究方向：法线分布函数方向发展出GGX、Ashikhmin-Shirley各向异性分布等变体；菲涅尔效应连接到薄膜干涉和彩虹色材质的模拟；几何遮蔽项则通向多重散射微表面模型（如Heitz等人2016年提出的将微表面间多次弹射纳入计算的方法）。Cook-Torrance的镜面层结构也直接支撑了清漆层（Clearcoat）材质的实现——清漆层本质上是在基础Cook-Torrance层之上叠加一个低粗糙度、固定 $F_0=0.04$ 的额外Cook-Torrance高光层。

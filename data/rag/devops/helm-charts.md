@@ -20,77 +20,101 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-26
 ---
+
+
 # Helm Charts
 
 ## 概述
 
-Helm Charts（Helm Charts）是AI工程（AI Engineering）中开发运维领域的重要概念。难度等级4/9（中级）。
+Helm Charts 是 Kubernetes 应用程序的打包格式，允许将一组相关的 Kubernetes 资源（Deployment、Service、ConfigMap、Ingress 等）打包成一个可版本化、可分发的单元。与手动管理数十个 YAML 文件相比，Helm Charts 将整个应用程序的基础设施定义封装在一个标准化目录结构中，并通过 Go 模板引擎（`text/template`）实现参数化配置。
 
-使用Helm管理Kubernetes应用的打包、配置和部署。
+Helm 于 2015 年由 Deis 公司的工程师创建，最初在 KubeCon 2015 上发布。2016 年项目捐献给 CNCF（Cloud Native Computing Foundation），Helm 3 于 2019 年 11 月发布，移除了备受批评的服务端组件 Tiller，改为纯客户端架构，直接使用 kubeconfig 凭证与 Kubernetes API Server 通信，从根本上解决了 Tiller 带来的 RBAC 权限过度集中问题。
 
-在知识体系中，Helm Charts建立在Kubernetes入门、Docker基础的基础之上，是理解可进入更高级主题的关键前置知识。为什么Helm Charts如此重要？因为它在开发运维中起到承上启下的作用，连接基础概念与高级应用。
+对于 AI 工程的 MLOps/DevOps 场景，Helm Charts 的价值在于：一个 ML 推理服务可能同时需要 Deployment（运行模型服务器）、HorizontalPodAutoscaler（按请求量扩缩）、PersistentVolumeClaim（挂载模型权重文件）和 Service（对外暴露端口），若没有 Helm，这些资源需逐一手动部署且难以复用于开发、测试、生产三套环境。
 
-## 核心知识点
+---
 
-### 1. 使用Helm管理Kubernetes应用的打包
+## 核心原理
 
-使用Helm管理Kubernetes应用的打包是Helm Charts(Helm Charts)的核心组成部分之一。在开发运维的实践中，使用Helm管理Kubernetes应用的打包决定了系统行为的关键特征。例如，当使用Helm管理Kubernetes应用的打包参数或条件发生变化时，整体表现会产生显著差异。深入理解使用Helm管理Kubernetes应用的打包需要结合AI工程的基本原理进行分析。
+### Chart 目录结构
 
-### 2. 配置
+一个标准 Helm Chart 的目录布局固定如下：
 
-配置是Helm Charts(Helm Charts)的核心组成部分之一。在开发运维的实践中，配置决定了系统行为的关键特征。例如，当配置参数或条件发生变化时，整体表现会产生显著差异。深入理解配置需要结合AI工程的基本原理进行分析。
+```
+mychart/
+├── Chart.yaml          # Chart 元数据（名称、版本、appVersion）
+├── values.yaml         # 默认参数值
+├── templates/          # Go 模板文件（*.yaml, helpers.tpl）
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   └── _helpers.tpl    # 可复用的命名模板片段
+└── charts/             # 子 Chart 依赖目录
+```
 
-### 3. 部署
+`Chart.yaml` 中必须包含 `apiVersion`（Helm 3 使用 `v2`）、`name` 和 `version` 字段，其中 `version` 遵循语义化版本规范（SemVer 2.0），如 `1.4.2`，而 `appVersion` 则记录被打包应用本身的版本号（例如模型服务框架 Triton Inference Server 的版本 `22.12`），两者相互独立。
 
-部署是Helm Charts(Helm Charts)的核心组成部分之一。在开发运维的实践中，部署决定了系统行为的关键特征。例如，当部署参数或条件发生变化时，整体表现会产生显著差异。深入理解部署需要结合AI工程的基本原理进行分析。
+### Go 模板引擎与 values 注入
 
+Helm 的核心机制是将 `values.yaml` 中的参数注入到 `templates/` 目录下的 Kubernetes 资源模板中。模板语法使用 `{{ .Values.key }}` 引用参数，使用 `{{ if }}...{{ end }}` 实现条件渲染，使用 `{{ range }}` 遍历列表。例如：
 
-### 关键原理分析
+```yaml
+# templates/deployment.yaml
+spec:
+  replicas: {{ .Values.replicaCount }}
+  containers:
+    - name: model-server
+      image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+      resources:
+        limits:
+          nvidia.com/gpu: {{ .Values.gpu.limit }}
+```
 
-Helm Charts的核心在于使用Helm管理Kubernetes应用的打包、配置和部署。从理论角度看，该概念涉及以下层面：
+部署时通过 `--set` 或 `-f custom-values.yaml` 覆盖默认值，实现同一 Chart 跨环境复用：`helm install prod-inference ./mychart -f production-values.yaml`。
 
-1. **定义层**：明确Helm Charts的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解Helm Charts内部各要素的相互作用方式
-3. **应用层**：将Helm Charts的原理映射到AI工程的实际场景中
+### Release 生命周期管理
 
-思考题：如何判断Helm Charts的应用是否超出了其理论适用范围？
+Helm 将每次部署称为一个 **Release**，并在 Kubernetes 的 Secret 资源中以 `helm.sh/release.v1` 类型存储 Release 的完整状态（包括渲染后的 manifest 和 values）。这使得以下操作成为可能：
 
-## 关键要点
+- **`helm upgrade`**：对比新旧 manifest，仅更新有变化的资源，并将 Release revision 号递增（如从 revision 3 升至 4）
+- **`helm rollback <release> <revision>`**：回滚至指定历史版本，例如 `helm rollback my-model-service 2` 将配置恢复到 revision 2 的状态
+- **`helm history`**：查看某 Release 的所有历史修订记录
 
-1. **核心定义**：Helm Charts的本质是使用Helm管理Kubernetes应用的打包、配置和部署，这是理解整个概念的出发点
-2. **多维理解**：掌握Helm Charts需要同时理解使用Helm管理Kubernetes应用的打包和部署等关键维度
-3. **先修关系**：扎实的Kubernetes入门基础对理解Helm Charts至关重要
-4. **进阶路径**：可广泛应用于AI工程各方面
-5. **实践标准**：真正掌握Helm Charts的标志是能在具体场景中灵活运用并正确判断适用边界
+默认情况下 Helm 保留最近 10 个 Release 历史记录（可通过 `--history-max` 调整），每条记录存储于集群内，无需外部数据库。
+
+### Chart 依赖管理
+
+`Chart.yaml` 中的 `dependencies` 字段允许声明子 Chart 依赖，类似于 `package.json`。例如一个 AI 平台 Chart 可以依赖官方 `postgresql` Chart（来自 `https://charts.bitnami.com/bitnami`，版本 `~12.0.0`）作为元数据存储。运行 `helm dependency update` 后，子 Chart 会被下载到 `charts/` 目录并锁定版本至 `Chart.lock` 文件，防止依赖漂移。
+
+---
+
+## 实际应用
+
+**部署 Triton Inference Server**：在 Kubernetes 上为 LLM 推理服务创建 Helm Chart 时，`values.yaml` 中通常包含 `modelRepository`（对象存储路径，如 `s3://my-bucket/models`）、`gpuCount`（申请的 GPU 数量）和 `maxBatchSize` 等 AI 特有参数。通过 `-f production.yaml` 传入生产环境配置，可在不修改 Chart 源码的情况下将同一 Chart 复用于不同规模的推理集群。
+
+**多环境配置分离**：团队通常维护 `values-dev.yaml`、`values-staging.yaml`、`values-prod.yaml` 三套文件，其中 dev 环境将 `replicaCount` 设为 1、不启用 HPA，而 prod 环境将 `replicaCount` 设为 3 并启用 `autoscaling.enabled: true`。这种模式避免了环境间配置混乱，且所有差异均通过 Git 版本控制追踪。
+
+**使用 Artifact Hub 分发**：Chart 打包后（`helm package ./mychart` 生成 `.tgz` 文件）可推送至 OCI 兼容仓库（Helm 3.8.0 起正式支持 OCI Registry），例如 `helm push mychart-1.4.2.tgz oci://registry.example.com/charts`，团队成员随后通过 `helm install` 直接拉取，无需共享原始源代码。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将Helm Charts与开发运维中其他相近概念混为一谈。例如，使用Helm管理Kubernetes应用的打包的适用条件与其他配置概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解Kubernetes入门就学习Helm Charts，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：Helm Charts虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：混淆 `version` 与 `appVersion`**
+许多初学者将 Chart 版本（`version: 1.2.0`）与应用版本（`appVersion: "2.28.0"`）视为同一字段，导致升级混乱。`version` 跟踪的是 Chart 模板和配置结构本身的变化，而 `appVersion` 仅作为描述性标签，Helm 不会基于 `appVersion` 做任何部署决策——实际镜像版本由 `values.yaml` 中的 `image.tag` 控制。
 
-## 知识衔接
+**误区二：在 `templates/` 中硬编码敏感信息**
+将数据库密码或 API 密钥直接写入 Chart 的 `values.yaml` 并提交 Git 是严重的安全风险。正确做法是在模板中引用已预先存在的 Kubernetes Secret（`valueFrom.secretKeyRef`），或集成 External Secrets Operator，使 Chart 本身不包含任何明文凭证。
 
-### 先修知识
-先修知识包括：
-- **Kubernetes入门** — 为Helm Charts提供了必要的概念基础
-- **Docker基础** — 为Helm Charts提供了必要的概念基础
+**误区三：认为 `helm upgrade` 等价于全量重建**
+`helm upgrade` 并非删除所有资源后重新创建，而是通过三方合并（three-way merge）对比原始 Chart、当前集群状态和新 Chart 的差异，仅对发生变更的资源执行 patch 操作。这意味着如果某个 Deployment 被手动修改（kubectl edit），upgrade 时 Helm 会将其强制恢复为 Chart 定义的状态，导致"漂移"被覆盖——应始终通过 `helm upgrade` 而非 `kubectl edit` 来变更由 Helm 管理的资源。
 
-### 后续学习
-掌握Helm Charts后，学习者已具备该方向的核心能力，可将所学应用于实际项目或探索AI工程其他分支。
+---
 
-## 学习建议
+## 知识关联
 
-预计学习时间：2-3小时。建议采用以下策略：
+**前置知识衔接**：Helm Charts 的每个模板文件最终都会渲染成标准 Kubernetes YAML，因此需要掌握 Kubernetes 中 Deployment、Service、ConfigMap 等核心资源的结构——`templates/deployment.yaml` 中的字段（如 `spec.selector.matchLabels`）与直接编写 Kubernetes manifest 时完全相同，Helm 只是在外层包裹了参数化逻辑。Docker 基础同样必要，因为 Chart 中的容器镜像来源、`imagePullPolicy` 和镜像仓库认证（`imagePullSecrets`）均涉及 Docker 镜像管理知识。
 
-- **主动回忆**：学完后不看笔记复述Helm Charts的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将Helm Charts与AI工程中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释Helm Charts，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于开发运维的章节可作为深入参考
-- Wikipedia: [Helm Charts](https://en.wikipedia.org/wiki/helm_charts) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Helm Charts" 可找到配套视频教程
+**横向关联**：在 MLOps 流水线中，Helm Charts 通常与 ArgoCD 或 Flux 结合实现 GitOps——将 Chart 和 values 文件存储于 Git 仓库，CD 工具自动检测变更并触发 `helm upgrade`，形成完整的模型服务持续交付链路。Helm 的 `helm test` 子命令支持在 Release 部署后运行测试 Pod，可用于验证模型推理端点的健康状态。
