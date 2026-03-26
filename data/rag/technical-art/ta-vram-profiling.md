@@ -24,71 +24,61 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # VRAM分析
 
 ## 概述
 
-VRAM（Video RAM，显存）分析是指通过专业工具检查GPU显存中各类资源的分配情况、占用大小及内存碎片状态的技术过程。在实时渲染管线中，纹理、顶点缓冲、帧缓冲、常量缓冲区等资源全部驻留在VRAM中，一旦VRAM溢出，GPU将被迫从系统内存（DRAM）读取数据，在移动平台上这一带宽惩罚可高达10倍以上，直接导致帧率崩溃。
+VRAM（Video RAM，显存）分析是指使用专用GPU调试工具，逐帧检查当前渲染管线向显卡提交的所有资源在显存中的分配状态与占用分布。其目的是精准定位哪些贴图、缓冲区、渲染目标正在消耗显存预算，并找出超规格或冗余的资源。与CPU端的内存分析不同，VRAM分析必须在GPU执行的上下文中进行，因为资源在驱动层的实际驻留状态只有在帧捕获后才能完整呈现。
 
-VRAM分析工具的普及源于现代GPU架构的演进。NVIDIA在2012年推出RenderDoc的前身工具，而RenderDoc本身由Baldur Karlsson于2012年作为开源项目发布，目前已成为主流跨平台帧调试工具，支持Vulkan、DirectX 12/11、OpenGL及Metal等图形API。相比之下，GPU Viewer（部分场合指Android GPU Inspector或厂商特定工具如Snapdragon Profiler）专注于移动端VRAM行为。理解两类工具的功能差异对技术美术精确定位资源问题至关重要。
+RenderDoc和NVIDIA的Nsight Graphics、AMD的Radeon GPU Profiler（RGP）是VRAM分析的主流工具。其中RenderDoc因完全免费、跨平台（支持Windows/Linux/Android）且可嵌入引擎PIX接口，成为技术美术最常用的入门工具。RenderDoc的"Resource Inspector"面板能列出当前帧所有Vulkan/D3D12/OpenGL资源对象，并显示每个资源的格式、分辨率、Mip层级与字节大小。
 
-在游戏项目中，主机平台通常将8GB显存设为预算上限（如PS5的GDDR6总共16GB，其中GPU可用约12.5GB），PC平台则受玩家显卡配置离散性影响。VRAM分析的目标不仅是找出"谁占用了最多显存"，更要识别哪些资源在当前帧根本未被采样却仍驻留内存，从而指导剔除与流送策略。
-
----
+在主机和PC游戏开发中，VRAM预算通常有严格上限——PS5的GDDR6显存为16GB但其中约2.5GB由OS和驱动占用，可用约13.5GB；而中端PC玩家的独显VRAM仍多为8GB。一旦运行时VRAM溢出，驱动将被迫把数据降级至系统RAM（即PCIe带宽极低的跨总线访问），帧时间会产生数十毫秒级的突刺。VRAM分析正是在这一约束下保证资产合规的直接手段。
 
 ## 核心原理
 
-### RenderDoc的资源检查流程
+### 显存资源的分类与读取
 
-在RenderDoc中，完成帧捕获后进入"Resource Inspector"面板，可看到当前帧所有GPU资源的枚举列表，每条记录包含资源类型（Texture2D、Buffer、RenderTarget等）、格式（如BC7\_UNORM、R16G16B16A16\_FLOAT）、分辨率、Mip层级数量及实际显存占用字节数。通过点击"Used"过滤器可将列表缩减为本帧实际被绑定到管线的资源，与全量列表对比，差值即为当前帧的"僵尸资源"占用量。
+RenderDoc在捕获一帧后，会枚举所有与该帧关联的GPU资源并按类型分组：Texture（2D/3D/Cube贴图）、Buffer（顶点缓冲、索引缓冲、Constant Buffer）、Render Target及Depth-Stencil Surface。每个资源条目显示：`Width × Height × Depth × ArraySize × MipLevels`，以及像素格式（如BC7_UNORM、R16G16B16A16_FLOAT）。通过将这些参数代入显存占用公式可以手动验证：
 
-技术美术需要重点关注"Texture List"中排名靠前的条目。一张未压缩的4096×4096 RGBA8纹理占用64MB（4096 × 4096 × 4字节），而同尺寸使用BC7压缩的纹理仅占16MB，压缩比为4:1；但若该纹理启用了完整Mip链，总大小需乘以约1.33，即BC7完整Mip链约21.3MB。RenderDoc直接在列表中显示这一包含Mip的实际显存数字，而非开发者凭经验估算的裸纹理大小，这一区别往往导致预算误判。
+$$\text{显存字节数} = W \times H \times \text{像素位深(Bytes)} \times \left(\sum_{i=0}^{M-1} \frac{1}{4^i}\right)$$
 
-### GPU Viewer / Android GPU Inspector中的内存堆分析
+其中M为Mip层级数，当M→∞时括号内的级数收敛于4/3，因此完整Mip链总大小约为基层的1.333倍。这个系数是判断某贴图是否启用了完整Mip链的快速验证依据。
 
-移动端GPU（如Adreno、Mali、Apple GPU）采用统一内存架构（UMA），CPU与GPU共享同一物理内存池，因此"VRAM"实际是从系统LPDDR内存中划分的GPU可见区域。Android GPU Inspector（AGI）的"Memory"面板将资源按内存堆（Memory Heap）分组显示，堆类型标记为DEVICE\_LOCAL表示GPU优先访问，HOST\_VISIBLE表示CPU可映射。一张在Vulkan中以`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT`分配的纹理出现在DEVICE\_LOCAL堆，而上传缓冲区（Staging Buffer）出现在HOST\_VISIBLE堆。若发现大量纹理停留在HOST\_VISIBLE堆中，说明上传流程未正确迁移资源，GPU读取带宽将严重受损。
+### 资源驻留状态与绑定分析
 
-### 显存占用的量化公式
+VRAM分析不仅关注"有什么资源"，还要区分资源是否在当前帧真正被着色器绑定使用。RenderDoc的"Pipeline State"视图可以展示每个Draw Call绑定到各Shader Stage的具体贴图槽位。如果一张4096×4096的BC7贴图出现在资源列表中但从未被任何Draw Call采样（即零绑定次数），说明它被加载进显存但未被使用，属于典型的冗余驻留问题。GPU Viewer（部分引擎内置，如UE5的GPU Visualizer）则提供按Pass维度的显存快照，可对比不同Pass间资源的生命周期变化。
 
-对于常见2D纹理，未压缩VRAM占用可用以下公式计算：
+### 渲染目标与帧缓冲的显存影响
 
-```
-VRAM(bytes) = Width × Height × BytesPerPixel × MipMultiplier
-```
-
-其中`MipMultiplier ≈ 1.333`（完整Mip链的几何级数求和结果），`BytesPerPixel`对应格式如下：R8G8B8A8 = 4，R16G16B16A16\_FLOAT = 8，BC7/BC1等块压缩格式需将Width和Height向上取整到4的倍数后除以压缩比（BC1为8:1，BC7为4:1）。RenderDoc的实际读数会精确反映GPU驱动的内存对齐（通常以256字节或4KB为粒度），因此工具读数略高于公式理论值属正常现象。
-
-### 帧缓冲与RenderTarget的隐性占用
-
-帧缓冲资源是VRAM分析中最易被忽视的部分。在延迟渲染管线中，一个1920×1080分辨率的G-Buffer通常包含：漫反射（R8G8B8A8，约8MB）、法线（R16G16B16A16，约16MB）、Roughness/Metallic（R8G8B8A8，约8MB）、深度（D32F\_S8，约12MB），合计约44MB仅用于G-Buffer本身，加上HDR颜色缓冲（R16G16B16A16\_FLOAT，约16MB）及阴影贴图（2048×2048 D32F，约16MB），一帧渲染所需的RenderTarget固定开销轻易超过80MB。RenderDoc在"Outputs"标签页下可逐一查看每个RenderPass的RenderTarget绑定，技术美术应将这些数字纳入总VRAM预算核算。
-
----
+渲染目标（Render Target）往往是VRAM消耗被低估最严重的区域。以1080p（1920×1080）分辨率的延迟渲染为例，一个标准G-Buffer可能包含：Albedo（RGBA8 = 7.9MB）、Normal（RG16F = 7.9MB）、Material（RGBA8 = 7.9MB）、Depth-Stencil（D24S8 = 7.9MB），合计约32MB，若启用4xMSAA则乘以4倍达128MB，这还不含HDR色调映射所需的R11G11B10F临时目标。RenderDoc的"Texture Viewer"可以直接预览渲染目标内容，帮助确认某个Full-screen Buffer是否分辨率过高或格式过重。
 
 ## 实际应用
 
-**场景一：定位超标纹理** 在一次主机项目审查中，VRAM预算超出200MB。通过RenderDoc捕获帧后，Resource Inspector按"Size"降序排列，发现UI模块中有12张2048×2048 RGBA16F的图标纹理，每张32MB（含Mip链约42MB），合计超过500MB。这些纹理实际只需R8G8B8A8格式且无需Mip链，格式降级后每张缩小至16MB，总节省超过300MB。
+**案例1：定位超规格贴图**
 
-**场景二：移动端驱动不自动压缩** 在Snapdragon Profiler的Memory视图中，发现一批运行时通过`Texture2D.LoadImage()`加载的PNG纹理显示为RGBA8未压缩格式，驻留DEVICE\_LOCAL堆共占用180MB。原因是Unity在Android平台对运行时加载纹理默认不执行GPU压缩，需在加载后手动调用`texture.Compress(true)`或改用ETC2/ASTC格式的资产包，最终将这批纹理VRAM降至45MB。
+在一个移动端项目中，VRAM预算限制为512MB。用RenderDoc捕获一帧后，在Resource Inspector中按"Size"列降序排列，发现一张角色武器的法线贴图使用了2048×2048 RGBA16F格式（32MB），而同场景其他角色法线贴图均为1024×1024 BC5（2MB）。进一步查看该贴图的Mip链，发现Mip级别仅有1层（无Mip），确认为美术导出时误操作。将其修正为BC5+完整Mip链后，该贴图降至约2.7MB，单项节省29MB显存。
 
-**场景三：Cubemap Mip链过度分配** 天空盒Cubemap使用4096分辨率、6面、完整Mip链、RGBA16F格式时，单个Cubemap占用：4096×4096×8×6×1.333 ≈ 1.07GB。RenderDoc的Resource Inspector直接显示该数字，立刻定位了项目VRAM溢出的根因。将天空盒降至2048分辨率并限制Mip层数为7级后，占用降至约64MB。
+**案例2：检测Shadowmap冗余**
 
----
+在UE5项目中，使用GPU Visualizer发现Shadow Pass阶段VRAM峰值超预期50MB。通过RenderDoc追踪到场景中有3盏动态点光源各自分配了一套2048×2048×6面的Cube Shadow Map（D32F格式），每套约96MB，合计288MB仅用于阴影深度图。技术美术依据分析结果，将次要点光源降级为1024分辨率（24MB/套），总Shadow Map显存从288MB降至144MB。
 
 ## 常见误区
 
-**误区一：以文件体积估算VRAM占用**
-PNG或TGA文件在磁盘上经过压缩，一张磁盘占用5MB的PNG解压后以未压缩RGBA8格式上传GPU可达64MB（2048×2048×4）。VRAM分析必须依赖RenderDoc等工具读取GPU端实际分配大小，而非资产文件大小。两者差距可达10倍以上。
+**误区1：资源列表中显示的大小等于实际显存占用**
 
-**误区二：认为资源不显示在当前帧就不占VRAM**
-GPU驱动出于性能考虑会将资源保持在显存中直到内存压力触发驱逐，或应用程序显式释放。RenderDoc的"Resource Inspector"列出所有存活资源，而不仅限于当前帧绑定的资源。技术美术若仅查看"Used"过滤后的列表，会低估实际VRAM占用，忽视场景切换后未被卸载的上一个关卡资源。
+RenderDoc的资源列表显示的是单个资源对象的理论字节大小，但实际驱动分配时存在内存对齐（通常以64KB或4MB的Heap块为单位）。一张仅3MB的贴图可能占据一个4MB的Heap Slot，导致真实显存占用比列表数字高出最多33%。因此在做预算汇总时应使用引擎自带的内存统计（如UE5的`stat memory`命令）来获得含对齐开销的准确数字，而非直接累加RenderDoc中的理论大小。
 
-**误区三：UMA架构下VRAM无限制**
-移动端统一内存架构并不意味着GPU可以无限使用内存。以Snapdragon 8 Gen 2为例，GPU驱动通常将DEVICE\_LOCAL堆上限设置为物理RAM的约35%-50%，在6GB RAM设备上约2-3GB。超出该限制同样会触发资源驱逐，导致纹理采样出现黑块或帧率骤降。
+**误区2：帧内看不到的资源就不占用VRAM**
 
----
+某些资源（如流式加载的LOD低层级贴图、已预加载但尚未出现在视口内的物体贴图）不会出现在单帧的Draw Call绑定列表中，但仍驻留在显存里。RenderDoc的单帧分析无法捕获这类"休眠"资源；需要结合引擎的Streaming Memory统计或专用分析工具（如Nsight Memory的Residency视图）才能看到完整的显存驻留画面。仅依赖RenderDoc的帧捕获往往会低估10%~30%的实际VRAM使用量。
+
+**误区3：压缩格式一定节省显存**
+
+BC7和ASTC等块压缩格式的作用是减少贴图在显存中的存储尺寸，但不影响GPU采样时重建的精度。然而，若原始贴图本身分辨率过高（如4K），即便使用BC7（每像素1字节），4096×4096的贴图含完整Mip链仍需约5.3MB。这个数字对许多移动端GPU而言已是单张超标。压缩格式不是提高分辨率的借口——分辨率审计与格式审计必须并行进行。
 
 ## 知识关联
 
-VRAM分析建立在**GPU性能分析**的基础上：通过GPU性能分析（如使用RenderDoc的Timeline视图或NSight的GPU Trace）识别出哪些Pass耗时异常后，才需要进入VRAM分析层面确认是否为带宽或容量瓶颈。例如，GPU Timeline显示某Pass采样时间过长，VRAM分析随即揭示该Pass绑定了一张未压缩的8K纹理，两个步骤形成诊断闭环。
+VRAM分析以**GPU性能分析**为前置基础：GPU性能分析教会使用RenderDoc进行帧捕获和Draw Call拆解，这是打开Resource Inspector面板的操作前提。没有帧捕获能力，VRAM分析工具的列表页就无从读取。
 
-完成VRAM分析后，下一步进入**资产大小审计**：VRAM分析给出"哪些资源超标"的量化数据，资产大小审计则系统化地建立项目全局的纹理/网格大小规范（如"角色纹理不超过512KB磁盘大小且VRAM不超过8MB"），并配合资产管线的自动化检测脚本，防止超标资产再次进入版本。VRAM分析是单帧诊断工具，资产大小审计是持续预防机制，两者共同构成完整的显存管理工作流。
+VRAM分析得出的数据直接输入**资产大小审计**流程：当VRAM分析确认了哪些具体贴图和缓冲区是超预算的"元凶"后，资产大小审计负责制定并执行系统性的规格收缩策略，包括重新设定各资产类别的分辨率和格式上限表格，以及在管线中加入自动化检查脚本。两者合力，VRAM分析是诊断环节，资产大小审计是处方与执行环节。

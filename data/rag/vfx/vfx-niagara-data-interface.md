@@ -24,87 +24,75 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # 数据接口（Niagara Data Interface）
 
 ## 概述
 
-Niagara Data Interface（简称NDI）是Unreal Engine Niagara特效系统中用于将**外部数据源**接入粒子模拟管线的专用桥接机制。与普通参数不同，数据接口并非传递单一数值，而是将整个数据资源（如骨骼网格体、静态网格体、纹理贴图、音频波形等）暴露给粒子脚本，使粒子能够主动查询这些资源中的信息。
+Niagara Data Interface（简称NDI）是Unreal Engine Niagara粒子系统中用于连接外部数据源的专用桥梁模块。它允许粒子模拟在运行时读取来自引擎其他子系统的数据，包括静态网格体（Static Mesh）、骨骼网格体（Skeletal Mesh）、2D纹理、体积纹理、音频波形（Audio Oscilloscope/Spectrum）以及场景深度缓冲等。没有Data Interface，Niagara模拟只能在自身的封闭参数空间内运行，无法感知场景中其他资产的实时状态。
 
-Niagara系统在Unreal Engine 4.20版本中作为Cascade的继任者正式引入时，数据接口机制就作为其核心设计理念之一被提出，目的是取代Cascade中固定写死的数据读取方式。Cascade无法让粒子运行时动态采样网格顶点位置，而NDI通过在GPU和CPU两侧均提供统一的接口抽象，彻底解决了这一局限。
+Data Interface最早在UE4.20随Niagara系统正式对外公开时引入，取代了旧版Cascade粒子系统中通过材质参数传递采样信息的低效方案。其核心设计理念是将数据提供者（Data Provider）与粒子逻辑解耦：NDI负责封装访问协议，Niagara脚本只需调用标准化的函数节点，无需了解底层的内存布局或GPU资源绑定细节。
 
-数据接口之所以重要，是因为它让粒子特效能够**响应场景中真实存在的几何数据**。例如，角色受击特效可以直接查询骨骼网格体的蒙皮顶点坐标作为粒子生成点，而非预先烘焙成静态纹理。这种实时查询能力是传统粒子系统无法实现的。
+NDI在实际项目中解决的典型问题是：让粒子"感知"角色的骨骼位置从而实现毛发模拟，让音频频谱数据驱动粒子爆炸规模，以及让粒子在网格体表面均匀分布而不穿插几何体。这些需求如果没有Data Interface机制，要么需要手动将数据烘焙为纹理再间接采样，要么根本无法实时响应。
 
 ---
 
 ## 核心原理
 
-### 数据接口的类型与作用范围
+### 数据接口的类型与注册方式
 
-Niagara内置了超过30种数据接口类型，每种NDI只能访问特定类别的数据。常见类型包括：
+UE5中内置的Data Interface类型超过30种，常用的包括：
 
-- **NDI_SkeletalMesh**：采样骨骼网格体的顶点位置、法线、骨骼变换矩阵
-- **NDI_StaticMesh**：采样静态网格体的三角面、顶点UV
-- **NDI_Texture2D**：在粒子模块中对2D纹理执行像素级采样，返回RGBA颜色值
-- **NDI_AudioOscilloscope**：以频谱或振幅形式读取当前播放音频的波形数据
-- **NDI_CollisionQuery**：在粒子运动中执行场景射线检测
+- **UNiagaraDataInterfaceStaticMesh**：暴露静态网格体的顶点位置、法线、UV、三角形采样等函数。
+- **UNiagaraDataInterfaceSkeletalMesh**：提供骨骼变换、蒙皮顶点、骨骼速度等实时数据，支持`Get Bone Position`、`Get Skinned Triangle Data`等节点。
+- **UNiagaraDataInterfaceTexture2D** / **UNiagaraDataInterfaceVolumeTexture**：允许粒子在GPU线程直接采样纹理的RGBA值，函数签名为`SampleTexture(UV, OutColor)`。
+- **UNiagaraDataInterfaceAudioSpectrum**：将音频频谱的频率幅值（0.0–1.0归一化）映射为粒子参数，精度最高支持512个频率桶（Frequency Bins）。
 
-每种NDI提供的函数集合（Functions）完全不同。例如`NDI_SkeletalMesh`提供`GetSkinnedTriangleDataWS()`函数，可以返回世界空间下的三角形顶点位置和法线，而`NDI_Texture2D`提供`SampleTexture()`函数，接受一个`UV (float2)`输入并返回`Color (LinearColor)`。
+每种NDI在Niagara System的"用户参数"或"系统参数"面板中注册为一个具名变量（如`MyMesh`、`AudioData`），然后在Emitter Update或Particle Update的HLSL/可视化脚本中通过绑定该变量名来调用其函数。
 
-### 数据接口的绑定机制
+### CPU端与GPU端的访问差异
 
-数据接口在Niagara系统中以**资源槽（Asset Slot）**形式存在。在Niagara Emitter的参数面板中，一个NDI变量可以设置为"用户暴露（User Exposed）"，这样在将Niagara系统放入场景的NiagaraComponent上，可以通过蓝图调用`SetNiagaraVariableObject()`在运行时动态替换绑定的目标网格体或纹理。
+Data Interface的函数分为CPU-only和CPU+GPU两类，这是NDI使用中最需要关注的限制。
 
-GPU模拟与CPU模拟在使用NDI时存在重要差异：**并非所有数据接口都支持GPU粒子**。例如`NDI_SkeletalMesh`在GPU模式下只能读取经过GPU蒙皮后的顶点数据，而`NDI_CollisionQuery`在GPU模式下使用的是深度缓冲近似碰撞（Depth Buffer Collision），而非精确的场景射线检测。使用不支持GPU的NDI时，Niagara编辑器会在模块编译阶段报错，提示"Emitter must use CPU simulation"。
+以`UNiagaraDataInterfaceSkeletalMesh`为例：`Get Bone Position`支持GPU执行，因为骨骼变换矩阵会在每帧提交到GPU的Structured Buffer；而`Get Num Triangles`默认仅在CPU执行，因为读回三角形数量需要同步，代价高昂。若将仅CPU的函数误放入GPU模拟的Particle Update阶段，编译时会产生错误：`Data Interface function 'X' does not support GPU simulation`。
 
-### 数据接口内部的查询函数调用方式
+GPU模式下，NDI通过`FNiagaraDataInterfaceProxy`机制在渲染线程维护一个镜像代理对象，每帧将CPU端资源的描述符（如纹理SRV、Buffer SRV）推送至GPU端，供HLSL代码通过`DECLARE_NIAGARA_DI_PARAMETER`宏访问。
 
-在Scratch Pad模块或自定义HLSL模块中使用NDI时，需要先声明一个对应类型的**Map Input**变量，再通过`DataInterface.Function()`语法调用。以`NDI_Texture2D`为例，典型代码结构为：
+### 骨骼网格体Data Interface的采样精度
 
-```
-float2 UV = float2(Particles.NormalizedAge, 0.5);
-LinearColor SampledColor;
-TextureDataInterface.SampleTexture(UV, SampledColor);
-Particles.Color = SampledColor;
-```
+骨骼网格体NDI提供两种顶点采样模式：
+1. **Direct Index**：按顶点索引直接访问，适合确定性粒子附着（如毛囊粒子贴合皮肤）。
+2. **Random Triangle**：在三角形面积加权的随机分布上采样，保证粒子在曲面的均匀密度，计算公式为对每个三角面积 $A_i$ 做归一化累积分布，再以均匀随机数 $u \in [0,1)$ 二分查找命中三角形。
 
-其中`NormalizedAge`（粒子归一化生命周期，范围0到1）被映射为纹理的U坐标，从而实现粒子颜色随生命周期从纹理采样变化的效果。这种逐粒子纹理查询是普通材质球无法直接完成的操作。
+使用`Get Skinned Vertex Data`时，蒙皮计算在前一帧的GPU Skin Pass结果上进行，存在1帧延迟，需要在设计时通过预测速度（Prev Position + Velocity × DeltaTime）补偿位移。
 
 ---
 
 ## 实际应用
 
-### 角色受击粒子吸附骨骼表面
+**角色毛发/布料粒子附着**：在第三人称游戏中，将骨骼网格体（角色Body Mesh）绑定到NDI，使用`Get Skinned Triangle Coordinate`在角色皮肤上生成粒子初始位置，每帧调用`Get Skinned Vertex Velocity`让粒子跟随皮肤运动。《黑神话：悟空》等使用Niagara实现毛发模拟时即采用此类方案。
 
-在制作角色被火焰灼烧的持续特效时，使用`NDI_SkeletalMesh`调用`GetSkinnedTriangleDataWS()`，在Spawn模块中随机采样角色皮肤表面的三角面，将返回的`Position`直接赋值给`Particles.Position`。同时采样该三角面的`Normal`值作为粒子的初始速度方向，使火焰粒子从皮肤表面向外喷射。由于蒙皮是实时计算的，角色做出动作时粒子生成位置也会跟随骨骼变形。
+**音频可视化粒子**：将`AudioSpectrum` Data Interface的频率幅值数组映射到粒子的`Scale`或`Color`参数。例如，将低频段（20–200 Hz对应Bin 0–10）映射到粒子半径，高频段（2 kHz以上）映射到粒子颜色饱和度，实现随音乐律动的粒子效果。
 
-### 音频驱动粒子律动特效
-
-使用`NDI_AudioOscilloscope`或`NDI_AudioSpectrum`可以读取当前音频资产的频谱数据。`NDI_AudioSpectrum`提供`GetNormalizedSoundWaveAmplitude(float NormalizedFrequency)`函数，输入一个0到1的归一化频率值，返回该频段的振幅（0到1）。将此振幅值乘以一个`ScaleForce (float)`参数，可以驱动粒子的径向速度，实现粒子在音乐节拍峰值时向外爆炸式扩散的律动效果。
-
-### 利用纹理贴图控制粒子密度分布
-
-将一张黑白噪波纹理通过`NDI_Texture2D`传入，在粒子的Spawn Rate模块中采样纹理的亮度值，用公式`SpawnRate = BaseRate * SampledBrightness`控制不同区域的粒子生成密度，从而在不写任何复杂数学公式的前提下，实现由美术直接绘制粒子分布图案的工作流。
+**碰撞数据接口场景深度**：`UNiagaraDataInterfaceSceneDepth`允许粒子读取当前帧的深度缓冲，实现软碰撞：当粒子的投影深度与场景深度之差小于阈值（如5 cm）时，粒子受到排斥力，避免穿插任意几何体，且无需物理碰撞体，GPU开销极低。
 
 ---
 
 ## 常见误区
 
-### 误区一：数据接口可以像普通浮点参数一样随时修改
+**误区一：认为Data Interface可以在任何模拟阶段自由调用**
+实际上每个NDI函数都有明确的执行阶段限制。例如`UNiagaraDataInterfaceRenderTarget2D`的写入函数`SetRenderTargetValue`只能在`Emitter Update`或`Simulation Stage`中调用，若放入`Particle Spawn`阶段因执行顺序问题会写入错误帧的数据。必须仔细查阅每个函数节点右键属性中的`Supported Contexts`标注。
 
-许多初学者认为在蓝图中随时调用`SetNiagaraVariableObject()`替换NDI绑定对象不会有性能问题。实际上，替换`NDI_SkeletalMesh`绑定的目标网格体会触发Niagara系统**重新编译GPU着色器**（Shader Recompile），在复杂特效中可能造成数百毫秒的卡顿。正确做法是在特效初始化时一次性绑定，避免在粒子存活期间频繁切换。
+**误区二：以为绑定同一个NDI实例会自动共享GPU缓存**
+当同一Niagara System中有多个Emitter都绑定了同一个`SkeletalMesh` NDI变量时，每个Emitter的`FNiagaraDataInterfaceProxy`是独立的，蒙皮数据会在GPU端被拷贝多份。正确做法是在System级别声明一个`System Data Interface`变量，由所有Emitter共享同一个代理实例，避免重复的`RHI::CopyBuffer`开销。
 
-### 误区二：所有数据接口函数返回的坐标都是世界空间
-
-`NDI_SkeletalMesh`中同时存在`GetSkinnedTriangleDataWS()`（World Space，WS后缀）和`GetSkinnedTriangleDataLS()`（Local Space，LS后缀）两个版本。如果Niagara系统的`Local Space`选项被启用（即粒子坐标以Emitter自身为原点），必须使用LS版本，否则粒子会在角色移动时飞离模型表面。这是制作跟随型特效时最常见的坐标空间错误。
-
-### 误区三：数据接口与事件系统的功能重叠
-
-事件系统（Event System）用于在**粒子与粒子之间**传递Payload数据，例如一个粒子死亡时触发另一批粒子生成。而数据接口是用于让粒子**查询外部场景资源**的单向数据读取通道，两者方向和数据来源完全不同。事件系统无法读取骨骼网格体的顶点数据，数据接口也无法在粒子之间发送消息。
+**误区三：混淆Data Interface与动态材质参数的适用场景**
+Data Interface是在粒子模拟计算阶段（Simulation）读取数据，影响粒子的位置、速度、颜色等属性；动态材质参数是在粒子渲染阶段影响着色结果。若需要纹理颜色影响粒子的运动轨迹，必须用`Texture2D` Data Interface在Particle Update中采样；若只需影响视觉外观而不改变粒子行为，则应通过材质参数集传递，不应滥用NDI增加模拟阶段的采样开销。
 
 ---
 
 ## 知识关联
 
-**与事件系统的关系**：事件系统解决的是Niagara粒子之间的数据通信问题，而数据接口解决的是粒子与Unreal Engine场景资源之间的数据通信问题。学习了事件系统的Payload概念之后，理解数据接口的"函数返回值即粒子可用数据"的模式会更加自然。
+**与事件系统的关系**：Niagara事件系统（Event Handler）负责Emitter之间的粒子数据传递，而Data Interface负责Niagara系统与引擎外部资源之间的数据读取。两者互补：事件系统处理"粒子生成粒子"的内部通信，Data Interface处理"粒子读取场景"的外部感知。理解事件系统的执行时序有助于判断在哪个事件阶段调用Data Interface函数最为合适，例如在`OnParticleSpawn`事件处理中调用`Get Skinned Position`初始化粒子位置。
 
-**引向渲染器类型的桥梁**：掌握数据接口后，下一步学习渲染器类型（Renderer Types）时会遇到`NDI_RenderTarget2D`——这是一种特殊的数据接口，Niagara粒子可以将计算结果**写入**一张RenderTarget纹理，供材质球或其他系统读取。这一写入方向与普通数据接口的只读模式相反，代表了Niagara作为GPU通用计算工具的高级用法，是从特效工具向技术特效（Technical VFX）进阶的重要节点。
+**对渲染器类型的影响**：Data Interface在模拟阶段写入的粒子属性（如`DynamicMaterialParameter`）最终需要被Niagara渲染器消费。不同渲染器类型（Sprite Renderer、Mesh Renderer、Ribbon Renderer）对粒子属性的绑定方式不同，例如Mesh Renderer可以通过`Mesh Orientation`属性直接对接骨骼NDI输出的法线方向，而Sprite Renderer则需要额外的旋转转换节点。选择渲染器类型时必须考虑Data Interface已经提供了哪些几何信息，以最小化重复计算。
