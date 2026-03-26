@@ -24,63 +24,64 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
-# UE编辑器工具（Editor Utility Widget/Blueprint）
+
+# UE编辑器工具
 
 ## 概述
 
-UE编辑器工具是Unreal Engine提供的一套专门用于扩展和自定义编辑器界面的框架，主要分为两种形式：**Editor Utility Widget**（编辑器工具控件）和 **Editor Utility Blueprint**（编辑器工具蓝图）。前者基于UMG（Unreal Motion Graphics）UI框架构建可视化面板，后者则以蓝图脚本形式执行批量操作或自动化任务，两者均在编辑器运行时（Editor Runtime）下执行，而非游戏运行时（Game Runtime）。
+UE编辑器工具（Editor Utility Widget / Editor Utility Blueprint）是Unreal Engine 4.22版本正式引入的功能，允许开发者使用蓝图或C++创建嵌入编辑器内部的自定义GUI面板和自动化脚本。与普通游戏内Widget不同，Editor Utility Widget运行在编辑器上下文（Editor Context）中，可以直接调用`EditorAssetLibrary`、`EditorLevelLibrary`等编辑器专属API，访问和修改引擎资产、Actor乃至项目设置。
 
-这套系统自 **Unreal Engine 4.22版本**正式引入并稳定开放给开发者使用，填补了此前只能依赖C++插件或Python脚本才能扩展编辑器功能的空白。对于技术美术而言，Editor Utility Widget的出现意味着可以用熟悉的蓝图可视化逻辑快速制作资产批量处理面板、材质参数调整工具、场景检查器等实用工具，而无需掌握C++模块开发。
+这一系统出现之前，UE的编辑器定制化主要依赖C++ Plugin或Slate框架，学习门槛极高。4.22引入Editor Utility Widget后，技术美术人员可以纯蓝图方式构建批量重命名工具、材质参数批改面板、LOD自动化生成器等工具，无需编译C++，大幅降低了工具开发周期。在大型项目中，这类工具能将重复性资产处理任务从数小时压缩至数分钟。
 
-在技术美术工作流中，该工具的核心价值在于将重复性的手工操作封装为一键式面板。例如，为一个拥有数百个静态网格体的场景统一设置LOD参数，或批量将特定命名规则的纹理自动分配到对应材质插槽——这类任务通过Editor Utility Widget可在几分钟内完成，替代原本数小时的手动操作。
+Editor Utility Blueprint（无界面版本）与Editor Utility Widget（有界面版本）是该系统的两个主要形态。前者适合纯批处理逻辑，后者适合需要用户输入参数的交互式工具。两者都继承自专用的基类——`EditorUtilityWidget`继承自`EditorUtilityWidgetBlueprint`，而非普通的`UserWidget`，这一继承关系决定了它能访问哪些编辑器API。
 
 ---
 
 ## 核心原理
 
-### Editor Utility Widget 的创建与入口
+### 创建与激活机制
 
-在内容浏览器中右键选择 **Editor Utilities > Editor Utility Widget** 即可创建一个新的工具控件资产，其父类默认为 `EditorUtilityWidget`，继承自 `UserWidget` 但仅在编辑器环境下可用。完成UI布局设计后，右键该资产并选择 **Run Editor Utility Widget** 即可将其作为独立面板停靠在编辑器中，行为与原生编辑器面板相同，支持拖拽停靠和布局保存。
+新建Editor Utility Widget的路径为：在内容浏览器右键 → Editor Utilities → Editor Utility Widget。创建后双击打开Designer界面，布局方式与普通UMG完全相同。启动工具的方式是右键点击该资产 → **Run Editor Utility Widget**，此操作会在编辑器的Dock面板中注册该Widget，并可停靠在任意编辑器标签页旁边。工具启动时调用的入口事件是`Construct`（对应普通Widget的Event Construct），工具关闭时触发`Destruct`。
 
-与普通UMG控件的关键区别在于，`EditorUtilityWidget` 的蓝图事件图中可以直接访问 **EditorUtilityLibrary** 和 **EditorAssetLibrary** 两个专属函数库。`EditorUtilityLibrary` 提供 `GetSelectionSet()`（获取当前选中Actor集合）、`GetSelectedAssets()`（获取内容浏览器选中资产）等编辑器上下文API；`EditorAssetLibrary` 则提供 `SaveAsset()`、`DuplicateAsset()`、`SetMetadataTag()` 等资产操作函数，这些函数在游戏蓝图中根本不存在。
+### 核心API分层
 
-### Editor Utility Blueprint 的批处理模式
+编辑器工具的蓝图节点分布在三个主要库中：
 
-Editor Utility Blueprint（右键创建路径：**Editor Utilities > Editor Utility Blueprint**）不包含可视化界面，适合纯逻辑操作。它的典型用法是配合 **右键菜单集成**：在蓝图类设置中启用 **Apply to Content Browser** 后，可在内容浏览器对特定资产类型的右键菜单中直接出现自定义操作项。例如，对所有选中的 `StaticMesh` 资产执行"检查UV通道数量并生成报告"。
+- **EditorAssetLibrary**：处理内容浏览器中的资产，包括`SaveAsset`、`DuplicateAsset`、`RenameAsset`、`SetMetadataTag`等节点。例如，批量为贴图资产添加元数据标签`T_`前缀检查，就依赖`GetMetadataTag`和`RenameAsset`节点。
+- **EditorLevelLibrary**：操作当前关卡，包括`GetAllLevelActors`、`SetActorSelectionState`、`SpawnActorFromClass`等。利用`GetAllLevelActors`过滤`StaticMeshActor`后批量替换网格体，是最常见的关卡工具用例。
+- **EditorUtilityLibrary**：提供编辑器工具专属的辅助函数，最重要的是`GetSelectedAssets`和`GetSelectedActors`——这两个节点能获取用户在内容浏览器或视口中当前选中的对象，是大多数工具的数据入口。
 
-该蓝图的入口函数为 `Run`，引擎在用户触发时自动调用此事件，无需手动绑定。配合 `ForEach` 循环遍历 `GetSelectedAssets()` 返回的资产数组，即可实现对多个资产的批量逻辑处理。
+### 异步操作与慢任务（Slow Task）
 
-### 作用域限定：EditorOnly 标记
-
-Editor Utility系统的所有资产均带有 **Editor Only** 标记，这意味着打包时引擎会自动将其排除在外，不会影响最终游戏包的体积。开发者无需担心这些工具代码泄漏到运行时环境——引擎在打包阶段会拒绝将带有 `EditorUtilityWidget` 类型的资产纳入烘焙流程，若错误地在运行时蓝图中引用此类资产，编译器会给出明确报错。
+当工具需要处理大量资产时（例如遍历500个贴图），必须使用`Slow Task`节点组向用户显示进度条，否则编辑器会出现假死状态。标准做法是：`Begin Slow Task`（传入总步骤数和描述字符串）→ 循环体内调用`Status Update`更新当前步骤 → 循环结束后调用`End Slow Task`。`Status Update`节点中`Step`参数的数值范围应与`Begin Slow Task`中的`Amount of Work`保持一致，否则进度条显示会不准确。
 
 ---
 
 ## 实际应用
 
-**批量重命名与资产整理面板**：使用一个带有文本输入框（TextBox）、下拉菜单和"执行"按钮的Editor Utility Widget，配合 `EditorAssetLibrary.RenameAsset()` 函数，可实现支持前缀替换、后缀追加、正则匹配的批量重命名工具。美术团队常见的命名规范检查（如强制要求纹理以 `T_` 开头、静态网格以 `SM_` 开头）均可封装为一键校验。
+**批量重命名工具**是最典型的入门级Editor Utility Widget案例。用户在面板中输入前缀字符串，点击"应用"按钮后，工具调用`GetSelectedAssets`获取选中资产列表，遍历每个资产使用`RenameAsset`重命名，规范化命名为`T_AssetName_D`（贴图漫反射）、`M_AssetName`（材质）等格式。整个工具的核心逻辑不超过15个蓝图节点。
 
-**材质实例参数批改工具**：在场景中选中多个带有相同父材质的Actor后，通过 `GetSelectionSet()` 获取选中对象，遍历其 `StaticMeshComponent` 上的材质实例，调用 `SetScalarParameterValue()` 或 `SetVectorParameterValue()` 批量修改参数值。这在调整大量道具的风化程度（Roughness参数）或季节色调（Albedo Tint参数）时极为高效。
+**材质参数批量修改工具**是中级应用场景。工具界面提供数值滑条和颜色选择器，用户选中多个材质实例后，工具通过`SetMaterialInstanceScalarParameterValue`和`SetMaterialInstanceVectorParameterValue`批量写入参数值，配合`SaveAsset`持久化修改。这类工具在需要统一调整场景材质风格时，能替代逐个打开材质实例面板的繁琐操作。
 
-**资产依赖检查器**：使用 `EditorAssetLibrary.FindPackageReferencersForAsset()` 函数可查询某个资产被哪些其他资产引用，配合ListView控件将结果可视化呈现，帮助美术在删除资产前确认依赖关系，避免产生"缺失引用"（Missing Reference）的红色问号错误。
+**LOD检查工具**是质检流程的常见工具：遍历关卡内所有`StaticMeshActor`，读取每个网格体的`LODNum`属性，将LOD数量不符合规范（例如少于4级）的资产名称输出到面板内置的`ListView`控件中，让美术人员一键定位问题资产。
 
 ---
 
 ## 常见误区
 
-**误区一：将 EditorUtilityWidget 当作游戏内UI使用**
-`EditorUtilityWidget` 继承链中虽然包含 `UserWidget`，但它无法被 `CreateWidget` 节点在运行时实例化。部分初学者尝试在游戏蓝图中直接引用Editor Utility Widget资产来构建调试面板，这会导致打包失败或运行时崩溃。游戏内的调试UI应使用普通 `UserWidget` 配合 `bShowInGame` 参数，或使用 ImGui 插件方案。
+**误区一：将Editor Utility Widget当作运行时UI使用。**
+Editor Utility Widget仅在编辑器模式下有效，其蓝图节点（如`GetSelectedAssets`）在打包后的游戏中不存在。如果在其中引用了`GameInstance`或试图调用`GetPlayerController`，会返回空值或直接报错。工具窗口只能通过右键资产的`Run`命令或`RegisterTabSpawner` C++ API注册打开，不能通过游戏内逻辑触发。
 
-**误区二：所有操作无需调用 Save 即自动持久化**
-通过蓝图修改资产属性（如修改静态网格体的碰撞设置）后，修改仅存在于内存中，并不会自动写入硬盘。必须在批处理循环结束后显式调用 `EditorAssetLibrary.SaveAsset(AssetPath)` 或 `SaveLoadedAsset(Asset)`，否则重启引擎后所有修改将丢失。这与在编辑器中手动修改后按 Ctrl+S 保存的行为等价，工具开发者需在面板中明确提示用户或在代码中强制保存。
+**误区二：认为Editor Utility Widget可以实时响应编辑器事件。**
+默认情况下，Editor Utility Widget不会自动监听编辑器的选择变化事件。如果需要工具随用户选择动态更新，必须手动绑定`OnObjectsReplaced`委托或使用`Tick`（在Widget中勾选`Tick`选项，性能开销较大），而不能像游戏内Widget那样依赖被动事件驱动刷新。
 
-**误区三：Editor Utility Blueprint 与 Editor Utility Widget 功能完全重叠**
-两者面向不同场景：Editor Utility Blueprint 适合无界面的快速批处理，执行后即结束；Editor Utility Widget 适合需要用户持续交互、参数输入或结果展示的场景。对于只需"选中资产—执行—完成"三步的简单任务，强行制作带界面的Widget反而增加了维护成本。
+**误区三：混淆Editor Utility Blueprint与Editor Utility Widget的使用场景。**
+Editor Utility Blueprint（无UI）执行后立刻运行全部逻辑并退出，不能停留等待用户输入。如果工具需要中途询问用户参数（如选择目标路径），必须改用Editor Utility Widget加入输入控件，或通过`AppendDialog`弹窗——使用纯Blueprint版本试图实现交互式流程会导致逻辑执行顺序混乱。
 
 ---
 
 ## 知识关联
 
-学习Editor Utility工具之前，需要掌握**技美工具开发概述**中关于编辑器扩展目标和蓝图基础语法的内容，特别是对UMG布局系统（Canvas Panel、Vertical Box等容器控件的使用）要有基本认知，否则在设计工具面板时会遭遇大量布局问题。
+学习UE编辑器工具之前，需要掌握**技美工具开发概述**中的工具需求分析方法——明确工具是批处理型（对应Editor Utility Blueprint）还是交互型（对应Editor Utility Widget），决定了后续所有开发路径的选择。UMG基础布局知识（Canvas Panel、Vertical Box、Button/TextBox的绑定方式）也是构建工具界面的前提，这部分知识直接复用于Editor Utility Widget的Designer面板。
 
-在此基础之上，下一个进阶方向是 **UE Python脚本**。当Editor Utility Widget的蓝图逻辑过于复杂、需要处理文件系统操作（如读写外部CSV配置文件）、或需要与版本控制系统（Perforce/SVN）API交互时，Python脚本能提供更强的字符串处理和外部库调用能力。两种工具并非替代关系——实际项目中常见的架构是用Editor Utility Widget作为用户交互前端，内部通过 `Execute Python Script` 节点调用Python脚本执行复杂的后台逻辑，将界面友好性与脚本灵活性结合起来。
+掌握蓝图版编辑器工具后，下一步是学习**UE Python脚本**。Python通过`unreal`模块暴露的API与蓝图编辑器工具高度重叠（同样使用`unreal.EditorAssetLibrary`、`unreal.EditorLevelLibrary`），但Python更适合命令行批处理、CI/CD管线集成以及逻辑复杂度更高的工具开发场景。蓝图工具侧重可视化交互，Python侧重自动化流水线，两者在实际项目中往往配合使用——Python负责后台数据处理，Editor Utility Widget负责提供操作面板。

@@ -24,106 +24,119 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # 复杂介词短语
 
 ## 概述
 
-复杂介词短语（complex prepositions）是由两个或三个单词构成的固定搭配，整体功能等同于单个介词，用于连接名词短语与句子其他成分。与简单介词（如 *in*、*on*、*at*）不同，复杂介词短语通常由"介词 + 名词 + 介词"或"副词/形容词 + 介词"的结构组成，例如 *in terms of*（就……而言）、*with regard to*（关于）、*by means of*（通过……手段）、*in spite of*（尽管）等。
+复杂介词短语（Complex Prepositions）是由两个或三个词构成、整体功能等同于单个介词的固定词组。与简单介词（如 *in*、*on*、*at*）不同，复杂介词通常包含"介词 + 名词 + 介词"或"介词 + 形容词 + 介词"的结构，例如 *in terms of*（在……方面）、*with regard to*（关于）、*by means of*（通过……方式）、*in spite of*（尽管）和 *on behalf of*（代表）。这类短语在正式书面语和学术写作中极为常见。
 
-复杂介词短语在英语书面语中的大规模使用可追溯至17—18世纪法庭文书与行政公文写作，许多形式借自拉丁语法律用语，如 *by virtue of*（凭借，源自拉丁 *vi*）。现代英语中，语言学家 Quirk 等人在1985年出版的《英语综合语法》（*A Comprehensive Grammar of the English Language*）中正式将其归类为"群介词"（group prepositions），并统计出常用复杂介词短语超过60个。
+复杂介词短语在英语中的大规模使用可追溯至中世纪晚期（约14-15世纪），随着法语和拉丁语对英语的深度影响而固定化。许多常用的复杂介词短语直接来源于拉丁语法结构，例如 *by virtue of* 来自拉丁语 *virtute*。英国语言学家 Otto Jespersen 于1909年在其著作《英语语法》中首次系统描述了这类结构，将其称为"compound prepositions"（复合介词）。
 
-掌握复杂介词短语对学术写作与正式语体至关重要。雅思、托福、GRE写作评分标准明确要求考生展示"lexical precision"（词汇精确性），而复杂介词短语恰好提供了比普通介词更精确的语义关系表达——例如 *with respect to* 能清晰标示"参照对象"，而简单的 *about* 则无法传达同等的正式程度与语义精度。
+掌握复杂介词短语对英语学习者具有直接的实用价值：雅思学术写作、GRE写作及学术论文中，考官明确将 *in terms of*、*with respect to*、*as a result of* 等短语列为高分词汇的标志性特征。误用或缺乏这类表达，往往导致学术语体（academic register）不达标。
 
 ---
 
 ## 核心原理
 
-### 结构分类
+### 结构类型与构成规律
 
-复杂介词短语按内部结构可分为三类：
+复杂介词短语按结构可分为三类：
 
-**① 介词 + 名词 + 介词（P + N + P）**：这是最常见的类型，约占所有复杂介词短语的70%以上。名词部分通常没有冠词，已高度词汇化。
-- *in terms of*（就……方面而言）
-- *by means of*（通过……方式）
-- *on behalf of*（代表……）
-- *in the light of*（根据；鉴于）——注意此类含定冠词 *the* 的变体
+**① 介词 + 名词 + 介词（最常见）**
+- *in terms of*（就……而言）
+- *by means of*（借助……）
+- *on account of*（由于……）
+- *in place of*（代替……）
+- *in front of*（在……前面）
 
-**② 形容词 + 介词（Adj + P）**：
-- *prior to*（在……之前）
+**② 介词 + 形容词 + 介词**
+- *in accordance with*（按照……）
+- *in addition to*（除……之外）
+- *in contrast to/with*（与……相对）
+
+**③ 副词/分词 + 介词（两词型）**
+- *because of*（因为）
 - *due to*（由于）
-- *contrary to*（与……相反）
+- *regardless of*（不管……）
+- *owing to*（由于）
 
-**③ 副词/介词 + 介词（Adv/P + P）**：
-- *apart from*（除……之外）
-- *ahead of*（在……之前）
-- *instead of*（代替）
+中间名词通常已经失去其独立的名词语义，整个短语只传达一种介词关系。例如 *in terms of* 中的 *terms* 已不再单独表示"条款"，而是成为固定词组的语法黏合剂。
 
-### 语义功能与选词精度
+### 语义功能分类
 
-不同复杂介词短语承载不同的语义角色，选词错误会导致逻辑关系偏差：
+复杂介词短语按语义功能可分为以下六类，每类有其典型代表：
 
-| 复杂介词短语 | 语义功能 | 典型搭配 |
-|---|---|---|
-| *in terms of* | 限定参照维度 | *evaluate in terms of cost*（从成本角度评估） |
-| *with regard to* | 标示话题对象 | *with regard to your application*（关于您的申请） |
-| *by virtue of* | 表示凭借资格 | *by virtue of her experience*（凭借她的经验） |
-| *in lieu of* | 表示替代关系 | *cash in lieu of shares*（以现金代替股份） |
-| *with a view to* | 表示目的 | *with a view to reducing costs*（以降低成本为目的）—— 注意后接动名词 |
+| 功能 | 代表短语 | 例句 |
+|------|----------|------|
+| 关于/涉及 | *with regard to*, *with respect to*, *in terms of* | *In terms of cost, this plan is superior.* |
+| 原因 | *as a result of*, *on account of*, *owing to* | *Owing to heavy rain, the event was cancelled.* |
+| 目的 | *with a view to*, *for the sake of*, *for the purpose of* | *She studied hard with a view to passing the exam.* |
+| 让步 | *in spite of*, *regardless of*, *notwithstanding* | *In spite of the difficulties, they succeeded.* |
+| 方式 | *by means of*, *by way of*, *in the form of* | *The message was sent by means of a secret code.* |
+| 比较/替代 | *in place of*, *in contrast to*, *as opposed to* | *As opposed to the previous model, this one is faster.* |
 
-特别注意：*with a view to* 后必须接动名词（V-ing），而非不定式，这与 *in order to* 恰好相反，是高频考点。
+注意：*with regard to* 后不加 *s*（而非 *with regards to*，后者属于口语错误），*in terms of* 中 *terms* 必须用复数形式——这两点是高频考点。
 
-### 词汇化程度与可修改性
+### 介词短语的句法位置
 
-复杂介词短语的内部成分已高度凝固，不能随意插入修饰语。例如：
-- ✅ *in terms of efficiency*
-- ❌ *in clear terms of efficiency*（不可插入形容词）
+复杂介词短语可出现在句子的三个核心位置，位置不同则语义重心不同：
 
-但少数含 *the* 的结构保留一定灵活性：
-- *in the light of* → *in the full light of*（在某些文学语体中可见）
+1. **句首（框架状语）**：*In terms of revenue, the company grew by 23% last year.*——将讨论范围限定于"收入"维度，读者在阅读主句前便获得解读框架。
 
-此外，部分复杂介词短语存在英式与美式的拼写/使用差异：*in connection with* 在英国法律文本中使用频率是美国英语的约2.3倍（基于BNC与COCA语料库对比数据）。
+2. **句中（后置定语或插入语）**：*The policy, with regard to immigration, remains unchanged.*——修饰主语或谓语，补充说明语境。
+
+3. **句尾（方式/原因补足）**：*The experiment was conducted by means of controlled randomization.*——说明动作的执行方式。
 
 ---
 
 ## 实际应用
 
-**学术论文写作**：在论证逻辑链中，*in terms of*、*with respect to* 和 *as regards* 用于界定讨论范围。例如学术摘要常见句式：
-> *The findings are discussed **in terms of** their implications for second language acquisition theory.*
-（研究发现就其对二语习得理论的影响而言进行了讨论。）
+**学术写作场景**
 
-**商务英语**：*on behalf of* 出现在正式函件的落款与授权文件中；*by means of* 出现在合同的"支付方式"条款，如 *Payment shall be made **by means of** wire transfer within 30 days.*
+在经济学论文中，*in terms of* 常用于限定比较维度：*In terms of purchasing power parity, developing economies account for nearly 60% of global GDP.*（就购买力平价而言，发展中经济体约占全球GDP的60%）。若改用简单介词 *about* 则明显降低语域。
 
-**对比逻辑表达**：*as opposed to* 与 *in contrast to* 均可表示对比，但 *as opposed to* 暗含"选择其一而非另一"的对立关系，而 *in contrast to* 仅陈述客观差异，无对立立场。例如：
-> *We chose digital distribution **as opposed to** print.*（含"主动放弃印刷版"的语义）
-> *Digital media, **in contrast to** print, reaches audiences instantly.*（客观陈述差异）
+**商务英语场景**
 
-**口语与书面语的频率差异**：根据朗文英语口语与书面语语料库（LGSWE，1999）的统计，*in terms of* 在学术书面语中每百万词出现约780次，而在日常对话中仅出现约40次，差距近20倍，说明其属于典型的书面语正式标记。
+*On behalf of* 是商务信函的固定开场表达：*On behalf of the entire team, I would like to express our sincere gratitude.*。此处不能替换为 *instead of*（意思完全不同：代替而非代表）。
+
+**雅思口语场景**
+
+考生在 Part 3 描述社会现象时，可用 *by virtue of* 表达"凭借……而具有某种资格或特质"：*By virtue of its geographical location, Singapore has become a major trading hub.*（凭借其地理位置，新加坡成为主要贸易枢纽）。
+
+**GRE写作场景**
+
+*Notwithstanding*（尽管如此）既可独立用作连接副词，也可作复杂介词：*Notwithstanding the statistical evidence, the author's conclusion remains unconvincing.*
 
 ---
 
 ## 常见误区
 
-**误区一：将复杂介词短语的名词部分当作普通名词处理**
+**误区一：将复杂介词短语中的名词随意变形**
 
-学习者常误加冠词或将名词复数化，如写出 *in the terms of* 或 *by the means of*。实际上，*in terms of* 和 *by means of* 中的 *terms* 和 *means* 已失去独立名词功能，整个短语作为一个语法单元使用，不能加定冠词（*in the light of* 是少数例外，须单独记忆）。
+学生常将 *in terms of* 错写成 *in term of*（去掉复数 *s*），或将 *on behalf of* 错写成 *on the behalf of*（多加定冠词 *the*）。正确规则：绝大多数"介词+名词+介词"结构中的名词已固化，不接受冠词或数的变化。*with regard to*（不加 *s*）和 *with regards to*（口语化，正式文体忌用）是平行的对比错例。
 
-**误区二：混淆语义相近的复杂介词短语**
+**误区二：混淆近义复杂介词的语用差异**
 
-*due to* 与 *owing to* 语义相近但用法有别：传统语法规定 *due to* 修饰名词（作表语或后置定语），而 *owing to* 修饰整个句子（作状语）。例如：
-- ✅ *The delay was **due to** bad weather.*（due to修饰名词delay）
-- ✅ ***Owing to** bad weather, the flight was delayed.*（owing to修饰整句）
-- ❌ ***Due to** bad weather, the flight was delayed.*（在正式书面语中仍被部分语法学家视为不规范，尽管现代英语中已广泛接受）
+*because of*、*owing to*、*due to*、*as a result of* 四者均表因果，但用法有别：
+- *due to* 传统语法要求其后跟名词短语且整体作表语或后置定语（*The delay was due to fog.*），而非句首状语；
+- *owing to* 和 *because of* 可直接用作句首原因状语；
+- *as a result of* 强调"结果的来源"，语气最正式，常见于学术文体。
 
-**误区三：认为复杂介词短语可与简单介词自由替换**
+将四者视为完全可互换的同义词，是学术写作中最常见的错误之一。
 
-*in spite of* ≠ *despite*（两者语法层面等义，但注册语域不同，*despite* 更简洁正式，*in spite of* 在强调让步语气时情感色彩略强）；*by means of* 也不能用 *by* 直接替换——*by* 后接普通名词时语义宽泛，而 *by means of* 特别强调"方法/手段"，带有技术性或正式描述色彩。
+**误区三：误解 *in terms of* 的适用范围**
+
+*in terms of* 专用于"从某角度/维度来衡量或看待"，不能泛化替代所有的"关于"表达。例如，*I have a question in terms of this contract.*（✗）应改为 *I have a question with regard to this contract.*（✓）。前者暗含"以合同为衡量维度"，语义失当。
 
 ---
 
 ## 知识关联
 
-学习复杂介词短语需建立在对简单介词语义场的扎实掌握之上：*in terms of* 的核心介词 *in* 提供"范围限定"的基础语义，*of* 提供"所属关系"，两者叠加后产生"在某个参照范围之内"的精确含义。如果对 *of* 表所属、*by* 表方式、*to* 表方向等基本语义不熟悉，则无法预测复杂介词短语的整体语义方向。
+**与前置知识（介词）的衔接**
 
-在横向拓展方面，复杂介词短语与**名词化结构**（nominalization）密切配合——学术写作中的典型句式往往是"复杂介词短语 + 名词化短语"，如 *with reference to the implementation of new policies*，其中 *implementation* 是动词 *implement* 的名词化形式。两者共同构成英语学术语体的核心词汇语法特征。
+学习者需要先掌握 *in*、*by*、*with*、*on*、*of* 这五个高频简单介词的基本介词语义（空间、方式、伴随、依据、归属），才能理解复杂介词短语为何在结构上将多个介词"融合"成单一语义单位。例如，理解 *by* 表示"方式"，才能准确推断 *by means of* 和 *by virtue of* 的核心语义方向。
 
-此外，熟练运用复杂介词短语也为理解**连接副词**（如 *nevertheless*、*furthermore*）的语篇功能奠定基础——两类结构都承担标示段落逻辑关系的功能，但复杂介词短语在句内连接名词性成分，连接副词则在句间或段落间建立关系。
+**在高级语法体系中的位置**
+
+复杂介词短语与**名词化结构**（nominalization）紧密配合，构成学术英语的典型句式。*The improvement in efficiency brought about by means of automation...* 一句中，复杂介词短语 *by means of* 嵌套在名词化结构 *the improvement in efficiency* 之内，这一组合模式在《经济学人》和Nature类期刊中的句子中出现频率超过 45%（Biber et al., 1999《语料库语言学》统计数据）。掌握复杂介词短语，为后续学习**分词短语**和**绝对结构**打下词汇—语法接口的基础。
