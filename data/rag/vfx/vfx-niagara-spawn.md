@@ -24,79 +24,70 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-27
 ---
 
+
 # 生成模式
 
 ## 概述
 
-生成模式（Spawn Mode）是Niagara系统中控制粒子**何时、以何种速率**产生的核心机制。它决定了粒子系统在时间轴上的粒子数量分布方式，直接影响特效的视觉密度和爆发节奏。Niagara中的生成模式通过专用的**发射器生成（Emitter Spawn）**和**粒子生成（Particle Spawn）**两个执行阶段来实现，这两个阶段在每帧运行的顺序上是固定且不可互换的。
+生成模式（Spawn Mode）是Unreal Engine Niagara粒子系统中控制粒子"何时"与"以何种方式"被创建进入模拟世界的机制集合。不同于粒子在存活期间的行为控制，生成模式专门决定粒子的诞生时机、数量和触发条件，是粒子效果从无到有的第一道关卡。
 
-生成模式的概念在Unreal Engine 4时代就已在Cascade粒子系统中存在，但Niagara于UE 4.20版本引入后，将生成策略拆分为独立模块，允许多个生成模块同时叠加运行，赋予美术更高的组合自由度。例如，你可以同时启用一个持续速率模块和一个爆发模块，两者的输出粒子数会相加，而不会互相覆盖。
+Niagara系统在UE4.20版本中正式取代Cascade成为主推粒子编辑器，生成模式作为其Emitter模块体系的首要环节，被设计为可堆叠的模块化结构——开发者可以在同一个Emitter上同时叠加多个不同的生成模式模块，例如同时使用Spawn Rate持续生成背景烟雾，再叠加一个Spawn Burst Instantaneous制造爆发瞬间的火花。
 
-理解生成模式对于控制特效性能至关重要：粒子数量直接影响GPU和CPU的计算开销。一个每秒生成500个粒子的持续速率设置，与一次性爆发500个粒子的Burst设置，在瞬时性能峰值和平均开销上有本质区别，选错生成模式会导致帧率尖刺或特效失去冲击力。
+理解生成模式的核心价值在于：错误的生成策略会直接导致性能浪费或视觉缺陷。使用过高的Spawn Rate会在一秒内生成数千个粒子拖垮GPU，而错误地用持续Rate代替Burst则会让爆炸效果看起来像是缓慢冒烟，而非瞬间爆发。
 
 ---
 
 ## 核心原理
 
-### Spawn Rate：持续速率生成
+### Spawn Rate：基于时间的持续生成
 
-Spawn Rate模块以**每秒粒子数（Particles Per Second，PPS）**为单位持续生成粒子。其内部逻辑基于**时间累积（Time Accumulator）**机制：每帧将`DeltaTime × SpawnRate`的结果累积到一个浮点数中，当累积值超过1.0时，实际生成对应数量的整数粒子，并保留小数部分供下一帧继续累积。
+Spawn Rate模块以"每秒粒子数"（Particles Per Second，PPS）为单位持续匀速创建粒子。其内部计算逻辑使用**累积小数帧**机制：每一帧实际生成数 = `Rate × DeltaTime + 上一帧余量`，整数部分立即生成，小数部分留存到下一帧累积。这意味着即便帧率波动，30 PPS的设置在1秒内依然精确生成30个粒子，而不会因帧率不稳定产生数量漂移。
 
-$$N_{spawn} = \lfloor Accumulator + \Delta t \times R \rfloor$$
+Spawn Rate支持绑定Niagara参数，例如将Rate绑定到`User.SpawnIntensity`浮点参数，可在蓝图中用`Set Niagara Variable (Float)`实时调整生成速率，制作如营火风力变化时火焰粒子随风速变稠变稀的动态效果。
 
-其中 $R$ 为设定的SpawnRate值，$\Delta t$ 为帧间隔时间，$Accumulator$ 为上一帧的残余小数。这意味着在低帧率情况下（如15fps），Spawn Rate为100时每帧约生成6~7个粒子，仍能保持总体数量的稳定性，而不是在低帧率下粒子数量成比例减少。
+### Spawn Burst Instantaneous：瞬时爆发
 
-### Burst：爆发式生成
+Burst模式在指定时间点**一次性**生成固定数量的粒子，核心参数为`SpawnCount`（生成数量）和`SpawnTime`（触发时刻，单位为秒，相对于Emitter激活后的本地时间）。一个典型子弹击中地面的烟尘效果会设置`SpawnTime = 0.0`、`SpawnCount = 80`，确保效果激活的第0帧立刻产生80颗尘粒，形成瞬间迸射感。
 
-Burst模块在**指定时间点**一次性释放固定数量的粒子，常用于爆炸、碰撞火花、技能释放瞬间等需要强烈冲击感的场景。在Niagara的Burst设置中，每个Burst条目包含三个参数：
-
-- **Time**：触发时刻（相对于发射器激活后的秒数，如`0.0`表示立即触发）
-- **Count**：生成粒子数量（整数）
-- **Count Low**：若大于0，则实际数量在`Count Low`到`Count`之间随机取整数，用于制造自然变化感
-
-多个Burst条目可以在同一发射器中共存，例如在0.0秒生成50个粒子，在0.5秒再生成30个粒子，模拟爆炸后的二次迸发效果。Burst与SpawnRate叠加时，同一帧内两者的粒子都会进入同一粒子生成阶段执行初始化。
+Burst支持设置`SpawnCount Min/Max`随机范围，例如设置Min=60、Max=100，系统每次激活时随机选取区间内整数，避免多次触发完全相同的粒子数量带来的重复感。可以在单个Emitter中添加多条Burst条目，例如时刻0.0生成主爆发，时刻0.15再追加一次余震效果。
 
 ### 事件触发生成（Event Handler Spawn）
 
-事件触发生成依赖Niagara的**事件系统**，允许一个发射器（或其他系统）产生的事件驱动另一个发射器生成粒子。常见事件类型包括：
+Niagara的事件系统允许一个Emitter的粒子**死亡、碰撞或自定义事件**触发另一个Emitter生成新粒子。具体实现路径为：在发送方Emitter的Particle Update阶段添加`Generate Death Event`模块，在接收方Emitter中添加`Event Handler`并设置`Spawn Per Event`数量。
 
-- **Collision Event**：粒子碰撞到物体表面时触发，常用于弹孔飞溅特效
-- **Death Event**：粒子生命周期结束时触发，常用于粒子消失时产生碎片或烟雾
-- **Location Event**：粒子携带位置信息，驱动子发射器在该位置生成新粒子
+例如制作烟花效果：主Emitter的每颗烟花粒子死亡时，通过Death Event通知子Emitter在该空间位置生成8～12颗子弹粒子。事件传递的Payload数据（如位置`Position`、速度`Velocity`）可以直接注入子粒子的初始属性，使子粒子继承父粒子的动量方向，物理感更真实。
 
-事件触发生成的特点是**每个事件对应一批粒子生成**，生成数量通过`Spawn Per Event`参数控制。若一帧内发生了10次碰撞事件，`Spawn Per Event`设为3，则该帧总共生成30个子粒子。事件数据（如碰撞法线、位置）可直接通过`EventPayload`传递给新生成的粒子，无需额外的参数绑定。
+### Spawn Per Frame：帧锁定生成
 
-### 脚本化生成（Spawn Script）
-
-Niagara还支持通过自定义HLSL或可视化脚本节点实现完全程序化的生成逻辑。在`Particle Spawn`阶段插入自定义模块，可以根据游戏逻辑参数（如角色速度、与玩家的距离）动态调整每帧生成数量，实现普通Spawn Rate无法覆盖的动态密度效果。
+与Rate不同，`Spawn Per Frame`模块每帧固定生成N个粒子，**不考虑DeltaTime**。这意味着帧率为60fps时每秒生成60×N个粒子，帧率降为30fps时每秒只生成30×N个。此模式极少用于常规特效，主要用于需要"每帧必有粒子更新"的特殊场景，如GPU粒子驱动的流体模拟或需要严格每帧输出数据点的技术性应用。
 
 ---
 
 ## 实际应用
 
-**火焰特效**通常组合使用Spawn Rate与随机化参数：设置SpawnRate为80~120（使用`Uniform Ranged Float`绑定到该参数），配合生命周期1.5~2.5秒，维持火焰的密度感与自然波动。
+**持续环境特效**：营地篝火的火星效果使用Spawn Rate设置为`15～25 PPS`，配合User参数绑定风力值，风大时PPS自动提升至40，视觉上模拟风吹火旺的状态。
 
-**爆炸特效**的标准做法是关闭Spawn Rate（设为0），仅使用单个Burst条目在`Time=0.0`时释放150~300个粒子，确保爆炸的瞬时冲击感。爆炸烟雾的二级发射器则通过**Death Event**在主发射器粒子消亡时生成，避免烟雾与火焰同时爆发导致视觉混乱。
+**武器开枪闪光**：枪口火焰Emitter采用单条`Spawn Burst Instantaneous`，SpawnTime=0、SpawnCount=30，Emitter的Loop Behavior设置为`One Shot`，每次开枪事件通过蓝图调用`Activate(Reset)`重新触发，保证每次射击产生一次性的爆发闪光，而非持续燃烧。
 
-**拖尾特效**（如刀光）常将SpawnRate设置为极高值（500~1000），并将发射器的`Loop Duration`设为0.1~0.2秒，配合武器挥动动画的时间窗口，在短暂时间内密集生成粒子构成连续轨迹。
+**粒子链式反应**：爆炸碎片粒子落地碰撞时，通过`Generate Collision Event`触发地面粒子Emitter，在碰撞点生成3颗石块碎屑粒子，Payload中传递碰撞法线`CollisionNormal`，使碎屑沿反射方向弹开，整个效果无需蓝图介入，纯在Niagara系统内完成链式生成。
 
 ---
 
 ## 常见误区
 
-**误区一：认为Burst的Time参数是游戏世界时间**
-Burst的`Time`参数是相对于**发射器自身激活后的本地时间**，而非游戏全局时间轴。如果发射器被延迟激活（通过`Emitter Delay`设置了0.5秒延迟），Burst的`Time=0.0`仍然指发射器开始运行后的第0秒，而非系统整体启动后的第0秒。混淆这两个时间坐标系会导致Burst粒子不在预期时刻出现。
+**误区一：认为Burst等同于"Rate极大值"**
+部分初学者用极高的Spawn Rate（如10000 PPS）并让Emitter只存活0.01秒来模拟Burst效果。这种方式无法保证粒子集中在同一帧生成，因为Rate的累积帧机制会将粒子分散到多帧，导致爆发感消失；同时Emitter生命周期管理的开销远高于直接使用一条Burst条目。
 
-**误区二：Spawn Rate越高粒子越多越好**
-高Spawn Rate配合长生命周期会导致活跃粒子数（Active Particle Count）持续累积。以SpawnRate=200、生命周期=5秒为例，稳定状态下活跃粒子数高达1000个。Niagara在GPU模拟模式下，超过`Max GPU Particle Count`（默认通常为1,048,576）会直接丢弃粒子；在CPU模式下则会触发内存分配压力。美术应始终在发射器的`Fixed Bounds`和`Max Particle Count`中设定合理上限。
+**误区二：Event Handler Spawn不设置生成上限导致雪崩**
+当事件触发的子粒子本身也携带Death Event时，若未在Event Handler中勾选`Max Spawns Per Frame`限制，父粒子死亡→子粒子生成→子粒子死亡→孙粒子生成的链式反应会在数帧内使粒子数量指数级暴涨，直接卡死编辑器。正确做法是为链式Event的最末级Emitter禁用Death Event输出，或设置每帧最大生成数为固定上限（如16）。
 
-**误区三：事件触发生成可以跨Niagara系统使用**
-事件触发生成（Event Handler）只能在**同一个Niagara系统内的发射器之间**传递。跨系统的事件通信需要通过蓝图或`User Parameter`传递外部信号，无法直接在两个独立的`NiagaraSystem`资产之间使用内置事件机制。
+**误区三：混淆Spawn Rate的全局时间与Emitter本地时间**
+Burst的`SpawnTime`参数使用的是**Emitter激活后的本地经过时间**，而非游戏世界的全局时间。若Emitter设置了`Pre-Warm`预热秒数（例如2秒），则SpawnTime=0的Burst实际上在系统对玩家可见之前已经触发完毕，玩家只会看到已经扩散的粒子而看不到爆发瞬间，这是制作循环特效预热时必须注意的时间偏移问题。
 
 ---
 
 ## 知识关联
 
-生成模式依赖**参数与属性**中介绍的`Float参数`、`User Parameter`绑定机制——SpawnRate和BurstCount都可以绑定到用户参数，由蓝图在运行时动态修改，例如根据技能等级调整爆发粒子数量。
+生成模式的参数（如SpawnCount、Rate值）本质上都是Niagara参数体系中的`Module Input`，在学习过**参数与属性**之后，你已经具备将这些数值绑定到User Parameter或System Parameter的基础，可以直接在蓝图中动态控制生成逻辑。
 
-生成模式结束后，每个被创建的粒子立即进入**粒子生命周期**阶段，执行初始位置、速度、颜色等属性的初始化逻辑。生成模式决定了**粒子的产生时机和数量**，而粒子生命周期决定了**每个粒子从诞生到消亡的完整行为序列**，二者共同构成Niagara发射器运作的完整时间线。
+生成模式决定了粒子"出生"的条件，而粒子出生后立刻进入**粒子生命周期**的管理——包括Particle Spawn阶段的初始属性设置、Particle Update阶段的每帧行为更新以及粒子死亡时的回收逻辑。生成模式中Burst的`SpawnCount`直接决定了同一时刻有多少粒子进入生命周期管线，数量过大会造成同帧初始化压力，这是后续学习性能优化时需要回溯的关键节点。
