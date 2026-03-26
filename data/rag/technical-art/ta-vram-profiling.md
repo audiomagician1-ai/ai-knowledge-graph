@@ -20,69 +20,75 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-26
 ---
+
 # VRAM分析
 
 ## 概述
 
-VRAM分析（Ta Vram Profiling）是技术美术（Technical Art）中内存与预算领域的重要概念。难度等级2/9（基础级）。
+VRAM（Video RAM，显存）分析是指通过专业工具检查GPU显存中各类资源的分配情况、占用大小及内存碎片状态的技术过程。在实时渲染管线中，纹理、顶点缓冲、帧缓冲、常量缓冲区等资源全部驻留在VRAM中，一旦VRAM溢出，GPU将被迫从系统内存（DRAM）读取数据，在移动平台上这一带宽惩罚可高达10倍以上，直接导致帧率崩溃。
 
-RenderDoc/GPU Viewer——分析显存中的资源分布。
+VRAM分析工具的普及源于现代GPU架构的演进。NVIDIA在2012年推出RenderDoc的前身工具，而RenderDoc本身由Baldur Karlsson于2012年作为开源项目发布，目前已成为主流跨平台帧调试工具，支持Vulkan、DirectX 12/11、OpenGL及Metal等图形API。相比之下，GPU Viewer（部分场合指Android GPU Inspector或厂商特定工具如Snapdragon Profiler）专注于移动端VRAM行为。理解两类工具的功能差异对技术美术精确定位资源问题至关重要。
 
-在知识体系中，VRAM分析建立在GPU性能分析的基础之上，是理解资产大小审计的关键前置知识。为什么VRAM分析如此重要？因为它在内存与预算中起到承上启下的作用，连接基础概念与高级应用。
+在游戏项目中，主机平台通常将8GB显存设为预算上限（如PS5的GDDR6总共16GB，其中GPU可用约12.5GB），PC平台则受玩家显卡配置离散性影响。VRAM分析的目标不仅是找出"谁占用了最多显存"，更要识别哪些资源在当前帧根本未被采样却仍驻留内存，从而指导剔除与流送策略。
 
-## 核心知识点
+---
 
-### 1. RenderDoc/GPU Viewer——分析显存中的资源分布
+## 核心原理
 
-RenderDoc/GPU Viewer——分析显存中的资源分布是VRAM分析(Ta Vram Profiling)的核心组成部分之一。在内存与预算的实践中，RenderDoc/GPU Viewer——分析显存中的资源分布决定了系统行为的关键特征。例如，当RenderDoc/GPU Viewer——分析显存中的资源分布参数或条件发生变化时，整体表现会产生显著差异。深入理解RenderDoc/GPU Viewer——分析显存中的资源分布需要结合技术美术的基本原理进行分析。
+### RenderDoc的资源检查流程
 
+在RenderDoc中，完成帧捕获后进入"Resource Inspector"面板，可看到当前帧所有GPU资源的枚举列表，每条记录包含资源类型（Texture2D、Buffer、RenderTarget等）、格式（如BC7\_UNORM、R16G16B16A16\_FLOAT）、分辨率、Mip层级数量及实际显存占用字节数。通过点击"Used"过滤器可将列表缩减为本帧实际被绑定到管线的资源，与全量列表对比，差值即为当前帧的"僵尸资源"占用量。
 
-### 关键原理分析
+技术美术需要重点关注"Texture List"中排名靠前的条目。一张未压缩的4096×4096 RGBA8纹理占用64MB（4096 × 4096 × 4字节），而同尺寸使用BC7压缩的纹理仅占16MB，压缩比为4:1；但若该纹理启用了完整Mip链，总大小需乘以约1.33，即BC7完整Mip链约21.3MB。RenderDoc直接在列表中显示这一包含Mip的实际显存数字，而非开发者凭经验估算的裸纹理大小，这一区别往往导致预算误判。
 
-VRAM分析的核心在于RenderDoc/GPU Viewer——分析显存中的资源分布。从理论角度看，该概念涉及以下层面：
+### GPU Viewer / Android GPU Inspector中的内存堆分析
 
-1. **定义层**：明确VRAM分析的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解VRAM分析内部各要素的相互作用方式
-3. **应用层**：将VRAM分析的原理映射到技术美术的实际场景中
+移动端GPU（如Adreno、Mali、Apple GPU）采用统一内存架构（UMA），CPU与GPU共享同一物理内存池，因此"VRAM"实际是从系统LPDDR内存中划分的GPU可见区域。Android GPU Inspector（AGI）的"Memory"面板将资源按内存堆（Memory Heap）分组显示，堆类型标记为DEVICE\_LOCAL表示GPU优先访问，HOST\_VISIBLE表示CPU可映射。一张在Vulkan中以`VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT`分配的纹理出现在DEVICE\_LOCAL堆，而上传缓冲区（Staging Buffer）出现在HOST\_VISIBLE堆。若发现大量纹理停留在HOST\_VISIBLE堆中，说明上传流程未正确迁移资源，GPU读取带宽将严重受损。
 
-思考题：如何判断VRAM分析的应用是否超出了其理论适用范围？
+### 显存占用的量化公式
 
-## 关键要点
+对于常见2D纹理，未压缩VRAM占用可用以下公式计算：
 
-1. **核心定义**：VRAM分析的本质是RenderDoc/GPU Viewer——分析显存中的资源分布，这是理解整个概念的出发点
-2. **多维理解**：掌握VRAM分析需要同时理解RenderDoc/GPU Viewer——分析显存中的资源分布等关键维度
-3. **先修关系**：扎实的GPU性能分析基础对理解VRAM分析至关重要
-4. **进阶路径**：掌握后可继续深入资产大小审计等进阶主题
-5. **实践标准**：真正掌握VRAM分析的标志是能在具体场景中灵活运用并正确判断适用边界
+```
+VRAM(bytes) = Width × Height × BytesPerPixel × MipMultiplier
+```
+
+其中`MipMultiplier ≈ 1.333`（完整Mip链的几何级数求和结果），`BytesPerPixel`对应格式如下：R8G8B8A8 = 4，R16G16B16A16\_FLOAT = 8，BC7/BC1等块压缩格式需将Width和Height向上取整到4的倍数后除以压缩比（BC1为8:1，BC7为4:1）。RenderDoc的实际读数会精确反映GPU驱动的内存对齐（通常以256字节或4KB为粒度），因此工具读数略高于公式理论值属正常现象。
+
+### 帧缓冲与RenderTarget的隐性占用
+
+帧缓冲资源是VRAM分析中最易被忽视的部分。在延迟渲染管线中，一个1920×1080分辨率的G-Buffer通常包含：漫反射（R8G8B8A8，约8MB）、法线（R16G16B16A16，约16MB）、Roughness/Metallic（R8G8B8A8，约8MB）、深度（D32F\_S8，约12MB），合计约44MB仅用于G-Buffer本身，加上HDR颜色缓冲（R16G16B16A16\_FLOAT，约16MB）及阴影贴图（2048×2048 D32F，约16MB），一帧渲染所需的RenderTarget固定开销轻易超过80MB。RenderDoc在"Outputs"标签页下可逐一查看每个RenderPass的RenderTarget绑定，技术美术应将这些数字纳入总VRAM预算核算。
+
+---
+
+## 实际应用
+
+**场景一：定位超标纹理** 在一次主机项目审查中，VRAM预算超出200MB。通过RenderDoc捕获帧后，Resource Inspector按"Size"降序排列，发现UI模块中有12张2048×2048 RGBA16F的图标纹理，每张32MB（含Mip链约42MB），合计超过500MB。这些纹理实际只需R8G8B8A8格式且无需Mip链，格式降级后每张缩小至16MB，总节省超过300MB。
+
+**场景二：移动端驱动不自动压缩** 在Snapdragon Profiler的Memory视图中，发现一批运行时通过`Texture2D.LoadImage()`加载的PNG纹理显示为RGBA8未压缩格式，驻留DEVICE\_LOCAL堆共占用180MB。原因是Unity在Android平台对运行时加载纹理默认不执行GPU压缩，需在加载后手动调用`texture.Compress(true)`或改用ETC2/ASTC格式的资产包，最终将这批纹理VRAM降至45MB。
+
+**场景三：Cubemap Mip链过度分配** 天空盒Cubemap使用4096分辨率、6面、完整Mip链、RGBA16F格式时，单个Cubemap占用：4096×4096×8×6×1.333 ≈ 1.07GB。RenderDoc的Resource Inspector直接显示该数字，立刻定位了项目VRAM溢出的根因。将天空盒降至2048分辨率并限制Mip层数为7级后，占用降至约64MB。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将VRAM分析与内存与预算中其他相近概念混为一谈。例如，RenderDoc/GPU Viewer——分析显存中的资源分布的适用条件与其他同类概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解GPU性能分析就学习VRAM分析，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：VRAM分析虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：以文件体积估算VRAM占用**
+PNG或TGA文件在磁盘上经过压缩，一张磁盘占用5MB的PNG解压后以未压缩RGBA8格式上传GPU可达64MB（2048×2048×4）。VRAM分析必须依赖RenderDoc等工具读取GPU端实际分配大小，而非资产文件大小。两者差距可达10倍以上。
 
-## 知识衔接
+**误区二：认为资源不显示在当前帧就不占VRAM**
+GPU驱动出于性能考虑会将资源保持在显存中直到内存压力触发驱逐，或应用程序显式释放。RenderDoc的"Resource Inspector"列出所有存活资源，而不仅限于当前帧绑定的资源。技术美术若仅查看"Used"过滤后的列表，会低估实际VRAM占用，忽视场景切换后未被卸载的上一个关卡资源。
 
-### 先修知识
-先修知识包括：
-- **GPU性能分析** — 为VRAM分析提供了必要的概念基础
+**误区三：UMA架构下VRAM无限制**
+移动端统一内存架构并不意味着GPU可以无限使用内存。以Snapdragon 8 Gen 2为例，GPU驱动通常将DEVICE\_LOCAL堆上限设置为物理RAM的约35%-50%，在6GB RAM设备上约2-3GB。超出该限制同样会触发资源驱逐，导致纹理采样出现黑块或帧率骤降。
 
-### 后续学习
-掌握VRAM分析后可继续学习：
-- **资产大小审计** — 在VRAM分析基础上进一步拓展
+---
 
-## 学习建议
+## 知识关联
 
-预计学习时间：30-60分钟。建议采用以下策略：
+VRAM分析建立在**GPU性能分析**的基础上：通过GPU性能分析（如使用RenderDoc的Timeline视图或NSight的GPU Trace）识别出哪些Pass耗时异常后，才需要进入VRAM分析层面确认是否为带宽或容量瓶颈。例如，GPU Timeline显示某Pass采样时间过长，VRAM分析随即揭示该Pass绑定了一张未压缩的8K纹理，两个步骤形成诊断闭环。
 
-- **主动回忆**：学完后不看笔记复述VRAM分析的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将VRAM分析与技术美术中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释VRAM分析，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于内存与预算的章节可作为深入参考
-- Wikipedia: [Ta Vram Profiling](https://en.wikipedia.org/wiki/ta_vram_profiling) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Ta Vram Profiling" 可找到配套视频教程
+完成VRAM分析后，下一步进入**资产大小审计**：VRAM分析给出"哪些资源超标"的量化数据，资产大小审计则系统化地建立项目全局的纹理/网格大小规范（如"角色纹理不超过512KB磁盘大小且VRAM不超过8MB"），并配合资产管线的自动化检测脚本，防止超标资产再次进入版本。VRAM分析是单帧诊断工具，资产大小审计是持续预防机制，两者共同构成完整的显存管理工作流。
