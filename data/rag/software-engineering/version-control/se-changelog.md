@@ -24,104 +24,78 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-27
 ---
 
+
 # 变更日志管理
 
 ## 概述
 
-变更日志（Changelog）是一份按时间倒序记录软件版本变更历史的文档，通常以 `CHANGELOG.md` 文件存放于项目根目录。它的核心价值在于让用户和开发者快速了解每个版本新增了哪些功能、修复了哪些缺陷、以及是否存在破坏性变更（Breaking Changes），而无需逐条阅读 Git 提交记录。
+变更日志（Changelog）是软件项目中记录每个版本新增功能、问题修复和破坏性变更的结构化文档，通常以 `CHANGELOG.md` 文件的形式存储在项目根目录。它的直接受众是使用该软件的开发者和用户，帮助他们快速判断是否需要升级，以及升级后需要修改哪些代码。
 
-变更日志的现代规范主要由 **Keep a Changelog**（keepachangelog.com）于2014年由 Olivier Lacan 提出，定义了一套标准化的分类体系，包括 `Added`、`Changed`、`Deprecated`、`Removed`、`Fixed`、`Security` 六个条目类别。与此同时，**语义化版本控制**（Semantic Versioning，简称 SemVer）的 `MAJOR.MINOR.PATCH` 格式为变更日志提供了版本号骨架，两者常配合使用。
+变更日志的规范化写法有一个广泛采用的标准：**Keep a Changelog**（keepachangelog.com），由 Olivier Lacan 于 2014 年发起。该规范规定每个版本条目应包含 `Added`、`Changed`、`Deprecated`、`Removed`、`Fixed`、`Security` 六个分类，并要求按语义化版本号（SemVer）倒序排列，最新版本始终在文件顶部。
 
-在大型开源项目中，手动维护变更日志极易出现条目遗漏、格式不统一等问题。自动化工具通过解析 Git 提交信息生成 `CHANGELOG.md`，将发布流程从"开发者逐条回忆"变为"提交即记录"，显著降低发布前的整理成本。
+变更日志与 Git 提交历史的核心区别在于受众不同。`git log` 是写给开发者追踪内部变化的，而 `CHANGELOG.md` 是写给依赖该库的下游用户的。一份设计良好的变更日志可以将用户升级时的排查时间从数小时压缩到几分钟。
 
 ---
 
 ## 核心原理
 
-### 约定式提交（Conventional Commits）规范
+### Keep a Changelog 文件结构
 
-自动化生成变更日志的基础是**约定式提交**（Conventional Commits）规范，版本 1.0.0 于2019年正式发布。该规范要求提交信息遵循以下格式：
+一个符合规范的 `CHANGELOG.md` 文件具有固定的 Markdown 结构。文件头部是项目名称和简短说明，随后每个版本占一个二级标题，格式为 `## [1.2.0] - 2024-03-15`，其中版本号用方括号括起，日期采用 ISO 8601 格式（`YYYY-MM-DD`）。版本号下方按六个分类用三级标题分组，未出现的分类可以省略。文件末尾通常附上版本号与 Git tag 对应的比较链接，例如：
 
 ```
-<type>[optional scope]: <description>
-
-[optional body]
-
-[optional footer(s)]
+[1.2.0]: https://github.com/owner/repo/compare/v1.1.0...v1.2.0
+[Unreleased]: https://github.com/owner/repo/compare/v1.2.0...HEAD
 ```
 
-其中 `type` 字段决定了该提交会出现在变更日志的哪个分类下：
-- `feat:` → 映射为 `Added` / 新功能，触发 MINOR 版本号递增
-- `fix:` → 映射为 `Fixed` / 缺陷修复，触发 PATCH 版本号递增
-- `feat!:` 或 footer 包含 `BREAKING CHANGE:` → 触发 MAJOR 版本号递增
-- `chore:`、`docs:`、`test:` 等 → 默认不出现在用户可见的变更日志中
+`[Unreleased]` 条目是一个特殊占位符，开发过程中持续向其追加变更，正式发布时将其重命名为具体版本号。
 
-例如，一条提交 `feat(auth): add OAuth2 login support` 会自动归入下个版本的 `Added` 分类，描述文字为 "add OAuth2 login support"。
+### 语义化版本与分类的对应关系
 
-### 自动化工具链
+变更日志的六个分类与语义化版本号的三段（MAJOR.MINOR.PATCH）直接对应：`Removed` 和 `Changed`（破坏性变更）触发 MAJOR 版本递增；`Added`（向后兼容的新功能）触发 MINOR 递增；`Fixed`（向后兼容的缺陷修复）和 `Security` 触发 PATCH 递增。正确地分类变更条目，意味着阅读 `CHANGELOG.md` 的用户可以直接从版本号推断升级风险等级。
 
-目前主流的变更日志自动化工具有三类：
+### 自动化生成：Conventional Commits 与工具链
 
-**1. standard-version / release-please**
-`standard-version` 是 npm 生态中广泛使用的工具，运行 `npx standard-version` 后会自动：①根据提交历史计算新版本号；②更新 `package.json` 中的 version 字段；③生成或追加 `CHANGELOG.md` 条目；④创建 Git tag。`release-please` 是 Google 推出的替代品，通过 GitHub Actions 以 PR 形式管理发布流程。
+手动维护变更日志容易在发布压力下被遗漏，因此业界发展出基于 **Conventional Commits** 规范的自动化方案。该规范要求每条 Git 提交消息符合 `<type>(<scope>): <description>` 格式，其中 `type` 取值包括 `feat`（对应 Added）、`fix`（对应 Fixed）、`docs`、`chore` 等。含有 `BREAKING CHANGE:` 页脚的提交会被工具识别为破坏性变更。
 
-**2. git-cliff**
-用 Rust 编写的高性能工具，通过 `cliff.toml` 配置文件支持完全自定义的模板渲染（基于 Tera 模板引擎），适合需要非标准格式输出的项目。
-
-**3. conventional-changelog-cli**
-命令行工具，底层被 `standard-version` 所依赖，支持 angular、atom、codemeta 等多种预设风格。
-
-### CHANGELOG.md 的文件结构
-
-一份符合 Keep a Changelog 规范的 `CHANGELOG.md` 通常如下所示：
-
-```markdown
-# Changelog
-
-## [1.2.0] - 2024-03-15
-### Added
-- 新增用户头像上传功能
-
-### Fixed
-- 修复在 Safari 16 下日期选择器崩溃的问题
-
-## [1.1.0] - 2024-01-08
-### Added
-- 支持深色模式
-
-[1.2.0]: https://github.com/org/repo/compare/v1.1.0...v1.2.0
-[1.1.0]: https://github.com/org/repo/compare/v1.0.0...v1.1.0
-```
-
-文件末尾的链接区块将版本号与对应的 GitHub 比较视图关联，使读者可以点击直接查看两个版本之间的全部 diff。
+主流工具 **standard-version**（已归档）和其继任者 **release-it** 或 **changesets** 会读取两个 Git tag 之间的所有符合规范的提交，按类型分组后自动追加到 `CHANGELOG.md`，同时自动递增 `package.json` 中的版本号并创建新 tag。例如，运行 `npx release-it` 后，工具会输出预览、确认后提交并推送，整个发布流程可在 2 分钟内完成。
 
 ---
 
 ## 实际应用
 
-**GitHub Releases 自动发布**：在 GitHub Actions 流水线中，可将生成的 `CHANGELOG.md` 对应版本区块内容自动提取，作为 `gh release create` 命令的 release notes 正文，实现"提交代码→CI 触发→CHANGELOG 更新→GitHub Release 自动发布"的完整流程。
+**npm 生态中的典型工作流**：在 `package.json` 的 `scripts` 中配置 `"release": "standard-version"`，每次需要发布时执行 `npm run release`。该命令会扫描上次 tag 以来的所有 `feat:` 和 `fix:` 类型提交，生成如下格式的 `CHANGELOG.md` 条目：
 
-**monorepo 多包场景**：在使用 pnpm workspace 或 Lerna 管理的 monorepo 项目中，每个子包可维护独立的 `packages/my-pkg/CHANGELOG.md`。工具如 `changesets`（由 Atlassian 团队维护）专为此场景设计，开发者通过运行 `changeset add` 命令声明变更意图，在发布时统一合并为各包的变更日志。
+```markdown
+## [2.1.0] - 2024-11-20
 
-**安全漏洞公告**：`Security` 分类条目在 `CHANGELOG.md` 中具有特殊意义。当某版本修复了 CVE 漏洞时，在该分类下注明 CVE 编号（如 `CVE-2023-45857`）可帮助使用者快速判断是否需要紧急升级，而不必另外查询安全公告页面。
+### Added
+- 支持批量导出为 CSV 格式 ([#142](https://github.com/...))
+
+### Fixed
+- 修复在 Safari 16 下日期选择器无法弹出的问题 ([#138](https://github.com/...))
+```
+
+**monorepo 场景**：当一个仓库包含多个独立包时，工具 **changesets**（由 Atlassian 开源）采用"变更集文件"方式：每次 PR 合并时在 `.changeset/` 目录写入一个描述文件，记录受影响的包名和变更类型；发布时 `changeset publish` 汇总所有变更集，为每个包单独生成 `CHANGELOG.md` 并发布到 npm。
+
+**GitHub Actions 集成**：在 CI 流水线中，可配置在推送 tag（如 `v*`）时自动运行 `gh release create`，并将 `CHANGELOG.md` 中当前版本的内容提取为 GitHub Release 的说明正文，实现一次推送、自动生成可视化的发布页面。
 
 ---
 
 ## 常见误区
 
-**误区1：把 CHANGELOG.md 当作 Git 提交历史的简单复制**
-Git 提交历史面向开发者，记录的是实现细节（如 "refactor: extract auth middleware to separate file"）；而变更日志面向用户，应描述用户可感知的变化。一次用户可见的功能可能跨越十几条提交，变更日志只应呈现最终效果，而非每条中间提交。直接用 `git log --oneline` 的输出替代变更日志是最常见的错误。
+**误区一：将提交日志直接粘贴为变更日志**。提交消息如 `fix typo`、`wip`、`merge branch 'feature/xxx'` 对终端用户毫无意义。变更日志条目应以用户视角描述影响，例如"修复了当输入包含特殊字符时搜索功能返回空结果的问题"，而不是"fix regex bug in search.js line 42"。自动化工具依赖 Conventional Commits 规范过滤掉 `chore`、`refactor` 等不面向用户的提交类型，正是为了解决这个问题。
 
-**误区2：`[Unreleased]` 区块可以无限期留空**
-Keep a Changelog 规范中的 `[Unreleased]` 区块用于实时记录尚未发布的变更，应在每次合并 PR 时即时更新。许多团队在发布前才集中填写，导致遗漏重要条目。正确做法是将 `CHANGELOG.md` 的更新纳入 PR 提交的 Definition of Done 检查清单，或完全依赖约定式提交实现自动化生成。
+**误区二：`CHANGELOG.md` 只需要在正式发布时更新**。Keep a Changelog 规范明确推荐维护一个持续更新的 `[Unreleased]` 区块。如果等到发布前才集中补写，极易遗漏两周前的某次关键 `Fixed` 条目，或者把对用户影响巨大的 `Removed` 变更写成无关紧要的措辞。
 
-**误区3：破坏性变更（Breaking Change）不需要特别标注**
-MAJOR 版本升级代表 API 不兼容，若变更日志中未明确标注 `BREAKING CHANGE` 及迁移指南，用户升级后遭遇崩溃将浪费大量排查时间。SemVer 规范明确要求破坏性变更必须体现在 MAJOR 版本号上，而变更日志是向用户传达这一信息的主要渠道。
+**误区三：破坏性变更可以放在 `Changed` 分类下不额外标注**。许多项目在做出破坏性变更时仅用 `Changed` 条目一笔带过，没有在条目前加 `**BREAKING CHANGE:**` 前缀或单独设立 `Removed` 分类。这会导致依赖自动化工具的用户升级后程序崩溃，而升级前扫描 `CHANGELOG.md` 时完全没有收到视觉警示。
 
 ---
 
 ## 知识关联
 
-变更日志管理建立在 **Git 提交工作流**之上，理解 `git tag` 的创建机制有助于明白自动化工具如何确定"上一次发布以来的所有提交"——工具通过 `git log v1.1.0..HEAD` 这类命令获取区间内的提交记录。
+变更日志管理建立在**语义化版本控制（SemVer）**的三段式版本号规则之上：不理解 MAJOR/MINOR/PATCH 的含义，就无法正确地将变更条目与版本号升级幅度对应起来。理解 SemVer 规范（semver.org）是规范填写变更日志的前提。
 
-向前延伸，变更日志管理直接支撑 **语义化版本控制（SemVer）** 的落地执行：约定式提交中的 `feat`/`fix`/`BREAKING CHANGE` 标记与 MINOR/PATCH/MAJOR 递增规则形成一一对应关系，使版本号的增减有据可查。对于持续交付（CD）流水线，`CHANGELOG.md` 的内容还常被直接消费为 **GitHub/GitLab Release** 的发布说明，连接版本管理与用户沟通两个环节。
+在工具链层面，**Conventional Commits 提交规范**是实现自动化变更日志的直接依赖——只有当团队的 Git 提交历史符合该格式，`standard-version`、`release-it`、`changesets` 等工具才能从中提取有意义的条目。可以将 `commitlint` 配置到 Git `commit-msg` hook 中，在提交时自动验证消息格式，从源头保证自动化生成的变更日志质量。
+
+对于发布了公共 npm 包或开源库的项目，`CHANGELOG.md` 的内容会直接同步到 npm 注册表的版本页面和 GitHub Releases，成为用户在 `npm info <package>` 或项目主页看到的第一手升级参考信息。
