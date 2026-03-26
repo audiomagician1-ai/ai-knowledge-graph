@@ -24,50 +24,47 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # 内核级反作弊
 
 ## 概述
 
-内核级反作弊（Kernel-level Anti-Cheat）是指将反作弊程序以内核驱动（Ring 0）的权限级别运行，而非普通用户态（Ring 3）程序，从而获得对操作系统最底层资源的直接访问与监控能力。Easy Anti-Cheat（EAC）和 BattlEye（BE）是目前最广泛部署的两套内核级反作弊方案，分别被 Apex Legends、Fortnite 和 PUBG 等数亿玩家使用的游戏所采用。与纯用户态反作弊不同，内核驱动可以拦截其他驱动的加载、监控内存读写操作的来源，以及检测试图隐藏自身的 Rootkit 程序。
+内核级反作弊（Kernel-Level Anti-Cheat）是指将反作弊软件的核心模块以内核驱动程序（Ring 0）的形式运行在操作系统最高权限层的技术方案。与运行在用户态（Ring 3）的传统反作弊相比，内核级方案能够直接监控内存读写、拦截系统调用、检测驱动注入，从根本上封堵了绝大多数外挂程序通过用户态API进行欺骗的攻击面。代表性产品包括Epic Games旗下的Easy Anti-Cheat（EAC）、BattlEye，以及腾讯在《英雄联盟》PC端使用的Vanguard系统——其中Vanguard是首批要求在系统启动阶段（Boot Time）即加载驱动的商业反作弊之一，于2020年随《无畏契约》（Valorant）正式落地。
 
-历史上，游戏反作弊最初完全依赖用户态扫描，即在游戏进程内周期性检查内存特征码。2003 年 Valve Anti-Cheat（VAC）首次大规模部署时仍属于用户态方案。随着外挂作者开始使用内核驱动来读取游戏内存（如 DMA 攻击、驱动级内存读取），反作弊厂商不得不将防御层级同样下沉至 Ring 0。EAC 在 2014 年前后开始全面推行内核驱动模式，BattlEye 的内核组件也在同期逐渐成熟。
-
-内核级反作弊的重要性在于它打破了对称性：用户态外挂无法绕过一个拥有更高特权级别的监控程序，除非外挂本身也拥有同等或更高权限的驱动。这意味着单纯修改游戏进程内存的大量廉价作弊工具被直接淘汰，外挂开发成本显著提升。
+内核级反作弊的出现直接回应了"AIMBOT + 内核驱动读写器"这一外挂产业链。2015年前后，外挂开发者开始大量使用`MmMapIoSpace`、`NtQuerySystemInformation`等内核API绕过用户态检测，使得PunkBuster等纯用户态方案的检出率急剧下降。面对这一威胁，反作弊厂商被迫将战场迁移至Ring 0，以毒攻毒，在相同权限层进行对抗。
 
 ## 核心原理
 
-### 特权级与 Ring 模型
+### Ring 0 驱动架构与权限边界
 
-x86/x64 处理器将执行权限分为 Ring 0（内核态）到 Ring 3（用户态）四个特权级。操作系统内核运行于 Ring 0，普通应用程序运行于 Ring 3。内核驱动拥有直接调用 `MmCopyMemory`、`PsSetLoadImageNotifyRoutine` 等内核 API 的能力，而用户态进程必须通过系统调用（syscall）陷入内核才能执行相同操作。EAC 和 BattlEye 均以 Windows 内核驱动（`.sys` 文件，签名要求通过 Microsoft WHQL 或 EV 证书）的形式安装，在系统启动早期即被加载，生命周期超出游戏进程本身。
+现代x86/x64处理器采用分级保护环（Protection Ring）机制，Ring 0拥有完整的CPU指令集访问权限，可直接读写任意物理地址，而Ring 3用户态程序必须通过系统调用（syscall）才能进入内核。内核级反作弊驱动加载后，以`DRIVER_OBJECT`形式注册于Windows内核，可以调用`PsSetLoadImageNotifyRoutine`监听所有模块加载事件，通过`ObRegisterCallbacks`拦截进程和线程句柄的创建，从而阻止外挂进程以`PROCESS_VM_READ`权限附着到游戏进程。
 
-### 回调注册与实时监控
+BattlEye的驱动模块`BEDaisy.sys`通过注册`PsSetCreateProcessNotifyRoutineEx`回调，在可疑进程被创建的瞬间即触发检测，而非等待进程运行后再扫描。这比用户态轮询扫描快了数个时钟周期量级，消除了经典的"注入时间窗口"漏洞。
 
-内核驱动通过向 Windows 内核注册一系列回调例程来实现实时监控。关键回调包括：`PsSetLoadImageNotifyRoutine`（镜像加载回调，检测新 DLL/驱动注入）、`ObRegisterCallbacks`（对象回调，阻止其他进程以 `PROCESS_VM_READ` 权限打开游戏进程句柄）以及 `CmRegisterCallback`（注册表回调，防止外挂修改启动项）。当外挂尝试通过 `OpenProcess` 获取游戏进程句柄时，BattlEye 的 `ObRegisterCallbacks` 实现会在内核层将 `PROCESS_VM_READ` 权限位从请求中剥除，使外挂在用户态完全无法读取游戏内存，而无需修改游戏进程自身。
+### 内存完整性扫描与签名校验
 
-### 内存完整性校验与签名强制
+内核驱动可以不经游戏进程允许，直接调用`MmCopyMemory`读取目标进程的虚拟地址空间，检查游戏模块的`.text`段是否被Inline Hook篡改。以EAC为例，它会周期性地对游戏可执行文件的关键函数头部（通常为前5~14字节）与磁盘上的原始镜像进行哈希比对，检测常见的`JMP rel32`或`MOV RAX, addr; JMP RAX`形式的跳板注入。
 
-内核级反作弊会对游戏模块的内存镜像进行定期哈希校验。具体做法是将游戏的 `.text` 段（代码段）当前内存内容与磁盘上的原始文件内容进行比对，任何字节差异都可能意味着代码注入或内存补丁。EAC 还会检查 Windows 内核自身的关键函数（如 `NtReadVirtualMemory`、`NtWriteVirtualMemory`）是否被 SSDT Hook 或 Inline Hook 篡改——这是早期内核外挂绕过检测的常用手段。此外，Windows 10 1607 版本引入的 **Kernel Patch Protection（KPP / PatchGuard）** 机制与内核反作弊形成互补，自动防止对内核关键数据结构（如 SSDT、IDT）的修改，违反者触发 Bug Check 0x109。
+此外，EAC驱动利用`PatchGuard`兼容机制（在Windows 10 x64上，内核补丁守护已强制开启），并结合自身的SSDT（System Service Descriptor Table）监控，检测外挂驱动是否通过修改系统服务表来截获游戏的系统调用序列。自Windows 10 1607版本起，微软强制要求所有加载的内核驱动必须具备有效的数字签名（WHQL或EV代码签名证书），这使得无签名外挂驱动的加载难度大幅上升，迫使外挂开发者转向利用已签名的漏洞驱动（BYOVD攻击）。
 
-### DMA 攻击与硬件外挂的对抗
+### 启动时加载（Boot-Time Loading）与TPM/安全启动联动
 
-直接内存访问（DMA）攻击使用独立的 FPGA 硬件设备（如 Screamer PCIe 卡）通过主板 PCIe 总线直接读取目标主机内存，完全绕过 CPU 指令流，从而规避所有基于软件的内核监控。针对 DMA 外挂，EAC 和 BattlEye 采取的对策包括：检测 PCIe 设备枚举异常、监控 Intel VT-d / AMD-Vi IOMMU 配置，以及服务端行为分析（因为 DMA 外挂可以读取内存但难以修改，行为模式较为特殊）。这是当前内核级反作弊最难解决的问题之一，纯客户端方案无法完全应对。
+Vanguard采用的启动时加载策略要求驱动在Windows启动序列的早期阶段（Boot Start Driver，`SERVICE_BOOT_START`）即进入运行状态，早于绝大多数恶意驱动和外挂程序。Vanguard还强制要求目标机器启用UEFI安全启动（Secure Boot）和TPM 2.0，利用`Measured Boot`机制将启动链的哈希值记录在TPM的PCR（Platform Configuration Register）寄存器中，使得任何预启动级别的篡改（如修改引导扇区注入外挂驱动）都无法绕过检测。这也是Valorant要求Windows 11或启用TPM的直接技术原因，而非市场策略。
 
 ## 实际应用
 
-**Valorant 与 vgk.sys 的早期加载策略**：Riot Games 的反作弊系统 Vanguard 将其内核驱动 `vgk.sys` 设置为系统服务，在 Windows 启动时即加载（而非游戏启动时），目的是在任何外挂驱动有机会先行加载之前建立监控基础。这一策略于 2020 年发布时引发了广泛讨论，因为它意味着即使玩家未在游玩游戏，驱动仍常驻内存。
+**《绝地求生》（PUBG）与BattlEye的BYOVD对抗**：2021至2023年间，外挂产业广泛使用"携带自有漏洞驱动"（Bring Your Own Vulnerable Driver）攻击，利用`gdrv.sys`（技嘉主板驱动）、`WinIo64.sys`等已签名但存在任意内存读写漏洞的合法驱动加载外挂内核模块。BattlEye随后建立了已知漏洞驱动的哈希黑名单（Vulnerable Driver Blocklist），与微软的HVCI（Hypervisor-Protected Code Integrity）推荐驱动阻断列表协同工作，实现了对这类攻击手法约73%的检出率（据2023年BattlEye公开报告）。
 
-**PUBG 的 BattlEye 实践**：BattlEye 在 PUBG 中会扫描系统中所有已加载驱动的签名状态，将未经 Microsoft 签名或来自已知外挂厂商的驱动加入黑名单并上报服务端。2018 年至 2019 年间，BattlEye 对 PUBG 单月封号量达数十万账号级别，其中大量案例源自内核驱动特征码匹配。
-
-**Linux / Wine 环境的兼容性挑战**：EAC 和 BattlEye 均在 2022 年前后为 Proton（Steam 的 Linux 兼容层）添加了有限支持，但实现方式是将 Wine 进程作为受信任环境而非完整内核监控，因此部分高级检测功能在 Linux 下实际处于禁用状态。
+**《无畏契约》Vanguard的虚拟化检测**：Vanguard会检测CPU是否运行在未被授权的Hypervisor（虚拟机监控程序）之下——通过`CPUID`指令的Hypervisor Present位（Leaf 0x1, ECX bit 31）以及`RDTSC`时间差异检测，识别外挂常用的"Hypervisor辅助内存隐写"攻击，即将外挂逻辑运行在Ring -1层以躲避Ring 0扫描。
 
 ## 常见误区
 
-**误区一：内核驱动反作弊等同于间谍软件**。内核驱动确实拥有读取任意内存的技术能力，但合规的商业反作弊（EAC、BattlEye）的实际行为受到 EULA 约束和安全研究人员的持续审计，其主要监控目标是其他驱动和与游戏进程的交互行为，而非用户个人文件。然而，内核驱动一旦存在漏洞，确实可能被利用为提权攻击的入口——2021 年曾有安全研究人员披露 EAC 驱动中存在的本地提权漏洞（CVE-2021-34514 类似问题）。
+**误区一：内核级反作弊等同于间谍软件**。部分玩家认为Ring 0驱动可以无限制地访问所有文件和网络流量。实际上，现代内核反作弊驱动的行为受到Windows内核回调机制和WDAC（Windows Defender Application Control）策略约束，EAC和BattlEye均通过第三方安全审计，且其监控范围被明确限定在游戏进程及相关模块的内存空间，而非整个文件系统或网络栈。
 
-**误区二：内核级反作弊可以完全阻止作弊**。内核驱动提升的是检测门槛而非实现"不可破解"。外挂开发者同样可以加载签名被盗或自签的内核驱动（利用 Bring Your Own Vulnerable Driver，即 BYOVD 技术，通过合法但有漏洞的驱动获取内核执行权限）。2022 年 Halo Infinite 等游戏出现的外挂即采用了此类手段，攻击者利用华硕或技嘉声卡驱动中的已知漏洞来加载未签名代码。
+**误区二：关闭内核反作弊驱动不影响游戏运行**。Vanguard在驱动未运行时会直接阻止游戏客户端启动——这是设计如此，因为若允许游戏在驱动卸载状态下运行，外挂程序可以在驱动停止监控的时间窗口内完成注入，然后再让玩家重新加载驱动，从而绕过所有检测。
 
-**误区三：禁用内核反作弊驱动可以保护隐私而不影响游戏**。对于 Valorant Vanguard 或 EAC 需要内核驱动的游戏，驱动是游戏启动的硬性前提条件，游戏可执行文件在启动时会向服务端验证驱动是否正常运行，缺失则拒绝连接。这与仅在用户态检查的 VAC 完全不同——VAC 在驱动缺失时仍可正常游戏，只是丧失了保护。
+**误区三：内核级方案能100%消除作弊**。内核级反作弊仍然无法检测纯物理层面的外挂，例如通过DMA（直接内存访问）卡经PCIe总线绕过CPU直接读取显存中的游戏帧缓冲数据，或使用独立摄像头+AI识别屏幕内容的"屏幕外挂"方案，这些攻击完全发生在操作系统之外，任何软件级别的方案均无法触及。
 
 ## 知识关联
 
-内核级反作弊建立在**客户端完整性**检测的基础上：客户端完整性解决的是"游戏文件是否被修改"这一静态问题，而内核反作弊则扩展至运行时动态监控——两者共同构成完整的客户端防护链。理解内核反作弊需要熟悉 Windows 驱动模型（WDM/KMDF）、x86 特权级架构以及 Windows 内核对象模型（句柄权限体系）。从攻防对抗角度看，内核反作弊与 BYOVD 利用技术、虚拟化辅助安全（VBS/HVCI）以及 TPM 2.0 硬件信任根形成了当前反作弊技术演进的前沿战场；微软的 Hypervisor-Protected Code Integrity（HVCI）要求所有内核驱动必须经过内存完整性验证，这将进一步收窄外挂驱动可利用的加载路径。
+内核级反作弊建立在**客户端完整性**检测的基础能力上——客户端完整性验证确认了游戏可执行文件未被修改，而内核级方案则进一步将这一验证权限从用户态提升至Ring 0，消除了用户态验证本身可被绕过的问题。理解内核级反作弊需要掌握Windows驱动开发的基础知识（WDK架构、IRP机制）、x86保护模式分级体系，以及PE文件格式（用于理解`.text`段校验逻辑）。从攻防博弈角度看，内核级方案推动了BYOVD、Hypervisor辅助外挂等更高级攻击手法的出现，反作弊与外挂的对抗已从应用层全面迁移至系统架构层，是操作系统安全领域与游戏安全领域交叉最深的技术前沿。
