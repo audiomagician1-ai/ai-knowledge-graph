@@ -62,14 +62,14 @@
 >   Batch 3 完成: 500篇Tier-B文档改写
 >   Batch P2 完成: 1000篇大域Tier-B改写
 >   Sprint 6 🔥进行中: **全量Tier-B升级** — `scripts/_batch_sprint6.py --max 3400`
->   进度: 2077/2754完成 (75.4%), ~5/min, 3错误, 后台进程PID 42652运行中(CPU 152s)
->   内网API稳定运行, PID 42652已连续处理wave 32-78, 无stall
->   累计结果: **S=615(10.0%) A=4,284(69.6%) B=1,257(20.4%) C=0(0.0%)** 均分72.8
->   vs Sprint 4结束: S=145 A=639 B=5,368 C=0 均分49.5 → **提升幅度: +23.3分, A+S从12.8%→79.6%**
->   🎉 里程碑: 均分72+! S-tier突破10%! A+S接近80%! B-tier降至20%!
+>   进度: 2237/2754完成 (81.2%), ~5/min, 3错误, 后台进程PID 42652运行中(CPU 181s)
+>   内网API稳定运行, PID 42652已连续处理wave 32-85, 无stall
+>   累计结果: **S=631(10.3%) A=4,415(71.7%) B=1,110(18.0%) C=0(0.0%)** 均分73.5
+>   vs Sprint 4结束: S=145 A=639 B=5,368 C=0 均分49.5 → **提升幅度: +24.0分, A+S从12.8%→82.0%**
+>   🎉 里程碑: 均分73.5! S-tier 10%+! A+S突码82%! B-tier降至18%! Sprint 81%完成!
 >   ✅ 跨域去重修复: 42个同名slug中24个低分副本升级(d1e0204e) + 22个frontmatter域不匹配修正(26f2cc92)
 >   Sprint 7 暂停: **Tier-S Booster** — 同一API依赖, Sprint 6优先
->   下一步: Sprint 6后台持续处理剩余~677篇Tier-B, 定期commit+push, 目标均分75+
+>   下一步: Sprint 6后台持续处理剩余~517篇Tier-B, 定期commit+push, 目标均分75+
 **✅ Phase 37 完成**: 游戏开发全领域跨球体总验证 | 详见 `docs/EXPANSION_PLAN.md` 第十章
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
@@ -163,7 +163,7 @@
 > **Issue**: #32 (已关闭)
 
 ## Last Review
-**Date**: 2026-03-26 | **Scope**: Sprint 6 waves 55-78 (24 waves this session). PID 42652 stable (~5/min). 2077/2754 completed (75.4%). Quality: avg 72.8, S=615/A=4284/B=1257/C=0 (A+S=79.6%). Milestones: avg 72+, S-tier 10%+, A+S approaching 80%, B-tier 20.4%. 0 open GitHub issues. | **Result**: passed
+**Date**: 2026-03-26 | **Scope**: Sprint 6 waves 55-85 (31 waves this session). PID 42652 stable (~5/min, 181s CPU). 2237/2754 completed (81.2%). Quality: avg 73.5, S=631/A=4415/B=1110/C=0 (A+S=82.0%). Milestones: avg 73.5, S 10%+, A+S 82%, B 18%, Sprint 81% done. 0 open GitHub issues. | **Result**: passed
 
 **FSRS-5 实现摘要** (间隔重复引擎):
 > **目标**: 实现ADR-007指定的FSRS-5间隔重复算法, 替代空占位stub
