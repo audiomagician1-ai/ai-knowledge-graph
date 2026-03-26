@@ -20,70 +20,93 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-26
 ---
+
 # UE Python脚本
 
 ## 概述
 
-UE Python脚本（Ta Ue Python）是技术美术（Technical Art）中工具开发领域的重要概念。难度等级2/9（基础级）。
+UE Python脚本是Unreal Engine内置的Python自动化接口，通过`unreal`模块暴露编辑器功能，允许开发者用Python语言直接操作资产、调用编辑器命令、驱动内容流水线。该功能自UE 4.22版本正式引入并标记为正式支持（非实验性），使用的是Python 3.x运行时，脚本在编辑器进程内执行，而非独立Python解释器环境。
 
-Unreal Python API——批量资产操作/管线自动化。
+与蓝图编辑器工具不同，Python脚本的核心优势在于批量处理：用十几行代码即可完成数千个资产的属性修改、材质重绑定或LOD设置，完全替代手动逐一操作。技术美术团队通常将UE Python脚本嵌入CI/CD流水线，实现资产校验、自动导入、烘焙触发等自动化节点。
 
-在知识体系中，UE Python脚本建立在UE编辑器工具的基础之上，是理解资产处理工具、命令行工具的关键前置知识。为什么UE Python脚本如此重要？因为它在工具开发中起到承上启下的作用，连接基础概念与高级应用。
+UE Python的所有API均通过`import unreal`访问，底层是C++反射系统（Unreal Header Tool生成的元数据）动态暴露给Python的绑定层。这意味着编辑器中任何标记了`UFUNCTION(BlueprintCallable)`或`UPROPERTY`的属性，原则上都可以在Python中访问，API数量超过5000个函数和类。
 
-## 核心知识点
+## 核心原理
 
-### 1. Unreal Python API——批量资产操作/管线自动化
+### unreal模块的结构与访问方式
 
-Unreal Python API——批量资产操作/管线自动化是UE Python脚本(Ta Ue Python)的核心组成部分之一。在工具开发的实践中，Unreal Python API——批量资产操作/管线自动化决定了系统行为的关键特征。例如，当Unreal Python API——批量资产操作/管线自动化参数或条件发生变化时，整体表现会产生显著差异。深入理解Unreal Python API——批量资产操作/管线自动化需要结合技术美术的基本原理进行分析。
+`unreal`模块的入口是`unreal.EditorAssetLibrary`、`unreal.AssetToolsHelpers`、`unreal.EditorLevelLibrary`等功能库类（Library Classes）。这些都是静态函数集合，调用时无需实例化对象。例如加载一个资产：
 
+```python
+import unreal
+asset = unreal.EditorAssetLibrary.load_asset('/Game/Characters/SK_Hero')
+```
 
-### 关键原理分析
+路径格式必须使用Unreal内部路径（以`/Game/`开头，对应Content目录），而非硬盘绝对路径。资产类型可通过`asset.get_class().get_name()`获取，返回如`StaticMesh`、`Material`等字符串。
 
-UE Python脚本的核心在于Unreal Python API——批量资产操作/管线自动化。从理论角度看，该概念涉及以下层面：
+### 批量资产操作与AssetRegistry
 
-1. **定义层**：明确UE Python脚本的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解UE Python脚本内部各要素的相互作用方式
-3. **应用层**：将UE Python脚本的原理映射到技术美术的实际场景中
+批量操作的核心是`unreal.AssetRegistry`，它维护着编辑器中所有已知资产的元数据缓存。通过`get_assets_by_path()`可以不加载资产本体的情况下检索整个目录：
 
-思考题：如何判断UE Python脚本的应用是否超出了其理论适用范围？
+```python
+registry = unreal.AssetRegistryHelpers.get_asset_registry()
+asset_data_list = registry.get_assets_by_path('/Game/Textures', recursive=True)
+for asset_data in asset_data_list:
+    print(asset_data.asset_name, asset_data.asset_class)
+```
 
-## 关键要点
+`asset_data`对象携带`package_name`、`asset_class`、`tags_and_values`等字段，无需完整加载资产即可读取。真正需要修改资产时再调用`asset_data.get_asset()`触发加载，这一延迟加载策略在处理数千资产时能显著减少内存压力。
 
-1. **核心定义**：UE Python脚本的本质是Unreal Python API——批量资产操作/管线自动化，这是理解整个概念的出发点
-2. **多维理解**：掌握UE Python脚本需要同时理解Unreal Python API——批量资产操作/管线自动化等关键维度
-3. **先修关系**：扎实的UE编辑器工具基础对理解UE Python脚本至关重要
-4. **进阶路径**：掌握后可继续深入资产处理工具等进阶主题
-5. **实践标准**：真正掌握UE Python脚本的标志是能在具体场景中灵活运用并正确判断适用边界
+### 慢任务与进度条：SlowTask
+
+长时间运行的Python脚本应使用`unreal.ScopedSlowTask`向编辑器汇报进度，否则编辑器会显示无响应状态：
+
+```python
+assets = [...]  # 资产列表
+with unreal.ScopedSlowTask(len(assets), '正在处理资产...') as slow_task:
+    slow_task.make_dialog(True)  # True表示允许用户取消
+    for asset in assets:
+        if slow_task.should_cancel():
+            break
+        slow_task.enter_progress_frame(1, f'处理: {asset.get_name()}')
+        # 实际处理逻辑
+```
+
+`ScopedSlowTask`的第一个参数是总工作量单位，`enter_progress_frame()`的参数是本次步进量，两者共同计算百分比。
+
+### 修改并保存资产
+
+修改资产属性后必须手动标记脏标记并保存，否则修改不会持久化：
+
+```python
+mesh = unreal.EditorAssetLibrary.load_asset('/Game/Meshes/SM_Rock')
+mesh.set_editor_property('lod_group', unreal.Name('SmallProp'))
+unreal.EditorAssetLibrary.save_asset('/Game/Meshes/SM_Rock')
+```
+
+`set_editor_property()`接受属性的snake_case名称（由C++的`PascalCase`名称自动转换），属性名称可在UE文档或通过`dir(mesh)`枚举获得。
+
+## 实际应用
+
+**批量替换材质实例参数**：技术美术需要将场景中500个SM_Building资产的材质参数`EmissiveIntensity`统一从1.0调整为3.5，可遍历AssetRegistry获取所有StaticMesh，筛选使用目标材质的资产，批量调用`set_scalar_parameter_value()`并保存，全程约15秒，手动操作需数小时。
+
+**自动化贴图导入与命名校验**：编写Python脚本监听指定目录，调用`unreal.AssetToolsHelpers.get_asset_tools().import_assets_automated()`批量导入FBX和贴图，同时通过正则表达式校验资产命名是否符合`T_[描述]_[类型]`规范，不合规资产自动输出错误报告到CSV文件。
+
+**生成LOD设置报告**：通过AssetRegistry遍历所有StaticMesh，读取每个Mesh的`lod_group`和各LOD的`screen_size`阈值，汇总为Excel报表，供Lead TA审核全项目LOD配置的一致性。此类只读操作无需加载完整资产几何体，速度极快。
 
 ## 常见误区
 
-1. **混淆概念边界**：将UE Python脚本与工具开发中其他相近概念混为一谈。例如，Unreal Python API——批量资产操作/管线自动化的适用条件与其他同类概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解UE编辑器工具就学习UE Python脚本，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：UE Python脚本虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区1：认为Python脚本可以在运行时（Runtime）执行**。UE Python仅限编辑器环境，打包后的游戏中`unreal`模块不存在，任何依赖Python的逻辑不能出现在游戏运行时代码路径中。Python脚本的适用范围严格限制在内容制作阶段的编辑器操作。
 
-## 知识衔接
+**误区2：直接修改CDO（Class Default Object）影响蓝图**。用Python修改蓝图资产的属性时，容易混淆修改的是资产本身的默认值还是某个实例。应使用`unreal.get_default_object()`明确访问CDO，而不是通过`load_asset()`加载后直接设置，后者在部分资产类型上会产生非预期行为。
 
-### 先修知识
-先修知识包括：
-- **UE编辑器工具** — 为UE Python脚本提供了必要的概念基础
+**误区3：忽略`Undo`事务包装导致操作无法撤销**。在编辑器中执行的Python修改默认不进入Undo历史。若希望操作可撤销，需用`with unreal.ScopedEditorTransaction('操作名称') as trans:`包裹修改代码块，否则用户按Ctrl+Z无法回退脚本产生的变更。
 
-### 后续学习
-掌握UE Python脚本后可继续学习：
-- **资产处理工具** — 在UE Python脚本基础上进一步拓展
-- **命令行工具** — 在UE Python脚本基础上进一步拓展
+## 知识关联
 
-## 学习建议
+学习UE Python脚本前需掌握UE编辑器工具的基础概念，特别是内容浏览器的资产路径体系和编辑器工具蓝图（EditorUtilityWidget）的工作方式——Python脚本本质上是将这些编辑器操作用代码串联的手段，对底层资产类型（StaticMesh、Material、Texture2D等）的认知直接影响Python脚本的编写效率。
 
-预计学习时间：30-60分钟。建议采用以下策略：
-
-- **主动回忆**：学完后不看笔记复述UE Python脚本的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将UE Python脚本与技术美术中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释UE Python脚本，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于工具开发的章节可作为深入参考
-- Wikipedia: [Ta Ue Python](https://en.wikipedia.org/wiki/ta_ue_python) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Ta Ue Python" 可找到配套视频教程
+掌握UE Python后，自然延伸至**资产处理工具**的开发：将Python脚本封装为带GUI的EditorUtilityWidget，或集成到项目级别的`init_unreal.py`自动启动脚本（该文件在项目Python路径下会被编辑器自动执行）。进一步则是**命令行工具**方向，通过`UnrealEditor.exe ProjectName -run=pythonscript -script=my_script.py`实现无界面的无头编辑器批处理，是构建全自动化资产流水线的关键一环。

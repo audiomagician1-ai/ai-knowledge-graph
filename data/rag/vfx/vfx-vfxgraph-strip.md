@@ -20,73 +20,59 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-26
 ---
+
 # Strip粒子
 
 ## 概述
 
-Strip粒子（Vfx Vfxgraph Strip）是特效（Visual Effects）中VFX Graph领域的重要概念。难度等级3/9（初级）。
+Strip粒子（条带粒子）是VFX Graph中一种特殊的粒子输出类型，它将同一粒子系统中按生命周期顺序排列的粒子顶点连接成连续的四边形条带网格，而非独立渲染每个粒子精灵。这种连接机制使得每两个相邻粒子之间自动生成一个四边形面片，从而在视觉上形成平滑的轨迹、拖尾、丝带或闪电等效果。
 
-VFX Graph中Strip(条带)粒子实现轨迹与拖尾。
+Strip粒子的概念源自传统粒子系统中的"Trail Renderer"思路，但在VFX Graph中通过GPU实例化重新实现，性能大幅提升。Unity在VFX Graph 7.x版本（对应Unity 2019.3）中正式将`Output ParticleStrip`节点作为稳定功能推出，允许开发者在Shader Graph中访问条带的`stripIndex`和`particleIndexInStrip`等专属属性。
 
-在知识体系中，Strip粒子建立在噪声函数的基础之上，是理解Point Cache的关键前置知识。为什么Strip粒子如此重要？因为它在VFX Graph中起到承上启下的作用，连接基础概念与高级应用。
+Strip粒子之所以在特效制作中具有独特价值，在于它能够保留粒子的运动历史——普通Quad粒子每帧独立绘制，而Strip粒子会将粒子在空间中走过的路径"物化"为几何体。这使得导弹尾焰、魔法能量束、刀光剑影等需要展现运动轨迹的特效成为可能，且所有运算均在GPU上完成。
 
-## 核心知识点
+## 核心原理
 
-### 1. VFX Graph中Strip(条带)粒子实现轨迹
+### 条带的拓扑结构与粒子容量（Capacity）
 
-VFX Graph中Strip(条带)粒子实现轨迹是Strip粒子(Vfx Vfxgraph Strip)的核心组成部分之一。在VFX Graph的实践中，VFX Graph中Strip(条带)粒子实现轨迹决定了系统行为的关键特征。例如，当VFX Graph中Strip(条带)粒子实现轨迹参数或条件发生变化时，整体表现会产生显著差异。深入理解VFX Graph中Strip(条带)粒子实现轨迹需要结合特效的基本原理进行分析。
+在VFX Graph中创建Strip系统时，必须在`Initialize Strip`上下文中设置`Strip Capacity`（条带容量）和`Particle Per Strip Capacity`（每条带粒子数）两个独立参数，而非普通系统中的单一Capacity值。每条Strip由最少2个粒子节点构成，N个粒子节点会生成`(N-1) × 2`个三角形。条带的宽度由每个粒子的`Size`属性控制，方向垂直于相机视角或由自定义切线向量决定。
 
-### 2. 拖尾
+### stripIndex与particleIndexInStrip属性
 
-拖尾是Strip粒子(Vfx Vfxgraph Strip)的核心组成部分之一。在VFX Graph的实践中，拖尾决定了系统行为的关键特征。例如，当拖尾参数或条件发生变化时，整体表现会产生显著差异。深入理解拖尾需要结合特效的基本原理进行分析。
+Strip粒子拥有两个专属内置属性：`stripIndex`标识当前粒子所属的条带编号（从0开始计数），`particleIndexInStrip`标识粒子在该条带内的序号位置。这两个属性可在`Output ParticleStrip`的Shader Graph材质中通过`VFXAttribute`节点访问，常用于实现沿条带的渐变效果。例如，将`particleIndexInStrip / (particlePerStripCount - 1)`的归一化值输入Alpha通道，可精确控制条带头部到尾部的透明度渐变，无需任何CPU干预。
 
+### Update Strip上下文与粒子顺序
 
-### 关键原理分析
+普通粒子系统的Update上下文可任意修改粒子属性而不影响渲染顺序，但Strip粒子的`Update Strip`上下文中粒子的**索引顺序直接决定条带的连接顺序**。粒子按照出生时间（age从小到大）在条带内排列，最新诞生的粒子位于条带"头部"（`particleIndexInStrip = 0`），最老的粒子在"尾部"。这意味着如果在Initialize阶段将所有粒子同时生成（burst模式），条带将退化为静态丝带形状，而非动态拖尾——必须使用`Constant Rate`或`Variable Rate`逐帧生成才能形成追踪轨迹。
 
-Strip粒子的核心在于VFX Graph中Strip(条带)粒子实现轨迹与拖尾。从理论角度看，该概念涉及以下层面：
+### 纹理UV映射模式
 
-1. **定义层**：明确Strip粒子的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解Strip粒子内部各要素的相互作用方式
-3. **应用层**：将Strip粒子的原理映射到特效的实际场景中
+`Output ParticleStrip`节点提供三种UV映射模式：`Stretch`（拉伸模式，纹理均匀铺满整条条带）、`RepeatPerSegment`（每段重复模式，纹理在每两个粒子之间完整重复一次）和`Custom`（自定义模式，由`texIndex`属性控制）。选择`Stretch`时，条带总长度变化会导致纹理随之压缩或拉伸，适合能量束类效果；`RepeatPerSegment`则保持单段纹理比例恒定，适合锁链或绳索效果。
 
-思考题：如何判断Strip粒子的应用是否超出了其理论适用范围？
+## 实际应用
 
-## 关键要点
+**刀光拖尾效果**：在`Initialize Strip`中设置Strip Capacity为1（单条带），Particle Per Strip Capacity为32。在`Update Strip`中添加`Age over Lifetime`节点驱动粒子Alpha衰减，并在Shader Graph中将`particleIndexInStrip`归一化值连接到Emission强度，使刀光头部最亮、尾部渐暗。配合`Orient: Along Velocity`朝向模式，条带宽度随速度变化而动态收窄。
 
-1. **核心定义**：Strip粒子的本质是VFX Graph中Strip(条带)粒子实现轨迹与拖尾，这是理解整个概念的出发点
-2. **多维理解**：掌握Strip粒子需要同时理解VFX Graph中Strip(条带)粒子实现轨迹和拖尾等关键维度
-3. **先修关系**：扎实的噪声函数基础对理解Strip粒子至关重要
-4. **进阶路径**：掌握后可继续深入Point Cache等进阶主题
-5. **实践标准**：真正掌握Strip粒子的标志是能在具体场景中灵活运用并正确判断适用边界
+**闪电链特效**：利用噪声函数（Perlin Noise）在`Update Strip`中每帧偏移粒子的Position属性，但仅对`particleIndexInStrip`在1到N-2范围内的中间粒子施加扰动（通过Step节点过滤首尾粒子），保持闪电两端锚点固定，中间段随机抖动，形成高频闪烁的放电视觉效果。
+
+**角色运动残影**：将Strip粒子的生成位置绑定到角色骨骼的世界坐标（通过`Position (Skinned Mesh)`采样器），设置粒子生命周期为0.15秒，Constant Rate为60/秒，使残影条带密度与帧率一致，在高速移动时留下清晰的运动轨迹切片。
 
 ## 常见误区
 
-1. **混淆概念边界**：将Strip粒子与VFX Graph中其他相近概念混为一谈。例如，VFX Graph中Strip(条带)粒子实现轨迹的适用条件与其他拖尾概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解噪声函数就学习Strip粒子，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：Strip粒子虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：将Strip系统的Capacity理解为普通粒子总数**
+Strip系统的容量由`Strip Capacity × Particle Per Strip Capacity`共同决定，总粒子槽位数等于两者之积。若设置Strip Capacity为10、Particle Per Strip Capacity为20，则系统支持最多10条独立条带，每条带最多20个粒子（共200个粒子槽），而非直接设置200个粒子。混淆这两个参数会导致条带数量超限后新条带无法生成，但不会有报错提示。
 
-## 知识衔接
+**误区二：在Output中修改Position来控制条带形状**
+条带的几何形状完全由粒子在`Update Strip`上下文中的Position属性决定，在`Output ParticleStrip`的Shader Graph中修改顶点位置仅影响视觉偏移，不改变条带的物理骨架。很多初学者尝试在Output的Vertex Shader中做扭曲变形，发现条带宽度方向的扭曲正常，但条带走向无法改变，根本原因就在于骨架拓扑已在Update阶段固化。
 
-### 先修知识
-先修知识包括：
-- **噪声函数** — 为Strip粒子提供了必要的概念基础
+**误区三：Strip粒子可以与粒子碰撞系统配合使用**
+VFX Graph目前（Unity 2022 LTS）的碰撞块（Collide with Depth Buffer / Collide with Sphere等）仅对`Output Particle Quad`类型的标准粒子有效，`Output ParticleStrip`不支持内置碰撞响应。若要实现条带与场景几何体的交互，需通过C# Script读取碰撞信息后以`VFXEventAttribute`形式回传给VFX Graph，手动更新锚点粒子的位置。
 
-### 后续学习
-掌握Strip粒子后可继续学习：
-- **Point Cache** — 在Strip粒子基础上进一步拓展
+## 知识关联
 
-## 学习建议
+Strip粒子的随机形变效果高度依赖**噪声函数**——在Update Strip上下文中，Curl Noise或Value Noise节点为条带中间节点提供逐粒子的位置扰动，使原本笔直的条带呈现有机的弯曲感。没有对噪声函数采样频率和幅度的理解，Strip的形态控制将缺乏精确性。
 
-预计学习时间：1-2小时。建议采用以下策略：
-
-- **主动回忆**：学完后不看笔记复述Strip粒子的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将Strip粒子与特效中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释Strip粒子，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于VFX Graph的章节可作为深入参考
-- Wikipedia: [Vfx Vfxgraph Strip](https://en.wikipedia.org/wiki/vfx_vfxgraph_strip) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Vfx Vfxgraph Strip" 可找到配套视频教程
+Strip粒子系统的预烘焙输出与**Point Cache**工作流紧密相连：通过Point Cache Bake Tool可以将复杂Strip动画的关键帧粒子位置序列烘焙为`.pcache`文件，在运行时直接从缓存中驱动条带形态，彻底绕过实时物理计算，在移动端等性能受限平台上实现高质量拖尾特效。

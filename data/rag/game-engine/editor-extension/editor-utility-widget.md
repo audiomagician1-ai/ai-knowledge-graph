@@ -24,58 +24,70 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # 编辑器工具Widget
 
 ## 概述
 
-编辑器工具Widget（Editor Utility Widget，简称EUW，也称Blutility）是Unreal Engine 4.16版本引入的一类特殊蓝图资产，允许开发者使用UMG（Unreal Motion Graphics）界面设计器创建自定义编辑器面板和工具窗口。与普通的UMG Widget不同，编辑器工具Widget仅在编辑器环境中运行，不会被打包进最终游戏，其基类为`EditorUtilityWidget`，继承自`UserWidget`但专属于编辑器上下文。
+编辑器工具Widget（Editor Utility Widget，Unreal Engine内部也称为Blutility）是虚幻引擎提供的一种特殊类型的UMG Widget蓝图，它专门运行在编辑器环境而非游戏运行时，允许开发者通过拖拽控件、绑定蓝图逻辑的方式制作具有图形界面的自定义编辑器工具。与普通的UMG Widget不同，编辑器工具Widget继承自`EditorUtilityWidget`类（C++层为`UEditorUtilityWidget`），该类本身继承自`UUserWidget`，但其生命周期完全由编辑器子系统`UEditorUtilitySubsystem`管理。
 
-编辑器工具Widget的前身是Blutility（Blueprint Utility），最早以实验性功能出现在UE4早期版本中，但彼时只能通过简单按钮触发函数，缺乏完整的UI布局能力。UE4.16将其升级为基于UMG的完整Widget系统，开发者可以像制作游戏UI一样设计编辑器工具，包括文本框、按钮、下拉菜单、列表视图等全部UMG组件。UE5中进一步完善了停靠（Docking）功能，工具窗口可以像原生编辑器面板一样嵌入主界面。
+该功能在Unreal Engine 4.22版本中正式转为稳定功能，在此之前其前身"Blutility"以实验性功能的形式存在于UE4早期版本。Blutility这一名称来源于"Blueprint Utility"的缩写，反映了其核心设计理念：让不熟悉C++的美术或策划人员也能编写具备完整GUI的编辑器扩展工具。
 
-这类工具的核心价值在于降低团队工作流自动化的技术门槛。美术人员和关卡设计师可以通过可视化界面操作批量资产处理、一键执行场景摆放规则检查等任务，而无需每次都依赖程序员通过命令行或Python脚本完成。一个制作精良的编辑器工具Widget能将原本需要数小时的重复性工作压缩到几分钟内。
+编辑器工具Widget的价值在于它将复杂的编辑器自动化任务包装成可交互的可视化面板。例如，一名技术美术可以制作一个材质批量替换工具，在面板上放置资产选择器和参数输入框，策划可以像使用普通软件一样操作，无需了解任何底层蓝图或Python命令。
+
+---
 
 ## 核心原理
 
-### 资产类型与创建方式
+### 创建与注册机制
 
-在内容浏览器中右键 → Editor Utilities → Editor Utility Widget，即可创建一个新的EUW资产，文件扩展名在磁盘上为`.uasset`，与普通蓝图资产相同但类型标识不同。双击打开后进入UMG设计器，左侧面板列出全部可用控件，开发者可以自由拖拽Button、TextBox、SpinBox、ComboBox等控件到画布上。
+在内容浏览器中右键选择"编辑器工具 > 编辑器工具控件（Editor Utility Widget）"即可创建一个新的编辑器工具Widget蓝图。保存后，右键该资产会出现"运行编辑器工具控件（Run Editor Utility Widget）"选项，点击后虚幻引擎会调用`UEditorUtilitySubsystem::SpawnAndRegisterTab()`方法，将该Widget作为一个可停靠的编辑器面板（Dockable Tab）打开在编辑器主窗口中。这一行为与在运行时调用`CreateWidget`完全不同——编辑器工具Widget的实例在关闭标签页后会被销毁，但`EditorUtilitySubsystem`会记录已注册的标签，重启编辑器后可自动恢复。
 
-Widget的图表（Graph）界面与普通蓝图完全一致，但可以调用大量仅在编辑器中可用的节点，例如`Get All Assets of Class`、`Editor Load Asset`、`Get Selected Assets`等。这些节点在运行时（Runtime）蓝图中无法使用，只有基类为`EditorUtilityWidget`的资产才能访问。要运行一个EUW，在内容浏览器中右键该资产选择"Run Editor Utility Widget"即可弹出浮动窗口，或调用`Register Tab and Get ID`函数使其成为可停靠面板。
+### 可用的编辑器专属节点
 
-### 访问编辑器子系统
+编辑器工具Widget的蓝图图表可访问大量在普通Widget蓝图中无法使用的编辑器API节点，这是其核心能力所在。常用的专属节点包括：
 
-编辑器工具Widget通过编辑器子系统（Editor Subsystem）与Unreal编辑器深度交互。常用的子系统包括：
-- **EditorUtilitySubsystem**：管理EUW窗口的打开、关闭与注册
-- **EditorAssetSubsystem**：执行资产的加载、保存、重命名、移动等文件操作
-- **EditorActorSubsystem**：获取关卡中选中的Actor列表、批量设置Actor属性
-- **UnrealEditorSubsystem**：获取当前活跃的关卡编辑器视口信息
+- **Get Selected Assets**：获取内容浏览器当前选中的资产数组（返回`TArray<UObject*>`）
+- **Get Selected Level Actors**：获取关卡视口中当前选中的Actor数组
+- **Get Actor Reference**：通过资产路径获取Actor引用
+- **EditorAssetLibrary** 系列节点：包含`Save Asset`、`Duplicate Asset`、`Rename Asset`等资产操作函数
+- **EditorLevelLibrary** 系列节点：包含`Get All Level Actors`、`Set Actor Label`等关卡操作函数
 
-在蓝图节点中通过`Get Editor Subsystem`节点并指定目标子系统类型即可获取实例，随后链式调用所需功能函数。例如，`EditorAssetSubsystem`的`Get Metadata Tag`和`Set Metadata Tag`函数可以读写资产的自定义元数据，这是实现资产标签管理工具的关键。
+这些节点来自`EditorScriptingUtilities`插件，使用前必须在项目插件列表中手动启用该插件，否则相关节点不会出现在蓝图搜索栏中。
 
-### 与选中内容的交互
+### 控件与事件绑定
 
-编辑器工具Widget最常见的用法之一是处理用户在内容浏览器或视口中的当前选中内容。通过`Get Selected Assets`节点返回`Array of Asset Data`，每个`FAssetData`结构体包含`AssetName`、`AssetClass`、`PackagePath`等字段。对这个数组进行For Each循环，即可批量操作所有被选中的资产。
+编辑器工具Widget的设计器（Designer）视图与普通UMG完全相同，可以放置Button、TextBox、ListView、ComboBox等所有标准控件。在图表（Graph）视图中，通过`OnClicked`、`OnTextCommitted`等标准UMG委托绑定逻辑。一个典型的模式是：用户在TextBox中输入前缀字符串，点击Button后触发事件，事件内部调用`Get Selected Assets`获取选中资产，再循环调用`Rename Asset`为每个资产添加前缀。整个流程的逻辑量大约在10-15个蓝图节点之间，对有UMG基础的开发者来说学习曲线极低。
 
-若要处理关卡视口中选中的Actor，则使用`EditorActorSubsystem`的`Get Selected Level Actors`节点，返回`Array of Actor`，可以直接Cast后修改Actor属性或调用其函数。这种"先选中、后执行"的工作模式是编辑器工具Widget与美术/设计人员协作的标准交互范式。
+---
 
 ## 实际应用
 
-**批量重命名工具**：一个典型的EUW批量重命名工具包含两个TextBox（分别输入查找字符串和替换字符串）和一个Execute按钮。点击按钮后，逻辑获取当前选中资产列表，对每个资产名称执行`Replace`字符串操作，再调用`EditorAssetSubsystem`的`Rename Asset`函数。整个工具蓝图节点数量通常不超过20个。
+**批量资产重命名工具**：技术美术常用的场景之一。在Widget上放置一个EditableText输入框（用于输入前缀/后缀）、一个CheckBox（用于选择是追加前缀还是后缀）和一个Button。Button的OnClicked事件中，通过`Get Selected Assets`取得资产列表，遍历后用`EditorAssetLibrary::RenameAsset`改名，最后调用`EditorAssetLibrary::SaveDirectory`保存更改。整个工具的蓝图实现可以在30分钟内完成。
 
-**LOD检查面板**：关卡设计工具中可以创建一个EUW，遍历当前关卡中所有`StaticMeshActor`，检查其`StaticMesh`资产是否配置了至少3个LOD级别，将不合规的Actor名称和路径显示在一个`ListView`控件中，双击列表条目后直接聚焦到该Actor在视口中的位置（通过调用`Pilot Actor`节点实现）。
+**关卡Actor属性批量设置**：关卡设计师需要将场景中所有静态网格体Actor的`CastShadow`属性设为`false`时，可以制作一个编辑器工具Widget，通过`EditorLevelLibrary::Get All Level Actors`获取全部Actor，过滤出`StaticMeshActor`类型，再用`Set Property by Name`节点批量修改属性。这类操作如果手动完成需要数小时，工具化后只需点击一次按钮。
 
-**材质参数批量覆写工具**：美术团队可以使用EUW选中一批`Material Instance`资产，通过SpinBox输入某个Scalar Parameter的新数值（如`Roughness_Override`），一键将该参数值写入所有选中材质实例并保存，替代逐个打开资产手动修改的流程。
+**自定义资产验证面板**：项目交付前，QA人员可以使用编辑器工具Widget遍历指定目录下的所有纹理资产（通过`EditorAssetLibrary::List Assets`），检查其压缩格式、MipMap设置是否符合规范，并在Widget内置的ListView控件中展示不合规资产列表，直接点击列表项即可跳转到对应资产。
+
+---
 
 ## 常见误区
 
-**误区一：认为EUW可以在运行时（Packaged Build）中使用**。编辑器工具Widget的类`EditorUtilityWidget`在运行时模块中不存在，若尝试在非编辑器构建中引用此类资产，打包时会直接报错或被剥离。所有EUW资产必须放置在标有`DeveloperOnly`或未被打包规则包含的目录下，通常约定放在`Content/EditorTools/`路径下以保持清晰。
+**误区一：认为编辑器工具Widget可以在打包后的游戏中运行。**
+编辑器工具Widget依赖`UEditorUtilitySubsystem`和大量`Editor`模块，这些模块在打包时会被完全剔除。尝试在运行时（PIE模式以外）调用`EditorAssetLibrary`节点会直接报错或返回空值。如果需要在游戏中实现类似的工具功能，必须重新使用普通`UserWidget`和运行时API重写。
 
-**误区二：混淆编辑器工具Widget与编辑器工具蓝图（Editor Utility Blueprint）**。后者基类为`EditorUtilityObject`，没有可视化UI界面，只能在右键菜单中暴露函数按钮，适合极简的单函数触发场景。编辑器工具Widget则提供完整UI，两者不可互换，创建时需在内容浏览器中明确选择正确的资产类型。
+**误区二：认为编辑器工具Widget与编辑器工具蓝图（Editor Utility Blueprint）是同一个东西。**
+编辑器工具蓝图（右键菜单中"编辑器工具 > 编辑器工具蓝图"）继承自`UEditorUtilityObject`，它没有任何可视化界面，只能通过右键资产调用其中的函数，适合无界面的单次操作脚本。编辑器工具Widget才是有GUI面板的版本。两者虽然同属Blutility体系，但用途和操作方式完全不同，不可混淆。
 
-**误区三：直接在Tick事件中轮询编辑器状态**。EUW支持Tick事件，但在编辑器中频繁执行Tick逻辑会拖慢整个编辑器的响应速度。正确做法是通过按钮点击或`EditorUtilitySubsystem`的委托（如`OnAssetsDeleted`）响应式地触发逻辑，而非每帧主动查询。
+**误区三：认为在Widget的Tick事件中执行大量编辑器API调用是安全的。**
+编辑器工具Widget确实支持Tick事件，但在Tick中频繁调用`List Assets`或`Get All Level Actors`等操作会显著拖慢编辑器帧率，因为这些函数会同步扫描资产注册表（AssetRegistry）或遍历关卡中的所有对象。正确做法是仅在用户主动触发（如点击按钮）时执行批量操作，或使用`Async`节点将耗时任务移出主线程。
+
+---
 
 ## 知识关联
 
-编辑器工具Widget建立在**编辑器扩展概述**中介绍的编辑器模块体系之上，理解编辑器仅在非Shipping构建中加载的模块生命周期，有助于解释为何EUW资产不可出现在运行时路径中。EUW大量使用的编辑器子系统（Editor Subsystem）与游戏运行时的GameInstance Subsystem遵循相同的`USubsystem`注册模式，已了解运行时子系统的开发者可以快速迁移这一知识。
+**前置概念——编辑器扩展概述**：学习编辑器工具Widget之前，需要了解虚幻引擎编辑器扩展的整体分类：C++层的`SWidget`（Slate框架）、编辑器工具蓝图（无GUI）和编辑器工具Widget（有GUI）三条路径各自的适用场景。编辑器工具Widget本质上是将Slate面板的制作门槛降低到UMG可视化编辑层级，但其底层渲染仍然经过Slate。
 
-在UMG控件层面，EUW复用了运行时Widget的全部布局知识，包括锚点、Canvas Panel对齐、Scale Box等，熟悉游戏UI开发的美术可以直接上手界面设计部分，只需额外学习编辑器专属节点的调用方式。对于需要更底层控制的场景，编辑器工具Widget可以通过`Execute Console Command`节点触发编辑器控制台命令，或通过`RunPythonScript`节点与Python编辑器脚本（Editor Scripting with Python，UE4.22+正式支持）协同工作，将复杂文件系统操作委托给Python而将UI交互保留在蓝图层。
+**关联工具——Python编辑器脚本**：虚幻引擎同样支持通过Python调用`unreal.EditorUtilityLibrary`和`unreal.EditorAssetLibrary`实现类似功能。对于需要CI/CD流水线集成的自动化任务，Python脚本更合适；对于需要非技术人员日常使用的工具，编辑器工具Widget的可视化面板优势更明显。两者使用的底层API在功能上高度重叠，学习其中一个对理解另一个有直接帮助。
+
+**进阶方向——C++扩展编辑器工具Widget**：当蓝图节点无法满足需求时（例如需要访问`FAssetRegistryModule`的高级查询接口），可以在C++中创建一个继承自`UEditorUtilityWidget`的子类，将自定义C++函数标记为`UFUNCTION(BlueprintCallable, Category="EditorScripting")`，然后在Widget蓝图中调用这些C++函数，实现蓝图可视化界面与C++底层逻辑的结合。

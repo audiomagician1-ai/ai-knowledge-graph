@@ -24,88 +24,99 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # 关系代词与关系副词
 
 ## 概述
 
-关系代词（relative pronouns）与关系副词（relative adverbs）是定语从句中连接主句先行词与从句的功能词，共六个核心词：**who、whom、whose、which、that、where、when**（实为七个，通常并列讨论）。它们同时承担两项任务：其一，替代先行词，成为从句内部的成分（主语、宾语、定语或状语）；其二，将从句引入并修饰先行词。这一双重身份是定语从句区别于其他从句的根本特征。
+关系代词（who、whom、whose、which、that）和关系副词（where、when、why）是引导定语从句的连接词，它们的核心功能有二：一是连接主句与从句，二是在从句内部充当成分（主语、宾语、定语或状语）。这一"双重身份"正是它们区别于普通连词的本质特征。
 
-关系代词体系可追溯至古英语时期，最初以"þe"（相当于现代that）充当通用关系词。"who/whom/whose"这一格变体系在中古英语（约1100–1500年）逐渐固定，将主格、宾格、属格分工明确。现代英语中，that的灵活性最高，可替换who/which，但who/whom/whose保留了对人的专指功能，which则专用于事物与动物，where/when专用于地点与时间先行词。
+关系代词的使用可追溯至古英语和中古英语时期，现代英语中的"which"源于古英语"hwilc"，"who"源于古英语"hwā"。17世纪英语语法规范化过程中，语法学家开始系统区分关系代词与疑问代词的用法。理解这一组词对中国英语学习者尤为重要，因为汉语通过在名词前直接加"的"字结构来修饰名词，没有对应的"引导词在从句内充当成分"机制，导致中文母语者极易在选词上出错。
 
-掌握这七个词的选用规则直接影响定语从句的语法准确性。每一个词的选择不仅取决于先行词的语义类别（人/物/地点/时间），还取决于该词在从句内部担任的句法成分（主语、宾语、状语等）。混淆这两个维度是学习者最常犯的错误。
+这七个关系词的选择并不自由，受先行词的性质（人或物）、关系词在从句中的句法功能（主语/宾语/定语/地点状语等）以及限制性或非限制性从句类型的三重约束共同决定。
 
 ---
 
 ## 核心原理
 
-### 一、关系代词的格与指代对象
+### 关系代词的选词规则
 
-**who / whom / whose** 专指**人**（有时指拟人化的动物）：
-- **who**：在从句中作**主语**。例：*The teacher **who** taught us math retired last year.*（who替代先行词the teacher，在从句中作主语）
-- **whom**：在从句中作**宾语**或介词宾语。例：*The student **whom** I helped won the prize.*（whom替代先行词，在从句中作help的宾语）。正式介词前置写法：*The person to **whom** I spoke was kind.*
-- **whose**：在从句中作**定语（所有格）**，修饰从句中的名词。例：*A student **whose** essay I read became a novelist.*（whose修饰essay）
+选择关系代词时，必须同时考虑**先行词类型**和**从句内句法功能**：
 
-**which** 专指**事物、动物、抽象概念**，可在从句中作主语或宾语。例：*The book **which** I borrowed was fascinating.*（which在从句中作borrowed的宾语）
+| 先行词 | 主语/宾语 | 属格（定语） |
+|------|---------|-----------|
+| 人 | who / whom / that | whose |
+| 物 | which / that | whose / of which |
 
-**that** 既可指人也可指物，同样在从句中作主语或宾语，但**不能紧跟介词**（不说 *the box in that*），且**只用于限制性定语从句**，不用于非限制性定语从句（即逗号隔开的从句）。
+- **who** 用于先行词为人且在从句中作主语：*The teacher **who** taught me French retired last year.*
+- **whom** 用于先行词为人且在从句中作宾语（正式语体）：*The scientist **whom** Edison admired was Faraday.* 口语中常省略或用who替代。
+- **whose** 表示所属关系，修饰紧随其后的名词：*A student **whose** phone rang was asked to leave.* 注意whose后必须紧接名词，不可插入冠词。
+- **which** 用于先行词为物（含动物、抽象概念、整个从句）：*The report **which** she submitted contained an error.*
+- **that** 在限制性定语从句中可替代who或which，但**不可用于非限制性定语从句**（即逗号后不能接that）。
 
-### 二、关系副词的功能与选用
+### that的专属使用场合
 
-关系副词引导的从句中，关系词本身在从句内充当**时间/地点/原因状语**，而非主语或宾语。这意味着从句中的动词已有完整的主谓结构，不缺成分。
+有五类情况**必须或倾向于**使用that而非who/which：
+1. 先行词同时包含人和物：*I remember the people and places **that** shaped my childhood.*
+2. 先行词前有最高级修饰：*This is the best film **that** I have ever seen.*
+3. 先行词前有序数词：*She was the first woman **that** climbed this peak.*
+4. 先行词前有all、only、every等词：*All **that** glitters is not gold.*
+5. 先行词为不定代词（something、anything、nothing等）：*Is there anything **that** I can do?*
 
-| 关系副词 | 先行词类型 | 等价替换 |
-|----------|------------|----------|
-| **where** | 地点名词（如 place, city, room） | 介词 + which（in/at which） |
-| **when** | 时间名词（如 time, year, day） | 介词 + which（in/on/at which） |
-| **why** | 原因（只与 reason 搭配） | for which |
+### 关系副词的替换逻辑
 
-例：
-- *The city **where** I was born has changed a lot.* = *The city **in which** I was born has changed a lot.*
-- *I remember the day **when** we first met.* = *I remember the day **on which** we first met.*
-- *I don't know the reason **why** he left.* = *I don't know the reason **for which** he left.*
+关系副词where、when、why本质上等于"介词+which"：
 
-**判断是否用关系副词的关键**：把从句单独提出，看动词是否已有完整的主谓宾——若完整，则用关系副词；若缺少宾语，则应用关系代词。
+- **where** = in/at/on which（先行词为地点）：*The city **where** she was born = the city **in which** she was born.*
+- **when** = in/at/on which（先行词为时间）：*the day **when** we met = the day **on which** we met*
+- **why** = for which（先行词几乎只能是reason）：*The reason **why** he left = the reason **for which** he left.*
 
-### 三、限制性 vs. 非限制性定语从句的词语限制
+理解这一对应关系可以帮助学习者检验自己选词是否正确——若替换成"介词+which"后语法不通，则原句有误。例如：✗ *the house when I grew up*（应为where，因为house是地点，需要介词in）。
 
-非限制性定语从句（前有逗号）**不能使用that**，必须用who/whom/whose/which：
-- ✅ *My father, **who** is 60, still works.*
-- ❌ *My father, **that** is 60, still works.*（错误）
+### 限制性与非限制性定语从句中的关系词差异
 
-此外，当先行词已被most/all/only/superlative等限定时，倾向使用**that**而非which/who：
-- *She is the most talented student **that** I have ever taught.*
+限制性定语从句不用逗号分隔，that/which/who均可用（视先行词而定）。非限制性定语从句**必须用逗号分隔**，且**只能用who/whom/whose/which/where/when，绝对不能用that**：
+- ✓ *My mother, **who** works as a nurse, is very caring.*
+- ✗ *My mother, **that** works as a nurse, is very caring.*
 
 ---
 
 ## 实际应用
 
-**写作中区分who与whom**：在正式书面英语（如雅思写作、学术论文）中，宾格位置必须用whom。快速检验法：将从句还原为陈述句，若该位置可用him/her（宾格代词），则用whom；若可用he/she（主格代词），则用who。
+**场景一：学术写作中whose的常见误用**
 
-例：*The manager \_\_\_ you interviewed yesterday called back.* → 还原：*You interviewed **him** yesterday.* → 宾格 → 填**whom**。
+中国学生常写出：*a company which its CEO resigned*，这是将关系代词与人称代词混用的错误。正确写法应为 *a company **whose** CEO resigned*，whose在此替代了its并引导从句。
 
-**where vs. which的混淆纠正**：先行词为地点名词时，若从句中动词已有宾语（如 *build a school*），仍需用which（充当宾语）；只有从句谓语不缺宾语时才用where。
-- *This is the village **which** they built.* （which充当built的宾语）
-- *This is the village **where** they lived.* （lived不缺宾语，村子是居住地点）
+**场景二：正式文体中whom的保留**
 
-**考试高频考点**：英语高考、四六级及雅思常考"介词+which"与关系副词的互换，如：*the year in which = the year when*；*the reason for which = the reason why*。
+在托福、GRE作文和学术论文中，whom仍被广泛使用。判断用who还是whom的简便方法：将从句单独拿出，若该位置能填he/she则用who，若能填him/her则用whom。例：*The candidate **whom** the committee selected*（the committee selected him → 用whom）。
+
+**场景三：关系副词的过度使用**
+
+*the reason why* 在现代英语中，why常被省略：*That's the reason (why) I called.* 但 *the place where* 和 *the time when* 中的关系副词通常不省略，除非先行词已非常明确指示地点或时间。
 
 ---
 
 ## 常见误区
 
-**误区一：whom与who凭感觉互换**
-许多学习者在口语影响下，将who用于一切指人情况，如 *The boy **who** I admire is here.*。书面英语中宾语位置应为whom。此误区源于美式口语中who逐渐取代whom的趋势，但在正式写作中这一替换仍被认为是语法错误。
+**误区一：认为that可以在任何情况下替代who/which**
 
-**误区二：地点先行词一律用where**
-看到city、room、place等词便自动填where，忽视了从句内部句法。*The room **which** they painted is dry now.* 中which是painted的宾语，不能换成where（*the room where they painted*语义变为"他们在那个房间里作画"，且语法上也存在疑问）。先行词是地点≠必用where，关键看从句是否缺宾语。
+很多学习者为了简便，凡是定语从句一律用that。但在非限制性定语从句（有逗号的情况）中，that是语法错误，必须根据先行词是人还是物分别用who或which。另外，介词之后不能直接接that：✗ *the hotel in **that** I stayed* → ✓ *the hotel in **which** I stayed*。
 
-**误区三：非限制性从句中使用that**
-受汉语"那个"影响，学习者误用 *My hometown, **that** I love, is beautiful.* 非限制性定语从句只接受who/whom/which，that在此语境中不被英语语法接受。这条规则无例外。
+**误区二：混淆where/when的使用，以为先行词是地点就一定用where**
+
+where和when是关系副词，引导的从句中该副词充当**地点/时间状语**。若从句中地点/时间是宾语而非状语，则应用which：*The city **which** I visited was beautiful.*（visited的宾语是city，用which）vs. *The city **where** I lived was beautiful.*（lived不需要宾语，where充当状语）。
+
+**误区三：whose只能指人**
+
+许多学习者认为whose是"谁的"，所以只用于人。但在英语中，whose同样可以修饰无生命的事物：*a book **whose** cover is torn*（= a book the cover of which is torn）。这一用法在书面语中相当普遍，尤其是避免 *of which* 结构显得笨重时。
 
 ---
 
 ## 知识关联
 
-关系代词与关系副词是**定语从句**语法体系的直接延伸。在学习定语从句先行词识别（判断修饰的是哪个名词）之后，下一步必然是选择正确的引导词——即本文内容。两者构成定语从句学习的完整闭环：先行词决定词语大类（人→who/whom/whose；物→which；地点→where；时间→when），从句内部句法决定具体格形（主格→who/which；宾格→whom/which；属格→whose；状语→关系副词）。
+学习关系代词与关系副词以定语从句的基本概念为前提——需要先理解先行词、从句对名词的修饰关系，以及限制性与非限制性从句的区别。若先行词的概念不清晰，无法判断关系词在从句内的句法功能，选词便会出错。
 
-在横向联系方面，**whose**与名词性从句中的**whose引导的主语从句**形式相同但功能不同，需注意区分。**that**作为定语从句引导词与作为同位语从句、名词性从句引导词时，其后从句结构完全不同：定语从句中that替代先行词（从句内可缺主语或宾语），而同位语从句中that纯属连词（从句结构完整）。这一区分是进阶语法学习的重要节点。
+在纵向联系上，这七个关系词与疑问代词（who、which、whose）字形相同但功能不同：疑问代词引导宾语从句或主语从句，自身充当疑问功能；关系代词则始终在定语从句内有具体的句法角色，无疑问含义。区分二者的关键在于判断该从句修饰的是哪一个先行词名词——若有先行词，从句为定语从句，引导词为关系词。
+
+掌握关系代词与关系副词后，可进一步接触分裂句（cleft sentence，如 *It is Edison **who** invented the phonograph.*）和名词化从句，这些结构都复用了关系代词的形式，但句法功能有所不同。

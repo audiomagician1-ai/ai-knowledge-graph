@@ -24,52 +24,74 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # Draw Call优化
 
 ## 概述
 
-Draw Call（绘制调用）是CPU向GPU发送的一条渲染指令，命令GPU绘制特定的几何体。每个Draw Call都需要CPU打包渲染状态、设置着色器参数、提交指令缓冲区，这一过程通常需要0.1ms至1ms的CPU时间。当一帧内存在数千个Draw Call时，CPU瓶颈便会严重拖慢帧率，而GPU往往仍处于空闲等待状态。
+Draw Call（绘制调用）是CPU向GPU发送"绘制这个网格"命令的操作。每次Draw Call都携带状态数据，包括使用哪个着色器、哪张纹理、哪个网格缓冲区。问题在于CPU发出Draw Call本身的开销很高——每次调用涉及驱动层的验证、状态打包与命令队列提交，在移动端GPU上一帧超过100个Draw Call就可能引发性能瓶颈，在PC端通常建议将每帧Draw Call数量控制在2000以内。
 
-Draw Call优化的核心目标是减少CPU提交给GPU的独立绘制指令数量，或降低每次状态切换的开销。在DirectX 11时代，业界将"每帧2000个Draw Call"作为桌面平台的警戒线；移动平台（如Android/iOS）由于驱动层更重，这一上限通常仅为200-500个。理解Draw Call的开销来源，是选择正确优化策略的前提。
+历史上，早期3D游戏（1990年代末）场景物体少，Draw Call数量不成问题。随着场景复杂度爆炸式增长，2010年代开始，引擎厂商普遍将"减少Draw Call"列为渲染优化的首要任务。Unity在2015年引入GPU Instancing，2019年推出SRP Batcher作为更激进的解决方案；Unreal Engine则长期依赖其Instanced Static Mesh系统。
 
-Unity引擎的Profiler窗口中，`Batches`字段直接反映当前帧的Draw Call数量，`SetPass Calls`则统计渲染状态切换次数——这两个指标是诊断CPU渲染瓶颈时最先查看的数据。
+Draw Call优化的本质是将多个单独的绘制命令合并，让CPU单次通信携带更多几何数据，从而将CPU-GPU通信开销平摊到更多三角形上。注意：这类优化降低的是**CPU侧**的驱动提交开销，而非GPU的实际渲染工作量。
+
+---
 
 ## 核心原理
 
-### Static Batching（静态合批）
+### Static Batching（静态批处理）
 
-静态合批针对场景中标记为`Static`的游戏对象，在构建（Build）时或运行时启用时，将多个共享同一材质的静态网格合并为单一顶点缓冲区（VBO）。合并后，这些对象在一次Draw Call中完成绘制，但代价是内存占用增加——每个静态批次都会在内存中保留一份合并后的网格副本。例如，100棵使用相同树木网格的树，静态合批后可能将Draw Call从100次降为1次，但同时在内存中新增100倍树木顶点数据的存储。Unity静态合批的顶点数上限为64,000个顶点。
+Static Batching在构建或运行时将标记为"Static"的多个网格合并成一个大网格，写入一个共享的顶点缓冲区（Vertex Buffer）和索引缓冲区（Index Buffer）。合并后，引擎只需发出极少数Draw Call即可绘制大量静态物体。
 
-### Dynamic Batching（动态合批）
-
-动态合批在每帧运行时将满足条件的动态对象网格临时合并，条件十分严格：网格顶点数须少于900个（若含顶点法线和UV则为300个），不能使用镜像缩放（如Scale.x为负值），且必须使用相同材质实例。动态合批的CPU开销实际上并不低——合并网格本身消耗CPU时间，当对象数量庞大时，合批的收益可能低于其开销，此时应关闭动态合批。
+代价是**内存占用显著增加**：每个被合并的网格实例都会在缓冲区中保存一份独立的顶点数据副本（即便两棵树使用同一个网格，也会存两份顶点坐标）。一个场景中有500棵相同的树，Static Batching会存储500份顶点数据，而同样情形下GPU Instancing只存储1份。Static Batching适合数量少、形状各异的静态场景物件。
 
 ### GPU Instancing（GPU实例化）
 
-GPU Instancing允许单次Draw Call绘制同一网格的多个实例，区别在于每个实例可以携带独立的per-instance数据（如变换矩阵、颜色）。在着色器中通过`UNITY_INSTANCING_BUFFER_START`宏声明的属性将被存入实例化缓冲区（Constant Buffer Array），GPU通过`SV_InstanceID`语义区分每个实例。Instancing不要求对象是静态的，也不会产生额外的内存拷贝，非常适合大量草地、粒子、敌人单位等场景。在DirectX 11下，单次Instancing Draw Call理论上可绘制最多1023个实例。
+GPU Instancing允许CPU发出**一次Draw Call**，同时传递一个"实例数据数组"（Per-Instance Data Buffer），包含每个实例的变换矩阵（Transform Matrix）、颜色等差异化属性。GPU在顶点着色器阶段通过内置变量`gl_InstanceID`（OpenGL）或`SV_InstanceID`（HLSL）区分每个实例，应用对应的变换。
 
-### SRP Batcher（可编程渲染管线合批）
+核心限制：**所有实例必须使用同一网格和同一材质（相同着色器+相同纹理）**。哪怕只是纹理偏移不同，也需要将纹理坐标作为Per-Instance属性传入。GPU Instancing对绘制大量重复物体（草地、石块、人群）效果显著，100个实例只消耗1个Draw Call，而非100个。
 
-SRP Batcher是Unity 2019.2引入的专为Universal Render Pipeline（URP）和High Definition Render Pipeline（HDRP）设计的批处理机制，工作原理与前三者完全不同。它并不减少Draw Call数量，而是通过将所有对象的`PerMaterial`属性存入GPU上的持久化Constant Buffer（CBUFFER），避免每次Draw Call前CPU重新上传材质数据。只要着色器的CBUFFER布局不变，CPU仅需更新`PerObject`数据（变换矩阵），渲染状态切换开销大幅下降。SRP Batcher要求着色器必须声明名为`UnityPerMaterial`和`UnityPerDraw`的标准CBUFFER块，不兼容的着色器（如旧版Standard Shader）无法被SRP Batcher处理。启用SRP Batcher后，Profiler中可观察到`SetPass Calls`数量显著减少，而`Batches`数字本身不变。
+### Dynamic Batching（动态批处理）
+
+Dynamic Batching由引擎CPU端在每帧运行时动态合并顶点数据，条件极为苛刻：Unity中要求单个网格顶点数不超过300个，且不能使用多Pass着色器。由于每帧都需要在CPU上执行合并操作，当物体数量多时CPU开销反而超过节省的Draw Call收益。Unity官方文档明确说明：在使用SRP的项目中，Dynamic Batching的价值已大幅下降，**不建议在现代项目中依赖它**。
+
+### SRP Batcher（可编程渲染管线批处理器）
+
+SRP Batcher是Unity 2019引入的针对Universal Render Pipeline（URP）和High Definition Render Pipeline（HDRP）的专属优化机制，其原理与上述三种方法**根本不同**。
+
+SRP Batcher的目标不是减少Draw Call数量，而是**减少每个Draw Call之间的GPU状态切换开销**。它将每个材质的属性（如`_BaseColor`、`_Metallic`等）存入GPU侧的专用常量缓冲区（Constant Buffer，称为CBUFFER）。只要两个物体使用**相同的着色器变体**（Shader Variant），即便材质属性不同，SRP Batcher也能将它们归为一个"Batch"，通过复用同一套着色器代码、仅更新CBUFFER内容来连续提交，避免CPU重新上传着色器状态。
+
+使用SRP Batcher的材质必须在着色器中声明`CBUFFER_START(UnityPerMaterial)` / `CBUFFER_END`块，将所有材质属性纳入统一管理。这要求自定义着色器按照SRP Batcher兼容规范书写；不符合规范的着色器将回退到标准Draw Call路径。
+
+---
 
 ## 实际应用
 
-在移动端手游开发中，UI是Draw Call的重灾区。Unity的uGUI会将同一Canvas下使用相同材质和纹理的UI元素自动合批，但一旦中间插入一个不同材质的元素（例如一个带有Mask的Image），合批链便被打断，后续所有元素都需要独立Draw Call。解决方案是将图集（Atlas）打包——使用`Sprite Atlas`将多张小图合入同一张纹理，使其可被合批。
+**森林场景优化**：一片由10000棵同款树木组成的森林，若逐个绘制需要10000个Draw Call。启用GPU Instancing后，同款树缩减为1个Draw Call，并通过Per-Instance矩阵实现位置、旋转、缩放差异。若树木有LOD（细节层次），每个LOD等级分别对应一个Instanced Draw Call，总Draw Call数等于LOD层级数，远优于原始方案。
 
-在PC端开放世界游戏中，植被渲染大量使用GPU Instancing。以Unity Terrain系统为例，开启`GPU Instancing`选项后，同种草木会自动走Instancing路径，数万株草的场景可从数千次Draw Call压缩至数十次。配合`LOD Group`组件，仅对视距内的植被实例化，进一步减少总绘制量。
+**UI与粒子系统**：UI Canvas在Unity中自动执行类似Dynamic Batching的合并，将同层同材质的UI元素合并为单次Draw Call。粒子系统可开启GPU Instancing模式，将数千个粒子压缩到极少数Draw Call中，但每个粒子的位置、颜色须以Per-Instance数据形式传递。
 
-对于使用URP的项目，优先保障SRP Batcher兼容性是最高性价比的优化：在Shader Graph中创建的着色器默认兼容SRP Batcher，而手写Shader需检查CBUFFER声明是否符合规范。在Unity Editor中选中着色器资产，Inspector面板会显示`SRP Batcher: compatible`或`not compatible`及不兼容原因。
+**SRP Batcher实战收益**：在一个典型的URP城市场景中，使用SRP Batcher可将CPU渲染线程时间降低40%~60%，Frame Debugger中可见"SRP Batch"标注的批次替代了原先大量的单独Draw Call。
+
+**工具诊断**：Unity Frame Debugger（Window > Analysis > Frame Debugger）可逐帧展示每个Draw Call的原因及其Batch归属；RenderDoc则可在GPU层面捕获完整的绘制命令列表，定位无法合批的具体原因。
+
+---
 
 ## 常见误区
 
-**误区一：Draw Call越少越好，应无条件启用所有合批手段。** 静态合批会增加内存用量，若场景中静态网格体积庞大，合批后的VBO可能占用数百MB内存，在移动设备上反而引发更严重的问题。正确做法是在Profiler中确认CPU确实存在Draw Call瓶颈（而非GPU瓶颈）后，再针对性开启合批。
+**误区一：Draw Call越少，帧率一定越高**
+Draw Call数量只是CPU侧的开销指标。若场景多边形数量极高，即便Draw Call很少，GPU的几何处理和光栅化依然可能成为瓶颈。优化Draw Call之后仍需用GPU Profile工具（如RenderDoc的Pipeline Statistics）检查GPU侧是否出现新的瓶颈。
 
-**误区二：GPU Instancing和静态合批可以同时对同一批对象生效。** 在Unity中，Static Batching的优先级高于GPU Instancing——已被标记为Static并完成合批的对象不会走Instancing路径。若需要per-instance属性（如随机颜色），应取消静态标记并改用Instancing，而非同时开启两者。
+**误区二：Static Batching与GPU Instancing可随意互换**
+两者针对的场景截然不同。Static Batching适合形状各异、数量有限的静态物件（如建筑群），因为它合并不同网格；GPU Instancing仅适合**完全相同网格**的大量重复物件（如草地）。将500棵同款树使用Static Batching，会浪费大量内存存储重复顶点；将500个不同形状的岩石用GPU Instancing则根本无法生效。
 
-**误区三：SRP Batcher减少了Draw Call数量。** SRP Batcher的作用是减少Draw Call之间的CPU状态上传开销，`Batches`计数不会下降。若项目同时存在大量Draw Call和SRP Batcher不兼容的Shader，需优先修复Shader兼容性，而不是寄希望于SRP Batcher"合并"绘制调用。
+**误区三：SRP Batcher等同于其他Batching方法**
+SRP Batcher在Frame Debugger中显示的Draw Call数量可能与启用前相同，这让人误以为它没有效果。但SRP Batcher降低的是每次Draw Call的**提交开销**（减少CPU驱动层状态切换），而非Draw Call的**数量**。它的收益体现在CPU帧时间降低，而非Draw Call计数减少，二者需用不同指标衡量。
+
+---
 
 ## 知识关联
 
-Draw Call优化建立在渲染管线概述的基础上——理解CPU提交命令到CommandBuffer、GPU执行顶点着色器和片元着色器的流程，才能明白每种优化技术究竟在哪个阶段减少了哪类开销。Static Batching和Dynamic Batching减少的是`DrawIndexedPrimitive`调用次数，GPU Instancing减少的是状态切换与指令发射次数，而SRP Batcher减少的是CPU与GPU之间的数据上传带宽。
+**依赖前置知识**：理解Draw Call优化需要先了解渲染管线中CPU提交命令、GPU执行命令的分工，以及顶点缓冲区（VBO）和索引缓冲区（IBO）的作用——这些概念在渲染管线概述中已建立。CPU-GPU带宽与延迟模型是判断各种Batching方案收益的基础参照。
 
-掌握四种合批策略的适用条件（是否静态、网格大小、Shader兼容性、内存预算），并能在Unity Profiler和Frame Debugger中定位具体的合批失败原因（Frame Debugger会逐条列出每个Draw Call及其无法合批的理由），是将Draw Call优化从理论转化为实际性能提升的关键操作能力。
+**延伸技术方向**：掌握Draw Call优化后，可进一步研究Indirect Rendering（GPU Driven Rendering），这是将Draw Call提交逻辑完全移至GPU侧的更激进方案，被《Assassin's Creed: Odyssey》等现代AAA游戏采用，可将Draw Call数量压缩至个位数量级。LOD（Level of Detail）系统与Draw Call优化高度协同，通过减少远处物体的顶点数使Instancing更高效。材质系统设计（减少着色器变体数量）直接影响SRP Batcher的批合效率，是工程实践中Draw Call优化的重要延伸话题。

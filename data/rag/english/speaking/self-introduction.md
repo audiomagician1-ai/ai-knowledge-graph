@@ -20,68 +20,89 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-26
 ---
+
 # 自我介绍
 
 ## 概述
 
-自我介绍（Self Introduction）是英语（English Language）中口语表达领域的重要概念。难度等级2/9（基础级）。
+自我介绍是英语口语中将个人基本信息、身份背景和核心特征向他人传达的一套固定表达体系。英语自我介绍有别于汉语习惯，遵循"姓名→身份→背景→目的"的信息排列顺序，且几乎所有场合都以 "My name is..." 或 "I'm..." 作为开场句。
 
-不同场合的自我介绍表达。
+自我介绍在英语交际中的使用频率极高，从课堂上老师的第一堂课、公司面试到国际会议，每一个初次见面场景都需要它。正因如此，自我介绍是英语学习者接触最早、也最容易形成错误习惯的表达类型。掌握正式、半正式和非正式三种场合的不同表达方式，是进入日常对话前必须完成的基础训练。
 
-在知识体系中，自我介绍建立在无特定先修要求的基础之上，是理解日常对话的关键前置知识。为什么自我介绍如此重要？因为它在口语表达中起到承上启下的作用，连接基础概念与高级应用。
+## 核心原理
 
-## 核心知识点
+### 三种场合的核心句型差异
 
-### 1. 不同场合的自我介绍表达
+英语自我介绍根据正式程度分为三个层次，每个层次的词汇选择和句式结构都有明显区别：
 
-不同场合的自我介绍表达是自我介绍(Self Introduction)的核心组成部分之一。在口语表达的实践中，不同场合的自我介绍表达决定了系统行为的关键特征。例如，当不同场合的自我介绍表达参数或条件发生变化时，整体表现会产生显著差异。深入理解不同场合的自我介绍表达需要结合英语的基本原理进行分析。
+**非正式场合**（朋友聚会、课堂同学间）：
+- "Hi, I'm Tom. I'm 16 and I'm from Beijing."
+- 使用缩写形式 "I'm"，语速较快，信息简短。
 
+**半正式场合**（学校社团、兴趣小组、新同事）：
+- "Hello, my name is Li Ming. I'm a sophomore at Guangzhou High School. I enjoy reading and playing basketball."
+- 完整句式，加入爱好信息，体现个性。
 
-### 关键原理分析
+**正式场合**（求职面试、演讲开场、国际交流）：
+- "Good morning. My name is Zhang Wei. I am currently a senior student majoring in Computer Science at Peking University. It is a pleasure to meet you."
+- 避免缩写，使用 "It is my pleasure" 替代 "Nice to meet you"，信息更具专业性。
 
-自我介绍的核心在于不同场合的自我介绍表达。从理论角度看，该概念涉及以下层面：
+### 自我介绍的六类信息模块
 
-1. **定义层**：明确自我介绍的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解自我介绍内部各要素的相互作用方式
-3. **应用层**：将自我介绍的原理映射到英语的实际场景中
+一个完整的英语自我介绍通常由以下模块组合而成，不同场合选取不同数量的模块：
 
-思考题：如何判断自我介绍的应用是否超出了其理论适用范围？
+1. **姓名（Name）**："My name is..." / "I go by..." （后者用于名字难以发音时）
+2. **年龄（Age）**："I am 18 years old." / "I just turned 20."
+3. **来源地（Origin）**："I'm from Chengdu, a city famous for pandas."
+4. **学校/职业（School/Job）**："I study at..." / "I work as a..."
+5. **爱好（Hobby）**："In my spare time, I enjoy..." / "I have a passion for..."
+6. **目的/期待（Purpose）**："I'm here to..." / "I'm looking forward to working with you."
 
-## 关键要点
+正式场合通常只用模块1、3、4、6；非正式场合则侧重模块1、2、5，语气更轻松。
 
-1. **核心定义**：自我介绍的本质是不同场合的自我介绍表达，这是理解整个概念的出发点
-2. **多维理解**：掌握自我介绍需要同时理解不同场合的自我介绍表达等关键维度
-3. **先修关系**：自我介绍是该领域的入口概念，适合初学者
-4. **进阶路径**：掌握后可继续深入日常对话等进阶主题
-5. **实践标准**：真正掌握自我介绍的标志是能在具体场景中灵活运用并正确判断适用边界
+### 开场与结尾的固定搭配
+
+英语自我介绍有一批高频固定搭配，这些表达不能随意替换：
+
+- 开场：**"Allow me to introduce myself."**（正式）vs **"Let me tell you a bit about myself."**（半正式）
+- 结尾：**"I look forward to getting to know you all."**（正式）vs **"Hope we can be good friends!"**（非正式）
+- 表达见面很高兴：正式用 **"It's a pleasure to meet you."**，非正式用 **"Nice to meet you!"** 或 **"Good to meet you!"**
+
+注意：**"How do you do?"** 这一句型在正式初次见面时使用，其回应也必须是 **"How do you do?"**，而非 "Fine, thank you"——这是自我介绍场景中最独特的问答规则之一。
+
+## 实际应用
+
+**场景一：英语课第一天的自我介绍**
+> "Hi everyone! My name is Xiao Yu, but you can call me Lily. I'm 15 years old and I'm from Nanjing. I love listening to English songs and watching American TV shows. I hope we can learn English together and have a lot of fun!"
+
+这段介绍使用了非正式句型，用 "you can call me Lily" 主动提供英文名，降低沟通障碍，是课堂场景的标准做法。
+
+**场景二：参加英语演讲比赛的开场**
+> "Good afternoon, judges and fellow participants. My name is Chen Jiayi, and I am a student from Shanghai No.1 High School. Today, I am honored to stand here and share my thoughts on environmental protection."
+
+此处用 "I am honored to" 替代普通问候，将自我介绍与演讲主题直接衔接，是正式场合的高分表达。
+
+**场景三：在国际夏令营认识外国朋友**
+> "Hey! I'm Wei, nice to meet you! I'm from Xi'an—it's where the Terracotta Warriors are. What about you?"
+
+用 "What about you?" 结尾是将自我介绍转化为双向对话的关键技巧，避免自我介绍变成单向"独白"。
 
 ## 常见误区
 
-1. **混淆概念边界**：将自我介绍与口语表达中其他相近概念混为一谈。例如，不同场合的自我介绍表达的适用条件与其他同类概念存在明确区别，需要准确辨析
-2. **跳过基础原理：急于应用而忽略自我介绍的理论根基**。建议先确认先修知识扎实
-3. **满足于表面理解：自我介绍虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：把"很高兴认识你"直译为 "Very happy to know you"**
+正确表达是 "Nice to meet you" 或 "It's a pleasure to meet you"。"Know" 在英语中表示已经认识、相熟，初次见面应使用 "meet"。这一错误在中国英语学习者中出现率超过60%。
 
-## 知识衔接
+**误区二：正式场合使用缩写形式**
+在求职面试或正式演讲中说 "I'm Chen Wei" 而非 "I am Chen Wei"，会给人留下不够严肃的印象。正式自我介绍要求完整展开所有缩写，包括 "I am"、"It is"、"I do not" 等。
 
-### 先修知识
-自我介绍是该学习路径的起始点之一，无严格先修要求，但具备英语基本素养有助于理解。
+**误区三：自我介绍顺序照搬中文习惯**
+中文自我介绍常说"我叫XX，今年XX岁，来自XX"，但英语在正式场合很少主动报出年龄，尤其对成年人而言年龄属于私人信息。在商务或正式学术场合，应用职位和专业背景替代年龄信息。
 
-### 后续学习
-掌握自我介绍后可继续学习：
-- **日常对话** — 在自我介绍基础上进一步拓展
+## 知识关联
 
-## 学习建议
+自我介绍是英语口语表达体系中第一个需要系统学习的场景，它直接训练了三项基础能力：一是 **be动词和简单现在时**的实际运用（"I am / I work / I enjoy"），二是**英语姓名顺序**（名在前、姓在后，与中文相反），三是**语调的礼貌性调整**（问句末尾升调、陈述句末尾降调）。
 
-预计学习时间：30-60分钟。建议采用以下策略：
-
-- **主动回忆**：学完后不看笔记复述自我介绍的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将自我介绍与英语中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释自我介绍，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于口语表达的章节可作为深入参考
-- Wikipedia: [Self Introduction](https://en.wikipedia.org/wiki/self_introduction) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Self Introduction" 可找到配套视频教程
+完成自我介绍的学习后，学生将进入**日常对话**阶段。自我介绍中的结尾提问句 "What about you?" 和 "Where are you from?" 正是日常对话的起点，两者在话题（个人信息）、句型（一般现在时疑问句）和词汇（国家、职业、爱好类名词）上高度重叠，形成自然的学习过渡。
