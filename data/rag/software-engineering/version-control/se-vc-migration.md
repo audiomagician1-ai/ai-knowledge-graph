@@ -24,84 +24,59 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-27
 ---
 
+
 # 版本控制迁移
 
 ## 概述
 
-版本控制迁移是指将代码仓库从一种版本控制系统（VCS）完整搬移到另一种系统的过程，核心挑战在于同时保留完整的提交历史、分支结构、标签和元数据。最常见的迁移路径是从集中式系统（SVN 或 Perforce/P4）迁移到分布式系统 Git，这一趋势在 2010 年代随着 GitHub 的普及而大规模出现。
+版本控制迁移是指将代码仓库从一种版本控制系统（VCS）转移到另一种系统的完整过程，通常包括提交历史、分支结构、标签和元数据的转移。最常见的迁移路径是从集中式系统 SVN（Subversion）或 Perforce（P4）迁移到分布式系统 Git，这一趋势在 2010 年代随着 GitHub 的普及而快速加速。
 
-历史上，SVN（Subversion）和 Perforce 长期主导企业版本控制市场。SVN 于 2000 年发布，Perforce 于 1995 年发布，而 Git 由 Linus Torvalds 于 2005 年为 Linux 内核开发而创建。随着 DevOps 和开源协作模式的推广，大量团队需要从这些旧系统迁移至 Git，以获得分支合并灵活性和离线工作能力。
+SVN 于 2000 年发布，设计目标是取代 CVS，采用单一中央仓库模型，每次提交拥有自增的修订号（如 r1234）。Git 由 Linus Torvalds 于 2005 年创建，采用 SHA-1 哈希标识每次提交，支持完全去中心化的工作流。Perforce 则在游戏开发和大型媒体公司中广泛使用，擅长处理大型二进制文件。迁移的动机通常包括降低基础设施成本、支持分布式团队协作，以及利用 GitHub/GitLab 的 CI/CD 生态。
 
-迁移并非简单的文件复制。一次失败的迁移会导致历史记录丢失、提交者信息错乱或分支拓扑断裂，从而让团队失去追溯 Bug 引入时间点的能力，严重影响代码审计和合规要求。
-
----
+历史保留是迁移决策的核心权衡点：完整迁移历史意味着每位开发者的每条提交记录都转入新系统，而"砍断历史"的方式则仅迁移当前代码快照，代价是失去 `git blame` 和 `git log` 的可追溯性。对于受合规审查约束的行业（如金融、医疗），历史保留通常不可妥协。
 
 ## 核心原理
 
-### SVN 到 Git 的迁移：`git svn` 工具链
+### SVN 到 Git 的迁移机制
 
-SVN 使用线性修订号（如 `r1234`）标识全局变更，而 Git 使用 SHA-1 哈希标识每次提交。`git svn clone` 命令可以将 SVN 仓库整体克隆为 Git 仓库，命令格式为：
+`git svn` 是执行 SVN→Git 迁移的官方工具，通过 `git svn clone` 命令将 SVN 仓库逐个修订号拉取并转换为 Git 提交。SVN 的修订号是全局线性递增的，而 Git 的提交形成有向无环图（DAG），因此工具需要在 `.git/svn/` 目录下维护一份修订号到 SHA-1 哈希的映射表。
 
-```
-git svn clone --stdlayout --authors-file=authors.txt https://svn.example.com/repo
-```
+SVN 的典型目录结构约定（`trunk/`、`branches/`、`tags/`）在迁移时通过 `--stdlayout` 参数自动识别：`trunk` 变成 Git 的 `main` 分支，`branches/` 下的子目录变成独立分支，`tags/` 下的目录变成 Git 标签。若仓库不遵循标准布局，则需要通过 `-T`、`-b`、`-t` 参数手动指定路径。
 
-`--stdlayout` 参数告诉工具 SVN 仓库遵循标准的 `trunk/branches/tags` 目录结构，工具会自动将 `trunk` 映射为 `main`，`branches/feature-x` 映射为 Git 分支。`--authors-file` 参数提供用户名到 `Name <email>` 的映射文件，因为 SVN 只存储用户名，Git 需要完整的邮件格式。若缺少此映射，提交者信息将丢失或不完整。
+SVN 的 `svn:externals` 属性（类似于 Git Submodule 的外部依赖引用）在迁移时无法自动转换，需要手动映射为 `.gitmodules` 配置，这是 SVN→Git 迁移中最常见的人工干预点之一。
 
-对于大型仓库，可使用 `svn2git` 工具（基于 `git svn` 封装），它自动处理 `tags` 转换为真实 Git 标签而非分支的问题——这是 `git svn` 裸用时的常见遗漏。
+### Perforce 到 Git 的迁移机制
 
-### Perforce 到 Git 的迁移：`git-p4` 与 `p4-fusion`
+P4 使用"变更列表"（Changelist）作为提交单位，每个 Changelist 有一个整数编号（如 CL#45678）。官方工具 `git-p4` 通过 Python 脚本实现迁移，命令 `git p4 clone //depot/project@all` 中的 `@all` 表示拉取全部历史，`@1234` 则表示只拉取到指定 Changelist。
 
-Perforce 的数据模型与 Git 差异更大：P4 使用 Depot 路径（如 `//depot/main/...`）、变更列表（Changelist）编号，以及 Client Workspace 概念。`git-p4` 是 Git 内置的迁移脚本，执行：
+P4 仓库的 Depot 路径结构与 Git 的仓库边界不对应：一个 P4 Depot 可能包含数百个逻辑项目，迁移时通常需要通过 `//depot/project/...` 的路径过滤来拆分出对应的 Git 仓库。P4 的 Label（标签）和 Branch Spec（分支规格）需要借助 `p4 labels` 和 `p4 branches` 命令枚举后，逐一转换为 Git 标签和分支。
 
-```
-git p4 clone //depot/main/...@all
-```
+### 提交者信息映射
 
-其中 `@all` 表示获取该路径下的全部历史，省略则只取最新快照。
+SVN 和 P4 只记录用户名（如 `jsmith`），Git 则要求每个提交包含姓名和电子邮件（格式：`John Smith <jsmith@example.com>`）。迁移时必须提供一个 `authors.txt` 映射文件，格式为 `jsmith = John Smith <jsmith@example.com>`，通过 `git svn` 的 `--authors-file` 参数或 `git p4` 的配置指定。若映射文件不完整，迁移工具会在遇到未知用户时中止，因此提前用 `svn log` 或 `p4 users` 枚举所有历史作者是迁移准备的必要步骤。
 
-对于拥有数百万个变更列表的超大型仓库（如游戏公司常见的 P4 仓库），微软开源的 `p4-fusion` 工具速度远超 `git-p4`，可将迁移时间从数周缩短至数小时，其原理是使用 P4 并行 API 多线程拉取文件内容。
+### 大文件与二进制资产处理
 
-### 历史保留的关键策略
-
-迁移时历史保留遵循三个层次：**完整迁移**（所有历史）、**截断迁移**（仅保留某个日期或版本号之后的历史）、**并行运行**（迁移后保留旧系统只读访问一段时间）。
-
-截断迁移适合那些历史超过 10 年、仓库体积超过 50GB 的情况，常用做法是设置一个"历史截止点"，例如仅迁移 SVN `r5000` 之后的提交，并将早期历史存档为静态 HTML 页面或只读 SVN 服务器。
-
-二进制大文件（图片、编译产物）在 SVN/P4 中很常见，但会导致 Git 仓库体积膨胀。迁移前应使用 `git-filter-repo` 或在迁移工具中配置排除规则，将大文件迁移至 Git LFS（Large File Storage）而非存入 Git 对象库。
-
----
+Git 对二进制大文件的处理效率远低于 P4 和 SVN LFS 扩展，因为 Git 的对象存储会保留文件每个版本的完整副本。迁移含有大量二进制资产（如游戏引擎的纹理文件）的 P4 仓库时，通常需要在迁移阶段引入 Git LFS（Large File Storage），通过 `git lfs migrate import --include="*.psd,*.fbx"` 将历史中的二进制文件全部重写为 LFS 指针，否则迁移后的仓库可能达到数百 GB，严重影响克隆性能。
 
 ## 实际应用
 
-**案例一：Python 语言仓库迁移**
-Python 核心开发团队于 2017 年将 CPython 仓库从 Mercurial 迁移至 GitHub/Git，使用了 `hg-fast-export` 工具，整个过程花费数月规划，重点工作包括建立 60,000+ 提交的作者映射表，以及将 Mercurial 的命名分支结构转换为 Git 分支。
+**Google Chrome 项目**曾将部分代码库从 SVN 迁移至 Git，其历史包含超过 30 万次提交，迁移过程中使用了自定义的 `authors.txt` 映射和分批克隆策略，以避免单次 `git svn fetch` 超时。
 
-**案例二：企业 SVN 标准迁移流程**
-典型的企业 SVN→Git 迁移分四步执行：① 冻结 SVN 写入权限（或设为只读）；② 运行 `git svn clone` 或 `svn2git` 拉取完整历史；③ 在新 Git 仓库上执行 `git gc --aggressive` 压缩对象库；④ 推送至 GitLab/GitHub 并更新 CI/CD 管道配置。整个过程对于 10 万次提交的仓库通常需要 4–12 小时。
+**游戏公司从 P4 迁移至 Git** 的典型案例中，通常采用"双轨并行"策略：新功能开发切换到 Git，旧分支维护留在 P4，通过 `git-p4` 的双向同步（`git p4 submit` 命令将 Git 提交推回 P4）保持两套系统在过渡期内的一致性，迁移窗口通常持续 3 到 6 个月。
 
-**案例三：游戏公司 P4→Git 局部迁移**
-游戏公司通常不完全放弃 Perforce，因为 P4 对二进制资产的锁定机制（exclusive checkout）是 Git 原生不支持的。常见方案是代码目录迁移到 Git，美术资产目录保留在 P4，通过 CI 系统在构建时整合两个来源。
-
----
+**企业 SVN 单仓库拆分** 是另一种常见场景：一个包含数十个项目的 SVN 大仓库（monorepo）迁移到 Git 时，使用 `git filter-repo --path src/projectA/` 命令提取特定子目录的历史，生成独立的 Git 仓库，同时清除无关路径的所有提交记录，最终每个项目获得精简且完整的独立历史。
 
 ## 常见误区
 
-**误区一：认为 SVN Tags 会自动正确转换为 Git Tags**
-`git svn` 默认将 SVN 的 `tags/` 目录下的内容创建为 Git 远程跟踪分支（`remotes/tags/v1.0`），而非真正的 Git 轻量标签或附注标签。必须在迁移后手动执行转换脚本，或使用 `svn2git` 工具，否则所有标签在 `git tag -l` 中不可见。
+**误区一：`git svn clone` 完成即迁移完成。** 实际上 `git svn clone` 生成的本地仓库仍然含有 `git-svn` 元数据（`.git/svn/` 目录），并非纯净的 Git 仓库。若直接推送到 GitHub，SVN 修订号引用会残留在提交信息中，且无法正常使用 `git pull --rebase` 进行协作。正确做法是在 `clone` 后执行 `git svn rebase` 清理元数据，再通过 `git remote add origin <url> && git push` 推送到纯 Git 服务器。
 
-**误区二：迁移完成后直接删除旧系统**
-迁移完成后立即关闭旧 SVN/P4 服务器是危险做法。团队成员可能有未提交的本地变更，还有部分脚本、构建系统或外部工具仍依赖旧 URL。建议保留旧系统只读访问至少 3 个月，期间记录所有访问请求以识别未迁移的依赖项。
+**误区二：迁移后 SVN 的分支合并历史会完整保留。** SVN 的合并通过 `svn:mergeinfo` 属性记录，而非实际的 DAG 节点关系。`git svn` 无法将这些属性转换为真正的 Git 合并提交，迁移后所有历史均表现为线性提交序列，分支合并关系会丢失。若需要保留合并拓扑，必须使用 `svn2git`（KDE 项目维护的工具）或商业工具如 Converge，它们支持解析 `svn:mergeinfo` 并生成对应的 `git merge` 节点。
 
-**误区三：认为历史提交时间戳会完整保留**
-SVN 的提交时间（`svn:date`）在 `git svn` 迁移后会成为 Git 提交的 `AuthorDate`，但若迁移脚本在执行过程中被中断并重新开始，部分提交的 `CommitDate` 会变为重新执行的当前时间，导致时间戳不一致。应始终使用 `--no-metadata` 以外的选项保留原始时间，并在迁移后用 `git log --format="%H %ai %ci"` 验证时间戳一致性。
-
----
+**误区三：历史迁移与仓库配置一步完成。** 很多团队在完成历史迁移后忽略了配置 `.gitattributes` 文件，导致原本在 SVN 中通过 `svn:eol-style` 属性控制的换行符规范失效，在 Windows 和 Linux 混合开发环境中引发大量虚假的行尾差异提交。迁移后必须显式设置 `* text=auto` 或按文件类型指定换行符处理规则。
 
 ## 知识关联
 
-**与 Git 基础概念的关系**：理解迁移需要掌握 Git 的对象模型（commit、tree、blob）和 SHA-1 寻址机制，因为迁移工具本质上是在将旧系统的增量变更重放为 Git 提交对象。SVN 的修订号是全局单调递增整数，而 Git 的哈希是基于内容的，两者无法直接对应，这是迁移工具需要维护映射表的原因。
+掌握版本控制迁移需要了解 SVN 的修订号模型与 Git 的 SHA-1 DAG 模型之间的结构差异，因为这直接决定了 `svn:mergeinfo` 无法被自动转换的根本原因。熟悉 Git 的分支与标签创建命令（`git branch`、`git tag`）有助于理解迁移脚本在 trunk/branches/tags 映射阶段的操作逻辑。
 
-**与分支策略的关系**：SVN 的 `trunk/branches/tags` 约定是目录级别的，而 Git 分支是指针。迁移后团队需要重新制定分支策略（如 Gitflow 或 Trunk-Based Development），不能简单沿用 SVN 的目录命名习惯，否则会产生类似 `origin/branches/feature-x` 这样冗余的分支名称。
-
-**与 CI/CD 流水线的关系**：旧版本控制系统往往绑定了特定的构建触发机制（如 SVN 的 `post-commit` 钩子，P4 的 `triggers`）。迁移后这些钩子需要全部改写为 Git 的 `push` 或 Pull Request 事件，Jenkins、GitLab CI 或 GitHub Actions 的配置文件需同步更新，这往往是迁移项目中耗时最长的非技术工作。
+对于后续的 Git 高级使用，迁移实践中涉及的 `git filter-repo` 工具也是仓库历史重写（如删除敏感文件、拆分子目录）的核心工具，理解其 `--path`、`--invert-paths`、`--path-rename` 参数为后续的仓库维护操作奠定了操作基础。Perforce 迁移中的 `git p4 submit` 双向同步机制，也与 Git 和其他 VCS 混合使用时的桥接工作流直接相关。
