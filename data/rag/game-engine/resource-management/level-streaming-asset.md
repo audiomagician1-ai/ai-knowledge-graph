@@ -24,60 +24,60 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # 关卡流式加载
 
 ## 概述
 
-关卡流式加载（Level Streaming）是一种将游戏世界分割为若干独立子关卡（Sub-level），并根据玩家位置在运行时动态加载或卸载这些子关卡的技术。与一次性将整个游戏世界加载进内存的传统方式不同，关卡流式加载允许引擎仅保留玩家当前区域及其邻近区域的几何体、灯光和碰撞数据在内存中，其余区域则保持卸载状态。这一机制使得开发者能够构建远超单块关卡内存上限的超大型开放世界。
+关卡流式加载（Level Streaming）是游戏引擎中将一个大型游戏世界拆分为多个子关卡（Sub-level），在运行时根据玩家位置动态加载和卸载这些子关卡的技术。这种机制让开发者无需将整个游戏世界的所有资源同时驻留在内存中，而是让世界的不同区域按需进出内存。例如在虚幻引擎5中，一张完整的开放世界地图可能被划分为数百个 512×512 米的子关卡格子，但同一时刻内存中只有玩家周边半径约 3 个格子范围内的内容处于激活状态。
 
-该技术在虚幻引擎中经历了显著演进。虚幻引擎3时代已引入手动子关卡流式概念，开发者通过放置`Level Streaming Volume`或蓝图调用`Load Stream Level`节点来精确控制加载时机。虚幻引擎5推出的**World Partition**系统则将这一过程自动化：引擎以512×512单位（默认值，可配置）的网格单元（Cell）为最小调度粒度，根据玩家与每个Cell的距离自动触发异步加载或卸载，无需开发者手动划分子关卡边界。
+该技术的雏形出现在虚幻引擎3时代（约2006年），当时开发者通过在编辑器中手动创建 Persistent Level 与多个 Streaming Level，用 `LoadStreamLevel` 和 `UnloadStreamLevel` 蓝图节点控制加载行为。虚幻引擎5的 World Partition 系统在2021年随《堡垒之夜》章节4的地图改造正式量产化，将子关卡的划分和调度逻辑完全自动化，开发者只需设定 Cell Size 和 Loading Range，引擎自动生成并管理数以千计的数据单元。
 
-关卡流式加载的重要性体现在它直接决定了游戏的可见内存占用（RSS）与I/O带宽消耗之间的平衡。若加载半径设置过大，GPU显存和系统内存会被大量非当前可见网格体占用；若加载半径过小，玩家移动时会频繁触发磁盘读取，造成明显的卡顿（Stutter）。针对PS5和Xbox Series X等次世代主机的SSD I/O速度（约5.5 GB/s raw），开发者可以使用更激进的卸载策略，这与上一世代HDD时代必须提前数秒预加载的做法截然不同。
-
----
+关卡流式加载对于超过 4GB 资源总量的开放世界游戏来说几乎是不可或缺的：主机端 GPU 显存通常只有 8–16 GB，如果不做流式调度，一张大型开放世界的 Static Mesh 和 Texture 总量就可以轻易超出硬件上限。
 
 ## 核心原理
 
-### 子关卡的状态机
+### 流式单元的划分策略
 
-每个流式子关卡在引擎内部维护一个严格的状态机，包含以下几个离散状态：**Unloaded（未加载）→ Loading（异步加载中）→ Loaded（已加载但不可见）→ MakingVisible（可见化处理中）→ Visible（完全可见）**，以及反向的卸载路径。Loaded状态与Visible状态的分离至关重要：关卡可以在内存中完成几何体和碰撞数据的构建，但延迟一帧或数帧再切换为可见，避免在同一帧内同时承受I/O完成、渲染命令构建和物理世界更新三重开销导致的帧率尖峰。
+关卡流式加载的基础单元在旧式 Level Streaming 中是人工划分的 `.umap` 子关卡文件，而在 World Partition 中称为 Runtime Cell（运行时单元），由引擎根据设定的 `World Partition Cell Size`（默认值通常为 12800 厘米，即 128 米）在编辑器内自动生成网格。每个 Runtime Cell 是一个独立的异步加载单位，拥有自己的包文件，包含该格子范围内所有 Actor 的序列化数据。
 
-### World Partition的Cell调度算法
+子关卡的空间索引依赖 **2D 网格哈希**（Spatial Hash Grid），引擎将玩家坐标 `(x, y)` 映射到格子下标 `i = floor(x / CellSize), j = floor(y / CellSize)`，从而以 O(1) 时间确定哪些单元需要加载，避免逐一遍历全部格子的开销。
 
-World Partition将世界坐标系划分为三维网格。每个Cell记录其包含的Actor引用列表（而非Actor本身）。引擎每帧执行`UWorldPartitionRuntimeCell::UpdateStreamingState()`，计算所有Streaming Source（默认为玩家控制的Pawn）到每个Cell中心的距离，并与该Cell配置的**加载距离（Loading Range）**和**可见距离（Visibility Range）**阈值比较。当距离小于Loading Range时，该Cell进入异步加载队列；距离超过Loading Range乘以一个Hysteresis系数（默认1.2）时，才触发卸载——这一滞回（Hysteresis）设计防止玩家在边界附近来回移动时反复触发加载/卸载抖动。
+### 加载状态机与优先级队列
 
-### 异步加载与主线程同步
+每个流式关卡在引擎内部维护一个包含 5 个状态的状态机：`Unloaded → Loading → Loaded → MakingVisible → Visible`，以及反向的 `Visible → MakingInvisible → Unloaded`。从 `Loading` 到 `Loaded` 由异步 I/O 线程完成磁盘读取，从 `Loaded` 到 `MakingVisible` 则需要在渲染线程完成 GPU 资源上传。两个阶段分开设计，是为了让资源在完全 GPU 就绪之前不会被渲染器看到，防止出现缺少材质的白模闪烁。
 
-关卡流式加载的实际文件读取发生在专用的异步加载线程（Async Loading Thread, ALT）上，与游戏逻辑主线程并行执行。在虚幻引擎中，`FlushAsyncLoading()`调用会强制主线程等待ALT完成所有待处理包（Package）的加载，这在关卡初始化时可能导致长达数百毫秒的冻结。因此，流式加载的设计原则是**永远不在运行时调用`FlushAsyncLoading()`**，而是依靠足够大的预加载半径保证异步工作总能在玩家抵达之前完成。`IsLevelVisible()`和`GetNumAsyncPackages()`等API可在运行时查询当前加载状态，供过场动画或传送逻辑使用。
+优先级方面，引擎为每个待加载单元计算一个优先级分数，公式简化为：
+```
+Priority = (1 / Distance²) × LoadingRangeWeight × CameraFacingBonus
+```
+摄像机正前方的格子优先级高于身后的格子，`CameraFacingBonus` 通常在 1.0–1.5 之间，确保玩家奔跑时前方内容先于侧方和后方完成加载。
 
-### HLOD与流式加载的协作
+### 流式距离与内存预算
 
-远距离的未加载Cell不会显示为空白区域，而是由**Hierarchical LOD（HLOD）**代理网格体填充视觉空缺。World Partition会为每个Cell自动烘焙一个简化的HLOD Actor，该Actor始终保持加载状态（内存占用极低），在真实Cell几何体加载完成后无缝切换。HLOD 0层代理通常将Cell内所有网格体合并为单个网格体并降低面数至原始的5%~10%，从而实现千米级别的视距而不触发真实几何体的流式加载。
-
----
+`Loading Range`（加载半径）是关卡流式加载中最直接影响内存占用的参数。以虚幻引擎5为例，在 `WorldSettings` 中可以分别设置 `Loading Range`（触发磁盘读取的距离）和 `HLod Distance`（切换到合并 Mesh 代理的距离）。当格子中心到玩家的 XY 平面距离超过 `Loading Range` 时，引擎发出卸载请求，但并非立即释放内存——引擎会维持一个 **短时缓存（Short-time Cache）**，通常持续 2–5 秒，防止玩家在区域边界反复横跳导致同一格子频繁加载卸载（即"乒乓问题"）。
 
 ## 实际应用
 
-**《堡垒之夜》大地图管理**：Epic在《堡垒之夜》Chapter 4迁移至World Partition后，将原本手动维护的数十个子关卡边界文件替换为自动Cell网格，关卡编辑器中的合并冲突（Merge Conflict）数量下降约80%，因为每个Actor独立存储为单独文件而非集中于同一关卡包。
+在《黑神话：悟空》（2024年）这类采用虚幻引擎5的开放场景游戏中，World Partition 将美术资产密集的山地场景拆分为若干 Cell，地形（Landscape）作为特殊类型以更大的 Cell Size（通常 256 米）单独划分，而密集植被（Foliage）则以独立的 HLOD 层级在远处替换为合并网格，只有玩家进入 50 米以内时才加载原始高精度模型。
 
-**过场动画触发加载**：在玩家按下开门按钮后，游戏通常播放一段3~5秒的开门动画。这段时间正是预加载门后区域子关卡的窗口期。开发者在门的Blueprint中调用`Load Stream Level(LevelName, MakeVisibleAfterLoad=false)`，使目标关卡在后台完成加载但保持不可见，动画结束时再调用`Set Level Visibility(true)`，实现零感知延迟的无缝切换。
+在多人游戏中，服务器与每位玩家都会独立维护各自的流式加载状态。《堡垒之夜》使用 World Partition 后，服务器需要为 100 名玩家的位置集合取并集，确保任意玩家可见范围内的格子都已在服务器端加载，这一逻辑称为 **Server Streaming Source**，由专用的 `APlayerController` 自动注册到 World Partition 的加载源列表。
 
-**多人游戏的服务器/客户端分离加载**：在多人游戏中，服务器需要加载所有玩家视野覆盖的Cell，而每个客户端只需加载本地玩家周围的Cell。虚幻引擎的`APlayerController`默认作为Streaming Source，但服务器端可以注册多个Streaming Source（每个在线玩家一个），确保玩家A所在区域的服务器碰撞逻辑在玩家B的客户端不可见时仍保持有效。
-
----
+调试关卡流式加载时，虚幻引擎提供 `wp.Runtime.ToggleDrawRuntimeHash2D` 控制台命令，可在视口中叠加显示每个 Runtime Cell 的加载状态颜色（绿色为 Visible，黄色为 Loading，灰色为 Unloaded），帮助开发者直观识别加载空洞（Loading Hole）问题。
 
 ## 常见误区
 
-**误区一：加载半径越大越安全**。许多开发者为了避免加载延迟，将World Partition的Loading Range设为极大值（如10000单位），结果导致内存中同时存在过多Cell的几何体和Actor，触发内存超限（OOM）或大量Actor的Tick调用拖慢主线程。正确做法是结合目标平台的可用内存预算，使用`World Partition > Debug > Show Cells`可视化工具监测实际加载Cell数量，并针对不同质量等级（PC高/中/低，主机/移动端）分别配置Loading Range。
+**误区一：将 Loading Range 设置得越大越安全**
+一些开发者出于担心加载空洞，将 `Loading Range` 设置到 20000 厘米（200 米）以上，导致同时激活的格子数量从约 9 个急增至约 49 个，内存占用成倍增长。正确做法是配合 HLOD 系统：远处格子用合并的低精度代理覆盖视觉，而非用高精度原始资源填满视野。
 
-**误区二：子关卡加载完成即可立即使用其中的Actor引用**。在蓝图中缓存跨子关卡的Actor引用后，若目标关卡被卸载，该引用会变为悬空指针（Stale Reference），访问时不会立即崩溃但会返回无效数据或触发断言。正确模式是在使用前调用`IsValid(ActorRef)`检查，或改用`UGameplayStatics::GetAllActorsOfClass()`在需要时动态查询，而非持久缓存。
+**误区二：认为子关卡加载是同步完成的**
+旧版 `LoadStreamLevel` 节点若不勾选 `Make Visible After Load`，蓝图在下一帧就能拿到"已加载"的回调，但此时关卡中的 Actor 仍处于 `Loaded` 而非 `Visible` 状态，直接访问其组件可能读取到未完成 GPU 上传的资源。正确做法是监听 `OnLevelShown` 事件，而不是 `OnLevelLoaded`。
 
-**误区三：World Partition与手动Level Streaming可以混用**。在同一个World中同时启用World Partition并手动创建Persistent Level下的Streaming Level，会导致两套系统的Actor所有权冲突和GC引用计数异常。虚幻引擎5官方文档明确指出，启用World Partition的World应完全依赖其自动Cell调度，不应再添加传统的`ULevelStreamingKismet`实例。
-
----
+**误区三：World Partition 可以完全取代手动关卡流式**
+World Partition 的自动网格化对需要精确边界控制的场景（如室内/室外切换的洞穴入口）并不理想，此时仍应使用传统的 `Level Streaming Volume` 配合手动划分的子关卡，由 Volume 边界精确触发加载，而不是依赖距离阈值。
 
 ## 知识关联
 
-关卡流式加载建立在**流式系统**的异步I/O和包（Package）生命周期管理基础之上——理解`FAsyncLoadingThread`如何处理`.umap`包的序列化反序列化，是排查关卡加载卡顿问题的前提知识。具体而言，关卡流式加载是流式系统在"地理空间数据"这一特定类型资产上的专项应用，其调度依据是空间距离而非通用的引用计数。
+关卡流式加载建立在**流式系统**的基础异步 I/O 调度机制之上：流式系统提供了将任意资源包异步读入内存的底层能力，而关卡流式加载则在此之上增加了**空间感知的调度层**——它决定"哪些包需要加载"，流式系统负责"如何高效读取这些包"。两者分工明确：流式系统不感知玩家位置，关卡流式加载不感知磁盘布局。
 
-在资源管理体系中，关卡流式加载与**纹理流式加载（Texture Streaming）**和**Nanite虚拟几何体**并列为三大运行时内存控制手段，但三者调度的资产类型和粒度完全不同：纹理流式加载以Mip层级为单位管理GPU显存，Nanite以Cluster为单位管理几何体细节，而关卡流式加载以整个Actor集合为单位管理世界状态（包括碰撞、AI NavMesh片段、光照数据等）。掌握这三者的协同关系，是构建次世代开放世界游戏内存预算方案的必要技能。
+关卡流式加载与 **HLOD（Hierarchical Level of Detail）** 系统紧密协作：HLOD 为尚未加载的远距离格子生成代理网格，填补视觉空洞，是关卡流式加载在视觉表现上的"补偿机制"。此外，**Data Layer**（数据层）系统可以在 World Partition 的格子之上叠加按游戏逻辑（如昼夜、剧情进度）过滤 Actor 的能力，两者共同构成了虚幻引擎5大世界管理的完整方案。

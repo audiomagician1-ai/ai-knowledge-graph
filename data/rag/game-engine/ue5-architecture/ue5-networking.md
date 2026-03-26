@@ -24,70 +24,74 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # UE5网络架构
 
 ## 概述
 
-UE5的网络架构建立在**客户端-服务器模型（Client-Server Model）**之上，服务器拥有游戏状态的权威版本（Authoritative State），所有客户端通过网络同步接收服务器的状态更新。这与点对点（P2P）架构有本质区别——UE5默认不支持纯P2P拓扑，所有游戏逻辑决策必须由服务器做出，客户端仅负责展示与输入。
+UE5的网络架构建立在虚幻引擎长达二十余年迭代的客户端-服务器（Client-Server）模型之上，其设计目标是让游戏逻辑开发者在多数情况下无需手动处理底层套接字通信。该架构的三大支柱是：属性复制（Replication）、远程过程调用（RPC）以及网络驱动（NetDriver）。UE5的网络代码入口位于`Engine/Source/Runtime/Engine/Classes/Engine/NetDriver.h`，整个系统在游戏运行时由`UNetDriver`实例统一调度。
 
-UE5的网络系统继承自UE4并在Epic自家游戏《堡垒之夜》的大规模生产验证中持续演进。其核心机制于虚幻引擎3时代奠定基础，包括属性复制（Property Replication）和远程过程调用（RPC）两大支柱。到UE5.1版本时，网络子系统新增了对Iris Replication System的实验性支持，这是一套基于数据导向设计（Data-Oriented Design）重构的新复制框架，目标是替换已运行二十余年的旧复制管线。
+该架构采用**权威服务器**（Authoritative Server）模式，即Server拥有游戏状态的最终决定权，Client只能通过RPC向Server发送请求，再由Server将最新状态复制回各Client。这与点对点（P2P）架构本质不同：在UE5默认模型下，没有任何Client可以直接修改另一个Client所看到的Actor状态。这一设计使作弊防御更容易实现，但也意味着所有需要同步的逻辑必须标记正确的网络角色（NetRole）。
 
-理解UE5网络架构对于开发任何多人游戏至关重要。一个错误的网络设计决策——例如在客户端直接修改角色血量而不通过服务器——会导致作弊漏洞或状态不同步（Desync），这类问题在项目后期极难修复。
-
----
+UE5在UE4基础上引入了**Iris Replication System**（虚幻引擎5.1起作为实验功能，5.3起可生产使用），以替换沿用多年的传统复制管道，重点解决大规模场景下的CPU瓶颈问题。传统系统使用逐Actor轮询方式检查脏标志（dirty flag），而Iris改用基于筛选器（Filter）和数据包组（ReplicationGroup）的批量处理管道，在千人同屏场景下可将复制CPU开销降低约40%。
 
 ## 核心原理
 
 ### 属性复制（Property Replication）
 
-属性复制是指服务器将Actor上标记为`UPROPERTY(Replicated)`的成员变量自动同步到所有相关客户端。其工作原理依赖**复制图（Replication Graph）**：每帧服务器遍历所有需要复制的Actor，计算哪些客户端的连接（UNetConnection）需要接收该Actor的更新，再对比属性的脏位（Dirty Bit），只发送自上次同步以来发生变化的属性数据。
+属性复制的触发前提是：Actor的`bReplicates`设置为`true`，且该属性在`GetLifetimeReplicatedProps`函数中通过`DOREPLIFETIME`宏进行注册。服务器在每个网络帧（默认频率由`NetUpdateFrequency`控制，默认值为100Hz）检查已标记为复制的属性是否与上次发送给该Client的快照（Shadow State）存在差异；若存在差异则将变更打包进UDP数据包发往对应Client。
 
-在C++中启用复制需要三个步骤：第一，在类构造函数中调用`SetReplicates(true)`；第二，在属性声明上添加`UPROPERTY(Replicated)`宏；第三，重写`GetLifetimeReplicatedProps`函数并使用`DOREPLIFETIME`宏注册属性。UE5还支持条件复制，例如`DOREPLIFETIME_CONDITION(AMyActor, Health, COND_OwnerOnly)`表示该属性仅同步给拥有该Actor的客户端，可显著减少网络带宽消耗。
+```cpp
+// 典型注册示例
+void AMyActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+    Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+    DOREPLIFETIME(AMyActor, Health);
+    DOREPLIFETIME_CONDITION(AMyActor, AmmoCount, COND_OwnerOnly);
+}
+```
 
-属性复制还支持**RepNotify**机制：当客户端收到属性更新时，自动调用`OnRep_PropertyName()`回调函数，开发者可在此函数中处理视觉或音效反馈，而无需手动轮询状态变化。
+`COND_OwnerOnly`是15种内置条件之一，表示该属性仅同步给拥有该Actor的Client，可显著减少不必要的带宽消耗。当属性到达Client后，引擎自动调用标记了`ReplicatedUsing`的回调函数（`OnRep_`函数），开发者在此处更新视觉效果或触发本地逻辑。
 
 ### 远程过程调用（RPC）
 
-RPC允许代码跨越网络边界在远端执行函数。UE5提供三种RPC类型，各有严格的调用方向约束：
+RPC分为三种类型，其方向和执行位置完全不同：
+- **Server RPC**：由Client调用，在Server上执行；必须标记`WithValidation`以防止恶意Client滥用。
+- **Client RPC**：由Server调用，在拥有该Actor的Client上执行；常用于播放UI反馈或音效。
+- **NetMulticast RPC**：由Server调用，同时在Server本机及所有已连接Client上执行。
 
-- **Server RPC**（`UFUNCTION(Server, Reliable)`）：由客户端调用，在服务器上执行。典型场景是客户端通知服务器玩家按下了射击键。
-- **Client RPC**（`UFUNCTION(Client, Reliable)`）：由服务器调用，在特定客户端上执行。典型场景是服务器通知特定玩家显示击杀信息。
-- **Multicast RPC**（`UFUNCTION(NetMulticast, Unreliable)`）：由服务器调用，在服务器和所有客户端上执行。典型场景是触发爆炸特效。
+RPC在UFUNCTION宏中通过`Server`、`Client`、`NetMulticast`关键字声明。需要特别注意：**RPC不保证送达**——底层使用UDP传输，仅当RPC被声明为`Reliable`时引擎才会增加确认重传机制，因此高频调用（如每帧触发的移动更新）应使用`Unreliable`以避免队列堆积导致延迟激增。
 
-可靠性（Reliability）是RPC的关键参数：`Reliable`使用TCP语义保证送达，`Unreliable`使用UDP语义允许丢包，后者适合高频低延迟的数据（如角色动画状态）。滥用`Reliable`标记会导致网络队列堆积，在高延迟环境下引发"网络洪泛"（Network Flood）问题。
+### 网络驱动（NetDriver）与连接管理
 
-### NetDriver与连接管理
+`UNetDriver`是整个网络栈的调度核心，负责管理`UNetConnection`列表和`UChannel`体系。每个已连接的Client对应一个`UNetConnection`，其内部包含若干`UActorChannel`，每个`UActorChannel`负责一个已复制Actor的状态同步。
 
-`UNetDriver`是UE5网络层的核心类，负责管理所有`UNetConnection`对象并驱动整个数据包的收发流程。默认实现类为`UIpNetDriver`，基于UDP协议传输，在UDP之上构建了UE自有的可靠传输层（Bunch/Channel系统）。
+`UNetDriver`的默认实现是基于UDP的`UIpNetDriver`，底层通过`FSocket`与平台无关的套接字抽象层通信。在Steam或Epic Online Services环境下，可替换为`UOnlineSubsystemSteamNetDriver`等自定义实现，而上层的Replication逻辑完全不变。NetDriver还集成了**包预算（Packet Budget）**机制：每个Client每帧可发送的字节数由`MaxClientRate`（默认15000 bytes/s）和`MaxInternetClientRate`控制，超出预算的数据包将被延后到下一帧发送。
 
-每个网络连接被抽象为一个`UNetConnection`，其下包含多个`UChannel`：`UControlChannel`处理握手与控制消息，`UActorChannel`负责具体Actor数据的序列化与反序列化，每个需要复制的Actor独占一个`UActorChannel`。数据在网络层的最小传输单位是**Bunch**，多个Bunch打包为一个**Packet**发送，默认MTU（最大传输单元）为1500字节。
+### 网络角色（NetRole）与相关性（Relevancy）
 
-**网络角色（Network Role）**决定了Actor在不同机器上的权限：`ROLE_Authority`表示该机器对此Actor有完全控制权（仅服务器持有），`ROLE_AutonomousProxy`表示本地玩家控制的Actor（在拥有该Actor的客户端上），`ROLE_SimulatedProxy`表示其他客户端上的模拟副本。开发者可在代码中通过`HasAuthority()`判断当前是否为服务器，这是网络逻辑分支的最常用方式。
+每个Actor在每个机器上拥有`ENetRole`枚举值：`ROLE_Authority`（服务器本机）、`ROLE_AutonomousProxy`（拥有该Actor的Client）、`ROLE_SimulatedProxy`（其他Client）。大量UE5系统（如`CharacterMovementComponent`的本地预测逻辑）通过判断`GetLocalRole()`来决定是否执行物理模拟还是仅插值显示。
 
----
+Actor**相关性**（IsNetRelevantFor）决定服务器是否为某Client复制该Actor。默认规则基于距离阈值`NetCullDistanceSquared`（默认225,000,000平方厘米，即1500米），超出距离的Actor不会被复制给该Client。开发者可重写`IsNetRelevantFor`实现视锥体裁剪、队友可见性等自定义逻辑。
 
 ## 实际应用
 
-在《堡垒之夜》类型的射击游戏中，玩家角色的`Health`属性设置为`DOREPLIFETIME_CONDITION(ACharacter, Health, COND_OwnerOnly)`，仅同步给角色所有者用于显示UI；而`Shield`属性则使用`COND_None`广播给所有人，以便其他玩家的UI能显示护盾特效。
+**多人射击游戏的生命值同步**：`Health`属性在Server上扣减后通过`DOREPLIFETIME`自动同步到所有Client；同时Server向受击Client发送`Client RPC`播放受击音效（仅该玩家听到），向全体Client发送`NetMulticast RPC`触发血液粒子效果（所有人可见）。两种机制分工明确，避免用一个NetMulticast RPC做所有事情。
 
-移动同步是另一个典型场景：`ACharacter`内置的`UCharacterMovementComponent`使用自定义的Server/Client RPC对（`ServerMove`与`ClientAdjustPosition`）实现**客户端预测（Client-Side Prediction）**——客户端立即响应输入移动，服务器验证后若位置偏差超过`KINDA_SMALL_NUMBER`（1e-4f）则发送校正包，客户端收到后回滚并重放输入。
+**大型开放世界的兴趣管理**：《堡垒之夜》等基于UE的大型多人游戏通过自定义`NetDriver`的Prioritization函数，对重要Actor（如持枪敌人）提高`NetPriority`值（默认1.0，关键Actor可设为3.0），确保在带宽受限时优先更新高威胁目标，低优先级的背景NPC则降频更新。
 
-在开发调试阶段，可在控制台输入`net.PacketLoss 10`模拟10%丢包率，输入`Net.Stat`查看实时网络统计数据，包括每秒发送/接收的包数量、带宽占用和RTT（往返延迟）。
-
----
+**Iris系统的实际迁移**：在`DefaultEngine.ini`中添加`[/Script/Iris.IrisSettings] bEnableIris=true`即可在UE5.3+项目中启用Iris管线。启用后原有的`DOREPLIFETIME`宏和`OnRep_`函数无需修改，Iris通过`UObjectReplicationBridge`自动适配现有代码。
 
 ## 常见误区
 
-**误区一：认为Multicast RPC可以替代属性复制**。Multicast RPC是一次性事件触发，不适合同步持续状态。若一个客户端在Multicast发送后才加入游戏，它不会收到该调用，导致状态缺失。属性复制在新客户端加入时会执行**初始复制（Initial Replication）**，保证新加入者获得完整的当前状态快照。
+**误区一：认为NetMulticast RPC与属性复制可以互相完全替代。** 实际上两者的语义根本不同：属性复制保证新加入的Client能收到当前最新值（状态同步），而Multicast RPC是瞬时事件，中途加入的Client永远不会收到已经广播过的RPC调用。因此"爆炸发生"这类一次性事件适合用RPC，而"当前HP为80"这类持久状态必须用属性复制。
 
-**误区二：在客户端直接调用Server RPC没有所有权限制**。实际上，Server RPC只能由**拥有该Actor的客户端**调用，即`PlayerController`所属的客户端。若客户端尝试对一个不属于自己的Actor调用Server RPC，该调用会被引擎静默丢弃（Silent Drop），不会触发任何错误提示，这是初学者最难排查的问题之一。
+**误区二：认为`Reliable` RPC不会有任何问题，所有RPC都应设为Reliable。** UE5的Reliable RPC使用序号确认机制，底层维护一个发送窗口；当某条Reliable RPC因网络丢包迟迟未收到ACK时，后续所有Reliable消息都会被阻塞（队头阻塞问题）。官方文档明确指出每帧调用Reliable RPC超过一定次数（通常认为超过约10次/秒）会导致连接不稳定乃至断线。
 
-**误区三：认为`SetReplicates(true)`后属性自动同步**。复制只对服务器到客户端方向有效，客户端对复制属性的本地修改不会自动上传到服务器；同时，Actor必须由服务器Spawn才能被正确复制，客户端Spawn的Actor在服务器和其他客户端上根本不存在。
-
----
+**误区三：误以为在Client端直接修改Actor属性会同步到Server。** Client端对`ROLE_SimulatedProxy` Actor的属性修改只影响本地表现，下一次Server复制数据到来时会直接覆盖Client的本地修改。若Client需要影响服务器状态，必须通过`Server` RPC主动请求，服务器验证后再通过属性复制更新所有端。
 
 ## 知识关联
 
-UE5网络架构依赖**GameFramework**的层次结构：`AGameMode`只存在于服务器（`GetGameMode()`在客户端返回null），`AGameState`被复制到所有客户端，`APlayerState`也全量复制，而`APlayerController`只存在于服务器和对应客户端。掌握这四个类的网络存在性，是正确放置游戏逻辑的前提——例如，得分统计放在`APlayerState`的复制属性中，游戏规则判断放在`AGameMode`的服务器逻辑中。
+UE5网络架构以**GameFramework**（`AGameMode`、`APlayerController`、`APawn`等类）为运行基础：`AGameMode`仅存在于Server，负责权威逻辑；`APlayerController`在Server和对应Client各有一份，是Server RPC的典型载体；`APawn`在所有Client上有复制实例。理解`NetRole`枚举与这些类在不同机器上的存在性，是正确使用Replication和RPC的前提条件。
 
-新版本的**Iris Replication System**（UE5.1+引入的实验性功能）通过`ReplicationFragment`和`ReplicationBridge`将复制逻辑与Actor解耦，并支持按连接进行批量脏检查，理论上在1000+玩家的大规模场景下比旧系统性能提升数倍。理解传统复制机制是迁移到Iris的必要基础。
+在UE5的高级网络开发中，网络架构与**在线子系统（Online Subsystem）**紧密协作：会话创建、匹配和NAT穿透由Online Subsystem处理，连接建立后的数据同步才移交给NetDriver。此外，**CharacterMovementComponent**内置的客户端预测（Client Prediction）和服务端校正（Server Reconciliation）逻辑是对本架构最复杂的实际应用，其源码`CharacterMovementComponent.cpp`超过14000行，完整展示了如何在该网络架构约束内实现流畅的本地手感。
