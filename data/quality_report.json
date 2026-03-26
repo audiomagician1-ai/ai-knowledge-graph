@@ -1,12 +1,12 @@
 {
-  "_generated": "2026-03-26T08:07:32.296615",
+  "_generated": "2026-03-26T08:47:44.724031",
   "_version": "scorer-v2.0",
   "total_docs": 6156,
-  "avg_score": 67.4,
+  "avg_score": 67.6,
   "tier_distribution": {
-    "S": 490,
-    "A": 3379,
-    "B": 2287,
+    "S": 496,
+    "A": 3414,
+    "B": 2246,
     "C": 0
   },
   "domain_summary": {
@@ -24,13 +24,13 @@
     },
     "ai-engineering": {
       "count": 392,
-      "avg_score": 67.8,
-      "min_score": 44.8,
+      "avg_score": 68.2,
+      "min_score": 45.0,
       "max_score": 100.0,
       "tiers": {
-        "S": 73,
-        "A": 162,
-        "B": 157,
+        "S": 75,
+        "A": 164,
+        "B": 153,
         "C": 0
       }
     },
@@ -48,13 +48,13 @@
     },
     "animation": {
       "count": 180,
-      "avg_score": 69.2,
-      "min_score": 44.9,
+      "avg_score": 69.5,
+      "min_score": 45.0,
       "max_score": 82.9,
       "tiers": {
         "S": 7,
-        "A": 123,
-        "B": 50,
+        "A": 125,
+        "B": 48,
         "C": 0
       }
     },
@@ -72,25 +72,25 @@
     },
     "computer-graphics": {
       "count": 250,
-      "avg_score": 67.6,
-      "min_score": 44.9,
+      "avg_score": 68.1,
+      "min_score": 45.0,
       "max_score": 96.6,
       "tiers": {
-        "S": 17,
-        "A": 145,
-        "B": 88,
+        "S": 18,
+        "A": 148,
+        "B": 84,
         "C": 0
       }
     },
     "concept-design": {
       "count": 220,
-      "avg_score": 72.2,
-      "min_score": 44.9,
+      "avg_score": 72.5,
+      "min_score": 45.0,
       "max_score": 92.6,
       "tiers": {
         "S": 7,
-        "A": 174,
-        "B": 39,
+        "A": 176,
+        "B": 37,
         "C": 0
       }
     },
@@ -108,25 +108,25 @@
     },
     "economics": {
       "count": 166,
-      "avg_score": 70.2,
-      "min_score": 44.9,
+      "avg_score": 70.8,
+      "min_score": 45.0,
       "max_score": 99.9,
       "tiers": {
-        "S": 32,
-        "A": 83,
-        "B": 51,
+        "S": 33,
+        "A": 85,
+        "B": 48,
         "C": 0
       }
     },
     "english": {
       "count": 188,
-      "avg_score": 74.7,
-      "min_score": 44.9,
+      "avg_score": 74.9,
+      "min_score": 45.0,
       "max_score": 100.0,
       "tiers": {
         "S": 9,
-        "A": 153,
-        "B": 26,
+        "A": 154,
+        "B": 25,
         "C": 0
       }
     },
@@ -180,13 +180,13 @@
     },
     "game-engine": {
       "count": 304,
-      "avg_score": 68.4,
+      "avg_score": 68.5,
       "min_score": 41.8,
       "max_score": 99.9,
       "tiers": {
         "S": 37,
-        "A": 169,
-        "B": 98,
+        "A": 170,
+        "B": 97,
         "C": 0
       }
     },
@@ -204,49 +204,49 @@
     },
     "game-production": {
       "count": 160,
-      "avg_score": 53.3,
-      "min_score": 44.9,
+      "avg_score": 53.7,
+      "min_score": 45.0,
       "max_score": 99.9,
       "tiers": {
         "S": 2,
-        "A": 24,
-        "B": 134,
+        "A": 26,
+        "B": 132,
         "C": 0
       }
     },
     "game-publishing": {
       "count": 180,
-      "avg_score": 57.4,
-      "min_score": 44.9,
+      "avg_score": 57.6,
+      "min_score": 45.0,
       "max_score": 79.6,
       "tiers": {
         "S": 0,
-        "A": 57,
-        "B": 123,
+        "A": 58,
+        "B": 122,
         "C": 0
       }
     },
     "game-qa": {
       "count": 160,
-      "avg_score": 58.5,
-      "min_score": 44.9,
+      "avg_score": 59.3,
+      "min_score": 45.0,
       "max_score": 82.9,
       "tiers": {
         "S": 2,
-        "A": 57,
-        "B": 101,
+        "A": 61,
+        "B": 97,
         "C": 0
       }
     },
     "game-ui-ux": {
       "count": 200,
-      "avg_score": 52.3,
-      "min_score": 44.9,
-      "max_score": 79.6,
+      "avg_score": 52.9,
+      "min_score": 45.0,
+      "max_score": 82.9,
       "tiers": {
-        "S": 0,
-        "A": 26,
-        "B": 174,
+        "S": 1,
+        "A": 28,
+        "B": 171,
         "C": 0
       }
     },
@@ -276,25 +276,25 @@
     },
     "multiplayer-network": {
       "count": 200,
-      "avg_score": 64.0,
-      "min_score": 44.9,
-      "max_score": 92.6,
+      "avg_score": 64.8,
+      "min_score": 45.0,
+      "max_score": 96.6,
       "tiers": {
-        "S": 11,
-        "A": 96,
-        "B": 93,
+        "S": 12,
+        "A": 99,
+        "B": 89,
         "C": 0
       }
     },
     "narrative-design": {
       "count": 180,
-      "avg_score": 60.2,
-      "min_score": 44.9,
+      "avg_score": 60.4,
+      "min_score": 45.0,
       "max_score": 92.6,
       "tiers": {
         "S": 4,
-        "A": 66,
-        "B": 110,
+        "A": 67,
+        "B": 109,
         "C": 0
       }
     },
@@ -360,36 +360,36 @@
     },
     "technical-art": {
       "count": 180,
-      "avg_score": 63.9,
-      "min_score": 44.9,
+      "avg_score": 64.1,
+      "min_score": 45.0,
       "max_score": 82.9,
       "tiers": {
         "S": 7,
-        "A": 92,
-        "B": 81,
+        "A": 93,
+        "B": 80,
         "C": 0
       }
     },
     "vfx": {
       "count": 180,
-      "avg_score": 64.6,
-      "min_score": 44.8,
+      "avg_score": 66.1,
+      "min_score": 45.0,
       "max_score": 96.6,
       "tiers": {
-        "S": 12,
-        "A": 88,
-        "B": 80,
+        "S": 13,
+        "A": 95,
+        "B": 72,
         "C": 0
       }
     },
     "writing": {
       "count": 185,
-      "avg_score": 77.6,
+      "avg_score": 77.4,
       "min_score": 40.1,
       "max_score": 96.0,
       "tiers": {
-        "S": 38,
-        "A": 129,
+        "S": 37,
+        "A": 130,
         "B": 18,
         "C": 0
       }

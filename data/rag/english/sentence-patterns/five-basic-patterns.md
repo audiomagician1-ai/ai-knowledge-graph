@@ -20,71 +20,68 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-26
 ---
+
+
 # 五种基本句型
 
 ## 概述
 
-五种基本句型（Five Basic Patterns）是英语（English Language）中句型结构领域的核心里程碑概念。难度等级2/9（基础级）。
+英语中所有简单句都可以归纳为五种基本句型，分别是：SV（主语+动词）、SVO（主语+动词+宾语）、SVC（主语+动词+表语）、SVOO（主语+动词+间接宾语+直接宾语）、SVOC（主语+动词+宾语+宾语补足语）。其中S代表Subject（主语），V代表Verb（动词），O代表Object（宾语），C代表Complement（补足语）。这五种结构覆盖了英语简单句的全部可能形式。
 
-SV/SVO/SVC/SVOO/SVOC。作为该学习路径上的里程碑概念，掌握它标志着学习者在该领域达到了重要的能力节点。
+五种基本句型的分类体系由19世纪英国语法学家对英语句法进行系统整理时逐步确立，在20世纪中期被日本和中国的英语教学体系广泛采纳，成为亚洲英语课堂的核心语法框架。掌握这五种句型，学习者能够准确判断句子中每个成分的语法功能，从而避免多余成分或缺失成分的错误。
 
-在知识体系中，五种基本句型建立在无特定先修要求的基础之上，是理解并列句、不定式短语、动名词短语、强调与分裂句、句子错误的关键前置知识。为什么五种基本句型如此重要？因为它在句型结构中起到承上启下的作用，连接基础概念与高级应用。
+五种句型的核心区分逻辑在于动词的"及物性"和"完整性"：不及物动词构成SV句型，及物动词根据是否需要补充说明宾语、是否涉及双宾语，分别形成SVO、SVOO、SVOC；而系动词（linking verb）专门构成SVC句型。动词类型直接决定了句型归属。
 
-## 核心知识点
+## 核心原理
 
-### 1. SV/SVO/SVC/SVOO/SVOC
+### SV句型：主语 + 不及物动词
 
-SV/SVO/SVC/SVOO/SVOC是五种基本句型(Five Basic Patterns)的核心组成部分之一。在句型结构的实践中，SV/SVO/SVC/SVOO/SVOC决定了系统行为的关键特征。例如，当SV/SVO/SVC/SVOO/SVOC参数或条件发生变化时，整体表现会产生显著差异。深入理解SV/SVO/SVC/SVOO/SVOC需要结合英语的基本原理进行分析。
+SV句型仅由主语和不及物动词构成，动词后不接任何宾语，句子已表达完整意义。例如：*The baby cried.*（婴儿哭了）、*The sun rises.*（太阳升起）。常见的不及物动词包括cry、sleep、arrive、happen、disappear等。需要注意，SV句型可以附加地点、时间等状语，但这些成分不改变句型本身，如 *She arrived at noon* 仍属SV句型，at noon为时间状语而非句子核心成分。
 
+### SVO句型：主语 + 及物动词 + 宾语
 
-### 关键原理分析
+SVO是英语中最常见的句型。及物动词（transitive verb）必须接宾语才能表达完整意思，宾语通常是名词、代词或名词短语。例如：*He reads books.*（他读书）、*She loves music.*（她热爱音乐）。判断SVO的关键是：删去宾语后句子意义不完整，如 *He reads* 虽语法上勉强成立，但通常语义残缺。
 
-五种基本句型的核心在于SV/SVO/SVC/SVOO/SVOC。从理论角度看，该概念涉及以下层面：
+### SVC句型：主语 + 系动词 + 表语
 
-1. **定义层**：明确五种基本句型的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解五种基本句型内部各要素的相互作用方式
-3. **应用层**：将五种基本句型的原理映射到英语的实际场景中
+系动词本身语义较弱，必须借助表语（complement）来描述主语的状态或性质。英语中常见系动词约有20个，分为三类：
+- **状态系动词**：be（最典型）
+- **感官系动词**：look、sound、smell、taste、feel
+- **变化/保持系动词**：become、get、turn、remain、stay、seem
 
-思考题：如何判断五种基本句型的应用是否超出了其理论适用范围？
+例如：*The milk smells sour.*（牛奶闻起来酸了）、*She became a doctor.*（她成了一名医生）。表语可以是形容词、名词或名词短语，但绝不能是副词——这是SVC句型最重要的约束条件之一，*She looks beautifully* 是典型错误，应为 *She looks beautiful*。
 
-## 关键要点
+### SVOO句型：主语 + 动词 + 间接宾语 + 直接宾语
 
-1. **核心定义**：五种基本句型的本质是SV/SVO/SVC/SVOO/SVOC，这是理解整个概念的出发点
-2. **多维理解**：掌握五种基本句型需要同时理解SV/SVO/SVC/SVOO/SVOC等关键维度
-3. **先修关系**：五种基本句型是该领域的入口概念，适合初学者
-4. **进阶路径**：掌握后可继续深入并列句等进阶主题
-5. **实践标准**：真正掌握五种基本句型的标志是能在具体场景中灵活运用并正确判断适用边界
+SVOO句型含有两个宾语：间接宾语（Indirect Object）表示动作的接受者，通常是人；直接宾语（Direct Object）表示动作的内容，通常是物。例如：*He gave me a book.*（他给了我一本书），其中me是间接宾语，a book是直接宾语。能构成SVOO的动词数量有限，典型代表有give、send、tell、show、buy、teach、lend、bring、offer等。
+
+SVOO句型有一个重要的变换规则：将间接宾语移至直接宾语之后时，需加介词to或for，即 *He gave a book to me.*。哪些动词用to（give/send/tell/show/lend），哪些动词用for（buy/cook/make/find），需要分别记忆。
+
+### SVOC句型：主语 + 动词 + 宾语 + 宾语补足语
+
+SVOC句型中，宾语补足语（Object Complement）用于补充说明宾语的状态、身份或动作。例如：*They elected him president.*（他们选他为主席）、*She painted the wall white.*（她把墙漆成了白色）、*I saw him running.*（我看见他在跑）。宾语补足语可以是名词、形容词、不定式或现在分词，其与宾语之间存在逻辑上的主谓或主表关系——这一特征是区分SVOC与SVOO的核心依据：在SVOC句型中，"宾语 + 宾语补足语"可以还原为一个独立的SV或SVC关系，如 *him running* 对应 *he is running*。
+
+## 实际应用
+
+在写作中，正确识别句型可以防止常见的成分错误。例如，*She suggested me to go*（错误）混淆了suggest不能构成SVOC句型的特点，正确表达为 *She suggested that I go* 或 *She advised me to go*（advised可构成SVOC）。
+
+在阅读分析长句时，五种句型是拆解句子主干的工具。面对复杂句 *The committee appointed him the new director of the research center*，识别出句型为SVOC（appointed him = O，the new director = C），立刻明确了句子的逻辑核心，后续修饰成分自然归位。
+
+在翻译中文为英文时，五种句型提供了结构框架。"我觉得这个计划可行"对应SVOC：*I find this plan feasible.*（find + plan = O，feasible = C）；"他送了我一份礼物"对应SVOO：*He gave me a gift.*
 
 ## 常见误区
 
-1. **混淆概念边界**：将五种基本句型与句型结构中其他相近概念混为一谈。例如，SV/SVO/SVC/SVOO/SVOC的适用条件与其他同类概念存在明确区别，需要准确辨析
-2. **跳过基础原理：急于应用而忽略五种基本句型的理论根基**。建议先确认先修知识扎实
-3. **满足于表面理解：五种基本句型虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：将SVC中的表语误用为副词形式。** 许多学习者写出 *He looks happily* 或 *The food tastes well*，将系动词误当成行为动词，后接副词修饰。系动词后的补足语描述的是主语的性质，必须用形容词：*He looks happy*，*The food tastes good*。这是SVC句型最高频的语法错误。
 
-## 知识衔接
+**误区二：混淆SVOO与SVOC。** 两个句型都含有动词后接两个成分，但性质完全不同。*He called me a taxi*（SVOO，他给我叫了辆出租车）和 *He called me a liar*（SVOC，他叫我骗子）字面结构相似，但前者me和a taxi是两个独立宾语，后者me与a liar之间有逻辑等同关系（I am a liar）。判断方法：在两个成分之间插入"is/are/was/were"，语义通顺则为SVOC，不通则为SVOO。
 
-### 先修知识
-五种基本句型是该学习路径的起始点之一，无严格先修要求，但具备英语基本素养有助于理解。
+**误区三：认为SV句型不能扩展，或认为扩展后句型改变。** SV句型添加时间状语、地点状语、方式状语后，句型仍然是SV。*Birds fly southward every winter.* 中southward和every winter都是状语，fly仍然是不及物动词，句型不变。句型由谓语动词的类型决定，与修饰成分数量无关。
 
-### 后续学习
-掌握五种基本句型后可继续学习：
-- **并列句** — 在五种基本句型基础上进一步拓展
-- **不定式短语** — 在五种基本句型基础上进一步拓展
-- **动名词短语** — 在五种基本句型基础上进一步拓展
-- **强调与分裂句** — 在五种基本句型基础上进一步拓展
+## 知识关联
 
-## 学习建议
+五种基本句型是学习英语句法结构的起点。学习者在掌握这五种句型的基础上，将进一步接触**并列句**——两个或多个简单句通过and、but、or等连词连接，每个分句内部仍遵循五种句型之一；以及**不定式短语**和**动名词短语**——这两类结构经常充当SVO中的宾语或SVOC中的宾语补足语，理解它们在句中的位置必须以句型分析为前提。
 
-预计学习时间：30-60分钟。建议采用以下策略：
-
-- **主动回忆**：学完后不看笔记复述五种基本句型的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将五种基本句型与英语中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释五种基本句型，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于句型结构的章节可作为深入参考
-- Wikipedia: [Five Basic Patterns](https://en.wikipedia.org/wiki/five_basic_patterns) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Five Basic Patterns" 可找到配套视频教程
+在纠错练习中，五种句型是判断句子是否存在**成分冗余或缺失**的标准尺。例如，双宾语句型中缺少间接宾语、或系动词句型后错误接了宾语，都可以通过套用五种句型模板快速定位错误类型。学习**强调与分裂句**（如It-cleft结构）时，也需要先还原出原始句型，再理解强调结构如何对其进行改写。
