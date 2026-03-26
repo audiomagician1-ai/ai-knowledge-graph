@@ -20,72 +20,66 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-26
 ---
+
 # 分块渲染
 
 ## 概述
 
-分块渲染（Cg Tiled Rendering）是图形学（Computer Graphics）中光栅化领域的重要概念。难度等级3/9（初级）。
+分块渲染（Tile-Based Rendering，TBR）是一种将屏幕划分为若干小矩形区域（称为"块"或"Tile"），逐块完成光栅化和着色计算的渲染架构。与传统的立即模式渲染（Immediate Mode Rendering，IMR）不同，TBR 不会在绘制每个图元时立即写回主内存，而是先将整帧的几何变换结果缓存，再逐 Tile 处理，从而大幅减少对外部 DRAM 的带宽需求。
 
-Tile-Based Deferred Rendering与移动端优化。
+这一架构最早由 Imagination Technologies 在 1990 年代中期随 PowerVR 系列 GPU 推广商用，随后 ARM 的 Mali 和高通的 Adreno GPU 也相继采用了 Tile-Based 或其变种架构。其诞生的直接驱动力是移动设备的功耗约束：在智能手机上，访问外部 DRAM 的能耗约为片上 SRAM 的 10 至 100 倍，而分块渲染通过将每个 Tile 的颜色缓冲与深度缓冲完全放入 GPU 的片上缓存（On-Chip Memory）来规避这一开销。
 
-在知识体系中，分块渲染建立在延迟渲染的基础之上，是理解可进入更高级主题的关键前置知识。为什么分块渲染如此重要？因为它在光栅化中起到承上启下的作用，连接基础概念与高级应用。
+分块渲染之所以在移动端图形中占据主导地位，是因为它天然契合了移动 GPU 面积小、外部带宽贵、电池容量有限的硬件现实。理解 TBR 的工作原理，对于优化 iOS（使用 Apple GPU）和 Android（Mali、Adreno、PowerVR）应用的帧率与电量消耗至关重要。
 
-## 核心知识点
+---
 
-### 1. Tile-Based Deferred Rendering
+## 核心原理
 
-Tile-Based Deferred Rendering是分块渲染(Cg Tiled Rendering)的核心组成部分之一。在光栅化的实践中，Tile-Based Deferred Rendering决定了系统行为的关键特征。例如，当Tile-Based Deferred Rendering参数或条件发生变化时，整体表现会产生显著差异。深入理解Tile-Based Deferred Rendering需要结合图形学的基本原理进行分析。
+### 两阶段流水线
 
-### 2. 移动端优化
+分块渲染将整个渲染管线分为两个明确的阶段。**第一阶段**是几何处理阶段（Binning Pass / Tiling Pass）：GPU 对场景中所有图元执行顶点着色器，计算每个三角形落在哪些 Tile 上，并将结果写入一张称为"Tile List"的数据结构，存储在主内存中。**第二阶段**是光栅化着色阶段（Rendering Pass）：GPU 逐 Tile 读取该 Tile 的 Tile List，将颜色缓冲、深度缓冲、模板缓冲全部加载到片上内存，完成光栅化、像素着色、混合等操作，最后仅将最终颜色结果写回主内存。整帧深度缓冲从不需要写入 DRAM，这是带宽节省的关键所在。
 
-移动端优化是分块渲染(Cg Tiled Rendering)的核心组成部分之一。在光栅化的实践中，移动端优化决定了系统行为的关键特征。例如，当移动端优化参数或条件发生变化时，整体表现会产生显著差异。深入理解移动端优化需要结合图形学的基本原理进行分析。
+### Tile 尺寸与片上内存
 
+典型 Tile 尺寸为 **16×16 像素**或 **32×32 像素**，具体数值因 GPU 型号而异（例如 Apple A 系列 GPU 使用 32×32 像素的 Tile，Mali G 系列常见 16×16）。以 1920×1080 分辨率、32×32 Tile 为例，屏幕被划分为 60×34 = 2040 个 Tile。每个 Tile 需要在片上存储 RGBA 颜色（4 字节/像素）+ 深度/模板（4 字节/像素），32×32 Tile 约需 8 KB 片上空间，而现代移动 GPU 片上缓存通常为 256 KB 至几 MB，可同时容纳多个 Tile 并行处理。
 
-### 关键原理分析
+### TBDR：延迟渲染的融合
 
-分块渲染的核心在于Tile-Based Deferred Rendering与移动端优化。从理论角度看，该概念涉及以下层面：
+**Tile-Based Deferred Rendering（TBDR）**是 PowerVR 首创并由 Apple GPU 采用的进一步优化。在片上光栅化阶段，TBDR 通过**隐藏面消除（Hidden Surface Removal，HSR）**在像素着色之前完成可见性判断：GPU 先对所有图元进行光栅化并确定每像素的最终可见图元，**仅对可见像素执行一次片段着色器调用**，彻底消除了 Overdraw 的着色开销。这与传统延迟渲染（Deferred Rendering）需要额外 G-Buffer 的方案不同——TBDR 在 Tile 粒度内直接实现了零 Overdraw，无需 G-Buffer 即可达到类似效果。传统 IMR 架构做不到这一点，因为它的逐图元即时写入无法在不增加大量状态的情况下推迟着色。
 
-1. **定义层**：明确分块渲染的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解分块渲染内部各要素的相互作用方式
-3. **应用层**：将分块渲染的原理映射到图形学的实际场景中
+---
 
-思考题：如何判断分块渲染的应用是否超出了其理论适用范围？
+## 实际应用
 
-## 关键要点
+### 正确使用 Render Pass 的 Load/Store Action
 
-1. **核心定义**：分块渲染的本质是Tile-Based Deferred Rendering与移动端优化，这是理解整个概念的出发点
-2. **多维理解**：掌握分块渲染需要同时理解Tile-Based Deferred Rendering和移动端优化等关键维度
-3. **先修关系**：扎实的延迟渲染基础对理解分块渲染至关重要
-4. **进阶路径**：可广泛应用于图形学各方面
-5. **实践标准**：真正掌握分块渲染的标志是能在具体场景中灵活运用并正确判断适用边界
+在 Metal（iOS）和 Vulkan（Android）API 中，开发者可以显式控制 Tile 的加载和存储行为。将 Render Pass 的 `loadAction` 设置为 `clear`（而非 `load`）、`storeAction` 设置为 `dontCare`（对不需要保留的深度缓冲），可以避免 GPU 从 DRAM 读取或写入该缓冲，直接节省带宽。若一帧中深度缓冲在后续 Pass 中不再使用，将其 Store Action 设为 `dontCare` 可节省整帧的深度写回带宽，在 1080p 下约节省 4 MB/帧的 DRAM 写入。
+
+### Subpass 与 Tile Memory 直接访问
+
+Vulkan 的 **Subpass** 机制和 Metal 的 **Tile Shading** 特性允许在同一 Render Pass 的不同子阶段之间，通过片上内存直接传递数据，无需写回并重新读取 DRAM。这在移动端实现延迟光照（Deferred Lighting）时尤其有价值：G-Buffer 数据写入片上后，光照 Pass 直接从片上读取，整个 G-Buffer 从不触碰 DRAM。相比桌面端必须将 G-Buffer 写入多张 Render Target 然后再读取，移动端 TBDR 使用 Subpass 可将延迟渲染的带宽开销降低 60% 至 80%。
+
+### 避免打断 Tile 流水线的操作
+
+某些操作会强制 GPU 刷新（Flush）当前 Tile 到主内存，从而破坏 TBR 的带宽优势，包括：在同一帧内读回帧缓冲内容（`glReadPixels`）、使用 `glCopyTexImage2D` 从当前绑定的帧缓冲拷贝纹理、在 Render Pass 中途切换帧缓冲等。这类操作在 ARM Mali GPU 上会触发所谓的 **"Flush"**，导致性能突降，Mali Graphics Debugger 可以检测到这一现象并标记为"External Read"。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将分块渲染与光栅化中其他相近概念混为一谈。例如，Tile-Based Deferred Rendering的适用条件与其他移动端优化概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解延迟渲染就学习分块渲染，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：分块渲染虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：认为分块渲染只是移动端的"阉割版"渲染**。事实恰恰相反，TBDR 的 HSR 技术实现了真正意义上的零 Overdraw 着色，这是桌面 IMR 架构在不引入额外复杂度的情况下无法实现的。Apple M 系列芯片（用于 Mac 和 iPad）同样采用 TBDR 架构，并用于运行高负载的桌面级图形应用。将 TBR 与"低性能"画等号是对架构本质的误解。
 
-## 知识衔接
+**误区二：认为 Overdraw 在 TBDR 上没有任何开销**。TBDR 的 HSR 消除的是**像素着色阶段**的 Overdraw，但几何处理阶段（第一阶段）仍需对所有图元执行顶点着色器。若场景中存在大量被遮挡的复杂网格，其顶点计算开销在 TBDR 上同样存在。此外，Alpha 测试（`discard` 指令）和 Alpha 混合操作会破坏 HSR 的可见性推断，导致 TBDR 无法延迟这些像素的着色，从而退化为类 IMR 行为。
 
-### 先修知识
-先修知识包括：
-- **延迟渲染** — 为分块渲染提供了必要的概念基础
+**误区三：直接将桌面端延迟渲染管线移植到移动端会自动获益**。若开发者不使用 Vulkan Subpass 或 Metal Tile Shading，而是用多个独立 Render Pass 实现 G-Buffer，则 G-Buffer 数据必须写回并重新读取 DRAM，完全丧失了 TBDR 片上内存的优势，实际带宽开销甚至高于原生前向渲染。
 
-### 后续学习
-掌握分块渲染后，学习者已具备该方向的核心能力，可将所学应用于实际项目或探索图形学其他分支。
+---
 
-## 学习建议
+## 知识关联
 
-预计学习时间：1-2小时。建议采用以下策略：
+分块渲染建立在**延迟渲染**的概念之上，但两者的实现层次不同：传统延迟渲染是软件层面的多 Pass 策略，而 TBDR 是硬件层面的片上调度机制。理解延迟渲染中 G-Buffer 的设计目的，有助于领会 TBDR 为何能在片上直接替代 G-Buffer 的 DRAM 往返。
 
-- **主动回忆**：学完后不看笔记复述分块渲染的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将分块渲染与图形学中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释分块渲染，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于光栅化的章节可作为深入参考
-- Wikipedia: [Cg Tiled Rendering](https://en.wikipedia.org/wiki/cg_tiled_rendering) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Cg Tiled Rendering" 可找到配套视频教程
+在 API 层面，分块渲染的优化与 **Vulkan Render Pass / Subpass** 和 **Metal Render Pass Descriptor** 的设计哲学深度绑定——这两套 API 之所以要求开发者显式声明 Load/Store Action，正是为了让驱动程序能够利用 TBR 硬件特性。对于希望进入移动图形优化领域的开发者，理解 TBR 是读懂 ARM 的《Mali GPU Best Practices》和 Apple 的《Metal Performance Best Practices》文档的前提基础。
