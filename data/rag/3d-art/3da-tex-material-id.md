@@ -24,64 +24,62 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # Material ID（材质ID分区）
 
 ## 概述
 
-Material ID（材质ID贴图）是Substance Painter中一种使用纯色色块对3D模型表面进行区域划分的特殊贴图。每一个不同颜色的色块代表一个独立的材质区域，例如金属部件、布料部分、皮革区域等，Substance Painter会根据这张贴图上的颜色差异，自动将不同的材质层分配到对应的模型区域，从而实现快速的纹理分区绘制。
+Material ID 是一种专用的纹理遮罩贴图技术，通过在模型表面涂抹不同的纯色区块，来标识哪些区域应当应用哪种材质效果。在 Substance Painter 中，这张贴图被加载为 `ID Map`，软件会自动识别每个色块的 RGB 数值，从而允许画师用一次点击完成整个区域的材质填充，而无需手动涂抹选区或反复修改遮罩。
 
-Material ID贴图的概念最早随着基于物理渲染（PBR）工作流程的普及而被广泛采用，在Substance Painter 1.x版本时期就已成为标准化功能。相比手动使用遮罩工具逐区涂抹，使用Material ID贴图可以在数秒内完成整个模型的材质分区，极大地压缩了纹理制作的前期准备时间，在游戏和影视角色制作管线中尤为重要。
+这一技术的广泛采用始于多边形模型的 PBR（基于物理的渲染）工作流普及之后，大约在 2014—2016 年间随着 Substance Painter 1.x 系列版本的推出而进入主流 3D 美术管线。在此之前，画师通常依赖面组（Polygon Groups）或 UV 岛手动区分材质，效率低下且难以返工。Material ID 贴图将这一分区逻辑外置为一张独立的颜色图，使美术资产在烘焙阶段就完成了材质边界的划定。
 
-对于一个角色模型而言，盔甲、皮肤、布料、皮带扣可能分属4种完全不同的材质类型，逐一手绘遮罩既耗时又容易出现边界不精准的问题。Material ID贴图通过在建模或烘焙阶段预先划定分区，将这一工作前置到更高效的环节，使纹理艺术家在Substance Painter中可以专注于材质本身的调整，而非边界的精细处理。
+Material ID 贴图在角色装备、武器道具和载具等硬表面模型中尤其重要。以一把步枪为例，枪管、护木、瞄准镜、弹匣通常需要金属、橡胶、玻璃、哑光塑料四种截然不同的材质，若没有 Material ID，每次调整其中一种材质就需要精确重绘遮罩，极易产生漏涂或越界。
 
 ---
 
 ## 核心原理
 
-### 颜色编码与映射机制
+### 色值分配规则
 
-Material ID贴图的本质是一张纯色填充的贴图，其中每个独立材质区域被填充为一种高饱和度、高对比度的纯色——通常使用红（R:255, G:0, B:0）、绿（G:255）、蓝（B:255）、黄（R:255, G:255, B:0）等6到8种标准色。颜色之间需要具有足够的色相差距，避免Substance Painter在识别时发生混淆。在Substance Painter中导入该贴图后，软件会通过"ID"通道读取每个像素的颜色值，并以此为依据生成对应的选区遮罩（Mask）。
+Material ID 贴图使用 **纯色平涂**，每个区域填充单一 RGB 值，两个不同材质区域之间不能有任何渐变或抗锯齿过渡。常见的分配颜色为红（255, 0, 0）、绿（0, 255, 0）、蓝（0, 0, 255）、黄（255, 255, 0）、青（0, 255, 255）、洋红（255, 0, 255）等六种原色与二次色，以及黑、白等中性色。最多可同时区分的材质数量取决于软件识别精度，在 Substance Painter 中实践上限约为 **12–16 种颜色**，超过这个数量时近似色值容易发生误识别。
 
-### 在三维软件中创建Material ID
+### 在 Substance Painter 中的读取机制
 
-在Maya或3ds Max中，最常见的做法是在建模阶段为不同多边形面片组（Face Group）赋予不同的多边形材质球（Polygon Material），每个材质球使用一种纯色Diffuse颜色。在将模型导出为FBX后，Substance Painter可以直接从FBX的材质信息中读取颜色分区，生成Material ID贴图——这种方式无需单独导出一张贴图文件。另一种方式是在ZBrush中使用PolyPaint功能，为不同的SubTool区域涂上不同颜色后，通过Polypaint to Texture的烘焙流程输出一张Color ID贴图，再导入Substance Painter使用。
+当用户将 Material ID 贴图拖入 Substance Painter 项目的 `Mesh Maps > ID` 插槽后，软件会将这张图与所有图层的 `Color Selection` 过滤器联动。在 Fill Layer（填充图层）上激活 `Color Selection` 并点击视口中的颜色区域，Substance Painter 会自动提取该像素的色值，生成一张精确的二值遮罩，使填充效果只作用于所选颜色对应的几何区域。这一读取过程不经过 Bake（烘焙），而是直接引用原始贴图的色值，因此修改 ID 贴图后必须重新加载才能更新遮罩。
 
-### 在Substance Painter中使用ID遮罩
+### 与烘焙 ID Map 的区别
 
-导入Material ID贴图后，在Substance Painter的图层面板中创建Fill图层，然后为该图层添加黑色遮罩（Black Mask），再在遮罩上添加"Color Selection"生成器。点击生成器中的颜色拾取器，直接在视口中点击模型上对应颜色区域，Substance Painter会自动将该颜色覆盖的所有像素转换为白色遮罩区域，准确度误差通常在1-2像素以内。通过调节"Threshold"（容差）参数（取值范围0到1），可以控制颜色识别的容错范围，默认值0.05在大多数情况下已经足够精准。
+Material ID 贴图有两种来源：**手动绘制**（在 3ds Max、Maya 或 Blender 中对面组指定材质颜色后烘焙输出）和 **自动生成**（在 Marmoset Toolbag 或 Substance Painter 烘焙器中选择 `Bake from Mesh > ID`）。自动生成方式依赖模型的面组、顶点色或材质槽数据，只要建模阶段已经正确划分面组，烘焙时即可一键输出；手动绘制则适用于高低模分离的工作流，画师在低模 UV 展开后直接在图像软件中平涂。两者最终产出的贴图格式完全相同，均为 8 位 RGB 图像，分辨率一般与其他贴图保持一致（常见为 2048×2048 或 4096×4096）。
 
 ---
 
 ## 实际应用
 
-### 游戏角色武器的快速分区
+**角色装甲分区**：一套机甲角色的胸甲通常包含主装甲板（金属）、关节软管（橡胶）、发光条（自发光材质）和固定螺钉（小件金属）四类区域。建模师在 Blender 中为这四类面组各指定一种材质颜色，烘焙输出 ID Map 后，纹理画师只需在 Substance Painter 中创建四个 Fill Layer，分别通过 `Color Selection` 锁定对应颜色，即可独立调整每种材质的粗糙度、金属度和基础色，后续修改某一区域不会干扰其他区域。
 
-以一把科幻步枪模型为例，该模型包含枪管（钢铁材质）、握把（橡胶材质）、镜片（玻璃材质）、贴片标签（贴纸材质）四个区域。建模师在Maya中为这四组面片分别赋予红、绿、蓝、黄四种纯色材质球，导出FBX。纹理师在Substance Painter导入该FBX后，通过烘焙面板勾选"ID"通道，30秒内即可生成Material ID贴图。随后为每种材质创建独立的Fill图层，每层用Color Selection生成器各自拾取对应颜色，4个材质区域的遮罩分配工作在2分钟内全部完成，而同样工作若采用手绘遮罩方式可能需要30分钟以上。
+**武器道具快速迭代**：游戏项目中武器美术资产常需要出具 3–5 套配色方案（皮肤变体）。利用 Material ID，画师只需复制 Fill Layer 并修改基础色，即可在 30 分钟内完成一套新配色，而传统手绘遮罩方式同样的工作可能耗费半天。
 
-### 场景道具的批量处理
-
-对于场景中需要重复使用同一张纹理图集（Texture Atlas）的多个道具，例如一套包含桌子、椅子、柜子的家具组合，也可以将所有道具的不同功能区（木材、金属钉、皮革坐垫）统一标记在同一张Material ID贴图中，在Substance Painter中一次性完成所有分区，然后通过智能材质（Smart Material）进行快速套用。
+**错误案例排查**：若 Color Selection 遮罩出现边缘锯齿或"漏色"，最常见原因是建模软件导出时对 ID 贴图做了纹理过滤（Bilinear 或 Trilinear），导致颜色边界处出现过渡像素。解决方案是在导出时将采样模式设为 **Nearest（最近邻）**，确保每个像素保持原始纯色值。
 
 ---
 
 ## 常见误区
 
-### 误区一：相邻区域颜色相似导致溢色
+**误区一：认为 Material ID 贴图需要高分辨率才精确**
+Material ID 贴图的精度取决于 UV 展开的密度，而非贴图分辨率本身。由于每个区域只是纯色平涂，即使使用 512×512 的低分辨率，只要 UV 岛之间有足够的像素间隔（建议至少 2–4 像素的颜色边界），识别精度与 4096×4096 的效果完全相同。过度提高 ID Map 分辨率只会增加项目文件体积而不带来任何质量提升。
 
-部分新手在创建Material ID贴图时使用视觉上相近的颜色，例如深红（R:200, G:0, B:0）和橙红（R:220, G:60, B:0）。Substance Painter在使用Color Selection时，即便将Threshold设为最低值0，也可能因为贴图压缩（如BC1/DXT1格式的有损压缩）导致边界像素颜色被混合，从而使遮罩边界出现溢出噪点。正确做法是确保相邻区域颜色在色相环（Hue）上相差至少30度以上，并在导出Material ID贴图时强制使用无损格式（PNG或TGA，而非JPG）。
+**误区二：Material ID 贴图中的颜色会影响最终渲染颜色**
+Material ID 贴图仅用于 Substance Painter 内部的遮罩生成，在导出最终贴图包（Base Color / Roughness / Metallic / Normal）时，ID Map 本身不会被导出或打包，也不会被游戏引擎或渲染器读取。它是一张 **工作流辅助贴图**，只存在于纹理制作阶段的软件内部。
 
-### 误区二：混淆Material ID与PolyGroup
-
-ZBrush的PolyGroup（多边形组）和Substance Painter的Material ID在视觉上均表现为颜色分区，两者常被初学者混淆。PolyGroup是ZBrush内部的拓扑管理工具，颜色随机分配，不能直接作为Material ID使用。必须通过ZBrush的"Polypaint from PolyGroups"功能，先将PolyGroup颜色烘焙为顶点颜色，再经由"Polypaint to Texture"输出成图像文件，才能得到可被Substance Painter识别的Material ID贴图。
-
-### 误区三：认为Material ID贴图分辨率越高越好
-
-Material ID贴图存储的是纯色色块信息，颜色数量通常不超过12种，因此512×512像素的分辨率在绝大多数情况下与4096×4096像素所生成的遮罩质量完全相同。过高的分辨率只会增加Substance Painter的内存占用和烘焙时间，而不带来任何精度提升。对于游戏角色模型，使用与最终纹理集相同的分辨率（如2048×2048）即可，不需要单独提高Material ID贴图的尺寸。
+**误区三：相近色系可以区分不同材质区域**
+部分初学者使用深红（180, 0, 0）和标准红（255, 0, 0）来区分两个相邻区域，Substance Painter 的 `Color Selection` 滑块容差（Tolerance）默认值约为 **15–20**，这意味着相差在此范围内的色值可能被同一次点选一并选中。必须使用色相差异明显的颜色（色相角度差建议大于 30°），而非同一色相的深浅变体。
 
 ---
 
 ## 知识关联
 
-Material ID的使用以Substance Painter基础操作为前提，需要掌握图层面板的Fill图层创建方式、黑色遮罩的概念以及烘焙（Bake）流程的基本设置。在Substance Painter的烘焙面板中，"Color Map from Mesh"选项正是将FBX材质颜色信息转化为Material ID贴图的关键步骤，需要在正式开始纹理绘制之前完成烘焙。
+**前置技能——Substance Painter 基础操作**：使用 Material ID 的前提是熟悉 Substance Painter 的图层系统，尤其是 Fill Layer 与 `Color Selection` 过滤器的配合方式。不了解图层遮罩逻辑的情况下加载 ID Map，无法有效发挥分区功能。
 
-掌握Material ID分区方法后，可以更高效地使用Substance Painter的智能材质（Smart Material）和图层蒙版组（Layer Group with Mask）功能——前者依赖精准的材质区域边界来呈现物理磨损效果，后者通过引用Material ID遮罩来批量控制整个材质组的显示范围。对于后续学习Substance Painter中的遮罩生成器（Generators）和锚点（Anchors）等进阶功能，Material ID所建立的分区逻辑也是重要的工作基础。
+**与 UV 展开的依赖关系**：Material ID 贴图与模型的 UV 布局一一对应。如果建模阶段 UV 发生修改（如重新展开或合并 UV 岛），已有的 ID Map 将失效，必须重新烘焙或重新绘制。因此在生产管线中，ID Map 的生成通常是 UV 确认冻结之后、纹理绘制开始之前的标准步骤，处于整个纹理制作流程的第一道准备工序。
+
+**与 Mask Editor 的协同**：在 Substance Painter 的 `Mask Editor` 智能遮罩系统中，Material ID 分区可以与曲率、环境光遮蔽等程序化信息叠加使用，例如"只在金属区域的边缘高光处增加磨损效果"，这依赖 ID Map 提供的材质边界作为前置过滤条件。掌握 Material ID 后，这类进阶遮罩操作会变得直接且可控。

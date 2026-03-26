@@ -20,72 +20,69 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-26
 ---
+
 # VFX Graph
 
 ## 概述
 
-VFX Graph（Unity Vfx Graph）是游戏引擎（Game Engine）中Unity架构领域的重要概念。难度等级3/9（初级）。
+VFX Graph（Visual Effect Graph）是Unity引擎中专为GPU加速粒子特效设计的节点化可视编程系统，于Unity 2018.3版本作为预览功能首次引入，并在Unity 2019.3版本正式进入生产可用状态。与传统Particle System（Shuriken）不同，VFX Graph将粒子模拟计算完全卸载到GPU上执行，单一特效在现代GPU上可轻松处理**数百万个粒子**，而传统CPU粒子系统通常在数万个粒子时就出现明显性能瓶颈。
 
-GPU粒子系统与节点化特效。
+VFX Graph的运行依赖于Unity的**Scriptable Render Pipeline（SRP）**，因此它只能在URP（Universal Render Pipeline）或HDRP（High Definition Render Pipeline）项目中使用，不支持内置渲染管线（Built-in Render Pipeline）。这一架构选择意味着VFX Graph能直接利用Compute Shader技术，在GPU上并行计算每个粒子的位置、速度、颜色和生命周期等属性，极大提升了大规模特效的实时渲染能力。
 
-在知识体系中，VFX Graph建立在Unity引擎概述的基础之上，是理解可进入更高级主题的关键前置知识。为什么VFX Graph如此重要？因为它在Unity架构中起到承上启下的作用，连接基础概念与高级应用。
+在游戏特效制作中，VFX Graph适用于需要海量粒子的场景，例如密集的雨雪天气、爆炸碎片群、星云宇宙场景以及流体模拟近似效果。其节点化界面使美术师无需编写HLSL着色器代码，即可通过连线方式定义粒子的完整生命周期逻辑。
 
-## 核心知识点
+## 核心原理
 
-### 1. GPU粒子系统
+### GPU粒子计算架构
 
-GPU粒子系统是VFX Graph(Unity Vfx Graph)的核心组成部分之一。在Unity架构的实践中，GPU粒子系统决定了系统行为的关键特征。例如，当GPU粒子系统参数或条件发生变化时，整体表现会产生显著差异。深入理解GPU粒子系统需要结合游戏引擎的基本原理进行分析。
+VFX Graph使用**Compute Shader**在GPU上存储和更新粒子数据。所有粒子的属性（位置、速度、年龄、颜色等）都存储在GPU显存的**GraphicsBuffer**中，CPU每帧只需发送少量参数更新命令，粒子的实际计算完全在GPU端完成。这与传统Shuriken系统每帧在CPU内存中遍历所有粒子对象有本质区别。粒子数据在CPU与GPU之间的回读（Readback）操作默认被禁用，因为这类同步操作会打破GPU流水线并造成性能停顿。
 
-### 2. 节点化特效
+### 系统层级结构：Context与Block
 
-节点化特效是VFX Graph(Unity Vfx Graph)的核心组成部分之一。在Unity架构的实践中，节点化特效决定了系统行为的关键特征。例如，当节点化特效参数或条件发生变化时，整体表现会产生显著差异。深入理解节点化特效需要结合游戏引擎的基本原理进行分析。
+VFX Graph的节点系统由三层结构组成：**Context（上下文）**、**Block（块）**和**Operator（运算符）**。
 
+- **Context**是粒子生命周期的阶段节点，包括`Spawn`（生成）、`Initialize`（初始化）、`Update`（更新）、`Output`（输出）四个核心阶段。粒子从Spawn产生，经Initialize设置初始属性，在Update中每帧更新状态，最终在Output阶段决定渲染方式（如Quad、Mesh、Strip等）。
+- **Block**是挂载在Context内部的操作单元，例如在Update Context中添加`Turbulence`块可为粒子施加湍流扰动，添加`Conform to Sphere`块可让粒子向球体表面聚拢。
+- **Operator**是独立的数学/逻辑运算节点，如`Noise`、`Sample Texture 2D`、`Cross Product`等，通过连线向Block提供动态数值输入。
 
-### 关键原理分析
+### 属性暴露与外部控制
 
-VFX Graph的核心在于GPU粒子系统与节点化特效。从理论角度看，该概念涉及以下层面：
+VFX Graph通过**Exposed Property（暴露属性）**机制与外部C#代码或Timeline交互。在Graph中将属性标记为Exposed后，可通过`VisualEffect`组件的API在运行时修改，例如：
 
-1. **定义层**：明确VFX Graph的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解VFX Graph内部各要素的相互作用方式
-3. **应用层**：将VFX Graph的原理映射到游戏引擎的实际场景中
+```csharp
+GetComponent<VisualEffect>().SetFloat("SpawnRate", 500f);
+GetComponent<VisualEffect>().SetVector3("AttractorPosition", target.position);
+```
 
-思考题：如何判断VFX Graph的应用是否超出了其理论适用范围？
+VFX Graph还支持**Event**系统，通过`SendEvent("OnPlayerHit")`触发特定粒子效果，实现游戏逻辑与视觉特效的解耦控制，而无需直接操作粒子系统的Play/Stop状态。
 
-## 关键要点
+### 粒子容量与内存管理
 
-1. **核心定义**：VFX Graph的本质是GPU粒子系统与节点化特效，这是理解整个概念的出发点
-2. **多维理解**：掌握VFX Graph需要同时理解GPU粒子系统和节点化特效等关键维度
-3. **先修关系**：扎实的Unity引擎概述基础对理解VFX Graph至关重要
-4. **进阶路径**：可广泛应用于游戏引擎各方面
-5. **实践标准**：真正掌握VFX Graph的标志是能在具体场景中灵活运用并正确判断适用边界
+每个VFX Graph资产在创建时需要预先设定**Capacity（容量）**值，这是GPU为该特效分配的最大粒子数上限，在运行时无法动态扩展。该值决定了显存占用量：一个属性配置典型的粒子（位置、速度、颜色、生命期）每粒子约占用**64至128字节**显存，设置100万容量的特效将固定占用约64MB至128MB显存，无论当前实际存活粒子数量多少。因此需要根据目标平台的显存限制谨慎设置容量值。
+
+## 实际应用
+
+**大规模环境特效**：在HDRP项目中制作沙尘暴效果时，利用VFX Graph的`Point Cache`功能从地形网格采样粒子生成位置，配合`Sample Signed Distance Field`节点让粒子与场景几何体产生碰撞近似，可在不依赖物理引擎的情况下实现数十万粒子的流动感。
+
+**技能特效与游戏反馈**：RPG游戏中的法术技能特效常使用VFX Graph的`GPU Event`功能：当一个粒子（如火球主体）在Update阶段触发`Trigger Event on Die`时，可在该位置自动生成子粒子系统（爆炸火花），整个链式特效逻辑全部在GPU端完成，无需CPU介入。
+
+**与Shader Graph联动**：VFX Graph的Output Context中可指定自定义Shader Graph材质，通过将粒子属性（如年龄比率`ageOverLifetime`）传递给Shader Graph的`VFX Input`节点，实现每个粒子独立的UV动画或溶解效果，制作出粒子随生命周期变化外观的高级特效。
 
 ## 常见误区
 
-1. **混淆概念边界**：将VFX Graph与Unity架构中其他相近概念混为一谈。例如，GPU粒子系统的适用条件与其他节点化特效概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解Unity引擎概述就学习VFX Graph，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：VFX Graph虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：认为VFX Graph可以替代所有粒子系统场景**。VFX Graph不支持内置渲染管线，且在移动平台上对GPU Compute Shader的兼容性要求较高（需要OpenGL ES 3.1或Vulkan支持）。对于需要运行在低端移动设备的项目，或粒子数量较少（低于数千个）的简单特效，传统Particle System的CPU开销反而更低，因为GPU Dispatch本身存在固定调用开销。
 
-## 知识衔接
+**误区二：认为容量（Capacity）越大越好**。由于显存在资产加载时即完成分配，将未经评估的特效容量设为100万会立即消耗约64MB以上显存，即便该特效每次只生成100个粒子。在有多个VFX Graph特效同时存在的场景中，盲目设置大容量值极易导致显存超限，引发GPU内存不足错误或渲染卡顿。
 
-### 先修知识
-先修知识包括：
-- **Unity引擎概述** — 为VFX Graph提供了必要的概念基础
+**误区三：混淆VFX Graph中的粒子碰撞与物理引擎碰撞**。VFX Graph中的`Collide with Depth Buffer`碰撞是基于屏幕空间深度图的近似碰撞，粒子并不真正参与Unity物理世界的刚体模拟，无法触发OnCollisionEnter等物理回调，也无法与Rigidbody对象产生力的交互。需要真实物理响应时仍需使用传统Particle System的碰撞模块。
 
-### 后续学习
-掌握VFX Graph后，学习者已具备该方向的核心能力，可将所学应用于实际项目或探索游戏引擎其他分支。
+## 知识关联
 
-## 学习建议
+学习VFX Graph需要先掌握Unity引擎的基础架构，特别是Scriptable Render Pipeline的工作方式——因为VFX Graph必须在SRP环境下运行，理解URP或HDRP的渲染流程有助于正确配置Output Context的渲染选项和混合模式。
 
-预计学习时间：1-2小时。建议采用以下策略：
+在图形编程方向，VFX Graph与**Shader Graph**形成互补关系：VFX Graph负责控制粒子的运动与生命周期逻辑，而Shader Graph负责定义粒子的表面着色外观，两者在Output阶段通过材质资产连接。如果希望深入定制粒子行为，可进一步学习HLSL和Compute Shader，以理解VFX Graph内部节点所对应的底层GPU代码逻辑。
 
-- **主动回忆**：学完后不看笔记复述VFX Graph的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将VFX Graph与游戏引擎中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释VFX Graph，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于Unity架构的章节可作为深入参考
-- Wikipedia: [Unity Vfx Graph](https://en.wikipedia.org/wiki/unity_vfx_graph) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Unity Vfx Graph" 可找到配套视频教程
+在工作流层面，VFX Graph与**Unity Timeline**深度集成，可在过场动画中通过Timeline的VFX Track精确控制特效的触发时机和参数动画，这对于需要精确同步特效与剧情镜头的影视级游戏内容制作至关重要。

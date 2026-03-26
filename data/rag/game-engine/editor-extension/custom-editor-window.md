@@ -24,80 +24,100 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # 自定义编辑器窗口
 
 ## 概述
 
-自定义编辑器窗口（Custom Editor Window）是游戏引擎编辑器扩展中的一种机制，允许开发者创建可停靠（Dockable）、可浮动的独立面板，用于承载工具界面、数据可视化或工作流辅助功能。与仅在 Inspector 中显示的自定义Inspector不同，编辑器窗口拥有独立的生命周期和窗口句柄，可以脱离任何选中对象独立存在。
+自定义编辑器窗口（Custom Editor Window）是指在游戏引擎编辑器环境中，由开发者通过插件或扩展代码自行创建的可停靠、可浮动的 Tab/Panel/Window 界面单元。与引擎内置的"细节面板"或"场景大纲"不同，自定义窗口可以承载完全由开发者定义的 UI 布局、交互逻辑和数据展示，满足项目特定的工作流需求，例如批量资产管理、关卡配置表编辑或角色技能树预览。
 
-在 Unity 中，自定义编辑器窗口的历史可追溯到 Unity 3.x 时代的 `EditorWindow` 基类，该类至今仍是 Unity 编辑器扩展的核心 API。Unreal Engine 则通过 Slate UI 框架和 `SDockTab` 体系实现类似功能，两套体系在注册方式和渲染管线上有本质区别。自定义编辑器窗口的价值在于：它能够将重复性的手工操作（如批量资产处理、场景分析报告）封装为一套持久化的工具界面，而不依赖任何特定游戏对象的选中状态。
+在 Unity 编辑器中，`EditorWindow` 类自 Unity 3.x 时代起就是扩展编辑器界面的标准入口；在 Unreal Engine 中，对应机制是基于 Slate UI 框架的 `SDockTab` 注册系统，在 UE4.20 之后还可以通过 `FTabManager` 和 `FGlobalTabmanager` 统一管理标签页的生命周期。两套系统虽然 API 不同，但核心思路一致：先定义窗口类，再向编辑器的标签注册表中登记，最后通过菜单项或快捷键触发打开。
+
+自定义编辑器窗口的价值在于它将重复性手工操作转化为一次性的工具界面。一个典型案例是：美术团队每天需要手动逐一检查数百张贴图的格式合规性，通过自定义窗口可以将这一流程压缩为点击一个按钮并查看结果列表，把原本需要 2 小时的工作缩短至 5 分钟以内。
+
+---
 
 ## 核心原理
 
-### Unity EditorWindow 的创建与注册
+### 1. 窗口类的声明与生命周期
 
-在 Unity 中，创建自定义窗口需要继承 `UnityEditor.EditorWindow` 类，并使用静态方法 `GetWindow<T>()` 完成实例化与注册。典型的最小实现如下：
+以 Unity 为例，自定义窗口必须继承自 `UnityEditor.EditorWindow`，并至少实现 `OnGUI()` 方法。窗口的完整生命周期包含以下回调节点：
+
+| 回调方法 | 触发时机 |
+|---|---|
+| `Awake()` | 窗口对象首次创建时 |
+| `OnEnable()` | 窗口变为可见或重新加载时 |
+| `OnGUI()` | 每帧绘制 UI 时（与渲染帧同步） |
+| `OnDisable()` | 窗口被关闭或隐藏时 |
+| `OnDestroy()` | 窗口对象被彻底销毁时 |
+
+`OnGUI()` 基于 Unity 的 **IMGUI（Immediate Mode GUI）**系统工作，每次调用都会重新计算并绘制所有控件，这与 WPF 或 Qt 的保留模式 GUI 不同——窗口内的按钮、标签、滑块等控件没有持久化对象，状态必须由开发者自行维护在字段变量中。
+
+### 2. 窗口的创建与注册
+
+要让窗口出现在编辑器菜单中，需要使用 `MenuItem` 属性标注一个静态工厂方法，并在其中调用 `GetWindow<T>()` 或 `CreateWindow<T>()`：
 
 ```csharp
-using UnityEditor;
-
-public class MyToolWindow : EditorWindow
+[MenuItem("Tools/我的工具窗口 %#W")]  // Ctrl+Shift+W 快捷键
+public static void OpenWindow()
 {
-    [MenuItem("Tools/My Tool Window")]
-    public static void ShowWindow()
-    {
-        GetWindow<MyToolWindow>("My Tool");
-    }
-
-    private void OnGUI()
-    {
-        EditorGUILayout.LabelField("窗口内容区域");
-    }
+    var window = GetWindow<MyToolWindow>("我的工具");
+    window.minSize = new Vector2(400, 300);
+    window.Show();
 }
 ```
 
-`[MenuItem]` 属性负责在编辑器菜单栏注册入口，路径格式为 `"顶级菜单/子菜单"`。`GetWindow<T>()` 会检查是否已有同类型窗口实例存在——若存在则聚焦，若不存在则新建，从而保证窗口单例行为。若需要允许多实例，应改用 `CreateWindow<T>()`，该方法在 Unity 2019.1 版本起可用。
+`GetWindow<T>()` 与 `CreateWindow<T>()` 的关键区别在于：前者若已存在同类型窗口则返回已有实例（单例语义），后者每次调用都创建新实例，适合需要同时打开多个独立窗口的场景，例如同时比较两份配置数据。
 
-### 窗口生命周期回调
-
-`EditorWindow` 提供了一套专属于编辑器窗口的生命周期方法，与 `MonoBehaviour` 的运行时生命周期完全分离：
-
-- `OnEnable()`：窗口被创建或重新加载时触发，适合初始化数据和订阅编辑器事件（如 `Selection.selectionChanged`）。
-- `OnGUI()`：每帧（或每次重绘请求）调用，所有 UI 绘制代码必须在此方法内执行，不可在其他方法中调用 `GUI.*` 系列函数。
-- `OnDisable()`：窗口关闭或编辑器重编译前触发，必须在此处取消订阅所有事件，否则会导致空引用异常。
-- `Update()`：以编辑器帧率（非固定60fps，取决于编辑器活跃状态）调用，适合轮询数据变化并调用 `Repaint()` 刷新界面。
-
-若在 `Update()` 中无条件调用 `Repaint()`，会导致编辑器持续重绘，消耗不必要的CPU资源，应加入脏标记（Dirty Flag）判断。
-
-### Unreal Engine 中的 SDockTab 注册
-
-在 Unreal Engine 5 中，自定义编辑器窗口通过 `FGlobalTabmanager::Get()->RegisterNomadTabSpawner()` 注册为一个 **Nomad Tab**（游牧标签页）。Nomad Tab 的特点是全局唯一且不属于任何特定编辑器布局，适合独立工具窗口。注册时需提供 `FTabId`（字符串标识符）和一个返回 `TSharedRef<SDockTab>` 的委托：
+在 Unreal Engine 中，窗口注册通过 `FTabSpawnerEntry` 完成。开发者需要在模块的 `StartupModule()` 内调用：
 
 ```cpp
-FGlobalTabmanager::Get()->RegisterNomadTabSpawner(
-    FName("MyToolTab"),
-    FOnSpawnTab::CreateRaw(this, &FMyToolModule::OnSpawnTab)
-).SetDisplayName(LOCTEXT("MyToolTabTitle", "My Tool"));
+FGlobalTabManager::Get()->RegisterNomadTabSpawner(
+    TabId,
+    FOnSpawnTab::CreateRaw(this, &FMyModule::OnSpawnTab)
+)
+.SetDisplayName(LOCTEXT("TabTitle", "我的工具"))
+.SetMenuType(ETabSpawnerMenuType::Hidden);
 ```
 
-注册通常在模块的 `StartupModule()` 中执行，并在 `ShutdownModule()` 中调用 `UnregisterNomadTabSpawner()` 完成反注册，防止引擎关闭时崩溃。
+`NomadTab`（游牧标签）表示该窗口不归属于任何特定布局区域，可自由停靠到编辑器的任意 DockArea 中。
+
+### 3. 布局与停靠行为控制
+
+Unity 的 `EditorWindow` 支持通过 `DockArea` 系统实现标签页停靠，但这一行为由用户拖拽控制，代码层面只能通过 `wantsMouseMove`、`autoRepaintOnSceneChange` 等属性影响刷新频率，无法强制指定停靠位置。
+
+Unreal 的 `SDockTab` 提供了更细粒度的控制。`ETabRole` 枚举定义了三种窗口角色：
+- `PanelTab`：可停靠到现有标签组，行为类似"细节面板"
+- `NomadTab`：独立浮动，不参与布局序列化
+- `MajorTab`：顶层窗口，拥有独立标题栏，如"蓝图编辑器"整体窗口
+
+选择错误的 `ETabRole` 会导致窗口在编辑器重启后丢失位置记录，或与其他停靠区域发生布局冲突。
+
+---
 
 ## 实际应用
 
-**批量资产重命名工具**：一个典型的自定义编辑器窗口用例是资产批量重命名面板。该窗口在 `OnEnable()` 中订阅 `Selection.selectionChanged` 事件，当用户在 Project 面板选中多个资产时，窗口自动列出所选资产的当前名称。用户输入前缀/后缀规则后，点击按钮调用 `AssetDatabase.RenameAsset()` 完成批量操作，最后调用 `AssetDatabase.SaveAssets()` 持久化更改。
+**批量资产重命名工具**：项目组经常需要按命名规范批量重命名模型文件。通过自定义窗口，可以在左侧列表展示当前选中的资产原名，在右侧输入框设置前缀/后缀规则，点击"预览"按钮后在中间区域显示重命名结果对比，确认无误后执行。整个工具的 `OnGUI()` 函数使用 `EditorGUILayout.BeginHorizontal()` 将界面切分为三栏，配合 `GUILayout.Width()` 控制各栏宽度比例。
 
-**场景对象统计面板**：在大型场景优化阶段，可创建一个编辑器窗口，在 `OnGUI()` 中使用 `EditorGUILayout.BeginScrollView()` 展示场景内所有 MeshRenderer 的面数统计，并按降序排列。此窗口可通过 `SceneView.duringSceneGui` 事件与场景视图联动，在用户点击列表项时自动定位并高亮对应物体。
+**关卡事件配置面板**：策划人员需要为关卡内的触发器配置多条事件链，通过继承 `EditorWindow` 并序列化一个 `ScriptableObject` 数据容器，可以将树形结构的事件逻辑可视化地呈现在自定义窗口中，并通过 `AssetDatabase.SaveAssets()` 持久化到磁盘，避免直接操作 YAML 场景文件。
+
+---
 
 ## 常见误区
 
-**误区一：在 OnGUI 之外调用 GUI 绘制方法**。`EditorGUILayout.TextField()` 等方法依赖 `Event.current` 对象，该对象只在 `OnGUI()` 执行期间有效。如果在 `Update()` 或外部回调中调用这些方法，Unity 会抛出 `ArgumentException: Getting control X's position in a group with only X controls`，且难以追踪根源。所有 UI 状态变量应存储在字段中，在 `OnGUI()` 中统一读写。
+**误区一：在 `OnGUI()` 中执行耗时操作**
+`OnGUI()` 在编辑器活跃期间每帧都会调用（通常 60fps），如果在其中直接遍历项目内所有资产文件，会导致编辑器严重卡顿。正确做法是在 `OnEnable()` 或按钮点击回调中一次性缓存数据，`OnGUI()` 只负责读取缓存并绘制。
 
-**误区二：混淆 GetWindow 与 CreateInstance**。部分开发者习惯用 `ScriptableObject.CreateInstance<T>()` 的思维来理解编辑器窗口创建，直接 `new MyToolWindow()` 或手动调用构造函数。`EditorWindow` 实例必须通过 `GetWindow<T>()` 或 `CreateWindow<T>()` 创建，由编辑器底层管理其与本地窗口句柄的绑定，手动实例化的窗口对象无法正确渲染且会导致编辑器状态异常。
+**误区二：混淆 `GetWindow` 的单例行为**
+开发者有时期望每次点击菜单项都弹出一个"新鲜"的窗口，却发现数据残留自上次操作。原因是 `GetWindow<T>()` 默认返回已存在的实例，窗口字段数据未被重置。如果确实需要每次打开时重置状态，应在 `OnEnable()` 中初始化所有字段，而不是依赖 `Awake()`，因为停靠的窗口在编辑器重启后会触发 `OnEnable()` 而不会重新触发 `Awake()`。
 
-**误区三：忽视编辑器重编译时的状态丢失**。Unity 每次脚本重编译后都会重建 AppDomain，`EditorWindow` 的 C# 字段会丢失。若需要跨编译保留窗口数据（如用户输入的文本），必须使用 `[SerializeField]` 标记字段，或将数据存入 `EditorPrefs`，否则每次修改代码后窗口都会重置为初始状态。
+**误区三：忽略 `titleContent` 设置导致标签名显示异常**
+直接向 `GetWindow()` 传入字符串参数虽然可以设置标题，但无法配置标签图标。Unity 5.1 之后推荐使用 `titleContent = new GUIContent("窗口名", iconTexture)` 进行设置，否则在密集停靠多个标签时，纯文字标签会因宽度不足被截断，降低工具的可用性。
+
+---
 
 ## 知识关联
 
-学习自定义编辑器窗口之前，需要掌握**编辑器扩展概述**中的 `[MenuItem]` 属性用法和 `AssetDatabase` 基本操作，因为这两者构成了编辑器窗口注册入口和数据操作的基础调用方式。
+学习自定义编辑器窗口需要先掌握**编辑器扩展概述**中关于 `MenuItem` 属性注册机制和编辑器脚本与运行时脚本隔离（放置在 `Editor` 文件夹内）的规则，否则窗口类会被错误地编译进运行时构建包，导致发布版本体积增大或编译报错。
 
-完成本节后，可以进入**内容浏览器扩展**（Content Browser Extension）的学习。内容浏览器扩展在 Unreal Engine 中需要将自定义菜单项和资产操作面板嵌入已有的内容浏览器标签页，其 `FContentBrowserModule` 的委托注册模式与本节的 Tab 注册机制高度相似，但面向的是子面板而非独立 Nomad Tab，理解二者的注册位置差异是进阶的关键。
+掌握自定义编辑器窗口之后，下一步学习**内容浏览器扩展**时会更加顺畅：内容浏览器的右键菜单扩展（`AssetTypeActions`）和过滤器扩展都需要通过类似的注册-回调模式接入编辑器，而在右键菜单操作触发后弹出的确认对话框或参数配置界面，正是利用 `EditorWindow.GetWindow<T>()` 或 `ScriptableWizard.DisplayWizard()` 来实现的——后者本质上也是 `EditorWindow` 的一个预制子类。

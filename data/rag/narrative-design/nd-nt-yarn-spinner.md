@@ -24,78 +24,75 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # Yarn Spinner
 
 ## 概述
 
-Yarn Spinner 是专为 Unity 引擎设计的开源对话脚本工具，由 Secret Lab 团队（《Night in the Woods》的幕后制作公司）于 2016 年首次发布。它使用一种名为 Yarn 的脚本语言，语法设计上刻意模仿 Twine 的简洁风格，使叙事设计师无需深入学习 C# 即可编写分支对话。截至 Yarn Spinner 2.x 版本，该工具已成为 Unity Asset Store 上下载量最高的对话管理插件之一。
+Yarn Spinner 是专为 Unity 游戏引擎设计的对话与叙事脚本系统，由 Secret Lab 团队开发，最初作为 2013 年独立游戏《Night in the Woods》的内部工具而诞生。该工具使用一种名为 Yarn 的自定义脚本语言，让编写者能够以接近自然写作的格式定义游戏对话分支、角色台词和叙事逻辑，而无需深入掌握 C# 编程。
 
-Yarn Spinner 最初是为开发《Night in the Woods》而创建的内部工具，游戏中数千行对话均通过 Yarn 脚本驱动。正是这款游戏的商业成功，使 Secret Lab 决定将其开源并持续维护。与 Ink 语言相比，Yarn Spinner 与 Unity 的集成更为原生——它直接通过 Unity Package Manager 安装，并提供与 Unity UI 组件绑定的内置对话视图系统。
+Yarn Spinner 2.0 版本于 2021 年发布，这次重大更新彻底重写了解析器架构，引入了虚拟机（VM）执行模式，并支持通过 NuGet 在非 Unity 环境中使用。目前 Yarn Spinner 已在 Unity Asset Store 免费提供，其核心运行时库基于 MIT 许可证开源，这使它成为中小型叙事游戏团队最常见的对话系统选择之一。
 
-Yarn Spinner 在叙事游戏开发中的重要性体现在它弥合了叙事设计师与程序员之间的工作流隔阂。编剧可以在 VS Code 配合官方 Yarn Spinner 扩展插件独立编写和预览对话树，完成后直接导入 Unity，程序员只需通过 `YarnCommand` 和 `YarnFunction` 属性将游戏逻辑钩入脚本，双方可以并行开发。
+对于叙事设计师而言，Yarn Spinner 的意义在于它将程序员和编剧的工作流明确分离：编剧在 `.yarn` 文件中撰写对话内容，程序员通过 `DialogueRunner` 组件和 C# 事件系统将其接入游戏逻辑，两者通过明确的接口解耦，减少跨职能协作摩擦。
+
+---
 
 ## 核心原理
 
-### Yarn 语言的节点结构
+### Yarn 语言语法结构
 
-Yarn 脚本的基本组织单位是**节点（Node）**，每个节点由三行元数据头部和正文内容构成：
+Yarn 脚本以**节点（Node）**为基本单位，每个节点以 `title:` 标签开头，以 `===` 结尾。节点内部的台词直接书写，选项使用 `->` 前缀标记，跳转使用 `<<jump NodeName>>` 命令实现：
 
-```
-title: StartConversation
-tags:
+```yarn
+title: MeetGuard
 ---
-角色A: 你好，旅行者。
--> 你好。
-    角色A: 欢迎来到小镇。
--> 再见。
-    <<stop>>
+守卫: 你是什么人？
+-> 我是旅行者。
+    <<jump TravellerPath>>
+-> 我不需要向你解释。
+    守卫: 那就离开这里。
 ===
 ```
 
-`---` 标记节点开始，`===` 标记节点结束，这与 Ink 的 `=== knot_name ===` 写法存在明显差异。节点之间通过 `<<jump NodeName>>` 命令跳转，而非 Ink 的 `-> divert` 语法。每个 `.yarn` 文件可以包含多个节点，整个项目的所有节点会被 Yarn Spinner 编译为一个统一的对话图。
+变量以 `$` 符号开头（如 `$has_key`），支持布尔值、数字和字符串三种类型。条件语句格式为 `<<if $variable == value>> ... <<endif>>`，这套语法使不懂编程的编剧也能编写带状态判断的分支逻辑。
 
-### 变量系统与条件分支
+### DialogueRunner 与 Unity 集成机制
 
-Yarn 语言支持三种原生变量类型：`Bool`、`Number` 和 `String`，变量名以 `$` 符号开头（例如 `$player_name`、`$has_key`）。条件判断语法使用 `<<if>>`、`<<elseif>>`、`<<else>>`、`<<endif>>` 块：
+在 Unity 中，Yarn Spinner 的核心组件是 `DialogueRunner`，它充当 Yarn 虚拟机与 Unity 场景之间的桥梁。`DialogueRunner` 挂载在场景对象上，引用 `YarnProject`（编译后的对话资产）和 `VariableStorage`（变量存储组件）。对话的显示由单独的 `DialogueView` 组件处理，官方提供了 `LineView`（单行文本显示）和 `OptionsListView`（选项列表显示）两种默认实现，开发者也可以继承 `DialogueViewBase` 类自定义显示逻辑。
 
-```
-<<if $has_key == true>>
-    守卫: 你可以通过。
-<<else>>
-    守卫: 你没有钥匙。
-<<endif>>
-```
+命令注册是 Yarn Spinner 与游戏逻辑交互的关键机制。通过在 C# 方法上添加 `[YarnCommand("command_name")]` 特性，或在 `DialogueRunner` 上调用 `AddCommandHandler()` 方法，可以让 Yarn 脚本内的 `<<command_name param>>` 语句触发具体的游戏行为（如播放动画、触发音效、修改游戏状态）。
 
-Yarn Spinner 2.0 引入了**智能变量（Smart Variables）**概念，允许通过 `<<declare>>` 在节点外声明带默认值的变量，解决了 1.x 版本中变量必须在 C# 端预先注册才能使用的痛点。变量持久化需要开发者实现 `IVariableStorage` 接口，官方提供了 `InMemoryVariableStorage` 作为开发阶段的默认实现。
+### YarnProject 编译流程
 
-### 命令与函数的 C# 绑定机制
+`.yarn` 源文件在 Unity 编辑器中会被自动编译为 `YarnProject` 资产，这是一个包含字节码、元数据和本地化字符串表的二进制对象。Yarn Spinner 的本地化系统将所有对白文本提取到 CSV 格式的字符串表中，每条对白都有唯一的 Line ID（如 `line:a1b2c3`），便于多语言翻译团队独立处理文本而不触碰原始 `.yarn` 文件。
 
-Yarn Spinner 与 Unity 游戏逻辑的交互通过两种机制实现：
-
-**命令（Commands）**：使用 `<<commandName param1 param2>>` 语法，在 C# 端通过 `[YarnCommand("commandName")]` 属性标记对应方法。命令支持协程（`IEnumerator`），这使得对话可以等待动画播放完成后再继续推进。
-
-**函数（Functions）**：使用 `<<set $result = functionName(arg)>>` 调用，在 C# 端通过 `[YarnFunction("functionName")]` 注册，必须有返回值（`bool`、`float` 或 `string`）。这一机制允许 Yarn 脚本查询游戏状态，例如检查玩家背包中某物品的数量。
+---
 
 ## 实际应用
 
-在《A Short Hike》和多款独立 Unity 游戏中，Yarn Spinner 被用于实现 NPC 的**状态感知对话**：编写一个名为 `TalkToFarmer` 的节点，根据 `$weather_is_raining` 和 `$crop_harvested` 两个布尔变量呈现不同的对话内容，无需程序员介入即可由叙事设计师直接完成所有分支的编写。
+**《Night in the Woods》**是 Yarn Spinner 最著名的使用案例，游戏中数万行对话均通过 Yarn 脚本管理，涵盖主线剧情、可选闲聊和环境交互三个层级。该游戏的成功证明了 Yarn Spinner 能够支撑叙事密集型项目的对话规模。
 
-Yarn Spinner 的**本地化（Localisation）**系统是其 2.x 版本的重大特性。工具链会为每行对话自动生成唯一的 Line ID（格式如 `line:farmer-greeting-001`），配合 CSV 格式的字符串表，翻译人员可以独立于 `.yarn` 源文件进行本地化工作，不会因对话内容修改而导致 ID 失效——只要原始行未被删除，其 ID 就会被保留。
+在实际项目工作流中，叙事设计师通常使用官方提供的 **Visual Studio Code 插件**（插件 ID：`SecretLab.yarn-spinner`）来获得语法高亮、节点跳转预览和错误提示功能。该插件还内置了对话节点图可视化视图，能够以图形方式展示节点之间的跳转关系，帮助设计师在不运行游戏的情况下审查对话结构。
 
-在多人叙事设计团队的版本管理实践中，`.yarn` 文件作为纯文本文件可以直接纳入 Git 管理，合并冲突的可读性远高于 Unity 的 YAML 场景文件，这使得 Yarn Spinner 成为强调叙事协作开发流程的团队的首选工具。
+对于需要动态生成台词的场景，Yarn Spinner 支持在 C# 端注册**函数（Function）**，通过 `AddFunction()` 方法将返回值传递给 Yarn 脚本中的表达式，例如 `<<if visited("NodeName")>>` 这种内置函数可检测某节点是否已被访问过，帮助编写根据游戏进度变化的对话内容。
+
+---
 
 ## 常见误区
 
-**误区一：认为 Yarn Spinner 可以完全替代程序员工作**。Yarn 脚本本身无法驱动角色移动、触发过场动画或管理存档，所有此类操作必须通过 `[YarnCommand]` 在 C# 端实现。初学者常见错误是在 `.yarn` 文件中写下 `<<playAnimation "wave">>` 后，发现没有任何效果，原因是 Unity 场景中没有任何 `MonoBehaviour` 注册了名为 `playAnimation` 的命令。
+**误区一：认为 Yarn Spinner 与 Ink 功能完全等同，可随意互换。**
+Ink 和 Yarn Spinner 虽然定位相似，但架构差异显著。Ink 拥有更强大的"织入（weave）"流程控制和内置的 `knot/stitch/divert` 层级结构，适合线性叙事密度更高的场景；Yarn Spinner 的节点模型更扁平，更适合开放世界中大量 NPC 各自维护独立对话树的架构。从 Ink 迁移到 Yarn Spinner 后，原来依赖 Ink 嵌套 `stitch` 的段落结构必须手动拆分为多个独立节点。
 
-**误区二：混淆 Yarn Spinner 1.x 和 2.x 的 API**。两个版本之间存在破坏性变更：1.x 使用 `DialogueRunner.AddCommandHandler()` 方法注册命令，2.x 改为特性（Attribute）注册方式；1.x 的对话视图使用 `DialogueUI` 组件，2.x 将其拆分为 `DialogueRunner`、`LineView` 和 `OptionsListView` 三个独立组件。网络上大量教程仍基于 1.x 版本，直接复制代码到 2.x 项目会导致编译错误。
+**误区二：以为可以直接在 Yarn 脚本中处理复杂游戏逻辑。**
+Yarn 变量系统只支持三种基本类型，不支持数组、字典或对象引用。试图在 `.yarn` 文件内用变量模拟物品栏或复杂状态机的做法会迅速使脚本难以维护。正确做法是将复杂状态保留在 C# 的游戏逻辑层，通过自定义 `VariableStorage` 组件将 C# 属性映射为 Yarn 可读变量，而非在 Yarn 端存储原始数据。
 
-**误区三：将 Yarn 节点等同于游戏场景**。一个 Yarn 节点应代表一段具体的对话交互，而非整个游戏关卡或地点。将大量无关对话堆放在单一节点中（超过 50 行对话分支）会导致节点难以维护，正确做法是按交互主题拆分节点并通过 `<<jump>>` 串联。
+**误区三：忽略 Line ID 管理导致本地化工作返工。**
+若在项目中期才启用 Yarn Spinner 的本地化功能，此前没有 Line ID 的台词需要重新生成 ID，已完成的翻译文件与源文件的对应关系会完全断裂。正确做法是在项目早期就通过编辑器菜单"Yarn Spinner > Add Line Tags to Scripts"为所有对白自动添加唯一 ID，并将 `.yarn` 文件纳入版本控制，确保 ID 不会在多人协作中重复或丢失。
+
+---
 
 ## 知识关联
 
-有 Ink 脚本语言基础的学习者会发现，Yarn 的选项语法 `->` 与 Ink 的 `*`（一次性选项）和 `+`（可重复选项）存在对应关系，但 Yarn **不区分**这两种选项类型——所有选项在每次到达时均会显示，控制选项可见性必须显式使用 `<<if>>` 条件块包裹，而非依赖 Ink 的自动消耗机制。
+学习 Yarn Spinner 之前掌握 **Ink 脚本语言**有助于建立对话分支设计的基本思维模型：理解"结（knot）"跳转的 Ink 用户能够快速类比 Yarn 的"节点（Node）"概念，但需要重新适应 Yarn 更依赖外部 C# 命令而非内置逻辑的设计哲学。
 
-Ink 的 `-> DONE` 和 `-> END` 在 Yarn 中对应 `<<stop>>` 命令，但行为略有差异：`<<stop>>` 仅暂停对话，对话历史会被保留，下次调用 `DialogueRunner.StartDialogue("NodeName")` 时可以重新进入任意节点，这与 Ink 故事对象的线性推进模型有根本性区别。
-
-掌握 Yarn Spinner 之后，进阶方向包括为其编写自定义 `DialogueView`（实现打字机效果、角色立绘切换等个性化表现层）以及研究 Yarn Spinner 的编译器架构——Yarn 脚本会被编译为基于栈机器的字节码（`.yarnc` 文件），理解这一底层机制有助于为大型项目优化对话系统的运行时性能。
+Yarn Spinner 的 `VariableStorage` 接口直接对接 Unity 的组件系统，因此对 Unity `MonoBehaviour` 生命周期和 C# 事件有基础认知的开发者能更顺畅地实现自定义存储逻辑。对于希望进一步扩展的团队，Yarn Spinner 的开源字节码格式和 NuGet 包结构也允许在 Godot 或自研引擎中移植使用，其 GitHub 仓库（`YarnSpinnerTool/YarnSpinner`）提供了完整的虚拟机规范文档供参考。
