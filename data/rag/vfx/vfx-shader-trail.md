@@ -24,74 +24,90 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # 拖尾Shader
 
 ## 概述
 
-拖尾Shader是专门用于渲染Trail（轨迹）和Ribbon（条带）效果的着色器技术，其核心挑战在于：这类几何体的UV坐标不是建模时预先烘焙的，而是由粒子系统或Ribbon组件在运行时动态生成的。以Unity的Particle System Trail模块为例，它会根据粒子运动路径实时拼接四边形面片，并自动生成沿路径方向延伸的UV，编写拖尾Shader就必须充分理解这套UV生成规则，才能控制花纹流动、边缘衰减等视觉效果。
+拖尾Shader是专门为Trail（拖尾）和Ribbon（丝带）类粒子渲染而设计的着色器，其核心任务是处理沿运动路径生成的连续网格的UV坐标生成与材质表现。与普通粒子Shader不同，拖尾网格是由一串按时间顺序排列的顶点构成的多边形带（triangle strip），每段顶点都携带了"出生时间"与"路径进度"两类关键信息，Shader必须正确读取并利用这些数据来实现流动、消散、拉伸等视觉效果。
 
-这一技术在2000年代初随实时粒子系统的普及而兴起。早期游戏引擎依赖CPU逐帧更新顶点缓冲区来构建拖尾几何体，开发者只能使用极简的alpha淡出材质。现代引擎（如Unity 5.5引入的Trail Renderer改进版、Unreal Engine的Ribbon Data Interface）将UV生成策略暴露为可配置参数，拖尾Shader因此从简单的贴图滚动演化为支持扭曲、分段色彩、流速控制的复杂着色系统。
+拖尾渲染的技术形态最早来自游戏引擎对剑挥轨迹（Sword Trail）的需求，在2000年代中期随着粒子系统的成熟而逐渐标准化。Unity的`TrailRenderer`组件和Niagara的Ribbon渲染器，都遵循同一底层约定：U轴沿拖尾长度方向延伸（从头到尾0→1），V轴沿拖尾宽度方向横跨（从边缘到边缘0→1）。理解这一UV空间分配规则，是编写拖尾Shader的前提。
 
-拖尾Shader的重要性体现在剑气、魔法轨迹、子弹痕迹等高频视觉需求上。不正确的UV理解会导致拖尾贴图被拉伸变形（近处宽段的UV密度远低于远处细段），或者花纹在拖尾头部与尾部交界处出现明显的撕裂缝隙，因此掌握其UV语义是编写可用材质的前提。
+拖尾Shader之所以需要独立讨论，是因为它的UV不像静态网格那样烘焙在顶点数据里，而是在运行时动态拉伸和截断的。当拖尾头部不断向前延伸、尾部不断消失时，UV的U值分布会随帧数变化，若Shader处理不当，纹理会随拖尾长度产生拉伸或压缩，破坏视觉效果。
 
 ---
 
 ## 核心原理
 
-### UV坐标的生成语义
+### UV坐标的动态生成机制
 
-拖尾几何体的UV.x（横轴）沿拖尾**宽度方向**分布，从0到1对应从拖尾左边缘到右边缘，这与普通平面贴图的U方向含义相同。UV.y（纵轴）则沿拖尾**长度方向**分布，在Unity中默认0对应拖尾的**头部**（粒子当前位置），1对应**尾部**（最旧的历史点）；在Unreal Engine Ribbon中则方向相反，0在尾部。Shader中若直接采样贴图，花纹会因UV.y的流速与运动速度不匹配而显得静止或反向，因此必须叠加时间偏移。
+在Unity的`TrailRenderer`中，U坐标默认按**Stretch（拉伸）**模式分配：最新生成的顶点U=0，最老的顶点U=1。这意味着如果直接在材质里采样一张箭头纹理，纹理会随拖尾长度缩放。Niagara的Ribbon渲染器提供了三种UV生成模式：
+- **Normalized（归一化）**：全段等比分配，头0尾1
+- **Tiled（平铺）**：按真实世界单位长度平铺，公式为 `U = worldLength / TileSize`
+- **Fixed（固定）**：头部UV固定，纹理不随长度变化，适合粒子头部图案
 
-Unity Trail Renderer提供三种UV模式：**Stretch**（将整段拖尾映射到0-1，贴图随长度拉伸）、**Tile**（按世界单位重复平铺，每1米重复N次）、**DistributePerSegment**（按段数等分UV）。Shader代码需针对模式编写，例如Stretch模式下若需保持圆形花纹不变形，必须在Fragment Shader中用纵横比（`_ScreenParams`或自定义`_AspectRatio`参数）校正UV。
-
-### 流动与衰减的实现公式
-
-拖尾流动效果的核心是在UV.y方向叠加时间偏移：
-
-```hlsl
-float2 uv = i.uv;
-uv.y += _Time.y * _FlowSpeed;
-float4 col = tex2D(_MainTex, uv);
+在Shader中，通常通过`TEXCOORD0.x`读取这个U值，再配合时间偏移`_Time.y * _FlowSpeed`实现纹理流动效果：
+```
+float flowU = i.uv.x - _Time.y * _FlowSpeed;
+fixed4 col = tex2D(_MainTex, float2(flowU, i.uv.y));
 ```
 
-其中`_Time.y`是Unity内置的场景运行秒数，`_FlowSpeed`控制流速方向（正值向尾部流动，负值向头部流动）。
+### 宽度方向的V轴与Soft Edge
 
-拖尾头部（UV.y≈0）通常最亮最不透明，尾部（UV.y≈1）逐渐消失。透明度衰减公式为：
-
+V轴（0→1从一侧边缘到另一侧边缘）常被用来实现拖尾的软边缘（Soft Edge）效果。标准做法是构造一个关于V=0.5对称的蒙版：
 ```
-alpha = tex2D(_MainTex, uv).a × pow(1 - uv.y, _FadeExponent) × _Color.a
+float edgeMask = 1.0 - abs(i.uv.y * 2.0 - 1.0);
+edgeMask = pow(edgeMask, _EdgeSharpness);
 ```
+其中`_EdgeSharpness`值为1时边缘线性衰减，值为3～5时边缘呈现锐利的光晕感。这与护盾Shader中的菲涅尔边缘不同——护盾的边缘来自视角与法线的夹角，而拖尾的边缘完全来自V轴的几何位置。
 
-`_FadeExponent`建议默认值为**1.5至2.0**，小于1会使衰减集中在尾端，大于3会使拖尾看起来被截断。此公式与护盾Shader的边缘菲涅尔不同——护盾是基于视角角度衰减，拖尾是基于路径距离衰减。
+### 头尾渐隐与Alpha衰减
 
-### 宽度抖动与法线重建
+拖尾头部（最新）和尾部（最老）通常需要Alpha透明渐隐，防止生硬截断。标准实现利用U轴的头尾位置：
+```
+float headFade = smoothstep(0.0, _HeadFadeLength, i.uv.x);      // 头部淡入
+float tailFade = smoothstep(1.0, 1.0 - _TailFadeLength, i.uv.x); // 尾部淡出
+float alpha = headFade * tailFade * edgeMask;
+```
+`_HeadFadeLength`和`_TailFadeLength`建议默认值分别设为0.05和0.2，即头部5%区间淡入，尾部20%区间淡出，这符合大多数武器拖尾的视觉习惯。
 
-Trail Renderer的每个面片没有固有法线（始终朝向摄像机的Billboard方式），其法线在顶点数据中存储的是**面片宽度方向的切线**，而非真实表面法线。若要在拖尾上叠加法线贴图实现波纹扭曲效果，需在Vertex Shader中手动重建TBN矩阵：切线T为顶点属性`TANGENT`，法线N计算为`normalize(cross(T, 视线方向))`，副法线B由`cross(N, T)`得出。错误地直接使用顶点法线会导致扭曲方向始终偏转90度。
+### 拖尾噪声扰动与UV动画
+
+进阶拖尾Shader会叠加一张Noise纹理来扰动拖尾轮廓或颜色。关键在于Noise的UV采样必须与拖尾流动方向一致，否则噪声图案会静止而拖尾在"穿过"它：
+```
+float2 noiseUV = float2(i.uv.x - _Time.y * _FlowSpeed, i.uv.y);
+float noise = tex2D(_NoiseTex, noiseUV * _NoiseTiling).r;
+col.rgb += noise * _NoiseIntensity;
+```
+Noise纹理建议使用128×128的单通道（R8）纹理，Tiling的X值独立控制（通常设为3～6），Y值设为1保持宽度方向不重复。
 
 ---
 
 ## 实际应用
 
-**剑气拖尾**：主贴图使用横向条纹噪声，UV.x控制条纹分布，UV.y叠加`_Time.y * 2.5`的流速使条纹向剑尖流动；透明度曲线`pow(1 - uv.y, 1.8)`确保剑根处最亮；顶点色的Alpha通道（`i.color.a`）叠加乘积，使粒子系统通过顶点色控制整体生命周期淡出，Shader本身无需知晓粒子生命周期。
+**武器挥砍拖尾**：为近战武器的Trail添加能量感，通常主纹理采用一张从左（白色）到右（透明）的渐变+高频噪声叠加，`_FlowSpeed`设为负值使纹理向刀刃方向流动，增强斩击感。
 
-**魔法圆弧Ribbon**：使用Tile UV模式，`_TileAmount`设为4.0使贴图沿弧线重复4次；在Fragment Shader中加入基于`uv.x`的边缘软化：`edge = smoothstep(0, 0.15, uv.x) * smoothstep(1, 0.85, uv.x)`，消除Ribbon侧边的硬边；再叠加一张以`_Time.y * 0.3`缓慢滚动的Noise贴图扰动主UV，使弧线产生流动波动感。
+**子弹轨迹Ribbon**：子弹飞行路径的Ribbon拖尾要求极短（生命周期约0.1～0.3秒），此时`_TailFadeLength`需要设置到0.6以上，确保细短的Ribbon不出现硬边。主纹理使用细长的高斯光斑图，V方向的`edgeMask`幂次设为4～6。
 
-**子弹痕迹（极短拖尾）**：拖尾存续时间仅0.05秒，Stretch模式下UV.y变化极快。此场景不适合流动贴图，改用**固定花纹+顶点色主导**的方案：Shader仅读取`i.color`并输出，贴图仅用于提供噪点Alpha遮罩，性能极低（每帧约120个此类拖尾同时存在仍保持60fps）。
+**魔法技能特效**：多层拖尾叠加时，外层Ribbon开启Additive混合（`Blend One One`），内层Ribbon使用Alpha Blend（`Blend SrcAlpha OneMinusSrcAlpha`），两层的`_FlowSpeed`设为不同方向（一正一负），形成层次感。Niagara中可在同一个Ribbon渲染器上通过**Custom Renderer Binding**绑定两套材质槽来实现。
 
 ---
 
 ## 常见误区
 
-**误区一：认为拖尾UV.y永远从0到1且0在头部**。Unity Trail的UV方向受Trail Renderer的"Texture Mode"和"Alignment"设置影响，同一项目在不同组件版本下表现不一致。正确做法是在Shader中暴露`_FlipV`开关（`uv.y = lerp(uv.y, 1 - uv.y, _FlipV)`），由美术根据实际方向调整，而非在代码中硬编码0在头部。
+**误区一：直接用普通Sprite材质作为拖尾材质**
+普通Sprite材质的UV坐标是静态的，不包含沿拖尾流动的时间信息。用在TrailRenderer上时，纹理会随拖尾长度拉伸而不是流动，导致长拖尾纹理糊掉、短拖尾纹理压缩变形。必须专门编写或使用带`_FlowSpeed`参数的拖尾材质。
 
-**误区二：直接将护盾Shader的菲涅尔边缘移植到拖尾**。护盾的菲涅尔基于`dot(viewDir, normal)`，拖尾面片的法线始终对准摄像机，`dot`值几乎恒为1，菲涅尔效果完全失效。拖尾的边缘高光必须改用UV.x距离0.5的偏移量来模拟：`float rim = 1 - abs(uv.x - 0.5) * 2`，此值在中心最大、两侧为0，才能产生"中轴最亮"的发光条带感。
+**误区二：将拖尾Shader的edgeMask逻辑与护盾Shader的边缘光混淆**
+护盾Shader的边缘光依赖`dot(viewDir, normalDir)`计算菲涅尔值，这个值随摄像机角度变化。拖尾Shader没有意义上的"法线方向"——拖尾网格的法线总是朝向摄像机（Billboard模式），用菲涅尔做拖尾边缘会导致拖尾正面中央反而最暗，与直觉完全相反。拖尾的边缘只应由V轴位置决定。
 
-**误区三：在拖尾Shader中使用Opaque渲染队列**。拖尾几何体形状细长且不规则，必须使用`Queue = Transparent`并搭配`ZWrite Off`；若误用Opaque会导致拖尾遮挡后方透明粒子，并因ZWrite写入深度缓冲而产生错误的遮挡关系，在多层粒子叠加场景中尤为明显。
+**误区三：忽略Niagara Ribbon的顶点顺序导致UV翻转**
+Niagara Ribbon的顶点生成顺序在某些生命周期设置下会从尾到头排列，造成U轴反向（新粒子U=1，老粒子U=0）。此时直接套用`headFade/tailFade`公式会让头尾渐隐效果颠倒。解决方法是在Niagara的Ribbon属性面板中勾选**Invert Ribbon UV**，或在Shader中加入`float correctedU = _InvertUV > 0.5 ? 1.0 - i.uv.x : i.uv.x`的条件翻转。
 
 ---
 
 ## 知识关联
 
-**与护盾Shader的衔接**：护盾Shader已建立了顶点色驱动透明度、Fresnel公式编写的基础，拖尾Shader将这两项技能迁移到更动态的几何体上，并新增了UV流动和衰减曲线的处理。护盾中学到的`Blend SrcAlpha OneMinusSrcAlpha`混合设置在拖尾中同样使用，但需追加`ZWrite Off`。
+**前置概念——护盾Shader**：护盾Shader建立了边缘光、Alpha混合与Additive渲染模式的基础认知。拖尾Shader延续了Additive混合的使用场景，但将边缘光的计算来源从视角夹角切换为UV位置，是对同一视觉目标（边缘发光）采用不同计算路径的典型对比案例。
 
-**通往自定义数据**：本文的剑气案例依赖粒子系统通过顶点色传递生命周期，这是一种间接通信方式，存在通道数量（RGBA仅4个数值）不足的问题。下一步学习的**自定义数据（Custom Data）**模块，允许粒子系统将任意浮点参数（如流速系数、色相偏移、纹理帧序号）写入UV2和UV3通道，Shader通过`TEXCOORD1`、`TEXCOORD2`读取，将拖尾材质的可控维度从4个扩展到12个（4通道×3套UV）。
+**后续概念——自定义数据**：拖尾Shader的进阶需求是让每段拖尾携带额外信息，例如沿路径变化的颜色、宽度权重、发光强度等。这要求粒子系统通过**自定义数据（Custom Data）**通道将这些逐顶点属性传入Shader的`TEXCOORD`插槽。掌握拖尾UV的基本读取之后，自定义数据提供了将任意逐帧属性注入Shader的通用机制，是实现"颜色渐变拖尾"和"宽度可控拖尾"的必经步骤。

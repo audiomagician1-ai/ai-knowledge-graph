@@ -24,70 +24,53 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # Draw Call优化
 
 ## 概述
 
-Draw Call（绘制调用）是CPU向GPU发出的一次"请求"，命令GPU绘制某个网格对象。每次Draw Call都需要CPU打包渲染状态（着色器、纹理、变换矩阵等）并通过驱动层提交给GPU，这个过程在DirectX 11和OpenGL传统架构下每次耗时约0.1ms，当场景中存在数千个独立对象时，CPU端的提交开销会成为帧率瓶颈。Draw Call数量过多导致的性能问题通常被称为"CPU瓶颈"，区别于GPU端的顶点处理或像素填充瓶颈。
+Draw Call（绘制调用）是CPU向GPU发出的一条渲染指令，命令GPU使用当前绑定的材质和网格数据绘制一批几何体。每次Draw Call发生时，CPU必须完成状态切换、参数验证、驱动层翻译等一系列工作，在DirectX 11及之前的API中，单次Draw Call的CPU开销约为0.1ms量级，当场景中存在数千个Draw Call时，CPU成为明显的渲染瓶颈。
 
-Draw Call的概念随实时渲染管线的发展而变得愈发关键。早期3D游戏（如1999年的《雷神之锤III》时代）场景对象数量有限，Draw Call不成问题；随着开放世界和密集场景的普及，行业逐渐总结出"移动端每帧100个Draw Call以内、PC端1000个以内"的经验阈值（这只是粗略参考，具体取决于硬件）。Unity引擎在Stats面板直接显示"Batches"数量，就是为了让开发者实时监控这一指标。
+这一问题在移动端尤为突出。ARM Mali等移动GPU的驱动层比PC更厚重，单次Draw Call的驱动开销是PC的2到5倍。Unity官方文档建议移动端场景将Draw Call控制在100以下，而PC端通常可以承受1000至2000个。Draw Call数量的限制本质上是**CPU提交瓶颈**，与GPU的并行计算能力无关——GPU可能处于空闲状态，而CPU却忙于打包渲染指令。
 
-优化Draw Call的本质是**减少CPU与GPU之间的通信次数**，将多个绘制请求合并为单次提交。主要手段有三类：静态合批（Static Batching）、动态合批（Dynamic Batching）、GPU实例化（GPU Instancing）以及间接渲染（Indirect Rendering）。
-
----
+Draw Call优化的目标是减少CPU向GPU提交的指令数量，核心思路分为三类：**合批（Batching）**将多个物体合并为一次提交，**实例化（Instancing）**复用同一份网格数据多次绘制，**间接渲染（Indirect Rendering）**将指令生成工作转移到GPU端，彻底绕过CPU瓶颈。
 
 ## 核心原理
 
-### 静态合批与动态合批
+### 静态合批（Static Batching）
 
-**静态合批**（Static Batching）在构建阶段将标记为Static的多个网格合并为一个大网格，并写入一个顶点缓冲区（Vertex Buffer）。运行时只需一次Draw Call即可绘制所有合批对象，代价是内存占用增加——同一个1000面的石头摆放100次，静态合批后顶点缓冲区会存储100×1000=100,000个顶点的副本。Unity文档指出，静态合批要求所有对象共享同一材质（Material）。
+静态合批在构建阶段或运行时启动阶段将标记为`Static`的物体网格顶点合并进一张大型顶点缓冲区。Unity的静态合批要求物体共享同一材质，合并后生成一个新的组合Mesh，运行时用单次Draw Call渲染整组物体。其代价是**内存占用翻倍**：原始网格数据和合并后的大Mesh同时驻留在内存中。对于一栋包含500个相同石砖物件的建筑，静态合批可以将500次Draw Call压缩到1次，但需要额外消耗这500个网格总顶点数乘以顶点数据大小的内存。
 
-**动态合批**在运行时每帧将符合条件的小网格动态合并。Unity的动态合批对单个网格有顶点数限制：默认情况下网格顶点数不超过300个、顶点属性不超过900个通道（如同时有位置、法线、UV则为300顶点×3属性=900）。超过此限制的网格不会参与动态合批。动态合批有CPU合并开销，对于高频变动的大量小对象效果有限。
+### 动态合批（Dynamic Batching）
 
-### GPU实例化
+动态合批在每帧运行时由CPU完成，引擎自动将**顶点数低于900个**（Unity中的限制，且顶点属性通道数影响此上限）、共享材质的动态物体网格临时合并。动态合批的CPU合并操作本身有计算成本，当参与合批的物体顶点总数过多时，合批CPU时间可能超过节省的Draw Call时间，反而造成性能下降。因此动态合批适合大量小型粒子、UI元素等场景，而不适合复杂角色模型。
 
-GPU Instancing允许用**同一份网格数据 + 一份实例属性数组**绘制N个对象，整个过程只产生1次Draw Call。GPU在顶点着色器中通过`SV_InstanceID`（HLSL语义）读取每个实例的变换矩阵、颜色等差异化数据。关键公式为：
+### GPU实例化（GPU Instancing）
 
-> **节省的Draw Call数 = (N - 1)**，其中N为实例数量
-
-例如绘制500棵相同树木，使用实例化只需1次Draw Call，而不使用则需500次。GPU Instancing要求所有实例使用**完全相同的网格和材质**，但允许通过`MaterialPropertyBlock`或实例化属性缓冲区（StructuredBuffer）传递每实例的颜色、矩阵等差异。
+GPU实例化通过一次Draw Call传入同一网格的多份变换矩阵（以及其他per-instance数据如颜色），让GPU内部循环绘制N个实例，而非CPU提交N次独立Draw Call。在Shader代码层面，需要使用`UNITY_INSTANCING_BUFFER_START`宏声明实例化属性块，`UNITY_ACCESS_INSTANCED_PROP`宏读取每实例数据。实例化对**相同网格、相同材质但不同Transform**的物体效果最佳，典型场景是草地（数万株草使用同一Mesh）或士兵群体。OpenGL ES 3.0及以上、Metal、Vulkan、DirectX 11及以上均支持此特性。
 
 ### 间接渲染（Indirect Rendering）
 
-`DrawMeshInstancedIndirect`（Unity API）或DirectX 12的`ExecuteIndirect`代表更高阶的优化手段：绘制参数（实例数量、网格范围等）本身存储在GPU侧的缓冲区中，CPU无需回读GPU数据即可发出指令。这意味着GPU可以在Compute Shader中自主剔除（Culling）不可见实例，并直接将存活实例数写入间接参数缓冲区，完全绕过CPU逻辑。这种方式常用于植被系统（草地、树木）绘制数十万个实例，Draw Call数量维持在个位数级别。
-
-### 合批的破坏因素
-
-以下行为会**打断**批次（Batching Break），导致Draw Call数量重新增加：
-- 使用不同的材质或材质实例（即使参数不同也会打断）
-- 开启`ShadowCasting`与关闭`ShadowCasting`的对象混用
-- 在运行时调用`renderer.material`（自动创建材质副本）而非`renderer.sharedMaterial`
-- 奇数次缩放（Negative Scale）的变换矩阵，因为它改变了顶点绕序（Winding Order）
-
----
+间接渲染使用`DrawMeshInstancedIndirect`（Unity）或Vulkan的`vkCmdDrawIndirect`等API，将绘制参数（实例数量、索引偏移等）存储在GPU端的Buffer中，由Compute Shader在GPU上动态决定绘制什么、绘制多少个，CPU只需调用一次间接绘制指令。这完全消除了CPU逐物体遍历和剔除的开销，GPU Driven Pipeline即基于此思路，在《最后生还者 Part II》（2020年）等项目中，数万个植被实例通过间接渲染在GPU端完成剔除和提交，CPU帧时间节省超过30%。
 
 ## 实际应用
 
-**移动端UI优化**：Unity的UGUI系统将同一Canvas下相同材质、相同纹理图集（Sprite Atlas）的UI元素自动合批。当一张Sprite Atlas包含所有HUD图标时，整个HUD只需1次Draw Call；一旦将图标拆分为多张独立纹理，每个图标都会产生独立Draw Call，导致DrawCall从1飙升至图标数量级别。
+**城市场景道路标线**：数百个箭头标线Mesh完全相同，仅位置和旋转不同，启用GPU实例化后从400次Draw Call降至1次，且每实例颜色（白线/黄线）通过实例化Buffer传入Shader，无需多材质切换。
 
-**开放世界植被**：使用`DrawMeshInstancedIndirect`结合Compute Shader进行视锥体剔除（Frustum Culling）和遮挡剔除（Occlusion Culling），可将100,000株草的绘制控制在8～16次Draw Call以内（按LOD分级各提交一次）。
+**UI系统图集合批**：将所有HUD图标打包进同一张Texture Atlas（图集），确保同一Canvas层级下的图标元素共享一个材质，Unity的UI Canvas会自动将它们合并为单次Draw Call。图集生成工具（如TexturePacker）将不同图标打包时需设置相同的压缩格式（如ASTC 4x4），否则材质不同导致合批失败。
 
-**角色合批**：多个角色使用同一套骨骼动画资产并配合GPU Skinning，可以将角色Draw Call从每角色4次（身体、头发、装备、武器）合并处理，但需要角色材质保持一致，实际项目中通常通过角色纹理图集（Character Atlas）将多个角色贴图合并到一张4096×4096纹理上实现材质统一。
-
----
+**地形植被**：使用`DrawMeshInstancedIndirect`配合Compute Shader，在GPU端执行视锥剔除（Frustum Culling）和遮挡剔除（Hi-Z Occlusion Culling），只将可见实例的矩阵写入Instance Buffer，再触发间接绘制。此方案在地形含10万棵树的场景中，CPU植被渲染帧时间可从8ms降至0.3ms以下。
 
 ## 常见误区
 
-**误区一：Draw Call数量越少越好，无需考虑合批代价**。静态合批会增加内存；动态合批每帧有CPU合并计算开销；GPU Instancing的实例数组上传也占用带宽。当场景中只有10个对象时，为它们设置GPU Instancing反而徒增复杂度。优化需在Draw Call数量与内存/CPU开销之间权衡，而非单纯追求最低Draw Call。
+**误区一：合批一定能提升性能。** 动态合批的CPU合并操作有实际成本。若每帧合批对象频繁变化（如物体不停加入/离开合批组），CPU需要每帧重建合并Buffer，当顶点数超过阈值时合批反而更慢。正确做法是通过Unity的Frame Debugger确认合批确实生效，并用Profiler对比合批前后的CPU帧时间，而不是默认开启了合批就等于优化了性能。
 
-**误区二：调用`renderer.material`不影响批次**。`renderer.material`在Unity中会自动创建一个材质实例副本（Material Instance），该副本与原始材质不同，立即破坏与其他对象的批次关系。正确做法是在只读场景下统一使用`renderer.sharedMaterial`，或通过`MaterialPropertyBlock`修改单个实例属性而不破坏材质共享关系。
+**误区二：减少Draw Call数等于减少渲染时间。** Draw Call优化解决的是**CPU提交瓶颈**，若场景的瓶颈在GPU（如过度绘制、复杂Shader的ALU压力），减少Draw Call对帧率几乎没有帮助。需要先用RenderDoc或Xcode GPU Frame Capture区分CPU Bound还是GPU Bound，再决定是否应优先做Draw Call优化。
 
-**误区三：GPU Instancing能解决所有Draw Call问题**。GPU Instancing仅适用于**同一网格**的大量副本。若场景中有500种不同形状的道具各出现1次，GPU Instancing无法发挥作用，此时应考虑网格合并（Mesh Merging）或通过材质标准化（统一材质）来启用其他合批方式。
-
----
+**误区三：GPU实例化与静态合批可以叠加使用。** 被标记为Static并已参与静态合批的物体，其网格已合并为组合Mesh，Unity无法再对其应用GPU实例化。两者是互斥的优化路径，静态合批适合不同网格混合的静态场景，GPU实例化适合大量重复使用同一网格的动态对象。
 
 ## 知识关联
 
-学习Draw Call优化需要先理解**性能优化概述**中CPU瓶颈与GPU瓶颈的区分方法——使用Unity Profiler或RenderDoc判断当前帧时间消耗在CPU提交端还是GPU执行端，才能确认Draw Call优化是否有效。
+学习Draw Call优化需要先了解**渲染管线概述**中CPU与GPU的分工模型，以及**材质与Shader基础**中材质实例（Material Instance）如何影响合批条件——两个物体即便使用同一Shader，若材质属性不同（非实例化情况下），也无法合批。
 
-本概念直接延伸至两个进阶方向：**GPU实例化**深入讲解`SV_InstanceID`的着色器编写、实例属性缓冲区的布局设计，以及与蒙皮动画结合的GPU Skinning Instancing技巧；**网格合并**则探讨如何通过`Mesh.CombineMeshes()` API在运行时或编辑时将多个不同形状的网格合并为单一网格，从而将Draw Call优化扩展到无法使用Instancing的多形状场景。
+Draw Call优化是进入**GPU实例化**深度学习的直接前置，GPU实例化章节将展开Instancing Buffer的内存布局、per-instance数据的Shader编写规范以及SRP Batcher与传统实例化的区别。**网格合并**章节则从资产制作角度讨论如何在建模阶段预合并网格以辅助静态合批，并分析合并网格与LOD（细节层次）系统的协同策略。
