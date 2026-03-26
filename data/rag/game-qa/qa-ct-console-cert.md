@@ -24,69 +24,47 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # 主机认证兼容
 
 ## 概述
 
-主机认证兼容（Console Certification Compatibility）是指游戏产品在发布至 PlayStation、Xbox 或 Nintendo Switch 平台之前，必须通过各平台原厂技术规范审核的验证流程。索尼、微软、任天堂三家公司各自维护着一套称为 Technical Requirements Checklist（TRC）、Xbox Requirements（XR）和 Lotcheck 的强制性认证文件，游戏必须满足其中每一条条款才能获准上架。
+主机认证兼容（Console Certification Compatibility）是指游戏产品在发布于PlayStation、Xbox或Nintendo Switch平台之前，必须通过各平台官方认证机构审核的一套强制性技术与内容验证流程。与PC游戏不同，主机游戏无法绕过平台方直接上架，每款游戏都必须向Sony、Microsoft或Nintendo提交完整的认证申请包（Submission Package），经平台方技术审查团队逐项检测后方可获得发行许可。
 
-这一流程起源于任天堂在1988年为 NES 平台引入的质量封印（Quality Seal）制度，旨在防止低质量第三方游戏损害平台生态。随后索尼在 PlayStation 时代建立了 TCR（Technical Certification Requirements），微软在 Xbox 360 时代将其细化为带有优先级分级（Required/Recommended）的 XR 文档体系。时至今日，三套体系均已演进到覆盖数百条具体规则的规模。
+这一机制的历史可追溯至任天堂1988年为保护Famicom/NES生态系统而推出的质量授权标志制度（Official Nintendo Seal of Quality），该制度首次以强制认证的形式确立了主机平台对第三方游戏的审查权。Sony随后在PlayStation时代建立了TRC（Technical Requirements Checklist）体系，Xbox则形成了XR（Xbox Requirements）规范体系，Nintendo Switch采用的是LoT（Lot Check）流程，三套体系各自独立、互不通用。
 
-对于游戏QA团队而言，主机认证兼容的失败代价极高：一次认证提交失败（Submission Failure）将导致至少两周的返工与重新排队等待期，且平台方会收取重新提交的额外费用。因此，理解三大平台各自的技术要求差异，是主机QA测试工程师区别于PC QA的核心能力。
-
----
+主机认证兼容之所以在游戏QA流程中不可跳过，是因为认证失败将直接导致发行计划延期，而每次重新提交审核（Resubmission）通常需要等待2至4周，涉及额外费用且影响发行商与平台方的商业关系。一款游戏若在PS5的TRC检测中未通过崩溃率要求，即便已完成所有内部测试，仍需重新经历完整的认证周期。
 
 ## 核心原理
 
-### 三大平台认证文件结构差异
+### 三大平台认证规范的结构差异
 
-**PlayStation TRC** 由索尼互动娱乐（SIE）通过 DevNet 开发者门户下发，分为 Crossbar、Trophy、Network、Save Data 等功能模块，每条规则标注为 Mandatory（必须）或 Conditional（条件性）。典型规则如 TRC R4107 规定：游戏在任何状态下弹出光盘后，必须在30秒内显示要求重新插入光盘的提示，否则为认证失败项。
+PlayStation的TRC文档由Sony Interactive Entertainment（SIE）维护，每个主机世代均会更新，PS5版TRC包含超过200条独立检查项，分为"强制（Mandatory）"与"推荐（Advisory）"两类。Xbox Requirements（XR）由Microsoft Game Stack团队管理，目前XR编号系统中，XR-001至XR-064为所有Xbox平台的通用强制要求，涵盖离线游玩行为、成就系统集成、Xbox Network服务调用等。Nintendo的Lot Check流程则侧重Switch硬件特有功能，例如Joy-Con手柄震动适配、TV/桌面/掌机三种显示模式的分辨率切换（720p/1080p自动适配）以及睡眠模式下的数据安全恢复。
 
-**Xbox XR 文档**（以 XR-045 为例）明确要求：游戏必须在手柄断开连接的2秒内暂停或弹出通知，并在重新连接后恢复原有游戏状态，否则判定为 Required 级别违规。XR 文档还区分 Xbox Series X|S 和 Xbox One 的分级要求，QA 团队需分别针对两代硬件执行独立测试矩阵。
+### 崩溃与挂起的硬性标准
 
-**Nintendo Lotcheck** 的规则以静默性著称，任天堂不对外公开完整的 Lotcheck 文件，开发商只能通过 Nintendo Developer Portal 获取，且条款更新频率高于索尼和微软。Switch 平台对 Joy-Con 控制器的 HD Rumble 响应延迟、NFC 读取时间（规定不超过1.5秒）以及 Sleep Mode 唤醒行为均有严格规定。
+三大平台均对游戏稳定性设有明确的可量化门槛，而非模糊的"稳定运行"表述。PlayStation TRC要求游戏在连续运行测试中，由游戏自身代码引发的崩溃次数必须为零（0 crashes in certification build）；Xbox XR-015明确规定游戏不得出现超过60秒的无响应挂起状态；Switch Lot Check要求游戏在电量不足警告弹出、系统截图功能调用、HomeButton按下返回主界面等系统中断场景下，均需在5秒内做出正确响应而不崩溃。QA团队需专门针对这些数值边界设计测试用例，而非仅依赖常规功能测试覆盖。
 
-### 认证测试矩阵构建
+### 平台专属功能的强制集成验证
 
-主机认证兼容测试需要构建专项测试矩阵，矩阵维度包括：硬件型号（PS5 / PS4 / PS4 Pro / PS4 Slim 分别执行）、系统固件版本（通常测试 N-1 版本到最新版本）、存储介质（内置SSD vs 扩展存储）以及网络状态（在线/离线/弱网）。每个平台的认证套件还包含自动化工具：PlayStation 使用 **checkdisc** 工具验证光盘数据完整性，Xbox 提供 **XBLA Compliance Tool** 执行必须项自动扫描。
-
-### 成就/奖杯系统合规验证
-
-三大平台均强制要求成就或奖杯系统满足特定条件，这是主机认证兼容中最常见的失败原因之一：
-- PlayStation **Trophy** 规则要求：单个游戏的 Trophy 总分值必须为 1230 点（含1枚白金奖杯时），且铂金奖杯不得设置隐藏属性。
-- Xbox **Achievement** 规则要求：基础游戏成就上限为1000G，每个DLC包最多可添加250G，总上限不超过基础+季票的累计值。
-- Switch **没有强制性成就系统**，但若开发商选择使用 Nintendo Switch Online 的积分功能，须符合 Platinum Points 触发时机规定。
-
----
+认证兼容测试的独特之处在于，游戏不仅要"不出错"，还必须"正确使用"平台专属API。PS5的DualSense触觉反馈（Haptic Feedback）与自适应扳机（Adaptive Trigger）在TRC中虽为Advisory级别，但其SDK调用格式必须符合规范，错误的API参数会导致认证失败。Xbox的成就（Achievements）系统要求游戏内所有成就必须在提交前完整注册至Xbox Live后台，成就积分总和必须精确等于1000G（基础游戏部分），偏差1G即视为不合规。Switch要求游戏图标（Nintendo eShop Icon）必须为256×256像素的JPEG格式，文件大小不超过64KB，这是Lot Check中最高频出现的材料错误之一。
 
 ## 实际应用
 
-**案例一：PS5版本TRC违规检出**
-某第三方开发商在提交 PS5 版本时，因游戏内下载 DLC 的过程中断时没有正确清除未完成的数据残留文件，触发了 TRC R4120（存储数据管理）违规。QA 团队通过在测试机上模拟网络中断场景（于 PS5 开发机的 DevKit Network Tool 中人工切断下载进程），复现了该问题并生成了带有存储快照对比的 Bug Report，最终开发团队修复了 Content Manager 的异常退出处理逻辑。
+在实际的主机认证兼容测试流程中，QA团队通常使用由平台方提供的专用开发机（DevKit）而非消费者零售机（Retail Unit）进行测试。Sony为第三方开发商提供PS5 DevKit，其运行的是带有调试日志输出的特殊系统固件，可捕获TRC违规的详细错误代码。一个典型的认证准备周期包括：开发商内部按照TRC/XR/LoT文档逐条执行自检（通常历时3至6周）→提交预检清单（Pre-Submission Checklist）→正式提交认证包（含游戏主程序、元数据、法律声明、年龄分级证书）→等待平台方反馈（约2至4周）→针对NCL（Non-Conformance List）逐条修复→重新提交。
 
-**案例二：Xbox XR-013 手柄振动违规**
-Xbox XR-013 要求游戏不得在系统 UI 层级（如 Guide 按钮弹出时）继续触发控制器振动。某赛车游戏的持续震动反馈在玩家打开 Xbox Guide 的瞬间没有停止，导致 Required 级别认证失败。QA 工程师通过在游戏内最高强度振动状态（赛车碰撞瞬间）连续按下 Guide 键100次进行压力验证，确认该问题的复现率为100%。
-
-**案例三：Switch Lotcheck 内存泄漏拦截**
-Switch 对运行时内存占用有严格上限（4GB RAM中游戏可用约3.2GB），Lotcheck 会通过任天堂内部工具检测长期运行后的内存使用曲线。某RPG游戏在连续游玩4小时后触发内存溢出崩溃，QA 团队使用 Nintendo SDK 的 **Nvn Profiler** 工具定位到地图切换时材质缓存未释放的问题，该问题若未检出将直接导致 Lotcheck 拒绝。
-
----
+以Switch游戏为例，Lot Check中常见的NCL条目包括：游戏在收到系统"低电量通知"时未暂停BGM导致用户数据丢失、多人联机房间在网络断开后未正确触发"通信中断"错误提示、以及eShop截图分辨率不符合1280×720像素的规格要求。这些问题若在QA阶段提前验证，可避免数万美元的重新提交费用和数周的延期损失。
 
 ## 常见误区
 
-**误区一：PC合规测试经验可直接迁移至主机认证**
-PC平台的合规测试主要关注 ESRB/PEGI 评级内容和 Steam 技术要求，而主机认证文件包含大量与主机硬件行为强绑定的规则，例如 PS5 的 Haptic Feedback 触发规范（DualSense 的自适应扳机阻力值必须在特定场景下配置在15%至85%区间内）。这类规则在 PC 测试框架中完全不存在，生搬 PC 测试用例会造成大量认证必须项的漏测。
+**误区一：通过内部测试等同于通过平台认证。** 许多开发团队在完成内部QA后误以为认证是走程序的形式。实际上，平台认证测试包含大量游戏逻辑层面无法覆盖的系统集成检查，例如Xbox的"存档云同步冲突解决（Cloud Save Conflict Resolution）"行为，必须在特定的XR-074测试场景下触发才能验证，普通功能测试流程不会主动构造这一场景。
 
-**误区二：通过一个平台认证说明其他平台也会通过**
-三个平台对同一功能的要求存在显著差异。以"玩家长时间无操作"场景为例，PlayStation 要求游戏在无操作超过一定时间后不得阻止系统进入屏保，Xbox 则侧重于检测游戏是否阻止了 Idle Detection，而 Switch 需要验证 Sleep Mode 触发后的游戏状态保存。这三条规则的测试方法、判定标准均不同，必须分别设计独立测试用例。
+**误区二：一次认证通过后，后续更新（Patch）无需再次认证。** PlayStation和Xbox均要求所有更新包（Update/Patch）在上线前通过各自的补丁认证流程（Patch Certification），且补丁认证同样有明确的崩溃率要求和功能兼容规范。Switch的版本更新同样需要经历Lot Check的更新版本专项审查。
 
-**误区三：认证测试只在开发末期进行**
-将主机认证兼容测试推迟到里程碑末期是极高风险的决策。TRC/XR/Lotcheck 的部分条款影响到游戏架构层面（如存档系统设计），若在 Alpha 阶段才发现存档格式不符合 PS5 的 Save Data Backup 要求，修复成本将数倍于早期介入。业界最佳实践是在垂直切片（Vertical Slice）阶段即引入认证 Checklist 进行预审。
-
----
+**误区三：跨平台移植只需改变图形API即可通过认证。** 将PC游戏移植至PS5时，除Vulkan转换为PS5 GNM/GNMX图形API外，还必须重新实现平台专属的存档系统（Trophy/Achievement）、用户账号管理、DLC许可验证等模块，每个模块均有独立的TRC条目对应，缺少任何一项都会导致认证包被拒绝。
 
 ## 知识关联
 
-主机认证兼容建立在**最低配置验证**的测试思维基础上：最低配置验证确立了「在受限硬件条件下游戏必须稳定运行」的测试原则，主机认证兼容则将这一原则延伸至各主机平台的固定硬件规格，并叠加了平台方强制性的行为规范。**合规性测试**提供了对「规则文档驱动测试设计」的方法论训练，而主机认证兼容是这一方法论在三套封闭文档体系（TRC、XR、Lotcheck）下的具体应用，测试用例的设计粒度和优先级排序直接由原厂规则文档的条款级别决定。
+主机认证兼容建立在**最低配置验证**的基础上——最低配置验证确保游戏在硬件性能下限（如Switch掌机模式的约0.8 TFLOPS GPU性能）下能够运行，而主机认证兼容在此基础上进一步验证平台专属功能集成是否符合官方规范。**合规性测试**为认证兼容提供了内容审核层面的支撑，尤其是年龄分级（CERO/ESRB/PEGI评级证书）是提交认证包的前置必要材料，缺少评级证书将导致认证申请在受理阶段即被退回。
 
-完成主机认证兼容的学习后，进入**浏览器兼容**测试领域时，学习者会发现后者的规则来源从封闭的平台原厂文档转变为 W3C 开放标准与各浏览器引擎的实现差异，测试对象从固定硬件规格转变为版本碎片化的浏览器矩阵，这一对比有助于理解不同兼容测试场景下规则溯源方式的本质差异。
+完成主机认证兼容知识的学习后，可进入**浏览器兼容**领域。浏览器兼容同样涉及多目标平台的规范化验证，但其检查对象从封闭的主机SDK切换为开放的Web标准（如W3C规范），验证方法从DevKit硬件测试转向Chrome/Firefox/Safari等浏览器的渲染差异分析，是从封闭平台兼容向开放平台兼容过渡的重要认知转变。

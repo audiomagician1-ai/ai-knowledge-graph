@@ -24,68 +24,61 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # 混合模式
 
 ## 概述
 
-混合模式（Blend Mode）是GPU渲染管线中控制新绘制像素（源像素）如何与帧缓冲区中已存在像素（目标像素）进行颜色合成的算法规则。其数学本质是一条公式：**最终颜色 = 源颜色 × 源因子 + 目标颜色 × 目标因子**，通过改变源因子（SrcFactor）和目标因子（DstFactor）的取值，可以得到完全不同的视觉效果。
+混合模式（Blend Mode）是Shader特效中控制像素如何与已有帧缓冲内容进行叠加计算的机制。其核心公式为：**最终颜色 = 源颜色 × 源因子 + 目标颜色 × 目标因子**，其中"源"指当前绘制的像素，"目标"指帧缓冲中已存在的颜色。不同混合模式的本质差异，就在于选取不同的源因子（SrcFactor）和目标因子（DstFactor）组合。
 
-混合模式的理论基础可以追溯到1984年Porter和Duff发表的论文《Compositing Digital Images》，该论文系统定义了Alpha合成的数学框架，其中"Over"操作正是今天游戏引擎中Alpha混合的原型。此后，图形硬件逐渐将这些混合方程以固定管线的形式内置于GPU中，开发者只需设置混合参数即可驱动硬件完成像素合成。
+混合模式的概念随着GPU可编程管线的普及而标准化，OpenGL在1.1版本（1997年）便引入了`glBlendFunc`接口，DirectX则通过`D3DBLEND`枚举提供对应功能。在Unity的ShaderLab语法中，通过`Blend SrcFactor DstFactor`一行指令即可完成配置。对于特效Shader而言，混合模式直接决定粒子、光晕、火焰等视觉元素如何与背景融合，是影响特效最终观感的最直接参数之一。
 
-在Shader特效开发中，混合模式的选择直接决定特效的视觉外观、性能开销以及是否出现颜色错误。选错混合模式会导致半透明边缘出现黑边、加法叠加后颜色过曝、或者粒子排序问题，这些都是特效制作中最常见的视觉缺陷来源。
+正确选择混合模式不仅影响视觉效果，还与渲染性能密切相关。错误的混合模式会导致颜色错误、边缘出现黑边或白边，甚至引发不必要的Overdraw开销，因此在特效制作流程中需要早期确定混合策略。
 
 ## 核心原理
 
-### Alpha混合（Alpha Blending）
+### Additive（叠加混合）
 
-Alpha混合是最通用的透明度混合方式，对应参数设置为 **SrcFactor = SrcAlpha，DstFactor = OneMinusSrcAlpha**，公式展开为：
+Additive混合的因子组合为 **SrcFactor = One，DstFactor = One**，公式简化为：最终颜色 = 源颜色 + 目标颜色。这种模式下，特效像素的RGB值直接累加到背景上，颜色只会越叠越亮，永远不会变暗。因此它天然适合表现自发光效果：火焰、闪电、激光、魔法光效等在叠加时会让背景"发光"。
 
-**最终颜色 = 源RGB × 源Alpha + 目标RGB × (1 - 源Alpha)**
+Additive模式有一个重要特性：纯黑色像素（RGB均为0）在叠加时对背景毫无影响，等同于完全透明。这意味着使用Additive特效时，贴图的黑色区域不需要额外的Alpha通道来实现透明，节省了纹理采样指令。但代价是无法表现"遮挡"关系——Additive粒子永远不能遮盖背景。
 
-当源Alpha为1时，完全覆盖目标像素；当源Alpha为0时，完全透明不影响目标。这种模式需要粒子或半透明物体**从后向前排序**（Back-to-Front，即Painter's Algorithm），否则后绘制的透明物体会错误地"盖住"已混合的前方物体。Alpha混合适合烟雾、云朵、玻璃等需要正确半透明效果的场景。
+### Alpha混合（传统透明）
 
-### 加法混合（Additive Blending）
+Alpha混合的标准因子为 **SrcFactor = SrcAlpha，DstFactor = OneMinusSrcAlpha**，公式为：最终颜色 = 源颜色 × α + 目标颜色 × (1 - α)。这是最常用的透明混合方式，烟雾、云朵、半透明玻璃通常采用此模式。
 
-加法混合参数为 **SrcFactor = SrcAlpha（或One），DstFactor = One**，公式为：
+Alpha混合需要配合**正确的深度排序**才能得到准确结果，因为该混合不具有交换律：A粒子在前、B粒子在后的混合结果，与顺序颠倒时的结果不同。这正是透明粒子特效中常见"排序穿插"问题的根源。Unity中半透明队列（Transparent Queue，值为3000）的存在，正是为了保证从后往前的绘制顺序。
 
-**最终颜色 = 源RGB × 源Alpha + 目标RGB × 1**
+### Pre-multiplied Alpha（预乘Alpha混合）
 
-加法混合的核心特征是只会让画面变亮，不会遮挡背景，多层叠加会趋向纯白。这一特性天然适合火焰、闪电、激光、魔法光效等"自发光"类特效——这类效果在现实中也是将光线叠加到环境上的。加法混合无需深度排序，多个粒子系统互相叠加顺序不影响结果，因此性能友好。但在暗色背景上叠加多层时极易过曝，需配合粒子Alpha控制亮度上限。
+预乘Alpha是指贴图在存储时已将RGB值乘以Alpha：**存储值 = 原始RGB × α**。使用时混合因子设置为 **SrcFactor = One，DstFactor = OneMinusSrcAlpha**。与标准Alpha混合相比，源因子从`SrcAlpha`改为`One`，因为颜色数据中已经包含了Alpha权重。
 
-### 预乘Alpha混合（Pre-multiplied Alpha Blending）
+预乘Alpha能够消除传统Alpha混合在纹理过滤时产生的"黑边"问题。当Alpha = 0的边缘像素在双线性过滤时与相邻非零像素混合，传统Alpha模式会引入原始RGB值参与计算，导致深色边缘。而预乘Alpha在Alpha = 0时，RGB本身也已经是0，过滤后不会引入错误颜色。Photoshop导出PNG时的"预乘Alpha"选项，以及Unity纹理导入设置中的"Alpha Is Transparency"，均与此原理直接相关。
 
-预乘Alpha的图像纹理中，RGB通道已提前乘以Alpha值（即存储的是 `RGB × Alpha`），对应混合参数为 **SrcFactor = One，DstFactor = OneMinusSrcAlpha**，公式为：
+### Multiply（正片叠底）
 
-**最终颜色 = 源RGB（已预乘）× 1 + 目标RGB × (1 - 源Alpha)**
-
-与普通Alpha混合相比，预乘Alpha可以同时模拟**加法和Alpha混合的中间效果**：纹理中Alpha=0但RGB不为0的区域表现为加法叠加，Alpha=1的区域则完全覆盖，这使得一张纹理就能同时表达"发光核心+半透明外晕"的复杂效果。Spine、Unity的URP/HDRP粒子系统均推荐使用预乘Alpha格式，因为它可以避免半透明纹理边缘的"黑边"伪影（该伪影是双线性采样时Alpha=0像素的黑色RGB值渗入边缘导致的）。
-
-### 正片叠底与柔光（Multiply / Soft Light）
-
-正片叠底参数为 **SrcFactor = DstColor，DstFactor = Zero**，效果是将源颜色与目标颜色相乘，结果只会比两者都暗。常用于实时阴影染色、压暗特效，如脚底阴影贴片或角色受击变暗效果。柔光等复杂混合模式在OpenGL ES 2.0硬件上无法直接用硬件混合实现，需要在Shader中手写合成逻辑并关闭硬件混合。
+Multiply混合的因子为 **SrcFactor = DstColor，DstFactor = Zero**，结果为源颜色 × 目标颜色。由于任何颜色与黑色相乘都得黑色，与白色相乘保持原色，该模式常用于制作阴影贴花（Decal Shadow）、污渍叠加等"只让画面变暗"的效果，在移动端也可作为实时阴影的轻量替代方案。
 
 ## 实际应用
 
-**火焰粒子**通常使用加法混合（SrcFactor=SrcAlpha, DstFactor=One），粒子颜色从亮黄到暗红渐变，配合Alpha从1到0的生命周期曲线，在暗色场景中自然叠加出火焰体积感，同时不产生遮挡黑边。
+**火焰粒子特效**：火焰的核心火苗使用Additive模式，通过颜色亮度控制发光强度；外层烟雾改用Alpha混合，表现遮挡感。同一个粒子系统常使用两层材质叠加，分别配置不同混合模式。
 
-**烟雾粒子**必须使用Alpha混合（SrcFactor=SrcAlpha, DstFactor=OneMinusSrcAlpha），并启用深度写入关闭、深度测试开启，再结合粒子系统的Distance Sort或View Space Z Sort确保后向前绘制顺序，否则相邻烟雾粒子会出现硬切边缘。
+**UI光效**：在游戏UI的技能冷却光效、描边发光中，Additive是首选，因为UI层背景颜色变化大，Additive能自然融入任意背景色而不产生突兀边框。
 
-**UI光晕特效**在使用预乘Alpha贴图时，将混合设置为（One, OneMinusSrcAlpha），可以让美术在Photoshop中以正常图层方式绘制贴图后直接导出预乘格式，保留边缘的高光信息而不丢失任何渐变细节。
+**贴花（Decal）系统**：地面弹痕、血迹等贴花通常使用Alpha混合结合`ZWrite Off`（关闭深度写入），防止贴花影响后续透明物体的排序计算。
 
-**受击白闪效果**短暂将角色材质切换至（One, One）全加法模式叠加一个纯白颜色，视觉上产生强烈的发光击打感，持续约0.1秒后切换回原混合模式。
+**软粒子与烟雾**：预乘Alpha在烟雾贴图的边缘过渡处表现优于传统Alpha混合，特别是在烟雾纹理分辨率较低（如64×64的噪波贴图）时，锯齿和黑边问题更为明显，此时应优先使用预乘Alpha工作流。
 
 ## 常见误区
 
-**误区一：加法混合与Alpha混合可以随意互换**。两者的本质差异在于对目标像素的处理：加法混合DstFactor=One，目标颜色完整保留并叠加；Alpha混合DstFactor=OneMinusSrcAlpha，目标颜色按源透明度被"压暗"。将烟雾从Alpha混合错误改为加法混合，背景会透过烟雾完全显现，烟雾丧失遮挡感，变成发光效果。
+**误区一：Additive粒子无法控制浓度**。许多开发者认为Additive粒子只能越叠越亮而无法调暗。实际上，通过降低粒子颜色的RGB亮度值（而非Alpha值）即可控制Additive粒子的视觉浓度，因为Additive混合使用的是RGB作为贡献量，Alpha在标准Additive中不参与叠加计算。
 
-**误区二：普通Alpha混合与预乘Alpha混合的纹理可以混用**。若将未预乘的纹理（普通RGBA贴图）用于预乘Alpha混合参数（One, OneMinusSrcAlpha），RGB与Alpha分离计算会导致半透明区域过亮；反之，将预乘纹理用于普通Alpha混合参数（SrcAlpha, OneMinusSrcAlpha），会对RGB进行二次Alpha乘法，导致半透明区域整体变暗。纹理格式与混合参数必须严格对应。
+**误区二：预乘Alpha只是存储格式问题，混合因子无需修改**。这是使用预乘Alpha时最常见的错误。若贴图是预乘格式但Shader仍使用`Blend SrcAlpha OneMinusSrcAlpha`（传统Alpha因子），则颜色会被Alpha权重计算两次，导致整体偏暗。预乘Alpha必须配合`Blend One OneMinusSrcAlpha`才能正确还原颜色。
 
-**误区三：关闭深度写入就无需考虑绘制顺序**。关闭深度写入（ZWrite Off）只是防止透明物体污染深度缓冲区，并不能自动解决透明物体之间的排序问题。在使用Alpha混合的粒子系统中，若多个粒子的绘制顺序混乱，重叠区域会根据绘制先后计算出不同的混合结果，导致闪烁或颜色错误。
+**误区三：所有透明特效都应关闭ZWrite**。Alpha混合特效通常需要关闭深度写入（`ZWrite Off`），但若特效使用Alpha Test（`clip()`指令做硬边裁切）而非Alpha Blend，则应保留`ZWrite On`，否则会导致被该特效遮挡的后续物体错误地渲染出来。
 
 ## 知识关联
 
-学习混合模式前需要掌握**自定义数据（Custom Data）**的使用——粒子系统通过Custom Data向Shader传递每粒子的Alpha缩放、颜色乘数等参数，这些参数直接影响进入混合方程的源颜色值，是动态控制混合强度的标准手段。
+混合模式的配置通常依赖**自定义数据（Custom Data）**传入逐粒子的颜色和Alpha值，自定义数据决定了源颜色的具体输入，而混合模式决定这个输入如何与帧缓冲结合——两者在Shader特效管线中紧密配合。
 
-掌握混合模式后，可以进入**PBR特效材质**的学习：PBR管线中透明物体的混合涉及Premultiplied Alpha与GBuffer兼容性问题，延迟渲染路径（Deferred）天然不支持透明混合，必须在Forward Pass中处理，这正是混合模式在PBR特效中的直接延伸。
-
-混合模式还直接关联**Overdraw控制**：加法混合和Alpha混合的粒子都会产生Overdraw（同一屏幕像素被多次绘制），Overdraw成本与粒子的屏幕覆盖面积和层叠数量成正比，理解混合模式的叠加机制是评估和优化Overdraw的前提。
+掌握混合模式后，学习**PBR特效材质**时会遇到一个关键矛盾：PBR的物理光照模型默认假定材质不透明，引入透明度和混合模式后需要额外处理菲涅尔、高光等项的混合正确性。而在**Overdraw控制**方向，混合模式的选择直接决定一个像素是否必须进入混合计算阶段——Additive模式下无法通过Early-Z剔除透明区域，理解这一点是优化半透明特效Overdraw的前提知识。

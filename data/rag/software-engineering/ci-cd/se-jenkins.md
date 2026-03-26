@@ -24,21 +24,22 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # Jenkins
 
 ## 概述
 
-Jenkins 是一款用 Java 编写的开源持续集成/持续交付（CI/CD）服务器，最初由 Kohsuke Kawaguchi 于 2004 年在 Sun Microsystems 以 "Hudson" 之名创建，2011 年因与 Oracle 的商标纠纷更名为 Jenkins，并由社区独立维护至今。Jenkins 的核心二进制文件（`.war` 包）可独立运行于任何支持 Java 8+ 的环境，也可部署在 Tomcat 等 Servlet 容器中，默认监听 8080 端口。
+Jenkins 是一款基于 Java 开发的开源持续集成与持续交付服务器，最初由 Kohsuke Kawaguchi 于 2004 年作为 Hudson 项目在 Sun Microsystems 内部创建，2011 年因与 Oracle 的商标纠纷，社区将其分叉并正式更名为 Jenkins。它运行在 JVM 之上，默认监听 8080 端口，通过 WAR 包或 Docker 镜像即可独立部署。
 
-Jenkins 之所以在 CI/CD 领域长期占据重要位置，在于其插件生态的规模：截至 2024 年，Jenkins 官方插件中心托管超过 **1800 个**插件，覆盖从 Git 拉取代码、Maven/Gradle 构建、Docker 镜像推送到 Kubernetes 部署的完整链路。团队可以用 Jenkinsfile 将整条流水线以代码形式存储在版本库中，实现"流水线即代码（Pipeline as Code）"的实践，让构建逻辑与应用代码同步演进。
+Jenkins 的核心价值在于其"一切皆插件"的架构设计。截至 2024 年，Jenkins 插件中心（plugins.jenkins.io）托管了超过 1800 个插件，覆盖源码管理、构建工具、测试报告、部署目标等几乎所有 CI/CD 环节。这意味着同一个 Jenkins 实例可以同时服务于 Maven 构建的 Java 项目、Webpack 打包的前端项目和 Go 编译的微服务项目，而无需额外搭建独立的构建服务器。
+
+Jenkins Pipeline 是 2016 年随 Jenkins 2.0 引入的首要特性，它将构建逻辑从 Web UI 配置迁移到版本控制中的 `Jenkinsfile` 文件，实现了"流水线即代码"（Pipeline as Code）的工程实践。
 
 ## 核心原理
 
-### Jenkinsfile 与 Pipeline DSL
+### Jenkinsfile 两种语法风格
 
-Jenkinsfile 使用基于 Apache Groovy 的领域特定语言（DSL）编写，分为两种语法风格：**声明式（Declarative）**和**脚本式（Scripted）**。声明式语法以 `pipeline { }` 块为根，结构严格；脚本式语法以 `node { }` 块为根，灵活性更高但错误提示较弱。
-
-声明式 Jenkinsfile 的最小骨架如下：
+Jenkins Pipeline 提供**声明式（Declarative）**和**脚本式（Scripted）**两种语法。声明式语法以 `pipeline { }` 块为顶层结构，语法更严格，可读性强，是官方推荐的写法：
 
 ```groovy
 pipeline {
@@ -55,51 +56,60 @@ pipeline {
                 junit 'target/surefire-reports/*.xml'
             }
         }
-        stage('Deploy') {
-            steps {
-                withCredentials([usernamePassword(
-                    credentialsId: 'docker-hub',
-                    usernameVariable: 'USER',
-                    passwordVariable: 'PASS')]) {
-                    sh 'docker push $USER/myapp:latest'
-                }
-            }
-        }
     }
     post {
         failure {
-            mail to: 'team@example.com', subject: 'Build Failed'
+            mail to: 'team@example.com', subject: '构建失败'
         }
     }
 }
 ```
 
-`agent` 指令决定流水线在哪里执行：`agent any` 表示在任意可用 Node 上运行；`agent { docker 'maven:3.9' }` 表示在临时启动的 Docker 容器内运行，容器结束后自动销毁。`post` 块支持 `always`、`success`、`failure`、`unstable`、`changed` 五种条件，分别对应不同的收尾逻辑。
+脚本式语法以 `node { }` 块开头，使用完整的 Groovy 语言能力，灵活性更高但对编写者的 Groovy 知识要求更高。两种语法不能混用于同一 `Jenkinsfile` 的顶层，但声明式流水线内部可以通过 `script { }` 块嵌入脚本式代码片段。
 
-### 主从架构（Controller/Agent）
+### 关键指令与执行机制
 
-Jenkins 采用 **Controller-Agent** 架构（旧称 Master-Slave）。Controller 负责调度任务、存储配置和展示 UI；Agent（工作节点）负责实际执行构建步骤。Agent 通过 **JNLP（TCP 50000 端口）** 或 **SSH** 与 Controller 建立连接。每个 Agent 可配置"执行器（Executor）"数量，表示并发构建能力。在 Kubernetes 环境中，Jenkins Kubernetes 插件可动态创建 Pod 作为临时 Agent，构建完成后 Pod 自动回收，避免资源闲置。
+声明式 Pipeline 的几个关键指令直接决定流水线的运行行为：
 
-### 插件加载与更新机制
+- **`agent`**：指定执行环境。`agent any` 表示在任意可用节点运行；`agent { docker 'maven:3.9' }` 表示在临时 Docker 容器中执行，容器销毁后不留痕迹。
+- **`environment`**：在 `pipeline` 或 `stage` 级别声明环境变量，例如 `REGISTRY_URL = 'registry.example.com'`，所有 `steps` 中均可作为 `$REGISTRY_URL` 引用。
+- **`when`**：条件执行某个 Stage，例如 `when { branch 'main' }` 使部署阶段仅在 main 分支触发时执行。
+- **`parallel`**：在同一 Stage 内并行运行多个子 Stage，可将单元测试与代码扫描并行化，显著缩短总耗时。
+- **`post`**：定义流水线或 Stage 结束后的回调，支持 `always`、`success`、`failure`、`unstable`、`changed` 五种条件。
 
-Jenkins 的插件以 `.hpi` 或 `.jpi` 格式存储在 `$JENKINS_HOME/plugins/` 目录下。Jenkins 在启动时通过类加载器为每个插件创建独立的 `PluginClassLoader`，防止插件间类冲突。插件的依赖关系在 `MANIFEST.MF` 中以 `Plugin-Dependencies` 字段声明，Jenkins 会在安装时自动解析并下载传递依赖。使用 **Jenkins Configuration as Code（JCasC）** 插件，可以将 Jenkins 的系统配置（包括插件列表、凭证、Agent 配置）写成 YAML 文件，实现配置的版本化管理。
+### 插件生态的工作方式
+
+Jenkins 插件以 `.hpi`（Hudson Plugin Interface）文件格式打包，本质是包含 Java 字节码和资源文件的 ZIP 归档。安装插件后 Jenkins 需要重启才能激活扩展点（Extension Point）。关键插件及其职责如下：
+
+| 插件名称 | 用途 |
+|---|---|
+| Git Plugin | 从 Git 仓库检出代码，提供 `checkout scm` 步骤 |
+| Pipeline: Shared Groovy Libraries | 跨项目复用 Groovy 函数库，通过 `@Library('my-lib') _` 引入 |
+| Blue Ocean | 提供现代化可视化流水线 UI，取代经典的构建视图 |
+| Credentials Plugin | 安全存储密码、SSH 密钥、API Token，通过 `withCredentials` 步骤注入 |
+| Kubernetes Plugin | 动态在 K8s 集群中创建 Pod 作为 Jenkins Agent，实现弹性扩缩 |
+
+**共享库（Shared Libraries）**是大型团队避免重复编写 Jenkinsfile 的标准手段。共享库遵循固定目录结构：`vars/` 下存放全局变量和函数，`src/` 下存放 Groovy 类。在 Jenkins 全局配置中注册共享库的 Git 地址后，各项目的 Jenkinsfile 即可直接调用库中定义的 `deployToK8s(env, version)` 等自定义步骤。
 
 ## 实际应用
 
-**Java 微服务的多分支流水线**：使用 Jenkins 的 Multibranch Pipeline 项目类型，Jenkins 会自动扫描 Git 仓库中的所有分支和 Pull Request，对含有 Jenkinsfile 的分支逐一创建独立的流水线实例。`feature/*` 分支只跑单元测试，`main` 分支额外执行 Docker 镜像构建和推送至 Harbor 镜像仓库，所有步骤均在 Jenkinsfile 的 `when { branch 'main' }` 条件块内控制，无需维护多份配置文件。
+**多分支流水线（Multibranch Pipeline）**是 Jenkins 处理 GitFlow 或 Trunk-Based Development 的专用 Job 类型。配置仓库地址后，Jenkins 会自动扫描所有分支和 Pull Request，为每个分支独立创建一条流水线，并在分支删除时自动清理对应的 Job。这使得每个 feature 分支的代码提交都能触发独立的构建和测试，而无需手动为每条分支创建 Job。
 
-**共享库（Shared Library）复用构建逻辑**：企业内多个团队若需共用相同的构建步骤（如统一的安全扫描、发布通知），可将 Groovy 函数封装在 Jenkins Shared Library 中。Shared Library 存储在独立 Git 仓库，目录结构固定为 `vars/`（全局变量/函数）和 `src/`（Groovy 类），在 Jenkinsfile 中以 `@Library('my-shared-lib') _` 一行引入，团队即可调用 `vars/deployToK8s.groovy` 中定义的 `deployToK8s()` 函数，避免重复编写相同逻辑。
+**与 Docker 结合的典型流程**：在 `agent { dockerfile true }` 模式下，Jenkins 读取仓库根目录的 `Dockerfile` 构建镜像并在其中执行所有步骤，彻底消除"在我电脑上没问题"的环境差异问题。构建完成后，使用 `docker.withRegistry('https://registry.example.com', 'registry-credentials')` 块将镜像推送到私有仓库，凭证 ID `registry-credentials` 由 Credentials Plugin 管理，明文密码不会出现在 Jenkinsfile 中。
 
 ## 常见误区
 
-**误区一：把所有逻辑写进 Jenkinsfile 的 `sh` 步骤**。部分团队将数百行 Shell 脚本内联在 Jenkinsfile 中，导致可读性极差且无法单独测试。正确做法是将复杂脚本提取为仓库内独立的 `.sh` 文件或 Makefile 目标，Jenkinsfile 中的 `sh` 步骤只做调用，保持 Jenkinsfile 层面的逻辑简洁，并在 Shared Library 中封装可复用的高阶操作。
+**误区一：将敏感信息直接写入 Jenkinsfile。**  
+由于 Jenkinsfile 存储在 Git 仓库中，任何有仓库读权限的人都能看到硬编码的密码或 Token。正确做法是通过 Credentials Plugin 将凭证存储在 Jenkins 的加密 Keystore 中，在 Jenkinsfile 里只引用凭证 ID，使用 `withCredentials([usernamePassword(credentialsId: 'db-creds', usernameVariable: 'DB_USER', passwordVariable: 'DB_PASS')]) { }` 块在执行时注入。
 
-**误区二：混淆 `environment` 块与 `withCredentials` 的使用场景**。`environment { FOO = 'bar' }` 中定义的变量会以明文出现在构建日志和环境变量转储中；而密码、Token 等敏感信息必须存储在 Jenkins Credentials Store 中，通过 `withCredentials` 步骤注入，Jenkins 会自动在日志中用 `****` 遮盖这些值，防止泄漏。
+**误区二：混淆 Jenkins Master 和 Agent 的职责。**  
+Jenkins Master（也称 Controller）负责调度任务、存储配置和展示 UI，不应直接执行构建任务。在 Master 节点上运行 `sh 'mvn clean package'` 这类高负载操作会直接影响调度服务的稳定性。生产环境应配置专用 Agent 节点或使用 Kubernetes Plugin 动态创建 Pod Agent，Master 仅做协调器使用。
 
-**误区三：忽视 Jenkins Controller 的资源限制**。Jenkins Controller 本身不应承担繁重的构建任务，其 JVM 堆内存建议设置为 `-Xmx4g` 起步（大型实例可到 8g），并通过 `-XX:+UseG1GC` 启用 G1 垃圾收集器降低停顿时间。将 Controller 的执行器数量设置为 `0`，强制所有构建任务下发到 Agent，是生产环境的推荐配置。
+**误区三：认为 Blue Ocean 已取代经典 UI。**  
+Blue Ocean 插件提供更友好的流水线可视化，但 Jenkins 官方已于 2022 年宣布停止 Blue Ocean 的主动开发，将新 UI 工作转移到 Jenkins 核心的"现代化界面"项目。依赖 Blue Ocean 进行新项目规划时需考虑其长期维护风险，核心功能应以经典 UI 和 Pipeline 语法为基准。
 
 ## 知识关联
 
-Jenkins 建立在**流水线设计**的概念之上：流水线设计中确定的阶段划分（如 Build → Test → Deploy）直接映射为 Jenkinsfile 中的 `stage` 块，而并行阶段的设计则对应 Jenkins 声明式语法中的 `parallel` 步骤。理解了流水线的串行/并行结构后，才能合理安排 Jenkinsfile 中的阶段顺序以缩短反馈时间。
+Jenkins 流水线的**阶段（Stage）划分**直接承接流水线设计中制定的构建、测试、发布等阶段模型——流水线设计中规划的"何时并行、何时串行、何时设门禁"的决策，在 Jenkinsfile 的 `parallel` 块、`stage` 嵌套和 `input` 步骤中找到对应的实现语法。理解流水线设计中的"快速反馈"原则，有助于解释为何 Jenkins 中代码编译和单元测试应放在最早的 Stage，而集成测试和部署应置于后续 Stage。
 
-在横向对比中，Jenkins 的竞争产品包括 GitLab CI（使用 `.gitlab-ci.yml` YAML 配置，无需独立服务器）、GitHub Actions（以 `.github/workflows/*.yml` 定义，原生集成 GitHub 事件触发）以及 Tekton（基于 Kubernetes CRD 的云原生流水线）。Jenkins 相比这些方案的核心优势在于插件生态的广度和私有化部署的灵活性，代价是运维复杂度更高：Controller 升级、插件兼容性维护和 `$JENKINS_HOME` 备份均需人工介入。对于计划迁移到云原生 CI/CD 的团队，理解 Jenkins 的 Jenkinsfile 语法也有助于理解后续 Tekton Pipeline 和 ArgoCD 工作流的设计思想，因为"任务（Task）→流水线（Pipeline）→触发器（Trigger）"的概念模型在各工具间高度一致。
+Jenkins 对 **Groovy DSL** 的使用意味着理解 Groovy 的闭包（Closure）和委托（Delegate）机制，能帮助解读为何 `steps { sh '...' }` 这样的块语法是合法的 Groovy 代码而非独立语言。同时，Jenkins 与 Docker、Kubernetes 的集成是容器化部署实践的入口，Kubernetes Plugin 中 `podTemplate` 和 `containerTemplate` 的配置方式是后续学习 Kubernetes 工作负载调度的实际应用场景。
