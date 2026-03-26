@@ -24,35 +24,49 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # GPU事件
 
 ## 概述
 
-GPU事件（GPU Event）是VFX Graph中一种特殊的粒子通信机制，允许一个粒子系统中的粒子在GPU端直接触发另一组粒子的生成，整个过程无需经过CPU参与，从而实现真正的粒子级联（Particle Cascade）效果。这一机制依赖Unity VFX Graph的Spawn上下文（Spawn Context）与Event属性的协同配合，通过`GPUEvent`数据类型在系统内部传递粒子状态。
+GPU事件（GPU Event）是VFX Graph中一种允许粒子在GPU端直接触发子粒子生成的机制。与CPU事件不同，GPU事件的整个触发和生成流程完全发生在GPU内存中，不需要将数据回传CPU再重新发送，因此能在不造成显著性能瓶颈的前提下实现粒子级联（Particle Cascading）效果——即一个粒子"死亡"或满足特定条件时，在原位生成一批新粒子。
 
-GPU事件功能随Unity 2019.3版本引入VFX Graph，其核心设计目标是解决粒子死亡或碰撞时产生子粒子的需求——例如烟花爆炸的二次粒子、子弹击中表面时飞溅的碎片，以及雨滴落地后的涟漪效果。在此之前，此类级联效果只能通过CPU端的脚本轮询粒子状态来间接实现，性能代价极高。
+该机制在Unity VFX Graph 7.x版本（随Unity 2019.3正式发布）中引入，作为解决爆炸碎屑、烟花分裂、雨滴溅射等多层粒子效果的核心工具。在此之前，制作这类效果需要依赖多个独立粒子系统通过脚本协调，不仅逻辑复杂，且在粒子数量较多时CPU开销极大。GPU事件将这一协调逻辑完全迁移到GPU侧执行。
 
-GPU事件的重要性在于它将粒子生命周期事件的响应完全保留在GPU上。当粒子数量达到数万甚至数十万时，若每帧通过CPU读取粒子状态并触发新粒子，GPU与CPU之间的数据回读（Readback）会造成严重的管线气泡（Pipeline Bubble），而GPU事件彻底消除了这一瓶颈。
+GPU事件的重要性在于它突破了传统GPU粒子系统"无状态传递"的限制。粒子的位置、速度、颜色、自定义属性等数据可以通过**Inherit Attribute**节点直接传递给子粒子，子粒子从父粒子的精确位置和状态出发，而不是从某个近似位置或全局起始点生成，这使得视觉上的连贯性和物理合理性远超传统多系统方案。
 
 ---
 
 ## 核心原理
 
-### GPUEvent数据类型与Block节点
+### GPU事件的触发节点
 
-VFX Graph中，GPU事件通过专用的`GPUEvent`属性类型传递。在Update Context中，使用`Trigger Event On Die`或`Trigger Event Rate`等Block可以创建一个`GPUEvent`输出槽，将这个输出连接到另一个独立System的`GPUEvent`输入Spawn Context，即构成级联链路。每个`GPUEvent`携带触发时该粒子的完整属性快照，包括位置、速度、颜色、生命周期剩余比例等，子粒子System可通过`Inherit Source Attribute`读取这些数值。
+VFX Graph中GPU事件通过两类专用节点触发：
 
-### 三种触发Block的区别
+- **GPUEvent OnDie**：当粒子的生命周期（Lifetime）归零时自动触发，最常用于爆炸、消散效果。
+- **GPUEvent OnCollide**（需开启碰撞模块）：当粒子与深度缓冲或SDF碰撞时触发，常用于液滴落地溅射。
 
-VFX Graph内置了三种主要的GPU事件触发Block：
+这两个节点输出一个`GPUEvent`类型的数据流，该数据流必须连接至独立的**Spawn Context**，这个Spawn Context的Spawn Mode必须设置为**GPU Event**（而非Constant Rate或Burst），否则连接不会生效。这与普通Output Context的连接方式有本质差异，初学者容易将两者混淆。
 
-- **Trigger Event On Die**：粒子寿命耗尽（Alive属性变为false）时触发恰好一次，是实现烟花二级爆炸最常用的方式。每个死亡粒子触发的子粒子数量由连接的Spawn Context中的`Constant Spawn Rate`或`Burst Count`决定。
-- **Trigger Event Rate**：按照每秒N次的频率持续触发，适合粒子在运动过程中持续拖尾，例如导弹尾焰中的烟雾粒子流。
-- **Trigger Event On Collision**：仅在粒子检测到碰撞时触发（需要SDF场或深度碰撞开启），可精确控制碰撞位置处的子粒子生成。
+### 属性继承机制与Inherit Attribute节点
 
-### 容量预算与GPUEvent Buffer
+子粒子系统（通过GPU Event触发的Spawn Context所连接的Initialize Particle Context）默认不继承父粒子的任何属性。要让子粒子从父粒子的位置、速度等数据出发，必须在Initialize Particle Context中显式添加**Inherit Source Attribute**块（快捷方式：在Initialize Context的Block列表中点击`+`，选择`Attribute > Source > Get Source Attribute`）。
 
-GPU事件系统要求开发者在Spawn Context中手动设定`Capacity`（容量上限）。VFX Graph在GPU端为每个接收GPU事件的System维护一个环形缓冲区（Ring Buffer），其大小等于该System设定的Capacity值，单位是粒子数。如果每帧触发的子粒子数量超过此容量，超出部分会被静默丢弃，不会报错。因此，一个典型的生产规则是：父粒子System容量 × 每粒子触发数量 ≤ 子粒子System容量，否则会出现可见的粒子"截断"现象。
+每个继承块只继承一个属性，常见的继承链如下：
+
+```
+父粒子 Position → 子粒子 Position（溅射起点）
+父粒子 Velocity → 子粒子 Velocity（继承初速度方向）
+父粒子 Color    → 子粒子 Color（颜色级联）
+```
+
+父粒子的任意**自定义属性（Custom Attribute）**，只要类型兼容，均可通过此机制传递。这是GPU事件比预制触发器强大得多的地方：整条粒子链上的语义信息（如"这是第几级爆炸"）可以编码进自定义浮点属性并逐级传递。
+
+### 容量与性能约束
+
+GPU事件生成的子粒子受其所在**Output Context对应粒子系统的Capacity（容量上限）**严格限制。Capacity值在VFX Graph中是静态编译时常量，单位为粒子个数。若父系统每帧有100个粒子死亡，每个粒子触发生成10个子粒子，子系统的Capacity至少需要设置为 `100 × 10 = 1000`，否则超出容量的粒子会被静默丢弃，不会报运行时错误，这是一个极难排查的bug来源。
+
+GPU事件系统的内存结构使用**Append Buffer**（追加缓冲区），其容量固定分配在显存中。当事件触发速率超过子系统消耗速率时，缓冲区会溢出，因此对于生命周期极短的子粒子（如Lifetime < 0.1s的闪光），需要适当降低父粒子的触发频率或提高子系统Capacity。
 
 ---
 
@@ -60,36 +74,36 @@ GPU事件系统要求开发者在Spawn Context中手动设定`Capacity`（容量
 
 ### 烟花三级爆炸
 
-一个经典的GPU事件级联包含三个System：第一级为发射上升的单颗粒子，使用`Trigger Event On Die`在其到达最高点死亡后触发第二级；第二级生成约80颗向外扩散的球形粒子，每颗同样挂载`Trigger Event On Die`，触发第三级的细小闪烁粒子。整条链路全部运行在GPU上，在RTX 3070显卡上测试，10个同时爆炸的烟花（总粒子数约12万）帧时间相比CPU轮询方案降低约37%。
+在烟花特效中，GPU事件可以实现三级级联：主弹体（Level 0）触发第一级星星粒子（Level 1，约50个），每个星星粒子死亡时触发闪烁微粒（Level 2，每颗3~5个）。整个效果约需 1 + 50 + 250 = 301 个粒子，但视觉密度等同于传统方案中数千个独立粒子。在VFX Graph中，只需两条GPU Event连接链即可实现，而无需任何C#脚本。
 
-### 雨滴涟漪系统
+### 雨滴溅射（结合SDF交互）
 
-地面雨滴效果使用`Trigger Event On Collision`驱动，将SDF地面的碰撞信号转换为GPU事件。父粒子为下落的雨滴，碰撞后触发子粒子System在碰撞点附近生成4个扩散环，子粒子通过`Inherit Source Position`精确获取碰撞坐标，无需任何CPU代码即可实现地面湿润的视觉反馈。
+当父粒子系统开启**Collide with Depth Buffer**模块后，雨滴粒子接触地面时触发**GPUEvent OnCollide**。子系统在碰撞点生成扁平圆形水花粒子，通过继承碰撞法线方向和碰撞点位置，水花的朝向与地面法线对齐。若地面使用了SDF网格（来自SDF交互前置知识），甚至可以将SDF梯度方向传递给子粒子，使水花贴合曲面法线方向扩散。
 
-### 粒子拖尾烟雾
+### 子弹击中特效
 
-火箭模拟中，使用`Trigger Event Rate`以每秒30次的频率在主弹体粒子的当前位置生成独立的烟雾粒子，烟雾System的生命周期设为3秒，Capacity设为90（= 30次/秒 × 3秒），保证恰好无溢出。
+在TPS/FPS游戏特效中，子弹粒子命中表面时通过GPUEvent OnCollide触发三类子粒子：火花（高速短寿命）、烟雾（低速长寿命）、弹孔贴花（静止超长寿命）。三套子系统并联连接到同一个GPUEvent输出端口，实现一次碰撞同时触发多种视觉层。
 
 ---
 
 ## 常见误区
 
-### 误区一：认为GPU事件会自动继承父粒子全部属性
+### 误区一：认为GPU事件会实时同步到CPU
 
-GPU事件仅传递一个`GPUEvent`句柄，子System并非自动拥有父粒子的所有属性。必须在子System的Initialize Context中为每个需要的属性单独添加`Inherit Source [AttributeName]` Block，例如`Inherit Source Position`、`Inherit Source Velocity`，否则子粒子只会在世界原点以默认数值生成，这是初学者最频繁遇到的调试问题。
+GPU事件的整个生命周期发生在GPU侧，CPU**无法**在同一帧内读取"有多少个子粒子被触发"。若尝试通过`VFXEventAttribute`在脚本中监听GPU事件触发次数，将得到延迟一帧或根本获取不到数据的结果。如果确实需要CPU感知碰撞事件（如播放音效），必须改用CPU事件路径，代价是每帧显存→内存的数据回读开销。
 
-### 误区二：Capacity设置过大无害
+### 误区二：子粒子Capacity不足时系统会报错
 
-部分开发者认为将子粒子System的Capacity设为极大值（如100万）可以避免截断问题。实际上，VFX Graph在Graph编译时会为每个System的Capacity分配固定显存，Capacity为100万的System无论实际粒子数量多少，都会预先占用该数量对应的全部属性Buffer内存。在Unity Profiler的GPU Memory视图中可以直接观察到这一静态分配。
+如前所述，Capacity溢出时VFX Graph**静默丢弃**超额粒子，既不抛出异常，也不在Console面板显示警告。调试GPU事件时，若子粒子数量明显少于预期，首先检查子系统Capacity设置是否满足 `峰值触发率 × 子粒子数量 × 子粒子最大生命周期` 的乘积。
 
-### 误区三：GPU事件可以跨VFX Asset触发
+### 误区三：多级GPU事件可以无限嵌套
 
-GPU事件的作用范围被严格限制在同一个VFX Graph Asset内部的不同System之间。无法将一个`.vfx`文件中的GPU事件连接到另一个`.vfx`文件的Spawn Context，跨Asset的粒子触发仍然必须通过CPU端调用`visualEffect.SendEvent()`实现。
+技术上GPU事件支持二级嵌套（孙粒子），但**三级及以上嵌套（曾孙粒子）在当前VFX Graph实现中不受支持**，编译器会拒绝该图并报告"GPU Event chain depth exceeded"错误。需要三级效果时，应将第三级改为CPU触发的独立VFX资产，通过事件系统调用。
 
 ---
 
 ## 知识关联
 
-**与SDF交互的衔接**：`Trigger Event On Collision`Block直接依赖SDF场提供的碰撞数据，只有粒子系统已配置SDF碰撞或深度缓冲碰撞，碰撞型GPU事件才能正确工作。SDF为GPU事件提供了触发位置和法线方向，子粒子的沿法线方向散射速度正是从这里读取。
+**与SDF交互的联系**：GPUEvent OnCollide依赖粒子的碰撞检测模块，而SDF交互提供了比深度缓冲碰撞更精确的几何碰撞信息。两者结合时，SDF的符号距离梯度（∇SDF）可作为子粒子初速度方向的来源，使溅射效果在复杂几何体表面保持法线对齐。若不使用SDF，OnCollide只能依赖屏幕空间深度缓冲，在摄像机视野外的碰撞无法触发。
 
-**向SubGraph复用的延伸**：当一套GPU事件级联逻辑（如通用的碰撞火花System）需要在多个不同的VFX效果中重复使用时，可以将级联的子System封装为SubGraph，通过暴露GPUEvent类型的输入端口接收外部System的触发信号。这要求开发者理解SubGraph的端口类型系统中GPUEvent与普通属性类型的区别——GPUEvent端口仅出现在Spawn Context的连线中，不能作为普通数值属性传递。
+**与SubGraph复用的关联**：一套完整的GPU事件级联配置（父系统触发→属性继承→子系统初始化）通常由10~20个节点构成，在不同特效资产中重复构建成本很高。SubGraph允许将这套标准触发链封装为可复用模板，并通过暴露参数（如子粒子数量、继承属性选择）实现一个SubGraph服务多种级联场景的复用目标。SubGraph中的内部GPU Event连接在编译时会正确展开，不影响运行时性能。

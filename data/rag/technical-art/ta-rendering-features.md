@@ -24,56 +24,65 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-26
 ---
 
+
 # 渲染特性开关
 
 ## 概述
 
-渲染特性开关（Render Feature Toggle）是指通过控制台变量（Console Variable，简称 CVar）或 `r.` 系命令，在不同平台或画质等级下动态启用或禁用特定渲染功能的技术手段。与修改着色器代码不同，CVar 开关在运行时生效，无需重新编译管线，适合按设备档次精确裁剪渲染成本。
+渲染特性开关（Render Feature Toggle）是Unreal Engine中通过控制台变量（Console Variable，简称CVar）动态启用或禁用特定渲染特性的机制。以`r.`前缀开头的CVar命令是其核心载体，例如`r.MotionBlur 0`关闭运动模糊、`r.AmbientOcclusion 0`关闭环境光遮蔽，这类命令在运行时立即生效，无需重启游戏进程。
 
-在 Unreal Engine 中，绝大多数渲染特性都暴露了对应的 `r.` 前缀 CVar，例如 `r.AmbientOcclusion`、`r.MotionBlur.Max`、`r.Shadow.MaxResolution` 等。开发者可以在 `DefaultScalability.ini` 或平台专属的 `[Platform]Engine.ini` 文件中按画质档次批量设置这些变量，从而使同一张地图在高端 PC 与中端移动设备上呈现截然不同的渲染负担。该机制的历史可追溯至 Unreal Engine 3 时代的 Scalability 系统，但现代的 CVar 体系在 UE4.15 之后经历了大幅标准化，引入了统一的 `sg.` 画质分组变量与底层 `r.` 特性变量的双层结构。
+该机制随着Unreal Engine 4的画质可伸缩性（Scalability）系统的成熟而被广泛采用，开发团队需要在同一代码库中同时支持高端PC、主机和移动平台时，逐渐将单一渲染管线拆解为可独立开关的特性集合。到UE5时代，`r.`命令数量超过500个，覆盖从光线追踪到阴影级联的几乎所有渲染子系统。
 
-在性能优化工作流中，渲染特性开关是最低成本、最高灵活度的调优手段之一：美术人员无需等待程序员修改代码，仅凭配置文件即可针对 PS5、Switch、Android 中端三条平台线路各自裁减不同的特性组合，将 GPU 帧时间压缩到目标值以内。
-
----
+渲染特性开关之所以在技术美术工作中不可忽视，原因在于它能以接近零开销的方式验证某个特性是否是性能瓶颈——在GPU性能分析工具（如RenderDoc或Unreal Insights）确认某个Pass耗时过高之前，用一条CVar命令即可在几秒内排除或锁定问题来源，大幅压缩优化排查周期。
 
 ## 核心原理
 
-### CVar 的类型与作用域
+### CVar的命名规则与分类
 
-Unreal Engine 将 CVar 分为三种执行标志：`ECVF_RenderThreadSafe`（可在渲染线程安全修改）、`ECVF_Cheat`（仅在非发行包中可用）、`ECVF_Scalability`（由可伸缩性系统自动管理）。渲染特性开关几乎全部注册为 `ECVF_RenderThreadSafe`，这意味着写入操作会被排队到渲染线程而非立即生效，因此在游戏线程上读取刚设置的值时可能出现一帧延迟。理解这一点对调试"开关不立即生效"的现象至关重要。
+`r.`前缀专属于渲染子系统，这是UE引擎约定的命名空间划分：`r.Shadow`系列控制阴影，`r.Lumen`系列控制Lumen全局光照，`r.RayTracing`系列控制硬件光线追踪特性。区别于此，`sg.`前缀属于画质组（Scalability Group）的高层抽象，`sg.ShadowQuality 3`内部会批量设置多个`r.`变量。技术美术在配置平台画质档位时，通常将`sg.`命令写在画质预设配置中，而将`r.`命令用于更细粒度的逐特性调优。
 
-### r. 命令与 sg. 命令的层级关系
+### 整数值与浮点值的语义差异
 
-`sg.`（Scalability Group）命令是对多个 `r.` 命令的批量预设。执行 `sg.ShadowQuality 2` 时，引擎实际上会同时写入 `r.Shadow.MaxResolution=1024`、`r.Shadow.RadiusThreshold=0.06` 等一系列底层变量。如果开发者在 `sg.` 命令执行之后再单独覆盖某个 `r.` 变量，该覆盖值优先级更高，但下次 `sg.` 再次触发时会被重置覆盖——这是常见的配置冲突来源。正确做法是在 `DefaultScalability.ini` 的对应画质段落内直接写入 `r.` 变量，与 `sg.` 一同管理。
+多数渲染开关使用整数0/1控制启用状态，但部分CVar接受更丰富的整数含义。以`r.Shadow.CSMCaching`为例，值为0时禁用阴影缓存，值为1时启用标准缓存，值为2时启用更激进的静态物体缓存策略——三档对应截然不同的渲染行为。而`r.ScreenPercentage`则是典型的浮点型CVar，取值范围50到200，代表渲染分辨率与输出分辨率的百分比比值，直接影响像素着色器的调用次数，是移动平台降帧率最直接的工具之一。
 
-### 平台专属 .ini 的加载顺序
+### DeviceProfile与CVar的绑定机制
 
-Unreal 的配置系统按以下顺序叠加加载：`Base*.ini` → `Default*.ini` → `[Platform]*.ini` → `[Platform][Device]*.ini`。渲染特性开关通常在 `DefaultScalability.ini` 定义通用默认值，在 `AndroidScalability.ini` 中覆盖移动端特定值，在 `AndroidDeviceProfiles.ini` 中进一步按 GPU 型号（如 Adreno 650 vs Mali-G78）写入最细粒度的差异化配置。越靠后的文件中的 `r.` 设置会覆盖越靠前的，但前提是变量名大小写完全一致，否则会静默创建同名的另一个变量而不覆盖。
+渲染特性开关真正发挥平台差异化价值，依赖UE的`DeviceProfile`系统。在`Config/Android/AndroidDeviceProfiles.ini`中，可以为特定GPU型号（如Adreno 640或Mali-G78）绑定一组CVar覆写值。配置格式为：
 
----
+```ini
+[Galaxy_S21 DeviceProfile]
+DeviceType=Android
++CVars=r.MobileHDR=1
++CVars=r.Mobile.Shadow.CSMShaderCulling=1
++CVars=r.BloomQuality=2
+```
+
+引擎在启动时检测设备型号，自动加载匹配的Profile并应用对应的CVar集合，无需任何运行时分支代码。这意味着技术美术可以在不修改C++的前提下，为数百种Android设备定制不同的渲染特性组合。
+
+### 运行时热切换与帧延迟
+
+绝大多数`r.`开关在下一帧渲染开始时生效，帧延迟为1帧。但涉及渲染管线拓扑变更的开关（如`r.RayTracing 0`切换到非光追路径）可能需要数帧的GPU资源重建时间。因此在游戏场景切换时批量更改多个渲染特性开关，应在加载黑屏期间执行，避免玩家看到一到两帧的渲染异常。
 
 ## 实际应用
 
-**移动端关闭屏幕空间反射（SSR）**：SSR 在移动端 GPU 的带宽开销通常占帧预算的 8–12%，而反射质量提升有限。在 `AndroidScalability.ini` 的 `[ScalabilityGroups]` 段落下写入 `r.SSR.Quality=0` 可彻底禁用 SSR，引擎会自动降级为反射捕获球（Reflection Capture）采样，无需改动任何材质节点。
+**移动端阴影降级**：在中低档Android设备上，将`r.Shadow.CSMMaxCascades`从4降至1，同时设置`r.Shadow.MaxResolution 512`，可将阴影渲染耗时从2.8ms降至0.6ms，释放的GPU时间可用于维持30fps帧率下的其他视觉效果。
 
-**按画质档次调整 Lumen 精度**：`r.Lumen.ScreenProbeGather.ScreenTraces=0` 可关闭 Lumen 的屏幕空间追踪步骤，将全局光照质量降低但节省约 2ms GPU 时间（在 RTX 3070 上的典型数据）。在 PC 低画质配置中设置此开关，高画质配置中保持默认值 1，可实现同一项目覆盖低端集显与高端独显用户的目标。
+**PC端动态画质调节**：将`r.DepthOfFieldQuality`在0到4之间根据GPU利用率动态调整，当GPU利用率超过90%时自动降至1级，利用率低于70%时恢复至3级，实现不改变分辨率的帧率稳定策略。
 
-**Switch 平台禁用 Temporal Anti-Aliasing（TAA）**：Switch 的 Maxwell 架构对 TAA 的 Velocity Buffer 读写带宽敏感，设置 `r.AntiAliasingMethod=2`（FXAA）替代 TAA（值 4），可在 720p 分辨率下节省约 1.5ms，同时通过 `r.FXAA.Quality=3` 维持边缘质量。这一组合在《马力欧+疯狂兔子》等 Switch 第三方 UE4 项目中有公开记录的应用。
-
----
+**主机平台的特性矩阵**：PS5版本可以开启`r.Lumen.Reflections.Allow 1`和`r.RayTracing.Reflections 0`（使用Lumen软件反射而非硬件光追反射），PC高配版本反向设置，两种配置通过各自的DeviceProfile自动激活，共享同一套美术资产。
 
 ## 常见误区
 
-**误区一：将 `r.` 命令写入 `DefaultEngine.ini` 的 `[/Script/Engine.RendererSettings]` 段落**。该段落存储的是编辑器 Project Settings 的序列化值，运行时引擎不会从此处读取 CVar；正确位置是 `[ConsoleVariables]` 段落或 `DefaultScalability.ini`。错误地写入前者会导致开关在 PIE 中似乎生效（因为编辑器重新解析了设置），但打包后完全无效，产生难以排查的平台差异。
+**误区一：`r.`命令关闭某特性等于该特性性能开销归零**。部分CVar关闭的只是特性的视觉输出，底层Pass仍可能参与渲染图（Render Graph）的依赖计算。例如`r.SSR.Quality 0`关闭屏幕空间反射后，若材质仍标记为反射接收者，相关的深度Prepass和法线缓冲写入依然发生。应配合`r.SSR 0`（完全移除SSR Pass）才能获得完整的性能收益。
 
-**误区二：认为将开关设为 0 就一定能节省性能**。某些 `r.` 变量关闭特性后，引擎会启用质量更低但开销并非为零的回退路径。例如 `r.AmbientOcclusion=0` 并不会让 AO Pass 完全消失，而是跳过 SSAO 但仍保留 Capsule AO 的计算（如果场景中存在 Capsule Shadow 组件）。正确的验证方法是用 `stat GPU` 或 RenderDoc 抓帧，对比关闭前后各 Pass 的实际耗时，而不是仅凭变量名称推断效果。
+**误区二：在蓝图中用Execute Console Command节点频繁切换渲染特性开关是安全的**。若每帧调用`r.PostProcessAAQuality`在0和4之间切换，会导致抗锯齿历史缓冲（TAA History Buffer）持续失效重建，实测造成约0.3ms的额外GPU开销，而且会产生明显的画面闪烁。渲染特性开关应作为配置级设定，而非逐帧逻辑控制手段。
 
-**误区三：混淆 CVar 的"启动时设置"与"运行时设置"限制**。部分 `r.` 变量标记了 `ECVF_ReadOnly`，只能在引擎启动前通过命令行参数 `-ExecCmds=` 或 `[ConsoleVariables]` 段落设置，启动后调用 `IConsoleManager::Get().FindConsoleVariable` 修改会静默失败。`r.GPUSkin.Support16BitBoneIndex` 就是典型例子，误以为可以在设备档次检测后动态切换会导致骨骼动画渲染异常。
-
----
+**误区三：所有`r.`命令在所有平台上都生效**。移动端使用独立的Mobile渲染管线，桌面端的`r.AmbientOcclusion.Compute`在ES3.1着色器模型下无对应实现，命令不报错但静默忽略。技术美术在移动平台调试时需查阅`r.Mobile.`前缀命令族，而非直接套用PC端的优化经验。
 
 ## 知识关联
 
-渲染特性开关以**画质可伸缩性**（Scalability System）为前提——`sg.` 分组命令正是可伸缩性系统的对外接口，开发者需先理解画质档次（Low/Medium/High/Epic）的划分逻辑，才能将 `r.` 变量正确挂载到对应档次中，避免低档次配置意外保留高开销特性。
+渲染特性开关直接建立在**画质可伸缩性**系统之上：`sg.`画质组命令是对`r.`命令的批量编排，理解了CVar的单个语义之后，才能判断画质预设中哪些`r.`参数配置是合理的，哪些存在冗余或遗漏。
 
-在工程实践中，渲染特性开关与**设备分级（Device Profile）**系统协同工作：Device Profile 负责识别具体硬件并设置基础 CVar 集合，Scalability 系统在此基础上叠加用户可选的画质档次偏好，两者共同决定最终生效的渲染特性组合。掌握渲染特性开关后，技术美术可以进一步探索**自定义 Scalability 规则**（通过 C++ 注册新的 `sg.` 分组）或**运行时性能自适应系统**（Adaptive Performance，根据帧率动态调整 CVar），将静态配置升级为动态调控方案。
+在排查性能问题时，渲染特性开关与**GPU性能分析工作流**紧密配合：先用`stat GPU`查看各Pass的毫秒开销，定位高耗时Pass后，用对应的`r.`命令快速验证关闭该特性的收益，再决定是否值得投入更深层的Shader优化。
+
+理解`r.ScreenPercentage`和`r.DynamicRes.MinScreenPercentage`的关系，将直接引导技术美术进入**动态分辨率（Dynamic Resolution）**的专项优化领域，这是主机平台维持稳定帧率的主流方案之一。
