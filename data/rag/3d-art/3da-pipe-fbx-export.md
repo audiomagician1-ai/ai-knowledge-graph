@@ -20,16 +20,17 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-27
 ---
+
 # FBX导出
 
 ## 概述
 
-FBX（Filmbox）格式由Kaydara公司于1996年开发，后被Autodesk收购并持续维护至今。它是3D资产管线中最广泛使用的中间格式，支持几何体、骨骼绑定、动画、材质引用、摄像机和灯光数据的统一封装。与OBJ等纯几何格式不同，FBX使用二进制或ASCII编码存储完整的场景层级，使其成为从DCC软件（如Maya、Blender、3ds Max）向游戏引擎（Unreal、Unity）传递复杂资产的标准桥梁。
+FBX（Filmbox）格式由Kaydara公司于1996年开发，后被Autodesk收购，目前主流版本为FBX 2020。它是3D美术资产在DCC软件（如Maya、Blender、3ds Max）与游戏引擎（如Unity、Unreal Engine）之间传输的事实标准二进制/ASCII格式。FBX能在单一文件中封装网格体、骨骼、蒙皮权重、动画曲线、材质引用和摄像机数据，使其成为资产管线中跨软件传递复杂资产的首选容器。
 
-FBX格式目前有多个版本，常用的为FBX 2014/2015、FBX 2019和FBX 2020。不同引擎对版本的兼容性存在差异——例如Unreal Engine 5推荐使用FBX 2016至2020，而某些旧版Unity项目在FBX 2013格式下有更好的稳定性。选择错误的FBX版本可能导致动画曲线丢失或多边形法线反转，因此版本选择是导出配置的第一步。
-
-理解FBX导出设置的意义在于：同一套3D资产，若导出参数配置错误，进入引擎后可能出现模型缩放为100倍、骨骼轴向错误、蒙皮变形崩坏等严重问题，这些错误在引擎端难以修复，必须从源头的导出设置介入。
+FBX的重要性体现在其"有损但通用"的特性：它不保存节点图材质细节，但能可靠传输Mesh拓扑与骨骼层级，因此在资产管线中通常承担"几何体+骨骼+动画"的传输职责，而材质和贴图则由引擎侧单独重建。理解导出设置直接决定资产在引擎中是否出现轴向偏转、单位错误或动画丢帧等问题。
 
 ---
 
@@ -37,48 +38,49 @@ FBX格式目前有多个版本，常用的为FBX 2014/2015、FBX 2019和FBX 2020
 
 ### 轴向（Axis）设置
 
-不同DCC软件使用不同的世界坐标系上方向（Up Axis）：Maya和Unreal Engine默认Y轴朝上，而Blender和3ds Max默认Z轴朝上。FBX导出时若未正确设置轴向，角色进入Unreal后会呈现"侧躺90度"的状态。
+不同DCC软件使用不同的世界坐标系约定：Maya和3ds Max默认Y轴朝上（Y-Up），而Blender默认Z轴朝上（Z-Up）。Unreal Engine 5内部使用X轴向前、Z轴向上的左手坐标系，Unity则使用Y轴朝上的左手坐标系。
 
-解决方案是在导出对话框中明确指定Up Axis为`Y-up`（对应Unreal/Unity）或`Z-up`（对应某些可视化软件）。在Blender中，FBX导出器提供了`Apply Transform`选项，勾选后会将Blender的Z-up坐标系烘焙转换为Y-up，从而保证模型在Unreal中直立。前方向（Forward）通常设置为`-Z Forward`以匹配Unreal的前向定义。
+从Blender导出FBX时，若不修正轴向，角色会在Unity中出现倒向侧面的问题。正确做法是在Blender的FBX导出面板中将`Forward`设置为`-Z Forward`，`Up`设置为`Y Up`，这样导出的文件轴向与Unity的期望一致。导入Unreal时则建议直接在引擎导入选项中勾选"Convert Scene"，让引擎自动处理轴向转换，而非在Blender端预旋转。
 
-### 单位与缩放（Scale Factor）
+### 缩放（Scale）设置
 
-FBX内部使用"单位"概念而非固定的物理距离。Maya默认单位为厘米（1单位=1cm），而Unreal Engine以厘米为标准，Unity以米为标准（1单位=1m）。因此，同一个FBX文件导入Unreal时比例正常，导入Unity后可能显示为100倍大小。
+FBX内部使用厘米（cm）作为默认单位，Unreal Engine的单位是厘米，Unity的单位是米。若Maya场景以厘米建模但不调整`Scale Factor`，导入Unity后模型会缩小为原来的1/100。
 
-FBX导出时的关键参数是`Scale Factor`，Maya导出到Unity时应将此值设为0.01（即将Maya的厘米转换为Unity的米）；导出到Unreal时保持1.0即可。Blender导出FBX时有`Apply Scale`选项，推荐选择`FBX Units Scale`而非`All Local`，前者会将单位差异写入FBX文件头，由接收端引擎自动处理换算，后者则直接修改顶点坐标数值。
+解决方案：在Maya的FBX导出选项中，将`Scale Factor`保持为1.0，同时确认场景工作单位为厘米；在Unity导入设置中将`Scale Factor`设为0.01，由引擎侧统一缩放。若团队选择在Blender中处理，需在导出对话框的`Scale`栏输入`0.01`，确保100 Blender单位（1米）映射为1 Unreal单位（1厘米 × 100 = 1米）的正确比例。缩放问题是管线中最常见且最难排查的错误来源之一。
 
-### 动画导出设置
+### 动画（Animation）导出设置
 
-动画导出涉及三个关键开关：**Bake Animation**（烘焙动画）、**Resample All**（重采样）和关键帧范围。`Bake Animation`会将驱动节点、表达式、IK等程序化动画逐帧烘焙为显式关键帧，确保引擎端能正确读取。若不勾选此选项，依赖驱动关系的动画在FBX中将丢失。
+FBX动画分为两种存储模式：**关键帧曲线（Curve）**和**烘焙逐帧采样（Baked）**。曲线模式文件体积小，但跨软件时三次贝塞尔插值可能被错误解读，导致骨骼路径偏差。对于发往引擎的动画资产，推荐启用`Bake Animation`，以场景的原始帧率（通常30fps或60fps）逐帧采样，牺牲文件体积换取确定性。
 
-`Resample All`控制是否以每帧为间隔重采样曲线，会显著增大文件体积，但对于使用Euler角插值的骨骼动画，重采样能防止引擎端发生万向节死锁（Gimbal Lock）导致的骨骼抖动。帧率（FPS）必须与项目设定一致——若Maya动画为30fps导出，但引擎项目设定为60fps，动画时长会被拉伸为双倍，需在导出时确认`Time Mode`设置。
+在Maya中导出带动画的FBX，必须勾选`Animation` → `Bake Animation`，并在`Start/End Frame`中精确填写动画区间，避免导出空白帧。同时关闭`Embed Media`（见下节），否则文件体积会因内嵌贴图而暴增。骨骼动画还需确认`Deformed Models` → `Skins`和`Blend Shapes`选项已勾选，否则蒙皮变形数据会丢失。
 
-### 嵌入贴图（Embed Textures）
+### 嵌入媒体（Embed Media）的取舍
 
-FBX支持将贴图文件以二进制形式嵌入到`.fbx`文件内部（`Embed Media`选项）。嵌入后FBX文件体积大幅增加，但能保证贴图路径不丢失，适合跨团队交付时使用。然而，大多数游戏引擎导入流程会忽略嵌入贴图，将其提取为独立文件，因此在项目内部管线中**不推荐**嵌入贴图，而应将贴图与FBX放在预定目录结构中，使用相对路径引用。Unreal Engine的FBX导入器无法读取嵌入贴图，Unity则能解包但会产生临时文件。
+FBX提供`Embed Media`选项，可将贴图二进制数据打包进FBX文件本身。此功能适合单文件存档或向客户交付独立资产包，但在引擎导入管线中**强烈不建议开启**：一张2K贴图会让FBX体积增加约8-16MB，版本控制系统（如Git LFS/Perforce）每次修改骨骼后都需要重新提交完整的大文件，严重拖慢协作效率。标准做法是关闭`Embed Media`，让FBX只保存贴图的相对路径引用，贴图以独立`.png`/`.tga`文件管理。
 
 ---
 
 ## 实际应用
 
-**角色绑定资产导出（Maya → Unreal Engine 5）**：导出选项应设为FBX 2020格式，Up Axis选`Y`，Scale Factor为`1.0`，勾选`Smooth Mesh`（光滑组信息传递法线分裂），勾选`Bake Animation`，取消`Embed Media`。骨骼命名中避免使用非ASCII字符，否则UE5的Skeleton Asset会出现骨骼识别错误。
+**角色资产从Maya到Unreal的标准导出流程**：在Maya中完成绑定后，选中骨骼根节点及所有Mesh，打开FBX导出对话框，选择FBX 2020版本；轴向保持`Y-Up`（Maya默认，Unreal导入时自动处理）；`Scale Factor`设为1.0；开启`Smooth Mesh`导出高模预览法线；动画Clip按`Bake Animation`逐帧输出，帧率填入场景设置的30fps；关闭`Embed Media`；勾选`Input Connections`以保留Blend Shape名称供引擎读取。完成后文件通常在1-20MB范围，超过50MB则需检查是否意外嵌入了贴图。
 
-**静态道具导出（Blender → Unity 2022）**：在Blender FBX导出面板中，Apply Transform勾选，Forward设为`-Z`，Up设为`Y`，Scale设为`1.0`并选`FBX Units Scale`，取消选中`Armature`和`Animation`分类以避免导出空骨架数据，保持文件简洁。Unity会自动将FBX单位系数处理为0.01的缩放修正，不需要手动改顶点数值。
+**场景道具的静态Mesh导出**：对于没有骨骼的静态Mesh（如武器、家具），应取消勾选`Animation`和`Skeleton`选项，减少无效数据块。Unreal的静态网格体导入器在检测到空骨骼时会报告警告，影响自动化批处理管线的日志清洁度。
 
 ---
 
 ## 常见误区
 
-**误区一：认为FBX会保存完整材质**。FBX格式仅能存储材质的**引用路径**和基础Lambert/Phong参数，不能保存PBR材质节点网络或Substance贴图连接。将FBX导入引擎后出现"灰色材质"是正常现象，需要在引擎端重新配置材质，或使用glTF 2.0格式（内置PBR材质规范）替代。
+**误区一：认为FBX导出设置一次配置永久有效**
+不同目标引擎要求不同的导出参数：Unity需要在Blender中预处理Z-Up→Y-Up转换，Unreal则推荐保留原始坐标让引擎自动转换。若美术团队同时向两个引擎交付资产，必须为每个目标维护独立的导出预设（Maya的`.fbxexportpreset`文件），而非使用同一套参数。
 
-**误区二：以为取消`Apply Transform`在Blender中也能正常导出**。如果不勾选`Apply Transform`，Blender会在FBX中写入原始的Z-up变换矩阵并附带一个旋转修正节点。部分引擎能识别该修正，但在需要根节点归零的动画重定向工作流中，这个隐藏的旋转偏移会导致动画重定向计算出错，难以排查。
+**误区二：骨骼Bind Pose破坏导致A-Pose导入为T-Pose**
+FBX保存了一个`BindPose`节点，记录骨骼在蒙皮时刻的初始姿态。若在Maya中重新绑定后未更新BindPose（通过`Pose` → `Assume Preferred Angle`），导出的FBX会让引擎读到错误的参考姿态，角色在引擎中静止时会出现扭曲。修复方法是在导出前执行`Reset Bind Pose`命令，确保BindPose与当前骨骼零帧姿态一致。
 
-**误区三：静态模型也勾选了`Skin`和`Blend Shape`导出选项**。即使模型没有权重和形态键，若导出时这些选项为开启状态，FBX文件中会写入空的蒙皮数据块，导致引擎误将静态网格识别为骨骼网格（Skeletal Mesh），触发不必要的蒙皮运算，浪费GPU性能。
+**误区三：Blender的`Apply Transformations`选项滥用**
+Blender导出FBX时提供`Apply Transformations`选项，勾选后会将物体级别的缩放和旋转烘焙进顶点坐标。对于静态Mesh，这通常是正确做法；但对于骨骼动画资产，此选项会破坏骨骼与Mesh之间的相对变换关系，导致引擎中蒙皮结果完全错误。带骨骼的资产必须关闭此选项。
 
 ---
 
 ## 知识关联
 
-FBX导出是资产管线概述中"格式转换"环节的具体实现，学习者应已了解DCC软件的坐标系概念与资产目录结构后，再配置FBX导出参数。
-
-掌握FBX导出后，可进一步学习**glTF格式**——glTF 2.0是FBX的现代替代方案，原生支持PBR材质且为开放规范，无需Autodesk许可；**引擎导入设置**与FBX导出设置是镜像关系，导出端的轴向、缩放选择直接决定导入端的补偿参数应如何配置。对于需要传递复杂骨骼绑定的项目，**绑定导出**专题会在FBX导出基础上讲解权重阈值、骨骼层级裁剪和shape key精度等进阶参数。对于布料模拟、流体等程序化动画，**Alembic缓存**格式以逐帧顶点位移的方式绕过了FBX动画烘焙的局限性，是FBX动画导出的重要补充方案。
+FBX导出是学习**glTF格式**的直接前置：gltF 2.0（2017年发布）在Web和实时渲染领域正逐步替代FBX，两者的轴向约定（glTF强制Y-Up、Z朝屏幕外）与FBX不同，理解FBX的坐标系处理逻辑有助于快速掌握glTF的转换规则。**引擎导入设置**是FBX导出的直接后续环节，Unreal的`FBX Import Options`面板中的`Convert Scene Unit`和`Force Front XAxis`选项与本文描述的导出参数直接对应，两端设置需要联动调试。在**DCC互通**场景（如Maya→Houdini→Unreal管线）中，FBX作为中间格式时的精度损失（尤其是自定义属性和程序节点）会促使团队转向**Alembic缓存**处理复杂模拟数据，而FBX则保留用于传递骨骼动画。

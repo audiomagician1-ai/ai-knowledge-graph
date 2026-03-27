@@ -20,70 +20,73 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-27
 ---
+
 # 引擎导入设置
 
 ## 概述
 
-引擎导入设置（Engine Import Settings）是指在将FBX、OBJ、PNG等外部资产文件拖入UE5或Unity时，弹出的参数配置面板所提供的选项集合。这些设置直接决定了资产在引擎内存中的存储格式、压缩方式、网格拓扑处理以及材质绑定行为，错误的导入设置会导致模型法线翻转、纹理色彩空间错误或动画帧率丢失等问题。
+引擎导入设置是指在将FBX、OBJ、PNG等资产文件导入Unreal Engine 5或Unity时，用于控制引擎解析、处理和存储资产的参数配置集合。这些设置直接决定了最终资产在引擎内的网格精度、贴图压缩格式、骨骼绑定方式和碰撞体生成规则，是3D美术资产从DCC软件进入实时渲染环境的最后一道关口。
 
-该功能在Unity 3.x时代以"Import Settings Inspector"形式出现，UE4则于2014年引入"FBX Import Options"对话框，二者均在后续版本中持续扩展。UE5.1之后加入了"Automated LOD Generation"等自动化选项，Unity 2020.1则引入了Preset系统，允许将一套导入配置保存为.preset文件批量应用给相同类型的资产。
+引擎导入设置的概念随着实时渲染引擎的商业化而逐渐成熟。Unity在2005年发布时就提供了模型导入检视器（Model Import Inspector），而Unreal Engine则在UE4时代引入了统一的资产导入流程（Unified Asset Import Pipeline），并在UE5中以FBX导入对话框（FBX Import Options Dialog）的形式进一步细化了超过40个可配置参数。这一演进反映了实时渲染对资产规格化的强烈需求。
 
-掌握引擎导入设置的意义在于：一个未正确配置的2048×2048纹理，若未勾选"Generate Mip Maps"，在远距离渲染时会出现严重闪烁；而一个多余的"Import Cameras"勾选，会在场景中生成垃圾摄像机节点，污染场景层级结构。
+对3D美术而言，错误的导入设置会直接造成生产损失：错误的法线切线空间设置会导致法线贴图在引擎中显示黑斑，错误的单位缩放会让角色在场景中尺寸失真，而遗忘勾选"Generate Lightmap UVs"则会让静态光照烘焙完全失败。掌握导入设置能在资产交付阶段提前排除大量视觉错误。
 
 ---
 
 ## 核心原理
 
-### 网格体（Static/Skeletal Mesh）导入参数
+### UE5的FBX导入参数体系
 
-在UE5的FBX Import Options中，**"Normal Import Method"** 提供三个选项：`Compute Normals`（引擎重新计算法线）、`Import Normals`（使用FBX内嵌法线）、`Import Normals and Tangents`（完整导入DCC软件计算的切线空间）。若模型在Maya中使用了"Soften Edge"手动控制硬边，必须选择第三项，否则引擎重新计算的法线会抹平所有硬边效果。
+在UE5的FBX Import Options窗口中，网格类选项分为静态网格（Static Mesh）和骨骼网格（Skeletal Mesh）两个分支，各自有独立参数集。对于静态网格，关键参数包括：
 
-**"Build Scale"** 参数（UE5默认为1.0）与FBX导出时的场景单位密切关联。如果Maya导出时单位为厘米而UE5项目设置为厘米，该值应保持1.0；若Blender导出时单位为米，导入时需将该值设为100，否则模型会缩小至原尺寸的1/100。
+- **Import Normals and Tangents**：选择"Import Normals and Tangents"时引擎直接使用FBX文件内存储的法线数据；选择"Calculate Normals"时引擎按照平滑组重新计算，这会覆盖掉Maya/Blender中手动编辑的硬边信息。
+- **Generate Lightmap UVs**：勾选后引擎自动在第二UV通道（UV Channel 1，索引从0开始）生成不重叠的展开UV，用于Lumen或Lightmass光照烘焙。未勾选且模型无预制第二UV时，静态光照会产生UV重叠警告。
+- **Build Scale**：默认值为(1,1,1)，但若DCC软件导出单位为厘米而引擎默认为厘米时无需更改；若Maya以默认单位（厘米）导出而FBX选项中勾选了"Convert to Centimeters"，可能产生100倍缩放错误。
 
-Unity的Meshes选项卡下，**"Read/Write Enabled"**（即`isReadable`标志）若勾选，网格数据会在CPU内存中保留一份副本，方便运行时通过`Mesh.vertices`访问，但会使内存占用翻倍，对于静态场景道具应保持关闭。
+### Unity的模型导入检视器结构
 
-### 纹理导入参数
+Unity在Model页签中提供了专门的**Scale Factor**参数，默认值为1，但由于Unity内部单位为米而FBX常以厘米存储，系统会自动设置为0.01以实现单位换算。若手动将此值改为1，一个180cm的角色会在Unity中变成180米高。
 
-UE5纹理导入时，**"Texture Type"** 的选择直接映射到压缩格式：选择`2D Texture`默认使用DXT1/BC1（RGB无透明）或DXT5/BC3（含Alpha），选择`Normal Map`则强制使用BC5（双通道RG法线），比BC3节省约25%显存同时保留法线精度。若将法线贴图误设为`2D Texture`，引擎会用DXT5压缩，导致蓝色通道被错误压缩，模型表面出现"坑洼"假象。
+Normals页签中的**Normals Mode**有三个选项：Import（直接读取FBX法线）、Calculate（按角度阈值重算）和None（不生成法线缓冲区，适用于点云数据）。**Smoothing Angle**参数仅在Calculate模式下生效，默认值为60度，表示两个面法线夹角超过60度时视为硬边。
 
-Unity的纹理导入面板中，**"sRGB"** 复选框控制色彩空间解释方式。所有固有色（Albedo/Diffuse）贴图必须勾选sRGB，因为它们存储的是Gamma空间数据；法线贴图、金属度贴图、粗糙度贴图则必须**关闭**sRGB，使引擎以线性空间读取，否则光照计算结果会整体偏亮或偏暗约2.2次方（Gamma值）。
+Rig页签专为骨骼网格设计，**Animation Type**需设置为Humanoid（使用Avatar重定向系统）或Generic（保留原始骨架层级），Humanoid模式会触发Avatar配置界面，引擎尝试将骨骼自动映射到标准人体骨骼定义（需要至少15根必要骨骼匹配成功）。
 
-### 动画与骨骼导入参数
+### 贴图导入的压缩格式设置
 
-UE5导入Skeletal Mesh时，**"Import Animations"** 与 **"Animation Length"** 的组合配置控制动画剪辑范围。选择`Exported Time`使用FBX文件中记录的帧范围；选择`Animated Time`则只截取关键帧实际存在的区间，可自动剔除Maya中时间轴首尾的空白帧。
+贴图导入时压缩格式的选择直接影响显存占用和画质。在UE5中，Texture的**Compression Settings**默认为`TC_Default`（对应BC1/DXT1用于无Alpha，BC3/DXT5用于有Alpha）。法线贴图必须手动设置为`TC_Normalmap`（对应BC5/ATI2），否则引擎会将其当作颜色贴图压缩，导致法线向量精度损失。遮罩贴图建议设置为`TC_Masks`以禁用sRGB色彩空间转换，因为粗糙度/金属度数据属于线性数据而非颜色数据。
 
-Unity的Animation选项卡提供**"Anim Compression"**，默认为`Optimal`，引擎会在`Off`（无压缩）、`Keyframe Reduction`（关键帧缩减）、`Optimal`（自动混合算法）之间选择最优方案。对于手部精细动画，建议手动切换为`Keyframe Reduction`并将`Rotation Error`从默认0.5降至0.1度，防止手指关节出现抖动。
+在Unity中，贴图的**Texture Type**设置为Normal Map后会自动切换压缩格式为BC5（PC）或EAC（移动端），并开启法线贴图解码Shader路径，若将法线贴图以Default类型导入则无法触发这一路径。
 
 ---
 
 ## 实际应用
 
-**批量导入自动化（UE5）**：在项目的`Content/Editor/ImportData`目录下放置`.ini`配置文件，配合UE5的**"Automatic Import Settings"**（位于Editor Preferences → General → Import Settings），可让特定文件夹内所有新增FBX自动应用预设参数，无需每次手动确认对话框。对于包含100+角色变体的角色包，此方法可将导入耗时从数小时压缩至分钟级。
+**角色FBX导入工作流（UE5）**：导入包含骨骼和蒙皮的角色FBX时，需在导入对话框中将Skeleton字段指向已有的同名骨架资产（Skeleton Asset），否则UE5会为每次导入创建新骨架，导致AnimBlueprint无法复用。导入角色动画时同样需要引用相同骨架，Anim Sequence才能正确绑定。
 
-**Unity的Preset系统**：在Project窗口右键任意资产 → "Create → Preset"，可将当前Inspector中的所有导入参数保存为`.preset`文件。随后在Project Settings → Preset Manager中，可按文件名正则表达式（如`*_NRM`）自动为文件名包含特定后缀的纹理应用对应Preset，实现命名规范驱动的自动导入。
+**批量导入自动化（UE5 Python脚本）**：UE5支持通过Python API进行批量导入自动化。使用`unreal.AssetToolsHelpers.get_asset_tools().import_assets_automated(import_data)`可绕过手动对话框，其中`import_data`为`unreal.AutomatedAssetImportData`对象，可预设`FbxImportUI`的所有参数，实现美术流程中一键批量导入数百个静态网格并自动套用统一设置。
 
-**LOD自动生成**：UE5导入Static Mesh时，勾选**"Generate LODs"**并配置LOD Group（如`LargeProp`），引擎会按照`Engine/Config/BaseEngine.ini`中`[StaticMeshLODSettings]`段落定义的简化百分比自动生成LOD0至LOD3，LOD1默认保留75%三角面，LOD2保留50%，LOD3保留25%。
+**Unity Preset系统**：Unity 2018.3版本引入了Preset（预设）功能，允许将导入设置保存为`.preset`文件并通过AssetPostprocessor脚本自动应用。例如在`OnPreprocessModel()`回调中检测资产路径前缀，对`Characters/`目录下的所有FBX自动应用Humanoid Rig预设，对`Environment/`目录应用Static Mesh预设，实现零手动操作的规范化导入流程。
 
 ---
 
 ## 常见误区
 
-**误区1：认为导入设置只影响首次导入**
-UE5中修改已导入资产的设置后，必须手动点击**"Reimport"**才能重新处理资产。很多初学者修改了导入设置面板中的参数后直接保存项目，但引擎并不会自动重新处理已缓存的资产，导致改动不生效，排查时浪费大量时间。
+**误区一：认为FBX导出设置正确就无需关心导入设置**
+FBX格式本身支持多种法线存储方式（按顶点或按多边形顶点），UE5的默认导入设置有时会误读多边形顶点法线为顶点法线，导致硬边丢失。FBX导出设置控制数据的写入方式，而引擎导入设置控制数据的读取和转换方式，两者相互独立，必须同时校验。
 
-**误区2：FBX导出设置正确就无需关注引擎导入设置**
-这是对两个环节独立性的误解。FBX导出设置控制写入文件的数据，而引擎导入设置控制引擎如何**解读**这些数据。例如FBX中法线数据完整，但若UE5导入时选择了`Compute Normals`，引擎会完全丢弃FBX内嵌法线并重新计算，使DCC软件中的精细法线控制失效。
+**误区二：Lightmap UV只要勾选"Generate"就一定可用**
+UE5自动生成的Lightmap UV质量取决于网格拓扑的复杂程度。对于有大量细长三角面或多个相互穿插零件的模型，自动生成算法（基于角度和面积的贪心展开）会产生过多UV接缝和浪费的UV空间，导致光照烘焙出现漏光或像素化阴影。高精度静态网格（如建筑主体）应在DCC软件中手动制作第二UV并在导入时关闭自动生成。
 
-**误区3：所有纹理用同一套导入设置**
-将金属度贴图（灰度图）的Max Size设置与Albedo贴图相同（如2048），会浪费显存。金属度、粗糙度等单通道灰度贴图在`BC4`格式下以512分辨率存储，在PBR管线中视觉损失极小，但相比2048的DXT5节省约94%的显存占用（从约2MB降至约128KB）。
+**误区三：Unity的Smoothing Angle改大就能减少硬边**
+Smoothing Angle仅在Normals Mode为Calculate时起作用。若FBX文件携带了明确的平滑组数据，Unity默认会以Import模式直接读取，此时Smoothing Angle参数完全无效。必须先将Normals Mode切换为Calculate，Smoothing Angle才会参与法线重算。
 
 ---
 
 ## 知识关联
 
-**前置概念——FBX导出**：FBX导出阶段在DCC软件中选择的"Scale Factor"、"Smoothing Groups"等选项，会直接与引擎导入设置中的对应参数形成配对关系。例如Blender中未勾选"Apply Transform"导出的FBX，在UE5导入时需配合调整`Transform Vertex to Absolute`选项才能获得正确的轴向。
+引擎导入设置以**FBX导出**为直接前提，FBX文件中携带的平滑组、蒙皮权重、UV通道数量和坐标轴朝向（Y-up vs Z-up）都会影响导入设置的选择。UE5导入时的"Convert Scene"选项本质上是对FBX坐标系与引擎坐标系（X前向、Z朝上）之间差异的自动校正，理解FBX导出时的轴向设置才能判断是否需要开启此选项。
 
-**横向关联——材质系统**：导入设置中对纹理`Texture Type`和`Compression`的选择，直接影响材质编辑器中材质球的视觉表现和Shader采样效率。BC5法线贴图需要材质节点使用`Reconstruct Z`节点从RG两通道还原完整法线向量，若纹理格式与材质节点不匹配，光照会出现系统性错误。
-
-**横向关联——LOD系统**：导入时自动生成的LOD数据，构成了引擎距离剔除（Distance Culling）和实例化渲染（HLOD）的基础数据来源，理解导入阶段的LOD参数配置，是后续优化渲染性能的前提工序。
+从资产管线的角度看，导入设置的规范化是LOD生成、碰撞体设置、材质实例绑定等下游工序的基础。如果导入阶段的单位、法线、UV通道就存在错误，后续所有依赖这些数据的系统（物理碰撞、光照烘焙、材质混合）都会出现难以溯源的错误，因此导入设置往往是项目技术美术（Technical Artist）制定规范文档（Art Bible）时最优先定义的内容之一。
