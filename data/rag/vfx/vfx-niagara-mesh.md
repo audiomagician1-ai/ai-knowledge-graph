@@ -24,73 +24,75 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-27
 ---
 
+
 # Mesh粒子
 
 ## 概述
 
-Mesh粒子是Niagara粒子系统中使用3D网格体（Static Mesh或Skeletal Mesh）作为粒子视觉表示的技术方案。与使用Billboard平面图片的Sprite粒子不同，每个Mesh粒子都是一个完整的三维模型，拥有真实的体积感、物理遮挡关系和法线光照响应。这一特性使其成为实现弹壳飞溅、玻璃碎片、飘落树叶、破碎砖块等需要真实立体感特效的首选方式。
+Mesh粒子是Niagara系统中使用静态网格体（Static Mesh）作为粒子单元的渲染方式，区别于Sprite粒子的2D公告板，每个粒子实例都是一个完整的3D几何体，拥有真实的体积感和多角度可见性。碎石崩飞、弹壳弹跳、秋叶飘落这类需要从任意视角观察都保持立体外形的特效，必须使用Mesh粒子才能达到可信的视觉效果。
 
-Mesh粒子在Unreal Engine 4的Cascade系统中已有原型实现（通过Mesh TypeData模块），但在Niagara系统（随UE4.20正式引入）中得到根本性重构。Niagara将Mesh渲染器抽象为独立的Render模块，允许在同一粒子发射器（Emitter）内混合使用多种渲染器，并通过HLSL自定义表达式精确控制每个Mesh实例的几何变换。这种灵活性是Cascade时代无法实现的。
+Mesh粒子在Unreal Engine 4.20随Niagara系统正式引入时便作为核心渲染器类型之一提供，替代了Cascade时代的"Mesh Emitter"。与Cascade相比，Niagara的Mesh粒子将每个网格体实例的Transform、颜色、自定义数据全部打包进GPU实例化绘制调用（Instanced Draw Call），单个发射器支持同时渲染数万个网格体而不成倍增加Draw Call数量。
 
-Mesh粒子的重要性体现在它直接利用GPU Instancing（实例化绘制）技术，将数千个相同网格的绘制合并为单次Draw Call，因此在性能上远优于将同等数量的Static Mesh Actor手动放置于场景。一颗手榴弹爆炸产生500块碎片，若用独立Actor实现会产生500次Draw Call，改用Mesh粒子则仅需1至2次。
+Mesh粒子的性能表现与所选网格体的多边形密度直接挂钩。一个三角面数超过500的Static Mesh用于需要同时存在2000个实例的弹壳特效，会比同等数量的Sprite特效消耗高出数倍的顶点着色器开销。因此选择专用低面数模型（通常50到200三角面）是Mesh粒子工程化落地的必要前提。
+
+---
 
 ## 核心原理
 
-### Mesh Renderer模块配置
+### Mesh渲染器的配置结构
 
-在Niagara Emitter的Render栈中添加**Mesh Renderer**时，核心参数包括：
-- **Particle Mesh**：指定用于渲染的Static Mesh资产，可同时指定多个Mesh并通过`MeshIndex`粒子属性随机选取
-- **Override Materials**：是否覆盖Mesh原有材质，通常需启用以支持粒子颜色参数传递
-- **Enable Frustum Culling**：开启视锥剔除，超出摄像机视野的粒子网格停止渲染
+在Niagara发射器中添加**Mesh Renderer**模块后，需要在"Meshes"数组中指定一个或多个Static Mesh资产。当数组包含多个网格体时，Niagara通过`MeshIndex`粒子属性决定每个粒子实例选用哪个网格，这一特性常用于制作碎片种类随机化的岩石爆破效果——同一发射器可以混合三种不同形状的石块模型。
 
-粒子的变换由三组专属属性驱动：`Position`控制世界坐标，`Scale`控制三轴缩放（类型为Vector3，而非Sprite粒子的标量Size），`MeshOrientation`使用四元数（Quaternion）存储旋转，这与Sprite粒子依赖`SpriteRotation`标量角度有本质区别。
+**Override Materials**选项允许用Niagara的动态材质参数覆盖网格体的原始材质，配合`Dynamic Material Parameter`模块，可以让每个叶片粒子携带独立的枯黄程度参数，通过材质中的`DynamicParameter`节点读取并调整颜色偏移。
 
-### 旋转与角速度计算
+**Facing Mode**是Mesh渲染器独有的朝向控制参数，提供四种模式：
+- `Default`：粒子使用粒子自身的旋转矩阵，适合弹壳翻滚
+- `Velocity`：网格体X轴对齐速度方向，适合飞行中的箭矢或螺旋弹
+- `Camera`：始终面向摄像机，退化为类Sprite行为，通常不在Mesh粒子中使用
+- `Custom Half Vector`：沿自定义向量对齐，用于特殊物理模拟
 
-Mesh粒子的旋转控制是其技术难点核心。`MeshOrientation`为**四元数格式**，不能直接赋值欧拉角，需使用Niagara内置函数`QuatFromAxisAngle(Axis, Angle)`将轴角对转换为四元数，或使用`QuatMul(Q1, Q2)`叠加两个旋转。
+### 粒子Transform的三重属性
 
-实现持续自旋的标准做法是在Particle Update阶段使用以下逻辑：
-```
-// 每帧增量旋转
-DeltaRotation = QuatFromAxisAngle(AngularVelocityAxis, AngularSpeed * DeltaTime)
-MeshOrientation = QuatMul(MeshOrientation, DeltaRotation)
-```
-其中`AngularSpeed`单位为**弧度/秒**，弹壳飞出时的典型自旋速度为10至30弧度/秒（约1.6至4.8圈/秒），落叶飘落通常设为0.5至2弧度/秒。
+Mesh粒子的空间变换由三个独立的粒子属性控制，与Sprite的二维Scale完全不同：
+- `Position`（Vector3）：世界空间或本地空间坐标
+- `MeshOrientation`（Quaternion）：四元数旋转，模块`Initial Mesh Orientation`提供随机锥形旋转初始化，`Mesh Rotation Rate`以度/秒为单位持续旋转
+- `Scale`（Vector3）：三轴独立缩放，允许在Z轴压扁弹壳
 
-### 物理碰撞与反弹
+弹壳翻滚的标准做法是：在`Particle Spawn`阶段用`Initial Mesh Orientation`随机化起始角度，在`Particle Update`阶段用`Mesh Rotation Rate`设置每轴50到300度/秒的旋转速率，同时向Z轴施加重力加速度`-980 cm/s²`模拟弹道。
 
-Mesh粒子配合**Collision模块**可实现地面碰撞弹跳，关键参数为：
-- **Restitution（弹性系数）**：弹壳约0.4至0.6，树叶约0.05至0.1（几乎不反弹）
-- **Friction（摩擦系数）**：影响碰撞后的切向速度衰减
-- **Collision Radius Scale**：碰撞检测使用的是球形近似，该参数缩放球体半径以匹配Mesh实际尺寸
+### 碰撞与网格体的配合
 
-碰撞后若需触发额外效果（如弹壳落地声音），可通过**Event Handler**接收Collision事件，在碰撞位置生成子发射器粒子。
+Mesh粒子在启用`Collision`模块后，碰撞检测形状始终是**球形包围盒**，半径由`Collision Radius`参数控制，而非实际网格体的精确几何形状。这意味着一个L形弹壳模型的碰撞实际上是一个包裹它的球体——对于快速运动的小型道具特效而言，这种近似在视觉上完全可接受，且GPU计算代价远低于Mesh精确碰撞。碰撞后可通过`Resilience`（弹性系数，取值0到1）控制反弹程度，弹壳落地通常设置为0.3到0.5。
 
-### LOD与性能管理
-
-Mesh粒子自动继承Static Mesh资产的**LOD（细节层次）**设置。建议为粒子专用Mesh创建极简LOD1（仅保留轮廓，三角面数降至LOD0的10%至20%），在距离超过500厘米时自动切换。通过**Scalability（可伸缩性）**设置，低端机可将`MaxParticleCount`从PC版的200颗碎片降至移动版的30颗。
+---
 
 ## 实际应用
 
-**弹壳抛出特效**：枪械射击时从弹舱位置发射弹壳Mesh粒子，初速度为`{200-400, 50-150, 0}`厘米/秒（侧向+向上分量），叠加每帧自旋更新，设置Restitution=0.5使弹壳在地面多次弹跳，粒子生命周期设为3至5秒后淡出消失。
+### 枪械弹壳抛出特效
 
-**爆炸碎片飞溅**：使用Burst发射模式在0.05秒内一次性发射50至200个碎片Mesh，通过`Initial Velocity`模块的Cone形随机分布控制飞散角度（典型锥角120度），配合`Drag`模块模拟空气阻力，使碎片在0.3秒内迅速减速。为增加视觉多样性，可在Particle Mesh处放入3至5种不同形状的破碎块Mesh，通过`UniformRandInt(0,4)`随机选取。
+第一人称射击游戏中的弹壳抛出是Mesh粒子最典型的应用场景。发射器设置为`Burst`模式，每次开枪触发`Spawn Burst Instantaneous`输出1个粒子。弹壳网格体选用专门制作的约80三角面低模，初始速度设置为`(−50, 80, 120) cm/s`（以武器本地空间计算，向右后方抛出），叠加随机偏移`±20 cm/s`避免每次抛出轨迹完全相同。重力模块使用`Apply External Forces`以`980 cm/s²`向下加速，`Drag`设置为0.05模拟空气阻力。弹壳生命周期设置为3至5秒，配合`Color over Life`在最后0.5秒线性淡出透明度，避免突然消失。
 
-**秋季落叶效果**：将树叶多边形Mesh（约80至120三角面）设置为粒子，在`Wind Force`模块中叠加正弦波侧向扰动（振幅10至30厘米，频率0.3至0.8Hz）模拟风吹效果，同时缓慢更新MeshOrientation实现翻滚，Restitution设为0.02使落地后立即静止。
+### 秋叶飘落环境特效
+
+场景环境特效中，落叶Mesh粒子通常使用`Box`形状发射器在角色上方10米处持续生成，每秒生成约15到30片。叶片网格体需要在Z轴`Scale`上设置0.05到0.1的随机值使其扁平化，模拟真实叶片厚度。`Curl Noise Force`模块以频率0.3、幅度80的设置为每片叶子施加不同的飘移扰动，使叶片呈现自然随风飘荡而非直线下落的轨迹。每片叶子通过`Dynamic Material Parameter`携带独立的颜色种子值（0.0到1.0），材质中用此值在绿、黄、红三色之间插值。
+
+---
 
 ## 常见误区
 
-**误区一：用欧拉角直接赋值MeshOrientation**
-初学者常尝试将`(Roll, Pitch, Yaw)`角度直接写入`MeshOrientation`变量，导致粒子出现异常扭曲或不旋转。正确做法是始终使用`QuatFromAxisAngle`或`RotationFromEuler`转换函数，因为`MeshOrientation`在内存中存储的是四元数的四个分量`(X, Y, Z, W)`，直接赋数值角度会破坏四元数的单位长度约束（|Q|=1）。
+**误区一：直接使用高精度模型**
+新手常将场景中现有的高精度道具模型直接拖入Mesh Renderer的Meshes数组。一个面数为8000的精细弹壳模型，在同时存在50个实例时，其顶点着色器开销等同于渲染400000个顶点。Mesh粒子应始终使用专门制作的特效用低模，并关闭`Cast Shadows`选项——粒子特效级别的网格体开启阴影投射会触发额外的深度Pass，开销可能超过渲染本身。
 
-**误区二：将高面数模型直接用作粒子Mesh**
-将5000+面的角色模型或道具直接指定为Mesh粒子，当粒子数量达到100个时等效于渲染50万面，极易造成GPU过载。粒子专用Mesh应控制在50至300三角面，通过LOD和低精度法线贴图来弥补细节损失，而非依赖高模面数。
+**误区二：用MeshOrientation的Euler角思维调整旋转**
+Niagara的`MeshOrientation`属性存储的是四元数，直接在`Set MeshOrientation`中输入Euler角需要先经过`RotatorToQuaternion`节点转换。初学者跳过此转换直接赋值会导致旋转计算出现万向节锁（Gimbal Lock）现象，表现为某个轴向旋转完全失效。正确做法是使用`Mesh Rotation Rate`模块（内部自动处理四元数积分）而不是手动设置每帧的绝对旋转值。
 
-**误区三：忽略Mesh的Pivot（轴心点）位置**
-粒子的`Position`坐标对应Mesh的Pivot点（原点），若Mesh在建模软件中Pivot位于几何中心，弹壳会以中心为基准旋转；若Pivot偏移到弹壳底部，旋转表现会截然不同。弹壳、碎片类Mesh的Pivot应设在质心位置，落叶类Mesh的Pivot建议设在叶柄根部以获得更真实的翻转效果。
+**误区三：认为Mesh粒子必然比Sprite粒子慢**
+在需要真实3D外形的场景下，用3张正交Sprite模拟立体感（Cross Billboard技术）的综合开销——3倍的半透明Overdraw、3倍的Sprite粒子数量——往往高于1个低面数Mesh粒子的开销。当网格体面数控制在150以下且关闭半透明时，Mesh粒子的渲染效率可以优于Cross Billboard方案。
+
+---
 
 ## 知识关联
 
-**与Ribbon特效的对比**：Ribbon粒子生成连续的带状曲面（适合光剑轨迹、烟雾拖尾），Mesh粒子生成离散的独立3D实体（适合固体碎片），两者渲染机制不同——Ribbon通过相邻粒子位置插值构建面片，Mesh直接实例化现有网格体，不存在粒子间连接关系。在同一Emitter中可同时添加两种Renderer叠加效果，例如飞舞的羽毛用Mesh粒子表现翎管，用Ribbon粒子表现羽毛脱落时的轨迹拖尾。
+Mesh粒子与**Ribbon特效**共同属于Niagara的几何体渲染器家族，但Ribbon生成连续的带状面片用于拖尾，而Mesh粒子生成离散的独立网格体实例；两者可以在同一个Niagara系统中的不同发射器中协作，例如导弹特效同时使用Ribbon发射器制作烟迹拖尾、Mesh发射器制作碎片喷溅。
 
-**通向GPU模拟**：Mesh粒子默认在CPU上计算每帧的位置、旋转和缩放更新，当粒子数量超过500至1000个时，CPU计算开销开始成为瓶颈。启用**GPU模拟（GPU Simulation）**后，所有粒子更新逻辑转移至Compute Shader执行，可将Mesh粒子数量提升至数万个而不显著增加CPU开销，这是实现大规模碎石崩落、漫天飞雪等宏观特效的技术基础。GPU模拟对Mesh粒子的主要限制是不支持Collision模块的精确射线检测，需改用深度缓冲近似碰撞方案。
+进入**GPU模拟**阶段后，Mesh粒子的计算从CPU转移至GPU，粒子数量上限从CPU模式的数千个扩展到数十万个。然而GPU模拟对Mesh粒子有一个关键限制：`Fixed Bounds`必须手动设置（GPU无法向CPU回读包围盒数据），且部分碰撞模式在GPU模式下不可用，需要改用`GPU Depth Buffer Collision`替代普通的场景碰撞查询。掌握Mesh粒子的CPU模式配置是迁移到GPU模拟前必须夯实的基础，因为两种模式共享绝大多数模块逻辑，差异主要集中在边界设置和碰撞接口上。
