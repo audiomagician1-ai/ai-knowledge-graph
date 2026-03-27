@@ -1,10 +1,9 @@
 name: CI
 
 on:
-  push:
-    branches: [master, develop]
   pull_request:
     branches: [master]
+  # push 不触发纯检查 CI — 本地已完成，部署走 deploy-cloudflare.yml
 
 jobs:
   frontend:
