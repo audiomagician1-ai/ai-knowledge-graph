@@ -20,68 +20,81 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-27
 ---
+
 # Unity Package
 
 ## 概述
 
-Unity Package（Unity Package）是游戏引擎（Game Engine）中插件开发领域的重要概念。难度等级2/9（基础级）。
+Unity Package 是 Unity 引擎官方包管理系统（Package Manager）所管理的标准化代码与资产分发单元，自 Unity 2018.1 版本起正式引入。每个 Package 以 `com.company.packagename` 格式的反向域名作为唯一标识符，并通过 `package.json` 清单文件描述其元数据、版本号及依赖关系。
 
-Package Manager/Assembly Definition。
+Unity Package 的出现解决了传统 `.unitypackage` 格式的根本缺陷——旧格式将所有内容平铺导入到 `Assets` 目录，导致版本冲突和命名空间污染。新的 Package 系统将代码存储在项目之外的全局缓存目录（`~/.config/unity3d/cache` 或 Windows 下的 `%APPDATA%\Unity\cache`），实现了跨项目复用而不产生文件冗余。
 
-在知识体系中，Unity Package建立在插件架构的基础之上，是理解可进入更高级主题的关键前置知识。为什么Unity Package如此重要？因为它在插件开发中起到承上启下的作用，连接基础概念与高级应用。
+Unity Package 还引入了 Assembly Definition（程序集定义，`.asmdef` 文件）机制，将 C# 源码编译为独立的 DLL 程序集，而非统一编译到 `Assembly-CSharp` 中。这一机制使增量编译时间从数十秒显著缩短，对大型项目尤为关键。
 
-## 核心知识点
+## 核心原理
 
-### 1. Package Manager/Assembly Definition
+### package.json 清单结构
 
-Package Manager/Assembly Definition是Unity Package(Unity Package)的核心组成部分之一。在插件开发的实践中，Package Manager/Assembly Definition决定了系统行为的关键特征。例如，当Package Manager/Assembly Definition参数或条件发生变化时，整体表现会产生显著差异。深入理解Package Manager/Assembly Definition需要结合游戏引擎的基本原理进行分析。
+每个 Package 的根目录必须包含 `package.json` 文件，其中最关键的字段包括：
 
+- `name`：反向域名标识符，例如 `com.unity.render-pipelines.universal`
+- `version`：遵循 [语义化版本规范（SemVer）](https://semver.org/)，格式为 `主版本.次版本.修订号`，例如 `14.0.8`
+- `unity`：指定兼容的最低 Unity 编辑器版本，例如 `"2022.2"`
+- `dependencies`：以对象形式列出所依赖的其他 Package 及其版本，Package Manager 会自动递归解析
 
-### 关键原理分析
+```json
+{
+  "name": "com.mycompany.mytool",
+  "version": "1.2.0",
+  "unity": "2021.3",
+  "dependencies": {
+    "com.unity.mathematics": "1.2.6"
+  }
+}
+```
 
-Unity Package的核心在于Package Manager/Assembly Definition。从理论角度看，该概念涉及以下层面：
+### Assembly Definition 文件机制
 
-1. **定义层**：明确Unity Package的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解Unity Package内部各要素的相互作用方式
-3. **应用层**：将Unity Package的原理映射到游戏引擎的实际场景中
+`.asmdef` 文件以 JSON 格式定义一个 C# 程序集的编译规则。放置在某目录下的 `.asmdef` 文件会将该目录及其子目录内所有 `.cs` 文件编译进同一个独立程序集。核心字段包括：
 
-思考题：如何判断Unity Package的应用是否超出了其理论适用范围？
+- `name`：程序集名称，必须全局唯一，通常与 Package 名称对应
+- `references`：显式列出该程序集依赖的其他程序集名称列表
+- `includePlatforms` / `excludePlatforms`：控制平台特定编译，例如 `["Editor"]` 表示仅在编辑器环境下编译
+- `autoReferenced`：设为 `false` 时，`Assembly-CSharp` 不会自动引用此程序集，强制使用显式引用
 
-## 关键要点
+若一个 Package 同时提供运行时代码和编辑器扩展，标准做法是在 `Runtime` 子目录放置运行时 `.asmdef`，在 `Editor` 子目录放置编辑器 `.asmdef`，后者通过 `includePlatforms: ["Editor"]` 限制编译范围。
 
-1. **核心定义**：Unity Package的本质是Package Manager/Assembly Definition，这是理解整个概念的出发点
-2. **多维理解**：掌握Unity Package需要同时理解Package Manager/Assembly Definition等关键维度
-3. **先修关系**：扎实的插件架构基础对理解Unity Package至关重要
-4. **进阶路径**：可广泛应用于游戏引擎各方面
-5. **实践标准**：真正掌握Unity Package的标志是能在具体场景中灵活运用并正确判断适用边界
+### Package 的来源与安装方式
+
+Unity Package Manager 支持五种安装来源，各有不同的 `manifest.json` 写法：
+
+1. **Unity Registry**：官方注册表，写法如 `"com.unity.cinemachine": "2.9.7"`
+2. **Scoped Registry**：自定义 npm 兼容注册表，需在 `manifest.json` 的 `scopedRegistries` 字段声明服务器地址
+3. **Git URL**：直接引用 Git 仓库，写法如 `"com.mycompany.tool": "https://github.com/user/repo.git#v1.0.0"`，`#` 后可指定 tag 或 commit hash
+4. **本地路径**：以 `"file:../LocalPackage"` 格式引用本地文件夹，适合开发阶段调试
+5. **内嵌 Package**：直接将 Package 文件夹放在项目的 `Packages/` 目录内，无需网络
+
+## 实际应用
+
+**开发可复用的编辑器工具**：假设团队需要在多个项目中共享一套关卡编辑工具，可将其打包为 `com.studio.leveleditor`。Runtime 程序集包含关卡数据结构，Editor 程序集包含自定义 Inspector 和窗口，通过 Git URL 在各项目的 `manifest.json` 中引用同一仓库的不同 tag，实现版本隔离。
+
+**条件编译与平台适配**：在 `.asmdef` 中结合 `versionDefines` 字段，可根据某依赖 Package 是否安装、版本是否满足条件来动态定义预处理符号。例如，当检测到 `com.unity.inputsystem` 版本 `>=1.4.0` 时定义 `NEW_INPUT_SYSTEM`，从而在代码中用 `#if NEW_INPUT_SYSTEM` 切换实现，避免硬编码版本检查。
+
+**打包与发布到 Scoped Registry**：使用 `npm pack` 命令可将 Package 目录打包为 `.tgz` 文件，配合私有 Verdaccio 服务器，团队成员只需在 `manifest.json` 中添加 `scopedRegistries` 条目即可通过 Package Manager UI 安装和更新工具，体验与 Unity 官方包完全一致。
 
 ## 常见误区
 
-1. **混淆概念边界**：将Unity Package与插件开发中其他相近概念混为一谈。例如，Package Manager/Assembly Definition的适用条件与其他同类概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解插件架构就学习Unity Package，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：Unity Package虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：认为 `.asmdef` 只影响编译速度，可以不加**。实际上，`.asmdef` 对 Package 是强制性要求——没有 `.asmdef` 的 Package 中的代码无法被 `Assembly-CSharp` 以外的其他程序集引用，因为跨程序集引用必须通过 `references` 字段显式声明。忽略 `.asmdef` 还会导致包内的 `Editor` 代码在构建时被错误打包进游戏包体，引发构建失败。
 
-## 知识衔接
+**误区二：混淆 `package.json` 版本与 Git tag 的对应关系**。通过 Git URL 安装时，Package Manager 读取的版本号来自仓库内 `package.json` 中的 `version` 字段，而非 Git tag 名称本身。若 `package.json` 写的是 `1.0.0` 但 Git tag 打的是 `v1.0.1`，Package Manager 显示和锁定的版本将是 `1.0.0`。正确做法是在每次发布时同步更新 `package.json` 中的版本号与对应的 Git tag。
 
-### 先修知识
-先修知识包括：
-- **插件架构** — 为Unity Package提供了必要的概念基础
+**误区三：将 Package 的 `Samples~` 目录与普通目录混淆**。Package 中以波浪号结尾命名的目录（如 `Samples~`）不会被 Unity 自动导入，用户需通过 Package Manager UI 手动选择导入。若开发者将示例场景放在普通目录，每个安装该包的项目都会强制获得这些资产，污染项目内容；正确做法是始终将可选内容放在 `Samples~` 目录并在 `package.json` 的 `samples` 数组中注册。
 
-### 后续学习
-掌握Unity Package后，学习者已具备该方向的核心能力，可将所学应用于实际项目或探索游戏引擎其他分支。
+## 知识关联
 
-## 学习建议
+**前置基础——插件架构**：理解 Unity Package 需要先掌握 DLL 程序集的引用机制和 Unity 的双编译域（Editor Domain 与 Player Domain）概念。传统插件架构中对 `Plugins` 目录的约定（`Plugins/Editor` 中的代码仅在编辑器加载）在 Package 体系中被 `.asmdef` 的 `includePlatforms` 字段所取代，是从旧体系向新体系迁移的关键转换点。
 
-预计学习时间：30-60分钟。建议采用以下策略：
-
-- **主动回忆**：学完后不看笔记复述Unity Package的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将Unity Package与游戏引擎中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释Unity Package，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于插件开发的章节可作为深入参考
-- Wikipedia: [Unity Package](https://en.wikipedia.org/wiki/unity_package) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Unity Package" 可找到配套视频教程
+**横向关联——Unity Registry 与 UPM 协议**：Unity 的包注册表基于 npm 协议的子集实现，因此私有注册表方案（如 Verdaccio、Azure Artifacts）均与 npm 生态直接兼容。理解 `manifest.json` 中的 `lock` 字段（`packages-lock.json`）可以帮助团队实现确定性构建，确保所有成员安装完全相同的依赖版本，这与前端工程中 `package-lock.json` 的作用完全类似。
