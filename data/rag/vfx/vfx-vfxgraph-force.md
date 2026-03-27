@@ -24,82 +24,83 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-27
 ---
 
+
 # 力与运动
 
 ## 概述
 
-在 Unity VFX Graph 中，"力与运动"描述的是通过各类力场节点对粒子速度向量进行逐帧修改，从而产生物理感运动的机制。与传统粒子系统（Shuriken）依赖曲线编辑器的方式不同，VFX Graph 将力的计算下放到 GPU，每帧在 Update Context 中对每颗粒子独立执行向量运算，支持数百万粒子同时接受力的影响而不产生 CPU 瓶颈。
+在 Unity VFX Graph 中，**力与运动**指通过施加各类物理力（Force、Drag、Turbulence 等 Block）来驱动粒子位置和速度随帧更新的机制。与传统粒子系统不同，VFX Graph 的力作用于 GPU 线程上的每个粒子，可在单帧内并行处理数百万粒子的速度积分，而不依赖 CPU 的 FixedUpdate 物理步长。
 
-该机制的理论基础来自牛顿第二定律的离散化形式：在每个时间步 Δt 内，粒子速度的变化量等于合力除以质量（Δv = F/m × Δt），位置随之更新（Δx = v × Δt）。VFX Graph 通过内置的 **Integrate Forces** 与 **Update Position** 隐式流程，或手动连接 **Force** Block 节点，将上述积分过程显式地暴露给美术人员。
+这一机制源于 2018 年 Unity 引入 HDRP + VFX Graph 时为影视级特效设计的需求：需要在不启用 Unity Physics 引擎的前提下，让粒子表现出类物理行为。因此，VFX Graph 的力是**近似模拟**，而非严格求解物理方程，所有力的计算发生在 `Update Particle` 上下文（Context）的 Block 执行阶段。
 
-掌握力与运动对 VFX 工作流的重要性在于：绝大多数真实感特效（火焰上升、爆炸冲击波、烟雾飘散）都需要力的组合叠加，而不是简单的速度预设。理解各力节点的参数范围与叠加顺序，可以避免粒子出现不稳定震荡（数值积分发散），这是初学者最常踩的坑。
+掌握力与运动的意义在于：仅靠 Spawn 阶段赋予的初速度只能生成直线运动，而绝大多数特效（火焰上浮、爆炸扩散、飘动粒子）都依赖运行时持续施加的力来产生非线性轨迹。错误地将力 Block 放入 `Initialize Particle` 上下文只会在出生时执行一次，导致效果完全失效。
 
 ---
 
 ## 核心原理
 
-### 1. Force Block：线性力的施加
+### 1. 速度积分与力的累加模型
 
-**Force** Block 位于 VFX Graph 的 Update Context 中，向每颗粒子施加一个固定的世界空间或局部空间向量力。其参数 `Force (Vector3)` 直接累加到粒子的加速度缓冲区。典型用法是模拟重力：将 Y 分量设为 `-9.81` 即可获得标准地球重力加速度（单位 m/s²）。
+VFX Graph 在每个 `Update Particle` 帧中使用**欧拉积分**更新粒子运动：
 
-需要注意的是，Force Block 默认假设粒子质量为 1 kg。若要模拟不同密度的粒子（如烟雾 vs. 火星），可在 Initialize Context 中为属性系统中的自定义 `Mass` 属性赋值，然后在 Update Context 中用 **Divide** 节点将力除以质量后再接入 Force Block，实现质量感差异。
+```
+velocity += force × deltaTime
+position += velocity × deltaTime
+```
 
-### 2. Turbulence Block：湍流场驱动的随机运动
+`deltaTime` 由系统自动注入，对应当前帧时间间隔（秒）。多个力 Block 在同一 Update 上下文中**串行叠加**，最终 velocity 是所有 Block 贡献之和。因此，Block 的排列顺序影响计算结果——将 Drag 放在 Gravity 之前与之后，会因中间速度值不同而产生细微差异。
 
-**Turbulence** Block 使用三维 Curl Noise（旋度噪声）生成无散度的速度场，确保粒子不会异常聚集或发散。其核心参数包括：
+### 2. 内置力 Block 及其参数
 
-- `Intensity`：湍流速度强度，建议范围 0.1–5.0，超过 10 容易导致粒子跳出可见范围
-- `Frequency`：噪声空间频率，值越高湍流细节越密集
-- `Speed`：噪声场随时间滚动的速率，模拟风向变化
-- `Octaves`（1–8）：叠加的噪声层数，每增加一层细节翻倍但 GPU 开销约增加 30%
+**Gravity（重力）**：施加恒定加速度向量，默认值为 `(0, -9.81, 0)` m/s²，可绑定属性系统中的 Vector3 属性覆盖默认方向，用于模拟反重力或侧向重力场景。
 
-Curl Noise 的数学本质是对标量噪声场 φ 取旋度（∇ × ∇φ），得到的向量场天然满足 ∇·v = 0（无散度条件），因此非常适合模拟烟雾、蒸汽等不可压缩流体的湍流效果。
+**Linear Drag（线性阻力）**：公式为 `force = -drag × velocity`，`drag` 系数越大粒子减速越快。将 drag 设为 `2.0` 可让粒子在约 0.5 秒内接近静止（指数衰减特性）。Drag 不会让粒子反向运动，与 Wind 配合时先施加 Wind 再施加 Drag 可模拟空气阻力效果。
 
-### 3. Noise 节点族：自定义噪声驱动
+**Force Field（力场）**：引用场景中的 `VFX Force Field` 组件（需 HDRP），支持 Drag、Gravity、Vortex、Turbulence 四种子类型，影响半径和衰减曲线均可在组件 Inspector 中调整。粒子进入力场包围盒时才受到影响，可用于局部风洞或黑洞吸引效果。
 
-除 Turbulence Block 外，VFX Graph 提供独立的噪声采样节点用于更细粒度的控制：
+### 3. 湍流与噪声驱动运动
 
-- **Sample Perlin Noise 3D**：输出 -1 到 1 的连续标量，适合调制粒子颜色或大小
-- **Sample Cellular Noise**：生成泡沫状图案，适合模拟熔岩表面粒子分布
-- **Sample Gradient Noise**：平滑过渡，适合宏观风场模拟
+**Turbulence Block** 是 VFX Graph 中最常用的非线性力来源，内部使用**Curl Noise**（旋度噪声）生成无散度的速度场，保证粒子在三维空间中形成涡旋流动而不聚集或发散。关键参数包括：
 
-这些节点的输出可以直接乘以方向向量后接入 Force Block，实现噪声调制的定向力。例如，将 Perlin Noise 输出乘以 `(1, 0, 0)` 向量，即可制作左右随机漂移但不影响竖直方向的侧风效果。
+- **Intensity**：噪声速度的强度倍数，典型值 `0.5–3.0` 对应轻风到强乱流
+- **Frequency**：噪声空间频率，值越高湍流细节越密集；`1.0` 对应约 1 米尺度的涡旋
+- **Speed**：噪声场随时间平移的速率，产生动态流动感
 
-### 4. 力的叠加顺序与数值稳定性
+Turbulence 与 Gravity 叠加时，可通过将 Intensity 设为粒子生命周期属性（`Age/Lifetime` 曲线采样）实现粒子刚出生时飘散、末期受重力主导下落的自然过渡。
 
-VFX Graph 的 Update Context 按 Block 从上到下顺序执行。多个 Force Block 的加速度在同一帧内累加，最终统一积分一次位置。这意味着力的排列顺序不影响当帧的结果，但若 Drag（阻力）Block 放置在 Force Block 之前，则阻力先于当帧新增力作用，会导致模拟结果与预期略有偏差。
+### 4. 速度限制与稳定性
 
-数值稳定性的关键参数是 `Δt`（帧时间）。当帧率低于 20 FPS 时，Δt > 0.05s，Force × Δt 的乘积可能使速度在单帧内超过安全阈值，导致粒子瞬间飞出场景。解决方案是在 Update Context 中添加 **Clamp Velocity** Block，将速度上限限制在合理范围（如 50 m/s）。
+无限制地累加力会导致粒子速度爆炸（尤其在高 Turbulence Intensity 下）。VFX Graph 提供 **Clamp Velocity** Block，将速度向量模长限制在指定最大值内。建议在所有力 Block 之后添加此 Block，最大速度值依据效果需求设置，火焰类特效通常限制在 `5–10` m/s，爆炸冲击波可设至 `50` m/s 以上。
 
 ---
 
 ## 实际应用
 
-**爆炸冲击波粒子**：在 Initialize Context 中，通过 **Set Velocity from Direction & Speed** Block 将粒子速度初始化为径向向外（速度 20–80 m/s）。在 Update Context 中，依次叠加重力 Force Block（Y=-9.81）、Turbulence Block（Intensity=1.5, Frequency=0.3）以及 Drag Block（系数 0.85），产生粒子先快速扩散、中段受湍流扰动、后期因阻力减速坠落的三段式运动曲线。
+**火焰上升效果**：在 `Update Particle` 中依次放置：① `Turbulence`（Intensity=1.5，Frequency=0.8）产生火舌摆动；② `Gravity`（值设为 `(0, -3, 0)` 而非默认 -9.81 以模拟热气上浮的净效果）；③ `Clamp Velocity`（Max=8）。配合 `Age over Lifetime` 缩小粒子 Scale，可还原篝火火苗形态。
 
-**烟雾上升效果**：创建一个负值 Y 方向的 Drag（系数 0.98 仅作用于 XZ 平面）配合正 Y 方向 Force（+2.0 m/s²，模拟热浮力），再叠加 Turbulence（Intensity=0.8, Octaves=4），即可在不使用任何关键帧动画的前提下生成持续上升并自然扩散的烟柱。
+**子弹穿透气流**：使用场景中放置的 `VFX Force Field` 组件，设置 Vortex 类型，绑定子弹 Transform 作为力场中心（通过脚本动态更新 `VFXForceField` 组件位置），粒子飞过时产生螺旋尾迹，无需编写任何 CPU 端的粒子运动代码。
 
-**受风影响的落叶**：利用 **Sample Perlin Noise 3D** 对粒子世界坐标采样，输出值乘以 `(3, 0, 1)` 向量接入 Force Block，同时保留 Y 方向重力 -9.81。每片叶子因坐标不同采样到不同的噪声值，在宏观风力方向一致的前提下产生个体差异，避免所有叶子同步运动的机械感。
+**水面涟漪粒子**：将 Turbulence 的 Speed 参数绑定到随时间变化的正弦函数（通过 Custom HLSL 节点实现），使噪声场周期性反向平移，粒子呈现往复波动而非单向流动，适合水面泡沫或圣光粒子特效。
 
 ---
 
 ## 常见误区
 
-**误区一：将 Turbulence 的 Intensity 调得越大越真实**
-实际上 Intensity 超过 5.0 后，Curl Noise 产生的速度增量远超重力，粒子会呈现出无规律的高速乱窜，完全失去物理感。真实烟雾和火焰的湍流强度通常在 0.3–2.0 之间，宏观运动方向（浮力或初速度）仍然主导粒子轨迹，湍流只提供次级扰动。
+**误区一：把力 Block 放入 Initialize Particle 上下文**
+Initialize 上下文仅在粒子出生帧执行一次。将 Gravity 或 Turbulence 放在 Initialize 中，会让粒子只在出生瞬间获得一次速度增量，此后匀速直线运动，而非持续加速。力 Block 必须放在 `Update Particle` 中才能每帧持续作用。
 
-**误区二：在 Initialize Context 中使用 Force Block**
-Force Block 设计用于 Update Context（逐帧累加），若错误放入 Initialize Context，它只在粒子出生帧执行一次，效果等同于给粒子施加一个固定初速偏移，而不是持续力。这在 VFX Graph 中不会报错但行为完全不符合预期，调试时极难发现。
+**误区二：认为 Turbulence 等同于随机位移**
+Turbulence 使用的 Curl Noise 是**空间连续**且**时间连续**的向量场，同一位置的相邻粒子会获得相似的速度方向，因此形成流线感。若改用逐粒子的随机偏移（如 `Random Number` 驱动 Set Velocity），粒子会各自随机抖动，丢失流体感。两者视觉效果差异明显，不可互换。
 
-**误区三：Drag Block 可以完全替代 Force Block 的减速功能**
-Drag Block 实现的是速度按比例衰减（v_new = v × drag_coefficient），这是指数衰减，粒子理论上永远不会停止。若需要粒子在特定距离内硬性停止（如地面弹跳前减速），必须配合 Clamp Velocity 或自定义速度阈值判断，单独使用 Drag 无法实现有限时间内的完全静止。
+**误区三：Drag 系数与物理引擎的 Linear Drag 含义相同**
+Unity Rigidbody 的 `linearDamping` 使用的是归一化阻尼（0=无阻力，1=临界阻尼），而 VFX Graph Drag Block 的 drag 值是直接乘以速度的系数（无量纲上限），设置为 `1.0` 并非"完全阻尼"，粒子仍会继续运动，只是每帧速度减少 `drag × deltaTime` 的比例。
 
 ---
 
 ## 知识关联
 
-**前置概念——属性系统**：力与运动中所有参数（速度、质量、自定义阻力系数）都存储在粒子属性缓冲区中。若未在 Initialize Context 的属性系统中声明 `Velocity (Vector3)` 或 `Mass (float)` 属性，Force Block 将找不到写入目标，导致节点报错或静默失效。理解属性的读写时序（Initialize 写入初值，Update 逐帧修改）是正确使用任何 Force 节点的前提。
+**前置知识——属性系统**：力 Block 的 Intensity、Direction 等参数可暴露为 VFX 属性（Exposed Property），由外部 C# 脚本通过 `visualEffect.SetFloat()`、`SetVector3()` 动态修改，实现运行时风向切换、技能触发爆炸力等交互逻辑。若未掌握属性绑定机制，力参数只能在编辑器中静态配置。
 
-**后续概念——碰撞与交互**：力驱动粒子到达边界后，需要碰撞系统提供法向反弹力或摩擦力，才能完成完整的物理模拟闭环。碰撞响应本质上是在检测到位置越界时，反向施加一个冲量（Impulse = -2 × (v·n) × n），其计算建立在本节速度向量运算的基础之上。
+**后续方向——碰撞与交互**：粒子在力驱动下运动后，需要与场景几何体发生碰撞反弹，这依赖 VFX Graph 的 Collider Block 和 Depth Buffer Collision，碰撞响应中的摩擦力和反弹系数本质上也是对速度向量的修改，与力 Block 同属速度操控体系。
 
-**后续概念——湍流与噪声**：本节介绍的 Turbulence Block 和 Noise 节点族是湍流与噪声专题的实践入口。进阶内容将涉及自定义噪声贴图（Flipbook Texture 作为向量场）、多层噪声混合的频谱分析，以及如何通过 HLSL Custom HLSL Block 实现 VFX Graph 内置节点不支持的 Simplex Noise 算法。
+**后续方向——湍流与噪声**：Turbulence Block 底层的 Curl Noise 算法（基于 Perlin/Simplex Noise 的旋度计算）有更深层的参数可通过自定义 HLSL 节点覆盖，包括分形叠加层数（Octave）、持久性（Persistence）等，是进阶创作复杂流体特效的基础。

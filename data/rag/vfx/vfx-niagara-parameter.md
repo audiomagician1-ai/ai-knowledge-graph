@@ -24,99 +24,77 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-27
 ---
 
+
 # 参数与属性
 
 ## 概述
 
-在Niagara系统中，**参数（Parameter）**是指在模块脚本之间传递数据的命名变量，而**属性（Attribute）**特指附加在粒子实例上、随粒子生命周期存在的数据字段。两者最本质的区别在于作用域：参数可以存在于System、Emitter、Particle三个命名空间中，而属性专属于Particle命名空间，每一个活跃粒子都拥有独立的属性副本。
+在Niagara系统中，**参数（Parameter）**是数据的具名容器，**属性（Attribute）**则是绑定在特定命名空间下、随粒子生命周期存在的特殊参数。两者共同构成Niagara数据流动的基础单元。最简单的区分方式是：属性属于参数，但参数不一定是属性——"Particles.Velocity"是属性，而"User.SpawnRate"是用户参数，两者都是参数，但只有前者挂载在粒子命名空间下才叫属性。
 
-Niagara的参数与属性系统在UE4.20（2018年）随Niagara正式发布时引入，取代了旧版Cascade中通过"分布曲线"直接绑定数据的方式。Cascade时代只能通过固定字段（如颜色、速度）修改粒子行为，而Niagara允许用户在模块脚本中**自定义任意数据类型的属性**，包括Float、Vector3、Bool、Int32乃至结构体类型，极大扩展了粒子系统的表达能力。
+Niagara参数系统在UE4.20版本随Niagara正式替代Cascade时一并引入，设计目的是解决Cascade中粒子数据硬编码、无法任意扩展的问题。Cascade的粒子模块只能读写固定的内置字段（位置、速度、颜色等），而Niagara允许开发者在任意命名空间下声明自定义float、vector、bool乃至结构体类型的参数，彻底开放了数据层的扩展性。
 
-参数与属性体系的重要性体现在：Niagara的所有模块逻辑，包括粒子的初始化、帧更新和事件响应，**全部通过读写参数与属性来实现数据流通**。一个Spawn模块如果不向`Particles.Position`属性写入初始位置，粒子就不会出现在任何地方；一个Update模块如果不读取`Particles.Velocity`并写回更新后的值，粒子就不会运动。
+理解参数与属性的核心价值在于：Niagara的每一个模块脚本（Module Script）的输入输出，本质上都是在对参数进行读写操作。错误地理解参数的生命周期和可见性规则，会直接导致数据在阶段间无法传递，或产生竞态覆盖问题。
 
 ---
 
 ## 核心原理
 
-### 命名空间与作用域规则
+### 命名空间（Namespace）决定生命周期
 
-Niagara参数系统使用**点分命名空间前缀**来区分变量的作用域和生命周期，共有以下主要命名空间：
+Niagara使用命名空间前缀来区分参数的所有者和存活范围，内置的主要命名空间如下：
 
-| 命名空间 | 前缀示例 | 存在周期 |
+| 命名空间 | 典型示例 | 存活范围 |
 |---|---|---|
-| 系统级 | `System.` | 整个System资产运行期间 |
-| 发射器级 | `Emitter.` | 单个Emitter实例运行期间 |
-| 粒子级（属性） | `Particles.` | 单个粒子从Spawn到Kill |
-| 用户暴露 | `User.` | 由外部蓝图/C++赋值 |
-| 引擎内置 | `Engine.` | 引擎自动提供，只读 |
+| `Emitter.` | Emitter.Age | 整个发射器生命周期 |
+| `Particles.` | Particles.Position | 单个粒子生命周期 |
+| `System.` | System.OwnerVelocity | 整个系统生命周期 |
+| `User.` | User.SpawnRate | 外部（蓝图/C++）设置 |
+| `Engine.` | Engine.DeltaTime | 引擎只读注入 |
 
-`Particles.`命名空间下的变量就是粒子属性。当一个粒子被生成时，Niagara为该粒子分配一块连续内存，按属性定义顺序存储每个字段的值；当粒子被Kill时，这块内存释放。这种**结构体数组（SoA）**内存布局保证了SIMD向量化计算的高效性。
+`Particles.`命名空间的参数在粒子被Kill时自动释放，下一帧新生的粒子不会继承上一粒子的同名属性值，除非经过显式初始化。`Emitter.`和`System.`参数则跨粒子共享，修改它们会影响同一发射器或系统下的所有粒子。
 
-### 内置属性与自定义属性
+### 参数类型与内存布局
 
-Niagara提供一批**引擎内置粒子属性**，这些属性在渲染器中有直接对应的语义：
+Niagara参数支持以下基础类型：`float`、`int32`、`bool`、`FVector2D`、`FVector`、`FVector4`、`FLinearColor`、`FQuat`以及用户自定义的Struct。每个`Particles.`属性在GPU模拟中对应一列连续内存（Struct of Arrays布局，SOA），这意味着新增一个`Particles.MyFloat`属性会为该发射器的每个粒子槽位额外分配4字节，当粒子数量达到100万时，单个float属性即占用约3.8 MB显存。因此在移动平台上，减少不必要的自定义粒子属性是显著降低显存占用的直接手段。
 
-- `Particles.Position`（Vector3）：粒子世界位置
-- `Particles.Velocity`（Vector3）：每帧位移量，单位cm/s
-- `Particles.Color`（LinearColor）：RGBA颜色
-- `Particles.SpriteSize`（Vector2）：Sprite渲染时的宽高，单位cm
-- `Particles.NormalizedAge`（Float，范围0~1）：粒子归一化寿命
+### 读写规则与阶段可见性
 
-**自定义属性**通过在模块脚本的"Add Parameter"面板中选择`Particles.`命名空间并指定类型来创建。自定义属性一旦在任意模块中被写入，Niagara参数存储（Parameter Store）就会自动为其分配存储空间，无需手动声明结构体字段。
+Niagara将执行分为四个主要阶段：**System Spawn**、**System Update**、**Emitter Spawn**、**Emitter Update**、**Particle Spawn**、**Particle Update**（以及Event和Render阶段）。参数的可读写性遵循以下规则：
 
-### 读写操作与模块接口的Map Get/Map Set
+- `Particles.`属性只能在Particle Spawn和Particle Update阶段读写；在Emitter阶段无法访问单个粒子的属性。
+- `Emitter.`参数可在Emitter Spawn/Update以及所有Particle阶段**读取**，但只能在Emitter阶段**写入**；若在Particle Update中写入`Emitter.`参数，Niagara编辑器会给出警告并标记为竞态写入（Race Condition Write）。
+- `User.`参数在所有阶段均只读，只能由外部蓝图通过`SetNiagaraVariableFloat`等函数或`UNiagaraComponent`的参数绑定进行赋值。
 
-在Niagara模块脚本（HLSL/节点图）中，读取属性使用**Map Get节点**，写入属性使用**Map Set节点**。每个模块执行时，引擎将当前粒子的所有属性值传入Map Get，模块计算完毕后通过Map Set将新值写回。
+在Module脚本内部，参数以引脚形式暴露：标注为`Output`的引脚会在模块执行后将结果写回对应命名空间，标注为`Input`的引脚则在模块执行前读取当前值。同一阶段内多个模块对同一属性的写入，按模块堆栈从上到下的顺序依次覆盖，最后一个写入的模块结果生效。
 
-关键约束：**同一帧内，同一属性在同一执行阶段（Particle Update）只有最后一次Map Set写入有效**。若两个模块都写入`Particles.Velocity`，执行顺序靠后的模块会覆盖靠前的结果，因此在Emitter的模块堆栈（Stack）中，模块顺序直接影响最终属性值。
+### 静态参数与动态参数
 
-`Emitter.`参数与`System.`参数在整个Emitter/System范围内共享同一份数据，所有粒子读取到的值相同，不能被粒子级模块写入——尝试在Particle Update阶段写入`Emitter.`参数会导致编译错误。
-
-### 参数绑定与动态输入
-
-参数还可以通过**动态输入（Dynamic Input）**与外部数据源绑定。例如，将`Emitter.SpawnRate`绑定到`User.SpawnRateOverride`后，蓝图中调用`SetNiagaraVariableFloat("User.SpawnRateOverride", 50.0f)`即可在运行时动态控制发射率，而无需修改模块内部逻辑。这是Niagara实现运行时参数化的标准路径。
+Niagara还区分**静态参数（Static Parameter）**和普通参数。静态参数以`static`关键字声明，其值在发射器编译时确定，不能在运行时更改，但可以驱动编译分支（类似C++的`constexpr`）。例如，用静态bool控制是否启用某条计算路径，编译器会直接裁剪掉未启用的分支，零运行时开销。这与普通bool参数在运行时做`if`判断有本质区别。
 
 ---
 
 ## 实际应用
 
-**案例1：给粒子添加自定义"质量"属性实现重力变化**
+**自定义粒子属性传递颜色渐变数据**：在Particle Spawn阶段用"Initialize Particle"模块写入`Particles.Color`初始值，再在Particle Update阶段用自定义模块读取`Particles.Age`与`Emitter.LifeTime`，计算归一化寿命比值`t = Age / LifeTime`，然后用`Lerp(Color_Start, Color_End, t)`写回`Particles.Color`。这里`Particles.Age`是Niagara内置属性，需要在发射器的Require属性列表中勾选"Particle Age"才会被自动计算。
 
-在Spawn模块中，创建`Particles.Mass`（Float）属性并用随机范围`(0.5, 2.0)`初始化。在Update模块中，通过Map Get读取`Particles.Mass`和`Particles.Velocity`，计算重力加速度：`NewVelocity = OldVelocity + (980.0 * InverseMass * DeltaTime * GravityDirection)`，再Map Set写回。这样不同质量的粒子表现出不同的下落速度，而整个逻辑无需修改渲染器配置。
+**User参数驱动运行时爆炸强度**：在Niagara资产中创建`User.ExplosionForce`（类型float），在Particle Update的Force模块中将其读取为径向力乘数。游戏代码通过`NiagaraComponent->SetNiagaraVariableFloat(TEXT("User.ExplosionForce"), 5000.f)`在触发爆炸时实时注入值。注意参数名字符串必须包含`User.`前缀，否则查找失败、赋值静默忽略，这是初学者常见错误。
 
-**案例2：User参数驱动颜色渐变**
-
-在蓝图中设置`User.TeamColor`（LinearColor），在Niagara Particle Spawn阶段通过Map Get读取该User参数并写入`Particles.Color`。当蓝图在运行时切换队伍颜色时，新生成的粒子立即应用新颜色，已存在粒子保持原色——这展示了User参数与Particle属性的生命周期差异。
-
-**案例3：Emitter.Age驱动粒子缩放**
-
-`Emitter.Age`是引擎自动维护的Emitter级Float属性，记录Emitter累计运行时间（秒）。在Update模块中读取`Emitter.Age`并以`sin(Age * 3.14159)`映射到`Particles.SpriteSize`，可以让整批粒子同步脉冲缩放，因为所有粒子共享同一个`Emitter.Age`值。
+**Emitter参数统计存活粒子数**：利用`Emitter.AliveParticleCount`（Niagara内置的Emitter属性）在HUD中显示当前粒子数量，通过蓝图读取`UNiagaraComponent::GetNiagaraVariable`并转为`FNiagaraVariable`查询，可实现性能监控面板。
 
 ---
 
 ## 常见误区
 
-**误区1：认为"在模块中声明属性"等于"属性一定存在"**
+**误区一：认为`Particles.`属性在粒子死亡后仍保留数据**。实际上，粒子被标记为Dead后，其占用的槽位在下一次Compact（粒子池整理）时会被新粒子复用，旧数据不会清零，而是直接被覆盖。因此不能假设新生粒子的自定义属性初始值为0，必须在Particle Spawn阶段显式初始化，否则会出现属性值"继承"了上一批粒子残留数据的幽灵问题。
 
-Niagara采用**懒惰分配**策略：一个`Particles.`属性只有在至少被一个模块的Map Set节点写入时，才会被实际分配粒子内存。仅在Map Get中读取但从未写入的属性，其值为该类型的默认零值（Float=0, Vector3=(0,0,0)），不会产生报错，但会导致静默的逻辑错误。检查方式是在发射器的"Particle Attributes"面板中确认属性是否出现在列表里。
+**误区二：混淆`Emitter.`写入竞态**。多个粒子在同一帧的Particle Update阶段并行执行，若模块脚本写入`Emitter.`参数，不同粒子线程会争抢写入同一地址。Niagara编辑器虽然会显示警告，但不会阻止编译，结果是最终值随线程调度不确定——这种bug极难复现。正确做法是使用专用的Emitter Update模块来写入`Emitter.`参数，或改用支持原子累加的`Emitter.`参数配合Simulation Stage。
 
-**误区2：混淆Particle属性与Emitter参数的写入权限**
-
-初学者常在Particle Update阶段尝试累加`Emitter.AccumulatedDamage`来统计全局伤害，结果发现数值不正确或编译报错。正确做法是：粒子只能写入`Particles.`命名空间；若需要粒子影响Emitter级数据，应使用**Emitter Event**或**Event Handler**机制，通过事件将粒子数据传递到Emitter Update阶段处理。
-
-**误区3：以为属性类型可以在运行时更改**
-
-属性的数据类型（Float、Int32、Vector3等）在模块编译时固定，运行时只能修改值而不能修改类型。若将一个已在多处模块中使用的`Particles.CustomData`从Float改为Vector3，所有引用该参数的Map Get/Map Set节点都会出现类型不匹配错误，需要逐一手动修正。规划自定义属性时应预先确定所需精度与维度。
+**误区三：`User.`参数与`System.`参数的混用**。`System.`参数由系统内部计算（如`System.Age`、`System.ExecutionState`），开发者不应尝试从蓝图写入`System.`命名空间的参数；而`User.`参数专为外部输入设计，具有完整的蓝图/C++ API支持。将自定义的外部控制变量声明为`System.`前缀，会导致蓝图侧的`SetNiagaraVariable`调用静默失效。
 
 ---
 
 ## 知识关联
 
-**前置概念：Module脚本**
-理解参数与属性必须先掌握Module脚本的节点图结构，因为Map Get和Map Set节点是Module脚本内部的专有节点——在Module脚本之外（如System/Emitter脚本）无法直接操作`Particles.`属性，只能通过模块间接访问。
+**前置概念——Module脚本**：参数与属性是Module脚本的操作对象，Module脚本的每个输入输出引脚本质上就是对命名空间参数的读写声明。没有理解Module脚本的执行模型，就无法判断属性在哪个阶段可写。
 
-**后续概念：生成模式（Spawn Mode）**
-生成模式（Burst、Rate、Scripted等）决定粒子何时被创建，而粒子被创建的瞬间，Spawn阶段的模块将执行首次属性写入。理解属性的初始化时机（Spawn vs. Update）对于正确使用不同生成模式至关重要：Burst模式下所有粒子在同一帧Spawn，意味着若Spawn模块读取了`Emitter.Age`，所有Burst粒子的该属性初始值相同。
-
-**横向关联：渲染器属性绑定**
-Niagara Sprite渲染器、Ribbon渲染器等均通过固定的属性名称（如`Particles.Position`、`Particles.Color`）读取粒子数据，属性命名必须与渲染器期望的名称完全匹配，大小写敏感，否则渲染器将回退到默认值。
+**后续概念——生成模式（Spawn Mode）**：生成模式决定粒子何时触发Particle Spawn阶段，而Particle Spawn正是`Particles.`属性初始化的唯一合法时机。Burst生成、Rate生成以及Event生成各有不同的Spawn触发机制，直接影响属性初始化的执行频率和时机选择策略。

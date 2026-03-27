@@ -20,52 +20,73 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-27
 ---
-# Substance Painter 内置烘焙器
+
+
+# Substance 烘焙
 
 ## 概述
 
-Substance Painter 是由 Allegorithmic 公司（2019年被 Adobe 收购）开发的 PBR 纹理绘制软件，其内置烘焙器自版本 1.x 起便集成在工作流程中，允许美术师在不离开软件的情况下直接完成从高模到低模的多种贴图烘焙。与 Marmoset Toolbag 或 xNormal 等外部烘焙工具相比，Substance Painter 的烘焙结果会直接绑定到当前项目的网格同步（Mesh Sync）系统中，烘焙完成后立即可用于图层和智能材质。
+Substance Painter 内置烘焙器是 Adobe（前 Allegorithmic）公司集成于 Substance Painter 软件中的专属烘焙模块，自 Substance Painter 1.x 版本起便作为软件的核心工作流程存在，并在 2.x 版本后逐步完善了多贴图同步烘焙能力。与 xNormal、Marmoset Toolbag 等外部烘焙工具不同，Substance 烘焙器的最大优势在于：烘焙结果可以直接被软件内的所有智能材质、锚点（Anchor Point）和填充图层实时读取，无需导入导出操作。
 
-Substance Painter 的烘焙模块支持一次性输出多达 10 余种贴图通道，包括 Normal、World Space Normal、Ambient Occlusion、Curvature、Position、Thickness、ID 等。这一特性使其在影视预渲染外包和游戏资产制作中被广泛采用，因为单次烘焙即可生成 Smart Material（智能材质）所需的全部输入数据，显著减少重复操作。
+Substance 烘焙器最核心的功能是"一键式多图烘焙"——在同一次烘焙操作中，用户可以同时生成法线贴图（Normal Map）、环境光遮蔽（AO）、曲率图（Curvature）、位置图（Position）、厚度图（Thickness）、世界空间法线（World Space Normal）等多达十余种贴图，这些贴图统称为 Mesh Maps（网格贴图），它们共同构成智能材质识别几何体特征的数据基础。
+
+在 3D 美术制作中，Substance 烘焙器的价值不仅是减少软件切换成本。更重要的是，曲率图和位置图这两种 Substance 特有的烘焙输出，是 Substance Painter 智能材质系统的专用输入信号，若使用外部工具烘焙则很难获得格式完全匹配的版本，导致智能材质效果失效或异常。
+
+---
 
 ## 核心原理
 
-### 高低模配对与匹配规则
+### 烘焙设置面板与关键参数
 
-Substance Painter 使用基于命名后缀的自动配对机制来匹配高模（High Poly）与低模（Low Poly）。默认规则是：低模网格的名称加上 `_high` 后缀即视为其对应的高模部件。例如，低模命名为 `Body`，则高模需命名为 `Body_high` 才能被自动识别。用户也可在烘焙面板的 **Match** 选项中切换为 `Always`（忽略命名直接全部匹配）或 `By Mesh Name`（严格按名称匹配），适应不同的项目命名规范。
+在 Substance Painter 中，通过菜单 **Texture Set Settings → Bake Mesh Maps** 打开烘焙面板。其中最关键的参数包括：
 
-### 烘焙分辨率与抗锯齿设置
+- **Output Size（输出尺寸）**：决定所有 Mesh Maps 的分辨率，通常选择 2048×2048 或 4096×4096，与贴图集（Texture Set）分辨率保持一致。
+- **Dilation Width（扩张宽度）**：默认值为 16 像素，用于填充 UV 边界外的颜色溢出区域，防止贴图接缝在实时渲染中出现黑边。
+- **Max Frontal Distance / Max Rear Distance**：定义高模投射到低模的前后搜索距离，其功能等同于 xNormal 中的 Ray Distance，控制烘焙笼（Cage）的范围。
+- **High Definition Meshes（高精度网格）**：这是 Substance 烘焙器的特有选项，用户可以在此槽位中直接拖入高模 FBX 文件，无需提前将高低模合并，软件会在烘焙时自动做名称匹配（Name Matching）。
 
-Substance Painter 烘焙面板提供 **Output Size** 选项，可独立于当前项目纹理分辨率设置烘焙分辨率，最高支持 4096×4096 像素。**Antialiasing** 下拉菜单提供 None、2x、4x、8x 四个超采样级别，其中 4x 是多数游戏资产的推荐默认值，可在烘焙时间和边缘质量之间取得平衡。**Max Frontal / Rear Distance** 两个参数控制射线投射的笼（Cage）前后范围，直接影响投影接触面是否产生浮动或漏穿缺陷，需根据高低模间距手动微调。
+### 名称匹配（Name Matching）机制
 
-### ID 贴图烘焙的颜色生成方式
+Substance 烘焙器通过网格名称前缀或后缀来自动配对高低模。默认规则是：低模网格命名为 `Mesh_low`，高模网格命名为 `Mesh_high`，软件识别 `_low` 和 `_high` 后缀后自动对应烘焙，避免多个物件相互干扰产生烘焙污染（Baking Pollution）。除内置规则外，用户可在 **Edit → Settings → Baking** 中自定义后缀关键字。这一机制在处理包含数十个子部件的角色或载具模型时尤为重要。
 
-Substance Painter 的 ID Map 烘焙支持三种颜色来源：**Mesh ID/Polygroup**（按多边形组着色）、**Vertex Color**（读取高模顶点色）和 **Material ID**（读取高模材质槽颜色）。选用 Vertex Color 模式时，软件直接从导入的 FBX 或 OBJ 高模中读取顶点颜色属性，不需要额外的材质设置，是 Blender 到 Substance 工作流中常见的做法。生成的 ID 贴图用于在 **Polygon Fill** 工具中按区域快速蒙版，配合颜色选择器实现一键区域遮罩。
+### 曲率图与厚度图的独特算法
 
-### 环境光遮蔽（AO）的专属参数
+曲率图（Curvature Map）并非由高模直接投射生成，而是由 Substance 烘焙器对低模本身的网格曲率进行计算，输出一张以灰度表示凸起（白色）和凹陷（黑色）的贴图，中性灰（128, 128, 128）代表平面区域。该图在智能材质中用于给边缘添加磨损效果，若曲率图烘焙质量差，边缘破损效果将完全失真。
 
-Substance Painter AO 烘焙提供 **Quality** 滑块（范围 1–64，代表每像素光线采样数）和 **Max Distance** 参数（单位与场景单位一致）。将 Quality 设为 64 可消除大多数噪点，但烘焙时间会相对线性增加。**Ignore Backface** 选项若开启，会忽略来自模型背面的遮蔽射线，适用于单面植被卡片等特殊资产。
+厚度图（Thickness Map）则从网格内部向外发射射线，计算表面到对面内壁的距离，输出白色（薄处）到黑色（厚处）的渐变。它专门用于驱动次表面散射（SSS）材质中的透光效果，例如耳廓、手指在背光时呈现的透射感。
+
+### Anti-aliasing（抗锯齿）与 Supersampling
+
+Substance 烘焙器在 **Antialiasing** 下拉菜单中提供 None、Subsampling 2×2、Subsampling 4×4 三个选项。选择 4×4 时，软件实际以目标分辨率的 4 倍进行内部采样后再降采样输出，可以显著减少法线贴图在斜面区域出现的锯齿状走样，代价是烘焙时间增加约 3～5 倍。
+
+---
 
 ## 实际应用
 
-在游戏角色制作流程中，美术师通常在 ZBrush 完成高模雕刻后导出为 FBX，在 Maya 或 Blender 制作低模并展 UV，将两者一同导入 Substance Painter 项目。在烘焙面板中勾选 Normal、AO、Curvature、Position、Thickness、ID 六个通道，以 2048×2048 分辨率、4x 抗锯齿执行单次烘焙，耗时通常在 30 秒至 3 分钟之间（取决于面数）。烘焙完成后，Curvature 贴图自动驱动智能材质的边缘磨损效果，Position 贴图驱动从上到下的渐变污迹，大幅提升材质细节的自动化程度。
+**角色武器的完整 Mesh Maps 烘焙流程**：以一把游戏低模步枪（约 8000 三角面）为例，将高模（约 200 万面）和低模同时载入 Substance Painter，在 Bake 面板中勾选全部 Mesh Map 类型，设置 Output Size 为 2048，Dilation Width 为 16，Subsampling 4×4，单次烘焙即可获得法线、AO、曲率、位置、厚度、世界空间法线共 6 张贴图。随后在图层面板中应用"Metal Edge Wear"智能材质，该材质会自动调用曲率图识别枪管和枪托的棱角位置，无需任何手动遮罩绘制即可生成真实的磨损痕迹。
 
-在武器道具制作中，ID 贴图通常通过材质槽方式生成：在 Maya 中为枪托、枪管、金属件分别指定不同颜色的 Lambert 材质，高模导出时保留材质信息，Substance 烘焙时选择 **Material ID** 模式，最终生成区域清晰的色块 ID 图，方便后续对不同金属区域独立调色。
+**多 Texture Set 批量烘焙**：当角色模型拥有身体、头部、服装三个独立 UV 集（Texture Set）时，Substance Painter 支持通过 **Bake All Texture Sets** 功能一次性烘焙全部 UV 集，避免逐一切换操作，显著提升大型项目的迭代效率。
+
+---
 
 ## 常见误区
 
-**误区一：认为 Substance 烘焙的 Normal Map 方向与外部工具完全相同**
-Substance Painter 默认输出 **OpenGL 方向**（Y 轴向上为绿色高光）的法线贴图，而 DirectX 方向（Y 轴向上为绿色低谷）在某些引擎（如早期 Unreal Engine 4 项目）中需要翻转 G 通道。若直接将 Substance 烘焙的法线贴图用于 DirectX 工作流却未翻转，模型凹凸关系将整体反转。导出时需在 Substance 的 **Shader Settings** 中切换 Normal Map Format，或在引擎端处理。
+**误区一：认为 Substance 烘焙法线质量不如 xNormal**
+这一观点在 Substance Painter 早期版本（1.x）时曾部分成立，但自 2.6 版本引入改进的切线空间算法并支持 MikkTSpace 切线空间计算后，Substance 烘焙器输出的法线贴图与主流游戏引擎（Unreal Engine、Unity）的切线空间计算完全对齐，实际上比在 xNormal 中烘焙后再导入更不容易出现接缝问题。
 
-**误区二：认为提高 Output Size 就等于提高烘焙精度**
-烘焙分辨率影响的是贴图的存储精度，但高低模之间的投影质量由射线数量（AO 的 Quality 参数）和笼距离（Max Frontal/Rear Distance）决定。在 512 分辨率下将 Quality 设为 64 得到的 AO 比在 4096 分辨率下 Quality 为 1 时仍要干净得多，两者作用机制完全不同。
+**误区二：曲率图可以用手绘遮罩代替**
+曲率图是基于网格几何信息精确计算的数学结果，记录了每个像素点的曲率方向和强度。手绘遮罩只能粗略模拟磨损区域的位置，无法重现曲率图在 0.5～5 像素级别边缘上的精确梯度信息，用于驱动智能材质时效果差异显著，尤其在复杂机械零件的倒角处更为明显。
 
-**误区三：认为 `Always` 匹配模式适用于所有场景**
-当低模 FBX 文件中包含多个独立零件（如角色身体、头发、装备），使用 `Always` 模式会让所有高模同时向所有低模投影，造成不同部件相互污染，在部件边缘产生明显的投影错误。正确做法是在多零件场景中使用 `By Mesh Name` 并严格遵守 `_high` 后缀命名规范。
+**误区三：烘焙后修改 UV 无影响**
+由于 Mesh Maps 是基于烘焙时的 UV 布局生成的，若在烘焙完成后修改模型 UV，所有 Mesh Maps 将与新 UV 错位，导致法线贴图扭曲、AO 位置偏移。正确做法是在最终确认 UV 展开后再进行烘焙，需要修改 UV 时必须重新执行全部烘焙流程。
+
+---
 
 ## 知识关联
 
-学习 Substance 烘焙需要预先掌握法线烘焙的基础原理，包括切线空间法线贴图的 RGB 通道编码方式（R=X 切线方向，G=Y 副法线方向，B=Z 法线方向）以及高低模拓扑要求。理解了法线烘焙的射线投射原理后，Substance 中 Max Frontal/Rear Distance 参数的含义才能准确把握，否则调参时只能靠试错。
+学习 Substance 烘焙之前，需要掌握**法线烘焙**的基础知识，包括切线空间法线的物理含义、高低模的准备标准以及 UV 展开规范，这些前置知识直接决定烘焙参数（如 Max Distance）的合理设置方式。
 
-Substance 烘焙生成的 Curvature 和 Position 贴图是后续使用 Smart Material（智能材质）和 Smart Mask（智能遮罩）的数据基础。Curvature 贴图存储每个像素的曲率信息（凸起为白色，凹陷为黑色），Smart Mask 通过对其进行阈值判断自动生成磨损遮罩；Position 贴图存储模型在包围盒内的归一化 XYZ 坐标，驱动方向性污迹效果。掌握烘焙质量控制后，上述所有高级材质技术才能稳定发挥效果。
+Substance 烘焙器输出的 Mesh Maps 是 Substance Painter 内所有**智能材质**（Smart Material）和**智能遮罩**（Smart Mask）的驱动数据源。理解哪些 Mesh Maps 控制哪些材质效果——例如 AO 驱动污垢积累、Position 驱动渐变过渡、Thickness 驱动透光——是进阶使用 Substance Painter 智能材质系统的直接前提。此外，Position Map 的 Y 轴分量还常被用于驱动角色从脚底（黑色）到头顶（白色）的垂直方向颜色渐变，是 Substance 特有的应用技巧。
