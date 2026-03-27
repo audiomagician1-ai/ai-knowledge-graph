@@ -20,72 +20,111 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-27
 ---
+
 # C#工具开发
 
 ## 概述
 
-C#工具开发（Ta Csharp Tools）是技术美术（Technical Art）中工具开发领域的重要概念。难度等级2/9（基础级）。
+C#工具开发是指利用C#语言在Unity编辑器环境中编写自定义扩展工具，或开发独立的桌面应用程序以辅助美术和策划工作流程的实践。区别于游戏逻辑编程，工具开发的目标不是运行时行为，而是在编辑时提升团队的制作效率。Unity的编辑器扩展API（位于`UnityEditor`命名空间）与运行时API（`UnityEngine`）是完全分离的，这意味着工具代码必须放置在`Editor`文件夹中，否则会被打包进最终发行版导致冗余。
 
-C#在Unity编辑器扩展和独立工具中的应用。
+C#在工具开发领域的地位建立在Unity 2017年之后对编辑器脚本API的大规模扩充之上。引入`UIElements`（后更名为`UI Toolkit`，在Unity 2021 LTS中趋于稳定）之前，几乎所有编辑器GUI都依赖`IMGUI`（Immediate Mode GUI）系统，开发者需要在`OnGUI()`方法中逐帧绘制界面元素。这一历史背景直接影响了现有大量工具代码的写法，技术美术在阅读遗留代码时必须了解这两套系统的共存现象。
 
-在知识体系中，C#工具开发建立在Unity编辑器扩展的基础之上，是理解可进入更高级主题的关键前置知识。为什么C#工具开发如此重要？因为它在工具开发中起到承上启下的作用，连接基础概念与高级应用。
+对于技术美术而言，C#工具开发的价值体现在能够将重复性的美术操作自动化——例如批量修改材质参数、自动化LOD生成流程、或为策划提供可视化的数值配置面板——将原本需要数小时的手工操作压缩到数秒。
 
-## 核心知识点
+---
 
-### 1. C#在Unity编辑器扩展
+## 核心原理
 
-C#在Unity编辑器扩展是C#工具开发(Ta Csharp Tools)的核心组成部分之一。在工具开发的实践中，C#在Unity编辑器扩展决定了系统行为的关键特征。例如，当C#在Unity编辑器扩展参数或条件发生变化时，整体表现会产生显著差异。深入理解C#在Unity编辑器扩展需要结合技术美术的基本原理进行分析。
+### 编辑器脚本的基础结构
 
-### 2. 独立工具中的应用
+所有Unity编辑器扩展脚本必须继承自特定基类。最常用的三个基类是：`EditorWindow`（独立浮动窗口）、`Editor`（Inspector面板扩展）和`AssetPostprocessor`（资产导入处理器）。以`EditorWindow`为例，最小可运行的工具框架如下：
 
-独立工具中的应用是C#工具开发(Ta Csharp Tools)的核心组成部分之一。在工具开发的实践中，独立工具中的应用决定了系统行为的关键特征。例如，当独立工具中的应用参数或条件发生变化时，整体表现会产生显著差异。深入理解独立工具中的应用需要结合技术美术的基本原理进行分析。
+```csharp
+using UnityEditor;
+using UnityEngine;
 
+public class MyTool : EditorWindow
+{
+    [MenuItem("Tools/My Tool")]
+    public static void ShowWindow()
+    {
+        GetWindow<MyTool>("My Tool");
+    }
 
-### 关键原理分析
+    private void OnGUI()
+    {
+        // 界面绘制逻辑写于此处
+    }
+}
+```
 
-C#工具开发的核心在于C#在Unity编辑器扩展和独立工具中的应用。从理论角度看，该概念涉及以下层面：
+`[MenuItem("Tools/My Tool")]`特性会在Unity菜单栏注册一个入口，路径字符串中的斜杠代表菜单层级。`GetWindow<T>()`是单例模式的编辑器窗口获取方式，若窗口已存在则聚焦，不存在则创建。
 
-1. **定义层**：明确C#工具开发的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解C#工具开发内部各要素的相互作用方式
-3. **应用层**：将C#工具开发的原理映射到技术美术的实际场景中
+### IMGUI与序列化字段的交互
 
-思考题：如何判断C#工具开发的应用是否超出了其理论适用范围？
+IMGUI系统中，`EditorGUILayout`和`GUILayout`是两套并行的布局API，前者额外支持`SerializedProperty`（序列化属性）的直接绑定，这对于需要支持Undo/Redo功能的工具至关重要。正确的编辑序列化属性的方式如下：
 
-## 关键要点
+```csharp
+SerializedObject so = new SerializedObject(targetObject);
+SerializedProperty prop = so.FindProperty("myField");
+so.Update();
+EditorGUILayout.PropertyField(prop);
+so.ApplyModifiedProperties(); // 此行触发Undo记录
+```
 
-1. **核心定义**：C#工具开发的本质是C#在Unity编辑器扩展和独立工具中的应用，这是理解整个概念的出发点
-2. **多维理解**：掌握C#工具开发需要同时理解C#在Unity编辑器扩展和独立工具中的应用等关键维度
-3. **先修关系**：扎实的Unity编辑器扩展基础对理解C#工具开发至关重要
-4. **进阶路径**：可广泛应用于技术美术各方面
-5. **实践标准**：真正掌握C#工具开发的标志是能在具体场景中灵活运用并正确判断适用边界
+直接通过`target.myField = value`赋值的方式会绕过Unity的序列化系统，导致Ctrl+Z无法回退操作，这是工具开发中最常见的功能缺陷之一。
+
+### 反射与资产批处理
+
+C#的反射机制（`System.Reflection`命名空间）在批量工具中被大量使用。例如，遍历项目中所有材质并修改特定Shader属性时，可以结合`AssetDatabase.FindAssets("t:Material")`与`AssetDatabase.LoadAssetAtPath<Material>()`实现：
+
+```csharp
+string[] guids = AssetDatabase.FindAssets("t:Material");
+foreach (string guid in guids)
+{
+    string path = AssetDatabase.GUIDToAssetPath(guid);
+    Material mat = AssetDatabase.LoadAssetAtPath<Material>(path);
+    if (mat.HasProperty("_BaseColor"))
+    {
+        mat.SetColor("_BaseColor", Color.white);
+        EditorUtility.SetDirty(mat); // 标记资产已修改
+    }
+}
+AssetDatabase.SaveAssets(); // 批量保存，避免逐个触发IO
+```
+
+`EditorUtility.SetDirty()`与`AssetDatabase.SaveAssets()`必须配合使用，单独调用`SetDirty`不会将修改写入磁盘。
+
+---
+
+## 实际应用
+
+**批量贴图导入设置工具**：技术美术可以编写继承自`AssetPostprocessor`的脚本，在`OnPreprocessTexture()`回调中根据贴图路径的命名规则（如路径包含`/Normal/`）自动设置`TextureImporterSettings`，将法线贴图类型、压缩格式、最大分辨率一次性配置完毕，替代美术手动逐张设置的流程。该方法在贴图量超过500张的项目中可节省约80%的导入配置时间。
+
+**角色换装预览工具**：为美术提供一个`EditorWindow`，通过`ObjectField`拖入角色根节点，工具自动扫描`SkinnedMeshRenderer`组件并列出所有子网格，允许美术在编辑器中快速切换显示/隐藏组合，无需进入Play Mode即可预览换装效果。这类工具直接调用`renderer.enabled`属性，配合`SceneView.RepaintAll()`强制刷新场景视图。
+
+**Shader属性可视化面板**：针对团队自定义Shader，编写对应的`ShaderGUI`子类，将原本线性排列的材质属性按功能分组并添加折叠栏、条件显示逻辑（如勾选"启用发光"后才显示发光颜色），使不熟悉Shader的美术也能安全地调整材质参数。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将C#工具开发与工具开发中其他相近概念混为一谈。例如，C#在Unity编辑器扩展的适用条件与其他独立工具中的应用概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解Unity编辑器扩展就学习C#工具开发，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：C#工具开发虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：将Editor代码放在非Editor文件夹**
+许多初学者直接在Assets根目录创建编辑器脚本，代码中引用了`UnityEditor`命名空间。这在编辑器中可以正常运行，但执行Build时Unity会尝试将`UnityEditor`编译进目标平台，由于该库在运行时不存在，必然导致构建失败并报错`The type or namespace name 'UnityEditor' could not be found`。解决方法是将所有工具脚本放入任意层级名为`Editor`的文件夹。
 
-## 知识衔接
+**误区二：混淆`EditorGUI`与`EditorGUILayout`的坐标系**
+`EditorGUI`系列方法需要手动传入`Rect`参数指定绘制区域（适合精确布局），而`EditorGUILayout`系列方法自动计算布局位置（适合快速开发）。将两者随意混用时，`GUILayoutUtility.GetRect()`获取到的矩形可能与实际绘制位置错位，导致点击热区与视觉元素不对齐。在同一个`OnGUI`作用域内应优先选择其中一套API保持一致。
 
-### 先修知识
-先修知识包括：
-- **Unity编辑器扩展** — 为C#工具开发提供了必要的概念基础
+**误区三：在工具中忘记处理`null`场景对象引用**
+编辑器工具运行期间，用户可能删除场景中的对象或切换场景，此时工具内缓存的`GameObject`引用会变为"假null"（Unity重写了`==`运算符，被销毁的对象不等于C#层面的`null`但行为异常）。使用`if (cachedObject != null)`在Unity中实际调用的是Unity重写的比较运算符，可正确检测销毁状态，但直接用`??.`空合并操作符会绕过Unity的重写逻辑，导致对已销毁对象的方法调用崩溃。
 
-### 后续学习
-掌握C#工具开发后，学习者已具备该方向的核心能力，可将所学应用于实际项目或探索技术美术其他分支。
+---
 
-## 学习建议
+## 知识关联
 
-预计学习时间：30-60分钟。建议采用以下策略：
+C#工具开发建立在**Unity编辑器扩展**的基础概念之上，后者提供了`MenuItem`、`EditorWindow`、`CustomEditor`等特性的基本用法框架。掌握了编辑器扩展的注册机制与生命周期后，C#工具开发进一步要求开发者理解`SerializedObject`的完整序列化链路、`AssetDatabase` API的文件系统映射关系，以及C#反射在运行时类型发现中的性能代价（大批量反射调用应缓存`MethodInfo`和`FieldInfo`实例而非重复查询）。
 
-- **主动回忆**：学完后不看笔记复述C#工具开发的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将C#工具开发与技术美术中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释C#工具开发，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于工具开发的章节可作为深入参考
-- Wikipedia: [Ta Csharp Tools](https://en.wikipedia.org/wiki/ta_csharp_tools) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Ta Csharp Tools" 可找到配套视频教程
+在团队协作维度，C#工具开发的产出物通常以Unity Package形式（通过`package.json`定义）或Git Submodule形式在多个项目间共享，因此工具代码应避免硬编码项目特定路径（如`"Assets/Characters/"`），改用`ProjectSettings`存储或`EditorPrefs.GetString()`持久化配置，使工具具备跨项目可移植性。
