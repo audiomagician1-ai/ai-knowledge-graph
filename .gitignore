@@ -86,3 +86,4 @@ $null
 pytest_out.txt
 vitest_out.txt
 homepage_v*.png
+_scorer_tmp.txt
