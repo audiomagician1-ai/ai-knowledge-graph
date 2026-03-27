@@ -20,72 +20,72 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-27
 ---
+
 # 世界分区与PCG
 
 ## 概述
 
-世界分区与PCG（Ta Pcg World Partition）是技术美术（Technical Art）中程序化生成领域的核心里程碑概念。难度等级3/9（初级）。
+世界分区（World Partition）是虚幻引擎5引入的大世界管理系统，它将地图划分为固定尺寸的单元格（默认为12800×12800厘米，即128米×128米），并通过运行时流送（Runtime Streaming）按需加载这些单元格。当PCG（程序化生成）系统需要在这类开放世界中运行时，必须感知这套分区机制，否则生成逻辑会因数据未加载而产生空洞或崩溃。
 
-大型开放世界中PCG与WorldPartition/Streaming的集成。作为该学习路径上的里程碑概念，掌握它标志着学习者在该领域达到了重要的能力节点。
+PCG与World Partition的集成并非简单地"在大地图上运行PCG图表"，而是需要PCG图表理解哪些区域当前已流入内存、哪些区域的Landscape或样条数据尚未可用。虚幻引擎在UE5.1及之后的版本中专门为此引入了**PCG World Actor**和**PCG Volume**的流送感知模式，允许PCG组件跟踪World Partition的单元格状态并分批触发生成。
 
-在知识体系中，世界分区与PCG建立在运行时PCG的基础之上，是理解可进入更高级主题的关键前置知识。为什么世界分区与PCG如此重要？因为它在程序化生成中起到承上启下的作用，连接基础概念与高级应用。
+这种集成对技术美术的意义在于：一座面积10平方公里的开放世界地图，若不借助流送感知的PCG，就必须在编辑器中一次性生成所有植被、建筑碎片和道路细节，内存峰值往往超过64GB；而正确配置分区感知PCG后，生成工作可拆分到各个单元格，在运行时按玩家位置动态触发。
 
-## 核心知识点
+---
 
-### 1. 大型开放世界中PCG
+## 核心原理
 
-大型开放世界中PCG是世界分区与PCG(Ta Pcg World Partition)的核心组成部分之一。在程序化生成的实践中，大型开放世界中PCG决定了系统行为的关键特征。例如，当大型开放世界中PCG参数或条件发生变化时，整体表现会产生显著差异。深入理解大型开放世界中PCG需要结合技术美术的基本原理进行分析。
+### World Partition单元格与PCG的关系
 
-### 2. WorldPartition/Streaming的集成
+World Partition将世界坐标空间切分为网格，每个网格单元格在加载时触发`FWorldPartitionCellLoader`事件。PCG系统通过监听`UWorldPartitionRuntimeHash`的单元格激活回调，得知某个128m×128m区域已完全加载，此时才调度该区域的PCG图表执行。
 
-WorldPartition/Streaming的集成是世界分区与PCG(Ta Pcg World Partition)的核心组成部分之一。在程序化生成的实践中，WorldPartition/Streaming的集成决定了系统行为的关键特征。例如，当WorldPartition/Streaming的集成参数或条件发生变化时，整体表现会产生显著差异。深入理解WorldPartition/Streaming的集成需要结合技术美术的基本原理进行分析。
+PCG图表中的数据采集节点（如`GetActorData`、`GetLandscapeData`）需要标记为**仅在单元格完全激活后才可采样**，否则Landscape高度数据可能只有部分LOD层级可用，导致生成的石块半悬浮在地表之上。在PCG图表属性中，`Execute On Grid`选项指定图表应在哪个层级的World Partition网格上执行——通常与加载半径保持一致，设为Runtime Grid的`Loading Range`值（默认约25600厘米）。
 
+### PCG Partition Actor与流送生命周期
 
-### 关键原理分析
+当启用了World Partition的地图中放置PCG Volume时，引擎会自动为每个PCG Volume的覆盖区域创建**PCG Partition Actor**。这些Partition Actor的空间范围与World Partition单元格对齐，确保一个Partition Actor中生成的SpawnedActor不会跨越两个流送单元格边界。
 
-世界分区与PCG的核心在于大型开放世界中PCG与WorldPartition/Streaming的集成。从理论角度看，该概念涉及以下层面：
+PCG Partition Actor的生命周期与所在单元格绑定：单元格卸载时，Partition Actor中生成的所有临时Actor同步销毁；单元格重新加载时，PCG系统检查磁盘上是否存有已序列化的生成结果（`bSerializeOutput = true`时），如果存在则直接读取，跳过重新计算，大幅减少流送时的CPU开销。这是大型开放世界中保持帧率稳定的关键机制。
 
-1. **定义层**：明确世界分区与PCG的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解世界分区与PCG内部各要素的相互作用方式
-3. **应用层**：将世界分区与PCG的原理映射到技术美术的实际场景中
+### 边界处理与接缝消除
 
-思考题：如何判断世界分区与PCG的应用是否超出了其理论适用范围？
+相邻PCG Partition Actor之间的边界（即单元格边缘）存在一个经典问题：两侧图表各自独立采样，可能在128m边界线上产生植被密度突变或重叠。解决方案是在PCG图表中使用**Bounds Modifier节点**，将采样区域向内收缩一定距离（通常为所用最大物体半径，例如大树的碰撞半径约300厘米），并通过Seed值锁定为基于世界坐标的哈希（`bUseSeedBasedOnPositionInWorld = true`），使两侧单元格的泊松分布采样结果在边界处自然衔接而不重叠。
 
-## 关键要点
+---
 
-1. **核心定义**：世界分区与PCG的本质是大型开放世界中PCG与WorldPartition/Streaming的集成，这是理解整个概念的出发点
-2. **多维理解**：掌握世界分区与PCG需要同时理解大型开放世界中PCG和WorldPartition/Streaming的集成等关键维度
-3. **先修关系**：扎实的运行时PCG基础对理解世界分区与PCG至关重要
-4. **进阶路径**：可广泛应用于技术美术各方面
-5. **实践标准**：真正掌握世界分区与PCG的标志是能在具体场景中灵活运用并正确判断适用边界
+## 实际应用
+
+**大型地形植被系统**：以《黑神话：悟空》同类型的山地场景为参考，技术美术在UE5中配置一张128km²地形时，将植被PCG图表的`Grid Size`设为与World Partition一致的12800cm，图表内的Landscape采样节点使用`HierarchicalLOD 0`数据以保证精度。最终运行时每帧只有玩家周围约5×5个单元格（约40km²）处于活跃PCG执行状态。
+
+**道路沿线建筑生成**：样条数据（Spline Actor）在World Partition中也具有流送边界，当道路样条横跨多个单元格时，PCG图表中的`GetSplineData`节点需要配合`Runtime Generation`设置为`Generate At Runtime`，并开启`Use Local Bounds For Spline Query`，使每个Partition Actor只查询与自身包围盒相交的样条段，避免跨单元格数据访问失效。
+
+**运行时动态刷新**：在玩家游戏过程中破坏场景（如砍树）后需要本地更新PCG输出时，可对特定Partition Actor调用`CleanupLocalComponent()`后再`GenerateLocal()`，只重算被影响的128m单元格，而非刷新整张地图的PCG数据。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将世界分区与PCG与程序化生成中其他相近概念混为一谈。例如，大型开放世界中PCG的适用条件与其他WorldPartition/Streaming的集成概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解运行时PCG就学习世界分区与PCG，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：世界分区与PCG虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：认为PCG Volume覆盖大区域就等同于启用了分区感知**
 
-## 知识衔接
+许多初学者将一个巨大的PCG Volume覆盖整张地图，误以为这样会自动利用World Partition进行分批生成。实际上，必须在PCG Volume的属性中将`Use World Partition Grid`显式设为`true`，引擎才会拆分出多个PCG Partition Actor。若该选项为关闭状态，即使地图启用了World Partition，PCG也会在地图加载时一次性计算所有区域，造成编辑器加载时长超过数十分钟，并极易内存溢出（OOM）。
 
-### 先修知识
-先修知识包括：
-- **运行时PCG** — 为世界分区与PCG提供了必要的概念基础
+**误区二：以为序列化输出可以完全替代运行时计算**
 
-### 后续学习
-掌握世界分区与PCG后，学习者已具备该方向的核心能力，可将所学应用于实际项目或探索技术美术其他分支。
+`bSerializeOutput`确实能让已生成结果缓存到磁盘，但序列化的是最终生成Actor的Transform和Mesh引用，而非PCG图表本身的中间数据。当底层Landscape高度或样条位置在编辑器中发生修改后，若忘记执行`Clean and Regenerate`，序列化缓存将与实际地形错位，出现树木悬空或插入地面的视觉错误，且在运行时不会自动检测到这种不一致，仅靠目视检查很难全面发现。
 
-## 学习建议
+**误区三：将PCG Partition Actor的网格大小设得过小以追求精细控制**
 
-预计学习时间：1-2小时。建议采用以下策略：
+有些技术美术将`PCG Partition Grid Size`从默认的12800cm改为3200cm（32m），期望获得更细粒度的流送控制。但这会导致Partition Actor数量按平方级增长：一张10km×10km的地图将产生约97656个Partition Actor，引擎在World Partition注册阶段的开销急剧上升，编辑器视口的物体统计面板中Actor数量会突破百万，反而拖慢加载速度。通常建议Partition Grid Size与World Partition的Runtime Grid保持一致或为其整数倍。
 
-- **主动回忆**：学完后不看笔记复述世界分区与PCG的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将世界分区与PCG与技术美术中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释世界分区与PCG，检验理解深度
+---
 
-## 延伸阅读
+## 知识关联
 
-- 相关教科书中关于程序化生成的章节可作为深入参考
-- Wikipedia: [Ta Pcg World Partition](https://en.wikipedia.org/wiki/ta_pcg_world_partition) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Ta Pcg World Partition" 可找到配套视频教程
+**前置概念——运行时PCG**：理解世界分区与PCG集成的前提是掌握PCG的运行时生成模式（`Runtime Generation`），包括`Generate At Runtime`和`Regenerate On Overlap`两种触发方式。只有在运行时PCG的基础上，Partition Actor才能在单元格激活回调中自动触发生成；编辑器时生成（`Generate In Editor Only`）模式下的PCG图表无法响应World Partition的流送事件，也就无从实现动态分区。
+
+**横向关联——Landscape与Nanite Tessellation**：PCG对分区地形的采样质量直接影响生成物体的贴地精度。开启Nanite的Landscape在World Partition加载后提供的碰撞数据与视觉LOD存在时序差异，PCG的`ProjectOnTerrain`节点有时需要延迟一帧执行才能拿到准确的物理高度，这在配置高密度植被系统时需要通过`Async Tracing`选项解决。
+
+**工程实践延伸**：掌握本主题后，技术美术可进一步探索PCG与HLOD（Hierarchical Level of Detail）的联动——在远距离LOD层级使用PCG生成的静态网格代理替换Partition Actor中的详细几何体，实现从PCG动态生成到HLOD静态烘焙的无缝过渡，这是大型开放世界性能优化的完整链路。

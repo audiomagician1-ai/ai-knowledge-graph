@@ -20,83 +20,75 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-27
 ---
+
+
 # 动画通知
 
 ## 概述
 
-动画通知（Animation Notify，简称 AnimNotify）是虚幻引擎动画系统中的一种机制，允许开发者在动画序列的**特定帧**上挂载事件，当动画播放至该帧时自动触发游戏逻辑。与依赖 Tick 轮询或计时器的事件触发方式不同，动画通知直接绑定在动画数据上，实现帧精确（Frame-Accurate）的事件分发，误差不超过一帧的播放间隔。
+动画通知（Animation Notify，简称 AnimNotify）是 Unreal Engine 动画系统中内嵌于动画序列时间轴上的事件标记机制。它允许开发者在动画的特定帧位置触发自定义逻辑，例如在角色脚步落地的精确帧播放脚步声、在挥拳动画到达最大力度帧时开启碰撞检测，或在技能释放瞬间生成粒子特效。与代码层面的定时器（Timer）相比，动画通知的触发时机与动画帧严格绑定，不受帧率波动影响。
 
-动画通知最早随虚幻引擎 4 的动画蓝图系统一同引入，其设计灵感来自传统 3D 动画软件中的"标记轨道"（Marker Track）概念。在 UE5 中，AnimNotify 体系进一步扩展，支持在 Sequencer 和 Montage 中复用相同的通知定义，无需为不同上下文重复编写触发代码。
+动画通知的设计源于游戏开发中"动画驱动逻辑"的需求。早期引擎通过在更新循环中轮询动画播放进度来触发事件，精度低且耦合性强。Unreal Engine 将通知系统集成进动画序列资产本身，使美术人员可以直接在 Persona 编辑器的 Notifies 轨道上拖放事件标记，无需修改蓝图逻辑即可调整触发时机。
 
-动画通知的核心价值在于将"**何时触发**"的信息封装在动画资产本身，而非散落在游戏代码中。例如，一段攻击动画的出手帧、一段跑步动画的左右脚落地帧、一段开门动画的接触帧，这些时机都可以直接在 `.uasset` 层面标注，使动画师与程序员的工作流解耦。
+动画通知分为两种主要类型：单帧触发的 **AnimNotify** 和具有持续时间的 **AnimNotifyState**。AnimNotify 在时间轴上表现为一个点，仅在该帧被执行一次；AnimNotifyState 则在时间轴上占据一段区间，分别在进入（NotifyBegin）、持续（NotifyTick）和离开（NotifyEnd）三个阶段执行对应逻辑，适合处理需要开关控制的行为，如攻击判定窗口的开启与关闭。
 
 ---
 
 ## 核心原理
 
-### AnimNotify 与 AnimNotifyState 的区别
+### AnimNotify 的帧精确触发机制
 
-虚幻引擎提供两种通知类型：
+动画系统在每次更新时会计算当前动画的播放位置（以归一化的 0.0～1.0 表示，或以实际时间秒数表示），并扫描时间轴上所有通知标记的位置。若本次更新跨越了某个通知的时间戳，则立即触发该通知。这一扫描过程发生在动画图（Animation Graph）求值之后、最终姿势写入之前，确保通知触发与骨骼位置保持严格的单帧同步。
 
-- **AnimNotify**：瞬时事件，仅在挂载帧触发一次 `Notify()` 回调。适合音效播放、粒子生成、足迹贴花等单次响应需求。
-- **AnimNotifyState**：持续区间事件，具有 `NotifyBegin()`、`NotifyTick()` 和 `NotifyEnd()` 三个回调。开发者需在通知轨道上同时拖拽出一段区间，引擎会在该区间每帧调用 `NotifyTick(float DeltaTime)`。适合格斗游戏的攻击判定窗口（Hit Window）或角色无敌帧的管理。
+在 C++ 层面，自定义 AnimNotify 需继承 `UAnimNotify` 并重写 `Notify(USkeletalMeshComponent*, UAnimSequenceBase*)` 函数；自定义 AnimNotifyState 则继承 `UAnimNotifyState`，重写 `NotifyBegin`、`NotifyTick` 和 `NotifyEnd` 三个函数，其中 `NotifyTick` 接收 `float TotalDuration` 和 `float FrameDeltaTime` 参数，可用于按比例插值计算进度。
 
-两者在 C++ 层分别继承 `UAnimNotify` 和 `UAnimNotifyState`，需重写对应虚函数。
+### AnimNotifyState 的时间区间管理
 
-### 帧精确触发的实现机制
+AnimNotifyState 的持续时间在 Persona 编辑器中以拖动右侧边缘的方式设置，内部以帧数或秒数记录。当动画被循环播放且通知区间跨越循环点时，引擎会在循环接缝处正确触发 NotifyEnd 和下一次循环的 NotifyBegin，而不会出现状态泄露（State Leak）。这对于循环攻击动画中的碰撞窗口管理尤为关键。
 
-动画通知的触发由 `UAnimSequenceBase::GetAnimNotifies()` 在每次动画更新时检索。引擎计算当前 `CurrentTime` 与上一帧 `PreviousTime` 之间的区间，遍历序列上所有通知，判断其挂载时间是否落入 `[PreviousTime, CurrentTime]` 区间内。因此，即使动画播放速率（`PlayRate`）被修改，通知依然会在对应的**归一化时间位置**精确触发，而非依赖实际经过的秒数。
+若动画蒙太奇（Anim Montage）的某段被跳段（Section Jump）打断，处于激活状态的 AnimNotifyState 同样会立即收到 NotifyEnd 回调，防止碰撞检测或特效在动画切换后残留。
 
-归一化触发公式为：
+### 通知组与同步（Notify Group）
 
-```
-TriggerTime = NotifyTime / SequenceLength
-```
-
-其中 `NotifyTime` 为通知在序列中的绝对秒数，`SequenceLength` 为动画总时长（秒）。当动画以 `PlayRate = 2.0` 播放时，触发位置不变，但触发所对应的真实时间缩短为原来的一半。
-
-### 通知的挂载与数据结构
-
-在动画编辑器的"通知轨道（Notify Track）"面板中，右键单击时间轴即可添加通知。每条通知记录存储为 `FAnimNotifyEvent` 结构体，关键字段包括：
-
-| 字段 | 含义 |
-|---|---|
-| `TriggerTime` | 触发时刻（秒） |
-| `Duration` | 持续时长（仅 NotifyState 有效） |
-| `Notify` | 指向 `UAnimNotify` 实例的指针 |
-| `TrackIndex` | 所在通知轨道编号 |
-
-一个动画序列可以拥有**多条通知轨道**，不同轨道上的通知彼此独立，便于分类管理（如将音效通知与游戏逻辑通知分轨存放）。
-
-### 蓝图中的接收与响应
-
-在动画蓝图的 **AnimGraph** 或 **EventGraph** 中，可直接添加 `AnimNotify_[通知名]` 事件节点来响应通知。若通知定义为自定义 C++ 类，则在 `Notify()` 函数体内可直接通过 `MeshComp->GetAnimInstance()` 获取 AnimInstance 指针，调用角色逻辑。蓝图自定义通知（Blueprint Notify）则无需 C++ 代码，在动画编辑器中选择"新建通知"后，事件节点会自动出现在 AnimInstance 的事件图表中。
+Unreal Engine 提供了 **Notify Group** 功能，允许将多个动画资产中的同名通知标记绑定到同一同步组（Sync Group）。当两个动画在混合过渡期间同时处于激活状态时，引擎可以选择以"主导动画"的通知为准，抑制"跟随动画"的同名通知，避免脚步声重复播放。此功能通过在 Notify 属性面板中设置 `Notify Filter Type` 为 `AllAnimations` 或 `CurrentStateMachine` 来控制。
 
 ---
 
 ## 实际应用
 
-**脚步音效同步**：在跑步动画中，左脚落地帧（约第 8 帧）和右脚落地帧（约第 22 帧）各挂载一个 `AnimNotify_Footstep`，通知触发时读取角色脚下的物理材质，播放对应的泥地、石板或金属音效。这是第三人称游戏中最常见的通知用例，完全消除了音效与动作不同步的问题。
+**脚步声与地面材质检测**：在奔跑动画中，将 AnimNotify 放置于左右脚落地的精确帧（通常需要在 Persona 中逐帧检查骨骼位置确认）。通知触发后，蓝图执行 Line Trace 检测地面材质，根据返回的物理材质资产播放对应脚步音效（木板、石头、泥地），整个逻辑与帧完全对齐。
 
-**近战攻击判定窗口**：使用 `AnimNotifyState` 在攻击动画的第 12 帧到第 18 帧之间定义 `AttackWindow` 状态。`NotifyBegin()` 激活武器碰撞体，`NotifyEnd()` 关闭碰撞体，`NotifyTick()` 每帧记录武器扫掠轨迹用于连续碰撞检测（Sweep Trace）。这比在 `AnimBP Tick` 中用布尔变量控制碰撞更精确，且碰撞窗口数据直接可视化于动画时间轴上。
+**近战攻击碰撞窗口**：使用 AnimNotifyState 标记挥拳动画中拳头实际可造成伤害的时间段（例如挥拳动画总时长 0.6 秒中的第 0.15 秒至第 0.35 秒）。在 NotifyBegin 中调用 `SetCollisionEnabled(ECollisionEnabled::QueryOnly)`，在 NotifyEnd 中调用 `SetCollisionEnabled(ECollisionEnabled::NoCollision)`，精确控制碰撞盒的激活时段，避免攻击判定过早或过晚。
 
-**技能系统集成**：与 GAS（Gameplay Ability System）配合时，可将 `AnimNotify_PlayMontageNotify` 与 `UAbilityTask_PlayMontageAndWaitForEvent` 结合，通知触发后向 Ability Task 发送游戏标签事件（Gameplay Tag Event），从而在帧精确的时机推进技能状态机，无需在 `AbilityTick` 中轮询动画进度。
+**武器拖尾特效**：在 AnimNotifyState 的 NotifyTick 中每帧记录武器骨骼的世界坐标，传入 Niagara 拖尾系统的 Ribbon 粒子，生成随攻击动作实时更新的残影效果。由于 NotifyTick 与动画帧完全同步，拖尾轨迹与武器实际运动路径严格匹配。
+
+**IK 过渡控制**：在着陆动画的 AnimNotifyState 区间内，用 NotifyTick 传递的 `FrameDeltaTime / TotalDuration` 进度值插值脚部 IK 的影响权重，实现落地时 IK 从 0 平滑过渡到 1 的效果，比在动画蓝图中写独立插值逻辑更易与动画美术对齐。
 
 ---
 
 ## 常见误区
 
-**误区一：认为通知触发时机等于帧率固定的某一帧**。实际上通知挂载的是**时间坐标（秒）**，而非帧编号。在 30fps 动画中标注为"第 10 帧"的通知，其 `TriggerTime` 为 `10/30 ≈ 0.333` 秒。若项目以 60fps 运行，该通知仍在 0.333 秒处触发，不会变成"第 20 帧"。混淆时间与帧编号会导致开发者误判通知位置。
+**误区一：认为 AnimNotify 的触发精度等同于游戏帧率**
 
-**误区二：AnimNotifyState 的 `NotifyEnd` 一定会在 `NotifyBegin` 之后调用**。当动画被中断（如 Montage 被 `StopMontage()` 强制停止）时，引擎会在同一帧内依次调用尚未结束的所有 `NotifyState` 的 `NotifyEnd()`，但如果代码在 `NotifyBegin()` 中分配了资源，必须在 `NotifyEnd()` 中做好清理，否则中断场景下会出现攻击碰撞体永久激活的 Bug。
+AnimNotify 的触发精度实际上取决于动画序列本身的采样帧率（通常为 30fps 或 60fps），而非游戏的运行帧率。若游戏以 120fps 运行，动画系统每帧仍按动画资产的采样率推进，不会在两个动画帧之间插入额外的通知触发。同时，当游戏帧率极低（如单帧耗时超过动画时长）时，引擎仍会在同一帧内扫描并触发本应在多帧内依序触发的所有通知，保证通知不丢失。
 
-**误区三：蓝图通知与 C++ 通知性能相当**。蓝图通知每次触发需经过反射系统查找蓝图函数，在高频触发场景（如每帧多角色同时触发脚步通知）下，C++ 重写 `UAnimNotify::Notify()` 的开销明显低于纯蓝图通知。性能敏感的通知建议使用 C++ 实现并通过 `UFUNCTION(BlueprintCallable)` 暴露必要接口。
+**误区二：将 AnimNotifyState 的 NotifyTick 等同于 Tick 事件**
+
+AnimNotifyState 的 NotifyTick 仅在动画实际播放期间且在 AnimNotifyState 覆盖的时间段内执行。当动画被暂停、权重降为 0 或蒙太奇被停止时，NotifyTick 不再调用，但对应的 NotifyEnd 仍会触发。因此不能用 NotifyTick 替代 Actor 的 Tick 来执行持续性游戏逻辑，它只适合与该动画状态强耦合的短时逻辑。
+
+**误区三：在蓝图中用"动画播放完成"事件替代 AnimNotify**
+
+`OnMontageEnded` 等蒙太奇完成回调的触发时机是动画蓝图求值结束后经过一定延迟才被分发的，无法精确定位到动画内部某帧。对于需要在动画第 N 帧触发的逻辑（如第 15 帧生成弹壳），必须使用 AnimNotify 而非播放完成事件，否则会产生视觉上可见的触发延迟。
 
 ---
 
 ## 知识关联
 
-动画通知依赖**动画图（AnimGraph）** 的状态机驱动动画播放——只有当某个动画序列处于活跃播放状态时，其上挂载的通知才会被评估和触发。理解状态机中的过渡规则有助于预判哪些通知可能因过渡中断而提前触发 `NotifyEnd`。
+动画通知直接依赖**动画图（Animation Graph）**提供的姿势求值流程——通知扫描发生在动画图输出最终姿势之后，因此理解动画图的单帧求值顺序有助于判断通知触发与骨骼变换的先后关系。
 
-在掌握动画通知之后，学习**动画序列器（Sequencer）** 时会发现，Sequencer 的通知轨道与动画蓝图共用同一套 `UAnimNotify` 类定义，可直接复用已有通知资产。Sequencer 中的通知还额外支持绑定到特定 Actor 实例，使过场动画中的帧精确事件触发与游戏运行时逻辑无缝衔接。此外，动画通知与 **Animation Montage** 紧密配合：Montage 的分段（Section）跳转并不影响通知的时间轴评估，通知依然按绝对时间坐标触发，这一点在设计连招动画时尤为重要。
+在后续学习**动画序列器（Sequencer）**时会发现，Sequencer 提供了独立的事件轨道（Event Track）机制，与 AnimNotify 的应用场景有所重叠。AnimNotify 适用于游戏运行时的动态动画状态机，而 Sequencer 事件轨道更适合过场动画的固定时间轴触发。区分两者的核心在于触发场景是否需要与动画蓝图的状态机逻辑交互。
+
+自定义 AnimNotify 类也是学习 Unreal Engine C++ 动画扩展的入门切入点——继承 `UAnimNotify` 并在构造函数中调用 `#if WITH_EDITOR` 宏设置编辑器显示颜色和名称，是标准的引擎扩展模式，可延伸到后续的自定义动画节点（Custom Animation Node）开发。

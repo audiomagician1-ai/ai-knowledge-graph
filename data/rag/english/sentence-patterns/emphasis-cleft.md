@@ -20,72 +20,94 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-27
 ---
+
 # 强调与分裂句
 
 ## 概述
 
-强调与分裂句（Emphasis Cleft）是英语（English Language）中句型结构领域的重要概念。难度等级5/9（中高级）。
+强调与分裂句（Emphatic and Cleft Sentences）是英语中用于突出句子某一成分的专门句型。其核心功能是将说话者认为重要的信息从句子中"分裂"出来，使其获得特殊焦点地位。与普通陈述句相比，强调句通过改变句子结构而非依赖语调来实现书面语中的重音效果。
 
-It is...that强调句型、do/does强调。
+"It...that"分裂句（It-cleft）在英语中出现于至少16世纪的书面文献，而助动词do强调用法则在现代英语（约1500年后）逐渐固定下来。两种结构在当代英语写作和口语中都极为常见，尤其出现在辩论、新闻报道和学术写作中，用于纠正对方的误解或强调关键信息。
 
-在知识体系中，强调与分裂句建立在五种基本句型的基础之上，是理解可进入更高级主题的关键前置知识。为什么强调与分裂句如此重要？因为它在句型结构中起到承上启下的作用，连接基础概念与高级应用。
+在英语四六级、高考及雅思考试中，强调句的识别与变换是高频考点。学生必须区分"It is...that"强调句与"It is...that"形式主语句——两者表面相同但结构本质迥异，是考试和实际运用中最容易出错的难点之一。
 
-## 核心知识点
+---
 
-### 1. It is...that强调句型
+## 核心原理
 
-It is...that强调句型是强调与分裂句(Emphasis Cleft)的核心组成部分之一。在句型结构的实践中，It is...that强调句型决定了系统行为的关键特征。例如，当It is...that强调句型参数或条件发生变化时，整体表现会产生显著差异。深入理解It is...that强调句型需要结合英语的基本原理进行分析。
+### "It is...that"分裂句的构成规则
 
-### 2. do/does强调
+"It is...that"强调句的基本公式为：
 
-do/does强调是强调与分裂句(Emphasis Cleft)的核心组成部分之一。在句型结构的实践中，do/does强调决定了系统行为的关键特征。例如，当do/does强调参数或条件发生变化时，整体表现会产生显著差异。深入理解do/does强调需要结合英语的基本原理进行分析。
+**It + is/was + 被强调成分 + that/who + 句子其余部分**
 
+例如原句"Tom broke the window yesterday"可生成三个强调变体：
+- 强调主语：*It was **Tom** who broke the window yesterday.*
+- 强调宾语：*It was **the window** that Tom broke yesterday.*
+- 强调时间状语：*It was **yesterday** that Tom broke the window.*
 
-### 关键原理分析
+关键检验方法：将"It is/was...that"结构去掉，剩余部分能还原为完整句子，则为强调句；若去掉后句意残缺或逻辑变化，则为形式主语句（如"It is important **that** you study hard"去掉后无法还原）。
 
-强调与分裂句的核心在于It is...that强调句型、do/does强调。从理论角度看，该概念涉及以下层面：
+强调句中，时态只体现在be动词上（is用于现在，was用于过去），that后面的从句动词时态保持原句时态不变。被强调成分若为人，that可替换为who；若为地点状语，偶见where替换that，但that始终适用。
 
-1. **定义层**：明确强调与分裂句的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解强调与分裂句内部各要素的相互作用方式
-3. **应用层**：将强调与分裂句的原理映射到英语的实际场景中
+### do/does/did 助动词强调用法
 
-思考题：如何判断强调与分裂句的应用是否超出了其理论适用范围？
+当需要强调谓语动词本身时，不能使用"It is...that"结构，而需在动词前加助动词do/does/did，后接动词原形。
 
-## 关键要点
+- *She **does** love classical music.*（强调"确实喜欢"，反驳他人否定）
+- *He **did** submit the report on time.*（强调"确实按时提交了"）
+- *Do sit down!*（祈使句中的do强调，表示礼貌或不耐烦）
 
-1. **核心定义**：强调与分裂句的本质是It is...that强调句型、do/does强调，这是理解整个概念的出发点
-2. **多维理解**：掌握强调与分裂句需要同时理解It is...that强调句型和do/does强调等关键维度
-3. **先修关系**：扎实的五种基本句型基础对理解强调与分裂句至关重要
-4. **进阶路径**：可广泛应用于英语各方面
-5. **实践标准**：真正掌握强调与分裂句的标志是能在具体场景中灵活运用并正确判断适用边界
+此结构中，do/does/did承担了时态和人称信息：第三人称单数现在时用does，过去时用did，其余用do。原动词必须还原为原形，这与疑问句中的助动词倒装规则完全一致。
+
+### 否定与疑问形式的强调句
+
+"It is...that"强调句变否定时，否定be动词而非从句动词：
+- *It was **not** Tom that broke the window.*（不是汤姆打碎了窗户）
+
+变一般疑问句时，be动词前置：
+- ***Was** it Tom that broke the window?*
+
+变特殊疑问句时，被强调成分由疑问词替代，提前：
+- ***Who** was it that broke the window?*（注意it保留在句中）
+
+这一"Who was it that..."结构是英语母语者日常口语中非常自然的疑问强调表达，考生应能识别并仿写。
+
+---
+
+## 实际应用
+
+**新闻纠错场景**：当报道澄清错误信息时，大量使用it-cleft句。例如BBC新闻中可见："It was the finance minister, not the prime minister, who announced the new policy."（强调主语以纠正混淆）
+
+**学术写作场景**：论文中强调研究发现的关键变量时，常见"It is the sample size that determines the statistical power of this study."此用法比"The sample size is important"更能突出因果关系中的核心要素。
+
+**口语辩驳场景**：do强调句常用于反驳对方："You don't care about the environment." — "I **do** care! It is the current policy that I oppose."此处do强调与it-cleft句联合使用，先强调动作存在，再强调对立关系。
+
+**高考典型题**：将"Only after the meeting did he realize his mistake"改写为it强调句时，需注意被强调成分为时间状语从句整体，写作"It was only after the meeting **that** he realized his mistake"，that后动词不再倒装。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将强调与分裂句与句型结构中其他相近概念混为一谈。例如，It is...that强调句型的适用条件与其他do/does强调概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解五种基本句型就学习强调与分裂句，导致基础不牢**。建议先确认先修知识扎实
-3. **过度简化：强调与分裂句的复杂度为5/9，初学者容易忽略其中的细微但关键的区别**
+**误区一：混淆强调句与形式主语句**
 
-## 知识衔接
+学生常将"It is surprising **that** he passed"误判为强调句。判断标准只有一个：删去"It is/was...that"后剩余部分是否构成完整句子。"He passed"可独立成句，但"It is surprising that he passed"的"that"引导主语从句而非强调，因为surprising不是句子成分，无法被"分裂"强调。能被强调的只有句子中已有的名词性或状语性成分。
 
-### 先修知识
-先修知识包括：
-- **五种基本句型** — 为强调与分裂句提供了必要的概念基础
+**误区二：do强调句与疑问句助动词倒装混用**
 
-### 后续学习
-掌握强调与分裂句后，学习者已具备该方向的核心能力，可将所学应用于实际项目或探索英语其他分支。
+do强调句中，do/does/did出现在陈述语序的句子里（主语在前），如"She does love him"；而疑问句中do提前是因为倒装。学生有时在强调句中也将主谓倒置，写出"*Does she love him*"（实为疑问句），彻底改变了句义。强调句保持陈述语序是区分两者的绝对标准。
 
-## 学习建议
+**误区三：强调句中that后的从句使用错误时态**
 
-预计学习时间：3-5小时。建议采用以下策略：
+原句"I met her in Paris in 2019"，强调地点应写"It was in Paris **that** I met her in 2019"，部分学生误将从句动词改为现在时或省略时间状语，写成"*It was in Paris that I meet her*"，破坏了从句的时态完整性。be动词用was（因原事件在过去），that从句保持过去时met，两者独立控制，不可混淆。
 
-- **主动回忆**：学完后不看笔记复述强调与分裂句的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将强调与分裂句与英语中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释强调与分裂句，检验理解深度
+---
 
-## 延伸阅读
+## 知识关联
 
-- 相关教科书中关于句型结构的章节可作为深入参考
-- Wikipedia: [Emphasis Cleft](https://en.wikipedia.org/wiki/emphasis_cleft) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Emphasis Cleft" 可找到配套视频教程
+强调句以**五种基本句型**为基础：只有能识别主谓宾、主谓补、状语等句子成分，才能判断哪个成分可被分裂强调，以及"It is...that"去掉后能否还原完整句。强调句实质上是对基本句型中各成分的重新排列与包装。
+
+从句法角度看，"It is...that"分裂句与**名词性从句**（主语从句、表语从句）共享表层形式，需结合具体语境和结构测试来区分。掌握强调句后，学习者在处理长难句分析时，能迅速识别句子焦点，大幅提升阅读理解效率，这在GRE、GMAT等高难度考试的长段落题中尤为关键。
