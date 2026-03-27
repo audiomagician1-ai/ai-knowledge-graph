@@ -24,80 +24,68 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-27
 ---
 
+
 # 几何遮蔽项
 
 ## 概述
 
-几何遮蔽项（Geometry Term，记作 $G$）是 Cook-Torrance 微表面 BRDF 中专门描述微表面自遮挡现象的因子。在真实材质中，粗糙表面的微小凸起会在入射方向遮挡其他微表面（遮蔽，Shadowing），也会在出射方向遮挡反射光线（掩蔽，Masking），几何遮蔽项将这两种效果合并为一个 $[0,1]$ 范围内的衰减系数。
+几何遮蔽项（Geometry Term，记作 G）是Cook-Torrance微表面BRDF中专门用于模拟微观表面自遮挡效应的分量。当光线从光源方向 **l** 照射微表面时，部分微小凸起会遮挡相邻区域（称为"阴影"，Shadowing）；同理，当反射光从视线方向 **v** 出射时，相邻凸起也会拦截部分出射光（称为"遮蔽"，Masking）。几何遮蔽项的数值范围严格限定在 [0, 1] 之间，0 表示完全遮蔽，1 表示无遮蔽。
 
-几何遮蔽项的系统性研究始于 1967 年 Torrance 和 Sparrow 对金属表面光散射的物理分析，他们首次将微几何遮挡写入反射方程。1963 年 Beckmann 分布和后来 1977 年 Cook-Torrance 模型的发表确立了完整框架，但早期的 $G$ 近似方法（如 Schlick-Smith 近似）存在能量不守恒的问题。2014 年 Eric Heitz 在 JCGT 上发表的论文《Understanding the Masking-Shadowing Function in Microfacet-Based BRDFs》系统推导了满足能量守恒的 Height-Correlated Smith 模型，成为现代 PBR 的标准参考。
-
-几何遮蔽项对渲染结果的影响直接体现在掠射角（grazing angle）处的明暗过渡上。若省略该项，粗糙材质在边缘处会出现不真实的过亮现象；若选用不精确的近似，金属、非金属的菲涅耳效果与粗糙度的交互会产生系统性误差，导致整个材质库的色调偏差。
-
----
+该概念在1967年由Torrance和Sparrow在其物理光学论文中首次以解析形式引入图形学领域。1981年Cook与Torrance将其纳入完整的反射模型后，G 项的精确建模始终是PBR材质研究的难点。粗糙表面（粗糙度 α 接近1）时G项对最终渲染结果影响极为显著，而极光滑表面（α 趋近于0）时G项趋近于1，影响可忽略。
 
 ## 核心原理
 
-### Smith 遮蔽函数
+### 单向Smith遮蔽函数 G₁
 
-Smith 几何遮蔽函数将掩蔽函数 $G_1(\mathbf{v}, \mathbf{m})$ 定义为从观察方向 $\mathbf{v}$ 看微表面法线 $\mathbf{m}$ 可见的概率。Smith 的关键假设是：微表面的高度与斜率统计独立，使得 $G_1$ 只依赖于观察方向的仰角而与具体法线方向解耦。对于 GGX（Trowbridge-Reitz）分布，$G_1$ 的解析形式为：
+Smith于1967年推导出一种将法线分布函数（NDF）与几何遮蔽分离建模的框架。对于单个方向 **v**，Smith G₁ 函数定义为：
 
-$$G_1(\mathbf{v}) = \frac{2}{1 + \sqrt{1 + \alpha^2 \tan^2\theta_v}}$$
+$$G_1(\mathbf{v}, \alpha) = \frac{2(\mathbf{n} \cdot \mathbf{v})}{(\mathbf{n} \cdot \mathbf{v}) + \sqrt{\alpha^2 + (1-\alpha^2)(\mathbf{n} \cdot \mathbf{v})^2}}$$
 
-其中 $\alpha$ 是各向同性粗糙度参数（通常由美工输入的粗糙度 $r$ 映射为 $\alpha = r^2$），$\theta_v$ 是观察方向与宏观法线的夹角。当 $\alpha \to 0$（光滑表面）时 $G_1 \to 1$，当 $\theta_v \to 90°$ 时 $G_1 \to 0$，与物理直觉完全吻合。
+其中 α 是粗糙度参数（通常是艺术家输入粗糙度的平方，即 α = roughness²），**n** 为宏观表面法线。这个G₁专门配合GGX（Trowbridge-Reitz）NDF使用，两者在微表面统计假设上相互一致——均假设微表面高度服从正态分布，坡度分布服从GGX形式。
 
-### Uncorrelated 与 Height-Correlated 模型
+### 分离式与Height-Correlated双向模型
 
-朴素的 Smith 联合遮蔽-掩蔽函数将入射方向 $\mathbf{l}$ 和出射方向 $\mathbf{v}$ 的遮蔽视为统计独立事件：
+最简单的双向几何项是将入射和出射方向的G₁直接相乘：
 
-$$G_{\text{uncorr}}(\mathbf{l}, \mathbf{v}) = G_1(\mathbf{l}) \cdot G_1(\mathbf{v})$$
+$$G_{\text{separable}}(\mathbf{l}, \mathbf{v}, \alpha) = G_1(\mathbf{l}, \alpha) \cdot G_1(\mathbf{v}, \alpha)$$
 
-然而 Heitz 2014 年的推导表明，真实微表面上入射和出射路径共享相同的高度分布，二者存在正相关性——位于微表面高处的点同时对入射和出射都更可见。Height-Correlated Smith 模型的联合函数为：
+然而这种分离式模型存在物理错误：它假设光线方向 **l** 的阴影函数与视线方向 **v** 的遮蔽函数在统计上完全独立。实际上，当 **l** 和 **v** 方向相近时，遭受阴影的微表面更有可能同时遭受遮蔽，两者存在正相关性。Height-Correlated模型（高度相关模型）正是为修正这一问题而设计的：
 
-$$G_2(\mathbf{l}, \mathbf{v}) = \frac{1}{1 + \Lambda(\mathbf{l}) + \Lambda(\mathbf{v})}$$
+$$G_{\text{correlated}}(\mathbf{l}, \mathbf{v}, \alpha) = \frac{1}{1 + \Lambda(\mathbf{l}) + \Lambda(\mathbf{v})}$$
 
-其中 $\Lambda$ 是 Smith 辅助函数（auxiliary function）。对于 GGX 分布：
+其中 Λ（Lambda）函数是Smith辅助函数，对于GGX NDF具体形式为：
 
 $$\Lambda(\mathbf{v}) = \frac{-1 + \sqrt{1 + \alpha^2 \tan^2\theta_v}}{2}$$
 
-Height-Correlated 模型的分母是 $1 + \Lambda_l + \Lambda_v$，而非 Uncorrelated 模型的 $(1+\Lambda_l)(1+\Lambda_v)$。这一差异在 $\alpha = 0.5$、$\theta_v = \theta_l = 45°$ 时可产生约 8% 的亮度差距，对高粗糙度金属的外观影响尤为显著。
+θ_v 是 **v** 与表面法线的夹角。Height-Correlated版本在 **l** 与 **v** 夹角较小时能量损失更少，而分离式版本在相同条件下会过度压暗高光，产生不符合物理的"能量漏洞"。
 
-### 完整几何项在 BRDF 中的位置
+### Schlick近似与实时渲染中的简化
 
-在 Cook-Torrance BRDF 的标准形式中：
+Schlick在1994年提出了G₁的低成本近似公式，避免了平方根运算：
 
-$$f_r = \frac{D(\mathbf{m}) \cdot G_2(\mathbf{l}, \mathbf{v}) \cdot F(\mathbf{v}, \mathbf{m})}{4 (\mathbf{n} \cdot \mathbf{l})(\mathbf{n} \cdot \mathbf{v})}$$
+$$G_{\text{Schlick}}(\mathbf{v}, k) = \frac{\mathbf{n} \cdot \mathbf{v}}{(\mathbf{n} \cdot \mathbf{v})(1-k) + k}$$
 
-分母中的 $4(\mathbf{n} \cdot \mathbf{l})(\mathbf{n} \cdot \mathbf{v})$ 来自雅可比行列式转换。$G_2$ 的作用是抵消这一分母在掠射角趋于零时的放大效应，保证 BRDF 不发散。部分引擎（如 Unreal Engine 4）将 $G_2$ 与分母合并，定义可见性项 $V = G_2 / (4(\mathbf{n}\cdot\mathbf{l})(\mathbf{n}\cdot\mathbf{v}))$，以减少 GPU 浮点运算量。
-
----
+其中 k 的取值因光照类型而异：直接光照使用 $k = \frac{(\alpha+1)^2}{8}$，IBL（基于图像的光照）使用 $k = \frac{\alpha^2}{2}$。这两种 k 的不同取法是为了在各自的积分域内最小化与Height-Correlated Smith G 的误差。实时渲染管线（如Unreal Engine 4）采用该近似，并将双向形式写为 $G = G_{\text{Schlick}}(\mathbf{l}, k) \cdot G_{\text{Schlick}}(\mathbf{v}, k)$，运算代价仅为两次Schlick G₁调用。
 
 ## 实际应用
 
-**实时渲染的近似优化**：完整的 Height-Correlated Smith $G_2$ 包含两次平方根运算，在延迟渲染管线中每像素开销较高。Filament（Google 的移动端 PBR 引擎）采用 Hammon 2017 提出的近似，将 $G_2$ 改写为关于 $(\mathbf{n}\cdot\mathbf{l})$ 和 $(\mathbf{n}\cdot\mathbf{v})$ 的线性插值，误差在 $\alpha \in [0.1, 1.0]$ 范围内不超过 1.5%，同时省去两次 `sqrt` 调用。
+在Unreal Engine 4的PBR管线中，材质粗糙度（Roughness）输入会先经过 α = roughness² 的重映射再传入几何遮蔽项，这一设计使粗糙度在感知上更加线性——粗糙度从0.5变化到1.0时，高光的明暗变化幅度与从0到0.5相近。若直接使用原始粗糙度值而不平方，低粗糙度区间高光会异常尖锐，高粗糙度区间变化迟钝。
 
-**各向异性材质扩展**：对于拉丝金属等各向异性表面，$\alpha$ 被分解为切线方向 $\alpha_t$ 和副切线方向 $\alpha_b$ 两个参数，$\Lambda$ 函数需分别在两个方向上计算，并以方位角加权合并。Blender Cycles 的各向异性 GGX 节点即采用此扩展形式。
-
-**离线渲染的多重散射补偿**：单次散射的 $G_2$ 模型在 $\alpha > 0.5$ 时会丢失微表面间多次弹射的能量，导致高粗糙度材质整体偏暗。Kulla-Conty 2017 提出通过预计算补偿纹理 $E(\mu, \alpha)$ 来恢复这部分能量，Arnold、RenderMan 等离线渲染器已内置此补偿，而实时渲染中 Unreal Engine 5 的 Lumen 也在部分路径上引入了类似修正。
-
----
+在离线渲染器（如Arnold、RenderMan）中，通常直接使用Height-Correlated Smith G 的完整形式，因为其能更精确地保持能量守恒。实测数据表明，在掠射角（**v** 与法线夹角超过70°）情况下，分离式Smith G比Height-Correlated版本暗约15%~30%，这在车漆、皮革等掠射高光明显的材质上会产生明显误差。
 
 ## 常见误区
 
-**误区一：把 $G$ 当做简单的 NdotL/NdotV 截断**
+**误区一：认为 G 项越大越亮，因此应尽量使其接近1**
+G 项的核心职责是维持能量守恒，而非单纯提亮。当 G 过大（即忽略遮蔽）时，BRDF在掠射角积分后能量超过入射能量，导致亮度物理错误。正确的G项会在高粗糙度的掠射方向适当压暗，这恰好对应真实材质在该方向的能量损失行为。
 
-初学者有时直接用 $\min(1, 2(\mathbf{n}\cdot\mathbf{h})(\mathbf{n}\cdot\mathbf{v})/(\mathbf{v}\cdot\mathbf{h}))$ 这一几何光学推导的旧式公式代替 Smith 函数。该公式来自 Torrance-Sparrow 1967 年的 V 形槽（V-cavity）假设，与 GGX 等统计分布的微表面模型并不匹配，会在中等粗糙度（$\alpha \approx 0.3$）下产生明显偏亮的高光边缘，与 Smith GGX 的结果偏差可超过 15%。
+**误区二：Schlick近似形式与Height-Correlated Smith G 可以随意互换**
+Schlick近似本质上是分离式结构（两个G₁相乘），并非真正的Height-Correlated模型。在金属材质的掠射高光中，两者差异肉眼可见。若使用Height-Correlated模型的 Λ 函数形式，则不能再套用Schlick的 k 值公式，两套参数体系不可混用。
 
-**误区二：认为 Schlick 的 $k$ 参数对直接光和 IBL 应相同**
-
-Unreal Engine 4 的 PBR 白皮书明确指出，针对直接光照使用 $k = \alpha^2 / 2$，而对 IBL（基于图像的光照）预积分使用 $k = \alpha^2 / 2$ 的不同变体，原因是 IBL 的半球积分覆盖所有入射角，若使用同一 $k$ 会导致材质在从点光源切换到环境光时出现肉眼可见的亮度跳变。这一区别源于 $G_1$ 在不同积分域上的统计行为差异，而非任意的工程 hack。
-
-**误区三：Height-Correlated 模型总优于 Uncorrelated 模型**
-
-Height-Correlated $G_2$ 在物理上更准确，但它假设入射和出射路径沿高度方向完全正相关，这在光线方向差异较大（如后向散射接近 180°）时反而低估了真实遮蔽量。Heitz 论文中提到 Direction-Correlated 模型可进一步修正此问题，但其计算复杂度使其目前只适用于离线路径追踪。
-
----
+**误区三：G 项与法线贴图的凸凹细节等价**
+法线贴图修改的是宏观可见的法线方向，影响漫反射和高光的方向分布；而 G 项建模的是亚像素级别的微表面统计遮蔽，与贴图分辨率无关。即使将法线贴图精度提升到4K，仍无法替代 G 项对能量守恒的修正作用。
 
 ## 知识关联
 
-**与 Cook-Torrance 模型的依赖关系**：几何遮蔽项是 Cook-Torrance BRDF 四个因子（$D$、$G$、$F$、归一化分母）之一，必须与 NDF（法线分布函数）配对使用——GGX 的 $D$ 必须搭配 GGX 推导出的 Smith $\Lambda$ 函数，若将 Beckmann 的 $
+几何遮蔽项是Cook-Torrance BRDF公式 $f_r = \frac{D \cdot F \cdot G}{4(\mathbf{n}\cdot\mathbf{l})(\mathbf{n}\cdot\mathbf{v})}$ 中的G因子，与法线分布函数D（GGX/Beckmann）和菲涅尔项F共同构成完整的镜面反射BRDF。理解G项需要先掌握Cook-Torrance模型中微表面假设（即宏观表面由无数随机朝向的微小镜面组成），因为G₁中的Λ函数直接由NDF的斜率分布积分推导而来——更换NDF（如从GGX换为Beckmann）必须同步更换对应的Λ公式，否则统计模型内部不一致。
+
+从G项延伸出的高级方向包括多次散射BRDF修正（如Heitz 2016年提出的随机游走微表面模型），该方向专门解决单次散射假设下G项无法捕捉多次微表面反弹导致的能量损失问题，在高粗糙度金属材质上可额外恢复约10%的能量。
