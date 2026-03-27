@@ -20,51 +20,67 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-27
 ---
-# XeSS（Intel超分辨率技术）
+
+# XeSS（Intel 超分辨率扩展技术）
 
 ## 概述
 
-XeSS（Xe Super Sampling）是Intel于2022年随Arc显卡系列发布的AI驱动超分辨率技术，全称"Xe Super Sampling"，旨在通过机器学习将低分辨率渲染画面放大至目标分辨率，同时维持接近原生分辨率的视觉质量。与AMD FSR或NVIDIA DLSS不同，XeSS在设计上兼顾了两种运行模式：在Intel Arc GPU上利用专用的XMX（Xe Matrix eXtensions）矩阵运算单元加速神经网络推理，而在其他厂商GPU上则回退至基于DP4a指令（dot product of 4 elements with accumulate）的通用计算路径。
+XeSS（Xe Super Sampling）是Intel于2022年随Arc显卡发布的AI驱动超分辨率技术，全称为"Xe超级采样"。它通过以较低分辨率渲染场景，再利用深度学习模型将图像放大至目标分辨率，在保持较高画质的同时显著提升帧率。XeSS 1.0随《魔女传说》（Shadow of the Witch）等首批支持游戏于2022年9月正式面向公众推出。
 
-XeSS的历史背景与Intel进入独立显卡市场直接相关。2022年10月，Arc A系列台式机显卡正式上市，XeSS作为其旗舰软件功能同步推出，SDK对第三方开发者开放，并以开源形式发布部分组件。这一策略使XeSS能够与DLSS和FSR在游戏厂商中竞争集成优先级，首批支持游戏包括《死亡循环》和《暗影火炬城》。
+XeSS的独特之处在于它针对Intel Arc显卡（Alchemist架构及以后）的XMX（Xe Matrix eXtensions）矩阵运算单元进行了专门优化。XMX单元是Arc GPU中专门执行矩阵乘法的硬件加速器，与NVIDIA的Tensor Core功能类似，可高效执行深度学习推理所需的大量点积运算。在非Intel硬件上，XeSS会自动退回到基于DP4a（4元素点积）指令的通用路径运行，因此也能在AMD和NVIDIA GPU上使用，只是无法享受XMX的全速硬件加速。
 
-XeSS的重要性在于它是唯一同时覆盖AI加速与传统计算路径的超分辨率方案。开发者集成一套SDK即可在所有主流GPU平台上运行，Arc用户获得XMX加速的高质量结果，而NVIDIA和AMD用户也能通过DP4a路径获得性能提升，尽管质量略低于XMX模式。
+XeSS的工程意义在于打破了超分辨率技术只服务于单一硬件平台的格局：开发者只需集成一套XeSS SDK，即可让游戏同时惠及Intel、AMD、NVIDIA三家GPU用户，无需分别适配多套专有方案。
 
 ## 核心原理
 
-### XMX矩阵运算单元与AI推理
+### XMX矩阵加速与网络推理
 
-XeSS的旗舰路径依赖Arc GPU内置的XMX单元执行神经网络推理。XMX是Intel为Xe-HPG架构设计的矩阵乘法加速器，每个Xe核心包含8个XMX引擎，每个引擎每周期可执行一个8×8×16的INT8矩阵乘法运算。XeSS的上采样网络权重以INT8量化格式存储，XMX硬件直接处理这些低精度矩阵乘法，相比通用着色器核心执行效率显著更高。这与NVIDIA的Tensor Core在技术层面属于同一类硬件设计思路，但XMX在每个Xe核心内的集成密度和指令集接口不同。
+XeSS的放大核心是一个轻量化卷积神经网络。在配备XMX单元的Intel Arc GPU上，该网络通过矩阵乘法累加（MMA）指令以INT8或FP16精度执行，XMX单元每个时钟周期可完成大批量矩阵运算，相比通用着色器执行同等推理任务效率高出数倍。网络输入包括当前帧的低分辨率颜色缓冲、运动向量（Motion Vectors）以及历史帧反投影数据，输出为目标分辨率下的高质量图像。
 
-### 基于历史帧的时间域累积
+### 多帧历史累积与运动向量
 
-XeSS继承并扩展了TAA（时间抗锯齿）的历史帧复用机制。每帧渲染时，引擎在亚像素级别应用抖动偏移（jitter offset），偏移序列采用Halton低差序列（通常取base-2与base-3的Halton序列的前8或16个样本），使相邻帧的采样点覆盖不同亚像素位置。XeSS网络接收当前低分辨率帧、历史高分辨率累积帧、运动向量和深度缓冲四类输入，通过运动向量将历史帧重投影到当前帧坐标系，然后由神经网络决定每个像素如何融合历史信息与当前帧细节。
+与基础的空间超采样不同，XeSS引入了TAA式的时域累积策略。渲染引擎在每帧使用亚像素级的Halton序列抖动（Jitter）偏移相机，使连续多帧的像素采样位置互相错开，从而在累积后获得比单帧更丰富的高频细节。运动向量用于将上一帧的历史像素反投影到当前帧坐标系中，XeSS网络随后判断哪些历史像素可信并加以融合，哪些因遮挡或快速运动应予抛弃，从而抑制传统TAA中常见的"鬼影（Ghosting）"伪影。
 
-### DP4a回退路径的计算逻辑
+### 放大质量档位
 
-在非Intel GPU上，XeSS使用DP4a（dot product of 4 INT8 values accumulated into INT32）指令实现神经网络推理。DP4a是DirectX 12 Shader Model 6.4引入的指令，NVIDIA Pascal及以上架构和AMD GCN 4代及以上架构均支持。DP4a路径将相同的网络权重重新量化为适合通用着色器处理的格式，以HLSL Compute Shader编写，不依赖任何厂商专有扩展。由于DP4a路径缺少专用矩阵硬件的带宽优势，在相同GPU性能级别下推理耗时约为XMX路径的1.5到2倍，且推理结果在高频细节还原上略逊于XMX模式。
+XeSS提供六个预设质量档位，以输入分辨率与输出分辨率的比值定义：
 
-### 质量档位与分辨率缩放比例
+| 档位 | 输入分辨率比例 | 放大倍率（线性） |
+|------|--------------|----------------|
+| Ultra Quality Plus | 77%（约1/1.3x） | ~1.3x |
+| Ultra Quality | 77% | 1.3x |
+| Quality | 67%（2/3） | 1.5x |
+| Balanced | 59% | 1.7x |
+| Performance | 50% | 2x |
+| Ultra Performance | 33% | 3x |
 
-XeSS提供五个预设质量档位：Ultra Quality（缩放比1.3×）、Quality（缩放比1.5×）、Balanced（缩放比1.7×）、Performance（缩放比2.0×）和Ultra Performance（缩放比3.0×）。以1080p输出为目标时，Performance模式内部渲染分辨率为540p，Ultra Performance模式仅渲染360p。缩放比越高，对神经网络从稀疏输入重建细节的能力要求越大，幽灵瑕疵（ghosting）和闪烁风险也随之上升。
+在4K（3840×2160）目标分辨率下，Performance档的实际输入为1920×1080，即以1080p渲染最终输出4K，帧率收益可达约70%~100%，具体取决于GPU瓶颈位置是在渲染还是后处理阶段。
+
+### DP4a回退路径
+
+当硬件不支持XMX时，XeSS切换至DP4a通用路径。DP4a是Vulkan和DirectX 12中均支持的INT8点积指令，几乎所有现代桌面GPU（包括AMD RDNA2和NVIDIA Turing及以后）均支持该指令集。回退路径使用同一神经网络权重但以软件方式调度矩阵运算，性能低于XMX路径，但画质与XMX路径基本一致。XeSS SDK会在初始化时自动检测硬件能力并选择对应路径，对上层应用透明。
 
 ## 实际应用
 
-在《死亡循环》中，XeSS首次公开演示了其超分辨率效果。在Arc A770（16GB）上，以1440p Ultra Quality输出时，相比原生1440p渲染的帧时间节省约30%至35%，且通过XMX路径的画面锐度被评测人员描述为接近原生。《幽灵行者2》是另一个深度集成案例，该游戏同时支持XeSS、DLSS和FSR 2，为玩家提供直接的跨技术横向对比，多数评测显示XeSS XMX模式在动态场景细节还原上与DLSS 3的质量相当，而DP4a路径与FSR 2相当。
+在《赛博朋克2077》中启用XeSS Quality档位（1440p目标，实际渲染960p）后，Intel Arc A770在光线追踪中等画质下帧率从约35fps提升至约58fps，画质损失主要集中在极细边缘处的轻微模糊，远景几何细节保留良好。
 
-在开发者工作流程中，XeSS通过DirectX 12 API集成，SDK提供C++接口，开发者调用`xessD3D12Execute`函数并传入当前帧纹理、历史帧纹理、运动向量纹理和目标纹理即可完成一次上采样。Intel同时提供了用于验证运动向量正确性的调试覆盖层，帮助开发者排查ghosting问题的根本原因。
+《杀手3》等支持XeSS的游戏通过DirectX 12的资源接口向SDK传入以下必要数据：当前帧颜色缓冲（HDR或LDR均可）、深度缓冲、运动向量缓冲以及曝光值，SDK内部管理历史帧缓存和网络权重，游戏引擎无需自行实现累积逻辑。XeSS SDK以开源形式托管于GitHub（github.com/intel/xess），开发者可直接查看集成示例和着色器实现。
+
+在移动平台，XeSS也被引入部分搭载Intel Arc集成显卡的超薄本，使这类功耗受限设备在轻度游戏场景下通过降低渲染分辨率并由XeSS补全细节，来维持可接受的视觉质量。
 
 ## 常见误区
 
-**误区一：XeSS只能在Intel显卡上运行**。事实上XeSS通过DP4a路径支持任何兼容DirectX 12 Shader Model 6.4的GPU，包括NVIDIA GTX 1060（Pascal）及以上和AMD RX 480（Polaris）及以上。XMX加速是Intel Arc的专属优化，但技术本身对硬件平台是开放的。不少玩家因为XeSS与Arc显卡同期发布而误认为这是封闭的厂商专属技术。
+**误区一：XeSS只能在Intel显卡上运行。** 实际上XeSS通过DP4a回退路径支持AMD和NVIDIA GPU。区别仅在于性能：在Intel Arc上运行XeSS的推理开销可借助XMX大幅压缩，而在其他GPU上则完全由着色器单元承担，帧率提升比例略低，但不存在画质差异。
 
-**误区二：XeSS与DLSS在技术架构上完全相同**。尽管两者都使用神经网络，但DLSS 2及以后版本使用在NVIDIA服务器集群上离线预训练的固定权重文件（由游戏集成的.nv文件提供），而XeSS的网络权重由Intel预先训练后打包进SDK，所有支持游戏共享同一套权重，不需要针对每款游戏单独训练模型。这意味着XeSS无需NVIDIA那样的内容合作计划，开发者集成SDK即可直接获得最新权重。
+**误区二：XeSS与TAA互斥，启用XeSS后TAA自动无用。** XeSS本身内嵌了时域累积逻辑，因此启用XeSS时引擎层面的独立TAA通道应当关闭，否则两层时域操作叠加会导致过度模糊和双重鬼影。但XeSS并不是"替代TAA"，而是将TAA的累积策略与神经网络放大融合为一个统一通道。
 
-**误区三：更高的缩放比例（如Ultra Performance）总是比低质量档位更值得用**。Ultra Performance的3.0×缩放在动态场景中极易产生ghosting和像素化瑕疵，在细节丰富的植被或快速移动物体上，360p→1080p的重建任务超出了当前XeSS网络的重建能力上限，最终结果有时不如原生720p渲染的清晰度，因此Ultra Performance档位主要用于极低性能GPU勉强运行游戏的场景，而非追求画质时的选择。
+**误区三：XeSS Quality档位的输入分辨率比例与DLSS Quality完全相同。** DLSS Quality档在4K目标下使用约67%输入（约2560×1440），与XeSS Quality的67%比例相近，但XeSS的Ultra Quality Plus档提供77%的更高比例输入，这是DLSS 2.x中未提供的额外档位，专门面向画质优先的使用场景。
 
 ## 知识关联
 
-XeSS直接建立在TAA的时间域累积原理之上，理解TAA中抖动偏移、历史帧混合系数（通常α=0.1）以及运动向量重投影的工作方式，是理解XeSS为何需要运动向量输入和深度缓冲的前提。TAA中的ghosting抑制问题（通过颜色空间邻域裁剪处理）在XeSS中由神经网络隐式学习，不再依赖手写的裁剪启发式算法，这是XeSS相比纯TAA在鬼影控制上的关键改进点。
+XeSS以TAA为直接前驱：若无对TAA中Halton抖动、运动向量重投影和历史帧融合权重的理解，便无法解释XeSS为何需要抖动偏移以及历史缓冲的用途。XeSS在TAA基础上引入了神经网络决策层，替代了TAA中固定权重的混合公式（通常为`output = lerp(history, current, 0.1)`），以学习到的权重动态判断历史像素可信度，从而抑制Ghosting并恢复TAA难以保留的高频锐度。
 
-从更宏观的抗锯齿技术谱系来看，XeSS与NVIDIA DLSS 2/3和AMD FSR 2/3构成当前主流的三大时间域超分辨率方案，它们的核心差异体现在硬件依赖性（DLSS需要Tensor Core、XeSS偏好XMX但不强制、FSR完全硬件无关）和训练策略（预训练固定权重vs.通用权重）两个维度上。XeSS的DP4a路径在算法上与FSR 2的空间域+时间域混合方法有相似的计算预算约束，两者在中低端硬件上的实际画质差距远小于XMX路径与DLSS之间的差距。
+在超分辨率技术谱系中，XeSS与NVIDIA DLSS 2/3（Tensor Core加速）、AMD FSR 2（纯空间+时域，无专用AI硬件）构成同一层级的对比参照。FSR 2依赖启发式算法而非神经网络，可在任意GPU甚至主机平台运行；XeSS则以神经网络为核心但借助DP4a保持跨平台兼容，处于两者之间的技术定位。理解XeSS的XMX加速路径与DP4a回退路径的性能差异，是评估图形API中AI加速硬件价值的具体案例。
