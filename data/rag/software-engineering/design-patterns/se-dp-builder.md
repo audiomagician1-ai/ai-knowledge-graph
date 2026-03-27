@@ -24,71 +24,104 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-27
 ---
 
+
 # 建造者模式
 
 ## 概述
 
-建造者模式（Builder Pattern）是一种创建型设计模式，专门用于解决**复杂对象需要多个步骤分阶段构建**的问题。它将一个复杂对象的构建过程与其表示分离，使得同样的构建过程可以创建出不同的表示形式。与工厂模式直接返回一个完整产品不同，建造者模式通过一系列有序的方法调用逐步组装对象，每个方法负责设置对象的一个特定部分。
+建造者模式（Builder Pattern）是一种创建型设计模式，专门用于解决构造参数过多、对象创建步骤复杂的问题。它将一个复杂对象的**构建过程**与其**表示形式**分离，使得同一套构建流程可以生产出不同的最终对象。与工厂模式的"一步到位"不同，建造者模式强调"分步构建"——对象的创建被拆分为多个独立的步骤，每个步骤对应一个具体的构建方法。
 
-建造者模式最早由 GoF（Gang of Four）在1994年出版的《设计模式：可复用面向对象软件的基础》中正式收录，书中使用"RTF文档阅读器将RTF格式转换为多种目标格式（ASCII、TeX、文本小部件）"作为经典示例。该模式的核心价值在于：当一个对象的构造参数超过4到5个，且其中多个参数是可选的时，链式建造者能有效替代"重叠构造器"（Telescoping Constructor）反模式，消除因参数顺序混淆导致的静默错误。
+建造者模式由 GoF（Gang of Four）在1994年出版的《设计模式：可复用面向对象软件的基础》中正式命名，书中以文本转换器（RTF读取器转换为多种格式）作为典型案例。在 Java 生态中，`StringBuilder` 类是最广为人知的建造者模式应用，它通过链式调用 `append()` 方法逐步拼接字符串，最后调用 `toString()` 获取结果。
+
+这一模式在构造函数参数超过4个时体现出最大价值。当一个对象拥有10个可选配置项时，使用构造函数重载会产生"伸缩构造函数"反模式（Telescoping Constructor Anti-pattern），代码可读性极差。建造者模式通过将每个参数封装为独立的 `setX()` 构建方法，并最终通过 `build()` 触发对象实例化，彻底解决了这一问题。
+
+---
 
 ## 核心原理
 
-### 四个角色的职责划分
+### 四个核心角色
 
-建造者模式由四个明确角色组成：
+建造者模式由四个角色构成，缺少任何一个结构都会不完整：
 
-- **Product（产品）**：最终被构建的复杂对象，例如一辆汽车，包含引擎、座椅、GPS等多个零部件。
-- **Builder（抽象建造者）**：定义构建各个零部件的抽象接口，例如 `buildEngine()`、`buildSeats()`、`buildGPS()`。
-- **ConcreteBuilder（具体建造者）**：实现 Builder 接口，为每个零部件提供具体的构建逻辑，并持有正在构建中的 Product 实例。不同的 ConcreteBuilder 可以组装出"豪华型汽车"或"经济型汽车"。
-- **Director（指挥者）**：持有 Builder 的引用，定义构建步骤的调用顺序。Director 不关心零部件的具体实现，只知道"先装引擎，再装座椅"这样的组装流程。
+- **Product（产品）**：最终要构建的复杂对象，例如一辆汽车或一份完整的 SQL 查询语句。
+- **Builder（抽象建造者）**：声明构建各个部件的抽象接口，如 `buildEngine()`、`buildWheels()`、`buildSeats()`。
+- **ConcreteBuilder（具体建造者）**：实现 Builder 接口，负责具体部件的创建与组装，同时持有一个 Product 实例。
+- **Director（指挥者）**：持有一个 Builder 引用，定义构建步骤的调用顺序，但不关心具体产品的内部构造。
 
-### Director 的核心作用
+Director 是建造者模式区别于其他创建型模式的关键所在。它封装了"如何组合步骤"的业务逻辑，客户端只需告知 Director 使用哪个 ConcreteBuilder，Director 便会按照固定流程完成构建。
 
-Director 是建造者模式区别于简单链式调用的关键。一个典型的 Director 实现如下（伪代码）：
+### Director 与 Builder 的职责分界
 
-```
-class CarDirector {
-    private Builder builder;
-    
-    void constructSportsCar(Builder builder) {
-        builder.buildEngine("V8");
-        builder.buildSeats(2);
-        builder.buildGPS(true);
+Director 中的典型代码结构如下：
+
+```java
+public class CarDirector {
+    private CarBuilder builder;
+    public CarDirector(CarBuilder builder) {
+        this.builder = builder;
     }
-    
-    void constructSUV(Builder builder) {
+    public void constructSportsCar() {
+        builder.buildEngine("V8");
+        builder.buildWheels(4);
+        builder.buildSeats(2);
+    }
+    public void constructSUV() {
         builder.buildEngine("V6");
+        builder.buildWheels(4);
         builder.buildSeats(7);
-        builder.buildGPS(false);
     }
 }
 ```
 
-Director 将"构建一辆跑车需要哪些步骤以及步骤顺序"这一知识封装起来，客户端代码只需告诉 Director 使用哪个 Builder，而不必了解具体的构建顺序。当产品的构建流程发生变化时，只需修改 Director，而所有 ConcreteBuilder 无需改动。
+Director 中定义了 `constructSportsCar()` 和 `constructSUV()` 两种不同的构建流程。替换不同的 ConcreteBuilder 实例（如 `ElectricCarBuilder` vs `GasolineCarBuilder`），Director 可在完全不修改自身代码的情况下输出截然不同的产品。这体现了**开闭原则**：对扩展开放，对修改关闭。
 
-### 与链式建造者（Fluent Builder）的关系
+### 流式建造者（Fluent Builder）的变体
 
-现代Java和C#开发中常见的链式建造者（如 `new Person.Builder("John").age(30).phone("555").build()`）是建造者模式的简化变体，通常省略了 Director 角色，适用于对象构建顺序无强制约束的场景。每个 setter 方法返回 `this`（即 Builder 自身），最后通过 `build()` 方法校验并返回最终对象。Joshua Bloch 在《Effective Java》第2条中将此变体作为替代多参数构造器的首选方案推荐。完整的 GoF 建造者模式（含 Director）则适用于构建步骤顺序固定且不可随意调换的场景。
+现代框架中更常见的是省略 Director 的流式建造者变体，通过方法链实现同样效果：
+
+```java
+Pizza pizza = new Pizza.Builder()
+    .size(12)
+    .crust("thin")
+    .topping("cheese")
+    .topping("mushroom")
+    .build();
+```
+
+每个构建方法返回 `this`（当前 Builder 实例），最终 `build()` 方法执行必要的参数校验后返回不可变的 Product 对象。Joshua Bloch 在《Effective Java》第2版（2008年）的第2条中将此变体作为处理多参数构造器的首选方案明确推荐。这种变体中 Builder 本身承担了 Director 的职责，适合构建逻辑相对简单、不需要多套构建方案的场景。
+
+---
 
 ## 实际应用
 
-**SQL查询构建器**：许多ORM框架（如MyBatis、Hibernate）使用建造者模式构建SQL语句。`QueryBuilder` 提供 `select()`、`from()`、`where()`、`orderBy()` 等方法，最后调用 `build()` 生成合法的SQL字符串。这里的"合法顺序"（SELECT必须在WHERE之前）可以由 Director 或 `build()` 方法内部强制执行。
+**Lombok 的 `@Builder` 注解**：在 Java 项目中，`@Builder` 注解会自动为类生成静态内部 Builder 类，无需手写任何建造者代码。标注 `@Builder` 后，编译器生成的代码完整实现了流式建造者变体，包括所有字段的链式 setter 和最终的 `build()` 方法。
 
-**Android中的AlertDialog**：Android SDK 的 `AlertDialog.Builder` 是教科书级别的链式建造者应用。开发者依次调用 `.setTitle()`、`.setMessage()`、`.setPositiveButton()`，最后调用 `.create()` 或 `.show()` 完成对话框的构建，避免了直接操作 AlertDialog 的多个可选字段。
+**SQL 查询构建器**：MyBatis、JOOQ 等 ORM 框架使用建造者模式构建动态 SQL。例如 JOOQ 的链式 API：`dsl.select(field).from(table).where(condition).orderBy(field).limit(10)` 将 SQL 的每个子句映射为独立的构建步骤，最终生成合法的 SQL 字符串，避免了字符串拼接的安全隐患（如 SQL 注入）。
 
-**游戏角色生成**：角色扮演游戏中，`CharacterBuilder` 可分步设置种族、职业、外貌、装备等属性，而 Director 可预设"精灵法师模板"和"人类战士模板"两种构建流程，复用同一套 Builder 接口生成不同配置的角色。
+**Android AlertDialog**：Android SDK 的 `AlertDialog.Builder` 是教科书级别的建造者模式应用。`setTitle()`、`setMessage()`、`setPositiveButton()` 等方法各自设置对话框的独立部分，全部完成后调用 `create()` 或 `show()` 生成最终的 AlertDialog 对象，且生成后对象不可再被修改，保证了不可变性。
+
+**Protobuf 生成代码**：Google Protocol Buffers 自动生成的 Java 代码中，每个消息类型都附带一个 Builder，通过 `toBuilder()` 可从现有对象创建 Builder，实现对现有对象的"修改性复制"，这解决了不可变对象难以局部更新的难题。
+
+---
 
 ## 常见误区
 
-**误区一：认为建造者模式等同于链式调用**。许多开发者将 `StringBuilder` 的链式 `append()` 调用视为建造者模式的典型案例，但 `StringBuilder` 并没有分离构建步骤与最终产品表示，也没有可替换的 ConcreteBuilder，本质上只是一个可变对象的方法链，不满足建造者模式中"同一构建过程产生不同表示"的核心意图。
+**误区一：认为建造者模式等于"有 Builder 内部类的类"**
 
-**误区二：认为建造者模式可以完全替代工厂模式**。工厂模式适用于创建类型不确定但结构相对简单的对象（通常一步完成），建造者模式适用于结构固定但内部配置复杂的对象（需要多步完成）。如果一个对象的所有"可选部分"都真正可选且无顺序依赖，直接使用带默认值的构造器或简单工厂即可，强行引入建造者模式会增加 Builder 和 ConcreteBuilder 至少两个额外类的维护成本。
+很多开发者将流式 Builder 等同于建造者模式的完整形式，忽略了 Director 角色的存在。实际上，当同一个 Builder 需要支持多种固定构建流程时（例如"豪华套餐"和"基础套餐"），Director 是消除重复构建代码的正确方式，而不是在业务层代码中重复编写相同的 Builder 调用序列。
 
-**误区三：Director 必须存在**。GoF 原著中 Director 是可选角色。当客户端代码本身就能确定构建顺序时，可以直接操作 Builder 而不引入 Director。Director 的必要性仅在于：需要在多处复用同一套构建步骤序列时，才值得将该序列封装进 Director。
+**误区二：将建造者模式与工厂模式混淆使用**
+
+工厂模式适合"根据类型参数返回不同子类实例"的场景，创建逻辑是单步的、类型驱动的。建造者模式适合"同一类型的对象需要通过多个步骤逐步配置"的场景，创建逻辑是多步的、结构驱动的。若某对象只有2-3个必填参数且无可选配置，引入 Builder 是过度设计。
+
+**误区三：`build()` 方法前不做参数校验**
+
+建造者模式的 `build()` 方法是执行参数一致性校验的最佳时机。例如，构建 HTTP 请求时，若 `method` 为 `POST` 但 `body` 为空，应在 `build()` 中抛出 `IllegalStateException`，而不是等到实际发送请求时才报错。跳过此步骤会导致创建出内部状态不合法的 Product 对象，破坏建造者模式保证对象合法性的核心价值。
+
+---
 
 ## 知识关联
 
-**与工厂模式的衔接**：工厂模式（包括工厂方法和抽象工厂）解决的是"创建哪个类的实例"的问题，决策点在对象类型上；建造者模式解决的是"如何一步步组装一个已知类型的复杂对象"的问题，决策点在组装过程上。两者可以组合使用：Director 内部可以调用工厂方法来创建各个零部件，再将零部件组装进 Product。
+**前置知识——工厂模式**：工厂模式解决"创建哪个类"的问题，建造者模式解决"如何一步步创建同一个类"的问题。掌握工厂方法模式后，可以理解建造者模式中 `ConcreteBuilder` 本质上是对产品组件创建逻辑的集中封装，而 Director 提供了比工厂更细粒度的流程控制能力。
 
-**对象构建复杂度的演进路径**：当一个类的构造参数从2个增长到3个时，可以使用普通构造器；增长到5个以上且有可选参数时，应考虑链式建造者；当构建步骤本身有强制顺序且存在多种构建方案需要复用时，才引入完整的带 Director 的建造者模式。理解这一演进路径有助于在实际项目中判断引入建造者模式的时机，避免过度设计。
+**设计原则关联**：建造者模式直接体现了**单一职责原则**（Director 只管流程，Builder 只管构造，Product 只管表示）和**开闭原则**（新增产品类型只需添加新的 ConcreteBuilder，无需修改 Director 或已有 Builder）。同时，不可变 Product 的设计思想与**防御性编程**理念一致，确保构建完成的对象在多线程环境下天然线程安全。

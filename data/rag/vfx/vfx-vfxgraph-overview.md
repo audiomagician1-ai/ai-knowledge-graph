@@ -24,55 +24,61 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-27
 ---
 
-# VFX Graph概述
+
+# VFX Graph 概述
 
 ## 概述
 
-Unity VFX Graph 是Unity引擎中基于节点式可视化编程的粒子特效编辑系统，于2018年随Unity 2018.3版本以预览版形式首次发布，并在Unity 2019.3版本中正式进入稳定版（Production Ready）。与Unity传统的粒子系统（Particle System / Shuriken）不同，VFX Graph将全部粒子计算任务卸载至GPU，利用Compute Shader在GPU上并行执行粒子逻辑，使单个特效中的粒子数量可突破百万级别。
+VFX Graph 是 Unity 引擎自 2018 年正式推出的节点式可视化粒子特效编辑系统，基于 GPU 计算着色器（Compute Shader）运行，能够在单帧内处理数百万个粒子。与 Unity 早期的 Particle System（Shuriken）不同，VFX Graph 将粒子的全部运算从 CPU 转移到 GPU，从根本上突破了传统粒子系统在数量规模上的瓶颈。
 
-VFX Graph仅支持具有Compute Shader能力的现代图形API，包括DirectX 11/12、Vulkan、Metal和PlayStation 5等平台。这一硬件限制意味着VFX Graph目前无法在移动端老旧设备或WebGL环境中运行，这是选用该系统时必须优先考量的因素。VFX Graph的数据文件格式为`.vfx`，本质上是一个包含有向图结构的JSON-like资产，存储于Unity工程的Assets目录中。
+VFX Graph 的核心设计理念是"所见即所得"的节点编辑：用户通过拖拽、连线不同功能节点来描述粒子的生命周期行为，不需要编写 HLSL 着色器代码即可实现复杂的粒子运动逻辑。这套系统最初与 HDRP（高清渲染管线）绑定，从 Unity 2021.2 版本起，VFX Graph 正式扩展支持 URP（通用渲染管线），使其覆盖范围大幅扩大到移动端和中端项目。
 
-VFX Graph的核心价值在于两点：一是通过GPU粒子模拟极大提升特效规模与视觉复杂度；二是通过可视化节点图替代脚本编写，让美术人员能够在不编写C#代码的前提下独立制作复杂粒子行为。这两点共同构成了VFX Graph区别于Shuriken的根本性差异。
+VFX Graph 的重要性在于它将原本需要程序员编写 GPU 粒子系统才能实现的百万级粒子特效，变成了美术和技术美术可以独立完成的可视化工作流。《赛博朋克 2077》《死亡搁浅》等 3A 级游戏中密集的人群粒子、体积光效均使用了类似 GPU 粒子架构，而 VFX Graph 将这一能力带入了 Unity 工作流。
+
+---
 
 ## 核心原理
 
-### GPU驱动的粒子模拟
+### GPU Compute Shader 驱动机制
 
-VFX Graph将每个粒子的属性（位置、速度、颜色、生命周期等）储存在GPU显存中的粒子缓冲区（Particle Buffer）里，每一帧通过Compute Shader并行计算所有存活粒子的状态更新。相比之下，Shuriken在CPU上执行粒子逻辑，每帧需要通过DrawCall将粒子数据从CPU内存传输至GPU，形成带宽瓶颈。VFX Graph消除了这一CPU-GPU数据传输开销，从而支撑百万数量级的粒子实时运算。
+VFX Graph 的所有粒子数据（位置、速度、颜色、生命值等）存储在 GPU 显存中的缓冲区（GraphicsBuffer）内，而不是传统 CPU 内存。每帧更新时，Unity 调度一组 Compute Shader 来并行计算每个粒子的状态变化。以 GTX 1060 级别显卡为例，VFX Graph 在维持 60fps 的条件下可稳定运行约 100 万个粒子，而同等条件下 Shuriken CPU 粒子系统通常上限约 3 万个粒子。这一差距来源于 GPU 数千个并行线程与 CPU 单线程模拟之间的本质架构差异。
 
-一个典型的VFX Graph特效在运行时，粒子数据全程驻留在GPU显存中，CPU端只负责提交少量参数（如播放速度、发射速率）给GPU，这种架构被称为"GPU-Resident"模式。
+### 节点图结构与 Context 组织
 
-### 节点图结构与执行顺序
+VFX Graph 的可视化界面本质上是一张有向无环图（DAG），由多种节点类型构成。最顶层的组织单位是 **Context 节点**（如 Spawn、Initialize、Update、Output），这些 Context 构成粒子生命周期的主干流程。在 Context 内部，可以插入 Block 节点来定义具体行为（例如"Set Velocity Random"Block 用于随机化速度）。Context 与 Context 之间通过流程箭头连接，而属性值则通过独立的数据线在 Operator 节点与 Block 之间传递。这种双轨结构——流程流与数据流分离——是 VFX Graph 与 Shader Graph 等其他节点工具的重要区别。
 
-VFX Graph使用有向无环图（DAG，Directed Acyclic Graph）来描述粒子行为逻辑。图中的节点分为两类：**Operator（运算节点）**负责数值计算（如加法、噪声、随机数），**Block（行为块）**负责定义粒子在特定阶段的行为（如Set Velocity、Gravity）。这些Block被组织进**Context（上下文）**容器中，构成粒子生命周期的各个阶段。
+### 容量预分配与内存管理
 
-整张图的执行顺序严格遵循：`System Initialize → Update → Output`的生命周期管线，这与GPU Compute Shader的Dispatch调用顺序直接对应。
+VFX Graph 采用固定容量预分配策略：每个 VFX Asset 在创建时必须在 Initialize Context 中设定粒子容量上限（Capacity）。例如设定 Capacity = 500,000，系统会在 GPU 显存中预留固定大小的缓冲区，无论实际存活粒子数量是否达到上限，这块显存始终被占用。这意味着将 Capacity 随意设为 1,000,000 会造成约 160~320MB 的显存占用（取决于每粒子属性数量），即使屏幕上只有一个粒子。因此，合理规划 Capacity 是 VFX Graph 性能调优的首要任务。
 
-### 与渲染管线的绑定关系
-
-VFX Graph要求项目使用**高清渲染管线（HDRP）**或**通用渲染管线（URP）**，无法在内置渲染管线（Built-in Render Pipeline）中工作。在Unity 2021.2之后，URP对VFX Graph的支持已较为完整，但HDRP仍提供更多高级光照选项，例如受HDRP光照影响的粒子Lit Output。VFX Graph的Output Context最终会调用SRP（Scriptable Render Pipeline）的Batch Renderer来执行GPU Instancing渲染，进一步减少DrawCall开销。
+---
 
 ## 实际应用
 
-**大规模环境特效**：在游戏场景中模拟暴风雪、火山爆发或沙尘暴时，VFX Graph能以超过50万粒子的规模在现代PC（如RTX 3070）上维持60fps稳定运行，而Shuriken在超过10万粒子时通常已出现明显性能下降。
+**爆炸特效**：制作枪口焰特效时，可在 Spawn Context 中设置 Single Burst 模式，一次性发射 500 个粒子，Initialize Context 中使用"Sphere"形状随机化初始位置（半径 0.05m），Update Context 中叠加 Drag Force Block（阻力系数 2.0）和 Turbulence Block 产生翻滚感，Output Context 选择 Quad 输出并绑定发光贴图，整个流程无需一行代码即可完成。
 
-**实时事件响应特效**：通过VFX Graph提供的`Event`接口，可以在C#中调用`visualEffect.SendEvent("OnHit")`，精确触发某个特效图内部定义的事件，驱动特定的Spawn Context执行。这使得"命中特效""技能释放特效"等需要与游戏逻辑精确同步的特效制作变得简洁直观。
+**与 Timeline 集成**：在过场动画中，VFX Graph Asset 可被 Timeline 的 Visual Effect Track 直接控制，通过 Activation Track 精确到毫秒级地触发粒子爆发时间点。例如在第 3.2 秒触发一次 SendEvent，在 VFX Graph 内部接收该 Event 来激活特定的 Spawn Context，实现剧情特效与镜头的精确同步。
 
-**程序化特效生成**：VFX Graph支持通过`Exposed Property`向图中暴露可在Inspector或C#中动态修改的参数，如粒子颜色、发射半径等。美术可以将同一张VFX图复用于多个场景，仅通过修改Exposed属性来产生差异化视觉效果，而无需复制多份资产。
+**自定义属性传递**：使用 Exposed Property（暴露属性）可以将 VFX Graph 内部参数（如颜色 Color、强度 Float、中心点 Vector3）暴露给外部 C# 脚本，通过 `visualEffect.SetVector3("Center", transform.position)` 的方式实时驱动特效跟随角色位置，从而实现动态交互型粒子效果。
+
+---
 
 ## 常见误区
 
-**误区一：VFX Graph是Shuriken的升级版，可以完全替代**
-这是常见的错误认知。VFX Graph不支持Built-in渲染管线，也不支持不具备Compute Shader能力的平台（如大多数旧款Android设备），而Shuriken在这些平台上仍可正常运行。对于移动端项目或需要广泛平台兼容性的游戏，Shuriken依然是更合适的选择。两者在当前阶段是并列存在、各有适用场景的系统。
+**误区一：VFX Graph 可以在任何 Unity 项目中使用**
 
-**误区二：节点越多，特效性能越差**
-VFX Graph中的Operator节点（数学运算）会被Unity编译进Compute Shader的HLSL代码中，在GPU上执行时其性能代价远低于粒子数量本身。增加10个Vector3加法Operator对帧率的影响，远不如将粒子数量从10万增加到20万显著。真正决定VFX Graph性能的核心指标是**活跃粒子数量**和**Output Context使用的渲染通道复杂度**，而非图中节点的数量。
+VFX Graph 依赖 Scriptable Render Pipeline（SRP）架构，无法在 Unity 内置渲染管线（Built-in Render Pipeline）项目中运行。如果项目使用的是默认 Built-in 管线，打开 VFX Graph 资产后粒子将无法渲染，只显示空白。在开始使用 VFX Graph 前，必须先确认项目已切换至 HDRP 或 URP，并安装对应版本的 `com.unity.visualeffectgraph` 包（版本号需与 SRP 版本对齐，如 SRP 14.x 对应 VFX Graph 14.x）。
 
-**误区三：VFX Graph只能制作粒子特效**
-VFX Graph的Output Context不仅支持Billboard Quad（公告板面片，即传统粒子），还支持输出Mesh粒子（每个粒子渲染一个指定网格）、Line Strip（线段），以及在HDRP中输出受全局光照影响的Lit粒子。这意味着VFX Graph可用于制作程序化植被摆动、大规模群体动画等超出传统"粒子特效"范畴的应用。
+**误区二：粒子数量越少，VFX Graph 相比 Shuriken 越有优势**
+
+VFX Graph 的 GPU 计算存在固定调度开销（Draw Call 准备、Compute Dispatch 启动），当粒子数量少于约 500 个时，这些开销会使 VFX Graph 的实际性能低于 CPU 粒子系统 Shuriken。对于 UI 粒子、少量装饰性粒子，Shuriken 反而是更合适的选择。VFX Graph 的优势区间是单个 Effect 粒子数超过 5,000 个的场景。
+
+**误区三：VFX Graph 节点等同于 Shader Graph 节点**
+
+两者的节点均呈现为可视化连线形式，但运行时机和目的完全不同。Shader Graph 节点在渲染每个像素时执行，输出颜色；VFX Graph 节点在粒子逻辑更新阶段执行，输出粒子属性（位置、颜色、大小等）。一个 VFX Graph Asset 的 Output Context 内部可以嵌入一个 Shader Graph 材质来控制粒子外观，即两者是层叠关系而非替代关系。
+
+---
 
 ## 知识关联
 
-学习VFX Graph概述是进入该系统所有后续概念的起点。下一个直接衔接的概念是**Context系统**，它定义了VFX Graph图内粒子生命周期的四种核心阶段（Spawn、Initialize、Update、Output），是整张VFX图的骨架结构。理解GPU-Resident粒子模拟的架构原理，有助于后续理解为何Initialize Context只执行一次而Update Context每帧执行，以及为何在VFX Graph中访问碰撞数据的方式与Shuriken完全不同。
-
-此外，VFX Graph与Unity **Shader Graph**共享相似的节点编辑器UI框架（均基于Unity的GraphView API构建），但两者解决的问题域完全不同——Shader Graph处理材质着色逻辑，VFX Graph处理粒子行为逻辑。了解这一关系有助于避免在学习阶段混淆两个系统的使用场景。
+学习 VFX Graph 不需要任何先修知识，但了解 Unity 基础操作（GameObject、Component、Package Manager）将加快上手速度。在 VFX Graph 内部，最关键的下一个学习目标是 **Context 系统**：理解 Spawn、Initialize、Update、Output 四种 Context 的职责划分和数据传递规则，是构建任何实质性粒子效果的前提。Context 系统决定了"粒子何时出生、初始状态如何、每帧如何更新、最终如何渲染"这四个核心问题的回答方式，而这四个问题贯穿了 VFX Graph 中所有特效制作的全过程。

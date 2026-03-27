@@ -24,15 +24,16 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-27
 ---
 
+
 # 高光工作流
 
 ## 概述
 
-高光工作流（Specular-Glossiness Workflow，简称 SG 工作流）是 PBR 材质系统中的一种贴图方案，由 Adobe/Allegorithmic 公司在 Substance 工具链早期版本中大力推广。它通过三张核心贴图来描述材质的物理属性：**漫反射颜色贴图（Diffuse）**、**高光颜色贴图（Specular）** 和 **光泽度贴图（Glossiness）**，分别控制材质的次表面散射颜色、镜面反射颜色和表面粗糙程度。
+高光工作流（Specular-Glossiness Workflow，简称 S/G 工作流）是 PBR 材质系统中用于描述表面反射特性的一种参数化方案，由 Adobe 与 Allegorithmic 在 2014 年前后共同推广，并被纳入 glTF 1.0 的扩展规范 `KHR_materials_pbrSpecularGlossiness` 中。它通过两张贴图——**漫反射颜色图（Diffuse/Albedo）** 和 **高光颜色图（Specular）** 加上**光泽度图（Glossiness）**——来完整描述材质的物理响应。
 
-该工作流最早在 Unreal Engine 3 时代以非 PBR 形式存在，后来随着基于物理的渲染理论普及，Allegorithmic 将其升级为物理正确的 SG 版本，并在 Substance Painter 1.x 系列中作为主要工作流提供。相比后来崛起的金属度工作流（Metalness-Roughness Workflow），SG 工作流历史更早、美术人员过渡成本更低，因此在影视、建筑可视化等行业中至今仍有广泛使用。
+与金属度工作流（Metallic-Roughness）不同，高光工作流将漫反射与镜面反射颜色作为两个**独立可控**的输入量，使艺术家可以直接指定非金属介质（如皮肤、木材、涂层）的精确 F0（零度入射角菲涅耳反射率）值，而不必依赖引擎从金属度参数中间接推导。这一特性让该工作流在旧一代 AAA 游戏项目和 CG 影视制作中积累了大量存量资产。
 
-理解 SG 工作流的意义在于：现实项目往往同时存在两套资产，引擎需要支持两种工作流的导入和转换。此外，SG 工作流在处理非金属材质的彩色高光（如人皮肤、漆面木材）时具备天然优势，可以直接在 Specular 贴图中绘制该颜色，而金属度工作流则无法直接做到这一点。
+高光工作流之所以值得专门学习，在于大量遗留管线（如早期 Unity 5 的 Legacy Shaders、Substance Painter 1.x 版本的默认导出模板）仍输出 S/G 贴图，资产迁移和项目维护时必须理解其内部逻辑，否则会在转换时引入严重的能量守恒错误。
 
 ---
 
@@ -40,58 +41,69 @@ updated_at: 2026-03-27
 
 ### 三张贴图的物理含义
 
-**Diffuse 贴图**存储的是材质的漫反射颜色，即光线经过次表面散射后离开表面的颜色。对于金属材质，Diffuse 值应当设置为纯黑（0, 0, 0），因为金属几乎不产生漫反射；对于非金属（电介质），Diffuse 代表材质的固有色。这一约定使得美术人员必须手动区分金属区域与非金属区域。
+高光工作流的信息由三张贴图承载：
 
-**Specular 贴图**存储 RGB 颜色值，直接描述材质的镜面反射率 F0（法向入射菲涅耳反射率）。对于电介质材质，F0 通常处于 0.02–0.05 的线性值范围（约对应 sRGB 下的 40–80 灰度），例如玻璃的 F0 约为 0.04，即 4%。对于金属，F0 可以是彩色值，例如金的 F0 约为 (1.0, 0.766, 0.336)，铜的 F0 约为 (0.955, 0.637, 0.538)，这些具体数值可以从真实材质测量数据库中查到。
+- **Diffuse 图**：存储非金属材质的漫反射颜色，对金属材质此通道应为纯黑（0,0,0），因为金属无漫反射。
+- **Specular 图**：以 sRGB 存储 F0 反射率颜色，非金属材质的 F0 通常落在 0.02–0.05（线性值）范围内，对应灰阶约为 40–60/255；金属材质的 F0 则是其特征颜色（如金的 F0 约为 (1.0, 0.71, 0.29) 线性值）。
+- **Glossiness 图**：光泽度 `g = 1 - roughness`，因此 Glossiness = 255 对应完全光滑镜面，Glossiness = 0 对应完全粗糙漫反射表面。与金属度工作流的 Roughness 图相比，两者是简单的数值取反关系：`Roughness = 1.0 - Glossiness`。
 
-**Glossiness 贴图**是粗糙度的反转版本，计算关系为：`Glossiness = 1.0 - Roughness`。白色（1.0）表示完全光滑的镜面，黑色（0.0）表示完全粗糙的漫反射表面。部分引擎（如 Unity 的 Standard Shader Legacy 模式）直接读取 Glossiness；而 Unreal Engine 5 则在内部统一使用 Roughness，导入 SG 资产时会自动执行这一反转计算。
+### 能量守恒约束
 
-### 与金属度工作流的核心差异
+高光工作流的核心物理约束是：漫反射分量与镜面反射分量之和不得超过 1。即对任意像素：
 
-金属度工作流（MR 工作流）使用 **Base Color + Metalness + Roughness** 三张贴图。两者的本质差异在于**信息编码方式**不同：
+$$\text{Diffuse}_{\text{linear}} + \text{Specular}_{\text{linear}} \leq (1, 1, 1)$$
 
-| 属性 | SG 工作流 | MR 工作流 |
-|------|-----------|-----------|
-| 漫反射控制 | Diffuse 贴图（独立通道） | Base Color × (1 - Metalness) |
-| 高光 F0 控制 | Specular 贴图（RGB，直接存储） | Base Color × Metalness + 0.04 × (1-M) |
-| 粗糙度表达 | Glossiness（反转） | Roughness（正向） |
-| 每像素数据量 | 3+3+1 = 7 通道 | 3+1+1 = 5 通道 |
+若艺术家同时将 Diffuse 和 Specular 通道设为高亮颜色，渲染器将输出超出物理范围的亮度，产生"发光"伪影。Substance Painter 的 S/G 验证工具（Validate Material）正是检测这一约束是否被违反。
 
-SG 工作流总计需要 **7 个有效通道**（Diffuse RGB + Specular RGB + Glossiness），而 MR 工作流只需要 **5 个有效通道**，这意味着 SG 工作流的贴图存储成本更高，但对非标准材质的表达自由度更大。
+### BRDF 中的作用方式
 
-### 菲涅耳约束与能量守恒
-
-SG 工作流在物理正确性上存在一个内生风险：美术人员可以随意填写 Diffuse 和 Specular 的值，从而违反能量守恒定律。具体约束为：对于任意像素，`Diffuse + Specular ≤ 1.0`（各通道分量均需满足）。如果将金属材质的 Diffuse 错误设置为非零值，或者使 Diffuse + Specular 之和超过 1.0，最终渲染结果会出现物理上不可能存在的"发光"效果。MR 工作流通过算法约束消除了这一风险，这也是 MR 工作流逐渐成为游戏行业标准的重要原因之一。
+在 Cook-Torrance BRDF 中，高光工作流对渲染方程的代入方式如下：镜面反射项的 F0 直接来自 Specular 图采样值；漫反射项的 Albedo 直接来自 Diffuse 图采样值；法线分布函数（NDF，通常为 GGX/Trowbridge-Reitz）所需的粗糙度参数由 `α = (1 - Glossiness)²` 转换得到（部分引擎使用 `α = 1 - Glossiness` 的线性映射，具体需查阅引擎文档确认）。
 
 ---
 
 ## 实际应用
 
-**Unity 引擎的 Standard Shader（Legacy）**默认支持 SG 工作流，通过勾选 "Specular Setup" 模式激活，Specular 贴图存储在 RGB 通道，Smoothness（即 Glossiness）存储在 Specular 贴图的 Alpha 通道中，节省一张贴图的采样开销。
+### 与金属度工作流互转
 
-**Unreal Engine 4/5** 本身不直接支持 SG 工作流，但 UE 的材质蓝图中可以通过手动节点将 SG 贴图转换为 MR 参数：Roughness = 1 - Glossiness，Metalness 根据 Specular 亮度阈值推断（通常亮度 > 0.5 的彩色 Specular 视为金属）。
+将 S/G 贴图转换为 M/R（Metallic-Roughness）贴图时，常用的算法步骤如下：
 
-**影视与 VFX 流程**中，Maya 的 Arnold 渲染器和 SideFX Houdini 的 Mantra 渲染器均支持直接输入 Specular Color 和 Roughness（等价于 SG 工作流中的 Specular + 1-Glossiness），因为离线渲染不受贴图通道数量限制，SG 工作流在该场景下非常自然。
+1. 根据 Specular 图的亮度判断金属度：若某像素的 Specular 值（线性）高于阈值 0.04（约 sRGB 值 60/255），则该像素倾向于金属，否则为非金属。
+2. 对于被判定为金属的像素，Metallic = 1，BaseColor = Specular 颜色。
+3. 对于非金属像素，Metallic = 0，BaseColor = Diffuse 颜色。
+4. Roughness = 1 - Glossiness（逐像素取反）。
 
-在**贴图格式**上，SG 工作流的 Specular 贴图通常以 sRGB 空间存储（因为它是颜色数据），而 Glossiness 贴图则以线性空间存储，混淆两者的色彩空间设置是常见的管线配置错误。
+此转换为有损操作，在金属与非金属混合边界（如生锈金属）处会出现边缘精度损失，因此 glTF 2.0 的核心规范最终选择 M/R 作为官方标准，并将 S/G 降级为扩展。
+
+### Substance Painter 中的工作流选择
+
+在 Substance Painter 2023 中，新建项目时可在"Template"下拉菜单选择"PBR - Specular/Glossiness"模板，此时导出配置将自动生成 `diffuse`、`specular`、`glossiness` 三张贴图。选择此工作流后，材质层的"Base Color"槽位语义变为漫反射颜色，"Specular"槽位可直接输入 F0 颜色，这与选择 Metallic 模板时的行为有本质不同。
+
+### Unity 的遗留材质支持
+
+Unity 早期版本（5.x）内置的 `Standard (Specular setup)` Shader 使用 S/G 工作流。该 Shader 的 Specular 贴图存储 F0 颜色，Smoothness 滑块对应 Glossiness 值（即 Unity 中 Smoothness = Glossiness，而非 Roughness）。在将旧项目迁移至 URP/HDRP 时，需将 Smoothness 贴图取反才能正确对应 HDRP 使用的 Roughness 参数。
 
 ---
 
 ## 常见误区
 
-**误区一：认为 SG 工作流的 Diffuse 等同于传统 Phong 模型的漫反射贴图**
-SG 工作流中的 Diffuse 是物理正确的次表面散射颜色，必须满足能量守恒，即金属区域的 Diffuse 必须为黑色。传统 Phong 流程的 Diffuse 贴图并无此约束，不能直接将旧资产的 Diffuse 贴图挪用进 SG 工作流而不做修改。
+### 误区一：Specular 图可以任意填色
 
-**误区二：Glossiness = Roughness 的反转，因此两者可以直接互换**
-虽然数学关系为 `Glossiness = 1 - Roughness`，但两者描述的感知分布并不完全线性等价。不同渲染引擎对 Roughness/Glossiness 的内部映射可能采用平方处理（如 Unreal 内部使用 `α = Roughness²` 作为 GGX 的粗糙度参数），直接将 SG 资产的 Glossiness 贴图反转后不加修正地输入 MR 流程，可能导致高光范围偏差。
+许多初学者将 Specular 图当作普通颜色层涂抹，结果非金属材质的 F0 值远超真实范围（如将非金属的 Specular 设为 (0.8, 0.8, 0.8)，线性值约 0.6，是真实非金属 F0 的 10 倍以上）。真实非金属介质的 F0 集中在 2%–5% 反射率，只有宝石类（如钻石约 5.7%，水晶约 6.4%）才接近 8%，不应随意将非金属 Specular 设为高亮颜色。
 
-**误区三：SG 工作流已经过时，无需学习**
-Substance 3D Painter 至今（2024 版）仍然提供 SG 工作流模板；glTF 2.0 规范虽以 MR 为主，但其扩展 `KHR_materials_specular` 专门为 SG 工作流提供了官方支持；大量历史资产（尤其是 2010–2016 年制作的影视级资产）均采用 SG 工作流存储。
+### 误区二：Glossiness 与 Roughness 数值含义相同
+
+部分工具（如某些版本的 3ds Max 导出插件）会将 Roughness 值直接写入文件名含"glossiness"的通道而不做取反处理，导致导入目标引擎时材质完全反转——原本的粗糙混凝土看起来像镜面，原本的光滑金属看起来像磨砂纸。检验方法是用纯白（1.0）和纯黑（0.0）的参数值分别渲染，观察哪端对应高光集中的镜面效果。
+
+### 误区三：S/G 工作流比 M/R 工作流"更精确"
+
+高光工作流提供更多自由度，但这正是其风险所在：艺术家可以指定物理上不存在的 F0 颜色（例如给非金属赋予金属色 F0），使能量守恒被破坏。M/R 工作流通过将金属度参数限制为 0 或 1（实践中推荐不使用 0–1 之间的中间值，除模拟过渡区如锈迹），从机制上减少了这类人为错误的概率。
 
 ---
 
 ## 知识关联
 
-学习 SG 工作流之前，需要掌握**金属度工作流**的 Base Color / Metalness / Roughness 三通道含义以及菲涅耳 F0 的物理定义，因为 SG 工作流的 Specular 贴图本质上就是 F0 的直接存储，而 MR 工作流的 F0 则由引擎从 Base Color 和 Metalness 混合计算得出（公式：`F0 = lerp(0.04, BaseColor, Metalness)`）。
+**前置概念——金属度工作流**：学习 S/G 工作流前需理解 M/R 工作流的 BaseColor 与 Metallic 参数含义，才能对照出两种工作流在"Albedo 含义"和"F0 来源"上的本质差异。M/R 工作流中 F0 由引擎根据金属度插值自动计算（非金属固定取 0.04），而 S/G 工作流由 Specular 图直接给定，这是两者在信息编码方式上的根本分歧。
 
-在实际管线中，SG 与 MR 之间的**双向转换算法**是衔接两种工作流的关键技术点，Allegorithmic 在 2016 年的技术白皮书《Substance PBR Conversion》中给出了完整的转换推导。掌握 SG 工作流后，可以进一步研究 glTF 扩展规范和多工作流混合管线的引擎实现，理解不同平台（游戏引擎、离线渲染器、Web 渲染器）如何统一处理异构 PBR 资产。
+**横向关联——法线贴图与粗糙度贴图**：无论使用 S/G 还是 M/R 工作流，法线贴图的使用方法完全相同；Glossiness 图与 Roughness 图携带等价信息，仅值域方向相反，替换时只需在着色器中做 `1.0 - x` 运算即可，不需要重新烘焙。
+
+**延伸实践——glTF 格式兼容性**：glTF 2.0 核心规范（2017年发布）不再原生支持 S/G 工作流，若需导出 S/G 资产到 glTF，必须启用 `KHR_materials_pbrSpecularGlossiness` 扩展，而该扩展自 2022 年起已被 Khronos 标注为"Archived"（存档状态），新项目不建议依赖此扩展，应优先转换为 M/R 工作流。
