@@ -24,48 +24,60 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-27
 ---
 
+
 # glTF格式
 
 ## 概述
 
-glTF（GL Transmission Format）是由Khronos Group于2015年发布、2017年正式推出2.0版本的三维资产传输格式，被誉为"3D界的JPEG"。与FBX或OBJ等传统格式不同，glTF专门针对实时渲染场景设计，其核心目标是最小化运行时的解析与处理开销，使浏览器或移动端应用能以接近零的转换代价直接加载并渲染模型。
+glTF（GL Transmission Format）是由Khronos Group于2015年首次发布、2017年正式推出2.0版本的开放标准3D文件格式，专为实时渲染和网络传输场景设计。与FBX不同，glTF并非由某一家商业公司主导，而是一个完全开放的行业规范，源码和规范文档均可在GitHub上免费获取。其设计目标可以用Khronos官方给出的定位来概括——glTF是"3D资产的JPEG格式"，意即像JPEG图片一样轻量、通用、易于传输。
 
-glTF 2.0规范将资产数据分为JSON描述文件（`.gltf`）与二进制数据块（`.bin`）两部分，纹理则以独立图像文件存储。GLB是其单文件变体，将JSON、二进制几何数据和纹理打包进一个`.glb`文件，文件头以魔数`0x46546C67`开头，便于网络传输与移动端分发。glTF支持WebGL、Vulkan、Metal等多种图形API的直接映射，这使得它成为Web 3D（three.js、Babylon.js）和AR/VR应用（ARCore、ARKit、WebXR）的首选格式。
+glTF 2.0相较于1.0版本最重要的改变是引入了PBR（基于物理的渲染）材质模型作为核心规范，并将着色器硬编码从格式中移除，使其不再依赖GLSL代码的直接嵌入。这一设计让glTF天然兼容WebGL、Metal、Vulkan等多种图形API，而无需修改内容本身。在Web和移动端3D内容快速增长的背景下，glTF已成为Three.js、Babylon.js、模型查看器（`<model-viewer>`）等主流Web 3D框架的首选导入格式。
 
 ## 核心原理
 
-### JSON场景描述与二进制缓冲区分离
+### 文件结构：glTF与GLB的区别
 
-glTF使用JSON文件描述场景图（Scene Graph），包含节点层级、网格引用、材质参数、动画通道和相机定义。几何数据（顶点坐标、法线、UV、蒙皮权重）存储在`.bin`二进制缓冲区中，通过`bufferView`和`accessor`对象进行索引访问。`accessor`精确定义了数据类型（如`FLOAT`、`UNSIGNED_SHORT`）、分量数量（`VEC3`、`MAT4`）和偏移量，GPU可以直接读取这些数据而无需格式转换，这是glTF实现高效加载的根本机制。
+glTF格式有两种存储形式。`.gltf`文件是纯文本的JSON描述文件，记录场景层级、网格数据索引、材质参数等结构信息；与之配套的是`.bin`二进制缓冲文件（存储顶点坐标、法线、UV等几何数据）以及独立的纹理图片文件（通常为PNG或JPEG）。这种分离结构便于按需异步加载各部分资源。
 
-### PBR材质模型内置支持
+`.glb`（GL Binary）是glTF的单文件打包形式，将JSON、二进制缓冲和纹理全部合并进一个二进制容器文件。GLB文件以12字节的文件头（magic number为`0x46546C67`，即ASCII的"glTF"）开头，随后是版本号和总文件长度，之后是若干Chunk块交替排列JSON内容和二进制数据。在实际项目部署中，GLB因为只需一次HTTP请求即可加载完整资产，更适合移动端和Web场景。
 
-glTF 2.0原生支持基于物理渲染（PBR）的金属粗糙度工作流（Metallic-Roughness Workflow）。材质参数直接存储为`pbrMetallicRoughness`对象，包含`baseColorFactor`（基础色，RGBA四分量）、`metallicFactor`（金属度，0.0–1.0）和`roughnessFactor`（粗糙度，0.0–1.0）。法线贴图、遮蔽贴图（Occlusion Map）和自发光贴图也有标准化字段，不像FBX需要依赖DCC软件的私有材质扩展，接收端程序能以一致方式解读材质而无需猜测着色器逻辑。
+### glTF的JSON节点结构
 
-### 扩展机制（Extensions）
+glTF的JSON层级由以下几类核心对象组成：`scenes`定义顶层场景入口，`nodes`构成场景树（每个node包含平移/旋转/缩放或4×4矩阵），`meshes`与`accessors`共同描述几何体数据，`materials`存储PBR参数，`animations`保存关键帧动画数据，`skins`记录蒙皮骨骼权重。所有几何数据通过`bufferViews`和`accessors`间接引用`.bin`文件中的字节偏移量，这种设计允许GPU直接映射内存而无需额外解析。
 
-glTF通过官方扩展（Official Extensions）和厂商扩展（Vendor Extensions）满足超出核心规范的需求。例如`KHR_draco_mesh_compression`启用Draco几何压缩，可将网格文件体积缩小高达90%；`KHR_texture_basisu`支持Basis Universal超级压缩纹理，使纹理在GPU上以压缩态（ETC1S或UASTC）直接采样，不占用大量显存；`EXT_mesh_gpu_instancing`支持GPU实例化绘制，适合植被或建筑重复资产。使用扩展时需在JSON的`extensionsRequired`字段声明，加载器若不支持则明确报错而非静默错误。
+### PBR材质模型
 
-### 动画数据结构
+glTF 2.0的核心材质模型为**metallic-roughness工作流**，材质参数包括：
+- `baseColorFactor`：基础颜色（RGBA）
+- `metallicFactor`：金属度，0.0~1.0
+- `roughnessFactor`：粗糙度，0.0~1.0
+- `emissiveFactor`：自发光颜色
+- `normalTexture`：法线贴图
+- `occlusionTexture`：环境遮蔽贴图
 
-glTF动画由`animation`对象管理，内含多个`channel`（通道）和`sampler`（采样器）。每个channel指定动画目标节点和属性路径（`translation`、`rotation`、`scale`或`weights`），sampler则引用时间轴关键帧的输入accessor与变换数据的输出accessor，并支持`LINEAR`、`STEP`、`CUBICSPLINE`三种插值方式。这种结构与WebGL的渲染循环高度契合，JavaScript引擎无需额外转换即可直接驱动骨骼动画或形变目标（Morph Target）。
+金属度与粗糙度被合并存储在同一张贴图的不同通道中（B通道=金属度，G通道=粗糙度），这一设计将纹理采样次数减少了一次，对移动端GPU性能有直接意义。glTF规范还定义了若干官方扩展（Extensions），例如`KHR_materials_unlit`用于不计算光照的卡通风格材质，`KHR_draco_mesh_compression`用于网格压缩，`KHR_texture_basisu`支持KTX2/Basis Universal纹理格式。
 
 ## 实际应用
 
-**Web端产品展示**：电商平台（如Shopify、IKEA官网）使用GLB格式展示家具或消费品3D模型。设计师在Blender中完成建模与PBR材质制作后，通过"File > Export > glTF 2.0"导出，勾选"Apply Modifiers"与"Include > Selected Objects"，最终上传GLB至CDN，用户浏览器通过`<model-viewer>`标签即可渲染，无需插件。
+**Web 3D展示**：电商平台产品3D预览（如Shopify的AR Quick Look功能）普遍采用GLB格式，配合`<model-viewer>`组件实现浏览器内的PBR实时渲染，单个产品GLB文件通常控制在2MB以内以确保移动网络加载速度。
 
-**AR应用资产分发**：苹果的Reality Composer和谷歌的Scene Viewer均支持GLB格式。Android设备通过Chrome浏览器的`intent://`链接唤起Scene Viewer加载GLB，整个流程无需安装App。为控制移动端加载时间，行业实践建议单个GLB文件不超过15MB，纹理分辨率不超过2048×2048。
+**游戏引擎导入**：Godot 4原生支持glTF 2.0作为首选3D场景导入格式；Unity通过官方UnityGLTF插件或第三方GLTFast插件支持GLB运行时加载；Unreal Engine 5.0起内置了glTF导入器，支持将glTF资产直接转换为UAsset。
 
-**游戏引擎导入**：Godot 4原生支持glTF 2.0导入；Unity和Unreal通过插件（UnityGLTF、glTF-UE4）导入，但需注意glTF的Y轴向上坐标系与Unity（Y轴向上）兼容，与Unreal（Z轴向上）需在导入时执行轴转换。
+**XR与移动端AR**：Apple的Reality Composer和Android的Scene Viewer均支持GLB格式作为AR内容来源。苹果在iOS 12后通过Safari原生支持USDZ，但Android生态几乎统一采用GLB，这使得GLB成为跨平台AR内容分发最实际的选择。
+
+**从Blender导出GLB**：在Blender 2.83及更高版本中，File > Export > glTF 2.0菜单下可选择导出为`.glb`或`.gltf + .bin`形式，导出选项中需注意勾选"Apply Modifiers"和"Export Deformation Bones Only"以精简骨骼数量。
 
 ## 常见误区
 
-**误区一：GLB等于压缩格式**。GLB只是将glTF的多个文件合并为单一二进制文件，本身并不压缩几何或纹理数据。若不启用`KHR_draco_mesh_compression`扩展，GLB内的网格数据以原始浮点数存储，文件体积不会比分离式`.gltf+.bin`更小。
+**误区一：认为glTF等同于FBX的替代品，可以完全覆盖所有3D管线需求。**  
+glTF设计目标是"传输与显示"而非"创作与编辑"，它不存储编辑历史、修改器堆栈、非破坏性节点网络等DCC软件特有的创作数据。FBX在影视动画制作管线（如Maya到Unreal的动画传递）中仍是主流，glTF的优势集中在最终交付阶段的轻量化传输，而不是替代FBX作为中间交换格式参与完整制作流程。
 
-**误区二：glTF可以替代FBX用于DCC软件间交换**。glTF的设计目标是"运行时传输"而非"创作数据交换"。它不保存编辑历史、细分曲面控制笼（Subdivision Control Cage）、NURBS曲线或非烘焙修改器，这些信息在导出时已被烘焙丢弃。DCC软件之间的资产交换仍应首选FBX或USD格式，glTF适合作为最终交付格式。
+**误区二：以为GLB文件天然就很小，不需要额外压缩处理。**  
+未经压缩的GLB文件中的几何体数据量与FBX相当，网格本身并不会自动压缩。要获得真正的体积优化，必须在导出时启用`KHR_draco_mesh_compression`扩展（通常可将几何数据体积压缩60%~80%），并对纹理应用Basis Universal（KTX2）格式转换。两种优化都需要接收端（浏览器/引擎）具备对应解码器支持。
 
-**误区三：glTF支持所有PBR工作流**。glTF 2.0核心规范仅支持金属粗糙度（Metallic-Roughness）工作流，Substance Painter的高光光泽度（Specular-Glossiness）工作流需通过`KHR_materials_specular`等扩展实现，且并非所有加载器都支持这些扩展。
+**误区三：混淆glTF的"扩展（Extensions）"等级，导致兼容性问题。**  
+glTF扩展分为"必需（required）"和"可用（used）"两类。若将某扩展标记为`extensionsRequired`，则不支持该扩展的渲染器必须拒绝加载整个文件；若标记为`extensionsUsed`则可降级忽略。在面向广泛平台部署时，错误地将`KHR_draco_mesh_compression`设为Required会导致部分旧版浏览器完全无法显示模型。
 
 ## 知识关联
 
-学习glTF格式前应先掌握FBX导出流程，因为实际资产管线中通常先在DCC软件（Maya、3ds Max、Blender）内以FBX格式制作和验证资产，确认骨骼、蒙皮和动画正确后，再转换或直接导出为glTF交付使用。理解FBX的节点层级概念有助于映射到glTF的`node`树结构，而FBX材质烘焙经验也直接适用于glTF导出前的PBR纹理准备工作。glTF格式的理解为后续学习WebXR资产优化、Draco压缩工作流以及实时渲染管线集成提供了直接的格式规范基础。
+学习glTF格式需要具备FBX导出的操作经验，因为实际工作流中往往需要比较两种格式在骨骼动画、材质通道和文件大小方面的具体差异，判断在哪个阶段切换格式最合适。理解glTF的PBR metallic-roughness参数与Substance Painter等贴图软件的输出预设直接对应，是正确配置贴图通道的前提——Substance Painter内置的"glTF PBR Metal Roughness"导出预设会自动将金属度和粗糙度打包进同一张贴图的正确通道。掌握glTF格式后，进一步学习KTX2纹理压缩格式和Draco几何压缩工具链，可以将Web端3D资产的传输体积优化至生产级标准。

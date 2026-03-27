@@ -24,21 +24,24 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-27
 ---
 
+
 # GitLab CI
 
 ## 概述
 
-GitLab CI 是 GitLab 平台内置的持续集成系统，通过在代码仓库根目录放置 `.gitlab-ci.yml` 配置文件来定义自动化流水线。与 Jenkins 等独立工具不同，GitLab CI 与代码托管、合并请求（Merge Request）、容器注册表（Container Registry）深度集成，无需额外安装独立 CI 服务器即可触发构建、测试和部署任务。
+GitLab CI 是 GitLab 内置的持续集成与持续交付系统，通过在代码仓库根目录放置 `.gitlab-ci.yml` 文件来定义自动化流水线。与 Jenkins 等需要独立部署的 CI 工具不同，GitLab CI 与代码仓库深度集成，每次 `git push` 或合并请求（Merge Request）都可自动触发流水线执行，无需额外的 Webhook 配置。
 
-GitLab CI 首次发布于 2012 年，最初作为独立项目 GitLab CI 存在，2015 年 GitLab 8.0 版本将其完全合并进主产品，成为 GitLab 平台不可分割的一部分。此后引入了 GitLab Runner（负责实际执行任务的代理程序）与 GitLab 服务器分离部署的架构，使执行环境高度灵活。
+GitLab CI 最早在 2012 年随 GitLab 4.0 版本引入，最初功能较为简单。2015 年 GitLab 8.0 版本对其进行了大规模重构，引入了 GitLab Runner 作为独立的执行代理，从此形成了"GitLab 服务器 + Runner"的两层架构，这一架构延续至今。Runner 可以部署在任意机器上，通过轮询或 WebSocket 长连接与 GitLab 服务器通信，领取并执行 Job 任务。
 
-GitLab CI 的核心价值在于"配置即代码"——`.gitlab-ci.yml` 文件随代码一同提交、版本化、审查，流水线行为完全透明可追溯。对于已将代码托管在 GitLab 的团队，无需额外集成外部 CI 工具，即可实现从代码推送到生产部署的全链路自动化。
+GitLab CI 对团队的意义在于：它将 CI/CD 配置作为代码（Configuration as Code）存储在版本库中，任何对 `.gitlab-ci.yml` 的修改都有完整的 Git 历史追踪，这比在 Jenkins Web 界面手动配置 Job 更具可审计性和可重现性。
+
+---
 
 ## 核心原理
 
 ### `.gitlab-ci.yml` 文件结构
 
-`.gitlab-ci.yml` 使用 YAML 语法编写，最顶层的关键字包括 `stages`、`variables`、`default` 和各个 `job` 定义。一个最小可运行的示例如下：
+`.gitlab-ci.yml` 使用 YAML 格式，最核心的概念是 **Stage（阶段）** 和 **Job（作业）**。Stage 定义执行顺序，同一 Stage 内的 Job 并行运行，前一 Stage 全部成功后才会进入下一 Stage。
 
 ```yaml
 stages:
@@ -49,50 +52,45 @@ stages:
 build-job:
   stage: build
   script:
-    - echo "Compiling..."
-    - make build
+    - docker build -t myapp:$CI_COMMIT_SHORT_SHA .
 
 unit-test:
   stage: test
   script:
-    - pytest tests/
-  only:
-    - merge_requests
-    - main
-```
+    - pytest tests/unit
 
-`stages` 字段定义阶段执行顺序，同一 `stage` 内的多个 job 并行执行，不同 `stage` 之间严格串行。每个 job 必须指定所属 `stage`，以及至少包含 `script` 字段（一个 Shell 命令列表）。
-
-### GitLab Runner 与执行器
-
-GitLab Runner 是独立的 Go 语言程序，负责从 GitLab 服务器拉取 job 并在本地执行。Runner 注册时需要选择**执行器（Executor）**类型，常见类型有：
-
-- **Shell**：直接在 Runner 所在机器的 Shell 中执行，适合简单场景，但环境污染风险高
-- **Docker**：每个 job 启动一个独立容器执行，通过 `image` 字段指定镜像（如 `image: python:3.11`），环境隔离彻底
-- **Kubernetes**：在 K8s 集群中为每个 job 动态创建 Pod，适合大规模并发场景
-
-注册 Runner 使用命令 `gitlab-runner register`，需要提供 GitLab 服务器 URL 和注册令牌（Registration Token）。Runner 有三种作用域：**Shared Runner**（所有项目共用）、**Group Runner**（组内项目共享）和**Specific Runner**（仅绑定指定项目）。
-
-### 流水线触发规则与 `rules` 关键字
-
-GitLab CI 通过 `rules`、`only`/`except` 关键字控制 job 的触发条件。推荐使用较新的 `rules` 语法（GitLab 12.3 引入），支持更复杂的条件逻辑：
-
-```yaml
 deploy-prod:
   stage: deploy
   script:
-    - ./deploy.sh production
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"'
-      when: manual
-    - when: never
+    - kubectl apply -f k8s/
+  only:
+    - main
 ```
 
-上述配置表示：仅当推送到 `main` 分支时该 job 出现，且需要手动触发（`when: manual`）。GitLab 提供超过 50 个预定义 CI/CD 变量（如 `$CI_COMMIT_SHA`、`$CI_MERGE_REQUEST_ID`），可在条件判断和脚本中直接使用。
+每个 Job 至少需要 `stage` 和 `script` 两个字段。`script` 是一个 Shell 命令列表，Runner 会按顺序逐行执行这些命令，任意一行返回非零退出码即视为 Job 失败。
 
-### Artifacts 与缓存机制
+### GitLab Runner 的类型与注册
 
-`artifacts` 关键字将 job 产出的文件传递给后续 stage 的 job，默认保留 30 天：
+Runner 是实际执行 Job 的代理进程，通过 `gitlab-runner register` 命令向 GitLab 服务器注册，注册时需要填写服务器 URL 和 Registration Token（在 GitLab 项目的 Settings > CI/CD > Runners 页面获取）。Runner 分为三种作用域：
+
+- **Shared Runner**：由 GitLab 管理员配置，所有项目共享使用，GitLab.com 提供的免费 Shared Runner 每月有 400 分钟的配额限制。
+- **Group Runner**：归属于某个 Group，该 Group 下所有项目可用。
+- **Specific Runner**：仅绑定到单个项目，适合需要特殊硬件（如 GPU）或特定网络环境的任务。
+
+Runner 的执行器（Executor）决定了 Job 在什么环境中运行，常用的有 `docker`（每次 Job 启动干净容器）、`shell`（直接在 Runner 所在机器执行）和 `kubernetes`（在 K8s 集群中动态创建 Pod）。
+
+### 关键配置指令
+
+**`only` / `except` 与 `rules`**：控制 Job 的触发条件。`only: [main]` 表示仅在 `main` 分支触发，而较新的 `rules` 语法更灵活，支持基于文件变更路径、变量值等复杂条件判断：
+
+```yaml
+rules:
+  - if: '$CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"'
+    when: always
+  - when: never
+```
+
+**`artifacts`**：用于在 Job 之间传递文件。声明了 `artifacts` 的 Job 会将指定路径的文件上传到 GitLab 服务器，后续 Stage 的 Job 会自动下载这些文件：
 
 ```yaml
 build-job:
@@ -102,26 +100,34 @@ build-job:
     expire_in: 1 week
 ```
 
-`cache` 关键字用于跨 pipeline 复用文件（如 `node_modules`），通过 `key` 字段区分不同缓存桶。`artifacts` 和 `cache` 的本质区别：前者在同一 pipeline 的 stage 之间传递数据，后者在不同 pipeline 执行之间节省下载时间。
+**`cache`**：与 `artifacts` 不同，`cache` 用于缓存依赖包（如 `node_modules`、`.pip` 目录）以加速构建，基于 `key` 字段决定缓存是否复用。
+
+**`variables`**：GitLab CI 内置了大量预定义变量，如 `$CI_COMMIT_SHA`（完整提交哈希）、`$CI_PROJECT_NAME`（项目名）、`$CI_REGISTRY`（容器镜像仓库地址），可直接在 `script` 中使用。
+
+---
 
 ## 实际应用
 
-**前端项目完整流水线**：一个典型的 Vue.js 项目 `.gitlab-ci.yml` 会包含 `install`（`npm ci`）、`lint`（`eslint`）、`test`（`jest --coverage`）、`build`（`npm run build`）、`docker-build`（推送镜像到 GitLab Container Registry）和 `deploy`（触发 K8s 滚动更新）六个 stage，合并请求触发前五个 stage，仅 `main` 分支的推送触发 `deploy`。
+**Node.js 项目的典型流水线**：在 `build` 阶段运行 `npm ci` 安装依赖并编译，在 `test` 阶段并行运行单元测试和 ESLint 代码检查，在 `deploy` 阶段使用 `only: [main]` 限制仅主分支自动部署到生产环境。整个过程利用 `cache` 缓存 `node_modules` 目录，可将后续流水线的依赖安装时间从 2 分钟降至 15 秒以内。
 
-**多环境部署**：利用 GitLab CI 的环境（`environment`）功能，可以定义 `staging` 和 `production` 两套部署 job，在 GitLab UI 的 Deployments 页面追踪每个环境当前部署的版本，并支持一键回滚。
+**合并请求流水线（Merge Request Pipeline）**：在 Job 中设置 `only: [merge_requests]` 或使用 `rules` 配置 `$CI_PIPELINE_SOURCE == "merge_request_event"`，可使流水线仅在 MR 创建或更新时触发，从而在代码合并前就完成测试验证，并将测试报告直接展示在 MR 页面的评论区。
 
-**矩阵测试**：使用 `parallel: matrix` 关键字（GitLab 13.3 引入）可在单个 job 定义中并行运行多个参数组合，例如同时测试 Python 3.9、3.10、3.11 三个版本，无需手动复制三份 job 配置。
+**动态环境（Review Apps）**：GitLab CI 支持为每个 MR 自动部署一个临时预览环境，在 Job 中配置 `environment: name: review/$CI_COMMIT_REF_NAME`，GitLab 会在 Environments 页面展示每个预览环境的访问链接，MR 合并后可配置 `on_stop` 自动销毁该环境。
+
+---
 
 ## 常见误区
 
-**误区一：将 `cache` 当 `artifacts` 使用**。cache 不保证可靠传递——Runner 可能在不同机器上执行导致缓存未命中，也可能因存储满而被清除。若 build 阶段产出的二进制文件需要在 deploy 阶段使用，必须用 `artifacts`，而不能依赖 `cache`。
+**误区一：混淆 `cache` 与 `artifacts` 的用途**。很多初学者将两者互换使用。`artifacts` 是流水线内跨 Job 传递构建产物（如编译后的二进制文件）的机制，具有严格的生命周期；而 `cache` 是跨流水线复用的加速机制（如缓存 Maven 本地仓库），不保证一定命中。将大型构建产物放入 `cache` 会导致每次流水线都上传/下载不必要的大文件，严重拖慢速度。
 
-**误区二：忽视 Runner 标签（Tags）导致 job 永远处于 Pending 状态**。每个 Runner 注册时可添加标签（如 `docker`、`linux`），job 中通过 `tags` 字段指定需要的 Runner。若 job 的 `tags` 要求无法被任何在线 Runner 满足，该 job 会无限期等待，而不会报错提示。排查时应检查 GitLab 项目设置中的 CI/CD Runner 列表，确认有绑定且在线的 Runner 具备匹配标签。
+**误区二：认为 `only: [main]` 与 `rules` 等效且可以混用**。实际上，在同一个 Job 中不能同时使用 `only/except` 和 `rules`，GitLab 会报配置错误。此外，`only` 语法在功能上存在局限，GitLab 官方文档已明确建议迁移至 `rules` 语法以获得更精细的控制能力。
 
-**误区三：在 `.gitlab-ci.yml` 中硬编码敏感信息**。API 密钥、数据库密码等不应明文写入配置文件。正确做法是在 GitLab 项目或组的 **Settings > CI/CD > Variables** 中添加 Masked 变量（变量值在 job 日志中自动屏蔽），在脚本中以 `$DEPLOY_KEY` 形式引用。
+**误区三：Shared Runner 与 Specific Runner 安全等价**。Shared Runner 在多个项目间共享执行环境，若使用 `shell` 执行器，不同项目的 Job 实际上运行在同一操作系统用户下，存在环境污染和敏感信息泄露风险。对于包含生产环境密钥的 Job，应使用专属的 Specific Runner 并配置 `docker` 执行器以隔离执行环境。
+
+---
 
 ## 知识关联
 
-学习 GitLab CI 之前需要掌握**流水线设计**的基本思想——理解 stage 串行与 job 并行的区别，以及构建、测试、部署分层的必要性，这样才能合理规划 `.gitlab-ci.yml` 的 `stages` 结构，避免将所有任务塞进单个 job。
+学习 GitLab CI 需要具备**流水线设计**的基础认知，理解 Stage 串行、Job 并行的执行模型正是流水线设计中阶段划分原则的直接落地实现。`.gitlab-ci.yml` 中 `stages` 数组的顺序对应流水线设计中对构建、测试、部署三层结构的划分逻辑。
 
-在 GitLab CI 的具体技术上，还可以进一步研究**父子流水线**（Parent-Child Pipelines，通过 `trigger` 关键字拆分大型仓库的配置）和**多项目流水线**（跨仓库触发，适合微服务联动部署场景）。掌握 GitLab CI 后，理解 GitHub Actions 或 Azure Pipelines 等其他 CI/CD 工具的配置语法也会更加容易，因为"触发规则 + 执行环境 + 步骤脚本"的三段式结构是各平台的共同范式。
+GitLab CI 与 GitLab 的**Protected Branches**（受保护分支）和**Environments**功能深度联动——受保护分支上的 Job 只能由标记了 `Protected` 的 Runner 执行，这提供了一层额外的安全隔离，是将代码评审流程与部署权限控制结合的关键机制。掌握 `.gitlab-ci.yml` 的完整语法后，可进一步探索 GitLab 的**父子流水线（Parent-Child Pipelines）**和**多项目流水线（Multi-project Pipelines）**，用于管理大型 Monorepo 或跨服务的协作部署场景。
