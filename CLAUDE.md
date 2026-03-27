@@ -62,15 +62,19 @@
 >   Batch 3 完成: 500篇Tier-B文档改写
 >   Batch P2 完成: 1000篇大域Tier-B改写
 >   Sprint 6 🔥进行中: **全量Tier-B升级** — `scripts/_batch_sprint6.py --max 3400`
->   进度: 2957+/2754原始目标完成 (107%+), 后台进程PID 42652继续处理扩展队列(CPU 317s)
->   内网API稳定运行, PID 42652已连续处理wave 32-124, 无stall
->   📊 **2026-03-27 质量快照**: **S=692(11.2%) A=5,094(82.7%) B=370(6.0%) C=0(0.0%)** 均分77.0
->   vs Sprint 4结束: S=145 A=639 B=5,368 C=0 均分49.5 → **提升幅度: +27.5分, A+S从12.8%→93.9%**
->   🎉 里程碑: 均分77! A+S 93.9%! B-tier降至6%! A-tier超82%!
+>   进度: 3157/3353完成 (94.2%), 后台进程PID 24056运行中(CPU 416s), 仅196项剩余
+>   Sprint 6.5 🔥进行中: **孤儿文件补全** — `scripts/_batch_sprint6_5.py --max 2800`
+>   目标: Sprint 6未覆盖的2,789篇非v2文件(来自Sprint 2-3时代ai-rewrite-v1批次)
+>   进度: 400/2789完成 (14.3%), 后台进程PID 35824运行中, 0错误
+>   📊 **2026-03-27 晚间质量快照**: **S=698(11.3%) A=5,267(85.6%) B=191(3.1%) C=0(0.0%)** 均分77.8
+>   累计v2改写: 3571/6156 (58.0%) 已完成rewrite-v2标记
+>   vs Sprint 4结束: S=145 A=639 B=5,368 C=0 均分49.5 → **提升幅度: +28.3分, A+S从12.8%→96.9%**
+>   🎉 里程碑: 均分77.8! A+S 96.9%! B-tier降至3.1%! v2覆盖率58%!
 >   ✅ 跨域去重修复: 42个同名slug中24个低分副本升级(d1e0204e) + 22个frontmatter域不匹配修正(26f2cc92)
 >   ✅ 3个超时错误手动修复: analogical-reasoning/chinese-metaphysics/feminist-philosophy (2026-03-27)
->   Sprint 7 暂停: **Tier-S Booster** — 同一API依赖, Sprint 6优先
->   下一步: Sprint 6扩展队列继续处理剩余~396篇, 目标B-tier<5%, 均分78+
+>   ✅ 重复进程清理: 杀掉重复PID 42652(旧Sprint6) + PID 29304(重复Sprint6.5), 保留PID 24056 + PID 35824
+>   Sprint 7 暂停: **Tier-S Booster** — 同一API依赖, Sprint 6/6.5优先
+>   下一步: Sprint 6约2小时完成(196项), Sprint 6.5约40小时(2384项), 目标全量v2覆盖+均分80+
 **✅ Phase 37 完成**: 游戏开发全领域跨球体总验证 | 详见 `docs/EXPANSION_PLAN.md` 第十章
 **🧭 方向性文档**: `DEVELOPMENT_PLAN.md` — MVP定义/技术架构/里程碑/成本估算
 **调研报告**: `RESEARCH_REPORT.md` — 市场分析/竞品/教育理论/技术可行性
@@ -164,7 +168,7 @@
 > **Issue**: #32 (已关闭)
 
 ## Last Review
-**Date**: 2026-03-27 | **Scope**: Sprint 6 progress check + 3 timeout error retries. PID 42652 stable (CPU 271s, started 03-26). 2720/3353 queue completed (81.1%), 2735/6156 total v2 (44.4%). Quality: avg 75.9, S=682/A=4859/B=615/C=0 (A+S=90.0%). Retried 3 failed concepts (analogical-reasoning/chinese-metaphysics/feminist-philosophy) — all succeeded. 0 open GitHub issues. 0 errors remaining. | **Result**: passed
+**Date**: 2026-03-27 (evening) | **Scope**: Sprint 6+6.5 progress check + process cleanup. Sprint 6: 3157/3353 done (94.2%), PID 24056, 196 remaining. Sprint 6.5: 400/2789 done (14.3%), PID 35824, 2384 remaining. Killed duplicate processes (old PID 42652 + PID 29304). Quality: avg 77.8, S=698/A=5267/B=191/C=0 (A+S=96.9%, B=3.1%). v2 coverage: 3571/6156 (58.0%). 0 open issues. 0 errors. | **Result**: passed
 
 **FSRS-5 实现摘要** (间隔重复引擎):
 > **目标**: 实现ADR-007指定的FSRS-5间隔重复算法, 替代空占位stub
