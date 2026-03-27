@@ -24,63 +24,66 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-27
 ---
 
+
 # Shader Graph
 
 ## 概述
 
-Shader Graph 是 Unity 于 2018 年随 Scriptable Render Pipeline（SRP）一同推出的可视化着色器编辑工具，允许开发者通过连接节点（Node）来构建 GPU 着色逻辑，而无需手写 HLSL 或 Cg 代码。它以 `.shadergraph` 格式保存文件，底层会自动将节点网络编译为符合 URP 或 HDRP 规范的 Shader 代码。
+Shader Graph 是 Unity 于 2018 年随通用渲染管线（URP）一同推出的可视化着色器编辑工具，允许开发者通过连接节点的方式创建着色器，无需手写 HLSL 代码。它以节点图（Node Graph）为基本编辑范式，每个节点封装一种数学运算或采样操作，开发者通过拖拽连线将节点输出端口（Output Port）与其他节点的输入端口（Input Port）相连，最终将数据流导入主节点（Master Stack），生成可被 GPU 执行的着色器程序。
 
-Shader Graph 的设计目标是降低着色器开发门槛——在此之前，Unity 开发者要么使用 Surface Shader（只支持 Built-in 管线），要么从零编写顶点/片元着色器。Shader Graph 的节点编辑器继承了 Unreal Engine 的 Material Editor 理念，但深度集成于 Unity 的 SRP 架构，支持 URP 和 HDRP 两套管线，无法在 Built-in Render Pipeline 中使用。
+Shader Graph 的前身是 Unity 商店中的第三方插件 Shader Forge（2013年），Unity 官方在观察到社区对可视化着色器编辑的强烈需求后，将类似的功能内置为第一方工具。自 Unity 2021 LTS 起，Shader Graph 同时支持 URP 和 HDRP 两条渲染管线，但不兼容旧版的内置渲染管线（Built-in Render Pipeline）。这一限制意味着项目必须先完成渲染管线迁移，才能使用 Shader Graph 资产。
 
-对于使用 URP 的项目，Shader Graph 是构建自定义材质效果的主要途径。它支持实时预览（Main Preview 窗口），节点更改后可在编辑器中即时看到渲染结果，配合 Blackboard 面板管理 Shader 属性（Properties），大幅提升了迭代效率。
+Shader Graph 的核心价值在于将着色器逻辑可视化，让美术人员在不了解 GPU 编程的情况下，也能独立迭代材质效果。生成的 `.shadergraph` 文件本质上是一个 JSON 序列化的图数据结构，Unity 在构建时会将其编译为对应渲染管线的 HLSL 代码，因此运行时性能与手写着色器相当，不存在额外的解释层开销。
+
+---
 
 ## 核心原理
 
-### 节点系统与数据流
+### 节点类型与数据类型系统
 
-Shader Graph 的工作逻辑是有向无环图（DAG）：数据从输入节点（Input Nodes）流向输出节点（Master Stack）。每条连线（Edge）传递特定数据类型，包括 `Float`、`Vector2`、`Vector3`、`Vector4`、`Color`、`Texture2D`、`Boolean` 等。节点的输出端口（Output Port）连接到另一个节点的输入端口（Input Port），不允许形成循环。
+Shader Graph 中每个节点的端口携带明确的数据类型，包括 `Float`（标量）、`Vector2`、`Vector3`、`Vector4`、`Color`、`Texture2D`、`Boolean` 等。连线时类型必须兼容，系统会对部分不匹配类型进行自动扩展（如 `Float` 连接 `Vector3` 时会填充为 `(x, x, x)`），但 `Texture2D` 端口只能接受纹理采样节点，不允许跨类别强制连接。
 
-每个节点代表一个 GPU 运算操作，例如 `Sample Texture 2D` 节点对纹理进行采样，`Multiply` 节点执行逐分量乘法，`Lerp` 节点执行线性插值：`result = A × (1 - T) + B × T`。开发者通过组合这些节点描述像素颜色、透明度、法线等最终属性。
+节点库中包含超过 200 个内置节点，分为 Input（输入）、Math（数学）、Channel（通道）、UV、Geometry（几何）、Procedural（程序化）等类别。例如 **Voronoi** 节点可直接生成程序化细胞纹理，**Normal From Height** 节点可从灰度高度图反推法线，这些封装减少了手写复杂 HLSL 的需要。
 
-### Master Stack（主堆栈）
+### 主节点（Master Stack）与渲染目标
 
-Shader Graph 2020.2 版本引入了 Master Stack 取代旧版的 Master Node。Master Stack 分为两个 Stage：
-- **Vertex Stage**：控制顶点位置（Position）、法线（Normal）、切线（Tangent）
-- **Fragment Stage**：控制基础颜色（Base Color）、金属度（Metallic）、平滑度（Smoothness）、自发光（Emission）等
+图的终点是 **Master Stack**，分为 Vertex 和 Fragment 两个模块。Fragment 模块包含 Base Color、Metallic、Smoothness、Emission、Alpha 等表面属性输入；Vertex 模块允许对顶点位置（Position）和法线（Normal）进行程序化偏移，从而实现顶点动画（如布料飘动、水面波浪）。Master Stack 在 URP 下对应 **Lit** 或 **Unlit** 两种目标着色器，选择不同目标会改变可用的输入属性集合。
 
-在 URP 中，Shader Graph 默认提供 **Lit** 和 **Unlit** 两种 Graph 类型。Lit Graph 的 Fragment Stage 使用 PBR 光照模型，Unlit Graph 则只输出最终颜色，不参与光照计算，适合 UI 特效或风格化渲染。
+### 子图（Sub Graph）与图的复用
 
-### Blackboard 与 Graph Inspector
+Shader Graph 支持将一段节点网络封装为 **Sub Graph**（扩展名 `.shadersubgraph`），使其像单一节点一样被其他图引用。Sub Graph 可自定义输入/输出端口名称和类型，形成可复用的函数模块。例如将"Triplanar 映射"逻辑封装为子图后，多个材质图均可调用，修改子图时所有引用者会自动同步更新。子图内部不能包含 Master Stack，不可单独编译为完整着色器。
 
-Blackboard 面板用于定义 Shader 的对外属性（Property），这些属性会暴露到 Material Inspector 面板，供美术在材质实例中调节数值。属性类型包括 `Float`、`Color`、`Texture2D`、`Vector` 等。每个属性都有一个 **Reference Name**（如 `_BaseColor`），材质球通过这个名称在 CPU 侧传递数据给 GPU。
+### 预览与实时编译
 
-Graph Inspector 则控制整个 Shader 的全局设置，包括精度（Precision，可选 `Half` 或 `Single`）、渲染面（Render Face，Front/Back/Both）以及 Alpha Clipping 的阈值。将 Precision 设为 Half 可以在移动端节省 GPU 寄存器，但对高动态范围颜色计算可能引入精度误差。
+Shader Graph 编辑器中每个节点右下角都有一个实时预览球，显示该节点当前输出值的可视化结果。编辑器会在节点连接发生变化时触发增量编译，将修改的子图片段重新转译为 HLSL，整个图无需全量重编。这一实时反馈循环的延迟通常在 0.5 到 2 秒之间，具体取决于节点数量和目标平台。
 
-### 子图（Sub Graph）
-
-Sub Graph 以 `.shadersubgraph` 格式保存，封装可复用的节点逻辑，类似于编程中的函数。Sub Graph 可以定义自己的输入输出端口，并在多个 Shader Graph 中引用。例如可以把"雪覆盖效果"封装为一个 Sub Graph，在角色、地形、道具的 Shader Graph 中统一调用，修改 Sub Graph 后所有引用它的着色器自动更新。
+---
 
 ## 实际应用
 
-**溶解效果（Dissolve Effect）**：使用 `Sample Texture 2D` 采样噪声贴图，将其输出值与一个 `Float` 属性（控制溶解进度）相减，结果传入 `Alpha Clip Threshold`。当进度属性从 0 动画到 1，物体表面像素依次被裁剪，形成溶解动画。整个效果只需约 6 个节点即可实现。
+**溶解效果（Dissolve Effect）**：在 Fragment 模块中，将噪声纹理的灰度值与一个可动画化的阈值属性（Property）输入 **Step** 节点，其输出连接 Alpha 端口，并在 Master Stack 中启用 Alpha Clipping。随阈值从 0 增大到 1，网格从完整逐渐"溶解"消失。整个逻辑仅需约 6 个节点，不需要任何 HLSL 代码。
 
-**UV 流动水面**：将 `Time` 节点的输出乘以速度系数，加到 `UV` 节点的输出上，再传入 `Sample Texture 2D` 的 UV 输入端口。水面法线贴图随时间偏移，结合两层不同速度的法线叠加（使用 `Normal Blend` 节点），可实现真实的水流扰动效果。
+**角色描边（Rim Light）**：使用 **View Direction** 节点与 **Normal Vector** 节点做点积（**Dot Product** 节点），将结果通过 **One Minus** 节点取反，再经 **Power** 节点控制边缘宽度，最后叠加到 Emission 端口，形成菲涅尔感的视角相关发光描边。
 
-**角色描边（Outline）**：在 Vertex Stage 中，将顶点位置沿法线方向偏移一个固定距离（如 0.02 单位），结合反面渲染（Render Face 设为 Back）实现描边层，配合主 Pass 共同构成卡通渲染风格描边，无需额外 C# 脚本控制。
+**UV 动画（Scrolling Texture）**：将 **Time** 节点输出乘以一个 Vector2 速度属性，加到 UV 坐标上，再送入 **Sample Texture 2D** 节点，实现流动的水面或传送门漩涡效果。此方案在 Vertex 和 Fragment 阶段均可实现，Fragment 阶段精度更高但性能开销略大。
+
+---
 
 ## 常见误区
 
-**误区一：Shader Graph 可以用于 Built-in 渲染管线**
-Shader Graph 依赖 SRP 的 Shader 后端，生成的 Shader 代码包含 URP 或 HDRP 的专用宏（如 `SHADERGRAPH_PREVIEW`、`UNITY_MATRIX_VP` 的 SRP 版本）。将 `.shadergraph` 文件拖入 Built-in 项目会显示品红色错误材质，无法正常工作。如需在 Built-in 管线中使用可视化工具，需借助第三方插件如 Amplify Shader Editor。
+**误区一：Shader Graph 生成的着色器性能低于手写代码**
+这是错误的。Shader Graph 在编辑时生成完整 HLSL 源码，构建时由 Unity 着色器编译器统一编译为 GPU 字节码，与手写着色器走完全相同的编译流程。性能差异来自节点逻辑本身是否高效，而非 Shader Graph 工具本身引入额外开销。
 
-**误区二：节点越少性能越好，与代码量无关**
-Shader Graph 的每个节点都会编译为若干条 GPU 指令。一个 `Sample Texture 2D` 节点展开后在 Fragment Stage 会产生多条纹理采样指令，而纹理采样是 GPU 的高开销操作。节点数量本身不直接等于性能代价，采样类节点、循环结构（通过 Custom Function 引入）和高精度数学运算才是主要性能瓶颈。应使用 Frame Debugger 或 RenderDoc 分析实际 Overdraw 和 Shader 指令数。
+**误区二：Shader Graph 可以在内置渲染管线（Built-in RP）项目中使用**
+Shader Graph 资产明确绑定 URP 或 HDRP 渲染管线。将 `.shadergraph` 文件拖入使用内置渲染管线的项目，材质将显示为洋红色错误材质（Magenta）。迁移管线不仅是 Shader Graph 使用前提，还会影响光照模型、批处理策略等整体渲染行为。
 
-**误区三：Shader Graph 生成的代码无法优化**
-通过右键 `.shadergraph` 文件选择 "Copy Shader"，可以获取完整的编译后 HLSL 代码。开发者可以将其复制为独立 `.shader` 文件后手动修改，删除冗余分支或合并 Pass，适用于性能敏感的平台（如主机或移动端）的最终优化阶段。
+**误区三：Custom Function 节点可以绕过 Shader Graph 的所有限制**
+**Custom Function** 节点确实允许内嵌 HLSL 代码，但它仍受 Shader Graph 的类型系统和编译上下文约束，无法访问 Shader Graph 不支持的着色器阶段（如 Geometry Shader），也无法直接写入深度缓冲区（Depth Buffer）。复杂的多 Pass 着色器依然必须手写 `.shader` 文件才能实现。
+
+---
 
 ## 知识关联
 
-学习 Shader Graph 需要先理解 **URP 渲染管线**的核心架构，特别是 URP 的 Renderer Feature 机制和 Pass 执行顺序——只有明白 URP 中 Lit Shader 如何参与前向渲染（Forward Rendering）的多 Pass 流程，才能正确设置 Shader Graph 的混合模式（Blend Mode）和深度写入（Depth Write）选项，避免透明物体排序错误等问题。
+Shader Graph 直接依赖 **URP 渲染管线**的存在——URP 定义了光照模型（如 Simple Lit、Complex Lit）和渲染 Pass 结构，Shader Graph 的 Master Stack 中的属性（Metallic、Smoothness 等）正是对 URP PBR 光照方程中参数的图形化映射。没有 URP，Shader Graph 的 Lit 目标无法完成光照计算。
 
-Shader Graph 输出的材质直接作用于 Renderer 组件，与 **Material Property Block**（C# API）结合可实现 GPU 实例化（GPU Instancing）下的每实例属性差异化。进一步学习着色器编程可以从 Shader Graph 的 Custom Function 节点入手，该节点允许内嵌 HLSL 代码片段，是从可视化工具过渡到手写着色器的桥梁。
+理解 Shader Graph 中 Vertex 模块的位移原理，需要具备基础的 3D 坐标空间知识（对象空间、世界空间、裁剪空间之间的变换），因为 **Position** 和 **Normal Vector** 节点均有 Space 属性选项，选错坐标空间会导致效果在摄像机移动时产生漂移。这部分知识属于渲染数学基础，与 Shader Graph 工具本身独立，但在实际使用中频繁交叉。
