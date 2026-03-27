@@ -24,76 +24,82 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-27
 ---
 
+
 # 约定式提交
 
 ## 概述
 
-约定式提交（Conventional Commits）是一套针对 Git 提交信息格式的书面规范，其完整规范版本于 2019 年首次发布为 1.0.0，目前广泛采用的是基于 Angular 团队内部代码提交规范演进而来的标准。该规范要求每条提交信息必须遵循 `<类型>[可选作用域]: <描述>` 的结构，例如 `feat(auth): add OAuth2 login support`，使每一次代码变更的意图在提交信息中一目了然。
+约定式提交（Conventional Commits）是一套针对 Git 提交消息的格式规范，由 Angular 团队于 2014 年首先在其开源框架的贡献指南中推广，后于 2019 年由社区整理为独立的 1.0.0 规范文档。该规范要求每条提交消息遵循固定的结构：`<类型>[可选作用域]: <描述>`，并可附带正文和脚注。这套规则让机器和人类都能以相同方式解读一条提交记录的语义含义。
 
-约定式提交规范的直接价值在于使提交历史可以被机器解析。当工具扫描到 `feat:` 前缀时，它知道这是一个新功能；扫描到 `fix:` 时，它知道这是一个缺陷修复；扫描到 `BREAKING CHANGE:` 关键字时，它知道这涉及不兼容的变更。这种机器可读性是自动生成 CHANGELOG 和自动递增语义化版本号（SemVer）的基础——没有约定式提交，版本发布流程就无法完全自动化。
-
-在实际团队协作中，约定式提交还解决了 Pull Request 审查时的沟通成本问题。审查者在看到 `refactor(database): extract query builder` 时，立即知道这次改动不引入新功能也不修复 Bug，不需要额外的回归测试，大幅提升了代码审查效率。
+约定式提交的价值在于将提交历史从自由文本变为**结构化数据**。当团队严格遵循该规范后，工具链可以自动推断版本号应如何升级（遵循语义化版本 SemVer 规则），自动生成 CHANGELOG.md 文件，并在 CI 流水线中对不合格的提交消息直接报错拦截，无需人工审查。
 
 ## 核心原理
 
-### 提交信息的结构格式
+### 提交消息的标准格式
 
-约定式提交规范定义的完整提交信息结构如下：
+完整的约定式提交消息由三部分组成：
 
 ```
-<类型>[可选作用域]: <简短描述>
+<类型>[可选作用域]: <描述>
 
 [可选正文]
 
 [可选脚注]
 ```
 
-**类型（type）** 是必填字段，规范强制要求的类型包括 `feat`（新功能）和 `fix`（缺陷修复），其他常用类型如 `docs`、`style`、`refactor`、`test`、`chore` 由社区约定俗成。类型后的冒号与空格不可省略，`feat:add login` 是不合规的，必须写成 `feat: add login`。
+其中"类型"字段是规范的核心，必须是预定义的关键词。规范官方明确要求必须支持的类型包括 `feat`（新功能）和 `fix`（缺陷修复），其余常用类型如 `docs`、`style`、`refactor`、`test`、`chore` 则由各团队自行约定。类型全部使用小写字母，冒号后紧跟一个空格，描述部分不以句号结尾。
 
-**作用域（scope）** 放在类型后的括号内，用于标识本次提交影响的代码模块，例如 `fix(parser): handle null pointer exception` 中的 `parser` 说明改动范围仅限于解析器模块。作用域是可选的，但团队一旦决定使用，就应在项目内保持一致。
+### 与语义化版本的映射关系
 
-**破坏性变更（BREAKING CHANGE）** 的标记有两种方式：在脚注区写 `BREAKING CHANGE: <描述>`，或在类型/作用域后添加感叹号，如 `feat!: remove deprecated API endpoint`。这两种方式都会触发语义化版本的主版本号（Major version）递增。
+约定式提交与 SemVer（语义化版本）存在精确的对应规则：
 
-### 与语义化版本的对应关系
+- 类型为 `fix` 的提交 → 触发 **PATCH** 版本号递增（如 1.2.3 → 1.2.4）
+- 类型为 `feat` 的提交 → 触发 **MINOR** 版本号递增（如 1.2.3 → 1.3.0）
+- 脚注中包含 `BREAKING CHANGE:` 或类型后附加 `!` 符号 → 触发 **MAJOR** 版本号递增（如 1.2.3 → 2.0.0）
 
-约定式提交与语义化版本 2.0.0 规范直接对应，映射规则如下：
+例如，提交消息 `feat!: 移除对 Node 12 的支持` 中的感叹号明确标记了破坏性变更，会让自动化工具将主版本号从 1 升到 2，即使描述文字没有写"breaking change"，规范工具也能识别。
 
-- `fix:` 类型提交 → 触发 **补丁版本**（PATCH）递增，如 1.0.0 → 1.0.1
-- `feat:` 类型提交 → 触发 **次版本**（MINOR）递增，如 1.0.0 → 1.1.0
-- 包含 `BREAKING CHANGE` 的提交 → 触发 **主版本**（MAJOR）递增，如 1.0.0 → 2.0.0
+### BREAKING CHANGE 的两种声明方式
 
-工具链（如 `semantic-release`、`standard-version`）正是依据这套映射规则，扫描自上次发布以来的所有提交信息，自动计算出下一个合适的版本号，完全无需人工干预。
+破坏性变更可通过两种等价方式声明。第一种是在类型或作用域后添加 `!`，例如 `refactor(auth)!: 重构登录接口参数`。第二种是在提交消息的**脚注区域**（正文之后，以空行隔开）写入 `BREAKING CHANGE: <详细说明>`，例如：
 
-### 自动化 CHANGELOG 的生成原理
+```
+feat(api): 新增分页查询接口
 
-`CHANGELOG.md` 的自动生成依赖提交信息的结构化分类。工具按照提交类型将变更分组：所有 `feat:` 提交归入"新功能"章节，所有 `fix:` 提交归入"缺陷修复"章节，所有 `BREAKING CHANGE` 提交归入"破坏性变更"章节。`docs:`、`style:`、`chore:` 类型的提交通常不出现在面向用户的 CHANGELOG 中，因为它们不影响最终产物的行为。
+BREAKING CHANGE: /users 接口不再支持 limit 参数，
+请改用 pageSize 替代。
+```
 
-以 `conventional-changelog-cli` 工具为例，执行 `npx conventional-changelog -p angular -i CHANGELOG.md -s` 命令，工具会读取 Git 日志，按上述规则提取并格式化内容，追加到 CHANGELOG 文件头部，整个过程耗时通常不超过 1 秒。
+两种写法在工具解析时效果相同，但脚注写法可以提供更完整的迁移说明，适合面向外部用户的公共 API 变更。
 
 ## 实际应用
 
-### 配合 commitlint 强制执行规范
+### 配合 commitlint 在 CI 中强制执行
 
-仅靠约定无法保证团队所有成员的提交格式合规。`commitlint` 配合 `husky` 的 Git Hooks 可以在本地提交时自动校验格式。在项目根目录创建 `commitlint.config.js` 并写入 `module.exports = { extends: ['@commitlint/config-conventional'] }`，再在 `package.json` 中配置 `commit-msg` hook，一旦有人提交 `fix bug in login` 这样不合规的信息，提交动作会被立即阻断并输出错误提示。
+团队通常使用 `commitlint` 工具配合 Git 的 `commit-msg` 钩子，在每次本地提交时自动校验格式。`@commitlint/config-conventional` 包内置了约定式提交的规则集。在 `.commitlintrc.json` 中写入 `{"extends": ["@commitlint/config-conventional"]}` 即可启用。若提交消息不符合规范，`git commit` 命令会直接返回非零退出码并阻止提交。
 
-### 在 CI/CD 流水线中触发自动发布
+在 Pull Request 工作流中，还可以通过 GitHub Actions 的 `wagoid/commitlint-action` 检查 PR 中所有提交的格式，确保合并进主干的每一条记录都是合规的。这与 PR 审查流程直接衔接：审查者关注代码逻辑，而格式合规性完全由自动化工具负责。
 
-在 GitHub Actions 中，可以配置一个 Release 工作流：当代码推送到 `main` 分支时，`semantic-release` 工具扫描自上次 Tag 以来的所有提交，若发现 `feat:` 类型的提交，则自动将 npm 包从 1.2.3 发布为 1.3.0，并同时创建对应的 GitHub Release 和更新 CHANGELOG，整个流程无需人工执行任何发布命令。
+### 使用 standard-version 自动生成变更日志
 
-### Monorepo 中的作用域管理
-
-在包含多个子包的 Monorepo 项目中，约定式提交的作用域字段用于区分变更所属的子包。例如 `feat(ui-button): add size variant` 和 `fix(ui-input): correct focus style`，`semantic-release` 的 Monorepo 插件可以识别作用域，仅对 `ui-button` 和 `ui-input` 两个子包分别发布新版本，而不触及其他未发生变更的子包。
+`standard-version` 是最常见的约定式提交配套工具。执行 `npx standard-version` 后，它会扫描自上次打标签（tag）以来的所有提交，按类型分组输出到 `CHANGELOG.md`，同时根据上述 SemVer 映射规则更新 `package.json` 中的版本号，最后自动创建一个新的 Git tag。整个发版流程从手动整理改动内容变为一条命令完成。
 
 ## 常见误区
 
-**误区一：认为所有提交都必须使用 feat 或 fix 类型。** 实际上日常开发中大量的提交属于 `refactor:`（重构，不改变外部行为）、`test:`（增加测试）或 `chore:`（构建脚本、依赖更新）。将一次依赖升级误写为 `feat: upgrade lodash` 会导致工具错误地递增次版本号，正确写法是 `chore: upgrade lodash to 4.17.21`。
+### 误区一：`chore` 和 `refactor` 可以随意互用
 
-**误区二：认为破坏性变更必须单独作为主版本提交。** 约定式提交规范允许 `fix!:` 和 `feat!:` 同时存在——即便是一个 Bug 修复，如果修改了公开 API 的签名，也应标记为 `fix!: change return type of parse() from string to object`。类型决定的是变更的意图，感叹号决定的是兼容性影响，二者相互独立。
+`chore` 专指不影响生产代码的维护性工作，例如更新依赖版本、修改构建脚本、配置 CI 环境。`refactor` 则专指在不改变外部行为的前提下重构生产代码的内部结构。将代码逻辑重构错标为 `chore` 会导致自动生成的变更日志遗漏重要的代码变动，使其他开发者在阅读历史记录时产生误判。
 
-**误区三：将约定式提交等同于代码注释或 PR 描述。** 约定式提交信息描述的是**一次原子提交做了什么**，而不是**为什么**要做或**如何**实现。"为什么"应写在提交信息的正文（body）区域，PR 描述中则可以包含更宏观的背景说明。三者各有其受众和使用场景，不可相互替代。
+### 误区二：破坏性变更只能在 `feat` 类型中出现
+
+规范并未限制破坏性变更的类型。`fix!`、`refactor!`、`chore!` 均是合法写法。例如修复了一个 bug，但修复方式改变了原有 API 的返回值结构，此时应写 `fix!: 修正用户对象返回格式` 而不是强行改为 `feat`，否则提交历史的语义会产生混乱，误导后续维护者认为这是新增功能。
+
+### 误区三：约定式提交是对每次提交都要写长篇说明的要求
+
+规范对描述部分没有最低字数要求，正文和脚注均为可选项。对于简单改动，`fix(login): 修正密码框占位符文字` 这样一行完全符合规范。正文和脚注仅在需要解释**为何**做出改动或存在破坏性变更时才必须填写。团队的常见痛点不是消息太短，而是类型和作用域选择不一致，这才是需要通过 commitlint 统一规范的问题所在。
 
 ## 知识关联
 
-学习约定式提交需要已掌握 Pull Request 工作流，因为约定式提交规范通常在 PR 合并节点发挥最大作用——许多团队使用 Squash Merge 策略，将整个 PR 的所有提交压缩为一条提交信息，此时这条合并提交的格式必须严格遵循约定式提交规范，才能被 CHANGELOG 工具正确解析。如果不理解 PR 的合并策略差异（Merge Commit vs. Squash Merge vs. Rebase Merge），就无法判断应该在每个小提交上执行规范还是仅在合并时执行规范。
+约定式提交建立在 **Pull Request 工作流**的基础上：PR 工作流定义了代码合并进主干的路径，而约定式提交规范化了这条路径上每一个提交节点的语义标记。在 PR 合并时，通常需要选择将分支上的多个提交压缩（squash）为一个符合约定式提交规范的合并提交，还是保留每个独立的约定式提交记录，这一决策直接影响 CHANGELOG 的粒度。
 
-约定式提交是语义化版本自动化发布流程的入口环节，掌握它之后可以进一步学习 `semantic-release` 的完整配置，以及如何在 GitHub Actions 或 GitLab CI 中搭建端到端的自动发布流水线。对于维护开源库的工程师而言，约定式提交还与 npm 发布流程、GitHub Releases API 深度集成，是现代软件发布工程不可或缺的基础规范。
+掌握约定式提交后，团队可以进一步引入完全自动化的语义化发版流程。`semantic-release` 工具能在 CI 环境中读取约定式提交历史，自动计算版本号、发布 npm 包、创建 GitHub Release 并附上生成的变更日志，将整个发布流程从人工决策变为由提交历史驱动的自动化管线。

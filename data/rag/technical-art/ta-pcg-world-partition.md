@@ -24,68 +24,67 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-27
 ---
 
+
 # 世界分区与PCG
 
 ## 概述
 
-世界分区（World Partition）是虚幻引擎5引入的大世界管理系统，它将地图划分为固定尺寸的单元格（默认为12800×12800厘米，即128米×128米），并通过运行时流送（Runtime Streaming）按需加载这些单元格。当PCG（程序化生成）系统需要在这类开放世界中运行时，必须感知这套分区机制，否则生成逻辑会因数据未加载而产生空洞或崩溃。
+世界分区（World Partition）是虚幻引擎5引入的一套自动化关卡流送架构，取代了UE4中手动管理的World Composition系统。当PCG（Procedural Content Generation）框架在大型开放世界中运行时，World Partition负责将整个地图划分为若干2D网格单元（Cell），PCG生成的内容必须与这套单元加载/卸载机制深度协同，才能避免在玩家视野范围外进行无效的程序化运算。
 
-PCG与World Partition的集成并非简单地"在大地图上运行PCG图表"，而是需要PCG图表理解哪些区域当前已流入内存、哪些区域的Landscape或样条数据尚未可用。虚幻引擎在UE5.1及之后的版本中专门为此引入了**PCG World Actor**和**PCG Volume**的流送感知模式，允许PCG组件跟踪World Partition的单元格状态并分批触发生成。
+传统的关卡流送方案要求美术人员手动切割子关卡，而World Partition + PCG的组合允许开发者在单一持久关卡（Persistent Level）内定义PCG图表（PCG Graph），系统自动决定哪些PCG Actor需要激活并产生输出。这一能力在《堡垒之夜》的超大地图迭代以及Epic内部的Valley of the Ancient演示关卡中得到了验证，证明即使在40平方公里以上的地形上，PCG结合World Partition也能将内存峰值控制在可接受范围内。
 
-这种集成对技术美术的意义在于：一座面积10平方公里的开放世界地图，若不借助流送感知的PCG，就必须在编辑器中一次性生成所有植被、建筑碎片和道路细节，内存峰值往往超过64GB；而正确配置分区感知PCG后，生成工作可拆分到各个单元格，在运行时按玩家位置动态触发。
+理解这一集成方案的核心价值在于：PCG组件上的**Generate on Load**属性与World Partition的Data Layer、Runtime Grid共同构成了一套生成时机控制链路。若不了解两者的触发顺序，开发者极易遭遇Actor在流送进来时重复执行生成逻辑或数据丢失的问题。
 
 ---
 
 ## 核心原理
 
-### World Partition单元格与PCG的关系
+### World Partition的网格划分与PCG的空间感知
 
-World Partition将世界坐标空间切分为网格，每个网格单元格在加载时触发`FWorldPartitionCellLoader`事件。PCG系统通过监听`UWorldPartitionRuntimeHash`的单元格激活回调，得知某个128m×128m区域已完全加载，此时才调度该区域的PCG图表执行。
+World Partition将地图按照可配置的Cell Size（默认128m × 128m）分割，每个Cell拥有独立的加载状态。PCG的**`UPCGComponent`**在执行图表时，可通过**GetActorBounds**以及**PCG Landscape Data**节点读取当前已加载Cell的边界，从而将采样范围（Sample Surface或Get Spline Points节点的输出）限定在已流送入的几何体上。若PCG图表尝试访问尚未加载的Cell中的地形高度数据，则会返回空的Point Data，而非崩溃——这一"软失败"机制是PCG与World Partition安全协同的基础。
 
-PCG图表中的数据采集节点（如`GetActorData`、`GetLandscapeData`）需要标记为**仅在单元格完全激活后才可采样**，否则Landscape高度数据可能只有部分LOD层级可用，导致生成的石块半悬浮在地表之上。在PCG图表属性中，`Execute On Grid`选项指定图表应在哪个层级的World Partition网格上执行——通常与加载半径保持一致，设为Runtime Grid的`Loading Range`值（默认约25600厘米）。
+开发者可在PCG Graph的属性面板中开启**`bGenerateBoundsBasedOnPartition`**，启用后PCG系统会自动将整张图表的执行划分为多个Tile Job，每个Tile的范围对齐到World Partition的Cell边界，从而保证单次Tile生成不会跨越未加载区域采样数据。
 
-### PCG Partition Actor与流送生命周期
+### Data Layer与PCG的条件生成
 
-当启用了World Partition的地图中放置PCG Volume时，引擎会自动为每个PCG Volume的覆盖区域创建**PCG Partition Actor**。这些Partition Actor的空间范围与World Partition单元格对齐，确保一个Partition Actor中生成的SpawnedActor不会跨越两个流送单元格边界。
+World Partition的Data Layer可为场景内容打上逻辑标签（如"白天"/"战后"/"任务阶段3"），PCG图表通过**PCG Data Layer Filter**节点读取当前激活的Data Layer列表，并通过分支（Branch）节点选择不同的生成路径。例如，同一片草原在"战后"Data Layer激活时，PCG可以将稠密草地的Spawn权重降低80%、增加废弃物件的生成密度，而无需美术团队手动摆放任何Actor。
 
-PCG Partition Actor的生命周期与所在单元格绑定：单元格卸载时，Partition Actor中生成的所有临时Actor同步销毁；单元格重新加载时，PCG系统检查磁盘上是否存有已序列化的生成结果（`bSerializeOutput = true`时），如果存在则直接读取，跳过重新计算，大幅减少流送时的CPU开销。这是大型开放世界中保持帧率稳定的关键机制。
+Data Layer的状态变更（`SetDataLayerRuntimeState`）会触发**`OnPCGGraphGenerated`**委托，若PCG组件的**`bActivateIfNotSet`**未正确配置，将导致Data Layer切换后PCG内容不刷新。这是UE5.1至5.3版本间最常见的World Partition + PCG联调Bug之一。
 
-### 边界处理与接缝消除
+### 运行时流送触发时机与Generate on Load
 
-相邻PCG Partition Actor之间的边界（即单元格边缘）存在一个经典问题：两侧图表各自独立采样，可能在128m边界线上产生植被密度突变或重叠。解决方案是在PCG图表中使用**Bounds Modifier节点**，将采样区域向内收缩一定距离（通常为所用最大物体半径，例如大树的碰撞半径约300厘米），并通过Seed值锁定为基于世界坐标的哈希（`bUseSeedBasedOnPositionInWorld = true`），使两侧单元格的泊松分布采样结果在边界处自然衔接而不重叠。
+PCG组件提供三种生成时机模式：
+- **`GenerateOnLoad`**：Actor随World Partition流送进入时立即执行图表。
+- **`GenerateOnDemand`**：仅响应蓝图或C++的显式`Generate()`调用。
+- **`GenerateWithHLOD`**：配合World Partition的HLOD（Hierarchical LOD）层生成低精度代理几何，当玩家距离超过HLOD转换距离（通常800m以上）时由HLOD代理替代实际PCG输出。
+
+当选用`GenerateOnLoad`时，PCG的执行发生在Actor的`BeginPlay`之前、`PostActorCreated`阶段，此时Landscape组件尚未完成全部碰撞Cook。因此在World Partition环境下，需要将**Landscape Projection**节点的**`Project Target`**设置为**`Height Field`**（基于高度场而非物理碰撞），以避免投影结果全部落回Y=0平面的问题。
 
 ---
 
 ## 实际应用
 
-**大型地形植被系统**：以《黑神话：悟空》同类型的山地场景为参考，技术美术在UE5中配置一张128km²地形时，将植被PCG图表的`Grid Size`设为与World Partition一致的12800cm，图表内的Landscape采样节点使用`HierarchicalLOD 0`数据以保证精度。最终运行时每帧只有玩家周围约5×5个单元格（约40km²）处于活跃PCG执行状态。
+**开放世界森林生成案例**：在一个16km × 16km的地图中，开发者在PCG Graph里使用**Partition by Grid**节点将树木生成按512m × 512m分块，每块独立作为一个PCG Partition Actor注册到World Partition中。这样当玩家在地图某一角时，只有周边约9个Partition（约2.3平方公里）处于激活状态并持有树木实例数据，其余区域的Foliage Instance Buffer被完全释放。
 
-**道路沿线建筑生成**：样条数据（Spline Actor）在World Partition中也具有流送边界，当道路样条横跨多个单元格时，PCG图表中的`GetSplineData`节点需要配合`Runtime Generation`设置为`Generate At Runtime`，并开启`Use Local Bounds For Spline Query`，使每个Partition Actor只查询与自身包围盒相交的样条段，避免跨单元格数据访问失效。
-
-**运行时动态刷新**：在玩家游戏过程中破坏场景（如砍树）后需要本地更新PCG输出时，可对特定Partition Actor调用`CleanupLocalComponent()`后再`GenerateLocal()`，只重算被影响的128m单元格，而非刷新整张地图的PCG数据。
+**任务相关地物的动态替换**：在支持玩家破坏建筑的开放世界游戏中，PCG结合Data Layer可实现建筑从"完整"到"废墟"的无缝替换——"完整"Data Layer卸载时，PCG Graph自动清理建筑模块的Spawn结果；"废墟"Data Layer加载时，新的PCG图表分支执行碎石、墙体破口等程序化摆放，整个切换过程不依赖任何预烘焙的子关卡资产。
 
 ---
 
 ## 常见误区
 
-**误区一：认为PCG Volume覆盖大区域就等同于启用了分区感知**
+**误区1：PCG生成的内容会自动参与World Partition的HLOD烘焙**
+事实上，PCG在运行时动态生成的Static Mesh Instance默认**不会**被World Partition的HLOD构建系统收录。要让PCG产出的树木或建筑出现在HLOD代理中，必须在编辑器内执行**Build PCG（Preview）** 将结果固化为静态Actor，或者显式为PCG Spawner节点指定**HLOD Layer**属性，二者缺一不可。
 
-许多初学者将一个巨大的PCG Volume覆盖整张地图，误以为这样会自动利用World Partition进行分批生成。实际上，必须在PCG Volume的属性中将`Use World Partition Grid`显式设为`true`，引擎才会拆分出多个PCG Partition Actor。若该选项为关闭状态，即使地图启用了World Partition，PCG也会在地图加载时一次性计算所有区域，造成编辑器加载时长超过数十分钟，并极易内存溢出（OOM）。
+**误区2：Cell Size越小，PCG性能越好**
+减小World Partition的Cell Size会增加Cell总数和流送开销，同时导致PCG Partition Actor数量成平方级增长。对于覆盖范围超过1km²的植被PCG，Cell Size低于64m时，Partition Actor的序列化/反序列化成本往往超过PCG生成本身的计算成本，实测在UE5.2中该拐点约在48m。
 
-**误区二：以为序列化输出可以完全替代运行时计算**
-
-`bSerializeOutput`确实能让已生成结果缓存到磁盘，但序列化的是最终生成Actor的Transform和Mesh引用，而非PCG图表本身的中间数据。当底层Landscape高度或样条位置在编辑器中发生修改后，若忘记执行`Clean and Regenerate`，序列化缓存将与实际地形错位，出现树木悬空或插入地面的视觉错误，且在运行时不会自动检测到这种不一致，仅靠目视检查很难全面发现。
-
-**误区三：将PCG Partition Actor的网格大小设得过小以追求精细控制**
-
-有些技术美术将`PCG Partition Grid Size`从默认的12800cm改为3200cm（32m），期望获得更细粒度的流送控制。但这会导致Partition Actor数量按平方级增长：一张10km×10km的地图将产生约97656个Partition Actor，引擎在World Partition注册阶段的开销急剧上升，编辑器视口的物体统计面板中Actor数量会突破百万，反而拖慢加载速度。通常建议Partition Grid Size与World Partition的Runtime Grid保持一致或为其整数倍。
+**误区3：`GenerateOnLoad`模式下PCG内容在编辑器和Runtime行为一致**
+编辑器中World Partition使用"Editor Cells"加载机制，其触发时机与PIE（Play In Editor）的Runtime流送时序存在差异。具体表现是：在编辑器视口中手动移动摄像机触发Cell加载时，PCG的`Generate`调用早于`LandscapeProxy`的`OnConstruction`完成，而在Runtime中顺序相反。这一差异在UE5.3的官方文档中有明确标注，需通过延迟一帧（`Delay 0`）或监听`OnLandscapeReady`事件来规避。
 
 ---
 
 ## 知识关联
 
-**前置概念——运行时PCG**：理解世界分区与PCG集成的前提是掌握PCG的运行时生成模式（`Runtime Generation`），包括`Generate At Runtime`和`Regenerate On Overlap`两种触发方式。只有在运行时PCG的基础上，Partition Actor才能在单元格激活回调中自动触发生成；编辑器时生成（`Generate In Editor Only`）模式下的PCG图表无法响应World Partition的流送事件，也就无从实现动态分区。
+本主题直接依赖**运行时PCG**中对`UPCGComponent`生命周期和`GenerateOnDemand`调用方式的理解——不熟悉PCG组件的激活状态机，就无法判断在World Partition流送回调中应使用哪种触发模式。
 
-**横向关联——Landscape与Nanite Tessellation**：PCG对分区地形的采样质量直接影响生成物体的贴地精度。开启Nanite的Landscape在World Partition加载后提供的碰撞数据与视觉LOD存在时序差异，PCG的`ProjectOnTerrain`节点有时需要延迟一帧执行才能拿到准确的物理高度，这在配置高密度植被系统时需要通过`Async Tracing`选项解决。
-
-**工程实践延伸**：掌握本主题后，技术美术可进一步探索PCG与HLOD（Hierarchical Level of Detail）的联动——在远距离LOD层级使用PCG生成的静态网格代理替换Partition Actor中的详细几何体，实现从PCG动态生成到HLOD静态烘焙的无缝过渡，这是大型开放世界性能优化的完整链路。
+在技术路径上，本主题与**PCG + Nanite/ISM优化**紧密相关：World Partition管理的是Actor级别的加载粒度，而Nanite与Instanced Static Mesh（ISM）管理的是已加载Cell内的渲染批次。两套系统共同决定了大规模PCG内容的最终帧预算分配。若项目需要支持主机平台（如PS5的内存上限约16GB可用），必须同时对World Partition Cell Size、PCG Tile大小和ISM Instance上限进行联合调参，而非独立优化单一参数。
