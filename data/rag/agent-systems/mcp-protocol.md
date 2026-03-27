@@ -20,59 +20,59 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-27
 ---
+
+
 # MCP模型上下文协议
 
 ## 概述
 
-MCP（Model Context Protocol，模型上下文协议）是由Anthropic于2024年11月正式发布的开放标准协议，专门用于规范AI模型与外部工具、数据源之间的双向通信方式。在MCP出现之前，每个AI应用都需要为每个工具单独编写集成代码，导致M×N的集成爆炸问题——M个模型与N个工具之间需要M×N套定制接口。MCP通过统一的协议层将这一复杂度降低为M+N，任何符合MCP规范的客户端都可以无缝连接任何MCP服务器。
+MCP（Model Context Protocol）是由Anthropic于2024年11月正式发布的开放协议标准，专门用于规范AI模型与外部工具、数据源之间的通信方式。其核心目标是将"AI模型如何获取上下文信息"这一问题标准化，让任何符合MCP规范的客户端（如Claude Desktop、Cursor等IDE插件）都能与任何MCP服务器互操作，无需为每对组合单独编写适配层。
 
-MCP的设计哲学借鉴了语言服务器协议（LSP，Language Server Protocol）的成功经验。LSP统一了IDE与编程语言工具链之间的接口，MCP则将同样的思路应用于AI Agent与外部世界的交互。协议底层采用JSON-RPC 2.0作为消息格式，支持通过标准输入输出（stdio）和HTTP+SSE两种传输方式建立连接，这使得MCP服务器可以是本地进程，也可以是远程Web服务。
+MCP诞生前，开发者为每个AI应用单独实现工具调用逻辑，导致大量重复的胶水代码。同一个"查询数据库"工具在不同AI产品中需要写四五套不同的集成代码。MCP通过定义统一的传输层（JSON-RPC 2.0 over stdio或HTTP+SSE）和语义层（Resources、Tools、Prompts三类原语），将这种M×N的集成复杂度降低为M+N。这种降维思想直接借鉴了LSP（Language Server Protocol）在代码编辑器生态中的成功经验。
 
-MCP的重要性在于它解决了Agent系统的工具碎片化难题。当一个Agent需要同时访问文件系统、数据库、GitHub仓库和Slack消息时，没有MCP则需要为每种资源编写不同的适配层；有了MCP，开发者只需实现一次MCP服务器接口，任何支持MCP的Agent框架（如Claude Desktop、Cursor、LangChain）均可直接调用。
+MCP在Agent系统中的价值在于它解决了"工具发现"与"工具调用"的解耦问题：Agent运行时可以在不重新部署的情况下，通过MCP动态挂载新的数据源或能力，使系统具备真正意义上的可插拔工具扩展性。
 
 ## 核心原理
 
-### 架构三角：Host、Client与Server
+### 三类原语：Resources、Tools、Prompts
 
-MCP定义了清晰的三层架构。**Host**是运行AI模型的宿主应用程序，例如Claude Desktop或一个自定义的Agent程序；**Client**是Host内嵌的协议客户端，负责与MCP服务器维持一对一的有状态连接；**Server**是暴露特定能力的独立进程，可以访问本地文件、数据库或调用远程API。一个Host可以同时持有多个Client，每个Client连接不同的Server，形成星型拓扑结构。
+MCP协议将服务器能提供的一切抽象为三种原语。**Resources（资源）** 是只读的上下文数据，每个资源通过URI唯一标识，例如 `file:///project/src/main.py` 或 `postgres://db/table/users`，客户端调用 `resources/read` 方法获取其内容。**Tools（工具）** 是有副作用的可调用函数，服务器通过 `tools/list` 暴露工具列表，客户端通过 `tools/call` 触发执行，每个工具携带JSON Schema描述的输入参数规范。**Prompts（提示模板）** 允许服务器向客户端注入结构化的提示片段，支持参数化填充，适合将领域特定指令标准化分发。这三类原语的区分原则是：只读数据用Resources，写操作或副作用用Tools，复用性指令用Prompts。
 
-### 三类原语：Resources、Tools与Prompts
+### 传输层：JSON-RPC 2.0的两种模式
 
-MCP协议将服务器能力抽象为三种原语：
+MCP底层通信格式严格遵循JSON-RPC 2.0规范，所有请求必须包含 `jsonrpc: "2.0"`、`id`、`method` 和 `params` 字段。传输层支持两种模式：**stdio模式**下，客户端以子进程方式启动服务器，通过标准输入输出流传递消息，延迟极低，适合本地工具服务器；**HTTP+SSE模式**下，客户端向服务器发送POST请求，服务器通过Server-Sent Events推送响应，支持跨网络部署和多客户端复用。协议还定义了 `notifications/message` 用于服务器向客户端单向推送日志或进度通知，无需客户端轮询。
 
-**Resources（资源）** 是只读的数据单元，类似REST中的GET端点。每个Resource有唯一的URI标识（例如`file:///home/user/report.pdf`或`postgres://localhost/db/schema`），客户端通过`resources/read`请求获取内容。资源支持订阅机制，服务器可在资源变更时主动推送通知。
+### 能力协商：初始化握手机制
 
-**Tools（工具）** 是可执行的操作，对应有副作用的函数调用。每个Tool必须提供JSON Schema格式的参数描述，模型在生成调用请求时依据该Schema填充参数。工具调用的完整流程是：模型输出`tools/call`请求 → Client转发至Server → Server执行并返回结果 → 模型基于结果继续推理。与Function Calling的关键区别在于，MCP的工具定义存储在Server侧而非每次注入到上下文中。
+MCP连接建立时必须执行三步握手：客户端发送 `initialize` 请求，声明自身支持的 `protocolVersion`（当前主流为 `2024-11-05`）和 `capabilities`；服务器返回自己支持的能力集合，如 `{tools: {}, resources: {subscribe: true}}`；最后客户端发送 `initialized` 通知完成握手。`capabilities` 字段决定双方能使用哪些高级特性，例如只有服务器声明 `resources.subscribe: true` 时，客户端才能调用 `resources/subscribe` 监听资源变更，否则该方法调用将返回 `-32601 Method not found` 错误。
 
-**Prompts（提示模板）** 是服务器预定义的可复用提示片段，客户端通过`prompts/get`动态获取，适合将领域特定的指令集中管理在服务器端。
+### 采样（Sampling）：反向调用模式
 
-### 连接生命周期与能力协商
-
-MCP连接建立时必须经历三个阶段：**初始化（Initialize）**——客户端发送包含协议版本号（当前为`2024-11-05`）和自身支持能力列表的请求；**能力协商**——服务器返回其支持的原语类型和特性（如是否支持流式传输、是否支持资源订阅）；**运行阶段**——双方基于协商结果进行正式通信。协议要求客户端在收到`initialize`响应后必须发送`initialized`通知，这一握手机制确保双方状态同步。
-
-安全模型方面，MCP规范要求Host负责用户授权决策，Server不得直接请求权限，所有敏感操作必须经过Host的显式批准流程，防止恶意服务器绕过用户控制执行危险操作。
+MCP有一个与传统工具调用完全相反的机制——**Sampling**。通常是客户端调用服务器的工具，但在Sampling场景下，MCP服务器可以通过 `sampling/createMessage` 方法请求客户端（即AI模型所在侧）执行一次推理。这允许服务器在处理复杂任务时将子任务的推理工作委托给AI模型，实现多步骤的人机协作流程，而整个过程仍在客户端的安全策略控制之下。
 
 ## 实际应用
 
-**本地开发场景**：开发者可以构建一个MCP文件系统服务器，暴露项目目录的读写工具。Claude Desktop连接该服务器后，可直接读取代码文件、写入修改结果，无需将文件内容手动粘贴到对话框。Anthropic官方提供了`@modelcontextprotocol/server-filesystem`的Node.js参考实现，配置仅需在`claude_desktop_config.json`中指定服务器启动命令即可。
+**本地文件系统工具服务器**是MCP最常见的部署场景。以Anthropic官方提供的 `@modelcontextprotocol/server-filesystem` 为例，服务器通过stdio模式启动，暴露 `read_file`、`write_file`、`list_directory` 等Tools，以及以 `file://` 为前缀的Resources。Claude Desktop在配置文件 `claude_desktop_config.json` 中注册该服务器后，用户对话时Claude可以直接读写指定目录下的文件，无需任何额外的Function Calling配置代码。
 
-**数据库查询自动化**：企业可将内部PostgreSQL数据库封装为MCP服务器，暴露`execute_query`和`list_tables`两个工具。业务人员用自然语言提问，Agent通过MCP工具生成并执行SQL，返回结构化数据。关键安全措施是在Server层强制只读权限，而非依赖模型的自我约束。
+**数据库上下文注入**是Resources原语的典型用例。一个PostgreSQL MCP服务器可将数据库Schema以 `postgres://mydb/schema` 为URI暴露为Resource，Agent在规划SQL查询前先拉取该Resource作为上下文，再调用 `execute_query` Tool执行语句。相比将整个Schema塞入系统提示词，按需通过Resources动态加载可节省50%以上的上下文窗口占用。
 
-**多服务器编排**：一个复杂的研究Agent可同时连接Web搜索MCP服务器（工具：`search`、`fetch_page`）、文献数据库MCP服务器（工具：`search_papers`、`get_abstract`）和本地笔记MCP服务器（资源：`notes://`，工具：`create_note`）。Agent在单次任务中可跨越三个服务器调用，协议层自动处理连接管理，开发者无需编写跨服务协调代码。
+**IDE集成Agent**场景中，Cursor和VS Code Copilot均已支持MCP，开发者可通过MCP服务器将代码审查规则、项目文档、测试覆盖率报告作为结构化Resources暴露给AI，避免重复粘贴上下文的手动操作。
 
 ## 常见误区
 
-**误区一：MCP是Function Calling的替代品**。实际上两者层次不同。Function Calling是模型层面的能力，描述"模型如何表达调用意图"；MCP是传输层协议，描述"调用请求如何路由到执行环境"。在MCP架构中，模型仍然使用Function Calling机制生成工具调用请求，MCP负责将这个请求可靠地传递给正确的服务器并带回结果。两者是互补而非竞争关系。
+**误区一：MCP等同于升级版Function Calling。** Function Calling是AI模型推理层的能力，由模型决定何时调用哪个函数，调用格式与具体模型API绑定（如OpenAI的 `tools` 参数格式）。MCP是独立于模型的基础设施协议，定义的是工具服务器的部署、发现和通信规范。一个MCP服务器可以被支持MCP的任何客户端调用，不依赖特定模型的Function Calling实现。两者的关系是：客户端通常用Function Calling驱动AI决策调用哪个MCP工具，但MCP本身不关心AI层发生了什么。
 
-**误区二：MCP服务器必须是远程HTTP服务**。MCP支持两种传输模式，其中stdio模式更适合本地工具——服务器作为子进程被启动，通过标准输入输出与客户端通信，完全不需要网络端口和身份验证配置。许多官方参考实现（如`server-sqlite`、`server-git`）均默认使用stdio模式，这使得本地MCP服务器的安全边界等同于本机进程权限，而非网络服务权限。
+**误区二：Resources是实时数据流。** 除非服务器明确声明支持 `resources.subscribe` 并且客户端订阅了特定资源，否则Resources仅代表一次性快照读取。客户端调用 `resources/read` 拿到的是请求时刻的内容，后续数据变更不会自动推送。将Resources当作WebSocket实时流使用会导致Agent使用过期数据做决策。
 
-**误区三：实现一个MCP服务器需要从零处理JSON-RPC细节**。Anthropic和社区提供了Python SDK（`mcp`包）和TypeScript SDK（`@modelcontextprotocol/sdk`），开发者只需用装饰器标注函数即可将其注册为Tool或Resource，SDK自动处理序列化、连接管理和生命周期。一个最简MCP工具服务器的Python实现核心代码不超过15行。
+**误区三：MCP服务器必须是独立进程。** stdio模式下确实每个服务器是独立子进程，但HTTP+SSE模式允许多个MCP服务端共享同一HTTP服务进程。此外，MCP SDK（Python版为 `mcp` 库，TypeScript版为 `@modelcontextprotocol/sdk`）支持在同一个应用进程内以内存传输方式嵌入服务器逻辑，这在单元测试和轻量级部署中非常实用。
 
 ## 知识关联
 
-理解MCP需要以**工具调用（Function Calling）**为前提——MCP的Tools原语在语义上直接对应Function Calling中的函数定义，其JSON Schema参数描述格式与OpenAI Function Calling规范高度一致；熟悉Function Calling的开发者可以快速理解MCP工具的定义方式，差异主要在于定义的存储位置从客户端上下文迁移到了服务器端。
+理解MCP需要扎实的**Function Calling**基础，因为实践中Agent的决策层（用Function Calling让模型选工具）与执行层（用MCP调用工具实现）紧密配合。具体地，客户端将MCP服务器的 `tools/list` 返回结果转换为模型API所需的工具描述格式，模型选定工具后，客户端再将参数通过 `tools/call` 转发给MCP服务器——这一转换逻辑是MCP客户端的核心实现职责。
 
-**RESTful API设计**经验有助于理解MCP Resources原语的设计逻辑——Resources的URI寻址机制和只读语义与REST的GET资源概念直接对应，而Tools的有副作用执行则类似于REST中的POST/PUT操作。具备REST设计经验的开发者在设计MCP服务器的接口边界时，可复用资源与操作分离的设计原则。
+**RESTful API设计**知识在MCP服务器开发中体现为：Resources的URI设计遵循与REST资源路径相似的层次结构规范，而HTTP+SSE传输模式的端点设计（`POST /message` 发送请求，`GET /sse` 接收推送）也需要HTTP语义的理解。但需注意MCP不是REST API——它没有状态码语义，错误通过JSON-RPC的 `error` 字段返回，错误码 `-32700`（解析错误）、`-32600`（无效请求）、`-32601`（方法未找到）均来自JSON-RPC 2.0标准而非HTTP状态码体系。
 
-MCP目前正在向**多Agent协作**方向扩展：2024年发布的规范草案中加入了Agent-to-Agent通信的实验性支持，允许一个MCP服务器本身也是一个Agent，从而构建可动态组合的Agent网络拓扑。这代表了MCP从"模型访问工具"向"Agent访问Agent"的架构演进方向。
+随着MCP生态的扩展，下一步实践方向包括：构建支持多服务器并发连接的MCP客户端路由层、实现基于OAuth 2.0的MCP服务器身份验证（MCP 2025路线图中的重点），以及设计跨MCP服务器的工具编排流程以实现复杂的多步Agent任务。

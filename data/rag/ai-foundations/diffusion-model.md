@@ -20,71 +20,68 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-27
 ---
+
 # 扩散模型
 
 ## 概述
 
-扩散模型（Diffusion Models）是一类基于非平衡热力学原理的生成模型，其核心思想是通过学习逆转一个逐步加噪的随机过程来生成数据。具体来说，模型分为两个阶段：**前向扩散过程**将真实数据逐步添加高斯噪声直至完全变为标准正态分布，**逆向去噪过程**则训练一个神经网络学习从噪声中还原数据。这一框架由Sohl-Dickstein等人于2015年首次提出，2020年Ho等人发表的DDPM（Denoising Diffusion Probabilistic Models）论文使其在图像生成领域取得突破性进展。
+扩散模型（Diffusion Model）是一类基于马尔可夫链的生成模型，其核心思想来源于非平衡热力学中的扩散过程。模型的运作分为两个阶段：**前向扩散过程**（forward process）逐步向数据添加高斯噪声，直至数据完全变为标准正态分布；**反向去噪过程**（reverse process）则训练神经网络从纯噪声中逐步还原出真实数据。2020年，Jonathan Ho等人在论文《Denoising Diffusion Probabilistic Models》（DDPM）中首次系统性地将去噪扩散概率模型用于高质量图像生成，奠定了现代扩散模型的理论基础。
 
-扩散模型的崛起直接冲击了GAN（生成对抗网络）在图像合成领域长达数年的统治地位。2021年，OpenAI的DALL-E 2和Stability AI的Stable Diffusion均基于扩散模型构建，后者的开源发布更引发了AI图像生成的全民热潮。与GAN相比，扩散模型训练更稳定（无需博弈均衡），生成的样本多样性更高，且更易于控制生成内容，代价是推理速度较慢——原始DDPM需要1000步去噪才能生成一张图片。
+扩散模型之所以受到广泛关注，在于其生成质量显著优于早期GAN模型，且训练过程更稳定。GAN容易出现模式崩溃（mode collapse）问题，而扩散模型通过最大化变分下界（ELBO）进行训练，损失函数具有明确的概率解释。2021年OpenAI的DALL-E 2、2022年Stability AI的Stable Diffusion，以及Google的Imagen均基于扩散模型架构，推动了文本生成图像技术的商业化落地。
 
 ## 核心原理
 
-### 前向扩散过程（Forward Process）
+### 前向扩散过程
 
-前向过程是一个固定的马尔科夫链，在 $T$ 步内逐渐向数据 $x_0$ 添加高斯噪声，产生一系列中间状态 $x_1, x_2, \ldots, x_T$。每步添加的噪声量由噪声调度表（noise schedule）中的超参数 $\beta_t$ 控制：
+前向过程定义了一个固定的马尔可夫链，在 $T$ 步内向原始数据 $x_0$ 逐步添加高斯噪声。每一步的转移概率为：
 
-$$q(x_t | x_{t-1}) = \mathcal{N}(x_t; \sqrt{1-\beta_t}\, x_{t-1},\, \beta_t \mathbf{I})$$
+$$q(x_t | x_{t-1}) = \mathcal{N}(x_t; \sqrt{1-\beta_t} \, x_{t-1}, \beta_t \mathbf{I})$$
 
-其中 $\beta_t$ 通常从约 $10^{-4}$ 线性或余弦递增至约 $0.02$。DDPM中的关键数学技巧是**重参数化**，利用 $\bar{\alpha}_t = \prod_{s=1}^{t}(1-\beta_s)$，可直接从 $x_0$ 一步采样任意时刻的噪声状态：
+其中 $\beta_t \in (0,1)$ 是预设的噪声调度参数（noise schedule），通常从 $\beta_1 = 10^{-4}$ 线性递增至 $\beta_T = 0.02$。利用重参数化技巧，可以直接从 $x_0$ 采样任意时刻的 $x_t$：
 
-$$q(x_t | x_0) = \mathcal{N}(x_t; \sqrt{\bar{\alpha}_t}\, x_0,\, (1-\bar{\alpha}_t)\mathbf{I})$$
+$$x_t = \sqrt{\bar{\alpha}_t} \, x_0 + \sqrt{1 - \bar{\alpha}_t} \, \epsilon, \quad \epsilon \sim \mathcal{N}(0, \mathbf{I})$$
 
-当 $T=1000$ 且 $\bar{\alpha}_T \approx 0$ 时，$x_T$ 近似等于纯高斯噪声 $\mathcal{N}(0, \mathbf{I})$。
+其中 $\alpha_t = 1 - \beta_t$，$\bar{\alpha}_t = \prod_{s=1}^{t} \alpha_s$。DDPM通常设置 $T = 1000$，当 $t = T$ 时 $\bar{\alpha}_T \approx 0$，$x_T$ 近似为标准正态分布。
 
-### 逆向去噪过程（Reverse Process）
+### 反向去噪过程与训练目标
 
-逆向过程目标是学习条件分布 $p_\theta(x_{t-1}|x_t)$，即从噪声图逐步还原真实图像。由于真实的后验分布 $q(x_{t-1}|x_t)$ 依赖整个数据集，模型使用一个U-Net结构的神经网络 $\epsilon_\theta(x_t, t)$ 来预测在时刻 $t$ 添加的噪声 $\epsilon$，然后据此推算去噪后的状态：
+反向过程用参数为 $\theta$ 的神经网络逼近真实后验 $q(x_{t-1}|x_t, x_0)$。DDPM将训练目标简化为**预测添加的噪声 $\epsilon$**，最终简化损失函数为：
 
-$$p_\theta(x_{t-1}|x_t) = \mathcal{N}(x_{t-1};\, \mu_\theta(x_t, t),\, \sigma_t^2 \mathbf{I})$$
+$$\mathcal{L}_{\text{simple}} = \mathbb{E}_{t, x_0, \epsilon} \left[ \| \epsilon - \epsilon_\theta(x_t, t) \|^2 \right]$$
 
-其中均值 $\mu_\theta$ 由预测的噪声 $\epsilon_\theta$ 计算得出。训练目标简化为最小化预测噪声与真实噪声之间的均方误差：
+即让网络 $\epsilon_\theta$ 在给定带噪样本 $x_t$ 和时间步 $t$ 的条件下，预测原始噪声 $\epsilon$。这一简化形式去除了变分下界中各时间步的权重系数，实验证明效果更好。网络结构通常采用带有时间步嵌入（timestep embedding）的U-Net，时间步 $t$ 通过正弦位置编码注入各层。
 
-$$\mathcal{L}_{\text{simple}} = \mathbb{E}_{t, x_0, \epsilon}\left[\|\epsilon - \epsilon_\theta(\sqrt{\bar{\alpha}_t}x_0 + \sqrt{1-\bar{\alpha}_t}\epsilon,\, t)\|^2\right]$$
+### 采样加速：DDIM与其他方法
 
-### 加速采样：DDIM
+DDPM的主要缺陷是采样速度慢，需要进行 $T=1000$ 次完整的神经网络前向推理。2021年Song等人提出**DDIM**（Denoising Diffusion Implicit Models），将马尔可夫采样过程改写为确定性的非马尔可夫过程，仅需约50步即可生成质量相当的图像，速度提升约20倍。此外，DPM-Solver利用扩散ODE的半线性结构，进一步将步数压缩至10-20步。Stable Diffusion采用的**潜空间扩散**（Latent Diffusion Model, LDM）则先用VAE将512×512图像压缩到64×64的潜变量空间中再进行扩散，将训练计算量降低约48倍。
 
-原始DDPM需要1000步去噪，推理极慢。2020年Song等人提出DDIM（Denoising Diffusion Implicit Models），通过将逆向过程改为**非马尔科夫确定性过程**，允许跳步采样——仅用50步甚至10步即可生成高质量图像，速度提升10到100倍，且同一噪声输入在不同步数下能生成语义一致的图像，实现了"隐空间插值"能力。
+### 条件生成与分类器引导
 
-### 条件生成与引导机制
+无条件扩散模型无法接收文本提示。**分类器引导**（Classifier Guidance）通过在反向采样中加入分类器梯度来控制生成方向：$\nabla_{x_t} \log p(y|x_t)$。更实用的方法是**无分类器引导**（Classifier-Free Guidance，CFG），由Ho和Salimans于2022年提出：训练时随机以20%的概率丢弃条件，推理时使用：
 
-单纯的扩散模型无法按文本提示生成指定内容。Classifier-Free Guidance（CFG）是目前主流方案：训练时随机丢弃文本条件（约10%~20%的概率），推理时同时计算有条件预测 $\epsilon_\theta(x_t, c)$ 和无条件预测 $\epsilon_\theta(x_t, \varnothing)$，并按引导强度 $w$ 加权合并：
+$$\tilde{\epsilon}_\theta(x_t, c) = \epsilon_\theta(x_t, \varnothing) + w \cdot (\epsilon_\theta(x_t, c) - \epsilon_\theta(x_t, \varnothing))$$
 
-$$\tilde{\epsilon} = \epsilon_\theta(x_t, \varnothing) + w \cdot (\epsilon_\theta(x_t, c) - \epsilon_\theta(x_t, \varnothing))$$
-
-$w$ 值通常在5到15之间，$w$ 越大图像越贴合文本但多样性下降。Stable Diffusion默认设置为7.5。
+其中 $c$ 为条件（如文本嵌入），$w$ 为引导尺度（guidance scale），Stable Diffusion默认值为7.5。增大 $w$ 可提升图文相关性，但会降低图像多样性。
 
 ## 实际应用
 
-**文生图（Text-to-Image）**：Stable Diffusion 1.5将扩散过程在潜空间（Latent Space）中进行，利用预训练VAE将512×512图像压缩为64×64的潜向量，再在其上运行扩散过程，使显存需求从约20GB降至约4GB，消费级GPU即可运行。CLIP模型的文本编码器通过Cross-Attention机制将文字语义注入U-Net每一层。
+**文本生成图像**是扩散模型最成熟的应用。Stable Diffusion 1.5使用CLIP ViT-L/14作为文本编码器，通过交叉注意力机制将512维文本嵌入注入U-Net的每个残差块。用户可通过正向提示词指定期望内容，通过负向提示词（negative prompt）排除不想出现的元素，如"blurry, low quality"。
 
-**图像修复（Inpainting）**：通过在前向加噪阶段仅对待填充区域加噪，保持已知区域的 $x_0$ 不变，逆向去噪时模型自动补全缺失内容并与周围像素保持一致。Adobe Photoshop的"创意填充"功能即基于此原理。
+**图像修复与编辑**方面，DALL-E 2提供inpainting功能，用户可在遮罩区域内基于文本描述重新生成内容，同时保持周边区域一致性。DreamBooth技术仅需3-5张人物照片进行微调，即可让模型学会特定人物的面部特征，实现个性化肖像生成。
 
-**医学影像增强**：扩散模型被用于低剂量CT图像去噪，相比传统滤波方法可在去除噪声的同时更好地保留病灶边缘细节；也被用于MRI超分辨率重建，通过从低分辨率图像出发的条件扩散生成4倍高分辨率结果。
+**医学图像合成**是新兴应用场景：扩散模型可生成具有病理特征的合成CT/MRI图像用于数据增强，缓解稀有病例数据不足的问题，2023年多项研究证明合成数据可将分割模型AUC提升2-5个百分点。
 
 ## 常见误区
 
-**误区一：扩散模型的U-Net与图像分割的U-Net功能相同**。扩散模型的U-Net额外接收时间步嵌入 $t$（通过正弦位置编码转为向量后注入各残差块），并且在SD等模型中增加了Cross-Attention层用于接收文本条件，其本质任务是噪声预测而非像素分类，两者架构虽相似但功能逻辑完全不同。
+**误区一：扩散模型只能生成图像**。事实上，扩散模型已被成功应用于音频合成（WaveGrad、DiffWave）、视频生成（Video Diffusion Models）、蛋白质结构预测（FrameDiff）和点云生成，是一类通用的生成框架，并非图像专用。
 
-**误区二：步数越多生成质量越高**。增加采样步数（如从20步增至100步）对最终图像质量的提升在实践中往往边际递减，超过50步后差异肉眼难辨。真正影响质量的是模型规模、训练数据质量、噪声调度设计和CFG引导强度，而非无限叠加采样步数。
+**误区二：步数越多生成质量越高**。DDPM的T=1000步是训练时的设定，采样时可通过DDIM在50步内获得几乎等效质量；过度增加推理步数不会带来明显的质量提升，反而线性增加计算时间。许多实践者误以为Stable Diffusion默认的20步不够，盲目增加到100步以上，实际收益微乎其微。
 
-**误区三：扩散模型只能生成图像**。AudioLDM和MusicGen的部分变体将扩散框架用于音频频谱生成，FrameDiff将其用于蛋白质骨架结构生成，Sora类模型将其用于视频时序帧生成，扩散模型本质上是一种通用的连续数据生成框架。
+**误区三：CFG引导尺度越大越好**。$w$ 值（guidance scale）超过15时，图像往往出现过饱和、颜色失真和伪影，这是因为高引导尺度本质上是在对数似然空间中进行极端外推，导致生成分布超出训练数据覆盖范围。通常 $w \in [7, 12]$ 是文本生成图像任务的合理区间。
 
 ## 知识关联
 
-**与GAN的关系**：GAN通过生成器-判别器博弈训练，扩散模型用单一去噪网络的极大似然训练替代了这一不稳定的对抗过程，彻底解决了GAN的模式崩溃（Mode Collapse）问题，但代价是推理需要多次前向传播而非GAN的单次前向。理解GAN的生成器概念有助于对比两种生成范式的目标函数差异。
-
-**与变分自编码器（VAE）的关系**：Stable Diffusion的Latent Diffusion Model（LDM）架构将VAE与扩散模型结合——VAE负责像素空间与潜空间的压缩/重建，扩散模型在低维潜空间学习数据分布，这一组合使高分辨率图像生成在计算上可行。
-
-**与Transformer架构的融合**：DiT（Diffusion Transformer，2022）用Transformer块替换U-Net作为扩散模型的骨干网络，通过自注意力机制更好地建模全局一致性，Sora视频生成模型即基于此架构变体构建，代表了扩散模型从CNN时代向Transformer时代的演进方向。
+学习扩散模型需要具备**生成对抗网络（GAN）**的知识背景，方能理解两类模型在训练稳定性、样本多样性和评估指标（FID分数）上的本质差异：GAN通过对抗训练隐式学习数据分布，而扩散模型通过最大化ELBO显式建模扩散过程的逆转。**深度学习入门**中的变分自编码器（VAE）概念是理解证据下界推导的前置知识；U-Net架构的卷积、跳跃连接结构是理解扩散模型网络主干的必要基础；注意力机制则是理解条件控制如何在特征图层面实现的关键。掌握扩散模型后，可进一步延伸至流匹配（Flow Matching）——它将扩散过程的SDE形式统一为更一般的ODE框架，是Stable Diffusion 3和Meta Voicebox所采用的下一代生成范式。
