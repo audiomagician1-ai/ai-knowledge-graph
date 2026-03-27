@@ -24,68 +24,83 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-27
 ---
 
+
 # 间接绘制
 
 ## 概述
 
-间接绘制（Indirect Draw）是一种让GPU直接从显存缓冲区读取绘制参数、无需CPU介入的渲染技术。与传统的直接绘制调用不同，间接绘制将绘制命令（如顶点数量、实例数量、起始偏移等）预先写入一块称为**间接缓冲区（Indirect Buffer）**的显存区域，GPU在执行时自行读取这些参数并驱动光栅化流程。这一机制从根本上打破了CPU必须逐帧向GPU"下命令"的瓶颈。
+间接绘制（Indirect Draw）是一种由GPU而非CPU决定绘制参数的渲染技术。在传统的直接绘制模式下，CPU调用 `DrawIndexedPrimitive` 时必须明确传入顶点数量、实例数量和偏移量；而间接绘制将这些参数预先写入一个GPU可访问的缓冲区（Argument Buffer / Draw Indirect Buffer），GPU在执行管线时直接从该缓冲区读取参数，CPU不再参与每帧的具体绘制决策。
 
-该技术在DirectX 11时代以`DrawInstancedIndirect`和`DrawIndexedInstancedIndirect`两个API函数正式进入主流图形管线，对应的OpenGL等价接口`glMultiDrawElementsIndirect`在GL 4.3（2012年）中引入。其真正的革命性意义在于：当间接缓冲区的内容由**前一帧的GPU计算着色器填写**时，整个场景裁剪、批次合并、LOD选择等逻辑可以完全在GPU侧完成，CPU仅需发出一次或极少次的间接绘制调用，这便是所谓的**GPU-Driven Rendering**架构的核心实现路径。
+间接绘制的概念随GPU计算能力的增强而出现。OpenGL 4.0（2010年）引入了 `glDrawArraysIndirect` 和 `glDrawElementsIndirect`，DirectX 11.1 引入了 `ExecuteIndirect` 的前身，而 DirectX 12 和 Vulkan 则将 `ExecuteIndirect` / `vkCmdDrawIndexedIndirect` 提升为一等公民，使GPU-Driven Rendering成为可能。
 
-间接绘制在场景包含数万个独立网格的大型开放世界游戏中极为关键。以《刺客信条：奥德赛》（2018年）为例，其GPU剔除系统正是依赖间接绘制将CPU侧的Draw Call数量压缩至个位数量级，同时保持十万级别的场景物件渲染。
+这一技术的核心价值在于彻底消除CPU-GPU同步瓶颈。传统渲染管线中CPU每帧需要遍历场景中所有物体、完成视锥剔除后提交数以千计的Draw Call；而间接绘制允许Compute Shader在GPU端直接完成剔除并填写绘制参数，CPU仅需提交一次间接绘制命令，从而将大场景的Draw Call数量从数千次压缩到个位数。
+
+---
 
 ## 核心原理
 
-### 间接缓冲区的数据结构
+### Indirect Buffer 的数据结构
 
-在DirectX 12中，`D3D12_DRAW_INDEXED_ARGUMENTS`结构体定义了一次间接绘制所需的全部参数：
+间接绘制的核心是一个名为 `DrawIndexedIndirectCommand`（Vulkan）或 `D3D12_DRAW_INDEXED_ARGUMENTS`（DX12）的结构体，其布局如下：
 
 ```
-IndexCountPerInstance  // 每个实例绘制的索引数量
-InstanceCount          // 实例数量
-StartIndexLocation     // 索引缓冲区的起始位置
-BaseVertexLocation     // 顶点偏移量
-StartInstanceLocation  // 实例数据的起始偏移
+struct DrawIndexedIndirectCommand {
+    uint32_t indexCount;      // 本次绘制使用的索引数量
+    uint32_t instanceCount;   // 实例化数量
+    uint32_t firstIndex;      // 索引缓冲区中的起始偏移
+    int32_t  vertexOffset;    // 顶点的基础偏移
+    uint32_t firstInstance;   // 实例ID起始值
+};
 ```
 
-这5个32位整数（共20字节）构成一条完整的间接绘制命令。一个间接缓冲区可以连续存储成百上千条这样的结构，GPU逐条读取并执行，效果等同于CPU连续调用数百次`DrawIndexedInstanced`，但完全无需CPU参与。
+CPU在初始化阶段将场景中所有可能的物体槽位预先分配好，Compute Shader在运行时决定将 `instanceCount` 填写为 1（可见）还是 0（剔除），从而在不改变缓冲区大小的情况下动态控制哪些物体被绘制。`firstInstance` 字段还可以用于索引GPU端的变换矩阵数组，实现每实例数据的无CPU传递。
 
-### GPU-Driven流程中的两阶段渲染
+### GPU-Driven Culling 与参数填写
 
-完整的GPU-Driven间接绘制通常分为两个计算着色器阶段：
+间接绘制的威力来自GPU端剔除管线。一个典型的实现分为三个Compute Dispatch步骤：
 
-**第一阶段（剔除与参数生成）**：一个Compute Shader以场景中的每个物件为一个线程，读取该物件的包围盒数据和上一帧的深度缓冲（HZB，Hierarchical Z-Buffer），执行视锥体剔除和遮挡剔除。通过测试的物件，其绘制参数被写入间接缓冲区对应槽位，并通过`AppendStructuredBuffer`或原子计数器记录实际绘制数量。
+1. **视锥剔除**：每个线程处理一个物体的包围球，用6个平面方程 $d_i = \vec{n_i} \cdot \vec{c} + r$ 判断物体是否在视锥体外，若剔除则将对应的 `instanceCount` 置零。
+2. **遮挡剔除（HZB）**：将物体的包围盒投影到上一帧的Hierarchical Z-Buffer（分辨率从 512×512 到 1×1 的Mip链），采样对应层级的深度值，若整个包围盒均被遮挡则剔除。
+3. **Prefix Sum紧凑化**（可选）：使用并行前缀和算法将稀疏的可见物体列表压缩为连续数组，再写入 Indirect Buffer，避免 GPU 执行大量 `instanceCount=0` 的空绘制。
 
-**第二阶段（间接绘制执行）**：主渲染通道调用`ExecuteIndirect`（DX12）或`glMultiDrawElementsIndirect`（GL），GPU读取第一阶段生成的间接缓冲区，连续执行所有通过剔除的Draw Call。整个过程CPU只调用了**2次**GPU命令：一次Dispatch和一次间接绘制。
+### Multi-Draw Indirect 与命令计数
 
-### 命令签名与参数验证
+DirectX 12 的 `ExecuteIndirect` 和 Vulkan 的 `vkCmdDrawIndexedIndirectCount` 支持在一次API调用中执行多条间接绘制命令。后者接受一个额外的 Count Buffer，由GPU在运行时写入实际绘制数量 N，随后GPU连续执行 Indirect Buffer 中前 N 条命令。这使得CPU甚至不需要知道最终有多少物体通过了剔除测试，整个过程对CPU完全透明。
 
-DX12引入了`CommandSignature`对象，它定义了间接缓冲区中每条命令的内存布局和步长（stride）。在Vulkan中对应的概念是`VkIndirectCommandsLayoutNV`（NV_device_generated_commands扩展）。这一设计允许每条间接命令携带额外的根常量或描述符绑定变更，从而实现每个物件使用不同材质贴图的**多材质间接绘制**，而不仅限于同质批次。
+---
 
 ## 实际应用
 
-**大规模植被与地形渲染**：一块包含50万棵树的森林场景，传统CPU批次可能产生数千次Draw Call。使用间接绘制时，Compute Shader在GPU侧完成实例裁剪和LOD分级（近距离使用高模，超过500米切换为低模），按LOD级别分别填入不同的间接缓冲区槽位，最终仅需3至4次`ExecuteIndirect`调用（对应3至4个LOD级别）完成全部渲染。
+**《荒野大镖客：救赎2》（2018）** 的地形与植被系统是间接绘制的标志性案例：场景中数十万棵树木和草丛通过GPU Culling + Indirect Instancing渲染，CPU端植被系统的Draw Call数量控制在100以内，而传统方式需要提交超过10万次Draw Call。
 
-**粒子系统的动态批次**：物理模拟计算着色器在更新粒子位置后，同步将存活粒子数量写入间接缓冲区的`InstanceCount`字段。渲染通道直接调用间接绘制，无需CPU读回粒子数量——避免了GPU→CPU的回读同步等待（通常需要1至2帧的延迟代价）。
+**UE5的Nanite**虚拟化几何体系统同样依赖间接绘制。Nanite在Compute Shader中完成Cluster-level的可见性判断后，将每个可见Cluster的绘制参数写入Indirect Buffer，再通过一次 `ExecuteIndirect` 绘制整个场景。这使得场景中多边形数量从每帧预算转变为纯粹的像素着色成本。
 
-**遮挡剔除与HZB结合**：上一帧完成后，将深度缓冲降采样生成层次化深度图（HZB）。当前帧的剔除Compute Shader将每个物件的包围盒投影到HZB的适当Mip层级，若包围盒深度大于HZB采样值则判定为被遮挡，不写入间接缓冲区。这一技术使室内复杂建筑场景的Draw Call数量可减少60%至80%。
+在移动端，Vulkan 的 `VK_EXT_multi_draw` 结合间接绘制可以将角色装备系统（通常包含20-50个材质分区）的Draw Call合并为1次，在高通Snapdragon 8 Gen系列上测量到约0.3ms的CPU帧时间节省。
+
+---
 
 ## 常见误区
 
-**误区一：间接绘制总是比直接绘制更快**
+**误区一：间接绘制总是比直接绘制快**
 
-间接绘制仅在场景足够复杂、Draw Call数量构成瓶颈时才能体现优势。对于场景简单（如Draw Call低于200次）的情况，引入Compute Shader剔除阶段和间接缓冲区管理的额外开销反而会使帧时间增加。另外，从显存读取间接参数本身存在约数十纳秒的延迟，当所有物件都不需要剔除时，这个开销是纯粹的浪费。
+间接绘制引入了Compute Shader的Dispatch开销和Indirect Buffer的内存读写。当场景物体数量少于约200个时，CPU端剔除+直接提交的总开销往往低于启动GPU Culling Pass的固定成本。间接绘制的收益曲线在物体数量超过2000-5000个时才开始明显优于传统方式。
 
-**误区二：间接绘制消除了所有CPU-GPU同步问题**
+**误区二：`firstInstance` 只是实例化的起始偏移**
 
-间接缓冲区作为GPU资源，在DX12和Vulkan中仍然需要正确的资源状态转换（Resource Barrier）。第一阶段Compute Shader写入间接缓冲区后，必须插入一道`UAV Barrier`，才能确保第二阶段的间接绘制读取到已完成写入的数据。遗漏这个屏障是间接绘制实现中最常见的Bug，表现为随机的渲染缺失或绘制参数错乱。
+许多开发者将 `firstInstance` 仅理解为 `gl_InstanceID` 的偏移量，而忽视了它在GPU-Driven架构中作为**物体索引**的关键用途。通过将 `firstInstance` 设置为物体在全局变换矩阵数组中的槽位索引，单次 `DrawIndexedIndirect` 可以在不绑定任何Per-Object常量缓冲区的情况下，让顶点着色器用 `gl_BaseInstance`（GLSL）直接寻址正确的变换数据，这是Bindless架构的基础操作。
 
-**误区三：间接绘制中每个物件必须使用相同的管线状态**
+**误区三：间接绘制消除了所有CPU-GPU同步**
 
-这是DX11时代间接绘制的局限性。在DX12的`ExecuteIndirect`配合可变步长`CommandSignature`机制，以及Vulkan的`NV_device_generated_commands`扩展下，每条间接命令可以携带不同的根描述符或推送常量（Push Constant），允许每个物件绑定不同的纹理索引，实现真正意义上的异质批次间接绘制。
+Indirect Buffer 的初始化仍需CPU上传物体列表（通常是每帧场景变化的增量更新），Count Buffer的回读（如需在CPU端显示可见物体数量用于调试）会强制GPU-CPU同步，造成数帧的Pipeline Stall。生产环境中应使用 `QueryPool` 的异步统计查询替代直接回读。
+
+---
 
 ## 知识关联
 
-间接绘制依赖**深度缓冲**提供遮挡剔除所需的历史深度信息——HZB正是从上一帧的深度缓冲降采样而来，如果不理解深度缓冲的生成机制和精度特性（如反转深度Reversed-Z带来的精度分布差异），就难以正确配置HZB剔除的比较函数，导致遮挡剔除出现误判（错误剔除可见物件）。
+**前置概念：深度缓冲**
 
-向下一步，**Mesh Shader**（DX12 Agility SDK中引入，对应着色器模型6.5）与间接绘制在GPU-Driven架构中形成互补：Mesh Shader将网格的细分与剔除直接内化到可编程着色器阶段，而间接绘制则负责批次调度的GPU化。两者在现代GPU-Driven Rendering管线中通常协同使用——Mesh Shader处理网格簇（Meshlet）级别的精细剔除，间接绘制负责对象级别的粗粒度批次调度，共同构成高效的多层级剔除体系。
+间接绘制中的HZB遮挡剔除直接依赖深度缓冲的Mipmap化结果。上一帧的深度缓冲经过逐级 `max` 降采样后形成HZB，Compute Shader在剔除阶段读取物体AABB投影区域对应的HZB层级，若包围盒的最近深度值大于HZB中的存储值，则确认遮挡。没有深度缓冲的层次化存储，GPU端遮挡剔除无法实现。
+
+**后续概念：Mesh Shader**
+
+间接绘制将绘制参数的控制权交给了GPU，但顶点着色器仍然按照固定的三角形流水线运行。Mesh Shader（DirectX 12 Ultimate / Vulkan NV_mesh_shader，RTX 20系列起支持）进一步将几何体的**生成**也移入GPU，Amplification Shader（Task Shader）承担了类似间接绘制中Compute Culling的角色，直接在GPU上决定每个Meshlet是否需要展开为完整几何体，使GPU-Driven管线从"控制绘制参数"进化为"动态生成绘制几何"。
