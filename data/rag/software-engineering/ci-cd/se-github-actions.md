@@ -24,101 +24,77 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-27
 ---
 
+
 # GitHub Actions
 
 ## 概述
 
-GitHub Actions 是 GitHub 于 2018 年推出、2019 年 11 月正式 GA（General Availability）的内置 CI/CD 自动化平台。它将工作流配置文件直接存储在代码仓库的 `.github/workflows/` 目录下，以 YAML 格式编写，使流水线定义与源代码版本同步管理。相比 Jenkins 等独立 CI 服务器，GitHub Actions 无需维护独立基础设施即可完成构建、测试和部署。
+GitHub Actions 是 GitHub 于 2019 年 11 月正式发布的原生 CI/CD 自动化平台，直接集成在 GitHub 代码仓库中，无需安装任何额外服务即可使用。它基于事件驱动模型，当仓库发生特定事件（如 `push`、`pull_request`、`release`）时，自动触发预定义的工作流程（Workflow）。与 Jenkins、Travis CI 等外部工具不同，GitHub Actions 将流水线配置文件以 YAML 格式存放在仓库的 `.github/workflows/` 目录下，配置即代码，版本可追踪。
 
-GitHub Actions 的计费模型对公开仓库完全免费，私有仓库每月提供 2000 分钟的免费额度（免费账户），超出后按 Ubuntu Runner 每分钟 $0.008 计费，macOS Runner 费率是其 10 倍（每分钟 $0.08）。这一定价结构直接影响了工作流的设计决策，例如是否使用 `continue-on-error`、是否并行化 job。
-
-理解 GitHub Actions 的关键在于掌握其四层抽象结构：**Event → Workflow → Job → Step**。每一层都有独立的配置键和执行上下文，混淆这四层是初学者最常见的错误。
-
----
+GitHub Actions 的计费模式对公开仓库完全免费，私有仓库每月提供 2000 分钟的免费使用额度（GitHub Free 方案）。GitHub 托管的 Runner 机器规格为 2 核 CPU、7 GB RAM、14 GB SSD，可运行 Ubuntu、Windows 和 macOS 环境。这种零基础设施维护成本的特性，使它成为中小型项目 CI/CD 的首选方案。
 
 ## 核心原理
 
-### 触发事件（Event）
+### Workflow 文件结构
 
-工作流由 `on:` 键定义触发条件。GitHub Actions 支持超过 35 种事件类型，最常用的包括：
-
-- `push`：代码推送到指定分支时触发
-- `pull_request`：PR 创建或更新时触发
-- `schedule`：使用 POSIX cron 语法定时触发，例如 `'0 9 * * 1'` 表示每周一 UTC 9:00
-- `workflow_dispatch`：手动触发，支持通过 `inputs:` 定义用户输入参数
-
-触发条件可以精细控制范围。例如 `push` 事件可用 `branches`、`paths` 过滤器限定仅在 `main` 分支且 `src/**` 目录有变更时才运行，避免文档修改触发完整构建流水线。
-
-### Job 与 Runner 配置
-
-Job 是并行执行的基本单位，通过 `runs-on:` 指定运行环境。GitHub 提供的托管 Runner 包括：
-
-- `ubuntu-latest`（当前映射至 Ubuntu 22.04）
-- `windows-latest`（Windows Server 2022）
-- `macos-latest`（macOS 13 Ventura）
-
-Job 间默认并行执行。若需串行，必须显式使用 `needs:` 声明依赖关系：
+一个完整的 Workflow 文件由三个必要字段构成：`name`（工作流名称）、`on`（触发条件）和 `jobs`（任务列表）。每个 Job 包含 `runs-on`（指定 Runner 环境）和 `steps`（执行步骤列表）。Steps 可以是运行 Shell 命令的 `run` 字段，也可以是调用预封装逻辑的 `uses` 字段。
 
 ```yaml
+name: CI Pipeline
+on:
+  push:
+    branches: [main]
 jobs:
   build:
-    runs-on: ubuntu-latest
-  test:
-    needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install && npm test
 ```
 
-`needs:` 还可以引用依赖 job 的输出值，通过 `needs.<job_id>.outputs.<output_name>` 语法跨 job 传递数据，例如将构建产生的镜像 tag 传递给部署 job。
+`on` 字段支持多种触发器，包括 `workflow_dispatch`（手动触发）、`schedule`（基于 cron 表达式的定时触发，如 `'0 8 * * 1'` 表示每周一上午 8 点）以及 `workflow_call`（被其他 Workflow 调用，实现复用）。
 
-### Step、Action 与环境变量
+### Action 的本质与复用
 
-每个 Job 内部由顺序执行的 Step 组成。Step 有两种形式：
+Action 是 GitHub Actions 中可复用的最小工作单元，分为三种类型：Docker 容器型 Action、JavaScript 型 Action 和复合型 Action（Composite Action）。官方维护的 `actions/checkout@v4` 负责将仓库代码检出到 Runner 工作目录，`actions/setup-node@v4` 负责配置指定版本的 Node.js 运行环境。这些 Action 本身也是公开的 GitHub 仓库，可在 GitHub Marketplace 中搜索超过 20000 个社区 Action。
 
-1. **`uses:`**：调用一个 Action（可重用单元），例如 `actions/checkout@v4` 检出代码，`actions/setup-node@v4` 配置 Node.js 环境
-2. **`run:`**：直接执行 shell 命令，默认在 bash 中运行（Windows 下为 PowerShell）
+引用 Action 时，版本固定写法推荐使用完整的 commit SHA（如 `actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683`）而非标签，以防止供应链攻击导致的恶意代码注入。
 
-环境变量通过三种方式注入：`env:` 键（在 workflow/job/step 级别均可设置）、GitHub 内置的 `$GITHUB_SHA`、`$GITHUB_REF` 等上下文变量，以及通过 Repository Settings 配置的 **Secrets**（加密存储，使用 `${{ secrets.MY_SECRET }}` 语法引用）。
+### Runner 与执行环境
 
-矩阵策略（Matrix Strategy）是 GitHub Actions 的高效并行测试机制：
+Runner 是执行 Workflow Job 的宿主机器，分为 **GitHub 托管 Runner** 和**自托管 Runner（Self-hosted Runner）**两类。GitHub 托管 Runner 每个 Job 都在全新的虚拟机中运行，Job 结束后环境销毁，保证隔离性。自托管 Runner 需要在目标机器上安装 `actions/runner` 软件并注册到仓库，适合需要访问内网资源或使用特殊硬件（如 GPU）的场景。
+
+多个 Job 默认并行执行，若需串行则使用 `needs` 字段声明依赖：`needs: build` 表示当前 Job 必须等待 `build` Job 成功后才能启动。Job 间数据传递通过 `actions/upload-artifact` 和 `actions/download-artifact` 实现，将构建产物（如编译后的二进制文件）以 ZIP 包形式暂存，默认保留 90 天。
+
+### 秘密变量与上下文
+
+GitHub Actions 提供 Secrets 和 Variables 两种仓库级配置存储。Secrets 中的值（如 API 密钥、部署令牌）在日志中自动被 `***` 遮蔽，通过 `${{ secrets.MY_SECRET }}` 语法引用。环境变量通过 `${{ env.VAR_NAME }}` 或直接写入 `GITHUB_ENV` 文件来传递。`github` 上下文对象提供运行时元数据，例如 `${{ github.sha }}` 获取触发当前运行的 commit 哈希值，`${{ github.actor }}` 获取触发者用户名。
+
+## 实际应用
+
+**Node.js 项目的完整 CI 流程**：在 `push` 和 `pull_request` 事件触发时，先用 `actions/setup-node@v4` 配置 Node 18 环境，再通过矩阵策略（`matrix`）同时在 `ubuntu-latest`、`windows-latest`、`macos-latest` 三个平台运行测试，确保跨平台兼容性。矩阵配置示例：
 
 ```yaml
 strategy:
   matrix:
-    node-version: [18, 20, 22]
     os: [ubuntu-latest, windows-latest]
+    node: [18, 20]
 ```
 
-上述配置会自动生成 6 个并行 Job，覆盖 3 个 Node.js 版本 × 2 个操作系统的组合，无需手动复制 Job 配置。
+这会生成 2×2=4 个并行 Job，大幅缩短整体 CI 时间。
 
----
-
-## 实际应用
-
-**Node.js 项目的标准 CI 工作流**通常包含以下结构：在 `push` 和 `pull_request` 事件触发后，使用 `actions/checkout@v4` 检出代码，`actions/setup-node@v4` 配置指定版本的 Node.js 环境，`actions/cache@v4` 缓存 `~/.npm` 目录以加速依赖安装（缓存命中时 `npm ci` 速度可提升 60% 以上），最后依次执行 `npm ci`、`npm run lint`、`npm test`。
-
-**自动发布 npm 包**的场景中，可在 `release` 事件的 `published` 类型触发时，使用 `NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}` 注入认证信息，执行 `npm publish`，实现从 GitHub Release 到 npm 包发布的全自动流程。
-
-**Composite Action** 允许将重复的 Step 序列封装为可重用模块，存放在仓库的 `.github/actions/my-action/action.yml` 中，通过 `using: composite` 声明，在其他工作流中以 `uses: ./.github/actions/my-action` 调用，避免跨工作流的代码重复。
-
----
+**自动发布到 npm**：在 `release` 事件触发时，用 `NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}` 完成身份验证，执行 `npm publish` 将包发布到 npm 注册表，实现代码合并即发布的完整 CD 流程。
 
 ## 常见误区
 
-**误区一：将 Secret 直接打印到日志**
-GitHub Actions 会自动遮蔽已注册 Secret 的值（显示为 `***`），但通过 `echo ${{ secrets.TOKEN }}` 显式打印时，某些 base64 变体或字符串分割仍可能绕过遮蔽机制。正确做法是永远不在 `run:` 中直接输出 Secret 内容，而是将其作为环境变量传递给需要的命令。
+**误区一：认为 Job 之间可以直接共享文件系统。** 每个 Job 运行在独立的 Runner 虚拟机上，文件系统完全隔离。同一 Job 内不同 Step 共享工作目录，但跨 Job 传递文件必须通过 Artifact 机制，而非直接读取路径。忽略这一点会导致 "文件不存在" 的报错，即便 `needs` 依赖已正确配置。
 
-**误区二：误解 `runs-on: ubuntu-latest` 的稳定性**
-`ubuntu-latest` 并非固定版本，GitHub 会周期性地将其从 Ubuntu 20.04 更新到 22.04 再到更新版本。如果工作流依赖特定系统库版本，应固定写 `ubuntu-22.04` 而非使用 `latest` 标签，否则 GitHub 升级映射时可能导致构建静默失败。
+**误区二：混淆 `on: push` 与 `on: pull_request` 的代码来源。** `push` 触发时，`actions/checkout` 检出的是目标分支的最新 commit；而 `pull_request` 触发时，检出的是 GitHub 自动生成的合并提交（merge commit），即将 PR 源分支与目标分支合并后的结果，而非 PR 分支本身的 HEAD。这一差异在调试 CI 失败原因时容易被忽视。
 
-**误区三：混淆 `pull_request` 与 `pull_request_target` 的安全边界**
-`pull_request` 事件在 fork PR 中无法访问目标仓库的 Secrets（出于安全隔离设计），而 `pull_request_target` 在仓库上下文中执行，可以访问 Secrets 但会执行 fork 提交的代码，存在安全风险。在公开仓库中不加防护地使用 `pull_request_target` 是导致 CI 密钥泄露的已知攻击向量。
-
----
+**误区三：将 Self-hosted Runner 注册到公开仓库而不加限制。** 公开仓库的 Pull Request 可由任何人提交，若 Self-hosted Runner 未设置适当的权限隔离，恶意 PR 中的 Workflow 代码可能在内部服务器上执行危险命令。GitHub 官方建议对公开仓库的 Self-hosted Runner 始终在隔离的容器或虚拟机中运行。
 
 ## 知识关联
 
-学习 GitHub Actions 需要以**流水线设计**为前置知识，具体体现在：流水线中的阶段划分（构建→测试→部署）直接对应 GitHub Actions 中多个 Job 通过 `needs:` 连接的有向无环图结构；流水线的并行化策略与 GitHub Actions 的 Matrix Strategy 和并发 Job 机制一一对应。
+学习 GitHub Actions 之前需要掌握**流水线设计**的基本思想，理解 CI/CD 流程中构建、测试、部署阶段的职责划分——这直接对应 GitHub Actions 中 Job 的拆分逻辑和 `needs` 依赖链的设计方式。
 
-掌握 GitHub Actions 后，自然延伸到**Docker 在 CI 中的应用**：`docker/build-push-action@v5` 是 GitHub Marketplace 中使用最广泛的 Action 之一，它利用 Docker BuildKit 的缓存机制（通过 `cache-from: type=gha` 将 Docker 层缓存存入 GitHub Actions Cache）大幅缩短镜像构建时间。理解 GitHub Actions 的 Runner 环境和权限模型，是正确配置 Docker 登录、推送镜像到 GHCR（GitHub Container Registry）的基础。
-
-进一步学习**游戏 CI/CD** 时，GitHub Actions 的 Self-hosted Runner 功能尤为关键——游戏项目通常需要 GPU 资源或特定的 Unity/Unreal 许可证服务器，托管 Runner 无法满足，需要在本地机器注册 Self-hosted Runner，通过 `runs-on: self-hosted` 调度到指定硬件上执行构建任务。
+掌握 GitHub Actions 后，自然进入 **Docker 在 CI 中的应用**这一话题：GitHub Actions 支持在 Job 中直接使用 `container` 字段指定 Docker 镜像作为运行环境，也支持通过 `services` 字段启动 MySQL、Redis 等辅助容器，构建更复杂的集成测试场景。此外，**游戏 CI/CD** 场景中对 Unity 构建、资源压缩等耗时任务的处理，需要在 GitHub Actions 的矩阵策略、缓存机制（`actions/cache`）和 Self-hosted Runner GPU 支持上进一步深化。
