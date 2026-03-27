@@ -24,86 +24,137 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-27
 ---
 
+
 # SQL聚合与分组
 
 ## 概述
 
-SQL聚合（Aggregation）是将多行数据压缩为单一结果值的操作，通过COUNT、SUM、AVG、MAX、MIN等聚合函数实现。当你需要知道"用户表里有多少条记录"或"过去30天订单的平均金额是多少"时，聚合函数是唯一能直接回答这类问题的工具。聚合操作改变了结果集的基数（cardinality）——原本100万行的表，经过COUNT聚合后只返回1行。
+SQL聚合与分组是将多行数据压缩为单个汇总值的操作机制，核心由聚合函数（Aggregate Functions）和 `GROUP BY` 子句协同完成。聚合函数对一组行执行计算并返回单个标量值，例如 `COUNT()` 统计行数、`SUM()` 求和、`AVG()` 求算术平均、`MAX()`/`MIN()` 求极值。这些函数在 SQL-92 标准中被正式规范化，至今仍是所有主流数据库（MySQL、PostgreSQL、SQLite、SQL Server）的基础特性。
 
-GROUP BY子句是聚合的搭档，它将数据按照指定列的值划分为若干分组，聚合函数随后在每个分组内独立计算。GROUP BY语法最早随SQL标准在1986年由ANSI正式规范化，此后成为所有主流关系型数据库（MySQL、PostgreSQL、Oracle、SQL Server）的核心查询能力。没有GROUP BY时，聚合函数作用于整张表；有了GROUP BY后，同一个COUNT或SUM可以同时返回每个分组的独立统计结果。
+`GROUP BY` 子句最早在 IBM System R（1974年）的关系代数实现中出现，其设计目的是把结果集按一个或多个列的唯一值划分成若干"分组"，再对每个分组独立运行聚合函数。这与逐行操作的 `WHERE` 筛选有本质区别：`WHERE` 在分组前过滤行，而 `HAVING` 子句专门在分组后对聚合结果进行条件筛选——这一顺序差异是初学者最常混淆的地方。
 
-在AI工程的数据处理链路中，SQL聚合与分组承担着特征工程的关键前处理职责。训练机器学习模型之前，往往需要从原始事件日志表中聚合出"用户过去7天购买次数""商品月均销量"等统计特征，这类操作几乎全部依赖GROUP BY + 聚合函数完成，其执行效率直接决定了特征生成流水线的吞吐量。
+在 AI 工程的数据预处理和特征工程场景中，聚合与分组直接决定能否从原始日志、交易记录或用户行为表中高效提取统计特征（如每用户点击均值、每类别商品数量），避免将全量数据拉入 Python/Pandas 内存后再计算，降低数据管道的资源消耗。
+
+---
 
 ## 核心原理
 
-### GROUP BY的执行顺序与逻辑分组
+### 聚合函数的工作机制
 
-SQL查询的逻辑执行顺序为：FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT。GROUP BY在WHERE之后执行，意味着WHERE先过滤原始行，再对过滤后的数据分组。这一顺序有实际约束：SELECT子句中出现的非聚合列，必须全部列在GROUP BY子句中，否则查询会报错（MySQL在严格模式`ONLY_FULL_GROUP_BY`下同样报错）。
+五个标准聚合函数各有精确语义：
+- `COUNT(*)` 统计包括 NULL 在内的所有行数；`COUNT(column)` 则忽略该列的 NULL 值，两者结果可能不同。
+- `SUM(column)` 对列中所有非 NULL 值求和，若全为 NULL 则返回 NULL（而非 0）。
+- `AVG(column)` 等价于 `SUM(column) / COUNT(column)`，分母只计非 NULL 行，因此均值不受 NULL 行影响。
+- `MAX()` 和 `MIN()` 可作用于数值、字符串（按字典序）和日期类型，对 NULL 值同样忽略。
 
-举例说明：若按`department_id`和`job_title`两列分组，则SELECT中除聚合函数外，只能出现这两列；若尝试同时SELECT `employee_name`，则违反GROUP BY规则，因为同一个分组内可能存在多个不同的员工姓名，数据库无法决定返回哪一个。
-
-### 五大聚合函数的精确语义
-
-- **COUNT(\*)** 统计分组内的总行数，包含NULL值所在的行；**COUNT(column)** 则只统计该列非NULL的行数，两者结果可能不同。
-- **SUM(column)** 对分组内指定列的所有非NULL值求和；若分组内该列全为NULL，SUM返回NULL而非0。
-- **AVG(column)** 等价于 `SUM(column) / COUNT(column)`，分母是非NULL行数，而非总行数，这导致含NULL的列均值计算结果可能与预期不符。
-- **MAX/MIN** 返回分组内指定列的极值，支持数值、字符串、日期类型的比较。
-
-公式示例：统计各部门平均薪资时，
 ```sql
-SELECT department_id, AVG(salary) AS avg_sal
+SELECT department,
+       COUNT(*)        AS total_employees,
+       AVG(salary)     AS avg_salary,
+       MAX(salary)     AS top_salary
 FROM employees
-GROUP BY department_id;
+GROUP BY department;
 ```
-若某部门有员工salary为NULL，该行不计入AVG的分子与分母，平均值仅反映有薪资记录员工的均值。
 
-### HAVING子句：对分组结果的过滤
+### GROUP BY 的分组逻辑与 HAVING 过滤
 
-HAVING在GROUP BY之后执行，专门用于过滤聚合结果，这是它与WHERE的本质区别。WHERE无法引用聚合函数（因为WHERE执行时分组尚未完成），但HAVING可以。典型用法：
+`GROUP BY` 将 `FROM`/`WHERE` 处理后的结果集按指定列的唯一组合分桶。**SELECT 列表中出现的非聚合列，必须全部出现在 `GROUP BY` 中**，否则在严格模式（如 MySQL 的 `ONLY_FULL_GROUP_BY`，自 5.7.5 版本默认启用）下会报错。
+
+`HAVING` 紧跟 `GROUP BY` 之后执行，专门筛选聚合结果：
 
 ```sql
-SELECT customer_id, COUNT(order_id) AS order_count
-FROM orders
-GROUP BY customer_id
-HAVING COUNT(order_id) >= 5;
+SELECT department, AVG(salary) AS avg_salary
+FROM employees
+GROUP BY department
+HAVING AVG(salary) > 8000;
 ```
 
-此查询筛选出累计下单5次及以上的客户。若将`HAVING COUNT(...) >= 5`误写为WHERE子句，数据库会直接报语法错误，因为WHERE中不允许出现聚合函数。
+SQL 的逻辑执行顺序为：`FROM → WHERE → GROUP BY → 聚合计算 → HAVING → SELECT → ORDER BY → LIMIT`，共 8 个阶段。理解这一顺序能解释为何 `HAVING` 中可以直接引用聚合函数，而 `WHERE` 中不能。
 
-### DISTINCT与聚合的组合
+### 多列分组与 ROLLUP / CUBE 扩展
 
-`COUNT(DISTINCT column)` 统计分组内指定列的不重复值数量，这是一个高成本操作，数据量大时需要去重排序，执行计划中通常会出现HashAggregate或Sort节点。在PostgreSQL中，对1000万行数据执行`COUNT(DISTINCT user_id)`的耗时可比`COUNT(*)`高出3至5倍，在设计大数据量查询时需特别注意。
+`GROUP BY` 支持多列组合分组，每个唯一的列值组合形成一个独立分组：
+
+```sql
+SELECT year, region, SUM(revenue) AS total_revenue
+FROM sales
+GROUP BY year, region;
+```
+
+SQL 标准还提供 `ROLLUP` 和 `CUBE` 修饰符（PostgreSQL、MySQL 8.0+、SQL Server 均支持）：
+- `GROUP BY ROLLUP(year, region)` 除生成 `(year, region)` 级别的小计外，还额外生成 `(year)` 级别汇总行和全局总计行，共产生 N+2 层结果。
+- `GROUP BY CUBE(year, region)` 生成所有可能维度组合的交叉汇总，对 2 列来说产生 2²=4 种分组层级。
+
+### DISTINCT 与聚合的结合
+
+`COUNT(DISTINCT column)` 对列去重后再计数，语义为"不同值的个数"，在统计 UV（独立用户数）时比 `COUNT(*)` 更精确：
+
+```sql
+SELECT COUNT(DISTINCT user_id) AS unique_users
+FROM page_views
+WHERE event_date = '2024-01-15';
+```
+
+---
 
 ## 实际应用
 
-**AI特征工程中的用户行为聚合**：在推荐系统训练数据准备阶段，常见操作是从用户点击日志表按user_id分组，计算`COUNT(*)`（总点击次数）、`COUNT(DISTINCT item_id)`（点击商品种类数）、`MAX(click_time)`（最近点击时间）等多维特征，一条GROUP BY语句可同时生成十几个统计特征列，替代反复扫描全表的低效方案。
+**用户行为特征提取（AI 特征工程）**：在推荐系统中，常需将用户-商品点击日志聚合为用户级特征向量。以下查询在数据库层面完成统计，避免全量数据传输：
 
-**数据质量监控**：用GROUP BY + COUNT检测重复数据是标准做法：
 ```sql
-SELECT user_id, COUNT(*) AS cnt
-FROM user_profiles
+SELECT user_id,
+       COUNT(*)                          AS total_clicks,
+       COUNT(DISTINCT item_category)     AS category_diversity,
+       AVG(dwell_time_seconds)           AS avg_dwell,
+       MAX(event_timestamp)              AS last_active
+FROM click_log
+WHERE event_date >= '2024-01-01'
 GROUP BY user_id
-HAVING COUNT(*) > 1;
+HAVING COUNT(*) >= 5;   -- 过滤冷启动用户
 ```
-返回结果若非空，说明user_id存在重复记录，需要进一步清洗。
 
-**时间维度聚合**：结合日期函数，按月或按周汇总指标。例如MySQL中`DATE_FORMAT(created_at, '%Y-%m')`配合GROUP BY，可生成月度销售额趋势表，为时序预测模型提供训练数据。
+**数据质量监控**：通过分组聚合快速发现各数据源的 NULL 比例和异常值分布：
 
-**多列分组的笛卡尔展开**：对`GROUP BY city, product_category`分组时，结果行数等于两列的有效组合数，而非两列基数之积。若数据中city有20个取值、product_category有50个取值，但实际组合只出现600种，则结果为600行，而非1000行。
+```sql
+SELECT data_source,
+       COUNT(*)                                      AS total_rows,
+       SUM(CASE WHEN feature_value IS NULL THEN 1 ELSE 0 END) AS null_count,
+       ROUND(100.0 * SUM(CASE WHEN feature_value IS NULL THEN 1 ELSE 0 END) / COUNT(*), 2) AS null_pct
+FROM feature_store
+GROUP BY data_source;
+```
+
+**时序分桶统计**：结合日期函数对时间窗口聚合，生成每小时请求量用于模型监控：
+
+```sql
+SELECT DATE_FORMAT(request_time, '%Y-%m-%d %H:00:00') AS hour_bucket,
+       COUNT(*) AS request_count,
+       AVG(latency_ms) AS avg_latency
+FROM api_logs
+GROUP BY hour_bucket
+ORDER BY hour_bucket;
+```
+
+---
 
 ## 常见误区
 
-**误区一：SELECT中的非聚合列不在GROUP BY中**
-MySQL在非严格模式下允许SELECT列出未出现在GROUP BY的列，此时MySQL会从分组的任意一行取值，结果具有不确定性。这是一个隐蔽的数据错误来源：查询不报错，但返回的非聚合列值是随机的某行数据。建议始终开启`sql_mode=ONLY_FULL_GROUP_BY`以强制报错提示。
+**误区1：在 WHERE 中使用聚合函数**
 
-**误区二：用WHERE过滤聚合结果**
-初学者常写`WHERE COUNT(*) > 10`，会收到"Invalid use of group function"错误。正确做法是将聚合过滤条件放在HAVING中。但需注意：能用WHERE提前过滤原始行的条件，不应挪到HAVING——`WHERE status = 'active'`先减少参与分组的数据量，效率远高于在HAVING中过滤。
+`WHERE AVG(salary) > 8000` 会直接报语法错误，因为 `WHERE` 在聚合计算发生前执行，此时不存在聚合结果可供引用。正确写法是将条件移到 `HAVING` 子句，或使用子查询。混淆 `WHERE` 与 `HAVING` 适用阶段，是 SQL 聚合查询中最高频的错误类型。
 
-**误区三：NULL值对聚合结果的影响被忽视**
-SUM、AVG、MAX、MIN均自动忽略NULL，只有COUNT(*)不忽略NULL（因为它统计行数而非列值）。若一列存在大量NULL且业务上NULL应视为0，必须用`COALESCE(column, 0)`显式转换后再聚合，否则SUM结果会偏小，AVG结果会偏高（分母变小导致均值虚高）。
+**误区2：COUNT(\*) 与 COUNT(column) 等价**
+
+若列中存在 NULL 值，`COUNT(*)` 统计全部行，而 `COUNT(column)` 跳过 NULL 行，二者结果不同。例如一个 10 行的表中某列有 3 个 NULL，则 `COUNT(*) = 10`，`COUNT(column) = 7`。在统计有效填写率时，必须使用 `COUNT(column)` 而非 `COUNT(*)`。
+
+**误区3：GROUP BY 中省略非聚合列**
+
+部分旧版 MySQL（5.7 之前默认非严格模式）允许 SELECT 列表包含未出现在 `GROUP BY` 中的非聚合列，此时数据库会从该分组中随机取一行的值，结果不可预期。迁移到 MySQL 5.7+ 或 PostgreSQL 时，此类查询会直接报错，需补全 `GROUP BY` 列或将其包裹在 `ANY_VALUE()` 函数中（MySQL 特有）。
+
+---
 
 ## 知识关联
 
-**前置概念衔接**：掌握SQL基础CRUD之后，GROUP BY是第一个改变结果集结构的操作。WHERE过滤行、SELECT投影列，这两者不改变数据的"行列粒度"；而GROUP BY将多行折叠为一行，是理解数据粒度变换的关键跨越。JOIN操作产生的宽表常作为GROUP BY的数据源，先JOIN后GROUP是特征工程的标准模式。
+**前置依赖（SQL基础/CRUD）**：聚合查询必须建立在 `SELECT`、`FROM`、`WHERE` 操作熟练的基础上，因为 `WHERE` 的行级过滤决定了进入 `GROUP BY` 的原始数据范围。多表的聚合通常还需要 `JOIN` 先将表合并再分组。
 
-**衔接窗口函数**：窗口函数（Window Function）是聚合与分组的自然延伸。普通GROUP BY会将分组内的多行压缩为一行，导致原始明细数据丢失；而窗口函数使用`OVER(PARTITION BY ... ORDER BY ...)`语法，在保留每一行原始数据的同时，附加上分组内的聚合计算结果。例如`SUM(salary) OVER(PARTITION BY department_id)`在每行返回该员工所在部门的薪资总和，而不是将部门压缩为一行。理解GROUP BY中"分组折叠"与窗口函数中"分组不折叠"的差异，是掌握窗口函数的核心前提。
+**后续延伸（窗口函数）**：窗口函数（`OVER` 子句）是聚合函数的重要升级——它能在保留原始行数的同时计算聚合值，而不像 `GROUP BY` 那样将多行压缩为一行。例如 `AVG(salary) OVER (PARTITION BY department)` 可以在每一行上同时显示员工工资和所在部门的平均工资，这是普通 `GROUP BY` 无法在单次查询中实现的。掌握 `GROUP BY` 的分组语义（特别是 `PARTITION BY` 与 `GROUP BY` 的对比）是理解窗口函数分区逻辑的直接跳板。
