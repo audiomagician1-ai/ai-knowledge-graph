@@ -20,77 +20,77 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-27
 ---
+
 # Mesh粒子
 
 ## 概述
 
-Mesh粒子（Vfx Niagara Mesh）是特效（Visual Effects）中Niagara系统领域的重要概念。难度等级3/9（初级）。
+Mesh粒子是Niagara粒子系统中使用3D网格体（Static Mesh或Skeletal Mesh）作为粒子视觉表示的技术方案。与使用Billboard平面图片的Sprite粒子不同，每个Mesh粒子都是一个完整的三维模型，拥有真实的体积感、物理遮挡关系和法线光照响应。这一特性使其成为实现弹壳飞溅、玻璃碎片、飘落树叶、破碎砖块等需要真实立体感特效的首选方式。
 
-Mesh渲染器实现碎片、弹壳、落叶等3D粒子。
+Mesh粒子在Unreal Engine 4的Cascade系统中已有原型实现（通过Mesh TypeData模块），但在Niagara系统（随UE4.20正式引入）中得到根本性重构。Niagara将Mesh渲染器抽象为独立的Render模块，允许在同一粒子发射器（Emitter）内混合使用多种渲染器，并通过HLSL自定义表达式精确控制每个Mesh实例的几何变换。这种灵活性是Cascade时代无法实现的。
 
-在知识体系中，Mesh粒子建立在Ribbon特效的基础之上，是理解GPU模拟的关键前置知识。为什么Mesh粒子如此重要？因为它在Niagara系统中起到承上启下的作用，连接基础概念与高级应用。
+Mesh粒子的重要性体现在它直接利用GPU Instancing（实例化绘制）技术，将数千个相同网格的绘制合并为单次Draw Call，因此在性能上远优于将同等数量的Static Mesh Actor手动放置于场景。一颗手榴弹爆炸产生500块碎片，若用独立Actor实现会产生500次Draw Call，改用Mesh粒子则仅需1至2次。
 
-## 核心知识点
+## 核心原理
 
-### 1. Mesh渲染器实现碎片
+### Mesh Renderer模块配置
 
-Mesh渲染器实现碎片是Mesh粒子(Vfx Niagara Mesh)的核心组成部分之一。在Niagara系统的实践中，Mesh渲染器实现碎片决定了系统行为的关键特征。例如，当Mesh渲染器实现碎片参数或条件发生变化时，整体表现会产生显著差异。深入理解Mesh渲染器实现碎片需要结合特效的基本原理进行分析。
+在Niagara Emitter的Render栈中添加**Mesh Renderer**时，核心参数包括：
+- **Particle Mesh**：指定用于渲染的Static Mesh资产，可同时指定多个Mesh并通过`MeshIndex`粒子属性随机选取
+- **Override Materials**：是否覆盖Mesh原有材质，通常需启用以支持粒子颜色参数传递
+- **Enable Frustum Culling**：开启视锥剔除，超出摄像机视野的粒子网格停止渲染
 
-### 2. 弹壳
+粒子的变换由三组专属属性驱动：`Position`控制世界坐标，`Scale`控制三轴缩放（类型为Vector3，而非Sprite粒子的标量Size），`MeshOrientation`使用四元数（Quaternion）存储旋转，这与Sprite粒子依赖`SpriteRotation`标量角度有本质区别。
 
-弹壳是Mesh粒子(Vfx Niagara Mesh)的核心组成部分之一。在Niagara系统的实践中，弹壳决定了系统行为的关键特征。例如，当弹壳参数或条件发生变化时，整体表现会产生显著差异。深入理解弹壳需要结合特效的基本原理进行分析。
+### 旋转与角速度计算
 
-### 3. 落叶等3D粒子
+Mesh粒子的旋转控制是其技术难点核心。`MeshOrientation`为**四元数格式**，不能直接赋值欧拉角，需使用Niagara内置函数`QuatFromAxisAngle(Axis, Angle)`将轴角对转换为四元数，或使用`QuatMul(Q1, Q2)`叠加两个旋转。
 
-落叶等3D粒子是Mesh粒子(Vfx Niagara Mesh)的核心组成部分之一。在Niagara系统的实践中，落叶等3D粒子决定了系统行为的关键特征。例如，当落叶等3D粒子参数或条件发生变化时，整体表现会产生显著差异。深入理解落叶等3D粒子需要结合特效的基本原理进行分析。
+实现持续自旋的标准做法是在Particle Update阶段使用以下逻辑：
+```
+// 每帧增量旋转
+DeltaRotation = QuatFromAxisAngle(AngularVelocityAxis, AngularSpeed * DeltaTime)
+MeshOrientation = QuatMul(MeshOrientation, DeltaRotation)
+```
+其中`AngularSpeed`单位为**弧度/秒**，弹壳飞出时的典型自旋速度为10至30弧度/秒（约1.6至4.8圈/秒），落叶飘落通常设为0.5至2弧度/秒。
 
+### 物理碰撞与反弹
 
-### 关键原理分析
+Mesh粒子配合**Collision模块**可实现地面碰撞弹跳，关键参数为：
+- **Restitution（弹性系数）**：弹壳约0.4至0.6，树叶约0.05至0.1（几乎不反弹）
+- **Friction（摩擦系数）**：影响碰撞后的切向速度衰减
+- **Collision Radius Scale**：碰撞检测使用的是球形近似，该参数缩放球体半径以匹配Mesh实际尺寸
 
-Mesh粒子的核心在于Mesh渲染器实现碎片、弹壳、落叶等3D粒子。从理论角度看，该概念涉及以下层面：
+碰撞后若需触发额外效果（如弹壳落地声音），可通过**Event Handler**接收Collision事件，在碰撞位置生成子发射器粒子。
 
-1. **定义层**：明确Mesh粒子的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解Mesh粒子内部各要素的相互作用方式
-3. **应用层**：将Mesh粒子的原理映射到特效的实际场景中
+### LOD与性能管理
 
-思考题：如何判断Mesh粒子的应用是否超出了其理论适用范围？
+Mesh粒子自动继承Static Mesh资产的**LOD（细节层次）**设置。建议为粒子专用Mesh创建极简LOD1（仅保留轮廓，三角面数降至LOD0的10%至20%），在距离超过500厘米时自动切换。通过**Scalability（可伸缩性）**设置，低端机可将`MaxParticleCount`从PC版的200颗碎片降至移动版的30颗。
 
-## 关键要点
+## 实际应用
 
-1. **核心定义**：Mesh粒子的本质是Mesh渲染器实现碎片、弹壳、落叶等3D粒子，这是理解整个概念的出发点
-2. **多维理解**：掌握Mesh粒子需要同时理解Mesh渲染器实现碎片和落叶等3D粒子等关键维度
-3. **先修关系**：扎实的Ribbon特效基础对理解Mesh粒子至关重要
-4. **进阶路径**：掌握后可继续深入GPU模拟等进阶主题
-5. **实践标准**：真正掌握Mesh粒子的标志是能在具体场景中灵活运用并正确判断适用边界
+**弹壳抛出特效**：枪械射击时从弹舱位置发射弹壳Mesh粒子，初速度为`{200-400, 50-150, 0}`厘米/秒（侧向+向上分量），叠加每帧自旋更新，设置Restitution=0.5使弹壳在地面多次弹跳，粒子生命周期设为3至5秒后淡出消失。
+
+**爆炸碎片飞溅**：使用Burst发射模式在0.05秒内一次性发射50至200个碎片Mesh，通过`Initial Velocity`模块的Cone形随机分布控制飞散角度（典型锥角120度），配合`Drag`模块模拟空气阻力，使碎片在0.3秒内迅速减速。为增加视觉多样性，可在Particle Mesh处放入3至5种不同形状的破碎块Mesh，通过`UniformRandInt(0,4)`随机选取。
+
+**秋季落叶效果**：将树叶多边形Mesh（约80至120三角面）设置为粒子，在`Wind Force`模块中叠加正弦波侧向扰动（振幅10至30厘米，频率0.3至0.8Hz）模拟风吹效果，同时缓慢更新MeshOrientation实现翻滚，Restitution设为0.02使落地后立即静止。
 
 ## 常见误区
 
-1. **混淆概念边界**：将Mesh粒子与Niagara系统中其他相近概念混为一谈。例如，Mesh渲染器实现碎片的适用条件与其他弹壳概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解Ribbon特效就学习Mesh粒子，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：Mesh粒子虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：用欧拉角直接赋值MeshOrientation**
+初学者常尝试将`(Roll, Pitch, Yaw)`角度直接写入`MeshOrientation`变量，导致粒子出现异常扭曲或不旋转。正确做法是始终使用`QuatFromAxisAngle`或`RotationFromEuler`转换函数，因为`MeshOrientation`在内存中存储的是四元数的四个分量`(X, Y, Z, W)`，直接赋数值角度会破坏四元数的单位长度约束（|Q|=1）。
 
-## 知识衔接
+**误区二：将高面数模型直接用作粒子Mesh**
+将5000+面的角色模型或道具直接指定为Mesh粒子，当粒子数量达到100个时等效于渲染50万面，极易造成GPU过载。粒子专用Mesh应控制在50至300三角面，通过LOD和低精度法线贴图来弥补细节损失，而非依赖高模面数。
 
-### 先修知识
-先修知识包括：
-- **Ribbon特效** — 为Mesh粒子提供了必要的概念基础
+**误区三：忽略Mesh的Pivot（轴心点）位置**
+粒子的`Position`坐标对应Mesh的Pivot点（原点），若Mesh在建模软件中Pivot位于几何中心，弹壳会以中心为基准旋转；若Pivot偏移到弹壳底部，旋转表现会截然不同。弹壳、碎片类Mesh的Pivot应设在质心位置，落叶类Mesh的Pivot建议设在叶柄根部以获得更真实的翻转效果。
 
-### 后续学习
-掌握Mesh粒子后可继续学习：
-- **GPU模拟** — 在Mesh粒子基础上进一步拓展
+## 知识关联
 
-## 学习建议
+**与Ribbon特效的对比**：Ribbon粒子生成连续的带状曲面（适合光剑轨迹、烟雾拖尾），Mesh粒子生成离散的独立3D实体（适合固体碎片），两者渲染机制不同——Ribbon通过相邻粒子位置插值构建面片，Mesh直接实例化现有网格体，不存在粒子间连接关系。在同一Emitter中可同时添加两种Renderer叠加效果，例如飞舞的羽毛用Mesh粒子表现翎管，用Ribbon粒子表现羽毛脱落时的轨迹拖尾。
 
-预计学习时间：1-2小时。建议采用以下策略：
-
-- **主动回忆**：学完后不看笔记复述Mesh粒子的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将Mesh粒子与特效中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释Mesh粒子，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于Niagara系统的章节可作为深入参考
-- Wikipedia: [Vfx Niagara Mesh](https://en.wikipedia.org/wiki/vfx_niagara_mesh) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Vfx Niagara Mesh" 可找到配套视频教程
+**通向GPU模拟**：Mesh粒子默认在CPU上计算每帧的位置、旋转和缩放更新，当粒子数量超过500至1000个时，CPU计算开销开始成为瓶颈。启用**GPU模拟（GPU Simulation）**后，所有粒子更新逻辑转移至Compute Shader执行，可将Mesh粒子数量提升至数万个而不显著增加CPU开销，这是实现大规模碎石崩落、漫天飞雪等宏观特效的技术基础。GPU模拟对Mesh粒子的主要限制是不支持Collision模块的精确射线检测，需改用深度缓冲近似碰撞方案。
