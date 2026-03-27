@@ -20,76 +20,117 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-27
 ---
-# 错误处理(try/catch)
+
+# 错误处理（try/catch）
 
 ## 概述
 
-错误处理(try/catch)（Error Handling）是AI工程（AI Engineering）中编程基础领域的重要概念。难度等级3/9（初级）。
+错误处理（try/catch）是一种结构化的异常捕获机制，允许程序在运行时遇到错误时，不立即崩溃退出，而是跳转到指定的处理代码块继续执行。这一机制由 try 块、catch 块和可选的 finally 块三部分组成：try 块包裹可能抛出异常的代码，catch 块定义异常发生后的处理逻辑，finally 块则无论是否发生异常都会执行（常用于资源释放）。
 
-掌握错误处理(try/catch)的核心概念和应用。
+try/catch 最早在 CLU 语言（1975年，MIT）中以"异常处理"形式出现，后被 C++（1990年）、Java（1995年）标准化并广泛推广。Python 使用 `try/except` 语法，JavaScript 使用 `try/catch`，两者语义相同但关键字不同。在 AI 工程中，调用外部 API、加载模型权重文件、解析用户输入时，随时可能遇到网络超时、文件缺失、类型不匹配等运行时错误，若不加处理，整个推理服务会直接崩溃。
 
-在知识体系中，错误处理(try/catch)建立在函数的基础之上，是理解后端错误处理、文件I/O、测试基础、契约式设计、日志基础的关键前置知识。为什么错误处理(try/catch)如此重要？因为它在编程基础中起到承上启下的作用，连接基础概念与高级应用。
+try/catch 的价值在于将"正常流程"与"错误流程"分离。没有它，开发者需要在每一步操作后手动检查返回值（类似 C 语言的 `if (err != NULL)` 模式），代码嵌套层级极深。使用 try/catch 后，正常逻辑保持线性可读，错误路径集中管理。
 
-## 核心知识点
+---
 
-### 1. 掌握错误处理(try/catch)的核心概念
+## 核心原理
 
-掌握错误处理(try/catch)的核心概念是错误处理(try/catch)(Error Handling)的核心组成部分之一。在编程基础的实践中，掌握错误处理(try/catch)的核心概念决定了系统行为的关键特征。例如，当掌握错误处理(try/catch)的核心概念参数或条件发生变化时，整体表现会产生显著差异。深入理解掌握错误处理(try/catch)的核心概念需要结合AI工程的基本原理进行分析。
+### 异常的传播机制（调用栈展开）
 
-### 2. 应用
+当 try 块内某行代码抛出异常时，Python/JavaScript 解释器会立即停止执行该块的后续语句，并沿**调用栈向上查找**最近的匹配 catch/except 块。这个过程称为"栈展开"（Stack Unwinding）。若函数 A 调用函数 B，函数 B 内抛出异常但未被捕获，该异常会冒泡到函数 A 的 catch 块。若整个调用栈都没有捕获，程序抛出未处理异常并终止。
 
-应用是错误处理(try/catch)(Error Handling)的核心组成部分之一。在编程基础的实践中，应用决定了系统行为的关键特征。例如，当应用参数或条件发生变化时，整体表现会产生显著差异。深入理解应用需要结合AI工程的基本原理进行分析。
+```python
+def load_model(path):
+    with open(path, 'rb') as f:   # 若文件不存在，抛出 FileNotFoundError
+        return pickle.load(f)
 
+def run_inference(path, input_data):
+    try:
+        model = load_model(path)   # 异常从 load_model 冒泡到此处
+        return model.predict(input_data)
+    except FileNotFoundError as e:
+        print(f"模型文件缺失: {e}")
+        return None
+```
 
-### 关键原理分析
+### 异常类型与精确捕获
 
-错误处理(try/catch)的核心在于掌握错误处理(try/catch)的核心概念和应用。从理论角度看，该概念涉及以下层面：
+catch/except 可以指定捕获的异常类型。Python 的内置异常形成继承树：`BaseException → Exception → ValueError / TypeError / IOError` 等。捕获父类（如 `Exception`）会拦截所有子类异常；捕获 `BaseException` 还会拦截 `KeyboardInterrupt` 和 `SystemExit`，这在 AI 服务中极危险——用户按 Ctrl+C 停止进程的信号会被吞掉，导致服务无法正常退出。
 
-1. **定义层**：明确错误处理(try/catch)的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解错误处理(try/catch)内部各要素的相互作用方式
-3. **应用层**：将错误处理(try/catch)的原理映射到AI工程的实际场景中
+正确做法是**从最具体的异常到最宽泛的异常**依次排列多个 except 块：
 
-思考题：如何判断错误处理(try/catch)的应用是否超出了其理论适用范围？
+```python
+try:
+    response = requests.get(api_url, timeout=5)
+    data = response.json()
+except requests.exceptions.Timeout:
+    log("API 超时，启用本地缓存")
+except requests.exceptions.ConnectionError:
+    log("网络不可达")
+except ValueError:
+    log("响应不是合法 JSON")
+except Exception as e:
+    log(f"未预期错误: {type(e).__name__}: {e}")
+```
 
-## 关键要点
+### finally 块与资源保证
 
-1. **核心定义**：错误处理(try/catch)的本质是掌握错误处理(try/catch)的核心概念和应用，这是理解整个概念的出发点
-2. **多维理解**：掌握错误处理(try/catch)需要同时理解掌握错误处理(try/catch)的核心概念和应用等关键维度
-3. **先修关系**：扎实的函数基础对理解错误处理(try/catch)至关重要
-4. **进阶路径**：掌握后可继续深入后端错误处理等进阶主题
-5. **实践标准**：真正掌握错误处理(try/catch)的标志是能在具体场景中灵活运用并正确判断适用边界
+finally 块在 try/catch 执行完毕后**无条件运行**，即使 catch 块内又抛出新异常，即使代码中有 `return` 语句。这一特性专门用于释放文件句柄、数据库连接、GPU 显存等资源。在 AI 推理服务中，若加载一个大型模型后发生异常，未释放的显存会导致后续所有请求失败。
+
+```python
+model = None
+try:
+    model = load_large_model()
+    result = model.infer(data)
+finally:
+    if model is not None:
+        model.release_gpu_memory()  # 无论是否出错都执行
+```
+
+### 主动抛出与自定义异常
+
+`raise` 语句主动抛出异常，可用于在检测到非法状态时提前终止。自定义异常类继承自 `Exception`，可携带额外上下文信息：
+
+```python
+class ModelNotWarmedException(Exception):
+    def __init__(self, model_name, wait_seconds):
+        super().__init__(f"{model_name} 尚未预热，需等待 {wait_seconds}s")
+        self.model_name = model_name
+```
+
+---
+
+## 实际应用
+
+**场景一：调用 OpenAI API 时的超时与限流处理**  
+OpenAI API 在触发速率限制时返回 HTTP 429，客户端库将其映射为 `openai.error.RateLimitError`。正确的处理方式是捕获该异常后进行指数退避重试（如等待 2^n 秒），而非直接返回空结果或崩溃。
+
+**场景二：加载 JSON 配置文件**  
+AI 项目常用 JSON 存储超参数配置。`json.loads()` 在输入不合法时抛出 `json.JSONDecodeError`（Python 3.5+ 中是 `ValueError` 的子类）。捕获它后应打印出具体的行号和列号（`e.lineno`, `e.colno`），帮助快速定位配置文件错误位置。
+
+**场景三：NumPy/PyTorch 运算中的形状不匹配**  
+矩阵乘法 `np.dot(A, B)` 在 A 的列数与 B 的行数不匹配时抛出 `ValueError: shapes (3,4) and (5,6) not aligned`。在批量推理循环中捕获此异常，记录出错的样本索引，可以跳过该样本继续处理其余数据，而不是终止整批推理。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将错误处理(try/catch)与编程基础中其他相近概念混为一谈。例如，掌握错误处理(try/catch)的核心概念的适用条件与其他应用概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解函数就学习错误处理(try/catch)，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：错误处理(try/catch)虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：用裸 `except:` 或 `except Exception` 捕获一切**  
+许多初学者写 `except:` 吞掉所有错误只为"程序不崩溃"。这会掩盖真实 bug——比如变量名拼写错误产生的 `NameError` 也会被静默忽略，导致后续逻辑以错误的中间状态继续运行，产生难以追踪的结果偏差。正确做法是只捕获**预期会发生的特定异常类型**。
 
-## 知识衔接
+**误区二：在 finally 块中使用 return**  
+若 finally 块内有 `return` 语句，它会**覆盖** try 或 catch 块中的 `return` 值，且会**吞掉**正在传播中的异常。这是 Python 和 JavaScript 共同的陷阱。例如 finally 里 `return None` 会使调用方永远收不到原始异常，错误被静默丢弃。
 
-### 先修知识
-先修知识包括：
-- **函数** — 为错误处理(try/catch)提供了必要的概念基础
+**误区三：混淆"异常"与"错误返回码"两种模式**  
+try/catch 的设计前提是异常是**例外情况**，不应用于控制正常业务流程。在 AI 工程中，有些开发者用抛出/捕获异常来做条件分支（如用 `try: value = dict[key] except KeyError: value = default`），虽然在 Python 中是惯用法（EAFP 风格），但在热路径（如每秒万次推理的批处理循环）中，频繁抛出异常的开销远高于 `dict.get(key, default)`，可能导致吞吐量下降 3-5 倍。
 
-### 后续学习
-掌握错误处理(try/catch)后可继续学习：
-- **后端错误处理** — 在错误处理(try/catch)基础上进一步拓展
-- **文件I/O** — 在错误处理(try/catch)基础上进一步拓展
-- **测试基础** — 在错误处理(try/catch)基础上进一步拓展
-- **契约式设计** — 在错误处理(try/catch)基础上进一步拓展
+---
 
-## 学习建议
+## 知识关联
 
-预计学习时间：1-2小时。建议采用以下策略：
+try/catch 建立在**函数**的基础上：异常沿调用栈传播的路径就是函数调用链，理解函数的执行帧（frame）才能正确判断异常会在哪一层被捕获。
 
-- **主动回忆**：学完后不看笔记复述错误处理(try/catch)的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将错误处理(try/catch)与AI工程中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释错误处理(try/catch)，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于编程基础的章节可作为深入参考
-- Wikipedia: [Error Handling](https://en.wikipedia.org/wiki/error_handling) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Error Handling" 可找到配套视频教程
+向前延伸，try/catch 直接支撑**后端错误处理**——HTTP 服务框架（如 FastAPI）的全局异常处理器（`@app.exception_handler`）本质上是在最外层 catch 块的基础上封装的。**文件 I/O** 操作中每一次磁盘读写都依赖 try/finally 保证文件句柄正确关闭（Python 的 `with` 语句是 try/finally 的语法糖，底层调用 `__exit__` 方法）。**日志基础**与 catch 块深度结合：捕获异常后应使用 `logger.exception(e)` 而非 `print(e)`，前者会自动记录完整的堆栈跟踪（traceback）。**契约式设计**中的前置条件违反（precondition violation）通常通过 `raise ValueError` 实现，与 try/catch 形成完整的防御性编程闭环。
