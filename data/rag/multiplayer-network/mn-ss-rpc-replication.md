@@ -24,56 +24,105 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-27
 ---
 
+
 # RPC与属性复制
 
 ## 概述
 
-RPC（Remote Procedure Call，远程过程调用）与属性复制是网络多人游戏中实现状态同步的两种互补机制。RPC允许一个网络节点（服务器或客户端）在远端节点上触发函数执行，而属性复制则通过将对象的成员变量标记为"可复制"，让引擎自动检测并广播变更。这两种机制共同构成了现代网络游戏引擎（如Unreal Engine的NetDriver系统）中同步逻辑的基础手段。
+RPC（Remote Procedure Call，远程过程调用）与属性复制是网络多人游戏中实现状态同步的两种核心手段。RPC允许一台机器调用另一台机器上的函数并传递参数，属性复制则通过标记变量让引擎自动将其值从服务器推送到客户端。两者分工不同：RPC处理**事件驱动**的瞬时行为（如开枪、播放音效），属性复制处理**持续存在**的状态（如玩家生命值、位置、弹药数）。
 
-属性复制的概念可追溯至1990年代的CORBA分布式对象系统，但将其深度整合进游戏引擎是Quake和Unreal系列引擎在1996至1998年间的创新。Unreal Engine 4/5中，属性复制通过`UPROPERTY(Replicated)`宏标记，服务器每隔固定网络帧（默认66ms，对应约15Hz网络更新频率）检查一次"脏标记"并向相关客户端推送差量。理解这两种机制的不同触发方式和传输特性，能帮助开发者在正确场合选用正确工具，避免带宽浪费或同步漏洞。
+属性复制的思想可以追溯到1996年前后早期多人联机游戏的"状态快照"机制，但现代属性复制在Unreal Engine 3（2006年）中得到了系统化的标记驱动实现，通过`UPROPERTY(Replicated)`宏让开发者显式声明哪些字段需要同步，而非全量广播所有数据。这一设计将带宽消耗降低了30%～60%，取决于Actor的属性数量。
+
+理解两者的差异至关重要：如果用RPC来同步持续变化的血量，每次血量变化都需要显式调用，容易在丢包时造成永久性状态不一致；如果用属性复制来触发"爆炸"特效，引擎会在特定tick将属性值推送，但无法保证每个客户端都能精确收到触发时刻的值。选错工具会导致性能浪费或同步漏洞。
+
+---
 
 ## 核心原理
 
-### 属性复制的工作流程
+### RPC的三种调用类型
 
-属性复制依赖服务器的权威地位（Authority）。当一个Actor在服务器上修改了被标记为`Replicated`的属性，引擎在下一个网络更新帧会将该属性的新值序列化后通过UDP数据包推送给所有拥有该Actor副本的客户端。客户端收到数据后会直接覆盖本地属性值，并可选地调用`OnRep_属性名()`回调函数执行副作用逻辑（例如播放特效、更新UI）。
+在Unreal Engine的NetMulticast / Server / Client分类体系中，RPC分为三种：
 
-属性复制只保证**最终状态一致性**，不保证每次中间变化都被传递。若服务器在同一帧内将血量从100改为50再改为80，客户端最终只会收到80这一个值。因此属性复制适合同步持续状态（位置、血量、弹药数），而不适合同步离散事件（开枪、跳跃）。
+- **Server RPC**：客户端调用，服务器执行。用于客户端向服务器报告意图（如按下跳跃键）。只有拥有该Actor所有权（Ownership）的客户端才能调用，否则调用被静默丢弃。
+- **Multicast RPC**：服务器调用，所有已连接客户端及服务器自身执行。典型用途是播放全局音效或特效，例如角色死亡时的爆炸粒子。
+- **Client RPC**：服务器调用，仅在该Actor的拥有客户端上执行。常用于给特定玩家发送UI提示，如"你已进入战区"。
 
-### RPC的三种类型
+RPC本质上是UDP报文上封装的函数调用，**不保证到达**（Unreliable修饰符）或**保证有序到达**（Reliable修饰符）。`Reliable` RPC通过重传机制确保执行，但每个连接同时最多只能有**256个未确认的Reliable RPC**，超出会断开连接，因此高频事件（如每帧发送的移动数据）绝对不应使用Reliable。
 
-Unreal Engine定义了三种RPC调用方向，理解其方向性是正确使用的关键：
+### 属性复制的标记与条件机制
 
-| RPC类型 | 调用方 | 执行方 | 典型用途 |
-|---|---|---|---|
-| `Server` | 客户端 | 服务器 | 客户端请求服务器执行某动作（如开枪验证） |
-| `Client` | 服务器 | 特定客户端 | 服务器向单个客户端推送私有信息（如得分结算） |
-| `NetMulticast` | 服务器 | 所有客户端+服务器 | 广播瞬间事件（如爆炸特效触发） |
+属性复制需要两步：首先在声明处加`UPROPERTY(Replicated)`，然后在`GetLifetimeReplicatedProps`函数中用宏`DOREPLIFETIME`注册该属性。
 
-`Server` RPC默认需标记`Reliable`或`Unreliable`：`Reliable`保证送达但增加延迟开销；`Unreliable`允许丢包，适合高频率低重要性数据（如角色的语音振幅）。Unreal Engine内部以队列方式处理Reliable RPC，连续丢失100个确认包后会强制断开连接。
+```cpp
+UPROPERTY(Replicated)
+float Health;
 
-### 带宽消耗对比与选择依据
+void AMyCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+    Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+    DOREPLIFETIME(AMyCharacter, Health);
+}
+```
 
-属性复制与RPC在带宽开销上差异显著。属性复制采用差量压缩（Delta Compression），仅传输变化的字段；而每次RPC调用都会产生独立的数据报文头（Header开销约为20-40字节）。对于每秒触发超过20次的高频事件，优先考虑将数据存入可复制属性而非连续发送RPC。
+引擎在每个**网络更新帧**（默认每秒约100次，由`NetUpdateFrequency`属性控制）比较属性的当前值与上次发送值，仅当发生变化时才生成差量包（Delta）并推送给相关客户端。
 
-条件复制（Conditional Replication）通过`DOREPLIFETIME_CONDITION`宏进一步精细化属性复制目标，例如`COND_OwnerOnly`只向拥有者客户端复制（用于弹药数量），`COND_SkipOwner`则跳过拥有者（用于他人可见的装备状态），有效减少不必要的带宽占用。
+属性复制还支持**条件复制**（Conditional Replication），通过`DOREPLIFETIME_CONDITION`宏精细控制推送范围：
+- `COND_OwnerOnly`：只复制给该Actor的拥有者，适合弹药数量等隐私数据。
+- `COND_SkipOwner`：跳过拥有者，适合同步给旁观者。
+- `COND_InitialOnly`：只在Actor首次Spawn时同步一次，适合不会改变的出生点坐标。
+
+### RepNotify回调机制
+
+属性加上`ReplicatedUsing`修饰符后，每当客户端收到该属性的更新，引擎会自动调用指定的回调函数（OnRep函数）：
+
+```cpp
+UPROPERTY(ReplicatedUsing = OnRep_Health)
+float Health;
+
+UFUNCTION()
+void OnRep_Health();
+```
+
+OnRep函数是**纯客户端逻辑**，服务器不执行。它的典型用途是在血量变化时更新血条UI、播放受伤音效，或根据新旧值判断是否刚刚复活。需注意：OnRep函数不会在服务器本地赋值时触发，只在网络数据到达时触发，因此服务器端的UI更新必须单独处理。
+
+---
 
 ## 实际应用
 
-**射击游戏中的开枪逻辑**：玩家按下扳机时，客户端调用`Server_Fire()`（Server RPC）向服务器报告射击意图。服务器执行碰撞检测后，若命中则修改目标Actor的`Health`属性（属性复制自动同步到所有客户端），同时调用`NetMulticast_PlayFireEffect()`播放枪口火焰特效（Multicast RPC，因为特效无需持久存储）。这一组合确保了：判定由服务器权威执行，视觉反馈及时广播，持久数据通过属性自动同步。
+**案例一：角色受伤系统**
 
-**MMO中的背包物品同步**：玩家背包内容属于私有状态，应使用`COND_OwnerOnly`条件复制的`TArray<FItemData> InventoryItems`属性，只同步给拥有者客户端。若服务器发放奖励物品，修改该数组后引擎自动向目标客户端推送，并触发`OnRep_InventoryItems()`更新背包UI，无需手动编写任何Client RPC。
+血量`Health`使用`ReplicatedUsing=OnRep_Health`标记，服务器在判定命中后直接修改`Health`值，属性复制自动将新值推送到所有相关客户端。客户端的`OnRep_Health`回调负责刷新血条UI和播放受伤动画。"造成伤害"这个动作本身不需要RPC，因为服务器是权威端，直接修改即可。
 
-**实时位置同步**：角色的`ReplicatedMovement`结构体（Unreal Engine内置）每帧在服务器更新后以`Unreliable`方式广播给客户端，配合客户端本地的运动预测（Client-Side Prediction），在100ms延迟下仍能保持流畅的视觉表现。
+**案例二：技能特效触发**
+
+玩家释放技能时，客户端先发送Server RPC `ServerCastSkill(SkillID)`，服务器验证合法性后，调用Multicast RPC `MulticastPlaySkillEffect(SkillID, Location)`在所有客户端播放特效。此场景不适合用属性复制，因为特效是一次性事件，若用布尔属性`bSkillActive`来触发，两次快速连续的技能释放可能导致属性值先变为true再变回false，客户端只收到最终false值，第二次特效被吞掉。
+
+**案例三：门的开关状态**
+
+门的`bIsOpen`布尔属性用`DOREPLIFETIME_CONDITION(ADoor, bIsOpen, COND_InitialOnly)`在新玩家加入时同步初始状态，之后通过服务器权威逻辑直接修改，结合RepNotify播放开门动画。晚加入的玩家会正确看到门的当前状态，而不是默认关闭状态。
+
+---
 
 ## 常见误区
 
-**误区一：认为客户端可以直接修改复制属性**。属性复制是单向的（服务器→客户端），客户端修改本地的`Replicated`属性值不会传播到其他机器，且下次服务器推送时会被覆盖还原。若需要客户端驱动状态变更，必须先通过`Server` RPC向服务器请求，由服务器执行后通过属性复制同步结果。
+**误区一：对高频数据使用Reliable RPC**
 
-**误区二：Multicast RPC等同于属性复制**。`NetMulticast` RPC在调用时刻才向所有当前在线客户端发送，此后新加入的客户端永远不会收到这条RPC。而属性复制会在新客户端请求Actor信息时（Initial Replication阶段）传递属性的当前值。因此用Multicast RPC同步"当前是否着火"状态会导致中途加入的玩家看不到已燃烧的物体——正确做法是用`bool bOnFire`属性复制表示持续状态，Multicast RPC仅触发点火瞬间的粒子特效。
+移动同步、瞄准方向等每帧变化的数据若使用`Reliable`修饰符，在网络抖动时会堆积大量未确认的RPC，触发256条上限后服务器直接断开该客户端连接。正确做法是使用`Unreliable`并在应用层实现状态插值补偿（如Unreal内置的CharacterMovement组件）。
 
-**误区三：Reliable RPC可以无限量使用**。Reliable RPC通过维护确认队列保证送达，但队列长度有上限（Unreal Engine默认256条），超出后会自动降级为Unreliable处理。在高频逻辑（如每帧调用）中滥用Reliable RPC会迅速填满队列，引发不可预期的同步故障。
+**误区二：在属性复制中依赖OnRep的执行顺序**
+
+若两个属性A和B都有RepNotify，且B的OnRep逻辑依赖A的最新值，实际上引擎不保证OnRep_A一定在OnRep_B之前执行。正确做法是在OnRep_B内直接读取当前A的属性值（此时A的新值已由网络包写入，只是回调顺序不定），而非假设回调按声明顺序触发。
+
+**误区三：RPC可以替代权威服务器逻辑**
+
+部分开发者用Client RPC将"你的攻击命中了"的结论发给客户端，让客户端自行扣血。这实际上将权威判断移交给客户端，形成作弊漏洞。RPC传递的应是**服务器已验证的结果**或**客户端的意图请求**，伤害计算、碰撞判定等逻辑必须在服务器上执行。
+
+---
 
 ## 知识关联
 
-本概念直接建立在**状态复制**的基础上：状态复制定义了服务器权威模型和Actor的`bReplicates = true`初始化，RPC与属性复制是状态复制在代码层面的两种具体实现手段。掌握属性复制需要熟悉`GetLifetimeReplicatedProps()`函数——该函数是Unreal Engine中声明所有参与复制的属性清单的强制入口点，遗漏任何属性都会导致该属性静默失效而不报错。RPC机制与网络所有权（Network Ownership）紧密相连，`Server` RPC只能由拥有该Actor的客户端调用，理解这一限制能避免"RPC调用无反应"类问题的调试困境。这两种机制的综合运用，是构建角色移动同步、伤害系统和游戏状态机等更复杂网络功能的直接前置能力。
+**前置概念——状态复制**：理解服务器-客户端的所有权模型（哪个客户端拥有哪个Actor）是正确使用Server RPC和Client RPC的前提，因为调用权限与所有权直接绑定。没有状态复制的基础概念，`COND_OwnerOnly`等条件复制宏的语义将难以理解。
+
+**与移动预测的联系**：属性复制的`NetUpdateFrequency`默认值（角色通常设为100Hz，背景Actor可低至2Hz）直接影响玩家感知到的延迟。高移动速度的角色需要更高的更新频率，而OnRep回调配合插值算法是实现客户端平滑移动的标准路径。
+
+**与网络优化的联系**：条件复制`COND_OwnerOnly`和低频`NetUpdateFrequency`是带宽优化的两大直接手段，理解属性复制的差量比较机制后，才能正确评估将哪些字段拆分为独立属性以最小化每帧的复制负载。
