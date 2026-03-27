@@ -24,93 +24,79 @@ quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-03-27
 ---
 
+
 # 1D BlendSpace（一维混合空间）
 
 ## 概述
 
-1D BlendSpace 是虚幻引擎（Unreal Engine）动画系统中的一种资产类型，允许开发者沿**单一数值轴**对多个动画片段进行权重混合。与直接在动画蓝图中写死动画状态不同，1D BlendSpace 接收一个浮点参数（如角色移动速度），并根据该参数值在预设的动画样本点之间自动插值，输出平滑过渡的姿态。
+1D BlendSpace 是虚幻引擎（Unreal Engine）动画系统中的一种资产类型，允许开发者沿**单条数轴**对两个或多个动画片段进行插值混合，输出一个随参数连续变化的合成姿势。它只接受一个浮点数作为驱动变量（通常命名为 `Speed`），并根据该值在预设的采样点之间自动计算各动画的权重。
 
-该功能自 UE4 引入，资产文件扩展名为 `.uasset`，在编辑器中通过 **Content Browser → 右键 → Animation → BlendSpace 1D** 创建。其核心价值在于用一条轴替代多个硬切换的状态机转换，使 Walk→Jog→Run 等连续运动状态的过渡自然流畅，而无需手工编写插值逻辑。
+1D BlendSpace 最早随虚幻引擎 4 的动画蓝图系统一同发布（约 2014 年），用来解决在固定动画片段之间生硬切换的问题。在此之前，开发者只能用状态机做离散跳转，导致角色从步行瞬间切至跑步时出现明显的动作抽搐（popping）。1D BlendSpace 将这一离散跳转转化为连续插值，消除了帧间穿帮。
 
-对于移动速度驱动的角色动画，1D BlendSpace 是最直接的解决方案：开发者只需将角色的 `Speed`（单位：cm/s）值传入，系统便自动计算每帧应混合的比例，大幅降低动画蓝图的节点复杂度。
+在运动系统中，速度是驱动 1D BlendSpace 最典型的参数：将 `Idle`（0 cm/s）、`Walk`（150 cm/s）、`Run`（600 cm/s）三个动画放置在同一条轴上，当角色速度为 300 cm/s 时，系统自动以 50% Walk + 50% Run 的权重输出混合姿势，无需任何额外代码。
 
 ---
 
 ## 核心原理
 
-### 轴定义与样本点布局
+### 采样点与轴范围设置
 
-创建 1D BlendSpace 后，首先需要在 **Asset Details** 面板中设置水平轴（Horizontal Axis）的参数名称、最小值与最大值。典型的速度轴设置为：
-
-- **Axis Name**：`Speed`
-- **Minimum Axis Value**：`0`（站立/Idle）
-- **Maximum Axis Value**：`600`（全速奔跑/Run）
-
-在轴上放置**样本点（Sample Points）**，每个样本点绑定一条动画序列。最简配置为三点：
-- `0 cm/s` → Idle 动画
-- `250 cm/s` → Walk 动画
-- `600 cm/s` → Run 动画
-
-样本点数量没有硬性上限，但通常 3–5 个已足够覆盖大多数移动状态。
-
-### 线性插值计算方式
-
-当输入参数值落在两个样本点之间时，引擎执行**线性插值（Lerp）**：
+创建 1D BlendSpace 后，必须在 **Axis Settings** 面板中定义轴的最小值（Minimum Axis Value）和最大值（Maximum Axis Value），以及网格分辨率（Grid Divisions）。例如，速度轴常设置为 0–600，Grid Divisions 设为 4，则引擎在轴上每隔 150 单位预计算一次采样权重。采样点（Sample Point）是手动拖入编辑器的动画序列，每个采样点绑定一个轴坐标值；若采样点坐标为 0、150、600，引擎会在相邻两点之间进行**线性插值（Lerp）**：
 
 $$
-\text{Output Pose} = (1 - t) \times \text{Pose}_A + t \times \text{Pose}_B
+\text{Output Pose} = \text{Pose}_A \times (1 - t) + \text{Pose}_B \times t
 $$
 
-其中 $t = \dfrac{v - v_A}{v_B - v_A}$，$v$ 为当前输入值，$v_A$ 和 $v_B$ 分别为相邻两个样本点的轴坐标值。
+其中 $t = \dfrac{V - V_A}{V_B - V_A}$，$V$ 为当前输入值，$V_A$、$V_B$ 为相邻采样点坐标。
 
-例如，当 `Speed = 400` 时，处于 Walk（250）和 Run（600）之间：$t = (400 - 250) / (600 - 250) \approx 0.43$，即以 57% Walk + 43% Run 的比例混合姿态。
+### 平滑插值与目标权重插值速度
 
-### 平滑插值与目标权重插值
+1D BlendSpace 内置 **Target Weight Interpolation Speed Per Second** 参数（默认为 0，表示瞬时跳变）。将其设为 5.0 意味着权重每秒最多变化 5 个单位，相当于对输入值施加了一阶低通滤波。这与在蓝图中手动用 `FInterp To` 平滑速度变量不同——BlendSpace 的平滑作用于**动画权重**本身，即使输入参数突变，输出姿势仍会缓慢过渡，防止角色在加速瞬间出现骨骼抖动。
 
-1D BlendSpace 提供 **Target Weight Interpolation Speed Per Second** 参数（默认值通常为 `0`，表示关闭）。当该值设为正数（如 `5`）时，输入参数的变化会被平滑处理，避免玩家突然松开移动键时动画跳变。该平滑作用于**权重层面**而非参数本身，因此与角色控制器中的速度平滑是两个独立机制，两者叠加可能造成过度滞后，需谨慎调节。
+### 循环与脚步同步
+
+1D BlendSpace 的每个采样点动画应设置为**循环（Loop）**，否则当角色持续移动时动画会在末帧冻结。更关键的是：Walk 动画与 Run 动画的**步幅节奏**必须对齐——如果 Walk 动画周期为 0.8 秒而 Run 为 0.6 秒，混合中间值时左右脚会出现相位错位，角色看起来像在拖行。解决方法是配合**同步组（Sync Group）**将两个动画钉在同一相位，但该功能属于独立话题，将在后续章节介绍。
 
 ---
 
 ## 实际应用
 
-### 速度驱动 Walk→Run 渐变
+**角色移动速度驱动（Walk→Jog→Run）**
+在第三人称模板中，动画蓝图的 EventGraph 每帧通过 `GetVelocity → VectorLength` 获取角色速度，将结果传入 1D BlendSpace 的 `Speed` 参数。采样点配置示例：
 
-在第三人称角色项目中，标准做法是：
+| 轴坐标（cm/s） | 动画片段         |
+|--------------|----------------|
+| 0            | Idle           |
+| 175          | Walk           |
+| 375          | Jog            |
+| 600          | Run            |
 
-1. 在动画蓝图的 **Event Graph** 中，每帧获取角色速度向量的长度：`Speed = GetVelocity().Size()`；
-2. 将 `Speed` 存入动画蓝图变量；
-3. 在 **AnimGraph** 中拖入 1D BlendSpace 节点，将 `Speed` 变量连接到其输入引脚。
+当玩家按下冲刺键使速度从 375 升至 600，BlendSpace 在约 0.2 秒内（取决于 Target Weight Interpolation Speed）完成 Jog→Run 的平滑融合。
 
-这样当玩家轻推摇杆（速度约 150 cm/s）时，输出姿态为 Walk 与 Idle 之间的混合，推满摇杆（600 cm/s）时完全播放 Run 动画，过渡全程无缝。
-
-### 武器持握状态下的移动动画
-
-同一套移动速度轴可用于持枪行走场景：将 Idle_Rifle、Walk_Rifle、Run_Rifle 三条动画以相同轴坐标（0 / 250 / 600）放置在另一个 1D BlendSpace 中。结合动画蓝图的状态机，在"武器未装备"与"武器装备"之间切换使用不同的 BlendSpace 资产，即可实现两套移动表现的分离管理。
+**武器持握状态下的移动层**
+在 Additive 层动画结构中，1D BlendSpace 常单独负责下半身移动，上半身叠加瞄准姿势。此时 1D BlendSpace 采样点只包含腰部以下的 Walk/Run 骨骼动画，通过 **Blend Poses by Bool** 节点与非武装状态的混合空间切换，避免维护两套完整角色动画。
 
 ---
 
 ## 常见误区
 
-### 误区一：将平滑参数与控制器速度平滑混为一谈
+**误区一：采样点越多越平滑**
+增加采样点并非总是改善混合效果。若在 0–600 的轴上添加 10 个采样点，但相邻动画在艺术上差异极小，插值结果与 3 个采样点几乎无法区分，却增加了内存占用和维护成本。实测中，速度轴通常 3–4 个采样点已足够；过多采样点反而会因相邻动画根骨骼偏移不一致而产生轻微抖动。
 
-许多初学者同时在角色移动组件中开启 `Braking Deceleration` 减速，又在 BlendSpace 中设置较高的 Target Weight Interpolation 值。两层平滑叠加导致角色停步后动画仍持续走动超过 0.5 秒，用户体验明显滞后。正确做法是**只选其一**：要么让移动速度本身平滑变化（BlendSpace 插值速度保持 0），要么让速度硬切但由 BlendSpace 平滑动画权重。
+**误区二：Target Weight Interpolation Speed 可以替代骨骼平滑**
+该参数只平滑**混合权重的变化速率**，不修改单个动画片段内部的骨骼轨迹。如果 Run 动画本身的根骨骼在第一帧存在偏移，权重平滑无法消除该偏移带来的瞬移。根骨骼问题需要在 DCC 工具（如 Maya、Blender）中修正动画数据本身。
 
-### 误区二：样本点间距不均匀导致过渡不自然
-
-若将三个样本点设为 0 / 50 / 600，则速度从 0 到 50 的极小范围内已完成 Idle→Walk 的全部过渡，而从 50 到 600 的漫长区间内 Walk 权重从 100% 缓慢降至 0%，视觉上 Walk 动画会持续"拖尾"很久。样本点应按**感知均匀**或实际游戏速度段分布，而非随意摆放。
-
-### 误区三：将 1D BlendSpace 用于需要方向信息的场景
-
-1D BlendSpace 只有单轴，无法同时编码速度与方向。当需要区分前进、后退、侧步时，单轴 Speed 变量会导致所有方向播放同一套混合动画。此类场景必须升级至 **2D BlendSpace**，以 Speed 和 Direction（-180°～180°）作为双轴输入。
+**误区三：1D BlendSpace 可以直接处理方向混合**
+1D BlendSpace 只有一条轴，无法同时表达速度和方向（前进/后退/左移/右移）。若在单轴上依次放置 Forward Walk、Strafe Walk、Backward Walk，混合结果会将三个方向的骨骼姿势线性叠加，产生错误的躯干旋转。方向混合必须使用 2D BlendSpace，以速度和方向角各占一轴。
 
 ---
 
 ## 知识关联
 
-**前置概念——混合基础**：理解姿态插值（Pose Lerp）和动画权重（0.0–1.0 范围）是读懂 BlendSpace 插值公式的前提。混合基础中讲解的 `Blend Poses by Bool` 节点实质上是 BlendSpace 的特殊二值情形（t 只取 0 或 1）。
+**前置概念——混合基础**：理解骨骼姿势插值（Pose Lerp）和动画权重归一化是读懂上文公式 $t = (V - V_A)/(V_B - V_A)$ 的必要条件；混合基础章节解释了为何所有采样点权重之和必须等于 1.0。
 
-**后续概念——2D BlendSpace**：在 1D BlendSpace 掌握单轴样本布局之后，2D BlendSpace 增加垂直轴（通常为 Direction），形成二维网格采样，混合计算从线性插值扩展为**双线性插值（Bilinear Interpolation）**，需要同时管理两个输入变量的范围与样本密度。
+**后续概念——2D BlendSpace**：1D BlendSpace 是 2D BlendSpace 的子集——2D 版本在水平轴放速度、垂直轴放方向角，可视为两条正交的 1D 轴联合求解双线性插值。掌握 1D 版本的采样点布局和 Target Weight 参数后，迁移至 2D 版本时只需额外学习三角形剖分（Delaunay Triangulation）权重求解逻辑。
 
-**后续概念——同步组（Sync Group）**：当 1D BlendSpace 中的 Walk 与 Run 动画周期不同（例如 Walk 为 0.8s/步，Run 为 0.5s/步）时，直接混合会导致脚步相位错位。同步组通过指定 Leader/Follower 角色，强制多条动画在混合时对齐关键帧，是 BlendSpace 在实际项目中必须搭配使用的机制。
+**后续概念——同步组**：1D BlendSpace 的脚步相位错位问题直接引出同步组的应用场景——同步组通过将 Walk 和 Run 归入同一 Group Name（如 `LocoGroup`），强制两者共享归一化的播放位置（0.0–1.0），从而消除混合时的步伐相位差。
 
-**后续概念——步幅调整（Stride Warping）**：1D BlendSpace 解决了动画过渡的视觉平滑问题，但动画实际步幅与角色真实移动速度仍可能存在滑步（foot sliding）偏差。步幅调整通过程序化缩放腿部骨骼运动范围来匹配实时速度，是对 BlendSpace 速度驱动方案的精度补充。
+**后续概念——步幅调整（Stride Warping）**：步幅调整是 1D BlendSpace 的进阶替代方案之一。它允许只保留单一速度的步行动画，通过在运行时拉伸腿部骨骼来匹配任意速度，减少对多个离散采样点的依赖，适用于需要精确脚步接地的 AAA 级项目。
