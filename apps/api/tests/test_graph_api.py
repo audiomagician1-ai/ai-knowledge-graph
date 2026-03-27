@@ -1815,7 +1815,7 @@ async def test_game_engine_domain_supplements():
 
 @pytest.mark.asyncio
 async def test_software_engineering_seed_graph_integrity():
-    """Software-engineering seed graph: 280 concepts, 178 edges, 14 subdomains, 47 milestones."""
+    """Software-engineering seed graph: 280 concepts, 398 edges, 14 subdomains, 47 milestones."""
     async with AsyncClient(transport=transport, base_url="http://test") as client:
         resp = await client.get("/api/graph/data?domain=software-engineering")
         assert resp.status_code == 200
@@ -1823,7 +1823,7 @@ async def test_software_engineering_seed_graph_integrity():
         nodes = data["nodes"]
         edges = data["edges"]
         assert len(nodes) == 280, f"Expected 280 concepts, got {len(nodes)}"
-        assert len(edges) == 178, f"Expected 178 edges, got {len(edges)}"
+        assert len(edges) == 398, f"Expected 398 edges, got {len(edges)}"
         subdomain_ids = set(n["subdomain_id"] for n in nodes)
         assert len(subdomain_ids) == 14, f"Expected 14 subdomains, got {len(subdomain_ids)}"
         milestones = [n for n in nodes if n.get("is_milestone")]

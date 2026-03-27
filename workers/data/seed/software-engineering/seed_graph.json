@@ -4890,6 +4890,1106 @@
       "source": "se-dep-security",
       "target": "se-ci-security",
       "type": "related"
+    },
+    {
+      "source": "se-mvc-mvvm",
+      "target": "se-pipe-filter",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-pipe-filter",
+      "target": "se-plugin-arch",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-ddd",
+      "target": "se-serverless",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-serverless",
+      "target": "se-caching-arch",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-caching-arch",
+      "target": "se-database-arch",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-dp-chain",
+      "target": "se-dp-visitor",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-monorepo-tools",
+      "target": "se-perforce",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-vc-binary",
+      "target": "se-semantic-versioning",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-semantic-versioning",
+      "target": "se-changelog",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-cherry-pick",
+      "target": "se-bisect",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-bisect",
+      "target": "se-worktree",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-worktree",
+      "target": "se-git-submodule",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-git-internals",
+      "target": "se-vc-migration",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-docker-ci",
+      "target": "se-artifact-mgmt",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-artifact-mgmt",
+      "target": "se-env-management",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-feature-flags",
+      "target": "se-monitoring-ci",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-monitoring-ci",
+      "target": "se-secrets-mgmt",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-rollback",
+      "target": "se-ci-cache",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-ci-cache",
+      "target": "se-release-mgmt",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-cr-intro",
+      "target": "se-code-convention",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-cr-automation",
+      "target": "se-cr-pair-programming",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-cr-pair-programming",
+      "target": "se-cr-metrics",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-tech-debt",
+      "target": "se-documentation",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-documentation",
+      "target": "se-accessibility-review",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-cr-culture",
+      "target": "se-mob-programming",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-mob-programming",
+      "target": "se-dependency-review",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-dependency-review",
+      "target": "se-cr-large-diff",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-perf-review",
+      "target": "se-cr-game-specific",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-bdd",
+      "target": "se-snapshot-test",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-snapshot-test",
+      "target": "se-test-fixture",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-test-refactoring",
+      "target": "se-flaky-tests",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-flaky-tests",
+      "target": "se-test-data",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-mutation-test",
+      "target": "se-contract-test",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-contract-test",
+      "target": "se-perf-test",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-perf-test",
+      "target": "se-chaos-engineering",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-chaos-engineering",
+      "target": "se-test-game",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-algo-complexity",
+      "target": "se-io-perf",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-io-perf",
+      "target": "se-load-testing",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-load-testing",
+      "target": "se-apm",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-apm",
+      "target": "se-optimization-pattern",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-optimization-pattern",
+      "target": "se-compile-time-perf",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-compile-time-perf",
+      "target": "se-startup-perf",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-startup-perf",
+      "target": "se-network-perf",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-network-perf",
+      "target": "se-perf-budget",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-cache-perf",
+      "target": "se-concurrency-perf",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-frame-analysis",
+      "target": "se-database-perf",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-rename-refactor",
+      "target": "se-micro-refactor",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-inline-refactor",
+      "target": "se-replace-conditional",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-replace-conditional",
+      "target": "se-introduce-parameter",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-introduce-parameter",
+      "target": "se-null-object",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-test-before-refactor",
+      "target": "se-continuous-refactor",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-refactor-patterns",
+      "target": "se-api-refactor",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-api-refactor",
+      "target": "se-database-refactor",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-event-queue",
+      "target": "se-service-locator",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-object-pool",
+      "target": "se-double-buffer",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-double-buffer",
+      "target": "se-dirty-flag",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-dirty-flag",
+      "target": "se-type-object",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-observer-game",
+      "target": "se-subclass-sandbox",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-spatial-partition",
+      "target": "se-bytecode",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-data-locality",
+      "target": "se-sandbox-pattern",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-ecs-query",
+      "target": "se-ecs-hierarchy",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-ecs-hierarchy",
+      "target": "se-ecs-prefab",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-ecs-prefab",
+      "target": "se-ecs-testing",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-ecs-scheduling",
+      "target": "se-ecs-events",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-soa-layout",
+      "target": "se-entt",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-entt",
+      "target": "se-flecs",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-ue5-mass",
+      "target": "se-ecs-networking",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-ecs-networking",
+      "target": "se-ecs-serialization",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-memory-budget",
+      "target": "se-string-interning",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-alignment",
+      "target": "se-mem-debug",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-memory-fragmentation",
+      "target": "se-virtual-memory",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-move-semantics",
+      "target": "se-ownership",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-rwlock",
+      "target": "se-data-race",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-data-race",
+      "target": "se-mt-patterns",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-mt-patterns",
+      "target": "se-mt-debug",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-simd",
+      "target": "se-gpu-compute",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-gpu-compute",
+      "target": "se-false-sharing",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-ninja",
+      "target": "se-gradle",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-gradle",
+      "target": "se-webpack-vite",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-precompiled-header",
+      "target": "se-build-variant",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-build-variant",
+      "target": "se-build-automation",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-cross-compile",
+      "target": "se-link-time",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-link-time",
+      "target": "se-code-generation",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-code-generation",
+      "target": "se-remote-build",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-remote-build",
+      "target": "se-build-reproducibility",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-build-reproducibility",
+      "target": "se-shader-build",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-pip",
+      "target": "se-nuget",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-conan-vcpkg",
+      "target": "se-cargo",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-cargo",
+      "target": "se-maven",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-lockfile",
+      "target": "se-private-registry",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-dep-license",
+      "target": "se-dep-upgrade",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-dep-upgrade",
+      "target": "se-vendoring",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-vendoring",
+      "target": "se-container-deps",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-publish-flow",
+      "target": "se-dep-analysis",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-monorepo-deps",
+      "target": "se-game-dep",
+      "type": "prerequisite"
+    },
+    {
+      "source": "se-layered-arch",
+      "target": "se-mvc-mvvm",
+      "type": "related"
+    },
+    {
+      "source": "se-plugin-arch",
+      "target": "se-monorepo",
+      "type": "related"
+    },
+    {
+      "source": "se-monorepo",
+      "target": "se-modular-arch",
+      "type": "related"
+    },
+    {
+      "source": "se-modular-arch",
+      "target": "se-solid",
+      "type": "related"
+    },
+    {
+      "source": "se-solid",
+      "target": "se-api-design",
+      "type": "related"
+    },
+    {
+      "source": "se-api-design",
+      "target": "se-arch-decision",
+      "type": "related"
+    },
+    {
+      "source": "se-event-driven",
+      "target": "se-hexagonal",
+      "type": "related"
+    },
+    {
+      "source": "se-hexagonal",
+      "target": "se-clean-arch",
+      "type": "related"
+    },
+    {
+      "source": "se-clean-arch",
+      "target": "se-ddd",
+      "type": "related"
+    },
+    {
+      "source": "se-database-arch",
+      "target": "se-service-mesh",
+      "type": "related"
+    },
+    {
+      "source": "se-service-mesh",
+      "target": "se-arch-evolution",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-singleton",
+      "target": "se-dp-factory",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-builder",
+      "target": "se-dp-prototype",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-prototype",
+      "target": "se-dp-adapter",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-adapter",
+      "target": "se-dp-decorator",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-proxy",
+      "target": "se-dp-facade",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-facade",
+      "target": "se-dp-composite",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-composite",
+      "target": "se-dp-observer",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-observer",
+      "target": "se-dp-strategy",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-strategy",
+      "target": "se-dp-command",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-command",
+      "target": "se-dp-state",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-state",
+      "target": "se-dp-template",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-template",
+      "target": "se-dp-iterator",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-iterator",
+      "target": "se-dp-mediator",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-mediator",
+      "target": "se-dp-flyweight",
+      "type": "related"
+    },
+    {
+      "source": "se-dp-flyweight",
+      "target": "se-dp-chain",
+      "type": "related"
+    },
+    {
+      "source": "se-git-merge-rebase",
+      "target": "se-git-hooks",
+      "type": "related"
+    },
+    {
+      "source": "se-git-hooks",
+      "target": "se-conventional-commit",
+      "type": "related"
+    },
+    {
+      "source": "se-conventional-commit",
+      "target": "se-git-lfs",
+      "type": "related"
+    },
+    {
+      "source": "se-git-lfs",
+      "target": "se-pr-workflow",
+      "type": "related"
+    },
+    {
+      "source": "se-pr-workflow",
+      "target": "se-monorepo-tools",
+      "type": "related"
+    },
+    {
+      "source": "se-perforce",
+      "target": "se-vc-binary",
+      "type": "related"
+    },
+    {
+      "source": "se-changelog",
+      "target": "se-cherry-pick",
+      "type": "related"
+    },
+    {
+      "source": "se-git-submodule",
+      "target": "se-git-internals",
+      "type": "related"
+    },
+    {
+      "source": "se-github-actions",
+      "target": "se-jenkins",
+      "type": "related"
+    },
+    {
+      "source": "se-jenkins",
+      "target": "se-gitlab-ci",
+      "type": "related"
+    },
+    {
+      "source": "se-gitlab-ci",
+      "target": "se-docker-ci",
+      "type": "related"
+    },
+    {
+      "source": "se-env-management",
+      "target": "se-feature-flags",
+      "type": "related"
+    },
+    {
+      "source": "se-secrets-mgmt",
+      "target": "se-ci-testing",
+      "type": "related"
+    },
+    {
+      "source": "se-ci-testing",
+      "target": "se-rollback",
+      "type": "related"
+    },
+    {
+      "source": "se-deploy-strategies",
+      "target": "se-infra-as-code",
+      "type": "related"
+    },
+    {
+      "source": "se-infra-as-code",
+      "target": "se-ci-security",
+      "type": "related"
+    },
+    {
+      "source": "se-ci-security",
+      "target": "se-gitops",
+      "type": "related"
+    },
+    {
+      "source": "se-gitops",
+      "target": "se-game-ci",
+      "type": "related"
+    },
+    {
+      "source": "se-cr-checklist",
+      "target": "se-cr-tooling",
+      "type": "related"
+    },
+    {
+      "source": "se-cr-tooling",
+      "target": "se-cr-feedback",
+      "type": "related"
+    },
+    {
+      "source": "se-cr-feedback",
+      "target": "se-cr-automation",
+      "type": "related"
+    },
+    {
+      "source": "se-cr-metrics",
+      "target": "se-code-quality",
+      "type": "related"
+    },
+    {
+      "source": "se-code-quality",
+      "target": "se-static-analysis",
+      "type": "related"
+    },
+    {
+      "source": "se-static-analysis",
+      "target": "se-tech-debt",
+      "type": "related"
+    },
+    {
+      "source": "se-accessibility-review",
+      "target": "se-cr-culture",
+      "type": "related"
+    },
+    {
+      "source": "se-security-review",
+      "target": "se-perf-review",
+      "type": "related"
+    },
+    {
+      "source": "se-test-pyramid",
+      "target": "se-unit-test",
+      "type": "related"
+    },
+    {
+      "source": "se-integration-test",
+      "target": "se-test-doubles",
+      "type": "related"
+    },
+    {
+      "source": "se-test-doubles",
+      "target": "se-test-coverage",
+      "type": "related"
+    },
+    {
+      "source": "se-test-coverage",
+      "target": "se-bdd",
+      "type": "related"
+    },
+    {
+      "source": "se-test-fixture",
+      "target": "se-test-patterns",
+      "type": "related"
+    },
+    {
+      "source": "se-test-patterns",
+      "target": "se-test-refactoring",
+      "type": "related"
+    },
+    {
+      "source": "se-e2e-test",
+      "target": "se-property-test",
+      "type": "related"
+    },
+    {
+      "source": "se-property-test",
+      "target": "se-mutation-test",
+      "type": "related"
+    },
+    {
+      "source": "se-cpu-profiling",
+      "target": "se-memory-profiling",
+      "type": "related"
+    },
+    {
+      "source": "se-memory-profiling",
+      "target": "se-benchmark",
+      "type": "related"
+    },
+    {
+      "source": "se-benchmark",
+      "target": "se-algo-complexity",
+      "type": "related"
+    },
+    {
+      "source": "se-gpu-profiling",
+      "target": "se-cache-perf",
+      "type": "related"
+    },
+    {
+      "source": "se-concurrency-perf",
+      "target": "se-frame-analysis",
+      "type": "related"
+    },
+    {
+      "source": "se-database-perf",
+      "target": "se-perf-regression",
+      "type": "related"
+    },
+    {
+      "source": "se-refactor-intro",
+      "target": "se-rename-refactor",
+      "type": "related"
+    },
+    {
+      "source": "se-extract-method",
+      "target": "se-extract-class",
+      "type": "related"
+    },
+    {
+      "source": "se-extract-class",
+      "target": "se-move-method",
+      "type": "related"
+    },
+    {
+      "source": "se-move-method",
+      "target": "se-inline-refactor",
+      "type": "related"
+    },
+    {
+      "source": "se-null-object",
+      "target": "se-test-before-refactor",
+      "type": "related"
+    },
+    {
+      "source": "se-strangler-fig",
+      "target": "se-refactor-patterns",
+      "type": "related"
+    },
+    {
+      "source": "se-database-refactor",
+      "target": "se-arch-refactor",
+      "type": "related"
+    },
+    {
+      "source": "se-arch-refactor",
+      "target": "se-refactor-game",
+      "type": "related"
+    },
+    {
+      "source": "se-update-method",
+      "target": "se-component-pattern",
+      "type": "related"
+    },
+    {
+      "source": "se-service-locator",
+      "target": "se-object-pool",
+      "type": "related"
+    },
+    {
+      "source": "se-type-object",
+      "target": "se-flyweight-game",
+      "type": "related"
+    },
+    {
+      "source": "se-flyweight-game",
+      "target": "se-prototype-game",
+      "type": "related"
+    },
+    {
+      "source": "se-prototype-game",
+      "target": "se-state-pattern-game",
+      "type": "related"
+    },
+    {
+      "source": "se-state-pattern-game",
+      "target": "se-command-pattern-game",
+      "type": "related"
+    },
+    {
+      "source": "se-command-pattern-game",
+      "target": "se-observer-game",
+      "type": "related"
+    },
+    {
+      "source": "se-bytecode",
+      "target": "se-data-locality",
+      "type": "related"
+    },
+    {
+      "source": "se-entity",
+      "target": "se-component-ecs",
+      "type": "related"
+    },
+    {
+      "source": "se-component-ecs",
+      "target": "se-system-ecs",
+      "type": "related"
+    },
+    {
+      "source": "se-archetype",
+      "target": "se-sparse-set",
+      "type": "related"
+    },
+    {
+      "source": "se-sparse-set",
+      "target": "se-ecs-scheduling",
+      "type": "related"
+    },
+    {
+      "source": "se-ecs-events",
+      "target": "se-soa-layout",
+      "type": "related"
+    },
+    {
+      "source": "se-flecs",
+      "target": "se-unity-dots-ecs",
+      "type": "related"
+    },
+    {
+      "source": "se-unity-dots-ecs",
+      "target": "se-ue5-mass",
+      "type": "related"
+    },
+    {
+      "source": "se-ecs-serialization",
+      "target": "se-ecs-migration",
+      "type": "related"
+    },
+    {
+      "source": "se-smart-pointers",
+      "target": "se-raii",
+      "type": "related"
+    },
+    {
+      "source": "se-raii",
+      "target": "se-memory-leak",
+      "type": "related"
+    },
+    {
+      "source": "se-memory-leak",
+      "target": "se-memory-budget",
+      "type": "related"
+    },
+    {
+      "source": "se-string-interning",
+      "target": "se-alignment",
+      "type": "related"
+    },
+    {
+      "source": "se-pool-allocator",
+      "target": "se-gc",
+      "type": "related"
+    },
+    {
+      "source": "se-gc-optimization",
+      "target": "se-memory-fragmentation",
+      "type": "related"
+    },
+    {
+      "source": "se-virtual-memory",
+      "target": "se-cache-friendly",
+      "type": "related"
+    },
+    {
+      "source": "se-cache-friendly",
+      "target": "se-texture-memory",
+      "type": "related"
+    },
+    {
+      "source": "se-texture-memory",
+      "target": "se-move-semantics",
+      "type": "related"
+    },
+    {
+      "source": "se-ownership",
+      "target": "se-arena-allocator",
+      "type": "related"
+    },
+    {
+      "source": "se-mutex-lock",
+      "target": "se-condition-var",
+      "type": "related"
+    },
+    {
+      "source": "se-condition-var",
+      "target": "se-thread-pool",
+      "type": "related"
+    },
+    {
+      "source": "se-thread-pool",
+      "target": "se-future-promise",
+      "type": "related"
+    },
+    {
+      "source": "se-future-promise",
+      "target": "se-rwlock",
+      "type": "related"
+    },
+    {
+      "source": "se-lock-free",
+      "target": "se-task-system",
+      "type": "related"
+    },
+    {
+      "source": "se-task-system",
+      "target": "se-coroutine",
+      "type": "related"
+    },
+    {
+      "source": "se-coroutine",
+      "target": "se-memory-model",
+      "type": "related"
+    },
+    {
+      "source": "se-memory-model",
+      "target": "se-game-threading",
+      "type": "related"
+    },
+    {
+      "source": "se-game-threading",
+      "target": "se-simd",
+      "type": "related"
+    },
+    {
+      "source": "se-false-sharing",
+      "target": "se-concurrent-ds",
+      "type": "related"
+    },
+    {
+      "source": "se-cmake",
+      "target": "se-make",
+      "type": "related"
+    },
+    {
+      "source": "se-make",
+      "target": "se-msbuild",
+      "type": "related"
+    },
+    {
+      "source": "se-msbuild",
+      "target": "se-ninja",
+      "type": "related"
+    },
+    {
+      "source": "se-webpack-vite",
+      "target": "se-incremental-build",
+      "type": "related"
+    },
+    {
+      "source": "se-incremental-build",
+      "target": "se-precompiled-header",
+      "type": "related"
+    },
+    {
+      "source": "se-bazel",
+      "target": "se-ubt",
+      "type": "related"
+    },
+    {
+      "source": "se-ubt",
+      "target": "se-cross-compile",
+      "type": "related"
+    },
+    {
+      "source": "se-shader-build",
+      "target": "se-asset-pipeline",
+      "type": "related"
+    },
+    {
+      "source": "se-npm",
+      "target": "se-pip",
+      "type": "related"
+    },
+    {
+      "source": "se-nuget",
+      "target": "se-conan-vcpkg",
+      "type": "related"
+    },
+    {
+      "source": "se-maven",
+      "target": "se-lockfile",
+      "type": "related"
+    },
+    {
+      "source": "se-private-registry",
+      "target": "se-dep-security",
+      "type": "related"
+    },
+    {
+      "source": "se-container-deps",
+      "target": "se-workspace",
+      "type": "related"
+    },
+    {
+      "source": "se-workspace",
+      "target": "se-publish-flow",
+      "type": "related"
+    },
+    {
+      "source": "se-dep-resolution",
+      "target": "se-monorepo-deps",
+      "type": "related"
     }
   ],
   "milestones": [
