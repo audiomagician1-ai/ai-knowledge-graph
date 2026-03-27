@@ -20,80 +20,83 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-27
 ---
+
 # 绑定导出
 
 ## 概述
 
-绑定导出是指将完成骨骼绑定的3D角色模型，以FBX格式从DCC软件（如Maya、3ds Max或Blender）导出，并在游戏引擎（如Unreal Engine或Unity）中正确建立骨骼映射关系的完整流程。这个过程不仅仅是简单地点击"导出"按钮，而是需要确保骨骼层级、命名规范、蒙皮权重和单位设置全部对齐，才能让动画在引擎内正确播放。
+绑定导出是指将含有骨骼绑定（Rig）的角色或道具模型，以FBX格式从DCC软件（如Maya、3ds Max、Blender）输出，并在游戏引擎（如Unity、Unreal Engine）中正确读取骨骼层级、权重数据与动画曲线的完整流程。这一步骤处于角色制作管线的末端，直接决定骨骼是否能被引擎识别、蒙皮权重是否完整传递，以及动画是否能驱动模型正确形变。
 
-FBX格式由Autodesk开发，自2006年成为业界标准的骨骼动画交换格式，其最大优势在于能够将网格、骨骼、蒙皮权重和动画数据打包进同一个文件。然而，FBX格式本身包含大量可配置项，不同软件对FBX规范的实现存在细微差异，导致导出设置的正确与否直接影响引擎内骨骼是否能被正确识别。
+FBX格式由Autodesk开发，最初以Filmbox格式发布，1996年前后开始在游戏行业普及。目前游戏引擎普遍支持FBX 2014/2015及更高版本规范，该规范中定义了`FbxSkin`与`FbxCluster`节点结构，用于存储顶点与骨骼之间的权重绑定关系。若导出时选择的FBX版本过旧（如FBX 6.1），则`FbxSkin`数据可能被截断，导致引擎中出现模型破面。
 
-绑定导出对游戏开发管线的重要性体现在：一次导出设置配置错误会导致整套角色动画在引擎中全部失效，例如骨骼轴向错误会让角色所有肢体旋转方向颠倒，而这种错误通常只有在引擎内预览时才能被发现。正确掌握绑定导出能节省角色动画师与TA之间大量的沟通返工时间。
+绑定导出的核心价值在于：骨骼层级命名必须与引擎骨骼映射表（Skeleton Mapping）完全匹配，否则引擎的重定向系统（Retargeting）将无法将通用动画正确驱动到目标角色。因此，掌握绑定导出等同于掌握DCC软件与引擎之间骨骼数据的"翻译协议"。
 
 ---
 
 ## 核心原理
 
-### FBX导出的关键参数设置
+### FBX导出面板中的关键参数
 
-在Maya的FBX导出对话框中，针对绑定角色有几个参数必须特别关注：
+在Maya的FBX导出插件（FBX Plugin）中，导出绑定角色时有以下必须确认的选项：
 
-- **Smoothing Groups（平滑组）**：必须勾选，否则引擎接收到的法线数据会丢失，导致模型表面光照错误。
-- **Skin（蒙皮）**：必须勾选，这个选项控制蒙皮权重数据是否被写入FBX文件。若取消勾选，引擎只会收到一个静态网格，骨骼对顶点的影响全部丢失。
-- **Animation**：如果本次只导出绑定T-Pose用于骨骼映射，应当**关闭**此选项，或单独导出动画FBX，避免将无关关键帧混入骨骼文件。
-- **Units**：Maya默认单位为厘米（cm），而Unreal Engine的单位是厘米，Unity默认是米（m）。导出到Unity时，若不在FBX导出设置中勾选"Automatic Units"或手动将Scale Factor设置为0.01，角色导入后将显示为100倍大小。
+- **Smoothing Groups**：须启用，否则法线信息丢失导致光照错误。
+- **Skin**（蒙皮）：必须勾选，控制是否导出`FbxSkin`权重数据；取消勾选后引擎将收到无蒙皮的静态网格体。
+- **Skeleton Definitions**：控制骨骼节点是否以`FbxSkeleton`类型写入，取消后骨骼节点会退化为普通`FbxNull`节点，Unreal Engine的骨架资产导入向导将无法识别骨骼树。
+- **Animation**（动画曲线）：若本次导出仅需骨骼+蒙皮而不含动画，须取消勾选，避免引擎将T-Pose强制识别为一段0帧动画并填满动画时间轴。
 
-### 骨骼轴向与根骨骼规范
+Blender的FBX导出器默认将`Armature`节点作为根骨骼父节点导出，这会在骨骼层级顶端插入一个名为`Armature`的额外节点。Unreal Engine 5在导入时会弹出"Convert Scene"警告并自动添加根骨骼，若不手动在导出选项中勾选**Add Leaf Bones = Off**并设置**Primary Bone Axis = Y Axis**，将产生骨骼轴向180°翻转的问题。
 
-FBX导出中最容易引发引擎问题的是骨骼的局部轴向（Local Axis）。Unreal Engine要求骨骼的**X轴朝向骨骼延伸方向**，而Maya的关节默认轴向可能因制作习惯不同而各异。在导出前，技术美术需要使用Maya的"Freeze Transformations"确认每根骨骼的旋转归零值（Bind Pose下所有关节的旋转通道应为0, 0, 0），这是引擎能正确读取骨骼Bind Pose的前提。
+### 引擎骨骼映射机制
 
-根骨骼（Root Bone）的命名和位置同样被引擎严格要求。Unreal Engine要求根骨骼必须位于世界坐标原点（0, 0, 0），且通常命名为"root"。若根骨骼存在位移偏移，导入UE后会在骨架资产中显示警告"Root bone is not at origin"，并可能导致动画重定向（Retargeting）失败。
+Unreal Engine使用**骨骼树（Skeleton Asset）**与**骨骼映射表（IK Rig Retargeter）**两套系统管理骨骼识别。导入FBX时，引擎读取所有`FbxSkeleton`节点的名称字符串与父子层级关系，在内部构建一棵骨骼树。若导出时骨骼名称含有空格（如`Left Arm`）或中文字符，引擎会将其替换为下划线（`Left_Arm`），导致后续动画复用时骨骼名无法与原始FBX对应。
 
-### 引擎骨骼映射（Skeleton Mapping）
+Unity的骨骼映射依赖**Humanoid Rig配置**。在Inspector的Rig标签下选择`Humanoid`后，Unity的Mecanim系统会尝试将FBX中的骨骼名称与其内置的56块人形骨骼（包含15块必须骨骼，如Hips、Spine、Head等）进行自动匹配。匹配规则基于名称关键词（如含"hip"、"pelvis"字样的骨骼会被映射到Hips槽位），因此遵循标准命名规范（如UE4骨骼命名或Mixamo命名）能极大提升自动映射成功率。
 
-在Unreal Engine中导入一个绑定FBX时，引擎会读取文件内的骨骼层级，生成一个**Skeleton资产**。当后续导入该角色的动画FBX时，引擎会尝试将动画文件中的骨骼名称与已有的Skeleton资产进行逐一匹配。这个过程称为骨骼映射（Skeleton Mapping）。
+### 单位与坐标系的导出配置
 
-骨骼映射的核心规则是：**名称完全一致**。若角色绑定文件中的骨骼命名为"LeftArm"，而动画文件中命名为"L_Arm"，映射将失败，该骨骼的动画数据会被丢弃。因此，在整个项目管线启动前，必须确立并锁定骨骼命名规范文档，绑定导出时的骨骼名称需与该文档完全一致。
+FBX格式记录场景单位与坐标轴方向，不同DCC软件默认值不同：
 
-Unity的骨骼映射机制略有不同：Unity使用**Avatar系统**，通过Humanoid配置界面进行骨骼映射，允许骨骼命名存在一定差异，但代价是需要手动指定哪根骨骼对应身体的哪个部位（如左大腿、右肩等）。
+| 软件 | 默认单位 | 默认前轴 | 默认上轴 |
+|------|---------|---------|---------|
+| Maya | cm | Z | Y |
+| 3ds Max | inch | Y | Z |
+| Blender | m | -Y | Z |
+
+Unreal Engine的内部单位为cm，坐标系为X轴朝前、Z轴朝上。导出时若不在Maya FBX导出选项中勾选**Apply Unit Conversion**并将单位锁定为`Centimeters`，导入UE后角色体型将缩小100倍（因为引擎默认将1单位解释为1cm）。Unity内部单位为m，导入FBX时会自动乘以`Scale Factor`（默认0.01将cm转换为m），但若DCC软件导出时已进行了单位转换，Unity的自动缩放会造成双重缩放，角色最终缩小至1/100。
 
 ---
 
 ## 实际应用
 
-**角色T-Pose绑定文件导出（Maya → Unreal Engine）完整流程：**
+**场景一：角色首次导入Unreal Engine**
+在Maya中完成绑定后，选中角色网格体与根骨骼（`root`节点），执行`File > Export Selection`，格式选`FBX export`，在设置面板中确认：Geometry中勾选Smoothing Groups，Animation取消勾选，Units选择Centimeters，FBX file format选择`FBX 2014/2015 Binary`。导入UE5后，在Skeletal Mesh导入窗口中将`Skeleton`指定为已存在的骨架资产，避免引擎为同一套骨骼创建多个不兼容的Skeleton Asset。
 
-1. 在Maya中将角色摆回Bind Pose（Edit > Pose > Assume Bind Pose）。
-2. 选中角色网格和根骨骼，执行File > Export Selection。
-3. 在FBX Export对话框中设置：Geometry > Smoothing Groups ✓，Animation（取消勾选），Deformed Models > Skins ✓，Units > Centimeters。
-4. 导入UE时，在Import对话框中：Import Mesh ✓，Import as Skeletal ✓，Skeleton选"None"（首次导入），Create Physics Asset可暂时选No。
-5. 导入完成后，在Skeleton Editor中检查骨骼层级，确认根骨骼位于原点，每根骨骼轴向显示符合预期。
+**场景二：Blender导出后骨骼朝向错误**
+Blender默认骨骼朝向为头部朝向+Y，导出至UE后骨骼T-Pose呈现全身旋转90°。解决方法：在Blender FBX导出设置中将`Forward`改为`-Z Forward`、`Up`改为`Y Up`，或直接勾选`Apply Transform`（Apply Transform会烘焙变换到顶点，无法还原，需谨慎评估是否为可接受的破坏性操作）。
 
-**常见排查场景**：角色导入UE后，在预览中发现手部骨骼扭曲，但在Maya中显示正常。原因通常是导出时没有烘焙（Bake）骨骼的驱动表达式（Driven Key），导致FBX中该骨骼的旋转数据记录为驱动器计算前的原始值而非实际姿势值。解决方法是在导出前执行Edit > Keys > Bake Simulation。
+**场景三：Unity Humanoid自动映射失败**
+若角色骨骼命名完全自定义（如`jnt_L_UpperArm`），Unity自动映射可能无法识别Left Upper Arm槽位。此时需要在`Configure Avatar`界面手动将`jnt_L_UpperArm`拖入对应槽位，并点击`Done`保存映射。该映射信息存储在`.meta`文件的`humanDescription`字段中，随项目版本控制提交。
 
 ---
 
 ## 常见误区
 
-**误区一：认为导出FBX后骨骼数量可以随意增减**
+**误区一：导出前未重置骨骼变换**
+部分美术在调整绑定过程中会在骨骼节点上累积未冻结的局部旋转值（Non-zero rest pose）。导出后引擎读取的骨骼静置姿势不为零旋转，导致动画混合时出现鬼影偏移。正确做法是在Maya中执行`Modify > Freeze Transformations`（或`makeIdentity -apply true`命令）将静置姿势的局部变换归零，再执行导出。
 
-部分制作者认为可以先导出角色绑定，再在后续版本中为骨架添加辅助骨骼（如布料骨、面部骨）而不影响已有动画。实际上，Unreal Engine的Skeleton资产一旦被动画文件引用，其骨骼结构就相对固化——新增根骨骼层级下的叶骨骼（Leaf Bone）通常是允许的，但删除或重命名已有骨骼会导致所有引用该Skeleton的动画资产全部报错失效。
+**误区二：以为只导出蒙皮网格就足够**
+许多初学者只选中Mesh导出，忘记同时选中骨骼层级中的根节点。这导致FBX文件只包含`FbxMesh`和`FbxSkin`引用信息，但不包含任何`FbxSkeleton`节点实体，引擎将无法解析蒙皮数据，表现为模型在引擎中显示为一团变形的静态网格。正确导出选择应为：骨骼根节点 + 所有蒙皮网格体，在Maya中可用`Select Hierarchy`命令全选。
 
-**误区二：以为Unity和Unreal Engine的FBX导出设置完全通用**
-
-实际上，导出到Unity时Scale Factor必须为1（Unity负责在导入时处理单位换算），而导出到UE时Maya的厘米单位可以直接使用而无需额外缩放。若将Unity流程的FBX设置照搬到UE，角色可能以100倍或0.01倍的尺寸出现在场景中，破坏物理胶囊体和布料模拟的比例参数。
-
-**误区三：Bind Pose不重要，只要最终姿势正确即可**
-
-Bind Pose（即骨骼绑定时顶点与骨骼的初始对应关系）是引擎计算蒙皮矩阵（Skinning Matrix）的基准。公式为：**顶点最终位置 = Σ(权重ᵢ × 骨骼ᵢ当前矩阵 × 骨骼ᵢ逆绑定矩阵 × 顶点初始位置)**。若导出的FBX中记录的逆绑定矩阵（Inverse Bind Matrix）与骨骼实际Bind Pose不一致，即使动画数据正确，网格顶点也会在静息姿势下产生形变偏移。
+**误区三：混淆"绑定导出"与"动画导出"的设置**
+绑定导出（仅含骨骼+蒙皮）与动画导出（含关键帧曲线）需使用不同的FBX导出预设。若在导出骨骼绑定时不小心启用了Animation选项，UE5会将T-Pose帧记录为一段名为`Take 001`的动画资产，并在骨架资产的动画列表中生成无效条目，污染项目资产结构。建议在DCC软件中分别保存"绑定导出预设"和"动画导出预设"，避免每次手动调整选项时发生混淆。
 
 ---
 
 ## 知识关联
 
-绑定导出是**游戏骨骼规范**的落地执行步骤——骨骼规范文档中约定的命名规则、骨骼数量上限（如移动端角色通常限制在75根骨骼以内）和轴向标准，都在绑定导出这个环节被写入FBX文件并传递给引擎。因此，绑定导出的质量直接取决于前期骨骼规范是否被严格遵守。
+**前置概念的承接**：游戏骨骼规范规定了引擎能识别的骨骼命名与层级结构（如UE4的`root > pelvis > spine_01...`链式结构），绑定导出的骨骼名称必须与之一致，否则同一套动画无法跨角色复用。FBX导出的基础操作（选择导出类型、版本、路径）是执行绑定导出的必要前提操作，绑定导出在FBX导出的基础上增加了蒙皮、骨骼映射与单位精度三层专属配置。
 
-**FBX导出**的通用知识（如FBX版本选择，建议使用FBX 2020而非更老版本以获得更好的Unicode骨骼名称支持）是绑定导出的技术前提，而绑定导出在此基础上增加了蒙皮、骨架层级、Bind Pose保持等角色绑定特有的考量维度。
-
-掌握绑定导出之后，角色动画师可以独立完成从绑定制作到引擎预览的完整闭环，不再需要每次都依赖技术美术介入处理导入错误，这对小型团队中加快角色迭代速度尤为关键。
+**向后延伸**：完成绑定导出并在引擎中成功建立Skeleton Asset之后，后续的动画重定向（Retargeting）、IK绑定（Control Rig）以及布料模拟（Cloth Simulation）组件挂载，都以这棵骨骼树作为数据基础。绑定导出一旦出错（如骨骼数量
