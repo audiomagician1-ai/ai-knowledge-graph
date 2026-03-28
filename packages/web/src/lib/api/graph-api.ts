@@ -1,5 +1,7 @@
 ﻿import type { GraphData, Concept, Domain } from '@akg/shared';
+import { createLogger } from '@/lib/utils/logger';
 
+const log = createLogger('GraphAPI');
 const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
 
 /** 获取指定领域的图谱数据 */
@@ -8,7 +10,10 @@ export async function fetchGraphData(domain?: string): Promise<GraphData> {
     ? `${API_BASE}/graph/data?domain=${encodeURIComponent(domain)}`
     : `${API_BASE}/graph/data`;
   const res = await fetch(url);
-  if (!res.ok) throw new Error(`获取图谱失败: ${res.statusText}`);
+  if (!res.ok) {
+    log.error('fetchGraphData failed', { domain, status: res.status });
+    throw new Error(`获取图谱失败: ${res.statusText}`);
+  }
   return res.json();
 }
 

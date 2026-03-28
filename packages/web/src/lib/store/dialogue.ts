@@ -2,6 +2,9 @@
 import { getLLMHeaders, useSettingsStore } from './settings';
 import { directCreateConversation, directChatStream, directAssess, clearDirectConversation } from '../direct-llm';
 import { syncConversationToCloud } from './supabase-sync';
+import { createLogger } from '@/lib/utils/logger';
+
+const log = createLogger('Dialogue');
 
 export interface ChoiceOption {
   id: string;
@@ -180,6 +183,8 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
     // Cancel any in-flight SSE stream
     abortCurrentStream();
 
+    log.info('startConversation', { conceptId, domainId });
+
     set({
       conversationId: null,
       conceptId,
@@ -273,6 +278,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
         });
       }
     } catch (err) {
+      log.error('startConversation failed', { conceptId, err: err instanceof Error ? err.message : 'Unknown error' });
       set({ isInitializing: false, isStreaming: false, error: err instanceof Error ? err.message : 'Unknown error' });
     }
   },
@@ -407,6 +413,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
         return;
       }
       if (get().conversationId === myConvId) {
+        log.error('sendMessage failed', { convId: myConvId, err: err instanceof Error ? err.message : 'Unknown error' });
         set({
           isStreaming: false,
           error: err instanceof Error ? err.message : 'Unknown error',
@@ -425,6 +432,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
 
     // Capture conversation ID for stale guard
     const myConvId = conversationId;
+    log.info('requestAssessment', { convId: conversationId });
     set({ isAssessing: true, error: null });
 
     try {
@@ -451,6 +459,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
         return;
       }
 
+      log.info('Assessment result', { convId: myConvId, score: data.overall_score, mastered: data.mastered });
       set({
         assessment: {
           completeness: data.completeness,
@@ -470,6 +479,7 @@ export const useDialogueStore = create<DialogueState>((set, get) => ({
     } catch (err) {
       // Stale guard
       if (get().conversationId !== myConvId) return;
+      log.error('requestAssessment failed', { convId: myConvId, err: err instanceof Error ? err.message : 'Unknown error' });
       set({
         isAssessing: false,
         error: err instanceof Error ? err.message : 'Unknown error',

@@ -1,6 +1,9 @@
 import { create } from 'zustand';
 import type { Domain } from '@akg/shared';
 import { fetchDomains as apiFetchDomains } from '@/lib/api/graph-api';
+import { createLogger } from '@/lib/utils/logger';
+
+const log = createLogger('Domain');
 
 const STORAGE_KEY = 'akg_active_domain';
 const HISTORY_KEY = 'akg_domain_access_history';
@@ -65,6 +68,7 @@ export const useDomainStore = create<DomainState>((set, get) => ({
       const domains = await apiFetchDomains();
       set({ domains, loading: false });
     } catch (err) {
+      log.error('fetchDomains failed', { err: err instanceof Error ? err.message : 'Unknown' });
       set({ error: err instanceof Error ? err.message : '获取领域列表失败', loading: false });
     }
   },

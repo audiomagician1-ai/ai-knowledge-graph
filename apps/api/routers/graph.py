@@ -6,6 +6,9 @@ import sys
 import threading
 from fastapi import APIRouter, Query, HTTPException
 from typing import Optional
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
 
 router = APIRouter()
 
@@ -55,6 +58,7 @@ def _load_seed(domain_id: str = DEFAULT_DOMAIN) -> dict:
                 )
             with open(path, "r", encoding="utf-8") as f:
                 _seed_cache[domain_id] = json.load(f)
+            logger.info("Loaded seed graph: %s", domain_id)
     return _seed_cache[domain_id]
 
 

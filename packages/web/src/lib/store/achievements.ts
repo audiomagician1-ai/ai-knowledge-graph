@@ -13,6 +13,9 @@ import {
   type AchievementsResponse,
 } from '@/lib/api/learning-api';
 import { useToastStore } from '@/lib/store/toast';
+import { createLogger } from '@/lib/utils/logger';
+
+const log = createLogger('Achievements');
 
 interface AchievementState {
   /** All achievements with status/progress */
@@ -57,6 +60,7 @@ export const useAchievementStore = create<AchievementState>((set, get) => ({
   checkNewAchievements: async () => {
     const data = await apiFetchRecentAchievements();
     if (data && data.unseen_count > 0) {
+      log.info('New achievements unlocked', { count: data.unseen_count });
       set({ unseenCount: data.unseen_count });
       // Show toast for each newly unlocked achievement
       const { addToast } = useToastStore.getState();

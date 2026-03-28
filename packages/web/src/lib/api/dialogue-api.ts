@@ -1,5 +1,7 @@
 ﻿import type { DialogueRequest } from '@akg/shared';
+import { createLogger } from '@/lib/utils/logger';
 
+const log = createLogger('DialogueAPI');
 const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
 
 /**

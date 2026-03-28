@@ -3,6 +3,9 @@
  * All calls are fire-and-forget async (write) or lazy-loaded (read).
  */
 
+import { createLogger } from '@/lib/utils/logger';
+
+const log = createLogger('LearningAPI');
 const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
 
 /** POST /api/learning/start */
@@ -172,7 +175,10 @@ export async function apiSyncToBackend(data: {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     });
-    if (!res.ok) return null;
+    if (!res.ok) {
+      log.warn('apiSyncToBackend failed', { status: res.status });
+      return null;
+    }
     return await res.json();
   } catch { return null; }
 }
