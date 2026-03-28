@@ -170,14 +170,14 @@
 ## Last Review
 **Date**: 2026-03-27 (evening) | **Scope**: Sprint 6+6.5 progress check + process cleanup. Sprint 6: 3157/3353 done (94.2%), PID 24056, 196 remaining. Sprint 6.5: 400/2789 done (14.3%), PID 35824, 2384 remaining. Killed duplicate processes (old PID 42652 + PID 29304). Quality: avg 77.8, S=698/A=5267/B=191/C=0 (A+S=96.9%, B=3.1%). v2 coverage: 3571/6156 (58.0%). 0 open issues. 0 errors. | **Result**: passed
 
-**统一日志系统完成摘要** (9d5fe1ab):
+**统一日志系统完成摘要** (9d5fe1ab→ad7c573f, 4 commits):
 > **目标**: 为前后端添加 Vibe Coding Standard 统一日志系统, 替换裸 console/print 调用
 > **TS Logger**: `packages/web/src/lib/utils/logger.ts` — createLogger+四级+环形缓冲500条+queryLogs+globalThis.__logger(非生产)+零依赖
 > **Python Logger**: `apps/api/utils/logger.py` — configure_logging()+get_logger()+环形缓冲500条+结构化格式+env LOG_LEVEL
-> **FE覆盖**: 42个console调用替换为createLogger, 覆盖6模块: learning.ts(18)/supabase-sync.ts(16)/auth.ts(1)/direct-llm.ts(1)/ErrorBoundary.tsx(1)/offline-queue.ts(3)
-> **BE覆盖**: 4个print()替换为logger, 覆盖3模块: neo4j_client.py(2)/redis_client.py(3)/main.py(1) + main.py统一初始化configure_logging()
-> **豁免**: settings.ts代理脚本字符串字面量(2个,非运行时代码) + tracker.py文档字符串示例(1个)
-> **测试**: 230 FE + 894 BE 全通过(3个graph_api域计数断言为预存失败), tsc 0 errors
+> **FE覆盖**: 13模块 — Learning/Sync/Auth/DirectLLM/ErrorBoundary/OfflineQueue/Dialogue/GraphAPI/LearningAPI/DialogueAPI/Achievements/Domain/Settings
+> **BE覆盖**: 12模块 — main/config/sqlite_client/neo4j_client/redis_client/llm-router/dialogue/graph/learning/evaluator/socratic/rate_limiter
+> **豁免**: settings.ts代理脚本字符串字面量(2个) + tracker.py文档字符串(1个) + graph.ts/toast.ts(纯setter, <40行)
+> **测试**: 230 FE + 654 BE 全通过, tsc 0 errors
 
 **FSRS-5 实现摘要** (间隔重复引擎):
 > **目标**: 实现ADR-007指定的FSRS-5间隔重复算法, 替代空占位stub
