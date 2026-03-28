@@ -1,4 +1,7 @@
 ﻿import { create } from 'zustand';
+import { createLogger } from '@/lib/utils/logger';
+
+const log = createLogger('Settings');
 
 export type LLMProvider = 'openrouter' | 'openai' | 'deepseek' | 'custom';
 
@@ -149,12 +152,13 @@ export async function probeProxy(): Promise<boolean> {
 
 /**
  * Build the token-limit parameter for the request body.
- * OpenAI's newer models (o1, o3, chatgpt-5 series etc.)
+ * OpenAI's newer models (o1, o3, gpt-5+, chatgpt-5 series etc.)
  * require `max_completion_tokens` instead of `max_tokens`.
  */
 function tokenLimitParam(model: string, tokens: number): Record<string, number> {
   const m = model.toLowerCase();
-  if (/^(o[1-9]|chatgpt-)/.test(m) || /\/(o[1-9]|chatgpt-)/.test(m)) {
+  // o1/o3 reasoning, chatgpt-* series, gpt-5+ series (bare or vendor-prefixed)
+  if (/(?:^|\/)(?:o[1-9]|chatgpt-|gpt-(?:[5-9]|\d{2,}))/.test(m)) {
     return { max_completion_tokens: tokens };
   }
   return { max_tokens: tokens };
@@ -185,9 +189,12 @@ export async function probeCORS(
     // If 404 or other error, fall through to chat probe
   } catch { /* timeout or CORS blocked — fall through */ }
 
-  // Fallback: POST /chat/completions with max_tokens: 1 (minimal token cost)
+  // Fallback: POST /chat/completions with max_completion_tokens: 5 (minimal cost)
+  // Using 5 tokens instead of 1: some models (e.g. gpt-5+) reject max_tokens=1 as too small.
+  // Always use max_completion_tokens — it's forward-compatible with all newer models,
+  // and older models that only accept max_tokens will simply ignore the unknown param and still respond.
   const url = `${base}/chat/completions`;
-  const body = JSON.stringify({ model, messages: [{ role: 'user', content: 'hi' }], ...tokenLimitParam(model, 1) });
+  const body = JSON.stringify({ model, messages: [{ role: 'user', content: 'hi' }], max_completion_tokens: 5 });
 
   const attempt = async (timeoutMs: number): Promise<{ ok: boolean; status?: number; detail?: string }> => {
     const ctrl = new AbortController();
@@ -222,9 +229,11 @@ export async function probeCORS(
     return await attempt(15_000);
   } catch (e1) {
     // On timeout or network error, retry once (connection is likely warmed up now)
+    log.warn('probeCORS first attempt failed, retrying', { err: e1 instanceof Error ? e1.message : 'Unknown' });
     try {
       return await attempt(10_000);
     } catch (e2) {
+      log.error('probeCORS failed after retry', { err: e2 instanceof Error ? e2.message : 'Unknown' });
       return { ok: false, detail: e2 instanceof Error ? e2.message : 'Unknown error' };
     }
   }

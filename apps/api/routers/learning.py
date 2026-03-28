@@ -6,6 +6,9 @@ from typing import Optional
 
 from fastapi import APIRouter, Query
 from pydantic import BaseModel, Field, field_validator
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
 
 from db.sqlite_client import (
     get_all_progress, get_progress, start_learning, record_assessment,
@@ -645,7 +648,8 @@ def _check_and_unlock_achievements() -> list[dict]:
     engine = AchievementEngine()
     try:
         stats = engine.collect_stats_from_db()
-    except Exception:
+    except Exception as e:
+        logger.warning("Achievement stats collection failed: %s", e)
         return []  # Graceful degradation if stats collection fails
 
     already_unlocked = get_unlocked_keys()
@@ -682,7 +686,8 @@ async def get_achievements():
     engine = AchievementEngine()
     try:
         stats = engine.collect_stats_from_db()
-    except Exception:
+    except Exception as e:
+        logger.warning("Achievement catalog stats collection failed: %s", e)
         stats = {
             'mastered_count': 0, 'learning_count': 0, 'total_concepts': 0,
             'current_streak': 0, 'longest_streak': 0, 'total_assessments': 0,
