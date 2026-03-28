@@ -1,0 +1,514 @@
+{
+  "domain": {
+    "id": "dissipative-structures",
+    "name": "耗散结构论",
+    "description": "从非平衡热力学到耗散结构形成的完整知识体系",
+    "icon": "🌀",
+    "color": "#ec4899"
+  },
+  "subdomains": [
+    {
+      "id": "nonequilibrium-thermo",
+      "name": "非平衡热力学",
+      "order": 1
+    },
+    {
+      "id": "dissipative-formation",
+      "name": "耗散结构形成",
+      "order": 2
+    },
+    {
+      "id": "bifurcation-instability",
+      "name": "分岔与失稳",
+      "order": 3
+    },
+    {
+      "id": "pattern-formation",
+      "name": "时空模式",
+      "order": 4
+    },
+    {
+      "id": "dissipative-applications",
+      "name": "耗散结构应用",
+      "order": 5
+    }
+  ],
+  "concepts": [
+    {
+      "id": "equilibrium-thermo-review",
+      "name": "平衡态热力学回顾",
+      "description": "热力学平衡、熵增原理、封闭系统的趋向平衡",
+      "domain_id": "dissipative-structures",
+      "subdomain_id": "nonequilibrium-thermo",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "nonequilibrium-states",
+      "name": "非平衡态",
+      "description": "近平衡态与远离平衡态、局部平衡假设、线性与非线性区域",
+      "domain_id": "dissipative-structures",
+      "subdomain_id": "nonequilibrium-thermo",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "entropy-production",
+      "name": "熵产生",
+      "description": "内熵产生率、熵流、Prigogine最小熵产生原理",
+      "domain_id": "dissipative-structures",
+      "subdomain_id": "nonequilibrium-thermo",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "onsager-reciprocal",
+      "name": "Onsager倒易关系",
+      "description": "线性唯象关系、交叉效应、热电效应",
+      "domain_id": "dissipative-structures",
+      "subdomain_id": "nonequilibrium-thermo",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "irreversible-processes-ds",
+      "name": "不可逆过程",
+      "description": "扩散、热传导、化学反应的热力学描述",
+      "domain_id": "dissipative-structures",
+      "subdomain_id": "nonequilibrium-thermo",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "far-from-equilibrium",
+      "name": "远离平衡态",
+      "description": "非线性效应、对称性破缺、新结构的涌现",
+      "domain_id": "dissipative-structures",
+      "subdomain_id": "dissipative-formation",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "dissipative-structure-def",
+      "name": "耗散结构定义",
+      "description": "Prigogine耗散结构概念、有序从混沌中诞生",
+      "domain_id": "dissipative-structures",
+      "subdomain_id": "dissipative-formation",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "dissipative-conditions",
+      "name": "耗散结构形成条件",
+      "description": "开放系统、远离平衡、非线性相互作用、涨落",
+      "domain_id": "dissipative-structures",
+      "subdomain_id": "dissipative-formation",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "fluctuation-amplification",
+      "name": "涨落放大",
+      "description": "微观涨落、宏观有序、涨落的选择作用",
+      "domain_id": "dissipative-structures",
+      "subdomain_id": "dissipative-formation",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "order-through-fluctuation",
+      "name": "通过涨落达到有序",
+      "description": "Prigogine的核心思想、涨落导致有序",
+      "domain_id": "dissipative-structures",
+      "subdomain_id": "dissipative-formation",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "bifurcation-theory-ds",
+      "name": "分岔理论",
+      "description": "分岔点、分岔参数、分岔图",
+      "domain_id": "dissipative-structures",
+      "subdomain_id": "bifurcation-instability",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "pitchfork-bifurcation",
+      "name": "叉形分岔",
+      "description": "对称性破缺、超临界与亚临界分岔",
+      "domain_id": "dissipative-structures",
+      "subdomain_id": "bifurcation-instability",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "hopf-bifurcation",
+      "name": "Hopf分岔",
+      "description": "极限环的产生、振荡解的出现",
+      "domain_id": "dissipative-structures",
+      "subdomain_id": "bifurcation-instability",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "instability-mechanism",
+      "name": "失稳机制",
+      "description": "线性稳定性分析、临界点、对称性破缺",
+      "domain_id": "dissipative-structures",
+      "subdomain_id": "bifurcation-instability",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "benard-convection",
+      "name": "Benard对流",
+      "description": "热对流花纹、Rayleigh数、临界条件",
+      "domain_id": "dissipative-structures",
+      "subdomain_id": "pattern-formation",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "chemical-oscillation",
+      "name": "化学振荡",
+      "description": "Belousov-Zhabotinsky反应、Brusselator模型",
+      "domain_id": "dissipative-structures",
+      "subdomain_id": "pattern-formation",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "turing-pattern",
+      "name": "Turing斑图",
+      "description": "反应-扩散系统、形态发生、自组织斑图",
+      "domain_id": "dissipative-structures",
+      "subdomain_id": "pattern-formation",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "spiral-waves",
+      "name": "螺旋波",
+      "description": "化学波传播、心脏组织螺旋波、拓扑缺陷",
+      "domain_id": "dissipative-structures",
+      "subdomain_id": "pattern-formation",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "dissipative-in-biology",
+      "name": "生命系统中的耗散结构",
+      "description": "生命的热力学本质、新陈代谢、形态发生",
+      "domain_id": "dissipative-structures",
+      "subdomain_id": "dissipative-applications",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "dissipative-in-ecology",
+      "name": "生态系统中的耗散结构",
+      "description": "生态系统自组织、物种多样性的维持",
+      "domain_id": "dissipative-structures",
+      "subdomain_id": "dissipative-applications",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "dissipative-in-society",
+      "name": "社会系统中的耗散结构",
+      "description": "社会结构的演化、城市化自组织、经济结构变迁",
+      "domain_id": "dissipative-structures",
+      "subdomain_id": "dissipative-applications",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "dissipative-in-climate",
+      "name": "气候系统中的耗散结构",
+      "description": "大气环流模式、气候突变、Lorenz模型",
+      "domain_id": "dissipative-structures",
+      "subdomain_id": "dissipative-applications",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "equilibrium-thermo-review",
+      "target_id": "nonequilibrium-states",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nonequilibrium-states",
+      "target_id": "entropy-production",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "entropy-production",
+      "target_id": "onsager-reciprocal",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nonequilibrium-states",
+      "target_id": "irreversible-processes-ds",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nonequilibrium-states",
+      "target_id": "far-from-equilibrium",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "far-from-equilibrium",
+      "target_id": "dissipative-structure-def",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "entropy-production",
+      "target_id": "dissipative-structure-def",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "dissipative-structure-def",
+      "target_id": "dissipative-conditions",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "far-from-equilibrium",
+      "target_id": "fluctuation-amplification",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "fluctuation-amplification",
+      "target_id": "order-through-fluctuation",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "far-from-equilibrium",
+      "target_id": "bifurcation-theory-ds",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "bifurcation-theory-ds",
+      "target_id": "pitchfork-bifurcation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "bifurcation-theory-ds",
+      "target_id": "hopf-bifurcation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "dissipative-conditions",
+      "target_id": "instability-mechanism",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "bifurcation-theory-ds",
+      "target_id": "instability-mechanism",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "dissipative-structure-def",
+      "target_id": "benard-convection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "hopf-bifurcation",
+      "target_id": "chemical-oscillation",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "dissipative-structure-def",
+      "target_id": "chemical-oscillation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "instability-mechanism",
+      "target_id": "turing-pattern",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "chemical-oscillation",
+      "target_id": "spiral-waves",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "dissipative-structure-def",
+      "target_id": "dissipative-in-biology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "dissipative-structure-def",
+      "target_id": "dissipative-in-ecology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "dissipative-in-ecology",
+      "target_id": "dissipative-in-society",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "dissipative-structure-def",
+      "target_id": "dissipative-in-climate",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    }
+  ]
+}

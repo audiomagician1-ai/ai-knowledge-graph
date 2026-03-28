@@ -1,0 +1,481 @@
+{
+  "domain": {
+    "id": "synergetics",
+    "name": "协同学",
+    "description": "从序参量到协同效应的完整协同科学知识体系",
+    "icon": "🤝",
+    "color": "#f59e0b"
+  },
+  "subdomains": [
+    {
+      "id": "synergetics-fundamentals",
+      "name": "协同学基础",
+      "order": 1
+    },
+    {
+      "id": "order-parameter",
+      "name": "序参量理论",
+      "order": 2
+    },
+    {
+      "id": "slaving-principle",
+      "name": "役使原理",
+      "order": 3
+    },
+    {
+      "id": "phase-transition-syn",
+      "name": "相变与对称破缺",
+      "order": 4
+    },
+    {
+      "id": "synergetics-applications",
+      "name": "协同学应用",
+      "order": 5
+    }
+  ],
+  "concepts": [
+    {
+      "id": "synergetics-overview",
+      "name": "协同学概述",
+      "description": "Haken的协同学思想、子系统协同与宏观有序",
+      "domain_id": "synergetics",
+      "subdomain_id": "synergetics-fundamentals",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "self-org-synergetics",
+      "name": "自组织现象",
+      "description": "激光、流体花纹、生物形态发生的自组织",
+      "domain_id": "synergetics",
+      "subdomain_id": "synergetics-fundamentals",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "open-system-syn",
+      "name": "开放系统条件",
+      "description": "能量/物质交换、远离平衡态、非线性耦合",
+      "domain_id": "synergetics",
+      "subdomain_id": "synergetics-fundamentals",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "competition-cooperation",
+      "name": "竞争与合作",
+      "description": "模式之间的竞争、协同效应、胜者通吃",
+      "domain_id": "synergetics",
+      "subdomain_id": "synergetics-fundamentals",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "order-parameter-def",
+      "name": "序参量定义",
+      "description": "宏观有序度的度量、慢变量、集体模式",
+      "domain_id": "synergetics",
+      "subdomain_id": "order-parameter",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "order-param-dynamics",
+      "name": "序参量动力学",
+      "description": "序参量方程、非线性动力学、分岔行为",
+      "domain_id": "synergetics",
+      "subdomain_id": "order-parameter",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "order-param-equation",
+      "name": "序参量方程",
+      "description": "Ginzburg-Landau方程形式、标准形式",
+      "domain_id": "synergetics",
+      "subdomain_id": "order-parameter",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "critical-slowing-down",
+      "name": "临界慢化",
+      "description": "相变前兆、松弛时间发散、临界指数",
+      "domain_id": "synergetics",
+      "subdomain_id": "order-parameter",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "slaving-principle-def",
+      "name": "役使原理",
+      "description": "快变量被慢变量支配、自由度缩减、序参量役使",
+      "domain_id": "synergetics",
+      "subdomain_id": "slaving-principle",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "adiabatic-elimination",
+      "name": "绝热消除",
+      "description": "快变量的绝热消除、降维技术、有效动力学",
+      "domain_id": "synergetics",
+      "subdomain_id": "slaving-principle",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "center-manifold",
+      "name": "中心流形",
+      "description": "中心流形定理、降维方法、动力学简化",
+      "domain_id": "synergetics",
+      "subdomain_id": "slaving-principle",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "circular-causality-syn",
+      "name": "协同学中的循环因果",
+      "description": "序参量产生又被产生、微观-宏观循环关联",
+      "domain_id": "synergetics",
+      "subdomain_id": "slaving-principle",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "phase-transition-concept",
+      "name": "相变概念",
+      "description": "一阶与二阶相变、临界点、序参量突变",
+      "domain_id": "synergetics",
+      "subdomain_id": "phase-transition-syn",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "symmetry-breaking-syn",
+      "name": "对称性破缺",
+      "description": "自发对称破缺、对称群、新模式的选择",
+      "domain_id": "synergetics",
+      "subdomain_id": "phase-transition-syn",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "pattern-selection",
+      "name": "模式选择",
+      "description": "多稳态、模式竞争、选择机制",
+      "domain_id": "synergetics",
+      "subdomain_id": "phase-transition-syn",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "nonequilibrium-phase",
+      "name": "非平衡相变",
+      "description": "激光阈值、化学振荡阈值、连续与不连续转变",
+      "domain_id": "synergetics",
+      "subdomain_id": "phase-transition-syn",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "laser-synergetics",
+      "name": "激光理论(协同学视角)",
+      "description": "激光阈值、模式竞争、光子统计",
+      "domain_id": "synergetics",
+      "subdomain_id": "synergetics-applications",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "synergetics-in-brain",
+      "name": "大脑中的协同现象",
+      "description": "神经振荡同步、脑电模式、认知协同",
+      "domain_id": "synergetics",
+      "subdomain_id": "synergetics-applications",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "synergetics-in-ecology-soc",
+      "name": "生态与社会中的协同",
+      "description": "种群同步、社会舆论相变、交通流相变",
+      "domain_id": "synergetics",
+      "subdomain_id": "synergetics-applications",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "pattern-recognition-syn",
+      "name": "协同学模式识别",
+      "description": "联想记忆、模式识别原理、吸引子",
+      "domain_id": "synergetics",
+      "subdomain_id": "synergetics-applications",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "synergetics-in-economy",
+      "name": "经济中的协同效应",
+      "description": "市场相变、技术锁定、群体行为同步",
+      "domain_id": "synergetics",
+      "subdomain_id": "synergetics-applications",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "synergetics-overview",
+      "target_id": "self-org-synergetics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "synergetics-overview",
+      "target_id": "open-system-syn",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "self-org-synergetics",
+      "target_id": "competition-cooperation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "open-system-syn",
+      "target_id": "competition-cooperation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "competition-cooperation",
+      "target_id": "order-parameter-def",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "order-parameter-def",
+      "target_id": "order-param-dynamics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "order-param-dynamics",
+      "target_id": "order-param-equation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "order-param-dynamics",
+      "target_id": "critical-slowing-down",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "order-parameter-def",
+      "target_id": "slaving-principle-def",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "slaving-principle-def",
+      "target_id": "adiabatic-elimination",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "adiabatic-elimination",
+      "target_id": "center-manifold",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "slaving-principle-def",
+      "target_id": "circular-causality-syn",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "order-parameter-def",
+      "target_id": "phase-transition-concept",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "phase-transition-concept",
+      "target_id": "symmetry-breaking-syn",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "symmetry-breaking-syn",
+      "target_id": "pattern-selection",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "phase-transition-concept",
+      "target_id": "nonequilibrium-phase",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "order-parameter-def",
+      "target_id": "laser-synergetics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "slaving-principle-def",
+      "target_id": "synergetics-in-brain",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "competition-cooperation",
+      "target_id": "synergetics-in-ecology-soc",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pattern-selection",
+      "target_id": "pattern-recognition-syn",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "nonequilibrium-phase",
+      "target_id": "synergetics-in-economy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    }
+  ]
+}

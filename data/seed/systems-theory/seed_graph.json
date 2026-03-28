@@ -1,0 +1,597 @@
+{
+  "domain": {
+    "id": "systems-theory",
+    "name": "系统论",
+    "description": "从系统基本概念到复杂适应系统的完整系统科学知识体系",
+    "icon": "🔄",
+    "color": "#0ea5e9"
+  },
+  "subdomains": [
+    {
+      "id": "system-fundamentals",
+      "name": "系统基础",
+      "order": 1
+    },
+    {
+      "id": "system-structure",
+      "name": "系统结构",
+      "order": 2
+    },
+    {
+      "id": "system-behavior",
+      "name": "系统行为",
+      "order": 3
+    },
+    {
+      "id": "system-modeling",
+      "name": "系统建模",
+      "order": 4
+    },
+    {
+      "id": "system-thinking",
+      "name": "系统思维",
+      "order": 5
+    },
+    {
+      "id": "complex-systems",
+      "name": "复杂系统",
+      "order": 6
+    }
+  ],
+  "concepts": [
+    {
+      "id": "system-definition",
+      "name": "系统的定义",
+      "description": "系统的概念界定、整体与部分的关系、系统边界",
+      "domain_id": "systems-theory",
+      "subdomain_id": "system-fundamentals",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "system-elements",
+      "name": "系统要素",
+      "description": "系统的组成元素、要素分类、要素间相互作用",
+      "domain_id": "systems-theory",
+      "subdomain_id": "system-fundamentals",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "system-environment",
+      "name": "系统与环境",
+      "description": "系统的开放性、环境影响、系统边界划定",
+      "domain_id": "systems-theory",
+      "subdomain_id": "system-fundamentals",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "system-classification",
+      "name": "系统分类",
+      "description": "开放/封闭系统、静态/动态系统、线性/非线性系统",
+      "domain_id": "systems-theory",
+      "subdomain_id": "system-fundamentals",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "emergence",
+      "name": "涌现性",
+      "description": "整体大于部分之和、涌现现象、层次涌现",
+      "domain_id": "systems-theory",
+      "subdomain_id": "system-fundamentals",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "system-hierarchy",
+      "name": "系统层次",
+      "description": "系统层次结构、子系统与超系统、层级关系",
+      "domain_id": "systems-theory",
+      "subdomain_id": "system-structure",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "system-coupling",
+      "name": "系统耦合",
+      "description": "紧耦合与松耦合、模块化、接口设计",
+      "domain_id": "systems-theory",
+      "subdomain_id": "system-structure",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "system-boundary",
+      "name": "系统边界",
+      "description": "边界的确定、边界渗透性、开放系统边界",
+      "domain_id": "systems-theory",
+      "subdomain_id": "system-structure",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "system-network",
+      "name": "系统网络",
+      "description": "节点与连接、网络拓扑、小世界网络",
+      "domain_id": "systems-theory",
+      "subdomain_id": "system-structure",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "feedback-loop",
+      "name": "反馈回路",
+      "description": "正反馈与负反馈、反馈环路、延迟效应",
+      "domain_id": "systems-theory",
+      "subdomain_id": "system-behavior",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "system-stability",
+      "name": "系统稳定性",
+      "description": "平衡态、稳定性条件、扰动响应",
+      "domain_id": "systems-theory",
+      "subdomain_id": "system-behavior",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "system-evolution",
+      "name": "系统演化",
+      "description": "系统发展阶段、演化方向、不可逆性",
+      "domain_id": "systems-theory",
+      "subdomain_id": "system-behavior",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "self-organization",
+      "name": "自组织",
+      "description": "自组织条件、有序化过程、远离平衡态",
+      "domain_id": "systems-theory",
+      "subdomain_id": "system-behavior",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "system-adaptation",
+      "name": "系统适应",
+      "description": "适应性行为、环境适应机制、进化适应",
+      "domain_id": "systems-theory",
+      "subdomain_id": "system-behavior",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "system-dynamics-model",
+      "name": "系统动力学建模",
+      "description": "因果回路图、存量-流量图、仿真模拟",
+      "domain_id": "systems-theory",
+      "subdomain_id": "system-modeling",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "state-space-model",
+      "name": "状态空间模型",
+      "description": "状态变量、状态转移、相空间",
+      "domain_id": "systems-theory",
+      "subdomain_id": "system-modeling",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "agent-based-model",
+      "name": "基于Agent的建模",
+      "description": "Agent行为规则、交互涌现、计算实验",
+      "domain_id": "systems-theory",
+      "subdomain_id": "system-modeling",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "system-optimization",
+      "name": "系统优化",
+      "description": "目标函数、约束条件、多目标优化",
+      "domain_id": "systems-theory",
+      "subdomain_id": "system-modeling",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "holistic-thinking",
+      "name": "整体性思维",
+      "description": "整体观、全局视角、系统性思考",
+      "domain_id": "systems-theory",
+      "subdomain_id": "system-thinking",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "causal-loop-thinking",
+      "name": "因果环路思维",
+      "description": "因果链分析、回路识别、系统基模",
+      "domain_id": "systems-theory",
+      "subdomain_id": "system-thinking",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "leverage-points",
+      "name": "杠杆点",
+      "description": "系统干预点、高杠杆与低杠杆、Meadows十二杠杆点",
+      "domain_id": "systems-theory",
+      "subdomain_id": "system-thinking",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "mental-models",
+      "name": "心智模型",
+      "description": "隐性假设、认知偏差、模型修正",
+      "domain_id": "systems-theory",
+      "subdomain_id": "system-thinking",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "complex-adaptive-system",
+      "name": "复杂适应系统",
+      "description": "CAS理论、适应性主体、共演化",
+      "domain_id": "systems-theory",
+      "subdomain_id": "complex-systems",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "edge-of-chaos",
+      "name": "混沌边缘",
+      "description": "有序与混沌之间、临界态、最优适应",
+      "domain_id": "systems-theory",
+      "subdomain_id": "complex-systems",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "scale-free-network",
+      "name": "无标度网络",
+      "description": "幂律分布、枢纽节点、优先连接",
+      "domain_id": "systems-theory",
+      "subdomain_id": "complex-systems",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "resilience",
+      "name": "系统韧性",
+      "description": "抗干扰能力、恢复力、适应性循环",
+      "domain_id": "systems-theory",
+      "subdomain_id": "complex-systems",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "system-definition",
+      "target_id": "system-elements",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "system-definition",
+      "target_id": "system-environment",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "system-elements",
+      "target_id": "system-classification",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "system-environment",
+      "target_id": "system-classification",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "system-elements",
+      "target_id": "emergence",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "system-classification",
+      "target_id": "system-hierarchy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "system-hierarchy",
+      "target_id": "system-coupling",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "system-environment",
+      "target_id": "system-boundary",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "system-coupling",
+      "target_id": "system-network",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "emergence",
+      "target_id": "feedback-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "feedback-loop",
+      "target_id": "system-stability",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "system-stability",
+      "target_id": "system-evolution",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "system-evolution",
+      "target_id": "self-organization",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "self-organization",
+      "target_id": "system-adaptation",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "feedback-loop",
+      "target_id": "system-dynamics-model",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "system-dynamics-model",
+      "target_id": "state-space-model",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "state-space-model",
+      "target_id": "agent-based-model",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "state-space-model",
+      "target_id": "system-optimization",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "system-definition",
+      "target_id": "holistic-thinking",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "feedback-loop",
+      "target_id": "causal-loop-thinking",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "causal-loop-thinking",
+      "target_id": "leverage-points",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "holistic-thinking",
+      "target_id": "mental-models",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "self-organization",
+      "target_id": "complex-adaptive-system",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "complex-adaptive-system",
+      "target_id": "edge-of-chaos",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "system-network",
+      "target_id": "scale-free-network",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "system-stability",
+      "target_id": "resilience",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "complex-adaptive-system",
+      "target_id": "resilience",
+      "relation_type": "related",
+      "strength": 0.7
+    }
+  ]
+}

@@ -1,0 +1,603 @@
+{
+  "domain": {
+    "id": "information-theory",
+    "name": "信息论",
+    "description": "从信息度量到编码理论的完整信息科学知识体系",
+    "icon": "📡",
+    "color": "#14b8a6"
+  },
+  "subdomains": [
+    {
+      "id": "info-fundamentals",
+      "name": "信息基础",
+      "order": 1
+    },
+    {
+      "id": "entropy-theory",
+      "name": "熵与信息度量",
+      "order": 2
+    },
+    {
+      "id": "source-coding",
+      "name": "信源编码",
+      "order": 3
+    },
+    {
+      "id": "channel-coding",
+      "name": "信道编码",
+      "order": 4
+    },
+    {
+      "id": "info-network",
+      "name": "网络信息论",
+      "order": 5
+    },
+    {
+      "id": "info-applications",
+      "name": "信息论应用",
+      "order": 6
+    }
+  ],
+  "concepts": [
+    {
+      "id": "information-definition",
+      "name": "信息的定义",
+      "description": "Shannon信息、语法信息与语义信息、信息的度量",
+      "domain_id": "information-theory",
+      "subdomain_id": "info-fundamentals",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "probability-basics-info",
+      "name": "概率论基础",
+      "description": "随机变量、概率分布、条件概率、贝叶斯定理",
+      "domain_id": "information-theory",
+      "subdomain_id": "info-fundamentals",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "information-source",
+      "name": "信息源",
+      "description": "离散无记忆源、马尔可夫源、遍历性",
+      "domain_id": "information-theory",
+      "subdomain_id": "info-fundamentals",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "communication-model",
+      "name": "通信系统模型",
+      "description": "Shannon通信模型、信源-编码器-信道-解码器-信宿",
+      "domain_id": "information-theory",
+      "subdomain_id": "info-fundamentals",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "shannon-entropy",
+      "name": "Shannon熵",
+      "description": "信息熵定义H(X)、最大熵原理、熵的性质",
+      "domain_id": "information-theory",
+      "subdomain_id": "entropy-theory",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "conditional-entropy",
+      "name": "条件熵",
+      "description": "H(Y|X)定义、链式法则、信息增益",
+      "domain_id": "information-theory",
+      "subdomain_id": "entropy-theory",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "mutual-information",
+      "name": "互信息",
+      "description": "I(X;Y)定义、信道容量与互信息、数据处理不等式",
+      "domain_id": "information-theory",
+      "subdomain_id": "entropy-theory",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "relative-entropy",
+      "name": "相对熵(KL散度)",
+      "description": "KL散度定义、非负性、信息投影",
+      "domain_id": "information-theory",
+      "subdomain_id": "entropy-theory",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "joint-entropy",
+      "name": "联合熵",
+      "description": "H(X,Y)、熵的Venn图、多变量熵关系",
+      "domain_id": "information-theory",
+      "subdomain_id": "entropy-theory",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "entropy-rate",
+      "name": "熵率",
+      "description": "平稳过程的熵率、马尔可夫链的熵率",
+      "domain_id": "information-theory",
+      "subdomain_id": "entropy-theory",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "source-coding-theorem",
+      "name": "信源编码定理",
+      "description": "Shannon第一定理、无损压缩极限、熵界",
+      "domain_id": "information-theory",
+      "subdomain_id": "source-coding",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "huffman-coding",
+      "name": "Huffman编码",
+      "description": "最优前缀码、编码树构造、平均码长",
+      "domain_id": "information-theory",
+      "subdomain_id": "source-coding",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "arithmetic-coding",
+      "name": "算术编码",
+      "description": "区间编码原理、自适应算术编码",
+      "domain_id": "information-theory",
+      "subdomain_id": "source-coding",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "lempel-ziv",
+      "name": "LZ编码",
+      "description": "LZ77/LZ78算法、字典编码、通用编码",
+      "domain_id": "information-theory",
+      "subdomain_id": "source-coding",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "rate-distortion",
+      "name": "率失真理论",
+      "description": "失真测度、率失真函数、有损压缩极限",
+      "domain_id": "information-theory",
+      "subdomain_id": "source-coding",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "channel-capacity",
+      "name": "信道容量",
+      "description": "Shannon信道容量公式C=max I(X;Y)、BSC与BEC信道",
+      "domain_id": "information-theory",
+      "subdomain_id": "channel-coding",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "noisy-channel-coding",
+      "name": "有噪信道编码定理",
+      "description": "Shannon第二定理、可靠通信的条件、编码速率",
+      "domain_id": "information-theory",
+      "subdomain_id": "channel-coding",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "error-detecting-codes",
+      "name": "检错码",
+      "description": "奇偶校验、CRC校验、汉明距离",
+      "domain_id": "information-theory",
+      "subdomain_id": "channel-coding",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "linear-codes",
+      "name": "线性码",
+      "description": "生成矩阵、校验矩阵、汉明码",
+      "domain_id": "information-theory",
+      "subdomain_id": "channel-coding",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "convolutional-codes",
+      "name": "卷积码",
+      "description": "卷积编码、网格图、Viterbi译码",
+      "domain_id": "information-theory",
+      "subdomain_id": "channel-coding",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "turbo-ldpc-codes",
+      "name": "Turbo码与LDPC码",
+      "description": "迭代译码、逼近Shannon极限、现代编码",
+      "domain_id": "information-theory",
+      "subdomain_id": "channel-coding",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "network-info-theory",
+      "name": "网络信息论基础",
+      "description": "多用户信道、多址接入、中继信道",
+      "domain_id": "information-theory",
+      "subdomain_id": "info-network",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "distributed-source-coding",
+      "name": "分布式信源编码",
+      "description": "Slepian-Wolf定理、Wyner-Ziv编码",
+      "domain_id": "information-theory",
+      "subdomain_id": "info-network",
+      "difficulty": 7,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "info-in-ml",
+      "name": "信息论与机器学习",
+      "description": "交叉熵损失、信息瓶颈、最大似然与KL散度",
+      "domain_id": "information-theory",
+      "subdomain_id": "info-applications",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "info-in-crypto",
+      "name": "信息论与密码学",
+      "description": "完美保密、一次一密、信息论安全",
+      "domain_id": "information-theory",
+      "subdomain_id": "info-applications",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "info-in-biology",
+      "name": "信息论与生物学",
+      "description": "DNA信息容量、神经编码、生物信息学",
+      "domain_id": "information-theory",
+      "subdomain_id": "info-applications",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "information-definition",
+      "target_id": "probability-basics-info",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "probability-basics-info",
+      "target_id": "information-source",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "information-definition",
+      "target_id": "communication-model",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "probability-basics-info",
+      "target_id": "shannon-entropy",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "shannon-entropy",
+      "target_id": "conditional-entropy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "shannon-entropy",
+      "target_id": "joint-entropy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "conditional-entropy",
+      "target_id": "mutual-information",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "mutual-information",
+      "target_id": "relative-entropy",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "joint-entropy",
+      "target_id": "conditional-entropy",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "information-source",
+      "target_id": "entropy-rate",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "shannon-entropy",
+      "target_id": "entropy-rate",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "shannon-entropy",
+      "target_id": "source-coding-theorem",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "source-coding-theorem",
+      "target_id": "huffman-coding",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "source-coding-theorem",
+      "target_id": "arithmetic-coding",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "huffman-coding",
+      "target_id": "lempel-ziv",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "mutual-information",
+      "target_id": "rate-distortion",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "mutual-information",
+      "target_id": "channel-capacity",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "channel-capacity",
+      "target_id": "noisy-channel-coding",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "communication-model",
+      "target_id": "error-detecting-codes",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "error-detecting-codes",
+      "target_id": "linear-codes",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "linear-codes",
+      "target_id": "convolutional-codes",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "convolutional-codes",
+      "target_id": "turbo-ldpc-codes",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "noisy-channel-coding",
+      "target_id": "turbo-ldpc-codes",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "channel-capacity",
+      "target_id": "network-info-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "source-coding-theorem",
+      "target_id": "distributed-source-coding",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "relative-entropy",
+      "target_id": "info-in-ml",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "shannon-entropy",
+      "target_id": "info-in-crypto",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "shannon-entropy",
+      "target_id": "info-in-biology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    }
+  ]
+}

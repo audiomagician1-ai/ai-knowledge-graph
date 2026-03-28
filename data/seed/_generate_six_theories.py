@@ -1,0 +1,440 @@
+"""Generate seed_graph.json for 6 domains: Old Three Theories + New Three Theories"""
+import json
+import os
+from datetime import datetime, timezone
+
+SEED_DIR = os.path.dirname(os.path.abspath(__file__))
+NOW = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%f+00:00")
+
+def c(id, name, desc, domain, subdomain, diff, tags, milestone=False, minutes=25):
+    return {
+        "id": id, "name": name, "description": desc,
+        "domain_id": domain, "subdomain_id": subdomain,
+        "difficulty": diff, "estimated_minutes": minutes,
+        "content_type": "theory", "tags": tags,
+        "is_milestone": milestone, "created_at": NOW
+    }
+
+def e(src, tgt, rel="prerequisite", strength=0.8):
+    return {"source_id": src, "target_id": tgt, "relation_type": rel, "strength": strength}
+
+def gen_systems_theory():
+    D = "systems-theory"
+    return {
+        "domain": {"id": D, "name": "系统论", "description": "从系统基本概念到复杂适应系统的完整系统科学知识体系", "icon": "🔄", "color": "#0ea5e9"},
+        "subdomains": [
+            {"id": "system-fundamentals", "name": "系统基础", "order": 1},
+            {"id": "system-structure", "name": "系统结构", "order": 2},
+            {"id": "system-behavior", "name": "系统行为", "order": 3},
+            {"id": "system-modeling", "name": "系统建模", "order": 4},
+            {"id": "system-thinking", "name": "系统思维", "order": 5},
+            {"id": "complex-systems", "name": "复杂系统", "order": 6},
+        ],
+        "concepts": [
+            c("system-definition", "系统的定义", "系统的概念界定、整体与部分的关系、系统边界", D, "system-fundamentals", 1, ["基础"]),
+            c("system-elements", "系统要素", "系统的组成元素、要素分类、要素间相互作用", D, "system-fundamentals", 2, ["基础"]),
+            c("system-environment", "系统与环境", "系统的开放性、环境影响、系统边界划定", D, "system-fundamentals", 2, ["基础"]),
+            c("system-classification", "系统分类", "开放/封闭系统、静态/动态系统、线性/非线性系统", D, "system-fundamentals", 2, ["核心"]),
+            c("emergence", "涌现性", "整体大于部分之和、涌现现象、层次涌现", D, "system-fundamentals", 3, ["里程碑"], True),
+            c("system-hierarchy", "系统层次", "系统层次结构、子系统与超系统、层级关系", D, "system-structure", 3, ["核心"]),
+            c("system-coupling", "系统耦合", "紧耦合与松耦合、模块化、接口设计", D, "system-structure", 3, ["核心"]),
+            c("system-boundary", "系统边界", "边界的确定、边界渗透性、开放系统边界", D, "system-structure", 3, ["核心"]),
+            c("system-network", "系统网络", "节点与连接、网络拓扑、小世界网络", D, "system-structure", 4, ["进阶"]),
+            c("feedback-loop", "反馈回路", "正反馈与负反馈、反馈环路、延迟效应", D, "system-behavior", 3, ["里程碑"], True),
+            c("system-stability", "系统稳定性", "平衡态、稳定性条件、扰动响应", D, "system-behavior", 4, ["核心"]),
+            c("system-evolution", "系统演化", "系统发展阶段、演化方向、不可逆性", D, "system-behavior", 4, ["核心"]),
+            c("self-organization", "自组织", "自组织条件、有序化过程、远离平衡态", D, "system-behavior", 5, ["里程碑"], True),
+            c("system-adaptation", "系统适应", "适应性行为、环境适应机制、进化适应", D, "system-behavior", 5, ["核心"]),
+            c("system-dynamics-model", "系统动力学建模", "因果回路图、存量-流量图、仿真模拟", D, "system-modeling", 4, ["核心"]),
+            c("state-space-model", "状态空间模型", "状态变量、状态转移、相空间", D, "system-modeling", 5, ["核心"]),
+            c("agent-based-model", "基于Agent的建模", "Agent行为规则、交互涌现、计算实验", D, "system-modeling", 5, ["进阶"]),
+            c("system-optimization", "系统优化", "目标函数、约束条件、多目标优化", D, "system-modeling", 5, ["进阶"]),
+            c("holistic-thinking", "整体性思维", "整体观、全局视角、系统性思考", D, "system-thinking", 2, ["核心"]),
+            c("causal-loop-thinking", "因果环路思维", "因果链分析、回路识别、系统基模", D, "system-thinking", 3, ["核心"]),
+            c("leverage-points", "杠杆点", "系统干预点、高杠杆与低杠杆、Meadows十二杠杆点", D, "system-thinking", 4, ["里程碑"], True),
+            c("mental-models", "心智模型", "隐性假设、认知偏差、模型修正", D, "system-thinking", 3, ["核心"]),
+            c("complex-adaptive-system", "复杂适应系统", "CAS理论、适应性主体、共演化", D, "complex-systems", 5, ["里程碑"], True),
+            c("edge-of-chaos", "混沌边缘", "有序与混沌之间、临界态、最优适应", D, "complex-systems", 6, ["进阶"]),
+            c("scale-free-network", "无标度网络", "幂律分布、枢纽节点、优先连接", D, "complex-systems", 5, ["核心"]),
+            c("resilience", "系统韧性", "抗干扰能力、恢复力、适应性循环", D, "complex-systems", 5, ["核心"]),
+        ],
+        "edges": [
+            e("system-definition", "system-elements"), e("system-definition", "system-environment"),
+            e("system-elements", "system-classification"), e("system-environment", "system-classification"),
+            e("system-elements", "emergence", "prerequisite", 0.9),
+            e("system-classification", "system-hierarchy"), e("system-hierarchy", "system-coupling"),
+            e("system-environment", "system-boundary"), e("system-coupling", "system-network"),
+            e("emergence", "feedback-loop", "prerequisite", 0.8),
+            e("feedback-loop", "system-stability", "prerequisite", 0.9),
+            e("system-stability", "system-evolution"),
+            e("system-evolution", "self-organization", "prerequisite", 0.9),
+            e("self-organization", "system-adaptation"),
+            e("feedback-loop", "system-dynamics-model", "prerequisite", 0.9),
+            e("system-dynamics-model", "state-space-model"),
+            e("state-space-model", "agent-based-model"),
+            e("state-space-model", "system-optimization"),
+            e("system-definition", "holistic-thinking", "related", 0.7),
+            e("feedback-loop", "causal-loop-thinking", "prerequisite", 0.9),
+            e("causal-loop-thinking", "leverage-points"),
+            e("holistic-thinking", "mental-models", "related", 0.7),
+            e("self-organization", "complex-adaptive-system", "prerequisite", 0.9),
+            e("complex-adaptive-system", "edge-of-chaos"),
+            e("system-network", "scale-free-network", "prerequisite", 0.8),
+            e("system-stability", "resilience"),
+            e("complex-adaptive-system", "resilience", "related", 0.7),
+        ]
+    }
+
+def gen_cybernetics():
+    D = "cybernetics"
+    return {
+        "domain": {"id": D, "name": "控制论", "description": "从反馈控制到智能控制的完整控制科学知识体系", "icon": "🎛️", "color": "#6366f1"},
+        "subdomains": [
+            {"id": "control-fundamentals", "name": "控制基础", "order": 1},
+            {"id": "feedback-control", "name": "反馈控制", "order": 2},
+            {"id": "classical-control", "name": "经典控制", "order": 3},
+            {"id": "modern-control", "name": "现代控制", "order": 4},
+            {"id": "intelligent-control", "name": "智能控制", "order": 5},
+            {"id": "cybernetics-applications", "name": "控制论应用", "order": 6},
+        ],
+        "concepts": [
+            c("cybernetics-overview", "控制论概述", "维纳的控制论思想、通信与控制、动物与机器的类比", D, "control-fundamentals", 1, ["基础"]),
+            c("control-system-def", "控制系统定义", "受控对象、控制器、执行机构、传感器", D, "control-fundamentals", 2, ["基础"]),
+            c("open-closed-loop", "开环与闭环控制", "开环控制、闭环控制、反馈的作用", D, "control-fundamentals", 2, ["核心"]),
+            c("signal-types", "信号类型", "连续信号、离散信号、随机信号、确定性信号", D, "control-fundamentals", 2, ["基础"]),
+            c("transfer-function", "传递函数", "拉普拉斯变换、传递函数定义、系统极点与零点", D, "control-fundamentals", 3, ["核心"]),
+            c("negative-feedback", "负反馈原理", "误差检测、偏差消除、负反馈稳定性", D, "feedback-control", 3, ["里程碑"], True),
+            c("positive-feedback", "正反馈原理", "自激振荡、指数增长、正反馈失稳", D, "feedback-control", 3, ["核心"]),
+            c("feedback-delay", "反馈延迟", "传输延迟、处理延迟、延迟对稳定性的影响", D, "feedback-control", 4, ["核心"]),
+            c("homeostasis", "稳态维持", "坎农稳态概念、动态平衡、生物恒温调节", D, "feedback-control", 3, ["核心"]),
+            c("pid-control", "PID控制", "比例-积分-微分控制、参数整定、性能指标", D, "classical-control", 4, ["里程碑"], True),
+            c("frequency-response", "频率响应", "Bode图、Nyquist图、频域分析", D, "classical-control", 5, ["核心"]),
+            c("stability-analysis", "稳定性分析", "劳斯判据、奈奎斯特判据、根轨迹法", D, "classical-control", 5, ["核心"]),
+            c("root-locus", "根轨迹法", "闭环极点轨迹、增益调节、系统设计", D, "classical-control", 5, ["核心"]),
+            c("compensator-design", "补偿器设计", "超前补偿、滞后补偿、PID补偿器", D, "classical-control", 5, ["进阶"]),
+            c("state-space-control", "状态空间法", "状态方程、可控性与可观性、状态反馈", D, "modern-control", 5, ["里程碑"], True),
+            c("optimal-control", "最优控制", "性能指标、LQR控制、Pontryagin极大值原理", D, "modern-control", 6, ["核心"]),
+            c("adaptive-control", "自适应控制", "模型参考自适应、自校正控制、参数估计", D, "modern-control", 6, ["进阶"]),
+            c("robust-control", "鲁棒控制", "不确定性描述、H-infinity控制、结构奇异值", D, "modern-control", 6, ["进阶"]),
+            c("fuzzy-control", "模糊控制", "模糊集合、模糊推理、模糊控制器设计", D, "intelligent-control", 5, ["核心"]),
+            c("neural-network-control", "神经网络控制", "BP神经网络控制、自学习控制、逼近能力", D, "intelligent-control", 6, ["核心"]),
+            c("genetic-algorithm-control", "遗传算法优化", "进化计算、参数优化、多目标控制", D, "intelligent-control", 6, ["进阶"]),
+            c("reinforcement-learning-ctrl", "强化学习控制", "策略梯度、Q-learning、在线学习控制", D, "intelligent-control", 7, ["进阶"]),
+            c("biological-cybernetics", "生物控制论", "神经控制、激素调节、生态系统反馈", D, "cybernetics-applications", 4, ["核心"]),
+            c("social-cybernetics", "社会控制论", "社会系统调控、组织管理、政策反馈", D, "cybernetics-applications", 4, ["核心"]),
+            c("economic-cybernetics", "经济控制论", "经济系统调控、市场反馈、宏观调控模型", D, "cybernetics-applications", 5, ["核心"]),
+            c("second-order-cybernetics", "二阶控制论", "观察者的参与、自指涉系统、建构主义", D, "cybernetics-applications", 6, ["进阶"]),
+        ],
+        "edges": [
+            e("cybernetics-overview", "control-system-def"),
+            e("control-system-def", "open-closed-loop"),
+            e("cybernetics-overview", "signal-types"),
+            e("signal-types", "transfer-function"),
+            e("open-closed-loop", "negative-feedback", "prerequisite", 0.9),
+            e("open-closed-loop", "positive-feedback"),
+            e("negative-feedback", "feedback-delay"),
+            e("negative-feedback", "homeostasis", "related", 0.7),
+            e("transfer-function", "pid-control", "prerequisite", 0.9),
+            e("negative-feedback", "pid-control"),
+            e("transfer-function", "frequency-response", "prerequisite", 0.9),
+            e("frequency-response", "stability-analysis", "prerequisite", 0.9),
+            e("transfer-function", "root-locus"),
+            e("stability-analysis", "compensator-design"),
+            e("root-locus", "compensator-design", "related", 0.7),
+            e("pid-control", "state-space-control"),
+            e("stability-analysis", "state-space-control", "prerequisite", 0.9),
+            e("state-space-control", "optimal-control"),
+            e("state-space-control", "adaptive-control"),
+            e("state-space-control", "robust-control"),
+            e("pid-control", "fuzzy-control", "related", 0.6),
+            e("adaptive-control", "neural-network-control"),
+            e("neural-network-control", "reinforcement-learning-ctrl"),
+            e("fuzzy-control", "genetic-algorithm-control", "related", 0.6),
+            e("homeostasis", "biological-cybernetics"),
+            e("negative-feedback", "social-cybernetics"),
+            e("social-cybernetics", "economic-cybernetics"),
+            e("social-cybernetics", "second-order-cybernetics"),
+        ]
+    }
+
+def gen_information_theory():
+    D = "information-theory"
+    return {
+        "domain": {"id": D, "name": "信息论", "description": "从信息度量到编码理论的完整信息科学知识体系", "icon": "📡", "color": "#14b8a6"},
+        "subdomains": [
+            {"id": "info-fundamentals", "name": "信息基础", "order": 1},
+            {"id": "entropy-theory", "name": "熵与信息度量", "order": 2},
+            {"id": "source-coding", "name": "信源编码", "order": 3},
+            {"id": "channel-coding", "name": "信道编码", "order": 4},
+            {"id": "info-network", "name": "网络信息论", "order": 5},
+            {"id": "info-applications", "name": "信息论应用", "order": 6},
+        ],
+        "concepts": [
+            c("information-definition", "信息的定义", "Shannon信息、语法信息与语义信息、信息的度量", D, "info-fundamentals", 1, ["基础"]),
+            c("probability-basics-info", "概率论基础", "随机变量、概率分布、条件概率、贝叶斯定理", D, "info-fundamentals", 2, ["基础"]),
+            c("information-source", "信息源", "离散无记忆源、马尔可夫源、遍历性", D, "info-fundamentals", 3, ["核心"]),
+            c("communication-model", "通信系统模型", "Shannon通信模型、信源-编码器-信道-解码器-信宿", D, "info-fundamentals", 2, ["核心"]),
+            c("shannon-entropy", "Shannon熵", "信息熵定义H(X)、最大熵原理、熵的性质", D, "entropy-theory", 3, ["里程碑"], True),
+            c("conditional-entropy", "条件熵", "H(Y|X)定义、链式法则、信息增益", D, "entropy-theory", 4, ["核心"]),
+            c("mutual-information", "互信息", "I(X;Y)定义、信道容量与互信息、数据处理不等式", D, "entropy-theory", 4, ["里程碑"], True),
+            c("relative-entropy", "相对熵(KL散度)", "KL散度定义、非负性、信息投影", D, "entropy-theory", 5, ["核心"]),
+            c("joint-entropy", "联合熵", "H(X,Y)、熵的Venn图、多变量熵关系", D, "entropy-theory", 4, ["核心"]),
+            c("entropy-rate", "熵率", "平稳过程的熵率、马尔可夫链的熵率", D, "entropy-theory", 5, ["进阶"]),
+            c("source-coding-theorem", "信源编码定理", "Shannon第一定理、无损压缩极限、熵界", D, "source-coding", 4, ["里程碑"], True),
+            c("huffman-coding", "Huffman编码", "最优前缀码、编码树构造、平均码长", D, "source-coding", 4, ["核心"]),
+            c("arithmetic-coding", "算术编码", "区间编码原理、自适应算术编码", D, "source-coding", 5, ["核心"]),
+            c("lempel-ziv", "LZ编码", "LZ77/LZ78算法、字典编码、通用编码", D, "source-coding", 5, ["核心"]),
+            c("rate-distortion", "率失真理论", "失真测度、率失真函数、有损压缩极限", D, "source-coding", 6, ["进阶"]),
+            c("channel-capacity", "信道容量", "Shannon信道容量公式C=max I(X;Y)、BSC与BEC信道", D, "channel-coding", 4, ["里程碑"], True),
+            c("noisy-channel-coding", "有噪信道编码定理", "Shannon第二定理、可靠通信的条件、编码速率", D, "channel-coding", 5, ["里程碑"], True),
+            c("error-detecting-codes", "检错码", "奇偶校验、CRC校验、汉明距离", D, "channel-coding", 3, ["核心"]),
+            c("linear-codes", "线性码", "生成矩阵、校验矩阵、汉明码", D, "channel-coding", 5, ["核心"]),
+            c("convolutional-codes", "卷积码", "卷积编码、网格图、Viterbi译码", D, "channel-coding", 5, ["核心"]),
+            c("turbo-ldpc-codes", "Turbo码与LDPC码", "迭代译码、逼近Shannon极限、现代编码", D, "channel-coding", 6, ["进阶"]),
+            c("network-info-theory", "网络信息论基础", "多用户信道、多址接入、中继信道", D, "info-network", 6, ["进阶"]),
+            c("distributed-source-coding", "分布式信源编码", "Slepian-Wolf定理、Wyner-Ziv编码", D, "info-network", 7, ["进阶"]),
+            c("info-in-ml", "信息论与机器学习", "交叉熵损失、信息瓶颈、最大似然与KL散度", D, "info-applications", 5, ["核心"]),
+            c("info-in-crypto", "信息论与密码学", "完美保密、一次一密、信息论安全", D, "info-applications", 5, ["核心"]),
+            c("info-in-biology", "信息论与生物学", "DNA信息容量、神经编码、生物信息学", D, "info-applications", 5, ["进阶"]),
+        ],
+        "edges": [
+            e("information-definition", "probability-basics-info"),
+            e("probability-basics-info", "information-source"),
+            e("information-definition", "communication-model"),
+            e("probability-basics-info", "shannon-entropy", "prerequisite", 0.9),
+            e("shannon-entropy", "conditional-entropy"),
+            e("shannon-entropy", "joint-entropy"),
+            e("conditional-entropy", "mutual-information", "prerequisite", 0.9),
+            e("mutual-information", "relative-entropy"),
+            e("joint-entropy", "conditional-entropy", "related", 0.7),
+            e("information-source", "entropy-rate"),
+            e("shannon-entropy", "entropy-rate"),
+            e("shannon-entropy", "source-coding-theorem", "prerequisite", 0.9),
+            e("source-coding-theorem", "huffman-coding"),
+            e("source-coding-theorem", "arithmetic-coding"),
+            e("huffman-coding", "lempel-ziv", "related", 0.6),
+            e("mutual-information", "rate-distortion"),
+            e("mutual-information", "channel-capacity", "prerequisite", 0.9),
+            e("channel-capacity", "noisy-channel-coding", "prerequisite", 0.9),
+            e("communication-model", "error-detecting-codes"),
+            e("error-detecting-codes", "linear-codes"),
+            e("linear-codes", "convolutional-codes"),
+            e("convolutional-codes", "turbo-ldpc-codes"),
+            e("noisy-channel-coding", "turbo-ldpc-codes", "related", 0.7),
+            e("channel-capacity", "network-info-theory"),
+            e("source-coding-theorem", "distributed-source-coding"),
+            e("relative-entropy", "info-in-ml"),
+            e("shannon-entropy", "info-in-crypto"),
+            e("shannon-entropy", "info-in-biology"),
+        ]
+    }
+
+def gen_dissipative_structures():
+    D = "dissipative-structures"
+    return {
+        "domain": {"id": D, "name": "耗散结构论", "description": "从非平衡热力学到耗散结构形成的完整知识体系", "icon": "🌀", "color": "#ec4899"},
+        "subdomains": [
+            {"id": "nonequilibrium-thermo", "name": "非平衡热力学", "order": 1},
+            {"id": "dissipative-formation", "name": "耗散结构形成", "order": 2},
+            {"id": "bifurcation-instability", "name": "分岔与失稳", "order": 3},
+            {"id": "pattern-formation", "name": "时空模式", "order": 4},
+            {"id": "dissipative-applications", "name": "耗散结构应用", "order": 5},
+        ],
+        "concepts": [
+            c("equilibrium-thermo-review", "平衡态热力学回顾", "热力学平衡、熵增原理、封闭系统的趋向平衡", D, "nonequilibrium-thermo", 2, ["基础"]),
+            c("nonequilibrium-states", "非平衡态", "近平衡态与远离平衡态、局部平衡假设、线性与非线性区域", D, "nonequilibrium-thermo", 3, ["核心"]),
+            c("entropy-production", "熵产生", "内熵产生率、熵流、Prigogine最小熵产生原理", D, "nonequilibrium-thermo", 4, ["里程碑"], True),
+            c("onsager-reciprocal", "Onsager倒易关系", "线性唯象关系、交叉效应、热电效应", D, "nonequilibrium-thermo", 5, ["核心"]),
+            c("irreversible-processes-ds", "不可逆过程", "扩散、热传导、化学反应的热力学描述", D, "nonequilibrium-thermo", 3, ["核心"]),
+            c("far-from-equilibrium", "远离平衡态", "非线性效应、对称性破缺、新结构的涌现", D, "dissipative-formation", 4, ["里程碑"], True),
+            c("dissipative-structure-def", "耗散结构定义", "Prigogine耗散结构概念、有序从混沌中诞生", D, "dissipative-formation", 3, ["里程碑"], True),
+            c("dissipative-conditions", "耗散结构形成条件", "开放系统、远离平衡、非线性相互作用、涨落", D, "dissipative-formation", 4, ["核心"]),
+            c("fluctuation-amplification", "涨落放大", "微观涨落、宏观有序、涨落的选择作用", D, "dissipative-formation", 5, ["核心"]),
+            c("order-through-fluctuation", "通过涨落达到有序", "Prigogine的核心思想、涨落导致有序", D, "dissipative-formation", 5, ["核心"]),
+            c("bifurcation-theory-ds", "分岔理论", "分岔点、分岔参数、分岔图", D, "bifurcation-instability", 5, ["里程碑"], True),
+            c("pitchfork-bifurcation", "叉形分岔", "对称性破缺、超临界与亚临界分岔", D, "bifurcation-instability", 5, ["核心"]),
+            c("hopf-bifurcation", "Hopf分岔", "极限环的产生、振荡解的出现", D, "bifurcation-instability", 6, ["核心"]),
+            c("instability-mechanism", "失稳机制", "线性稳定性分析、临界点、对称性破缺", D, "bifurcation-instability", 5, ["核心"]),
+            c("benard-convection", "Benard对流", "热对流花纹、Rayleigh数、临界条件", D, "pattern-formation", 4, ["核心"]),
+            c("chemical-oscillation", "化学振荡", "Belousov-Zhabotinsky反应、Brusselator模型", D, "pattern-formation", 5, ["核心"]),
+            c("turing-pattern", "Turing斑图", "反应-扩散系统、形态发生、自组织斑图", D, "pattern-formation", 6, ["进阶"]),
+            c("spiral-waves", "螺旋波", "化学波传播、心脏组织螺旋波、拓扑缺陷", D, "pattern-formation", 6, ["进阶"]),
+            c("dissipative-in-biology", "生命系统中的耗散结构", "生命的热力学本质、新陈代谢、形态发生", D, "dissipative-applications", 4, ["核心"]),
+            c("dissipative-in-ecology", "生态系统中的耗散结构", "生态系统自组织、物种多样性的维持", D, "dissipative-applications", 5, ["核心"]),
+            c("dissipative-in-society", "社会系统中的耗散结构", "社会结构的演化、城市化自组织、经济结构变迁", D, "dissipative-applications", 5, ["进阶"]),
+            c("dissipative-in-climate", "气候系统中的耗散结构", "大气环流模式、气候突变、Lorenz模型", D, "dissipative-applications", 5, ["进阶"]),
+        ],
+        "edges": [
+            e("equilibrium-thermo-review", "nonequilibrium-states"),
+            e("nonequilibrium-states", "entropy-production", "prerequisite", 0.9),
+            e("entropy-production", "onsager-reciprocal"),
+            e("nonequilibrium-states", "irreversible-processes-ds"),
+            e("nonequilibrium-states", "far-from-equilibrium", "prerequisite", 0.9),
+            e("far-from-equilibrium", "dissipative-structure-def", "prerequisite", 0.9),
+            e("entropy-production", "dissipative-structure-def", "related", 0.7),
+            e("dissipative-structure-def", "dissipative-conditions"),
+            e("far-from-equilibrium", "fluctuation-amplification"),
+            e("fluctuation-amplification", "order-through-fluctuation", "prerequisite", 0.9),
+            e("far-from-equilibrium", "bifurcation-theory-ds", "prerequisite", 0.9),
+            e("bifurcation-theory-ds", "pitchfork-bifurcation"),
+            e("bifurcation-theory-ds", "hopf-bifurcation"),
+            e("dissipative-conditions", "instability-mechanism"),
+            e("bifurcation-theory-ds", "instability-mechanism", "related", 0.7),
+            e("dissipative-structure-def", "benard-convection"),
+            e("hopf-bifurcation", "chemical-oscillation", "related", 0.7),
+            e("dissipative-structure-def", "chemical-oscillation"),
+            e("instability-mechanism", "turing-pattern"),
+            e("chemical-oscillation", "spiral-waves"),
+            e("dissipative-structure-def", "dissipative-in-biology"),
+            e("dissipative-structure-def", "dissipative-in-ecology"),
+            e("dissipative-in-ecology", "dissipative-in-society", "related", 0.6),
+            e("dissipative-structure-def", "dissipative-in-climate"),
+        ]
+    }
+
+def gen_synergetics():
+    D = "synergetics"
+    return {
+        "domain": {"id": D, "name": "协同学", "description": "从序参量到协同效应的完整协同科学知识体系", "icon": "🤝", "color": "#f59e0b"},
+        "subdomains": [
+            {"id": "synergetics-fundamentals", "name": "协同学基础", "order": 1},
+            {"id": "order-parameter", "name": "序参量理论", "order": 2},
+            {"id": "slaving-principle", "name": "役使原理", "order": 3},
+            {"id": "phase-transition-syn", "name": "相变与对称破缺", "order": 4},
+            {"id": "synergetics-applications", "name": "协同学应用", "order": 5},
+        ],
+        "concepts": [
+            c("synergetics-overview", "协同学概述", "Haken的协同学思想、子系统协同与宏观有序", D, "synergetics-fundamentals", 1, ["基础"]),
+            c("self-org-synergetics", "自组织现象", "激光、流体花纹、生物形态发生的自组织", D, "synergetics-fundamentals", 2, ["核心"]),
+            c("open-system-syn", "开放系统条件", "能量/物质交换、远离平衡态、非线性耦合", D, "synergetics-fundamentals", 2, ["核心"]),
+            c("competition-cooperation", "竞争与合作", "模式之间的竞争、协同效应、胜者通吃", D, "synergetics-fundamentals", 3, ["核心"]),
+            c("order-parameter-def", "序参量定义", "宏观有序度的度量、慢变量、集体模式", D, "order-parameter", 3, ["里程碑"], True),
+            c("order-param-dynamics", "序参量动力学", "序参量方程、非线性动力学、分岔行为", D, "order-parameter", 4, ["核心"]),
+            c("order-param-equation", "序参量方程", "Ginzburg-Landau方程形式、标准形式", D, "order-parameter", 5, ["核心"]),
+            c("critical-slowing-down", "临界慢化", "相变前兆、松弛时间发散、临界指数", D, "order-parameter", 5, ["进阶"]),
+            c("slaving-principle-def", "役使原理", "快变量被慢变量支配、自由度缩减、序参量役使", D, "slaving-principle", 4, ["里程碑"], True),
+            c("adiabatic-elimination", "绝热消除", "快变量的绝热消除、降维技术、有效动力学", D, "slaving-principle", 5, ["核心"]),
+            c("center-manifold", "中心流形", "中心流形定理、降维方法、动力学简化", D, "slaving-principle", 6, ["进阶"]),
+            c("circular-causality-syn", "协同学中的循环因果", "序参量产生又被产生、微观-宏观循环关联", D, "slaving-principle", 4, ["核心"]),
+            c("phase-transition-concept", "相变概念", "一阶与二阶相变、临界点、序参量突变", D, "phase-transition-syn", 3, ["核心"]),
+            c("symmetry-breaking-syn", "对称性破缺", "自发对称破缺、对称群、新模式的选择", D, "phase-transition-syn", 4, ["里程碑"], True),
+            c("pattern-selection", "模式选择", "多稳态、模式竞争、选择机制", D, "phase-transition-syn", 5, ["核心"]),
+            c("nonequilibrium-phase", "非平衡相变", "激光阈值、化学振荡阈值、连续与不连续转变", D, "phase-transition-syn", 5, ["核心"]),
+            c("laser-synergetics", "激光理论(协同学视角)", "激光阈值、模式竞争、光子统计", D, "synergetics-applications", 4, ["核心"]),
+            c("synergetics-in-brain", "大脑中的协同现象", "神经振荡同步、脑电模式、认知协同", D, "synergetics-applications", 5, ["核心"]),
+            c("synergetics-in-ecology-soc", "生态与社会中的协同", "种群同步、社会舆论相变、交通流相变", D, "synergetics-applications", 5, ["核心"]),
+            c("pattern-recognition-syn", "协同学模式识别", "联想记忆、模式识别原理、吸引子", D, "synergetics-applications", 5, ["进阶"]),
+            c("synergetics-in-economy", "经济中的协同效应", "市场相变、技术锁定、群体行为同步", D, "synergetics-applications", 5, ["进阶"]),
+        ],
+        "edges": [
+            e("synergetics-overview", "self-org-synergetics"),
+            e("synergetics-overview", "open-system-syn"),
+            e("self-org-synergetics", "competition-cooperation"),
+            e("open-system-syn", "competition-cooperation"),
+            e("competition-cooperation", "order-parameter-def", "prerequisite", 0.9),
+            e("order-parameter-def", "order-param-dynamics"),
+            e("order-param-dynamics", "order-param-equation"),
+            e("order-param-dynamics", "critical-slowing-down"),
+            e("order-parameter-def", "slaving-principle-def", "prerequisite", 0.9),
+            e("slaving-principle-def", "adiabatic-elimination"),
+            e("adiabatic-elimination", "center-manifold"),
+            e("slaving-principle-def", "circular-causality-syn"),
+            e("order-parameter-def", "phase-transition-concept"),
+            e("phase-transition-concept", "symmetry-breaking-syn", "prerequisite", 0.9),
+            e("symmetry-breaking-syn", "pattern-selection"),
+            e("phase-transition-concept", "nonequilibrium-phase"),
+            e("order-parameter-def", "laser-synergetics"),
+            e("slaving-principle-def", "synergetics-in-brain"),
+            e("competition-cooperation", "synergetics-in-ecology-soc"),
+            e("pattern-selection", "pattern-recognition-syn"),
+            e("nonequilibrium-phase", "synergetics-in-economy"),
+        ]
+    }
+
+def gen_catastrophe_theory():
+    D = "catastrophe-theory"
+    return {
+        "domain": {"id": D, "name": "突变论", "description": "从拓扑学基础到初等突变的完整突变科学知识体系", "icon": "💥", "color": "#ef4444"},
+        "subdomains": [
+            {"id": "catastrophe-fundamentals", "name": "突变论基础", "order": 1},
+            {"id": "elementary-catastrophes", "name": "初等突变", "order": 2},
+            {"id": "catastrophe-math", "name": "突变的数学工具", "order": 3},
+            {"id": "catastrophe-dynamics", "name": "突变动力学", "order": 4},
+            {"id": "catastrophe-applications", "name": "突变论应用", "order": 5},
+        ],
+        "concepts": [
+            c("catastrophe-overview", "突变论概述", "Thom的突变论思想、连续变化导致突然跳跃", D, "catastrophe-fundamentals", 1, ["基础"]),
+            c("structural-stability-ct", "结构稳定性", "动力系统的结构稳定、微扰不变性", D, "catastrophe-fundamentals", 3, ["核心"]),
+            c("critical-point-catastrophe", "临界点理论", "函数的临界点、退化临界点、分类问题", D, "catastrophe-fundamentals", 3, ["核心"]),
+            c("smooth-mapping", "光滑映射与奇点", "光滑函数、奇点分类、泛开折", D, "catastrophe-fundamentals", 4, ["核心"]),
+            c("potential-function", "势函数", "势能面、极值、鞍点、势能景观", D, "catastrophe-fundamentals", 3, ["核心"]),
+            c("fold-catastrophe", "折叠突变(A2)", "最简单的突变类型、一个控制参数、跳跃行为", D, "elementary-catastrophes", 3, ["里程碑"], True),
+            c("cusp-catastrophe", "尖点突变(A3)", "两个控制参数、双稳态、滞后现象", D, "elementary-catastrophes", 4, ["里程碑"], True),
+            c("swallowtail-catastrophe", "燕尾突变(A4)", "三个控制参数、三稳态、更复杂的分岔", D, "elementary-catastrophes", 5, ["核心"]),
+            c("butterfly-catastrophe", "蝴蝶突变(A5)", "四个控制参数、口袋形态、妥协行为", D, "elementary-catastrophes", 6, ["核心"]),
+            c("umbilic-catastrophes", "脐点突变(D类)", "椭圆脐点D4-、双曲脐点D4+、抛物脐点D5", D, "elementary-catastrophes", 6, ["进阶"]),
+            c("classification-theorem", "Thom分类定理", "7种初等突变的分类、余维数小于等于4、普适性", D, "elementary-catastrophes", 5, ["里程碑"], True),
+            c("singularity-theory", "奇点理论", "Milnor数、有限决定性、ADE分类", D, "catastrophe-math", 6, ["核心"]),
+            c("unfolding-theory", "开折理论", "泛开折、余维数、开折参数", D, "catastrophe-math", 6, ["核心"]),
+            c("transversality", "横截性", "横截性定理、一般位置、通有性", D, "catastrophe-math", 6, ["进阶"]),
+            c("morse-theory-intro", "Morse理论简介", "Morse函数、Morse引理、非退化临界点", D, "catastrophe-math", 5, ["核心"]),
+            c("hysteresis-ct", "滞后现象", "磁滞、相变滞后、非平衡路径依赖", D, "catastrophe-dynamics", 4, ["核心"]),
+            c("bimodality", "双模态", "双峰分布、两种稳定状态的共存与转换", D, "catastrophe-dynamics", 4, ["核心"]),
+            c("catastrophe-flags", "突变标志", "模态性、不可达区、发散、滞后、突跳五标志", D, "catastrophe-dynamics", 4, ["核心"]),
+            c("delay-convention", "延迟惯例与Maxwell惯例", "系统跟随极小值策略、Maxwell等概率选择", D, "catastrophe-dynamics", 5, ["核心"]),
+            c("catastrophe-in-physics", "物理学中的突变", "相变、光学焦散线、弹性屈曲", D, "catastrophe-applications", 4, ["核心"]),
+            c("catastrophe-in-biology", "生物学中的突变", "形态发生、细胞分化、生态系统崩溃", D, "catastrophe-applications", 5, ["核心"]),
+            c("catastrophe-in-psychology", "心理学中的突变", "态度突变、攻击行为、知觉突变", D, "catastrophe-applications", 5, ["核心"]),
+            c("catastrophe-in-economics", "经济学中的突变", "市场崩盘、汇率突变、经济周期", D, "catastrophe-applications", 5, ["进阶"]),
+        ],
+        "edges": [
+            e("catastrophe-overview", "structural-stability-ct"),
+            e("catastrophe-overview", "critical-point-catastrophe"),
+            e("catastrophe-overview", "potential-function"),
+            e("critical-point-catastrophe", "smooth-mapping"),
+            e("potential-function", "fold-catastrophe", "prerequisite", 0.9),
+            e("fold-catastrophe", "cusp-catastrophe", "prerequisite", 0.9),
+            e("cusp-catastrophe", "swallowtail-catastrophe"),
+            e("swallowtail-catastrophe", "butterfly-catastrophe"),
+            e("cusp-catastrophe", "umbilic-catastrophes"),
+            e("fold-catastrophe", "classification-theorem"),
+            e("cusp-catastrophe", "classification-theorem", "related", 0.7),
+            e("smooth-mapping", "singularity-theory"),
+            e("critical-point-catastrophe", "unfolding-theory"),
+            e("singularity-theory", "transversality"),
+            e("critical-point-catastrophe", "morse-theory-intro"),
+            e("cusp-catastrophe", "hysteresis-ct", "prerequisite", 0.9),
+            e("cusp-catastrophe", "bimodality"),
+            e("hysteresis-ct", "catastrophe-flags"),
+            e("bimodality", "catastrophe-flags"),
+            e("catastrophe-flags", "delay-convention"),
+            e("fold-catastrophe", "catastrophe-in-physics"),
+            e("cusp-catastrophe", "catastrophe-in-biology"),
+            e("cusp-catastrophe", "catastrophe-in-psychology"),
+            e("cusp-catastrophe", "catastrophe-in-economics"),
+        ]
+    }
+
+# ============ Main ============
+generators = {
+    "systems-theory": gen_systems_theory,
+    "cybernetics": gen_cybernetics,
+    "information-theory": gen_information_theory,
+    "dissipative-structures": gen_dissipative_structures,
+    "synergetics": gen_synergetics,
+    "catastrophe-theory": gen_catastrophe_theory,
+}
+
+for domain_id, gen_func in generators.items():
+    data = gen_func()
+    out_dir = os.path.join(SEED_DIR, domain_id)
+    os.makedirs(out_dir, exist_ok=True)
+    out_path = os.path.join(out_dir, "seed_graph.json")
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+    n_c = len(data["concepts"])
+    n_e = len(data["edges"])
+    n_s = len(data["subdomains"])
+    print(f"[OK] {domain_id}: {n_s} subdomains, {n_c} concepts, {n_e} edges")
+
+print("\nAll 6 domains generated successfully!")

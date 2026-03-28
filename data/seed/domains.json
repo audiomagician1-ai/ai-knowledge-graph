@@ -331,6 +331,72 @@
       "subdomain_count": 8,
       "seed_dir": "game-production",
       "rag_dir": "game-production"
+    },
+    {
+      "id": "systems-theory",
+      "name": "系统论",
+      "description": "从系统基本概念到复杂适应系统的完整系统科学知识体系",
+      "icon": "🔄",
+      "color": "#0ea5e9",
+      "seed_dir": "systems-theory",
+      "rag_dir": "systems-theory",
+      "is_active": true,
+      "sort_order": 31
+    },
+    {
+      "id": "cybernetics",
+      "name": "控制论",
+      "description": "从反馈控制到智能控制的完整控制科学知识体系",
+      "icon": "🎛️",
+      "color": "#6366f1",
+      "seed_dir": "cybernetics",
+      "rag_dir": "cybernetics",
+      "is_active": true,
+      "sort_order": 32
+    },
+    {
+      "id": "information-theory",
+      "name": "信息论",
+      "description": "从信息度量到编码理论的完整信息科学知识体系",
+      "icon": "📡",
+      "color": "#14b8a6",
+      "seed_dir": "information-theory",
+      "rag_dir": "information-theory",
+      "is_active": true,
+      "sort_order": 33
+    },
+    {
+      "id": "dissipative-structures",
+      "name": "耗散结构论",
+      "description": "从非平衡热力学到耗散结构形成的完整知识体系",
+      "icon": "🌀",
+      "color": "#ec4899",
+      "seed_dir": "dissipative-structures",
+      "rag_dir": "dissipative-structures",
+      "is_active": true,
+      "sort_order": 34
+    },
+    {
+      "id": "synergetics",
+      "name": "协同学",
+      "description": "从序参量到协同效应的完整协同科学知识体系",
+      "icon": "🤝",
+      "color": "#f59e0b",
+      "seed_dir": "synergetics",
+      "rag_dir": "synergetics",
+      "is_active": true,
+      "sort_order": 35
+    },
+    {
+      "id": "catastrophe-theory",
+      "name": "突变论",
+      "description": "从拓扑学基础到初等突变的完整突变科学知识体系",
+      "icon": "💥",
+      "color": "#ef4444",
+      "seed_dir": "catastrophe-theory",
+      "rag_dir": "catastrophe-theory",
+      "is_active": true,
+      "sort_order": 36
     }
   ]
 }
