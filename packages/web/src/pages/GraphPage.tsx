@@ -1,4 +1,5 @@
 ﻿import { useEffect, useState, useCallback, useRef, lazy, Suspense, useMemo } from 'react';
+import { createLogger } from '@/lib/utils/logger';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useGraphStore } from '@/lib/store/graph';
 import { useLearningStore } from '@/lib/store/learning';
@@ -19,6 +20,7 @@ import {
 import { useSettingsStore } from '@/lib/store/settings';
 import { useAuthStore } from '@/lib/store/auth';
 
+const log = createLogger('GraphPage');
 
 const KnowledgeGraph = lazy(() =>
   import('@/components/graph/KnowledgeGraph').then((m) => ({ default: m.KnowledgeGraph }))
@@ -121,7 +123,7 @@ export function GraphPage() {
     try {
       const data = await apiFetchRecommendations(5, activeDomain);
       if (data) setRecommendations(data.recommendations);
-    } catch { /* ignore — non-critical feature */ }
+    } catch (e) { log.warn('Failed to load recommendations', { err: (e as Error).message }); }
     finally { setRecommendLoading(false); }
   }, [activeDomain]);
 

@@ -5,11 +5,14 @@
  * Right column: other domains sorted by most-recently-accessed
  */
 import { useEffect, useMemo } from 'react';
+import { createLogger } from '@/lib/utils/logger';
 import { useLearningStore, peekDomainProgress, type ConceptProgress } from '@/lib/store/learning';
 import { useGraphStore } from '@/lib/store/graph';
 import { useDomainStore } from '@/lib/store/domain';
 import { Zap, BookOpen, Flame, Trophy, Clock, Target, ArrowRight, Globe } from 'lucide-react';
 import type { Domain } from '@akg/shared';
+
+const log = createLogger('DashboardContent');
 
 interface DashboardContentProps {
   /** Called when user clicks a learning activity item. Receives the concept_id. */

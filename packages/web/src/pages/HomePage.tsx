@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { createLogger } from '@/lib/utils/logger';
 import { useDomainStore } from '@/lib/store/domain';
 import { Loader } from 'lucide-react';
+
+const log = createLogger('HomePage');
 
 /* ─── Demo fallback — 37 domains = 4 complete hex rings (1+6+12+18) ─── */
 /* Refined palette: low saturation (~25-35%), lightness ~65-75%, sophisticated muted tones */

@@ -1,4 +1,5 @@
 ﻿import { useEffect, useRef, useState } from 'react';
+import { createLogger } from '@/lib/utils/logger';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDialogueStore } from '@/lib/store/dialogue';
 import { useLearningStore } from '@/lib/store/learning';
@@ -12,6 +13,8 @@ import {
 import { MarkdownRenderer } from '@/components/chat/MarkdownRenderer';
 import { ChoiceButtons } from '@/components/chat/ChoiceButtons';
 import { stripChoicesBlock } from '@/lib/utils/text';
+
+const log = createLogger('LearnPage');
 
 export function LearnPage() {
   const { conceptId, domainId } = useParams<{ conceptId: string; domainId: string }>();

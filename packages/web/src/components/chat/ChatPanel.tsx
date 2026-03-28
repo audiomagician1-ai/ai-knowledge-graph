@@ -1,4 +1,5 @@
 ﻿import { useEffect, useRef, useState } from 'react';
+import { createLogger } from '@/lib/utils/logger';
 import { useDialogueStore } from '@/lib/store/dialogue';
 import { useLearningStore } from '@/lib/store/learning';
 import { useAchievementStore } from '@/lib/store/achievements';
@@ -12,6 +13,8 @@ import {
   Send, BarChart3, Brain, RotateCcw, Zap, Play,
   Trophy, History, Trash2, MessageSquare, X,
 } from 'lucide-react';
+
+const log = createLogger('ChatPanel');
 
 interface ChatPanelProps {
   conceptId: string;

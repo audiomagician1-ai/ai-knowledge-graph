@@ -34,6 +34,10 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Callable, Optional
 
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
+
 
 @dataclass
 class AchievementDef:
@@ -308,6 +312,8 @@ class AchievementEngine:
                     'tier': ach.tier,
                     'progress': round(progress, 1),
                 })
+        if newly:
+            logger.info("Achievements unlocked", extra={"count": len(newly), "keys": [a['key'] for a in newly]})
         return newly
 
     def get_all_with_status(self, stats: dict, unlocked_map: dict[str, dict]) -> list[dict]:

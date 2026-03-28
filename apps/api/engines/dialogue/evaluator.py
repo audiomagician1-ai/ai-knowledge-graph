@@ -5,7 +5,6 @@
 """
 
 import json
-import logging
 from typing import Optional
 
 from llm.router import llm_router
@@ -13,8 +12,9 @@ from engines.dialogue.prompts.feynman_system import (
     ASSESSMENT_SYSTEM_PROMPT,
     ASSESSMENT_SUPPLEMENTS,
 )
+from utils.logger import get_logger
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 
 class UnderstandingEvaluator:

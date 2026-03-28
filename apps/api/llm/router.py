@@ -7,7 +7,6 @@ httpx 异步 + SSE 流式 + 重试
 import asyncio
 import ipaddress
 import json
-import logging
 import re
 from typing import AsyncIterator, Optional
 from urllib.parse import urlparse
@@ -15,6 +14,7 @@ from urllib.parse import urlparse
 import httpx
 
 from config import settings
+from utils.logger import get_logger
 
 
 # SSRF prevention: block private/internal network ranges
@@ -38,7 +38,7 @@ def _validate_base_url(url: str) -> str:
             raise ValueError(f"Private/reserved IP not allowed: {hostname}")
     return url.rstrip("/")
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 
 class LLMRouter:

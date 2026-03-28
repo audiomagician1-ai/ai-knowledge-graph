@@ -13,7 +13,6 @@ import asyncio
 import json
 import time
 import uuid
-import logging
 from typing import Optional
 
 from fastapi import APIRouter, HTTPException, Request
@@ -31,8 +30,9 @@ from db.sqlite_client import (
     list_conversations as db_list_conversations,
     cleanup_old_conversations,
 )
+from utils.logger import get_logger
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 router = APIRouter()
 

@@ -15,12 +15,13 @@ import os
 import sqlite3
 import sys
 import time
-import logging
 from pathlib import Path
 from contextlib import contextmanager
 from typing import Optional
 
-logger = logging.getLogger(__name__)
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
 
 # ── DB file location ──
 # In frozen mode (EXE): next to the exe file

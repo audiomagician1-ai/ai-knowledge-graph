@@ -18,10 +18,11 @@ BYOK (bring-your-own-key) users are NOT rate-limited — they use their own quot
 
 import os
 import time
-import logging
 from collections import defaultdict, deque
 
-logger = logging.getLogger(__name__)
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
 
 # Configuration from environment
 ANON_LIMIT = int(os.getenv("RATE_LIMIT_ANON_PER_HOUR", "30"))

@@ -1,9 +1,12 @@
 ﻿import { useEffect, useRef } from 'react';
+import { createLogger } from '@/lib/utils/logger';
 import * as THREE from 'three';
 import type { GraphData, GraphNode } from '@akg/shared';
 import { GRAPH_VISUAL } from '@akg/shared';
 import type { ForceGraph3DInstance } from '3d-force-graph';
 import type { NodeObject, LinkObject } from '3d-force-graph';
+
+const log = createLogger('KnowledgeGraph');
 
 /* ── Props ── */
 interface KnowledgeGraphProps {

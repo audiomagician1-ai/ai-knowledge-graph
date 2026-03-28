@@ -6,7 +6,6 @@ AI Knowledge Graph — Backend API
   2. 打包模式: PyInstaller exe  （前端 dist 内嵌，由 FastAPI StaticFiles 提供）
 """
 
-import logging
 import os
 import sys
 from contextlib import asynccontextmanager

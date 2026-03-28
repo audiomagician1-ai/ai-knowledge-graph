@@ -2,11 +2,14 @@
  * DomainOverview — Galaxy overview showing all knowledge domains with per-domain progress.
  * Phase 7.6: Displays each domain's icon, name, concept count, and mastered/learning progress.
  */
+import { createLogger } from '@/lib/utils/logger';
 import { useDomainStore } from '@/lib/store/domain';
 import { useGraphStore } from '@/lib/store/graph';
 import { peekDomainProgress } from '@/lib/store/learning';
 import { Globe, Sparkles } from 'lucide-react';
 import type { Domain } from '@akg/shared';
+
+const log = createLogger('DomainOverview');
 
 interface DomainOverviewProps {
   /** Compact mode for modal panels (less padding, smaller text) */

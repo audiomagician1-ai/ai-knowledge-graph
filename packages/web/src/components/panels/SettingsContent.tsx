@@ -1,4 +1,5 @@
 ﻿import { useState, useRef } from 'react';
+import { createLogger } from '@/lib/utils/logger';
 import { useSettingsStore, PROVIDER_INFO, resolveBaseUrl, probeCORS, probeProxy, PROXY_SCRIPT_SRC, generateSelfContainedBat, downloadBlob, validateModelId, getDefaultModel } from '@/lib/store/settings';
 import type { LLMProvider, LLMConfig } from '@/lib/store/settings';
 import { Eye, EyeOff, Check, Trash2, Shield, Key, Server, Wifi, WifiOff, Loader2, Globe, Box, Info, Download, Upload, MonitorDown, AlertTriangle, Zap } from 'lucide-react';
@@ -7,6 +8,8 @@ import { useLearningStore } from '@/lib/store/learning';
 import { useDialogueStore } from '@/lib/store/dialogue';
 
 const PROVIDERS: LLMProvider[] = ['openrouter', 'openai', 'deepseek', 'custom'];
+
+const log = createLogger('SettingsContent');
 
 export function SettingsContent() {
   const { llmConfig, setLLMConfig, clearApiKey } = useSettingsStore();

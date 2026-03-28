@@ -5,9 +5,12 @@
  * Used inside a DraggableModal from GraphPage.
  */
 import { useEffect } from 'react';
+import { createLogger } from '@/lib/utils/logger';
 import { useAchievementStore } from '@/lib/store/achievements';
 import { Trophy, Loader } from 'lucide-react';
 import type { Achievement } from '@/lib/api/learning-api';
+
+const log = createLogger('AchievementPanel');
 
 const CATEGORY_META: Record<string, { label: string; icon: string }> = {
   learning:   { label: '学习里程碑', icon: '📖' },

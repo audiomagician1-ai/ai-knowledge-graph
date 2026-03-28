@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { createLogger } from '@/lib/utils/logger';
 import { useAuthStore } from '@/lib/store/auth';
 import { BookOpen, Loader2, ArrowRight, ArrowLeft, Sparkles, Brain, Network } from 'lucide-react';
+
+const log = createLogger('LoginPage');
 
 /* ── Decorative background blobs ── */
 function BackgroundDecoration() {

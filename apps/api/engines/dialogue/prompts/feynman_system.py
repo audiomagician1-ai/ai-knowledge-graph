@@ -12,6 +12,10 @@ import json
 import re
 from typing import Optional
 
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
+
 
 # ---------------------------------------------------------------------------
 # Choices parser — extract structured choices from LLM response
@@ -55,6 +59,7 @@ def parse_ai_response(raw_text: str) -> dict:
 
     # Validate and fix choices
     choices = _validate_choices(choices)
+    logger.debug("Parsed AI response", extra={"choices_count": len(choices), "content_len": len(content)})
 
     return {"content": content, "choices": choices}
 

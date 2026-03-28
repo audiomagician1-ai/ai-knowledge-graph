@@ -27,6 +27,10 @@ from dataclasses import dataclass, field, asdict
 from enum import IntEnum
 from typing import Optional
 
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
+
 
 # ── Enums ──────────────────────────────────────────────
 
@@ -179,6 +183,7 @@ class FSRSScheduler:
         """
         now = now or time.time()
         rating = Rating(rating)
+        logger.debug("FSRS review", extra={"state": card.state, "rating": int(rating), "stability": round(card.stability, 2)})
 
         # Save pre-review state for the log
         log = ReviewLog(
