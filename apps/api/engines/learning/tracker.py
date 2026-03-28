@@ -34,6 +34,10 @@ import json
 from dataclasses import dataclass, field, asdict
 from typing import Optional
 
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
+
 
 # ── Default parameters ────────────────────────────────
 
@@ -272,13 +276,18 @@ class KnowledgeTracker:
         # Clamp to [0, 1] for numerical safety
         p_l_new = max(0.0, min(1.0, p_l_new))
 
-        return BKTState(
+        new_state = BKTState(
             p_mastery=p_l_new,
             observations=state.observations + 1,
             correct_count=state.correct_count + (1 if correct else 0),
             params=state.params,
             mastery_threshold=state.mastery_threshold,
         )
+        logger.debug("BKT update", extra={
+            "correct": correct, "p_before": round(p_l, 4),
+            "p_after": round(p_l_new, 4), "mastered": new_state.is_mastered,
+        })
+        return new_state
 
     def update_from_score(self, state: BKTState, score: float,
                           threshold: float = 70.0) -> BKTState:
