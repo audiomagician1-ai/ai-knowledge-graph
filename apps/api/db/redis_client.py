@@ -5,6 +5,9 @@ import time
 
 import redis.asyncio as redis
 from config import settings
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
 
 
 class RedisClient:
@@ -17,9 +20,9 @@ class RedisClient:
         try:
             self._client = redis.from_url(settings.redis_url, decode_responses=True)
             await self._client.ping()
-            print(f"✅ Redis connected: {settings.redis_url}")
+            logger.info("Redis connected: %s", settings.redis_url)
         except Exception as e:
-            print(f"⚠️ Redis connection failed (will retry on demand): {e}")
+            logger.warning("Redis connection failed (will retry on demand): %s", e)
             self._client = None
 
     async def close(self):
@@ -50,7 +53,7 @@ class RedisClient:
                         await old_client.close()
                     except Exception:
                         pass
-                print("✅ Redis reconnected")
+                logger.info("Redis reconnected")
                 return True
             except Exception:
                 self._client = None

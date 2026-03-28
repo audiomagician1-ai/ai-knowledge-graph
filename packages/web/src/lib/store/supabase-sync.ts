@@ -13,6 +13,9 @@
 
 import { supabase } from '../api/supabase';
 import { onAuthLogin, useAuthStore } from './auth';
+import { createLogger } from '@/lib/utils/logger';
+
+const log = createLogger('Sync');
 import type { ConceptProgress, LearningHistory } from './learning';
 import { useLearningStore } from './learning';
 import { useDomainStore } from './domain';
@@ -72,9 +75,9 @@ export async function syncProgressToCloud(p: ConceptProgress): Promise<void> {
   try {
     const { error } = await supabase.from('user_concept_status')
       .upsert(buildProgressRow(uid, p), { onConflict: 'user_id,concept_id,domain_id' });
-    if (error) console.warn('[sync] upsert progress failed:', p.concept_id, error.message);
+    if (error) log.warn('Upsert progress failed', { conceptId: p.concept_id, err: error.message });
   } catch (err) {
-    console.warn('[sync] Failed to sync progress:', p.concept_id, err);
+    log.warn('Failed to sync progress', { conceptId: p.concept_id, err: (err as Error).message });
   }
 }
 
@@ -90,12 +93,12 @@ export async function writeProgressToCloud(p: ConceptProgress): Promise<boolean>
     const { error } = await supabase.from('user_concept_status')
       .upsert(buildProgressRow(uid, p), { onConflict: 'user_id,concept_id,domain_id' });
     if (error) {
-      console.warn('[sync] writeProgress failed:', p.concept_id, error.message);
+      log.warn('writeProgress failed', { conceptId: p.concept_id, err: error.message });
       return false;
     }
     return true;
   } catch (err) {
-    console.warn('[sync] writeProgress error:', p.concept_id, err);
+    log.warn('writeProgress error', { conceptId: p.concept_id, err: (err as Error).message });
     return false;
   }
 }
@@ -133,7 +136,7 @@ export async function downloadProgressFromCloud(): Promise<Record<string, Concep
     }
     return result;
   } catch (err) {
-    console.warn('[sync] Failed to download progress:', err);
+    log.warn('Failed to download progress', { err: (err as Error).message });
     return {};
   }
 }
@@ -155,9 +158,9 @@ export async function syncHistoryToCloud(
       event_type: mastered ? 'mastered' : 'feynman_attempt',
       payload: { concept_name: conceptName, score, mastered },
     });
-    if (error) console.warn('[sync] insert history failed:', conceptId, error.message);
+    if (error) log.warn('Insert history failed', { conceptId, err: error.message });
   } catch (err) {
-    console.warn('[sync] Failed to sync history event:', err);
+    log.warn('Failed to sync history event', { err: (err as Error).message });
   }
 }
 
@@ -178,12 +181,12 @@ export async function writeHistoryToCloud(
       payload: { concept_name: conceptName, score, mastered },
     });
     if (error) {
-      console.warn('[sync] writeHistory failed:', conceptId, error.message);
+      log.warn('writeHistory failed', { conceptId, err: error.message });
       return false;
     }
     return true;
   } catch (err) {
-    console.warn('[sync] writeHistory error:', err);
+    log.warn('writeHistory error', { err: (err as Error).message });
     return false;
   }
 }
@@ -209,7 +212,7 @@ export async function downloadHistoryFromCloud(limit = 200): Promise<LearningHis
       timestamp: new Date(row.created_at).getTime(),
     }));
   } catch (err) {
-    console.warn('[sync] Failed to download history:', err);
+    log.warn('Failed to download history', { err: (err as Error).message });
     return [];
   }
 }
@@ -244,7 +247,7 @@ export async function syncConversationToCloud(
       updated_at: new Date().toISOString(),
     }, { onConflict: 'id' });
   } catch (err) {
-    console.warn('[sync] Failed to sync conversation:', convId, err);
+    log.warn('Failed to sync conversation', { convId, err: (err as Error).message });
   }
 }
 
@@ -262,7 +265,7 @@ export async function downloadConversationsFromCloud(limit = 50): Promise<CloudC
     if (error || !data) return [];
     return data as CloudConversation[];
   } catch (err) {
-    console.warn('[sync] Failed to download conversations:', err);
+    log.warn('Failed to download conversations', { err: (err as Error).message });
     return [];
   }
 }
@@ -341,9 +344,9 @@ export async function fullSync(): Promise<{
         try {
           const { error } = await supabase.from('user_concept_status')
             .upsert(rows, { onConflict: 'user_id,concept_id,domain_id' });
-          if (error) console.warn('[sync] batch upsert failed:', error.message);
+          if (error) log.warn('Batch upsert failed', { err: error.message });
         } catch (err) {
-          console.warn('[sync] batch upsert error:', err);
+          log.warn('Batch upsert error', { err: (err as Error).message });
         }
         uploadedProgress += batch.length;
       }
@@ -364,7 +367,7 @@ export async function fullSync(): Promise<{
       streak: store.streak, // streak stays local
     });
 
-    console.log(`[sync] Full sync done: uploaded=${uploadedProgress}, cloud=${Object.keys(cloudProgress).length}, merged=${mergedCount}`);
+    log.info('Full sync done', { uploaded: uploadedProgress, cloud: Object.keys(cloudProgress).length, merged: mergedCount });
 
     return {
       uploadedProgress,
@@ -381,11 +384,11 @@ export async function fullSync(): Promise<{
 // ════════════════════════════════════════════
 
 onAuthLogin(async (_userId: string) => {
-  console.log('[sync] Login detected, starting full sync...');
+  log.info('Login detected, starting full sync...');
   try {
     await fullSync();
   } catch (err) {
-    console.warn('[sync] Full sync failed:', err);
+    log.warn('Full sync failed', { err: (err as Error).message });
   }
 });
 

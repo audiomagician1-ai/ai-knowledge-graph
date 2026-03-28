@@ -8,6 +8,9 @@
  */
 
 const QUEUE_KEY = 'akg-offline-queue';
+import { createLogger } from '@/lib/utils/logger';
+
+const log = createLogger('OfflineQueue');
 const MAX_QUEUE_SIZE = 200;
 
 // ════════════════════════════════════════════
@@ -65,7 +68,7 @@ function saveQueue(queue: QueuedWrite[]): void {
     const trimmed = queue.slice(-MAX_QUEUE_SIZE);
     localStorage.setItem(QUEUE_KEY, JSON.stringify(trimmed));
   } catch (e) {
-    console.warn('[offline-queue] Failed to save queue:', e);
+    log.warn('Failed to save queue', { err: (e as Error).message });
   }
 }
 
@@ -157,7 +160,7 @@ export async function flushQueue(writers: {
 
     saveQueue(remaining);
     if (replayed > 0) {
-      console.log(`[offline-queue] Flushed ${replayed}/${queue.length} queued writes`);
+      log.info('Flushed queued writes', { replayed, total: queue.length });
     }
     return replayed;
   } finally {
@@ -172,7 +175,7 @@ export async function flushQueue(writers: {
 export function registerOnlineFlush(writers: Parameters<typeof flushQueue>[0]): void {
   if (typeof window === 'undefined') return;
   window.addEventListener('online', () => {
-    console.log('[offline-queue] Network restored, flushing queue...');
+    log.info('Network restored, flushing queue...');
     flushQueue(writers).catch(() => {});
   });
   // Also flush on visibility change (e.g. user switches back to tab after being offline)

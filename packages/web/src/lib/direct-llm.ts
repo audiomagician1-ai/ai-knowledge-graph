@@ -6,7 +6,10 @@
 
 import { useSettingsStore, PROVIDER_INFO, resolveBaseUrl, getDefaultModel } from './store/settings';
 import { useGraphStore } from './store/graph';
+import { createLogger } from '@/lib/utils/logger';
 import type { GraphNode } from '@akg/shared';
+
+const log = createLogger('DirectLLM');
 
 // ─── Prompt templates (mirrored from workers/src/prompts.ts) ───
 
@@ -561,13 +564,13 @@ const MAX_CONTEXT_MESSAGES = 20;
 
 /**
  * Build the token-limit parameter for the request body.
- * OpenAI's newer models (o1, o3, chatgpt-4o-latest, chatgpt-5 series etc.)
+ * OpenAI's newer models (o1, o3, gpt-5+, chatgpt-4o-latest, chatgpt-5 series etc.)
  * require `max_completion_tokens` instead of `max_tokens`.
  */
 export function tokenLimitParam(model: string, tokens: number): Record<string, number> {
   const m = model.toLowerCase();
-  // Models that require max_completion_tokens
-  if (/^(o[1-9]|chatgpt-)/.test(m) || /\/(o[1-9]|chatgpt-)/.test(m)) {
+  // o1/o3 reasoning, chatgpt-* series, gpt-5+ series (bare or vendor-prefixed)
+  if (/(?:^|\/)(?:o[1-9]|chatgpt-|gpt-(?:[5-9]|\d{2,}))/.test(m)) {
     return { max_completion_tokens: tokens };
   }
   return { max_tokens: tokens };
@@ -858,7 +861,7 @@ export async function directCreateConversation(conceptId: string): Promise<{
     // Guard: wrong URL may return 200 + HTML instead of JSON
     const openCT = res.headers.get('content-type') || '';
     if (res.ok && !openCT.includes('application/json')) {
-      console.warn('LLM returned non-JSON content-type:', openCT);
+      log.warn('LLM returned non-JSON content-type', { contentType: openCT });
     } else if (res.ok) {
       const data: any = await res.json();
       const raw = data.choices?.[0]?.message?.content || '';

@@ -2,6 +2,9 @@
 
 from neo4j import AsyncGraphDatabase
 from config import settings
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
 
 
 class Neo4jClient:
@@ -16,9 +19,9 @@ class Neo4jClient:
         # 验证连接
         try:
             await self._driver.verify_connectivity()
-            print(f"✅ Neo4j connected: {settings.neo4j_uri}")
+            logger.info("Neo4j connected: %s", settings.neo4j_uri)
         except Exception as e:
-            print(f"⚠️ Neo4j connection failed (will retry on demand): {e}")
+            logger.warning("Neo4j connection failed (will retry on demand): %s", e)
 
     async def close(self):
         if self._driver:

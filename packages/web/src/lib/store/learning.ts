@@ -1,5 +1,8 @@
 ﻿import { create } from 'zustand';
 import type { LearningStats, ConceptStatus } from '@akg/shared';
+import { createLogger } from '@/lib/utils/logger';
+
+const log = createLogger('Learning');
 import {
   apiStartLearning, apiRecordAssessment,
   apiFetchStats, apiSyncToBackend,
@@ -127,11 +130,11 @@ export function migrateLegacyStorage(targetDomain: string = 'ai-engineering'): b
       // Remove legacy keys after successful migration
       localStorage.removeItem(LEGACY_STORAGE_KEY);
       localStorage.removeItem(LEGACY_HISTORY_KEY);
-      console.log(`[learning] Migrated legacy storage to domain: ${targetDomain}`);
+      log.info('Migrated legacy storage to domain', { targetDomain });
       return true;
     }
   } catch (e) {
-    console.warn('[learning] Legacy storage migration failed:', e);
+    log.warn('Legacy storage migration failed', { err: (e as Error).message });
   }
   return false;
 }
@@ -219,7 +222,7 @@ if (typeof window !== 'undefined') {
 // Verify at load time
 const _storageOk = verifyStorageAvailable();
 if (!_storageOk) {
-  console.error('[learning] ⚠️ localStorage is NOT available! Learning data will NOT be persisted. Check browser privacy settings or storage quota.');
+  log.error('localStorage is NOT available! Learning data will NOT be persisted. Check browser privacy settings or storage quota.');
 }
 
 interface PersistedData {
@@ -249,13 +252,13 @@ function loadProgress(domain?: string): Record<string, ConceptProgress> {
         if (isValidProgress(val)) {
           validated[k] = val;
         } else {
-          console.warn(`[learning] Skipped corrupted progress entry: ${k}`);
+          log.warn('Skipped corrupted progress entry', { key: k });
         }
       }
       return validated;
     }
   } catch (e) {
-    console.warn('[learning] Failed to load progress from localStorage:', e);
+    log.warn('Failed to load progress from localStorage', { err: (e as Error).message });
   }
   return {};
 }
@@ -269,12 +272,12 @@ function saveProgress(progress: Record<string, ConceptProgress>, domain?: string
     // Verify write succeeded
     const readBack = localStorage.getItem(key);
     if (!readBack) {
-      console.error('[learning] localStorage write verification failed: readback is null');
+      log.error('localStorage write verification failed: readback is null');
       return false;
     }
     return true;
   } catch (e) {
-    console.error('[learning] Failed to save progress to localStorage:', e);
+    log.error('Failed to save progress to localStorage', { err: (e as Error).message });
     return false;
   }
 }
@@ -296,7 +299,7 @@ function loadHistory(domain?: string): LearningHistory[] {
       });
     }
   } catch (e) {
-    console.warn('[learning] Failed to load history from localStorage:', e);
+    log.warn('Failed to load history from localStorage', { err: (e as Error).message });
   }
   return [];
 }
@@ -309,7 +312,7 @@ function saveHistory(history: LearningHistory[], domain?: string): boolean {
     localStorage.setItem(key, JSON.stringify(trimmed));
     return true;
   } catch (e) {
-    console.error('[learning] Failed to save history to localStorage:', e);
+    log.error('Failed to save history to localStorage', { err: (e as Error).message });
     return false;
   }
 }
@@ -333,7 +336,7 @@ function saveStreak(streak: StreakData): boolean {
     localStorage.setItem(STREAK_KEY, JSON.stringify(streak));
     return true;
   } catch (e) {
-    console.error('[learning] Failed to save streak to localStorage:', e);
+    log.error('Failed to save streak to localStorage', { err: (e as Error).message });
     return false;
   }
 }
@@ -448,7 +451,7 @@ export const useLearningStore = create<LearningState>((set, get) => ({
   },
 
   startLearning: (conceptId) => {
-    console.log('[learning] startLearning called:', conceptId);
+    log.info('startLearning called', { conceptId });
     const { progress, streak } = get();
     const existing = progress[conceptId];
     const now = Date.now();
@@ -461,7 +464,7 @@ export const useLearningStore = create<LearningState>((set, get) => ({
 
     const newProgress = { ...progress, [conceptId]: updated };
     const saved = saveProgress(newProgress);
-    console.log('[learning] startLearning saveProgress:', saved ? 'OK' : 'FAILED', '| entries:', Object.keys(newProgress).length);
+    log.info('startLearning saveProgress', { saved, entries: Object.keys(newProgress).length });
 
     // Update streak
     let newStreak = { ...streak };
@@ -496,7 +499,7 @@ export const useLearningStore = create<LearningState>((set, get) => ({
   },
 
   recordAssessment: (conceptId, conceptName, score, mastered) => {
-    console.log('[learning] recordAssessment called:', { conceptId, conceptName, score, mastered });
+    log.info('recordAssessment called', { conceptId, conceptName, score, mastered });
     const { progress, history } = get();
     const existing = progress[conceptId];
     const now = Date.now();
@@ -524,7 +527,7 @@ export const useLearningStore = create<LearningState>((set, get) => ({
       { concept_id: conceptId, concept_name: conceptName, score, mastered, timestamp: now },
     ];
     const savedH = saveHistory(newHistory);
-    console.log('[learning] recordAssessment save:', { progress: savedP ? 'OK' : 'FAILED', history: savedH ? 'OK' : 'FAILED', status: updated.status, entries: Object.keys(newProgress).length });
+    log.info('recordAssessment save', { progress: savedP ? 'OK' : 'FAILED', history: savedH ? 'OK' : 'FAILED', status: updated.status, entries: Object.keys(newProgress).length });
 
     // Compute newly unlocked concepts if this node was just mastered
     let newlyUnlocked: string[] = [];
@@ -698,9 +701,9 @@ export const useLearningStore = create<LearningState>((set, get) => ({
       // Skip pull from backend — localStorage is the single source of truth for anonymous users.
       // When Supabase auth is configured (Phase 5), user-specific sync uses supabase-sync.ts instead.
       set({ backendSynced: true });
-      console.log('[learning] Backend push-only sync complete:', Object.keys(localProgress).length, 'concepts');
+      log.info('Backend push-only sync complete', { concepts: Object.keys(localProgress).length });
     } catch (err) {
-      console.warn('[learning] Backend sync failed, using local data:', err);
+      log.warn('Backend sync failed, using local data', { err: (err as Error).message });
       set({ backendSynced: true }); // Don't retry this session
     }
   },
@@ -721,6 +724,6 @@ export const useLearningStore = create<LearningState>((set, get) => ({
       recommendedIds: new Set(),
       newlyUnlockedIds: [],
     });
-    console.log(`[learning] Switched to domain: ${domain}, ${Object.keys(progress).length} concepts loaded`);
+    log.info('Switched to domain', { domain, concepts: Object.keys(progress).length });
   },
 }));

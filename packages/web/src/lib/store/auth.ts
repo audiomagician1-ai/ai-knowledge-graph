@@ -1,6 +1,9 @@
 ﻿import { create } from 'zustand';
 import type { Session, User, Provider, Subscription } from '@supabase/supabase-js';
 import { supabase } from '../api/supabase';
+import { createLogger } from '@/lib/utils/logger';
+
+const log = createLogger('Auth');
 
 /** Track active auth subscription to avoid leaks on re-init (HMR / StrictMode) */
 let _authSubscription: Subscription | null = null;
@@ -47,7 +50,7 @@ async function _runLoginCallbacks(userId: string) {
     try {
       await cb(userId);
     } catch (err) {
-      console.warn('[auth] Post-login callback failed:', err);
+      log.warn('Post-login callback failed', { err: (err as Error).message });
     }
   }
 }
