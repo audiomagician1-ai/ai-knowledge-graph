@@ -20,63 +20,56 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # SOLID原则
 
 ## 概述
 
-SOLID原则是面向对象设计中五条具体指导原则的首字母缩写，由Robert C. Martin（"Uncle Bob"）在2000年前后的系列论文中首次系统整理，并在其2002年著作《Agile Software Development: Principles, Patterns, and Practices》中正式成文。这五条原则分别是：单一职责原则（SRP）、开放封闭原则（OCP）、里氏替换原则（LSP）、接口隔离原则（ISP）和依赖倒置原则（DIP）。
+SOLID是五条面向对象设计原则的首字母缩写，由Robert C. Martin（又称"Uncle Bob"）在2000年的论文《Design Principles and Design Patterns》中系统整理，后由Michael Feathers将其命名为SOLID。这五条原则分别是：单一职责原则（SRP）、开闭原则（OCP）、里氏替换原则（LSP）、接口隔离原则（ISP）和依赖倒置原则（DIP）。
 
-在AI工程场景下，SOLID原则的价值尤为突出。AI系统通常包含数据预处理、模型训练、推理服务、评估监控等高度异构的模块，如果各模块职责不清、依赖混乱，任何一次算法迭代都可能引发连锁修改。遵守SOLID原则能让每个模块独立演化，使模型替换（如将XGBoost换成LightGBM）不影响上下游代码。
-
-SOLID并非七条或三条，恰好是五条相互补充的约束，缺少其中任意一条都会导致特定的腐化模式：缺少SRP导致"上帝类"，缺少OCP导致大量if-else分支，缺少LSP导致类型断言陷阱，缺少ISP导致"胖接口"污染，缺少DIP导致高层模块直接依赖具体实现而难以测试。
-
----
+SOLID原则的提出是为了解决软件系统随规模增长后出现的"代码腐化"问题，具体表现为僵化性（Rigidity）、脆弱性（Fragility）、不可移植性（Immobility）三类病症。在AI工程领域，模型服务、数据管道、推理模块的边界划分不清时，往往导致一处修改引发多处崩溃，SOLID原则为这类问题提供了结构化的预防方案。
 
 ## 核心原理
 
-### 单一职责原则（SRP）
+### S — 单一职责原则（Single Responsibility Principle）
 
-SRP规定：**一个类应该只有一个引起它变化的原因**。"原因"在这里等同于"业务维度"。例如，一个`ModelTrainer`类不应同时负责日志记录和超参数搜索，因为日志格式的变更和搜索策略的变更是两个独立的变化轴。Martin给出的判断标准是：如果你能为一个类写出两个不同部门（如算法团队与运维团队）各自会要求修改的理由，那么这个类就违反了SRP。实践中应将日志、持久化、验证等横切关注点剥离为独立类。
+SRP的精确表述是：**一个类只应有一个引起它变化的原因**。注意"职责"不等于"功能单一"，而是对应一个特定的变化方向。例如在AI推理服务中，若一个`ModelServer`类同时负责模型加载、HTTP路由和结果序列化，则存在三个独立变化原因——更换模型格式、更换API框架、更改输出格式，任何一种变化都会污染其他逻辑。正确做法是将其拆分为`ModelLoader`、`APIRouter`、`ResponseSerializer`三个独立类。
 
-### 开放封闭原则（OCP）
+### O — 开闭原则（Open/Closed Principle）
 
-OCP由Bertrand Meyer于1988年首次提出，Martin后来用多态重新诠释：**软件实体应对扩展开放，对修改封闭**。具体做法是将变化点抽象为接口或抽象类，新功能通过新增子类实现，而不修改已有代码。在AI推理服务中，可以定义`Predictor`抽象接口，初期实现`SklearnPredictor`，后续直接新增`OnnxPredictor`或`TorchServingPredictor`，原有调用代码无需改动。衡量代码是否满足OCP的简单标准：添加一种新算法时，改动的文件数是否为1（仅新增实现类）。
+OCP由Bertrand Meyer于1988年首次提出：**软件实体对扩展开放，对修改关闭**。实现手段是通过抽象（接口或抽象类）隔离变化点。在AI工程中典型场景是评估指标体系：定义抽象基类`MetricBase`，其`compute(y_true, y_pred)`方法对外封闭；当需要新增F1Score时，继承`MetricBase`扩展即可，原有`Accuracy`和`AUC`类无需改动。违反OCP的特征是代码中大量出现`if metric_type == "f1": ... elif metric_type == "auc": ...`这类分支链。
 
-### 里氏替换原则（LSP）
+### L — 里氏替换原则（Liskov Substitution Principle）
 
-LSP由Barbara Liskov于1987年在OOPSLA会议论文《Data Abstraction and Hierarchy》中提出，精确表述为：**若`S`是`T`的子类型，则程序中所有使用`T`的地方，用`S`替换后行为不变**。违反LSP的典型反例是"正方形-矩形悖论"：若`Square`继承`Rectangle`并重写`setWidth`使其同时改变高度，则调用方对`Rectangle`的假设（宽高独立可变）被破坏。在机器学习中，若`BaseClassifier`定义了`predict_proba`方法，子类`SVMClassifier`抛出`NotImplementedError`，则使用`BaseClassifier`类型的代码会因替换而崩溃，违反LSP。
+LSP由Barbara Liskov于1987年在论文中给出形式化定义：**若S是T的子类型，则程序中T的对象可以被S的对象替换，且程序行为不变**。形式化表达为：`∀x:T, P(x) → P(x as S)`。违反LSP的典型案例是"正方形继承矩形"问题——`Square.setWidth(5)`会同时修改高度，破坏了矩形"宽高独立"的契约。在AI管道中，若`DistributedTrainer`继承`BaseTrainer`后重写`fit()`方法时抛出`NotImplementedError`，则调用方无法安全替换，违反LSP。
 
-### 接口隔离原则（ISP）
+### I — 接口隔离原则（Interface Segregation Principle）
 
-ISP规定：**不应强迫客户端依赖它不使用的方法**。一个包含`train`、`predict`、`explain`、`export_onnx`的"胖接口"会迫使所有实现类提供`explain`和`export_onnx`，即使某些模型（如规则引擎）完全不需要它们。正确做法是将其拆分为`Trainable`、`Predictable`、`Explainable`、`OnnxExportable`四个细粒度接口，具体类按需组合实现。ISP与接口这一前置概念直接相连：只有先理解接口的抽象机制，才能进行有意义的接口拆分。
+ISP规定：**客户端不应被迫依赖它不使用的接口方法**。具体阈值参考：若一个接口超过7个方法且多数实现类只用其中3个，应当拆分。在AI工程中，若定义一个`DataProcessor`接口同时包含`load()`、`transform()`、`validate()`、`visualize()`，则仅做数据验证的模块也被迫实现`visualize()`。正确做法是将其拆为`ILoader`、`ITransformer`、`IValidator`、`IVisualizer`四个窄接口，由实现类按需组合。
 
-### 依赖倒置原则（DIP）
+### D — 依赖倒置原则（Dependency Inversion Principle）
 
-DIP包含两层含义：**高层模块不应依赖低层模块，两者都应依赖抽象；抽象不应依赖细节，细节应依赖抽象**。在Python中，违反DIP的代码形如`self.db = MySQLDatabase()`（高层类直接实例化低层具体类）；遵守DIP的形式是构造函数接收`DatabaseInterface`类型参数，由外部传入具体实现。DIP是依赖注入（下一个概念）的理论基础：依赖注入是实现DIP的具体技术手段，DIP描述"应该依赖谁"，依赖注入描述"如何把依赖传进来"。
-
----
+DIP包含两层含义：**高层模块不应依赖低层模块，二者都应依赖抽象；抽象不应依赖细节，细节应依赖抽象**。在AI工程中，`TrainingPipeline`（高层）不应直接实例化`PostgreSQLDataLoader`（低层），而应依赖`IDataLoader`接口。依赖的方向从"具体→具体"倒置为"具体→抽象←具体"，形成倒V形依赖结构。DIP是依赖注入框架（如Python的`dependency-injector`库）的理论基础。
 
 ## 实际应用
 
-**AI特征工程流水线**：设计一个特征处理系统时，可以定义`FeatureTransformer`接口，包含`fit(data)`和`transform(data)`两个方法（ISP保证接口精简）。`NumericalScaler`、`CategoricalEncoder`、`EmbeddingLookup`各自实现该接口（OCP），彼此可互相替换且不改变流水线逻辑（LSP）。流水线主类`FeaturePipeline`通过构造函数接收`List[FeatureTransformer]`而不直接实例化具体转换器（DIP）。每个转换器类只负责自身的变换逻辑，日志记录由装饰器单独处理（SRP）。
+**AI模型服务重构场景**：一个违反SOLID的`PredictionService`类可能包含：从Redis读取特征（违反SRP）、硬编码XGBoost模型路径（违反OCP和DIP）、子类无法覆写预测逻辑（违反LSP）、强制实现未使用的`retrain()`方法（违反ISP）。按SOLID重构后，`FeatureStore`负责特征读取，`IPredictor`接口定义预测契约，`XGBoostPredictor`和`TorchPredictor`分别实现该接口，`PredictionService`通过构造函数注入`IPredictor`，彻底解耦。
 
-**模型评估模块**：违反SOLID的写法是一个`Evaluator`类中用`if model_type == 'classification': ... elif model_type == 'regression': ...`分支计算指标。遵守OCP的重构方案是定义`EvaluationStrategy`接口，分别实现`ClassificationEvaluator`和`RegressionEvaluator`，主流程通过接口调用，新增`RankingEvaluator`时不修改任何已有文件。
-
----
+**特征工程管道**：使用ISP将`FeatureTransformer`拆分为`IScaler`、`IEncoder`、`IImputer`三个接口后，当新增`MinMaxScaler`时只需实现`IScaler`的`fit(X)`和`transform(X)`两个方法，不影响编码器和缺失值填充模块的测试覆盖率。
 
 ## 常见误区
 
-**误区一：SRP等于"每个类只有一个方法"**。SRP说的是"一个变化原因"，而非"一个方法"。一个`DataPreprocessor`类可以包含`normalize`、`remove_nulls`、`encode_categoricals`多个方法，只要它们都因"数据预处理规则变更"这同一原因而改变，就满足SRP。若该类还包含"将结果写入S3"的方法，则引入了存储策略这一第二变化轴，才真正违反SRP。
+**误区一：SRP要求每个类只有一个方法**。SRP关注的是"变化原因"而非"方法数量"。一个`UserProfile`类有20个getter/setter方法，但如果它们都因同一个业务实体的变化而变化，仍然符合SRP。相反，一个只有`load()`和`save()`两个方法的类，若`load()`连接数据库而`save()`发送邮件通知，则有两个变化原因，违反SRP。
 
-**误区二：OCP意味着永远不能修改旧代码**。OCP针对的是已稳定的"完成状态"代码，而非开发中的代码。修复Bug、修正接口定义本身都是合理的修改。OCP要求的是：当新增业务功能时，通过扩展（新增类/模块）而非修改已通过测试的旧类来实现。
+**误区二：开闭原则意味着永远不修改已有代码**。OCP的"关闭"是针对**已测试、已发布的稳定接口**而言的。在迭代早期，尚未确定抽象边界时，过早引入抽象反而制造"过度设计"。Uncle Bob在《敏捷软件开发》中明确指出，OCP应在第一次扩展需求出现时才引入对应抽象，即"第一枪原则"（The First Bullet）。
 
-**误区三：LSP只是"子类能调用父类方法"**。很多人将LSP误解为语法层面的继承合法性。LSP关注的是行为契约：子类不仅要实现父类的方法签名，还要保持父类方法的前置条件（不能比父类更严格）和后置条件（不能比父类更宽松）。`predict`方法若父类约定返回0到1之间的概率值，子类返回未归一化的logit就违反了LSP的后置条件约束，即使代码能正常编译运行。
-
----
+**误区三：LSP等同于"子类重写父类方法"**。继承并重写是语法层面的操作，LSP是语义层面的约束。子类可以重写方法，但前置条件不能比父类更严格，后置条件不能比父类更宽松。例如父类`fit(X)`接受空DataFrame时抛出`ValueError`，子类不得在正常DataFrame输入时也抛出`ValueError`——这强化了前置条件，破坏替换性。
 
 ## 知识关联
 
-SOLID原则以**接口**作为直接的技术支撑。OCP中的"对扩展开放"依赖接口定义变化点；ISP直接操作接口的粒度切分；DIP要求高层模块依赖接口而非具体类。如果不理解接口的抽象与多态机制，OCP和DIP的实践将无法落地。
+**与接口的关系**：ISP和DIP的实现高度依赖接口机制。Python中通过`abc.ABC`和`@abstractmethod`定义抽象接口，是实践OCP和DIP的直接工具；若没有接口，SOLID中后三条原则几乎无法落地。LSP也可理解为对接口契约（行为规范）的继承约束。
 
-SOLID原则的直接延伸是**依赖注入**。DIP规定了"应依赖抽象"，但没有规定谁来创建具体对象并将其注入高层模块——这正是依赖注入框架（如Python的`injector`库或Java的Spring IoC容器）解决的问题。掌握SOLID原则后，依赖注入的动机与设计选择将会变得清晰：构造函数注入对应DIP中"通过抽象接收依赖"，容器配置对应"在应用启动时绑定抽象与具体实现"。两者合用才能构建出模块间低耦合、可独立测试的AI系统架构。
+**通向依赖注入**：DIP定义了"依赖抽象"的方向，但没有规定如何将具体实现传递给高层模块。依赖注入（DI）正是DIP的实现策略：构造函数注入、属性注入、方法注入三种方式都是将`IDataLoader`的具体实现"注入"到`TrainingPipeline`中。可以说，理解DIP是正确使用依赖注入框架（如Python `dependency-injector`、Java Spring）的前提，两者形成"原则→实现机制"的递进关系。

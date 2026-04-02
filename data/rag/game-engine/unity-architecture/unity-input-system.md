@@ -20,69 +20,64 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-04-01
 ---
-# Unity Input System
+
+
+# Unity 新输入系统
 
 ## 概述
 
-Unity Input System（Unity Input System）是游戏引擎（Game Engine）中Unity架构领域的重要概念。难度等级2/9（基础级）。
+Unity 新输入系统（Input System Package）是 Unity 于 2019 年作为独立 Package 发布、并在 Unity 2020.1 起成为官方推荐替代方案的输入处理架构。它的包名为 `com.unity.inputsystem`，通过 Package Manager 安装，与旧版 `UnityEngine.Input` 类并行存在但互不兼容。旧系统基于帧轮询（每帧调用 `Input.GetAxis()`），而新系统采用事件驱动模型，大幅降低了不必要的 CPU 开销。
 
-新输入系统:Action/Binding/Processor。
+新系统的设计目标是解决旧 `Input` 类的三个痛点：硬编码设备绑定、缺乏运行时重绑定支持、以及多人本地输入混用困难。新系统将"按什么键"与"触发什么行为"彻底解耦，开发者通过配置 `InputActionAsset` 资产文件管理所有绑定，无需修改代码即可支持键盘、手柄、触摸屏和 XR 控制器。
 
-在知识体系中，Unity Input System建立在Unity引擎概述的基础之上，是理解输入系统概述的关键前置知识。为什么Unity Input System如此重要？因为它在Unity架构中起到承上启下的作用，连接基础概念与高级应用。
+## 核心原理
 
-## 核心知识点
+### Action、Binding 与 Processor 三层模型
 
-### 1. 新输入系统:Action/Binding/Processor
+**Action（输入动作）** 是新系统的最小逻辑单元，代表一个游戏行为（如"跳跃""移动"）。每个 Action 有三种类型：`Value`（持续返回数值，适合摇杆）、`Button`（只关心按下/释放，适合按键）、`PassThrough`（不进行状态合并，适合鼠标移动）。选错类型会导致事件丢失或重复触发。
 
-新输入系统:Action/Binding/Processor是Unity Input System(Unity Input System)的核心组成部分之一。在Unity架构的实践中，新输入系统:Action/Binding/Processor决定了系统行为的关键特征。例如，当新输入系统:Action/Binding/Processor参数或条件发生变化时，整体表现会产生显著差异。深入理解新输入系统:Action/Binding/Processor需要结合游戏引擎的基本原理进行分析。
+**Binding** 将具体的物理输入路径绑定到 Action 上。路径格式为 `<Device>/control`，例如键盘空格键写作 `<Keyboard>/space`，PS4 手柄叉键写作 `<DualShockGamepad>/buttonSouth`。一个 Action 可以拥有多个 Binding，系统会自动合并它们的值。Binding 还支持 **Composite**，例如 `1D Axis` 组合将 `<Keyboard>/a` 设为负方向、`<Keyboard>/d` 设为正方向，返回范围 `[-1, 1]` 的浮点值。
 
+**Processor（处理器）** 是挂载在 Binding 或 Action 上的值变换管线。内置处理器包括 `Normalize`（将值规范到指定范围）、`Invert`（反转方向）、`DeadZone`（死区裁切，默认下限 0.125、上限 0.925）和 `ScaleVector2`（缩放二维输入）。多个处理器按配置顺序依次执行，形成处理链。
 
-### 关键原理分析
+### InputActionAsset 与控制方案
 
-Unity Input System的核心在于新输入系统:Action/Binding/Processor。从理论角度看，该概念涉及以下层面：
+所有 Action 组织在 **InputActionAsset**（`.inputactions` 文件）内。资产内部分为若干 **Action Map**，每个 Map 代表一种输入上下文（如 `Gameplay`、`UI`、`Vehicle`）。同一时刻可以启用多个 Map，但同名 Action 优先级以最后启用的 Map 为准。
 
-1. **定义层**：明确Unity Input System的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解Unity Input System内部各要素的相互作用方式
-3. **应用层**：将Unity Input System的原理映射到游戏引擎的实际场景中
+**Control Scheme（控制方案）** 定义了"使用哪些设备"的规则。例如 `Keyboard&Mouse` 方案要求同时具备 `Keyboard` 和 `Mouse` 设备才能激活；`Gamepad` 方案只需一个 `Gamepad`。系统会根据当前连接的设备自动切换控制方案，也可通过 `PlayerInput.SwitchCurrentControlScheme()` 手动切换。
 
-思考题：如何判断Unity Input System的应用是否超出了其理论适用范围？
+### 事件回调与 PlayerInput 组件
 
-## 关键要点
+代码中订阅 Action 有两种主流方式。第一种是直接订阅委托：
 
-1. **核心定义**：Unity Input System的本质是新输入系统:Action/Binding/Processor，这是理解整个概念的出发点
-2. **多维理解**：掌握Unity Input System需要同时理解新输入系统:Action/Binding/Processor等关键维度
-3. **先修关系**：扎实的Unity引擎概述基础对理解Unity Input System至关重要
-4. **进阶路径**：掌握后可继续深入输入系统概述等进阶主题
-5. **实践标准**：真正掌握Unity Input System的标志是能在具体场景中灵活运用并正确判断适用边界
+```csharp
+inputActions.Gameplay.Jump.performed += ctx => Jump();
+inputActions.Gameplay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
+```
+
+第二种是使用 **PlayerInput** 组件，在 Inspector 中选择通知方式：`Send Messages`（调用 `GameObject` 上的 `OnJump()`）、`Broadcast Messages`（向子物体广播）或 `Invoke Unity Events`（直接连接 UnityEvent）。`PlayerInput` 还内置了多人输入管理，通过 `PlayerInputManager` 最多支持 `8` 个本地玩家独立绑定设备。
+
+## 实际应用
+
+**多平台角色移动** 是最典型用例。创建 `Move` Action，类型设为 `Value`，Control Type 选 `Vector2`；添加 `WASD Composite Binding` 供键盘使用，同时添加 `<Gamepad>/leftStick` 供手柄使用。在 `Update` 中通过 `moveAction.ReadValue<Vector2>()` 读取，两种设备无需额外判断，自动合并。
+
+**运行时重绑定** 可通过 `InputActionRebindingExtensions.PerformInteractiveRebinding()` 实现。调用后系统进入监听状态，玩家按下任意键后自动写入新 Binding 路径，整个流程无需手写解析代码，绑定结果可序列化为 JSON 字符串存储到 `PlayerPrefs`。
+
+**XR 手柄震动** 通过 `InputSystem.QueueEvent()` 搭配 `DualMotorRumbleCommand` 结构体发送，左右电机强度各为 `0f~1f` 浮点值，此功能在旧 `Input` 系统中完全不可用。
 
 ## 常见误区
 
-1. **混淆概念边界**：将Unity Input System与Unity架构中其他相近概念混为一谈。例如，新输入系统:Action/Binding/Processor的适用条件与其他同类概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解Unity引擎概述就学习Unity Input System，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：Unity Input System虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：混用新旧输入系统**。在 Project Settings → Player → Active Input Handling 中选择 `Both` 可同时启用，但 `Input.GetKey()` 与新系统的事件回调会产生重复处理逻辑，且旧系统不支持新系统的 Action Map 切换。正式项目应选 `Input System Package (New)`，彻底关闭旧系统。
 
-## 知识衔接
+**误区二：忘记在 OnDisable 中取消订阅**。直接订阅 `performed` 委托时，若不在 `OnDisable()` 中调用 `inputActions.Disable()` 或手动 `-=` 取消注册，场景卸载后委托引用仍然存活，导致 `MissingReferenceException` 或内存泄漏。使用 `PlayerInput` 组件的 `Invoke Unity Events` 模式可规避此问题，因为组件生命周期由 Unity 管理。
 
-### 先修知识
-先修知识包括：
-- **Unity引擎概述** — 为Unity Input System提供了必要的概念基础
+**误区三：误解 Action 的 started / performed / canceled 三个阶段**。对于 `Button` 类型，`started` 在按下瞬间触发，`performed` 也在按下瞬间触发（两者几乎同时），`canceled` 在松开时触发。对于持有 `Hold` Interaction 的 Button，`performed` 会延迟到默认 `0.4` 秒长按后才触发，`started` 仍在按下瞬间触发，若只订阅 `performed` 则会误以为"单击没有反应"。
 
-### 后续学习
-掌握Unity Input System后可继续学习：
-- **输入系统概述** — 在Unity Input System基础上进一步拓展
+## 知识关联
 
-## 学习建议
+学习新输入系统的前提是理解 Unity 的 **MonoBehaviour 生命周期**（`Awake`、`OnEnable`、`Update`、`OnDisable`），因为 Action 的 Enable/Disable 必须与组件生命周期同步。同时需要熟悉 **ScriptableObject** 概念，因为 `InputActionAsset` 本质上是一个 ScriptableObject 资产。
 
-预计学习时间：30-60分钟。建议采用以下策略：
-
-- **主动回忆**：学完后不看笔记复述Unity Input System的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将Unity Input System与游戏引擎中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释Unity Input System，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于Unity架构的章节可作为深入参考
-- Wikipedia: [Unity Input System](https://en.wikipedia.org/wiki/unity_input_system) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Unity Input System" 可找到配套视频教程
+掌握新输入系统后，可进一步学习 **输入系统架构设计**，例如基于新系统封装输入抽象层（Input Facade），将 `InputActionReference` 暴露为可配置字段，实现输入逻辑与游戏逻辑的完全解耦。也可结合 **Unity Multiplayer（Netcode for GameObjects）** 学习网络环境下的本地输入预测与服务端校验，此时新系统的事件驱动模型能精确记录每帧输入时间戳，优于旧系统的轮询方式。

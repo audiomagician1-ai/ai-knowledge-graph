@@ -20,62 +20,54 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # UAsset格式
 
 ## 概述
 
-UAsset格式是Unreal Engine 5（以及UE4）中所有资产文件的标准二进制存储格式，文件扩展名为`.uasset`，辅助文件扩展名为`.uexp`和`.ubulk`。每个UAsset文件本质上是一个自描述的序列化容器，内部存储了从纹理、静态网格到蓝图类等各类游戏资产的完整数据。UAsset格式于UE4时代奠定基础，并在UE5中随着Chaos物理系统和Nanite等新特性的引入持续演化。
+UAsset格式是Unreal Engine 5（及其前身UE4）用于存储游戏资产的专有二进制文件格式，文件扩展名为`.uasset`，其配套的`.uexp`文件用于存储实际的导出对象数据。这种格式将纹理、静态网格、蓝图、材质等各类资产统一编码为结构化的二进制字节流，使引擎能够在运行时高效加载和反序列化资产对象。UAsset格式不是简单的"内容打包"方案，而是与UE对象系统（UObject体系）深度耦合的序列化协议，每个字段的读写顺序都由`FArchive`类及其派生类严格管理。
 
-UAsset格式之所以重要，在于它是Unreal引擎资产管线的基本单元。Unreal的烘焙（Cook）过程会将编辑器可读的UAsset转换为特定平台优化的二进制形式，而Pak打包系统又以UAsset为单位进行资产捆绑。理解UAsset的内部结构，对于实现自定义资产导入器、构建资产差异比较工具或进行模组开发都至关重要。
+UAsset格式在UE4时代基本定型，其文件头部的魔数（Magic Number）固定为`0x9E2A83C1`（4字节小端序），这是识别UAsset文件的首要标志。UE5引入了Zen存储（Zen Storage）和IoStore（`ucas`/`utoc`文件），将传统的单文件UAsset批量打包进容器，但单个UAsset文件的内部结构逻辑基本延续了UE4时期的设计。理解UAsset格式对于资产热重载、MOD制作、资产迁移工具开发以及运行时内存布局分析都有直接的实用价值。
 
 ## 核心原理
 
-### 文件头部结构（File Summary）
+### 文件头（Summary Header）
 
-UAsset文件的起始位置是一个固定的文件摘要（`FPackageFileSummary`结构体），以一个4字节的魔数（Magic Number）`0x9E2A83C1`开头，用于标识该文件为合法的UAsset文件。紧随其后是`FileVersionUE4`和`FileVersionUE5`两个版本号字段，决定了后续数据应以何种方式解析。文件头还包含以下关键字段：
-
-- **TotalHeaderSize**：整个头部区域（包括名称表、导入表、导出表）占用的总字节数
-- **PackageFlags**：标志位集合，记录资产是否经过烘焙、是否为地图包等元信息
-- **NameCount** 和 **NameOffset**：名称表的条目数量和起始偏移量
-- **ExportCount** 和 **ExportOffset**：导出表的条目数量和起始偏移量
-- **ImportCount** 和 **ImportOffset**：导入表的条目数量和起始偏移量
+UAsset文件最开头的区域是`FPackageFileSummary`结构体，包含了整个文件的元数据目录。其核心字段按顺序依次为：魔数（4字节，值`0x9E2A83C1`）、文件版本号`FileVersionUE4`（如UE4.27对应版本号517）、名称表偏移量`NameOffset`、名称表条目数`NameCount`、导入表偏移量`ImportOffset`、导入表条目数`ImportCount`、导出表偏移量`ExportOffset`、导出表条目数`ExportCount`，以及总资产大小`TotalHeaderSize`。引擎在加载任何资产前，必须先完整解析这个Summary，才能定位后续各表的位置。
 
 ### 名称表（Name Table）
 
-名称表（Name Map）紧跟在文件头之后，是整个UAsset文件的字符串池。文件中所有对象名、属性名、类名均不直接存储字符串，而是存储一个32位索引（`FName`由Index和Number两部分构成），通过查名称表取得实际字符串。这种设计使得高频出现的名称如`StaticMesh`、`Material`、`Transform`只需存储一次，有效压缩了文件体积。名称表中每个条目在UE4格式下存储为长度前缀的UTF-16或Latin-1字符串，并附带一个4字节的哈希值用于快速比较。
+名称表是UAsset格式的字符串池，存储文件中所有`FName`对象引用的字符串字面量。每条名称记录由一个带长度前缀的UTF-8字符串（或UTF-16，取决于最高位标志）和一个32位哈希值组成。名称表中的每个条目在运行时会被映射为`FNameEntryId`，代码中引用`FName`时只需记录一个整数索引，而非重复存储字符串本身，这大幅压缩了文件体积。例如一个包含100个相同`StaticMesh`字符串引用的文件，在名称表中该字符串只出现一次，其余位置存储其索引值（通常4字节）。
 
 ### 导入表与导出表
 
-**导出表（Export Table）** 中每个条目（`FObjectExport`）描述一个本文件定义的对象，包含其类引用、外层对象索引、序列化数据在文件中的偏移量（`SerialOffset`）和长度（`SerialSize`），以及表示是否为资产主对象的`bIsAsset`标志位。
+导入表（`FObjectImport[]`）记录此UAsset依赖的外部对象，每条记录包含：类包名（ClassPackage）、类名（ClassName）、外部对象索引（OuterIndex，负数表示引用其他UAsset）以及对象名称索引。导出表（`FObjectExport[]`）记录此UAsset自身拥有的UObject实例，每条记录包含：序列化大小`SerialSize`（字节数）、序列化偏移量`SerialOffset`、类索引`ClassIndex`（负数指向导入表，正数指向导出表自身）、标志位`ObjectFlags`（如`RF_Public=0x00000001`）等字段。导出表中第一个条目（索引0）通常是资产的"根对象"，即文件所代表的主资产对象。
 
-**导入表（Import Table）** 中每个条目（`FObjectImport`）描述一个本文件依赖的外部对象，以包路径字符串（通过名称表索引）标识来源包，不存储实际数据。两张表通过正负整数索引相互引用：正整数指向导出表，负整数指向导入表，索引`0`保留为`NULL`。
+### 属性序列化（Tagged Property Serialization）
 
-### .uexp分离机制
-
-从UE4.14版本起，Unreal引入了`.uexp`文件，将导出对象的实际序列化数据从`.uasset`文件中分离出来，`.uasset`仅保留头部、名称表和索引表。这一拆分降低了内存映射的粒度，使引擎可以在不加载大体量数据的情况下快速读取资产元信息。超大型二进制数据（如原始纹理Mip数据）则进一步存放在`.ubulk`文件中，通过`FByteBulkData`结构以懒加载（Lazy Load）方式按需读取。
+UAsset中导出对象的实际属性数据使用"标记属性序列化"格式存储。每个属性按`(FName tag, int32 size, data)`三元组写入：先写属性名称在名称表中的索引（4字节index + 4字节number），再写属性类型名索引，再写该属性数据的字节长度（允许引擎跳过未知属性），最后写实际数据。属性列表以一个名称索引指向`None`（名称表中的"None"字符串）作为终止符。这种自描述格式使得新版引擎读取旧版资产时，可以安全跳过不认识的属性，而不会导致解析崩溃。
 
 ## 实际应用
 
-**资产差异比较与版本控制**：由于UAsset是二进制格式，直接使用Git diff无法获取可读的差异信息。开发团队通常借助`UAssetAPI`（一个开源.NET库）解析UAsset结构并导出为JSON，再对JSON进行文本比较，从而追踪蓝图节点变动或材质参数修改历史。
+**资产查看与调试**：工具UAssetGUI和FModel专门解析UAsset格式，通过读取Summary定位名称表、再逐条解析导出表，可以将任意`.uasset`文件的属性树可视化展示。开发者常用这类工具检查打包后资产是否包含预期数据，或比较两个版本资产的属性差异。
 
-**自定义资产导入器**：引擎插件开发者需要手动构造导出表条目和序列化字节流，将第三方格式（如`.vox`体素文件）转换为UAsset。此时必须正确填写`SerialOffset`字段，该字段的值是相对于`.uexp`文件起始位置的偏移，而非相对于`.uasset`文件。
+**自定义资产迁移**：将资产从一个项目迁移到另一个项目时，导入表中的外部包路径（如`/Game/Characters/Skeleton`）必须在目标项目中有对应资产，否则加载时引擎会报"Failed to find object"错误。迁移工具需要重写导入表中的包路径才能保证依赖链完整。
 
-**烘焙优化分析**：通过解析Cooked包的`PackageFlags`字段中的`PKG_FilterEditorOnly`标志位，可以验证编辑器专属数据（如缩略图、LOD组注释）是否已被正确剥离，从而诊断发布包体积异常问题。
+**运行时Pak加密**：UE5项目发布时，`.uasset`文件通常被打包进`.pak`归档并可选AES-256加密。Pak文件自身有独立的目录结构，但其内部存储的每个条目仍然是完整的UAsset二进制块，解密后可直接按上述格式解析，加密不改变UAsset内部格式。
 
 ## 常见误区
 
-**误区一：认为UAsset是可移植的跨平台格式**
-未经烘焙的Editor UAsset包含大量仅用于编辑器工作流的数据，且依赖当前引擎版本的类布局。将一个项目的`.uasset`文件直接复制到引擎版本不同的项目中，往往因为`FileVersionUE4`/`FileVersionUE5`版本号不匹配而导致加载失败，或因类属性布局变化引发数据错乱。
+**误区一：`.uasset`文件包含完整资产数据**。实际上，从UE4.16开始，引擎默认将导出对象的序列化主体数据（`SerialOffset`指向的字节块）分离到同名的`.uexp`文件中，`.uasset`仅保留Summary和各种表的元数据。只有当项目设置`bSplitAttachmentsPerPackage=false`时，数据才留在`.uasset`里。工具解析时若只读`.uasset`而忽略`.uexp`，会得到空数据或错误偏移。
 
-**误区二：认为导出表的SerialOffset是文件绝对偏移**
-许多初学者在手动解析时将`FObjectExport.SerialOffset`当作`.uasset`文件内的绝对字节偏移来读取数据，结果始终得到乱码。实际上，当`.uexp`存在时，`SerialOffset`是相对于`.uexp`文件开头的偏移；只有在传统单文件模式（即不存在`.uexp`的旧格式）下，偏移才相对于`.uasset`文件本身。
+**误区二：版本号相同即格式兼容**。`FileVersionUE4`和`FileVersionUE5`只是大版本号，引擎还维护一套`FCustomVersionContainer`，存储各子系统（如Niagara、AnimGraph）的私有版本号列表，附加在Summary末尾。同样`FileVersionUE4=517`的两个文件，若自定义版本号不同，其属性数据可能有完全不同的序列化布局，强行用旧代码读新版本的自定义属性会得到错误数据。
 
-**误区三：以为FName索引就是名称表的行号**
-`FName`由`ComparisonIndex`（或`DisplayIndex`）和`Number`两部分构成。`Number`大于0时表示同名对象的实例编号（如`Mesh_0`、`Mesh_1`），`ComparisonIndex`才是名称表中的行索引。直接将`FName`的原始4字节整数当作行索引，会在存在编号后缀的名称上出现解析错误。
+**误区三：UAsset文件是跨平台通用的**。引擎在Cook过程中会针对目标平台（PC/PS5/Switch等）将UAsset转换为平台专属的Cooked格式，其中纹理数据以目标GPU压缩格式（如BC7、ASTC）存储，字节序也可能按目标平台调整。Editor中的UAsset（Uncooked）与Cooked UAsset虽然文件扩展名相同，但内部结构和可用属性集存在显著差异。
 
 ## 知识关联
 
-UAsset格式建立在二进制序列化的基础之上——`FArchive`类是Unreal中所有序列化操作的抽象基类，`<<`运算符重载实现了对基础类型（`int32`、`float`、`FString`等）的读写，UAsset文件中每个导出对象的数据块正是由各自类的`Serialize(FArchive&)`函数产生的字节流。掌握`FArchive`的工作机制是理解UAsset数据块内部结构的前提。
+UAsset格式的设计直接建立在**二进制序列化**基础之上：`FArchive`的运算符重载机制（`operator<<`）负责将C++结构体字段逐一读写为连续字节，UAsset的每个表项和属性数据块都是`FArchive`序列化的产物。理解`FArchive`的"保存/加载统一接口"模式是读懂UAsset各字段写入顺序的前提。
 
-在资产管线的下游，Cook系统（`UCookCommandlet`）会遍历项目中所有UAsset，将其转换为目标平台格式并写入`Saved/Cooked`目录；Pak系统（`UnrealPak`工具）再将Cooked后的UAsset批量压缩打包为`.pak`文件进行发行。UAsset格式是连接内容创作工具（如Maya、Photoshop导入流程）与最终运行时数据的枢纽节点，深入掌握其结构可为资产流水线的各个环节（导入、版本控制、优化、热更新）提供底层支持。
+在工程实践中，UAsset格式与UE的**包系统（Package System）**紧密相连：一个`.uasset`文件对应一个`UPackage`对象，导入/导出表本质上是包间对象引用的序列化表达。此外，UE5的**IoStore格式**（`.ucas`+`.utoc`）是对传统UAsset批量存储的再封装，理解单个UAsset的结构有助于进一步分析IoStore容器的分块（Chunk）寻址逻辑。资产热重载（Hot Reload）机制也依赖于对UAsset Summary中时间戳和哈希字段的实时比对，判断磁盘上的文件是否发生变化。

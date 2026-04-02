@@ -20,77 +20,76 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 重积分
 
 ## 概述
 
-重积分是将定积分从一维推广至多维空间的积分形式，分为二重积分与三重积分两大类。二重积分 $\iint_D f(x,y)\,dA$ 表示函数 $f(x,y)$ 在平面区域 $D$ 上的积累量，几何上对应曲面 $z=f(x,y)$ 与 $xy$ 平面之间的有向体积；三重积分 $\iiint_\Omega f(x,y,z)\,dV$ 则将积分域扩展至三维空间区域 $\Omega$。
+重积分是将一元函数的定积分推广到多元函数的积分运算，包括二重积分和三重积分。二重积分 $\iint_D f(x,y)\,dA$ 表示函数 $f(x,y)$ 在平面区域 $D$ 上的积分，其几何意义是以曲面 $z=f(x,y)$ 为顶面、以区域 $D$ 为底面的"曲顶柱体"的有向体积。当 $f(x,y)\geq 0$ 时，二重积分给出该柱体的实际体积。
 
-重积分的严格理论由黎曼（Riemann）在19世纪60年代建立，核心思路是将积分区域分割为 $n$ 个小块，取每块面积（或体积）$\Delta A_i$（或 $\Delta V_i$）与函数值之积的极限：$\iint_D f\,dA = \lim_{n\to\infty}\sum_{i=1}^n f(\xi_i,\eta_i)\Delta A_i$，与一维黎曼积分的构造完全平行。勒贝格（Lebesgue）后来在1902年提出了更一般的积分理论，使重积分在更广泛的函数类上成立。
+重积分的理论由莱布尼茨和欧拉在18世纪初步建立，黎曼在1854年将其严格化为"黎曼和的极限"：将区域 $D$ 分割为 $n$ 个小块 $\Delta\sigma_i$，在每块上取点 $(\xi_i,\eta_i)$，当最大分块直径 $\lambda\to 0$ 时，极限 $\lim_{\lambda\to 0}\sum_{i=1}^n f(\xi_i,\eta_i)\Delta\sigma_i$ 即为二重积分的定义。
 
-重积分在物理、工程中有直接意义：质量计算公式 $m = \iint_D \rho(x,y)\,dA$（其中 $\rho$ 为面密度）、转动惯量、电荷分布、引力势能等均依赖重积分。掌握重积分不仅是计算技能，更是理解场论与曲线、曲面积分体系的前提。
+重积分的计算意义超越几何体积：它是计算质心、转动惯量、引力场以及概率论中联合概率密度的核心工具。例如，均匀薄板 $D$ 的质心横坐标为 $\bar{x}=\frac{1}{A}\iint_D x\,dA$，其中 $A$ 是 $D$ 的面积。没有重积分，这类物理量的精确计算将无法实现。
 
 ---
 
 ## 核心原理
 
-### 化累次积分（Fubini 定理）
+### 化为累次积分（Fubini定理）
 
-将二重积分转化为两次一元定积分是计算的基本手段，理论依据是 **Fubini 定理**：若 $f(x,y)$ 在矩形区域 $[a,b]\times[c,d]$ 上连续，则
+重积分的计算核心依赖**Fubini定理（1907年）**：若 $f(x,y)$ 在矩形区域 $[a,b]\times[c,d]$ 上连续，则：
 
-$$\iint_D f(x,y)\,dA = \int_a^b\!\left(\int_c^d f(x,y)\,dy\right)dx = \int_c^d\!\left(\int_a^b f(x,y)\,dx\right)dy$$
+$$\iint_D f(x,y)\,dA = \int_a^b\left(\int_c^d f(x,y)\,dy\right)dx = \int_c^d\left(\int_a^b f(x,y)\,dx\right)dy$$
 
-对非矩形区域，需确定积分上下限的依赖关系。X型区域（先 $y$ 后 $x$）：$a\le x\le b$，$\varphi_1(x)\le y\le\varphi_2(x)$；Y型区域（先 $x$ 后 $y$）：$c\le y\le d$，$\psi_1(y)\le x\le\psi_2(y)$。错误地交换积分次序而不修正积分限是最常见的计算错误。
+对于非矩形区域，需先确定积分限。X型区域（$a\leq x\leq b$，$\varphi_1(x)\leq y\leq\varphi_2(x)$）写为：
 
-三重积分类似地化为三次积分：先固定 $x,y$ 对 $z$ 积分（截面法），或先固定 $z$ 做横截面面积积分再对 $z$ 积分（投影法）。
+$$\iint_D f(x,y)\,dA = \int_a^b dx\int_{\varphi_1(x)}^{\varphi_2(x)} f(x,y)\,dy$$
 
-### 换元法：极坐标与柱、球坐标
+Y型区域则先对 $x$ 积分。选择积分次序的关键在于使内层积分的上下限为**简单函数**，否则运算复杂度会急剧上升。例如对 $\iint_D e^{x^2}dA$（$D$: $0\leq x\leq 1$, $0\leq y\leq x$），若先对 $x$ 积分，$e^{x^2}$ 无初等原函数；交换次序先对 $y$ 积分，化为 $\int_0^1 xe^{x^2}dx = \frac{e-1}{2}$，立即可解。
 
-当积分区域具有圆形或球形对称性时，换元可大幅简化计算。
+### 极坐标变换
 
-**极坐标变换**（用于二重积分）：令 $x=r\cos\theta$，$y=r\sin\theta$，则面积微元变为 $dA = r\,dr\,d\theta$。**因子 $r$ 不可遗漏**，它来自变换的雅可比行列式 $J = \partial(x,y)/\partial(r,\theta) = r$。例如计算 $\iint_D e^{-(x^2+y^2)}\,dA$（$D$ 为圆盘 $x^2+y^2\le R^2$）时，结果为 $\pi(1-e^{-R^2})$，若令 $R\to\infty$ 即可推导出著名的高斯积分 $\int_{-\infty}^{+\infty}e^{-x^2}\,dx=\sqrt{\pi}$。
+当被积函数含 $x^2+y^2$ 或积分区域为圆形/扇形时，令 $x=r\cos\theta$，$y=r\sin\theta$，二重积分变换为：
 
-**柱坐标变换**（用于三重积分）：$x=r\cos\theta$，$y=r\sin\theta$，$z=z$，体积微元 $dV = r\,dr\,d\theta\,dz$。
+$$\iint_D f(x,y)\,dA = \iint_{D'} f(r\cos\theta,\,r\sin\theta)\,r\,dr\,d\theta$$
 
-**球坐标变换**：$x=\rho\sin\varphi\cos\theta$，$y=\rho\sin\varphi\sin\theta$，$z=\rho\cos\varphi$，体积微元 $dV = \rho^2\sin\varphi\,d\rho\,d\varphi\,d\theta$，其中 $\rho^2\sin\varphi$ 为对应的雅可比因子。球坐标尤其适合积分区域为球体或锥体的情形。
+注意**Jacobi行列式** $r$ 不可遗漏——这是极坐标变换与直角坐标变换的本质差异。例如计算 $\iint_D e^{-(x^2+y^2)}dA$（$D$为以原点为圆心、半径为 $R$ 的圆盘），化为 $\int_0^{2\pi}d\theta\int_0^R e^{-r^2}r\,dr = \pi(1-e^{-R^2})$；令 $R\to\infty$ 便得到著名的高斯积分 $\int_{-\infty}^{+\infty}e^{-x^2}dx=\sqrt{\pi}$。
 
-### 一般换元公式与雅可比行列式
+### 三重积分与柱、球坐标
 
-设变换 $x=x(u,v)$，$y=y(u,v)$ 将 $uv$ 平面上的区域 $D'$ 映射到 $xy$ 平面上的区域 $D$，则
+三重积分 $\iiint_\Omega f(x,y,z)\,dV$ 将平面区域 $D$ 推广为空间区域 $\Omega$。化为累次积分时常用两种变换：
 
-$$\iint_D f(x,y)\,dA = \iint_{D'} f(x(u,v),y(u,v))\left|\frac{\partial(x,y)}{\partial(u,v)}\right|du\,dv$$
+**柱坐标**：$x=r\cos\theta$，$y=r\sin\theta$，$z=z$，体积微元 $dV=r\,dr\,d\theta\,dz$，适用于轴对称区域（如圆柱、圆锥）。
 
-其中雅可比行列式 $\displaystyle\frac{\partial(x,y)}{\partial(u,v)} = \begin{vmatrix} x_u & x_v \\ y_u & y_v \end{vmatrix}$。极坐标、柱坐标、球坐标都是这一公式的特殊情形，其雅可比因子分别为 $r$、$r$、$\rho^2\sin\varphi$。
-
-### 对称性简化
-
-若积分区域 $D$ 关于 $y$ 轴对称，被积函数 $f(x,y)$ 关于 $x$ 是奇函数，则 $\iint_D f\,dA = 0$；若为偶函数则可化为半区域积分的两倍。三重积分具有类似的三个方向对称性原则。利用对称性往往能将计算量减少一半甚至直接得零。
+**球坐标**：$x=\rho\sin\varphi\cos\theta$，$y=\rho\sin\varphi\sin\theta$，$z=\rho\cos\varphi$，体积微元 $dV=\rho^2\sin\varphi\,d\rho\,d\varphi\,d\theta$，其中 $\rho^2\sin\varphi$ 为球坐标的Jacobi行列式绝对值，适用于球形或锥形区域。例如计算球 $x^2+y^2+z^2\leq a^2$ 的体积，球坐标下直接得 $\int_0^{2\pi}d\theta\int_0^\pi\sin\varphi\,d\varphi\int_0^a\rho^2 d\rho = \frac{4}{3}\pi a^3$。
 
 ---
 
 ## 实际应用
 
-**质心计算**：均匀薄板在区域 $D$ 上的质心坐标为 $\bar{x} = \frac{1}{A}\iint_D x\,dA$，$\bar{y} = \frac{1}{A}\iint_D y\,dA$，其中 $A=\iint_D dA$ 为面积。对非均匀密度 $\rho(x,y)$，分母换成总质量 $m=\iint_D\rho\,dA$。
+**质量与质心计算**：密度函数为 $\mu(x,y)$ 的薄板，其总质量为 $M=\iint_D\mu(x,y)\,dA$，对 $x$ 轴的转动惯量为 $I_x=\iint_D y^2\mu(x,y)\,dA$。这在机械工程中用于设计旋转零件的平衡结构。
 
-**转动惯量**：绕 $z$ 轴的转动惯量 $I_z = \iint_D (x^2+y^2)\rho(x,y)\,dA$，这一积分在机械工程中用于计算飞轮、齿轮的惯性参数。
+**概率论中的联合分布**：若二维随机变量 $(X,Y)$ 的联合密度为 $f(x,y)$，则 $P(X\leq a, Y\leq b)=\int_{-\infty}^a\int_{-\infty}^b f(x,y)\,dy\,dx$，即二重积分。标准正态分布的归一化条件 $\iint_{\mathbb{R}^2}e^{-(x^2+y^2)/2}\,dA=2\pi$ 也需通过极坐标下的二重积分验证。
 
-**概率论中的联合分布**：二元连续随机变量 $(X,Y)$ 的联合概率密度 $f(x,y)$ 满足 $P\{(X,Y)\in D\} = \iint_D f(x,y)\,dA$，标准二元正态分布的归一化正是通过极坐标下的二重积分验证的。
-
-**体积计算**：两曲面 $z=x^2+y^2$ 与 $z=2-x^2-y^2$ 围成的立体体积，通过令两式相等得交线为圆 $x^2+y^2=1$，再用极坐标计算得体积 $V = \iint_{x^2+y^2\le 1}(2-2(x^2+y^2))\,dA = \pi$。
+**流体力学中的体积流量**：流体流过三维管道截面 $\Omega$ 的总流量为 $\iiint_\Omega v(x,y,z)\,dV$，其中 $v$ 为速度场。实际工程计算中，球坐标变换可将球阀内的流量积分从不可解形式转化为标准三角函数积分。
 
 ---
 
 ## 常见误区
 
-**误区一：遗忘换元后的雅可比因子**。在极坐标换元时，很多学生将 $dA$ 直接写成 $dr\,d\theta$ 而漏掉因子 $r$，导致结果相差一个 $r$ 的积分。例如计算圆盘上 $\iint e^{r^2}dA$，错误结果为 $2\pi\int_0^R e^{r^2}dr$，正确结果应为 $2\pi\int_0^R r e^{r^2}dr = \pi(e^{R^2}-1)$，两者相差巨大。
+**误区1：忽略Jacobi行列式**。做坐标变换时，直角坐标微元 $dx\,dy$ 换为极坐标时必须乘以 $r$，即 $dA=r\,dr\,d\theta$，而非 $dr\,d\theta$。遗漏 $r$ 是极坐标计算中最高频的错误。例如计算圆盘面积时漏掉 $r$，会得到 $2\pi\cdot R = 2\pi R$，而非正确的 $\pi R^2$。
 
-**误区二：非矩形区域交换积分次序时不修正上下限**。Fubini 定理保证积分次序可交换，但上下限的函数关系必须重新推导。例如 $\int_0^1\int_y^1 f(x,y)\,dx\,dy$ 交换次序后应为 $\int_0^1\int_0^x f(x,y)\,dy\,dx$，积分域 $D$ 是三角形，若直接写 $\int_0^1\int_0^1$ 则是错误的，积分区域扩大了。
+**误区2：积分区域与积分次序混淆**。交换积分次序时，不能直接调换 $dx$ 和 $dy$ 的顺序，必须重新确定新次序下的积分上下限。$\int_0^1 dx\int_x^1 f(x,y)\,dy$ 交换次序后应为 $\int_0^1 dy\int_0^y f(x,y)\,dx$，而非 $\int_0^1 dy\int_y^1 f(x,y)\,dx$。这要求先画出区域 $D$ 的草图，再重新读出新方向的界限。
 
-**误区三：混淆柱坐标与球坐标的适用场景**。柱坐标适合"轴对称"且保留 $z$ 方向线性结构的区域（如圆柱、抛物面），球坐标适合与原点距离有关的球体或锥体。对球体 $x^2+y^2+z^2\le R^2$ 强行使用柱坐标，$z$ 的上下限变为 $\pm\sqrt{R^2-r^2}$，计算复杂度远高于球坐标下直接得到 $\frac{4}{3}\pi R^3$。
+**误区3：将二重积分与二次积分混同**。Fubini定理要求 $f$ 在区域上**可积**（通常连续即满足），但对不连续函数，二次积分的两种次序可能给出不同结果，而二重积分本身可能不存在。Cauchy在1821年给出反例：$f(x,y)=\frac{x^2-y^2}{(x^2+y^2)^2}$ 在 $[0,1]^2$ 上两种次序结果分别为 $\pi/4$ 和 $-\pi/4$，但二重积分不存在（函数在原点无界且不可积）。
 
 ---
 
 ## 知识关联
 
-**前置概念**：重积分的每一次内层积分本质上是一个关于单变量的定积分，因此**定积分**的换元法（对应重积分的内层积分换元）、分部积分与牛顿-莱布尼茨公式是必不可少的基础工具。此外，偏导数与雅可比行列式来自**多元函数微分学
+**与定积分的关系**：重积分的计算最终归结为反复执行一元定积分（换元法、分部积分、牛顿-莱布尼茨公式），即累次积分的每一层均为定积分。因此一元定积分中的技巧（如奇偶对称性简化、特殊换元）在重积分中仍然有效：若 $f(x,y)$ 关于 $x$ 为奇函数且 $D$ 关于 $y$ 轴对称，则 $\iint_D f(x,y)\,dA=0$。
+
+**通向曲线积分与曲面积分**：重积分是第一类曲线积分 $\int_L f(x,y)\,ds$ 与格林公式的基础。格林公式 $\oint_L P\,dx+Q\,dy=\iint_D\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dA$ 直接将第二类曲线积分（线积分）转化为二重积分，是向量分析的核心桥梁

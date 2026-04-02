@@ -20,100 +20,76 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-04-01
 ---
+
 # 前端测试
 
 ## 概述
 
-前端测试是验证Web界面逻辑、交互行为与视觉表现的系统化质量保障手段，专门针对运行在浏览器环境中的JavaScript代码、DOM结构和用户交互流程。与后端测试不同，前端测试必须模拟或真实驱动浏览器引擎，处理异步渲染、CSS样式计算和用户事件传播等浏览器特有问题。
+前端测试是针对Web用户界面层的质量保障手段，涵盖从单个React组件的逻辑验证，到跨页面完整用户流程的自动化验证，再到像素级UI外观比对三条独立的测试维度。与后端接口测试不同，前端测试必须处理DOM渲染、异步状态更新、CSS样式和用户交互事件等特有复杂性，导致测试策略设计远比单纯断言函数返回值复杂。
 
-前端测试体系在2010年代随着单页应用（SPA）兴起而系统化。Karma测试运行器（2012年）和Mocha框架推动了早期组件测试，随后Kent C. Dodds于2018年发布的Testing Library系列将"以用户视角测试"确立为主流理念，彻底改变了React组件测试的写法风格。2021年Playwright正式发布1.0版本，将Chromium、Firefox、WebKit三引擎的跨浏览器E2E测试统一进单一API。
+前端自动化测试的现代体系成型于2016年前后：Jest 1.0奠定了JavaScript单元测试的标准运行时，Cypress在2017年以"在真实浏览器中运行"的理念颠覆了Selenium时代的E2E测试方案，Percy和Chromatic则在2018年前后将视觉回归测试商业化。三类工具的成熟促使业界形成了"测试金字塔"向"测试奖杯（Testing Trophy）"演进的新共识——奖杯模型由Kent C. Dodds提出，强调集成测试（组件层）应占测试预算的最大比重，而非传统金字塔中的单元测试。
 
-前端测试的核心价值体现在三个维度：防止UI回归（一次改动意外破坏已有交互）、确保组件契约（props类型与渲染输出的对应关系）、以及验证用户流程的端到端完整性。在AI应用的前端中，模型推理结果的动态渲染、流式输出的逐字显示和多轮对话状态管理均需专门的测试策略。
+在AI辅助Web应用中，前端测试的重要性额外凸显：模型输出的不确定性会导致UI状态无法完全由业务逻辑预测，流式响应和加载动画会引入时序问题，视觉回归测试能捕捉到因模型版本升级导致的渲染差异——这些都是纯后端测试无法覆盖的风险点。
 
 ---
 
 ## 核心原理
 
-### 组件测试（Component Testing）
+### 组件测试：隔离渲染与行为断言
 
-组件测试的目标是隔离单个React组件，验证其在给定props与状态下的渲染输出及交互响应。使用React Testing Library时，核心原则是**不测试实现细节**，而是通过`getByRole`、`getByLabelText`等语义化查询模拟用户如何感知界面。
+组件测试使用`@testing-library/react`（RTL）将React组件渲染至JSDOM虚拟DOM，通过模拟用户行为断言输出。RTL的核心哲学是"按用户感知查询"：优先使用`getByRole`、`getByLabelText`等语义化查询，而非`querySelector`或`data-testid`。这一设计使测试与组件内部实现解耦——即便重构了state管理方式，只要最终渲染的ARIA角色不变，测试就不会失败。
 
-典型断言示例：
+典型的异步组件测试需要配合`waitFor`或`findBy*`系列查询。例如测试一个调用OpenAI接口后显示结果的`<ChatMessage>`组件，需要在`userEvent.click(sendButton)`之后调用`await findByText(/回答完毕/)`，而非同步的`getByText`——后者会在流式响应未结束时立即抛出`TestingLibraryElementError`。Mock网络请求推荐使用`msw`（Mock Service Worker）库，它在Service Worker层拦截`fetch`，比Jest的`jest.mock('axios')`更接近真实网络行为，能捕捉到请求头、Content-Type等细节问题。
 
-```jsx
-import { render, screen, fireEvent } from '@testing-library/react';
-import ChatInput from './ChatInput';
+### E2E测试：浏览器全链路自动化
 
-test('发送按钮在输入为空时禁用', () => {
-  render(<ChatInput onSend={jest.fn()} />);
-  expect(screen.getByRole('button', { name: /发送/i })).toBeDisabled();
-});
-```
+E2E测试（端到端测试）使用Playwright或Cypress启动真实Chromium/Firefox实例，执行完整用户场景。Playwright由微软维护，支持多标签页、iframe和浏览器上下文隔离，并原生支持`async/await`语法；Cypress采用事件循环嵌入式架构，所有命令自动重试直至超时（默认4000ms），语法上看起来同步实际是异步队列。
 
-`@testing-library/jest-dom`扩展了约30个专用matcher，如`toBeDisabled()`、`toHaveTextContent()`，这些matcher直接映射DOM属性，比`expect(button.disabled).toBe(true)`更具可读性且不依赖实现。
+E2E测试的核心挑战是**测试稳定性（Flakiness）**。导致E2E测试不稳定的最常见原因不是业务逻辑错误，而是隐式时序依赖：例如在元素可点击之前就触发点击。Playwright提供`page.waitForSelector('[data-state="ready"]')`和`locator.waitFor({ state: 'visible' })`等显式等待API，而不应依赖`page.waitForTimeout(2000)`这类硬编码等待——后者在CI服务器性能波动时会产生大量误报。
 
-对于包含`useEffect`数据获取或`useState`异步更新的组件，必须使用`waitFor`或`findBy*`系列异步查询，否则断言会在状态更新前执行而误报通过。
+针对AI应用的E2E测试还需要处理**非确定性输出**：可以通过正则断言`expect(responseText).toMatch(/[\u4e00-\u9fff]{10,}/)`验证"输出了至少10个中文字符"，而不断言精确内容；也可以在测试环境中使用固定seed的本地小模型（如llama.cpp）替换生产模型，保证输出可复现。
 
-### 端到端测试（E2E Testing）
+### 视觉回归测试：像素级UI差异捕捉
 
-E2E测试启动真实浏览器并模拟完整用户操作路径，Playwright使用`page.goto()`、`page.click()`、`page.fill()`等API驱动浏览器。与Selenium相比，Playwright的**自动等待机制**（Auto-waiting）默认对每个操作等待元素可操作状态最长30秒，大幅减少手动`sleep`导致的测试脆弱性。
+视觉回归测试对组件或页面截图，与基准图片（baseline）进行像素差值比对，差异超过阈值则失败。Storybook的`@storybook/test-runner`配合`jest-image-snapshot`可以在组件故事层做轻量视觉测试；Chromatic（Storybook官方商业服务）提供云端并行截图和人工审核工作流；Playwright内置`expect(page).toHaveScreenshot('name.png', { maxDiffPixels: 100 })`，支持将100像素差异以内视为通过。
 
-针对AI聊天应用的流式输出场景，需要使用`page.waitForFunction`轮询DOM内容变化：
-
-```js
-await page.waitForFunction(
-  () => document.querySelector('.message-content').textContent.length > 10
-);
-```
-
-E2E测试金字塔建议：单元测试约70%、集成/组件测试约20%、E2E测试约10%。E2E用例应覆盖关键业务路径（登录→提问→获得响应→保存对话），而非穷举所有边界条件。
-
-Playwright的`test.describe`支持并行执行，配合`--workers=4`参数可将200个测试用例的执行时间从约8分钟压缩至约2分钟，这对CI/CD流水线的反馈速度至关重要。
-
-### 视觉回归测试（Visual Regression Testing）
-
-视觉回归测试通过像素级截图比对检测CSS样式、布局变化，弥补功能测试无法感知视觉偏差的盲区。Percy、Chromatic（专为Storybook设计）和Playwright内置的`toHaveScreenshot()`是三种主流方案。
-
-Playwright的截图比对方法如下：
-
-```js
-await expect(page.locator('.ai-response-card')).toHaveScreenshot(
-  'response-card.png',
-  { maxDiffPixelRatio: 0.02 }  // 允许2%像素差异，容纳字体渲染差异
-);
-```
-
-`maxDiffPixelRatio`参数控制容差阈值，过低会因字体渲染差异导致大量误报，建议初始设置0.01到0.05之间。首次运行时生成基准截图存入版本控制，后续运行时自动与基准比对。
-
-视觉测试的**动态内容陷阱**是前端特有难题：时间戳、用户头像、AI生成文本会在每次截图中变化。解决方案是在测试环境中用CSS覆盖或`page.addStyleTag`将动态元素设为`visibility: hidden`，或通过Mock API固定响应内容。
+视觉回归测试的关键配置是**忽略动态内容区域**（masking）。时间戳、随机头像、加载动画等区域必须用`mask: [page.locator('.timestamp')]`参数屏蔽，否则每次运行都会因无关变化失败。基准图片应与代码一同提交至Git仓库，并在PR流程中触发自动更新，避免长期基准漂移。
 
 ---
 
 ## 实际应用
 
-**AI聊天界面的组件测试**：测试`MessageList`组件时，需覆盖"流式输出中"（显示光标动画）和"输出完成"（显示复制按钮）两种状态。可注入固定props模拟两种状态并分别断言对应UI元素的存在性。
+**场景一：测试AI流式输出组件**
+在`<StreamingOutput>`组件中，文字逐字渲染（SSE流）。用msw拦截`/api/chat`并返回分块响应，然后断言：①渲染开始后立即显示加载Spinner；②流结束后Spinner消失；③最终文本内容等于所有chunk拼接结果。这三步验证覆盖了组件的状态机转换，而不仅仅是最终快照。
 
-**表单验证的交互测试**：使用`userEvent.type()`（来自`@testing-library/user-event` v14）代替`fireEvent.change()`，因为前者模拟完整键盘事件序列（keydown→keypress→input→keyup），能触发依赖原生输入事件的校验逻辑。
+**场景二：用Playwright测试RAG检索流程**
+编写E2E测试覆盖"用户输入问题→系统显示引用来源→用户点击来源跳转详情页"的完整流程。使用`page.route('/api/rag', route => route.fulfill({ json: mockData }))`替换真实RAG接口，验证引用链接的`href`属性指向正确的文档ID，确保前端路由逻辑与后端文档ID格式保持一致。
 
-**Storybook集成视觉测试**：将组件的每个状态写成Story，Chromatic会自动对每个Story截图比对。在PR阶段即可拦截因修改全局CSS变量导致的跨组件视觉破坏，避免问题进入生产环境。
+**场景三：视觉回归保护设计系统**
+在组件库的CI流水线中集成Chromatic，每次PR触发截图对比。当设计师将主色从`#1677ff`（Ant Design blue-6）调整为`#0958d9`时，视觉测试会标记出所有受影响的Button、Link、Tag组件的故事，在代码合并前完成人工确认，防止全局色彩意外回退。
 
 ---
 
 ## 常见误区
 
-**误区一：用`querySelector`代替语义化查询**。直接写`container.querySelector('.btn-primary')`的测试在重构类名后立即失效，且不能反映用户的实际感知方式。`getByRole('button', {name: /提交/})`基于ARIA角色和可访问名称，与CSS类名无关，重构安全性更高。
+**误区一：用`data-testid`作为首选查询策略**
+大量使用`getByTestId`看似稳定，实则将测试与DOM结构耦合而非用户行为。若`<button data-testid="submit">`被无障碍化改造为`<button aria-label="提交表单">`，`getByTestId`仍然通过但`getByRole('button', { name: '提交表单' })`才反映用户实际感知。RTL文档明确将`getByTestId`列为最后选项（last resort）。
 
-**误区二：E2E测试覆盖所有边界条件**。将输入验证的边界条件（空字符串、超长文本、特殊字符）全部放入E2E测试会导致执行时间剧增。这类逻辑应在组件测试或单元测试层处理，E2E只验证"正常提交流程能走通"。
+**误区二：E2E测试覆盖所有分支逻辑**
+E2E测试启动浏览器、加载完整应用，单个用例耗时常在5~30秒，不适合覆盖十几种边界条件（如空输入、超长文本、特殊字符）。这些分支应在组件测试层以毫秒级成本覆盖，E2E只验证最关键的3~5条主流程，即"Happy Path"加1~2条关键错误路径。
 
-**误区三：视觉测试与功能测试互相替代**。截图比对能发现按钮颜色变浅，但无法验证点击后是否触发了正确的回调。视觉测试发现"看起来不对"，功能测试验证"行为是否正确"，两者缺一不可，应在CI中串联执行。
+**误区三：视觉基准图片不入库**
+部分团队将视觉基准存储在外部存储桶而非Git仓库，导致基准版本与代码版本脱节——某次组件重构后基准未更新，视觉测试长期失败被当成"已知问题"忽略，最终失去保护作用。正确做法是将`.png`基准文件通过Git LFS管理，让每个commit的代码和基准一一对应。
 
 ---
 
 ## 知识关联
 
-**前置知识的衔接**：React基础中的受控组件、props/state生命周期是组件测试的直接测试对象；测试基础中的Mock、Stub概念在前端体现为`jest.mock('axios')`拦截HTTP请求或`jest.spyOn(window, 'fetch')`，以及Playwright的`page.route()`拦截网络层。
+**与React基础的衔接**：理解React的`useState`异步批量更新机制直接影响组件测试的`act()`包裹规则——在React 18中，所有状态更新默认在`act()`边界内批处理，不用`act`包裹的`userEvent`操作会触发"not wrapped in act"警告并导致断言时序错误。
 
-**工具链全图**：Jest负责单元/组件测试的断言引擎，Testing Library提供DOM查询层，MSW（Mock Service Worker）在Service Worker层拦截真实网络请求（适合既有组件测试也有集成测试的项目），Playwright处理E2E与视觉回归，这四层工具协同构成完整的前端质量防线。
+**与测试基础的衔接**：测试基础中的"Arrange-Act-Assert"三段式结构在前端测试中对应"渲染组件—触发事件—断言DOM状态"，但前端额外需要处理`cleanup`（RTL在每个测试后自动调用`unmountComponentAtNode`清理）和全局Mock的重置（`afterEach(() => server.resetHandlers())`），这是纯逻辑测试中没有的生命周期管理。
 
-**在AI工程前端中的延伸**：当前端接入流式LLM响应（Server-Sent Events）时，组件测试需要Mock ReadableStream，E2E测试需要用`page.route`返回分块响应，视觉测试需固定"打字中"动画帧——这是将本文三类测试策略应用于AI应用场景的具体挑战。
+**向进阶方向延伸**：掌握这三类前端测试策略后，可进一步学习测试覆盖率分析（Istanbul/v8 coverage）、Contract Testing（前后端接口契约验证）以及性能测试（Lighthouse CI），形成完整的前端质量工程体系。

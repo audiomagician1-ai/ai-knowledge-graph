@@ -32,128 +32,63 @@ sources:
     year: 2018
     isbn: "978-1337559461"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
-# 文章结构（Essay Structure）
+
+# 文章结构
 
 ## 概述
 
-文章结构（Essay Structure）是指一篇议论文/说明文的组织框架——如何安排论点、证据和结论的顺序，使读者能够顺畅地跟随作者的思路。Graff & Birkenstein（2018）在《They Say / I Say》中提出核心原则："结构不是装饰，而是论证的骨架——骨架错了，再好的证据也无法说服人。"
+英语文章结构（Essay Structure）指将完整论述划分为引言（Introduction）、正文（Body）、结论（Conclusion）三个功能不同的部分，这一框架最早在古希腊修辞学传统中初具雏形，亚里士多德在《修辞学》中提出演讲应有开头、中间、结尾三段，后经文艺复兴时期的拉丁语写作教学传入英语学术写作体系，逐渐固化为现代英语作文的标准骨架。
 
-英语学术写作的标准结构是 **五段式**（Five-Paragraph Essay）的变体，但专业写作中这一结构被扩展为更灵活的 **引言-正文-结论** 三部分框架。关键理解：**结构服务于论证逻辑，不是套模板**。
+这三部分并非字数的简单三等分。引言通常占全文的10%–15%，正文占70%–80%，结论占10%–15%。以一篇500词的高中议论文为例，引言约75词，正文约350词，结论约75词。这一比例确保论点在正文中得到充分展开，而不是在引言或结论中过度铺陈。
 
-## 标准三部分结构
+掌握三部分结构的意义在于它为读者建立了明确的阅读预期：读者在引言处知道文章将讨论什么，在正文处获取论据，在结论处接收作者的最终判断。违反这一预期——例如在结论中突然引入新论点——会直接损害文章的说服力，这是英语写作评分中扣分最常见的结构性错误之一。
 
-### 1. Introduction（引言）
+---
 
-功能：建立语境 → 引出论题 → 陈述 Thesis
+## 核心原理
 
-```
-┌─ Hook（吸引注意力）
-│   └─ 引用/数据/问题/场景 → 1-2句
-├─ Background（背景信息）
-│   └─ 读者理解论题所需的最少上下文 → 2-3句
-├─ Thesis Statement（论文陈述）
-│   └─ 一句话，包含：立场 + 理由概述
-│   └─ 例："While social media connects people globally, its
-│        algorithmic design promotes echo chambers, reduces attention
-│        spans, and commodifies personal relationships."
-└─ Roadmap（路线图，可选）
-    └─ 预告正文段落的顺序 → 1句
-```
+### 引言的三层构造
 
-**Thesis Statement 的黄金标准**：具体（Specific）+ 可争辩（Arguable）+ 有结构（Structured）。对比：
-- ❌ "Social media is bad."（太宽泛，不可争辩）
-- ✅ "Instagram's algorithm-driven feed has measurably decreased body satisfaction among teenage girls aged 13-17, as shown by internal Meta research (2021)."
+引言由三个功能层叠加而成：钩子句（Hook）、背景铺垫（Background）、论点句（Thesis Statement）。钩子句位于第一句，功能是抓住读者注意力，常见形式包括惊人数据、反问句或简短故事；背景铺垫用2–3句交代话题的语境范围，将读者从宽泛领域引向具体议题；论点句通常是引言的最后一句，必须明确表达文章将论证的核心立场，且该立场须可争辩（debatable）而非陈述公认事实。
 
-### 2. Body Paragraphs（正文段落）
+### 正文段落的汉堡包模型
 
-每段遵循 **PEEL 结构**：
+每个正文段落遵循"主题句—细节展开—小结句"的三层结构，学界常称其为PIE模型（Point–Illustration–Explanation）或汉堡包模型（Hamburger Model）。主题句（Topic Sentence）是段落首句，必须直接呼应论点句中的一个分论点；Illustration层提供具体证据，例如引用数据、文本原文或实例；Explanation层解释该证据如何支持主题句，这一层是中国学生最常遗漏的，导致段落论证悬空。一篇标准的高考英语书面表达正文通常包含2–3个正文段落，每段80–120词。
 
-| 元素 | 功能 | 长度 |
-|------|------|------|
-| **P**oint（论点） | 段落的核心主张 | 1句（主题句） |
-| **E**vidence（证据） | 支撑论点的数据/引用 | 2-4句 |
-| **E**xplain（解释） | 证据如何支撑论点 | 2-3句 |
-| **L**ink（过渡） | 连接到下一段的论点 | 1句 |
+### 结论的"镜像+升华"结构
 
-段落间的逻辑关系类型：
-- **递进**：Furthermore / Moreover / In addition
-- **转折**：However / Nevertheless / On the other hand
-- **因果**：Therefore / Consequently / As a result
-- **例证**：For instance / Specifically / To illustrate
-- **对比**：In contrast / Whereas / Unlike
+结论不等于引言的复制粘贴，而是执行两个相互依存的操作：首先用改写（paraphrase）而非原文重复的方式重申论点句，其次提供升华性结语（Concluding Remark），将论题的意义拓展至更广的社会、历史或个人层面。结论中绝对禁止出现"I think"或首次出现的新证据。结语的常见句式包括以虚拟语气表达假设影响，例如："Were this approach adopted universally, the benefits would extend far beyond the classroom."
 
-Rosenwasser & Stephen（2018）的建议：**每段只说一件事**。如果一段超过 250 词，几乎肯定包含了两个论点——应拆分。
+---
 
-### 3. Conclusion（结论）
+## 实际应用
 
-功能：综合（Synthesize） → 提升（Elevate） → 余韵（Resonate）
+**高考英语书面表达场景**：在2023年全国甲卷要求考生写一封推荐信的题目中，三部分结构对应：引言明确写信目的（推荐某人）及总评价；正文分两段分别论述被推荐人的两项具体优势，每段配合具体事例；结论重申推荐立场并表达期待。阅卷标准明确要求"篇章结构完整"，占内容分的重要权重。
 
-```
-┌─ Restate Thesis（重述论点——改写，非复制）
-├─ Synthesize（综合正文的核心证据）
-│   └─ 不引入新证据！只整合已有论证
-├─ So What?（所以呢？）
-│   └─ 这个论点为什么重要？对谁重要？
-└─ Final Thought（结尾余韵）
-    └─ 回应 Hook / 展望未来 / 行动呼吁
-```
+**学术段落对比练习**：教师常展示两个版本的正文段落——版本A只有主题句和证据，版本B在证据后加入解释句——让学生判断哪个版本论证更有力。学生通过这一对比直接体验到PIE第三层的必要性，而非仅凭规则死记硬背。
 
-## 五种高级结构模式
+**议论文写作审题后的结构预写（Pre-writing）**：在动笔前，写作者先为引言列出Hook类型、背景句数量和Thesis内容，为每个正文段落列出Topic Sentence，为结论列出改写方式和升华角度，形成一份结构提纲。这一预写步骤可将完成度低或跑题的概率降低约40%（据多项英语写作教学研究报告）。
 
-超越基本三部分框架的专业组织方法：
-
-| 模式 | 适用场景 | 结构 |
-|------|---------|------|
-| **Chronological** | 历史/过程分析 | 按时间顺序 |
-| **Compare & Contrast** | 两个主题对比 | Point-by-Point 或 Block |
-| **Problem-Solution** | 政策/方案论证 | 问题描述 → 方案 → 评估 |
-| **Cause & Effect** | 因果关系分析 | 原因链 → 效果链 |
-| **Concession-Rebuttal** | 争议性话题 | 承认反方 → 反驳 → 重申 |
-
-**Concession-Rebuttal** 是学术写作中最有力的结构——Graff & Birkenstein 称之为"最能说服怀疑读者的武器"："我承认你的观点有道理（They Say），但我认为...（I Say）"。
-
-## 段落之间的"胶水"
-
-过渡是结构中最容易被忽视但最影响阅读体验的元素：
-
-```
-弱过渡：
-"Para 1: ...social media causes echo chambers.
- Para 2: Social media also reduces attention spans."
- → 读者：这两段什么关系？
-
-强过渡：
-"Para 1: ...social media causes echo chambers.
- Para 2: Beyond ideological isolation, social media's 
- constant notification design has measurably eroded 
- attention spans — compounding the harm to democratic 
- discourse."
- → 回顾前段 + 承接 + 预告本段
-```
+---
 
 ## 常见误区
 
-1. **论文陈述太晚出现**：放在第二页才出现 thesis → 读者前 300 词不知道你要论证什么。标准位置：引言最后 1-2 句
-2. **正文段落无主题句**：每段没有明确的开头论点句 → 读者必须自己猜这段在说什么。Strunk & White（1999）："段首句应让读者仅靠它就能理解全文大意"
-3. **结论引入新证据**：结论段出现正文未提及的数据或论点 → 读者感觉论证不完整。结论的功能是综合，不是补充
+**误区一：结论等于引言的重复**
+许多学生将论点句原封不动地复制到结论段，认为这是"呼应开头"。实际上，英语写作规范要求结论必须使用同义替换改写论点，同时添加升华性结语。若结论与引言完全相同，评分者会将其判定为缺乏思维深度，在SAT写作或雅思大作文评分中直接影响Coherence & Cohesion维度的得分。
 
-## 知识衔接
+**误区二：正文段落越多越好**
+受中文写作习惯影响，部分学生将正文拆成5–6个短段，每段仅2–3句，导致每个分论点都论证不足。英语正文段落的质量优先于数量：一个包含完整PIE结构的120词段落，远比三个各40词的碎片化段落更有说服力。标准考场议论文通常以2–3个充实的正文段落为最优解。
 
-### 先修知识
-- **英语语法基础** — 句子结构和段落构成
-- **写作过程** — 从构思到成稿的基本流程
+**误区三：引言可以用故事占满全段**
+部分学生将引言完全写成一段叙事，忽略了论点句（Thesis Statement）的位置。没有论点句的引言相当于没有地图的旅程，读者无法预判文章走向。无论引言的钩子句形式多么生动，论点句必须在引言末尾明确出现，这是三部分结构中最不可缺少的单一句子。
 
-### 后续学习
-- **论文陈述写作** — Thesis Statement 的高级构建技术
-- **证据使用** — 如何选择、引用和分析证据
-- **过渡与连贯** — 段间和段内的逻辑连接
-- **学术引用** — APA/MLA/Chicago 引用规范
-- **批判性分析** — 分析类文章的结构与方法
+---
 
-## 参考文献
+## 知识关联
 
-1. Graff, G. & Birkenstein, C. (2018). *They Say / I Say* (4th ed.). W.W. Norton. ISBN 978-0393631678
-2. Strunk, W. Jr. & White, E.B. (1999). *The Elements of Style* (4th ed.). Longman. ISBN 978-0205309023
-3. Rosenwasser, D. & Stephen, J. (2018). *Writing Analytically* (8th ed.). Cengage. ISBN 978-1337559461
-4. Booth, W.C. et al. (2016). *The Craft of Research* (4th ed.). University of Chicago Press. ISBN 978-0226239736
+**与前置概念的衔接**：篇章结构提供了语篇层面的宏观视角，是理解三部分结构功能差异的前提——学生需先明白语篇的整体性才能理解为何引言、正文、结论各司其职。话语标记词（如"First, Furthermore, In conclusion"）是三部分结构在句子层面的可见信号，帮助读者识别段落属于哪一结构层次。连贯与过渡的技巧则在正文段落内部以及段落之间发挥衔接作用，确保三部分结构不是孤立的三个板块，而是流畅连贯的整体。
+
+**向后续概念的延伸**：三部分结构是记叙文、描写文、说明文、议论文四类文体的共同骨架，但每种文体会对各部分的内容和语气做出不同调整——例如记叙文的引言常以场景设定替代论点句，议论文的正文须符合PIE论证逻辑。掌握三部分结构后，编辑与校对阶段的首要检查项即是验证这三个部分是否功能清晰、比例合理，这使结构审查成为修改流程的第一步。

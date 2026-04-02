@@ -20,53 +20,79 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 设计到代码
 
 ## 概述
 
-"设计到代码"（Design-to-Code）是指将视觉设计稿自动或半自动转换为可运行前端代码的工具与流程体系。这一领域的核心目标是消除设计师与开发者之间的"翻译损耗"——即手动还原设计稿时产生的像素偏差、样式不一致和重复劳动。随着 Figma、Sketch 等设计工具生态的成熟，设计到代码工具已能识别布局约束、颜色变量、文字样式并输出对应的 CSS、React 组件或 SwiftUI 代码。
+"设计到代码"（Design-to-Code，简称 D2C）是指将 Figma、Sketch、Adobe XD 等设计工具中的视觉稿自动或半自动转换为可运行前端代码的工具与流程体系。这一流程打通了设计师与前端开发工程师之间的协作断层，将以往需要开发者手动还原 UI 的工作，转变为由工具直接输出 HTML/CSS、React 组件、SwiftUI 或 Flutter 代码。
 
-这一技术方向的历史可追溯至 2017 年前后 Airbnb 发表的 React Sketch.app 项目，该项目允许设计师用 React 组件直接渲染 Sketch 画板，标志着设计与代码双向打通的早期实践。2023 年 Figma 发布 Dev Mode 并推出 AI 辅助代码生成功能后，行业对"零手工还原"的预期显著提升，但实际交付质量仍高度依赖设计规范的严谨程度。
+D2C 概念的商业化落地始于 2018 年前后，以 Zeplin 的标注导出功能为早期代表，随后 Figma 在 2022 年推出 Dev Mode，标志着主流设计工具将代码导出视为一等功能。2023 年以来，以 Vercel v0、Locofy.ai、Anima 为代表的 AI 辅助 D2C 工具涌现，GPT-4V 等多模态大语言模型使得"截图直接生成 React 代码"成为工程可行方案。
 
-理解设计到代码的意义不仅在于提速，更在于强制对齐设计语言与代码结构。当设计师使用 Auto Layout 约束组件时，工具才能正确生成 Flexbox 布局；当颜色使用 Token 而非硬编码时，输出代码才具备主题切换能力。因此，"能否被工具正确解析"成为衡量设计规范质量的客观尺度。
+该流程对产品团队的价值在于缩短设计到上线的时间差。传统流程中，前端工程师平均需要花费 30%–40% 的开发时间在 UI 像素还原工作上；引入 D2C 工具后，基础布局与样式代码可自动生成，工程师专注于业务逻辑与交互状态处理。
+
+---
 
 ## 核心原理
 
-### 设计结构解析与 DOM 映射
+### 设计稿的结构化解析
 
-设计到代码工具的第一步是将设计文件的图层树（Layer Tree）映射为 HTML/CSS 的 DOM 结构。以 Figma 为例，其 API 将画布元素暴露为 JSON 节点，每个节点携带 `type`（FRAME、TEXT、VECTOR 等）、`x/y` 坐标、`width/height`、`fills`、`strokes` 等属性。工具读取这些数据后，根据节点的嵌套关系和绝对坐标计算相对布局。
+D2C 工具的第一步是将设计文件解析为结构化数据。Figma 通过其 REST API 暴露设计文件的节点树（Node Tree），每个图层对应一个 JSON 节点，包含 `x`、`y`、`width`、`height`、`fills`、`strokes`、`effects`、`constraints` 等属性。工具读取这棵树后，需要判断哪些节点是容器（Frame/Group）、哪些是文本、哪些是图片资源，再据此映射为 `div`、`span`、`img` 等 HTML 元素。
 
-关键挑战在于**绝对定位转响应式布局**。手动堆叠的图层坐标只能生成 `position: absolute` 代码，而 Figma Auto Layout 中的 `layoutMode: HORIZONTAL` 属性才能被识别为 `display: flex; flex-direction: row`。因此，设计师使用 Auto Layout 的比例直接决定代码的可维护性。Anima、Locofy 等工具会在转换时提示哪些图层未使用约束，协助设计师补充信息。
+关键挑战在于**嵌套关系推断**：设计稿中图层的绝对坐标位置必须转换为符合 CSS Flexbox 或 Grid 布局逻辑的相对关系。例如，若两个子节点的 `x` 坐标依次排列且 `y` 坐标相近，工具会推断其父容器应使用 `flex-direction: row`；若垂直堆叠则使用 `column`。
 
-### 样式提取与 Design Token 对接
+### 样式属性的代码映射规则
 
-颜色、字体、间距若在设计文件中已定义为命名样式（Figma Styles 或 Variables），工具可将其映射为 CSS 自定义属性（`--color-primary: #1A73E8`）或 JavaScript 的 Token 对象。这一映射依赖设计文件中样式命名的规范化程度——若颜色直接填写 `#1A73E8` 而非引用 `Brand/Primary`，输出代码只能得到硬编码值，无法与设计系统的 Token 文件联动。
+设计属性与 CSS 属性之间存在明确的映射公式：
 
-Style Dictionary 是目前最广泛使用的 Token 转换格式标准，它将 JSON 格式的 Token 定义编译为 CSS、SCSS、iOS、Android 等多平台输出。设计到代码工具若支持 Style Dictionary 格式导出，则生成的样式代码可直接并入项目的 Token 管道，实现设计更新自动同步到代码库。
+- **圆角**：Figma 的 `cornerRadius` 值直接对应 CSS `border-radius`，单位为 px
+- **阴影**：Figma 阴影的 `offsetX`、`offsetY`、`blur`、`spread`、`color` 对应 CSS `box-shadow: {offsetX}px {offsetY}px {blur}px {spread}px {color}`
+- **不透明度**：`opacity` 属性 0–1 直接映射
+- **Auto Layout**：Figma 的 Auto Layout 组件与 CSS Flexbox 属性一一对应，`paddingLeft/Right/Top/Bottom` 对应 CSS `padding`，`itemSpacing` 对应 `gap`
 
-### AI 辅助语义化生成
+文字样式方面，`fontSize`、`fontFamily`、`fontWeight`、`letterSpacing`（Figma 单位为百分比，需换算为 `em`）、`lineHeight` 均有直接的 CSS 对应项。
 
-2023 年后，以 GitHub Copilot、Vercel v0 为代表的 AI 代码生成工具引入了多模态能力，允许开发者上传截图或设计稿直接生成 React + Tailwind CSS 代码。其底层原理是视觉语言模型（VLM）识别界面元素的语义（按钮、表单、卡片），而非依赖设计文件的结构化数据。这与传统解析式工具形成互补：AI 生成代码的语义准确率更高，但像素精度较低；解析式工具的像素还原度高，但需要严格的结构化输入。Vercel v0 的实测数据显示，生成一个表单组件耗时约 8 秒，但需要 2–4 轮人工修改才能达到生产级别标准。
+### AI 辅助代码生成的工作机制
+
+以 Locofy.ai 和 Vercel v0 为代表的 AI D2C 工具在规则映射基础上增加了语义理解层。Locofy.ai 在 Figma 插件中允许设计师为图层打上"Button"、"Input"、"Card"等语义标签，AI 据此生成具备无障碍属性（`aria-label`、`role`）的组件代码，而非裸 `div`。
+
+Vercel v0 采用不同路径：用户上传截图或描述需求，模型（基于 GPT-4 定制微调版本）直接输出使用 shadcn/ui 组件库的 React + Tailwind CSS 代码。其生成质量依赖训练数据中大量的组件-代码对，适合快速原型但不适合直接对接设计规范。
+
+---
 
 ## 实际应用
 
-**Figma + Locofy 工作流**：设计师在 Figma 中完成组件设计并为所有容器添加 Auto Layout 后，安装 Locofy 插件并标注交互属性（如 `onClick`、`isInput`）。Locofy 将标注信息与图层结构合并，输出带有 Props 定义的 React 组件，组件目录结构与 Figma 页面层级对应。这一流程将中等复杂度页面（约 20 个组件）的初始还原时间从开发者手动编写的 4–6 小时压缩至 30–45 分钟。
+**场景一：Figma + Figma Dev Mode 的标注交付**
+产品设计师在 Figma 中完成高保真稿后，将文件切换为 Dev Mode，开发者在浏览器中可直接看到每个图层的 CSS 代码片段、间距标注、已导出的资源文件，并可复制 CSS 或 iOS/Android 属性值。这是当前最主流的 D2C 应用场景，不依赖第三方工具。
 
-**Figma Dev Mode 直接标注**：不追求全自动输出的团队可使用 Figma Dev Mode 作为"增强版标注工具"。开发者在 Dev Mode 中点击任意图层即可获取精确的 CSS 片段（包含 `font-family`、`letter-spacing`、`border-radius` 等属性）和资产下载链接，并能与 GitHub、Jira 集成实现设计版本与任务的绑定，避免开发者对着过期版本写代码的经典问题。
+**场景二：Locofy.ai 生成 React 组件**
+设计师在 Figma 中完成一个电商商品卡片组件的设计，使用 Auto Layout 规范排列图片、标题、价格。安装 Locofy.ai 插件后，标记各元素语义，工具导出包含 `ProductCard.jsx` 和 `ProductCard.module.css` 的代码包，开发者可直接将其集成进 Next.js 项目，通常只需调整数据绑定部分（将硬编码的图片路径和文字替换为 props）。
 
-**Tokens Studio + Style Dictionary 管道**：团队在 Figma 中使用 Tokens Studio 插件管理 Token，将 Token JSON 文件存储在 GitHub 仓库。设计师修改主色后提交 PR，CI 流程自动运行 Style Dictionary 编译，生成更新后的 CSS 变量文件，开发者合并 PR 后样式变更即时生效，全程无需手动复制颜色值。
+**场景三：Anima 生成交互原型代码**
+Anima 支持将 Figma 中的 Prototype 交互（页面跳转、Hover 状态）一并转换为包含 `useState` 的 React 代码，适合需要快速验证交互方案的设计冲刺（Design Sprint）场景。
+
+---
 
 ## 常见误区
 
-**误区一：自动生成代码可直接上生产环境**。当前最先进的设计到代码工具生成的代码需经过不同程度的人工整理。自动生成代码通常存在冗余的内联样式、缺少无障碍属性（`aria-label`、`role`）、未处理边界状态（空数据、加载中、错误）等问题。正确的预期是：工具生成"80% 完成度的脚手架"，开发者在此基础上进行语义化补全和逻辑接入。
+**误区一：D2C 生成的代码可以直接用于生产环境**
+D2C 工具生成的代码通常缺乏动态数据绑定、缺少错误状态和加载状态，且样式代码存在冗余嵌套（因为它忠实还原了设计稿的图层结构而非组件复用逻辑）。正确做法是将 D2C 输出视为"代码草图"，工程师需要重构组件抽象、添加 Props 接口和状态管理，才能进入生产代码库。
 
-**误区二：设计文件结构不重要，工具会自动处理**。工具输出质量与设计文件规范程度强相关。未命名图层（`Frame 43`、`Rectangle Copy 7`）会导致生成变量名混乱；重叠图层无法被识别为 CSS `z-index` 层叠关系；未使用 Component 的重复元素会生成独立代码而非可复用组件。设计师将文件规范程度从低（无 Auto Layout、无组件）提升至高（全组件化、全 Auto Layout）后，Locofy 等工具的输出可用率通常从 30% 提升至 70% 以上。
+**误区二：设计稿越精细，D2C 效果越好**
+实际上，图层命名规范、Auto Layout 的正确使用对 D2C 质量的影响远大于视觉细节的精细度。一个使用随意图层名（如"Rectangle 234"）和手动绝对定位的设计稿，即使视觉效果完美，D2C 工具也难以生成可维护的代码。推荐在设计规范中强制要求：所有图层名使用英文语义命名，容器组件必须使用 Auto Layout。
 
-**误区三：AI 截图生成与解析式工具等价**。两类工具的输入来源根本不同：截图工具输入光栅图像，无法获取间距精确值、字体名称或颜色的 Token 归属；解析式工具输入结构化设计文件，能精确提取 `padding: 16px`、`font-family: Inter` 等数值。截图生成适合快速原型验证，解析式工具适合对接设计系统的生产交付，两者不可互相替代。
+**误区三：D2C 工具能处理所有设计系统**
+各 D2C 工具对 Figma 组件库（Library）的理解程度不同。Figma Dev Mode 能识别组件实例并显示组件名称，但 Locofy 等第三方工具需要额外配置才能将设计系统中的 Button 组件映射到代码库中已有的 `<Button>` 组件，否则会生成全新的裸代码，导致与现有组件库脱节。
+
+---
 
 ## 知识关联
 
-设计到代码工具能够正常工作的前提是**设计交付**规范的完整性——交付阶段约定的组件命名规则、标注单位（px vs rem）、资产导出格式（SVG vs PNG）直接影响工具的解析结果。若设计交付文档中未规定使用 Auto Layout，开发者很难在事后要求设计师返工整理。
+**前置概念：设计交付**
+设计交付阶段建立的规范（切图标注、图层命名约定、组件化程度）直接决定 D2C 工具的可用输出质量。一份遵循设计交付标准的 Figma 文件（Tokens 规范化、Auto Layout 全覆盖）可使 Locofy 等工具的代码可用率提升约 50%；而一份交付规范缺失的文件，D2C 工具仅能输出位置正确但无法维护的绝对定位代码。
 
-在技术侧，设计到代码与前端框架的组件化哲学高度绑定。输出 React 组件意味着设计文件的 Component 与 Variant 需映射为 Props 的不同取值；输出 Vue 单文件组件则要求工具理解 `<template>`、`<script>`、`<style>` 的分离结构。团队采用的技术栈（React、Vue、SwiftUI、Flutter）决定了选择哪款工具，目前没有一款工具能以同等质量支持所有框架。随着 Figma 持续扩展其 Variables 与 Dev Mode 功能，设计到代码的工具链将进一步向"设计文件即单一事实来源"的方向演进。
+**横向关联：设计系统（Design System）**
+D2C 流程的最终质量天花板由设计系统的代码映射完整度决定。当设计系统中的 Token（颜色、字体、间距变量）与前端代码库中的 CSS Variables 或 Tailwind 配置保持同步时，D2C 工具可直接输出引用 Token 变量的代码（如 `color: var(--color-primary)`），而非硬编码的十六进制值，从而使生成代码真正融入工程体系。

@@ -20,72 +20,66 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 游戏CI/CD
 
 ## 概述
 
-游戏CI/CD（持续集成/持续交付）是针对游戏引擎（主要是Unreal Engine 5和Unity）构建特殊的自动化流水线，用于自动完成代码编译、资产烘焙（Cook）、平台打包（Package/Build）和分发的全流程。与普通Web应用的CI/CD不同，游戏CI/CD必须处理数十GB的贴图、模型、音频等二进制资产，以及针对PC、主机（PS5/Xbox Series X）、移动端（iOS/Android）等多平台的差异化构建需求。
+游戏CI/CD是将持续集成与持续交付的自动化流程专门适配于游戏引擎（如Unreal Engine 5和Unity）的工程实践，其核心挑战在于游戏项目同时包含代码（C++/C#）和大规模二进制资产（纹理、模型、音频），这使得标准的代码型CI/CD方案无法直接套用。一个典型的AAA手游项目资产总量可达数十GB，传统Git仓库无法高效处理，必须借助Git LFS或Perforce等大文件存储方案配合构建系统。
 
-游戏行业自动化构建的普及约从2015年前后随着Unity Cloud Build和Unreal Automation Tool（UAT）的成熟而加速。传统游戏团队依赖开发者手动在本地执行打包，单次PC+Android+iOS三平台构建可能耗费4-8小时并占用开发者工作站，极大浪费人力。现代游戏CI/CD将这一过程转移到专用构建服务器，使开发者提交代码后自动触发全平台构建并推送到测试设备。
+游戏CI/CD实践在2015年前后随着Unity Cloud Build等托管服务的出现逐渐普及，Epic Games则在2019年为UE4/UE5推出了BuildGraph——一个基于XML的任务图执行系统，专为虚幻引擎的多平台构建设计。在此之前，大型游戏工作室通常依赖自研的批处理脚本完成打包，缺乏标准化流程，构建失败难以追溯。
 
-游戏CI/CD的核心价值在于早期发现"构建破坏"（Build Break）。游戏项目中一个错误的材质引用、一段未编译的C++代码，或一个损坏的`.uasset`文件都会导致整个项目无法打包，而这类问题在大型团队中每天可能出现多次。自动化流水线确保每次提交后15-30分钟内即可获得构建状态反馈。
+游戏CI/CD的重要性体现在多平台发布的复杂性上：同一款游戏可能需要同时输出PC（Windows/macOS）、主机（PS5/Xbox Series X）、移动端（iOS/Android）共五到六个构建目标，且各平台有各自的签名证书、SDK版本和包体限制，自动化流水线能将这一过程从数天压缩至数小时。
 
 ## 核心原理
 
-### Unreal Engine 5的自动化构建工具链
+### UE5 BuildGraph与UnrealBuildTool
 
-UE5提供了名为**Unreal Automation Tool（UAT）**的命令行工具，其核心可执行文件位于`Engine/Build/BatchFiles/RunUAT.bat`（Windows）或`RunUAT.sh`（macOS/Linux）。执行游戏打包的标准命令格式为：
-
-```
-RunUAT.bat BuildCookRun -project="Game.uproject" -platform=Win64 -clientconfig=Shipping -cook -build -stage -pak -archive -archivedirectory="Output/"
-```
-
-关键参数说明：`-cook`触发资产烘焙（将编辑器格式资产转换为目标平台格式）、`-pak`将所有烘焙资产打包进`.pak`压缩包、`-clientconfig=Shipping`编译剥除调试符号的发布版本。烘焙阶段通常是整个构建中最耗时的部分，一个中型UE5项目的首次全量烘焙可能需要2-6小时，因此CI/CD中必须配置**派生数据缓存（DDC, Derived Data Cache）**的共享服务器，让增量构建只重新烘焙变化的资产。
-
-### Unity的自动化构建方法
-
-Unity的命令行构建通过`-executeMethod`参数调用项目中的C#静态方法来实现，例如：
+UE5的自动化构建依赖两个核心工具：**UnrealBuildTool（UBT）**负责C++代码的编译和模块依赖管理，**BuildGraph**负责定义跨节点的任务依赖图。BuildGraph的XML脚本中通过`<Node>`标签定义构建节点，`<Agent>`标签分配执行机器，典型命令如下：
 
 ```
-Unity -batchmode -nographics -projectPath /path/to/project -executeMethod BuildScript.BuildAndroid -logFile build.log -quit
+Engine/Build/BatchFiles/RunUAT.bat BuildGraph -Script=Build/Build.xml -Target="Package Game" -set:Platform=Win64
 ```
 
-`BuildScript.BuildAndroid`是开发者在项目中编写的构建脚本，调用`BuildPipeline.BuildPlayer()`API。Unity CI/CD的特殊挑战是**License激活**：Unity Personal/Pro许可证为浮动授权，在无头（headless）CI服务器上需要通过`Unity -manualLicenseFile`流程预先激活，或使用Unity Build Automation（原Cloud Build）云服务规避本地License管理。Android构建额外需要配置`keystore`签名文件，通常将其加密后存储为CI系统的Secret变量（如GitHub Actions的`secrets.ANDROID_KEYSTORE_BASE64`）。
+UBT会根据`.uproject`文件中的模块声明生成Makefile等效的构建指令，增量编译时只重新编译变更文件，冷启动全量编译一个中型UE5项目通常需要40到90分钟，而增量编译可压缩至5分钟以内。
 
-### 多平台构建矩阵与资产管理
+### Unity的自动化打包流水线
 
-游戏CI/CD流水线通常使用**构建矩阵（Build Matrix）**并行化多平台构建。在GitHub Actions中，一个典型的UE5多平台矩阵配置如下：
+Unity提供**Unity Build Automation（原Cloud Build）**和本地命令行两种方式。命令行模式通过`-batchmode`标志触发无头构建，配合`-executeMethod`指定静态方法入口：
 
-```yaml
-strategy:
-  matrix:
-    platform: [Win64, Android, iOS]
-    config: [Development, Shipping]
+```
+Unity -batchmode -quit -projectPath /path/to/project -executeMethod BuildScript.BuildAndroid -logFile build.log
 ```
 
-这会同时启动6个构建任务。但资产烘焙本身无法简单并行，因为不同平台的纹理压缩格式不同（PC使用BC7/DXT5，Android使用ASTC，iOS也使用ASTC但参数有差异），每个平台需要独立烘焙。为避免重复烘焙Editor格式资产，CI服务器通常将DDC目录挂载为持久化网络存储（如NFS或AWS EFS），烘焙缓存命中率可从0%提升到70-90%，构建时间可缩短50%以上。
+在Unity项目中，`BuildPipeline.BuildPlayer()`是打包的核心API，接收`BuildPlayerOptions`结构体，其中`scenes`字段指定打包场景列表，`target`字段指定`BuildTarget.Android`等平台枚举。Unity的**Addressables**资产管理系统要求在打包前单独执行`AddressableAssetSettings.BuildPlayerContent()`，否则热更新资产不会被正确纳入包体，这是游戏CI/CD中最常见的遗漏点之一。
+
+### 资产处理与缓存策略
+
+游戏CI/CD与普通软件CI/CD的最大差异在于**资产导入缓存**的管理。Unity的Library文件夹存储所有导入后的资产，大小通常是原始资产的1.5到3倍，在CI环境中若每次构建都重新导入，仅此步骤就可能耗时30分钟以上。常见做法是将Library文件夹挂载到缓存卷，通过资产哈希判断是否需要重新导入。UE5的等效机制是**Derived Data Cache（DDC）**，其路径由`Engine.ini`中的`[DerivedDataBackendGraph]`配置，Shared DDC可指向网络共享路径供多台构建机共用，显著降低材质编译和贴图压缩的重复开销。
+
+### GitHub Actions与游戏构建的集成
+
+在GitHub Actions的`workflow.yml`中，游戏构建任务通常需要配置`runs-on: self-hosted`以使用具备GPU和大内存的私有Runner，因为iOS/Android构建需要XCode或Android SDK，以及至少16GB内存应对UE5的链接阶段。构建产物（APK、IPA、.exe安装包）通过`actions/upload-artifact`上传，但应注意GitHub Actions的免费层对Artifact存储有500MB限制，游戏包体动辄数百MB，需要配置外部存储如AWS S3或阿里云OSS。
 
 ## 实际应用
 
-**典型游戏CI/CD工作流**：开发者向`develop`分支推送包含新关卡资产的提交后，GitHub Actions触发流水线：第一步用`dotnet` CLI编译UE5的C++游戏模块（约5-15分钟）；第二步运行`RunUAT BuildCookRun`烘焙并打包Win64 Development版本（增量约20-40分钟）；第三步将`.pak`文件上传至内部测试服务器，并通过Slack Webhook发送附带构建日志链接的通知消息。若任一步骤返回非零退出码，流水线标记失败并@相关提交者。
+**手游多渠道打包**：一款Android手游常需要同时生成Google Play版本（AAB格式）和国内各渠道的APK（需内嵌不同渠道号）。在CI流水线中，可通过矩阵策略`matrix: channel: [googleplay, huawei, xiaomi]`并行触发多个Unity命令行进程，每个进程通过`-define:CHANNEL_HUAWEI`等编译宏区分渠道逻辑，最终将所有包体上传至分发平台。
 
-**移动端签名与分发**：iOS构建在CI中需要将`.p12`证书和`.mobileprovision`配置文件注入macOS Keychain，这通常通过`security import`命令完成。Android APK/AAB构建后可自动上传至Firebase App Distribution供测试人员下载安装，或推送至Google Play内部测试轨道，整个过程通过`fastlane supply`命令完成，无需人工登录Google Play Console。
+**UE5多平台构建分发**：一个PC+主机同步发布的项目通常在Jenkins或GitHub Actions中配置跨平台Stage：Win64编译在Windows Runner上执行，PS5构建需要在索尼授权的开发机上运行，流水线通过BuildGraph的Agent标签路由任务。构建完成后，包体自动推送至Steam的SteamPipe或主机平台的开发者门户。
 
-**构建产物版本管理**：游戏构建产物通常以`GameName_Platform_BranchName_CommitHash_Timestamp`格式命名，如`MyGame_Win64_develop_a3f7b2c_20241125_143022`，并存储于S3或Artifactory，保留最近30个构建版本。这使得QA团队可以精确复现某个历史版本的行为。
+**自动化冒烟测试**：游戏CI/CD流水线在打包后通常集成Gameplay Automation测试，UE5可通过Gauntlet测试框架在无头模式下运行游戏并采集帧率、崩溃日志等指标；Unity则通过TestRunner的`PlayMode`测试验证核心逻辑，测试失败会阻断构建并通知钉钉或Slack频道。
 
 ## 常见误区
 
-**误区一：将游戏CI/CD等同于普通应用CI/CD，忽视资产烘焙阶段**。许多初次为游戏项目搭建流水线的工程师直接套用Web应用的CI模板，只配置代码编译步骤而跳过资产烘焙。结果是CI报告"构建成功"，但实际生成的可执行文件运行时崩溃，因为游戏运行时需要的`.pak`资产文件从未被正确生成。正确做法是必须在流水线中包含完整的`-cook -pak`步骤。
+**误区一：直接用标准Git存储所有资产**。游戏二进制资产（PSD、FBX、WAV）单文件可达数百MB，若不启用Git LFS，仓库克隆时间会超过构建时间本身，且Git对二进制文件无法进行增量传输。正确做法是在`.gitattributes`中为`*.psd`、`*.fbx`、`*.uasset`等扩展名配置Git LFS追踪，或对超大型项目迁移到Perforce，将代码与资产分开管理。
 
-**误区二：在CI服务器上启用完整的UE5编辑器界面**。UE5的`UnrealEditor.exe`在无显示器的CI服务器上默认会尝试初始化渲染子系统并弹出GUI，导致进程挂起。正确做法是所有CI构建命令必须通过`RunUAT`或添加`-unattended -nullrhi`参数以无头模式运行，`-nullrhi`禁用渲染硬件接口，允许在无GPU的构建机器上执行烘焙。
+**误区二：在CI中对所有提交都触发全量打包**。UE5全量打包单次可耗时2到4小时，若每次代码提交都触发，构建队列会迅速积压。正确策略是分层触发：代码变更仅触发编译和单元测试（约15分钟），合并到`develop`分支才触发增量打包，标签推送（如`v1.2.0-rc1`）才触发全平台发布包构建。
 
-**误区三：用Git LFS直接在CI中拉取所有游戏资产**。一个中型UE5项目的Git LFS资产可能超过50GB，若每次CI触发都执行`git lfs pull`全量拉取，单次网络传输耗时可能超过实际构建时间。正确方案是维护一台持久化的构建服务器（而非每次从干净镜像启动的临时Runner），使该服务器保持LFS资产的增量同步，或使用Perforce等专为游戏设计的版本控制系统，其`p4 sync`命令天然支持增量文件同步。
+**误区三：忽略代码签名证书的安全存储**。iOS的`.p12`证书和Android的`.keystore`文件若硬编码在仓库中，一旦代码泄露将导致签名私钥外泄。正确做法是使用GitHub Actions Secrets或HashiCorp Vault存储证书Base64编码值，在构建步骤中动态解码写入磁盘，构建完成后立即删除临时文件。
 
 ## 知识关联
 
-游戏CI/CD以**CI/CD概述**中的流水线阶段概念（触发→构建→测试→部署）为基础框架，但将每个阶段替换为游戏引擎专有工具链：普通CI的`npm run build`对应游戏CI的`RunUAT BuildCookRun`，普通CI的单元测试对应游戏的自动化截图对比测试（UE5的Gauntlet框架或Unity的Graphics Test Framework）。
-
-**GitHub Actions**的矩阵构建（`strategy.matrix`）和加密Secret机制在游戏CI/CD中被密集使用：矩阵用于并行多平台构建，Secret用于存储代码签名证书、商店API密钥和DDC服务器地址。GitHub Actions的`self-hosted runner`是游戏CI的首选部署方式，因为游戏构建需要大量本地存储（DDC可能占用100GB+）和高性能CPU，托管Runner的资源配置通常不满足要求。
-
-**资产处理管线**的概念直接映射到CI中的烘焙（Cook）阶段：资产处理管线定义了原始资产（`.fbx`、`.psd`、`.wav`）如何转换为引擎可用格式，而CI中的烘焙步骤则进一步将引擎格式资产转换为目标平台运行时格式，是资产处理管线的最终执行环节。理解贴图压缩格式差异（BC7 vs ASTC）和音频格式差异（PCM vs ADPCM）有助于分析为什么同一资产在不同平台的烘焙时间差异显著。
+游戏CI/CD建立在**CI/CD概述**中流水线触发、阶段划分等基础概念之上，但将其中的"构建"阶段替换为游戏引擎特有的UBT/BuildGraph调用，将"测试"阶段扩展为包含帧率采集的Gameplay测试。**GitHub Actions**提供了声明式的工作流语法和矩阵构建能力，是游戏CI/CD最常见的编排平台，但需要通过Self-Hosted Runner突破算力和SDK限制。**资产处理管线**是游戏CI/CD中耗时最长的环节，DDC和Library缓存策略直接决定流水线总时长，与资产处理管线的衔接点在于将`uasset`编译和贴图压缩纳入有向无环图的节点调度中。**GitOps**的版本化配置理念在游戏CI/CD中体现为将BuildGraph XML脚本、`ProjectSettings`、`DefaultEngine.ini`等配置文件全部纳入版本控制，使每一次历史构建都可通过Git commit哈希完整复现。

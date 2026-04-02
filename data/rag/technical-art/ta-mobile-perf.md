@@ -20,73 +20,69 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 移动端性能
 
 ## 概述
 
-移动端性能优化是技术美术领域中一个与桌面端截然不同的专项课题，其核心差异来源于移动端GPU采用的**基于瓦片的渲染架构（Tile-Based Rendering，TBR）**，而非桌面端的立即模式渲染（Immediate Mode Rendering，IMR）。这一架构差异从根本上改变了Draw Call、带宽消耗和Overdraw的代价计算方式，使得许多在PC端无害的操作在移动端会造成严重性能瓶颈。
+移动端性能优化是技术美术在手游开发中面临的核心挑战，其根本原因在于移动端GPU采用了与桌面端截然不同的**基于瓦片的渲染架构（Tile-Based Rendering，TBR）**，而非桌面GPU普遍使用的立即模式渲染（Immediate Mode Rendering，IMR）。这一架构差异导致桌面端的许多性能优化经验无法直接迁移到移动端，甚至会产生反效果。
 
-移动端GPU的代表性厂商包括ARM（Mali系列）、Qualcomm（Adreno系列）和苹果（Apple GPU），它们虽然实现细节各异，但都以TBR或其进化形式TBDR（Tile-Based Deferred Rendering，典型代表为Apple GPU和PowerVR）为基础。移动端GPU通常集成在SoC（片上系统）芯片中，与CPU共享同一块LPDDR内存，没有独立的显存。这意味着GPU访问主内存的带宽极其珍贵，带宽消耗直接关联功耗，而功耗又直接触发热降频机制。
+TBR架构诞生的背景是移动设备的功耗限制。ARM Mali、Qualcomm Adreno、Apple GPU、Imagination PowerVR等主流移动端GPU均采用TBR或其变体TBDR（Tile-Based Deferred Rendering）。以2023年广泛使用的Adreno 740（搭载于骁龙8 Gen 2）为例，其片上缓存（On-Chip Memory）仅有数百KB，但通过将屏幕分割为16×16或32×32像素的瓦片（Tile），在每个瓦片的渲染过程中将数据保留在高速片上缓存中，从而大幅减少对带宽消耗极高的主内存（DRAM）读写操作，将整机功耗控制在手机散热可承受的范围内。
 
-对于技术美术而言，理解移动端性能的意义在于：一款在PC端运行流畅的视觉效果，移植到移动端后可能因为一个Alpha混合半透明物体的滥用或一次无意义的RT读写操作，就将帧率从60fps打入30fps甚至更低，且这种下降往往伴随设备发热，最终导致持续性能衰减而非稳定低帧。
-
----
+移动端性能问题直接决定玩家体验：帧率下降会触发系统的热降频机制，导致游戏后期帧率雪崩；带宽超标则会引发设备发热，反过来加速热降频。因此理解移动端GPU的工作机制是手游技术美术的基本功。
 
 ## 核心原理
 
-### TBR架构与On-Chip Memory
+### TBR架构与带宽优化
 
-TBR架构将屏幕划分为若干个小瓦片（Tile），典型尺寸为**16×16像素或32×32像素**。GPU每次仅处理一个Tile的几何体和像素，所有光栅化和像素着色计算都在GPU内部高速的**片上内存（On-Chip Memory / GMEM）**中进行，Tile计算完毕后才将结果写回主内存（System RAM）。这与IMR架构中每个Draw Call立即将结果写回显存的方式形成鲜明对比。
+TBR渲染管线分为两个主要阶段：**几何处理阶段（Binning Pass）**和**渲染阶段（Rendering Pass）**。在Binning Pass中，GPU先遍历所有顶点，计算每个图元落在哪个Tile内，将这些信息写入显存。在Rendering Pass中，GPU逐Tile加载该Tile所需的几何信息，在片上缓存中完成全部光栅化和像素着色计算，最终一次性将结果写入帧缓冲（Framebuffer）。
 
-TBR的关键优势在于：只要渲染过程不主动"打断"这一流程，深度测试（Depth Test）、模板测试（Stencil Test）和Alpha混合等操作全部在片上内存内完成，**完全不消耗主内存带宽**。然而，一旦发生以下操作，TBR就会被迫将片上内存的内容"Flush"回主内存，再重新加载：
-- 切换Render Target（RT）
-- 在着色器中采样当前正在写入的Render Target（称为"Framebuffer Fetch"滥用）
-- 使用需要读取前帧数据的效果（如屏幕空间折射）
+这一机制带来的关键优化规则是：**避免打断Tile渲染流程**。任何导致GPU必须提前将当前Tile结果刷写（Flush）到主内存的操作都会产生巨大的带宽惩罚。最常见的触发场景包括：在同一帧内对同一张RenderTarget先写后读（如后处理读取场景颜色缓冲）、使用`glCopyTexImage2D`等接口强制同步GPU/CPU数据。Unity的`GrabPass`在移动端性能极差的根本原因就在于此——它强制GPU将当前帧缓冲Flush到主内存，然后才能被Shader读取，产生一次完整的带宽往返。
 
-每一次Flush和Reload都会产生大量带宽消耗，这是移动端后处理链条代价远高于PC端的直接原因。
+替代方案是使用`Framebuffer Fetch`扩展（iOS上对应`[[color(0)]]`输入，Android上对应`GL_EXT_shader_framebuffer_fetch`），该扩展允许Shader直接从片上缓存读取当前像素的已有颜色值，无需任何主内存读写，带宽开销近乎为零。
 
-### 带宽优化：移动端第一性能杀手
+### 带宽（Bandwidth）量化与控制
 
-由于GPU与主内存共享带宽，移动端的带宽通常仅有**30–60 GB/s**（如Snapdragon 8 Gen 2约51 GB/s），远低于桌面端独立GPU的400–1000 GB/s。带宽消耗不仅影响渲染速度，更直接转化为热量。降低带宽消耗的主要手段包括：
+移动端GPU的带宽预算非常有限。以中端机型为例，LPDDR5内存的带宽上限约为**50-60 GB/s**，而一张2560×1440分辨率的Framebuffer，若格式为RGBA8（4字节），以60fps渲染，仅读写Framebuffer本身就需要约 2560×1440×4×2（读+写）×60 ≈ **3.3 GB/s**，这还不包括纹理采样、顶点缓冲等其他带宽消耗。
 
-- **使用ASTC压缩格式**：ASTC（Adaptive Scalable Texture Compression）是移动端标准纹理压缩格式，ASTC 6×6可将原始RGBA8纹理压缩至约2.37 bpp（原始为32 bpp），压缩比约13:1，且支持HDR和透明通道。
-- **减少Render Target数量和尺寸**：每一张全屏RT（如1080p RGBA16F）占用约8 MB，频繁读写数张全屏RT的后处理流水线在移动端是最典型的带宽超标场景。
-- **正确设置LoadAction和StoreAction**：在Unity中对应`RenderBufferLoadAction.DontCare`和`RenderBufferStoreAction.DontCare`，告知GPU无需加载或保存某张RT的内容，避免无意义的Flush。不正确设置这两个参数是移动端开发中最常见的隐式带宽浪费来源。
+减少带宽消耗的具体手段包括：
+- **降低Framebuffer精度**：将HDR格式从RGBA16F（8字节/像素）降为R11G11B10F（4字节/像素），带宽直接减半。
+- **启用MSAA而非后处理抗锯齿**：TBR架构下，MSAA的多重采样数据可以完全保留在片上缓存中，最终Resolve时只写出1倍分辨率的结果，实际带宽开销远低于TAA的多帧Framebuffer读写。
+- **压缩纹理格式**：Android优先使用ASTC（可达6:1至12:1压缩率），iOS使用PVRTC或ASTC（A8芯片起支持），避免使用未压缩的RGBA32。
+- **减少RenderPass数量**：每增加一个RenderPass就意味着一次Framebuffer的Load/Store操作，在Vulkan/Metal中明确设置`storeAction = DontCare`可告知驱动无需将Tile数据写回主内存。
 
-### 热降频（Thermal Throttling）
+### 热降频（Thermal Throttling）机制
 
-移动端设备依赖被动散热（无风扇），当SoC温度超过阈值（通常为**85°C至95°C**，因厂商不同而异），系统会强制降低CPU和GPU的工作频率以控制功耗，这一机制称为热降频（Thermal Throttling）。
+热降频是移动端独有的性能杀手。当芯片温度超过阈值（通常为**80-85°C**）时，操作系统会主动降低GPU/CPU的工作频率，骁龙系列在严重过热时GPU频率可降至正常频率的**40%-60%**，导致帧率从60fps骤降至20fps以下。
 
-热降频的危险在于它是**累积性的**：一款游戏可能在冷机状态下稳定60fps，但经过10-15分钟持续高负载后，GPU频率从最高的710 MHz（以Adreno 740为例）降至400 MHz左右，导致帧率持续下滑至40fps以下，而开发者在短时测试中从未发现此问题。对此，技术美术需要主动使用**长时压力测试（Sustained Performance Test）**而非短时截帧分析来评估移动端性能，Unity的Android Player Profiler连续录制至少15分钟才能暴露热降频导致的性能曲线下滑。
+热降频的根本诱因是持续高功耗，而高带宽和高Overdraw是移动端功耗的主要来源。技术美术可通过以下方式延缓热降频：
+- 将目标帧率从60fps降为30fps并开启帧率锁定，功耗约降低40%，设备温升明显减缓。
+- 使用Mali的**Streamline**或高通的**Snapdragon Profiler**工具监控`GPU Active Cycles`和`Tiler Active`指标，定位是几何复杂度还是填充率导致的高功耗。
+- 避免粒子系统的Alpha Blend叠加层数超过3层，半透明物体的Overdraw对带宽和ALU功耗均有显著影响。
 
----
+### TBDR与Early-Z的特殊交互
+
+PowerVR和Apple GPU的TBDR架构在TBR基础上引入了**隐面消除（Hidden Surface Removal，HSR）**，在着色之前通过硬件确定每个像素的可见性，理论上可完全消除Overdraw。但这一特性有严格前提：像素着色器不能修改深度值（`gl_FragDepth`），也不能使用`discard`/`clip`指令，否则GPU无法提前判断可见性，HSR会退化失效。因此在移动端使用AlphaTest时，应将`clip()`操作移至片元着色器的**最后一行**而非最前，以最大化HSR的有效范围。
 
 ## 实际应用
 
-**案例1：移动端Bloom效果的TBR适配**  
-PC端Bloom通常包含多次全屏Blit（亮度提取→多级降采样→上采样→合并），每一次Blit在移动端都意味着一次RT切换，触发TBR Flush。优化方案是将降采样和上采样的Pass数量压缩至最少，或使用Dual Kawase Blur替代标准高斯模糊，将采样次数从标准5×5卷积的25次减少至每Pass仅4次采样，同时将全部Pass的RT分辨率限制在屏幕1/4（540p→270p→135p），大幅降低每次Flush的数据量。
+**案例一：后处理管线优化。** 某手游的Bloom效果原本使用5次降采样+5次升采样，每次都产生独立的RenderTarget读写，在Adreno 630上带宽占用达到整体的35%。将管线改为双线性降采样3次，并合并最终升采样与UI合批为同一个RenderPass后，Bloom的带宽消耗降至12%，帧时间从18ms降至14ms。
 
-**案例2：TBDR的HSR（Hidden Surface Removal）与不透明物体渲染顺序**  
-Apple GPU和PowerVR的TBDR架构在像素着色之前执行完整的可见性判断（HSR），彻底消除Overdraw，前提是不透明物体的材质Shader**不包含`discard`指令（即clip()）**和Alpha Test。一旦Shader中有clip()，GPU无法在着色前确认像素是否可见，HSR失效，退化为与Mali相似的逐像素深度测试，Overdraw代价恢复正常。因此在移动端，应将Alpha Test效果替换为Alpha-to-Coverage（在MSAA环境下）或使用Distance Field代替纹理透明，以保留TBDR的HSR优势。
+**案例二：角色Shader中的Discard优化。** 某角色使用AlphaTest模拟头发透明，因Shader最前使用`clip()`导致Apple GPU的HSR完全失效，全屏头发区域Overdraw达4层。将`clip()`移至Shader末尾并加入Early-Z Pass后，GPU像素处理耗时减少约30%。
 
----
+**案例三：阴影质量与带宽平衡。** 将ShadowMap格式从Depth24（3字节）改为Depth16（2字节），分辨率从2048降至1024，带宽节省约75%，在中低端机（Mali-G57）上帧率从27fps提升至34fps，视觉差异经测试在5%阈值内不可感知。
 
 ## 常见误区
 
-**误区1：移动端Draw Call数量是首要瓶颈**  
-受早期移动端（2010-2015年）性能限制观念影响，许多开发者认为控制Draw Call数量是移动端优化的头等大事。然而现代移动端GPU（Mali-G710、Adreno 730+、Apple A15+）对CPU侧Draw Call提交的处理能力已大幅提升，真正的首要瓶颈几乎总是**带宽和片上内存压力**，而非Draw Call数量本身。盲目合并Mesh（静态合批）反而可能增加顶点数量和带宽消耗。
+**误区一：桌面端的Early-Z优化在移动端同样有效。** 在IMR架构的桌面GPU上，从前到后排序透明物体、利用Early-Z剔除是经典优化。但在TBR架构下，GPU已在Binning Pass中获取了完整的场景深度信息，不透明物体的绘制顺序对Early-Z的影响远小于桌面端。盲目在移动端做不透明物体排序，反而会破坏CPU端合批（Batching），增加DrawCall。
 
-**误区2：Alpha混合在移动端仅影响Overdraw**  
-在桌面IMR架构中，Alpha混合的主要代价是Overdraw（像素着色重复计算）。但在TBR架构中，半透明物体必须在不透明物体完全渲染完成后才能正确混合，这意味着渲染半透明物体时GPU必须先加载（Load）当前Tile的颜色缓冲，完成混合后再存储（Store），**每个半透明Draw Call都强制触发一次片上内存的Load操作**，带宽代价远超桌面端。粒子系统滥用半透明是移动端帧率崩溃的最常见原因之一。
+**误区二：MSAA在移动端很贵。** 许多开发者因桌面端经验而排斥移动端MSAA。实际上，4xMSAA在TBR架构下的额外带宽开销几乎可以忽略不计（多重采样数据驻留片上缓存），其功耗主要来自Rasterization阶段的ALU计算，通常比TAA的帧间读写开销更低。在Adreno 640上，4xMSAA相比TAA帧时间通常减少约1-2ms。
 
-**误区3：只需在目标机型上测试不发热就算通过**  
-不同移动设备的散热能力差异极大：同一款SoC在厚机身旗舰手机中可能持续性能运行30分钟，在轻薄机型中5分钟内即触发热降频。正确的测试策略是使用**性能最差的目标机型**（而非旗舰设备），在室温25°C环境下连续运行30分钟，使用Snapdragon Profiler或Mali Graphics Debugger监控GPU频率曲线，确保频率无持续下降。
-
----
+**误区三：减少DrawCall是移动端最重要的优化。** DrawCall优化在桌面端PC上至关重要，但移动端的性能瓶颈通常首先出现在带宽和填充率（Fillrate）上，而非DrawCall提交开销。在Mali-G76的典型场景测试中，将DrawCall从800减少到400，帧时间改善仅约0.5ms；而将Overdraw从4层降至2层，帧时间改善可达3-5ms。技术美术应优先使用Snapdragon Profiler或Mali Graphics Debugger确认瓶颈类型，而非默认套用桌面端优化思路。
 
 ## 知识关联
 
-本概念直接依赖**GPU性能分析**的基础知识，特别是对GPU渲染流水线（顶点处理→光栅化→像素着色→ROP输出）的理解，以及使用GPU专项分析工具（如RenderDoc、Xcode GPU Frame Debugger、Snapdragon Profiler）抓帧和解读Overdraw、带宽、像素填充率等指标的能力。没有这些工具使用经验，无法定量判断移动端某次优化是否有效——例如，优化ASTC压缩设置后，需要通过Snapdragon Profiler的"Memory Traffic"数据确认带宽确实下降，而非主观判断帧率变化。
-
-移动端性能优化还与**Shader复杂度控制**高度关联：移动端GPU的ALU算力（浮点计算单元数量）普遍低于桌面端，复杂的PBR光照计算（如多次IBL卷积采样）在移动端需要替换为预计算或简化版本。此外，**LOD系统**和**遮挡剔除**虽然
+本概念建立在**GPU性能分析**的基础上：掌握GPU渲染管线各阶段（Vertex、Rasterization、Fragment、ROP）的功能划分，是理解TBR将哪些阶段移入

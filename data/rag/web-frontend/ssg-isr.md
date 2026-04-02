@@ -20,99 +20,103 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-04-01
 ---
+
 # SSG与ISR：静态站点生成与增量静态再生成
 
 ## 概述
 
-SSG（Static Site Generation，静态站点生成）是一种在**构建时**（build time）将页面预先渲染为纯 HTML 文件的前端渲染策略。与 SSR 在每次请求时动态执行服务端逻辑不同，SSG 在 `npm run build` 执行阶段就完成所有页面的 HTML 生成，部署后 CDN 直接响应静态文件，无需任何运行时服务器计算。
+SSG（Static Site Generation，静态站点生成）是指在**构建阶段**（build time）预先将页面渲染为静态HTML文件的技术。与SSR在每次请求时动态渲染不同，SSG在`npm run build`执行时一次性生成所有页面的HTML，这些文件随后可直接部署到CDN，无需服务器实时计算。Next.js在2020年9.3版本中正式将SSG提升为一等公民，引入了`getStaticProps`和`getStaticPaths`两个专属API。
 
-ISR（Incremental Static Regeneration，增量静态再生成）由 Vercel 团队在 2020 年随 Next.js 9.5 版本引入，是对纯 SSG 的关键扩展。ISR 解决了 SSG 最核心的痛点：内容更新必须触发全量重新构建。ISR 允许在不重新构建整个站点的前提下，按页面粒度异步更新静态内容，将"构建时静态"与"运行时按需刷新"结合为一套机制。
+ISR（Incremental Static Regeneration，增量静态再生成）是Next.js 9.5版本（2020年8月）引入的机制，解决了纯SSG的核心痛点：**构建后数据无法更新**。ISR允许单个页面在后台按需或定时重新生成，而不需要重新构建整个站点。这意味着一个拥有10万个产品页面的电商站点，可以在无需全量重建的情况下，让某个商品页的价格数据在60秒内反映最新状态。
 
-在 AI 工程与 Web 前端场景中，SSG 与 ISR 尤其适合内容驱动型产品：文档站、博客、AI 生成内容展示页、产品详情页等。其核心价值在于 Time To First Byte（TTFB）极低——静态文件由 CDN 边缘节点直接响应，延迟通常可降至 10ms 以内，而 SSR 节点往往需要 100~500ms 的服务端处理时间。
+两者的区别在于生命周期：SSG的内容生命周期等于两次部署之间的间隔（可能是数天），而ISR的内容生命周期可精确控制到秒级。这两种机制均依赖Webpack/Vite在构建阶段的代码分割与模块图分析能力来确定哪些页面需要预渲染。
 
 ---
 
 ## 核心原理
 
-### SSG 的构建流程
+### SSG的构建时渲染机制
 
-SSG 的工作流可以用以下步骤描述：
+SSG的执行流程分为三个阶段：**数据获取 → HTML生成 → 静态文件输出**。在Next.js中，`getStaticProps`函数只在Node.js环境中运行，其返回值被序列化为JSON并嵌入页面的`__NEXT_DATA__`脚本标签，供客户端hydration使用。
 
-1. **数据获取阶段**：构建工具调用 `getStaticProps`（Next.js）或等效 API，从 CMS、数据库或文件系统拉取数据。
-2. **路径枚举阶段**：对于动态路由（如 `/posts/[id]`），`getStaticPaths` 返回所有合法路径列表，构建器逐一生成对应 HTML。
-3. **渲染输出阶段**：每个路径对应一个独立的 `.html` 文件和关联的 `.json` 数据文件，客户端 Hydration 时直接复用该 JSON，不再发起额外请求。
-
-关键限制：`getStaticPaths` 必须在构建时返回完整路径集合。若站点有 10 万篇文章，构建阶段就需枚举并渲染 10 万个 HTML 文件，构建时间线性增长。
-
-### ISR 的 Stale-While-Revalidate 机制
-
-ISR 的底层采用 **stale-while-revalidate** HTTP 缓存语义，其逻辑如下：
-
-```
-用户请求 → CDN/服务器检查缓存年龄
-  ├─ 年龄 < revalidate 秒数 → 返回缓存（stale 但有效）
-  ├─ 年龄 ≥ revalidate 秒数 → 返回旧缓存（立即响应），同时后台触发重新生成
-  └─ 缓存不存在（首次访问新路径）→ 按需生成，阻塞等待，生成后缓存
-```
-
-在 Next.js 中配置 ISR 的核心代码：
-
-```js
+```javascript
+// 此函数仅在构建时执行，永远不会暴露给浏览器
 export async function getStaticProps() {
-  const data = await fetchArticle();
+  const res = await fetch('https://api.example.com/products');
+  const products = await res.json();
   return {
-    props: { data },
-    revalidate: 60, // 单位：秒，60秒后标记为过期
+    props: { products },
   };
 }
 ```
 
-`revalidate: 60` 意味着：**在某次请求后的 60 秒内**，所有访问均命中缓存；60 秒过后的首个请求仍获得旧页面，但会在后台触发异步重新渲染；下一个请求才会获得新内容。这种"最终一致性"模型意味着内容更新存在最多 `revalidate` 秒的延迟。
+对于动态路由（如`/products/[id]`），必须配合`getStaticPaths`使用，显式声明需要预渲染的路径列表。`fallback: 'blocking'`选项表示对未预渲染的路径执行SSR降级处理；`fallback: false`表示未声明路径返回404；`fallback: true`则先返回loading状态再异步生成。
 
-### On-Demand ISR（按需重验证）
+### ISR的"过期重验证"算法（Stale-While-Revalidate）
 
-Next.js 12.1 引入了 On-Demand ISR，允许通过调用 `res.revalidate('/posts/123')` 主动清除特定页面的缓存，而不依赖时间窗口。这在 CMS Webhook 场景中极为实用：编辑在 Contentful 或 Strapi 发布新内容后，CMS 触发 Webhook → Next.js API 路由调用 `revalidate` → 对应页面在下次请求时立即重新生成，延迟降至秒级甚至毫秒级，彻底消除固定 `revalidate` 时间窗口的等待。
+ISR本质上是HTTP缓存策略**stale-while-revalidate**在服务器渲染层的实现。配置核心是`revalidate`字段，单位为秒：
 
-### SSG 中的 `fallback` 策略
+```javascript
+export async function getStaticProps() {
+  const data = await fetchData();
+  return {
+    props: { data },
+    revalidate: 60, // 60秒后此页面被标记为"过期"
+  };
+}
+```
 
-`getStaticPaths` 的 `fallback` 参数控制构建时未枚举路径的处理方式：
+工作流程如下：
+1. 第一次请求：返回构建时生成的静态HTML（新鲜）
+2. 60秒内的后续请求：继续返回同一份缓存HTML
+3. 60秒后的第一个请求：返回**旧的**缓存HTML（用户无感知延迟），同时在后台触发页面重新生成
+4. 重新生成完成后：下一个请求获得新HTML
 
-| fallback 值 | 行为 |
-|---|---|
-| `false` | 未枚举路径返回 404 |
-| `true` | 首次访问显示加载态，后台生成后缓存 |
-| `'blocking'` | 首次访问阻塞等待，生成完成后响应（类似 SSR，但之后缓存为静态） |
+这意味着ISR的数据最大延迟 = `revalidate`秒 + 重新生成所需时间。若重新生成失败，旧版本HTML将继续提供服务，不会出现503。
 
-`fallback: 'blocking'` 与 ISR 结合使用时，可实现"仅构建热门页面，长尾页面首次访问时按需生成"的策略，兼顾构建速度与全量覆盖。
+### ISR的按需重验证（On-Demand Revalidation）
+
+Next.js 12.1版本引入了`revalidatePath`和`revalidateTag`API，允许通过Webhook触发指定页面的立即重新生成，绕过时间限制：
+
+```javascript
+// pages/api/revalidate.js
+export default async function handler(req, res) {
+  await res.revalidate('/products/42'); // 立即使该页面的缓存失效
+  return res.json({ revalidated: true });
+}
+```
+
+CMS（如Contentful、Sanity）可在内容发布时调用此API，实现**内容更新后秒级反映**到生产环境，同时保持静态文件的CDN分发优势。
 
 ---
 
 ## 实际应用
 
-**AI 内容展示平台**：假设一个平台每天由 AI 批量生成 500 篇文章，若使用纯 SSG，每次全量构建需渲染历史所有文章（可能超过 10 万篇），构建时间不可接受。使用 ISR + `fallback: 'blocking'` 的方案：仅在构建时生成最近 1000 篇，其余页面首次访问时按需生成并永久缓存；新增文章通过 CMS Webhook 触发 On-Demand ISR 更新。
+**博客与文档站点（纯SSG最佳场景）**：内容更新频率低（每周一次），所有页面在每次Git推送后重新构建。Gatsby框架专门针对此场景优化，其GraphQL数据层在构建时统一聚合所有数据源。构建一个1000篇文章的博客通常耗时30-120秒，生成的HTML可部署到Vercel、Netlify等平台的边缘CDN节点。
 
-**电商产品详情页**：商品价格和库存频繁变动，但商品描述、图片等内容相对稳定。可将静态内容用 SSG/ISR 渲染（`revalidate: 300`），而价格和库存在客户端通过 SWR 或 React Query 实时请求独立的 API 端点，实现"静态骨架 + 动态数据"的混合策略。
+**电商产品页面（ISR典型场景）**：某电商平台有50万个SKU页面，不可能在每次价格变动时全量重建。设置`revalidate: 30`意味着价格更新最多30秒后反映到用户页面，同时首字节时间（TTFB）保持在50ms以内（因为CDN命中）。与SSR相比，ISR在高并发场景下可将服务器负载降低90%以上，因为大多数请求直接由CDN响应。
 
-**技术文档站**：Nextra（基于 Next.js 的文档框架）使用纯 SSG，将 Markdown 文件在构建时全量转换为 HTML。文档更新通过 CI/CD 触发全量重新构建，因文档页数有限（通常不超过数百页），构建时间在 30 秒内，纯 SSG 足够。
+**新闻媒体站点**：突发新闻文章使用按需重验证（On-Demand ISR），记者点击"发布"按钮时CMS发送Webhook，触发`revalidatePath('/news/breaking-story')`，文章15秒内在全球CDN刷新。常规文章使用`revalidate: 300`（5分钟）的定时策略。
 
 ---
 
 ## 常见误区
 
-**误区一：ISR 等于"定时刷新"**  
-`revalidate: 60` 并不意味着每 60 秒服务器就主动重新构建页面。实际上，重新构建只在"60 秒过期后有真实用户请求到来"时才被触发。若某页面 60 秒内无任何访问，不会消耗任何服务端资源。这是 ISR 与定时任务（cron job）的本质区别。
+**误区一：认为SSG页面完全不能有动态内容**。SSG只是HTML骨架是静态的，页面在浏览器中完成hydration后，仍然可以通过客户端`fetch`获取实时数据。典型模式是：用SSG生成产品页面的静态骨架（标题、描述、图片），再用`useEffect`客户端请求实时库存数量。这种"静态骨架+动态片段"模式不需要ISR也能解决部分动态需求。
 
-**误区二：SSG 页面完全不支持动态内容**  
-SSG 只是服务端渲染部分静态化，客户端 Hydration 后页面是完整的 React 应用。个性化内容（用户信息、购物车）、实时数据（股价、在线人数）完全可以在客户端通过 API 请求填充。误将 SSG 与"纯静态无交互"画等号会导致不必要的架构妥协。
+**误区二：混淆ISR的`revalidate`与HTTP缓存的`max-age`**。`revalidate: 60`不等于设置`Cache-Control: max-age=60`。ISR的60秒是**服务器端**判断是否触发后台重生成的阈值，Next.js实际设置的HTTP响应头是`s-maxage=60, stale-while-revalidate`，允许CDN在超期后继续服务旧内容同时后台刷新。直接修改`Cache-Control`响应头可能破坏ISR的缓存行为。
 
-**误区三：ISR 在所有部署环境均可用**  
-ISR 的 On-Demand 重验证和后台再生成依赖运行时 Node.js 服务器（或 Vercel 的 Edge Runtime）。若将 Next.js 项目导出为纯静态（`next export`），则 ISR 特性完全失效，`revalidate` 字段会被忽略。部署至 Netlify、AWS S3 等纯静态托管时，需确认平台是否支持 Next.js 的 ISR 运行时；Vercel 原生支持，其他平台需额外适配。
+**误区三：认为ISR可以替代所有SSR场景**。ISR无法处理**用户个性化内容**（如"您的购物车"）和需要请求时认证的页面。`getStaticProps`中无法访问请求的Cookie或Authorization Header，因此用户专属页面必须使用SSR（`getServerSideProps`）或客户端渲染。ISR的适用条件是页面内容对所有用户相同但需要定期更新。
 
 ---
 
 ## 知识关联
 
-**与 SSR 的关系**：SSR 在每次 HTTP 请求时执行 `getServerSideProps`，适合需要请求级别数据（如鉴权后的个人化内容）的页面；SSG 在构建时执行 `getStaticProps`，适合内容对所有用户一致的页面。ISR 是二者之间的折衷——内容具有时效性但不需要毫秒级实时更新时，ISR 是比 SSR 性能更优的选择，因为命中缓存的 ISR 页面响应时间与纯静态相同。
+**与SSR的关系**：SSR（`getServerSideProps`）在每次请求时执行数据获取，TTFB通常为200-500ms；SSG+ISR在缓存命中时TTFB为10-50ms，但代价是数据存在`revalidate`秒的延迟窗口。Next.js允许同一项目中不同页面混用SSR、SSG和ISR，选择依据是"数据更新频率"和"是否需要请求级别的上下文"。
 
-**与打包工具（Webpack/Vite）的关系**：Webpack（Next.js 默认）和 Vite（Nuxt 3、Astro 等框架采用）在 SSG 构建阶段负责模块打包、代码分割和资产优化。SSG 的构建性能直接受打包工具影响：Next.js 13+ 引入基于 Rust 的 Turbopack 将大型站点的 SSG 构建速度提升约 10 倍，解决了万级页面构建缓慢的瓶颈。理解打包工具的 Tree Shaking 和 Code Splitting 机制，有助于优化 SSG 输出的单页 JavaScript Bundle 体积，进而提升 Hydration 速度。
+**与Webpack/Vite的关系**：SSG依赖打包工具完成构建时代码分割。Vite在开发模式使用ESM按需编译，但`vite build`时生成的静态资源哈希名称（如`index.abc123.js`）使得HTML可以设置极长的CDN缓存TTL（通常1年），与ISR的HTML层短缓存形成配合——JS/CSS永久缓存，HTML层按`revalidate`周期刷新。
+
+**框架实现差异**：Astro框架的SSG默认输出0KB JavaScript的纯HTML，其"孤岛架构"（Islands Architecture）允许页面中单个交互组件hydrate而非整页hydrate，与Next.js ISR的整页重生成策略形成对比。Nuxt 3通过`useFetch`的`server: true`选项和`nitro`引擎实现类似ISR的缓存行为，配置API为`routeRules: { '/products/**': { swr: 60 } }`。

@@ -20,67 +20,85 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 布局引擎
 
 ## 概述
 
-布局引擎（Layout Engine）是UI系统中负责自动计算控件位置与尺寸的算法模块，它根据约束规则、容器尺寸和子元素属性，在运行时或编辑时动态确定每个UI节点的矩形边界（RectTransform）。与手动锚点定位不同，布局引擎可在分辨率或内容变化时无需人工干预地重新排列所有元素。
+布局引擎是UI系统中负责计算并分配各个元素位置、尺寸的算法模块，它接收一组声明式的约束条件（如"子元素等宽排列"或"溢出时换行"），输出每个节点的最终像素坐标和宽高值。与手动锚点定位不同，布局引擎可以在运行时动态响应内容变化，使一个列表容器在子元素从3个增加到30个时，无需任何脚本干预即可自动重新排列。
 
-布局引擎的现代形态起源于CSS的盒模型（Box Model，1996年W3C规范），Flexbox算法于2009年首次提出草案，彻底改变了一维弹性排列的处理方式。游戏UI领域随后将这些思想引入：Unity从4.6版本起在UGUI中加入了`LayoutGroup`组件体系，Unreal Engine的UMG则采用了与Slate框架一脉相承的`Slot`插槽约束模型。
+布局引擎的算法体系主要源自Web领域。CSS Flexbox规范于2009年由W3C提出草案，2012年定稿为现代版本；CSS Grid则于2017年正式成为W3C推荐标准。游戏引擎厂商随后将这些算法移植到各自的UI框架中——Unity的UI Toolkit底层采用了Yoga引擎（Facebook开发的开源Flexbox实现，也被React Native使用），而Unity的旧系统UGUI则通过`HorizontalLayoutGroup`、`VerticalLayoutGroup`、`GridLayoutGroup`三个组件提供了功能更有限的布局计算。
 
-布局引擎在游戏UI中的重要性体现在两个具体场景：一是背包、技能列表等动态数量的格子型界面，若手动排列则每次数据更新都需重算坐标；二是多分辨率适配，当目标平台从1080p切换到720p时，引擎需自动收缩子元素间距而不产生溢出或留白。
+理解布局引擎对游戏开发者的核心价值在于：现代手游需要适配从4:3到21:9的数十种分辨率比例，背包格子、技能栏、对话气泡等动态内容的数量随存档状态变化，手动计算每个元素坐标既无法维护也无法扩展。布局引擎将"元素应该如何排列"的规则与"元素最终在哪里"的结果分离开来，这正是它在游戏UI工程中的根本意义。
 
 ---
 
 ## 核心原理
 
-### 一维弹性布局（Flexbox模型）
+### Flexbox的单轴线性分配算法
 
-Flexbox的核心公式是**弹性分配公式**：每个子元素获得的额外空间 = `(容器剩余空间 × 该元素flex-grow值) ÷ 所有子元素flex-grow之和`。例如，容器宽度600px，三个子元素flex-grow分别为1、2、1，则剩余空间按1:2:1分配。Unity的`HorizontalLayoutGroup`实现了类似逻辑，通过`preferredWidth`与`flexibleWidth`两个接口分别对应Flexbox的基础尺寸和弹性系数。
+Flexbox沿主轴（main axis）按顺序排列子元素，核心公式是**自由空间（free space）的计算与分配**：
 
-Flexbox排列方向由主轴（Main Axis）与交叉轴（Cross Axis）决定。主轴控制子元素的堆叠方向（Row或Column），交叉轴控制单行内的对齐方式（Align-Items）。多行场景下，`flex-wrap: wrap`触发换行逻辑，此时交叉轴上会出现行间距`align-content`计算，这是Flexbox性能开销最高的代码路径之一。
+```
+free_space = 容器主轴尺寸 - Σ(子元素基础尺寸 + margin)
+```
 
-### 二维网格布局（Grid模型）
+当`free_space > 0`时，引擎遍历所有`flex-grow`不为0的子元素，按各自`flex-grow`值的比例分配多余空间；当`free_space < 0`时，按`flex-shrink × basis`的加权比例收缩元素。Unity UI Toolkit中对应的USS属性是`flex-grow`、`flex-shrink`和`flex-basis`，其计算过程与标准Yoga算法完全一致，包含多轮迭代以处理`min-width`/`max-width`约束冲突。
 
-CSS Grid引入了**显式轨道**（Explicit Track）概念：开发者用`grid-template-columns: 100px 1fr 2fr`声明三列，其中`fr`（fraction unit）是网格专属单位，表示剩余空间的分数份额，计算方式与flex-grow完全一致。游戏UI中等价实现出现在Unity的`GridLayoutGroup`，其`cellSize`固定尺寸、`spacing`间距、`constraint`约束（固定列数或行数）共同构成一个简化版二维网格。
+当`flex-wrap: wrap`开启时，算法在主轴上尝试放置元素，一旦累计宽度超过容器宽度就新开一条交叉轴行（line），整个容器高度由所有行高求和决定。这个换行决策发生在布局树的**测量阶段（measure pass）**，早于最终位置写入的**布局阶段（layout pass）**。
 
-完整Grid模型还支持**区域命名**（`grid-area`）和**跨轨道合并**（`grid-column: 1 / 3`），这允许一个元素跨越多列，是制作复杂HUD仪表盘布局的关键特性。Cocos Creator 3.x在其`Layout`组件中尚未原生支持跨轨道，开发者需要手动嵌套多层`Layout`节点来模拟此行为。
+### 网格布局的双轴轨道系统
 
-### 堆栈布局（Stack/Overlay）
+CSS Grid和UGUI的`GridLayoutGroup`都将容器划分为由行轨道（row tracks）和列轨道（column tracks）组成的二维网格。Unity的`GridLayoutGroup`使用固定轨道尺寸——所有格子的`cellSize`相同，因此算法极为简单：格子在第`n`个位置的坐标为：
 
-堆栈布局不在主轴方向排列子元素，而是让所有子元素占据相同的矩形区域并按Z顺序叠加。SwiftUI的`ZStack`和Unity的`Canvas`子画布均属于此类。其布局计算的关键是**尺寸协商**（Size Negotiation）：父节点询问每个子节点的`intrinsicContentSize`，然后取所有子节点中最大宽度和最大高度作为自身尺寸，这与Flexbox/Grid取主轴累加、交叉轴取最大的逻辑截然不同。
+```
+column = n % columnCount
+row    = n / columnCount  (整除)
+x = startX + column × (cellWidth + spacingX)
+y = startY + row    × (cellHeight + spacingY)
+```
 
-### 约束求解与脏标记机制
+UI Toolkit的Grid则支持`fr`单位（fraction unit），`1fr`表示占可用空间的一份，三列定义为`1fr 2fr 1fr`时中间列宽度恰好是两侧的两倍。这种分数轨道的计算先减去固定轨道和gap占用的空间，再将剩余空间按`fr`总数等分。
 
-布局引擎不在每帧全量重算，而是通过**脏标记（Dirty Flag）**机制优化性能。当某个节点的尺寸或内容发生变化时，引擎将该节点及其所有祖先节点标记为"布局脏"。Unity UGUI在`LayoutRebuilder.MarkLayoutForRebuild()`中实现此逻辑，并将脏节点统一收集到`CanvasUpdateRegistry`队列，在`LateUpdate`阶段批量执行从根到叶的**两遍布局（Two-Pass Layout）**：第一遍自底向上收集子节点尺寸，第二遍自顶向下分配父节点空间。
+### 测量-布局两遍树遍历
+
+无论是Yoga（UI Toolkit）还是UGUI的LayoutGroup，布局引擎都对UI树执行**两遍深度遍历**：
+
+1. **测量遍历（Measure Pass）**：从叶节点自底向上传播，每个节点根据自身内容（文字行数、图片原始尺寸）和父节点给定的可用空间返回自己的期望尺寸（`desiredWidth`/`desiredHeight`）。Unity中实现了`ILayoutElement`接口的组件（如`Text`、`Image`）在此阶段提供数据。
+
+2. **布局遍历（Layout Pass）**：从根节点自顶向下传播，父节点根据子节点的测量结果和自身布局规则，给每个子节点分配最终的`Rect`（x, y, width, height）。实现了`ILayoutController`接口的组件（如`HorizontalLayoutGroup`）在此阶段写入数据。
+
+UGUI通过`LayoutRebuilder.MarkLayoutForRebuild()`将脏标记节点加入重建队列，在每帧`LateUpdate`阶段统一执行，避免同一帧内多次触发布局导致的性能抖动。
 
 ---
 
 ## 实际应用
 
-**动态背包格子界面**：使用`GridLayoutGroup`配合对象池，当玩家拾取道具时只需将新`Item`实例化并加入容器，`GridLayoutGroup`自动按4列×N行排列，`ConstraintCount = 4`参数保证列数固定。无需任何手动坐标赋值。
+**背包格子动态扩展**：游戏中背包格子数量随玩家解锁而增加，使用`GridLayoutGroup`配置`cellSize=(80,80)`、`spacing=(8,8)`、`constraint=FixedColumnCount(5)`，当通过数据绑定向容器添加第6个子对象时，第二行格子的Y坐标由引擎自动计算，无需任何手动定位代码。
 
-**聊天消息气泡**：每条消息气泡的宽度随文字内容变化（由文字层级系统的`preferredWidth`驱动），高度同理。`VerticalLayoutGroup`通过读取每个子节点的`LayoutElement.preferredHeight`自动完成纵向堆叠，新消息追加后触发一次布局重建，时间复杂度为O(n)，n为当前可见消息数量。
+**聊天气泡自适应文字**：消息气泡需要随文字长度伸缩。在UI Toolkit中，将气泡容器设为`flex-direction: column`、文字Label设为`white-space: normal`（允许换行），再配合`ContentSizeFitter`（UGUI）或让父容器`height: auto`（UI Toolkit），布局引擎的测量阶段会先获取Text的`preferredHeight`（UGUI TextMeshPro在折行后自动更新此值），再撑开气泡背景图。
 
-**响应式技能栏**：玩家切换职业导致技能数量从4变为6，使用`HorizontalLayoutGroup`的`childForceExpandWidth = true`后，6个技能格会均分总宽度480px，每格80px，无需任何代码干预。
+**横竖屏自适应导航栏**：底部导航栏在竖屏时水平排列图标（`flex-direction: row`），横屏时改为侧边垂直列（`flex-direction: column`）。由于布局规则是声明式的，切换屏幕方向时只需更改一个USS类，引擎重新执行两遍树遍历即可完成整个导航栏的重排，图标间距和尺寸通过`flex: 1`自动均分。
 
 ---
 
 ## 常见误区
 
-**误区一：认为布局引擎每帧都在运行**。实际上Unity UGUI仅在脏标记触发后才执行布局重建。误解会导致开发者错误地认为频繁修改`RectTransform.sizeDelta`会引起性能问题——真正的开销来源是在同一帧内反复调用`MarkLayoutForRebuild()`，导致同一节点被多次加入重建队列。
+**误区一：认为`RectTransform`的Anchors等价于布局引擎**。锚点系统是一种相对坐标的*手动定位*机制，它只是在父容器尺寸变化时等比例移动或拉伸元素，不能处理子元素数量变化、内容尺寸未知等场景。LayoutGroup才是自动布局引擎，二者在UGUI中必须配合使用（LayoutGroup控制子元素，子元素的RectTransform由引擎接管）。
 
-**误区二：混淆`preferredWidth`与`minWidth`的语义**。`minWidth`是硬约束，布局引擎保证子元素宽度永远不低于此值；`preferredWidth`是软约束，容器空间不足时会被压缩至`minWidth`。若将两者都设为相同数值，则等同于固定宽度，此时`flexibleWidth`参数完全失效，弹性布局退化为固定布局。
+**误区二：频繁调用`Canvas.ForceUpdateCanvases()`触发布局**。部分开发者在协程中连续修改多个子元素后立即调用此方法以获取最新尺寸，但这会绕过UGUI的批处理脏标记机制，在同一帧内触发多次完整的布局重建，在含有数百元素的复杂UI上可造成明显的帧耗时峰值。正确做法是等待`LateUpdate`后的帧或使用`LayoutRebuilder.ForceRebuildLayoutImmediate()`仅对特定节点重建。
 
-**误区三：在运行时频繁启用/禁用`LayoutGroup`组件**。部分开发者为了临时固定布局而`enabled = false`，再通过代码手动调整位置。这会绕过脏标记系统，导致下次重新启用`LayoutGroup`时出现单帧布局闪烁，因为子节点位置在禁用期间被外部修改，与引擎预期状态不一致。
+**误区三：认为Flexbox的`justify-content`和`align-items`都作用于同一轴**。`justify-content`控制主轴（main axis）上的元素分布，`align-items`控制交叉轴（cross axis）上的对齐，二者操作的轴方向由`flex-direction`决定而非固定的水平/垂直。当`flex-direction: column`时，`justify-content: space-between`实现的是垂直方向上的均匀分布，这是初学者混淆最频繁的设置。
 
 ---
 
 ## 知识关联
 
-**与数据绑定模式的关联**：数据绑定将后端数据变化（如背包道具列表更新）转化为UI节点的增删操作，布局引擎则接收这些结构变化并重新计算空间分配。二者的协作点是`MarkLayoutForRebuild()`调用时机——数据绑定层应在完成所有DOM变更后统一触发一次重建，而非每绑定一个属性就触发一次，否则会造成多次布局重算。
+**与数据绑定模式的关系**：数据绑定负责决定向容器中添加或移除哪些子元素，布局引擎负责在子元素集合确定后计算它们的位置。二者构成游戏动态UI的两层机制——绑定层驱动DOM树结构变化，布局层响应DOM变化重新计算几何信息。理解数据绑定如何触发`MarkLayoutForRebuild`是分析UI性能问题的前提。
 
-**与UGUI的关联**：UGUI的`RectTransform`是布局引擎的输出目标，`ILayoutElement`、`ILayoutController`两个接口是引擎的扩展点。理解`LayoutGroup`如何通过这两个接口与`ContentSizeFitter`协作，是实现自定义布局算法（如六边形网格排列）的必要前提。
+**与UGUI组件体系的关系**：UGUI中的布局引擎并非一个独立模块，而是通过`ILayoutElement`、`ILayoutController`、`ILayoutSelfController`三个接口分散在各组件中实现的。`ContentSizeFitter`实现了`ILayoutSelfController`，可让元素根据测量阶段结果自动设置自身尺寸，与布局组的两遍遍历密切协作。
 
-**与UI渲染管线的关联**：布局引擎输出的是几何位置数据（顶点坐标），这些数据随后进入UI渲染管线的网格合批（Mesh Batching）阶段。布局重建若触发了`RectTransform`变化，会导致该Canvas下的所有UI元素重新合批，产生`Canvas.BuildBatch`的CPU开销，这是理解渲染管线性能瓶颈的关键上游因素。
+**与UI渲染管线的衔接**：布局引擎的输出（每个元素的最终`Rect`）是UI渲染管线的直接输入。渲染管线根据这些矩形数据生成顶点网格（mesh），再提交到GPU批处理。布局引擎在CPU侧完成计算后，若元素的位置或尺寸发生变化，则对应的Canvas会被标记为`dirty`，触发下一帧的网格重建——这是理解UI渲染管线中"为什么频繁布局变更会导致Draw Call增加"的关键路径。

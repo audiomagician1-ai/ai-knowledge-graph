@@ -20,101 +20,97 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 测试基础
 
 ## 概述
 
-软件测试是通过执行程序来验证其行为是否符合预期规格的系统性方法。在AI工程中，测试尤为关键，因为模型推理代码、数据预处理管道和API接口的任何缺陷都可能导致错误的预测结果在生产环境中悄然传播。与普通业务软件不同，AI系统的错误往往不会触发崩溃，而是以精度下降的形式静默失败，使得自动化测试成为质量保障的唯一可靠手段。
+软件测试是通过执行程序来发现代码缺陷的系统性过程。在AI工程的编程实践中，测试分为多个层级：**单元测试（Unit Test）**针对最小可测试单元（通常是单个函数或类方法），**集成测试（Integration Test）**验证多个模块协同工作的正确性，**端到端测试（E2E Test）**则模拟真实用户的完整操作流程。理解这三个层级的边界，是写出有效测试代码的前提。
 
-测试作为工程规范的历史可追溯至1957年，D.D. McCracken在《Digital Computer Programming》中首次系统描述了程序验证流程。测试驱动开发（TDD）作为现代方法论，由Kent Beck在1999年出版的《Extreme Programming Explained》中正式提出，其核心循环被概括为"Red-Green-Refactor"三步法：先写一个必然失败的测试（Red），再写最少代码使其通过（Green），最后重构代码（Refactor）。
+测试驱动开发（Test-Driven Development，TDD）由Kent Beck在2003年出版的《Test-Driven Development: By Example》中系统化阐述，其核心循环被称为"红-绿-重构（Red-Green-Refactor）"：先写一个必然失败的测试（红），再写最少量的代码使测试通过（绿），最后在不改变行为的前提下改善代码结构（重构）。这个循环通常每次持续不超过10分钟。
 
-Python生态中，`unittest`模块自Python 2.1起内置于标准库，而`pytest`框架因其更简洁的语法和强大的插件体系成为当前行业主流。一个项目如果测试覆盖率低于60%，引入新功能时回归缺陷的概率会显著上升；而覆盖率达到80%以上的项目，其缺陷逃逸率（Bug Escape Rate）通常降低至未测试项目的1/3以下。
+在AI工程项目中，测试尤为关键，因为数据预处理函数、特征工程管道和模型推理接口的错误往往难以通过肉眼排查。一个未经测试的数据清洗函数可能静默地将`NaN`替换为0，导致模型训练结果偏差，而这类缺陷在没有自动化测试的情况下可能在生产环境中潜伏数周。
 
 ---
 
 ## 核心原理
 
-### 单元测试：隔离最小可测单元
+### 单元测试的结构：AAA模式
 
-单元测试针对单个函数或类方法进行验证，其关键特征是**隔离性**：被测单元不依赖外部数据库、网络或文件系统。隔离通过"桩"（Stub）和"模拟对象"（Mock）实现。例如，测试一个调用OpenAI API的`generate_summary(text)`函数时，不应真实发送HTTP请求，而应使用`unittest.mock.patch`替换`openai.ChatCompletion.create`，让其返回预设的假响应。
-
-```python
-from unittest.mock import patch
-import pytest
-from my_module import generate_summary
-
-def test_generate_summary_returns_string():
-    fake_response = {"choices": [{"message": {"content": "摘要内容"}}]}
-    with patch("my_module.openai.ChatCompletion.create", return_value=fake_response):
-        result = generate_summary("这是一段很长的文章...")
-    assert isinstance(result, str)
-    assert len(result) > 0
-```
-
-一个标准单元测试遵循**AAA模式**：Arrange（准备测试数据和依赖）、Act（调用被测函数）、Assert（断言结果）。每个测试函数应只包含一个逻辑断言点，否则当测试失败时，难以定位是哪个断言触发了错误。
-
-### 集成测试：验证模块协作边界
-
-集成测试验证两个或多个模块组合工作时的行为，允许真实依赖存在，但通常使用测试专用环境（如SQLite内存数据库替代生产PostgreSQL）。集成测试的典型场景是验证数据预处理函数和特征工程函数的组合输出：
+单元测试通常遵循**Arrange-Act-Assert（准备-执行-断言）**三段式结构。以Python的`unittest`框架为例：
 
 ```python
-def test_pipeline_integration():
-    raw_data = load_csv("tests/fixtures/sample_10rows.csv")
-    cleaned = clean_missing_values(raw_data)
-    features = extract_features(cleaned)
-    # 验证整个管道输出的列数和数据类型
-    assert features.shape[1] == 15
-    assert features.dtypes["age"] == float
+import unittest
+
+def add(a, b):
+    return a + b
+
+class TestAddFunction(unittest.TestCase):
+    def test_positive_numbers(self):
+        # Arrange
+        x, y = 3, 5
+        # Act
+        result = add(x, y)
+        # Assert
+        self.assertEqual(result, 8)
 ```
 
-集成测试的执行速度通常比单元测试慢10到100倍，因此在CI/CD流水线中，通常配置单元测试在每次commit时运行，集成测试仅在合并到主分支前运行。
+`assertEqual`、`assertTrue`、`assertRaises`是最常用的三类断言方法。其中`assertRaises`专门用于验证函数在异常输入下是否正确抛出错误，这与错误处理（try/except）的使用场景直接相关——测试代码验证的正是生产代码的异常分支是否被正确触发。
 
-### 测试驱动开发（TDD）：Red-Green-Refactor循环
+### 测试覆盖率与其局限
 
-TDD要求在写任何实现代码之前先写测试。以实现一个`normalize_score(score, min_val, max_val)`函数为例，TDD流程如下：
+**代码覆盖率（Code Coverage）**用公式表示为：
 
-**第一步（Red）**：写出尚未实现的测试，运行后确认报`NameError`或`AssertionError`：
-```python
-def test_normalize_score_range():
-    assert normalize_score(5, 0, 10) == 0.5
-    assert normalize_score(0, 0, 10) == 0.0
-    assert normalize_score(10, 0, 10) == 1.0
-```
+$$\text{覆盖率} = \frac{\text{被测试执行的代码行数}}{\text{总代码行数}} \times 100\%$$
 
-**第二步（Green）**：写出最简单的实现，公式为 `(score - min_val) / (max_val - min_val)`，使测试通过。
+Python的`coverage.py`工具可以生成详细的覆盖率报告。行业普遍将80%视为可接受的最低覆盖率门槛，但覆盖率100%并不等于代码无缺陷——测试可以执行到某一行代码，但如果断言写错，依然无法发现逻辑错误。例如，`assert result >= 0`会让一个返回`-1`的加法函数"通过"测试。
 
-**第三步（Refactor）**：添加边界条件处理（如`max_val == min_val`时抛出`ValueError`），并更新测试覆盖此边界情况。
+### 集成测试与模块边界
 
-TDD的核心价值不在于测试本身，而在于**迫使开发者在编码前明确函数的输入输出契约**，这对设计清晰的API接口有直接的推动作用。
+集成测试验证的是**模块接口的契约**，而非模块内部实现。当你的AI推理模块依赖一个数据库读取模块时，集成测试需要将两者连接起来，验证数据从数据库到推理结果的完整路径是否正确。
+
+在集成测试中，**Mock（模拟对象）**是隔离外部依赖的关键工具。Python的`unittest.mock.patch`可以将真实的数据库连接替换为返回固定数据的假对象，使测试在没有真实数据库的环境中稳定运行。这种隔离保证了集成测试失败时，问题一定出在被测模块的集成逻辑上，而非外部服务的可用性上。
+
+### TDD的红-绿-重构实践
+
+TDD要求测试代码**先于**生产代码存在。以实现一个文本截断函数为例：
+
+1. **红**：写`test_truncate_at_10_chars`，此时`truncate()`函数不存在，测试必然报错（`NameError`）
+2. **绿**：实现`truncate(text, limit): return text[:limit]`，测试通过
+3. **重构**：添加边界检查（`limit`为负数时的处理），同时保持测试继续通过
+
+每次重构后重新运行所有测试，是保证重构安全性的唯一机制。
 
 ---
 
 ## 实际应用
 
-**AI数据管道测试**：在构建训练数据管道时，应为每个变换步骤编写单元测试，验证输出张量的`shape`、`dtype`和值域范围。例如，图像归一化函数应通过测试确认输出值域严格在`[0.0, 1.0]`区间内，使用`assert (output >= 0).all() and (output <= 1).all()`。
+**AI数据预处理管道的单元测试**：假设有一个函数`normalize_scores(scores)`将分数列表归一化到`[0, 1]`区间。单元测试应覆盖四种情况：正常输入、全相同值（分母为零的边界情况）、空列表、含`None`的列表。其中分母为零的情况直接对应生产代码中必须存在的`try/except ZeroDivisionError`分支。
 
-**参数化测试（Parametrize）**：`pytest`的`@pytest.mark.parametrize`装饰器允许用一组输入-输出对运行同一个测试逻辑，避免复制粘贴。测试一个情感分析函数时，可以将10组正负样本作为参数传入，用4行代码替代40行重复测试代码。
+**pytest框架的参数化测试**：使用`@pytest.mark.parametrize`装饰器，可以用一个测试函数覆盖多组输入输出对，避免重复编写结构相同的测试方法。例如验证`tokenize()`函数对中文、英文、混合文本三种输入分别返回正确的token列表，只需一个测试函数配合三组参数即可完成。
 
-**测试固件（Fixture）**：`pytest`的`@pytest.fixture`用于在多个测试间共享初始化逻辑，例如只创建一次数据库连接或只加载一次大型嵌入模型，通过`scope="module"`参数控制其生命周期，避免重复初始化的性能开销。
+**集成测试的真实场景**：在AI推理服务中，集成测试通常覆盖"接收HTTP请求 → 调用预处理模块 → 加载模型 → 返回预测结果"这条完整链路。使用`requests-mock`库可以在不启动真实HTTP服务器的情况下，验证各模块之间的数据格式协议是否匹配。
 
 ---
 
 ## 常见误区
 
-**误区一：测试覆盖率100%等于代码无缺陷。**
-覆盖率只衡量哪些代码行被执行过，不衡量执行时是否用了有意义的边界值。一个函数即使每行都被覆盖，若测试只使用正常输入，仍无法捕获负数输入、空字符串或`None`值导致的错误。正确做法是结合**边界值分析**（Boundary Value Analysis）选择测试用例，例如对接受1到100整数的函数，必须测试0、1、100、101四个边界点。
+**误区1：测试代码不需要维护**
+许多开发者将测试代码视为一次性脚本，不按函数命名规范命名，不处理测试数据的清理（teardown）。实际上，一个测试数据库连接未在`tearDown()`中关闭，会导致后续测试因端口占用而随机失败，这类"脆弱测试（Flaky Test）"比没有测试更有害，因为它们会让团队逐渐停止信任测试结果。
 
-**误区二：集成测试可以完全替代单元测试。**
-集成测试失败时，错误可能来自任意一个参与模块，定位成本高。单元测试在毫秒级别运行并精确指向单个函数，两者粒度不同、目的不同，无法互相取代。测试金字塔（Test Pyramid）模型建议单元测试数量占70%，集成测试占20%，端到端测试占10%。
+**误区2：集成测试可以完全替代单元测试**
+集成测试的执行成本（启动时间、依赖服务数量）远高于单元测试。一个包含200个单元测试的项目可以在3秒内完成全部测试；同等数量的集成测试可能需要5分钟。如果开发者每次提交代码都需要等待5分钟，他们会减少测试频率，测试保护网就会失效。**测试金字塔**原则建议：单元测试数量最多，集成测试次之，E2E测试最少。
 
-**误区三：TDD会降低开发速度。**
-短期内TDD确实需要额外时间编写测试，但IBM和Microsoft在2008年发布的联合研究显示，采用TDD的团队代码缺陷密度降低了40%到90%，而开发时间仅增加了15%到35%。在AI工程项目中，修复一个逃逸到生产环境的数据处理Bug的成本，远高于编写对应测试所需的时间。
+**误区3：TDD会降低开发速度**
+短期来看，TDD确实会让单个功能的首次开发时间增加约15-35%。但研究（Microsoft Research 2008年的"Realizing quality improvement through test driven development"）表明，采用TDD的团队在交付后的缺陷密度降低了40-90%，因此总体调试和修复时间显著减少。
 
 ---
 
 ## 知识关联
 
-**前置知识的作用**：理解`函数`是编写单元测试的前提，因为测试的最小单元就是一个具有明确输入输出的函数。`模块与导入`机制决定了如何组织`tests/`目录以及如何在测试文件中导入被测模块。`错误处理(try/catch)`知识在测试中用于验证异常行为，`pytest.raises(ValueError)`的内部原理正是捕获并断言特定异常类型被抛出。
+**与前置概念的连接**：单元测试的测试对象就是**函数**——每个测试用例针对一个函数的特定行为。**模块与导入**决定了测试文件如何引用被测代码，Python中`from mymodule import my_function`是测试文件的标准起点。**错误处理（try/except）**与`assertRaises`形成直接对应关系：生产代码用try/except处理异常，测试代码用`assertRaises`验证异常处理逻辑是否被正确触发。
 
-**后续概念的衔接**：**前端测试**将本文的单元测试和集成测试原理扩展到组件渲染和用户交互场景，引入`Jest`和`Testing Library`等工具，核心断言模式（Arrange-Act-Assert）与本文完全相同。**契约式设计**（Design by Contract）将本文中TDD隐式定义的"输入输出约定"升级为显式的前置条件（Precondition）和后置条件（Postcondition），是测试驱动思想在架构层面的延伸。
+**通向后续概念**：掌握单元测试和集成测试的基本框架后，**前端测试**引入了DOM操作验证、组件渲染测试等浏览器环境特有的挑战，需要Jest、Testing Library等专门工具。**契约式设计（Design by Contract）**则将测试中的"前置条件-后置条件"思想内化为代码本身的一部分，用`assert`语句直接在函数内声明输入输出的约束，是测试思维从测试文件向生产代码的延伸。

@@ -20,74 +20,102 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # 名词
 
 ## 概述
 
-名词（Noun）是英语中用来命名人、地点、事物、概念或状态的词类。英语名词最基本的语法功能是充当句子的主语、宾语或表语，例如 *The **dog** barked* 中，"dog"作主语；*She loves **music*** 中，"music"作宾语。名词在英语句子中通常与冠词（a/an/the）或其他限定词搭配出现，这一点与汉语名词存在根本性区别——汉语名词本身不发生形态变化，而英语名词有数（Number）的形态变化。
+名词（Noun）是英语中用来命名人、地点、事物、概念或状态的词类。在英语句子中，名词最常见的功能是充当主语（subject）或宾语（object），例如 *The **dog** barked at the **mailman**.* 中，"dog"是主语，"mailman"是宾语，两者都是名词。英语名词还可以充当表语、同位语或介词宾语，是构建句子骨架不可缺少的元素。
 
-名词这一术语源自拉丁语 *nomen*，意为"名称"，古希腊语法学家亚里士多德早在公元前4世纪便将名词列为独立词类加以研究。在英语语法体系中，名词的核心语法特征有两个：**可数性（Countability）**和**数（Number，即单数/复数）**。正是这两个特征决定了名词与冠词、谓语动词、数量词之间的搭配规则，因此掌握名词分类是学习英语句子结构的必要前提。
+名词这一语法概念可追溯至古希腊语言学家狄奥尼修斯·色雷克斯（Dionysius Thrax）约公元前100年写成的《语法术语》（Téchnē Grammatikḗ），他将名词定义为"带有格变化、表示人或物的词"。英语名词从古英语（Old English，约450–1150年）时期就具有性、数、格变化，但现代英语名词已大幅简化，只保留了**数的变化**（单数/复数）和**所有格变化**（加 *'s*）。
+
+了解名词的分类和变形规则至关重要，因为名词的可数性（countability）直接决定其前面可以用哪些冠词（a/an vs. the vs. 零冠词），名词的单复数形式决定谓语动词的形式（is vs. are），名词的所有格形式则影响句子的修饰结构。这三条语法规则全部以正确识别名词为前提。
+
+---
 
 ## 核心原理
 
-### 一、可数名词与不可数名词
+### 1. 名词的两大类别：可数与不可数
 
-英语名词首先按照**可数性**分为两大类：
+英语名词首先分为**可数名词（countable nouns）**和**不可数名词（uncountable nouns）**两大类，这是英语有别于许多其他语言的重要特征。
 
-**可数名词（Countable Nouns）**指可以被独立计数的实体，有单数和复数两种形式，例如 *book / books*、*child / children*。可数名词单数形式前必须使用冠词或其他限定词（*a book*，而非 ~~book~~）。
+**可数名词**指可以用数字计量、存在单数和复数形式的名词，例如：*a book / two books*、*one idea / three ideas*。可数名词单数前必须有限定词（如 a/an/the/this），不可单独裸用：❌ *I have book.* → ✅ *I have a book.*
 
-**不可数名词（Uncountable Nouns / Mass Nouns）**指在通常语境下不能直接用数字计数的物质、抽象概念或集合概念。常见不可数名词包括物质名词（water、rice、air）、抽象名词（love、advice、knowledge）和某些集体概念（furniture、luggage）。不可数名词在英语中永远使用**单数形式**，其前不可加不定冠词 *a/an*，谓语动词用单数：*The information **is** useful.*（不可说 ~~an information~~ 或 ~~informations~~）。
+**不可数名词**指无法直接用数字计量的名词，通常包括以下几类：
+- **物质名词**：water, rice, air, gold
+- **抽象名词**：love, information, advice, knowledge
+- **集合概念**：furniture, luggage, equipment, homework
 
-部分名词在不同语境下既可数又不可数，意义发生转变：*I'd like a **coffee***.（一杯咖啡，可数）vs. *Coffee is grown in Brazil.*（咖啡作为物质，不可数）。
+不可数名词没有复数形式，前面不加 a/an：❌ *an advice* → ✅ *some advice*；❌ *two furnitures* → ✅ *two pieces of furniture*。
 
-### 二、可数名词的复数变化规则
+### 2. 复数变化的七条规则
 
-英语可数名词从单数变为复数遵循以下规则：
+可数名词从单数变为复数，遵循以下具体规则：
 
-| 情况 | 规则 | 例词 |
+| 规则 | 条件 | 示例 |
 |------|------|------|
-| 一般情况 | 词尾加 **-s** | cat → cats |
-| 以 -s/-x/-z/-ch/-sh 结尾 | 加 **-es** | bus → buses, watch → watches |
-| 辅音字母 + -y 结尾 | 变 **-y** 为 **-i**，加 **-es** | baby → babies |
-| 元音字母 + -y 结尾 | 直接加 **-s** | boy → boys |
-| 部分以 -f/-fe 结尾 | 变 **-f/-fe** 为 **-v**，加 **-es** | leaf → leaves, wife → wives |
-| 以 -o 结尾（有生命） | 加 **-es** | potato → potatoes |
-| 以 -o 结尾（无生命/外来词） | 加 **-s** | photo → photos, piano → pianos |
+| 加 -s | 一般情况 | cat → cats |
+| 加 -es | 词尾为 s/x/z/ch/sh | box → boxes, church → churches |
+| 辅音+y → -ies | 词尾为辅音字母+y | city → cities, baby → babies |
+| 元音+y → 加 -s | 词尾为元音字母+y | day → days, boy → boys |
+| 加 -es 或 -s | 词尾为 -o | potato → potatoes, photo → photos |
+| -f/-fe → -ves | 部分词尾为 f/fe | leaf → leaves, wife → wives |
+| 不规则变化 | 需单独记忆 | man → men, child → children, foot → feet |
 
-**不规则复数**需要单独记忆，共有几种类型：
-- 内部元音变化：man → men，woman → women，foot → feet，tooth → teeth，goose → geese，mouse → mice
-- 完全不规则：child → children，ox → oxen
-- 单复数同形：sheep → sheep，deer → deer，fish → fish（也可 fishes）
+特别注意：以 -f/-fe 结尾的名词并非全部变成 -ves，例如 roof → roofs、cliff → cliffs，必须逐词记忆。
 
-### 三、名词的语义分类
+### 3. 单复数同形与只有复数形式的名词
 
-除可数/不可数之外，名词还按语义分为四类：
+英语中有一类**单复数同形名词**，形式不变但含义随语境变化：*one sheep / three sheep*，*a fish / many fish*（指同种鱼时），*one species / five species*。这类词共约20个常见词，包括 deer、means、series、aircraft 等。
 
-1. **专有名词（Proper Nouns）**：特指某一独一无二的人或地点，首字母必须大写，通常不加冠词，如 *London*、*Shakespeare*、*Monday*。
-2. **普通名词（Common Nouns）**：泛指一类人或事物，如 *city*、*teacher*。
-3. **集体名词（Collective Nouns）**：表示一组个体的集合，如 *team*、*family*、*committee*。在英式英语中，集体名词后谓语可用复数（*The team are playing well.*）；在美式英语中，通常视为整体用单数（*The team is playing well.*）。
-4. **物质名词（Material Nouns）**：表示材料或物质，通常不可数，如 *gold*、*wood*、*cotton*。
+另有一类名词**只有复数形式**，称为"复数恒名词"（pluralia tantum），但并不意味着数量是多个，而是该事物天然呈双件或集合形态：
+- **成对物品**：scissors（剪刀）, trousers（裤子）, glasses（眼镜）, tweezers（镊子）
+- **疾病/学科**：measles（麻疹）, physics（物理学）, economics（经济学）
+
+这些名词谓语用单数还是复数需个别记忆：*Physics **is** my favorite subject.*（学科名词通常接单数动词）；*My glasses **are** broken.*（成对物品接复数动词）。
+
+---
 
 ## 实际应用
 
-**量词短语转化不可数名词**：当需要计量不可数名词时，英语使用"数词 + 量词 + of + 不可数名词"结构，例如：*two pieces of advice*（两条建议）、*three cups of tea*（三杯茶）、*a loaf of bread*（一条面包）。这一结构是处理不可数名词数量表达的标准方式。
+**写作中量化不可数名词**：当需要表达不可数名词的具体数量时，使用"数量词 + of + 不可数名词"结构，称为**分量表达（partitive expression）**：
+- a piece of advice（一条建议）
+- three cups of coffee（三杯咖啡）
+- two loaves of bread（两条面包）
+- a bottle of water（一瓶水）
 
-**主谓一致中的名词数**：名词的单复数直接影响谓语动词形式。*The boy **runs** every day.*（单数名词配单数动词）vs. *The boys **run** every day.*（复数名词配复数动词）。特别注意，以 *-s* 结尾的名词不一定是复数——*mathematics*、*news*、*physics* 均为单数：*The news **is** shocking.*
+**同一词在不同语境下的可数性转变**：许多名词可数性并非固定不变。例如 *paper* 作"纸张"时不可数（*I need some paper.*），但作"论文/报纸"时可数（*She published three papers.*）。同理，*experience* 表"经验"时不可数（*He has a lot of experience.*），表"经历"时可数（*That was an interesting experience.*）。
 
-**可数名词在零冠词复数下表达泛指**：*Dogs are loyal animals.*（狗作为一类动物的泛称，复数无冠词）；而 *A dog is a loyal animal.* 同样表达泛指，用单数不定冠词。
+**新闻标题与正式文书**：英文新闻标题频繁省略冠词，但名词复数规则仍严格遵守，例如 *Scientists Discover New Species of Frog*（注意 species 单复数同形，frog 此处单数表类别）。
+
+---
 
 ## 常见误区
 
-**误区一：认为以 -s 结尾的名词都是复数。**
-*News*（新闻）、*mathematics*（数学）、*series*（系列）等词形虽以 -s 结尾，但属于单数不可数名词或单复数同形名词。*No news **is** good news.*，此句中 news 搭配单数动词 is，不可写成 ~~are~~。
+**误区一：以为所有表示"多"的概念都用复数**
+学生常写出 ❌ *informations*、❌ *homeworks*、❌ *equipments*，但这三个词均为不可数名词，永远没有复数形式。判断一个名词是否可数，不能依赖"多少"的直觉，必须查词典确认。尤其是从汉语翻译过来时，汉语"信息"可以说"三条信息"，但英语 information 绝不能说 *three informations*，而要说 *three pieces of information*。
 
-**误区二：混淆"不可数"与"不重要"，随意将不可数名词加复数。**
-*Information*、*furniture*、*equipment* 是典型的不可数名词，中文里可以说"两条信息""三件家具"，但英语中不可说 ~~informations~~ 或 ~~furnitures~~。正确表达为 *two pieces of information* 和 *three pieces of furniture*。
+**误区二：-s 结尾的名词一定是复数**
+以 -s 结尾的名词不一定是复数。*News*（新闻）、*mathematics*（数学）、*politics*（政治学）、*means*（手段）虽以 -s 结尾，但均接**单数谓语**：*No news **is** good news.*；*Mathematics **requires** logical thinking.*。反之，*people*（人们）、*police*（警察）不以 -s 结尾，却接**复数谓语**：*People **are** waiting outside.*
 
-**误区三：专有名词前误加冠词。**
-人名、地名、语言名称通常不加冠词：~~the China~~、~~the English language~~（此处 the 可加，但 ~~the China~~ 不可）、~~a Beijing~~。但注意，含有普通名词的专有名词需要加定冠词，如 *the United States*、*the Great Wall*。
+**误区三：可数名词单数可以"裸用"**
+受汉语影响，学生常写 ❌ *I am student.* 或 ❌ *She has cat.*。英语可数名词单数前**必须**有限定词（a/an/the/this/my/each 等其中之一），这与汉语"我是学生"不需要冠词截然不同。这一规则无例外，是英语写作中最高频的语法错误之一。
+
+---
 
 ## 知识关联
 
-学习名词之前，需要了解**词性概述**中关于英语八大词类的基本划分，明白名词在句子成分中承担的角色。名词的可数性和单复数变化直接影响后续多个语法点：**冠词（a/an/the）**的选择完全取决于名词是否可数、是否为单数；**所有格**（如 *the boy's book* vs. *the boys' book*）在书写上因名词单复数不同而改变撇号位置；**数量词**（some/any/much/many/few/little）的选择依赖名词可数性——*many books* 对应可数复数，*much water* 对应不可数名词；**主谓一致**规则中，名词单复数是判断谓语动词形式的核心依据。
+**前置知识：词性概述**
+在学习词性概述时已知英语有8大词类，名词是其中数量最多的一类（英语词汇中约60%以上为名词或可用作名词的词）。正确识别名词是本节所有规则的前提——只有确认某个词是名词，才能讨论它是否可数、如何变复数。
+
+**直接延伸：冠词（a/an/the）**
+名词的可数性直接决定冠词的选择：可数名词单数首次提及用 *a/an*，再次提及或特指用 *the*；不可数名词首次提及通常不加冠词，特指时加 *the*。没有对名词可数性的准确判断，冠词选择将无从入手。
+
+**直接延伸：主谓一致**
+名词的单复数形式是主谓一致规则的触发条件。第三人称单数名词作主语时，一般现在时谓语动词必须加 -s（*The child **plays**.* vs. *The children **play**.*）。"复数恒名词"和"单复数同形名词"是主谓一致中难点的直接来源。
+
+**横向关联：数量词与限定词**
+分量表达（a piece of, a cup of）、数量词（many/much, few/little, a lot of）的选择规则，全部依赖名词的可数/不可数分类：*many books*（可数）vs. *much water*（不可数）；*few ideas*（可数）vs. *little time*（不可数）。掌握名词分类是使用这些限定词的基础。

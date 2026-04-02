@@ -20,113 +20,105 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
-# Job System
+
+# Job System（作业系统）
 
 ## 概述
 
-Job System 是 Unity 引擎中用于多线程并行计算的作业调度框架，于 Unity 2018.1 版本随 DOTS（面向数据的技术栈）一同正式引入。其核心设计目标是让开发者能够安全地在工作线程（Worker Thread）上执行计算密集型任务，同时自动处理线程安全问题，避免竞态条件（Race Condition）。
+Job System 是 Unity 引擎中用于多线程并行计算的调度框架，随 Unity 2018.1 正式引入稳定版本，是 Unity DOTS（面向数据的技术栈）三大支柱之一（另外两个为 ECS 和 Burst Compiler）。它允许开发者将计算任务拆分为离散的"作业（Job）"单元，由 Unity 的内部工作线程池（Worker Thread Pool）自动调度执行，从而充分利用多核 CPU 的并行处理能力。
 
-Job System 的诞生源于 Unity 传统 MonoBehaviour 架构的单线程瓶颈。大量逻辑只能在主线程执行，导致 CPU 多核利用率极低。Job System 通过将工作分解为独立的"Job"单元分发到线程池（Thread Pool），使 8 核或 16 核 CPU 的算力得以充分利用。Unity 内部测试数据表明，在粒子物理模拟等场景中，使用 Job System 后性能提升可达 **10 倍以上**。
+与传统 `MonoBehaviour` 中所有逻辑必须在主线程运行不同，Job System 通过严格的数据所有权规则（借鉴自 Rust 的借用检查思想）来保证线程安全，无需手动加锁（mutex）。开发者声明一个 struct 并实现 `IJob` 接口，将所需数据以 `NativeArray<T>` 等原生容器形式传入，系统便能安全地在任意工作线程上执行该作业。
 
-Job System 与 Burst Compiler 和 ECS 共同构成 DOTS 体系。Job System 负责调度与并发安全，Burst 负责将 Job 内的 C# 代码编译为高效本机代码，二者组合是 Unity 高性能计算路线的基础设施。
+Job System 解决的核心问题是：Unity 早期版本的物理模拟、动画蒙皮、粒子系统均在主线程串行执行，导致帧时间（Frame Time）居高不下。启用 Job System 后，以 Unity 官方公布的 MegaCity 示例为例，场景中超过 400 万个游戏对象的更新可维持在 60 FPS，这在传统 GameObject 架构下几乎不可能实现。
 
 ---
 
 ## 核心原理
 
-### Job 结构体与 IJob 接口
+### 作业类型与接口定义
 
-每个 Job 必须是一个实现了特定接口的 `struct`（值类型），而非 `class`。Unity 提供多种 Job 接口：
+Job System 提供多种作业接口以适配不同并行模式：
 
-- `IJob`：执行单次操作
-- `IJobFor`：对一个范围内的索引并行执行相同逻辑（类似 `for` 循环的并行版本）
-- `IJobParallelFor`：功能与 `IJobFor` 相似，但调度方式略有不同
-- `IJobParallelForTransform`：专用于并行处理 `Transform` 数组
-
-使用 `struct` 而非 `class` 是有意为之：值类型数据会被**复制**到 Job 中，杜绝了多线程同时访问同一内存地址的可能，这是 Job System 实现线程安全的基础机制之一。
+- **`IJob`**：最基础的单任务接口，实现 `Execute()` 方法，整个作业只执行一次。
+- **`IJobParallelFor`**：并行 For 循环接口，`Execute(int index)` 方法针对数组的每个索引并行调用，Unity 会将索引范围自动分批（batching）分配给不同工作线程，批大小（innerloopBatchCount）需由开发者指定，典型值为 32 或 64。
+- **`IJobParallelForTransform`**：专用于 `Transform` 组件的并行读写，避免频繁访问主线程 Transform 的性能损耗。
+- **`IJobChunk`**（配合 ECS 使用）：以 ECS Archetype Chunk 为处理单元，每次 `Execute()` 处理一整块内存连续的实体数据。
 
 ```csharp
-struct MyJob : IJobFor
+struct MyParallelJob : IJobParallelFor
 {
     public NativeArray<float> results;
-    public float multiplier;
-
     public void Execute(int index)
     {
-        results[index] = index * multiplier;
+        results[index] = math.sqrt(index);
     }
 }
 ```
 
-### JobHandle 与依赖链管理
+### 依赖链与 JobHandle
 
-调度一个 Job 后，`Schedule()` 方法返回一个 `JobHandle`。这个句柄代表该 Job 的"完成凭证"，可以传递给后续 Job 的 `Schedule()` 调用，形成**依赖链（Dependency Chain）**。
+Job System 使用 `JobHandle` 结构体来管理作业间的依赖关系。调度一个作业时，`Schedule()` 方法返回一个 `JobHandle`，后续作业可以将该 Handle 作为依赖参数传入，从而形成有向无环图（DAG）式的依赖链。
 
 ```csharp
-JobHandle jobA = jobA_instance.Schedule();
-JobHandle jobB = jobB_instance.Schedule(jobA); // jobB 等待 jobA 完成后才开始
-JobHandle combined = JobHandle.CombineDependencies(jobA, jobB); // 合并多个依赖
+JobHandle handleA = jobA.Schedule();
+JobHandle handleB = jobB.Schedule(handleA); // B 依赖 A 完成后才执行
+handleB.Complete(); // 阻塞主线程直到 B 完成
 ```
 
-Unity 运行时会基于这些依赖关系构建一张**有向无环图（DAG）**，自动推断哪些 Job 可以并行执行，哪些必须串行。开发者无需手动管理线程锁（mutex），依赖关系声明即隐式保证了内存访问顺序的正确性。
-
-调用 `jobHandle.Complete()` 会将主线程阻塞，直到目标 Job 及其所有依赖均完成，通常在需要从主线程读取结果时调用。
+多个依赖可通过 `JobHandle.CombineDependencies(handleA, handleB)` 合并，允许 C 同时等待 A 和 B 完成后再执行，这是实现扇入（fan-in）模式的标准方式。`Complete()` 调用会将控制权交回主线程，若过早调用则会抵消并行收益，Unity Profiler 中会将此标记为"WaitForJobGroupID"耗时。
 
 ### NativeContainer 与内存安全
 
-Job 内部**不能**使用托管类型（如 `List<T>`、普通数组），只能使用 `NativeContainer` 系列类型，包括：
+Job 内部不能直接访问托管堆（managed heap）上的 C# 数组或 List，必须使用 `NativeContainer` 系列类型，这些类型分配在非托管内存（unmanaged memory）上，支持跨线程访问：
 
-| 类型 | 用途 |
+| 容器类型 | 特点 |
 |---|---|
-| `NativeArray<T>` | 定长数组 |
-| `NativeList<T>` | 动态列表（需 Allocator.Persistent 或 TempJob）|
-| `NativeHashMap<K,V>` | 键值对映射 |
-| `NativeQueue<T>` | 先进先出队列 |
+| `NativeArray<T>` | 固定长度，读写均支持 |
+| `NativeList<T>` | 可变长度，需 `[NativeDisableParallelForRestriction]` 属性才可并行写入 |
+| `NativeHashMap<TKey, TValue>` | 键值对，并行写不同键时安全 |
+| `NativeQueue<T>` | 并行版本为 `NativeQueue<T>.ParallelWriter` |
 
-`NativeContainer` 内部通过**原子操作（Atomic Operation）**和**安全句柄（AtomicSafetyHandle）**在 Editor 模式下追踪读写冲突。若两个 Job 同时写入同一 `NativeArray`，Unity 会在 Editor 中抛出异常，帮助开发者在开发期发现并发错误。`[ReadOnly]` 和 `[WriteOnly]` 属性标注可放宽并发限制，允许多个 Job 同时读取同一数据。
+所有 NativeContainer 必须手动调用 `.Dispose()` 释放内存，否则在 Unity Editor 中会触发内存泄漏警告（生产构建则静默泄漏）。使用 `Allocator.TempJob` 分配器时，Unity 要求该容器必须在 4 帧内被释放，违反此规则会在 Editor 中抛出异常。
 
-分配 `NativeContainer` 时需指定 **Allocator** 类型：
-- `Allocator.Temp`：仅当帧内有效，最快
-- `Allocator.TempJob`：最长存活 4 帧，适合跨帧 Job
-- `Allocator.Persistent`：长期存活，须手动调用 `.Dispose()`
+### 安全检查机制
 
-### 批处理大小（Batch Size）与调度开销
-
-`IJobParallelFor` 的 `Schedule(arrayLength, innerLoopBatchCount)` 中，`innerLoopBatchCount` 指定每个工作线程每次领取的最小任务数量。该值过小（如 1）会造成频繁的任务分发开销；过大（如与数组等长）则退化为单线程执行。典型推荐值为 **64 或 128**，但实际最优值需根据 Execute 方法的计算量通过 Profiler 测定。
+Unity 的安全系统通过"AtomicSafetyHandle"在 Editor 模式下对每个 NativeContainer 实例进行读写冲突检测。若同一个 `NativeArray` 被两个没有依赖关系的作业同时写入，系统会在 `Schedule()` 时立即抛出 `InvalidOperationException`，而不是在运行时出现不确定性的数据竞争。此检查仅在 Editor 和 Development Build 中启用，Release Build 中被剥离以提升性能。
 
 ---
 
 ## 实际应用
 
-**大规模 AI 路径查询**：游戏中有 5000 个敌人单位需要每帧更新寻路方向向量。使用 `IJobParallelFor` 将 5000 次向量计算分散到所有工作线程，主线程仅负责提交 Job 和读取结果，帧时间从 12ms 降至约 1.5ms。
+**群体行为模拟（Boids）**：数千只 AI 实体的速度、位置更新逻辑通过 `IJobParallelFor` 并行处理。每帧调度一次，将所有实体位置存于 `NativeArray<float3>`，计算邻近实体的分离/对齐/聚合力向量，总计算量从主线程 12ms 降低至 1.5ms（8 核机器上的典型数据）。
 
-**流体/布料物理模拟**：顶点位置更新属于纯数学运算（无随机写冲突），适合用 `IJobFor` 并行化。每个 Execute(index) 计算第 index 个顶点在弹簧力下的新位置，写入独立的 `NativeArray<float3>`，天然满足无竞争条件。
+**程序化地形生成**：Perlin 噪声采样可对地形高度图的每个像素点独立计算，使用 `IJobParallelFor` + Burst Compiler 组合，512×512 高度图的生成时间可从约 80ms 降至约 2ms。
 
-**ECS System 内的 Job 调度**：在 Unity ECS 中，`SystemBase` 的 `OnUpdate()` 使用 `Entities.ForEach().ScheduleParallel()` 本质上是自动生成并调度 `IJobChunk`。Job System 的 `Dependency` 属性在各 System 间自动传递，保证组件数据的访问顺序正确。
+**物理射线检测批处理**：Unity 提供 `RaycastCommand` 和 `BatchRayCastCommand` 配合 Job System 使用，可在一帧内并行发射数千条射线，Unity 文档标注该方式比逐条 `Physics.Raycast` 快约 **10 倍**以上。
 
 ---
 
 ## 常见误区
 
-**误区一：认为 `Complete()` 越早调用越安全**
+**误区一：认为 `Complete()` 应该紧跟 `Schedule()` 调用**
+许多初学者在调度后立即调用 `Complete()`，这使作业与主线程串行执行，完全失去并行收益。正确做法是在帧的早期（如 `Update` 开始时）调度作业，在帧的后期（如 `LateUpdate` 或下一帧开始时）才调用 `Complete()`，给工作线程足够的时间并发执行。
 
-很多开发者在 Schedule 后立刻调用 `Complete()`，实际上这使 Job 与主线程完全串行，丧失了并行价值。正确做法是在当帧尽可能晚地调用 `Complete()`——理想情况是在同帧最后需要读取结果的地方才调用，让 Job 在主线程处理其他逻辑的同时在后台运行。
+**误区二：在 Job 内部访问 Unity 托管对象**
+`IJob` 的 struct 实现中不能持有对 `GameObject`、`Component`、`Mesh` 等托管类型的引用，编译器或运行时会报错。需要将所需数据提前提取到 `NativeArray` 等原生容器中再传入 Job，而非在 Job 内部调用 Unity API。
 
-**误区二：在 Job 内部 new 托管对象**
-
-Job 的 `Execute()` 方法中绝对不能执行 `new List<T>()`、字符串拼接等产生 GC 分配的操作，因为工作线程上的托管内存分配行为未被 Unity 支持，轻则产生 GC 压力，重则崩溃。所有数据须在 Schedule 前通过 `NativeContainer` 准备好。
-
-**误区三：混淆 `IJobFor` 与 `IJobParallelFor` 的调度机制**
-
-`IJobFor` 通过 `ScheduleParallel(length, batchSize, dependency)` 调度，Unity 的线程调度器会自动按批次分配给工作线程；而 `IJobParallelFor` 使用 `Schedule(length, batchSize, dependency)`。二者接口几乎相同，但 `IJobFor` 是更新的 API（2020.1+），在某些情况下调度效率更优，新项目建议优先使用 `IJobFor`。
+**误区三：混淆 `NativeArray` 的 `Allocator` 类型导致性能损耗**
+`Allocator.Persistent` 分配速度最慢但生命周期不限，`Allocator.TempJob` 速度居中适用于跨帧作业，`Allocator.Temp` 速度最快但只能在同一帧内使用且不能传入 Job。错误地对每帧创建的临时数组使用 `Persistent` 分配器，会因频繁的慢速分配显著拖慢性能。
 
 ---
 
 ## 知识关联
 
-**前置概念——ECS 架构**：Job System 中的 `NativeArray<T>` 与 ECS 中 ComponentData 的内存布局（SoA，Structure of Arrays）高度契合。ECS 中 Chunk 内的组件数据本身就是连续内存块，可直接作为 `IJobChunk` 的输入，无需额外拷贝。理解 ECS 的 Archetype 和 Chunk 机制有助于写出真正零拷贝的 Job。
+**前置概念：ECS/DOTS 架构**
+Job System 的 `IJobChunk` 接口直接消费 ECS 中 Archetype 的内存块（Chunk），所有 ComponentData 均以 struct 形式存储于连续内存，满足 Job System 对非托管数据的要求。若不使用 ECS，纯 Job System 也可独立运行，但需要开发者自行管理 NativeContainer 的生命周期。
 
-**协同概念——Burst Compiler**：Job System 决定"在哪个线程执行"，Burst Compiler 决定"执行的机器码质量"。一个 `IJobFor` 加上 `[BurstCompile]` 属性后，Burst 会对 `Execute()` 内的数学运算进行 SIMD 向量化（如将 4 次 float 运算合并为单条 SSE 指令），在 Job System 并行化的基础上再叠加单线程指令级加速。
+**协同概念：Burst Compiler**
+Job System 的性能收益在与 Burst Compiler 结合时才能最大化。为 Job struct 添加 `[BurstCompile]` 特性后，Burst 会将 `Execute()` 方法编译为高度优化的原生代码，并自动利用 SIMD 向量化指令（如 SSE4、AVX2），在数学密集型计算中可额外获得 4~8 倍加速。
 
-**对比参考——C# async/await**：Job System 与 C# 原生异步模型本质不同。`async/await` 基于任务延续（Continuation），主要用于 I/O 异步，运行在线程池但无强制内存安全约束；Job System 面向 CPU 密集型计算，通过 `NativeContainer` 和依赖声明提供编译期与运行期双重安全保障，是专为游戏帧循环设计的确定性调度系统。
+**配套工具：Unity Profiler 的 Timeline 视图**
+开发者可在 Profiler 的 Timeline 视图中直观看到各工作线程（Worker 0 ~ Worker N）上的作业执行时间段，识别依赖等待气泡（dependency bubble），据此调整 `CombineDependencies` 拓扑结构或 `innerloopBatchCount` 参数以优化并行效率。

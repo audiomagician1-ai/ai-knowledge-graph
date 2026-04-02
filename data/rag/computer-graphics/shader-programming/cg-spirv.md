@@ -20,65 +20,60 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # SPIR-V
 
 ## 概述
 
-SPIR-V（Standard Portable Intermediate Representation - Vulkan）是由Khronos Group于2015年随Vulkan API一同发布的着色器中间语言规范，版本号从1.0起步，目前已演进至1.6版本（随Vulkan 1.3发布）。它采用二进制格式存储，以32位字（word）为基本单位，每条指令由操作码（opcode）加操作数组成，彻底脱离了GLSL或HLSL的文本字符串形式。
+SPIR-V（Standard Portable Intermediate Representation - Vulkan）是由Khronos Group于2015年随Vulkan API同步发布的二进制中间表示格式，专为GPU着色器与计算内核设计。与GLSL和HLSL等高级着色器语言不同，SPIR-V是一种低级的、结构化的二进制格式，驱动程序直接消费这种格式而无需在运行时解析人类可读的源代码。SPIR-V的魔数（Magic Number）固定为`0x07230203`，每个SPIR-V模块以这个32位标识符开头，后跟版本号、生成器标识等头部字段。
 
-与传统着色器语言不同，SPIR-V本身不是用来手写的——它是一种**编译目标**。GLSL可通过`glslangValidator`编译为SPIR-V，HLSL可通过DXC（DirectX Shader Compiler）的`-spirv`选项编译为SPIR-V，而OpenCL C也有对应的SPIR-V子集（SPIR-V for OpenCL）。这种设计将着色器前端（语言解析）与后端（GPU驱动）彻底解耦，驱动商不再需要各自实现完整的GLSL/HLSL解析器。
+SPIR-V的诞生解决了长期困扰图形生态的"运行时编译"问题。在SPIR-V出现之前，OpenGL驱动需要在运行时将GLSL字符串编译为机器码，各家GPU厂商（NVIDIA、AMD、Intel）的编译器行为不一致，导致跨平台着色器结果存在差异甚至错误。SPIR-V将编译链前移至离线阶段，驱动只需做最后一步从SPIR-V到本机ISA的转换，大幅减少了运行时开销和跨驱动的不一致性。
 
-SPIR-V的重要性在于它解决了OpenGL时代"驱动在运行时编译GLSL导致性能峰值和编译行为不一致"的顽疾。将编译链提前到离线阶段，让Vulkan驱动只需做最后一步的机器码生成，极大减少了运行时卡顿。
-
----
+SPIR-V不仅服务于Vulkan，也是OpenCL 2.1及以后版本的标准内核交付格式，OpenGL 4.6同样通过`glShaderBinary`接口支持直接加载SPIR-V模块，因此它实质上成为了Khronos生态系统的统一中间层。
 
 ## 核心原理
 
-### 二进制模块结构
+### 二进制结构与指令编码
 
-一个SPIR-V模块由固定的五字头（magic number + version + generator magic + bound + schema）开头，其中magic number固定为`0x07230203`。随后是若干**指令流**，指令按照严格的逻辑分区顺序排列：能力声明（`OpCapability`）→ 扩展导入（`OpExtInstImport`）→ 内存模型（`OpMemoryModel`）→ 入口点（`OpEntryPoint`）→ 执行模式（`OpExecutionMode`）→ 类型/常量/全局变量定义 → 函数体。这个顺序是规范强制要求的，违反顺序的模块验证器（如`spirv-val`）会直接拒绝。
+SPIR-V模块是一个32位字（word）的线性序列，没有跳转表或分支表，所有指令按顺序排列。每条指令的第一个字同时编码**指令字长度**（高16位）和**操作码**（低16位），例如`OpLoad`的操作码为`61`，`OpStore`为`62`。这种编码方式使得解析器无需查表即可跳过不认识的指令。
 
-### SSA形式与ID系统
+模块中的所有值（变量、类型、函数）都通过唯一的**结果ID**（Result ID）引用，ID是一个递增的32位无符号整数。类型声明必须在使用之前出现，所有全局变量声明必须在函数定义之前完成，这种严格的拓扑顺序约束使得单遍解析成为可能。
 
-SPIR-V采用SSA（Static Single Assignment）形式：每个值只被赋值一次，用一个全局唯一的整数ID标识。例如`%12 = OpFAdd %float %10 %11`表示将ID为10和11的浮点值相加，结果绑定到ID 12。这一设计使得优化Pass（如SPIRV-Tools中的`spirv-opt`）可以直接在IR上执行常量折叠、死代码消除等操作，无需重新解析源码。bound字段记录了模块中使用的最大ID值+1，方便工具预分配数据结构。
+### 执行模型与能力声明
 
-### 执行模型与能力系统
+每个SPIR-V模块在`OpEntryPoint`指令中声明执行模型（Execution Model），合法值包括`Vertex`、`Fragment`、`GLCompute`、`TessellationControl`等枚举。模块还必须通过`OpCapability`指令明确声明所使用的功能集，例如使用64位浮点需要声明`Float64`能力，使用光线追踪需要声明`RayTracingKHR`能力。驱动在加载模块时首先验证这些能力声明是否被当前设备支持，若不支持则拒绝加载，而不是等到运行时崩溃。
 
-SPIR-V通过`OpCapability`显式声明所需硬件能力，例如`OpCapability Shader`表示基础图形着色器能力，`OpCapability RayTracingKHR`表示光线追踪能力（Vulkan光线追踪扩展对应的SPIR-V扩展`SPV_KHR_ray_tracing`）。`OpEntryPoint`指令声明执行模型（ExecutionModel），包括`Vertex`、`Fragment`、`GLCompute`、`RayGenerationKHR`等16种以上的模型。这种显式能力声明让驱动在加载阶段就能检查兼容性，而不必等到Pipeline创建时才报错。
+### 控制流图与结构化控制流
 
-### 装饰系统（Decoration）
+SPIR-V要求着色器的控制流必须是**结构化控制流**（Structured Control Flow）。所有`if-else`必须有对应的`OpSelectionMerge`指令，所有循环必须有`OpLoopMerge`指令，指定合并块和继续块的ID。这一约束来源于GPU硬件对SIMD发散执行的管理需求——没有结构化控制流信息，驱动无法高效地管理线程掩码（thread mask）的收敛点。SPIR-V验证器（spirv-val）会拒绝任何违反结构化控制流规则的模块。
 
-SPIR-V通过`OpDecorate`和`OpMemberDecorate`指令附加元数据，替代了GLSL的`layout`限定符和HLSL的语义标注。例如`OpDecorate %ubo DescriptorSet 0`和`OpDecorate %ubo Binding 1`指定了一个UBO的描述符集和绑定点；`OpDecorate %pos Location 0`指定了顶点输入位置。`BuiltIn`装饰用于标记内置变量，如`OpDecorate %gl_Position BuiltIn Position`。
+### 扩展与装饰系统
 
----
+SPIR-V通过`OpDecorate`和`OpMemberDecorate`指令为变量和结构体成员附加元数据，例如`Location`（顶点属性槽位）、`Binding`（描述符绑定点）、`BuiltIn`（内置变量如`Position`、`FragCoord`）。这种装饰系统将语义信息与结构定义分离，同一个结构体类型可以在不同装饰下服务于不同用途。扩展通过`OpExtension`和`OpExtInstImport`引入，例如`GLSL.std.450`扩展包提供了`sin`、`cos`、`sqrt`等数学函数的标准实现，这些函数以扩展指令集的形式调用而非内置操作码。
 
 ## 实际应用
 
-**Vulkan渲染管线创建**：在Vulkan中，`VkShaderModule`的创建函数`vkCreateShaderModule`直接接受SPIR-V二进制的字节数组，而非源码字符串。典型工作流是：离线用`glslangValidator -V shader.vert -o shader.vert.spv`将GLSL编译为`.spv`文件，运行时读取该文件字节流创建ShaderModule，再将其绑定到`VkPipelineShaderStageCreateInfo`。
+**着色器编译工具链**：最常见的工作流程是使用`glslangValidator`或`glslc`将GLSL源码编译为SPIR-V二进制（`.spv`文件），再由Vulkan驱动的`vkCreateShaderModule`加载。HLSL同样可以通过`dxc`（DirectX Shader Compiler）配合`-spirv`参数直接输出SPIR-V，这使得在Vulkan上使用HLSL工作流成为可能。
 
-**跨语言管线**：Unity的Shader Graph在移动端Vulkan路径上将ShaderLab编译为HLSL，再通过DXC转为SPIR-V；Unreal Engine则在Vulkan后端使用其自研工具链将HLSL转SPIR-V，两者都依赖`spirv-reflect`库在运行时自动提取管线布局信息（描述符绑定、顶点输入属性），避免手动维护绑定表。
+**SPIR-V优化**：`spirv-opt`工具（来自SPIRV-Tools项目）提供针对SPIR-V的中间层优化，包括死代码消除（`--eliminate-dead-code-aggressive`）、常量折叠（`--fold-spec-const-op-composite`）、内联（`--inline-entry-points-exhaustive`）等pass，这些优化在高级语言编译器和驱动后端之间形成独立的优化层。
 
-**计算着色器与OpenCL互操作**：SPIR-V 1.0定义了两个子环境：Full Profile（对应Vulkan/OpenGL）和OpenCL Embedded Profile。同一个矩阵乘法计算核心，可以编译为SPIR-V后同时提交给Vulkan Compute Queue和OpenCL平台（如OpenCL 2.1+），实现代码复用。
+**跨API着色器复用**：游戏引擎（如Unity、Unreal Engine）维护SPIR-V资产可以在Vulkan和OpenGL 4.6之间共享同一份着色器二进制，避免为不同API维护两套GLSL源码，减少了着色器变体管理的复杂度。
 
-**SPIR-V优化工具链**：Google的`spirv-opt`工具提供了超过30种优化Pass，包括`--eliminate-dead-code-aggressive`、`--inline-entry-points-exhaustive`、`--loop-unroll`等，可在驱动JIT之前进一步减小模块体积和改善指令序列，对移动端GPU尤其有效。
-
----
+**特化常量**：SPIR-V的`OpSpecConstant`机制允许在着色器加载时通过`VkSpecializationInfo`覆写特定常量值，而无需重新编译源码。例如将循环展开次数或材质属性数量作为特化常量，可以在运行时生成针对不同配置的优化变体，比宏替换更轻量。
 
 ## 常见误区
 
-**误区一：SPIR-V是可读的汇编语言**。SPIR-V的标准形式是二进制`.spv`文件，人类不可直接阅读。`spirv-dis`工具可以将其反汇编为人类可读的文本格式（`.spvasm`），但这只是调试用的表示形式，不是SPIR-V规范的主格式。不少初学者混淆了二进制SPIR-V和其反汇编文本，错误地尝试手写`.spvasm`然后直接提交给Vulkan。
+**误区一：SPIR-V是机器码，可以直接在GPU上运行。** 实际上SPIR-V是中间表示，不是任何GPU的原生指令集。Vulkan驱动在`vkCreateShaderModule`或最迟在`vkCreateGraphicsPipeline`时，仍需将SPIR-V翻译为具体GPU的ISA（如NVIDIA的SASS、AMD的GCN/RDNA指令集）。SPIR-V只是消灭了运行时的高级语言解析步骤，并非完整的AOT编译产物。
 
-**误区二：SPIR-V保证完全相同的着色器行为**。SPIR-V消除了语言解析的差异，但GPU驱动将SPIR-V编译为机器码的阶段（称为PSO编译，在`vkCreateGraphicsPipelines`时触发）仍然可能因厂商实现不同而产生浮点计算顺序差异。SPIR-V规范本身允许驱动在保持语义的前提下重排指令，因此"相同SPIR-V = 相同像素输出"的假设在跨GPU平台时并不成立。
+**误区二：SPIR-V完全消除了跨平台差异。** SPIR-V规范化了格式，但各驱动的SPIR-V后端编译质量仍有差异。某些SPIR-V构造（如复杂的矩阵运算模式）在不同驱动上可能产生不同的性能特征。此外，`OpSpecConstant`的特化时机（`vkCreateShaderModule`阶段还是`vkCreateGraphicsPipeline`阶段）由驱动决定，会影响优化效果。
 
-**误区三：所有SPIR-V能力在所有Vulkan设备上均可用**。`OpCapability ShaderFloat64`（64位浮点）或`OpCapability GeometryShader`在部分移动端GPU（如Mali早期型号）上不受支持。必须在运行时通过`vkGetPhysicalDeviceFeatures`查询对应Feature位（如`shaderFloat64`、`geometryShader`）后，再决定是否加载含相应Capability的SPIR-V模块。
-
----
+**误区三：手写SPIR-V汇编是日常工作。** SPIR-V提供了人类可读的文本格式（`.spvasm`）和`spirv-as`/`spirv-dis`工具用于汇编/反汇编，但这主要用于调试和规范测试，实际开发中几乎不直接编写SPIR-V，而是通过glslang、dxc等前端工具生成。
 
 ## 知识关联
 
-**与GLSL/HLSL的关系**：GLSL和HLSL是SPIR-V的主要前端输入语言。理解GLSL的`layout(set=X, binding=Y)`语法有助于对应SPIR-V中`OpDecorate DescriptorSet/Binding`装饰的含义；HLSL的register绑定语法通过DXC的`-fvk-b-shift`等参数映射到SPIR-V绑定空间。
+学习SPIR-V需要先掌握GLSL或HLSL，因为理解SPIR-V如何表示`uniform`块、`in/out`变量和内置变量，必须对照这些高级语言的对应概念——例如GLSL的`layout(location=0) in vec3 pos`最终对应SPIR-V中带`OpDecorate %pos Location 0`装饰的`OpVariable`。
 
-**通往Slang语言**：Slang是NVIDIA研发的新一代着色器语言，其编译器后端可以直接生成SPIR-V，并引入了泛型（Generics）、接口（Interface）等现代语言特性来弥补GLSL/HLSL的不足。学习Slang时，理解SPIR-V的模块结构和能力声明系统，有助于解释Slang编译器为何要求显式标注执行模型和特定扩展能力。
-
-**与Vulkan管线的绑定**：SPIR-V的描述符装饰信息直接对应Vulkan的`VkDescriptorSetLayout`，通过`spirv-reflect`可自动从SPIR-V模块中提取`VkDescriptorSetLayoutBinding`数组，这是现代Vulkan框架（如vk-bootstrap、Filament）自动管线反射功能的技术基础。
+SPIR-V是理解**Slang语言**的重要基础。Slang作为下一代着色器语言，其编译后端可以输出SPIR-V，Slang的模块系统和接口概念在降级到SPIR-V时需要经历特定的去虚拟化（devirtualization）和特化过程。此外，理解SPIR-V的能力声明系统和装饰机制，有助于掌握Slang如何通过`[vk::binding]`等注解控制最终的SPIR-V输出元数据。SPIR-V的结构化控制流要求也直接影响了Slang等语言在设计循环和条件分支语义时需要遵守的约束。

@@ -20,88 +20,123 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # 主谓一致
 
 ## 概述
 
-主谓一致（Subject-Verb Agreement）是指句子中的谓语动词必须在人称和数上与主语保持一致的语法规则。最基本的表现形式是：单数主语搭配单数动词形式，复数主语搭配复数动词形式。例如，"She **runs** every morning"中第三人称单数主语"she"要求动词加"-s"，而"They **run** every morning"中复数主语"they"则使用动词原形。
+主谓一致（Subject-Verb Agreement）是指英语句子中主语的数（单数或复数）必须与谓语动词的形式保持一致的语法规则。简单来说，单数主语搭配单数动词形式，复数主语搭配复数动词形式。例如，"The dog **runs**"中单数主语使用第三人称单数动词，而"The dogs **run**"中复数主语使用原形动词。
 
-这一规则在英语语法史上可追溯至古英语时期，彼时动词屈折变化极为丰富，不同人称对应不同词尾。现代英语简化后，主谓一致最显眼的标志只剩下一般现在时第三人称单数动词加"-s/-es"，以及"be"动词的多种形态（am/is/are/was/were）。
+这一规则在古英语时期即已存在，属于印欧语系的共性特征。现代英语中，主谓一致最明显的标志是一般现在时第三人称单数动词需加"-s"或"-es"后缀，以及be动词根据主语变化为"am/is/are"（现在时）和"was/were"（过去时）。虽然英语的动词变化相比拉丁语已大幅简化，但主谓一致仍是英语学习者最容易出错的语法点之一。
 
-主谓一致之所以重要，是因为违反该规则会被英语母语者立刻察觉为语法错误。中文没有动词随主语变形的机制，因此中国学生极容易在"He go to school"这类句子中犯错，必须通过专项训练来建立正确的语感。
+主谓一致的重要性在于，违反该规则会导致句子在语法上不可接受，影响书面和口语表达的准确性。在标准化考试如SAT写作、托福独立写作等中，主谓一致错误被列为扣分项，因此准确掌握该规则对英语学习者具有实际意义。
 
 ---
 
 ## 核心原理
 
-### 一般现在时的"-s/-es"规则
+### 基本规则：单复数对应
 
-当主语为第三人称单数（he, she, it，或可替换为这三者的名词）时，一般现在时动词需加"-s"或"-es"：
-- 一般情况加"-s"：runs, plays, eats
-- 以-o, -ch, -sh, -x, -s结尾的动词加"-es"：goes, watches, washes, fixes, passes
-- 辅音字母+y结尾，变y为i再加"-es"：studies, flies
+最基本的主谓一致规则如下：当主语为**第三人称单数**时，一般现在时动词词尾加"-s"或"-es"；当主语为第三人称复数时，动词使用原形。
 
-"be"动词是主谓一致规则中变化最复杂的动词，共有8种形态，其中现在时：I am / He·She·It **is** / You·We·They **are**；过去时：I·He·She·It **was** / You·We·They **were**。记住这张表是掌握主谓一致的基础。
+| 主语类型 | 动词形式 | 示例 |
+|--------|---------|------|
+| 第三人称单数 | 动词 + s/es | She **writes** every day. |
+| 第三人称复数 | 动词原形 | They **write** every day. |
+| I | 动词原形（be动词用am） | I **write** / I **am** |
+| You | 动词原形（be动词用are） | You **write** / You **are** |
+
+be动词的单复数变化最为特殊：现在时为 am/is（单数）和 are（复数），过去时为 was（单数）和 were（复数）。
+
+---
 
 ### 就近原则与就远原则
 
-英语中有两套相互竞争的规则，需要分场合使用：
+某些连词结构决定动词形式采用"就近"还是"就远"原则：
 
-**就近原则**适用于"either...or..."、"neither...nor..."、"not only...but also..."等并列连词连接两个不同数的主语时，动词与**最近的主语**保持一致：
-> Neither the students nor the teacher **is** in the classroom.
-> Neither the teacher nor the students **are** in the classroom.
+**就近原则**适用于以下连词，动词形式由**最靠近动词的主语**决定：
+- **or / nor**：*Neither the students nor the teacher **is** ready.*（teacher单数，动词用is）
+- **either...or...**：*Either you or I **am** responsible.*
 
-**就远原则**适用于"as well as""together with""along with"等短语插入时，动词与**原主语**（最远的名词）一致，这类短语在语法上不是并列而是附加：
-> The president, as well as his advisers, **is** attending the meeting.
+**就远原则**适用于以下结构，动词形式由**句子主语**（而非插入成分）决定：
+- **as well as / along with / together with**：*The manager, along with his assistants, **is** attending the meeting.*（主语是manager，单数）
 
-混淆这两种原则是中国学生最常见的失分点之一。
+这两组规则经常使学习者混淆，需专门记忆适用范围。
 
-### 特殊主语的数判断
+---
 
-以下几类主语需要特别记忆：
+### 特殊名词与集合名词
 
-**集合名词**：family, team, class, committee等既可接单数动词（强调整体）也可接复数动词（强调成员），但美式英语更倾向单数：
-> The team **is** ready.（美式）/ The team **are** ready.（英式）
+以下几类名词对主谓一致有特殊要求：
 
-**不定代词**：everyone, somebody, each, either, neither永远接**单数**动词，尽管语义上可能指多人：
-> Everyone in the two classes **has** submitted the assignment.
+1. **集合名词**：如 team、family、committee，在美式英语中通常视为单数整体，动词用单数（*The team **is** winning.*）；在英式英语中可视为复数个体，动词用复数（*The team **are** celebrating.*）。
 
-**以"-s"结尾但含义为单数的名词**：news, mathematics, physics, economics接**单数**动词：
-> The news **is** shocking.
+2. **不定量词**：
+   - **each / every / either / neither** 后接单数名词，动词用单数：*Each student **has** a textbook.*
+   - **both / several / many / few** 后接复数名词，动词用复数：*Both answers **are** correct.*
 
-**"a number of" vs "the number of"**：前者表示"许多"接**复数**，后者表示"数目"接**单数**：
-> A number of students **were** absent. / The number of students **is** increasing.
+3. **以"-s"结尾但意义单数的名词**：如 mathematics、physics、news、economics，动词用单数：*The news **is** surprising.*
+
+4. **以"-s"结尾的复数概念名词**：如 scissors、trousers、glasses，动词用复数：*The scissors **are** on the table.*
+
+5. **数量表达**：表示一个整体数量时用单数，如 *Five dollars **is** a fair price.*（五美元作为一个整体金额）；但 *Five students **are** absent.*（五个学生是独立个体）。
+
+---
+
+### 主语与谓语被分隔时的一致性
+
+当修饰语（介词短语、定语从句等）插在主语和动词之间时，动词必须与**句子真正的主语**一致，而非最近的名词：
+
+> *The **quality** of the reports **was** poor.*（主语是quality，单数）
+
+> *The **boxes** of chocolates **were** delivered.*（主语是boxes，复数）
+
+这类情况下，学习者常错误地以距离动词最近的名词（reports / chocolates）为判断依据，这是主谓一致最常见的错误来源之一。
 
 ---
 
 ## 实际应用
 
-**考试填空题**：主谓一致是中国高考英语和英语四六级中单项填空的高频考点。例如典型题型："The committee \_\_\_ (has/have) reached a decision"，需判断集合名词的数。
+**写作场景**：在学术写作中，主谓一致错误最常见于长句中主语被多个修饰成分拉开的情况。例如：
 
-**写作中的长距离主谓一致**：当主语和动词之间插入较长修饰语时，学生容易被就近的名词干扰。如：
-> The quality of the products in our three overseas factories **needs** improvement.
-此处谓语应与主语"quality"一致，而非与最近的复数名词"factories"一致。
+> ✗ *The development of new technologies in various industries have changed everyday life.*
+> ✓ *The development of new technologies in various industries **has** changed everyday life.*（主语是development，单数）
 
-**口语纠错**：在英语口语中，"There is/are"句型是主谓一致的高频错误区。正确用法：There **is** a book and two pens（就近原则，与最近的"a book"一致）；There **are** two pens and a book（同理）。
+**选择题辨析**：托福和GRE语法题中，常用"there be"句型考查主谓一致。注意"there be"句型的动词形式由**后置主语**决定：
+- *There **is** a book on the desk.*（单数名词book）
+- *There **are** three students in the classroom.*（复数名词students）
+
+**口语纠错**：口语中常听到"Everyone are here"这类错误。**every-/any-/some-/no- 开头的复合不定代词**（everyone、anybody、something、nobody等）一律视为单数，动词用第三人称单数形式：*Everyone **is** here.*
 
 ---
 
 ## 常见误区
 
-**误区一：把"-s"结尾的名词一律当复数**
-学生看到"news""physics""economics"等词尾有"-s"便误用复数动词。实际上这些词是不可数名词或学科名称，始终接单数动词。同类陷阱还包括"a pair of trousers **is**..."——逻辑主语是"a pair"而非"trousers"。
+**误区一：被修饰语迷惑，就近选择动词形式**
 
-**误区二：each/every修饰的名词接复数动词**
-"Each student and each teacher **has** a badge"——尽管涉及多人，but "each"强调逐一，因此不论后面有多少名词被"each/every"修饰，谓语一律用单数。许多学生因语义直觉误用"have"。
+许多学习者看到 *The list of items **is/are** on the table* 时，因为 items 靠近动词而选择 are，但正确答案是 **is**，因为主语是单数名词 list。判断依据是找到句子的核心主语，跳过介词短语（of items）。
 
-**误区三：关系从句中的主谓一致混乱**
-在"one of those students who **are** always late"中，定语从句修饰的先行词是复数"students"，故用"are"；但"the only one of those students who **is** always late"中，先行词实际是单数"the only one"，故用"is"。这两个结构仅一词之差，却导致截然不同的谓语形式。
+**误区二：认为"and"连接的主语一定用复数**
+
+通常 A and B 作主语时动词用复数，但有例外：当 and 连接的两个名词指同一个人或概念时，动词用单数。例如：
+> *The founder and CEO of the company **is** attending the press conference.*（founder和CEO是同一人）
+> *Bread and butter **is** what I eat for breakfast.*（bread and butter作为一种固定搭配食物）
+
+**误区三：混淆"the number of"与"a number of"**
+
+这是高频考点：
+- **The number of** + 复数名词 → 动词用**单数**：*The number of applicants **has** increased.*
+- **A number of** + 复数名词 → 动词用**复数**：*A number of applicants **have** withdrawn.*
+
+两者形式相似，意义不同（"the number of"表示具体数量这个整体，"a number of"表示"许多"），导致动词形式相反，是中高级学习者最易混淆的主谓一致规则。
 
 ---
 
 ## 知识关联
 
-**前置知识——名词的数与be动词**：判断主谓一致的第一步是准确识别名词是可数还是不可数、单数还是复数。只有在对名词分类熟练的基础上，才能快速判断谓语形式。"be"动词的am/is/are/was/were变化表本身就是主谓一致规则的直接体现，它是学习主谓一致的最初切入点。
+**前置知识**：主谓一致的判断建立在对**名词单复数形式**的掌握之上——不规则复数（child→children、foot→feet）若识别错误，就无法正确判断动词形式。同时，需要熟悉**be动词的六种变体形式**（am/is/are/was/were/been），才能在主谓一致中正确选用。
 
-**后续知识——时态一致性（Sequence of Tenses）**：主谓一致解决了"动词形态与主语数和人称的匹配"问题，而时态一致性进一步要求在复合句或语篇中，主从句的时态之间要保持逻辑上的协调关系（如主句用过去时则从句通常也用过去时）。掌握主谓一致是学习时态一致性的直接前提，因为学生必须先能在单句层面正确写出动词形式，才能在多句层面处理时态的呼应关系。
+**后续延伸**：掌握主谓一致后，学习者进入**时态一致性（Sequence of Tenses）**时会发现，时态选择不仅涉及主句与从句的时间关系，还需同时维持主谓一致，使句子语法判断的复杂度进一步提高。例如在复杂从句 *The students who were absent yesterday **need** to submit their assignments* 中，既要处理时态（were vs. need），又要确认主谓一致（students → need）。

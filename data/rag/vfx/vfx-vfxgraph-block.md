@@ -20,77 +20,70 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-04-01
 ---
+
+
+
 # Block与节点
 
 ## 概述
 
-Block与节点（Vfx Vfxgraph Block）是特效（Visual Effects）中VFX Graph领域的重要概念。难度等级2/9（基础级）。
+VFX Graph 的视觉编程系统由三种不同类型的节点构成：**Block（块）**、**Operator（运算符节点）** 和 **属性节点（Property Node）**。这三者共同构成粒子系统逻辑的完整表达，但各自承担截然不同的职责。Block 是只能存在于 Context 内部的执行单元，Operator 是可以独立浮动于图中的计算节点，属性节点则是将 VFX Asset 的暴露参数接入图中的入口。
 
-VFX Graph节点类型——Block、Operator、属性节点。
+Block 的概念源自 Unity 将 Shader Graph 的节点化思想延伸至粒子系统领域，于 Unity 2018.3 进入实验性阶段，2019.3 正式推出 VFX Graph 1.0。Block 之所以与普通节点分离，是因为粒子系统的执行逻辑本质上是**顺序化的管线**——每个 Block 按从上到下的顺序依次作用于粒子属性，这与 Shader Graph 中节点的数据流方向有根本不同。
 
-在知识体系中，Block与节点建立在Context系统的基础之上，是理解生成系统的关键前置知识。为什么Block与节点如此重要？因为它在VFX Graph中起到承上启下的作用，连接基础概念与高级应用。
+理解这三类节点的区别，直接影响能否在 VFX Graph 中正确搭建粒子逻辑。若将 Operator 与 Block 混淆，会导致图中出现孤立计算节点却无法影响粒子行为的典型错误；若不理解属性节点的绑定机制，则无法从 C# 脚本动态控制粒子效果。
 
-## 核心知识点
+---
 
-### 1. VFX Graph节点类型——Block
+## 核心原理
 
-VFX Graph节点类型——Block是Block与节点(Vfx Vfxgraph Block)的核心组成部分之一。在VFX Graph的实践中，VFX Graph节点类型——Block决定了系统行为的关键特征。例如，当VFX Graph节点类型——Block参数或条件发生变化时，整体表现会产生显著差异。深入理解VFX Graph节点类型——Block需要结合特效的基本原理进行分析。
+### Block：Context 内的执行指令
 
-### 2. Operator
+Block 是 VFX Graph 中**唯一能够写入粒子属性**的节点类型。每个 Block 必须挂载在某个 Context（如 Initialize、Update、Output）之内，不能独立存在于图的空白区域。Block 的输入端口（左侧）接收数值或向量，**不输出数据给其他节点**——它的"输出"是直接修改对应 Context 所管理的粒子属性。
 
-Operator是Block与节点(Vfx Vfxgraph Block)的核心组成部分之一。在VFX Graph的实践中，Operator决定了系统行为的关键特征。例如，当Operator参数或条件发生变化时，整体表现会产生显著差异。深入理解Operator需要结合特效的基本原理进行分析。
+Block 的执行顺序严格遵循垂直排列顺序，靠上的 Block 先执行。例如在 Update Context 中，若先放置 `Set Velocity` Block 再放置 `Turbulence` Block，则湍流效果会叠加在已设置的速度之上；反之则顺序相反，结果不同。Block 可通过右键菜单在 Context 内部拖拽重排。
 
-### 3. 属性节点
+每种 Context 仅支持特定类别的 Block。Initialize Context 只接受初始化类 Block（如 `Set Position Shape`、`Set Lifetime Random`），Output Context 只接受输出类 Block（如 `Set Size over Life`、`Orient`）。若尝试将 Output 专属 Block 拖入 Update Context，VFX Graph 会拒绝放置并显示红色禁止标志。
 
-属性节点是Block与节点(Vfx Vfxgraph Block)的核心组成部分之一。在VFX Graph的实践中，属性节点决定了系统行为的关键特征。例如，当属性节点参数或条件发生变化时，整体表现会产生显著差异。深入理解属性节点需要结合特效的基本原理进行分析。
+### Operator：浮动的数学运算单元
 
+Operator 是 VFX Graph 中的纯计算节点，可以放置在图的任意空白区域，**既有输入端口也有输出端口**，专门用于生成和变换数据流。常见的 Operator 包括 `Add`、`Multiply`、`Sample Texture2D`、`Noise`、`Get Attribute` 等。
 
-### 关键原理分析
+Operator 本身**不直接影响任何粒子**，必须将其输出端口连接到某个 Block 的输入端口，才能将计算结果注入粒子系统。一个典型链路是：`Time` Operator → `Multiply` Operator → `Sine` Operator → `Set Position` Block 的 Position 输入，由此实现粒子位置随时间做正弦波动。
 
-Block与节点的核心在于VFX Graph节点类型——Block、Operator、属性节点。从理论角度看，该概念涉及以下层面：
+`Get Attribute` 是一类特殊 Operator，用于读取当前粒子的属性值（如当前速度、当前位置），其输出可以再连接到其他 Operator 进行计算后送回 Block。这使得粒子属性的自我引用成为可能，例如实现速度衰减公式 `newVelocity = oldVelocity × 0.98`。
 
-1. **定义层**：明确Block与节点的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解Block与节点内部各要素的相互作用方式
-3. **应用层**：将Block与节点的原理映射到特效的实际场景中
+### 属性节点：外部参数的接入口
 
-思考题：如何判断Block与节点的应用是否超出了其理论适用范围？
+属性节点（Property Node，也称 Blackboard 参数节点）对应 VFX Graph 左侧 **Blackboard** 面板中定义的暴露参数。将 Blackboard 中的参数拖拽到图中，即生成对应的属性节点，其输出端口类型与参数类型一致（Float、Vector3、Texture2D 等）。
 
-## 关键要点
+在 C# 脚本中，通过 `visualEffect.SetFloat("参数名", value)` 即可在运行时修改该属性节点的值，进而影响所有连接该节点的 Block。属性节点的典型应用是将粒子颜色的 HDR 强度暴露给脚本，由游戏逻辑驱动粒子效果的强弱变化。属性节点不支持直接在图中手动输入覆盖值，其数值来源必须是 Blackboard 定义。
 
-1. **核心定义**：Block与节点的本质是VFX Graph节点类型——Block、Operator、属性节点，这是理解整个概念的出发点
-2. **多维理解**：掌握Block与节点需要同时理解VFX Graph节点类型——Block和属性节点等关键维度
-3. **先修关系**：扎实的Context系统基础对理解Block与节点至关重要
-4. **进阶路径**：掌握后可继续深入生成系统等进阶主题
-5. **实践标准**：真正掌握Block与节点的标志是能在具体场景中灵活运用并正确判断适用边界
+---
+
+## 实际应用
+
+**粒子随血量变化变红**：在 Blackboard 中创建一个名为 `HealthRatio` 的 Float 参数（范围 0–1）。在图中拖入该属性节点，通过 `Lerp` Operator 将其在红色（1,0,0）和白色（1,1,1）之间插值，输出连接到 Output Context 中的 `Set Color` Block。在 C# 中每帧调用 `vfx.SetFloat("HealthRatio", currentHP / maxHP)`，即可实现粒子颜色随生命值动态变化。
+
+**分层噪声驱动运动**：在 Update Context 中放置 `Turbulence` Block，将其 Intensity 输入连接到一个 `Multiply` Operator，该 Operator 的两个输入分别来自 `Noise` Operator（频率 2.5）和一个 `Get Attribute: Age/Lifetime` Operator。这样粒子越接近生命末尾，湍流强度越大，产生消散效果。整个链路中 Block 仅有一个，其余均为 Operator。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将Block与节点与VFX Graph中其他相近概念混为一谈。例如，VFX Graph节点类型——Block的适用条件与其他Operator概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解Context系统就学习Block与节点，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：Block与节点虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：认为 Operator 的输出可以直接作用于粒子**。初学者常将 `Noise` Operator 的输出接到空白处就以为粒子会抖动。实际上，任何 Operator 的效果都必须通过连接到某个 Block 的输入端口才能落地。孤立的 Operator 在图中只是"悬空计算"，Unity 甚至会在编译时以灰色标注未使用的 Operator 节点。
 
-## 知识衔接
+**误区二：将属性节点与 Operator 内联常量等同**。Block 的输入端口在未连接时可以直接填写常量数值（内联值），这与拖入属性节点后连接完全不同——内联常量无法被 C# 脚本修改，而属性节点可以。若项目需要运行时调参，必须使用 Blackboard 属性节点，而非依赖内联常量。
 
-### 先修知识
-先修知识包括：
-- **Context系统** — 为Block与节点提供了必要的概念基础
+**误区三：认为 Block 执行顺序不重要**。在同一 Context 中，同类操作的 Block 顺序会影响最终结果。例如先执行 `Conform to Sphere`（将粒子推离球面）再执行 `Set Velocity from Direction & Speed`，与相反顺序相比，粒子的运动轨迹会有明显差异，因为后执行的 Block 会覆盖前一个 Block 对同一属性的写入。
 
-### 后续学习
-掌握Block与节点后可继续学习：
-- **生成系统** — 在Block与节点基础上进一步拓展
+---
 
-## 学习建议
+## 知识关联
 
-预计学习时间：30-60分钟。建议采用以下策略：
+Block 的"只能存在于 Context 内部"这一约束，直接来源于 **Context 系统**的设计——每种 Context 代表粒子生命周期的一个阶段（Initialize、Update、Output），Block 是向该阶段注入具体行为的最小单元。没有对 Context 阶段语义的理解，就无法判断某个 Block 应该归属于哪个 Context。
 
-- **主动回忆**：学完后不看笔记复述Block与节点的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将Block与节点与特效中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释Block与节点，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于VFX Graph的章节可作为深入参考
-- Wikipedia: [Vfx Vfxgraph Block](https://en.wikipedia.org/wiki/vfx_vfxgraph_block) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Vfx Vfxgraph Block" 可找到配套视频教程
+掌握三类节点后，下一步是学习 **生成系统（Spawn System）**。Spawn System 本身也是一类 Context（Spawn Context），其内部同样使用 Block 来定义粒子生成的节奏——例如 `Constant Spawn Rate` Block（设置每秒生成数量）和 `Periodic Burst` Block（定时爆发生成）。Spawn Context 的 Block 作用对象不是粒子属性，而是生成事件流，这是对 Block 机制的进一步扩展应用。

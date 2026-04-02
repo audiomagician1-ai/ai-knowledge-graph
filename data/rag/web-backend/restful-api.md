@@ -20,133 +20,132 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-04-01
 ---
+
 # RESTful API设计
 
 ## 概述
 
-REST（Representational State Transfer，表述性状态转移）由Roy Fielding在2000年的博士论文《Architectural Styles and the Design of Network-based Software Architectures》中首次提出。它不是一种协议或标准，而是一套约束风格，用于规范客户端与服务器之间通过HTTP协议交互的方式。符合REST约束的API被称为RESTful API。
+REST（Representational State Transfer，表述性状态转移）由Roy Fielding于2000年在其博士论文《Architectural Styles and the Design of Network-based Software Architectures》中正式提出。REST不是一种协议或标准，而是一套针对HTTP的架构约束风格，遵循这些约束设计出来的API即为RESTful API。Fielding本人是HTTP/1.1规范的主要作者之一，因此REST天然与HTTP语义高度契合。
 
-RESTful API的核心思想是：网络上的每一个资源（如用户、文章、订单）都有唯一的URI标识，客户端通过标准HTTP动词（GET、POST、PUT、PATCH、DELETE）对这些资源执行操作，服务器返回资源的"表述"（通常为JSON）。这与传统的RPC风格（如`/getUserById?id=1`）形成鲜明对比——RPC暴露的是行为，REST暴露的是资源。
+RESTful API的核心思想是将服务器上的一切数据或功能抽象为**资源（Resource）**，每个资源由唯一的URI标识，客户端通过HTTP方法对这些资源进行操作。与早期的SOAP（Simple Object Access Protocol）相比，RESTful API无需XML信封格式、无需WSDL服务描述文件，直接利用HTTP协议本身的动词语义，使接口更轻量、可读性更强。
 
-在AI工程的Web后端开发中，RESTful API是模型推理服务、数据标注平台和MLOps管道对外提供能力的主要接口形式。设计良好的RESTful API能使前端开发者、算法工程师和第三方系统无需阅读源码便能推断接口行为，大幅降低集成成本。
+在AI工程的后端开发中，RESTful API是模型服务对外暴露推理接口的主要方式。例如OpenAI的`/v1/chat/completions`端点、Hugging Face的`/models/{model_id}`端点，都是遵循REST原则设计的。掌握RESTful API设计能让你准确复现这类工业级接口规范，构建可被前端、移动端或其他微服务调用的AI推理服务。
+
+---
 
 ## 核心原理
 
-### 六大约束条件
+### 资源命名与URI设计规范
 
-Fielding提出的REST架构包含六个约束，违反任意一条即不能称为严格的RESTful：
-
-1. **客户端-服务器分离**：UI逻辑与数据存储逻辑解耦，各自独立演化。
-2. **无状态（Stateless）**：每个请求必须包含服务器处理所需的全部信息，服务器不保存客户端的会话状态。这意味着认证信息（如JWT Token）需在每次请求的Header中携带，而非依赖服务器端Session。
-3. **可缓存（Cacheable）**：响应需标注是否可缓存（通过HTTP的`Cache-Control`头），允许客户端或中间代理缓存GET响应。
-4. **统一接口（Uniform Interface）**：这是REST最核心的约束，包括资源识别、通过表述操作资源、自描述消息和超媒体驱动（HATEOAS）四个子约束。
-5. **分层系统（Layered System）**：客户端无需知道自己是在与最终服务器还是中间代理通信。
-6. **按需代码（Code on Demand，可选）**：服务器可向客户端发送可执行代码（如JavaScript）。
-
-### URI设计规范
-
-URI设计遵循"名词复数表示资源集合"原则。以AI平台为例：
+REST的URI设计只表达**名词**，不包含动词。资源用复数名词表示，层级关系通过路径体现：
 
 ```
-✅ 正确：GET  /api/v1/models
-✅ 正确：GET  /api/v1/models/{model_id}
-✅ 正确：POST /api/v1/models/{model_id}/predictions
-❌ 错误：GET  /api/v1/getModels
-❌ 错误：POST /api/v1/runPrediction
+# 正确示例
+GET  /users              # 获取用户列表
+GET  /users/42           # 获取ID为42的用户
+GET  /users/42/orders    # 获取该用户的订单列表
+POST /users/42/orders    # 为该用户创建新订单
+
+# 错误示例（包含动词）
+GET  /getUser?id=42
+POST /createOrder
 ```
 
-层级关系通过路径嵌套表达，但超过三级嵌套（如`/users/{id}/projects/{pid}/tasks/{tid}`）会导致URI过于复杂，建议将深层资源提升为顶层端点并用查询参数过滤。URI中统一使用小写字母和连字符（`-`），避免下划线（`_`）和大驼峰命名。
+URI中使用小写字母，单词间用连字符（`-`）分隔而非下划线（`_`），避免文件扩展名（如`.json`）出现在路径中，格式协商应通过`Accept`请求头完成。
 
-### HTTP动词与状态码映射
+### HTTP方法的幂等性与安全性
 
-HTTP动词具有精确的语义，错误使用会破坏API的可预测性：
+RESTful API严格区分HTTP方法的语义，其中**幂等性**和**安全性**是两个关键属性：
 
-| 动词 | 语义 | 幂等性 | 典型场景 |
-|------|------|--------|---------|
-| GET | 获取资源 | 是 | 查询模型列表 |
-| POST | 创建资源 | 否 | 提交推理任务 |
-| PUT | 完整替换资源 | 是 | 更新全部模型配置 |
-| PATCH | 部分更新资源 | 否 | 仅更新模型名称 |
-| DELETE | 删除资源 | 是 | 删除数据集 |
+| HTTP方法 | 操作语义 | 安全（不修改数据） | 幂等（多次调用结果一致） |
+|----------|----------|-------------------|--------------------------|
+| GET      | 查询资源 | ✅ | ✅ |
+| HEAD     | 查询元数据 | ✅ | ✅ |
+| POST     | 创建资源 | ❌ | ❌ |
+| PUT      | 完整替换资源 | ❌ | ✅ |
+| PATCH    | 部分更新资源 | ❌ | ❌（通常） |
+| DELETE   | 删除资源 | ❌ | ✅ |
 
-**幂等性**意味着对同一资源执行多次相同操作，结果与执行一次相同——这对网络重试逻辑至关重要。
+PUT与PATCH的区别尤其重要：PUT要求客户端发送完整资源体，缺失字段会被置为null；PATCH只发送需要变更的字段。对于AI模型配置的局部参数更新，PATCH是更合适的选择。
 
-响应状态码需精确选用：
-- `200 OK`：GET、PUT、PATCH成功
-- `201 Created`：POST成功创建，响应Header中应包含`Location: /api/v1/models/123`指向新资源
-- `204 No Content`：DELETE成功，无响应体
-- `400 Bad Request`：请求参数校验失败，响应体需说明具体哪个字段错误
-- `401 Unauthorized`：未携带或Token无效（注意：名称虽为Unauthorized，实为未认证）
-- `403 Forbidden`：已认证但无权限（注意与401的区别）
-- `404 Not Found`：资源不存在
-- `422 Unprocessable Entity`：语法正确但语义错误（如传入负数的`batch_size`）
-- `429 Too Many Requests`：触发限流
+### HTTP状态码的精确使用
 
-### API版本管理
+返回正确的状态码是RESTful API区别于"伪REST"接口的重要标志。常见错误是将所有响应都返回200并在body里包含`error`字段，这违反了REST约定：
 
-版本管理有三种主流策略：URI路径版本（`/api/v1/`）、请求头版本（`Accept: application/vnd.myapi.v2+json`）和查询参数版本（`?version=2`）。URI路径版本因其直观性和浏览器友好性在实践中最为普遍。当接口发生**破坏性变更**（移除字段、修改字段类型、改变认证方式）时必须升级主版本号；新增可选字段属于非破坏性变更，无需升级版本。
+- **201 Created**：POST创建成功，响应头应包含`Location: /users/43`指向新资源URI
+- **204 No Content**：DELETE成功，无响应体
+- **400 Bad Request**：请求参数格式错误（如缺少必填字段）
+- **401 Unauthorized**：未提供认证凭据（名称具有误导性，实为"未认证"）
+- **403 Forbidden**：已认证但权限不足
+- **404 Not Found**：资源不存在
+- **409 Conflict**：业务逻辑冲突（如创建已存在的用户名）
+- **422 Unprocessable Entity**：格式合法但业务校验失败
+- **429 Too Many Requests**：触发限流
+
+### 无状态约束与版本控制
+
+REST六大约束之一是**无状态（Stateless）**：每个请求必须包含处理该请求所需的全部信息，服务器不在请求之间保存客户端的会话状态。这意味着不能依赖服务端Session存储认证状态，而要在每个请求的`Authorization`头中携带token。
+
+API版本控制有三种主流方案：
+1. **URI路径**：`/v1/predictions`（最直观，但污染URI）
+2. **请求头**：`Accept: application/vnd.myapi.v2+json`（最符合REST纯粹主义）
+3. **查询参数**：`/predictions?version=2`（不推荐，语义不明确）
+
+AI服务类API（如OpenAI）普遍采用URI路径方案，因为其可读性最强，便于网关路由和日志分析。
+
+---
 
 ## 实际应用
 
-**AI推理服务接口设计示例：**
-
-设计一个图像分类模型的推理API，完整的请求-响应如下：
+**构建AI模型推理服务接口**：以图像分类服务为例，完整的RESTful设计如下：
 
 ```http
-POST /api/v1/models/resnet50/predictions
+# 提交推理任务（异步）
+POST /v1/predictions
 Content-Type: application/json
-Authorization: Bearer eyJhbGci...
-
 {
-  "image_url": "https://storage.example.com/img/001.jpg",
-  "top_k": 5
+  "model_id": "resnet50-imagenet",
+  "input_url": "https://example.com/cat.jpg"
 }
+→ 202 Accepted
+Location: /v1/predictions/pred_a1b2c3
+{ "id": "pred_a1b2c3", "status": "processing" }
+
+# 查询推理结果
+GET /v1/predictions/pred_a1b2c3
+→ 200 OK
+{ "id": "pred_a1b2c3", "status": "completed",
+  "results": [{"label": "tabby cat", "confidence": 0.94}] }
+
+# 列出历史推理记录（分页）
+GET /v1/predictions?page=2&per_page=20&model_id=resnet50-imagenet
+→ 200 OK
+Link: <https://api.example.com/v1/predictions?page=3>; rel="next"
 ```
 
-```http
-HTTP/1.1 201 Created
-Content-Type: application/json
+分页响应使用`Link`响应头而不是在body中嵌套分页元数据，更符合REST的HATEOAS（超媒体作为应用状态引擎）约束。
 
-{
-  "prediction_id": "pred_abc123",
-  "model_id": "resnet50",
-  "results": [
-    {"label": "cat", "confidence": 0.92},
-    {"label": "lynx", "confidence": 0.05}
-  ],
-  "created_at": "2024-01-15T08:30:00Z",
-  "_links": {
-    "self": "/api/v1/predictions/pred_abc123",
-    "model": "/api/v1/models/resnet50"
-  }
-}
-```
-
-注意响应中的`_links`字段——这是HATEOAS（超媒体作为应用状态引擎）的实践，客户端可通过链接发现后续可执行的操作，而无需硬编码URL。
-
-**分页与过滤设计：**
-
-查询大量训练日志时，使用查询参数实现分页和过滤：
-
-```
-GET /api/v1/experiments?status=running&page=2&page_size=20&sort=-created_at
-```
-
-响应头应包含`X-Total-Count: 157`，响应体可包含`next`和`prev`链接，使客户端无需计算偏移量。
+---
 
 ## 常见误区
 
-**误区一：将所有操作都用POST实现。** 这是从传统表单提交习惯迁移过来的错误做法。使用POST查询资源会破坏缓存机制（HTTP代理仅对GET响应进行缓存），导致重复请求造成不必要的服务端负载。只有在操作确实具有副作用（创建资源、触发异步任务）时才应使用POST。
+**误区一：POST用于所有写操作**。许多初学者用POST替代PUT、PATCH和DELETE，认为"POST就是修改数据"。这导致接口语义混乱且破坏幂等性。正确做法是：更新用PUT或PATCH，删除用DELETE，仅创建新资源时用POST。
 
-**误区二：混淆401与403的使用场景。** `401 Unauthorized`表示"你是谁我不知道"，需要客户端重新提供认证凭据（响应头需包含`WWW-Authenticate`字段）；`403 Forbidden`表示"我知道你是谁，但你没有权限"，重新认证无济于事。在AI平台中，未登录用户访问私有模型应返回401，已登录但非模型所有者的用户访问应返回403。
+**误区二：URI中嵌套层级越深越好**。类似`/users/42/projects/7/tasks/3/comments/9`的五层嵌套URI难以维护。REST社区的最佳实践是嵌套不超过两层，更深的关联资源应提升为独立端点：`GET /comments/9`，并在资源body中通过`task_id`字段体现从属关系。
 
-**误区三：将操作性动词（`/activate`、`/run`）直接暴露在URI中。** 当确实需要表达动作时（如激活账号、触发模型重训），应将该动作建模为一个"子资源"：`POST /api/v1/models/{id}/retraining-jobs`，而非`POST /api/v1/models/{id}/retrain`。这保持了URI的名词性语义一致性。
+**误区三：认为REST必须用JSON**。REST对媒体类型没有限制，通过`Content-Type`和`Accept`头协商格式。在AI工程场景中，某些高吞吐推理接口会选择`application/x-msgpack`（MessagePack）来减少序列化体积，典型情况下比JSON小约20%-30%。
+
+---
 
 ## 知识关联
 
-掌握RESTful API设计后，**API认证（JWT/OAuth）**是直接的延伸——无状态约束决定了必须使用Token而非Session，JWT（JSON Web Token）正是为HTTP无状态认证场景设计的，其结构`Header.Payload.Signature`与RESTful的自描述消息约束高度契合。
+RESTful API设计以**服务器基础概念**（HTTP协议、请求/响应模型、TCP连接）为前提——不理解HTTP方法和状态码的原始语义，就无法准确实现REST约束。
 
-**GraphQL**是另一种API设计范式，它解决了RESTful的两个固有痛点：过度获取（Over-fetching，客户端收到大量不需要的字段）和获取不足（Under-fetching，一个页面需要调用多个端点）。理解RESTful的资源模型和HTTP动词语义，有助于判断哪些场景下GraphQL的单端点查询语言更合适。
+设计好REST接口后，下一个必然问题是**API认证（JWT/OAuth）**：无状态约束要求在每个请求中携带令牌，JWT的自包含特性正是为无状态认证场景而生，OAuth 2.0则解决了第三方授权问题。
 
-**微服务架构**中，每个微服务通常通过RESTful API对外暴露能力，API网关负责路由、限流（`429 Too Many Requests`）和认证，这是RESTful设计中版本管理和统一接口约束在分布式系统中的直接应用。
+当REST接口因"过度获取"（Over-fetching）或"获取不足"（Under-fetching）导致前端需要多次往返请求时，**GraphQL**提供了另一种思路——客户端自定义查询结构，一次请求获取精确字段。理解REST的局限性（尤其是固定响应结构）是学习GraphQL的最佳切入点。
+
+在横向扩展方向，REST接口的无状态特性天然适合**微服务**间通信，每个服务暴露独立的REST端点，服务间通过HTTP调用解耦。

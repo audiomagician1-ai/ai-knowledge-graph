@@ -20,72 +20,76 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-04-01
 ---
+
 # UE材质编辑器
 
 ## 概述
 
-UE材质编辑器（Material Editor）是Unreal Engine内置的基于节点图的可视化Shader创作工具，用户通过拖拽节点、连接引脚的方式构建材质逻辑，引擎在后台自动将节点图编译为HLSL代码并生成对应平台的着色器字节码。这种方式让美术师无需手写GLSL/HLSL即可创作复杂材质，同时技术美术可通过"Custom节点"直接嵌入原生HLSL代码突破节点图的表达限制。
+UE材质编辑器（Material Editor）是Unreal Engine内置的基于节点图（Node Graph）的可视化Shader编写工具，允许美术师和技术美术师无需手写HLSL代码即可构建复杂的着色逻辑。其本质是一套将视觉节点网络自动转译为HLSL Shader代码的编译系统，最终输出可供GPU执行的着色器程序。
 
-材质编辑器最早随Unreal Engine 3（2006年）引入，彼时称为"Material Expression Graph"，并在UE4（2014年）中重新设计了UI布局，加入了实时预览视口和材质参数化体系。UE5进一步引入了Substrate（底物）材质框架（实验性功能，5.0起可用），将传统单一着色模型拓展为可分层混合的物理材质描述语言，但核心节点图界面保持一致。
+该工具最早在Unreal Engine 3时代以"Material Expression"系统的形式出现，并在UE4中经历了全面重构，引入了基于物理渲染（PBR）的主材质节点（Master Material Node），将传统的漫反射/高光等老式工作流替换为基底颜色（Base Color）、金属度（Metallic）、粗糙度（Roughness）等PBR参数引脚。UE5进一步在此基础上集成了Substrate材质框架（实验性功能），但经典节点图系统依然是默认工作流。
 
-对技术美术而言，掌握材质编辑器意味着能够直接控制GPU每像素的计算逻辑：从纹理采样、UV变换，到复杂的次表面散射参数输入，所有数据流动都通过有向无环图（DAG）表达，最终汇聚到材质输出节点（Material Output Node）的各个插槽上，如Base Color、Metallic、Roughness、Normal等。
+对于技术美术而言，理解材质编辑器意味着能够精确控制每个像素在GPU光栅化阶段的最终颜色计算过程，直接影响渲染性能与视觉质量的平衡。材质编辑器还承担着驱动Static Mesh、Skeletal Mesh、Particle System等多类渲染对象外观的中心职责。
 
 ---
 
 ## 核心原理
 
-### 节点图结构与数据流向
+### 节点系统与材质表达式
 
-材质编辑器的图由**材质表达式节点（Material Expression Nodes）**和**连线（Wire）**构成。每条连线携带特定数据类型：float1（标量）、float2（2D向量）、float3（RGB颜色）或float4（RGBA）。引擎会在类型不匹配时自动截断或补零——例如将float3连接到float1输入时，引擎取R通道值；将float1连接到float3输入时，三个通道均填充该标量。
+材质编辑器的每个图形节点对应一个**Material Expression**类，当前UE5中内置超过200种Expression类型，涵盖数学运算（Add、Multiply、Lerp）、纹理采样（Texture Sample）、坐标操作（Texture Coordinate、World Position）等。每个节点拥有若干输入引脚（白色/灰色）和输出引脚（白色），引脚颜色标识数据类型：灰色=float1（标量），黄色=float3（向量），绿色=float2，白色=通配。连线时若类型不匹配，引擎会自动进行类型提升（如将float1复制至float3的RGB三通道），但这可能导致非预期的计算结果，需要特别注意。
 
-图的执行方向**从右向左**溯源求值：从最终输出节点出发，沿连线追溯所有依赖节点，未被任何输出引脚间接引用的孤立节点会被编译器自动剔除（Dead Code Elimination）。这意味着在图中放置但未连接的节点不会产生任何GPU运算开销。
+### 主材质节点（Master Material Node）
 
-### 材质输出节点与着色模型
+画布最右侧固定存在的"结果节点"即主材质节点，其引脚直接对应着色器的输出语义。常用引脚包括：
 
-材质图有且只有一个**最终输出节点（Final Material Node）**，其可用插槽由"Shading Model"属性决定。默认的Default Lit模式暴露Base Color、Metallic、Specular、Roughness、Emissive Color、Opacity、Normal、World Position Offset等主要输入。切换为Unlit（无光照）模式后，只有Emissive Color和Opacity插槽有效，所有光照相关计算被从生成的HLSL中完全移除，这也是UI材质和粒子材质常用Unlit的根本原因——节省了整个GBuffer写入和光照积分的开销。
+- **Base Color**（float3）：对应漫反射颜色，接受0–1范围的线性颜色值
+- **Metallic**（float1）：金属度，0为非金属，1为纯金属
+- **Roughness**（float1）：微表面粗糙度，影响镜面反射的锐利程度
+- **Emissive Color**（float3）：自发光，数值可超过1以触发Bloom效果
+- **Opacity**（float1）：仅在Blend Mode为Translucent时有效
+- **Normal**（float3）：切线空间法线，接受从法线贴图解包的向量
 
-Shading Model在4.25版本后支持**Per-Pixel Shading Model**，即通过Shading Model ID节点在单一材质内按像素混合不同着色模型，实现皮肤与织物在同一Mesh上的混合着色，而无需拆分为多个材质球。
+主材质节点的**Shading Model**属性决定光照计算模型，Default Lit使用完整PBR GGX高光模型，Unlit则完全跳过光照计算，仅输出Emissive Color，可节省大量GPU算力。
 
-### 参数节点与材质实例
+### 编译流程与HLSL转译
 
-将普通Constant节点替换为**Parameter节点**（如ScalarParameter、VectorParameter、TextureParameter）后，该值可被材质实例（Material Instance）覆盖，无需重新编译整个Shader。参数必须在父材质中声明，子实例只能修改参数值而无法改变图的拓扑结构。
+在编辑器中每次修改节点后点击Apply，或保存材质时，编辑器会触发**材质编译（Material Compilation）**。编译器遍历节点图，从主材质节点出发反向追踪依赖树，将每条连接转译为HLSL表达式，并生成多个着色器排列（Shader Permutation）以应对不同功能开关（如是否使用顶点着色）。一个复杂材质可能产生数十乃至数百个Permutation，对项目打包时间影响显著。可通过菜单"Shader → View HLSL Code"查看最终生成的HLSL代码，验证节点逻辑是否符合预期。
 
-参数节点支持"Group"和"Sort Priority"属性，用于在材质实例编辑器中对参数进行分组排列，这是团队协作中规范材质资产的重要手段——通常按"Base Surface / Tiling / Color Variation"等语义分组，避免美术师在实例编辑器中面对几十个无序参数。
+### 预览视口
 
-### 编译流程与Shader排列组合（Permutation）
-
-保存材质时，UE编译器执行以下流程：①将节点图序列化为中间表示；②调用HLSLTranslator将其转换为HLSL文本；③根据目标平台（D3D11/D3D12/Vulkan/Metal）调用对应的着色器编译器（DXC/SPIRV-Cross等）生成字节码；④将字节码存入DDC（Derived Data Cache）。
-
-每启用一个Static Switch Parameter节点，编译器必须为True/False两个分支各生成一套字节码，导致Shader排列数量以**2ⁿ**的速度膨胀（n为Static Switch数量）。一个拥有10个Static Switch的材质会产生最多1024个Shader变体，这是大型项目中Shader编译时间过长和包体增大的常见根源，技术美术需谨慎使用Static Switch并定期用**Material Stats**（快捷键：统计面板，可查看指令数）审查开销。
+材质编辑器内嵌独立预览视口，默认在球体（Sphere）上渲染当前材质。工具栏提供立方体、平面、圆柱等预置几何体切换按钮，也可拖入自定义Static Mesh进行预览。预览使用引擎默认HDRI环境光（由`Engine/MapTemplates/Sky/SunSky`下的HDR提供），可通过视口菜单切换光照环境，以便在不同打光条件下检验材质表现。预览视口的渲染结果是实时的，节点图任意变动均会立即触发GPU重新执行着色器（不等待完整编译），因此可即时反映Float值调整对外观的影响。
 
 ---
 
 ## 实际应用
 
-**地形混合材质**：使用4个TextureSample节点分别采样泥土、草地、岩石、雪地的BaseColor与Normal，结合LandscapeLayerBlend节点按地形权重图混合，最终输出统一的法线与颜色。该场景中World Position Offset插槽常接入顶点动画节点实现草地随风摆动效果，全部逻辑在一张材质图内完成。
+**参数化与材质实例（Material Instance）**：将Constant节点升级为**Parameter**节点（如ScalarParameter、VectorParameter、TextureParameter），可将材质发布为可继承的父材质。子级Material Instance可在不重新编译Shader的前提下覆盖这些参数值，这是大型项目中管理材质变体的标准实践。例如一套角色皮肤材质可通过VectorParameter暴露"皮肤颜色基调"，供美术在实例中自由调整而不产生额外的Shader编译开销。
 
-**角色皮肤材质**：选用Subsurface Profile着色模型，在Opacity插槽连入一张红色调散射贴图控制次表面散射半径，在Roughness插槽接入遮罩贴图区分皮肤与嘴唇光泽。通过ScalarParameter暴露"SkinTone"参数，供美术师在实例中快速调整，而无需修改底层Shader逻辑。
+**Texture Sample节点与UV操控**：Texture Sample节点的UVs引脚接受float2类型的UV坐标，默认使用网格自带的UV0通道。接入TexCoord节点并设置UTiling=2、VTiling=2即可将贴图平铺密度翻倍。若接入Panner节点（含Speed X/Y参数），可在运行时产生贴图滚动效果，常用于流水、传送带等动态表面。
 
-**Custom节点嵌入原生HLSL**：在Custom节点的"Code"字段输入`return sin(In * 6.28318) * 0.5 + 0.5;`，将输入值转换为正弦波形输出。Custom节点支持声明额外的Include文件路径，引用项目Shaders目录下的`.ush`头文件，是技术美术实现程序化噪声、自定义光照模型等高级效果的标准入口。
+**自定义节点（Custom Node）**：当内置节点无法实现所需逻辑时，可插入**Custom Expression**节点，在其Code文本框内直接编写HLSL代码片段。该节点的输入引脚会作为HLSL函数参数传入，输出结果由`return`语句返回。这是实现Voronoi噪声、屏幕空间效果等复杂算法的常用途径。
 
 ---
 
 ## 常见误区
 
-**误区1：节点越少性能越好**
-节点数量本身不等于GPU指令数——一个单独的Noise节点（Value噪声，质量8）会生成约750条GPU指令，而十几个简单的Add/Multiply节点可能仅产生10条指令。评估材质性能应使用材质编辑器左上角的**Shader Complexity视图**以及统计面板中的"Base Pass Shader Instructions"指令计数，而不是直觉上数节点个数。
+**误区一：节点越少性能越好**  
+许多初学者认为减少节点数量就能提升性能，实则不然。真正影响GPU开销的是最终编译后的HLSL指令数（Instruction Count），可在材质编辑器左下方的Statistics面板中查看。一个Lerp节点与手动写`A*(1-Alpha)+B*Alpha`生成的指令数完全相同。影响性能的关键是纹理采样数量（因为纹理采样会引起内存带宽压力和潜在的缓存未命中）和Shader复杂度（Shader Complexity视图中红色区域），而非节点图中可见的节点个数。
 
-**误区2：Dynamic Parameter与Scalar Parameter是同一机制**
-ScalarParameter通过材质实例（CPU侧设置，Draw Call前上传）传递值，每帧修改需调用`SetScalarParameterValue`；而Dynamic Parameter节点（仅用于粒子系统）通过粒子系统的DynamicParameter模块按粒子逐个传递float4值，二者走不同的数据通道，不可混用。在粒子材质中误用ScalarParameter会导致所有粒子共享同一个值，无法实现逐粒子差异化效果。
+**误区二：Opacity引脚在任何混合模式下均生效**  
+Opacity引脚的效果完全取决于主材质节点上设置的**Blend Mode**。若Blend Mode为Opaque（默认），Opacity输入即便连接了有效数值也会被忽略；必须将Blend Mode切换为Translucent或Masked，Opacity或Opacity Mask引脚才会参与计算。Masked模式使用OpacityMask引脚配合ClipValue实现硬边透明（如树叶镂空），Translucent则启用完整半透明排序，两者的渲染成本差异显著。
 
-**误区3：修改材质参数会触发Shader重编译**
-修改ScalarParameter/VectorParameter/TextureParameter的**默认值**不会触发重编译，因为这些值以Uniform Buffer形式在运行时传入GPU，Shader字节码不含其具体数值。只有改变节点图拓扑、修改Shading Model、或修改Static Switch参数的默认状态时才会触发完整的HLSL重新编译和字节码重生成。
+**误区三：预览实时结果等同于最终编译结果**  
+材质编辑器的预览视口会在节点修改后立即刷新，但此时引擎使用的是"解释执行"模式或上一次编译的缓存Shader。只有点击Apply并等待完整编译完成后，项目中所有引用该材质的对象才会使用最新Shader。在大型场景中，若跳过Apply直接保存退出，可能在下次打开项目时触发大量Shader重编译，造成编辑器启动缓慢。
 
 ---
 
 ## 知识关联
 
-**前置概念——GPU渲染管线**：理解材质编辑器输出节点各插槽的含义，需要知道Base Color对应Albedo Texture在GBuffer的存储位置，Roughness/Metallic对应PBR光照方程中的粗糙度参数`α = Roughness²`（UE采用Disney平方映射关系）。Normal插槽接收的是切线空间法线向量，最终在像素着色器中通过TBN矩阵变换至世界空间参与光照计算——若不理解TBN矩阵，就无法正确调试法线贴图翻转、压缩格式导致的Z分量重建问题。
+**前置概念——GPU渲染管线**：材质编辑器的节点图本质上是对GPU渲染管线中**片元着色器（Fragment/Pixel Shader）阶段**的可视化抽象。理解渲染管线有助于明白为何主材质节点的引脚与光照方程的各项参数一一对应——Base Color对应漫反射反照率，Roughness和Metallic共同决定Cook-Torrance GGX高光积分的形状，这些参数在GPU中由UE的`TiledDeferredLighting`或Forward Shading Pass在像素级别逐一求值。
 
-**扩展方向——材质函数（Material Function）**：掌握材质编辑器节点图后，可将可复用的子图封装为Material Function资产（后缀`.mf`），通过FunctionInput/FunctionOutput节点定义接口，在多张材质中共享同一套逻辑而无需复制粘贴节点，这是大型项目中实现材质库标准化的核心工作流。**Substrate材质框架**则将BaseColor等标量化输入替换为结构化的"Slab"层描述，要求技术美术重新理解材质层混合算子（如`SubstrateCoverageCompositing`），是UE5后续版本的演进方向。
+**后续拓展方向**：掌握材质编辑器后，可进一步学习**Niagara材质**（粒子系统的专用材质参数化）、**Material Function**（可复用的节点子图，类似Shader中的函数封装）、以及通过**RenderDoc**抓帧分析UE材质编译出的真实HLSL在GPU上的执行效率，从而完成从可视化编辑到底层Shader性能优化的完整技能链路。

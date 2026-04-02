@@ -20,122 +20,95 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 继承
 
 ## 概述
 
-继承（Inheritance）是面向对象编程中子类自动获得父类属性和方法的机制，通过 `class Child(Parent)` 这样的语法建立"是一种"（is-a）关系。继承创建的是类层次结构：子类不仅拥有父类的全部非私有成员，还可以新增自己独特的属性和方法，或者覆盖父类已有的方法。
+继承（Inheritance）是面向对象编程中的一种机制，允许一个类（子类/派生类）自动获取另一个类（父类/基类）的属性和方法，并在此基础上添加或覆盖特定行为。用Python语法表示最简单的继承结构为 `class Dog(Animal):` ——括号内的 `Animal` 就是父类，`Dog` 自动继承了 `Animal` 的所有非私有成员。
 
-继承概念由 Ole-Johan Dahl 和 Kristen Nygaard 在1967年设计 Simula 67 语言时首次正式引入，这也是世界上第一个面向对象语言。Python 3 中所有类默认隐式继承自 `object` 基类，这意味着即使你写 `class Dog:` 也等价于 `class Dog(object):`，所有类天然拥有 `__str__`、`__repr__`、`__eq__` 等魔术方法。
+继承的思想最早在1967年的 Simula 语言中由 Ole-Johan Dahl 和 Kristen Nygaard 提出，随后被 Smalltalk（1972年）、C++（1983年）和 Java（1995年）进一步完善。继承的核心价值在于**代码复用**和**类型层次建模**：当多个类共享相同属性时，将公共逻辑上移到父类，可以消除重复代码，并且子类实例在类型检查中可以被视为父类类型（`isinstance(dog, Animal)` 返回 `True`）。
 
-继承在AI工程中具有直接的实用价值：PyTorch 所有神经网络模块都必须继承 `nn.Module`，TensorFlow 的自定义层必须继承 `tf.keras.Layer`。这种强制继承保证子类能被框架的训练循环、参数管理、序列化等基础设施自动识别和处理，而不是依赖鸭子类型的约定。
+在AI工程实践中，继承广泛出现于框架设计中。例如，PyTorch 要求所有自定义神经网络模块都必须继承 `torch.nn.Module`，通过重写 `forward()` 方法来定义前向传播逻辑，这是一个强制使用继承的经典案例。
 
 ---
 
 ## 核心原理
 
-### 方法解析顺序（MRO）
+### 属性与方法的继承规则
 
-Python 使用 **C3线性化算法**决定多继承时的方法查找顺序。给定 `class D(B, C):`，Python 调用 `D.__mro__` 可以查看完整的解析链。C3算法保证两个规则：子类永远在父类之前，同级父类按声明顺序排列。
+子类继承父类的所有**公有（public）和受保护（protected）**成员。以Python为例，单下划线前缀（`_method`）表示受保护，双下划线前缀（`__method`）触发名称改写（name mangling），变为 `_ClassName__method`，子类无法直接以原名访问。子类实例化时，Python的方法解析顺序（MRO，Method Resolution Order）按照 C3 线性化算法确定查找链，可通过 `ClassName.__mro__` 查看完整顺序。
 
-例如：
-```python
-class A: pass
-class B(A): pass
-class C(A): pass
-class D(B, C): pass
-# D.__mro__ = (D, B, C, A, object)
-```
+### 方法重写（Override）与 super() 调用
 
-在PyTorch自定义层中，如果同时继承 `nn.Module` 和一个自定义 `Mixin` 类，MRO顺序直接决定 `__init__` 和 `forward` 哪个版本被调用，错误的顺序会导致模型参数无法注册。
-
-### `super()` 与协作式多继承
-
-`super()` 不是"调用父类方法"，而是"按MRO顺序调用下一个类的方法"。这一区别在多继承时至关重要。
+子类可以定义与父类**同名的方法**，从而覆盖父类行为，这称为方法重写。若需在重写时保留父类逻辑，使用 `super()` 函数向上调用：
 
 ```python
-class ModelBase(nn.Module):
-    def __init__(self, device):
-        super().__init__()   # 沿MRO传递调用，最终到达 nn.Module.__init__
-        self.device = device
+class Animal:
+    def __init__(self, name: str):
+        self.name = name
+
+class Dog(Animal):
+    def __init__(self, name: str, breed: str):
+        super().__init__(name)   # 调用 Animal.__init__
+        self.breed = breed
 ```
 
-如果子类 `__init__` 忘记调用 `super().__init__()`，PyTorch的 `nn.Module` 内部的 `_parameters`、`_modules` 字典将不会被创建，后续调用 `.parameters()` 或 `.to(device)` 时会抛出 `AttributeError`。
+不调用 `super().__init__()` 是新手最常见的错误，会导致父类初始化的属性（如 `self.name`）未被赋值。在多重继承场景下，`super()` 会严格按照 MRO 顺序向上传递调用，而非简单地调用"父类"。
 
-### 方法覆盖（Override）与 `super()` 扩展
+### 单继承与多重继承
 
-子类可以完全覆盖父类方法，也可以先调用 `super()` 再扩展。两种策略有本质区别：
+Python 支持多重继承，语法为 `class C(A, B):`，而 Java 只允许单继承（接口实现不计）。多重继承的最大风险是**菱形继承问题（Diamond Problem）**：若 `A` 和 `B` 都继承自 `Base`，且都重写了 `speak()` 方法，`C` 继承 `A, B` 时需要 MRO 来确定调用哪个版本。MRO的计算规则保证 `Base.speak()` 只被调用一次，避免重复初始化。
 
-| 策略 | 适用场景 | 代码模式 |
-|------|---------|---------|
-| 完全覆盖 | 父类逻辑完全不适用 | 直接定义同名方法 |
-| 扩展覆盖 | 在父类基础上增加行为 | `super().method()` + 新逻辑 |
+### 抽象类与强制接口
 
-在AI工程中，自定义 `Dataset` 类必须覆盖 `__len__` 和 `__getitem__` 两个抽象方法，PyTorch 的 `DataLoader` 内部依赖这两个方法来分批和打乱数据。如果只覆盖其中一个，运行时会抛出 `TypeError: Can't instantiate abstract class`。
-
-### 访问控制：名称修饰（Name Mangling）
-
-Python 没有真正的 `private` 关键字，但双下划线前缀（`__attr`）会触发名称修饰机制，将属性重命名为 `_ClassName__attr`。这实际上阻止了子类直接访问该属性。
+Python通过 `abc` 模块（Abstract Base Classes）实现抽象类。使用 `@abstractmethod` 装饰的方法必须在子类中被重写，否则子类实例化时会抛出 `TypeError`。例如：
 
 ```python
-class Trainer:
-    def __init__(self):
-        self.__learning_rate = 0.001   # 存储为 _Trainer__learning_rate
+from abc import ABC, abstractmethod
 
-class CustomTrainer(Trainer):
-    def show_lr(self):
-        print(self.__learning_rate)    # AttributeError！
-        print(self._Trainer__learning_rate)  # 可以访问
+class Model(ABC):
+    @abstractmethod
+    def predict(self, X):
+        pass
+
+class LinearRegression(Model):
+    def predict(self, X):          # 必须实现，否则报错
+        return X @ self.weights
 ```
 
-单下划线 `_attr` 只是约定（"请勿外部访问"），并不触发名称修饰，子类可以直接访问。
+抽象类本身无法被直接实例化（`Model()` 会报 `TypeError: Can't instantiate abstract class`），它只能作为继承的模板强制约束子类行为。
 
 ---
 
 ## 实际应用
 
-**构建神经网络层的标准模式**是继承在AI工程中最典型的用法。自定义注意力层必须：
+**Scikit-learn 的估计器体系**：所有 Scikit-learn 模型都继承自 `BaseEstimator`，并根据功能混入 `ClassifierMixin`、`RegressorMixin` 等。通过继承 `BaseEstimator`，自定义模型自动获得 `get_params()` 和 `set_params()` 方法，使其兼容 `GridSearchCV` 等超参数搜索工具，无需重新实现这些方法。
 
-```python
-class MultiHeadAttention(nn.Module):
-    def __init__(self, d_model, num_heads):
-        super().__init__()                    # 必须调用，注册参数字典
-        self.num_heads = num_heads
-        self.d_k = d_model // num_heads
-        self.W_q = nn.Linear(d_model, d_model)
-        self.W_k = nn.Linear(d_model, d_model)
-        self.W_v = nn.Linear(d_model, d_model)
+**PyTorch 自定义层**：继承 `torch.nn.Module` 后，只需重写 `forward()`，就自动获得参数注册（`.parameters()` 返回所有可训练张量）、模型状态保存（`.state_dict()`）、GPU迁移（`.cuda()`）等功能。这些功能全部定义在父类 `nn.Module` 中，包含约1500行代码，子类通过继承零成本复用。
 
-    def forward(self, query, key, value):
-        # 具体实现
-        pass
-```
-
-`nn.Module` 父类的 `__setattr__` 被重写，能自动检测到 `self.W_q = nn.Linear(...)` 这样的赋值，将其注册进 `_modules` 字典——这是继承父类行为后获得的"隐式能力"。
-
-**scikit-learn 自定义变换器**也依赖继承 `BaseEstimator` 和 `TransformerMixin`：继承 `TransformerMixin` 后只需实现 `fit` 和 `transform`，就自动获得 `fit_transform` 方法（父类用这两个方法组合实现的），可直接插入 `Pipeline`。
+**数据加载器**：PyTorch 的 `Dataset` 是一个抽象基类，要求子类必须实现 `__len__()` 和 `__getitem__()` 两个方法。自定义图像数据集继承 `Dataset` 后，可直接传入 `DataLoader` 使用批量加载、shuffle、多进程等功能。
 
 ---
 
 ## 常见误区
 
-**误区1：继承等于代码复用，复用就该用继承**
+**误区一：继承等同于代码复用，应尽量多用**
+继承实际上建立了**强耦合**关系：父类的任何修改都会影响所有子类。当继承层级超过3层时，代码的可读性和可维护性急剧下降。"Is-A"关系（狗是动物）才适合继承；若是"Has-A"关系（汽车有发动机），应使用组合而非继承。
 
-继承建立的是强耦合的"是一种"关系，修改父类可能意外破坏所有子类。如果目的只是复用某几个方法，而子类和父类之间没有真正的分类关系，应使用组合（将对象作为属性持有）而非继承。例如，`DataLoader` 不继承 `Dataset`，因为加载器不"是一种"数据集，而是"持有"数据集。
+**误区二：方法重写会改变父类行为**
+方法重写只影响子类实例的行为，父类及其他子类完全不受影响。`Animal` 实例调用 `speak()` 始终执行 `Animal.speak()`，`Dog` 实例才会执行重写后的版本。父类对象不知道也不关心子类的存在。
 
-**误区2：`super()` 只调用直接父类**
-
-很多人认为 `super().__init__()` 只调用直接父类的 `__init__`，但实际上在菱形继承结构中，`super()` 按MRO顺序传递调用，每个中间类也会被执行一次。如果某个中间类没有调用 `super().__init__()`，就会打断这条调用链，导致某些祖先类的初始化被跳过——这是多继承中最难调试的bug之一。
-
-**误区3：子类会继承私有方法（双下划线）**
-
-双下划线方法（如 `__compute`）因名称修饰机制，在子类中以 `_ParentClass__compute` 的形式存在，无法通过 `self.__compute()` 直接调用。这不同于Java的 `private`：Python的双下划线不阻止子类覆盖，只阻止子类用原名访问。
+**误区三：`super()` 只调用直接父类**
+在多重继承中，`super()` 调用的是 MRO 中的**下一个类**，而非固定的直接父类。在 `class C(A, B)` 中，`A.super()` 可能调用的是 `B` 而非 `object`，这与直觉不符。不理解 MRO 时盲目使用 `super()` 可能导致意料之外的方法调用顺序。
 
 ---
 
 ## 知识关联
 
-**前置概念**：理解继承需要先掌握类与对象——特别是 `__init__` 方法和实例属性的初始化机制，因为继承中最容易出错的正是子类 `__init__` 与父类 `__init__` 的协调调用。
+**前置概念**：理解继承前需要掌握**类与对象**的基本结构——类定义属性和方法，对象是类的实例。继承在此基础上引入了类之间的层次关系，`__init__`、`self` 等概念在继承场景中有延伸用法（如 `super().__init__()` 的必要性）。
 
-**后续概念**：继承自然引出**多态**——子类覆盖父类方法后，父类引用调用同名方法时执行子类版本，这正是PyTorch `forward` 分发机制的工作方式。**模板方法模式**将继承的方法覆盖系统化：父类定义算法骨架（如 `fit` 的步骤顺序），子类覆盖具体步骤，整体流程由父类控制。**组合优于继承**原则则是对继承滥用的矫正——当你能明确说出两个类之间"是一种"关系时才使用继承，否则用对象组合来获得更松散的耦合。
+**后续概念**：继承是**多态**的实现基础之一——子类覆盖父类方法后，同一接口调用在运行时根据对象实际类型派发到不同实现，这就是多态的本质。然而，继承的强耦合缺陷直接催生了**组合优于继承**原则（出自《设计模式》GoF 1994年，原文："Favor object composition over class inheritance"），建议优先通过持有对象引用来复用行为。**模板方法模式**则是继承的典型设计模式应用：父类定义算法骨架（`final` 方法），将可变步骤声明为抽象方法由子类实现，这正是 PyTorch `nn.Module` + 自定义 `forward()` 的设计哲学。

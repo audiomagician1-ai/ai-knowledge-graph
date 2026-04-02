@@ -20,91 +20,70 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # Ninja 构建系统
 
 ## 概述
 
-Ninja 是一个专为速度而设计的小型构建系统，由 Google 工程师 Evan Martin 于 2010 年开发，最初用于加速 Chromium 浏览器的构建过程。Chromium 项目庞大，在当时使用 Make 构建时单次全量构建需要数小时，增量构建也因 Makefile 解析开销过大而缓慢。Ninja 的诞生正是为了解决这一具体痛点：将构建系统的职责缩减到极致——只执行构建，不生成构建规则。
+Ninja 是一个专注于速度的小型构建执行器，由 Google 工程师 Evan Martin 于 2010 年创建，最初用于加速 Chromium 浏览器项目的构建过程。Chromium 的代码库规模庞大，传统的 Make 工具在增量构建时需要花费数十秒甚至数分钟来评估依赖关系，而 Ninja 通过极简的设计哲学将这个评估时间压缩到毫秒级别。Ninja 的第一个公开版本于 2012 年发布，其核心目标只有一个：在给定构建描述文件（`.ninja` 文件）的情况下，尽可能快地完成增量构建。
 
-与 Make 不同，Ninja 的设计哲学是"不应该由人类手写"。Ninja 的输入文件（`.ninja` 文件）语法极为简单，仅包含规则（rule）和构建边（build edge）两种核心概念，整个语言规范文档不足 500 行。这种设计使 Ninja 在解析构建图时几乎没有额外计算，能在毫秒级时间内完成依赖分析，随后并行执行所有可并行的构建任务。
+与 CMake 或 MSBuild 这类"高层级"构建系统不同，Ninja 并不负责检测编译器、管理依赖库或生成跨平台配置。Ninja 的 `.ninja` 文件几乎不可能由人工手写维护——它的定位是作为 CMake、GN、Meson 等高层级工具的**后端执行器**。CMake 在配置阶段通过 `cmake -G Ninja` 参数生成 `.ninja` 文件，之后由 Ninja 负责实际的编译调度与执行。这种分工使得 Ninja 在整个构建工具链中承担"执行引擎"的角色。
 
-Ninja 在现代 C/C++ 生态中几乎无处不在：LLVM、Android AOSP、以及大量使用 CMake 的项目都默认将 Ninja 作为后端执行器。CMake 从 3.14 版本开始将 `Ninja` 列为官方推荐生成器之一，命令为 `cmake -G Ninja`。
+Ninja 之所以重要，在于它将增量构建的哲学推向极致：只重新编译真正发生变化的文件。在一个包含数千个源文件的 C++ 项目中，修改单个头文件后，Ninja 能够在不到一秒的时间内完成依赖图遍历并启动最小必要的重新编译任务。
 
 ## 核心原理
 
-### 构建图与依赖跟踪
+### 极简的 .ninja 文件格式
 
-Ninja 将整个构建过程表示为一张有向无环图（DAG），图中每个节点是一个文件，每条边代表一条构建命令。`.ninja` 文件中的 `build` 语句声明输出文件、使用的规则以及输入文件：
-
-```
-build foo.o: cc foo.c
-```
-
-Ninja 通过对比输出文件与输入文件的修改时间戳（mtime）判断是否需要重新构建，这与 Make 的机制相同。但 Ninja 的特殊之处在于它还支持**依赖文件（depfile）**机制：编译器（如 GCC/Clang）在编译时可以生成 `.d` 文件，列出所有隐式头文件依赖，Ninja 在构建后自动读取并将这些依赖写入 `.ninja_deps` 数据库（SQLite 格式）。这样，当某个头文件发生变化时，Ninja 能准确识别哪些 `.cpp` 文件需要重新编译，避免漏编或过度编译。
-
-### 并行执行模型
-
-Ninja 默认并行度等于当前机器的 CPU 逻辑核心数，可通过 `-j N` 参数手动指定。其并行调度基于构建图的拓扑排序：所有入度为零（即依赖已满足）的构建节点会立即被提交到线程池执行。每当一个任务完成，Ninja 重新检查哪些节点的依赖已全部就绪，并立即调度它们，从而实现接近理论最优的并行效率。
-
-相比之下，传统 `make -j` 的并行机制是在递归 Make 的子进程层面实现的，存在进程创建开销以及父子进程之间的同步损耗。Ninja 的单进程调度模型避免了这些开销，在核心数较多（如 32 核以上）时优势更为明显。
-
-### `.ninja` 文件语法结构
-
-Ninja 文件由以下几类语句组成：
-
-- **rule**：定义一条构建规则，包含 `command` 变量，描述实际执行的 shell 命令。`$in` 和 `$out` 是内置变量，分别指向输入和输出文件列表。
-- **build**：将具体文件与规则关联，声明依赖关系。
-- **variable**：全局或局部变量赋值，用于避免重复书写编译器路径、编译选项等。
-- **pool**：限制某类任务的并发度，例如链接任务通常内存消耗极大，可用 `pool link_pool` 将并发链接数限制为 4。
+Ninja 的构建描述文件格式刻意设计得极其简单，只有六个顶层关键字：`rule`、`build`、`default`、`pool`、`subninja`、`include`。一个典型的规则定义如下：
 
 ```
-pool link_pool
-  depth = 4
-
-rule link
-  command = clang++ $in -o $out
-  pool = link_pool
+rule cc
+  command = gcc -c $in -o $out
+  depfile = $out.d
+  deps = gcc
 ```
 
-### 重新生成检测
+其中 `$in` 和 `$out` 是 Ninja 内置变量，分别代表输入文件和输出文件列表。`depfile` 和 `deps = gcc` 告诉 Ninja 读取 GCC 生成的 `.d` 格式依赖文件，从而实现头文件级别的精确增量构建。这种依赖追踪机制是 Ninja 相比简单 Makefile 的关键优势之一。
 
-Ninja 文件本身也被纳入依赖管理。`.ninja` 文件中可以声明一条特殊的 `build build.ninja` 规则，当 CMakeLists.txt 或其他构建配置文件发生变化时，Ninja 会在执行构建前自动重新运行 CMake 重新生成 `.ninja` 文件，无需用户手动干预。
+### 构建图与并行执行策略
+
+Ninja 在启动时将整个 `.ninja` 文件解析为一张有向无环图（DAG），图中每个节点代表一个文件，每条边代表构建依赖关系。Ninja 的并行执行默认线程数为当前机器的逻辑 CPU 核心数加 2（即 `N+2` 个并行任务），这个公式的设计考虑了 I/O 等待期间的 CPU 利用率。用户可以通过 `-j` 参数手动指定并行度，例如 `ninja -j 8` 强制使用 8 个并行任务。
+
+Ninja 使用时间戳和文件哈希的组合来判断文件是否过期。与 Make 仅依赖时间戳不同，Ninja 通过 `restat` 规则属性支持"输出未变化则不触发下游重建"的优化——如果一次编译产生的目标文件内容与之前完全相同，Ninja 不会标记其下游目标为需要重建。
+
+### 最小化启动开销
+
+Ninja 的二进制文件本身极为精简，在 Linux 系统上通常小于 200KB。其设计刻意避免任何复杂的脚本语言解析、变量展开逻辑或条件判断——这些功能都必须由生成 `.ninja` 文件的上游工具（如 CMake）在配置阶段完成。Ninja 的解析器对 `.ninja` 文件采用单遍扫描，不支持循环、条件分支或函数定义。正是这种"无脑执行"的设计使得 Ninja 的启动时间通常在 10 毫秒以内，而 GNU Make 在处理复杂 Makefile 时光是解析阶段就可能消耗数百毫秒。
 
 ## 实际应用
 
-### 与 CMake 配合使用
-
-最常见的使用场景是通过 CMake 生成 Ninja 构建文件：
-
+**在 CMake 项目中使用 Ninja**：只需在 CMake 配置时指定生成器即可：
 ```bash
-cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
-cmake --build build -j 16
+cmake -S . -B build -G Ninja
+cmake --build build
 ```
+生成的 `build/build.ninja` 文件包含所有编译规则，后续每次执行 `ninja -C build` 时只会重新编译修改过的源文件。
 
-CMake 生成的 `build.ninja` 通常包含 `all`、`clean`、`install` 等伪目标（phony target），与 Makefile 的使用体验类似但执行速度更快。在一个包含约 2000 个编译单元的项目中，Ninja 的增量构建启动时间通常在 100ms 以内，而 Make 在同等规模下仅解析 Makefile 就需要数秒。
+**Android NDK 构建**：Android 的 NDK 构建系统从 r14 版本开始默认使用 Ninja 作为后端，取代了原有的 GNU Make 方案。对于包含大量 C/C++ 模块的 Android 项目，切换到 Ninja 后端通常可以将增量构建时间缩短 40%–70%。
 
-### Android NDK 构建
+**Chromium 项目的 GN + Ninja 工作流**：Chromium 使用 GN（Generate Ninja）工具替代 CMake 来生成 `.ninja` 文件。在一台 32 核工作站上，Chromium 的全量构建通过 Ninja 的并行调度可以在约 20 分钟内完成，而早期使用 Make 的版本需要超过 1 小时。
 
-Android AOSP 从 Android 7.0（Nougat，2016 年）开始将 Ninja 作为主要构建后端。AOSP 的构建系统（Soong）先将 `Android.bp` 文件转换为 `.ninja` 文件，再由 Ninja 执行实际编译。完整 AOSP 构建涉及数十万条构建边，Ninja 对大规模构建图的高效处理是其被选中的核心原因。
-
-### 直接编写 `.ninja` 文件
-
-对于需要自定义构建流程的场景，也可以直接编写轻量的 `.ninja` 文件，适合嵌入式项目或脚本生成的构建系统。由于语法极简，一个 50 行以内的 `.ninja` 文件即可描述一个中等规模嵌入式项目的完整构建逻辑。
+**与 ccache 集成**：Ninja 可以通过在规则的 `command` 字段中将编译器替换为 `ccache gcc` 来无缝集成编译缓存工具，无需任何特殊配置，因为 Ninja 对命令内容完全透明。
 
 ## 常见误区
 
-**误区一：Ninja 可以替代 CMake**  
-Ninja 只负责执行构建命令，它不会自动探测编译器路径、处理平台差异或管理依赖库版本。CMake 承担的是"生成 Ninja 文件"的角色，两者分工明确、不可互换。直接使用 Ninja 意味着必须手动或通过其他工具生成 `.ninja` 文件。
+**误区一：Ninja 可以独立使用来管理项目构建**。由于 `.ninja` 文件格式缺乏条件逻辑、平台检测和依赖查找能力，几乎没有项目会直接手写 `.ninja` 文件。Ninja 必须配合 CMake、GN 或 Meson 等工具使用，自行维护 `.ninja` 文件在中型项目中即不可行也无意义。
 
-**误区二：Ninja 比 Make 功能更强大**  
-Ninja 恰恰相反——它是刻意设计得比 Make 功能更少。Ninja 不支持条件判断、循环、函数定义等元编程特性，也不提供自动变量推导规则。这种"功能缺失"是设计选择，换来的是极低的解析开销和可预测的执行行为。
+**误区二：Ninja 的速度优势主要来自更好的并行算法**。实际上，Ninja 与 Make 在并行调度算法上差异不大，都是基于 DAG 的拓扑排序。Ninja 的速度优势主要来自两点：一是极低的解析和启动开销（毫秒级 vs. Make 的百毫秒级），二是基于 `depfile` 的精确头文件依赖追踪减少了不必要的重新编译。对于全量构建（首次构建），Ninja 相对于 Make 的速度提升非常有限。
 
-**误区三：`-j` 参数越大越好**  
-在链接阶段，每个链接任务可能消耗 1–8 GB 内存（取决于项目规模）。盲目设置 `-j 32` 可能导致内存耗尽、系统 OOM。正确做法是使用 `pool` 机制单独限制链接任务的并发度，而对编译任务使用较高的并发数。
+**误区三：Ninja 与 MSBuild 是平行替代关系**。MSBuild 是一个完整的构建系统，负责从项目描述到编译执行的全流程；Ninja 只负责执行阶段。在 Windows 上，CMake 可以生成 MSBuild 项目文件或 `.ninja` 文件，两者是同一层级中 CMake 可选的不同后端，而非 Ninja 取代 MSBuild。
 
 ## 知识关联
 
-学习 Ninja 之前需要掌握 CMake 的基本使用，特别是 CMake 生成器（Generator）的概念——CMake 支持生成 Makefile、Ninja、Visual Studio 工程等多种格式，理解这一层抽象有助于明白 Ninja 在整个构建流程中的位置。
+学习 Ninja 需要先理解 **CMake** 的配置阶段——CMake 的 `cmake -G Ninja` 命令负责生成 Ninja 所需的 `.ninja` 文件，理解 CMake 的 `CMakeLists.txt` 如何被翻译为构建规则有助于读懂生成的 `.ninja` 文件内容。**MSBuild** 提供了对比视角：MSBuild 将项目描述（`.vcxproj`）和构建执行合为一体，而 Ninja 刻意只做执行层，这种对比清晰展示了"生成器与执行器分离"架构的权衡。
 
-Ninja 本身是构建执行层的终点，其上层工具包括 CMake、Meson、GN（Chromium 使用的元构建系统）等，它们都能以 Ninja 作为后端输出。若需要进一步提升大型项目的构建速度，可以在 Ninja 之上引入分布式编译工具（如 `distcc` 或 `icecc`）或编译缓存工具（如 `ccache`），这些工具与 Ninja 的 `rule` 中的 `command` 字段直接集成，替换编译器调用命令即可生效。
+进阶学习可以转向 **Gradle**：Gradle 面向 JVM 生态（Java/Kotlin/Android），内置了依赖管理、插件系统等高层功能，是 Ninja 所刻意回避的功能范畴。对比 Ninja 的"极简执行器"定位与 Gradle 的"全功能构建平台"定位，能够帮助理解构建工具在功能边界上的不同设计决策。此外，了解 **GN**（Chromium 的元构建系统）可以深入理解 Ninja 文件格式的最大化利用方式。

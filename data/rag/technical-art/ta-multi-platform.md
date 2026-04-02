@@ -20,85 +20,76 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 多平台管线
 
 ## 概述
 
-多平台管线（Multi-Platform Pipeline）是技术美术在项目中为PC、主机（Console）与移动端（Mobile）构建的一套差异化资产处理与输出流程。其核心任务不是维护三套独立工程，而是通过统一的源资产（Source Asset）在构建阶段自动分流，针对每个目标平台的硬件特性输出对应规格的贴图、Mesh与着色器变体。
+多平台管线（Multi-Platform Pipeline）是技术美术工作流中专门处理同一套原始资产在PC、主机（Console）与移动端（Mobile）三类硬件平台上差异化输出的构建体系。其核心任务不是重新制作资产，而是在单一制作源（Single Source of Truth）的基础上，通过条件编译、LOD分级与纹理压缩格式切换，自动生成各平台专属的资产变体包（Platform-Specific Asset Bundle）。
 
-这一概念随着跨平台商业游戏的兴起而系统化。2011年前后，Unity引入了Platform Overrides机制，允许同一张贴图在Inspector中为iOS、Android、Standalone分别设置压缩格式和最大尺寸；Unreal Engine则在4.x时代引入了Device Profile系统，通过`.ini`配置文件的层级继承来驱动平台差异。这两种思路代表了多平台管线设计的两条主线：**资产级覆写**与**设备配置驱动**。
+这一体系的工程化需求最早在2010年代初移动游戏爆发期显现——彼时开发团队需要为同一款游戏同时维护PC的DX11管线和iOS的OpenGL ES 2.0管线，手动维护两套资产的成本使项目延期风险急剧上升。Unity在4.x版本引入AssetBundle的平台分支机制，Unreal在4.14版本引入了Cook平台过滤系统，这两个节点标志着多平台管线从手工流程向自动化工具链的转型。
 
-多平台管线的价值在于它直接决定游戏能否在不同设备上同时达到目标帧率与显存预算。以一张角色皮肤贴图为例，PC版本可保留4096×4096 BC7格式（约8MB显存），主机版本降为2048×2048 BC7，移动端则必须转为ASTC 6x6（约900KB），三者来自同一张源文件，靠管线自动完成分发。
+在现代AAA项目中，多平台管线直接决定了内存预算的执行效率：一张4K PBR材质在PC上保持RGBA 32bit未压缩约64MB，同一张图在Switch上必须强制降为BC1/ASTC 4x4格式，显存占用缩减至约4-8MB，这种压缩策略的系统性自动化正是多平台管线要解决的问题。
 
 ---
 
 ## 核心原理
 
-### 平台能力矩阵与资产规格表
+### 平台能力矩阵与资产分级
 
-多平台管线首先需要建立一张**平台能力矩阵**，将硬件限制量化为具体数字约束。典型的三平台规格对比如下：
+多平台管线的第一步是建立**平台能力矩阵**（Platform Capability Matrix），为每个目标平台记录其GPU特性集合：支持的最大纹理尺寸（PC可达16384×16384，移动端通常上限4096×4096）、支持的压缩格式（PC支持BC1-BC7，iOS专属PVRTC/ASTC，Android需同时打包ETC2与ASTC）、顶点着色器最大Uniform数量（WebGL 1.0限制为128个vec4，PC DX12无此约束）。
 
-- **PC（DirectX 12 / Vulkan）**：支持BC1–BC7、ASTC（通过扩展），显存预算通常≥4GB，Shader Model 6.x，纹理最大分辨率16384×16384。
-- **Console（PS5 / Xbox Series X）**：主要使用BC1/BC3/BC7，GDK平台额外支持XeSS纹理压缩，显存预算约10–16GB但受严格带宽限制，支持Mesh Shader与RT。
-- **Mobile（iOS Metal / Android Vulkan）**：iOS强制ASTC（4x4至12x12），Android的ASTC支持率在OpenGL ES 3.1+设备上超过95%（截至2023年数据），但仍需准备ETC2兜底；GPU为Tile-Based架构，Overdraw成本远高于桌面端。
+基于该矩阵，资产被分入三档质量等级（Quality Tier）：Tier 0为移动端最低配置，Tier 1为主机标准配置，Tier 2为PC高配。每个原始资产在导入设置（Import Settings）中对应三套规则文件（`.platformrule`），构建系统根据目标平台读取对应规则，驱动压缩参数、Mip级别与着色器变体的差异化输出。
 
-这张矩阵构成了管线中所有自动化决策的依据。
+### 纹理压缩格式路由
 
-### 差异化构建流程（Build-Time Differentiation）
+纹理格式路由是多平台管线中逻辑最复杂的环节。以Android平台为例，由于GPU厂商碎片化（Adreno/Mali/PowerVR），单一APK打包策略需要同时包含ETC2压缩包（作为兼容后备）与ASTC压缩包（供Adreno 430+优先加载），通过`GL_KHR_texture_compression_astc_ldr`扩展检测在运行时动态选择。而iOS自A8芯片起统一支持ASTC，无需运行时分支，构建时直接输出单一格式即可。
 
-差异化不发生在运行时判断，而是在**构建阶段（Build Time）**完成资产分流。一个典型的多平台贴图处理节点链如下：
+在Unreal的Cook流程中，纹理路由通过`DefaultDeviceProfiles.ini`中的`CVarGroup`字段控制，形如：
 
 ```
-Source PSD (8K, 32-bit linear)
-    └─ 导出管线
-        ├─ PC Output      → 4K BC7, mip生成, sRGB转换
-        ├─ Console Output → 2K BC7, 平台SDK工具链压缩
-        └─ Mobile Output  → 2K ASTC 6x6 (质量 = medium), sRGB转换
+[DeviceProfile:Android_Adreno]
+BaseProfileName=Android
++CVars=r.Streaming.UseFixedPoolSize=1
+TextureGroup_World=(MinLODSize=16,MaxLODSize=1024,LODBias=1)
 ```
 
-在基于Python的资产管线（如Houdini Digital Asset或自研工具链）中，平台路由通常通过一个`platform_config.json`配置文件控制，其中记录每类资产（Albedo / Normal / Roughness）在每个平台的`max_resolution`、`compression_format`与`mip_bias`参数，构建脚本读取该文件后并行生成各平台包。
+Unity的等效机制是在`TextureImporter`的`platformTextureSettings`中为每个平台写入`maxTextureSize`与`format`字段，通过Editor脚本批量覆盖。
 
-### 着色器变体的平台管理
+### Shader变体的跨平台管理
 
-多平台管线中着色器膨胀是最大的隐性成本。一个支持PC、PS5、移动端的着色器，若不加控制，在Unity的ShaderVariantCollection机制下可膨胀至数千个变体。具体控制手段包括：
-
-- **平台关键字剥离（Shader Keyword Stripping）**：在`IPreprocessShaders`接口（Unity）或UE的`r.ShaderPipelineCache`中，为Mobile平台移除所有`#pragma multi_compile _ SHADOWS_SOFT`等桌面端专用变体。
-- **Feature Level分层**：UE的Material Quality Level（Low / Medium / High）映射到Mobile / Console / PC三级，每级使用不同的节点子图（SubGraph），避免Mobile执行虚空指令。
-- **PSO预编译**：PS5与Xbox使用管线状态对象（Pipeline State Object）预编译，要求在出包时静态确定所有着色器组合，这迫使管线在构建时完全枚举变体而非依赖运行时编译。
+PC、主机与移动端的着色器代码并非简单地"同一段HLSL编译到不同目标"，而是需要在特性宏层面进行有意识的剔除。移动端GPU普遍使用TBR（Tile-Based Rendering）架构，`SHADER_FEATURE_MOBILE`宏下应禁用屏幕空间反射（SSR）、高精度阴影级联（超过2级CSM）等带宽密集型特性。在Unity的ShaderLab中，这通过`#pragma exclude_renderers`与`#pragma multi_compile _ _MOBILE_SHADER_QUALITY`组合实现，预期可将移动端Shader变体数量从数百个压缩至数十个，减少PSO缓存压力。
 
 ---
 
 ## 实际应用
 
-### 角色资产的平台差异化输出
+**案例：《原神》的多平台资产策略**  
+米哈游在维护PC/PS4/iOS/Android四端的管线中，对同一个角色模型采用三套骨骼LOD：PC端使用约600块骨骼的完整绑定，主机端裁剪至约400块，移动端降为约200块并关闭布料模拟。这要求管线在FBX导出阶段即完成骨骼剥离，而非在引擎内运行时降级，否则蒙皮权重重计算会阻塞加载线程。
 
-以一个AAA手游向PC移植项目为例，角色模型原始精度为80,000三角形，PC版本直接使用，主机版本使用LOD1（40,000三角形）作为基础，移动端使用LOD2（15,000三角形）并且剔除次级配件（如耳环、腰带扣等独立Mesh）。这些LOD并非美术手动制作三套，而是在资产入库时通过Houdini的`polyloft` + `polyreduce`节点以70%和20%的目标比例自动生成，并写入同一FBX文件的不同LOD层级，由构建脚本按平台提取对应层级打包。
-
-### 移动端Tile-Based架构的特殊处理
-
-移动端GPU（如Apple A17 Pro的GPU或高通Adreno 750）使用TBDR（Tile-Based Deferred Rendering）架构，Framebuffer读写完全在片上SRAM中完成，这意味着多平台管线必须为移动端禁用所有需要`Framebuffer Fetch`替代方案的后处理Pass。在Unity URP管线中，Mobile平台的`Renderer Feature`列表需剔除SSAO（改用SSAO的预烘焙版本）、Screen Space Reflection，以及任何采样`_CameraOpaqueTexture`超过一次的Pass，否则会触发Tile Memory Flush，导致显存带宽飙升3–5倍。
+**案例：Nintendo Switch的内存预算强制约束**  
+Switch的系统可用RAM约为4GB，游戏可用约3.2GB，远低于PS5的12GB可用量。针对Switch构建分支，管线需强制执行以下规则：所有漫反射贴图最大512×512（PC允许2048×2048），关闭所有Runtime Virtual Texture（RVT），World Partition Cell Size从512m扩大至1024m（减少流式加载频率）。这些规则通过CI/CD管线中的Python脚本在资产构建阶段预检，不达标的资产会触发构建失败警告，而非推迟到QA阶段发现。
 
 ---
 
 ## 常见误区
 
-### 误区一：用运行时`#if UNITY_IOS`替代构建时分流
+**误区1：用运行时降级替代构建期分支**  
+许多初期团队选择在游戏运行时检测设备性能后动态降低贴图质量，而非在构建期生成平台专属包。这一方案虽然实现简单，但会导致低端设备在首次加载时仍需解码高精度资产再丢弃，白白消耗首屏加载时间（实测在2019款中端Android设备上可增加约1.2秒的纹理解码耗时）。正确的多平台管线应在AssetBundle或Package粒度就完成平台隔离，设备只下载和解码自己的目标格式。
 
-很多初学者在Shader或C#脚本中直接使用平台宏做运行时判断，认为这等同于多平台管线。实际上，`#if UNITY_IOS`在Unity中是**编译期**宏，会在非iOS构建中被完全剥离，但在资产层面（贴图压缩、Mesh精度）它毫无作用——这些必须通过Asset Importer Settings或脚本化构建（`BuildPipeline.BuildAssetBundles`配合`BuildTarget`枚举）在构建时处理。将逻辑塞入运行时判断不仅不能减小包体，还会在构建目标不对时产生错误的资产引用。
+**误区2：认为主机平台是PC的子集**  
+PS5和Xbox Series X的GPU支持VRS（Variable Rate Shading）与Mesh Shader，而大多数2021年以前的PC用户仍使用不支持Mesh Shader的GTX 10系显卡。因此，"主机分支"不是PC分支的简化版，而是一个需要独立维护特性集合的平台，尤其在光线追踪实现方式（PS5的Insomniac自研BVH方案 vs PC的DXR标准API）上存在根本性差异。
 
-### 误区二：移动端ASTC压缩参数全局统一
-
-ASTC的块大小（4x4到12x12）对质量与压缩率影响显著：4x4压缩比约为8:1，接近BC7质量；12x12压缩比达到约22:1，但会在高频细节区域产生明显块状伪影。实际项目中，法线贴图必须使用ASTC 4x4（保留精度），Albedo可用6x6，环境Cubemap的远景面可用8x8。将所有贴图统一设为ASTC 6x6是一种过于粗糙的策略，会导致法线贴图精度损失直接表现为高光锯齿。
-
-### 误区三：认为主机与PC管线可以共用同一压缩链
-
-PS5的SDK（GNM/GNMX）要求贴图以GNF（Gnm Native Format）格式存储，并通过`orbis-image2gnf`工具链转换，这个过程会重新排列Mip层级的内存布局以匹配PS5的内存系统寻址模式。如果直接将PC构建的DDS文件复制到PS5包中，虽然格式兼容性可能通过，但会产生5–15%的贴图采样性能损耗，因为Mip的Tile排列不符合GCN/RDNA架构的最优布局。
+**误区3：一套LOD策略跨平台通用**  
+LOD切换距离（Screen Size Threshold）在移动端由于分辨率差异（720p vs 4K）需要独立校准。PC 4K屏幕下LOD0到LOD1的切换阈值通常设在屏幕占比0.25%，而移动端720p屏幕下同一模型视觉面积更大，相同阈值会导致LOD0持续时间过长，过早消耗Draw Call预算。
 
 ---
 
 ## 知识关联
 
-**前置概念——资产烘焙管线**：多平台管线的输入是已完成烘焙的高精度资产（法线、AO、厚度图等），烘焙管线产出统一规格的16位EXR或32位PSD源文件，多平台管线从这个统一源头开始分流。若烘焙阶段就已输出压缩格式，则多平台管线的分流灵活性会大幅受损。
+多平台管线以**资产烘焙管线**为前置基础——烘焙阶段决定了法线贴图、AO贴图的原始精度与格式，这些原始数据是多平台管线进行格式路由的输入源。若烘焙阶段未输出16bit EXR中间格式而直接输出8bit PNG，后续向ASTC HDR格式转换时会发生不可逆的精度损失，这一问题在烘焙管线阶段便需要预留接口。
 
-**后续概念——版本迁移策略**：当项目引擎从Unity 2021升级到Unity 6，或从UE4升级到UE5时，各平台的压缩格式支持、Shader Feature Level定义以及Device Profile的配置结构都会发生变化。版本迁移策略需要盘点多平台管线中所有硬编码的平台参数，评估哪些`platform_config.json`条目需要更新，哪些Shader关键字剥离规则已被新版引擎内置，从而避免升级后出现平台特定的资产回退或性能劣化。
+向后，**版本迁移策略**是多平台管线稳定运行后必然面对的挑战：当引擎升级（如UE4升UE5）导致Nanite替换传统LOD系统后，原有的三档平台分级规则需要整体评估，PC端可能完全切入Nanite流，而移动端必须维持传统LOD栈。如何在资产数据库（Asset Registry）中记录平台规则版本号、如何在不重新制作资产的前提下完成规则升级，是版本迁移策略要解决的核心命题，其输入正是多平台管线积累的规则配置文件与构建日志。

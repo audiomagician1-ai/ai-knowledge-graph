@@ -20,57 +20,80 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 半定规划
 
 ## 概述
 
-半定规划（Semidefinite Programming，SDP）是一类在对称矩阵锥上求解线性目标函数的凸优化问题。其标准形式要求决策变量 $X$ 为对称半正定矩阵（$X \succeq 0$），约束条件为线性矩阵不等式（LMI），目标函数为矩阵内积 $\langle C, X \rangle = \text{tr}(C^T X)$。与线性规划将变量约束在非负象限不同，SDP 将变量约束在半正定矩阵锥（PSD cone）上，这是一个真正的无穷维推广。
+半定规划（Semidefinite Programming，SDP）是一类在矩阵变量上定义的凸优化问题，其约束条件要求矩阵变量为半正定矩阵（Positive Semidefinite，PSD）。标准形式的SDP在线性目标函数下，通过矩阵不等式约束将可行域限定在半正定矩阵锥（PSD Cone）之内。相比线性规划只处理向量变量、二次规划只处理标量二次型，SDP将变量提升为矩阵，使其具有更强的表达能力。
 
-SDP 的理论框架在 20 世纪 90 年代初由 Vandenberghe 和 Boyd 等人系统化整理，1994 年 Nesterov 和 Nemirovskii 提出了针对 SDP 的内点法多项式时间算法，使得 SDP 从理论走向大规模实际计算成为可能。在此之前，处理线性矩阵不等式约束几乎没有可靠的数值方法。
+SDP的理论框架在1990年代由Vandenberghe和Boyd系统整理并发表于1996年的《SIAM Review》综述论文，奠定了现代SDP理论的基础。在此之前，Alizadeh于1995年发展了内点法在SDP上的应用，证明了SDP可以在多项式时间内求解。这一进展将大量原本难以处理的组合优化问题和控制系统设计问题纳入了高效可求解的范畴。
 
-SDP 的重要性在于它是目前已知计算上可处理（polynomial-time solvable）的最富表达力的凸优化类之一。大量组合优化问题（如 MAX-CUT）的最优松弛、控制理论中的稳定性分析、量子信息中的密度矩阵优化，都统一在 SDP 框架下求解。
+SDP的重要性在于它是凸优化层次中功能最强的多项式时间可解问题类之一：线性规划 ⊂ 二阶锥规划 ⊂ 半定规划，形成严格的包含关系。许多NP难问题的最强多项式时间近似算法（如最大割问题的Goemans-Williamson算法，近似比0.878）都依赖SDP松弛。
+
+---
 
 ## 核心原理
 
-### 标准形式与对偶
+### 标准形式与矩阵不等式
 
-SDP 的**原始标准形式**为：
-$$\min_{X \in \mathbb{S}^n} \; \text{tr}(CX) \quad \text{s.t.} \; \text{tr}(A_i X) = b_i,\; i=1,\ldots,m,\; X \succeq 0$$
-其中 $\mathbb{S}^n$ 表示 $n \times n$ 对称矩阵空间，$C, A_1, \ldots, A_m \in \mathbb{S}^n$，$b \in \mathbb{R}^m$。
+SDP的标准形式（不等式形式）为：
 
-对应的**对偶问题**为：
-$$\max_{y \in \mathbb{R}^m} \; b^T y \quad \text{s.t.} \; \sum_{i=1}^m y_i A_i \preceq C$$
-即对偶约束要求 $C - \sum_i y_i A_i \succeq 0$。SDP 满足弱对偶性（strong duality 在 Slater 条件下成立），对偶间隙为零需要原始和对偶均严格可行。注意 SDP 不像线性规划那样总是强对偶，存在原始/对偶可行但间隙非零的病态情形。
+$$
+\min_{X \in \mathbb{S}^n} \langle C, X \rangle \quad \text{s.t.} \quad \langle A_i, X \rangle = b_i,\ i=1,\ldots,m,\quad X \succeq 0
+$$
 
-### 线性矩阵不等式（LMI）
+其中 $X \in \mathbb{S}^n$ 表示 $n \times n$ 实对称矩阵，$\langle C, X \rangle = \text{tr}(C^T X)$ 为矩阵内积，$X \succeq 0$ 表示 $X$ 为半正定矩阵（即所有特征值 $\geq 0$）。符号 $\succeq$ 定义了半正定锥上的偏序，称为Löwner偏序。对偶问题（等式形式）为：
 
-LMI 的一般形式为 $F(x) = F_0 + \sum_{i=1}^m x_i F_i \succeq 0$，其中 $F_i \in \mathbb{S}^n$ 为给定矩阵，$x \in \mathbb{R}^m$ 为决策变量。LMI 约束集合是凸集，因为半正定矩阵锥在加法和正数标量乘法下封闭。多个 LMI 约束可通过块对角组合 $\text{diag}(F_1(x), F_2(x), \ldots) \succeq 0$ 统一处理。实际上，线性规划的非负约束 $x \geq 0$ 是 LMI 的特殊情形（取 $F_i$ 为对角矩阵）。
+$$
+\max_{y \in \mathbb{R}^m} b^T y \quad \text{s.t.} \quad \sum_{i=1}^m y_i A_i \preceq C
+$$
 
-### 内点法求解
+强对偶性在SDP中**不**自动成立——需要满足Slater条件（即存在严格可行点 $X \succ 0$），才能保证对偶间隙为零。这与线性规划的强对偶定理存在本质区别，是SDP理论中需特别注意的技术细节。
 
-求解 SDP 的主要算法为**原始-对偶内点法**，核心思路是对障碍函数 $-\ln \det(X)$ 进行中心路径跟踪。每次迭代需要求解一个 $O(n^2) \times O(n^2)$ 的线性方程组（Schur 补方程），单次迭代复杂度为 $O(m^2 n^2 + m n^3)$。对于问题规模 $n = 1000, m = 10^4$ 的 SDP，现代求解器（如 SDPT3、SeDuMi、MOSEK）通常需要数分钟至数小时。精度保证上，内点法可在 $O(\sqrt{n} \ln(1/\varepsilon))$ 步内达到 $\varepsilon$ 精度。
+### 半正定锥的几何结构
+
+半正定锥 $\mathbb{S}^n_+$ 是 $n(n+1)/2$ 维实对称矩阵空间 $\mathbb{S}^n$ 中的一个闭凸锥，其极端射线（Extreme Rays）由秩为1的矩阵 $vv^T$ 构成。当 $n=2$ 时，$\mathbb{S}^2_+$ 可几何化为三维空间中的一个"冰淇淋锥"（实际上是旋转锥面），其边界正好与二阶锥规划的可行域等价，这也直接说明了二阶锥规划是SDP的特例。半正定锥不像正定锥那样是内部开集，其边界（奇异点）是秩亏损矩阵的集合，这给内点法迭代带来数值挑战。
+
+### 内点法求解与计算复杂度
+
+求解SDP最常用的算法是内点法中的**原对偶路径跟踪法**（Primal-Dual Path Following）。该方法引入对数障碍函数 $-\mu \log \det(X)$，沿着中心路径迭代趋近最优解。每次迭代需要求解一个 $m \times m$ 的线性方程组（正规方程），其中 $m$ 为约束数量，单次迭代的计算量为 $O(m^2 n^2 + m n^3)$。因此当矩阵维度 $n$ 和约束数 $m$ 均较大时（如 $n > 1000$），标准内点法会面临内存和计算瓶颈，需借助一阶方法（如ADMM或谱方法）替代。常用求解器包括SeDuMi、SDPT3和MOSEK，后者在工业界应用最广泛。
+
+---
 
 ## 实际应用
 
-**MAX-CUT 的 Goemans-Williamson 松弛**是 SDP 最著名的应用之一。对于图 $G=(V,E)$ 的最大割问题，Goemans 和 Williamson（1995）构造如下 SDP：$\max \frac{1}{2}\sum_{(i,j)\in E}(1 - \langle v_i, v_j \rangle)$，约束 $\|v_i\|^2 = 1$，将每个节点对应单位向量。通过随机超平面舍入（random hyperplane rounding），该算法保证近似比 $0.878$，即结果不低于最优整数解的 87.8%，这一比值由 Irrational number $\alpha_{GW} = \min_{0 \leq \theta \leq \pi} \frac{2\theta}{\pi(1-\cos\theta)} \approx 0.8785$ 精确确定。
+**最大割SDP松弛（MAX-CUT）**：给定无向图 $G=(V,E)$，权重矩阵 $W$，最大割问题的SDP松弛将 $\pm 1$ 向量变量替换为半正定矩阵，问题变为：
 
-**控制系统稳定性分析**中，线性时不变系统 $\dot{x} = Ax$ 的 Lyapunov 稳定性条件 $A^T P + PA \prec 0, P \succ 0$ 可直接写为关于矩阵变量 $P$ 的 LMI，从而用 SDP 验证或设计满足 $H_\infty$ 性能指标的控制器。
+$$
+\max \frac{1}{4} \langle L, X \rangle \quad \text{s.t.} \quad X_{ii}=1,\ X \succeq 0
+$$
 
-**量子信息**中，量子态的密度矩阵 $\rho$ 满足 $\rho \succeq 0, \text{tr}(\rho) = 1$，判断两量子态是否纠缠（separability problem）的 PPT 准则等价于一组 SDP 约束。量子信道容量的计算也通过 SDP 给出可计算上界。
+其中 $L$ 为图的拉普拉斯矩阵。对最优解进行随机超平面切割后得到近似解，Goemans和Williamson（1995）证明该算法的近似比为 $\alpha_{\text{GW}} \approx 0.8786$，是迄今在标准复杂度假设下已知的最佳多项式时间近似算法。
 
-**多项式优化**中，SOS（Sum-of-Squares）方法将多项式非负性验证转化为 SDP：多项式 $p(x)$ 可表示为平方和当且仅当存在半正定矩阵 $Q$ 使得 $p(x) = z(x)^T Q z(x)$，其中 $z(x)$ 为单项式向量。
+**控制系统中的线性矩阵不等式（LMI）**：判断线性系统 $\dot{x} = Ax$ 的渐近稳定性等价于寻找Lyapunov矩阵 $P \succ 0$ 满足 $A^T P + PA \prec 0$，这正是一个SDP可行性问题。$H_\infty$ 鲁棒控制设计、多目标控制综合均可转化为SDP，是控制工程中SDP应用最成熟的领域。
+
+**量子信息中的纠缠检测**：判断密度矩阵是否对应可分态（Separable State）是量子信息中的核心问题。SDP可用于计算最优纠缠见证（Entanglement Witness）算子，形式上等价于在密度矩阵的半正定约束下最小化某个线性泛函。
+
+**多项式优化的SOS松弛**：判断多项式 $p(x)$ 是否为平方和（Sum-of-Squares, SOS）多项式，等价于存在半正定矩阵 $Q \succeq 0$ 使得 $p(x) = z(x)^T Q\, z(x)$，其中 $z(x)$ 是单项式向量。Lasserre层级（2001）通过逐阶SDP松弛逼近多项式优化的全局最优，在有限阶数下可以恢复精确最优解。
+
+---
 
 ## 常见误区
 
-**误区一：将 SDP 与普通矩阵变量优化混淆**。许多初学者认为"目标函数含矩阵变量的优化"就是 SDP，实际上 SDP 的关键约束是矩阵变量的**半正定性** $X \succeq 0$，而非仅仅矩阵参数化。若没有 PSD 约束，即使目标含矩阵内积，问题可能退化为普通线性规划甚至非凸问题。正定矩阵约束 $X \succ 0$（严格正定）与 $X \succeq 0$（半正定）在可行集几何上有本质区别：前者是开集，后者是闭凸锥。
+**误区一：混淆强对偶的适用条件。** 线性规划在原问题或对偶问题有界时强对偶自动成立，但SDP存在原对偶均可行而对偶间隙仍为正的反例（如Dattorro 2003年给出的经典构造）。必须显式验证Slater条件（严格可行性），才能保证强对偶成立和数值求解器的可靠收敛。许多学生将LP的强对偶定理直接移植到SDP，会导致推导上的严重错误。
 
-**误区二：认为 SDP 强对偶总是成立**。线性规划在可行时强对偶恒成立，但 SDP 存在原始和对偶均可行却对偶间隙严格大于零的反例。例如，Ramana（1997）构造了如下情形：$\min x_1$ s.t. $\begin{pmatrix} x_1 & 1 \\ 1 & x_2 \end{pmatrix} \succeq 0$ 原始最优值为 0 但对偶不可达。强对偶成立的充分条件是 Slater 条件（内点可行性），即存在严格正定的可行解 $X \succ 0$。
+**误区二：认为SDP可以精确表示所有凸优化问题。** SDP虽然表达能力很强，但存在凸优化问题无法用有限维SDP精确表示的情形。例如，协正锥（Copositive Cone）上的优化比SDP严格更难，可以编码NP难问题而不损失最优性，这说明"所有凸问题均可化为SDP"是错误的。正确的认识是：SDP只覆盖可用线性矩阵不等式描述的凸集。
 
-**误区三：将 SDP 规模与线性规划规模等量齐观**。SDP 变量个数为 $n(n+1)/2$（对称矩阵独立元素数），但每步迭代要处理 $n \times n$ 矩阵的正定性（涉及 Cholesky 分解，复杂度 $O(n^3)$），因此 $n=100$ 的 SDP 比 $m=5050$ 的线性规划求解代价高出若干数量级。实践中，矩阵规模 $n > 2000$ 的 SDP 已属大规模问题，需要一阶方法（如 ADMM、谱方法）近似求解。
+**误区三：忽略数值精度导致的秩判断失误。** 在用SDP求解组合优化松弛时，需要根据最优解矩阵 $X^*$ 的秩来判断松弛是否紧（tight）。但数值求解器返回的解存在浮点误差，理论上秩为1的矩阵在数值上可能表现为秩为2或更高，若不设置合理的阈值（通常取特征值比值 $\lambda_2/\lambda_1 < 10^{-6}$ 作为近似秩1判断标准），会错误地认为松弛不紧，导致后续分析失误。
+
+---
 
 ## 知识关联
 
-**前置知识衔接**：理解 SDP 需要掌握**凸优化**中的对偶理论——Lagrange 对偶、KKT 条件直接对应 SDP 的原始-对偶关系，SDP 的对偶可行性条件 $C - \sum_i y_i A_i \succeq 0$ 即是 KKT 互补条件的矩阵版本。**正定矩阵**的知识则支撑了 SDP 可行集的几何理解：半正定矩阵锥的极点结构（秩-1 矩阵 $vv^T$）解释了 SDP 最优解通常具有低秩的现象（Barvinok-Pataki 界：若约束数为 $m$，最优解秩 $r$ 满足 $r(r+1)/2 \leq m$）。
+**与正定矩阵的关系**：SDP的约束 $X \succeq 0$ 直接来源于正定矩阵理论。Cholesky分解、矩阵特征值的单调性以及Schur补引理（Schur Complement Lemma）是将非线性矩阵不等式转化为标准LMI的核心工具——例如，非线性约束 $C - A^T B^{-1} A \succeq 0$（$B \succ 0$）等价于分块矩阵 $\begin{pmatrix} B & A \\ A^T & C \end{pmatrix} \succeq 0$，后者是合法的线性矩阵不等式。
 
-**横向连接**：SDP 与**二阶锥规划**（SOCP）形成优化问题层次——LP $\subset$ SOCP $\subset$ SDP，三者均可在多项式时间内求解，表达能力依次增强。组合优化中的 Lovász theta 函数 $\vartheta(G)$（图的独立数与色多项式的界）是 SDP 松弛的经典成果，将离散问题与连续凸优化深度连接。
+**与凸优化的关系**：SDP的可行域（半正定锥上的仿射截面）是凸集，目标函数是线性的，因此SDP是凸优化的特殊情形，局部最优即为全局最优的性质成立。凸优化中的KKT条件在SDP上的表现为互补松弛条件 $XS = 0$（其中 $S = C - \sum y_i A_i$

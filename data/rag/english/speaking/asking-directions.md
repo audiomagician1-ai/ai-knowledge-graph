@@ -20,111 +20,113 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # 问路与指路
 
 ## 概述
 
-问路与指路是英语口语中处理空间方向、位置描述和交通方式的一套专用表达体系。与日常闲聊不同，问路对话具有明确的目的性：说话者需要在陌生环境中快速获取可操作的位置信息，听话者需要将脑海中的地图转化为语言指令。这套表达的核心挑战在于方向词汇（left/right/straight ahead）和距离估计（two blocks away / about five minutes on foot）必须清晰准确，否则对话失去实用价值。
+问路与指路是英语口语中用于询问和描述空间方向、地点位置以及出行方式的一套专用表达体系。这类对话有固定的开场礼貌公式、核心方向动词和距离时间估算表达，三者缺一不可。与日常寒暄不同，问路对话的成功与否直接取决于能否让对方理解并抵达目的地，因此用词必须精准且有序。
 
-该类对话在英语教学史上长期占据初级口语教材的重要位置。20世纪70年代交际教学法（Communicative Language Teaching）兴起后，问路场景成为最经典的"任务型"口语训练之一，因为它天然包含"信息差"——问路者不知道路，指路者知道，双方必须真实沟通才能完成任务。掌握这一表达体系，意味着学习者能在英语国家独立出行、寻求帮助，是语言从课堂走向真实生活的直接检验。
+这套表达方式在英语世界中有高度标准化的格式。17世纪英语旅行指南就已收录固定的问路对话范本，现代英语教材则将其归入"功能性语言"（functional language）类别，强调其在真实交际中的实用性。从伦敦地铁站的问路告示到纽约街头的对话，核心句型几乎一致。
+
+掌握问路与指路表达，能让学习者在陌生城市独立完成出行任务，是英语口语从"课堂练习"转向"真实使用"的关键一步。这类对话在旅游、留学、商务出行场景中出现频率极高，且有时间压力——迷路者通常无法等待冗长解释，因此表达必须简洁有效。
 
 ---
 
 ## 核心原理
 
-### 开口请求的礼貌公式
+### 问路的标准开场句式
 
-在英语文化中，直接走向陌生人说"Where is the station?"被视为失礼。标准做法是先用礼貌引语软化请求，最常用的有以下三种结构：
+礼貌开场是问路成功的第一步。英语中最常用的三种开场公式是：
 
-- **Excuse me, could you tell me how to get to ___?**（最通用，适合所有场合）
-- **Excuse me, is there a ___ near here?**（用于询问附近是否存在某地点）
-- **Sorry to bother you, but I'm looking for ___.**（更口语化，暗示自己已经在找了）
+- **Excuse me, could you tell me how to get to...?**（最礼貌，适用于陌生人）
+- **Excuse me, where is the nearest...?**（直接询问最近的某类地点）
+- **Sorry to bother you, but I'm looking for...**（承认打扰，语气更柔和）
 
-注意"Excuse me"几乎是问路的必要开头词——省略它会让对话显得突兀。相比之下，"Pardon me"在美式英语中同样常见，但主要用于美国南部地区。
+注意：直接说"Where is...?"虽然语法正确，但在英美文化中对陌生人略显唐突，建议加上"Excuse me"作缓冲。"Could you"比"Can you"更礼貌，因为情态动词过去式形式在英语中表示委婉语气。
 
-### 方向指令的核心词汇与结构
+### 指路的核心方向动词与介词
 
-指路者使用的方向词汇有固定的搭配规则，不可随意替换：
+指路的主体是一套固定的动词+方向搭配，需要整块记忆：
 
-| 表达 | 含义 | 常见错误 |
-|------|------|----------|
-| Turn left / Turn right | 左转 / 右转 | ❌ Go to the left |
-| Go straight ahead | 直行 | ❌ Go straight forward |
-| Take the first/second turning on the left | 在第一/二个路口左转 | ❌ Go to the first left road |
-| It's on your left/right | 它在你左/右手边 | ❌ It's at your left side |
+| 表达 | 含义 |
+|------|------|
+| **go straight ahead** | 直走 |
+| **turn left / turn right** | 向左/右转 |
+| **take the first/second turning on the left** | 在第一/二个路口左转 |
+| **go past the post office** | 经过邮局继续走 |
+| **cross the bridge** | 过桥 |
+| **it's on your left/right** | 在你的左/右边 |
 
-距离描述有两个常用单位：**block（街区）**和**minute（步行分钟）**。美式英语偏好"two blocks down this street"，英式英语更常说"about ten minutes' walk"。两种表达都需要学习者掌握。
+介词方面，**opposite**（正对面）、**next to**（紧邻）、**between A and B**（在A和B之间）、**at the corner of**（在……路口）是最高频的位置描述词。例如："It's at the corner of Oxford Street and Regent Street."
 
-### 标志性建筑作为路标的用法
+### 距离与时间的估算表达
 
-英语指路中极少使用抽象坐标（如"向北走"），而是大量依赖**可见地标（landmarks）**。标准句式为：
+仅有方向还不够，还需告知对方路程长短。英语中常用两种方式估算：
 
-**"Go past the ___ and turn left at the ___."**
-（经过___之后，在___处左转）
+- **时间估算**："It's about a 10-minute walk."（步行约10分钟）；"It's a 5-minute drive."
+- **距离估算**："It's about 200 metres down the road."；"It's not far, just around the corner."
 
-常用地标类别包括：traffic lights（红绿灯）、crossroads/intersection（十字路口）、roundabout（环形交叉路口，英式英语）、the corner of ___ Street（___街的拐角处）。其中"roundabout"是英式英语特有词汇，美式英语对应说"traffic circle"或"rotary"，学习者需注意区分。
+当路程较复杂时，使用顺序连接词将步骤串联：**First... Then... After that... Finally...**
 
-### 确认理解的回应策略
+例如完整指路：*"Go straight ahead for about 200 metres, then turn right at the traffic lights. The bank is on your left, next to the pharmacy."*
 
-问路对话中有一个常被忽视的环节：**复述确认（confirmation check）**。当指路者说完之后，问路者应当简短复述关键步骤：
+### 交通方式表达
 
-> "So I go straight ahead, take the second left, and it's next to the post office. Is that right?"
+问路不仅涉及步行，还包括乘坐公共交通：
 
-这一策略在现实中极为实用——它既帮助自己记住路线，也让指路者发现是否表达有误。若听不清或没听懂，标准请求重复的表达是："I'm sorry, could you say that again more slowly, please?"
+- **Take the No. 38 bus** / **Take the Central Line**（乘坐38路公交/中央线地铁）
+- **Get off at Oxford Circus**（在牛津广场站下车）
+- **Change at King's Cross**（在国王十字站换乘）
+- **It's two stops from here.**（从这里乘两站）
+
+"Take"是搭乘交通工具的万用动词，可接bus、tube、subway、train、taxi等所有交通方式。
 
 ---
 
 ## 实际应用
 
-**场景一：在英国伦敦问地铁站**
+**场景一：在伦敦街头找博物馆**
 
-> A: Excuse me, could you tell me how to get to Oxford Circus station?
-> B: Sure. Go straight ahead along this road, then take the second turning on the right. You'll see a Boots pharmacy on the corner. The station entrance is just opposite.
-> A: So I go straight, second right, and it's across from Boots?
-> B: That's right, you can't miss it.
+> A: Excuse me, could you tell me how to get to the British Museum?
+> B: Sure! Go straight along this road, then take the second turning on the left. Walk for about five minutes and you'll see it on your right. You can't miss it — it's a huge building.
 
-注意B使用了"you can't miss it"（你不会错过的）——这是英语指路中的常用收尾语，表示目标非常显眼。
+注意B的最后一句"You can't miss it"（你不会错过的）是英语指路中的高频安慰句，暗示地标足够明显。
 
-**场景二：问附近是否有餐厅**
+**场景二：询问乘坐地铁**
 
-> A: Excuse me, is there a supermarket around here?
-> B: Yes, there's one about three blocks from here. Head down this street, turn left at the traffic lights, and it's on your right next to a car park.
+> A: Excuse me, is there a tube station near here?
+> B: Yes, Piccadilly Circus is about a 3-minute walk. Turn left out of this door, go past the cinema, and it's right there at the junction.
 
-此处"head down"（沿着…走）是比"go"更地道的口语说法，"car park"是英式英语，美式英语对应"parking lot"。
+**场景三：目的地不确定时的确认句**
 
-**场景三：使用公共交通**
-
-> A: How do I get to the National Museum by bus?
-> B: Take the number 15 bus from the stop just around the corner. It's about four stops. Get off at Museum Road.
-
-注意乘车指路的专用动词搭配：**take the bus/tube/subway**（乘坐）、**get on / get off**（上车/下车）、**change at ___**（在某站换乘）。
+当听完指路后表示理解：*"So I go straight, then turn right at the lights — is that correct?"* 用"is that correct?"或"did I get that right?"来确认，是避免走错路的实用策略。
 
 ---
 
 ## 常见误区
 
-**误区一：混淆"go to the left"和"turn left"**
+**误区一：混淆"on the left"与"to the left"**
 
-中文说"往左边走"，许多学习者直译为"go to the left"，但这在英语中不自然甚至有歧义。正确表达是"turn left"（转向左边）或"bear left"（轻微偏左，用于道路分叉时）。"Go to the left"在英语中更接近"移动到左侧区域"，用于指路会让人困惑。
+"Turn to the left"表示"向左转"（动作），而"It's on the left"表示"它在左侧"（位置状态）。两者不可互换。许多学习者说"It's to the left side"来描述位置，这在英语母语者耳中听起来不自然，正确说法是"It's on the left-hand side"或直接"It's on your left"。
 
-**误区二：不区分"next to"、"opposite"和"across from"**
+**误区二：用"go to straight"代替"go straight"**
 
-这三个介词都与位置相关，但含义不同：
-- **next to** = 紧靠旁边（side by side）
-- **opposite** = 正对面（英式英语更常用）
-- **across from** = 对面（美式英语更常用，意思与opposite相同）
+"Straight"在此作副词修饰动词"go"，不需要介词"to"。"Go to straight"是典型的母语迁移错误，源于汉语"向前走"的结构。正确形式固定为"go straight"或"go straight ahead"，ahead可强调"继续向前"的方向感。
 
-错误示例：说"The bank is next to the school"却指的是银行与学校面对面，应说"opposite the school"。
+**误区三：忽略路口的精确描述**
 
-**误区三：忽略"I'm afraid I don't know"的重要性**
-
-很多学习者认为被问路后必须给出答案，但在英语文化中，诚实说"I'm sorry, I'm afraid I don't know this area very well"不仅完全可以接受，而且是礼貌的必要表达。强行给出错误指路比承认不知道危害更大，这一表达需要主动学习和练习。
+中文说"在路口转弯"，英语需要区分：**at the traffic lights**（在红绿灯处）、**at the roundabout**（在环形交叉路口）、**at the T-junction**（在T形路口）。这三种路口形态词完全不同，若用错会导致对方在错误地点转弯。
 
 ---
 
 ## 知识关联
 
-问路与指路建立在**日常对话**中已掌握的礼貌用语（如"excuse me"、"could you"的疑问句结构）和基础方位词之上，但将它们组合进一个具有真实目的的对话框架中。学习者在日常对话阶段学过的"Could you...?"句式，在这里具体化为问路请求的固定公式。
+**前置基础：日常对话**
+问路与指路在"日常对话"（daily conversation）的基础上引入了空间逻辑和顺序表达。已掌握礼貌用语（Excuse me / Sorry to bother you）和基础疑问句结构（Where is...? / How do I get to...?）的学习者，可以直接将这些已知句型嵌入问路场景中使用。
 
-在词汇层面，本主题与交通工具词汇（bus、tube、taxi）、城市设施词汇（bank、pharmacy、museum）形成网络连接——能听懂指路内容，需要同时具备这两类词汇的积累。建议学习者在练习问路对话时，配合城市地图图片进行角色扮演，将方向词汇与实际空间感知结合，从而将"turn left at the second traffic light"这类指令内化为可操作的心理地图。
+**向上延伸的方向**
+掌握问路与指路后，学习者可进一步探索：一是**旅游英语**中预订酒店、购票等场景，这些同样需要精准的地点和交通描述；二是**英语写作中的空间描述**，学术写作和说明文中也需要用到"adjacent to""opposite"等位置词汇；三是**地图英语阅读**，理解地图标注和导航App的英文语音提示（如"In 200 metres, turn right"）都以本章词汇为基础。

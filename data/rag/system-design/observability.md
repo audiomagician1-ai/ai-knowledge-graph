@@ -20,68 +20,78 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 可观测性
 
 ## 概述
 
-可观测性（Observability）这一术语源自控制论，由匈牙利裔美国工程师 Rudolf Kálmán 于1960年提出，用于描述"能否从系统外部输出推断内部状态"的能力。在分布式AI系统工程中，可观测性被重新定义为：通过收集日志（Logs）、指标（Metrics）、追踪（Traces）三类遥测数据，使工程师能够在不修改系统代码的前提下，回答任意关于系统内部状态的未知问题。这与传统监控（Monitoring）的本质区别在于：监控回答"是否出问题"，可观测性回答"为什么出问题"。
+可观测性（Observability）源自控制论，由鲁道夫·卡尔曼（Rudolf Kálmán）于1960年在线性动态系统理论中正式提出，其核心定义是：**仅通过系统外部输出，能够推断系统内部状态的程度**。在AI工程的分布式系统语境下，可观测性被具体化为三大支柱：日志（Logs）、指标（Metrics）、追踪（Traces），通称"LMT三支柱"，由Charity Majors等工程师在2010年代后期将其系统化推广至云原生领域。
 
-可观测性在AI推理服务和训练集群中尤为关键。一个典型的LLM推理集群可能同时运行数百个微服务，单次用户请求跨越10至20个服务节点，传统逐机器排查的方式已完全不可行。2021年AWS re:Invent大会披露，SRE团队将平均故障恢复时间（MTTR）从47分钟压缩至8分钟的核心手段，正是建立了完整的三支柱可观测性体系。
+可观测性与传统监控（Monitoring）有本质区别。监控回答"预设的问题是否发生"，例如CPU是否超过80%；而可观测性回答"任何我事先未知的问题为何发生"。对于包含多个微服务、动态扩缩容的AI推理系统，一个模型预测延迟突发性升高可能来自特征工程、数据预处理、模型加载或下游数据库中的任何一个环节，此时没有可观测性基础设施，排查时间会从分钟级膨胀到数小时。
+
+在AI工程中，可观测性还承担特有职责：追踪模型版本与预测结果的对应关系、检测数据漂移（Data Drift）触发的推理质量下降，以及在A/B测试框架中分别统计各模型版本的P99延迟。这使得AI系统的可观测性比普通Web服务更复杂，需要在标准LMT三支柱之上叠加**模型可观测性（Model Observability）**层。
+
+---
 
 ## 核心原理
 
-### 第一支柱：结构化日志
+### 1. 日志（Logs）：事件的结构化记录
 
-原始文本日志（如`ERROR: connection failed`）在分布式环境中几乎无法聚合分析。结构化日志要求以固定Schema（通常为JSON）记录每一条日志，必须包含`timestamp`、`severity`、`service_name`、`trace_id`和`span_id`五个标准字段。`trace_id`是连接三大支柱的纽带——同一请求在所有服务产生的日志，必须携带相同的128位`trace_id`，才能在ELK（Elasticsearch + Logstash + Kibana）或Loki中实现跨服务日志关联查询。
+日志是系统在特定时刻发生的离散事件记录。现代AI工程强调**结构化日志**，即使用JSON格式而非纯文本，确保每条日志均可机器解析。例如，一条推理服务日志应包含字段：`model_version`、`request_id`、`input_token_count`、`latency_ms`、`status_code`。
 
-AI系统特有的日志场景包括：模型推理延迟日志（记录每次forward pass耗时）、Token使用量日志（输入/输出Token数量）、以及特征工程失败日志（记录具体缺失特征名称和样本ID）。日志采样率（Sampling Rate）是关键决策：对于高流量AI服务，通常对正常请求按1%采样，对错误和慢请求保持100%全量记录。
+日志级别通常分为TRACE、DEBUG、INFO、WARN、ERROR、FATAL六级，在生产环境的AI服务中，默认级别设置为INFO，WARN及以上级别触发告警。日志的最大挑战是**采样策略**：一个QPS为5000的推理服务若记录全量请求日志，每天将产生超过4亿条记录，存储成本不可接受。尾部采样（Tail-based Sampling）仅保留出现错误或延迟超过阈值的请求的完整日志，是常见解法。
 
-### 第二支柱：时序指标
+### 2. 指标（Metrics）：时间序列的数值聚合
 
-指标是对系统状态的数值型聚合，其数据模型由**名称、标签集（Label Set）和时间戳-数值对序列**构成。Prometheus的数据模型是业界标准，其PromQL查询语言支持如下典型表达式：
+指标是将系统行为聚合为数值时间序列的机制，计算开销远低于日志。Prometheus是AI工程中最广泛使用的指标收集系统，其数据模型为：
 
 ```
-rate(llm_inference_requests_total{status="error"}[5m]) 
-/ rate(llm_inference_requests_total[5m])
+metric_name{label_key="label_value", ...} value timestamp
 ```
 
-此式计算过去5分钟内推理请求的错误率。
+指标类型分为四种：**Counter**（单调递增，如总请求数）、**Gauge**（可升降，如当前GPU内存占用MB）、**Histogram**（值分布，如延迟分桶统计，用于计算P50/P95/P99）、**Summary**（客户端计算的分位数）。AI推理服务的关键指标包括：模型加载时间、批处理队列长度、GPU利用率（`gpu_utilization_percent`）、每秒Token生成数（Token/s）。
 
-AI系统需要监控四类核心指标，通称"四大黄金信号"（Google SRE手册提出）：**延迟**（P50/P95/P99分位数，而非平均值）、**流量**（每秒请求数QPS）、**错误率**（HTTP 5xx及模型级错误）、**饱和度**（GPU显存占用率、KV Cache命中率）。其中GPU显存饱和度是AI系统区别于普通Web服务的独特指标，当显存占用超过85%时，通常预示OOM（Out of Memory）错误即将发生。
+Prometheus的采集周期（Scrape Interval）默认为15秒，这意味着指标的时间分辨率存在最小粒度限制，无法检测到15秒内发生并恢复的瞬时故障。
 
-### 第三支柱：分布式追踪
+### 3. 追踪（Traces）：跨服务请求的因果链
 
-分布式追踪基于OpenTelemetry（OTel）标准，每次请求生成一个**Trace**，由多个**Span**构成有向无环图（DAG）。每个Span记录：操作名称、开始时间戳、持续时长、父Span ID，以及键值对形式的自定义属性（Attributes）。
+分布式追踪基于**Dapper论文**（Google，2010年发表）提出的模型，将一次完整请求拆解为树状结构的Span集合。每个Span携带：`trace_id`（全局唯一）、`span_id`、`parent_span_id`、开始时间、结束时间、操作名称和标签。
 
-在LLM应用中，一个典型Trace包含以下Span层级：
-- `http.server`（接收用户请求，根Span）
-  - `retrieval.vector_search`（RAG检索，含`embedding_model`属性）
-  - `llm.completion`（模型推理，含`model_name`、`prompt_tokens`属性）
-    - `tokenizer.encode`（分词）
-    - `gpu.forward_pass`（GPU推理，最关键的耗时节点）
-  - `http.response`（返回结果）
+OpenTelemetry（OTel）是当前行业标准，将日志、指标、追踪统一至同一SDK，避免厂商锁定。在AI推理系统中，一条追踪链通常跨越：API网关 → 特征服务 → 模型服务 → 后处理服务 → 结果缓存，每一跳都产生独立Span。通过Jaeger或Zipkin可视化这棵Span树，工程师能精确定位哪个服务贡献了多少毫秒的延迟。
 
-Jaeger和Zipkin是常用的Trace后端，它们通过`trace_id`将所有Span组装为火焰图（Flame Graph），直观呈现哪个服务是延迟瓶颈。
+追踪的**上下文传播（Context Propagation）**通过HTTP Header（如`traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01`，遵循W3C Trace Context规范）在服务间传递，确保跨进程的Span能被正确关联至同一Trace。
+
+### 4. 三支柱的关联与互补
+
+单独任一支柱均有盲区：指标能告知P99延迟升高，但无法说明原因；日志能记录具体错误，但无法显示哪个下游服务是根因；追踪能显示调用链，但缺乏系统级聚合视图。三支柱通过共享`request_id`/`trace_id`字段实现关联：先用指标发现异常，再用追踪定位问题发生在哪条调用链，最后用日志查看该链路上的详细错误信息，形成"发现→定位→诊断"的完整工作流。
+
+---
 
 ## 实际应用
 
-**AI推理服务的可观测性落地**：部署一个基于vLLM的推理服务时，需在`/metrics`端点暴露Prometheus格式指标，包括`vllm:num_requests_running`（并发请求数）、`vllm:gpu_cache_usage_perc`（KV Cache使用率）。当KV Cache使用率持续超过90%时，应触发自动扩容或请求限流，这一阈值判断依赖Metrics支柱。
+**AI推理服务的SLO监控**：设定服务级别目标（SLO）如"P99延迟 < 200ms，成功率 > 99.9%"，通过Prometheus记录`histogram_quantile(0.99, rate(inference_latency_seconds_bucket[5m]))`，当该值持续超过0.2秒时触发PagerDuty告警，同时自动触发熔断器切换至轻量备用模型。
 
-**慢查询根因分析**：当P99延迟突然从200ms升至2000ms时，标准排查流程为：① 查Metrics定位异常时间窗口（如14:23-14:35）；② 在该窗口内筛选`duration > 1s`的慢Trace；③ 展开慢Trace找到耗时最长的Span（如`retrieval.vector_search`占比87%）；④ 用该Span的`trace_id`在日志系统查询原始错误信息（如"向量索引未预热，进行全量扫描"）。此流程完整串联了三大支柱。
+**大语言模型（LLM）服务的特殊指标**：对于GPT类服务，需额外监控Time-To-First-Token（TTFT）和每秒生成Token数（Throughput Token/s）。这两个指标与传统Web服务延迟指标不同，需要在Histogram桶边界设计上特别处理（如将桶边界设为50ms, 100ms, 200ms, 500ms, 1000ms, 2000ms而非默认值）。
 
-**模型性能退化检测**：记录每次推理的`model_accuracy_score`或`reward_score`作为业务指标（Business Metric），通过Grafana设置连续5分钟均值低于阈值即告警，可在用户投诉前发现模型退化问题。
+**数据漂移检测**：将模型输入特征的统计分布（均值、标准差、分位数）作为Gauge指标定期上报，与训练集基准值对比，当Jensen-Shannon散度超过0.1时触发预警，此为模型可观测性层超出标准LMT三支柱的典型扩展场景。
+
+---
 
 ## 常见误区
 
-**误区一：将可观测性等同于日志收集**。许多团队在系统中仅部署ELK或EFK（Elasticsearch + Fluentd + Kibana）即认为已具备可观测性。实际上，缺少Traces意味着无法定位跨服务请求的延迟分布；缺少Metrics意味着无法设置有意义的SLO（服务等级目标）告警。只有三支柱全部覆盖，才能应对"服务整体正常但部分用户请求异常缓慢"此类复杂故障场景。
+**误区一：可观测性等于大量打日志**。随意增加日志条数会引入三个问题：存储成本线性增长、日志I/O本身成为性能瓶颈（同步日志写入可使推理延迟增加10%-30%），以及噪声淹没真正有价值的信息。正确做法是明确每条日志的消费场景，区分应走日志还是走指标（高频重复的统计数据应走指标，非仅用Gauge记录而非写日志）。
 
-**误区二：越多数据越好**。全量收集所有日志和Trace会导致存储成本爆炸，以及查询时的信噪比下降。正确做法是实施**基于头部采样（Head-based Sampling）和尾部采样（Tail-based Sampling）的混合策略**：头部采样在请求入口按概率决定是否采集，尾部采样则在请求完成后，对耗时超过阈值或含错误的Trace进行补充全量保留。OpenTelemetry Collector原生支持Tail Sampling Processor配置。
+**误区二：追踪对性能无影响**。分布式追踪的上下文注入和Span上报均有开销。Jaeger官方基准测试显示，全量采样（100%）可导致目标服务吞吐量下降约5%-15%。生产环境通常采用基于头部的概率采样（如1%固定采样率）结合尾部采样（100%保留错误和高延迟请求），而非全量追踪。
 
-**误区三：可观测性仅对生产环境有意义**。AI系统的模型训练过程同样需要可观测性：训练Loss曲线是指标、梯度异常是日志、DataLoader各阶段耗时是追踪。MLflow和Weights & Biases（W&B）正是将可观测性三支柱应用于训练循环的专用工具，其中W&B的`wandb.log()`每隔N个step记录一次指标，相当于训练过程的Metrics采集。
+**误区三：三支柱各自独立部署即算完成可观测性建设**。如果Prometheus指标中的`request_id`标签与Elasticsearch中日志的`request_id`字段命名不一致，或追踪系统未注入`trace_id`到日志，三支柱将成为孤岛，无法联动排查。可观测性建设的关键交付物是**关联性**，而非三套系统的独立运行。
+
+---
 
 ## 知识关联
 
-**与熔断器模式的关联**：熔断器（Circuit Breaker）的状态转换（Closed → Open → Half-Open）依赖错误率指标的实时计算，而这正是可观测性第二支柱（Metrics）的输出。Hystrix和Resilience4j等熔断器库通常内置Metrics端点，可直接接入Prometheus采集，形成"可观测性数据驱动熔断决策"的闭环。熔断器打开时产生的大量降级日志，也需要通过日志聚合系统（第一支柱）进行告警，避免无声失败。
+**与熔断器模式的关系**：熔断器（Circuit Breaker）的状态转换（Closed→Open→Half-Open）直接依赖可观测性数据——错误率和响应延迟两个指标是熔断器判断是否触发的输入信号。若指标采集延迟超过熔断器的滑动窗口时间（如Resilience4j默认的60秒），熔断决策将基于过期数据，导致保护失效或错误触发。
 
-**与日志与监控的延伸**：传统监控关注预定义的已知故障模式（Known Unknowns），而可观测性通过追踪支柱引入的上下文关联能力，使工程师能够诊断从未预料到的故障（Unknown Unknowns）。从监控升级至完整可观测性体系，需要引入OpenTelemetry SDK完成代码插桩（Instrumentation），并部署Tempo（Traces）、Prometheus（Metrics）、Loki（Logs）构成Grafana推荐的PLT（Prometheus-Loki-Tempo）开源可观测性栈。
+**与日志与监控的关系**：传统日志与监控聚焦于预定义规则的告警，是可观测性的子集和前身。将既有监控系统升级为具备可观测性的系统，核心改造点在于：为日志添加结构化字段（尤其是`trace_id`）、将监控指标迁移至支持Histogram类型的系统、引入分布式追踪的上下文传播机制，三者缺一则无法实现完整的根因分析能力。

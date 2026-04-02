@@ -21,79 +21,59 @@ sources:
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
 quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-03-27
+updated_at: 2026-04-01
 ---
+
+
 
 # GLSL基础
 
 ## 概述
 
-GLSL（OpenGL Shading Language，OpenGL着色器语言）是由Khronos Group随OpenGL 2.0标准于2004年正式引入的着色器编程语言，取代了早期基于汇编指令的ARB着色器扩展。它以C语言为语法基础，专为在GPU着色器阶段编写程序而设计，能够直接运行于顶点着色器（Vertex Shader）和片元着色器（Fragment Shader）两个可编程阶段，OpenGL 3.2之后还支持几何着色器，OpenGL 4.0起引入曲面细分着色器，OpenGL 4.3起支持计算着色器。
+GLSL（OpenGL Shading Language）是由Khronos Group随OpenGL 2.0规范于2004年正式引入的着色器编程语言，基于C语言语法设计，专用于在GPU上编写顶点着色器（Vertex Shader）和片元着色器（Fragment Shader）程序。在此之前，OpenGL的可编程着色能力依赖ARB汇编扩展，GLSL的出现让开发者第一次能以高级语言直接控制图形管线中的可编程阶段。
 
-GLSL最重要的应用场景是跨平台图形开发，尤其在OpenGL ES 2.0确立之后，它成为移动端GPU编程的统一标准——iOS早期的Metal推出之前、Android平台至今仍大量使用GLSL的ES变体。Unity引擎在编写Surface Shader和OpenGL/OpenGL ES后端时，底层也会将ShaderLab代码编译为GLSL。理解GLSL的语法与限制，是技术美术在跨平台着色器开发与调试中不可绕开的基本能力。
+GLSL的核心设计目标是为OpenGL（桌面端）和OpenGL ES（移动端/嵌入式）提供统一的着色语言基础。WebGL所用的GLSL ES 1.00直接派生自OpenGL ES 2.0规范，这意味着在浏览器中运行的着色器代码与移动端OpenGL ES代码高度相似，但与桌面GLSL 3.30之后版本存在一些语法差异，例如WebGL中不允许使用整数纹理坐标索引。
+
+对于技术美术而言，GLSL是理解移动平台Shader性能优化的入口。Unity在Android/iOS平台最终将ShaderLab编译成GLSL或GLSL ES，Unreal Engine也支持将材质图表输出为GLSL。掌握原生GLSL语法，能够直接阅读移动端Shader的编译输出，定位精度问题和性能瓶颈。
 
 ## 核心原理
 
-### 与HLSL的主要差异
+### 精度修饰符（Precision Qualifiers）
 
-GLSL和HLSL（High-Level Shading Language，微软DirectX专用）在功能上高度对等，但存在若干具体的语法和语义差异。
+精度修饰符是GLSL区别于HLSL最显著的特性之一，在HLSL中完全不存在对应语法。GLSL定义了三种精度级别：`lowp`（低精度，最小范围±2，精度1/256）、`mediump`（中等精度，最小范围±2¹⁴，精度约1/1024）、`highp`（高精度，最小范围±2⁶²，精度1/65536）。
 
-**语义（Semantic）系统**：HLSL使用显式语义标注（如`POSITION`、`TEXCOORD0`、`SV_Target`）来绑定输入输出变量；GLSL不存在这套语义关键字，改用`layout(location = n)` 限定符（OpenGL 3.3+）或内置变量来指定数据槽位。例如，片元着色器最终输出颜色在HLSL中写`float4 col : SV_Target`，在GLSL中则声明 `layout(location = 0) out vec4 fragColor;`，或在旧版中直接写入内置变量 `gl_FragColor`。
+在片元着色器中，`highp`精度支持是**可选的**，不同GPU厂商的实现可能不支持片元阶段的`highp`浮点运算，这在桌面HLSL中从不需要考虑。实践中常见写法是在片元着色器顶部声明`precision mediump float;`，将float默认精度设为中等，对确实需要高精度的变量（如深度值、世界空间坐标）单独声明`highp float`。使用`lowp`处理颜色分量（0\~1范围）通常已足够且能降低移动端GPU的功耗。
 
-**坐标系约定**：GLSL裁剪空间的NDC（Normalized Device Coordinates）深度范围是 **[-1, 1]**，而HLSL/DirectX的NDC深度范围是 **[0, 1]**。这一差异在自己实现投影矩阵或读取深度缓冲时极易引发错误。
+### 与HLSL的语法差异
 
-**入口函数与着色器分离**：HLSL允许在一个文件里定义多个着色器阶段的函数，通过编译时指定入口名选择；GLSL每个编译单元只对应一个着色器阶段，且入口函数固定命名为 `main()`，没有返回值和参数列表，返回值通过 `out` 变量或内置变量传出。
+GLSL和HLSL的最大语法差异体现在内置变量命名规范上。GLSL顶点着色器使用内置变量`gl_Position`（类型`vec4`）输出裁剪空间坐标，而HLSL使用语义`SV_Position`。片元着色器在GLSL 1.30之前使用`gl_FragColor`（`vec4`类型）输出颜色，GLSL 1.30之后则改为用户自定义的`out vec4 fragColor`声明输出变量。
 
-**矩阵乘法顺序**：HLSL中矩阵默认行主序（row-major），向量通常左乘矩阵写作 `mul(vec, mat)`；GLSL中矩阵默认列主序（column-major），向量右乘矩阵写作 `mat * vec`，两者等价但写法相反，混淆会导致变换结果完全错误。
-
-### 精度修饰符
-
-GLSL ES（用于OpenGL ES 2.0/3.0，即移动端）引入了三种精度修饰符，桌面版GLSL接受这些关键字但通常忽略其语义，编译器仍按最高精度处理。
-
-| 修饰符 | 说明 | 典型精度 |
-|---|---|---|
-| `highp` | 高精度浮点，对应IEEE 754 32位浮点 | 24位尾数 |
-| `mediump` | 中等精度，至少16位浮点 | 10位尾数 |
-| `lowp` | 低精度，至少9位浮点，范围 [-2, 2] | 8位 |
-
-在片元着色器中，`mediump` 精度通常足够处理颜色值（0~1范围），但用于世界空间坐标或大范围UV偏移时会出现明显抖动伪影。最佳实践是在文件头部写 `precision mediump float;` 设置默认精度，对需要高精度的变量单独追加 `highp` 修饰，平衡移动端GPU的计算带宽与精度需求。顶点着色器中 `highp` 是默认精度，片元着色器无默认精度，若不声明会引发编译错误（部分驱动会隐式补全，但属于未定义行为）。
+GLSL的纹理采样函数在不同版本间有变化：GLSL ES 1.00使用`texture2D(sampler2D, vec2)`和`textureCube(samplerCube, vec3)`等分类函数，而GLSL 3.30及GLSL ES 3.00统一为重载函数`texture(sampler, coord)`，与HLSL的`tex2D`或`Sample`方法都不同。此外，GLSL使用`mix(a, b, t)`实现线性插值，对应HLSL的`lerp(a, b, t)`；GLSL的`fract(x)`对应HLSL的`frac(x)`，这些细微命名差异常在移植Shader时造成编译错误。
 
 ### uniform变量
 
-`uniform` 是GLSL中从CPU向GPU传递常量数据的专用存储限定符。uniform变量在同一次Draw Call内对所有顶点和片元保持相同的值，修改只能在CPU端通过 `glUniform*` 系列函数完成，着色器内部不能写入。
+`uniform`是GLSL中CPU向GPU传递只读常量数据的机制。在一次Draw Call期间，`uniform`变量的值对所有顶点和片元保持不变，这与`attribute`（逐顶点数据，GLSL ES 3.0后改为`in`）和`varying`（顶点到片元的插值数据，GLSL ES 3.0后改为`out/in`）形成对比。
 
-声明格式为：
-```glsl
-uniform mat4 u_ModelViewProjection; // 4x4变换矩阵
-uniform sampler2D u_MainTex;        // 纹理采样器
-uniform float u_Time;               // 时间变量
-```
+声明示例：`uniform mat4 u_MVPMatrix;`——此处`mat4`是4×4矩阵，通常由应用程序每帧调用`glUniformMatrix4fv(location, 1, GL_FALSE, matrixData)`上传。GLSL规范规定每个程序对象（Program Object）至少支持`GL_MAX_VERTEX_UNIFORM_VECTORS`个uniform向量，OpenGL ES 2.0保证最小值为128个vec4，而桌面OpenGL 3.3保证至少4096个。当uniform数量超限时Shader会静默编译失败，这是移动端常见的隐蔽Bug来源。
 
-纹理采样器（`sampler2D`、`samplerCube`等）也通过uniform传递，但其本质是纹理单元索引，绑定方式与普通数值uniform不同——需调用 `glUniform1i(location, textureUnit)` 传入纹理单元编号，而非纹理对象ID。
-
-OpenGL ES 2.0规范要求实现至少支持顶点着色器8个uniform向量（`GL_MAX_VERTEX_UNIFORM_VECTORS >= 128`）和片元着色器16个（`GL_MAX_FRAGMENT_UNIFORM_VECTORS >= 16`），超出限制将导致链接失败。OpenGL 3.1之后引入的**Uniform Buffer Object（UBO）**将uniform打包进GPU缓冲区，可以跨着色器程序共享，并突破单着色器uniform数量限制。
+`uniform`块（Uniform Buffer Object，UBO）是GLSL 1.40引入的批量uniform机制，语法为`layout(std140) uniform TransformBlock { mat4 model; mat4 view; };`，`std140`布局规则规定每个`vec3`的对齐字节数为16（而非12），这是CPU端构造UBO数据时最容易踩的内存对齐陷阱。
 
 ## 实际应用
 
-**移动端半透明Unlit Shader**：在Unity中为Android平台手写一个简单的贴图乘色着色器，片元着色器开头必须写 `precision mediump float;`，颜色输出写入 `gl_FragColor`（OpenGL ES 2.0后端）或通过 `layout(location=0) out vec4 fragColor;` 输出（OpenGL ES 3.0），否则编译器报精度未声明错误或输出变量未定义错误。
+**移动端UV动画Shader**是展示精度修饰符实际影响的典型案例。若对纹理坐标使用`lowp`精度，在进行`uv + u_Time * speed`的动画偏移时，由于`lowp`精度不足（1/256 ≈ 0.004），纹理滚动会出现肉眼可见的"跳帧"而非平滑移动，此时必须将UV变量声明为至少`mediump vec2`。
 
-**时间驱动的UV动画**：通过 `uniform float u_Time;` 接收CPU每帧传入的时间值，在片元着色器中对采样坐标做偏移 `texture2D(u_MainTex, v_uv + vec2(u_Time * 0.1, 0.0))`，实现流动水面效果。注意 `v_uv` 是从顶点着色器通过 `varying`（ES 2.0）或 `out/in`（ES 3.0）传入的插值变量，与uniform的传递路径不同。
+**自定义后处理效果**中，从OpenGL ES 2.0项目移植到ES 3.0时，需将`varying`改为`in`，移除`gl_FragColor`并改用`out vec4 outColor`，同时将所有`texture2D()`替换为`texture()`。一次不完整的移植会导致某些GPU（尤其是Mali系列）编译报错而PowerVR可能静默接受，造成跨设备表现不一致的问题。
 
-**跨平台深度重建**：从深度缓冲重建世界坐标时，必须考虑GLSL的NDC深度范围 [-1,1] 与HLSL的 [0,1] 差异，线性化公式也需相应调整：GLSL中深度值为 `depth = gl_FragCoord.z * 2.0 - 1.0` 才能还原为线性深度。
+**粒子系统颜色混合**通常通过uniform传递粒子颜色乘子：`uniform lowp vec4 u_ColorTint;`——因为颜色值范围在0\~1之间，`lowp`精度完全够用，使用`highp`会浪费移动GPU的寄存器资源。
 
 ## 常见误区
 
-**误区一：认为精度修饰符在PC端有实际效果**
-桌面OpenGL驱动几乎都将三种精度统一处理为32位浮点，`lowp` 和 `mediump` 不会带来任何性能提升。精度优化只在实际运行于移动GPU（如Mali、Adreno、PowerVR系列）时才生效，在PC上通过精度修饰符"优化性能"是徒劳的。
+**误区一：认为GLSL和HLSL仅是函数名不同**。实际上两者在精度模型、内置变量体系、着色器输入输出声明方式上有根本性差异。HLSL没有精度修饰符，shader model决定精度；而GLSL的精度修饰符会直接影响移动GPU的硬件执行路径，`highp`在某些Mali GPU上会启用不同的ALU单元，性能差距可达2倍以上。
 
-**误区二：混淆varying与uniform的生命周期**
-`uniform` 是CPU设置、全体着色器调用共享的常量；`varying`（ES 2.0）/ `in/out`（ES 3.0及以上）是在顶点着色器中写入、经过光栅化插值后传入片元着色器的逐片元数据。两者都是"只读"的（对片元着色器而言），但数据来源和插值行为完全不同——将逐顶点计算结果误放入uniform，结果只会取第一个顶点或发生未定义行为。
+**误区二：`uniform`声明但未使用会占用uniform槽位**。GLSL编译器会在链接阶段裁剪掉未被实际引用的`uniform`变量，`glGetUniformLocation()`对未使用的uniform返回-1，而非占用槽位。但条件分支中被"静态使用"的uniform（代码路径永远不被执行但编译器无法确定）有时仍会被保留，这在性能分析时容易产生误判。
 
-**误区三：GLSL版本声明可以省略**
-不同GLSL版本语法差异显著：1.00 ES使用 `attribute`/`varying`，3.00 ES改用 `in`/`out` 并废弃 `gl_FragColor`，桌面GLSL 1.20 vs 3.30的差异同样巨大。省略 `#version` 指令时，驱动默认按版本 `110`（桌面）或 `100 es`（移动）编译，极易因语法不匹配产生大量编译警告甚至错误，且行为因驱动厂商而异。
+**误区三：GLSL ES 1.00和GLSL ES 3.00可以混用语法**。版本由着色器首行`#version 100`或`#version 300 es`声明，未声明时默认为版本100。在300 es版本中使用`attribute`/`varying`/`gl_FragColor`会直接报编译错误，而在100版本中使用`in`/`out`同样无效。Unity在不同渲染管线下会插入不同的版本声明，手写GLSL时必须明确指定目标版本。
 
 ## 知识关联
 
-GLSL的执行模型直接建立在GPU渲染管线的可编程阶段之上：顶点着色器读取顶点缓冲中的属性数据（通过 `attribute`/`in` 变量），沿管线写入 `gl_Position` 交给光栅化器，光栅化器对 `varying`/`out` 变量进行双线性插值后将结果送入片元着色器——理解这一数据流是正确使用GLSL各类变量限定符的前提。
-
-从GLSL出发可以进一步延伸到SPIR-V（Vulkan使用的中间字节码）：Khronos于Vulkan 1.0（2016年发布）中引入SPIR-V作为着色器传递格式，GLSL源码通过 `glslangValidator` 或 `shaderc` 工具编译为SPIR-V二进制，运行时不再需要驱动内置的GLSL编译器，解决了长期以来不同厂商GLSL编译器行为不一致
+GLSL的执行模型建立在GPU渲染管线的两个可编程阶段之上：顶点着色器接收来自顶点缓冲区（VBO）的`in`变量，将`gl_Position`写入裁剪空间；光栅化器将顶点阶段的`out`变量插值后作为片元阶段的`in`变量输入，这一数据流向是理解GLSL变量限定符（`in/out/uniform`）语义的物理基础。掌握GLSL基础后，可进一步学习计算着色器（Compute Shader，GLSL 4.30引入）和几何着色器（Geometry Shader，GLSL 1.50引入），以及针对特定移动GPU的Shader优化技术，如ARM Mali的"Midgard/Valhall架构对mediump的原生支持"所带来的具体优化策略。

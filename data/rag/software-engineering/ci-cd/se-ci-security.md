@@ -20,59 +20,60 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # CI安全扫描
 
 ## 概述
 
-CI安全扫描是将静态应用安全测试（SAST）、动态应用安全测试（DAST）和软件成分分析（SCA）等安全检测工具嵌入持续集成流水线，使每次代码提交都自动触发安全检查的工程实践。与开发周期末尾才执行的渗透测试不同，CI安全扫描将安全验证前移到代码合并之前，在漏洞修复成本最低的阶段发现问题。
+CI安全扫描是将SAST（静态应用安全测试）、DAST（动态应用安全测试）和SCA（软件成分分析）三类安全检查工具嵌入持续集成流水线的工程实践，使安全漏洞在代码合并前即被发现并阻断。其核心价值在于将安全验证从"上线前审计"提前至"每次提交"，缩短漏洞存活周期。
 
-该实践起源于2010年代初期DevOps运动兴起之后，安全团队意识到仅依靠季度性安全审计已无法跟上每天数十次的部署频率。NIST在2021年发布的《安全软件开发框架》（SSDF SP 800-218）中正式将CI阶段的自动化安全扫描列为基准要求。Gartner将这一理念称为"DevSecOps"，核心主张是安全工具必须适配开发者的工作流，而不是让开发者去适配安全工具。
+这一概念的系统化推广始于2012年前后DevSecOps运动兴起。传统安全扫描由独立安全团队在发布前执行一次，修复成本极高——IBM研究数据显示，生产环境修复漏洞的成本是开发阶段的15倍。CI安全扫描通过在pipeline中强制执行质量门（Security Quality Gate），将安全责任下移至开发团队，使每个Pull Request都携带安全签名。
 
-CI安全扫描的价值在于将安全反馈循环从数周压缩到分钟级。IBM 2022年的研究数据显示，在开发阶段发现并修复一个漏洞的平均成本约为80美元，而在生产阶段修复同类漏洞的成本高达7600美元，差距接近100倍。这一量化差距为企业投入CI安全扫描基础设施提供了直接的经济依据。
+该实践对需要满足PCI DSS、SOC 2、ISO 27001等合规标准的系统尤为重要。PCI DSS 6.3.2条款明确要求对所有定制化软件进行自动化漏洞检测，而CI安全扫描是满足该条款最低成本的技术路径。
 
 ## 核心原理
 
-### SAST：源码静态分析集成
+### SAST：静态应用安全测试的流水线集成
 
-SAST工具在不执行程序的情况下分析源代码，通过污点追踪（Taint Analysis）识别SQL注入、XSS、命令注入等漏洞模式。在CI流水线中，SAST通常在代码编译步骤之后、单元测试之前执行，扫描对象是提交的差异代码（diff）而非全量代码库，以控制扫描时间。Semgrep、Checkmarx、SonarQube是主流SAST工具，其中SonarQube社区版支持27种编程语言，可通过Quality Gate机制在新代码引入严重（Blocker/Critical）漏洞时直接阻断流水线合并。
+SAST在不运行代码的情况下分析源代码或编译产物，识别SQL注入、XSS、路径遍历等OWASP Top 10漏洞。在CI流水线中，SAST通常在单元测试阶段之后、镜像构建之前执行，直接分析代码仓库中的文件。常见工具包括针对Java的SpotBugs+FindSecBugs、针对Python的Bandit、通用型的Semgrep和SonarQube。
 
-典型的SAST配置会设置"增量扫描模式"——仅分析与基准分支（main/master）产生差异的文件，将全量扫描可能需要的30分钟压缩到5分钟以内，从而不影响开发者的提交频率体验。
+SAST的关键配置参数是**误报率阈值（False Positive Rate）**和**严重等级过滤**。工程实践中通常只将CVSS评分≥7.0（High及以上）的发现设置为阻断构建的硬性门控，中低危问题创建Issue但不阻断，以避免流水线因大量误报而失去工程信任。Semgrep在CI模式下提供`--error`标志，当匹配到指定规则时以非零退出码终止流水线。
 
-### SCA：第三方依赖漏洞检测
+### SCA：软件成分分析与依赖漏洞检测
 
-SCA专门针对项目依赖的开源组件，通过比对CVE数据库和GHSA（GitHub Advisory Database）识别已知漏洞。在CI中，SCA工具读取`package-lock.json`、`pom.xml`、`requirements.txt`等依赖清单文件，无需完整构建代码。CVSS（Common Vulnerability Scoring System）评分是判断是否阻断流水线的标准依据：通常将CVSS 9.0以上（Critical）设为硬性阻断条件，CVSS 7.0–8.9（High）设为警告但不阻断。
+SCA专门扫描项目依赖的第三方库，对比其版本与CVE（公共漏洞披露）数据库。当Log4Shell（CVE-2021-44228）在2021年12月爆发时，集成了SCA的团队在6小时内即完成了全量代码库的受影响版本识别，而未集成的团队平均耗时3天以上。
 
-OWASP Dependency-Check和Snyk是广泛使用的SCA工具，Snyk每天更新其漏洞数据库，在2023年已收录超过17万条开源漏洞记录。对于Log4Shell（CVE-2021-44228，CVSS 10.0）这类供应链漏洞，SCA能在受影响的log4j-core版本被引入代码库的当次提交就触发阻断。
+SCA工具（如OWASP Dependency-Check、Snyk、GitHub Dependabot）的工作流程是：解析`pom.xml`、`package.json`、`requirements.txt`等依赖清单文件，查询National Vulnerability Database（NVD）及各工具自有数据库，生成包含CVE编号、CVSS评分、可修复版本的报告。CI集成时需注意NVD API在流量限制下可能导致扫描超时，生产实践中常通过本地镜像缓存NVD数据解决此问题。
 
-### DAST：运行时动态扫描集成
+### DAST：动态测试在CI中的轻量化策略
 
-DAST在部署到临时测试环境（Staging或Ephemeral Environment）之后执行，通过发送模拟攻击请求检测运行时漏洞，例如认证绕过、目录遍历和不安全的HTTP响应头。OWASP ZAP（Zed Attack Proxy）的自动化扫描模式（ZAP Baseline Scan）专为CI设计，在2–5分钟内完成对目标URL的被动扫描，仅发现而不主动利用漏洞，从而避免损坏测试数据。
+DAST通过向运行中的应用发送攻击载荷来发现漏洞，传统DAST需要完整的运行环境，与CI的快速反馈原则存在天然矛盾。解决方案是在CI中运行**轻量级API扫描**而非全功能DAST：使用OWASP ZAP的Baseline Scan模式（`zap-baseline.py`），该模式仅执行被动扫描和少量主动检测，通常在2-5分钟内完成，适合在staging环境的CI阶段运行。完整的DAST扫描则推迟到CD阶段部署至预生产环境后执行。
 
-DAST在CI中的位置处于流水线靠后阶段，通常位于集成测试之后、生产部署之前。由于需要运行中的服务实例，DAST与SAST/SCA的触发条件不同——SAST/SCA在每次PR时运行，而DAST通常仅在合并到主干分支之后触发，以避免频繁启动临时环境产生过高的基础设施成本。
+### 流水线编排：三类扫描的执行顺序
 
-### 扫描结果的阈值管理
-
-三类扫描工具产生的发现（Findings）需要通过阈值策略区分"阻断合并"和"创建工单跟进"两种处理方式。常见策略是以CVSS评分、漏洞年龄（引入时间超过90天仍未修复则升级为阻断）和是否存在可利用的公开PoC代码作为联合判断条件，避免因大量低危发现导致"报警疲劳"（Alert Fatigue），使开发团队养成忽略安全扫描结果的习惯。
+标准的CI安全扫描编排方案将三类工具的执行顺序设计为**并行优先、串行阻断**：SAST和SCA因不依赖运行时环境，可在代码检出后立即并行执行；两者均通过后才进入构建阶段；DAST在部署至临时环境（Ephemeral Environment）后单独执行。这种设计将安全扫描引入的额外时间控制在5分钟以内，满足工程团队对流水线总时长的心理预期（通常不超过10分钟）。
 
 ## 实际应用
 
-**GitHub Actions中的完整三层扫描配置**：一个典型的Node.js项目CI配置会在同一个workflow文件中定义三个并行Job：`sast-scan`调用`github/codeql-action`执行CodeQL分析；`sca-scan`调用`snyk/actions/node`检查npm依赖；`build-and-test`完成正常编译测试流程。三个Job完成后，`staging-deploy`和`dast-scan`顺序执行。整个流水线在PR阶段跳过DAST，仅在推送到`main`分支时触发完整流程。
+**GitHub Actions中的多扫描器集成示例**中，一个典型的`.github/workflows/security.yml`配置将CodeQL（SAST）、trivy（容器镜像SCA）和Dependabot配置组合使用。CodeQL扫描在`push`事件触发后与单元测试并行运行，使用`github/codeql-action/analyze`动作，发现High级别漏洞时通过`continue-on-error: false`阻断流水线并在Pull Request中自动标注受影响行号。
 
-**误报（False Positive）治理**：Semgrep支持在代码行添加`# nosemgrep: rule-id`注释来抑制特定规则的告警，并要求注释者在代码审查中说明理由。SonarQube提供"标记为误报"功能，带有审计日志，合规团队可追溯每条被抑制告警的处理人和处理时间。
+**容器镜像扫描**是SCA在CI中的重要延伸场景：使用Trivy扫描Dockerfile构建产出的镜像，不仅检查应用依赖，还检查操作系统层的包漏洞。命令`trivy image --exit-code 1 --severity HIGH,CRITICAL myapp:latest`在发现高危或严重漏洞时返回退出码1，直接阻断镜像推送。
 
-**容器镜像安全扫描**：在CI中，Trivy可以在`docker build`之后立即扫描生成的镜像层，检测操作系统包（如Ubuntu的apt包）中的CVE。这与SCA的代码依赖扫描形成互补——SCA覆盖应用层依赖，Trivy覆盖OS层依赖，共同构成完整的供应链安全视图。
+**合规报告自动化**：扫描结果以SARIF（Static Analysis Results Interchange Format）格式输出，上传至GitHub Security Dashboard或SonarQube Server，与JIRA集成自动创建安全工单，为PCI DSS审计提供可追溯的机器可读证据链。
 
 ## 常见误区
 
-**误区一：将全部漏洞类别设为流水线阻断条件**。许多团队在初次引入CI安全扫描时，出于安全意识将CVSS 4.0以上的所有发现都设为阻断条件，结果导致大量历史低危漏洞立即阻断所有PR。正确做法是采用"只对新引入的漏洞执行阻断"策略，存量漏洞进入跟踪工单系统分批修复，同时为高危以上的已知漏洞设置不超过30天的修复SLA。
+**误区一：将所有漏洞等级都设为阻断条件。** 新项目引入SAST时，初始扫描常发现数百个中低危问题，若全部阻断，流水线将立即失效，团队反而关闭安全扫描。正确做法是采用**渐进式门控**：第一周仅统计不阻断，第二周阻断Critical，第四周加入High，逐步收紧阈值，让团队有消化存量问题的时间。
 
-**误区二：认为SAST可以替代DAST**。SAST基于代码模式匹配，无法检测依赖配置错误、部署环境中不安全的HTTP头（如缺失`Content-Security-Policy`）或因业务逻辑缺陷导致的越权访问漏洞。DAST通过实际发送HTTP请求发现SAST盲区中的运行时问题，两者检测到的漏洞类型重叠率通常低于20%。
+**误区二：认为SAST可以替代代码评审的安全检查。** SAST擅长发现已知模式漏洞（如硬编码密码、不安全的随机数生成`Math.random()`替代`SecureRandom`），但对业务逻辑型漏洞（如水平越权、竞态条件中的业务规则缺陷）的检出率极低。SAST的误报率通常在30%-50%之间，这意味着人工确认仍不可缺少，两者互补而非替代。
 
-**误区三：SCA扫描通过即代表依赖安全**。SCA仅检测CVE数据库中已登记的已知漏洞，对于尚未分配CVE编号的零日漏洞（0-day）和恶意软件包（如2021年的ua-parser-js供应链攻击，该包每周下载量超过800万次）无法识别。针对恶意包，需要额外配置包完整性校验（npm的`--audit`配合lockfile验证）和包名拼写检查（Typosquatting Detection）工具作为补充。
+**误区三：SCA扫描通过即代表依赖安全。** SCA仅能检测已知CVE漏洞，对零日漏洞和尚未录入NVD的漏洞完全无感知。此外，传递性依赖（Transitive Dependency）的实际调用路径才决定漏洞是否可利用，CVE严重等级高不等于当前项目必然受影响，需结合可达性分析（Reachability Analysis）工具（如Snyk的reachability feature）才能准确判断。
 
 ## 知识关联
 
-CI安全扫描建立在**静态分析**（源代码抽象语法树解析、数据流分析）和**依赖安全**（CVE数据库、SBOM软件物料清单）两个基础能力之上——没有高质量的静态分析引擎，SAST的误报率会高到无法在CI中实际使用；没有持续更新的漏洞数据库，SCA的检出率无法保障。
+CI安全扫描以**静态分析**为技术基础，SAST本质上是将静态分析技术（数据流分析、污点传播、符号执行）应用于安全规则集，掌握静态分析的AST遍历原理有助于理解为何某类漏洞对SAST不可见。**依赖安全**知识直接支撑SCA阶段的漏洞评估，理解CVE评分体系（CVSS v3.1公式中的攻击向量、权限要求等维度）才能合理配置SCA的门控阈值。**基础设施即代码**扫描（如Checkov扫描Terraform文件）是CI安全扫描的横向延伸，将同一套扫描框架应用于IaC文件，防止权限过度宽松的云资源配置被提交。
 
-从工程角度看，CI安全扫描与**代码质量门禁**（Quality Gate）的实现机制相同，都是在流水线中设置可量化的通过/失败标准，区别在于判断依据从代码覆盖率、重复率变为安全漏洞严重等级。掌握CI安全扫描之后，可进一步扩展到**容器安全策略**（OPA/Gatekeeper对Kubernetes部署清单的安全基线检查）和**基础设施即代码安全扫描**（Checkov对Terraform文件的错误配置检测），形成覆盖代码、依赖、容器、基础设施的完整安全左移体系。
+后续学习**GitOps**时，CI安全扫描的结论会成为GitOps工作流中`main`分支保护规则的组成部分：只有通过安全门控的提交才能触发Argo CD或Flux的自动同步，安全扫描结果直接影响部署策略的执行，实现从代码到生产的全链路安全门禁。

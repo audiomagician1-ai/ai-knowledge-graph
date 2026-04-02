@@ -20,73 +20,62 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-04-01
 ---
+
+
 # Timeline编辑
 
 ## 概述
 
-Timeline编辑（Game Audio Music Fmod Timeline）是游戏音乐（Game Music）中FMOD音乐领域的重要概念。难度等级2/9（基础级）。
+FMOD Studio的Timeline是一个基于时间轴的多轨编辑界面，允许音频设计师将音频片段、逻辑标记和自动化曲线排布在一条水平时间线上，通过精确的时间控制实现游戏音乐的播放与触发。Timeline以毫秒（ms）为最小时间单位，同时支持以小节/拍（Bars/Beats）为单位进行编辑，这对于需要节拍对齐的游戏音乐设计尤为关键。
 
-FMOD Studio Timeline的多轨编辑与音乐时间线设计。
+Timeline编辑的概念源自传统DAW（数字音频工作站）软件的轨道式布局，FMOD Studio从2.0版本开始对Timeline界面进行了重大重构，引入了"Instrument"（乐器层）的概念，使每条轨道不仅能容纳音频片段，还能承载参数触发和过渡逻辑。与Cubase或Pro Tools等纯录音软件的时间线不同，FMOD Timeline的核心价值在于它是"实时可分叉"的——游戏运行时，Timeline的播放头位置会受到游戏参数影响，而不仅仅是线性推进。
 
-在知识体系中，Timeline编辑建立在Music Event的基础之上，是理解参数化音乐的关键前置知识。为什么Timeline编辑如此重要？因为它在FMOD音乐中起到承上启下的作用，连接基础概念与高级应用。
+在游戏音乐设计中，Timeline编辑解决了"固定时长音频与动态游戏进程"之间的矛盾。一段45秒的战斗音乐如果用传统方式播放，无法在第23秒时恰好配合玩家击败Boss的瞬间结束。通过在Timeline上放置Transition Region和Destination Marker，设计师可以定义音乐在特定条件下如何优雅地跳转至胜利主题，而不产生生硬的切断感。
 
-## 核心知识点
+## 核心原理
 
-### 1. FMOD Studio Timeline的多轨编辑
+### 轨道类型与层级结构
 
-FMOD Studio Timeline的多轨编辑是Timeline编辑(Game Audio Music Fmod Timeline)的核心组成部分之一。在FMOD音乐的实践中，FMOD Studio Timeline的多轨编辑决定了系统行为的关键特征。例如，当FMOD Studio Timeline的多轨编辑参数或条件发生变化时，整体表现会产生显著差异。深入理解FMOD Studio Timeline的多轨编辑需要结合游戏音乐的基本原理进行分析。
+FMOD Timeline中的轨道分为三个主要类型：**Audio Track**（音频轨道）、**Logic Track**（逻辑轨道）和**Automation Track**（自动化轨道）。Audio Track直接承载音频片段，可以叠加多个片段形成复音层次；Logic Track不包含音频，专门用于放置Marker、Loop Region、Transition Region等控制元素；Automation Track用于在时间轴上绘制参数值随时间变化的曲线，例如让Low-pass滤波器截止频率在16拍内从20kHz缓降至800Hz。
 
-### 2. 音乐时间线设计
+多条Audio Track可以同时激活，形成音乐的多层结构。例如，一个战斗音乐Event可以包含四条轨道：底鼓/打击乐层、贝斯层、弦乐层和铜管层，每层以独立轨道存在，方便后续通过参数控制各层的音量淡入淡出。
 
-音乐时间线设计是Timeline编辑(Game Audio Music Fmod Timeline)的核心组成部分之一。在FMOD音乐的实践中，音乐时间线设计决定了系统行为的关键特征。例如，当音乐时间线设计参数或条件发生变化时，整体表现会产生显著差异。深入理解音乐时间线设计需要结合游戏音乐的基本原理进行分析。
+### Marker与Region的编辑机制
 
+Timeline上最常用的逻辑元素有四种，各自具有不同的图标颜色和行为：
 
-### 关键原理分析
+- **Destination Marker**（绿色旗帜）：标记播放头可以跳转到的目标位置，通常放在小节起始处，确保跳转后节拍对齐。
+- **Loop Region**（蓝色区域块）：定义循环的起止范围。播放头到达Loop Region末端时会自动返回起点，是游戏音乐无缝循环的基础。
+- **Transition Region**（橙色区域块）：当播放头进入此区域且预设的参数条件成立时，Timeline会在当前Loop Region完成后执行跳转，而非立即中断。
+- **Tempo Marker**（节拍标记）：定义Timeline特定位置的BPM和拍号。一条Timeline上可以放置多个Tempo Marker，使音乐从120 BPM的段落平滑过渡到90 BPM的段落，FMOD会自动计算每个小节的像素宽度。
 
-Timeline编辑的核心在于FMOD Studio Timeline的多轨编辑与音乐时间线设计。从理论角度看，该概念涉及以下层面：
+### 时间显示模式与卡尺系统
 
-1. **定义层**：明确Timeline编辑的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解Timeline编辑内部各要素的相互作用方式
-3. **应用层**：将Timeline编辑的原理映射到游戏音乐的实际场景中
+Timeline顶部的卡尺（Ruler）有两种显示模式可以切换：**时间模式**（显示分:秒:毫秒）和**音乐模式**（显示小节:拍:细分）。在音乐模式下，Timeline的网格对齐吸附功能会以当前Tempo Marker定义的BPM为基准，自动将音频片段的起点吸附到最近的小节线或拍点。这一功能确保音频素材与节拍完全对齐，误差不超过1个采样（在48000Hz采样率下约为0.02ms）。
 
-思考题：如何判断Timeline编辑的应用是否超出了其理论适用范围？
+拖拽音频片段至Timeline时，按住Ctrl键可暂时关闭网格吸附，允许非整拍位置的精确放置，适用于需要切分节奏或弱拍进入的乐句。
 
-## 关键要点
+## 实际应用
 
-1. **核心定义**：Timeline编辑的本质是FMOD Studio Timeline的多轨编辑与音乐时间线设计，这是理解整个概念的出发点
-2. **多维理解**：掌握Timeline编辑需要同时理解FMOD Studio Timeline的多轨编辑和音乐时间线设计等关键维度
-3. **先修关系**：扎实的Music Event基础对理解Timeline编辑至关重要
-4. **进阶路径**：掌握后可继续深入参数化音乐等进阶主题
-5. **实践标准**：真正掌握Timeline编辑的标志是能在具体场景中灵活运用并正确判断适用边界
+**战斗音乐的层叠结构设计**：以一款RPG游戏为例，设计师在同一个Event的Timeline上创建6条平行Audio Track，分别对应鼓组、低频层、旋律层A、旋律层B、打击乐补充层和氛围层。每条轨道的音频片段时长均为32小节（约64秒，BPM=120），确保所有层完美对齐。通过将每条轨道连接到同一个"战斗激烈度"参数，可以让轨道的Volume Automation根据敌人数量动态调整，而这一切都在同一条Timeline上可视化管理。
+
+**无缝循环点设置**：在Timeline音乐模式下，将Loop Region的起点设置在第1小节第1拍，终点设置在第32小节第4拍最后一个16分音符之后（即恰好在第33小节第1拍之前）。若音频素材的末尾存在混响尾音，可在Loop Region末端之后额外预留2小节的尾音区域，并勾选Audio Track的"Steal on loop"选项，避免混响被截断。
+
+**过场动画的一次性播放**：对于不需要循环的过场音乐，在Timeline上不放置任何Loop Region，并在音频片段末尾放置一个Event End Marker。播放头到达End Marker后，Event将自动停止并从内存中释放引用，防止内存泄漏。
 
 ## 常见误区
 
-1. **混淆概念边界**：将Timeline编辑与FMOD音乐中其他相近概念混为一谈。例如，FMOD Studio Timeline的多轨编辑的适用条件与其他音乐时间线设计概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解Music Event就学习Timeline编辑，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：Timeline编辑虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：认为Timeline与Playlist可以互换使用**。Timeline适合有明确时间结构和节拍逻辑的音乐，例如需要精确卡点的战斗音乐。Playlist则适合需要随机或顺序播放一组独立片段的场景（如环境音效）。若将一首带有明确起承转合结构的RPG战斗曲放入Playlist，将失去Timeline提供的Transition Region和Tempo Marker等节拍对齐能力。
 
-## 知识衔接
+**误区二：认为Loop Region的结束点越靠近音频片段末尾越好**。实际上，Loop Region的结束点需要设置在音乐中"可以重复"的自然节点，通常是4小节或8小节的整数倍位置。若Loop Region过短（例如只有2拍），频繁的循环跳转可能导致节奏感割裂，而过长的Loop Region（例如64小节）则会使Transition Region的触发延迟过高，影响音乐对游戏事件的响应速度——一般推荐Loop Region长度控制在8至16小节之间。
 
-### 先修知识
-先修知识包括：
-- **Music Event** — 为Timeline编辑提供了必要的概念基础
+**误区三：混淆Destination Marker与Transition Marker的功能**。Destination Marker仅定义"跳转目标"，本身不触发任何跳转动作；触发跳转的动作由Transition Region或游戏代码调用`EventInstance.setParameterByName()`实现。若只放置Destination Marker而不配置对应的Transition Region，音乐不会自动跳转，播放头将直接越过Destination Marker继续前行。
 
-### 后续学习
-掌握Timeline编辑后可继续学习：
-- **参数化音乐** — 在Timeline编辑基础上进一步拓展
+## 知识关联
 
-## 学习建议
+Timeline编辑建立在**Music Event**概念之上：Music Event定义了整个音频事件的容器属性（如3D空间化、音量、距离衰减），而Timeline则是该容器内部的时间编排层，负责决定容器内的音频何时播放、如何循环。没有对Music Event的理解，无法判断Timeline中的轨道应当使用何种输出总线路由。
 
-预计学习时间：30-60分钟。建议采用以下策略：
-
-- **主动回忆**：学完后不看笔记复述Timeline编辑的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将Timeline编辑与游戏音乐中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释Timeline编辑，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于FMOD音乐的章节可作为深入参考
-- Wikipedia: [Game Audio Music Fmod Timeline](https://en.wikipedia.org/wiki/game_audio_music_fmod_timeline) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Game Audio Music Fmod Timeline" 可找到配套视频教程
+学习Timeline编辑之后，下一个核心主题是**参数化音乐**。参数化音乐利用Timeline中已建立的Transition Region和Destination Marker，通过FMOD参数系统在运行时动态控制播放头的跳转行为——本质上是将Timeline从一个线性播放序列升级为一个由游戏状态驱动的有限状态机。掌握Timeline编辑中Marker的放置逻辑，是实现参数化音乐跳转规则的必要前提。

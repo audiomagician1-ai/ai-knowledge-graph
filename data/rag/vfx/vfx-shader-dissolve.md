@@ -20,82 +20,76 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-04-01
 ---
+
 # 溶解效果
 
 ## 概述
 
-溶解效果（Dissolve Effect）是一种通过Shader将物体表面逐渐"烧蚀"或"碎裂消失"的视觉特效技术。其核心机制是用一张噪声贴图（Noise Texture）的灰度值与一个可动态变化的阈值（Threshold）做比较，当像素的噪声采样值低于当前阈值时，该像素被丢弃（clip/discard），从而在空间上制造出不规则的消融边界，而非简单的线性淡出。
+溶解效果（Dissolve Effect）是一种通过噪声纹理（Noise Texture）驱动像素逐步消失的Shader技术，视觉上表现为物体表面像被火焰灼烧或粒子分解一样逐渐碎裂消失。其核心机制是：将噪声贴图的灰度值与一个可动态调节的阈值（Threshold）进行比较，当噪声值低于阈值时，该像素被丢弃（discard）或设置透明度为0，从而形成不规则的消融边界。
 
-溶解Shader最早在游戏工业中随可编程管线的普及而流行，约2005年后随着Unity、Unreal等引擎对Surface Shader的支持，开发者能够以极低成本实现此效果。如今它被广泛用于角色死亡动画、传送门开启、魔法技能释放等场景，因其能配合粒子特效产生"边缘发光燃烧"的视觉延伸而成为特效美术的常备技法。
+溶解效果最早在游戏行业广泛流行于2010年代，《暗黑破坏神3》（2012年）中怪物死亡时的碎裂消融动画是其经典应用之一。该技术之所以重要，在于它仅需一张灰度噪声贴图和一个float参数（0到1的Threshold值）即可实现极具冲击力的视觉叙事，几乎不增加额外的几何体或粒子系统开销。
 
-溶解效果的关键价值在于：它只需一张噪声贴图和一个float参数（溶解进度），即可驱动复杂的视觉变化，GPU端的clip指令执行成本极低，对移动端也友好。
-
----
+在Unity的Shader实现中，溶解效果通常在片元着色器（Fragment Shader）阶段执行`clip()`或`discard`指令，这意味着它属于逐像素裁剪操作，而非顶点层面的变形。这一特性使它与顶点偏移类特效有本质区别。
 
 ## 核心原理
 
-### 噪声贴图与阈值比较
+### 噪声纹理采样与阈值比较
 
-溶解Shader的数学本质是一条简单的判断：
+实现溶解效果的最小Shader代码逻辑如下：
 
-```
-dissolveValue = tex2D(_NoiseTex, i.uv).r
-clip(dissolveValue - _Threshold)
-```
-
-其中 `_Threshold` 是0到1之间的浮点数，由外部脚本随时间驱动。`clip(x)` 函数在x < 0时丢弃该像素。当 `_Threshold = 0` 时，所有像素保留（物体完整）；当 `_Threshold = 1` 时，所有像素被丢弃（物体完全消失）。噪声贴图决定了哪些区域先消失——灰度值低的区域更早被clip掉，因此Perlin Noise或Worley Noise的有机形态使消融边界呈现自然的不规则感，而非矩形裁切。
-
-### 边缘发光（Edge Glow）效果
-
-仅有clip逻辑的溶解效果视觉上较为生硬，业界标准做法是在消融边界处叠加高亮颜色。实现公式为：
-
-```
-float edge = step(dissolveValue, _Threshold + _EdgeWidth) 
-             * step(_Threshold, dissolveValue);
-col.rgb += edge * _EdgeColor * _EdgeIntensity;
+```hlsl
+float noiseVal = tex2D(_NoiseTex, i.uv).r;
+clip(noiseVal - _Threshold);
 ```
 
-其中 `_EdgeWidth` 控制发光带宽度（典型值为0.05到0.15），`_EdgeColor` 和 `_EdgeIntensity` 控制颜色与强度（HDR值可超过1以配合Bloom后处理）。这一层逻辑使消融边界呈现"燃烧火焰"或"能量侵蚀"的质感，是溶解效果高品质的核心标志。
+其中`_NoiseTex`是一张灰度噪声贴图，`noiseVal`取其红色通道（R通道）的值，范围为[0, 1]。`_Threshold`是外部传入的控制参数，当`noiseVal - _Threshold < 0`时，`clip()`函数会丢弃该像素。当`_Threshold`从0逐渐增大到1，被丢弃的像素区域从无到有覆盖整个网格，完成完整的消融过程。
 
-### 噪声贴图的选择与影响
+噪声贴图的选择直接决定溶解图案的外观风格：Perlin Noise产生柔和的云雾状溶解，Voronoi Noise生成细胞裂纹状消融，Value Noise形成块状像素化分解。实际项目中最常用的是Perlin噪声，其连续性保证了溶解边界的自然感。
 
-不同的噪声类型产生截然不同的消融风格：
-- **Perlin Noise**：产生有机云雾状溶解，适合角色消失、烟雾散去
-- **Voronoi/Worley Noise**：产生细胞破碎状溶解，适合岩石碎裂、玻璃破碎
-- **Gradient Noise（方向性渐变）**：从某一方向向另一方向溶解，适合传送或滑动消失
+### 边缘发光效果
 
-噪声贴图通常为单通道（R通道）灰度图，分辨率256×256或512×512即可满足大多数需求，使用时开启双线性过滤（Bilinear Filtering）以避免硬边噪点。
+裸裶的溶解效果边界过于生硬，实际项目中几乎必然配合边缘发光（Edge Glow）使用。实现方式是在阈值附近定义一个宽度参数`_EdgeWidth`（典型值为0.05到0.1之间），对处于`[_Threshold, _Threshold + _EdgeWidth]`范围内的像素叠加一个高亮颜色（如橙色`float4(1, 0.4, 0, 1)`）：
 
----
+```hlsl
+float edge = step(_Threshold, noiseVal) * 
+             step(noiseVal, _Threshold + _EdgeWidth);
+finalColor += edge * _EdgeColor * _EdgeIntensity;
+```
+
+`_EdgeIntensity`通常设为2到5的HDR值，配合Bloom后处理才能呈现真实的灼烧发光感。没有Bloom的情况下，单独的高亮颜色视觉效果会大打折扣。
+
+### Threshold动画驱动
+
+在Unity中，`_Threshold`参数可以通过C#脚本的`Material.SetFloat("_Threshold", value)`动态设置，也可以直接在Shader中使用内置时间变量`_Time.y`驱动自动循环溶解。典型的死亡消融动画会在1.5到3秒内将Threshold从0线性插值到1，然后配合对象销毁逻辑`Destroy(gameObject, duration)`同步执行。
+
+在Shader Graph中，此参数通过暴露为`Exposed Property`挂载到材质球，再由Animator或Timeline的Signal机制触发C#协程控制其动画曲线，可以实现非线性的"前慢后快"溶解节奏，强化死亡的戏剧感。
 
 ## 实际应用
 
-**角色死亡消融**：将 `_Threshold` 从0动画曲线过渡到1，配合曲线Ease-In使前半段消融慢、后半段加速，模拟"烧尽"感。边缘颜色设为橙红色（RGB: 1.0, 0.4, 0.0），HDR强度设为3，与场景Bloom组件配合即产生燃烧效果。
+**角色死亡消融**：RPG游戏中敌人死亡时，Threshold在2秒内从0变化到1，配合橙红色边缘光模拟灵魂散逸效果。消融完成后调用`renderer.enabled = false`而非立即销毁对象，避免帧率抖动。
 
-**技能召唤物显现**：反向使用，`_Threshold` 从1到0，物体从噪声破碎状态逐渐显现完整形态。可在UV采样时叠加世界空间Y轴坐标偏移，使溶解方向自下而上。
+**传送门入场/出场**：玩家走入传送门时，溶解方向不再是随机的，而是将噪声UV替换为基于世界空间Y轴的渐变贴图，使角色从脚底向头顶依次消失，强化"被传送走"的方向感。
 
-**传送门与空间裂缝**：在边缘Glow之外，额外在 `_EdgeWidth * 2` 范围内对UV做扭曲偏移采样（UV Distortion），使边界看起来在空间中颤动，强化"次元撕裂"感。
+**场景道具的交互反馈**：可拾取道具被玩家获取后执行0.5秒快速溶解，比直接消失更自然，比粒子特效的实现成本更低。这是溶解效果性价比最高的应用场景之一。
 
-**UI消失动效**：在UI Shader中同样可用此技术，将噪声贴图与UI元素的Rect UV对齐，用C#的 `Material.SetFloat("_Threshold", value)` 每帧更新，实现卡片或对话框的燃烧退场。
-
----
+**地形遮挡透视**：将Threshold固定为较低值（如0.3），使地形Shader在玩家角色被建筑遮挡时呈现半透明溶解孔洞，比Alpha透明渲染在延迟渲染管线（Deferred Rendering）中的兼容性更好，因为`clip()`仍属于不透明渲染队列（Queue=2000）。
 
 ## 常见误区
 
-**误区一：认为溶解效果必须使用Alpha透明度混合**
-实际上标准溶解Shader使用的是 `clip()` 丢弃像素，而非Alpha Blend。这意味着材质球的渲染队列应设为"Geometry"（2000），Blend Mode保持Opaque，不需要开启Alpha Blending。若错误地改为透明混合模式，会导致深度写入问题，尤其在有多个溶解物体重叠时产生错误的遮挡排序。
+**误区一：认为溶解效果需要开启Alpha Blend透明度**
+很多初学者会将溶解Shader的渲染队列设置为`Transparent`并启用`Blend SrcAlpha OneMinusSrcAlpha`。这是错误的。溶解效果使用`clip()`做硬裁剪，像素非0即1，属于不透明渲染（Opaque），可以正确写入深度缓冲（Depth Buffer）。使用Alpha Blend反而会导致边缘半透明像素无法正确遮挡后方物体，且在延迟渲染管线中无法工作。
 
-**误区二：将_Threshold范围误理解为需要手动钳制**
-`clip(dissolveValue - _Threshold)` 中，当 `_Threshold < 0` 时所有像素均保留，当 `_Threshold > 1` 时所有像素均被丢弃，HLSL的clip函数天然处理了边界，无需额外的 `saturate()` 包裹，多余的钳制反而可能导致在0和1附近出现突兀的全保留/全消失跳变，破坏边缘发光的平滑过渡。
+**误区二：边缘宽度用世界空间固定值而非噪声空间比例值**
+`_EdgeWidth`是相对于噪声纹理灰度[0,1]的比例值，而不是像素宽度或世界单位宽度。如果误用后处理的像素宽度逻辑来控制边缘宽度，会导致物体大小不同时边缘粗细不一致。正确做法是边缘宽度始终在[0, 0.2]的噪声值域内调节，与物体的实际尺寸无关。
 
-**误区三：用纯程序噪声替代贴图噪声以节省内存**
-在片元Shader中实时计算Perlin Noise（每像素多次sin/cos运算）在移动端代价远高于纹理采样。实测在Mali-G72 GPU上，256×256 Perlin Noise的实时计算比贴图采样慢约4-6倍，在粒子系统大量实例化该Shader时尤为明显，应优先使用预烘焙贴图。
-
----
+**误区三：溶解速度使用线性插值就足够**
+将Threshold做线性动画（`Lerp(0, 1, t)`）会让溶解的感知速度在中间段（0.3到0.7）最快，而开头和结尾变化不明显。实际项目中推荐使用EaseInQuad（`t*t`）或EaseOutQuad（`1-(1-t)*(1-t)`）曲线，使消融在最后阶段加速，强化"灰飞烟灭"的爆发感。
 
 ## 知识关联
 
-**前置知识衔接**：学习溶解效果需要理解Shader特效概述中介绍的 `clip()` 函数语义、片元Shader执行阶段以及 `tex2D()` 纹理采样基础。如果对这些概念不熟悉，溶解Shader中的 `clip(dissolveValue - _Threshold)` 逻辑将难以理解其为何能产生空间上不规则的消失区域。
+学习溶解效果需要先掌握**Shader特效概述**中的片元着色器执行流程，特别是`clip()`函数如何在光栅化阶段进行像素裁剪，以及纹理采样`tex2D()`的基本用法。不理解渲染队列（Render Queue）的设置逻辑，会在半透明场景中遇到Z-fighting和排序错误问题。
 
-**后续扩展方向**：掌握溶解效果后，学习UV滚动技术可以让溶解边缘的噪声纹理动态流动，例如使噪声贴图的UV随时间偏移 `i.uv + _Time.y * _ScrollSpeed`，使燃烧边界呈现流动的火焰效果而非静态纹理，这是溶解效果在技能特效中进一步提升品质的自然演进路径。此外，溶解效果与顶点动画结合（如溶解同时伴随顶点向外扩散）可构造出"崩解飞散"的高级效果。
+溶解效果学完后，自然衔接的下一个技术是**UV滚动**（UV Scrolling）。UV滚动同样以动态修改纹理坐标为核心，可以为溶解效果的噪声贴图叠加流动动画，制作岩浆流淌式消融或水面蒸发式消失等进阶变体——而这需要对UV坐标的变换逻辑有更深入的掌握。

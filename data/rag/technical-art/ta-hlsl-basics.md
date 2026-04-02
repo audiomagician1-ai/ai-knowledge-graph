@@ -20,57 +20,107 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # HLSL基础
 
 ## 概述
 
-HLSL（High Level Shading Language，高级着色器语言）是微软为DirectX图形API设计的着色器编程语言，首次随DirectX 8.1于2001年发布。在此之前，开发者必须直接编写汇编级别的着色器指令，HLSL的出现将着色器开发提升到了类C语言的抽象层级，大幅降低了GPU编程门槛。
+HLSL（High Level Shading Language）是微软为DirectX图形API开发的着色器编程语言，首次随DirectX 8.1于2001年发布。与汇编级别的着色器代码相比，HLSL引入了类C语言语法，让程序员能以更高抽象层级描述GPU上的并行计算逻辑，最终由DirectX编译器（FXC或DXC）将其编译为GPU可执行的字节码（DXBC或DXIL）。
 
-HLSL代码会被FXC（Effect Compiler）或更现代的DXC（DirectX Shader Compiler）编译器编译成DXBC（DirectX Bytecode）或DXIL（DirectX Intermediate Language）中间字节码，再由驱动程序翻译为目标GPU的原生指令集。这种两阶段编译机制使得同一份HLSL代码可以运行在不同厂商的显卡上。HLSL与OpenGL生态中的GLSL是平行对应关系，两者功能相近但语法不完全互换，Unity引擎内部实际使用的ShaderLab最终也会将代码路径编译为HLSL或GLSL。
+HLSL在技术美术领域的重要性体现在：Unity的ShaderLab底层使用HLSL或CG（两者语法几乎等同），Unreal Engine的材质节点最终也会编译为HLSL代码。理解HLSL语法意味着可以绕过节点编辑器的限制，直接描述像素级别的光照模型、噪声算法或自定义后处理效果。HLSL还支持Shader Model 分级（从SM 2.0到SM 6.6），每个版本对应不同的GPU指令集能力，例如SM 6.0引入了Wave Intrinsics，SM 6.5引入了DXR光追着色器。
 
-掌握HLSL是编写顶点着色器、片元着色器和Compute Shader的前提。着色器程序直接在GPU的可编程着色器核心上运行，与C++等CPU语言相比，HLSL天然支持向量与矩阵运算，单条指令即可完成四分量并行计算，这对于图形变换和光照运算至关重要。
+---
 
 ## 核心原理
 
-### 数据类型系统
+### 基本数据类型与向量/矩阵扩展
 
-HLSL的基础标量类型包括`float`（32位IEEE 754浮点）、`half`（16位浮点）、`double`（64位浮点）、`int`（32位有符号整数）和`bool`。在此基础上，HLSL引入了向量类型和矩阵类型两类GPU专用聚合类型。
+HLSL最基础的标量类型包括 `float`（32位浮点）、`half`（16位浮点）、`int`（32位整数）、`uint`（32位无符号整数）和 `bool`。与C语言不同，HLSL内置向量和矩阵类型作为一等公民：`float4` 表示四维浮点向量，`float4x4` 表示4×4浮点矩阵，可直接对向量进行逐分量算术运算，例如：
 
-向量类型使用`typeN`格式命名，例如`float4`代表四分量浮点向量，等价于GLSL中的`vec4`。向量支持swizzle（分量重排）操作，可以写成`color.rgba`或`color.xyzw`两套等价的语义别名进行任意组合访问，例如`float3 rgb = color.rgb`或`float2 uv = texCoord.yx`（同时完成了分量提取和翻转）。矩阵类型使用`typeRxC`格式，`float4x4`表示4行4列的浮点矩阵，是MVP变换矩阵的标准类型，访问元素使用`_mRC`下标，如`matrix._m00`访问第0行第0列。
+```hlsl
+float4 a = float4(1.0, 0.5, 0.2, 1.0);
+float4 b = a * 2.0;  // 每个分量乘以2，结果(2.0, 1.0, 0.4, 2.0)
+```
 
-### 语义（Semantics）机制
+HLSL独有的**Swizzle（混排）**语法允许任意重组向量分量：`a.zyx` 将返回 `float3(0.2, 0.5, 1.0)`；`a.xxxx` 将x分量广播为 `float4`。Swizzle也可用于赋值左值，如 `col.rgb = tex.bgr;` 可在单行内完成RGB通道顺序翻转。
 
-HLSL中的语义（Semantics）是该语言区别于通用C/C++的核心特性之一。语义是附加在变量声明后的标识符，告知编译器该变量与渲染管线的哪个槽位绑定。顶点着色器输入的顶点位置必须标记为`POSITION`或`SV_Position`语义，颜色数据使用`COLOR0`至`COLOR7`，纹理坐标使用`TEXCOORD0`至`TEXCOORD7`，法线使用`NORMAL`语义。
+### 语义（Semantic）系统
 
-系统值语义（System Value Semantics）以`SV_`前缀区分，代表管线内置的特殊数据。`SV_Position`是顶点着色器输出的裁剪空间坐标，`SV_Target`是像素着色器向渲染目标写入颜色的语义，`SV_Depth`用于自定义深度写入，`SV_VertexID`和`SV_InstanceID`分别提供当前顶点索引和实例化绘制的实例索引，无需额外传参即可在着色器内访问。
+语义是HLSL独特的概念，用于告知渲染管线某个变量的用途，写法为变量名后加冒号和语义标识符。顶点着色器的输入语义包括：
 
-### 内置函数与运算
+- `POSITION`：顶点位置（通常是模型空间的 `float4`）
+- `TEXCOORD0` ~ `TEXCOORD7`：UV坐标或自定义插值数据
+- `NORMAL`：法线向量
+- `COLOR0`：顶点色
 
-HLSL内置了约70个专为GPU优化的数学函数，这些函数通常在硬件层面有专用指令支持。关键函数包括：`dot(a, b)`计算向量点积，`cross(a, b)`计算三维向量叉积，`normalize(v)`返回单位向量，`lerp(a, b, t)`执行线性插值（等价于GLSL的`mix`），`saturate(x)`将值钳制到`[0, 1]`区间，`clamp(x, min, max)`钳制到任意区间，`pow(x, y)`计算幂次，`frac(x)`取小数部分，`step(edge, x)`返回阶跃值。
+输出到片元着色器时使用 `SV_Position`（其中SV代表System Value，表示经裁剪空间变换后的最终位置）。片元着色器必须输出 `SV_Target` 以写入渲染目标颜色缓冲，若存在多个MRT（Multiple Render Target），则使用 `SV_Target0` ~ `SV_Target7`。语义机制本质上是编译器在链接顶点着色器输出与片元着色器输入时匹配槽位的手段，名称不匹配会导致链接错误而非运行时异常。
 
-纹理采样函数在HLSL中分为两代API：旧式的`tex2D(sampler, uv)`适用于Shader Model 3.0及以下；现代HLSL使用`Texture2D`对象配合`SamplerState`，调用方式为`tex.Sample(samplerState, uv)`，支持`SampleLevel`（指定mip级别）和`SampleGrad`（传入偏导数）等扩展版本，提供更细粒度的采样控制。
+### 常用内置函数
 
-### 着色器入口函数与Shader Model
+HLSL提供大量GPU原生加速的内置函数，以下是技术美术最常用的子集：
 
-每个HLSL着色器程序必须声明一个入口函数，其命名可自定义（通常写作`VSMain`、`PSMain`）。`#pragma target`或编译时`/T`参数指定Shader Model版本，如`vs_5_0`代表顶点着色器Shader Model 5.0。Shader Model 5.0（对应DirectX 11）引入了曲面细分着色器和Compute Shader支持；Shader Model 6.0（对应DirectX 12）则引入了波操作（Wave Intrinsics），允许在一个Wave内的线程间共享数据而无需显式同步。
+| 函数 | 作用 | 典型应用 |
+|------|------|----------|
+| `lerp(a, b, t)` | 线性插值，等同于 `a + t*(b-a)` | 颜色混合、动画过渡 |
+| `saturate(x)` | 将x钳制到 [0, 1]，单指令执行 | 防止颜色溢出 |
+| `pow(x, n)` | 幂运算，注意x为负时结果未定义 | Phong高光指数 |
+| `frac(x)` | 返回x的小数部分 | 周期性纹理、噪声 |
+| `ddx(x)` / `ddy(x)` | 屏幕空间偏导数 | MIP级别计算、法线重建 |
+| `clip(x)` | x<0时丢弃当前片元 | 透明镂空效果 |
+| `mul(M, v)` | 矩阵-向量乘法 | MVP变换 |
+
+特别注意：`tex2D(sampler, uv)` 是SM 3.0及以下的旧式采样函数，SM 4.0以上应使用 `Texture2D.Sample(SamplerState, uv)` 的对象方法形式，两者在Compute Shader中不可互换。
+
+### cbuffer 与常量缓冲区
+
+从CPU传入GPU的数据通过 `cbuffer`（Constant Buffer）声明，语法如下：
+
+```hlsl
+cbuffer PerObjectData : register(b0)
+{
+    float4x4 _MatrixMVP;
+    float4   _Color;
+    float    _Glossiness;
+};
+```
+
+`register(b0)` 指定绑定到常量缓冲区槽位0。HLSL要求cbuffer内部遵循**16字节对齐规则**：每个变量不能跨越16字节边界，因此 `float3` 后直接跟 `float` 共16字节可打包，但 `float3` 后跟 `float4` 则会插入4字节填充，这一规则在手写cbuffer时是最常见的数据错位来源。
+
+---
 
 ## 实际应用
 
-一个最简单的漫反射着色器展示了HLSL的完整结构。顶点着色器接收`float4 pos : POSITION`和`float3 normal : NORMAL`，通过矩阵乘法`mul(pos, WorldViewProj)`输出`SV_Position`，同时将世界空间法线传递给像素着色器。像素着色器接收插值后的法线，与光照方向做`dot`运算并`saturate`，乘以光照颜色后输出到`SV_Target`，不足20行代码即实现了Lambert漫反射模型。
+**Lambert漫反射着色器片段**是理解HLSL语法组合使用的经典案例。设光线方向为 `float3 L`，法线为 `float3 N`，漫反射强度公式为：
 
-在Unity的URP管线中，Surface Shader已被淘汰，取而代之的是直接编写HLSL的ShaderLab Pass，通过`#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"`引入URP内置的坐标变换宏和光照函数，这些宏内部封装了`UNITY_MATRIX_MVP`等标准变换矩阵，避免手动声明cbuffer。
+```hlsl
+float diff = saturate(dot(normalize(N), normalize(L)));
+float4 finalColor = _BaseColor * diff;
+```
+
+`dot()` 计算点积，结合 `saturate()` 将背面（负值点积）钳制为0，整行代码在GPU上编译为3~4条向量指令。
+
+在Unity URP的自定义HLSL中，常见的文件结构是将cbuffer声明放在 `.hlsl` 头文件中，通过 `#include` 引入，主Pass的 `HLSLPROGRAM` / `ENDHLSL` 块内只保留顶点和片元函数体。这种组织方式使得多个Pass共享同一套常量定义，避免重复声明导致的编译错误。
+
+---
 
 ## 常见误区
 
-**误区一：混淆行主序与列主序**。HLSL默认矩阵以行主序（row-major）存储，但DirectX数学约定的向量是行向量，变换写法为`mul(vector, matrix)`；而GLSL和OpenGL使用列主序和列向量，写法为`matrix * vector`。在从GLSL移植代码到HLSL时若不注意此区别，矩阵乘法的结果会完全错误。当使用`float4x4`通过cbuffer传递矩阵时，还需注意CPU端是否需要转置。
+**误区1：float与half精度无差异**  
+在移动端GPU（如Mali、Adreno）上，`half`（mediump）运算的吞吐量是 `float` 的两倍，且寄存器占用减半。将不需要高精度的颜色值、UV坐标声明为 `half` 可显著降低移动端带宽消耗。但在PC端桌面GPU上，硬件通常将 `half` 提升到32位执行，精度优化在此平台无效，需根据目标平台选择。
 
-**误区二：将`half`类型当作性能银弹**。在PC端的桌面GPU上，`half`（float16）的运算速度与`float`（float32）几乎相同，因为大多数桌面GPU的ALU并不支持原生16位运算，编译器会自动提升为32位。`half`的真正优势在于移动端GPU（如Adreno、Mali系列），这类GPU支持FP16硬件加速，理论吞吐量翻倍；在移动端着色器中用`half`替换非必要的`float`精度计算，是实际有效的优化手段。
+**误区2：向量运算中Swizzle的赋值副作用**  
+初学者常写出 `v.xy = v.yx;`，期望交换x和y分量，但这在HLSL中会产生未定义行为，因为左侧和右侧引用同一向量的重叠分量。正确写法是引入临时变量：`float2 tmp = v.yx; v.xy = tmp;`，或使用内置的 `float2(v.y, v.x)` 构造器。
 
-**误区三：混淆`POSITION`与`SV_Position`的使用位置**。`SV_Position`在顶点着色器的输出结构体和像素着色器的输入结构体中含义不同：顶点着色器输出时代表裁剪空间的齐次坐标（四维），像素着色器接收时已变为屏幕空间坐标（xy为像素坐标，z为深度值，w为1/w_clip）。在像素着色器中直接将`SV_Position.xy`当作纹理UV使用是错误的，需要除以渲染目标分辨率才能得到`[0,1]`范围的UV坐标。
+**误区3：`pow(x, n)` 对负数输入的处理**  
+HLSL规范规定当 `x < 0` 时 `pow(x, n)` 的返回值未定义，不同驱动和GPU可能返回NaN、0或错误值。在使用菲涅耳公式 `pow(1 - NdotV, 5)` 时，由于 `1 - NdotV` 在掠射角可能因浮点误差产生极小负数，必须写成 `pow(saturate(1 - NdotV), 5)` 以保证正确性。
+
+---
 
 ## 知识关联
 
-学习HLSL基础之前需要理解GPU渲染管线的各个阶段划分，明确顶点着色器和像素着色器在管线中分别处于几何变换阶段和光栅化之后的阶段，这样才能理解为何顶点着色器输出需要`SV_Position`语义、像素着色器输出需要`SV_Target`语义。
+学习HLSL基础前需理解**GPU渲染管线**中各阶段的执行顺序：顶点着色器→光栅化→片元着色器，这决定了语义系统中 `POSITION` 与 `SV_Position` 分别作用于哪个阶段，以及为何顶点着色器输出的 `float4 worldPos : TEXCOORD1` 到达片元着色器时已经过重心坐标插值。
 
-掌握HLSL语法、数据类型和内置函数后，可以直接进入顶点着色器编写和片元着色器编写的专项学习，前者重点在空间变换矩阵运算和顶点属性传递，后者重点在纹理采样和光照模型实现。Compute Shader是HLSL的进阶方向，使用`numthreads(x, y, z)`属性声明线程组维度，利用`RWTexture2D`和`RWStructuredBuffer`进行读写操作，其语法建立在熟练掌握HLSL基础类型和编译模型之上。
+掌握HLSL语法和语义系统后，**顶点着色器编写**和**片元着色器编写**会围绕MVP变换矩阵乘法（`mul(_MatrixMVP, v.vertex)`）和纹理采样（`_MainTex.Sample(_MainTex_Sampler, i.uv)`）展开具体实现。而**Compute Shader**将引入 `numthreads` 线程组声明、`RWTexture2D` 可读写资源和 `SV_DispatchThreadID` 内置语义，这些都建立在本文介绍的cbuffer布局规则和内置函数体系之上。

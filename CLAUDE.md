@@ -1,283 +1,281 @@
-# CLAUDE.md ? AI???? ????
+# CLAUDE.md — AI知识图谱 项目大脑
 
-> ?????? context ??????????????
-> ??????????????????????
-> ?? ???????? docs/history/CHANGELOG-2026.md
-
----
-
-## 1. PRIME DIRECTIVE?????? ? ???
-
-### ?????? UI???? ? ????? ??????
-
-> **???????????????UI????????**
->
-> **??**???UI???????? padding?margin?gap ????????????
-> 1. ????**???**??????
-> 2. ?????????????
-> 3. ??/?????????
-> 4. ?????????????????
->
-> **????**???UI?????????
-> - [ ] ???? padding ? 8px
-> - [ ] ????? gap/margin ????? Tailwind gap-* ???? px ??
-> - [ ] ??????????/????
-> - [ ] ??/??/??????? 12px padding
-> - [ ] ???????? 4-8px gap
-
-### ?????? Bug???????????????????
-
-> **????**?Hub bar UI?? commit ?? push??????????????
->
-> **?? Bug ?????????**?
-> 1. **?? GitHub Issue** ? ??? [Bug] ???body ?????/??/????
-> 2. **????** ? commit message ?? Issue ??: ix(scope): description #N
-> 3. **??** ? pnpm build + pnpm test ??
-> 4. **?? ?? git push** ? commit ? ???? push = CI/CD ??? = ???????
-> 5. **????** ? ?? [GitHub Actions](https://github.com/audiomagician1-ai/ai-knowledge-graph/actions) ????
-> 6. **????** ? ?? https://akg-web.pages.dev ??????
-> 7. **?? Issue**
+> 每次新对话或 context 压缩后，必须首先读取本文件。
+> 本文件是项目级持久记忆，不受上下文压缩影响。
+> 详细 历史记录见 docs/history/CHANGELOG-2026.md
 
 ---
 
-## 2. PROJECT IDENTITY???????
+## 1. PRIME DIRECTIVE（最高优先级 — 必读）
 
-**??**: AI???? ? ?????+???????+?????????????
-**????**: AI????? ? ???????? ? ?????? ? ??????? ? ??????? ? ????
+### ⚠️⚠️⚠️ UI间距纪律 — 最高优先级 ⚠️⚠️⚠️
+
+> **这是反复犯过的错误，必须在每次UI开发前重新阅读！**
+>
+> **规则**：所有UI组件必须有合理的 `padding`、`margin`、`gap` 间距。禁止出现以下情况：
+> 1. 元素之间**零间距**或间距不一致
+> 2. 文字紧贴容器边缘无呼吸空间
+> 3. 按钮/卡片之间间距不均匀
+> 4. 新增组件不考虑与周围元素的间距关系
+>
+> **检查清单**（每次UI改动后必须自查）：
+> - [ ] 组件内部 padding ≥ 8px
+> - [ ] 同级元素间 gap/margin 统一（使用 Tailwind gap-* 或一致的 px 值）
+> - [ ] 按钮组中所有按钮尺寸/间距对称
+> - [ ] 浮层/弹窗/面板四周有至少 12px padding
+> - [ ] 文字与图标之间有 4-8px gap
+
+### 🚨🚨🚨 Bug修复全流程纪律（强制执行）🚨🚨🚨
+
+> **事故教训**：Hub bar UI修复 commit 后未 push，导致线上未部署，用户投诉。
+>
+> **所有 Bug 必须走完以下全流程**：
+> 1. **创建 GitHub Issue** — 标题含 `[Bug]` 前缀，body 含复现步骤/预期/实际行为
+> 2. **本地修复** — commit message 引用 Issue 编号: `fix(scope): description #N`
+> 3. **验证** — `pnpm build` + `pnpm test` 通过
+> 4. **⚠️ 立即 `git push`** — commit ≠ 部署！不 push = CI/CD 不触发 = 用户看不到修复
+> 5. **确认部署** — 检查 [GitHub Actions](https://github.com/audiomagician1-ai/ai-knowledge-graph/actions) 运行状态
+> 6. **线上验证** — 访问 https://akg-web.pages.dev 确认修复生效
+> 7. **关闭 Issue**
+
+---
+## 2. PROJECT IDENTITY（项目基本面）
+
+**产品**: AI知识图谱 — 交互式教学+苏格拉底式对话+知识图谱技能树点亮学习平台
+**核心理念**: AI先讲解知识 → 提供选项引导互动 → 探测用户水平 → 自适应深度讲解 → 选项式理解检验 → 评估点亮
 **GitHub**: https://github.com/audiomagician1-ai/ai-knowledge-graph
-**??**: https://akg-web.pages.dev
+**线上**: https://akg-web.pages.dev
 
-**???**:
-- **??**: React 19 + TypeScript 5.7 + Vite 6 + TailwindCSS 4 + Zustand 5 + Three.js/3d-force-graph + Framer Motion + Lucide React
-- **??**: FastAPI (Python 3.11+) ? ????/????/????
-- **???**: Neo4j 5 (????) + PostgreSQL 15 via Supabase (??/????) + Redis 7 (??)
-- **???**: Capacitor 8 (Android/iOS)
+**技术栈**:
+- **前端**: React 19 + TypeScript 5.7 + Vite 6 + TailwindCSS 4 + Zustand 5 + Three.js/3d-force-graph + Framer Motion + Lucide React
+- **后端**: FastAPI (Python 3.11+) — 图谱引擎/对话引擎/学习引擎
+- **数据库**: Neo4j 5 (知识图谱) + PostgreSQL 15 via Supabase (用户/学习数据) + Redis 7 (缓存)
+- **移动端**: Capacitor 8 (Android/iOS)
 - **BaaS**: Supabase (Auth + PostgreSQL + Edge Functions + Storage)
-- **LLM**: ???? (DeepSeek/GPT-4o-mini/GPT-4o) via OpenRouter; ????: stepfun/step-3.5-flash:free
-- **??**: Cloudflare Pages (??) + Docker (??) + Supabase Cloud
+- **LLM**: 分层调度 (DeepSeek/GPT-4o-mini/GPT-4o) via OpenRouter; 默认免费: stepfun/step-3.5-flash:free
+- **部署**: Cloudflare Pages (前端) + Docker (后端) + Supabase Cloud
 
-**??**: pnpm monorepo
-`
-packages/web/      ? Vite + React ?? (@akg/web)
-packages/shared/   ? ????/?? (@akg/shared)
-packages/mobile/   ? Capacitor ??? (@akg/mobile)
-apps/api/          ? FastAPI ?? (??+??+????)
-workers/           ? Cloudflare Workers (??API)
-supabase/          ? Auth + PostgreSQL + Edge Functions
-data/seed/         ? ?????? (30?)
-data/rag/          ? RAG???? (6,156?)
-`
+**架构**: pnpm monorepo
+```
+packages/web/      — Vite + React 前端 (@akg/web)
+packages/shared/   — 共享类型/常量 (@akg/shared)
+packages/mobile/   — Capacitor 移动端 (@akg/mobile)
+apps/api/          — FastAPI 后端 (图谱+对话+学习引擎)
+workers/           — Cloudflare Workers (代理API)
+supabase/          — Auth + PostgreSQL + Edge Functions
+data/seed/         — 种子图谱数据 (30球)
+data/rag/          — RAG知识文档 (6,156篇)
+```
 
 ---
 
-## 3. CURRENT METRICS??????
+## 3. CURRENT METRICS（当前指标）
 
-| ?? | ? | ???? |
+| 指标 | 值 | 更新日期 |
 |------|------|----------|
-| **???** | 30 ???? | 2026-03-27 |
-| **????** | 6,156 | 2026-03-27 |
-| **?** | 7,015 | 2026-03-27 |
-| **????** | 595 (0 ???) | 2026-03-27 |
-| **RAG ??** | 6,156 (100% ??) | 2026-03-27 |
-| **????** | 1,126 (897 BE + 229 FE) | 2026-03-21 |
+| **知识球** | 30 个知识球 | 2026-03-27 |
+| **知识概念** | 6,156 | 2026-03-27 |
+| **边** | 7,015 | 2026-03-27 |
+| **跨球链接** | 595 (0 断引用) | 2026-03-27 |
+| **RAG 覆盖** | 6,156 (100% 覆盖) | 2026-03-27 |
+| **测试总数** | 1,126 (897 BE + 229 FE) | 2026-03-21 |
 | **tsc errors** | 0 | 2026-03-21 |
 | **Open Issues** | 0 | 2026-03-27 |
-| **RAG ??** | ?? 77.8, S=698/A=5,267/B=191/C=0 (A+S=96.9%) | 2026-03-27 |
+| **RAG 质量** | v2覆盖 3934/6156 (63.9%), S6.5进行中→100% | 2026-03-30 |
 
 ---
 
-## 4. CURRENT P0 TASKS???????
+## 4. CURRENT P0 TASKS（当前优先任务）
 
-### RAG ?????? ??
-> ?? ?? docs/RAG_EVOLUTION_PLAN.md
+### RAG 知识库质量 迭代
+
+> 详情 见 docs/RAG_EVOLUTION_PLAN.md
 >
-> **Scorer v2.0** ??: ai-rewrite-v1 ????44.9 ? ???????77.8
+> **Scorer v2.0** 重评: ai-rewrite-v1 原始均分44.9 → 迭代改写后均分77.8
 >
-> | Sprint | ?? | ?? |
+> | Sprint | 状态 | 内容 |
 > |--------|------|------|
-> | Sprint 0-4 | ? | Schema v2 + Scorer + ???? + research-rewrite + ai-rewrite + Tier-C?? |
-> | Sprint 5 | ? | intranet-llm-rewrite-v2 Tier-B???? (Batch 1-3 + P2) |
-> | Sprint 6 | ?? | ??Tier-B?? ? 3157/3353?? (94.2%), PID 24056 |
-> | Sprint 6.5 | ?? | ?????? ? 400/2789?? (14.3%), PID 35824 |
-> | Sprint 7 | ? | Tier-S Booster ? ?Sprint 6/6.5?? |
+> | Sprint 0-4 | ✅ | Schema v2 + Scorer + 手动精写 + research-rewrite + ai-rewrite + Tier-C消除 |
+> | Sprint 5 | ✅ | intranet-llm-rewrite-v2 Tier-B批量提升 (Batch 1-3 + P2) |
+> | Sprint 6 | ✅ | 全量Tier-B升级 — 3353/3353完成 (100%), 0 errors |
+> | Sprint 6.5 | 🔥 | 孤儿文件补全 — 192/2573进行中 (7.5%), PID 2856, ~63/hr |
+> | Sprint 7 | ⏸ | Tier-S Booster — 等Sprint 6.5完成, S6已就绪 |
 >
-> **??**: ??v2?? + ??80+
-> **??**: scripts/_batch_sprint6.py, scripts/_batch_sprint6_5.py, scripts/_batch_tier_b_parallel.py
+> **目标**: 全量v2覆盖 + 均分80+
+> **脚本**: scripts/_batch_sprint6.py, scripts/_batch_sprint6_5.py, scripts/_batch_tier_b_parallel.py
 
-### V1.0 ????
-- ? FSRS ?????? (#34/#35)
-- ? BKT ?????? (#36)
-- ? ???? + UI (#37/#38)
-- ? ?????? (FE 23?? + BE 16??)
-- ?? ?? FSRS ??UI??
+### V1.0 剩余任务
+- ✅ FSRS 间隔重复引擎 (#34/#35)
+- ✅ BKT 知识追踪引擎 (#36)
+- ✅ 成就系统 + UI (#37/#38)
+- ✅ 统一日志系统 (FE 23模块 + BE 16模块)
+- 待做 FSRS 复习UI集成
 
 ---
 
-## 5. ACTIVE DECISIONS??????????
+## 5. ACTIVE DECISIONS（生效中的架构决策）
 
-| ID | ?? | ?? |
+| ID | 决策 | 理由 |
 |----|------|------|
-| ADR-001 | Supabase ? Auth/????/RLS | ?? MuseSea ?????? |
-| ADR-002 | FastAPI ???? (?? BaaS) | ?????? Neo4j + ?? LLM ?? |
-| ADR-003 | Neo4j ????? | Cypher ????????????? |
-| ADR-004 | ?? Vite+React (? Next.js) | ?? MuseSea ????Capacitor ?? |
-| ADR-005 | Capacitor ???? (? RN) | ?? MuseSea?????? Web ?? |
-| ADR-006 | ?????? | ???????Observatory Study ?? |
-| ADR-007 | FSRS ???? (? SM-2) | 97.4% ?? SM-2?Anki ????? |
-| ADR-009 | ??????? | ??????????????? |
-| ADR-010 | ???? LLM + ???? Key | stepfun/step-3.5-flash:free ????? |
-| ADR-011 | ???? Supabase-first ??? | ??????? Supabase Cloud ???? |
+| ADR-001 | Supabase 做 Auth/用户数据/RLS | 对齐 MuseSea 验证过的架构 |
+| ADR-002 | FastAPI 独立后端 (非纯 BaaS) | 知识图谱需要 Neo4j + 复杂 LLM 编排 |
+| ADR-003 | Neo4j 做知识图谱 | Cypher 查询语言成熟，图遍历性能优 |
+| ADR-004 | 前端 Vite+React (非 Next.js) | 对齐 MuseSea 工具链，Capacitor 兼容好 |
+| ADR-005 | Capacitor 做移动端 (非 RN) | 对齐 MuseSea，共享同一套 Web 代码 |
+| ADR-006 | 深色主题优先 | 知识宇宙主题，对齐Observatory Study 风格 |
+| ADR-007 | FSRS 间隔重复 (非 SM-2) | 97.4% 优于 SM-2，Anki 已默认采用 |
+| ADR-009 | 全站免登录可用 | MVP阶段降低门槛，匿名即可体验全部功能 |
+| ADR-010 | 默认免费 LLM + 可选自带 Key | stepfun/step-3.5-flash:free 作为默认后端 |
+| ADR-011 | 登录用户 Supabase-first 持久化 | 登录用户数据以 Supabase Cloud 为权威源 |
 
 ---
+## 6. CROSS-MODULE INVARIANTS（跨模块不变量清单）
 
-## 6. CROSS-MODULE INVARIANTS??????????
+> 以下 规则同时存在于多个文件中，修改时必须同步所有出处。
 
-> ?? ???????????????????????????????
-
-### Mastered ???? (7???)
-`
+### Mastered 判定阈值 (7处同步)
+```
 overall >= 75 AND all dimensions >= 60
-`
+```
 - FE: direct-llm.ts (validateAssessment + fallback)
 - FE: learning.ts (recordAssessment)
 - BE: evaluator.py (validate_result + fallback_evaluate)
 - BE: sqlite_client.py (record_assessment)
 - Workers: dialogue.ts (validateAssessment + fallback)
 
-### Mastered ???? (8???)
-?mastered???????????learning/not_started:
+### Mastered 降级防护 (8处同步)
+已mastered的概念不允许被降级回learning/not_started:
 - FE: learning.ts (startLearning + recordAssessment wasMastered guard)
 - FE: supabase-sync.ts (toDbStatus mapping)
 - BE: sqlite_client.py (start_learning + record_assessment C-06)
 - BE: learning.py /sync (mastered guard)
 - Workers: learning.ts (/start + /assess + /sync mastered CASE)
 
-### tokenLimitParam (4???)
-OpenAI o1/o3/chatgpt-* ??: max_completion_tokens ?? max_tokens
+### tokenLimitParam (4处同步)
+OpenAI o1/o3/chatgpt-* 专用: max_completion_tokens 替代 max_tokens
 - FE: direct-llm.ts + settings.ts (regex o[1-9]|chatgpt-)
 - BE: llm/router.py (re.match o[1-9]|chatgpt-)
 - Workers: llm.ts (regex o[1-9]|chatgpt-)
 
-### validateAssessment (3???)
-Score clamping [0,100] + mastered recalc + null/??? ? fallback 50:
+### validateAssessment (3处同步)
+Score clamping [0,100] + mastered recalc + null/异常值 → fallback 50:
 - FE: direct-llm.ts (Number.isFinite)
 - BE: evaluator.py (int(float()) try/except)
 - Workers: dialogue.ts (Number.isFinite)
 
-### DOMAIN_SUPPLEMENTS / ASSESSMENT_SUPPLEMENTS (????)
-?????????????????:
-- BE: pps/api/engines/dialogue/prompts/feynman_system.py
+### DOMAIN_SUPPLEMENTS / ASSESSMENT_SUPPLEMENTS (三端同步)
+新增域时必须同步补充注册到以下三处:
+- BE: pps/api/engines/dialogue/prompts/feynman_system.py
 - FE: packages/web/src/lib/direct-llm.ts
 - Workers: workers/src/prompts.ts
 
-### ???? (3???)
-8000????, push+reverse O(n):
+### 对话截断 (3处同步)
+8000字符上限, push+reverse O(n):
 - FE: direct-llm.ts
 - BE: evaluator.py (_format_dialogue)
 - Workers: dialogue.ts
 
-### Status Mapping (????)
-learning.ts local ? toDbStatus() ? DB CHECK ? downloadProgressFromCloud() reverse
+### Status Mapping (四端一致)
+learning.ts local → toDbStatus() → DB CHECK → downloadProgressFromCloud() reverse
 
 ---
 
-## 7. CODING STANDARDS??????
+## 7. CODING STANDARDS（编码规范）
 
-### ????
-- JS/TS ? 800?, React?? ? 200?, ??????
-- ?????? CSS ?? (--color-*), ????? hex
-- ???? 0 ? s any (? supabase-sync.ts enum?? + learning.ts diagnostics ??)
-- ???? eval/exec/innerHTML/dangerouslySetInnerHTML
+### 代码规范
+- JS/TS ≤ 800行, React组件 ≤ 200行, 超限必须拆分
+- 颜色使用 CSS 变量 (--color-*), 禁止硬编码 hex
+- 编译器 0 个 s any (除 supabase-sync.ts enum转换 + learning.ts diagnostics 豁免)
+- 禁止使用 eval/exec/innerHTML/dangerouslySetInnerHTML
 
-### ????
-- ? ?????? LLM API Key
-- ? ???? RLS ?????????
-- ? ?????? depth=3
-- ? SSRF ??: BE _validate_base_url + Workers alidateBaseUrl (private IP blocked)
-- ? CORS: URL-parsed hostname???? (?substring)
+### 安全规范
+- 禁 前端硬编码 LLM API Key
+- 禁 绕过或关闭 RLS 策略（除管理员迁移）
+- 禁 图遍历深度超过 depth=3
+- ✅ SSRF 防护: BE _validate_base_url + Workers validateBaseUrl (private IP blocked)
+- ✅ CORS: URL-parsed hostname白名单校验 (非substring)
 
-### ???????
-- ?? ?? min-h-dvh ?? min-h-screen
-- ?? ???? ? 44px
-- ?? safe-area ?? CSS ??
-- ?? ?375px ? ?390px ?? @media ????
+### 移动端适配规范
+- 全局 使用 min-h-dvh 替代 min-h-screen
+- 触摸 目标区域 ≥ 44px
+- 使用 safe-area 环境 CSS 变量
+- 测试 ≥375px 及 ≥390px 的 @media 断点布局
 
 ---
 
-## 8. COMMANDS??????
+## 8. COMMANDS（常用命令）
 
-`ash
-# ??
-pnpm dev                    # ?? dev server (port 3000)
+```bash
+# 开发
+pnpm dev                    # 启动 dev server (port 3000)
 pnpm api:dev                # FastAPI dev server (port 8000)
-pnpm docker:up              # ?? Neo4j + Redis
-pnpm build                  # ????
+pnpm docker:up              # 启动 Neo4j + Redis
+pnpm build                  # 生产构建
 
-# ??
-cd packages/web && npx vitest run        # ????
-cd apps/api && python -m pytest          # ????
+# 测试
+cd packages/web && npx vitest run        # 前端测试
+cd apps/api && python -m pytest          # 后端测试
 
-# ????
-pnpm type-check             # ?? tsc
+# 类型检查
+pnpm type-check             # 全量 tsc
 
-# ??
+# 部署
 git add -A ; git commit -m "feat(scope): desc" ; git push
-# ? GitHub Actions ????? Cloudflare Pages
+# → GitHub Actions 自动构建 → Cloudflare Pages
 
-# EXE ??
-python scripts/build_exe.py  # ??? release/
-`
+# EXE 打包
+python scripts/build_exe.py  # 输出到 release/
+```
 
-### ????
-- ??: eat(scope): description ? ix(scope): description #N
+### 提交规范
+- 格式: `feat(scope): description` 或 `fix(scope): description #N`
 - scope: graph / dialogue / learning / ui / auth / infra
-- ?????: pnpm type-check + ??????
-- **??? commit ???? git push**
+- 提交前必须: pnpm type-check + 相关测试通过
+- **修复类 commit 必须立即 git push**
 
 ---
+## 9. KEY FILES INDEX（关键文件索引）
 
-## 9. KEY FILES INDEX????????
-
-### ??
-| ?? | ?? |
+### 文档
+| 文件 | 用途 |
 |------|------|
-| DEVELOPMENT_PLAN.md | MVP??/????/???/???? |
-| RESEARCH_REPORT.md | ????/??/????/????? |
-| docs/EXPANSION_PLAN.md | ??????? + 30???? |
-| docs/RAG_EVOLUTION_PLAN.md | RAG??????????? |
-| docs/history/CHANGELOG-2026.md | ??Phase/Sprint/CR???? |
+| DEVELOPMENT_PLAN.md | MVP定义/技术架构/里程碑/成本估算 |
+| RESEARCH_REPORT.md | 市场分析/竞品/教育理论/技术可行性 |
+| docs/EXPANSION_PLAN.md | 多球体扩展路线 + 30球体详情 |
+| docs/RAG_EVOLUTION_PLAN.md | RAG知识库质量迭代进化方案 |
+| docs/history/CHANGELOG-2026.md | 所有Phase/Sprint/CR详细记录 |
 
-### ??
-| ?? | ?? |
+### 数据
+| 文件 | 用途 |
 |------|------|
-| data/seed/domains.json | 30???? (id/name/icon/color/sort_order) |
-| data/seed/{domain}/seed_graph.json | ?????? |
-| data/seed/cross_sphere_links.json | 595????? |
-| data/rag/{domain}/{subdomain}/{concept}.md | RAG???? |
+| data/seed/domains.json | 30球体定义 (id/name/icon/color/sort_order) |
+| data/seed/{domain}/seed_graph.json | 各域种子图谱 |
+| data/seed/cross_sphere_links.json | 595条跨球链接 |
+| data/rag/{domain}/{subdomain}/{concept}.md | RAG知识文档 |
 
-### ????
-| ?? | ?? |
+### 核心代码
+| 文件 | 用途 |
 |------|------|
-| pps/api/engines/dialogue/ | ?????? + Feynman?? |
-| pps/api/engines/learning/ | ??? + BKT + FSRS |
-| pps/api/routers/ | graph/dialogue/learning API |
-| pps/api/llm/router.py | LLM??? (SSRF/retry/tier) |
-| pps/api/rate_limiter.py | ??????? |
+| pps/api/engines/dialogue/ | 对话引擎主逻辑 + Feynman提示 |
+| pps/api/engines/learning/ | 学习引擎 + BKT + FSRS |
+| pps/api/routers/ | graph/dialogue/learning API |
+| pps/api/llm/router.py | LLM路由器 (SSRF/retry/tier) |
+| pps/api/rate_limiter.py | 请求频率限制器 |
 | packages/web/src/lib/store/ | Zustand stores (dialogue/learning/domain/graph) |
-| packages/web/src/lib/direct-llm.ts | ????LLM (888?, ?validateAssessment) |
-| workers/src/ | Cloudflare Workers???? |
+| packages/web/src/lib/direct-llm.ts | 前端直连LLM (888行, 含validateAssessment) |
+| workers/src/ | Cloudflare Workers代理后端 |
 
 ---
 
 ## 10. KNOWN ISSUES / NOTES
 
-- Phase 5 ??: Supabase Cloud OAuth?? + E2E?? (?????????)
-- dialogue-api.ts ?????import (dialogue.ts??fetch), future-ready
-- useMediaQuery.ts ???unused (Round 74?), future-ready
-- NPM audit: 6??(4moderate+2high)??workers>wrangler dev??, ?????
-- data/scripts/ ????????? data/seed/programming/, ??????
-- Vite warning: learning.ts ?????+??import (??????), cosmetic
+- Phase 5 剩余: Supabase Cloud OAuth配置 + E2E测试 (代码层面已就绪)
+- dialogue-api.ts 导出但无import (dialogue.ts直接fetch), future-ready
+- useMediaQuery.ts 暂时unused (Round 74保留), future-ready
+- NPM audit: 6漏洞(4moderate+2high)均属workers>wrangler dev依赖, 不影响生产
+- data/scripts/ 目录含已完成脚本 data/seed/programming/, 保留供参考
+- Vite warning: learning.ts 循环依赖+未用import (不影响运行), cosmetic
 
 ## Last Review
 
-**Date**: 2026-03-27 (evening) | **Scope**: Sprint 6+6.5 progress check + process cleanup | **Result**: passed
+**Date**: 2026-03-30 | **Scope**: Sprint 6 completed (3353/3353), Sprint 6.5 resumed (192/2573 running PID 2856) | **Result**: S6 done, S6.5 in progress

@@ -20,116 +20,104 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # 句子合并
 
 ## 概述
 
-句子合并（Sentence Combining）是将两个或多个独立的简单句整合为一个结构更复杂、表意更精准的句子的写作技巧。这一技巧的核心在于识别句子之间的逻辑关系——并列、因果、转折、条件、让步等——并选用恰当的语言工具将其显性化。合并后的句子可以是并列句（compound sentence）、复合句（complex sentence）或并列复合句（compound-complex sentence）。
+句子合并（Sentence Combining）是将两个或两个以上的简单句重新组织，通过连词、关系代词、分词结构或其他语法手段，整合成一个语法完整、逻辑清晰的复合句或并列复合句的写作技巧。这一技巧的核心在于识别句子之间的逻辑关系——因果、让步、时间、条件、对比——并选择最准确的连接方式来体现该关系。
 
-句子合并作为系统性写作教学方法，由美国学者Mellon于1969年在其研究《变换句法成熟度》中首次提出，后经O'Hare（1973年）进一步推广验证。实验数据显示，接受句子合并训练的学生在句法复杂度上比对照组提高约15%。这一发现奠定了句子合并在英语写作教学中的实证地位。
+句子合并作为一种系统性写作训练方法，由美国教育研究者弗兰克·奥黑尔（Frank O'Hare）于1973年在其研究报告《Sentence Combining: Improving Student Writing without Formal Grammar Instruction》中系统化提出。他的实验证明，经过八周句子合并训练的七年级学生，其写作成熟度（syntactic maturity）提升幅度相当于未经训练学生三年的自然发展量。
 
-掌握句子合并技巧之所以关键，在于英语书面语中过度使用短句会造成"choppy writing"（断裂感写作），降低文章的连贯性与可读性。通过合并，写作者能够准确表达句间的从属与平等关系，避免信息碎片化，同时通过句式变化维持读者注意力。
+句子合并的价值不仅体现在减少语篇中重复的短句，更重要的是训练写作者主动思考句间关系，将隐含的逻辑用精确的语法结构显性化。英文写作中，一篇由大量简单句堆砌的文章（称为"primer style"）会让读者感到逻辑割裂，而合并后的句子能通过从句结构本身传达信息的主次层级。
 
 ---
 
 ## 核心原理
 
-### 一、使用并列连词合并（Coordinating Conjunctions）
+### 1. 并列合并：使用并列连词（FANBOYS）
 
-并列连词FANBOYS（For, And, Nor, But, Or, Yet, So）用于连接两个语法地位平等的独立子句，合并结果为并列句。并列句的标准格式为：**独立子句 + 逗号 + 并列连词 + 独立子句**。
+当两个简单句表达同等重要的信息，且关系为并列、对比或选择时，使用并列连词合并，形成并列句（compound sentence）。并列连词包括 for、and、nor、but、or、yet、so，首字母缩写即FANBOYS。
 
-- 原句：*She studied hard. She failed the exam.*
-- 合并：*She studied hard, yet she failed the exam.*
+- 合并前：*She studied hard. She passed the exam.*
+- 合并后：*She studied hard, so she passed the exam.*
 
-逗号的位置固定在并列连词之前，这是并列句区别于其他合并方式的形式标志。省略逗号会造成"run-on sentence"（粘连句）错误。
+注意：合并时连词前需加逗号，且连词的选择必须准确反映关系。将上例改为 *and* 虽然语法正确，但会丢失"因果"信息，是一种逻辑精度的降级。
 
-### 二、使用从属连词合并（Subordinating Conjunctions）
+### 2. 从属合并：使用从属连词引导状语从句
 
-从属连词（because, although, when, if, unless, since, while等）将一个子句降格为从属子句，合并结果为复合句。从属子句不能独立成句，其地位低于主句。
+当两个句子之间存在逻辑主次关系时，使用从属连词（subordinating conjunctions）将次要信息降格为从句，主要信息保留为主句。常见从属连词按功能分类：
 
-合并时需注意语序规则：
-- **从句后置**：主句 + 从属连词 + 从句（通常不需要逗号）
-  - *I stayed home because it was raining.*
-- **从句前置**：从属连词 + 从句 + **逗号** + 主句
-  - *Because it was raining, I stayed home.*
+| 逻辑关系 | 常用连词 |
+|----------|----------|
+| 时间 | when, while, after, before, as soon as |
+| 原因 | because, since, as |
+| 让步 | although, even though, while |
+| 条件 | if, unless, provided that |
 
-从句前置时必须加逗号，这是最常见的标点错误来源之一。
+- 合并前：*It was raining. We continued the game.*
+- 合并后：*Although it was raining, we continued the game.*
 
-### 三、使用关系代词合并（Relative Pronouns）
+从句位置灵活，置于句首时需用逗号与主句隔开；置于句末时通常不加逗号（条件从句和原因从句尤为如此）。
 
-关系代词who, which, that, whose, whom用于将一个描述性句子嵌入另一句子，形成定语从句，实现信息的精简整合。
+### 3. 关系从句合并：使用关系代词嵌入定语
 
-- 原句：*The man is my teacher. He wrote this book.*
-- 合并：*The man who wrote this book is my teacher.*
+当一个句子的内容是对另一个句子中某个名词的说明或限定时，使用关系代词（who, which, that, whose, whom）将说明性句子改造为定语从句，嵌入主句名词之后。
 
-关系代词的选择规则：**who/whom用于指人，which用于指物，that可替代who或which用于限制性定语从句**。非限制性定语从句（即含额外补充信息的从句）必须使用逗号隔开且不能使用that：
-- *My father, who is a doctor, lives in Beijing.*（非限制性，不可换that）
+- 合并前：*The scientist won the Nobel Prize. She discovered CRISPR.*
+- 合并后：*The scientist who discovered CRISPR won the Nobel Prize.*
 
-### 四、使用非谓语动词压缩合并
+此处需区分限定性定语从句（不加逗号）与非限定性定语从句（加逗号）。前者缩小先行词范围，后者仅补充信息，删除后主句含义不变。若将上例改为 *The scientist, who discovered CRISPR, won the Nobel Prize*，则预设听者已知这位科学家，从句仅作补充。
 
-当两个句子主语相同时，可将其中一个动词变为分词（present/past participle）或不定式，实现结构压缩：
+### 4. 分词短语合并：压缩冗余的动词信息
 
-- 原句：*He finished his homework. He went out to play.*
-- 合并：*Having finished his homework, he went out to play.*（完成分词短语表先后）
+当两个句子的主语相同，且其中一个动作发生在另一个之前或同时，可将其中一个句子改写为现在分词（-ing）或过去分词（-ed）短语，替代整个从句，实现结构上的精炼。
 
-- 原句：*She was tired. She couldn't continue.*
-- 合并：*Too tired to continue, she stopped.*（不定式否定）
+- 合并前：*He finished his homework. He went out to play.*
+- 合并后：*Having finished his homework, he went out to play.*（完成分词强调动作先于主句）
 
-此方法适合描述连续动作或因果关系，使句子更简洁，但要严格遵守**悬垂分词（dangling participle）**禁忌——分词的逻辑主语必须与主句主语一致。
+此方法要求两个句子的逻辑主语必须一致，否则会产生"垂悬分词"（dangling participle）错误，如：*Walking down the street, the trees were beautiful.* 此句语法错误，因为trees不能"walking"。
 
 ---
 
 ## 实际应用
 
-**场景一：学生作文中的短句重组**
+**学术写作中的信息层级化**
 
-原文（choppy writing）：
-> *The weather was cold. We went hiking. We had a great time. We took many photos.*
+在GRE/IELTS写作中，考生常将论据以简单句列举，合并后可显著提升学术感。例如：
 
-合并后：
-> *Although the weather was cold, we went hiking and had a great time, taking many photos along the way.*
+- 原始：*Social media increases anxiety. Many studies show this. Teenagers are especially affected.*
+- 合并后：*Multiple studies demonstrate that social media increases anxiety, with teenagers being disproportionately affected.*
 
-此合并使用了从属连词although表让步、并列连词and连接动词短语，以及现在分词短语压缩最后一个动作，句子从4句压缩为1句，信息密度提升且逻辑清晰。
+此例综合使用了that引导的宾语从句和with引导的独立结构，将三句压缩为一句，且突出了主要论点（social media increases anxiety）与次要数据（teenagers的影响）的层级差异。
 
-**场景二：标准化考试写作（如雅思/托福）**
+**叙述文写作中的节奏控制**
 
-考试评分标准明确要求"grammatical range and complexity"（语法多样性与复杂度），句子合并是提升评分的直接手段。将简单句合并为含有状语从句、定语从句或分词结构的复合句，直接对应评分标准中7分及以上的句法要求。
-
-**场景三：新闻导语改写**
-
-新闻写作常需将多条信息高效整合：
-- 原句：*The fire started at 3 a.m. It destroyed the building. No one was injured.*
-- 合并：*The fire, which started at 3 a.m., destroyed the building without injuring anyone.*
+职业作家有意交替使用长句（合并句）与短句（简单句），以控制阅读节奏。Ernest Hemingway因大量使用并列连词and连接动作，形成其标志性的"iceberg style"，而William Faulkner则以多层嵌套的从属从句著称。了解句子合并，本质上是了解何时合并、何时拆分，以服务于表达目的。
 
 ---
 
 ## 常见误区
 
-**误区一：认为合并后的句子越长越好**
+**误区一：合并即加"and"**
 
-句子合并的目标是**逻辑清晰、关系准确**，而非追求句子长度。将三个以上的从句叠加在一句话中，往往造成"句子过载"（sentence overload），反而降低可读性。例如，将5个独立信息强行并入一句，会导致读者在处理修饰关系时认知负担过重。合并的黄金标准是：每句话有且仅有一个主要信息焦点。
+许多学习者将"句子合并"等同于用and连接两句话。这会导致大量逻辑关系模糊的并列结构，如：*He was tired and he kept working*，而实际的逻辑关系是让步，正确表达应为 *Although he was tired, he kept working*。and连接的是并列关系，不能替代让步、因果、条件等逻辑连词。
 
-**误区二：混淆并列关系与从属关系**
+**误区二：从属连词与并列连词可互换**
 
-并列连词and/but/so表达两个子句地位平等，从属连词because/although表达一个子句依附另一个子句。将因果关系误用and连接是典型错误：
-- 错误：*It was raining, and I stayed home.*（and削弱了因果关系）
-- 正确：*I stayed home because it was raining.*
+because、since是从属连词，引导从句；so是并列连词，连接两个独立分句。常见错误：*Because it rained, so we stayed inside.* 此句混用了从属和并列两套连接体系，导致主句缺失。正确形式二选一：*Because it rained, we stayed inside.* 或 *It rained, so we stayed inside.*
 
-选错连词会导致句间逻辑关系模糊，这是比语法错误更严重的表意问题。
+**误区三：忽视垂悬分词错误**
 
-**误区三：忽视悬垂分词错误**
-
-使用非谓语动词合并时，若不检查逻辑主语一致性，易产生悬垂分词：
-- 错误：*Walking down the street, the trees looked beautiful.*（树不会走路）
-- 正确：*Walking down the street, I found the trees beautiful.*
-
-此类错误在机器改错工具中常被漏过，需要人工逻辑审查。
+使用分词短语合并时，许多学习者不检查主语一致性。*Waiting for the bus, the rain started.* 这句话暗示"the rain在等公共汽车"，逻辑荒谬。正确合并必须改写主句主语：*Waiting for the bus, I was caught in the rain.*
 
 ---
 
 ## 知识关联
 
-句子合并以**并列句**的知识为直接基础——学生需先掌握FANBOYS的用法与并列句的逗号规则，才能在此基础上区分平等关系与从属关系。理解了"独立子句可以独立成句"这一判断能力，是正确使用从属连词的前提。
+句子合并直接建立在**并列句**知识的基础上：并列句训练已覆盖FANBOYS的用法和逗号规则，句子合并将其扩展为更丰富的从属关系和分词结构。学习者在掌握并列合并后，应重点突破从属连词和关系代词两类合并方式，因为它们要求判断信息的主次层级，而不只是并列关系。
 
-在句型结构体系中，句子合并综合运用了定语从句、状语从句、名词性从句以及分词结构等多种语法手段。它并非单一语法点，而是**运用已学语法知识进行写作决策**的能力训练。学生在练习句子合并时，本质上是在反复决策：这两个信息之间是什么逻辑关系？哪种语言结构能最准确地表达这种关系？这种训练直接迁移至段落写作与篇章组织能力。
+句子合并技巧与**语篇衔接（cohesion）**、**句子变换（sentence transformation）**直接相关。在标准化考试（如剑桥FCE/CAE的Use of English部分）中，句子变换题（Key Word Transformation）本质上就是对句子合并与拆分能力的考察，要求在保持原句语义的前提下，用指定词汇重新构建句子结构。

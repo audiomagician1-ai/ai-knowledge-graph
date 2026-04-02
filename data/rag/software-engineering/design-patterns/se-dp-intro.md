@@ -32,115 +32,76 @@ sources:
     year: 1999
     isbn: "978-0201485677"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 设计模式概述
 
 ## 概述
 
-设计模式（Design Patterns）是软件设计中**反复出现的问题的经过验证的解决方案模板**。这个概念由建筑师 Christopher Alexander 在 1977 年首次提出（*A Pattern Language*），后被 Gamma、Helm、Johnson、Vlissides 四人（合称 Gang of Four / GoF）引入软件工程，在 1994 年出版的《Design Patterns: Elements of Reusable Object-Oriented Software》中系统化为 23 种经典模式。
+设计模式（Design Pattern）是软件工程中针对反复出现的设计问题所总结出的**可复用解决方案模板**。它不是可以直接运行的代码，而是描述在特定上下文中如何解决某类设计问题的结构性方案。设计模式的价值在于将专家级的设计经验提炼为标准词汇，使开发者能够高效沟通并规避已知的设计陷阱。
 
-设计模式不是可以直接复制粘贴的代码，而是**描述问题-上下文-解决方案三元组的抽象方案**。正如 GoF 书中所述："每个模式描述了一个在我们的环境中反复出现的问题，以及该问题的解决方案的核心"（GoF, 1994, p.2）。
+1994年，Erich Gamma、Richard Helm、Ralph Johnson、John Vlissides四人（合称"四人帮"，Gang of Four，简称GoF）出版了《Design Patterns: Elements of Reusable Object-Oriented Software》，系统整理了**23种经典设计模式**。这一著作奠定了面向对象设计模式的学科基础，书中的模式至今仍是行业标准参考。值得注意的是，设计模式的思想源头可追溯到建筑师Christopher Alexander在1977年提出的"模式语言"概念，GoF将其引入了软件领域。
 
-## 核心知识点
+在工程实践中，设计模式解决的是**接口设计、对象职责划分与系统扩展性**三类核心问题。一个未经模式思考的系统往往在需求变更时暴露出类爆炸、强耦合或修改涟漪效应等问题，而正确应用设计模式可将这些风险控制在可预见范围内。
 
-### 1. GoF 的三大分类
+---
 
-GoF 将 23 种模式按**目的（intent）**分为三类：
+## 核心原理
 
-| 分类 | 目的 | 模式数 | 代表模式 | 解决的典型问题 |
-|------|------|--------|---------|--------------|
-| **创建型（Creational）** | 控制对象创建过程 | 5 | Singleton, Factory Method, Abstract Factory, Builder, Prototype | "如何创建对象而不硬编码具体类？" |
-| **结构型（Structural）** | 组合类和对象形成更大结构 | 7 | Adapter, Decorator, Proxy, Facade, Composite, Bridge, Flyweight | "如何让不兼容的接口协同工作？" |
-| **行为型（Behavioral）** | 定义对象间的通信方式 | 11 | Observer, Strategy, Command, State, Iterator, Template Method... | "如何让对象协作而不产生紧耦合？" |
+### GoF 23种模式的三大分类
 
-**选择依据**：先问"我遇到的是创建问题、结构问题还是通信问题？"，这一步就能把候选范围缩小到 5-11 个。
+GoF将23种模式按**意图**分为三类，而非按语法特征分类：
 
-### 2. 模式的四要素
+| 类别 | 模式数量 | 解决问题 | 典型代表 |
+|------|---------|---------|---------|
+| **创建型**（Creational） | 5种 | 控制对象的创建方式与时机 | 单例、工厂方法、抽象工厂 |
+| **结构型**（Structural） | 7种 | 组织类与对象的组合关系 | 适配器、装饰器、代理 |
+| **行为型**（Behavioral） | 11种 | 定义对象间的通信与职责分配 | 观察者、策略、命令 |
 
-GoF 定义每个模式包含四部分（GoF, 1994, p.3）：
+创建型模式将"如何创建对象"的逻辑从使用逻辑中分离；结构型模式通过组合而非继承来扩展功能；行为型模式专注于算法封装与对象协作协议。
 
-1. **模式名称（Pattern Name）**：用 1-2 个词描述问题、方案和效果。命名本身就是设计词汇的扩展——当团队说"这里用 Observer"，所有人立即理解意图。
-2. **问题（Problem）**：在什么场景下使用该模式。包括具体的上下文条件和约束（如"需要通知多个对象但不想硬编码依赖关系"）。
-3. **解决方案（Solution）**：描述元素之间的关系、职责和协作方式。注意是抽象描述，不是具体实现。
-4. **效果（Consequences）**：使用该模式的**权衡**（trade-offs）。每个模式都有代价——Singleton 方便全局访问但引入隐式依赖和测试困难；Observer 解耦但调试链条变长。
+### 模式的四要素描述法
 
-### 3. 适用场景判断框架
+GoF规定每个模式必须包含四个描述要素：**模式名称（Pattern Name）、问题（Problem）、解决方案（Solution）、效果（Consequences）**。这套四要素描述法是设计模式区别于普通编程技巧的重要标志——它强制要求说明模式的适用条件和权衡取舍，而不仅是提供代码结构。例如，单例模式的"效果"部分必须明确指出它会引入全局状态，导致单元测试困难。
 
-不是所有代码复用都需要设计模式。Martin Fowler 在《Refactoring》中建议的判断流程：
+### 模式选择的适用场景判断
 
-```
-问题反复出现？ ─No→ 直接写最简方案（YAGNI）
-       │Yes
-       ↓
-现有代码有 code smell？ ─No→ 现状可能已经够好
-       │Yes
-       ↓
-smell 是否对应已知模式的 Problem？ ─Yes→ 考虑应用该模式
-       │No
-       ↓
-先 Refactor 到更清晰的结构，再评估
-```
+选择设计模式的核心依据是**变化点定位**，即识别系统中哪些维度会发生变化：
+- 若**创建逻辑复杂或需要延迟**，选创建型模式（如工厂模式处理多类型对象实例化）
+- 若**接口不兼容或需要透明扩展**，选结构型模式（如适配器处理第三方库接口差异）
+- 若**算法或行为需要运行时切换**，选行为型模式（如策略模式替换条件分支链）
 
-**常见 code smells 与对应模式**：
-- **Switch/case 爆炸** → Strategy 或 State
-- **构造函数参数过多** → Builder
-- **子类泛滥** → Decorator 或 Composite
-- **跨模块依赖** → Observer 或 Mediator
-- **遗留系统接口不兼容** → Adapter 或 Facade
+这一判断框架与SOLID原则直接对应：开闭原则（OCP）要求对扩展开放，这正是行为型模式中策略、模板方法等模式的设计动机。
 
-### 4. 反模式（Anti-Patterns）
+---
 
-反模式是"看起来像好主意但系统性地导致坏结果的常见做法"。与设计模式形成对照学习效果极佳：
+## 实际应用
 
-| 反模式 | 症状 | 根因 | 修正方向 |
-|--------|------|------|---------|
-| **God Object** | 一个类 3000+ 行，什么都做 | 职责未分离 | 拆分为多个 SRP 类 |
-| **Singleton 滥用** | 到处 `getInstance()`，测试无法 mock | 把全局状态当捷径 | 改用依赖注入 |
-| **Lava Flow** | 无人敢删的"可能有用的"死代码 | 缺乏文档和测试覆盖 | 写测试 → 安全删除 |
-| **Golden Hammer** | 所有问题都用同一个模式解决 | 只熟悉一种方案 | 扩展模式知识面 |
-| **Copy-Paste Programming** | 相同逻辑出现在 5+ 个地方 | 懒于抽象 | Template Method 或 Strategy |
+**Java标准库中的模式实例**是理解设计模式真实用途的最佳案例。`java.util.Calendar.getInstance()` 使用了工厂方法模式；`java.io.InputStream` 的各种包装类（如`BufferedInputStream`）是装饰器模式的教科书实现；`java.util.Observer`接口（Java 9前）直接对应观察者模式。
 
-### 5. 模式之间的关系
+**Spring框架中的模式应用**更加密集：IoC容器本质上是工厂模式与依赖注入的结合，`ApplicationContext` 使用了单例作用域管理Bean；Spring AOP使用了代理模式动态织入横切逻辑；`JdbcTemplate` 使用模板方法模式固定数据库操作流程，留出具体SQL供子类定义。
 
-GoF 模式不是孤立的。常见组合：
+在**微服务架构**中，断路器（Circuit Breaker）可视为状态模式的工程应用——系统在"关闭/开启/半开"三种状态间转换，每种状态对应不同的请求处理行为，这与GoF状态模式的结构完全吻合。
 
-- **Abstract Factory** 内部常用 **Factory Method** 来创建具体产品
-- **Composite** + **Iterator** = 遍历树状结构
-- **Strategy** 和 **State** 结构相似，区别在于意图：Strategy 选择算法，State 响应状态变化
-- **Observer** + **Mediator** = 复杂事件系统（Unity 的事件系统就是这种组合）
-- **Decorator** 和 **Proxy** 都包装了原对象，但 Proxy 控制访问，Decorator 增加行为
-
-理解这些关系比死记 23 个模式的 UML 图更重要。
-
-## 实践建议
-
-1. **先学 5 个高频模式**：Singleton、Observer、Strategy、Factory Method、Decorator——覆盖大多数实际场景。
-2. **从重构中学习**：不要在新项目中提前"设计"模式。写完简单代码，发现 smell 后再引入模式。GoF 自己说过："设计模式不应该在设计初期就应用"。
-3. **用你的语言实践**：每学一个模式，用当前项目的语言（C++/Python/C#/TypeScript）实现一个最小可运行示例。
-4. **画 UML 序列图**：比类图更能揭示模式的运行时行为。Observer 的类图看起来简单，但序列图能暴露通知链的复杂度。
+---
 
 ## 常见误区
 
-1. **模式崇拜**：为了用模式而用模式。经典反面教材——`AbstractSingletonProxyFactoryBean`（Spring 框架曾真实存在的类名）。如果简单 `if/else` 就能解决，不需要 Strategy。
-2. **等同于架构**：设计模式是**类/对象级别**的解决方案（GoF 明确说明），不是系统架构（MVC、微服务属于架构模式，层级不同）。
-3. **忽略语言特性**：Python 的函数是一等公民，很多 Strategy/Command 模式可以直接用函数引用替代类继承。Go 没有类继承，模式实现方式完全不同。
-4. **23 种模式就是全部**：GoF 的 23 种只是起点。后续有 Enterprise Patterns（Fowler）、Game Programming Patterns（Nystrom）、Concurrency Patterns 等大量扩展。
-5. **只看结构不看意图**：Strategy 和 State 的 UML 类图几乎一样，但解决完全不同的问题。模式的本质是**意图**，不是结构。
+**误区一：将设计模式视为必须强制套用的规范**
+设计模式是"在复杂度达到阈值时"的解决方案，而非默认编码规范。对一个只有两种支付方式的简单系统强行引入策略模式，反而增加了不必要的类数量和间接层。GoF原书明确指出："如果问题不存在，就不要应用模式。"过度设计（Over-engineering）与不用模式同样有害。
 
-## 知识衔接
+**误区二：混淆模式分类导致选型错误**
+常见错误是将工厂方法模式（属于创建型）与模板方法模式（属于行为型）混淆，两者都使用"父类定义框架，子类实现细节"的结构，但工厂方法的意图是**延迟对象创建**，模板方法的意图是**固定算法骨架**。混淆分类会导致用错模式、解决不了真实问题。
 
-### 先修知识
-- **SOLID 原则** — 设计模式是 SOLID 原则的具体实现工具。不理解 OCP（开闭原则），就无法理解 Strategy 为什么要抽取接口。
+**误区三：忽视反模式（Anti-Pattern）的识别价值**
+反模式与设计模式同等重要。1998年，AntiPatterns一书记录了软件开发中常见的失败模式，如"大泥球"（Big Ball of Mud，缺乏清晰架构的系统）、"神类"（God Class，一个类承担过多职责）和"黄金锤"（Golden Hammer，用同一种熟悉的技术解决所有问题）。识别反模式是应用设计模式的前置能力，因为反模式正是设计模式试图预防的问题形态。
 
-### 后续学习
-- **单例模式** — 最简单但最容易被滥用的创建型模式
-- **工厂模式** — 创建型模式的核心，理解多态创建
-- **观察者模式** — 行为型模式的代表，事件驱动架构的基础
+---
 
-## 延伸阅读
+## 知识关联
 
-- Gamma, E. et al. (1994). *Design Patterns: Elements of Reusable Object-Oriented Software*. Addison-Wesley. ISBN 978-0201633610
-- Freeman, E. & Robson, E. (2004). *Head First Design Patterns*. O'Reilly. ISBN 978-0596007126
-- Nystrom, R. (2014). *Game Programming Patterns*. Genever Benning. [免费在线阅读](https://gameprogrammingpatterns.com/)
-- Fowler, M. (1999). *Refactoring: Improving the Design of Existing Code*. Addison-Wesley. ISBN 978-0201485677
-- Refactoring.Guru: [Design Patterns 交互式目录](https://refactoring.guru/design-patterns)
+**前置概念：SOLID原则**为设计模式提供了判断依据。单一职责原则（SRP）解释了为何命令模式要将请求封装为对象；依赖倒置原则（DIP）是工厂模式和策略模式能够实现的数学基础——依赖抽象而非具体实现，才使替换成为可能。不理解SOLID，就无法判断某个模式是否解决了真实问题还是制造了复杂度。
+
+**后续概念展开路径**：三类23种模式形成学习树状结构。**单例模式**是最简单的创建型模式，用于理解"控制实例化"思想，但也因引入全局状态而频繁成为反模式案例，是学习创建型模式的争议性起点；**工厂模式**（包含简单工厂、工厂方法、抽象工厂三个变体）是创建型模式中应用最广泛的一族，直接体现DIP原则的落地；**观察者模式**则打开行为型模式的学习通道，其发布-订阅变体是现代事件驱动架构和响应式编程（RxJava、Reactor）的直接理论来源。

@@ -20,56 +20,72 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # Docker基础
 
 ## 概述
 
-Docker是一个基于Linux容器技术（LXC）的开源平台，由Solomon Hykes于2013年3月在PyCon大会上首次公开发布。它通过将应用程序及其所有依赖打包进一个标准化的隔离单元——**容器（Container）**——来解决"在我机器上能跑"这一经典工程难题。与虚拟机不同，Docker容器直接共享宿主机的操作系统内核，不需要完整的Guest OS，使得单个容器的启动时间通常在毫秒到秒级，镜像体积也比虚拟机磁盘文件小几个数量级。
+Docker是一个基于Linux容器技术（LXC）的开源平台，由Solomon Hykes于2013年3月在PyCon大会上首次公开发布。Docker的核心创新在于将应用程序及其所有依赖项打包进一个称为"容器"（Container）的标准化单元，使其能在任何安装了Docker Engine的环境中以完全一致的方式运行，从根本上解决了"在我机器上能跑"这一历史性难题。
 
-Docker的重要性在AI工程领域尤为突出：深度学习项目依赖复杂的Python包版本（如PyTorch 2.1.0搭配CUDA 12.1）、系统库和驱动程序，这些依赖在不同机器间极易冲突。Docker将训练环境、推理服务和数据处理管线分别封装，使得从开发笔记本到云端GPU集群的部署过程变得可重复、可版本化。自2013年至今，Docker Hub上的公开镜像数量已超过800万，成为软件分发的事实标准之一。
+与传统虚拟机（VM）相比，Docker容器不需要完整的Guest OS，而是直接共享宿主机的Linux内核。一台普通服务器运行10个虚拟机可能需要消耗数十GB内存，而运行100个Docker容器只需数百MB额外开销。这种轻量化特性使Docker迅速成为云原生应用开发与部署的标准工具，也是Kubernetes、CI/CD流水线等现代AI工程基础设施的底层支撑。
+
+在AI工程场景中，Docker尤为关键：一个包含CUDA 11.8、PyTorch 2.0、特定Python版本及数十个依赖库的深度学习训练环境，可以被精确复现在任何GPU服务器或云实例上，无需手动配置环境，极大降低了模型训练与推理服务的部署复杂度。
 
 ## 核心原理
 
-### 镜像（Image）与分层文件系统
+### 镜像（Image）与联合文件系统
 
-Docker镜像采用**联合文件系统（UnionFS）**构建，每个镜像由多个只读层（Layer）叠加而成。当你基于`python:3.11-slim`镜像安装PyTorch时，系统不会复制整个基础层，而是在其上添加一个新的差异层。这种分层机制使得多个容器可以共享相同的底层，节省磁盘空间。每一层由SHA-256哈希值唯一标识，例如`sha256:a3ed95caeb02`，保证了镜像内容的完整性和可复现性。
+Docker镜像是一个只读的分层文件系统，采用OverlayFS（或旧版的AUFS）实现联合挂载。每一层（Layer）对应Dockerfile中的一条指令，层与层之间通过SHA256哈希值唯一标识。例如，一个PyTorch推理镜像可能包含：基础Ubuntu层 → Python安装层 → pip依赖层 → 模型代码层，共4层叠加。
 
-`Dockerfile`是定义镜像内容的文本文件，每条指令（`FROM`、`RUN`、`COPY`、`CMD`等）对应镜像中的一层。指令顺序直接影响构建缓存效率——将变动频繁的`COPY . .`放在安装依赖的`RUN pip install`之后，可以避免每次代码修改都重新下载所有Python包。
+镜像存储在镜像仓库（Registry）中，Docker Hub是最常用的公共仓库。镜像名称格式为 `[仓库地址/]用户名/镜像名:标签`，例如 `nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04`。构建镜像的核心文件是Dockerfile，其中`FROM`指令指定基础镜像，`RUN`执行命令，`COPY`复制文件，`CMD`或`ENTRYPOINT`定义容器启动时执行的命令。
 
-### 容器（Container）的隔离机制
+### 容器（Container）运行机制
 
-容器是镜像的运行实例，Docker利用Linux内核的两个核心特性实现隔离：
+容器是镜像的运行实例。Docker在宿主机Linux内核上通过三项技术实现容器隔离：**Namespace**（隔离进程、网络、文件系统等视图）、**cgroups**（限制CPU、内存、磁盘I/O等资源用量）、**Capabilities**（精细控制进程权限）。执行`docker run`时，Docker Engine会基于指定镜像在只读层之上叠加一层可写的容器层，所有运行时写入操作均发生在该层，镜像本身保持不变。
 
-- **Namespaces（命名空间）**：隔离进程ID（PID）、网络栈（NET）、文件系统挂载点（MNT）、主机名（UTS）等，使容器内的进程"看不到"宿主机或其他容器的资源。
-- **Cgroups（控制组）**：限制容器可使用的CPU、内存、I/O等硬件资源。例如`docker run --memory="4g" --cpus="2"`将容器的内存限制在4GB、CPU限制在2核，防止单个AI推理服务耗尽整台服务器资源。
+常用运行参数直接影响AI工作负载的行为：`-m 8g`限制内存为8GB；`--gpus all`将宿主机所有GPU暴露给容器（需安装nvidia-container-toolkit）；`-v /data:/workspace/data`将宿主机目录挂载到容器内，确保训练数据持久化。
 
-容器在镜像的只读层之上增加一个**可写层（Writable Layer）**，容器删除后该层消失，镜像本身不受影响。
+### Dockerfile最佳实践
 
-### Docker网络与数据卷
+构建高效Dockerfile需遵循层缓存原理：Docker按顺序执行指令，某一层变化会导致其后所有层的缓存失效。因此应将变动频率低的指令（如安装系统依赖）放在前面，将频繁变动的代码复制放在最后。多阶段构建（Multi-stage Build）可显著减小最终镜像体积：在第一阶段（builder）中编译代码，在第二阶段仅复制可执行文件，最终AI推理服务镜像可从数GB压缩至数百MB。
 
-Docker默认提供三种网络模式：`bridge`（容器间通过虚拟交换机通信）、`host`（容器直接使用宿主机网络栈，延迟最低）和`none`（完全隔离）。AI推理服务常用`bridge`模式，通过`-p 8080:80`将宿主机的8080端口映射到容器内的80端口对外提供API。
+```dockerfile
+# 多阶段构建示例
+FROM python:3.10-slim AS builder
+COPY requirements.txt .
+RUN pip install --user -r requirements.txt
 
-数据持久化通过**Volume（数据卷）**实现。使用`docker volume create model_weights`创建命名卷后，多个容器可以挂载同一份模型权重文件，避免在每个容器镜像内重复存储数GB的模型文件。Bind Mount（绑定挂载）则直接将宿主机目录挂载进容器，常用于开发阶段实时同步代码修改。
+FROM python:3.10-slim
+COPY --from=builder /root/.local /root/.local
+COPY ./app /app
+CMD ["python", "/app/serve.py"]
+```
+
+### 网络与数据卷
+
+Docker提供bridge（默认，容器间通过虚拟网桥通信）、host（直接使用宿主机网络，延迟最低）、overlay（跨主机容器通信，用于集群）三种网络模式。数据卷（Volume）是Docker管理的持久化存储，与绑定挂载（Bind Mount）不同，Volume存储在`/var/lib/docker/volumes/`下，生命周期独立于容器，适合存储模型权重文件等需长期保留的数据。
 
 ## 实际应用
 
-**构建AI推理服务镜像**是Docker在AI工程中最典型的用法。一个标准流程如下：基于`nvidia/cuda:12.1.0-cudnn8-runtime-ubuntu22.04`官方镜像，通过`RUN pip install fastapi uvicorn torch==2.1.0`安装依赖，再`COPY`模型加载代码，最后用`CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]`启动服务。整个镜像可以推送至AWS ECR或Docker Hub，在任意支持Docker的GPU服务器上用一条`docker run`命令复现相同环境。
+**AI模型推理服务容器化**：将FastAPI推理服务、模型权重（如1.3GB的BERT模型）、ONNX Runtime等打包为单一镜像，通过`docker run -p 8080:8080 --gpus device=0 myorg/bert-inference:v2.1`在GPU服务器上一键启动，对外暴露8080端口提供HTTP接口。
 
-**多阶段构建（Multi-stage Build）**可大幅缩减最终镜像体积。在第一个`FROM`阶段编译C++扩展或安装build工具，第二阶段仅`COPY --from=builder`复制编译产物，去除gcc等编译工具，将镜像从数GB压缩至数百MB，显著缩短云端拉取时间。
+**实验环境标准化**：团队所有成员使用`docker pull myorg/ml-dev:cuda11.8-torch2.0`获取完全相同的开发环境，杜绝因Python版本（3.9 vs 3.10）或CUDA驱动差异导致的实验不可复现问题。通过`docker exec -it <container_id> bash`可进入运行中容器进行交互式调试。
 
-**本地实验环境隔离**：在同一台开发机上同时运行TensorFlow 2.13和PyTorch 2.1的代码，无需担心Python包冲突，只需分别`docker exec -it tf_container bash`和`docker exec -it pt_container bash`进入各自环境。
+**CI/CD流水线集成**：在GitHub Actions或Jenkins中，每次代码提交触发`docker build`构建新镜像，`docker push`推送至私有Registry（如Harbor），再通过`docker pull` + `docker run`完成测试环境部署，全程无需手动介入。
 
 ## 常见误区
 
-**误区一：容器等同于轻量级虚拟机。** 很多初学者认为容器提供了与虚拟机相同程度的隔离，但容器共享宿主机内核，这意味着容器内无法运行与宿主机不同的内核版本，也无法在Linux宿主机上运行Windows容器（Docker Desktop通过内置轻量VM绕过此限制）。内核级漏洞（如2019年的runc CVE-2019-5736）可能允许容器逃逸，而虚拟机的Hypervisor层提供更强的隔离边界。
+**误区一：容器即虚拟机**。许多初学者将Docker容器与虚拟机等同看待，在容器内安装systemd、运行多个服务进程。实际上，Docker容器的设计哲学是"一个容器只运行一个进程"，容器的生命周期与其主进程（PID 1）绑定，主进程退出则容器停止。在容器内管理多服务会破坏这一设计，增加排障难度。
 
-**误区二：`docker commit`是构建镜像的正确方式。** 一些开发者通过`docker exec`手动在容器内安装软件，再用`docker commit`保存为镜像。这种方式产生的镜像没有可审计的构建记录，无法重现，也无法利用层缓存加速构建。正确做法始终是维护`Dockerfile`并通过`docker build`构建，保证镜像内容与代码仓库中的定义一致。
+**误区二：数据写入容器层等同于持久化**。容器可写层中的数据在`docker rm`后永久丢失。将模型训练输出、数据库文件等直接写入容器文件系统而不使用Volume或Bind Mount，是导致数据丢失的常见原因。正确做法是通过`-v`参数明确声明需要持久化的目录。
 
-**误区三：容器内写入数据默认持久化。** 容器的可写层在`docker rm`后会被删除，所有写入容器文件系统的数据（包括训练中间checkpoint）都会丢失。必须通过`-v`参数挂载Volume或Bind Mount，将需要持久化的数据写入挂载点，这是AI训练任务中极易踩到的陷阱。
+**误区三：使用`latest`标签保证稳定性**。`latest`标签只是一个可变的别名，`docker pull nginx:latest`在不同时间获取的可能是不同版本的镜像。在生产AI推理服务中应始终使用精确的版本标签（如`pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime`），确保部署的可追溯性与稳定性。
 
 ## 知识关联
 
-**前置依赖**：Linux基础命令是使用Docker的必要基础——`docker exec`进入容器后本质上是在操作一个Linux环境，需要用`ps`、`ls`、`chmod`等命令排查问题；理解Linux的文件权限模型有助于正确配置容器内的用户权限，避免以root运行容器带来的安全风险。
+Docker基础以Linux基础命令为前提，`docker exec`、文件挂载路径、用户权限（`--user`参数）等操作均需要对Linux文件系统和进程模型有基本理解。
 
-**后续拓展**：掌握Docker单容器操作后，**Docker Compose**使用`docker-compose.yml`文件定义和编排多容器应用（例如将模型服务、Redis缓存和Nginx网关组合成一个可一键启动的系统），是Docker基础的直接延伸。**微服务入门**需要在Docker容器化单服务的基础上，理解服务注册、负载均衡等跨容器协作模式。进入Kubernetes生态后，**Helm Charts**将Docker镜像部署模板化，而**安全扫描**工具（如Trivy、Snyk）则专门检测Docker镜像各层中已知CVE漏洞，将DevOps中的安全实践与Docker镜像生命周期深度绑定。**基础设施即代码**实践中，Dockerfile本身就是"代码定义环境"理念的体现，是理解Terraform等工具的思维起点。
+掌握Docker基础后，可自然延伸至**Docker Compose**——使用YAML文件定义由多个容器（如训练服务 + Redis + Nginx）组成的应用栈，通过单条`docker compose up`命令编排启动。在更大规模的集群场景下，**Helm Charts**将Docker镜像的部署配置模板化，用于Kubernetes集群的应用发布管理。**基础设施即代码**实践中，Dockerfile本身就是对运行环境的代码化描述，与Terraform等工具共同构成可版本控制的基础设施体系。此外，理解镜像分层结构后，**安全扫描**工具（如Trivy、Snyk）能对每一层的依赖包进行CVE漏洞检测，这是AI服务上线前的必要安全步骤。

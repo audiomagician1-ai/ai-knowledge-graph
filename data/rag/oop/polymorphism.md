@@ -20,139 +20,107 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 多态
 
 ## 概述
 
-多态（Polymorphism）是面向对象编程的三大特征之一（另外两个是封装和继承），其名称来源于希腊语，意为"多种形态"。多态允许同一个方法调用在运行时根据对象的实际类型执行不同的行为，使得一个接口能够服务于多种数据类型。Python 在设计上天然支持多态，无需像 Java 那样强制声明 `interface` 或 `abstract` 关键字也能实现完整的多态行为。
+多态（Polymorphism）是面向对象编程中允许同一个接口或方法名，根据调用对象的实际类型表现出不同行为的机制。词源来自希腊语 "poly"（多）+ "morphe"（形态），字面意思就是"多种形态"。在Python中，多态通过鸭子类型（Duck Typing）和方法重写（Method Overriding）共同实现，而在Java、C++等静态类型语言中则依赖虚函数表（vtable）机制。
 
-多态的概念最早由 Christopher Strachey 在 1967 年的论文《Fundamental Concepts in Programming Languages》中系统提出，他将其分为"参数多态"和"特设多态"两类。在 AI 工程领域，多态的价值体现在构建可扩展的模型框架上——例如，同一个 `train()` 方法可以被不同的模型类（`LinearModel`、`NeuralNet`、`DecisionTree`）各自以不同方式实现，上层代码无需修改即可切换底层模型。
+多态的理论基础由Alan Kay在设计Smalltalk语言（1972年）时系统化，他将其确立为面向对象编程的三大支柱之一（另外两个是封装和继承）。在AI工程场景中，多态使得不同的模型类（如`LinearRegressor`、`RandomForest`、`NeuralNetwork`）可以共享统一的`fit(X, y)`和`predict(X)`接口，调用方代码无需关心底层实现细节。
 
-多态的本质是**运行时绑定**（Runtime Binding），即方法的具体实现在程序运行时才确定，而非编译时。这与静态语言的早期绑定（Early Binding）形成对比，是构建灵活 AI 管道（Pipeline）的基础机制。
+多态之所以在AI工程中极为重要，是因为它支撑了sklearn的`Pipeline`和`Estimator`架构——sklearn中所有估计器都实现了相同的接口规范，这使得用`SVC`替换`LogisticRegression`时调用代码无需修改一行，仅靠多态即可完成模型切换。
 
 ---
 
 ## 核心原理
 
-### 方法覆盖（Method Overriding）
+### 方法重写（Method Overriding）
 
-方法覆盖是实现多态最直接的方式，依赖于继承关系。子类重新定义父类中同名、同参数列表的方法，当通过父类引用调用该方法时，实际执行的是子类的版本。以下是一个 AI 工程中的典型例子：
+子类重新定义父类中已有方法，是实现运行时多态的基本手段。当父类引用指向子类对象并调用该方法时，执行的是子类版本，而非父类版本。这种"晚绑定"（Late Binding）发生在运行时，而非编译时。
 
 ```python
 class BaseModel:
     def predict(self, X):
-        raise NotImplementedError("子类必须实现 predict 方法")
+        raise NotImplementedError("子类必须实现predict方法")
 
 class LinearModel(BaseModel):
     def predict(self, X):
-        return X @ self.weights + self.bias
+        return X @ self.weights  # 矩阵乘法
 
-class NeuralNet(BaseModel):
+class TreeModel(BaseModel):
     def predict(self, X):
-        return self.forward_pass(X)
+        return self._traverse_tree(X)  # 树遍历
 ```
 
-当代码执行 `model.predict(X)` 时，Python 解释器通过 **MRO（Method Resolution Order，方法解析顺序）** 查找实际类型并调用对应实现。Python 的 MRO 使用 C3 线性化算法，确保多重继承场景下的方法查找顺序唯一且一致。
+调用 `model.predict(X)` 时，Python解释器在运行时查找 `model` 的真实类型，动态决定调用哪个 `predict`，这正是多态的核心行为。
 
-### 鸭子类型（Duck Typing）
+### 鸭子类型（Duck Typing）与结构多态
 
-Python 多态的独特之处在于"鸭子类型"——"如果它走路像鸭子，叫声像鸭子，那它就是鸭子"。Python 不要求对象必须继承自同一父类，只要对象拥有被调用的方法名，多态就能生效：
+Python不要求显式的继承关系来实现多态——"如果它走路像鸭子，叫声像鸭子，那它就是鸭子"。只要对象拥有被调用的方法，Python就接受它，这称为结构多态（Structural Polymorphism）或隐式接口。
 
 ```python
-class TorchDataLoader:
-    def __iter__(self): ...
+def evaluate_model(model, X_test, y_test):
+    predictions = model.predict(X_test)   # 不检查model的类型
+    return accuracy_score(y_test, predictions)
 
-class CustomCSVLoader:
-    def __iter__(self): ...
-
-def train_epoch(dataloader):
-    for batch in dataloader:  # 无论哪种 loader，都能工作
-        ...
+# 以下三种对象都能传入，无需继承同一父类
+evaluate_model(sklearn_svm, X, y)
+evaluate_model(pytorch_wrapper, X, y)
+evaluate_model(custom_rule_engine, X, y)
 ```
 
-这种设计使得 AI 工程中的数据加载器、评估器等组件可以自由替换，而无需强制继承同一基类。
+这与Java的接口多态不同：Java需要显式声明 `implements Predictor`，Python只需对象存在 `predict` 方法即可。
 
-### 运算符重载（Operator Overloading）
+### 参数多态与函数重载
 
-Python 通过特殊方法（Dunder Methods）支持运算符多态。例如，`__add__` 方法使得 `+` 运算符对不同对象产生不同行为：PyTorch 中的 `Tensor.__add__` 执行 GPU 加速的张量加法，而普通 Python `int.__add__` 执行标量加法。这是特设多态（Ad-hoc Polymorphism）的典型实现，底层通过 `type(obj).__add__(obj, other)` 动态分派。
-
-### 抽象基类（Abstract Base Class）
-
-Python 的 `abc` 模块提供 `ABC` 和 `abstractmethod` 装饰器，用于强制子类实现特定方法，将多态的"约定"变为"契约"：
+Python原生不支持基于参数类型的函数重载（同名函数不同签名），但可以通过 `functools.singledispatch`（Python 3.4引入）模拟：
 
 ```python
-from abc import ABC, abstractmethod
+from functools import singledispatch
 
-class Optimizer(ABC):
-    @abstractmethod
-    def step(self, params, grads):
-        pass  # SGD、Adam 等子类必须各自实现
+@singledispatch
+def process_input(data):
+    raise TypeError(f"不支持类型: {type(data)}")
+
+@process_input.register(np.ndarray)
+def _(data):
+    return data.astype(float)   # 处理numpy数组
+
+@process_input.register(list)
+def _(data):
+    return np.array(data, dtype=float)  # 处理Python列表
 ```
 
-如果子类未实现抽象方法，在实例化时会抛出 `TypeError`，而非等到运行时调用时才报错，这提前捕获了实现缺失的问题。
+`singledispatch` 根据第一个参数的运行时类型选择对应实现，这是Python中实现参数多态的标准方式。
 
 ---
 
 ## 实际应用
 
-**场景一：统一模型评估接口**
+**sklearn中的Estimator多态**：sklearn要求所有模型类实现 `fit(X, y)` 和 `predict(X)` 方法。`GridSearchCV` 接受任意满足此接口的估计器对象，内部调用 `estimator.fit()` 而不关心它是SVM还是决策树。这种设计让同一套超参数搜索代码能服务于上百种不同算法，是工业级AI系统可扩展性的直接来源。
 
-在 AI 工程的模型选择阶段，通常需要对比多种模型的性能。利用多态，可以编写一个通用的评估函数：
+**深度学习框架中的Layer多态**：PyTorch的`nn.Module`要求子类实现`forward(x)`方法。`nn.Sequential`在前向传播时依次调用每个层的`forward`，但它只持有`nn.Module`类型的引用，实际执行的是`Conv2d`、`BatchNorm2d`、`ReLU`各自的`forward`实现。这使得构建任意复杂的网络结构时，`Sequential`本身的代码无需改动。
 
-```python
-def evaluate_all(models: list[BaseModel], X_test, y_test):
-    for model in models:
-        preds = model.predict(X_test)  # 多态调用
-        print(f"{type(model).__name__}: accuracy={accuracy(preds, y_test):.4f}")
-```
-
-传入 `[LinearModel(), NeuralNet(), DecisionTree()]`，每个对象调用自己的 `predict` 实现，上层代码零修改。
-
-**场景二：Scikit-learn 的 Estimator 协议**
-
-Scikit-learn 通过鸭子类型多态设计了通用 `Pipeline`。任何实现了 `fit(X, y)` 和 `transform(X)` 或 `predict(X)` 方法的对象，都能插入 Pipeline 中。这正是 Scikit-learn 能支持 100+ 算法无缝互换的根本原因，而非通过复杂的类型检查机制。
-
-**场景三：损失函数的多态替换**
-
-```python
-class MSELoss:
-    def __call__(self, pred, target):
-        return ((pred - target) ** 2).mean()
-
-class CrossEntropyLoss:
-    def __call__(self, pred, target):
-        return -torch.sum(target * torch.log(pred))
-
-def train(model, loss_fn, data):
-    for X, y in data:
-        loss = loss_fn(model(X), y)  # 同一调用，不同行为
-```
-
-通过重写 `__call__`，损失函数对象表现为可调用对象，训练循环对具体损失类型完全透明。
+**回调与钩子的多态扩展**：在Keras/PyTorch Lightning中，`Callback`基类定义了`on_epoch_end`、`on_train_begin`等方法，用户通过重写这些方法注入自定义逻辑（如早停、学习率调度、日志记录），训练循环代码调用`callback.on_epoch_end()`时自动分发到对应子类实现，完全解耦了训练框架与用户定制逻辑。
 
 ---
 
 ## 常见误区
 
-**误区一：重载（Overloading）等同于覆盖（Overriding）**
+**误区一：多态等同于方法重写**。方法重写是实现多态的手段之一，但多态本身是指"通过统一接口操作不同类型对象"的能力。如果重写后的子类方法不通过父类引用调用，多态效果就没有发挥。在Python中，即使没有继承关系，通过鸭子类型同样能实现多态，说明多态的本质在于接口的一致性，而非类的层级结构。
 
-方法覆盖（Overriding）发生在继承体系中，子类重写父类的同名方法，这是多态的核心机制。而方法重载（Overloading）是同一类中定义多个同名但参数不同的方法，Java 支持此特性，但 **Python 不支持传统意义上的方法重载**——后定义的同名方法会直接覆盖前者。Python 通过默认参数和 `*args/**kwargs` 模拟重载效果，但这与多态是两个不同的概念。
+**误区二：Python中覆盖父类方法时不需要调用`super()`**。这一误区在AI工程中尤其危险。`__init__`方法中如果忘记调用`super().__init__()`，父类的初始化逻辑会被完全跳过。例如继承`nn.Module`时必须调用`super().__init__()`，否则PyTorch的参数注册机制无法正常工作，导致`model.parameters()`返回空迭代器，训练时梯度无法传播。
 
-**误区二：多态必须依赖继承**
-
-受 Java 等静态语言影响，很多初学者认为多态必须通过继承实现。但在 Python 中，鸭子类型允许完全独立的两个类（无任何继承关系），只要它们各自实现了相同名称的方法，就能在同一多态调用中工作。AI 工程中许多框架（如 HuggingFace Transformers）正是利用这一特性，让自定义模型无需继承框架基类也能无缝集成。
-
-**误区三：多态会显著降低运行性能**
-
-多态的运行时分派确实比直接调用有额外开销，但在 Python 中这一开销通常可忽略不计（每次方法查找约 50-200 纳秒量级），AI 工程中的性能瓶颈几乎永远在矩阵运算、I/O 或内存传输上，而非多态分派本身。过早为了"避免多态开销"而写出重复的条件分支代码，反而会破坏系统的可维护性。
+**误区三：多态会带来显著的性能开销**。在Python中，方法查找通过MRO（方法解析顺序，Method Resolution Order）进行，每次调用都需要在`__dict__`链中查找方法。但在实际AI工程中，模型推断的性能瓶颈几乎永远在矩阵运算（由C/CUDA实现）而非Python层的方法分发，多态引入的调用开销通常可以忽略不计。
 
 ---
 
 ## 知识关联
 
-**与继承的关系**：多态的方法覆盖机制以继承为前提——只有子类继承父类后，覆盖父类方法才有意义。继承定义了"是什么"（is-a 关系），多态决定了"做什么"（运行时行为）。没有继承，仍可通过鸭子类型实现多态，但抽象基类强制约束需要继承 `ABC`。
+多态依赖继承提供的父子类关系作为基础——没有继承建立的类型层次结构，就无法通过父类引用实现运行时多态。Python的MRO算法（C3线性化，由Samuele Pedroni于2002年在Python 2.3中引入）决定了多层继承时方法的查找顺序，直接影响多态的行为结果。
 
-**与封装的协同**：多态通常与封装配合使用——父类将内部实现细节封装，对外暴露统一接口，子类在封装边界内自由替换实现。这是"对接口编程，而非对实现编程"设计原则的直接体现。
-
-**在 AI 工程中的延伸**：掌握多态后，可以进一步学习设计模式中的**策略模式（Strategy Pattern）**和**工厂模式（Factory Pattern）**，这两种模式都是多态的高级应用形式，广泛用于 AI 框架中的算法选择和对象创建场景。
+在AI工程的进阶实践中，多态是设计模式的基础语言：策略模式（Strategy Pattern）用多态替换条件分支，让不同的优化算法（SGD、Adam、RMSProp）通过统一的`step()`接口可互换；工厂模式（Factory Pattern）利用多态在运行时根据配置创建不同的模型对象，是ML系统配置化的核心手段。理解多态的行为边界，是从"能写代码"到"能设计可扩展AI系统架构"的关键跨越。

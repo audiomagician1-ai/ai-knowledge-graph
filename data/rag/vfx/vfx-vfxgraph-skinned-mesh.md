@@ -20,53 +20,74 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-04-01
 ---
+
 # 蒙皮网格采样
 
 ## 概述
 
-蒙皮网格采样（Skinned Mesh Sampling）是VFX Graph中一种从骨骼动画角色表面实时生成粒子的技术。与静态网格采样不同，蒙皮网格在每帧都会根据骨骼权重（Bone Weights）发生形变，因此粒子的生成位置和法线方向需要跟随网格顶点的实时变换一起更新。Unity在VFX Graph 10.x（对应Universal Render Pipeline 10.0）版本中正式引入了对`SkinnedMeshRenderer`组件的原生采样支持。
+蒙皮网格采样（Skinned Mesh Sampling）是VFX Graph中一种从骨骼动画角色表面直接生成粒子的技术。与静态网格采样不同，蒙皮网格采样能够实时追踪骨骼权重变形后的顶点世界坐标，使粒子始终贴合角色皮肤表面运动。这项功能在Unity VFX Graph中通过`Sample Skinned Mesh`节点实现，该节点在2019.3版本随VFX Graph正式发布时首次加入。
 
-蒙皮网格采样的价值在于它能够将角色动画与粒子特效紧密绑定。例如，制作人物奔跑时脚底扬起的尘土、战士铠甲上迸发的火花，或者法师施咒时沿手臂皮肤流淌的魔法粒子流，这些效果都依赖蒙皮网格采样提供的逐帧蒙皮位置数据。若使用传统的静态网格采样，动画形变后粒子会浮空脱离角色表面，无法实现贴合效果。
+蒙皮网格采样的核心价值在于解决动态角色与粒子系统之间的数据同步问题。传统粒子系统无法感知骨骼动画的形变，只能将角色视为静态边界框，导致粒子与角色动作产生明显错位。蒙皮网格采样通过每帧读取`SkinnedMeshRenderer`的变形后网格数据，将顶点位置、法线方向和UV坐标实时传递给GPU上的粒子系统。
+
+这项技术在制作燃烧角色、能量溢出、受伤流血等贴合角色躯体的特效时不可替代。它要求目标对象必须挂载`SkinnedMeshRenderer`组件，并且在VFX Graph的上下文中以`Skinned Mesh`类型的属性公开绑定。
 
 ## 核心原理
 
-### 顶点变换与骨骼权重
+### GPU蒙皮数据读取机制
 
-蒙皮网格采样的数学基础是线性混合蒙皮（Linear Blend Skinning，LBS）公式：
+蒙皮网格采样依赖Unity将CPU端骨骼矩阵运算结果写入一块临时GPU缓冲区的机制。在启用该功能后，VFX Graph要求`SkinnedMeshRenderer`开启`Update When Offscreen`选项，否则当角色离开摄像机视锥时骨骼计算会被Unity剔除，导致粒子发射位置冻结在最后一帧的网格状态。`Sample Skinned Mesh`节点直接从这块GPU缓冲区采样，避免了CPU-GPU数据回传的性能瓶颈。
 
-$$p' = \sum_{i=1}^{n} w_i \cdot M_i \cdot p$$
+### 采样模式与数据输出
 
-其中 $p$ 是顶点在绑定姿势（Bind Pose）下的原始位置，$M_i$ 是第 $i$ 根骨骼的变换矩阵，$w_i$ 是该骨骼对此顶点的权重，$n$ 通常为每顶点最多影响4根骨骼（Unity默认限制）。VFX Graph在GPU端通过Compute Shader读取经过CPU或GPU蒙皮计算后的顶点缓冲区，从而获取每帧最终的蒙皮位置。
+`Sample Skinned Mesh`节点提供两种采样模式：**按顶点索引（Vertex Index）**和**随机表面（Random Surface）**。
 
-### 采样模式：顶点采样与三角形表面采样
+- **Vertex Index模式**：输入一个整数索引`[0, VertexCount-1]`，精确返回该顶点在当前帧骨骼变形后的世界坐标（Position）、法线（Normal）和切线（Tangent）。适合需要在固定解剖位置生成粒子的场景，例如在角色肩膀顶点位置产生火焰特效。
 
-VFX Graph提供两种主要采样模式。**顶点采样（Vertex Sampling）**直接从`SkinnedMeshRenderer`的顶点列表中选取坐标，适合粒子数量与顶点数量一一对应的场景，如角色身体每个顶点冒出一颗粒子。**三角形表面采样（Triangle Surface Sampling）**则在三角形面片内部用重心坐标插值计算随机点，公式为 $p = (1-\sqrt{u}) \cdot v_0 + \sqrt{u}(1-v) \cdot v_1 + \sqrt{u} \cdot v \cdot v_2$，其中 $u, v$ 为均匀随机数。三角形采样生成的粒子分布更均匀，适合覆盖面积不均的复杂角色模型。
+- **Random Surface模式**：节点内部通过重心坐标插值（Barycentric Coordinate Interpolation）在三角面上随机采样，公式为：
+  $$P = u \cdot V_0 + v \cdot V_1 + (1-u-v) \cdot V_2$$
+  其中 $u, v \geq 0$ 且 $u + v \leq 1$，$V_0, V_1, V_2$ 为三角形三个顶点的变形后坐标。这保证了粒子在网格表面的均匀分布而非聚集在顶点密集区域。
 
-### 采样上下文：Spawn Context中的位置绑定
+### 与Point Cache的关键区别
 
-在VFX Graph的Spawn Context或Initialize Context中，使用`Sample Skinned Mesh`节点时必须将`SkinnedMeshRenderer`通过**Exposed Property**（暴露属性）从场景中传入图表。节点输出包括：`Position`（蒙皮后世界空间位置）、`Normal`（法线方向）、`Color`（顶点颜色，若存在）以及`TexCoord`（UV坐标）。法线输出在制作粒子朝角色表面外侧喷发的效果时尤为关键，粒子初速度可直接设置为 `Normal * SpawnSpeed`。
+Point Cache存储的是烘焙于文件中的静态顶点快照，无法反映运行时骨骼动画的实时形变。蒙皮网格采样每帧从`SkinnedMeshRenderer`的动态缓冲区读取数据，这意味着当角色执行奔跑动画时，粒子生成坐标会随手臂摆动、腿部抬起而实时更新。代价是蒙皮网格采样必须在运行时（Play Mode）才能看到正确结果，在编辑器静止预览时只会采样T-Pose网格数据。
 
-### 实时更新与`Update Position`标志
+### 采样率与性能控制
 
-当角色持续播放骨骼动画时，可在Update Context中再次调用`Sample Skinned Mesh`节点，并将每帧新采样的位置赋给粒子的`Position`属性，使粒子始终贴附在网格表面移动。这与Point Cache的静态采样形成对比——Point Cache烘焙的是某一帧的顶点数据，无法响应运行时骨骼变化；而蒙皮网格采样每帧从GPU顶点缓冲中读取最新数据，因此有每帧约0.1~0.3ms的额外GPU读取开销（取决于顶点数量）。
+在`Initialize Particle`上下文中使用蒙皮网格采样时，建议将单帧发射粒子数控制在目标网格顶点数的1/10以内，以避免大量重复采样同一顶点造成视觉聚集。对于顶点数约8000的标准人形角色网格，单帧发射上限通常设置为800个粒子，可通过`Spawn Rate`节点结合角色动作速度动态调整。
 
 ## 实际应用
 
-**角色受击特效**：当敌人角色受到攻击时，在受击骨骼所在的网格区域采样生成血液或火花粒子。通过Bone Mask或顶点颜色通道将采样范围限制在受击部位，可避免全身所有表面都产生粒子。
+### 角色溶解与重组效果
 
-**溶解消亡效果**：角色死亡时结合粒子生命周期，从蒙皮网格全表面采样生成灰烬粒子，并随时间增大粒子的`Noise Offset`使其向上飘散，形成角色逐渐化为灰烬的视觉效果。此类效果在《Destiny 2》风格的科幻题材游戏中被广泛使用。
+制作角色传送特效时，将`Sample Skinned Mesh`的Position输出接入`Set Position`模块，同时将Normal输出乘以一个随时间增大的速度标量作为粒子初速度。粒子从角色全身表面均匀飞散，视觉上模拟身体分解为能量粒子的效果。关键在于在粒子生命周期的前20%帧内采用Random Surface模式密集发射，之后停止发射让已存在粒子自由飞散。
 
-**魔法附着流动效果**：沿蒙皮网格法线方向偏移一个固定距离（如0.05米），使粒子悬浮于皮肤表面，配合Update Context中的`Conform to Skinned Mesh`逻辑，令粒子随动画流动，制造液态魔法包裹角色身体的效果。
+### 血液与液体飞溅
+
+在角色受击时，通过C#脚本调用`VFXEventAttribute.SetInt("hitVertexIndex", closestVertex)`将最近受击顶点索引传递给VFX Graph，再由`Sample Skinned Mesh`的Vertex Index模式精确从该位置生成血液粒子。结合Normal方向作为粒子初速度方向，可实现从正确的受击点朝外喷射的物理真实感。
+
+### 能量护盾充能
+
+为法师角色制作全身覆盖的能量充能特效时，使用蒙皮网格采样获取全身表面的法线方向，将粒子初速度设为沿法线向内偏移（Normal乘以-0.05），使粒子悬浮在皮肤表面约5厘米处，再叠加沿Y轴向上的0.2 m/s漂移速度，形成粒子贴身上升的充能视觉效果。
 
 ## 常见误区
 
-**误区一：认为蒙皮网格采样可以直接与静态`MeshRenderer`通用**。`Sample Skinned Mesh`节点专门读取`SkinnedMeshRenderer`提交至GPU的蒙皮后顶点缓冲（通常是`AsyncGPUReadback`或Compute Buffer共享），普通`MeshRenderer`没有此缓冲区，必须改用`Sample Mesh`节点。混用会导致编译错误或粒子全部生成在原点位置。
+### 误区一：认为蒙皮网格采样能在Scene视图静态预览中正常工作
 
-**误区二：认为顶点采样的粒子分布密度均匀**。蒙皮网格的顶点并不均匀分布在表面——面部、手部等细节区域顶点密度远高于后背、大腿等平坦区域。若直接做顶点采样，角色面部的粒子密度会远大于躯干部分。需要使用三角形表面采样并启用`Surface-Weighted`选项，按三角形面积加权随机选取，才能得到均匀覆盖整个表面的粒子分布。
+许多初学者在编辑器中预览VFX Graph时发现粒子全部聚集在角色T-Pose的初始位置，误以为节点连接有误。实际原因是`SkinnedMeshRenderer`只有在运行时才执行骨骼混合，编辑器静止状态下采样到的是静止蒙皮网格。解决方案是进入Play Mode预览，或使用`BakeMesh()`方法手动烘焙特定动画帧的网格用于编辑器调试。
 
-**误区三：在Spawn Context中每帧重新采样等同于粒子跟随角色运动**。Spawn Context只在粒子出生时执行一次采样，粒子出生后便脱离网格独立运动。若要粒子持续贴附蒙皮表面，必须在Update Context中每帧重新采样并将位置写回，同时将粒子`Lifetime`设置为与特效持续时间匹配的较短数值（如0.016秒，即每帧刷新一次），否则粒子会在出生位置漂离。
+### 误区二：混淆`Update When Offscreen`与蒙皮采样精度的关系
+
+部分开发者认为不开启`Update When Offscreen`只会在角色离屏时造成问题，实际上Unity的动态遮挡剔除（Dynamic Occlusion Culling）可能在角色被场景物体遮挡时提前停止骨骼计算，即角色仍在视锥内也会导致蒙皮数据冻结。蒙皮网格采样的任何项目中，绑定的`SkinnedMeshRenderer`必须强制勾选`Update When Offscreen`。
+
+### 误区三：将蒙皮网格采样的输出Position直接用于Velocity计算
+
+`Sample Skinned Mesh`输出的是当前帧的绝对世界坐标，若用相邻两帧Position之差计算粒子速度，会在动画关键帧切换时因插值跳变产生瞬间极大速度，导致粒子爆炸性飞散。正确做法是使用节点内置的`Velocity`输出引脚，该引脚由VFX Graph内部用有限差分法计算蒙皮顶点的帧间速度，并已做平滑处理。
 
 ## 知识关联
 
-蒙皮网格采样以Point Cache的采样概念为基础：Point Cache教会了你如何从网格表面的采样点读取位置、法线和颜色属性，蒙皮网格采样将这一流程从离线烘焙扩展到了运行时实时计算，增加了对骨骼动画变换的响应能力。在掌握蒙皮网格采样后，下一步学习Shader Graph集成时，可以将蒙皮网格采样输出的UV坐标和顶点颜色传递给自定义Shader，通过粒子的`TexCoord`属性驱动贴图采样，实现粒子颜色随角色贴图变化的高级效果，例如让每颗粒子的颜色精确匹配其出生位置对应的皮肤纹理颜色。
+蒙皮网格采样建立在Point Cache的概念基础之上：Point Cache教会了用户如何将网格表面坐标作为粒子生成源，而蒙皮网格采样将这个数据源从静态文件换成了运行时动态骨骼系统，新增了对骨骼权重和帧间变形的处理能力。学习过Point Cache中重心坐标采样和法线偏移的操作习惯，可以直接迁移到蒙皮网格采样的Random Surface模式配置中。
+
+掌握蒙皮网格采样后，下一步学习Shader Graph集成将使粒子的视觉表现与角色材质产生联动。具体路径是将蒙皮网格采样获取的UV坐标输出传递给VFX Graph的粒子颜色模块，再通过Shader Graph中的`VFX Graph Output`节点让粒子颜色采样角色皮肤纹理贴图，实现粒子颜色与角色皮肤颜色精确匹配的高级效果。

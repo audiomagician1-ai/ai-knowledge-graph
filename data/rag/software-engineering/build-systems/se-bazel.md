@@ -20,92 +20,62 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # Bazel
 
 ## 概述
 
-Bazel 是 Google 于 2015 年对外开源的构建系统，其前身是 Google 内部使用多年的 Blaze 系统。Google 工程师在管理数十亿行代码的单一代码仓库（Monorepo）时开发了 Blaze，目标是实现快速、可靠且可扩展的构建。Bazel 这个名字本身是 Blaze 的变位词（anagram）。目前 Bazel 由 Google 持续维护，版本已迭代至 7.x，并拥有活跃的开源社区。
+Bazel 是 Google 于 2015 年开源发布的构建与测试工具，其内部版本名为 Blaze，已在 Google 内部使用超过十年。Bazel 的设计目标是支持超大规模代码库（Google 内部单一代码库包含数十亿行代码）的快速、可复现、可缓存构建，能够在数千台分布式机器上并行执行构建任务。
 
-Bazel 最核心的设计哲学是**可复现性（Reproducibility）**和**正确的增量构建（Correct Incremental Builds）**。传统构建工具如 Make 依赖文件时间戳来判断是否需要重新构建，容易产生"构建结果因机器不同而不同"的问题。Bazel 通过对每个构建动作的输入（源文件、依赖、工具链）进行精确的哈希指纹计算，确保相同输入必然产生相同输出，从而实现跨机器、跨时间的构建结果一致性。
+Bazel 之所以在业界受到广泛关注，是因为它提供了两个关键保证：**可复现性（Reproducibility）**和**正确性（Correctness）**。可复现性意味着相同的输入必然产生完全相同的输出——无论在哪台机器上构建、何时构建。正确性意味着 Bazel 只重新构建真正发生变化的部分，不会遗漏也不会多余地触发构建。这两个保证使得 Bazel 的增量构建和远程缓存机制极为可靠，是其区别于 Make、Gradle 等传统构建工具的根本所在。
 
-Bazel 尤其适合大型多语言项目：它原生支持 Java、C++、Python、Go、Kotlin、Scala 等语言，并通过规则扩展机制（rules）支持更多技术栈。在 Google 规模下，一次完整构建可能涉及数万个目标（targets），Bazel 的并行化和分布式缓存能力在此场景下体现出显著优势。
-
----
+Bazel 使用名为 **Starlark**（原称 Skylark）的领域专用语言编写构建规则，该语言是 Python 的严格子集，具有确定性和不可变性约束。构建描述文件分为 `BUILD`（或 `BUILD.bazel`）和 `WORKSPACE` 两类，前者定义构建目标，后者声明外部依赖。
 
 ## 核心原理
 
-### 构建图与 BUILD 文件
+### 基于有向无环图（DAG）的依赖建模
 
-Bazel 将整个项目表示为一个**有向无环图（DAG）**，图中的节点称为**目标（target）**。开发者在每个目录下创建名为 `BUILD` 或 `BUILD.bazel` 的文件，使用 Starlark 语言（一种 Python 子集）声明目标及其依赖关系。
+Bazel 将整个代码库的构建关系建模为一个有向无环图（DAG），图中每个节点是一个**目标（Target）**，边表示依赖关系。每个目标由**标签（Label）**唯一标识，格式为 `//path/to/package:target_name`，例如 `//src/server:main_binary`。
 
-一个典型的 `BUILD` 文件如下：
+Bazel 在执行构建前会先进行**加载（Loading）→ 分析（Analysis）→ 执行（Execution）**三个阶段。加载阶段解析所有 BUILD 文件；分析阶段根据规则生成**动作图（Action Graph）**，每个动作（Action）描述具体的命令、输入文件集合和输出文件集合；执行阶段才真正运行命令。三阶段分离使得 Bazel 能够在执行前完整推断整个构建图，从而实现精确的并行调度。
 
-```python
-java_library(
-    name = "greeter",
-    srcs = ["Greeter.java"],
-    deps = ["//third_party:guava"],
-)
+### 基于内容哈希的缓存机制
 
-java_binary(
-    name = "app",
-    srcs = ["Main.java"],
-    deps = [":greeter"],
-)
-```
+Bazel 使用每个动作的**输入文件内容哈希 + 命令字符串 + 环境变量**共同计算一个缓存键（Cache Key），而非依赖文件时间戳。这是 Bazel 可复现性的数学基础：只要缓存键相同，就直接使用缓存输出，完全跳过执行。
 
-目标的完整标签格式为 `//path/to/package:target_name`，例如 `//src/main:app`。顶层的 `WORKSPACE` 文件（或新版的 `MODULE.bazel`）定义外部依赖来源，类似 Maven 的 `pom.xml` 但作用于整个仓库。
+缓存分为两层：**本地动作缓存**（存储在磁盘的 `~/.cache/bazel` 目录下）和**远程缓存（Remote Cache）**。远程缓存通过 gRPC 协议与支持 Bazel Remote API 的服务器（如 BuildBuddy、Buildkite Remote Cache 或自建的 `bazel-remote`）通信。在 CI/CD 流水线中，开发者本地修改一行代码后触发构建，Bazel 只需重新执行受影响的少数动作，其余结果直接从远程缓存拉取，构建时间可从小时级降至分钟级。
 
-### 沙箱化执行与 Hermetic 构建
+### 沙箱隔离与密封性
 
-Bazel 的每个构建动作在**沙箱（sandbox）**中执行，沙箱仅包含该动作明确声明的输入文件，无法访问系统的任意文件。这一机制强制开发者完整声明依赖，避免隐式依赖导致的不可复现问题。在 Linux 上 Bazel 默认使用 Linux namespaces 实现文件系统隔离；在 macOS 上使用 `sandbox-exec`。
+Bazel 默认为每个动作创建**沙箱（Sandbox）**，每个动作只能看到其在 BUILD 文件中显式声明的输入文件，无法访问文件系统上的其他文件或未声明的环境变量。在 Linux 上，Bazel 使用 Linux 命名空间（`unshare` 系统调用）实现沙箱；在 macOS 上使用 `sandbox-exec`。
 
-这种"密封构建（Hermetic Build）"意味着构建不依赖本地环境变量、随机 PATH 中的工具或未声明的系统库。要使用特定版本的编译器，必须通过工具链（toolchain）规则显式注册，Bazel 会管理该工具的下载和调用。
+这种密封性（Hermeticity）强制要求开发者显式声明所有依赖，消除了因隐式依赖导致的"在我机器上能跑"问题。若某个 C++ 编译动作偷偷读取了未声明的头文件，沙箱会直接报错，而不是产生一个不稳定的构建结果。
 
-### 内容可寻址缓存与远程缓存
+### 规则系统与 Starlark
 
-Bazel 的缓存机制基于**内容可寻址存储（Content-Addressable Storage，CAS）**。每个构建动作的缓存 Key 是由其所有输入文件内容的 SHA-256 哈希、命令行参数和环境变量共同组成的哈希值。只要 Key 命中缓存，Bazel 直接复用输出，无需重新执行该动作。
-
-Bazel 支持三层缓存：
-1. **本地磁盘缓存**：默认位于 `~/.cache/bazel`
-2. **远程缓存（Remote Cache）**：通过 gRPC 协议连接到兼容 Remote Execution API（REAPI）的服务，如 Google Cloud Storage 或自建的 Buildbarn、BuildBuddy
-3. **远程执行（Remote Execution）**：不仅缓存结果，还将构建动作分发到远程机器集群并行执行，可将大型项目的构建时间从小时级压缩到分钟级
-
----
+BUILD 文件中调用的 `cc_binary`、`java_library`、`py_test` 等都是**内置规则（Built-in Rules）**，开发者也可以用 Starlark 编写自定义规则。一个典型的规则定义包含 `attrs`（输入属性声明）、`implementation`（Python 风格的实现函数）和 `providers`（输出数据结构）三部分。Starlark 禁止 I/O 操作和随机性，所有函数必须是纯函数，这在语言层面保证了分析阶段的确定性。
 
 ## 实际应用
 
-**Android 应用构建**：Google 官方的 Android 构建系统 `rules_android` 使用 Bazel 管理大型 Android 工程，将数百个模块拆分为独立的 `android_library` 和 `android_binary` 目标，修改单个模块只重新构建受影响的目标，而非整个 APK。
+**Android/iOS 多平台应用构建**：Airbnb、Uber 等公司使用 Bazel 管理同时包含 Android、iOS 和后端服务的单一代码库（Monorepo）。通过配置 `android_binary` 和 `apple_framework` 规则，同一份业务逻辑代码可以交叉编译到多个平台，且不同平台的构建任务可完全并行。
 
-**多语言 Monorepo**：Stripe、Spotify 等公司将前端（TypeScript）、后端（Java/Scala）、移动端（iOS/Android）代码放在同一仓库，使用 Bazel 统一构建。`rules_nodejs`、`rules_swift`、`rules_kotlin` 等社区规则集覆盖各语言的构建逻辑。
+**大规模 CI 加速**：在一个包含 5000 个构建目标的 Java 项目中，全量构建可能需要 40 分钟，但借助 Bazel 的增量构建和远程缓存，典型的 PR 构建仅需 3-5 分钟，因为大部分目标的缓存命中率超过 90%。
 
-**Docker 镜像构建**：`rules_docker`（已演化为 `rules_oci`）允许用 Bazel 目标声明 Docker 镜像的层次结构，并基于构建图的变更检测，只重新打包真正变化的镜像层，避免每次 CI 都全量重建镜像。
-
-**测试分片与缓存**：Bazel 的 `bazel test` 命令原生支持测试结果缓存。若测试代码及其所有依赖均未变化，Bazel 直接报告上次通过的测试结果，跳过实际执行，这在大型代码库中可节省 70%~90% 的 CI 测试时间。
-
----
+**工具链管理**：Bazel 通过 `toolchains` 机制和 `WORKSPACE` 中的 `http_archive` 规则下载并锁定特定版本的编译器（如 LLVM 15.0.6），确保所有开发者和 CI 机器使用完全相同的编译工具，消除因编译器版本差异导致的构建不一致。
 
 ## 常见误区
 
-**误区一：Bazel 的 BUILD 文件等同于 Makefile**
+**误区一：Bazel 只适合超大型项目**。许多开发者认为 Bazel 的配置复杂度只有 Google 规模的团队才值得承受。实际上，Bazel 对中型 Monorepo（如 10-100 人团队）同样有价值，特别是在需要跨语言构建（如同时包含 Go、Python、TypeScript 的项目）或 CI 构建时间超过 15 分钟时，Bazel 的远程缓存收益非常显著。
 
-许多初学者认为 `BUILD` 文件只是"更复杂的 Makefile"。实际上两者存在根本差异：Makefile 描述的是**命令序列**（如何构建），而 `BUILD` 文件描述的是**声明式依赖图**（构建什么、依赖谁）。Bazel 根据这张图自动推导构建顺序和并行策略，开发者无需指定执行步骤。这也意味着 Bazel 目标的依赖必须完整声明，否则沙箱化执行会直接报错——而 Makefile 中漏写依赖可能悄悄运行成功，留下隐患。
+**误区二：Bazel 的增量构建与 Make 的增量构建等价**。Make 使用文件时间戳判断是否重建，这在文件被 `touch` 后会错误触发重建，在时钟不同步的分布式环境中会产生错误结论。Bazel 使用内容哈希，时间戳完全无关，因此其增量判断在任何环境下都是正确的。
 
-**误区二：增量构建一定比全量构建快**
-
-Bazel 的增量构建优势依赖于正确、完整的依赖声明。如果某个底层库（如通用工具模块）被大量目标依赖，修改该库会导致大量目标失效缓存，触发广泛重建。此时增量构建代价接近全量构建。解决方法是合理拆分构建目标粒度，避免过于宽泛的依赖关系，将频繁变更的代码与稳定代码在依赖图中隔离。
-
-**误区三：Bazel 开箱即用，无需配置**
-
-与 Maven、Gradle 相比，Bazel 的初期配置成本较高：需要编写 `WORKSPACE`/`MODULE.bazel`、为每个目录创建 `BUILD` 文件、配置工具链等。部分团队使用 `Gazelle` 工具（针对 Go 和 Java）自动生成 `BUILD` 文件来降低维护负担，但理解 Bazel 的构建图模型仍是必要前提。
-
----
+**误区三：在 BUILD 文件中可以使用 `glob` 通配符代替显式依赖声明**。`glob(["**/*.cpp"])` 虽然方便，但它会绕过 Bazel 的精确依赖追踪，导致任何新增文件都触发整个目标重建，破坏增量构建的效率。Bazel 官方建议仅在叶子节点的小范围内使用 `glob`，核心库应显式列出每个源文件。
 
 ## 知识关联
 
-**与构建系统概述的关系**：理解通用构建系统概念（目标、依赖、增量构建）是使用 Bazel 的基础。Bazel 是这些概念的一种具体且严格的实现——它通过沙箱和哈希指纹将"增量正确性"从"尽力而为"变成了可数学保证的属性。
+学习 Bazel 需要对**构建系统概述**中的依赖图、增量构建和构建规则有基本认识，Bazel 本质上是这些通用概念在极端规模约束下的具体实现。Bazel 的 Starlark 语言借鉴了 Python 语法，理解 Python 的函数式编程风格有助于编写自定义规则。
 
-**与 CMake/Gradle 的对比**：CMake 面向 C/C++ 的生成式构建，Gradle 面向 JVM 生态的脚本式构建，两者均不强制声明完整依赖。Bazel 的严格性是其可复现性的代价，也是其在大规模场景下相比 Gradle 具备一致性优势的原因。Gradle 从 Bazel 借鉴了部分缓存思路，推出了 Build Cache 功能，但实现机制不同。
-
-**Starlark 语言**：Bazel 的 `BUILD` 文件和宏（macro）使用 Starlark，掌握其语法（特别是不支持递归、无全局可变状态等限制）有助于编写自定义规则，扩展 Bazel 支持新语言或新构建模式。
+从 Bazel 出发，可以进一步学习 **Unreal Build Tool（UBT）**——Epic Games 为虚幻引擎设计的专用构建系统。UBT 同样面对超大规模 C++ 代码库（虚幻引擎源码约 300 万行），但其设计哲学与 Bazel 截然不同：UBT 使用 C# 编写构建逻辑而非 Starlark，且专注于游戏引擎的模块化架构，而非通用多语言支持。对比两者有助于理解不同领域对构建系统设计取舍的影响。此外，Bazel 的远程执行协议（Remote Execution API v2）已成为业界标准，Buck2（Meta）、Pants 等工具均与该协议兼容，理解 Bazel 的架构对掌握整个现代构建系统生态至关重要。

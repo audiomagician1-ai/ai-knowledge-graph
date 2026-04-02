@@ -20,66 +20,73 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # Git基础
 
 ## 概述
 
-Git是由Linus Torvalds于2005年创建的分布式版本控制系统，最初为Linux内核开发而生。与SVN等集中式系统不同，Git的每个本地仓库都包含完整的项目历史记录，这意味着即使在断网状态下也能执行提交、查看历史、创建分支等绝大多数操作。
+Git是由Linus Torvalds于2005年4月创建的分布式版本控制系统，最初是为了管理Linux内核的源代码开发而设计的。与CVS、SVN等集中式版本控制工具不同，Git的每个本地仓库都包含完整的项目历史记录，这意味着即使在没有网络连接的情况下也可以完整地提交、查看历史和创建分支。
 
-Git使用有向无环图（DAG）来存储提交历史，每个提交对象包含指向父提交的指针、作者信息、时间戳以及指向文件树快照的SHA-1哈希值（40位十六进制字符串）。这种基于内容寻址的存储方式使得数据极难被篡改，任何一个字节的变更都会导致哈希值完全不同。
-
-在AI工程实践中，Git不仅管理模型训练代码，还负责追踪`requirements.txt`、Docker配置、CI/CD脚本等基础设施文件的演变。一个规范的Git提交历史能让团队准确还原任意历史版本的训练环境，这对实验可复现性至关重要。
+Git使用SHA-1哈希算法（产生40位十六进制字符串）来唯一标识每一个提交对象、树对象和文件对象，这保证了数据的完整性——任何一个字节的变化都会导致哈希值完全不同。在AI工程开发运维场景中，Git不仅用于管理Python训练脚本和模型配置文件，还与MLflow、DVC等工具配合追踪实验版本，是可复现机器学习实验的基础设施之一。
 
 ## 核心原理
 
-### 三个工作区域
+### 三棵树模型
 
-Git将本地环境分为三个区域：**工作目录**（Working Directory）、**暂存区**（Staging Area / Index）和**本地仓库**（Local Repository）。工作目录是实际编辑文件的地方；暂存区是一个中间层，通过`git add`将变更放入其中；`git commit`则将暂存区的快照永久写入仓库。这三区分离的设计使开发者可以将一次大改动拆分成多个逻辑清晰的提交。
+Git在本地维护三个"区域"：工作目录（Working Directory）、暂存区（Staging Area / Index）和本地仓库（Repository）。工作目录是实际修改文件的地方；`git add`命令将修改写入暂存区，形成一个快照；`git commit`命令将暂存区的快照永久写入仓库历史。这个三阶段流程与SVN的"直接提交"模式完全不同，允许开发者精确控制哪些改动进入同一个提交。
 
-### 对象模型与SHA-1
+### 对象存储结构
 
-Git仓库的`.git/objects`目录存储四种对象：**blob**（文件内容）、**tree**（目录结构）、**commit**（提交元数据）和**tag**（标签）。每次执行`git commit`，Git会计算所有变更文件的SHA-1哈希，生成新的blob和tree对象，最终创建指向该tree的commit对象。由于SHA-1具有雪崩效应，即使修改训练脚本中的一个超参数，提交哈希也会完全改变，从而实现精确的版本追踪。
+Git的底层存储由四种对象类型构成：**blob**（存储文件内容）、**tree**（存储目录结构）、**commit**（存储提交元数据和指向tree的指针）、**tag**（存储标签信息）。所有对象均以压缩格式存放在`.git/objects/`目录中，按哈希值的前2位作为子目录名。例如哈希值`a1b2c3d4...`会存储在`.git/objects/a1/b2c3d4...`路径下。这种内容寻址机制使得相同内容的文件在仓库中只存储一次，节省磁盘空间。
 
-### 常用核心命令
+### 基础命令与工作流
 
-以下是AI工程中最高频的Git操作及其语义：
+以下是AI工程开发中最常用的Git操作链：
 
-- `git init` / `git clone <url>`：初始化或克隆仓库，克隆会自动配置名为`origin`的远程引用
-- `git status`：显示工作目录与暂存区的差异状态，用`M`标记已修改、`?`标记未追踪文件
-- `git add -p`：交互式暂存，逐块（hunk）选择变更，适合从大型调试改动中提取核心修复
-- `git commit -m "feat: 调整学习率从0.001到0.0005"`：提交时建议遵循Conventional Commits规范，用`feat`/`fix`/`chore`等前缀分类
-- `git log --oneline --graph`：以ASCII图形展示分支合并历史，快速定位实验节点
-- `git diff HEAD~1 HEAD -- train.py`：对比最近两次提交中`train.py`文件的具体差异
+```
+git init / git clone <url>        # 初始化或克隆仓库
+git status                        # 查看三棵树的当前状态
+git add <file> / git add .        # 将变更加入暂存区
+git commit -m "feat: add ResNet config"   # 创建提交
+git log --oneline --graph         # 可视化提交历史
+git diff HEAD~1 HEAD              # 对比最近两次提交的差异
+git remote add origin <url>       # 关联远程仓库
+git push origin main              # 推送到远程分支
+```
 
-### 远程仓库与同步
+`git log`命令中，`HEAD`是一个特殊指针，始终指向当前所在分支的最新提交。`HEAD~1`表示当前提交的父提交，`HEAD~2`表示祖父提交，以此类推。
 
-Git通过`git remote`管理远程仓库引用。`git fetch`只下载远程对象而不修改本地工作目录；`git pull`等价于`git fetch`后执行`git merge`，可能引入合并提交；`git push origin main`将本地`main`分支推送至`origin`。在多人协作的AI项目中，推荐使用`git fetch`配合`git rebase`而非`git pull`，以保持线性提交历史。
+### .gitignore的重要性
+
+在AI项目中，必须正确配置`.gitignore`文件，避免将以下内容提交到仓库：模型权重文件（`.pt`、`.h5`、`.pkl`）、数据集目录（通常几十GB以上）、Python虚拟环境目录（`venv/`、`.env/`）以及含有API密钥的`.env`配置文件。一旦敏感信息被提交，即使后续删除，在Git历史中仍然可以通过`git log`找回，需要使用`git filter-branch`或`BFG Repo-Cleaner`才能彻底清除。
 
 ## 实际应用
 
-**场景一：追踪超参数实验**  
-在深度学习项目中，每次调整`config.yaml`中的`batch_size`或`learning_rate`后，执行`git add config.yaml && git commit -m "exp: batch_size=64, lr=1e-4, val_acc=0.87"`，将实验结果直接写入提交信息。配合`git log --grep="exp:"` 可快速过滤所有实验提交，无需额外的实验追踪工具。
+**场景一：追踪模型训练超参数变更**
+在调整神经网络学习率时，将每次参数变更和对应实验结果写入提交信息，例如`git commit -m "exp: lr=0.001, batch=32, val_acc=0.923"`。配合`git log --oneline`可以快速对比多组实验的超参数历史，无需依赖额外的实验管理工具。
 
-**场景二：快速回滚错误依赖**  
-发现升级`torch`版本后模型精度下降，使用`git log -- requirements.txt`找到修改该文件的历史提交，然后执行`git checkout <commit-hash> -- requirements.txt`将该文件还原至指定版本，而不影响其他文件的最新状态。
+**场景二：使用git stash临时保存现场**
+当训练脚本修改到一半，线上模型服务出现紧急bug需要立即修复时，可以执行`git stash`将未完成的修改临时存入堆栈，切换到生产分支修复后，再用`git stash pop`恢复现场，避免用临时文件备份代码的混乱做法。
 
-**场景三：`.gitignore`保护大文件**  
-AI项目的模型权重文件（`.pt`、`.ckpt`）、数据集目录和`__pycache__`不应进入Git仓库。在项目根目录创建`.gitignore`并添加`*.pt`、`data/`等规则。一旦文件已被追踪，需用`git rm --cached model.pt`将其从索引中移除。
+**场景三：回滚错误的数据预处理代码**
+若发现三个提交前引入了一个错误的数据归一化公式，可以使用`git revert <commit-hash>`创建一个新提交来撤销指定提交的改动，而不会破坏已有的提交历史——这在多人协作的AI项目中比`git reset --hard`更安全。
 
 ## 常见误区
 
-**误区一：`git commit -m`中的信息可以随意书写**  
-很多初学者习惯写`fix bug`或`update`等无意义的提交信息。在AI工程中，一条含糊的提交信息会导致数周后无法判断某次模型精度下降是因为代码逻辑变更还是数据预处理调整。规范的提交信息应包含**变更类型、文件范围和具体行为**，例如`fix(dataloader): 修复CIFAR-10标签偏移1的索引错误`。
+**误区一：混淆`git reset`的三种模式**
+`git reset`有三个关键参数，行为截然不同：`--soft`只移动HEAD指针，暂存区和工作目录保持不变；`--mixed`（默认）移动HEAD并重置暂存区，但保留工作目录修改；`--hard`移动HEAD、重置暂存区并丢弃工作目录的修改，数据无法通过常规手段恢复。AI工程师在回滚实验代码时误用`--hard`导致丢失未提交的模型改进是非常常见的事故。
 
-**误区二：`git pull`和`git fetch`效果相同**  
-`git fetch`仅更新`.git/refs/remotes/origin/`下的远程追踪引用，不修改当前工作目录；而`git pull`在fetch之后立即执行merge，可能在当前有未提交变更时产生冲突或意外的合并提交，打断正在进行的实验调试。
+**误区二：认为`git add .`等同于"保存全部文件"**
+`git add .`确实会将当前目录所有变更加入暂存区，但它遵循`.gitignore`规则并且不会追踪空目录。更重要的是，如果`.gitignore`配置不当，执行`git add .`可能意外将数百MB的训练数据或敏感凭证加入暂存区。正确做法是先运行`git status`确认暂存内容，或使用`git add -p`进行交互式逐块确认。
 
-**误区三：删除文件后历史记录也消失了**  
-Git永久保存每一次提交的完整快照。即使执行了`git rm large_dataset.csv`并提交，该文件仍存在于历史提交的blob对象中，`git clone`依然会下载包含该文件的完整历史，导致仓库体积虚高。正确做法是在文件进入仓库之前就配置好`.gitignore`，或使用`git filter-repo`工具彻底重写历史。
+**误区三：频繁使用`git push --force`覆盖远程历史**
+当本地执行了`git commit --amend`或`git rebase`修改历史后，直接推送会失败，部分工程师会习惯性地加上`--force`强制覆盖。这在共享分支上会破坏其他团队成员的本地历史，导致他们的后续推送产生大量冲突。应使用更安全的`git push --force-with-lease`，该选项在检测到远程有其他人提交时会自动拒绝强制推送。
 
 ## 知识关联
 
-**前置知识**：Git的所有操作均通过命令行执行，需要熟悉`cd`、`ls`、路径概念以及Shell的标准输入输出重定向。`git log | grep "feat"`这类管道操作要求具备命令行基础才能灵活使用。
+学习Git基础需要具备**命令行基础**知识，因为Git的绝大多数操作通过终端命令完成，理解路径、文件权限和管道符是正确使用`git diff`、`git log --grep`等命令的前提。熟悉`cd`、`ls`、`cat`等命令也能帮助理解`.git/`目录的内部结构。
 
-**后续概念**：掌握Git基础的提交、暂存和远程同步操作之后，下一个关键主题是**Git分支策略**。分支策略在Git对象模型之上构建工作流规范，例如`main`分支对应生产环境、`develop`对应集成测试、`feature/*`对应单项实验。理解SHA-1哈希和提交指针的工作方式是理解分支合并（merge）与变基（rebase）区别的必要前提：`git merge`会创建新的merge commit节点，而`git rebase`会重新计算提交哈希以生成线性历史。
+掌握Git基础后，下一步是学习**Git分支策略**。单人开发只需了解`git commit`和`git push`，但AI团队协作开发时需要设计合理的分支模型：例如为每个实验创建独立特性分支、使用`main`/`develop`双主干结构隔离生产代码，或者采用GitHub Flow中的Pull Request审查机制。Git分支策略是在当前所学提交、暂存、回滚操作基础上，应用于多人协作场景的完整工作流设计。

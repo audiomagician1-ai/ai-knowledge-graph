@@ -20,55 +20,80 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # Lock文件
 
 ## 概述
 
-Lock文件（锁定文件）是包管理器在安装依赖后自动生成的一种记录文件，它精确捕获了每一个已安装包的**确切版本号、下载地址和校验哈希值**。以npm为例，执行`npm install`后会生成`package-lock.json`；Yarn生成`yarn.lock`；pnpm生成`pnpm-lock.yaml`。这三种文件格式不同，但核心目的一致：将某一时刻的完整依赖树"冻结"下来。
+Lock文件（锁定文件）是包管理器在首次安装依赖后自动生成的快照文件，它记录了项目中每一个直接依赖和间接依赖的**精确版本号、下载地址和内容哈希值**。以npm为例，`package-lock.json`文件中每个包条目都包含`version`、`resolved`（下载URL）和`integrity`（SHA-512哈希）三个关键字段，确保任何人在任何机器上执行`npm ci`时安装的包与原始环境完全一致。
 
-Lock文件出现的背景源于语义化版本（SemVer）带来的不确定性。`package.json`中常见的版本范围写法如`"^1.2.3"`意味着"接受1.x.x中任何不低于1.2.3的版本"，这在不同时间、不同机器上执行`npm install`可能解析出不同的实际版本。npm在2016年推出`npm@5`时将`package-lock.json`设为默认生成行为，正是为了解决"在我机器上能跑"这一经典协作痛点。Yarn早在2016年10月发布1.0时就内置了`yarn.lock`机制，比npm更早解决此问题。
+Lock文件的出现解决了"在我电脑上能跑"的经典问题。2016年，npm 5.0发布时引入`package-lock.json`；同年，Facebook推出的Yarn 1.0也带来了`yarn.lock`，这是Lock文件概念真正被大规模采用的起点。在此之前，开发者只能依赖`package.json`中的语义化版本范围（如`^1.2.3`），这意味着今天安装的是`1.2.3`，明天可能安装`1.9.0`，引入不可预期的破坏性变更。
 
-Lock文件的核心价值体现在两个维度：**确定性**（Determinism）与**安全性**。确定性确保团队中每位开发者、CI/CD流水线、生产环境部署时安装的依赖树完全一致；安全性则通过记录每个包的`integrity`哈希（通常为SHA-512格式，如`sha512-abc123...`）来防止包内容被篡改或供应链攻击。
+Lock文件之所以重要，在于现代项目的依赖树往往有数百甚至数千个节点。一个使用React的项目，其`package-lock.json`可能包含超过1000个间接依赖条目，任何一个包的版本漂移都可能导致生产环境故障。Lock文件将这棵庞大的依赖树固化为一份可复现的安装清单，是CI/CD流水线可靠性的重要保障。
 
 ## 核心原理
 
-### 依赖树的完整快照
+### 精确版本快照与哈希校验
 
-`package.json`只记录直接依赖及其版本范围，而Lock文件记录的是**完整的扁平化依赖树**，包括所有间接（传递性）依赖。例如你的项目依赖`express@^4.18.0`，而express本身依赖`body-parser@^1.20.0`，Lock文件会同时记录express和body-parser的确切版本，以及body-parser的所有依赖，层层展开直到叶节点。一个中型项目的`package-lock.json`记录几百甚至上千个包的精确信息是完全正常的现象。
-
-### integrity校验字段
-
-Lock文件中每个包都包含一个`integrity`字段，其值为该包压缩包的加密哈希摘要，格式遵循**Subresource Integrity（SRI）规范**，例如：
-
+Lock文件中记录的不仅是版本号，还包括每个包的内容完整性哈希。npm的`package-lock.json`使用`integrity`字段存储`sha512-<base64>`格式的哈希值，例如：
 ```
-"integrity": "sha512-ZJ567U37Ly/HlAqnz3R..."
+"integrity": "sha512-abc123...=="
 ```
+安装时，包管理器会下载包文件并重新计算哈希，若与Lock文件中的值不匹配，安装将立即中止并报错。这一机制防止了供应链攻击中"包内容被篡改但版本号不变"的场景。
 
-当`npm ci`（clean install）执行时，它会下载包后重新计算哈希，与Lock文件中记录的值进行比对。若不一致，安装过程立即中止并报错。这一机制在2021年`ua-parser-js`包被恶意注入挖矿代码事件中，凡是使用了Lock文件且未手动更新的项目都得到了保护。
+### `npm install` vs `npm ci` 的行为差异
 
-### `npm install`与`npm ci`的差异
+这是理解Lock文件最关键的使用细节。`npm install`会读取`package.json`的版本范围，在满足约束的前提下可能升级间接依赖并**更新**`package-lock.json`；而`npm ci`（ci代表clean install）则严格按照`package-lock.json`安装，若`package.json`与Lock文件不一致会直接报错退出，且每次运行前会删除整个`node_modules`目录。因此CI/CD环境中应始终使用`npm ci`而非`npm install`。
 
-这两个命令对Lock文件的处理方式截然不同：`npm install`在Lock文件存在时会**尽量遵循**其内容，但若`package.json`中的版本范围与Lock文件冲突，它会更新Lock文件；而`npm ci`**严格要求**Lock文件存在，且若与`package.json`不一致时直接报错而非自动修正。因此，CI/CD环境中应始终使用`npm ci`而非`npm install`，以保证构建的可重复性。
+### 不同包管理器的Lock文件格式对比
+
+| 工具 | Lock文件名 | 格式 |
+|------|-----------|------|
+| npm | `package-lock.json` | JSON，含嵌套依赖树 |
+| Yarn 1.x | `yarn.lock` | 自定义DSL格式 |
+| Yarn Berry (2+) | `yarn.lock` | 相同DSL但结构调整 |
+| pnpm | `pnpm-lock.yaml` | YAML格式 |
+
+pnpm的`pnpm-lock.yaml`还额外记录了依赖的`specifier`（原始版本约束字符串），使得Lock文件与`package.json`的关系更加透明。Maven和Gradle生态虽无原生Lock文件，但Maven的`maven-dependency-plugin:dependency-lock`插件和Gradle 6.0+引入的依赖锁定功能（`gradle.lockfile`）提供了类似机制。
+
+### Lock文件的版本控制策略
+
+Lock文件**必须提交到Git仓库**，这一点与`.gitignore`通常排除的`node_modules`形成鲜明对比。对于应用程序项目（最终部署的产品），Lock文件应严格维护；但对于发布到npm的**库**（library），业界惯例是将`package-lock.json`加入`.gitignore`，因为库的消费者会使用自己的Lock文件，库的Lock文件对消费者毫无作用，还可能造成误导。
 
 ## 实际应用
 
-**团队协作场景**：将`package-lock.json`或`yarn.lock`提交到Git仓库是行业标准实践。当新成员克隆仓库后执行`npm ci`，会得到与其他成员完全相同的`node_modules`结构，避免因依赖版本差异导致的"环境问题"。相反，将Lock文件加入`.gitignore`是一个错误做法，会导致每次安装可能得到不同版本。
+**场景一：团队协作一致性**
+开发者A在本地执行`npm install`后提交了更新的`package-lock.json`，开发者B拉取代码后运行`npm ci`，得到与A完全相同的`node_modules`结构，避免了因各自本地环境差异导致的"玄学bug"。
 
-**依赖升级工作流**：有意升级某个包时，应执行`npm update lodash`或直接修改`package.json`后重新`npm install`，此操作会**更新Lock文件中对应条目**。Dependabot、Renovate等自动化工具正是通过提交"只更新Lock文件"的PR来实现自动依赖升级，代码审查者可以精确看到哪些包的哪些版本发生了变化。
+**场景二：Docker镜像构建**
+在`Dockerfile`中，应先单独复制Lock文件和`package.json`，再执行`npm ci`，最后才复制业务代码。这样当业务代码变化但依赖不变时，Docker可以复用缓存层，大幅加速镜像构建速度：
+```dockerfile
+COPY package.json package-lock.json ./
+RUN npm ci --only=production
+COPY src/ ./src/
+```
 
-**排查幽灵版本问题**：当某个依赖行为异常时，直接查阅Lock文件可以确认实际安装的版本号，而无需遍历`node_modules`目录。例如在`package-lock.json`中搜索包名，可以立即找到`"version": "1.0.21"`这样的精确版本信息。
+**场景三：依赖安全审计**
+`npm audit`命令通过对比`package-lock.json`中记录的包版本与npm安全漏洞数据库，精确识别项目中存在已知CVE漏洞的依赖，并给出受影响的依赖路径（如`your-app > express > qs@6.5.2 [CVE-2022-24999]`）。
 
 ## 常见误区
 
-**误区一：Lock文件与`package.json`内容重复，可以不提交**。实际上两者记录的信息层次完全不同。`package.json`记录意图（"我需要axios 1.x"），Lock文件记录事实（"实际安装的是axios 1.6.2，SHA-512哈希为xxxx，从https://registry.npmjs.org/axios/-/axios-1.6.2.tgz下载"）。删除Lock文件会丢失所有传递依赖的版本锁定信息。
+**误区一：Lock文件与`package.json`重复，可以不提交**
+`package.json`中写的是版本范围（`^16.0.0`表示接受16.x.x的任何版本），而Lock文件记录的是某次安装时解析出的精确版本（如`16.8.6`）。两者信息层次不同，不存在重复。不提交Lock文件会导致不同时间、不同成员安装的依赖版本各不相同。
 
-**误区二：Lock文件一旦生成就永远不应修改**。Lock文件应当随依赖更新而同步更新。正确的做法是：日常维护中定期通过`npm update`或专用工具更新Lock文件，审查变更内容后提交。Lock文件"不该改"的场景仅限于生产环境部署时——此时应使用`npm ci`而非`npm install`，以确保安装内容与Lock文件完全一致。
+**误区二：手动编辑Lock文件**
+Lock文件由包管理器算法自动生成，手动修改极易引入格式错误或哈希值不匹配，导致后续`npm ci`报错或哈希校验失败。需要修改依赖时，应通过`npm install <package>@<version>`命令让包管理器重新生成Lock文件的相关条目。
 
-**误区三：不同包管理器的Lock文件可以互换使用**。`yarn.lock`、`package-lock.json`和`pnpm-lock.yaml`格式完全不同，且各自包含的元数据结构也有差异。若项目中同时存在多个Lock文件，不同开发者使用不同包管理器安装依赖，可能产生不一致的`node_modules`结构，这本身就违背了Lock文件的设计初衷。团队应统一使用一种包管理器。
+**误区三：Lock文件能完全防止所有版本变化**
+Lock文件锁定的是npm registry中已发布包的版本，但如果某个包在registry上被**取消发布**（unpublish）或**内容被替换**（2021年`colors`和`faker`包恶意更新事件即为此类），Lock文件记录的版本号仍然存在，但哈希校验将失败。这正是`integrity`哈希字段存在的意义——检测内容篡改，而非仅仅检测版本号。
 
 ## 知识关联
 
-理解Lock文件需要首先掌握**npm/Yarn/pnpm**的基本使用，因为Lock文件是这些工具执行`install`命令的产物，其内容格式与对应工具强绑定。语义化版本（SemVer）中`^`和`~`前缀的含义是理解Lock文件必要性的直接前置知识——正是版本范围的模糊性催生了精确锁定的需求。
+Lock文件建立在npm/Yarn/pnpm的**语义化版本解析**机制之上：包管理器先读取`package.json`中的版本约束，通过semver算法确定合法版本范围，再生成Lock文件将这个范围"收拢"为一个唯一的版本号。没有对`^`、`~`等版本范围符号的理解，就无法理解Lock文件解决的核心问题。
 
-Lock文件的概念与`Gemfile.lock`（Ruby/Bundler）、`Pipfile.lock`（Python/Pipenv）、`Cargo.lock`（Rust）等其他语言生态中的同类机制完全对应，掌握npm Lock文件的原理后，迁移到其他语言的包管理体系会非常顺畅。在CI/CD流水线设计中，`npm ci`命令的正确使用直接依赖对Lock文件机制的理解，是构建可重复构建系统的基础操作。
+在Maven/Gradle生态中，`dependencyManagement`（Maven的BOM机制）和`platform`（Gradle）承担了类似Lock文件的部分职责，将间接依赖的版本集中管理，但其运作方式是声明式的版本约束而非哈希快照，安全性保证弱于Lock文件的哈希校验机制。
+
+掌握Lock文件后，下一步是**私有注册表**的配置。当团队使用私有npm registry（如Verdaccio或Artifactory）时，Lock文件中`resolved`字段记录的下载URL会指向私有注册表地址，这带来了URL迁移时需要批量更新Lock文件的挑战——理解Lock文件的`resolved`字段结构是解决这一问题的前提。

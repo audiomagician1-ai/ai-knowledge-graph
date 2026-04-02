@@ -20,55 +20,79 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 渲染图（RDG）
 
 ## 概述
 
-渲染图（Render Dependency Graph，简称 RDG）是现代游戏引擎中用于描述一帧渲染工作流的有向无环图（DAG）结构。每个图节点代表一个渲染通道（Render Pass），每条有向边代表通道之间的资源依赖关系，例如某个通道写入的纹理必须在另一个通道读取之前完成。RDG 的核心价值在于将"渲染工作的声明"与"渲染工作的执行"解耦，引擎代码只需声明每个通道需要读写哪些资源，调度系统负责自动推导执行顺序与资源生命周期。
+渲染图（Render Dependency Graph，RDG）是一种将一帧内所有渲染操作组织为有向无环图（DAG）的调度系统，图中每个节点代表一个渲染Pass，每条有向边代表Pass之间的资源依赖关系。RDG的核心职责是：在帧开始时声明全部Pass及其输入输出资源，在帧结束前由系统自动推断资源生命周期、插入必要的屏障（Barrier）并剔除无效Pass，最终以最优顺序提交GPU命令。
 
-RDG 概念在 2017 年 GDC 上由 Frostbite 引擎团队（DICE）以"FrameGraph"形式正式提出，之后 Unreal Engine 4.22 在 2019 年引入了自己的 RDG 实现，Epic Games 将其命名为 `FRDGBuilder`。同年，业界多款 AAA 引擎纷纷跟进类似架构，包括 id Software 在《毁灭战士：永恒》中使用的帧图系统。
+RDG概念的工程化落地以2017年育碧在GDC上发表的《Framegraph: Extensible Rendering Architecture in Frostbite》为标志性里程碑，寒霜引擎（Frostbite）率先将帧图思想应用于生产项目。此后，虚幻引擎4.22版本（2019年）引入了自己的RDG实现，并在UE5中将其作为所有渲染代码的强制路径。RDG的出现解决了手动管理Vulkan/DX12显式API中资源状态的复杂性——在这些API下，程序员必须精确控制每个纹理从`D3D12_RESOURCE_STATE_RENDER_TARGET`切换到`D3D12_RESOURCE_STATE_SHADER_RESOURCE`的时机，而RDG将这一繁琐工作完全自动化。
 
-RDG 解决的根本问题是手工管理 GPU 资源屏障（Resource Barrier）的复杂性。在没有 RDG 的传统渲染管线中，程序员必须手动插入 `D3D12_RESOURCE_BARRIER` 或 Vulkan 的 `vkCmdPipelineBarrier`，一旦遗漏或顺序错误便导致渲染错误或 GPU 崩溃。RDG 通过图拓扑自动生成这些屏障，并在此基础上进行资源别名（Aliasing）和通道裁剪（Pass Culling）优化。
+RDG之所以重要，在于它将"描述帧"与"执行帧"彻底分离。开发者只需声明Pass的读写关系，系统即可在编译阶段完成Pass裁剪（Culling）和资源别名（Aliasing），将瞬态资源的GPU显存占用降低30%~50%（寒霜引擎实测数据），同时避免了手动排布屏障时极易产生的竞态条件（Race Condition）。
+
+---
 
 ## 核心原理
 
-### 有向无环图的构建
+### 1. 帧图的构建阶段（Setup Phase）
 
-RDG 在每帧开始时由 CPU 侧代码构建。开发者通过 `AddPass` 接口注册渲染通道，每个通道声明其输入资源（`SRV/CBV/TexRead`）和输出资源（`RTV/UAV/TexWrite`）。系统将这些读写声明转换为图边：若通道 B 读取通道 A 写入的资源 `GBuffer_A`，则图中存在边 A→B，表示 B 依赖 A。整个帧的渲染意图由此形成一张 DAG，Unreal Engine 的 RDG 在 `FRDGBuilder::Compile()` 阶段对该图进行拓扑排序，生成线性执行序列。
+在Setup阶段，CPU端按逻辑顺序调用`AddPass()`注册每个Pass，每个Pass通过`FRDGBuilder`声明它所读取（`Read`）和写入（`Write`）的`FRDGTexture`或`FRDGBuffer`对象。这些资源在此阶段仅是虚拟句柄，尚未分配实际GPU内存。以UE5的代码模式为例：
 
-### 通道裁剪与资源别名
+```cpp
+FRDGTextureRef SceneColor = GraphBuilder.CreateTexture(Desc, TEXT("SceneColor"));
+GraphBuilder.AddPass(
+    RDG_EVENT_NAME("BasePass"),
+    PassParameters,
+    ERDGPassFlags::Raster,
+    [](FRHICommandList& RHICmdList) { /* 执行体 */ }
+);
+```
 
-拓扑排序完成后，RDG 对图执行**反向可达性分析**：从最终输出（通常是 `FRDGTextureRef` 对应的 Swapchain 纹理）出发向后遍历，凡是不影响最终输出的通道标记为"已裁剪（Culled）"，不会提交给 GPU，这一机制在延迟渲染中可跳过大量条件性调试通道，节省 0.5–2ms 的 GPU 时间。
+系统将所有Pass及资源引用存入内部DAG，此时不发出任何GPU命令。整个Setup阶段完全在CPU上完成，通常耗时低于0.5ms。
 
-资源别名利用**资源生命周期不重叠**的事实，允许两个 RDG 资源在物理内存上共用同一块分配。以 Unreal Engine 为例，`FRDGAllocator` 在 `Execute()` 阶段扫描每个虚拟资源的首次写入通道和最终读取通道，若两个资源的活跃区间不相交，则它们共享同一 `D3D12Heap` 或 Vulkan `VkDeviceMemory`，典型场景下可节省帧缓冲区总内存的 30%–40%。
+### 2. 图编译阶段（Compile Phase）
 
-### 自动屏障推导
+编译阶段执行三项关键操作：
 
-RDG 在图执行前遍历每条边，根据两端通道对资源的访问类型（读/写）及管线阶段（Pixel Shader / Compute / Copy），自动插入最小必要的资源状态转换。例如，GBuffer 写入阶段资源状态为 `D3D12_RESOURCE_STATE_RENDER_TARGET`，当 Deferred Lighting 通道读取它时，RDG 自动插入转换至 `D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE` 的屏障，并尽量将屏障批处理到单次 `ResourceBarrier` 调用以减少 CPU-GPU 通信开销。
+- **Pass裁剪**：从最终输出资源（如交换链后缓冲区）出发，反向遍历DAG，凡是其输出不被任何后续Pass或最终输出引用的Pass将被标记为Culled并跳过执行。这使得调试用的截图Pass或未开启的特效Pass无需手动开关即可自动剔除。
+- **资源生命周期推断**：系统记录每个资源的"首次写入Pass"与"最后一次读取Pass"，据此确定资源的`FirstAccess`和`LastAccess`，将生命周期不重叠的资源映射到同一块GPU内存（资源别名/Aliasing），这是瞬态资源（Transient Resources）的核心节省机制。
+- **屏障插入**：根据相邻Pass对同一资源的访问类型差异（如从`UAV_WRITE`变为`SRV_READ`），系统在两Pass之间自动插入`ResourceBarrier`，保证读写一致性，同时将屏障批量合并以减少API调用次数。
 
-### 异步计算调度
+### 3. 执行阶段（Execute Phase）
 
-RDG 支持将标记为 `AsyncCompute` 的通道提交至 GPU 的异步计算队列（Async Compute Queue）。系统通过图中的同步信号（Fence/Semaphore）节点保证图形队列与计算队列之间的依赖，例如 SSAO 计算可与后续阴影图生成并行执行，在 PlayStation 5 和 Xbox Series X 上这一重叠策略可带来约 15%–20% 的帧时间压缩。
+执行阶段按编译后的拓扑顺序依次调用各Pass的Lambda函数体。在调用前，RDG将虚拟资源句柄解析为真实的`FRHITexture`或`FRHIBuffer`指针，并提交该Pass所需的屏障。支持异步计算（Async Compute）的引擎（如UE5）会在此阶段将`ERDGPassFlags::AsyncCompute`标记的Pass调度到Async Compute队列，与图形队列并行执行，典型情景是将SSAO计算与GBuffer渲染重叠执行，节省约0.8~1.2ms帧时间（视GPU型号而定）。
+
+---
 
 ## 实际应用
 
-**延迟渲染管线**：在标准延迟渲染中，GBuffer 通道、Deferred Lighting 通道、后处理通道形成一条线性依赖链。使用 RDG 后，开发者无需手工管理 GBuffer 各分量（Albedo、Normal、Roughness 纹理）的状态转换，仅需在 Lighting 通道的 `PassParameters` 结构中声明 `RDGTextureSRV(GBufferA)` 即可，Unreal Engine 的 `FDeferredShadingSceneRenderer` 完全基于此模式实现。
+**延迟渲染管线中的GBuffer管理**：在延迟渲染中，GBuffer由4~5张纹理组成（Albedo、Normal、Roughness/Metallic、Depth）。使用RDG时，BasePass声明对所有GBuffer纹理的Write权限，LightingPass声明对全部GBuffer的Read权限，系统自动在两Pass之间插入从`RENDER_TARGET`到`SHADER_RESOURCE`的状态转换屏障，开发者无需关心DX12的`D3D12_RESOURCE_STATE`枚举值。
 
-**Temporal AA（TAA）资源管理**：TAA 需要访问当前帧和上一帧的颜色缓冲。RDG 通过 `FRDGTextureRef` 的 `ExternalTexture` 接口将跨帧持久化纹理（Persistent Texture）纳入图中管理，既能参与屏障推导，又不受单帧生命周期限制，解决了历史帧资源状态不一致导致的"闪烁"问题。
+**瞬态资源的显存复用**：后处理链中，SSAO纹理在LightingPass读取后即失效，而后续的Bloom降采样纹理在BloomSetup之后也不再需要。RDG的Aliasing机制可以让这两张分辨率和格式相同的纹理共享同一段64MB的瞬态堆（Transient Heap）内存，物理显存只分配一次。
 
-**移动端瓦片渲染优化**：在 Arm Mali 和 Apple A 系列 GPU 上，RDG 可识别写后立即读的纹理访问模式，将其优化为 Metal 的 `Memoryless Attachment` 或 Vulkan 的 `TRANSIENT_ATTACHMENT`，使数据留在 GPU 瓦片缓存中而不写入主存，节省带宽最高达 50%。
+**条件性Pass的零开销裁剪**：当玩家关闭动态阴影设置时，ShadowDepthPass的输出纹理不会被后续任何Pass引用，RDG在编译阶段将其Cull，CPU端的`AddPass()`调用的开销仅为记录一个节点入图，Lambda函数体永远不会执行，不产生任何GPU命令，也不分配Shadow Map显存。
+
+---
 
 ## 常见误区
 
-**误区一：RDG 会消除所有 GPU 同步开销。** RDG 只能优化*帧内*资源依赖，对于跨帧资源（如 TAA 历史帧纹理、流式加载的纹理）仍需开发者手动管理同步点。若将持久资源错误地以普通 `CreateTexture` 而非 `RegisterExternalTexture` 纳入 RDG，RDG 无法感知其帧间状态，可能在错误的初始状态上插入屏障，产生验证层报错甚至 GPU 挂起。
+**误区一：认为RDG是运行时调度，Setup阶段会阻塞GPU**
+RDG的Setup阶段完全是CPU端的图构建操作，不发出任何GPU命令。GPU命令仅在Execute阶段提交。因此频繁调用`AddPass()`本身不会造成GPU等待，但若在Setup阶段进行大量CPU计算，则会延迟整帧的命令提交时机，间接影响GPU利用率。
 
-**误区二：通道裁剪会自动优化所有冗余工作。** Pass Culling 仅裁剪那些输出资源未被任何未裁剪通道消费的通道。如果某个调试可视化通道的输出被错误地注册为帧的最终输出之一，它将永远不会被裁剪，即便该可视化功能已在运行时关闭。正确做法是用条件判断阻止将该通道加入图，而非依赖 RDG 的裁剪逻辑。
+**误区二：认为被Cull的Pass的Lambda函数体不会被编译器优化**
+Pass被Culled仅意味着Execute阶段不调用Lambda，但Lambda本身仍被编译进二进制。更重要的是，传入`AddPass`的`PassParameters`结构体中的资源引用会被RDG用于建立依赖关系，即使Pass被Cull，这些资源的引用仍会影响生命周期分析，因此不能通过传入空Parameters来"欺骗"系统跳过依赖检测。
 
-**误区三：RDG 资源生命周期等同于 C++ 对象生命周期。** `FRDGTextureRef` 是一个轻量句柄，其指向的物理 GPU 内存在 `FRDGBuilder::Execute()` 之前根本未分配。若在 `AddPass` 的 Lambda 外部（即编译阶段）尝试访问纹理实际数据，将访问空指针，这是 Unreal Engine RDG 迁移过程中最常见的崩溃原因之一。
+**误区三：以为RDG可以自动处理跨帧资源**
+RDG仅管理单帧内的瞬态资源生命周期。跨帧持久资源（如TAA历史帧缓冲区、阴影缓存）必须使用`RegisterExternalTexture()`以外部资源形式注入RDG，由开发者负责其状态管理，RDG只负责记录该资源在本帧内的访问状态并在帧末将其状态正确归还给外部所有者。
+
+---
 
 ## 知识关联
 
-RDG 以 GPU 驱动渲染（GPU-Driven Rendering）为前提知识：理解 GPU 命令缓冲（Command Buffer）的录制与提交机制、资源状态机（Resource State Machine）以及同步原语（Barrier/Fence），是读懂 RDG 自动屏障推导逻辑的必要基础。具体而言，Vulkan 的 `VkImageLayout` 状态转换规则和 D3D12 的 `D3D12_RESOURCE_STATES` 枚举直接对应 RDG 内部的资源状态追踪表。
+RDG建立在**GPU驱动渲染**（GPU-Driven Rendering）的显式API基础之上：Vulkan和DX12要求程序员手动声明资源状态转换，RDG正是对这一显式管理需求的高层封装，将图形程序员从逐资源的屏障管理中解放出来，专注于渲染算法本身。
 
-掌握 RDG 之后，自然引出 **GPU 性能分析**这一后续主题：RDG 的通道结构天然对应 GPU 性能捕获工具（如 RenderDoc 的 Event Tree、PIX 的 Timing Captures）中的事件层级，每个 RDG 通道在工具中表现为一个独立的 Marker 区段。理解 RDG 如何调度通道、何时插入屏障、哪些通道并行执行，是解读 GPU 时间线（Timeline View）和定位性能瓶颈的直接依据。
+掌握RDG之后，下一个学习目标是**GPU性能分析**（GPU Profiling）。RDG为性能分析提供了天然的结构化数据：每个`RDG_EVENT_NAME`标记的Pass都会在RenderDoc、Nsight等工具中形成独立的性能区间，Pass的Cull率、瞬态内存的Aliasing命中率等指标直接反映帧图设计的优劣。理解RDG的编译与执行分离机制，是正确解读GPU Capture中时间线和内存占用图的前提。

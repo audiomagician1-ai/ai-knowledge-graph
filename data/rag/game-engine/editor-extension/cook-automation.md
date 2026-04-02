@@ -20,84 +20,92 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 烘焙自动化
 
 ## 概述
 
-烘焙自动化（Bake Automation）是指在游戏引擎编辑器扩展体系中，将光照贴图烘焙、导航网格生成、遮挡剔除体积计算等预计算任务集成到无人值守的构建流水线中的技术体系。与手动在 Unity Editor 或 Unreal Editor 中点击"Bake"按钮不同，烘焙自动化通过命令行参数、脚本 API 或外部进程触发引擎以 headless（无头）模式完成全部预计算工作，并将结果产物（如 `.exr` 光照贴图、`NavMesh.asset`、`OcclusionCullingData.asset`）纳入版本控制或制品仓库。
+烘焙自动化（Bake Automation）是指在游戏引擎编辑器扩展体系中，通过脚本或命令行接口驱动光照贴图、导航网格、遮挡剔除体积等预计算数据的批量生成过程，无需人工在编辑器 GUI 中逐一点击"Bake"按钮。其核心价值在于将原本耗时数小时甚至数十小时的烘焙任务嵌入 CI/CD 流水线，使每次代码或美术资产提交都能触发可验证的构建结果。
 
-这一做法最早随 Unity 2017 引入 `-batchmode -executeMethod` 命令行参数体系而在业界普及。Unreal Engine 在 4.14 版本加入了 `BuildLighting` 命令行开关，使大型开放世界关卡能够在农场机器上批量并行烘焙而无需打开编辑器 UI。烘焙自动化的意义在于：一套 100 万面的场景完整光照烘焙可能耗时 4–8 小时，若依赖美术手动触发，极易因忘记烘焙或烘焙版本不匹配导致线上 Bug；而将烘焙纳入 CI/CD 流水线后，每次场景资产变更提交即可自动触发并验证结果。
+烘焙自动化的实践雏形可追溯至 2012 年前后 Unity 引入命令行批处理模式（`-batchmode -quit`），允许通过静态方法 `[InitializeOnLoad]` 或 `BuildPipeline.BuildPlayer` 系列 API 在无头进程中执行资产处理。Unreal Engine 则在 4.x 时代通过 UnrealBuildTool 与 AutomationTool（`RunUAT.bat`）提供了等价能力，其中 `BuildCookRun` 命令可在单条指令内完成编译、Cook（即烘焙资产）和打包三个阶段。
+
+在大型项目中，一个场景的光照烘焙可能涉及数百个光照贴图 Texel，手动管理极易因遗漏重烘导致线上版本与本地预览不一致。烘焙自动化通过强制将烘焙结果纳入版本控制比对，从根本上消除"在我机器上是好的"类问题。
+
+---
 
 ## 核心原理
 
-### Headless 引擎调用与编辑器脚本
+### 命令行无头烘焙接口
 
-Unity 烘焙自动化的入口是 `Lightmapping.BakeAsync()` 或同步版本 `Lightmapping.Bake()`，需在继承自 `Editor` 命名空间的静态方法中调用，并通过以下命令行启动：
-
-```
-Unity.exe -quit -batchmode -projectPath /path/to/project \
-          -executeMethod BakeTools.AutoBake \
-          -logFile build.log
-```
-
-`-quit` 标志确保烘焙完成后进程以退出码 0 退出，CI 系统（Jenkins、GitLab CI 或 GitHub Actions）可据此判断成功与否。Unreal 对应的命令为：
+Unity 的无头烘焙依赖 `-executeMethod` 参数指定入口静态方法，典型调用形如：
 
 ```
-UnrealEditor-Cmd.exe MyProject.uproject \
-    -run=ResavePackages -lighting -buildlighting \
-    MapName -allowcommandletrendering
+Unity.exe -batchmode -quit -projectPath /proj -executeMethod BakeTools.BakeAll
 ```
 
-关键点在于这两套 API 都会绕过 GUI 渲染循环，仅执行预计算内核，因此可在无 GPU 显示输出的服务器节点上运行（需驱动支持或使用虚拟帧缓冲）。
+在 `BakeTools.BakeAll` 方法内部，调用 `Lightmapping.BakeAsync()` 或同步版本 `Lightmapping.Bake()` 启动光照烘焙，并通过 `Lightmapping.bakeCompleted` 委托监听完成事件后退出。`-batchmode` 标志禁用所有 GPU 渲染窗口，但 GPU Lightmapper（Progressive GPU）仍可访问计算着色器，因此在有显卡的 CI Agent 上速度显著优于 CPU Progressive 模式（通常快 3–10 倍）。
 
-### CI 集成与产物管理
-
-将烘焙嵌入 CI 流水线需要解决三个工程问题：触发策略、产物存储和失败通知。触发策略通常采用路径过滤——只有当 `Assets/Scenes/` 或 `Content/Levels/` 目录下的文件发生变更时才触发烘焙 Job，否则复用缓存产物。以 GitLab CI 为例：
-
-```yaml
-bake_lightmaps:
-  rules:
-    - changes:
-        - "Assets/Scenes/**/*"
-        - "Assets/Lighting/**/*"
-  script:
-    - ./unity_bake.sh
-  artifacts:
-    paths:
-      - Assets/Scenes/**/*.exr
-      - Assets/Scenes/**/*.asset
-    expire_in: 30 days
-```
-
-烘焙产物体积通常在数百 MB 至数 GB，直接存入 Git 会导致仓库膨胀，因此业界惯例是将产物上传至 Git LFS 或专用制品服务器（Artifactory、AWS S3），并在 CI 配置中记录产物指纹（SHA-256）以供后续构建步骤拉取。
+Unreal 侧，`RunUAT BuildCookRun -cook -map=MapName -targetplatform=Win64` 会调用编辑器的 `-run=Cook` 模式，此过程中导航网格数据（Recast NavMesh）、预计算可见集（PVS）等均按地图配置自动生成并序列化到 `.uasset` 中。
 
 ### 差异构建（Incremental / Delta Bake）
 
-差异构建是烘焙自动化中最能节省成本的技术。其核心思路是：在全量烘焙前，对比当前提交与上一次烘焙成功提交之间的场景文件差异，仅重新烘焙受影响的区域或子场景。
+全量烘焙在场景庞大时代价极高，差异构建通过比较资产哈希决定哪些对象需要重新烘焙。Unity Addressables 结合 Content Update Workflow 可生成 `addressables_content_state.bin`，其中记录了每个资产组的内容哈希；若某组哈希未变化，则跳过该组的烘焙与打包。
 
-Unity 的多场景烘焙 API 支持按 Scene 粒度单独调用 `Lightmapping.BakeMultipleScenes(string[] scenePaths)`，因此差异构建脚本只需：
+在自定义编辑器工具层面，差异构建的典型实现步骤为：
 
-1. 通过 `git diff --name-only HEAD~1 HEAD` 获取变更文件列表；
-2. 将变更文件映射到所属 Scene；
-3. 仅将这些 Scene 传入 `BakeMultipleScenes`。
+1. 在烘焙前对所有参与烘焙的 Mesh Renderer、Light 组件和 Lightmap Settings 序列化为 JSON 快照，计算 SHA-256 哈希值。
+2. 与上次成功烘焙保存的哈希文件比对；若哈希相同，则跳过该场景并复用缓存的 `.exr` 光照贴图文件。
+3. 仅对哈希变化的场景执行 `Lightmapping.Bake()`，完成后更新哈希文件并提交到构建产物存储（Artifact Storage）。
 
-Unreal 的 World Partition 系统从 5.0 版本起支持按 Cell 级别的增量光照重建，通过 `-buildlightingonly -MapsOnly=<Level>` 参数锁定单个子关卡。实践中，差异构建可将日常迭代的烘焙时间从 6 小时压缩到 15–30 分钟，但需要维护一份"烘焙清单"记录每个 Scene/Cell 最后一次成功烘焙时对应的 Git commit hash。
+差异构建在包含 20 个以上独立场景的项目中可将平均 CI 烘焙时间从 4 小时压缩至 30–45 分钟。
+
+### CI 集成与构建流水线设计
+
+将烘焙任务接入 Jenkins、GitHub Actions 或 TeamCity 时，需注意以下三个 Unity/Unreal 特有的陷阱：
+
+- **许可证激活**：`-batchmode` 下仍需有效的 Unity 序列号或浮动许可证服务器；可通过 Unity 官方提供的 `Unity.Licensing.Client` CLI 在 Agent 启动阶段完成激活，并在流水线结束后调用 `-returnlicense` 释放。
+- **日志解析与错误检测**：Unity 批处理模式将所有错误输出到 `Editor.log` 而非 stderr，CI 脚本必须主动扫描该日志中的 `"Bake failed"` 或 `"Exception"` 关键字并以非零退出码终止流水线。
+- **GPU 驱动隔离**：在无显示器的 Linux Agent 上使用 Progressive GPU Lightmapper 需配置虚拟帧缓冲（`Xvfb :99 -screen 0 1280x720x24 &`）并设置环境变量 `DISPLAY=:99`，否则 GPU 上下文初始化失败会静默回退至 CPU 模式，烘焙时间翻倍而无任何警告。
+
+---
 
 ## 实际应用
 
-**大型 MMO 项目的夜间烘焙流水线**：某款包含 200 个关卡场景的手机 MMO 采用如下策略——白天美术提交资产，每晚 22:00 由 Jenkins 定时任务拉取主干，执行差异构建脚本，对当日变更的 12–30 个场景重新烘焙，产物上传 S3，第二天早上程序员拉取最新包含烘焙贴图的构建进行集成测试。全量烘焙保留为每周一次，利用 8 核 Xeon 机器并行跑约 11 小时。
+**案例：多场景移动项目的每夜烘焙**
 
-**导航网格自动化验证**：除光照外，NavMesh 也是烘焙自动化的重要目标。CI 流水线在每次关卡几何变更后调用 `NavMeshBuilder.BuildNavMeshAsync()`，并通过自定义断言检查生成的 NavMesh 是否覆盖率超过 95%（相对于预定义的可行走面积基准），低于阈值则将 CI Job 标记为失败并通知关卡设计师。
+某采用 Unity 2022 LTS 开发的移动 RPG，包含 35 个独立场景，每个场景平均包含 180 个静态 Mesh Renderer。团队在 Jenkins 上配置每夜定时任务（Cron `0 2 * * *`），执行以下流程：
+
+1. 从 Git LFS 拉取最新美术资产。
+2. 运行差异哈希检测脚本，识别出当天有改动的 8 个场景。
+3. 以 `-batchmode` 启动 Unity，依次对 8 个场景调用 `Lightmapping.Bake()`，使用 Progressive CPU（因 CI Agent 无独立 GPU）。
+4. 烘焙完成后，将生成的 `.exr` 光照贴图和 `LightingData.asset` 提交至专用 `lighting` 分支，供主分支通过 git subtree 合并。
+5. 若任一场景烘焙失败，Slack Webhook 自动推送包含场景名称和错误摘要的告警消息。
+
+整个流程从原来每周人工烘焙一次（耗时 6 小时以上）压缩为每夜自动完成（平均 1.5 小时），并实现了烘焙结果的完整版本溯源。
+
+---
 
 ## 常见误区
 
-**误区一：在 batchmode 下直接使用异步 API 不做等待**。`Lightmapping.BakeAsync()` 返回一个协程，在 `-batchmode` 下 Unity 的 `EditorCoroutineUtility` 并不会自动 tick，必须在 `EditorApplication.update` 回调中轮询 `Lightmapping.isRunning` 状态，或改用同步的 `Lightmapping.Bake()`，否则进程会在烘焙完成前就因 `-quit` 标志退出，留下空白的光照贴图文件。
+**误区一：`-batchmode` 等同于彻底无 GPU 运行**
 
-**误区二：将烘焙产物直接提交进 Git 主分支**。光照贴图 `.exr` 文件格式为二进制，单张可达 64MB，200 个场景意味着仓库每次全量烘焙增加数 GB 历史记录。正确做法是配置 `.gitattributes` 将 `*.exr` 标记为 Git LFS 指针对象，或完全不提交产物而依赖 CI 制品服务器按 commit hash 检索。
+许多开发者误以为 `-batchmode` 模式下所有 GPU 功能均不可用，因此在 CI 配置中不安装显卡驱动。实际上，`-batchmode` 仅关闭渲染窗口（Display），并不禁用 Compute Shader。Progressive GPU Lightmapper 在正确配置显卡驱动和 `DISPLAY` 环境变量后可在 `-batchmode` 下正常运行，速度通常是 CPU 模式的 5 倍以上。
 
-**误区三：差异构建忽略共享光照资产的依赖传播**。若多个场景共用同一个 `LightingSettings.asset` 或 HDR 天空盒贴图，修改该共享资产后差异脚本若只检查 `.unity` 场景文件本身的变更则会漏掉所有依赖这些共享资产的场景。正确实现需要构建一张资产依赖图（可通过 `AssetDatabase.GetDependencies()` 获取），将共享资产的变更扩散到所有依赖它的场景，再计算最终需要重烘的场景集合。
+**误区二：差异构建仅需比较文件修改时间戳**
+
+用文件 `mtime` 做差异检测在 Git 工作流中完全不可靠——`git checkout` 和 `git lfs pull` 会将文件时间戳重置为操作时刻，导致所有资产每次都被判定为"已修改"。正确做法是基于文件内容哈希（SHA-256 或 xxHash）或 Git 对象 SHA-1 进行比较，确保只有内容真正变化的资产才触发重烘焙。
+
+**误区三：烘焙产物不需要纳入版本控制**
+
+部分团队将烘焙产物（`LightingData.asset`、`*.exr` 光照贴图）列入 `.gitignore`，依赖开发者本地烘焙。这导致不同开发者机器上因 CPU/GPU 差异产生像素级不一致的光照贴图，在运行时表现为场景切换时光照闪烁（Lightmap Atlas ID 不匹配）。烘焙产物应通过 Git LFS 统一存储，并与触发该次烘焙的资产提交形成一对一的 Tag 关联。
+
+---
 
 ## 知识关联
 
-烘焙自动化建立在**自动化工具**（编辑器脚本、命令行调用、CI 配置文件）的基础能力之上——理解如何编写 Unity 的 `MenuItem` 静态方法或 Unreal 的 `Commandlet` 是实现烘焙入口的前提。进一步地，烘焙自动化与**资产管线自动化**高度协同：光照贴图压缩格式（ETC2 vs ASTC）的选择需在烘焙完成后由纹理导入器自动处理，这要求烘焙脚本与贴图后处理脚本按顺序编排在同一流水线中。差异构建中的依赖图分析技术与**增量构建系统**（如 Gradle、Bazel 的输入哈希追踪机制）原理一致，理解后者有助于设计更健壮的烘焙缓存失效策略。
+烘焙自动化以**自动化工具**的基础能力为前提——具体指编辑器脚本 API（如 Unity 的 `AssetDatabase`、`EditorApplication`，Unreal 的 `IAutomationControllerManager`）和命令行参数体系。没有这些 API，`-batchmode` 下就无法以编程方式控制烘焙范围、读取烘焙进度或在失败时返回正确的退出码。
+
+在知识图谱的横向关联上，烘焙自动化与**Addressables 构建自动化**共享"哈希差异比对→增量处理"的设计模式，但烘焙自动化处理的是预计算渲染数据（光照、遮挡、NavMesh），而非运行时加载的游戏资产包。此外，烘焙自动化生成的光照贴图 `.exr` 文件通常体积在 50–200 MB 之间，对 CI Agent 的磁盘 I/O 和 Git LFS 带宽有具体的基础设施要求，在设计流水线时需与 DevOps 团队就 Artifact Storage 策略（保留最近 N 次构建或按 Tag 保留）达成明确约定。

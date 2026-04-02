@@ -20,100 +20,114 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # Git基础
 
 ## 概述
 
-Git 是由 Linus Torvalds 于 2005 年 4 月为管理 Linux 内核代码而创建的分布式版本控制系统。与 CVS、Subversion 等集中式系统不同，Git 的每个本地仓库都包含完整的历史记录和版本管理能力，无需持续连接中央服务器即可完成大多数操作。Git 首次公开发布时，Torvalds 的设计目标是：速度、数据完整性保证以及对非线性开发（数千个并行分支）的支持。
+Git 是由 Linus Torvalds 于 2005 年 4 月为管理 Linux 内核源代码而开发的分布式版本控制系统。最初版本仅用 10 天完成原型，第一个正式版本 Git 0.99 于同年 7 月发布。与 CVS、SVN 等集中式系统不同，Git 的每个本地仓库都包含完整的历史记录和版本信息，无需持续连接中央服务器即可提交、查看历史或创建分支。
 
-Git 的工作模型建立在三个区域的概念之上：工作目录（Working Directory）、暂存区（Staging Area / Index）和本地仓库（Repository）。这三个区域的分离是 Git 有别于大多数版本控制系统的核心设计。理解这三个区域之间文件状态的流转，是掌握 Git 日常操作的基础。
+Git 的核心数据模型不是基于文件差异（delta）存储，而是基于**快照**（snapshot）存储。每次提交时，Git 会对当时所有被跟踪文件拍摄一张完整快照，并保存指向该快照的引用。若某文件未发生变化，Git 不会重复存储其内容，而是保存一个指向上一个相同文件的链接。这种设计使得 Git 的分支操作极为廉价，切换分支只需移动一个 40 字节的 SHA-1 指针。
 
-对于软件工程团队而言，Git 的意义不仅在于备份代码，更在于它将每一次修改的"为什么"通过提交信息（commit message）永久记录下来，使得代码历史本身成为项目文档的一部分。一个规范的 Git 工作流能够让团队成员追溯任意时间点的代码状态，精确定位某个 Bug 是在哪次提交中引入的。
+理解 Git 的工作流对于软件团队协作至关重要。一个错误的 `git push --force` 可以覆盖团队成员的工作，而正确掌握暂存区机制则允许开发者将一个文件的部分修改拆分成多个语义清晰的提交，大幅提升代码审查效率。
 
 ---
 
 ## 核心原理
 
-### 仓库初始化：`git init` 做了什么
+### 仓库初始化与 .git 目录结构
 
-执行 `git init` 命令后，Git 会在当前目录下创建一个名为 `.git` 的隐藏目录。该目录包含以下关键子目录和文件：
-- `objects/`：存储所有数据对象（blob、tree、commit、tag）
-- `refs/`：存储分支和标签指针
-- `HEAD`：一个文本文件，初始内容为 `ref: refs/heads/master`（或 `main`），指向当前所在分支
-- `config`：仓库级别的配置文件，优先级高于全局配置 `~/.gitconfig`
+执行 `git init` 后，Git 在当前目录创建 `.git` 隐藏目录，这是整个仓库的数据库。`.git` 目录包含以下关键子目录和文件：
 
-删除 `.git` 目录将立即销毁整个仓库历史，工作目录中的文件不受影响但不再被 Git 追踪。`git clone` 的本质是复制远程仓库的完整 `.git` 目录内容到本地。
+- **objects/**：对象存储区，存放所有 blob（文件内容）、tree（目录结构）、commit（提交）和 tag 对象，以 SHA-1 哈希的前 2 位作为子目录名，后 38 位作为文件名。
+- **refs/heads/**：存放各本地分支指针，每个文件内容是一个 40 字符的 SHA-1 哈希值。
+- **HEAD**：一个文本文件，通常内容为 `ref: refs/heads/main`，指向当前所在分支。
+- **config**：仓库级别的配置文件，优先级高于全局配置 `~/.gitconfig`。
+- **index**：暂存区的二进制索引文件，记录下次提交将包含的文件快照。
 
-### 暂存区：Git 的"草稿台"
+对于已有项目，`git clone <url>` 不仅下载所有对象，还会自动设置名为 `origin` 的远程仓库引用，并将默认分支检出到工作区。
 
-暂存区（Index）是 Git 独有的中间层，物理上对应 `.git/index` 这个二进制文件。它记录了"下一次提交将包含哪些内容"，允许开发者从一批修改中有选择地组织提交。
+### 三个工作区域与文件状态转换
 
-`git add <file>` 命令将文件的当前内容生成一个 blob 对象（以文件内容的 SHA-1 哈希值命名）存入 `objects/` 目录，并将该哈希值登记到 `index` 文件中。这意味着执行 `git add` 之后再修改文件，暂存区保存的仍是执行 `add` 时的版本，而非最新修改——这是初学者最常遭遇的困惑之一。
+Git 管理文件时涉及三个截然不同的区域：
 
-`git add -p`（交互式暂存）允许将同一文件中不同代码块（hunk）分批加入暂存区，实现"一次修改、多次提交"的精细控制。
+1. **工作区**（Working Directory）：磁盘上实际可编辑的文件。
+2. **暂存区**（Staging Area / Index）：下次提交的准备区域，存储在 `.git/index` 文件中。
+3. **本地仓库**（Local Repository）：已提交的永久历史，存储在 `.git/objects/` 中。
 
-### 提交工作流与对象模型
+文件状态转换遵循固定路径：`Untracked → Staged → Committed → Modified → Staged`。执行 `git add <file>` 将工作区的修改写入暂存区（即更新 `.git/index` 并在 `objects/` 中创建对应的 blob 对象）。执行 `git commit` 则基于暂存区当前内容创建一个新的 commit 对象，包含作者信息、时间戳、父提交的 SHA-1 引用以及根 tree 对象的引用。
 
-`git commit` 将暂存区的当前状态打包成一个 commit 对象。该对象包含四项内容：一个指向目录树快照（tree 对象）的指针、父 commit 的 SHA-1 哈希值、作者/提交者信息及提交时间戳，以及提交信息文本。
+`git status` 输出分为两栏：`Changes to be committed`（暂存区与上次提交的差异）和 `Changes not staged for commit`（工作区与暂存区的差异）。两栏同时出现意味着同一文件被修改后部分暂存、又继续修改。
 
-每个 commit 的 SHA-1 哈希值（40 位十六进制字符串，如 `a3f5c2d...`）由以上所有内容共同决定。修改提交信息或作者信息都会产生一个全新的哈希值，这也是为什么 `git commit --amend` 会改变 commit 历史、不能对已推送的提交随意使用的原因。
+### 提交对象与 SHA-1 哈希
 
-三个区域之间的状态转换命令如下：
+每个 Git 提交对象包含固定格式的元数据，其 SHA-1 由以下内容共同决定：
 
 ```
-工作目录  --git add-->   暂存区   --git commit-->  本地仓库
-          <--git restore-- (丢弃工作目录修改)
-                         <--git restore --staged-- (撤出暂存区)
-          <-----------git checkout <commit>------  (切换到历史版本)
+commit <size>\0
+tree <tree-sha1>
+parent <parent-sha1>
+author <name> <email> <timestamp> <timezone>
+committer <name> <email> <timestamp> <timezone>
+
+<commit message>
 ```
 
-`git status` 同时展示工作目录与暂存区的差异，`git diff` 显示工作目录相对暂存区的差异，`git diff --staged` 显示暂存区相对上次提交的差异。
+由于 SHA-1 的输入包含父提交哈希，修改历史中任何一个提交（例如通过 `git commit --amend`）都会导致该提交及其所有后代提交的哈希值全部改变。这是 Git 历史不可篡改性的数学基础，也是为何 `--amend` 已推送的提交会给协作者带来麻烦的根本原因。
+
+`git log --oneline` 显示每个提交的缩短 SHA-1（默认 7 位）。当仓库规模增大时，Git 会自动使用更多位数以避免碰撞。Linux 内核仓库约有 100 万个提交，通常需要 12 位前缀才能唯一标识一个提交。
 
 ---
 
 ## 实际应用
 
-**场景一：修复一个 Bug 同时调整了多处代码**
+**场景一：将一次大改动拆分为多个语义提交**
 
-假设你在修复登录验证逻辑时，顺手改了一处 UI 样式。通过 `git add -p` 可以只将逻辑修复的代码块加入暂存区，先提交一个"fix: 修复登录 token 过期未跳转的问题"，再提交一个"style: 调整登录按钮边距"。这两个提交的职责清晰，日后查阅 `git log` 时便于理解。
+假设你同时修改了 `user.py` 中的登录逻辑和错误提示文案。使用 `git add -p user.py`（交互式暂存），Git 会将文件按 hunk（差异块）逐一呈现，你可以用 `y`（暂存）、`n`（跳过）、`s`（拆分更小块）来选择性暂存，从而将一个文件的修改拆分成两次独立的提交，分别对应功能修复和文案调整。
 
-**场景二：初始化一个新项目**
+**场景二：撤销操作的正确选择**
+
+- `git restore <file>`：丢弃工作区修改，恢复到暂存区版本（Git 2.23+ 推荐命令，替代旧版 `git checkout -- <file>`）。
+- `git restore --staged <file>`：将文件从暂存区移出，退回工作区，但保留磁盘上的修改内容。
+- `git commit --amend --no-edit`：将暂存区的新修改追加到上一次提交，且不修改提交信息，适合修正刚提交时遗漏的文件。
+
+**场景三：初始化新项目的标准流程**
 
 ```bash
-mkdir my-project && cd my-project
-git init
+git init my-project
+cd my-project
 echo "# My Project" > README.md
 git add README.md
-git commit -m "Initial commit: add README"
+git commit -m "init: add README"
+git remote add origin https://github.com/user/my-project.git
+git push -u origin main
 ```
 
-此时 `.git/refs/heads/master`（或 `main`）文件中存储了第一个 commit 的 SHA-1 值，项目历史正式建立。
-
-**场景三：查看提交历史**
-
-`git log --oneline --graph` 以简洁的单行格式附带 ASCII 分支图展示历史，常用于快速了解项目的提交脉络。`git show <commit-hash>` 可查看某次提交引入的具体变更内容。
+`-u` 参数设置上游追踪关系，此后可直接使用 `git push` 和 `git pull` 而无需指定远程和分支名。
 
 ---
 
 ## 常见误区
 
-**误区一："暂存后再修改文件，下次提交会包含最新修改"**
+**误区一：`git add .` 与 `git add -A` 完全相同**
 
-执行 `git add` 时 Git 已将文件内容的快照写入 `objects/`，此后对该文件的修改不会自动更新暂存区。必须再次执行 `git add` 才能将新内容纳入下次提交。`git status` 此时会同时显示该文件出现在"Changes to be committed"和"Changes not staged for commit"两个区域，这一现象是最直接的提示。
+在 Git 2.x 中，`git add .` 暂存当前目录及其子目录的所有变更（含新文件、修改、删除），行为已与 `git add -A` 一致。但在 Git 1.x 中，`git add .` 不会暂存当前目录以外的删除操作，而 `git add -A` 会处理整个工作区。若仓库中存在使用旧版 Git 的团队成员，这一差异可能导致提交内容不一致。
 
-**误区二："`git add .` 与 `git add -A` 效果相同"**
+**误区二：`git commit -m` 之后文件就"备份到服务器"了**
 
-在 Git 2.x 版本中，`git add .` 从当前目录递归暂存所有新增和修改（包括子目录），也会暂存当前目录下的删除操作；`git add -A` 则无论当前所在目录，始终作用于整个仓库根目录，包含全部新增、修改和删除。在仓库子目录中运行时，两者行为存在差异。
+`git commit` 只在本地仓库（`.git/objects/`）创建提交对象，不涉及任何网络操作。代码必须通过 `git push` 才会上传到远程仓库。新手常见的错误是连续提交数天后才首次推送，导致远程仓库无法及时反映进度，也无法触发 CI/CD 流水线。
 
-**误区三："提交之后代码就安全了"**
+**误区三：删除工作区文件等于告知 Git 删除了该文件**
 
-`git commit` 仅将数据保存在本地 `.git` 目录中。只有执行 `git push` 将提交推送到远程仓库（如 GitHub、GitLab），数据才有了异地备份。本地磁盘损坏将导致未推送的所有提交永久丢失。
+直接在文件系统删除文件（如 `rm file.txt`）后，`git status` 会显示该文件为 `deleted`（未暂存状态），但该删除**不会**出现在下次提交中，除非执行 `git rm file.txt`（同时删除工作区并暂存删除操作）或 `git add file.txt`（将已删除状态暂存）。
 
 ---
 
 ## 知识关联
 
-**前置概念**：版本控制概述建立了"快照 vs. 差异"的基本认知框架。Git 采用快照模型——每次提交存储整个项目状态的快照（通过 SHA-1 去重避免冗余），而非记录文件变化的差异列表。这与 SVN 的 delta 存储策略截然不同，是理解 Git 高效分支切换的前提。
+**与前置概念的衔接**：版本控制概述介绍了"为什么需要追踪文件历史"的动机，而 Git 基础将这一抽象需求具体化为 `git init`、`git add`、`git commit` 三个命令和三个工作区域的物理实现。SHA-1 快照模型是理解后续所有高级操作的基础。
 
-**后续方向**：掌握三区域工作流之后，**Git 分支策略**将在此基础上引入 `HEAD` 指针的移动机制——分支本质上只是指向某个 commit 的可移动指针，分支切换即是改变 `HEAD` 的指向。**忽略规则**（`.gitignore`）解决的是如何让特定文件永久不进入暂存区的问题，直接作用于 `git add` 的行为。**Git 内部原理**则会深入 `objects/` 目录，剖析 blob、tree、commit 四种对象类型的二进制存储结构——这些对象在本文中已多次提及，届时将得到完整的技术解释。
+**通向后续概念**：掌握 commit 对象的不可变性和 HEAD 指针的移动逻辑，是理解**Git 分支策略**（branch 不过是指向 commit 的可移动指针）的直接前提。`.git/info/exclude` 和 `.gitignore` 文件的优先级规则属于**忽略规则**的专项内容。`git commit --amend` 修改提交哈希的原理，则直接延伸至 **Cherry-pick 与补丁**（`git format-patch` 基于提交元数据生成 .patch 文件）以及 **Git 内部原理**（pack 文件、引用日志 reflog 的存储机制）等进阶主题。

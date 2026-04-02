@@ -20,53 +20,62 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-04-01
 ---
+
 # GPU模拟
 
 ## 概述
 
-GPU模拟（GPU Compute Sim）是Niagara系统中的一种粒子执行模式，它将粒子的生成、更新、碰撞等所有计算任务从CPU迁移到GPU的计算着色器（Compute Shader）上执行。与CPU模拟每帧仅能在单线程或有限线程中处理数千粒子不同，GPU模拟利用GPU的大规模并行架构，理论上可在单帧内同步处理**数十万乃至数百万个粒子**，同时保持60fps的实时渲染性能。
+GPU模拟（GPU Compute Sim）是Niagara粒子系统中将粒子运算从CPU迁移到GPU上并行执行的计算模式。与CPU模拟每帧只能串行处理数千至数万个粒子不同，GPU模拟利用显卡的数千个着色器核心同时处理粒子，理论上可在单个发射器中支持超过百万量级的粒子，同时保持可接受的帧率。
 
-该功能的基础是DirectX 11引入的Compute Shader技术（2009年），Unreal Engine 4.20版本将其整合进Niagara系统的早期Preview版本，至UE5正式成为生产级特性。GPU模拟的核心意义在于打破了CPU粒子数量的上限瓶颈——大型烟雾、沙尘暴、成千上万枚子弹的弹道轨迹，这些效果在CPU模拟下会导致明显的帧率下降，而GPU模拟将计算负载转移到本就负责图形渲染的硬件上，实现了计算资源的充分利用。
+GPU模拟对应的底层技术是Unreal Engine的Compute Shader管线。Niagara在UE4.20版本（2018年）正式引入GPU Compute Sim选项，取代了旧Cascade系统中有限的GPU Sprite支持。其核心实现是将每个粒子的Update逻辑编译成HLSL Compute Shader，由GPU的CS阶段并行执行，粒子状态数据全程存储在GPU端的结构化缓冲区（StructuredBuffer）中，无需每帧回传CPU，极大降低了总线带宽压力。
+
+在制作需要大规模粒子的特效时——例如沙尘暴、群体火花、流体泡沫——GPU模拟是性能可行性的关键前提。同样的百万粒子场景，CPU模拟往往导致帧率跌至个位数，而GPU模拟在中端显卡上可维持60fps以上。
 
 ## 核心原理
 
-### 执行模型：并行线程组
+### 执行模型：线程组与粒子并行
 
-GPU模拟的调度单位是**线程组（Thread Group）**。Niagara GPU模拟默认将粒子分配到大小为64的线程组中，每个线程对应一个粒子的计算任务。当场景中有512,000个活跃粒子时，系统会自动分配8,000个线程组并行执行。这与CPU模拟的串行逐粒子迭代有本质区别：CPU每帧遍历所有粒子的时间复杂度为O(n)，而GPU模拟在线程数充足时接近O(1)的墙钟时间（wall-clock time）。
+GPU模拟将粒子数组切分成固定大小的线程组（Thread Group），每个线程对应一个粒子的计算单元。Niagara默认的线程组大小为 **64**（即`[numthreads(64,1,1)]`），这意味着粒子总数会被填充为64的整数倍进行调度。Spawn和Update模块中编写的所有节点逻辑，均被编译为对应的CS入口函数。粒子属性（位置、速度、颜色等）存储在GPU端的`RWStructuredBuffer<float4>`中，每帧直接在GPU内存中原地更新，避免了CPU→GPU的数据上传开销。
 
-### 粒子数据存储：GPU缓冲区结构
+### 数据隔离与CPU交互限制
 
-CPU模拟的粒子属性存储在系统主内存（RAM）中，而GPU模拟的所有粒子属性——位置（float3）、速度（float3）、生命周期（float）、颜色（float4）等——均以**StructuredBuffer**或**RWBuffer**的形式常驻于显存（VRAM）中。这意味着每帧CPU端**无需回读粒子数据**，避免了PCIe总线传输的延迟（典型延迟约0.3ms~1ms，对于百万级粒子可能高达数毫秒）。启用GPU模拟后，在Niagara发射器属性面板中将"Sim Target"设置为`GPUCompute Sim`，同时需关闭`Fixed Bounds`外的动态边界估算。
+由于粒子数据驻留在GPU，CPU无法在运行时直接读取单个粒子的位置或状态。这导致以下限制在GPU模拟中**不可用**：
+- **碰撞事件（Collision Event）的CPU路径**：GPU粒子碰撞需改用Scene Depth Buffer进行屏幕空间深度碰撞，精度受摄像机视角限制，且无法在被遮挡区域产生碰撞。
+- **Spawn On Event（基于事件生成）**：GPU模式下粒子死亡事件无法触发另一CPU发射器的Spawn，若需粒子死亡时产生子粒子，必须将子发射器也设为GPU模拟并使用GPU事件（GPU Event）。
+- **获取粒子数量（Get Particle Count）到蓝图**：蓝图无法实时获取GPU粒子数量，因读回操作会引发GPU→CPU同步气泡（Stall）。
 
-### 粒子上限与Fixed Bounds
+### 固定边界（Fixed Bounds）的必要性
 
-GPU模拟要求在编辑阶段手动指定**最大粒子数（Max GPU Particle Count）**，默认上限为**1,048,576（即2²⁰ = 1M）**粒子，这是因为GPU显存缓冲区必须在初始化时静态分配。超出此数量的粒子发射请求会被系统静默丢弃，不会触发运行时报错，因此性能调试时需特别注意实际粒子数与上限的关系。与此同时，GPU模拟必须配置**Fixed Bounds**（固定包围盒），因为GPU端的粒子位置数据无法在每帧廉价地同步回CPU用于Visibility Culling的AABB计算，固定包围盒告知渲染器该发射器始终占据的空间范围。
+CPU模拟的粒子可以动态计算包围盒，而GPU粒子的位置数据无法被CPU实时读取，因此必须手动设置**Fixed Bounds**。在Niagara发射器属性面板中，将`Fixed Bounds`勾选并填写合适的Min/Max坐标范围（单位为本地空间厘米）。若Fixed Bounds设置过小，粒子超出范围时会被视锥剔除（Frustum Culling）错误裁剪，导致粒子凭空消失。建议边界至少比粒子运动范围扩大20%作为安全余量。
 
-### 碰撞与深度缓冲采样
+### 深度碰撞（Depth Buffer Collision）
 
-GPU模拟支持基于**场景深度缓冲（Scene Depth Buffer）**的碰撞检测，对应Niagara模块`Collision (GPU)`。该模块在每个粒子的移动步骤中对当前帧的深度贴图进行采样，将粒子的屏幕空间投影位置与深度值比较，检测穿透后执行反弹或销毁。这种方法计算代价极低（每粒子约1次纹理采样），但存在固有局限：**相机背面或屏幕外的几何体无法参与碰撞**，且碰撞精度受深度缓冲分辨率影响。
+GPU模拟的碰撞通过采样场景深度图（Scene Depth Texture，格式为`SceneDepth R32`）近似实现。模块`Collision (GPU)`将粒子的世界坐标投影为屏幕UV，采样深度值还原出碰撞位置，再通过法线偏转速度向量。该方法的计算开销约为每粒子**4次纹理采样**，在粒子数量百万级时仍比物理碰撞快数个数量级。但其本质限制在于：摄像机背面或被遮挡的几何体无法参与碰撞判定。
 
 ## 实际应用
 
-**大规模弹道与战场粒子效果**：在射击类游戏中，同屏爆炸产生的碎石、弹壳、火星可能需要50,000~200,000粒子同时运动。使用GPU模拟后，单个爆炸效果的粒子数可从CPU模式下的500个提升至50,000个，视觉密度提升100倍，而GPU耗时仅增加约0.8ms（在RTX 3080级别GPU上测试数据）。
+**沙漠沙尘暴特效**：在《堡垒之夜》等项目的公开拆解中，沙尘暴使用单个GPU模拟发射器维持约800,000个沙粒粒子，结合Deep Buffer Collision使沙粒贴合地表流动，整体GPU开销控制在1.2ms以内（RTX 2070参考值）。CPU模拟同等粒子量需要约40ms，完全不可行。
 
-**流体状烟雾与大气散射**：体积烟雾效果通常需要在3D空间中密集分布数十万个代表烟雾微粒的点粒子或Sprite粒子。结合`Curl Noise Force`模块，GPU模拟可以在每帧内为每个粒子独立计算三维旋度噪声偏移，产生自然流动的烟雾形态，这在CPU模式下因计算量过大几乎无法实时运行。
+**流体泡沫模拟**：水面泡沫效果通常将GPU模拟发射器与Simulation Stage配合，粒子在每帧执行多次迭代（Multi-Iteration）来模拟粒子间的排斥力，实现类流体聚集行为。这种工作流必须在GPU模式下进行，因为Simulation Stage本身依赖Compute Shader的多Pass调度。
 
-**GPU模拟与Mesh粒子的结合**：在CPU模式下，每个Mesh粒子需要独立的Draw Call，10,000个Mesh粒子意味着10,000次Draw Call，这对渲染线程是灾难性的。切换到GPU模拟后，Niagara通过**GPU Instancing**将所有同类Mesh粒子合并为1次Instanced Draw Call，Draw Call数量降低至1，同时GPU端计算每个实例的变换矩阵，这是Mesh粒子大规模使用的前提条件。
+**大规模群体火花**：锻造、爆炸等工业特效需要数十万个金属火花粒子，每个粒子具有不同的冷却曲线和颜色变化。GPU模拟中用Curve采样模块结合粒子年龄（Normalized Age）更新颜色，所有计算在GPU内完成，对CPU帧时间贡献几乎为零。
 
 ## 常见误区
 
-**误区一：GPU模拟总是比CPU模拟快。** 对于粒子数量少于约5,000个的简单效果，GPU模拟反而可能因为Compute Shader的调度开销、显存分配和同步机制，导致比CPU模拟多出约0.1~0.3ms的固定成本。GPU模拟的优势需要粒子数量足够大才能显现，通常建议以**10,000粒子**作为考虑切换的参考阈值。
+**误区一：GPU模拟总是比CPU模拟更快**
+粒子数量较少时（通常低于5,000个），GPU模拟的Dispatch开销（Compute Shader调度的固定成本约0.05ms）反而使其慢于CPU模拟。GPU模拟的优势在粒子数超过约50,000个后才开始明显体现。盲目将所有发射器切换为GPU模拟会增加低粒子数特效的额外开销。
 
-**误区二：GPU模拟支持所有Niagara模块。** 许多依赖CPU端逻辑的模块——例如`Spawn Per Unit`的精确距离计算、读取场景Actor位置的`Get Actor Position`、以及大部分事件（Event）系统——在GPU模拟模式下不可用或功能受限。Niagara编辑器会用橙色警告标注不兼容模块，开发者切换Sim Target前必须审查模块兼容性列表。
+**误区二：只需切换为GPU模拟，其余设置不变**
+将发射器模拟目标从CPU切换为GPU后，所有使用了`Actor`或`Component`引用的模块将失效，因为GPU无法持有对象引用。同时，未设置Fixed Bounds会导致整个粒子系统被剔除或随机闪烁。切换后必须逐一检查模块兼容性并配置Fixed Bounds。
 
-**误区三：Fixed Bounds设大一些没有副作用。** 过大的Fixed Bounds会导致渲染器的遮挡剔除（Occlusion Culling）失效——即使粒子系统实际上完全在相机视锥之外，引擎仍会因为包围盒与视锥相交而执行GPU模拟计算，造成不必要的GPU开销。应将Fixed Bounds设置为粒子实际运动范围的1.1~1.5倍，而非无脑扩大。
+**误区三：GPU粒子数越多越好，可以无限堆砌**
+GPU显存（VRAM）对粒子属性缓冲区有硬性上限。每个粒子属性占用4字节（float）至16字节（float4），100万个粒子若有20个float4属性，则需要约**76.3MB VRAM**仅用于粒子数据。移动端显卡的VRAM往往只有1-2GB，大规模粒子会挤占用于贴图和几何体的显存，造成整体性能劣化。
 
 ## 知识关联
 
-学习GPU模拟需要先掌握**Mesh粒子**的基本配置，原因是GPU模拟与Mesh粒子结合时涉及Instanced Rendering的概念，理解Mesh粒子的Draw Call问题能让开发者清晰认识到GPU模拟在渲染批处理上的具体收益。
+GPU模拟建立在**Mesh粒子**的基础之上：Mesh粒子阶段已掌握粒子渲染的各种形态（Sprite、Ribbon、Mesh），GPU模拟则是对这些粒子类型的执行后端的替换——Mesh粒子在GPU模式下依然渲染为Mesh，但更新计算迁移到Compute Shader中。理解Mesh粒子的属性系统（位置、方向、缩放分别存于独立Buffer）有助于理解GPU端数据布局。
 
-GPU模拟是**Simulation Stage**（模拟阶段）的必要前提：Simulation Stage允许在单帧内对GPU粒子执行多次迭代计算（例如流体模拟的多步积分），而这种多Pass计算机制只有在粒子数据完全驻留于显存时才能高效实现，CPU模拟无法支持Simulation Stage。
-
-在性能分析方向，GPU模拟的开销需要通过**GPU Profile**（Unreal Insights中的GPU Track或`stat gpu`命令）来定量评估，CPU端的`stat Niagara`仅能反映CPU调度时间而非实际GPU计算耗时，两种工具的分工直接由GPU模拟的执行架构决定。
+学习GPU模拟之后，自然引出**Simulation Stage**：Simulation Stage是GPU模拟的扩展功能，允许在单帧内对粒子系统执行多个顺序的Compute Pass，实现粒子间交互（如格网采样、流体模拟）。Simulation Stage只在GPU模拟目标下可用，是构建高级物理特效的前置能力。另一个后续方向是**GPU Profile**：使用Unreal Insights或RenderDoc的Compute Shader时间戳，定位GPU模拟中耗时过高的模块，是性能优化闭环的最终工具。

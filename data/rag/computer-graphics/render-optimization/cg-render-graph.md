@@ -20,66 +20,80 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # 渲染图（Render Graph / Frame Graph）
 
 ## 概述
 
-渲染图（Render Graph，有时也称 Frame Graph）是一种将单帧渲染流程抽象为有向无环图（DAG）的资源管理与调度框架，由 Yuriy O'Donnell 在 2017 年 GDC 演讲《FrameGraph: Extensible Rendering Architecture in Frostbite》中系统性地提出并推广。在此框架中，图的每个节点（Node）对应一个渲染阶段（Pass），每条有向边则对应 Pass 之间的资源依赖关系，例如一个 Pass 写入的颜色缓冲恰好是下一个 Pass 读取的输入纹理。
+渲染图（Render Graph，也称 Frame Graph）是一种将帧内所有渲染Pass及其资源依赖关系显式声明为有向无环图（DAG）的高层抽象系统。其核心思想由 Yuriy O'Donnell 在 2017 年 GDC 演讲《Frame Graph: Extensible Rendering Architecture in Frostbite》中系统提出，Frostbite 引擎随后将其工程化落地。与传统的"命令式"渲染流程不同，渲染图要求程序员在帧开始时**声明**所有Pass的输入输出资源，引擎再根据依赖关系自动完成资源生命周期管理、Pass排序和屏障插入。
 
-在 Frostbite 引擎引入渲染图之前，大型渲染管线的资源生命周期完全由程序员手工管理，当 Pass 数量超过数十个时，极易出现资源泄漏、无效同步屏障（Barrier）过多，以及无法在主机端并行提交命令包等问题。渲染图通过编译期（Compile Phase）的可达性分析，自动裁剪当前帧中不影响最终 Backbuffer 的"死亡 Pass"，并为剩余 Pass 自动推导所有 GPU 资源的最优生命周期与访问状态转换。
+渲染图解决了现代渲染管线中两个长期存在的工程痛点：其一，GPU资源（Texture、Buffer）的瞬态生命周期管理极为复杂，手动跟踪每张RT何时可以被Alias极易出错；其二，Vulkan / D12等低层API要求开发者手动插入精确的Pipeline Barrier和Image Layout转换，传统写法容易引入过度同步或遗漏同步。通过图结构，这两类问题都可以算法化处理，大幅减少渲染工程师的心智负担。
 
-渲染图之所以重要，在于它将"**逻辑描述**"与"**物理执行**"彻底解耦：开发者在声明 Pass 时只需说明"我需要读取哪些资源、写入哪些资源"，而不必关心底层 API（Vulkan / D3D12 / Metal）所要求的具体 Image Layout、Resource State 或 Memory Barrier 时机。这使得渲染管线的新增、删除和重排变得如同编辑图结构一样直观。
+渲染图不仅是工程工具，它本质上也是一种**渲染优化框架**：通过自动裁剪（Culling）未被最终输出依赖的Pass、自动堆叠瞬态资源的显存别名（Memory Aliasing），可以将帧内GPU显存占用降低20%~40%（Frostbite的实测数据）。
 
 ---
 
 ## 核心原理
 
-### 1. 三阶段执行模型：Setup → Compile → Execute
+### 1. 图的构建阶段（Setup Phase）
 
-渲染图的每一帧处理分为三个严格顺序的阶段：
+在每帧开始时，渲染图进入Setup阶段。每个RenderPass通过调用 `builder.Read(resource)` 和 `builder.Write(resource)` 显式声明其资源依赖，并返回经过版本化的资源句柄（Versioned Handle）。每次 `Write` 操作会生成一个新版本号，例如资源 `GBuffer_Albedo` 在几何Pass中写入后变为版本1，SSAO Pass读取版本1后若再写入则升为版本2。这种版本化机制使得图中的每条有向边都精确对应"谁产生了哪个版本的数据"，从而构成真正的DAG而非带环图。
 
-- **Setup（注册阶段）**：所有 Pass 向渲染图声明自身的输入资源（`read`）和输出资源（`write`），并创建对应的虚拟资源句柄（Virtual Resource Handle）。此阶段仅填充图结构，不分配任何 GPU 内存，也不记录任何 GPU 命令。
-- **Compile（编译阶段）**：渲染图执行两项关键操作。第一，**剔除（Culling）**：从 Backbuffer 节点出发做逆向 DFS（深度优先搜索），将所有未被引用的 Pass 和资源标记为无效并丢弃，通常可裁剪 10%–30% 的无效工作。第二，**资源别名（Aliasing）**：对生命周期不重叠的虚拟资源分配同一块物理显存，Frostbite 内部数据显示此技术可节省约 **50% 的瞬态渲染目标（Transient Render Target）内存**。
-- **Execute（执行阶段）**：按拓扑排序顺序依次执行各 Pass 的回调函数，渲染图在每次 Pass 切换前自动插入精确的 Pipeline Barrier / Resource State Transition，并负责按需分配与释放物理资源。
+### 2. 编译阶段：Pass裁剪与资源生命周期计算
 
-### 2. 虚拟资源与物理资源的映射
+Setup完成后，渲染图执行一次**反向拓扑遍历**：从最终输出节点（如Swapchain Present节点）开始逆向标记所有被实际引用的Pass；未被标记的Pass（"无效Pass"）会被直接裁剪，其声明的资源也不会被分配显存。这一步的时间复杂度为 O(V + E)，其中 V 为Pass数量，E 为资源依赖边数量。
 
-渲染图引入"虚拟资源"概念，是实现自动内存别名的关键。每个虚拟资源由一个描述符（ResourceDesc）唯一标识，包含格式（Format）、分辨率、MipLevel 数、用途标志（Usage Flags）等信息。编译阶段会构建一张**资源生命周期区间表**，区间定义为 `[first_write_pass_index, last_read_pass_index]`，生命周期区间不重叠的资源可以安全共用同一显存地址。公式化描述如下：
+裁剪完成后，编译器遍历有效Pass的线性执行序列，计算每个资源的 **first_use** 和 **last_use** 时间戳，两个时间戳之间的帧段即为该资源的生命周期区间。不重叠的生命周期区间所对应的资源可进行**显存别名（Memory Aliasing）**——它们共享同一块物理显存，只是在不同时段激活。例如在典型的延迟渲染帧中，GBuffer中的 `Velocity` 纹理（生命周期：Pass 2–5）与 TAA 的 `MotionBlur_Temp`（生命周期：Pass 8–9）若大小格式一致，即可完全共用同一段显存。
 
-> 若资源 A 的区间为 [a₁, a₂]，资源 B 的区间为 [b₁, b₂]，且 a₂ < b₁ 或 b₂ < a₁，则 A 与 B 可别名同一物理内存块。
+### 3. 执行阶段：自动同步与Pass排序
 
-### 3. 自动 Barrier 推导与异步计算调度
+渲染图在已计算好的线性拓扑序下执行，对每对相邻Pass之间的资源状态转换自动生成 Pipeline Barrier（Vulkan）或 Resource Transition（D3D12）。具体来说，对于资源 R，若 Pass A 将其作为 `RENDER_TARGET` 使用，Pass B 将其作为 `SHADER_READ` 使用，则图系统自动在 A、B 之间插入：
 
-渲染图在 Execute 阶段利用编译期收集到的每个 Pass 对每个资源的最后访问类型（读/写/格式），为 Vulkan 生成精确的 `VkImageMemoryBarrier`，或为 D3D12 生成 `ResourceBarrierTransition`，避免了手工 Barrier 中普遍存在的"过度同步"问题（例如将所有资源统一转换为 `COMMON` 状态）。此外，渲染图可识别哪些 Pass 仅依赖 Compute Queue 资源，将其自动调度到独立的异步计算队列（Async Compute Queue）并行执行，GPU 并行度提升最高可达 **20%–40%**（依硬件而异）。
+```
+srcStageMask  = COLOR_ATTACHMENT_OUTPUT
+dstStageMask  = FRAGMENT_SHADER
+srcAccessMask = COLOR_ATTACHMENT_WRITE
+dstAccessMask = SHADER_READ
+oldLayout     = COLOR_ATTACHMENT_OPTIMAL
+newLayout     = SHADER_READ_ONLY_OPTIMAL
+```
+
+这种基于图结构生成的 Barrier 集合在正确性上有形式化保证：图中每条读写边恰好对应一条 Barrier，既不会遗漏同步，也不会插入冗余的全局屏障。
+
+### 4. 瞬态资源池与帧间复用
+
+渲染图将所有在图内创建并在帧末销毁的资源称为**瞬态资源（Transient Resources）**。这类资源通过带有哈希键（格式 + 大小 + Usage标志）的资源池管理，帧内创建时从池中匹配，帧末归还。持久资源（如历史帧的TAA缓冲区）则通过 `Import` 接口显式导入图中，其生命周期由外部代码控制。
 
 ---
 
 ## 实际应用
 
-**Unreal Engine 5 的 RDG（Rendering Dependency Graph）** 是目前应用最广泛的渲染图实现之一。UE5 中每个渲染 Pass 通过 `FRDGBuilder::AddPass()` 宏注册，资源通过 `FRDGTexture` / `FRDGBuffer` 等句柄引用，引擎在每帧 `FRDGBuilder::Execute()` 调用时完成编译与物理提交。Lumen 全局光照的多层 Pass（Screen Probe Gather → Radiance Cache Update → Denoiser）正是依赖 RDG 的拓扑排序确保正确执行顺序，同时将 Surface Cache 更新 Pass 自动卸载到 Async Compute。
+**Unreal Engine 5 的 RDG（Render Dependency Graph）**是目前工业界最广泛使用的渲染图实现。UE5 中的 RDG 使用 `FRDGBuilder` 类，每帧通过 `AddPass` 宏声明Pass及其 Lambda 回调，最终调用 `GraphBuilder.Execute()` 触发编译与执行。UE5 的 RDG 还实现了**Pass合并（Pass Merging）**优化：若相邻两个Pass均写入同一RenderTarget集合且无资源状态冲突，可被合并为同一个 Vulkan RenderPass，从而节省 Tile-Based GPU 上代价昂贵的 Framebuffer Flush 操作。
 
-**Frostbite 引擎的原始实现**中，Frame Graph 使得寒霜 AAA 游戏（如《战地 1》）将瞬态 RT 内存占用从约 **1.2 GB** 降低到约 **600 MB**，同时彻底消除了手工内存管理导致的渲染顺序错误类 Bug。
-
-在 **Vulkan / D3D12 的移植场景**中，渲染图还被用于自动生成 Render Pass 的 `loadOp`/`storeOp` 配置：若某 RT 在当前帧的上一次写入在同一物理 Render Pass 内，则 `loadOp` 可设为 `DONT_CARE`，节省移动端 TBDR（Tile-Based Deferred Rendering）架构上的带宽开销。
+在移动端延迟渲染（如基于 Mali GPU 的设备）中，渲染图的Pass合并尤为重要。Mali 的 TBDR 架构要求将几何Pass（MRT写入）与光照Pass（读取GBuffer）合并为同一个 Subpass，否则会触发 Resolve 操作，产生约 4~8 倍的带宽开销。渲染图的编译器可以自动检测这种可合并模式并生成 Vulkan Subpass，避免手动维护 RenderPass 兼容性矩阵。
 
 ---
 
 ## 常见误区
 
-**误区一：渲染图等同于多线程渲染**  
-渲染图的拓扑排序和资源别名机制本身是单线程完成的（Setup 和 Compile 阶段通常在主线程执行），它并不直接提供多线程命令录制能力。多线程提交需要在 Execute 阶段额外将 Pass 分组到不同 CommandList 并分配给工作线程，这是在渲染图之上叠加的并行策略，而非渲染图自身功能。
+**误区1：渲染图等同于多线程渲染**
+渲染图的核心价值是资源生命周期管理与自动同步，与多线程录制命令并无直接关联。渲染图可以在单线程上串行执行所有Pass回调，并行化是可选的优化方向，但不是渲染图概念本身的内容。混淆两者会导致工程师期望引入渲染图后自动获得多核性能提升，实际上渲染图在单线程下已具有完整价值。
 
-**误区二：渲染图的 Compile 阶段发生在 CPU 上，因此可以忽略其开销**  
-编译阶段虽在 CPU 执行，但对于包含 200+ Pass 的复杂帧（例如带完整阴影级联、SSAO、TAA 的场景），DAG 遍历与生命周期计算可消耗 **0.3–1.0 ms** 的 CPU 时间。UE5 的 RDG 为此引入了 Pass 合并（Pass Merging）和渲染图缓存（Graph Caching）等优化以降低重复帧的编译成本。
+**误区2：所有Pass都应声明为瞬态资源**
+对于需要跨帧持久化的资源（TAA历史帧缓冲、Shadow Map缓存、Irradiance Cache），若错误地声明为瞬态资源，渲染图会在帧末将其归还资源池，下一帧重新分配时数据已清零。正确做法是通过 `Import` 接口将这类资源以持久句柄引入图中，图只负责管理其帧内的读写顺序，不介入其分配与销毁。
 
-**误区三：资源别名对所有 GPU 资源都安全适用**  
-资源别名仅对生命周期严格不重叠的**瞬态资源**安全。跨帧持久化的资源（如 TAA 历史帧缓冲、Radiance Cache）绝对不能参与别名，否则会发生数据竞争。渲染图通常要求开发者在声明资源时显式标注 `Transient`（瞬态）或 `Imported`（外部导入/持久）标志，编译器据此决定是否允许该资源进入别名候选池。
+**误区3：渲染图的编译开销可以忽略**
+渲染图每帧需要执行拓扑排序、引用计数反向遍历和Barrier生成，对于包含200+个Pass的复杂帧，若未使用缓存机制，CPU侧的图编译时间可达0.5~1 ms。UE5 RDG 通过检测Pass集合是否变化来决定是否跳过重编译，称为"Pass Hash"机制。忽视这一开销并在每帧强制重编译，会在Pass数量增加时引入明显的CPU瓶颈。
 
 ---
 
 ## 知识关联
 
-**前置概念**：渲染优化概述中介绍的 GPU 管线阶段划分（Vertex → Rasterization → Fragment）和渲染目标（Render Target）概念，是理解渲染图中 Pass 输入/输出语义的直接基础。了解 D3D12 Resource State 或 Vulkan Image Layout 的状态机模型，有助于直观理解渲染图自动 Barrier 推导的工作内容。
+渲染图建立在**渲染优化概述**中介绍的GPU同步原语（Barrier、Semaphore）和显存分配策略之上——只有理解为何手动管理这些原语容易出错，才能体会渲染图自动化方案的必要性。
 
-**横向关联**：渲染图与**多线程命令录制**（Command Buffer Threading）、**GPU Work Graph**（D3D12 Agility SDK 1.710 引入的新特性，允许在 GPU 端动态派发节点工作负载）在设计思路上有共同的"图节点调度"哲学，但渲染图的调度在 CPU 完成，GPU Work Graph 的调度在 GPU 完成，两者解决的问题层次不同。渲染图编译产出的精确 Barrier 序列也是**GPU 帧调试工具**（如 RenderDoc、PIX）中 Resource State Timeline 视图的直接数据来源。
+在图内部，渲染图与**Vulkan RenderPass/Subpass**机制深度耦合：渲染图的Pass合并优化本质上是将逻辑Pass映射到Vulkan Subpass，充分利用 TileMemory；若对 Subpass Dependency 语义不熟悉，调试渲染图生成的 Barrier 集合时将非常困难。
+
+渲染图的资源版本化思想与**数据流分析（Data Flow Analysis）**中的SSA（Static Single Assignment）形式一脉相承——每次写入产生新版本，等价于 SSA 中对变量的重命名。对编译器原理有了解的工程师可以借助这一类比快速理解渲染图的版本化机制。掌握渲染图后，可进一步研究**可见性剔除**（将剔除结果作为渲染图的间接绘制参数）和**光线追踪管线集成**（光追Pass同样可作为渲染图节点，通过图机制与光栅化Pass共享加速结构资源）。

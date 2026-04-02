@@ -20,64 +20,86 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-04-01
 ---
+
 # 移动端优化
 
 ## 概述
 
-移动端优化是指针对智能手机和平板电脑等移动设备的硬件限制，对游戏或应用中的视觉特效进行专项裁剪与重构的技术体系。移动设备搭载的GPU架构与桌面端根本不同——ARM Mali、Adreno（高通）、Apple GPU等芯片均采用基于瓦片的延迟渲染（TBDR，Tile-Based Deferred Rendering），这一架构决定了移动端在带宽消耗和overdraw处理上有别于桌面端GPU的根本差异。
+移动端优化是指针对iOS和Android移动平台的硬件约束，对粒子系统、Shader特效和后处理效果进行专项裁剪与性能调整的技术实践。移动GPU（如高通Adreno、ARM Mali、苹果A系列芯片）普遍采用Tile-Based渲染架构（TBDR），与桌面端的IMR架构差异显著，这直接决定了移动端特效优化的策略方向。
 
-移动端特效优化的紧迫性源于硬件约束的严苛程度。以2023年主流安卓旗舰为例，GPU内存带宽约为桌面级GTX 1080的1/4，热设计功耗（TDP）仅约10W以内，而桌面GPU往往在150W以上运行。特效渲染如果不经针对性优化，会导致设备持续降频（throttling），造成帧率骤降和机身过热。
+移动端特效优化的压力来源于三个硬件瓶颈：显存带宽有限（中端手机通常仅有20-30 GB/s，而桌面GPU可达300+ GB/s）、热设计功耗（TDP）极低（手机SoC通常在3-10W范围），以及统一内存架构（UMA）导致CPU与GPU共享内存带宽。这意味着桌面端可以接受的"全屏AlphaBlend粒子风暴"在移动端几乎必然导致过热降频。
 
-移动端优化的意义在于，它直接决定特效在中低端设备上的可运行性，而非仅仅影响画质表现。全球移动游戏市场中，中低端设备用户占比超过60%，若特效不经优化，这部分用户将面临无法流畅运行的问题，直接影响产品的商业可行性。
+理解移动端优化之所以在特效工作流中独立成体系，是因为它的优化方向有时与桌面端完全相反——例如移动端要尽量减少Overdraw，而桌面端更关注Shader计算复杂度。
 
 ---
 
 ## 核心原理
 
-### 移动GPU的TBDR架构与overdraw控制
+### Overdraw与Fill Rate限制
 
-TBDR架构将屏幕划分为若干16×16像素的小瓦片（tile），逐块处理渲染。这意味着overdraw（同一像素被多次绘制）会使片元着色器在片上内存内反复执行，迅速耗尽有限的寄存器资源。移动端特效的overdraw应严格控制在2倍以内；对比桌面端，通常允许4~6倍overdraw而不产生明显性能问题。具体手段包括：将粒子系统的最大粒子数量从桌面版的500个削减至移动版的50~100个，并将粒子混合模式优先选用加法（Additive）而非Alpha混合（Alpha Blend），因为Additive可利用early-z提前剔除遮挡粒子。
+移动端最关键的特效性能指标是**Overdraw**（像素过绘制率）。在1080p屏幕上，每帧填充一次全部像素需要约200万次片元操作；若屏幕被半透明粒子覆盖5层，Overdraw即为5x，实际消耗1000万次片元操作。Unity的Frame Debugger和RenderDoc的Overdraw可视化模式可以直观检测这一问题。移动端一般建议将Overdraw控制在**2x以内**，超过3x即视为高风险区域。
 
-### 着色器精度与ALU消耗削减
+优化手段包括：将粒子Billboard的透明贴图替换为Alpha Cutout（clip指令丢弃透明像素，避免写入framebuffer）；对远景粒子设置Camera距离裁剪（Cull Distance）；以及使用更小的粒子发射区域，用更密集的小粒子替代大范围稀疏粒子。
 
-移动端着色器中，使用`half`（16位浮点）代替`float`（32位浮点）是最直接的优化手段。在Adreno和Mali架构上，half精度运算吞吐量是float的2倍。具体规则：颜色值、UV坐标、粒子透明度使用`half`；世界空间坐标、深度值必须保留`float`。同时，移动端特效着色器的指令数（ALU instruction count）应尽量控制在64条以内，超过此阈值在Mali G57等中端GPU上会触发寄存器溢出（register spill），导致性能骤降约30%~50%。
+### Shader复杂度控制
 
-### 纹理格式与内存带宽压缩
+移动端GPU的ALU（算术逻辑单元）数量远少于桌面端。以高通Adreno 650为例，其Shader处理器数量约为桌面端GTX 1060的1/10。因此移动端特效Shader必须遵守**指令数上限**：Adreno系列推荐片元Shader不超过64条ALU指令，Mali系列对分支（if-else）极为敏感，应优先用Step()、Lerp()等数学函数替代动态分支。
 
-移动端特效纹理必须使用平台专属压缩格式，而非通用PNG或未压缩图集。Android设备优先采用ETC2（不支持Alpha通道时用ETC1），iOS设备采用ASTC（Adaptive Scalable Texture Compression）。以一张256×256的RGBA纹理为例：未压缩占用256KB，ETC2压缩后降至64KB，ASTC 6×6块压缩后约为28KB，带宽节省超过85%。特效粒子纹理通常仅需64×64或128×128分辨率，使用更高分辨率纹理对移动端视觉提升几乎可忽略不计，却造成数倍带宽浪费。
+在Unity中，可通过Shader Inspector查看"Render queue"与指令数估算；在Shader代码中使用`#pragma target 2.0`可强制限制Shader Feature使用的功能集，同时对移动端关闭法线映射（Normal Map）、减少采样次数（如将Soft Particles的深度采样改为Hard Cutoff）。
 
-### 粒子系统LOD与生命周期裁剪
+### 粒子系统参数精简
 
-移动端粒子系统应结合可扩展性设置建立专属LOD层级。距摄像机超过15米的粒子效果应切换至Impostor（公告板替代）或直接关闭子发射器（SubEmitter）。粒子生命周期（Lifetime）应从桌面版的3~5秒压缩至1~2秒，配合更高的初始发射速率，在视觉上保持密度感的同时减少场上同时存活的粒子数量。Unity的Particle System在移动平台上，建议将Max Particles硬性上限设为64，而非桌面版的1000。
+Unity Particle System中以下参数对移动端性能影响最大：
+
+- **Max Particles数量**：建议单个特效不超过**100个粒子**，屏幕同时存活粒子数控制在500以内
+- **Collision模块**：World Collision在移动端会触发CPU射线检测，应改为Plane Collision或直接禁用
+- **Trail Renderer**：粒子拖尾每条Trail需要独立的Draw Call与顶点流，10条Trail约等于10个额外Mesh批次
+- **Sub Emitter**：子发射器会成倍增加粒子数量，移动端慎用超过2层嵌套
+
+### 纹理格式与内存
+
+移动端纹理必须使用硬件原生压缩格式，否则GPU无法直接采样，必须先解压到RAM：Android使用**ETC2**（RGBA需要8bpp）或ASTC（可选4x4到12x12多种压缩比）；iOS（A8芯片起）支持**ASTC 4x4至8x8**。未经压缩的RGBA32纹理在移动端会导致额外的内存带宽消耗，是桌面端的6-8倍相对成本。
+
+特效专用粒子贴图建议使用ASTC 6x6（约2.67 bpp）作为质量与性能的平衡点，单张粒子贴图建议分辨率不超过256×256。
 
 ---
 
 ## 实际应用
 
-在手游《原神》的移动端特效实现中，角色技能的光效粒子数量约为PC版的1/5，核心法阵纹理从PC版的1024×1024降至移动版的512×512，并在iOS上全面采用ASTC 4×4压缩。这一组合使骁龙865设备上的技能特效帧时间从约8ms降低至约3ms。
+**游戏案例：** 一款移动端动作RPG的技能打击特效原始版本包含300个粒子、3层全屏Distortion叠加，在小米10（Adreno 650）上帧率从60fps骤降至22fps。优化流程如下：
 
-在Unity的URP（Universal Render Pipeline）移动项目中，爆炸特效的实际落地配置通常为：Shader使用half精度颜色输出、禁用Depth Fade（深度软粒子），因为移动端读取深度缓冲会破坏TBDR的片上存储优化；粒子总数不超过80个；纹理使用128×128 ETC2压缩序列帧，而非Alpha单张纹理+脚本控制UV偏移的组合。
+1. 将Distortion层数从3层削减为1层，并降低全屏Render Texture分辨率至Half（540p）
+2. 粒子数从300降至80，删除Trail拖尾，改用UV动画贴图模拟流动感
+3. 粒子贴图从PNG（RGBA32）改为ASTC 6x6压缩，内存从1MB降至0.17MB
+4. 增加LOD层级：距离摄像机超过8米的同一特效切换为低配版本（30粒子，无Distortion）
 
-在Cocos Creator开发的2D手游中，spine动画特效与粒子系统共用图集（Atlas）可减少drawcall至1次，但需注意粒子纹理与spine纹理需提前规划在同一2048×2048图集页内，否则合批失败，反而增加状态切换开销。
+最终在同一设备上帧率稳定在58fps，发热功耗从9W降至6W。
+
+**平台分层方案：** 结合Unity的Quality Settings，为移动端建立Low/Medium/High三档，Low档关闭所有后处理特效与Soft Particles，Medium档仅保留Bloom（Half分辨率），High档（旗舰机型）开启完整特效集。设备档位判断基于`SystemInfo.graphicsMemorySize`与`SystemInfo.maxTextureSize`。
 
 ---
 
 ## 常见误区
 
-**误区一：认为关闭后处理效果足以解决移动端性能问题。**
-关闭Bloom、色调映射等后处理是必要的，但不充分。移动端性能瓶颈更多来自粒子overdraw和着色器ALU消耗，而非后处理本身。许多开发者关闭后处理后发现帧率改善不足5%，原因正是粒子系统的overdraw仍在持续消耗片上带宽。
+**误区一：把桌面端的"GPU Instancing"当作移动端万能药**
 
-**误区二：使用软粒子（Soft Particles / Depth Fade）提升移动端视觉质量。**
-软粒子需要采样深度缓冲，在TBDR架构上这意味着必须将深度数据从片上内存（on-chip memory）写回到主内存，再重新读取，产生"framebuffer fetch"之外的额外带宽消耗。在Mali GPU上，每帧使用软粒子会额外增加约1~2ms的渲染时间，对移动端16.67ms（60fps）的帧预算而言代价显著。
+GPU Instancing在桌面端可以将1000个相同粒子合并为1次Draw Call。但在移动TBDR架构中，Instancing的收益大幅缩水——Mali G77实测表明，当Instance数量低于50时，Instancing的驱动开销可能反而使Draw Call时间增加15-20%。移动端更有效的做法是合并使用**静态图集（Sprite Atlas）**，减少材质切换，而非依赖Instancing。
 
-**误区三：认为移动端高端旗舰设备的优化可参考桌面端标准。**
-即使是骁龙8 Gen3或Apple A17 Pro，其GPU架构仍是TBDR，overdraw和带宽的敏感性与桌面端有本质差异。在骁龙8 Gen3上测试合格的特效，若移植到中端骁龙680上运行，可能产生3~4倍的性能下降，因此移动端优化必须以中端设备（如骁龙678、Helio G99）作为基准机型，而非以旗舰机型为参照。
+**误区二：认为减少Draw Call是移动端特效优化的首要目标**
+
+移动端Overdraw和带宽消耗的性能代价通常远高于Draw Call数量。一个全屏4层Alpha Blend特效（只有1个Draw Call）对性能的破坏远超20个小型不透明粒子（20个Draw Call）。优化时应优先用GPU Profile工具（如Android的Snapdragon Profiler、iOS的Xcode GPU Frame Capture）确认真正的瓶颈是Fill Rate还是Submission Cost。
+
+**误区三：iOS与Android可以使用同一套纹理压缩方案**
+
+ETC2格式在iOS设备上需要软件解码（A7之前的设备完全不支持），而PVRTC仅支持正方形2的幂次纹理。生产管线中必须为两个平台分别打包，Unity的Texture Importer支持针对Platform的Override设置，不可将Android的ETC2设置直接应用于iOS构建目标。
 
 ---
 
 ## 知识关联
 
-本概念建立在**可扩展性设置**的基础之上：可扩展性设置定义了High/Medium/Low等质量档位的切换逻辑，而移动端优化则规定了每个档位在移动设备上的具体参数上限，包括粒子数、纹理尺寸、着色器精度三个核心维度。两者配合构成完整的多平台特效质量管理方案。
+本文档依赖**可扩展性设置**（Scalability Settings）的分级质量体系——移动端优化策略中的Low/Medium/High档位划分，本质是在可扩展性框架内针对移动硬件进行参数填充，若未掌握Quality Settings的层级结构，无法有效实施分档方案。
 
-掌握移动端优化后，自然延伸至**图集共享**技术：图集共享通过将多个特效纹理合并进同一张纹理图集，可将多次DrawCall合并为1次，这是移动端进一步降低CPU-GPU通信开销的关键手段。移动端优化解决了单个特效的硬件适配问题，图集共享则从资源组织维度继续压缩整体渲染开销，二者在移动端特效管线中相互依赖、共同作用。
+后续概念**图集共享（Sprite Atlas Sharing）**是移动端优化的延续：将多个特效的粒子贴图合并到同一张Atlas，可以将批次内材质切换（Material Switch）从每特效触发1次降低至整个特效系统触发1次，这是在已控制Overdraw和Shader复杂度之后进一步压缩Draw Call的必要手段。

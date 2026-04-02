@@ -20,70 +20,99 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 资产处理工具
 
 ## 概述
 
-资产处理工具（Asset Processing Tool）是技术美术在UE工作流中开发的一类自动化脚本或编辑器插件，专门用于解决贴图、网格体、材质等游戏资产在导入、导出、格式转换和命名规范化过程中的重复性劳动问题。一个典型的资产处理工具可以将原本需要美术手动操作数小时的批量导入任务压缩至几分钟内完成。
+资产处理工具是技术美术工具开发中专门针对游戏或影视项目资产文件进行批量导入、导出、格式转换与自动命名的自动化程序。其核心价值在于将美术团队每天需要手动重复执行数十次乃至数百次的文件操作压缩为单次脚本调用，直接消除因手工操作引入的命名错误、路径错误和格式不兼容问题。
 
-从历史背景来看，早期UE4项目（约2015年前后）中，技术美术大量依赖手动拖拽FBX文件和逐一设置导入参数的方式处理资产，随着项目规模扩大到数百至数千个资产，这种方式产生了严重的效率瓶颈。UE4.25版本正式稳定了`unreal.AssetImportTask`类的Python API接口，使批量自动化导入工具的开发变得系统化且可维护。
+资产处理工具的概念随着3D游戏开发管线的成熟而逐渐形成，在虚幻引擎4时代，官方开放了`unreal.EditorAssetLibrary`等Python API模块，使得在编辑器内批量操控资产成为可能。此前，美术人员只能依赖手动拖拽或录制宏的方式处理资产，效率极低且无法处理条件分支逻辑（例如"仅导入法线贴图分辨率大于1024的文件"）。
 
-资产处理工具在技术美术日常工作中的价值体现在两个维度：一是消除人工操作导致的命名错误或导入设置不一致问题；二是通过统一的处理管线保证全项目资产符合命名约定（如`T_CharacterName_D`表示漫反射贴图、`SM_PropName`表示静态网格体），这直接影响后续材质蓝图的参数绑定逻辑是否能正常运行。
+在一个中型项目中，美术团队通常需要管理数千张贴图、数百个静态网格体和数十个骨骼动画资产。如果缺少资产处理工具，命名规范执行完全依赖人工自觉，最终资产库中往往混杂着`final_v2_REAL_USE_THIS.fbx`这类命名，导致版本控制和资产引用均出现严重混乱。
 
 ---
 
 ## 核心原理
 
-### AssetImportTask批量导入机制
+### 批量导入与FBX导入选项控制
 
-UE Python API中，`unreal.AssetImportTask`是构建批量导入工具的核心类。每个`AssetImportTask`实例对应一个待导入文件，需要设置`filename`（源文件磁盘路径）、`destination_path`（UE内容浏览器目标路径）、`automated`（是否跳过弹窗，设为`True`）和`save`（是否自动保存）四个关键属性。将多个Task实例收集到列表后，调用`unreal.AssetToolsHelpers.get_asset_tools().import_asset_tasks(task_list)`即可触发批量导入，相比逐个调用可减少编辑器弹窗确认次数至零。
+在UE Python中，批量导入的核心类是`unreal.AssetImportTask`。每个导入任务需要设置`filename`（源文件路径）、`destination_path`（目标内容浏览器路径）和`replace_existing`（是否覆盖）三个基础字段。对于FBX格式，还需要额外配置`unreal.FbxImportUI`对象，通过`import_mesh`、`import_as_skeletal`、`import_textures`等布尔参数精确控制导入行为，避免引擎将静态网格体错误识别为骨骼网格体。
 
-导入选项的精细控制依赖`FbxImportUI`等选项对象。例如导入带骨骼的角色FBX时，需要额外创建`unreal.FbxImportUI()`实例，将`import_mesh`设为`True`、`import_as_skeletal`设为`True`，并通过`task.options = fbx_ui`挂载到导入任务上，否则骨骼网格体会以静态网格体形式错误导入。
+```python
+task = unreal.AssetImportTask()
+task.filename = "D:/Assets/Chair.fbx"
+task.destination_path = "/Game/Props/Furniture"
+task.replace_existing = True
+task.automated = True  # 禁止弹出导入对话框
+unreal.AssetToolsHelpers.get_asset_tools().import_asset_tasks([task])
+```
 
-### 资产重命名与自动命名规则引擎
+`automated = True`是批量场景的关键设置——若不设置此项，每个文件都会弹出确认窗口，批量导入100个文件将产生100次手动确认，完全失去自动化意义。
 
-批量重命名工具通常需要实现一套规则引擎，将从磁盘扫描到的原始文件名（如`character_diffuse_v3_FINAL.png`）转换为符合项目规范的UE资产名（如`T_Character_D`）。规则引擎的核心是正则表达式匹配加前缀映射表，一个典型的前缀映射字典如下：
+### 格式转换与资产重定向
+
+格式转换不仅指文件格式的变更（如PNG转DDS），还包括引擎内部资产类型的转换。贴图压缩格式的批量修改是最常见的转换需求：技术美术需要将BC1格式（DXT1）用于无透明通道的Diffuse贴图，BC3格式（DXT5）用于带Alpha通道的贴图，BC5格式用于法线贴图。通过`unreal.Texture2D`的`compression_settings`属性批量修改，可以将原本需要1天的压缩格式审查工作压缩到10分钟以内。
+
+重定向（Redirect）功能解决了资产移动后引用断裂的问题。`unreal.EditorAssetLibrary.rename_asset(old_path, new_path)`在重命名资产时会自动在引擎内创建重定向记录，后续需调用`unreal.AssetToolsHelpers.get_asset_tools().fix_up_redirectors()`清理冗余重定向，否则项目中会积累大量重定向垃圾文件影响打包速度。
+
+### 自动命名规则引擎
+
+自动命名工具的核心是正则表达式匹配与前缀/后缀规则表的结合。一套标准的命名规则表通常包含资产类型前缀映射，例如：静态网格体使用`SM_`前缀，材质使用`M_`前缀，材质实例使用`MI_`前缀，贴图使用`T_`并以`_D`（Diffuse）、`_N`（Normal）、`_R`（Roughness）等后缀区分用途。
 
 ```python
 PREFIX_MAP = {
-    "StaticMesh": "SM_",
-    "SkeletalMesh": "SKM_",
-    "Texture2D": "T_",
-    "Material": "M_",
-    "MaterialInstance": "MI_",
-    "Blueprint": "BP_",
+    unreal.StaticMesh: "SM_",
+    unreal.Material: "M_",
+    unreal.MaterialInstanceConstant: "MI_",
+    unreal.Texture2D: "T_",
 }
+
+def auto_rename_asset(asset_path):
+    asset = unreal.EditorAssetLibrary.load_asset(asset_path)
+    asset_type = type(asset)
+    prefix = PREFIX_MAP.get(asset_type, "")
+    asset_name = asset_path.split(".")[-1]
+    if not asset_name.startswith(prefix):
+        new_name = prefix + asset_name
+        # 执行重命名
 ```
 
-在UE Python中，通过`unreal.EditorAssetLibrary.rename_asset(old_path, new_path)`执行实际重命名操作。重命名前必须检查目标路径是否已有同名资产，否则会触发覆盖冲突；检测方法是`unreal.EditorAssetLibrary.does_asset_exist(new_path)`，返回`True`则需追加版本后缀或抛出警告。
-
-### 格式转换与导出管线
-
-资产导出工具使用`unreal.ExportTask`类，与导入任务结构对称。导出静态网格体到FBX时，`exporter`属性需指定为`unreal.StaticMeshExporterFBX()`，导出路径通过`filename`指定为本地磁盘绝对路径。格式转换场景（如将UE内部的`.uasset`纹理批量导出为PNG交给2D美术修改后再导回）构成了一个完整的"导出→外部编辑→重新导入"往返循环，资产处理工具必须在导出时记录原始资产路径元数据，以便再导入时自动映射回正确的内容浏览器位置，这份元数据通常序列化存储为JSON文件与导出资产放在同一目录下。
+该脚本通过`type(asset)`动态获取资产类型，查询规则表后检测现有名称是否符合规范，仅对不符合规范的资产执行重命名，避免对已正确命名的资产产生不必要的重定向记录。
 
 ---
 
 ## 实际应用
 
-**批量贴图导入场景**：在一次角色更新迭代中，外包团队交付了80张按照`_D/_N/_R`后缀命名的贴图文件（分别代表漫反射、法线、粗糙度）。资产处理工具扫描指定目录，对每张PNG文件生成一个`AssetImportTask`，同时根据`_N`后缀自动将`TextureCompressionSettings`设为`TC_Normalmap`、将`SRGB`属性设为`False`，避免法线贴图以错误色彩空间导入。整个80张贴图的导入与设置过程通过约60行Python代码实现，运行耗时约45秒。
+**场景一：外包资产批量入库**  
+外包团队通常按自己的习惯命名文件，交付包中可能包含`prop_chair_lod0.fbx`、`Prop_Chair_LOD1.FBX`等混合大小写、下划线不统一的文件。资产处理工具先用Python的`os.walk()`遍历交付目录，通过正则表达式`r'(prop|character|weapon)_(\w+)_lod(\d)'`提取资产类别、名称和LOD层级，重组为符合项目规范的`SM_Chair_LOD0`格式，再批量调用`import_asset_tasks()`完成导入，整个过程无需美术人员手动介入。
 
-**项目资产命名审计与批量修正**：在项目中期加入命名规范时，内容浏览器中已存在大量不规范命名资产。工具通过`unreal.AssetRegistryHelpers.get_asset_registry().get_assets_by_path("/Game/Characters", recursive=True)`获取全部资产列表，对每个资产检查其名称是否以`PREFIX_MAP`中对应类型的前缀开头，不合规资产写入报告CSV文件，确认后执行批量`rename_asset`操作并自动修复所有引用重定向（UE会自动生成Redirector，工具随后调用`unreal.EditorAssetLibrary.consolidate_redirectors()`清理）。
+**场景二：跨平台贴图格式批量转换**  
+针对移动端发布，项目需要将PC平台使用的BC7格式贴图批量转换为ASTC 6x6格式。通过遍历`/Game/Textures/`目录下所有`unreal.Texture2D`资产，读取其`LOD group`属性区分UI贴图与世界贴图，分别赋予不同的ASTC压缩块尺寸，最后调用`unreal.EditorAssetLibrary.save_asset()`保存并重新cook，可在30分钟内完成原本需要2天人工逐一修改的工作。
+
+**场景三：导出LOD资产供DCC检查**  
+当技术美术需要将引擎内的LOD数据导出回Maya进行面数审核时，资产处理工具调用`unreal.ExportTask`批量将指定路径下所有StaticMesh导出为FBX，文件名自动附加资产面数信息（如`SM_Chair_LOD0_2048tris.fbx`），便于美术团队快速识别超标资产。
 
 ---
 
 ## 常见误区
 
-**误区一：认为`automated=True`等于不需要处理导入选项**。设置`automated=True`只是让导入任务跳过UI弹窗，但如果不显式指定`FbxImportUI`等选项对象，UE会使用上次手动导入时保留在编辑器内存中的选项值，导致不同开发者机器上批量导入同一资产得到不同的导入结果，产生难以复现的渲染差异。正确做法是每次批量导入都显式构造选项对象并赋值。
+**误区一：忽略`automated`标志导致批量操作被对话框阻断**  
+许多初学者在编写批量导入脚本时遗漏`task.automated = True`，在小批量测试（3-5个文件）时因手速够快未察觉问题，但在实际执行200个文件的批量导入时，脚本会在第一个文件处挂起等待用户点击确认。正确做法是始终将`automated`设为`True`，并在`options`对象中预先配置好所有导入参数。
 
-**误区二：直接操作`.uasset`文件进行格式转换**。`.uasset`是UE私有二进制格式，不能通过文件系统直接复制或重命名来实现资产迁移，这会导致资产引用断裂（Reference broken）。正确的跨项目资产迁移必须通过UE编辑器的"Migrate Asset"功能或使用Python的`unreal.AssetToolsHelpers.get_asset_tools().export_assets()`接口走正式导出管线。
+**误区二：重命名后不清理重定向文件**  
+每次调用`rename_asset()`都会在原路径生成一个重定向资产（`.uasset`文件内容为指向新路径的指针）。如果批量重命名500个资产后不执行`fix_up_redirectors()`，项目中会存留500个冗余重定向文件，这些文件会被计入打包体积并拖慢资产扫描速度。部分团队在项目后期才发现重定向文件已累计超过2000个。
 
-**误区三：重命名后忽略Redirector清理**。`rename_asset`操作在原路径自动生成一个Redirector资产以维持旧引用的兼容性，若长期不清理，大量Redirector会导致`AssetRegistry`查询性能下降，且Cooked包体中会包含冗余数据。工具在完成批量重命名后应主动调用`fix_up_redirectors`或通过`EditorAssetLibrary.consolidate_redirectors()`执行清理，而不是等到项目打包前才处理。
+**误区三：将文件系统重命名与引擎资产重命名混淆**  
+直接在操作系统层面用Python的`os.rename()`修改`.uasset`文件名，会导致引擎内部的资产注册表（AssetRegistry）与实际文件不同步，引发资产丢失或引用断裂。所有资产重命名操作必须通过`unreal.EditorAssetLibrary.rename_asset()`在引擎API层面执行，确保注册表同步更新。
 
 ---
 
 ## 知识关联
 
-资产处理工具直接建立在**UE Python脚本**基础之上，特别是`unreal.AssetImportTask`、`unreal.EditorAssetLibrary`和`unreal.AssetRegistryHelpers`这三个模块的使用能力是开发任何资产处理工具的前置要求，不熟悉这些API的调用方式将无法实现自动化导入逻辑。
+资产处理工具以**UE Python脚本**基础知识为前提，具体依赖`unreal.AssetImportTask`、`unreal.EditorAssetLibrary`和`unreal.AssetToolsHelpers`三个模块的API使用能力，以及Python正则表达式和文件系统操作（`os`、`pathlib`）的熟练运用。
 
-掌握资产处理工具后，下一步自然延伸到**资产验证工具**的开发——在批量导入完成后，需要对每个资产检查其LOD设置是否正确、贴图分辨率是否符合2的幂次规范（如512×512至4096×4096之间）、命名是否已通过前缀规则验证，这本质上是在资产处理管线末端增加质量门禁。另一个延伸方向是**批量操作工具**，资产处理工具解决的是导入/导出/命名的入库问题，而批量操作工具进一步处理已入库资产的属性批量修改（如批量修改一批材质实例的父材质引用）。此外，**DCC桥接工具**将资产处理工具的能力延伸到UE编辑器之外，打通Maya、Blender等DCC软件与UE之间的资产往返同步流程，其底层的导入导出逻辑与本文所述的资产处理工具原理高度复用。
+掌握资产处理工具后，自然延伸到**资产验证工具**——后者在导入完成后对资产进行合规性检查（如贴图分辨率是否为2的幂次、命名是否符合规范），两者通常在同一管线中串联执行，形成"导入→验证→报告"的完整工作流。**批量操作工具**则在资产处理工具的基础上扩展到资产属性的批量修改，例如批量设置材质的双面渲染属性或批量调整光照贴图分辨率。**DCC桥接工具**进一步将资产处理逻辑延伸到Maya、Houdini等外部软件侧，实现从DCC到引擎的全程自动化资产传输管线，资产处理工具中积累的路径约定和命名规则在DCC桥接工具中被直接复用。

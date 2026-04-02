@@ -20,106 +20,68 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 依赖安全
 
 ## 概述
 
-依赖安全（Dependency Security）是指识别、评估并修复软件项目中第三方依赖包所携带的已知漏洞的实践体系。现代 Node.js 项目平均直接依赖约 50 个包，但通过传递依赖（transitive dependencies）实际引入的包数量往往超过 500 个，每一个包都可能成为攻击面。
+依赖安全（Dependency Security）是指在软件项目中，对第三方包及其传递依赖进行漏洞扫描、风险评估和自动修复的工程实践。现代 Node.js 项目平均直接依赖约 50 个包，但这些包通过传递依赖可引入超过 1000 个不同的包，每一个都可能成为安全攻击的入口点。
 
-2021 年的 `log4shell`（CVE-2021-44228）事件让全球开发者意识到依赖漏洞的破坏力——一个 Java 日志库的反序列化漏洞导致数以万计的系统在 72 小时内面临远程代码执行风险。npm 生态系统同样不例外：2018 年的 `event-stream` 投毒事件中，攻击者通过接管一个每周下载量超过 200 万次的包，植入了针对比特币钱包的恶意代码。
+依赖安全问题在 2021 年 Log4Shell 事件（CVE-2021-44228）后引发业界广泛关注——该漏洞隐藏于被数百万应用间接依赖的 Apache Log4j 库中，CVSS 评分高达 10.0（满分）。同年 npm 生态中的 `ua-parser-js` 包被恶意代码注入，在检测到前已有数百万次下载。这两类事件代表了依赖安全的两大核心威胁：已知漏洞（CVE）和供应链投毒。
 
-依赖安全的核心工作流包含三个阶段：**扫描**（Scan）发现已知漏洞、**评估**（Assess）判断漏洞对当前项目的实际影响、**修复**（Remediate）通过升级或补丁解决问题。掌握这一流程是任何生产级 Node.js 或 Python 项目上线前的必要准备。
-
----
+掌握依赖安全工具链对任何将第三方包发布到生产环境的团队都是必要的，因为监管框架如 NIST SP 800-218（SSDF）和欧盟 CRA 法规均要求组织能够追溯并报告其软件依赖的漏洞状态。
 
 ## 核心原理
 
-### CVE 与 CVSS 评分系统
+### CVE 与 CVSS 评分体系
 
-依赖安全的技术基础是 **CVE（Common Vulnerabilities and Exposures）** 编号体系和 **CVSS（Common Vulnerability Scoring System）** 评分。每个已知漏洞都被分配一个唯一 CVE ID（如 `CVE-2022-25881`），同时获得 0.0～10.0 的 CVSS v3 分数。评分公式综合了攻击向量（AV）、攻击复杂度（AC）、所需权限（PR）、用户交互（UI）等维度：
+依赖安全扫描的数据基础是 CVE（Common Vulnerabilities and Exposures）数据库。每个已知漏洞都被分配一个唯一编号（如 CVE-2022-3786），并使用 CVSS v3.1 公式计算严重程度分数：
 
 ```
-CVSS v3 基础分 = f(AV, AC, PR, UI, S, C, I, A)
+CVSS Score = f(AV, AC, PR, UI, S, C, I, A)
 ```
 
-CVSS ≥ 9.0 为 **Critical**，7.0～8.9 为 **High**，4.0～6.9 为 **Medium**，0.1～3.9 为 **Low**。`npm audit` 在输出报告时直接使用这套分级，方便开发者按优先级排队处理。
+其中 AV 为攻击向量、AC 为攻击复杂度、C/I/A 分别代表机密性、完整性、可用性影响。评分范围 0–10，划分为 None（0）、Low（0.1–3.9）、Medium（4.0–6.9）、High（7.0–8.9）、Critical（9.0–10.0）五级。npm audit 报告中展示的严重等级即来自这套标准。
 
 ### npm audit 的工作机制
 
-`npm audit` 命令在 npm 6（2018年发布）中正式引入，执行时将项目的完整依赖树（`package-lock.json` 中记录的精确版本）发送到 npm 官方维护的漏洞数据库（Registry Advisory Database）进行比对。运行 `npm audit --json` 可获取结构化输出，字段 `vulnerabilities` 列出每条漏洞的 `severity`、`via`（漏洞来源包）和 `fixAvailable` 布尔值。
+执行 `npm audit` 时，npm CLI 将当前项目的 `package-lock.json` 中所有包的名称和版本号发送至 npm 注册表的安全端点（`https://registry.npmjs.org/-/npm/v1/security/audits`），注册表返回已知漏洞列表及修复建议。`npm audit fix` 命令会在不破坏 semver 约束的前提下自动升级有漏洞的包；若修复版本涉及主版本号变更（breaking change），则需使用 `npm audit fix --force`。
 
-`npm audit fix` 会自动将存在漏洞的包升级到满足 semver 约束的最小安全版本；若需要跨越主版本号，则需使用 `npm audit fix --force`，但这可能引入破坏性变更（breaking changes），需要人工验证。
+npm audit 仅能检测 npm 公共数据库中已收录的漏洞，无法发现零日漏洞或私有注册表中未同步的安全公告。
 
-### Snyk 与 Dependabot 的扩展能力
+### Snyk 的静态分析增强
 
-**Snyk** 在 `npm audit` 的基础上提供两项额外能力：
+Snyk 在 CVE 数据库之上维护了自己的漏洞情报数据库（Snyk Vulnerability DB），收录了超过 1,700,000 条漏洞记录，其中包含大量 npm 官方数据库尚未收录的条目。Snyk 的核心能力是构建完整的依赖调用图（Dependency Call Graph），从而判断存在漏洞的代码路径是否在实际运行时可达（Reachability Analysis）。若一个 High 级别漏洞位于你的代码从未调用到的函数中，Snyk 会将其标记为"not reachable"以降低告警噪声。
 
-1. **可达性分析（Reachability Analysis）**：静态分析代码调用链，仅在项目代码实际调用了包含漏洞的函数时才标记为"可达漏洞"，显著降低误报率。Snyk 的研究数据表明，约 40% 的高危漏洞在特定项目中实际不可达。
-2. **修复 PR 自动生成**：Snyk 可直接向 GitHub/GitLab 提交含版本升级的 Pull Request，并在 PR 描述中注明 CVE 编号和修复说明。
+集成方式有三种：`snyk test`（CLI 本地扫描）、`snyk monitor`（持续上报项目快照到云端）和 GitHub/GitLab 原生集成（PR 时自动扫描）。
 
-**Dependabot** 是 GitHub 于 2022 年免费向所有仓库开放的工具，通过 `.github/dependabot.yml` 配置文件定义扫描频率和目标生态系统（支持 npm、pip、Maven、Go modules 等 16 种）。Dependabot 的 Security Updates 功能专门针对漏洞版本自动开 PR，而 Version Updates 则定期升级所有依赖到最新版本，两者目的不同，不可混淆。
+### Dependabot 的自动化修复流程
 
-```yaml
-# .github/dependabot.yml 示例
-version: 2
-updates:
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 10
-```
+GitHub Dependabot 通过读取仓库中的 `package.json` 和 `package-lock.json`，每天或每周定期检查依赖更新。其安全更新（Security Updates）和版本更新（Version Updates）是两个独立流程：安全更新在检测到漏洞后立即触发 PR，不受配置的更新频率限制；版本更新则按 `.github/dependabot.yml` 中指定的 `schedule.interval` 执行。
 
----
+Dependabot 创建的 PR 包含完整的变更摘要、链接到对应 CVE 和漏洞严重程度，同时兼容 GitHub Actions 中的 `dependabot/fetch-metadata` action，可据此设置自动合并低风险补丁的规则。
 
 ## 实际应用
 
-**场景一：CI 流水线强制审计门禁**
+**前端项目的 audit 工作流**：在 CI 流水线中加入 `npm audit --audit-level=high` 命令，设置仅当 High 及以上级别漏洞存在时构建失败，Medium 及以下级别漏洞生成报告但不阻断流水线。这是平衡安全性与开发效率的常见阈值配置。
 
-在 GitHub Actions 中加入 `npm audit --audit-level=high` 步骤，当存在 High 或 Critical 漏洞时以非零退出码终止流水线，阻止含漏洞代码合并到主干分支。`--audit-level` 参数可取 `low`、`moderate`、`high`、`critical` 四档。
+**Snyk 与私有注册表结合**：当项目使用 Verdaccio 或 Artifactory 等私有注册表（参见先决知识）时，需在 `.snyk` 配置文件中通过 `packageManager` 字段和 `registry` 指向内部镜像，否则 Snyk 无法解析内部包的元数据，导致扫描结果不完整或误报。
 
-**场景二：处理无法立即升级的漏洞**
-
-当某个漏洞存在于深层传递依赖、且上游还未发布修复版本时，可使用 `npm audit` 提供的 `.nsprc`（已弃用）或更现代的 `overrides` 字段（npm 8.3+）强制覆盖子依赖版本：
-
-```json
-// package.json
-{
-  "overrides": {
-    "vulnerable-package": ">=2.1.0"
-  }
-}
-```
-
-Snyk 则提供"忽略规则"（Ignore Rule），可在 `.snyk` 文件中标注某条 CVE 在本项目中不可达，附上原因和到期时间，形成可审计的豁免记录。
-
-**场景三：Python 项目的等价工具**
-
-Python 生态使用 `pip-audit`（2021年 PyPA 发布）或 `safety check` 扫描 `requirements.txt`，数据来源是 OSV（Open Source Vulnerabilities）数据库，与 `npm audit` 使用 npm Advisory Database 的机制平行。
-
----
+**锁文件安全**：`package-lock.json` 的 `integrity` 字段存储每个包的 SHA-512 哈希值，`npm ci` 安装时会验证该哈希以防止中间人攻击篡改包内容。团队应将锁文件提交到版本控制，并在 CI 中使用 `npm ci` 而非 `npm install`。
 
 ## 常见误区
 
-**误区一："npm audit fix 之后就安全了"**
+**误区一："npm audit fix 能修复所有漏洞"**。实际上约有 30%–40% 的 npm audit 告警涉及的漏洞没有可用的修复版本（fix available: false），原因包括：上游包已停止维护、修复版本存在破坏性变更、或漏洞存在于深层传递依赖中而直接依赖尚未升级。此类情况需要手动评估风险或通过 `npm audit --json` 导出报告后人工决策。
 
-`npm audit fix` 只能修复存在直接 semver 兼容升级路径的漏洞。当漏洞修复版本需要跨越主版本号（如从 `lodash@3.x` 升至 `lodash@4.x`），`npm audit` 会报告 `fixAvailable: { isSemVerMajor: true }`，此时不会自动修复。此外，`npm audit` 的数据库仅覆盖 npm Advisory 来源，不包括 GitHub Advisory Database 的全量数据，Snyk 的数据库覆盖面通常更广。
+**误区二："依赖扫描报告零漏洞意味着项目是安全的"**。CVE 数据库更新存在滞后——从漏洞被发现到公开披露通常有 1–6 个月的窗口期（称为零日期间）。Dependabot 和 npm audit 均只能应对已知漏洞，对供应链攻击（如恶意包通过 typosquatting 手法发布）无效。检测此类威胁需要额外的工具，如 socket.dev，它通过分析包的源代码行为模式而非漏洞数据库来识别可疑包。
 
-**误区二："CVSS 9.5 的漏洞一定比 CVSS 6.0 的漏洞更紧急"**
-
-CVSS 分数描述的是漏洞的**通用严重性**，不考虑具体部署环境。一个 CVSS 9.5 的漏洞若存在于只处理受信任内部数据的离线工具中，实际风险远低于 CVSS 6.0 但暴露于公网 API 的漏洞。Snyk 引入的 **优先级分数（Priority Score，0～1000）** 会结合漏洞可达性、是否有在野利用（in-the-wild exploit）、EPSS 分数等因素进行综合排序，比裸 CVSS 更具参考价值。
-
-**误区三："锁定版本就不会新增漏洞"**
-
-`package-lock.json` 锁定了安装时的精确版本，但不能阻止已锁定版本被披露新漏洞。CVE 漏洞是持续被发现和发布的，昨天还被认为安全的 `axios@0.21.1` 今天可能出现在 Advisory 数据库中。因此依赖安全扫描必须**定期运行**，而非仅在初次安装时执行一次。
-
----
+**误区三："漏洞严重性等同于业务风险"**。CVSS 9.8 的远程代码执行漏洞如果存在于服务器端渲染的 HTML 转义库中，而该函数在你的项目中仅处理受信任的内部数据，其实际风险可能远低于 CVSS 6.0 的身份验证绕过漏洞。Snyk 的可达性分析正是为了解决这一问题，但在没有 Snyk 的环境下，工程师需要手动追踪漏洞代码路径。
 
 ## 知识关联
 
-**前置概念——包管理概述**：理解 `package.json` 的 `dependencies`/`devDependencies` 区分、`package-lock.json` 的锁文件作用，以及语义化版本（semver）的 `^` 和 `~` 运算符，是读懂 `npm audit` 修复建议的前提。漏洞修复本质上是一次受约束的版本升级，直接依赖 semver 解析逻辑。
+**前置知识**：包管理概述中介绍的 `package.json` 依赖字段（`dependencies`、`devDependencies`、`peerDependencies`）直接影响 audit 扫描范围——默认情况下 `npm audit` 会扫描所有字段，但可通过 `--omit=dev` 标志排除开发依赖以聚焦生产风险。私有注册表的配置（`.npmrc` 中的 `registry` 和 `scope` 设置）决定了 Snyk 和 Dependabot 能否正确解析内部包的依赖图。
 
-**后续概念——许可证合规**：与依赖安全并列的依赖治理维度。`npm audit` 检查漏洞，而 `license-checker` 或 Snyk 的许可证扫描检查包的开源协议是否与商业项目兼容（如 GPL-3.0 的传染性问题）。两者共同构成完整的依赖治理策略。
-
-**后续概念——CI 安全扫描**：依赖安全扫描是 CI 安全流水线的第一道关卡，后续还需结合 SAST（静态应用安全测试）工具（如 Semgrep、CodeQL）检查自有代码漏洞，以及容器镜像扫描（Trivy、Grype）检查操作系统层依赖，形成纵深防御的安全流水线体系。
+**后续知识**：依赖安全扫描识别的开源包漏洞报告会附带包的许可证信息，这自然引出许可证合规问题——某些漏洞修复版本可能切换了许可证（如从 MIT 变为 GPL），需要在升级前审查。CI 安全扫描则是将 `npm audit`、Snyk CLI 和 Dependabot 安全更新整合到 GitHub Actions 或 Jenkins 流水线中的工程化实践，包含扫描结果解析、阈值判断和安全报告归档的完整自动化链路。

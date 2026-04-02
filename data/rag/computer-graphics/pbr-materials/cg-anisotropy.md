@@ -20,69 +20,80 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # 各向异性
 
 ## 概述
 
-各向异性（Anisotropy）描述材质表面反射行为随观察方向或光照方向不同而呈现差异的物理现象。区别于各向同性材质（BRDF关于方位角旋转对称），各向异性材质的高光形状沿特定切线方向被拉伸或压缩，在参数空间中表现为椭圆形高光而非圆形高光。拉丝金属、丝绸织物、磁盘光碟等都是典型的各向异性材质，其表面存在微观方向性结构。
+各向异性（Anisotropy）描述材质表面在不同方向上具有不同反射行为的光学性质。当光线照射到拉丝金属、头发、碳纤维或缎面织物时，沿着表面纹理方向与垂直纹理方向观察到的高光形状截然不同——各向同性材质产生圆形高光，而各向异性材质产生沿某一方向拉伸的椭圆形或条带状高光。这一现象的物理根源在于微表面的法线分布函数（NDF）在切线方向和副切线方向上具有不同的粗糙度参数。
 
-各向异性BRDF的理论基础可追溯至1984年James Blinn对各向异性高光的早期描述，但现代PBR中广泛使用的模型来自Burley在2012年Disney BRDF报告中提出的参数化方案。该报告引入了单一的各向异性参数 $\alpha_{aniso} \in [-1, 1]$，使艺术家能够直观控制高光形状的拉伸程度与方向，而无需直接操控底层微表面分布函数的两个粗糙度轴。
+这一概念的数学建模由James Blinn于1977年在各向同性Phong模型之后不久提出，但真正被引入PBR管线的各向异性模型由Burley（迪士尼）在2012年SIGGRAPH课程《Physically-Based Shading at Disney》中系统化，其中定义了`anisotropic`参数范围为[-1, 1]，并给出从单一粗糙度值推导出双轴粗糙度的具体公式。
 
-在实时渲染和离线渲染中，各向异性对金属材质的视觉真实感影响尤为显著。若对拉丝金属使用各向同性BRDF，其圆形高光会与真实的线状高光产生明显差异，即便使用了精确的菲涅耳和几何遮蔽项也无法弥补这一缺陷。因此，各向异性是PBR材质系统中区分不同微观结构的关键物理参数。
+在实时渲染和离线渲染中，各向异性对于准确还原金属加工件、布料和生物材质（如头发）至关重要。忽略各向异性会导致拉丝不锈钢的高光错误地呈圆形，而非沿拉丝方向的横向条带，严重损害材质的视觉真实感。
+
+---
 
 ## 核心原理
 
-### 各向异性微表面分布函数
+### 各向异性NDF：双轴粗糙度
 
-标准Cook-Torrance模型使用各向同性GGX分布，其法线分布函数（NDF）形式为 $D(\mathbf{h}) = \frac{\alpha^2}{\pi((\mathbf{n}\cdot\mathbf{h})^2(\alpha^2-1)+1)^2}$，其中 $\alpha$ 为单一粗糙度参数。各向异性GGX（也称为GTR2各向异性变体）将其扩展为双轴形式：
+各向同性的GGX NDF仅使用单一粗糙度参数 $\alpha$，而各向异性版本引入两个独立参数 $\alpha_x$（沿切线方向 $\mathbf{t}$）和 $\alpha_y$（沿副切线方向 $\mathbf{b}$）。各向异性GGX法线分布函数的完整表达式为：
 
-$$D(\mathbf{h}) = \frac{1}{\pi \alpha_x \alpha_y \left(\left(\frac{\mathbf{t}\cdot\mathbf{h}}{\alpha_x}\right)^2 + \left(\frac{\mathbf{b}\cdot\mathbf{h}}{\alpha_y}\right)^2 + (\mathbf{n}\cdot\mathbf{h})^2\right)^2}$$
+$$D(\mathbf{h}) = \frac{1}{\pi \alpha_x \alpha_y} \cdot \frac{1}{\left(\dfrac{(\mathbf{h}\cdot\mathbf{t})^2}{\alpha_x^2} + \dfrac{(\mathbf{h}\cdot\mathbf{b})^2}{\alpha_y^2} + (\mathbf{h}\cdot\mathbf{n})^2\right)^2}$$
 
-其中 $\mathbf{t}$ 为切线向量，$\mathbf{b}$ 为副切线向量，$\alpha_x$ 和 $\alpha_y$ 分别为沿切线轴和副切线轴的粗糙度。当 $\alpha_x = \alpha_y$ 时，该公式退化为各向同性GGX分布。
+其中 $\mathbf{h}$ 为半程向量，$\mathbf{t}$ 为切线，$\mathbf{b}$ 为副切线，$\mathbf{n}$ 为法线。当 $\alpha_x = \alpha_y$ 时，公式退化为标准各向同性GGX。$\alpha_x \gg \alpha_y$ 时，高光沿副切线方向被压缩为条带状。
 
-### Disney各向异性参数化
+### 迪士尼各向异性参数化
 
-Disney方案使用单一各向异性参数 $anisotropic \in [0, 1]$ 与基础粗糙度 $roughness$ 共同推导双轴粗糙度：
+迪士尼模型使用直觉友好的`roughness`（$r$）和`anisotropic`（$k$，范围0到1）两个参数，通过以下公式转换为双轴粗糙度：
 
-$$\alpha_x = roughness^2 \cdot \frac{1}{\sqrt{1 - 0.9 \cdot anisotropic}}, \quad \alpha_y = roughness^2 \cdot \sqrt{1 - 0.9 \cdot anisotropic}$$
+$$\alpha_x = r^2 \cdot \frac{1}{\sqrt{1-0.9k}}, \quad \alpha_y = r^2 \cdot \sqrt{1-0.9k}$$
 
-系数0.9是经验值，防止 $\alpha_y$ 趋向于0导致数值奇异性。当 $anisotropic = 0$ 时两轴相等；当 $anisotropic = 1$ 时，$\alpha_x / \alpha_y$ 比值达到约 $\sqrt{10} \approx 3.16$，产生显著的线状高光。
+系数0.9的选择保证了当 $k=1$ 时 $\alpha_y$ 不会降为零（避免数值奇点），同时使高光在 $k=1$ 时产生约10:1的长宽比。这是迪士尼材质文档中明确给出的具体数值，而非理论推导的结果。
 
-### 各向异性几何遮蔽项
+### 切线空间参数化与切线贴图
 
-各向同性Smith-GGX几何项同样需要扩展为各向异性版本。对于各向异性Schlick-Smith近似，单方向遮蔽函数变为：
+各向异性的方向由表面的切线向量 $\mathbf{t}$ 确定。在实际使用中，通常有两种方式控制各向异性方向：其一是使用网格的UV展开切线（由顶点属性提供）；其二是使用专门的**各向异性方向贴图**（Anisotropy Direction Map），贴图的RG通道存储切线空间中的2D方向向量，经过 $[0,1] \to [-1,1]$ 的解码后，与顶点切线叉乘形成最终各向异性主轴。Substance PainterPainter和Filament引擎均采用这种双重机制。注意：切线方向与法线贴图所用的切线空间是同一套空间，因此切线贴图会受到UV接缝和切线一致性的约束，UV展开质量直接影响各向异性高光的连续性。
 
-$$G_1(\mathbf{v}) = \frac{2(\mathbf{n}\cdot\mathbf{v})}{\mathbf{n}\cdot\mathbf{v} + \sqrt{\alpha_x^2(\mathbf{t}\cdot\mathbf{v})^2 + \alpha_y^2(\mathbf{b}\cdot\mathbf{v})^2 + (\mathbf{n}\cdot\mathbf{v})^2}}$$
+### 各向异性遮蔽-阴影函数
 
-完整几何项 $G = G_1(\mathbf{l}) \cdot G_1(\mathbf{v})$，其中 $\mathbf{l}$ 为光照方向。遗漏各向异性几何项而仅更换NDF，会导致掠射角下能量守恒破坏。
+各向异性NDF必须配合对应的各向异性Smith遮蔽函数，否则能量守恒会被打破。各向异性Smith $G_1$ 的近似形式为：
 
-### 切线空间参数化与旋转
+$$G_1(\mathbf{v}) = \frac{2}{1 + \sqrt{1 + \frac{\alpha_x^2(\mathbf{v}\cdot\mathbf{t})^2 + \alpha_y^2(\mathbf{v}\cdot\mathbf{b})^2}{(\mathbf{v}\cdot\mathbf{n})^2}}}$$
 
-各向异性BRDF的高光方向由切线向量 $\mathbf{t}$ 决定。切线向量来源于网格UV展开的切线空间，但艺术家通常还需要一个额外的**各向异性旋转角度**参数（$anisotropicAngle \in [0, 1]$，映射到 $[0, 2\pi]$）来旋转高光方向，而不依赖UV展开方式。旋转后的切线为：
+完整遮蔽阴影项 $G = G_1(\mathbf{l}) \cdot G_1(\mathbf{v})$，两轴各自独立参与计算，确保掠射角度下的能量行为与各向同性GGX一致。
 
-$$\mathbf{t}' = \cos(\theta)\mathbf{t} + \sin(\theta)\mathbf{b}$$
-
-其中 $\theta = anisotropicAngle \times 2\pi$。Filament渲染引擎从1.0版本起便在材质系统中暴露该旋转参数，允许在纹理贴图中逐像素编码各向异性旋转方向，实现如流动金属丝线的复杂效果。
+---
 
 ## 实际应用
 
-**拉丝不锈钢**是最常见的各向异性材质用例。实现时，将 $anisotropic$ 设为约0.8，$roughness$ 设为0.3–0.5，切线方向沿拉丝方向对齐。高光呈现为垂直于拉丝方向的细长光斑，这与物理上微观沟槽将光散射到垂直于沟槽方向的行为一致。
+**拉丝金属**：不锈钢厨具、铝制外壳的拉丝纹理方向平行于加工方向，$\alpha_x$（顺纹方向）远大于$\alpha_y$，高光呈现横跨高光区域的亮条。虚幻引擎5中Substrate材质的金属层直接暴露 `AnisotropyAngle` 输入，允许以弧度值旋转各向异性主轴。
 
-**丝绸和缎面织物**呈现出特殊的环形高光（Schimmer），其切线方向随纤维编织方向变化。实际制作中会使用各向异性旋转贴图（切线流向图，即Tangent Flow Map）来编码逐像素的纤维方向，再配合各向异性BRDF生成随视角变化的丝光效果。育碧在《刺客信条：奥德赛》的布料着色器中即采用了此类切线流向贴图驱动的各向异性材质。
+**头发渲染**：Kajiya-Kay模型是针对头发光纤的各向异性专用模型（1989年），将圆柱形头发纤维的切线方向作为各向异性轴，产生"内高光"（primary specular）和"外高光"（secondary specular）两个错开的条带，这是GGX各向异性无法直接替代的场景。
 
-**光碟（CD/DVD）**表面的彩虹色条纹虽主要来自衍射光栅效应，但其初步近似可以用极高各向异性（$anisotropic \approx 1.0$）且低粗糙度的BRDF模拟环形渐变高光，作为无法使用波动光学模型时的替代方案。
+**碳纤维与编织布料**：碳纤维的编织角度通常为±45°，需要在各向异性方向贴图中烘焙出编织方向的流场（flow map），由Houdini或Substance Designer的"方向流"节点生成，以实现编织纹路之间局部方向变化的各向异性高光。
+
+---
 
 ## 常见误区
 
-**误区一：认为各向异性仅影响高光形状，不影响能量守恒。** 实际上，若只替换NDF而保持各向同性几何项，BRDF在掠射角附近会超出能量守恒上限。各向异性NDF和各向异性Smith几何项必须配对使用，才能保证 $\int D(\mathbf{h})(\mathbf{n}\cdot\mathbf{h})\,d\omega_h = 1$ 以及BRDF的能量不增特性。
+**误区一：认为各向异性只需修改粗糙度贴图**
 
-**误区二：认为切线方向完全由网格UV决定，无法在运行时调整。** 切线空间的UV切线只是默认方向，各向异性旋转参数允许独立旋转高光方向。更进一步，可以使用切线流向图（Tangent Flow Map）将方向编码为纹理的RG通道（存储 $(\cos\theta, \sin\theta)$），实现复杂曲面上逐点各向异性方向控制，这在布料和拉丝金属的细节表现上不可或缺。
+部分初学者认为在粗糙度贴图中绘制方向性纹理即可模拟各向异性。实际上，粗糙度贴图只控制高光的整体大小，无法改变高光在两个垂直轴上的拉伸比例。真正的各向异性需要独立的 $\alpha_x$ 和 $\alpha_y$ 参数以及切线方向输入，仅凭单通道粗糙度无法实现椭圆形高光的方向控制。
 
-**误区三：将各向异性参数的正负号当作纯粹的方向翻转。** 在部分引擎（如Blender的Principled BSDF）中，各向异性参数的符号含义是将高光拉伸方向从沿切线轴切换到沿副切线轴，而不是简单的高光旋转180°。具体来说，$anisotropic = +0.8$ 时高光沿 $\mathbf{t}$ 方向拉伸（即 $\alpha_t < \alpha_b$），$anisotropic = -0.8$ 时高光沿 $\mathbf{b}$ 方向拉伸，两者在视觉上产生90°旋转的效果。
+**误区二：将各向异性角度旋转与法线贴图等同**
+
+各向异性方向贴图工作在切线空间的2D平面内，旋转的是NDF的主轴，与法线贴图对 $\mathbf{n}$ 的扰动完全不同。将法线贴图的G通道误用为各向异性方向会导致高光方向与表面凸起方向错误绑定，在曲面上产生随观察角度变化的方向跳变。
+
+**误区三：各向异性参数 $k=1$ 时会产生完全线性高光**
+
+由于迪士尼公式中0.9系数的存在，$k=1$ 时 $\alpha_y$ 并非零，而是 $r^2 \cdot \sqrt{0.1} \approx 0.316 \cdot r^2$，高光仍有一定宽度，不会退化为一维线段。将 $k$ 暴力设为1并期待得到完美线条高光的做法忽略了这一数值设计，会导致参数与预期不符。
+
+---
 
 ## 知识关联
 
-各向异性BRDF建立在Cook-Torrance微表面框架之上，其核心修改是将单一粗糙度参数 $\alpha$ 拆分为沿切线和副切线的两个独立粗糙度 $(\alpha_x, \alpha_y)$，并将NDF和几何项从各向同性函数扩展为依赖 $\mathbf{t}$、$\mathbf{b}$ 方向的各向异性函数。理解Cook-Torrance中GGX的数学推导是理解各向异性扩展的必要前提，因为各向异性版本的每一项都是对应各向同性项的直接泛化。
-
-各向异性与**切线空间**的关系极为紧密：高光的物理方向完全由切线向量 $\mathbf{t}$ 决定，因此网格的切线生成质量、UV接缝处的切线连续性，以及各向异性旋转贴图的正确编码，都直接影响各向异性效果的视觉质量。在实际项目中，各向异性材质往往需要美术与技术美术密切配合，确
+各向异性NDF是对Cook-Torrance模型中各向同性GGX NDF的直接推广：Cook-Torrance框架定义了 $f_r = \frac{D \cdot F \cdot G}{4(\mathbf{n}\cdot\mathbf{l})(\mathbf{n}\cdot\mathbf{v})}$，其中菲涅耳项 $F$ 和几何项 $G$ 的基本结构在各向异性情况下保持不变，仅 $D$ 和 $G$ 中的粗糙度由标量替换为双轴参数。这意味着掌握各向同性GGX的能量归一化条件（$\int_\Omega D(\mathbf{h})(\mathbf{n}\cdot\mathbf{h})d\omega_h = 1$）是理解各向异性版本何时成立的必要前提。在迪士尼材质体系中，各向异性与清漆层（Clearcoat）、布料层（Sheen）是并列的独立扩展项，清漆层固定使用各向同性GGX（$\alpha=0.25$），因此为物体同时添加清漆和各向异性时，两层使用不同NDF，需要分别计算再加权叠加。

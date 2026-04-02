@@ -20,59 +20,68 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 资产处理管线
 
 ## 概述
 
-资产处理管线（Asset Processing Pipeline）是构建系统中专门负责将原始创作资产转换为目标平台可直接加载格式的自动化处理链。它区别于代码编译流程，处理对象是纹理、音频、3D网格、动画、关卡数据等二进制或结构化文件，而非源代码。一个典型管线包含三个主要阶段：Cook（烹制/格式转换）、Compress（压缩）、Platform-specific Export（平台专属导出），三者串联形成有向无环图（DAG）结构的处理链。
+资产处理管线（Asset Processing Pipeline）是构建系统中负责将原始创作资源转换为目标平台可直接加载的二进制格式的自动化流程。其输入包括美术师和设计师产出的源资产（如`.psd`纹理、`.fbx`模型、`.wav`音频），输出则是针对特定硬件优化的压缩包格式，例如针对Android GPU的ETC2压缩纹理或针对PlayStation的GNF格式文件。与代码编译管线不同，资产处理管线处理的数据量通常以GB计，一个中型游戏项目的原始资产总量可轻易超过100 GB。
 
-资产处理管线的概念随游戏引擎工业化而成熟。虚幻引擎（Unreal Engine）在2004年UE3版本中引入了统一的"Cook"术语，将"将编辑器格式资产转换为运行时格式"的操作系统化。Unity则在2005年发布时以"Import Pipeline"命名类似机制，并在2019年的Unity 2019.3版本中引入Scriptable Build Pipeline（SBP），允许开发者完全自定义资产处理逻辑。
+该概念在2000年代随着游戏主机世代更迭而逐渐规范化。早期开发团队手动转换资产，但Xbox 360和PS3的多核架构要求资产必须按特定内存对齐方式打包，手工操作无法保证一致性，于是Unreal Engine 3率先引入了系统化的"Cook"流程，将平台相关的资产变换从引擎运行时剥离到离线构建阶段。如今，Unity的Addressables构建系统和Unreal的Derived Data Cache（DDC）都是成熟资产处理管线的代表实现。
 
-资产处理管线的重要性体现在两个具体数字上：一是跨平台游戏的资产体积差异——同一张4K纹理，PC平台使用BC7压缩后约为5.3MB，iOS使用ASTC 4x4后约为5.5MB，Android Mali GPU使用ETC2后约为2.7MB，若无自动化管线，手动维护三份资产不可行；二是构建时间——《堡垒之夜》官方公开数据显示其完整Cook时间超过40分钟，增量Cook则可控制在5分钟以内，管线效率直接影响开发迭代速度。
+资产处理管线的核心价值在于三点：消除目标平台对原始格式的解析负担（运行时加载ETC2压缩纹理比加载原始PNG快3-10倍）；通过内容哈希实现增量处理，仅重新处理发生变化的资产；以及集中管理平台差异，使同一份源资产能派生出PC、主机、移动端三条不同的输出流。
 
 ## 核心原理
 
-### Cook阶段：格式标准化与序列化
+### Cook阶段：格式规范化与平台分叉
 
-Cook阶段的核心任务是将编辑器内部格式转换为运行时格式。以UE5为例，编辑器中的`UTexture2D`对象存储为`.uasset`文件，包含元数据和未压缩的原始像素数据；Cook之后输出为平台专属的`.pak`条目，像素数据已转换为GPU原生格式。Cook过程使用**依赖追踪**机制：每个资产维护一个内容哈希（Content Hash），若资产本身或其依赖资产的哈希未变化，则跳过重新Cook，这是增量构建的基础。
+Cook是资产处理管线的第一个主要阶段，负责将源资产解析并重新序列化为引擎内部格式。以纹理为例，Cook阶段会读取`.psd`或`.tga`文件，提取像素数据，按照目标平台的纹理采样器要求生成完整的Mip链（通常使用Kaiser滤波器，比Box滤波器在高频细节保留上好约15%），并剥除源文件中的图层、元数据等运行时无用信息。
 
-Cook阶段还负责**资产引用解析**（Reference Resolution）：将编辑器中的软引用（`/Game/Textures/T_Wall`路径字符串）替换为运行时的数字ID，减少加载时字符串比较开销。Unity的Addressable Asset System在构建时执行类似操作，将GUID映射为内部地址。
+平台分叉发生在Cook阶段末尾：同一张4096×4096的反照率纹理，在PC管线中保留完整分辨率并标记为BC7格式候选，在移动端管线中则可能被缩减到2048×2048再送入后续压缩阶段。这种分叉由平台目标描述文件（Target Configuration）驱动，Unreal Engine中对应`DataDrivenPlatformInfo.ini`，Unity中则对应平台专属的`TextureImporter`设置。
 
-### Compress阶段：针对目标硬件的压缩策略
+### Compress阶段：GPU原生压缩格式
 
-压缩阶段根据目标平台GPU的硬件解码能力选择压缩格式，核心是**纹理压缩格式决策树**：
+压缩阶段将Cook后的原始像素数据编码为GPU可直接解压的块压缩格式。主要目标格式及其用途如下：BC1/DXT1用于不需要Alpha通道的漫反射纹理，压缩比8:1；BC3/DXT5用于带Alpha的纹理，压缩比4:1；BC5专用于法线贴图的双通道（RG）存储；ASTC是移动端主流格式，块大小可选4×4到12×12，压缩比灵活可调。
 
-- **BC系列（Block Compression）**：DirectX 11+硬件支持，BC1（4bpp，无Alpha）、BC3（8bpp，带Alpha）、BC7（8bpp，高质量，2013年DirectX 11.1引入）
-- **ASTC（Adaptive Scalable Texture Compression）**：ARM Mali/Apple A7+/Adreno 400+支持，块大小可变（4×4到12×12），4×4时8bpp，12×12时约0.89bpp
-- **ETC2**：OpenGL ES 3.0强制支持，兼容所有Android设备
+压缩质量与时间存在明显权衡：BC7格式的高质量编码使用`squish`库的迭代优化算法，单张4K纹理在CPU上可能耗时20-60秒；而使用GPU加速压缩（如NVIDIA的`nvtt3`库）可将时间缩短至1-3秒。大型项目通常在本地构建时使用快速模式（`-quality fast`），在CI服务器上发布构建时使用高质量模式（`-quality production`）。
 
-音频资产压缩同样平台相关：PC使用Vorbis（OGG），Xbox使用XMA2，PlayStation使用AT9（ATRAC9），Switch使用OPUS。管线需维护每种资产类型到每个目标平台压缩格式的映射表，通常以JSON或XML配置文件形式存储。
+### 分发打包：AssetBundle与PAK文件
 
-### Platform-specific Export阶段：平台合规性处理
+处理完成的单个资产最终需要按加载单元聚合为包文件。Unity的AssetBundle系统将相互引用的资产分组打包，生成包含资产序列化数据和依赖清单的`.bundle`文件；Unreal使用`.pak`文件，内部采用SHA1哈希索引，支持按目录或按资产类型分片。
 
-各主机平台的First-Party SDK要求特定的打包格式与加密方案：PlayStation要求使用Sony提供的`orbis-pub-cmd`工具生成`.pkg`文件；Nintendo Switch要求通过`AuthoringTool`生成`NSP`格式并施加平台加密；Xbox使用`MakePkg`工具并需要`ContentID`注册。此阶段还处理**本地化资产替换**（Localization Asset Substitution）：根据目标区域将通用资产替换为区域专属版本，例如将包含特定文字的纹理替换为当地语言版本。
+打包策略直接影响运行时I/O性能：将同一场景的所有纹理、网格、材质打入同一个包可减少文件系统寻道次数，但包粒度过粗会导致热更新时补丁包体过大。业界常见的做法是将基础资产（角色、UI字体）单独成包，关卡资产按地图分包，这样单关卡热更新的补丁包体可控制在总资产量的5%以内。
 
-资产处理管线通常以**清单文件**（Manifest/Asset Bundle Manifest）结束，记录每个输出文件的路径、大小、哈希值及其依赖关系，供后续的补丁生成（Patch Generation）和CDN分发使用。
+### 内容寻址与增量缓存
+
+现代资产处理管线使用内容哈希（通常为SHA256或xxHash3）作为每个资产处理任务的缓存键，键值由源文件内容 + 处理器版本号 + 目标平台参数共同计算得出：
+
+```
+cache_key = Hash(source_content || processor_version || platform_config)
+```
+
+Unreal的DDC就基于此原理，命中缓存时直接返回已处理结果，跳过整个Cook+Compress流程。在大型团队中，共享DDC服务器（Shared DDC）可使新成员第一次全量构建时间从数小时降至20-40分钟。
 
 ## 实际应用
 
-**虚幻引擎的UnrealPak + DerivedDataCache（DDC）**：UE的DDC是一个专门缓存Cook中间结果的系统，支持本地磁盘、共享网络驱动器和云端（如Amazon S3）三级缓存。当CI服务器完成Cook后，所有开发者机器可从共享DDC拉取已处理资产，避免重复Cook。配置文件`Engine/Config/BaseEngine.ini`中的`[DerivedDataBackendGraph]`节点定义缓存层次结构。
+**移动游戏发行场景**：一款面向iOS和Android双平台的手游，其资产处理管线会在同一次构建中并行执行两条路径。iOS路径输出ASTC 6×6格式纹理（针对Metal API），Android路径输出ASTC 4×4纹理（针对Vulkan高端设备）和ETC2纹理（兼容OpenGL ES 3.0设备），最终按设备GPU能力在运行时选择加载哪套纹理。
 
-**Unity的AssetBundle与Addressables构建管线**：Unity的`BuildPipeline.BuildAssetBundles()`API允许将资产打包为独立的`.bundle`文件，支持热更新（Hot Update）场景。2022年Unity引入了**Content Build**系统，通过`BuildScriptPackedMode`脚本在构建时自动计算资产的CRC校验值并写入catalog.json，客户端启动时对比服务器catalog判断是否需要下载更新包。
+**PC游戏热更新场景**：Steam平台的游戏在内容更新时，资产处理管线仅对变动的源资产重新执行Cook和Compress，生成新旧版本间的差异PAK文件。通过Zstandard算法对差异数据再压缩，一次包含30张修改纹理的小更新，其补丁包体通常可以控制在10 MB以内。
 
-**Frostbite引擎的离线资产处理**：EA的Frostbite使用称为"Binaries"的中间格式，纹理从PSD/TGA经过"MipmapChain Generation → Format Conversion → Chunk Splitting"三步处理，其中Chunk Splitting将大纹理切分为固定大小（默认2MB）的数据块，支持流式加载（Texture Streaming）时按需请求特定Mip级别的特定块。
+**主机认证场景**：索尼和微软的主机认证要求资产文件头包含特定的魔数（Magic Number）和加密签名，资产处理管线中专门设有Post-Cook阶段用于注入这些平台特有的元数据，该阶段只在主机目标构建中激活，不影响PC开发构建的速度。
 
 ## 常见误区
 
-**误区一：认为Cook等同于压缩。** Cook是格式转换（Serialization Format Change），目标是从编辑器格式转为运行时格式，输出可能比原始文件更大（例如删除编辑器专用元数据但展开引用关系时）。压缩（Compression）是独立步骤，专注于减少存储体积，两者目标不同、可独立控制。UE的Cook命令行参数`-compress`明确将两步分开，`Cook`不带此参数时不执行纹理压缩。
+**误区一：认为资产处理管线只是格式转换工具**。实际上，压缩格式选择、Mip生成策略、打包分组方案都属于资产处理管线的决策范畴，这些决策直接影响游戏的内存占用和加载性能。一张4K纹理使用BC1和BC7压缩，GPU显存占用分别为8 MB和16 MB，运行时质量和内存预算的平衡必须在管线配置阶段确定。
 
-**误区二：增量Cook可以完全替代全量Cook。** 增量Cook依赖内容哈希的准确性，但某些全局设置变更（如修改`DefaultEngine.ini`中的纹理分辨率上限`MaxTextureSize`）不会触发单个资产的哈希变更，却影响所有资产的Cook结果。此类"隐式依赖"（Implicit Dependency）若未被管线正确追踪，会导致增量Cook输出与全量Cook不一致，这是实际项目中常见的"在我机器上正常"问题的根源。
+**误区二：源资产文件修改后管线会自动全量重处理**。正确配置了内容哈希缓存的管线只会重新处理哈希值发生变化的资产及其依赖项。但若处理器本身（如压缩算法库）升级了版本，处理器版本号变化会导致缓存全部失效，引发强制全量重建——这是大型项目中构建时间突然暴增的常见原因，需要在升级压缩库前评估影响范围。
 
-**误区三：资产管线只处理最终输出，不影响运行时行为。** 以Mipmap生成为例，若管线中`MipmapFilter`配置为`Box`（简单均值）而非`Kaiser`（数学上更优的锐化滤波器，截止频率约0.5），远距离纹理会出现可见的模糊瑕疵。同理，音频管线中的采样率降采样算法选择（线性插值 vs Sinc重采样）直接影响高频音质表现，这些都是管线配置决定最终用户体验的具体案例。
+**误区三：资产处理管线与Shader编译管线是相互独立的**。两者在材质资产处理时存在强耦合：材质资产的Cook阶段需要确认其引用的所有Shader变体均已编译完成，才能将Shader字节码嵌入材质包。若Shader编译缓存失效与资产Cook并行触发，会导致材质资产引用到不完整的Shader数据，产生运行时渲染错误。
 
 ## 知识关联
 
-**前置概念——构建系统概述**：资产处理管线是构建系统DAG中的一个专用子图。理解构建系统中的增量构建（Incremental Build）、目标依赖（Target Dependency）和并行任务调度是理解资产管线中DDC缓存命中率优化和多线程Cook（UE支持`-numcookershaderstoprocess`参数控制并行Cook线程数）的前提。
+**前置概念衔接**：构建系统概述中介绍的依赖图（Dependency Graph）概念直接适用于资产处理管线——每个资产处理任务是图中的一个节点，源文件是叶节点，最终PAK文件是根节点，任务调度器按拓扑顺序执行节点。Shader编译管线产出的`.shadercache`文件是资产处理管线中材质Cook任务的输入依赖，两条管线通过共享的DDC层交换中间产物。
 
-**后续概念——游戏CI/CD**：资产处理管线是游戏CI/CD流水线中耗时最长的阶段，通常占总构建时间的60%-80%。CI/CD系统需要针对管线做专项优化：使用分布式Cook（如Incredibuild或IncrediBuild Grid for Asset Processing）、维护热缓存的专用Cook Agent、以及基于分支变更集（Changelist）的资产差异分析来最小化触发全量Cook的频率。资产处理管线的输出（各平台压缩包+Manifest）也是CD阶段自动化分发给QA测试机或提交First-Party认证的起点。
+**后续概念延伸**：游戏CI/CD系统将资产处理管线作为其流水线中的一个阶段，需要解决资产处理任务的分布式执行（将Cook+Compress任务分发到构建集群的多台机器）、构建结果的版本存档（将每次构建产出的PAK文件与Git提交哈希关联存储）以及回归测试（对比两次构建输出的资产哈希，检测非预期的资产变化）等工程问题。

@@ -20,69 +20,57 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-04-01
 ---
-# Simulation Stage
+
+
+# 模拟阶段（Simulation Stage）
 
 ## 概述
 
-Simulation Stage（Vfx Niagara Sim Stage）是特效（Visual Effects）中Niagara系统领域的重要概念。难度等级4/9（中级）。
+模拟阶段（Simulation Stage）是Niagara粒子系统中一种允许开发者在单帧内对粒子数据执行多次GPU计算Pass的机制。与标准的粒子更新（Particle Update）模块不同，模拟阶段可以在粒子缓冲区（Particle Buffer）上反复迭代，每次Pass的输出可以作为下一次Pass的输入，从而实现传统单Pass更新无法完成的复杂粒子行为。
 
-自定义模拟阶段实现多Pass粒子计算。
+这一功能最早在虚幻引擎4.25版本中随着Niagara的GPU模拟能力增强而正式引入。其设计动机源自流体模拟与粒子约束求解的需求——例如Position-Based Dynamics（PBD）算法要求在一帧内对粒子位置约束进行多次迭代求解（通常需要4到16次迭代才能收敛），单Pass的粒子更新完全无法满足这一要求。
 
-在知识体系中，Simulation Stage建立在GPU模拟的基础之上，是理解邻域网格的关键前置知识。为什么Simulation Stage如此重要？因为它在Niagara系统中起到承上启下的作用，连接基础概念与高级应用。
+模拟阶段的意义在于它将GPU计算着色器（Compute Shader）的多Pass调度能力暴露给了Niagara的可视化脚本系统，使技术美术师无需手写HLSL代码即可实现粒子弹簧约束、SPH流体压力求解、热传导模拟等算法。启用模拟阶段的Niagara系统必须运行在GPU模拟模式下，CPU模拟模式不支持此特性。
 
-## 核心知识点
+## 核心原理
 
-### 1. 自定义模拟阶段实现多Pass粒子计算
+### 迭代计数与粒子缓冲区双缓冲
 
-自定义模拟阶段实现多Pass粒子计算是Simulation Stage(Vfx Niagara Sim Stage)的核心组成部分之一。在Niagara系统的实践中，自定义模拟阶段实现多Pass粒子计算决定了系统行为的关键特征。例如，当自定义模拟阶段实现多Pass粒子计算参数或条件发生变化时，整体表现会产生显著差异。深入理解自定义模拟阶段实现多Pass粒子计算需要结合特效的基本原理进行分析。
+每个模拟阶段节点（Simulation Stage Node）上有一个关键属性`Num Iterations`，用于指定该阶段在单帧内执行的完整Pass次数。引擎在每次迭代时，将整个粒子缓冲区作为Dispatch目标，线程数等于活跃粒子数量。为避免读写竞争，Niagara对粒子属性缓冲区采用Ping-Pong双缓冲策略：奇数Pass从Buffer A读取、写入Buffer B，偶数Pass从Buffer B读取、写入Buffer A，迭代完成后最终结果缓冲区被用于渲染。
 
+### 数据接口与迭代索引
 
-### 关键原理分析
+在模拟阶段内部，可以通过`Engine.Owner.SimulationStageIterationIndex`变量获取当前迭代的编号（从0开始计数）。这个变量对于实现松弛（Relaxation）系数的动态调整至关重要，例如在PBD求解中，前几次迭代使用较大步长快速收敛，后几次迭代使用较小步长精细修正。此外，`Engine.Owner.SimulationStageNormalizedIterationIndex`提供归一化的[0,1]范围迭代进度值，便于在插值计算中使用。
 
-Simulation Stage的核心在于自定义模拟阶段实现多Pass粒子计算。从理论角度看，该概念涉及以下层面：
+### 邻域数据接口的协同工作
 
-1. **定义层**：明确Simulation Stage的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解Simulation Stage内部各要素的相互作用方式
-3. **应用层**：将Simulation Stage的原理映射到特效的实际场景中
+模拟阶段本身仅提供迭代调度框架，要实现粒子间的相互作用（如碰撞检测、弹簧约束），必须配合Grid2D Collection或Neighbor Grid3D等数据接口使用。典型工作流为：第一个模拟阶段负责将粒子位置写入网格结构；第二个模拟阶段从网格中查询邻域粒子并计算约束力；第三个模拟阶段应用速度积分。这三个阶段在Niagara系统图中以链式顺序排列，均在GPU粒子更新阶段之后执行。
 
-思考题：如何判断Simulation Stage的应用是否超出了其理论适用范围？
+### 源类型与粒子子集迭代
 
-## 关键要点
+`Iteration Source`属性控制每次迭代的线程分配方式，有三个选项：`Particles`（每个活跃粒子一个线程，最常用）、`Data Interface`（线程数由外部数据接口决定，如Grid2D的单元格数量）和`Direct Count`（手动指定固定线程数）。当设置为`Data Interface`并绑定Grid2D Collection时，每个线程对应一个网格单元而非一个粒子，这使得模拟阶段可以用于驱动网格场的独立计算，粒子只是从网格中采样数据。
 
-1. **核心定义**：Simulation Stage的本质是自定义模拟阶段实现多Pass粒子计算，这是理解整个概念的出发点
-2. **多维理解**：掌握Simulation Stage需要同时理解自定义模拟阶段实现多Pass粒子计算等关键维度
-3. **先修关系**：扎实的GPU模拟基础对理解Simulation Stage至关重要
-4. **进阶路径**：掌握后可继续深入邻域网格等进阶主题
-5. **实践标准**：真正掌握Simulation Stage的标志是能在具体场景中灵活运用并正确判断适用边界
+## 实际应用
+
+**布料模拟约束求解**：在Niagara布料特效中，将粒子视为布料顶点，粒子间弹簧约束通过模拟阶段以`Num Iterations = 8`进行PBD求解。每次迭代读取粒子当前位置，计算与相邻粒子的距离，若距离偏离静止长度则施加位置修正量，8次迭代后布料看起来具有真实的弹性形变而不会穿透。
+
+**SPH粒子流体**：液体特效中的SPH（Smoothed Particle Hydrodynamics）算法要求分为密度计算和压力梯度计算两个独立Pass。第一个模拟阶段（Iteration Source = Particles）计算每个粒子的局部密度`ρ_i = Σ m_j · W(r_ij, h)`，结果写入自定义粒子属性`Density`；第二个模拟阶段读取`Density`属性，计算压力加速度并更新粒子速度。两个模拟阶段的分离确保了密度场在计算压力时是完全同步的全局快照。
+
+**GPU粒子排序前处理**：在需要半透明粒子正确排序的场景中，可以用一个`Iteration Source = Direct Count`且迭代次数为1的模拟阶段，执行并行归约（Parallel Reduction）来计算所有粒子的深度范围，为后续排序Pass提供归一化参数。
 
 ## 常见误区
 
-1. **混淆概念边界**：将Simulation Stage与Niagara系统中其他相近概念混为一谈。例如，自定义模拟阶段实现多Pass粒子计算的适用条件与其他同类概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解GPU模拟就学习Simulation Stage，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：Simulation Stage虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：认为Num Iterations越高效果越好**。提高迭代次数会线性增加GPU计算时间，在Adreno 640或Mali-G78等移动端GPU上，单系统超过4次迭代的模拟阶段很容易导致帧率跌破30fps。实际开发中应对目标平台进行GPU Profiling，在Unreal Insights的GPU轨道中观察`NiagaraSimStage`事件的耗时，而不是盲目堆砌迭代次数。
 
-## 知识衔接
+**误区二：混淆模拟阶段与粒子更新模块的执行顺序**。模拟阶段节点在Niagara图中的位置决定其是在标准粒子更新（Particle Update）之前还是之后执行。若将约束求解阶段放置在粒子更新之前，则物理模块（如Drag、Gravity）计算的速度变化还未应用于位置，约束求解将基于上一帧的旧位置数据，产生一帧的时序误差，表现为约束力抖动。
 
-### 先修知识
-先修知识包括：
-- **GPU模拟** — 为Simulation Stage提供了必要的概念基础
+**误区三：认为模拟阶段可以在CPU模拟模式下降级运行**。CPU模拟模式的粒子更新是在工作线程上以串行方式逐模块执行的，没有Compute Shader调度机制，因此模拟阶段在CPU模式下会被完全跳过且不报错，导致特效行为与预期完全不符。必须在Niagara系统属性中将`Fixed Bounds`和`GPU Sim Debug`同时检查，并将模拟目标显式锁定为`GPU Compute Sim`。
 
-### 后续学习
-掌握Simulation Stage后可继续学习：
-- **邻域网格** — 在Simulation Stage基础上进一步拓展
+## 知识关联
 
-## 学习建议
+模拟阶段的使用以GPU模拟（GPU Simulation）为前提——粒子系统必须运行在`GPU Compute Sim`模式，且项目设置中须开启`Support Compute Skin Cache`以保证Compute Shader的正常调度。理解GPU模拟的双缓冲机制、粒子属性在显存中的布局（结构化缓冲区SRV/UAV的绑定关系）是正确使用模拟阶段的技术基础。
 
-预计学习时间：2-3小时。建议采用以下策略：
-
-- **主动回忆**：学完后不看笔记复述Simulation Stage的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将Simulation Stage与特效中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释Simulation Stage，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于Niagara系统的章节可作为深入参考
-- Wikipedia: [Vfx Niagara Sim Stage](https://en.wikipedia.org/wiki/vfx_niagara_sim_stage) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Vfx Niagara Sim Stage" 可找到配套视频教程
+在掌握模拟阶段的迭代调度原理之后，邻域网格（Neighbor Grid3D）的学习将变得自然——邻域网格本质上是为模拟阶段的粒子间查询提供空间加速结构的数据接口，两者在SPH和PBD算法中形成标准的三阶段工作流：写入网格→迭代查询→积分更新。邻域网格的分辨率参数`Grid Resolution`直接影响模拟阶段每次Dispatch的线程访问模式，理解模拟阶段的线程-粒子映射关系是正确配置邻域网格Cell Size的必要条件。

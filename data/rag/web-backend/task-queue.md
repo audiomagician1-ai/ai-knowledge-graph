@@ -20,74 +20,58 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-04-01
 ---
+
 # 任务队列
 
 ## 概述
 
-任务队列（Task Queue）是一种将耗时操作从HTTP请求-响应周期中剥离出来，交由后台工作进程异步执行的架构模式。当用户触发一个需要30秒才能完成的图像处理请求时，若在Web进程中同步执行，用户将被迫等待并占用宝贵的线程资源；任务队列则允许Web进程立即返回"任务已提交"的响应，将实际处理工作推入队列，由独立的Worker进程消费执行。
+任务队列（Task Queue）是一种将耗时操作从HTTP请求-响应周期中剥离出来、交由后台工作进程异步执行的架构模式。当用户上传视频文件触发转码请求时，若同步等待转码完成，HTTP连接将超时（通常30秒后Nginx会关闭连接）；任务队列将"转码"这一动作序列化为消息写入中间件，立即返回任务ID给用户，由独立的Worker进程消费并执行。
 
-任务队列的概念在2009年前后随着Ruby的Delayed::Job和Resque库开始流行，Python生态中的Celery于2009年首次发布，此后成为最主流的任务队列框架之一。Node.js生态中的BullMQ（Bull的继任者）则依托Redis的List和Sorted Set数据结构实现了相似功能。这两套工具代表了任务队列在不同语言生态中的主流实践路径。
+任务队列概念最早伴随Web 2.0时代的异步化需求成熟。Celery项目于2009年由Ask Solem在Django社区发起，使用Python编写，最初只支持AMQP（RabbitMQ）作为消息代理。Node.js生态中的Bull库（现已迭代为BullMQ）则于2013年问世，依托Redis的`LPUSH`/`BRPOP`原语实现了轻量级队列。两者代表了成熟任务队列框架的主流实现路径。
 
-任务队列在AI工程的Web后端中尤为关键：模型推理、批量嵌入生成、向量数据库索引构建等操作通常耗时数秒至数分钟，完全不适合在同步请求中执行。通过任务队列，可以实现推理请求的削峰填谷、GPU资源的串行化利用以及失败任务的自动重试。
+任务队列之所以在AI工程的Web后端中尤为关键，是因为大模型推理、批量数据预处理、向量嵌入生成等操作的延迟通常在秒到分钟量级，远超HTTP协议的合理响应窗口。通过任务队列，AI推理服务可以实现请求削峰、GPU资源的批处理聚合（batching），以及失败后的自动重试。
+
+---
 
 ## 核心原理
 
-### 生产者-消费者模型与Broker
+### 生产者-消费者模型与消息序列化
 
-任务队列依赖三个角色：**Producer**（生产者，即Web应用）、**Broker**（消息代理，存储任务）、**Worker**（消费者，执行任务）。Producer调用 `task.delay(args)` 或 `task.apply_async(args)` 将序列化后的任务消息写入Broker；Worker进程持续轮询或监听Broker，取出任务并执行。Celery支持Redis、RabbitMQ、Amazon SQS等多种Broker；BullMQ则强制使用Redis，并利用Redis的原子操作保证同一任务不被两个Worker重复领取。
+任务队列的运转遵循严格的生产者-消费者模型：Web应用进程充当**Producer**，将任务描述序列化（通常为JSON或MessagePack格式）后推入队列；独立的**Worker进程**作为Consumer轮询或阻塞监听队列，取出消息后反序列化并执行对应函数。以Celery为例，一个任务的完整生命周期包含5个状态：`PENDING → STARTED → SUCCESS/FAILURE/RETRY`。任务的函数名、参数列表、关键字参数均被打包进消息体，Worker端必须能够import到相同的函数路径，这要求生产者与消费者共享代码库。
 
-任务消息本身是一个包含任务名称、参数、任务ID（UUID）和元数据的序列化对象，Celery默认使用JSON序列化，也支持pickle（存在安全风险，生产环境应避免）。BullMQ将任务存储在Redis的Hash中，任务ID格式为 `bull:{queue_name}:{jobId}`。
+### Broker与Backend的分工
 
-### 任务状态机与Result Backend
+任务队列框架通常区分两个存储角色。**Broker（消息代理）**负责临时存储待执行的任务消息，Celery支持RabbitMQ（AMQP）、Redis、Amazon SQS等；**Result Backend（结果后端）**负责持久化任务执行结果，常见选项包括Redis、数据库（Django ORM/SQLAlchemy）、Memcached。两者可以使用不同的存储系统：生产环境中常见的组合是RabbitMQ作Broker（保证消息不丢失、支持消息确认ACK）加Redis作Backend（毫秒级结果查询）。BullMQ则将两者都托管于Redis，通过`bull:jobName:jobId`格式的键名存储任务状态，队列数据结构使用Redis的Sorted Set（`ZADD`）管理延迟任务。
 
-一个Celery任务在其生命周期中经历以下状态：`PENDING → STARTED → SUCCESS / FAILURE / RETRY`。若配置了Result Backend（如Redis或数据库），任务执行结果和异常信息会被持久化，供生产者通过 `AsyncResult(task_id).get()` 查询。BullMQ中对应的状态为 `waiting → active → completed / failed`，可通过 `job.getState()` 获取。
+### 优先级队列、重试机制与定时任务
 
-Celery的Result Backend配置示例：`app.conf.result_backend = 'redis://localhost:6379/1'`，其中数据库编号1与Broker（通常用编号0）隔离，避免键名冲突。未配置Result Backend时，任务结果将永久丢失，适用于"fire-and-forget"场景（如发送通知邮件）。
+成熟的任务队列框架支持**多优先级队列**：Celery可以配置多个队列名称，Worker启动时用`--queues high,default,low`指定消费顺序，优先消费`high`队列中的任务。**重试机制**允许在任务函数内调用`self.retry(countdown=60, max_retries=3)`，以指数退避策略应对下游服务的临时故障。**定时任务（Cron/Beat）**通过专用的调度进程实现：Celery Beat进程读取`CELERYBEAT_SCHEDULE`配置，按cron表达式或固定间隔向Broker发送任务消息；BullMQ则使用`{ repeat: { cron: '0 9 * * 1-5' } }`选项将任务注册为重复任务，底层用Redis的`ZADD`将下次执行时间戳作为Score存储。
 
-### 定时任务与Beat调度器
-
-除即时异步任务外，任务队列框架还支持定时任务（Cron-style Scheduling）。Celery通过独立进程`celery beat`实现调度，配置示例：
-
-```python
-app.conf.beat_schedule = {
-    'rebuild-index-every-hour': {
-        'task': 'tasks.rebuild_vector_index',
-        'schedule': crontab(minute=0),  # 每小时整点执行
-    },
-}
-```
-
-BullMQ使用 `repeat: { pattern: '0 * * * *' }` 参数实现相同功能，底层通过Redis的Sorted Set按执行时间戳排序待执行的重复任务。需要注意：Celery Beat是单点进程，生产环境中必须保证其高可用，否则定时任务将全面停止。
-
-### 并发模型与Worker配置
-
-Celery Worker支持三种并发模型：`prefork`（多进程，默认，适合CPU密集型）、`gevent`/`eventlet`（协程，适合IO密集型）、`solo`（单线程，适合调试）。启动命令 `celery -A myapp worker --concurrency=4 --pool=prefork` 会创建4个子进程并行处理任务。BullMQ的Worker通过 `concurrency` 参数控制同时处理的任务数，底层基于Node.js的事件循环，天然适合IO密集型任务（如调用外部AI API）。
+---
 
 ## 实际应用
 
-**场景一：AI模型推理队列**
-用户上传文档后，Web接口立即返回 `task_id`，后台Celery Worker调用本地部署的Ollama或OpenAI API进行文本分析，完成后将结果写入数据库，前端通过轮询 `/tasks/{task_id}/status` 接口获取进度。这一模式避免了LLM推理延迟（通常5~30秒）阻塞Web服务器线程。
+**AI推理异步化**：用户通过REST API提交文本摘要请求，Web服务立即将`(document_id, model_name)`封装为Celery任务推入`gpu_inference`队列，返回`{"task_id": "abc-123", "status": "pending"}`。GPU Worker从该专用队列取任务，调用模型生成摘要后将结果写入Redis Backend。前端通过轮询`/tasks/abc-123/status`或WebSocket订阅获取结果。
 
-**场景二：批量向量嵌入**
-知识库更新时，将数千条文档的嵌入生成任务拆分为每批100条，通过 `group()` 原语并行分发给多个Worker，最终用 `chord()` 汇总结果并触发向量数据库的索引刷新。Celery的 `chord` 原语要求配置Result Backend，因为需要等待所有子任务完成后才能触发回调。
+**批量向量嵌入**：知识库更新时需对数千条文档重新生成向量嵌入。使用Celery的`group()`原语将每条文档创建为独立子任务，配合`chord()`在所有子任务完成后触发向量数据库的索引重建任务。`group(embed.s(doc) for doc in documents) | rebuild_index.si()`这一链式表达式即为Celery Canvas的核心用法。
 
-**场景三：定时数据同步**
-每天凌晨2点通过Celery Beat触发任务，从第三方数据源拉取最新数据并增量更新向量索引，这类任务的执行耗时不影响任何用户请求，同时通过 `max_retries=3, countdown=60` 配置实现网络异常时的自动重试。
+**定时数据同步**：每日凌晨2点从外部API拉取最新训练数据，可通过Celery Beat配置`cron(hour=2, minute=0)`触发ETL任务链，避免在业务高峰期占用数据库写入资源。
+
+---
 
 ## 常见误区
 
-**误区一：任务函数内直接共享Django ORM对象**
-Celery Worker运行在独立进程中，不能将Django QuerySet或SQLAlchemy Session对象作为任务参数传递，因为这些对象无法跨进程序列化。正确做法是只传递对象的主键（整数ID），在Worker内部重新查询数据库：`obj = MyModel.objects.get(id=obj_id)`。
+**误区一：将任务队列等同于消息队列**。消息队列（如Kafka、RabbitMQ）是通用的消息传递基础设施，关注消息的可靠传输、顺序保证和多消费者订阅；任务队列是在消息队列之上封装了任务调度语义的上层框架，额外提供了任务状态追踪、重试策略、结果存储、Worker并发管理等能力。Celery本身并不实现消息传输，而是依赖RabbitMQ或Redis作为底层Broker。
 
-**误区二：误以为任务天然幂等**
-Worker崩溃后Broker会将任务重新分配，若任务不具备幂等性（如重复扣款、重复发送邮件），将导致严重业务错误。应在任务逻辑中通过数据库唯一约束或Redis SETNX实现去重，Celery的 `acks_late=True` 配置会在任务执行完成后才确认消息，减少丢失但增加重复执行概率，需结合幂等设计使用。
+**误区二：认为Celery任务默认具备幂等性**。Celery的`acks_late=True`配置（Worker执行完成后才发送ACK而非取出即ACK）可防止任务丢失，但若任务本身不是幂等的（如直接扣减数据库余额），`acks_late`反而会导致Worker崩溃重启后任务被重复执行。正确做法是在任务逻辑中引入幂等键（如`task_id`）做去重检查。
 
-**误区三：用任务队列替代流式响应**
-对于需要实时流式输出的LLM推理（如ChatGPT流式回复），任务队列并不合适，因为它本质上是"执行完成后获取结果"的模型。流式场景应使用WebSocket或Server-Sent Events直接推送，任务队列适合的是"提交→等待→查询结果"的异步模式。
+**误区三：用任务队列处理实时性要求高的场景**。任务从写入Broker到Worker取出存在调度延迟，在Redis Broker下通常为毫秒级，但队列积压时可达秒级甚至更长。对于需要100ms内响应的场景（如实时推荐），应使用同步RPC或流式响应，而非任务队列的异步模式。
+
+---
 
 ## 知识关联
 
-**与消息队列的关系**：任务队列构建在消息队列之上——Redis的List/Sorted Set或RabbitMQ的AMQP协议提供了底层消息存储和传输能力，而Celery/BullMQ在其上封装了任务序列化、Worker管理、重试策略、优先级队列等专为任务执行场景设计的高级特性。消息队列关注"消息的可靠传递"，任务队列关注"函数的可靠异步执行"。
-
-**与中间件的关系**：任务队列框架本身充当Web框架与后台处理逻辑之间的中间件层。在Django中，Celery通过 `django-celery-results` 与ORM集成；在Express.js中，BullMQ的Queue实例通常在应用初始化时作为中间件注入，供路由处理器调用 `queue.add()`。理解中间件的请求拦截与依赖注入机制，有助于在Web后端中正确初始化和复用Queue连接实例，避免每次请求重复创建Redis连接的性能损耗。
+任务队列直接依赖**消息队列**作为底层传输层：理解RabbitMQ的Exchange/Binding模型能帮助配置Celery的路由规则（`task_routes`），理解Redis的阻塞命令`BRPOP`能解释BullMQ Worker的取任务机制。**中间件**知识则涵盖了Broker和Backend的选型依据——RabbitMQ在消息持久化和ACK确认上比Redis更可靠，但Redis在结果查询延迟上更有优势；生产环境中还需要通过中间件层的连接池配置（如Celery的`broker_pool_limit`）防止Worker与Broker之间的连接耗尽。掌握任务队列后，可进一步探索分布式任务调度（如Apache Airflow的DAG编排）以及事件驱动架构（Event-Driven Architecture）中任务队列与事件流的边界划分问题。

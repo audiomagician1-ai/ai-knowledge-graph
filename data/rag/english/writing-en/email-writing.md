@@ -20,90 +20,90 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # 邮件写作
 
 ## 概述
 
-邮件写作（Email Writing）是一种按照特定格式组织文字，通过电子邮件传递信息、表达请求或维系关系的书面交际形式。与面对面交流不同，邮件写作要求发件人在没有语气、表情等辅助信息的情况下，仅凭文字准确传达意图，因此格式规范与措辞选择至关重要。
+邮件写作（Email Writing）是指按照特定格式和语言规范，用英语撰写电子邮件的能力。根据收信人的身份和邮件目的，英语邮件分为正式邮件（Formal Email）和非正式邮件（Informal Email）两大类，二者在开头称呼、结尾敬语、用词风格和句式结构上均有显著差异。
 
-英语邮件写作在商务、学术和日常生活领域均有广泛使用。20世纪90年代互联网普及后，电子邮件逐渐取代传统信件成为最主要的书面沟通工具。如今，职场人士平均每天收发约121封商业邮件（Adobe 2019年调查数据），邮件写作能力直接影响工作和学习效率。
+英语邮件写作规范最早源于传统书信格式，随着1970年代电子邮件技术的普及逐渐演变。现代英语邮件写作在商务、学术和日常交流中广泛应用，剑桥、雅思等国际英语考试均将邮件写作列为写作测试的必考题型。例如剑桥B2 First考试要求考生在140-190词内完成一封正式或非正式邮件，评分标准明确包含"目标达成""词汇语法"和"格式规范"三个维度。
 
-英语邮件最核心的特征是**正式程度（register）的区分**。同一个请求"我想请你帮个忙"，正式邮件写作为 *I would be grateful if you could assist me with…*，而非正式邮件则写作 *Could you help me with…?* 甚至 *Any chance you could give me a hand?* 这种语域差异是中国学习者最需要有意识练习的技能。
+掌握邮件写作的关键在于准确识别语境，选择匹配的语体风格，并遵守英语邮件的固定结构。一封格式错误或用词不当的邮件，即使语法完全正确，也会给读者留下不专业或失礼的印象，直接影响沟通效果。
 
 ---
 
 ## 核心原理
 
-### 邮件的结构组成
+### 正式邮件的结构与套语
 
-一封标准英语邮件由以下固定部分构成，缺一不可：
+正式邮件（写给上司、教授、机构或不熟悉的人）遵循以下固定结构：
 
-1. **主题行（Subject Line）**：简洁说明邮件核心内容，通常不超过8个单词。例：*Meeting Rescheduled to 3 PM Friday* 比 *About the Meeting* 信息量更大。
-2. **称呼（Salutation）**：正式邮件用 *Dear Mr./Ms. + 姓氏*，半正式可用 *Dear + 名字*，非正式则用 *Hi Tom* 或 *Hey Sarah*。注意称呼后，英式英语用逗号，美式英语用逗号或不加标点。
-3. **开场白（Opening Line）**：正式邮件常用 *I am writing to enquire about…*；非正式邮件常以 *Hope you're doing well!* 开场。
-4. **正文（Body）**：按段落分述，每段聚焦一个要点，段与段之间空行分隔。
-5. **结束语（Closing）**：正式邮件用 *Yours sincerely*（已知姓名）或 *Yours faithfully*（不知姓名），非正式用 *Best wishes*、*Take care* 或 *Cheers*。
-6. **署名（Signature）**：正式邮件需包含全名、职位和联系方式；非正式邮件只需名字即可。
+1. **称呼（Salutation）**：使用 `Dear Mr./Ms. + 姓氏,`。不知道姓名时写 `Dear Sir or Madam,`。注意称呼后跟逗号，英式英语如此，美式有时用冒号。
+2. **开头句（Opening Line）**：点明写信目的，常用 `I am writing to inquire about...` 或 `I am writing with regard to...`，避免使用 `I'm`（缩写形式在正式邮件中不适用）。
+3. **正文段落**：每段只讨论一个主题，使用完整句和正式连接词，如 `Furthermore`、`However`、`In addition`，避免使用 `Also` 起句。
+4. **结尾敬语（Closing）**：若称呼中有姓名，用 `Yours sincerely,`；若写的是 `Dear Sir or Madam`，则用 `Yours faithfully,`。这一区别是英式英语的明确规则，常被学生混淆。
+5. **署名**：写全名，并注明职位或联系方式（如涉及商务邮件）。
 
-### 正式与非正式语言特征
+### 非正式邮件的语言特征
 
-正式邮件使用完整词汇，避免缩写：写 *I am* 而非 *I'm*，写 *do not* 而非 *don't*。常用被动语态增加客观性，例如 *Your application has been received* 而非 *We got your application*。句子结构较复杂，多使用礼貌性条件句：*I would appreciate it if you could reply by Friday.*
+非正式邮件写给朋友、同学或熟悉的人，允许使用口语化表达，但仍需基本礼貌规范。称呼使用 `Hi Tom,` 或 `Hey Sarah,`，结尾用 `Best wishes,`、`Take care,` 或 `Lots of love,`。正文可以使用缩写（`I'm`、`can't`、`it's`）、省略句（`Hope you're well!`）和感叹号，但仍需避免短信体缩写如 `ur`、`gr8`。非正式邮件中可以使用问句拉近距离，例如 `How have you been lately?` 或 `Have you heard about...?`
 
-非正式邮件则广泛使用缩略语（*BTW = by the way*）、口语化短语（*drop me a line* = 给我写信）、感叹号和表情符号。动词短语替代正式词汇：*find out*（非正式）对应 *investigate*（正式），*get back to you*（非正式）对应 *respond to your enquiry*（正式）。
+### 主题行（Subject Line）的写法
 
-### 请求类邮件的写作逻辑
+主题行是邮件写作中经常被忽视但极其重要的部分。正式邮件主题行应简洁具体，如 `Application for Marketing Manager Position` 或 `Inquiry Regarding Course Registration Deadline`。主题行中每个实词首字母大写（Title Case），字数控制在6-10个词以内。非正式邮件的主题行可以更随意，如 `Quick question` 或 `Weekend plans?`。在考试写作中，部分题目会要求学生自拟主题行，占有格式分。
 
-请求类邮件（Request Email）是考试和日常使用中最高频的类型，遵循"**背景→请求→依据→致谢**"四步结构：
+### 语气调节与礼貌策略
 
-- 背景：*I am a third-year student at Beijing University majoring in Economics.*
-- 请求：*I would like to apply for a two-week internship at your company.*
-- 依据/原因：*I believe my skills in data analysis would be of value to your team.*
-- 致谢与期待回复：*I look forward to hearing from you at your earliest convenience.*
-
-这四个步骤缺少任何一步，邮件在逻辑上都会显得突兀或不礼貌。
+正式邮件中表达请求时，须使用间接礼貌句式（Indirect Request）。例如，直接说 `Send me the report.` 是不礼貌的，应改为 `Could you please send me the report at your earliest convenience?` 或 `I would be grateful if you could provide...`。表示抱怨时用 `I am writing to express my concern regarding...` 而非 `I want to complain about...`。这些表达策略体现了礼貌原则（Politeness Principle）在书面语中的具体应用，与口语礼貌规范一脉相承但措辞更为正式。
 
 ---
 
 ## 实际应用
 
-**场景一：向老师请假**（半正式）
+**场景一：向学校申请换课**
 
-> *Dear Mr. Johnson,*
-> *I am writing to let you know that I will be unable to attend class on Thursday, October 12th, due to a medical appointment. I would be grateful if you could share any materials covered in that session. I apologize for any inconvenience caused.*
-> *Best regards, Li Ming*
+正式邮件范例开头：
+> Dear Ms. Johnson,
+> I am writing to request a transfer from Monday's Advanced Grammar class to the Wednesday session...
 
-注意：说明具体日期，给出明确理由，并表达歉意——这三点是请假邮件的必要要素。
+此处须避免 `I want to` 或 `Can I change...` 等非正式表达，应使用 `I would like to request` 或 `I am writing to enquire whether it would be possible to...`
 
-**场景二：邀请朋友参加活动**（非正式）
+**场景二：邀请朋友参加生日派对**
 
-> *Hey Alex! I'm throwing a small birthday party this Saturday at 7 pm. It'd be awesome if you could make it! Just bring yourself — I've got everything covered. Let me know if you're free.*
-> *Cheers, Wei*
+非正式邮件范例：
+> Hi Clara,
+> Guess what — I'm throwing a birthday party on the 15th and you absolutely have to come! It's going to be at my place from 7 pm...
 
-对比两封邮件，语气、词汇、句长均截然不同，但两者结构仍然完整（称呼、正文、结束语）。
+这里用了感叹号、破折号和口语化短语 `Guess what`，均符合非正式邮件的语体规范。
 
-**场景三：申请剑桥雅思考试官方样题中的投诉信邮件**，要求考生能使用 *I am writing to express my dissatisfaction with…* 等正式表达，并附上具体事实（时间、地点、金额），最后提出合理解决方案而非单纯抱怨。
+**场景三：雅思通用培训类Task 1**
+
+雅思通用培训写作Task 1要求在20分钟内写至少150词的邮件，题目会明确标注"write a formal/semi-formal/informal letter"。评分中"Task Achievement"（任务完成度）要求考生完整覆盖题目给出的三个bullet points，遗漏任意一点会直接导致该项失分。
 
 ---
 
 ## 常见误区
 
-**误区一：把中文思维直接翻译成英文开头**
+**误区一：`Yours sincerely` 和 `Yours faithfully` 可以互换使用**
 
-许多学习者写正式邮件时以 *Hello!* 或 *Dear Leader* 开场，前者过于随意，后者是中文官方信函习惯的直译，在英语邮件中均不恰当。正式邮件对不熟识的收件人应始终使用 *Dear + 头衔 + 姓氏*。
+许多学生认为两者均为正式结语，可以随意选择。实际上，英式英语有严格规定：当称呼中包含对方姓名（如 `Dear Mr. Smith`）时，必须用 `Yours sincerely`；当称呼为 `Dear Sir or Madam` 时，必须用 `Yours faithfully`。这条规则源于英国维多利亚时代的书信传统，考试中混用会被标注格式错误。
 
-**误区二：混淆 Yours sincerely 与 Yours faithfully 的使用场合**
+**误区二：非正式邮件不需要段落结构**
 
-英式英语中存在严格区分：知道收件人姓名并在称呼中使用了对方姓名（如 *Dear Ms. Brown*），结尾用 *Yours sincerely*；若称呼为 *Dear Sir or Madam*（不知对方姓名），则结尾必须用 *Yours faithfully*。这是英国国家考试委员会（Cambridge Assessment）评分标准中的明确扣分项。
+部分学生认为非正式邮件可以把所有内容写成一段，理由是"随意"。事实上，哪怕是写给朋友的邮件，也应按照"开头寒暄—主体内容—结尾收尾"的逻辑分段，每段只聚焦一个话题。一段式邮件在考试中会丢失"组织结构"分。
 
-**误区三：认为非正式邮件不需要结构**
+**误区三：邮件的开头句可以用 `How are you?`**
 
-很多学生认为给朋友写邮件"怎么写都行"，结果邮件逻辑混乱，读者无法抓住重点。非正式邮件同样需要清晰的段落逻辑：开场寒暄→主要内容→收尾问候。缺少主题行也是常见失误，收件人在邮件列表中看不到主题，很容易忽略。
+在正式邮件中，`How are you?` 属于非正式用语，不能用于开头。正式邮件应直接说明写信目的，如 `I am writing to follow up on our meeting last Tuesday.` 即便是半正式邮件，也建议用 `I hope this email finds you well.` 来代替 `How are you?`
 
 ---
 
 ## 知识关联
 
-邮件写作直接依赖**句子写作**技能，尤其是复合句和条件句的构造能力——正式邮件中大量使用 *I would be + adj. + if + 从句* 结构，如果句子写作基础薄弱，语法错误会直接破坏邮件的专业感。**礼貌规范**知识决定了称呼选择、语气把握和措辞委婉程度，例如用 *Could you possibly…?* 而非命令式 *Send me the document*，体现的是对礼貌规范原则（间接性、给对方留余地）的应用。
+邮件写作建立在**句子写作**和**礼貌规范**两项基础能力之上。句子写作能力决定了邮件中的语法准确性，包括时态选择（投诉过去发生的事用一般过去时，提出请求用情态动词 `would/could`）和从句结构（`I would appreciate it if you could...` 中含有条件从句）。礼貌规范则提供了邮件语气调节的依据，使学生理解为何在英语书面交流中要使用间接表达而非直接命令。
 
-在后续学习中，邮件写作的格式思维可以迁移至**商务信函写作**和**学术写作**——前者在邮件基础上增加信头（letterhead）和正式段落格式，后者在措辞正式性和客观性上有更高要求。此外，邮件写作中练习的"目的→支撑→行动请求"三段式逻辑，也是论文写作段落结构的基础训练。
+在写作能力的纵向发展上，邮件写作是从句子层面过渡到篇章层面的重要实践形式。掌握邮件写作后，学生可以将同样的段落组织、受众意识（Audience Awareness）和语体选择能力迁移到议论文、报告和演讲稿等更复杂的写作任务中。邮件写作还是英语语用能力（Pragmatic Competence）的直接体现，即在真实交际情境中做出得体语言选择的能力。

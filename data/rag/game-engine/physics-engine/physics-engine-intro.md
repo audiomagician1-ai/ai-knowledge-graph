@@ -32,135 +32,69 @@ sources:
     year: 2018
     isbn: "978-1138035454"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 物理引擎概述
 
 ## 概述
 
-物理引擎（Physics Engine）是游戏引擎中模拟物体运动、碰撞检测和力学响应的子系统。Ian Millington 在《Game Physics Engine Development》（2010）中将其描述为"让虚拟世界'感觉真实'的数学层——即使我们模拟的物理常常是假的"。
+物理引擎是游戏引擎中负责模拟牛顿力学、刚体碰撞、约束求解等物理现象的独立子系统，其核心任务是在每帧16.67毫秒（60fps）或更短的时间窗口内完成整个场景的物理状态更新。与离线物理仿真（如有限元分析）不同，游戏物理引擎刻意牺牲精度以换取实时性——例如位置修正（Position Correction）步骤会直接移动物体来消除穿透，而非通过精确积分恢复物理真实。
 
-关键区别：游戏物理 ≠ 真实物理。游戏物理的目标是 **"看起来对"** 而非 **"算出来对"**。Mario 的跳跃完全违反物理定律（空中可变方向、双跳、可变重力），但它 **感觉** 对——这才是游戏物理引擎的设计目标。
+物理引擎的独立化发展始于2000年代初期。2004年Havok物理引擎随《半条命2》正式进入大众视野，证明了实时刚体模拟在商业游戏中的可行性。2005年开源引擎Bullet发布，其创始人Erwin Coumans将迭代冲量（Iterative Impulse）求解器引入大众开发者视野。此后Epic Games于2020年在虚幻引擎5中推出自研的Chaos物理系统，Unity则先后经历PhysX集成与Unity Physics（基于DOTS架构）两代方案，形成了当前行业的主要技术格局。
 
-## 物理引擎的核心流水线
+物理引擎在游戏开发中的不可替代性体现在两个维度：一是玩法层面，布娃娃系统、车辆模拟、破坏系统等机制直接依赖物理引擎的约束求解能力；二是视觉反馈层面，碎布效果、抛物线弹道、液体溅射等视觉现象若完全依靠美术手工制作成本极高，而物理引擎可以程序化生成这些行为。
 
-每帧（通常以固定时间步长 1/60s 或 1/120s 运行）：
+## 核心原理
 
-```
-1. 力与加速度累积（Force Accumulation）
-   └─ 重力 + 摩擦力 + 用户输入力 + 弹簧力 + ...
-   └─ a = F_total / mass (Newton's Second Law)
+### 离散时间步长与积分方法
 
-2. 积分（Integration）
-   └─ 从加速度计算新速度和位置
-   └─ 常用方法：Euler / Verlet / RK4
-   └─ velocity += acceleration * dt
-   └─ position += velocity * dt
-
-3. 碰撞检测（Collision Detection）
-   ├─ 宽阶段（Broad Phase）：AABB/空间哈希/BVH 快速剔除
-   └─ 窄阶段（Narrow Phase）：GJK/SAT 精确检测
-
-4. 碰撞响应（Collision Response）
-   └─ 计算冲量（Impulse）、分离重叠物体
-   └─ 处理摩擦、弹性系数
-
-5. 约束求解（Constraint Solving）
-   └─ 关节、铰链、弹簧、接触约束
-   └─ 迭代求解器（Sequential Impulse / PGS）
-```
-
-## 主流物理引擎对比
-
-| 引擎 | 使用者 | 类型 | 特点 |
-|------|--------|------|------|
-| PhysX (NVIDIA) | UE5, Unity默认 | 刚体+布料+流体 | GPU加速，行业标准 |
-| Havok | 《塞尔达》《黑暗之魂》《天际》 | 刚体+破坏 | 性能最优，AAA首选 |
-| Bullet | Blender, 独立游戏 | 开源刚体+软体 | 免费，广泛使用 |
-| Box2D | 2D游戏 | 2D刚体 | 轻量，《愤怒的小鸟》使用 |
-| Jolt | 开源新秀 | 刚体 | Horizon 团队开发，性能接近 Havok |
-| Chaos (UE5) | UE5 原生 | 刚体+破坏+布料 | 替代 PhysX 成为 UE5 默认 |
-
-性能基准（10,000 刚体堆叠，Ryzen 9 5900X）：
-- Havok: 2.1ms/frame
-- Jolt: 2.3ms/frame
-- PhysX CPU: 4.5ms/frame
-- Bullet: 5.8ms/frame
-
-## 碰撞检测：从宽到窄
-
-### 宽阶段（Broad Phase）
-
-快速排除绝不可能碰撞的物体对——将 O(n²) 降到接近 O(n log n)：
-
-| 方法 | 原理 | 适合场景 | 复杂度 |
-|------|------|---------|--------|
-| AABB 扫描排序 | 沿轴排序后扫描重叠 | 通用 | O(n log n) |
-| 空间哈希 | 将世界划分为网格 | 均匀分布物体 | O(n) 平均 |
-| BVH 树 | 层级包围盒 | 复杂场景 | O(n log n) 构建, O(log n) 查询 |
-| 八叉树 | 递归空间划分 | 3D开放世界 | O(n log n) |
-
-### 窄阶段（Narrow Phase）
-
-精确计算两个凸体是否相交：
-
-- **GJK（Gilbert-Johnson-Keerthi）**：通过 Minkowski 差判断两个凸体是否重叠——O(迭代次数)，通常 < 20 次
-- **SAT（Separating Axis Theorem）**：如果存在一条轴使得两物体的投影不重叠，则不碰撞——对 OBB 需要测试 15 条轴
-- **EPA（Expanding Polytope Algorithm）**：GJK 确认碰撞后，EPA 计算穿透深度和法线
-
-## 积分方法
-
-| 方法 | 公式 | 精度 | 稳定性 | 使用场景 |
-|------|------|------|--------|---------|
-| Euler | x += v*dt; v += a*dt | 一阶 | 能量不守恒（发散） | 教学 |
-| Semi-Implicit Euler | v += a*dt; x += v*dt | 一阶 | 能量近似守恒 | 大多数游戏 |
-| Verlet | x_new = 2x - x_old + a*dt² | 二阶 | 优秀 | 布料/绳索 |
-| RK4 | 四次采样加权平均 | 四阶 | 优秀但昂贵 | 航天模拟 |
-
-Gregory（2018）的建议：**Semi-Implicit Euler 是游戏物理的默认选择**——简单、稳定、快速。只有需要高精度模拟（轨道力学、精密物理谜题）才需要 RK4。
-
-## 固定时间步长 vs 可变步长
+物理引擎不以连续时间运行，而是将时间离散为固定步长Δt进行数值积分，常见值为0.02秒（即物理帧率50Hz，对应Unity的`Time.fixedDeltaTime`默认值）。最常用的积分方法是半隐式欧拉积分（Semi-implicit Euler Integration）：
 
 ```
-// 固定步长（推荐）
-const float PHYSICS_DT = 1.0f / 60.0f;  // 60Hz 物理
-float accumulator = 0;
-
-void update(float frame_dt) {
-    accumulator += frame_dt;
-    while (accumulator >= PHYSICS_DT) {
-        physics_step(PHYSICS_DT);        // 确定性！
-        accumulator -= PHYSICS_DT;
-    }
-    // 剩余时间用于渲染插值
-    float alpha = accumulator / PHYSICS_DT;
-    render_interpolated(alpha);
-}
+v(t+Δt) = v(t) + a(t) × Δt
+x(t+Δt) = x(t) + v(t+Δt) × Δt
 ```
 
-**为什么固定步长**：可变步长在高帧率（240fps）和低帧率（15fps）下行为不同——物体可能穿墙（dt太大→位移过大）或抖动。固定步长确保物理模拟是 **确定性的**（deterministic），对网络同步至关重要。
+注意速度更新先于位置更新，这与显式欧拉不同，使得该方法在能量守恒上更稳定。更高精度的Runge-Kutta 4（RK4）虽然误差为O(Δt⁴)，但因计算量是欧拉法的4倍，游戏引擎中几乎不采用。
+
+### 宽相与窄相碰撞检测的两阶段架构
+
+物理引擎将碰撞检测分为宽相（Broad Phase）与窄相（Narrow Phase）两个阶段，目的是将O(n²)的物体对检测复杂度降低到接近O(n log n)。宽相使用AABB（轴对齐包围盒）配合SAP（Sweep And Prune）算法或BVH（包围体层次结构）快速排除不可能碰撞的物体对；窄相仅对宽相筛选出的候选对执行精确几何求交，常用算法包括GJK（Gilbert-Johnson-Keerthi）算法用于凸体距离计算，以及EPA（Expanding Polytope Algorithm）用于穿透深度求解。
+
+### 约束求解器与冲量迭代
+
+碰撞响应与关节约束统一通过约束求解器（Constraint Solver）处理。现代游戏物理引擎普遍采用PGS（Projected Gauss-Seidel）迭代求解器，每帧对所有约束迭代4到10次（Havok默认为4次，Bullet默认为10次）。每次迭代计算冲量J并将其施加到刚体上：
+
+```
+J = -(1 + e) × v_rel · n / (1/m_A + 1/m_B + (r_A × n)·I_A⁻¹·(r_A × n) + (r_B × n)·I_B⁻¹·(r_B × n))
+```
+
+其中e为碰撞恢复系数，n为碰撞法线，r为接触点相对质心的向量，I为惯性张量。迭代次数越多结果越稳定，但计算成本线性增长，这是物理引擎调优时最需要权衡的参数之一。
+
+### 物理场景的数据组织
+
+物理引擎维护独立于渲染场景的物理世界（Physics World），包含刚体列表、碰撞形状树、约束列表和材质库。物理更新完成后，引擎将刚体变换同步回游戏对象（Transform Sync），这一步骤在Unity中发生在`FixedUpdate`之后、`Update`之前的内部同步阶段。物理世界与渲染世界的解耦使物理引擎可以独立线程运行，例如PhysX 3.x引入了异步物理（Asynchronous Physics）模式，允许物理计算与渲染并行执行。
+
+## 实际应用
+
+在第一人称射击游戏中，子弹穿透力学要求物理引擎在单帧内处理射线检测（Raycast）、冲量施加和布娃娃激活三个连续步骤。《毁灭战士：永恒》的物理系统在极端情况下每帧需要处理超过200个活跃刚体的碰撞响应，通过限制布娃娃最大数量（通常为8-12个）来维持帧率稳定。
+
+车辆物理是物理引擎应用的高度专业化场景。《极品飞车》系列使用专用的车辆动力学库，将车辆悬挂建模为弹簧-阻尼系统（Spring-Damper），轮胎摩擦力则采用Pacejka"魔法公式"（Magic Formula）计算侧向力与纵向力。这类需求远超通用刚体求解器的能力边界，因此大多数引擎为车辆提供专用组件（如Unity的`WheelCollider`）。
+
+在建筑游戏（如《我的世界》dungeons扩展包）中，物理引擎负责大规模结构体的实时坍塌模拟，通常结合Voronoi碎裂预计算与运行时刚体激活（Sleeping/Waking机制）实现：静止物体进入休眠状态不参与计算，受力后唤醒，将活跃刚体数量控制在可接受范围内。
 
 ## 常见误区
 
-1. **帧率耦合物理**：直接用 `delta_time` 驱动物理 → 帧率波动时物理行为不一致。应使用固定时间步长 + 渲染插值
-2. **物体穿墙（Tunneling）**：高速物体在一帧内穿过薄墙。解决方案：连续碰撞检测（CCD）/ 增加碰撞体厚度 / 限制最大速度
-3. **物理引擎做游戏逻辑**：用物理力来控制角色移动（如 AddForce） → 操控感差。最佳实践：角色控制器（Kinematic）直接设定速度，物理引擎只处理环境物体
+**误区一：物理帧率越高越精确**。提高物理帧率（将Δt从0.02秒降至0.01秒）确实减少了积分误差，但同时会使每帧的物理计算时间翻倍，且不会改变PGS求解器因迭代次数有限而产生的约束误差。对于大多数游戏场景，调整求解器迭代次数比单纯提高帧率更有效。将物理帧率设置为渲染帧率的整数倍（而非相等）是更常见的工程实践，可避免渲染与物理时间步不同步导致的抖动。
 
-## 知识衔接
+**误区二：碰撞形状应尽量贴合视觉网格**。使用完整三角网格（Triangle Mesh）作为碰撞形状会导致窄相检测成本急剧上升，且GJK算法要求碰撞形状为凸体。实际项目中，开发者通常用数个简单凸体（如胶囊体、长方体的组合）拼合复杂物体的碰撞体积，视觉网格与物理网格分离维护是标准工作流。
 
-### 先修知识
-- **游戏引擎概述** — 物理引擎是引擎的核心子系统之一
+**误区三：物理引擎负责所有"碰撞"逻辑**。触发器（Trigger）碰撞体虽然经过物理引擎的宽相与窄相检测，但不产生冲量响应，属于纯几何重叠检测。游戏中大量"碰到就触发"的逻辑（捡取道具、进入区域、技能判定）应优先使用触发器而非刚体碰撞，以避免不必要的约束求解开销。
 
-### 后续学习
-- **碰撞检测** — 深入 AABB/GJK/SAT/BVH 算法
-- **刚体动力学** — 力、扭矩、惯性张量的完整模拟
-- **关节与约束** — 铰链/弹簧/布娃娃系统
-- **射线检测** — Raycast 的物理查询和游戏应用
-- **角色控制器** — Kinematic vs Dynamic 的角色物理
+## 知识关联
 
-## 参考文献
+学习物理引擎概述需要具备游戏引擎整体架构的认知，理解物理引擎作为独立子系统如何与渲染、脚本、动画系统协作；同时Chaos物理系统与Unity Physics作为当前主流实现，其架构选择（如Chaos的多线程破坏、Unity Physics的ECS无状态设计）都是本文理论在具体引擎中的体现。
 
-1. Millington, I. (2010). *Game Physics Engine Development* (2nd ed.). Morgan Kaufmann. ISBN 978-0123819765
-2. Ericson, C. (2004). *Real-Time Collision Detection*. Morgan Kaufmann. ISBN 978-1558607323
-3. Gregory, J. (2018). *Game Engine Architecture* (3rd ed.). CRC Press. ISBN 978-1138035454
-4. Catto, E. (2006). "Iterative Dynamics with Temporal Coherence." GDC 2006. (Box2D author)
-5. NVIDIA (2024). "PhysX 5 SDK Documentation."
+在此基础上，**刚体动力学**将深入展开质量、惯性张量、力矩等概念的数学细节；**碰撞形状**将具体讲解各类几何体的碰撞检测算法与性能特征；**物理材质**涉及摩擦系数与恢复系数在约束方程中的参数化方式；**布料模拟**则引入基于位置的动力学（Position-Based Dynamics，PBD）这一与刚体求解器完全不同的模拟范式；**物理场景管理**将讨论大规模物理世界的空间分区与休眠管理策略。这些后续概念共同构成游戏物理引擎的完整技术栈。

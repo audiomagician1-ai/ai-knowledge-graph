@@ -20,77 +20,102 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-04-01
 ---
-# Fetch API与网络请求
+
+
+# Fetch API 与网络请求
 
 ## 概述
 
-Fetch API与网络请求（Fetch Api）是AI工程（AI Engineering）中Web前端领域的重要概念。难度等级4/9（中级）。
+Fetch API 是浏览器原生提供的基于 Promise 的网络请求接口，于 2015 年随 WHATWG Fetch 规范首次标准化，并在 Chrome 42、Firefox 39、Edge 14 等版本中陆续实装，取代了自 1999 年 IE5 引入的 `XMLHttpRequest`（XHR）成为现代前端发起 HTTP 请求的首选方案。与 XHR 的事件回调模型不同，Fetch 的每次请求返回一个 `Promise<Response>`，天然支持 async/await 语法链，使异步网络代码可以写成近乎同步的风格。
 
-掌握Fetch API与网络请求的核心概念和应用。
+Fetch API 在 AI 工程前端场景中尤为重要。调用 OpenAI、Hugging Face 等大模型 REST 接口、上传图片到视觉识别服务、以 Streaming 模式逐 token 渲染模型输出，均依赖 Fetch 的流式读取能力（`ReadableStream`）。相比 axios 等第三方库，Fetch 无需额外安装，运行时体积为零，在 Edge Runtime 和 Service Worker 环境中也可直接使用，这对 Next.js API Routes 与 Cloudflare Workers 部署的 AI 应用至关重要。
 
-在知识体系中，Fetch API与网络请求建立在异步JavaScript(Promise/async)、HTTP协议的基础之上，是理解可进入更高级主题的关键前置知识。为什么Fetch API与网络请求如此重要？因为它在Web前端中起到承上启下的作用，连接基础概念与高级应用。
+---
 
-## 核心知识点
+## 核心原理
 
-### 1. 掌握Fetch API
+### 基本请求与 Response 对象
 
-掌握Fetch API是Fetch API与网络请求(Fetch Api)的核心组成部分之一。在Web前端的实践中，掌握Fetch API决定了系统行为的关键特征。例如，当掌握Fetch API参数或条件发生变化时，整体表现会产生显著差异。深入理解掌握Fetch API需要结合AI工程的基本原理进行分析。
+调用 `fetch(url, options)` 后，浏览器发出 HTTP 请求并返回 Promise。该 Promise 在**收到响应头**时即 resolve 为 `Response` 对象，而非等待响应体完全下载完毕。因此必须二次调用 `response.json()`、`response.text()` 或 `response.blob()` 等方法来消费响应体，这两步均为异步操作：
 
-### 2. 网络请求的核心概念
+```javascript
+const response = await fetch('https://api.example.com/predict', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json',
+              'Authorization': 'Bearer sk-...' },
+  body: JSON.stringify({ prompt: 'hello' })
+});
+// 此时 response.ok 可读，但 body 尚未解析
+const data = await response.json(); // 第二次 await
+```
 
-网络请求的核心概念是Fetch API与网络请求(Fetch Api)的核心组成部分之一。在Web前端的实践中，网络请求的核心概念决定了系统行为的关键特征。例如，当网络请求的核心概念参数或条件发生变化时，整体表现会产生显著差异。深入理解网络请求的核心概念需要结合AI工程的基本原理进行分析。
+`Response` 对象包含 `status`（HTTP 状态码）、`ok`（200–299 范围为 true）、`headers`（`Headers` 对象）和 `body`（`ReadableStream`）四类属性。**关键点**：Fetch 对 4xx/5xx 状态码不会抛出异常，只有网络层错误（DNS 失败、CORS 拒绝、请求超时无内置支持）才会导致 Promise reject。
 
-### 3. 应用
+### CORS 与请求模式
 
-应用是Fetch API与网络请求(Fetch Api)的核心组成部分之一。在Web前端的实践中，应用决定了系统行为的关键特征。例如，当应用参数或条件发生变化时，整体表现会产生显著差异。深入理解应用需要结合AI工程的基本原理进行分析。
+Fetch 的 `mode` 选项控制跨域行为，共三个值：`cors`（默认，遵循 CORS 协议）、`same-origin`（跨域直接拒绝）、`no-cors`（允许跨域但响应体不可读，type 为 `"opaque"`）。调用第三方 AI API 时必须确认服务端返回正确的 `Access-Control-Allow-Origin` 响应头；若服务端不支持 CORS，前端须通过自建 proxy 转发请求，而非使用 `no-cors` 模式，后者无法读取响应数据。
 
+预检请求（Preflight）由浏览器自动发送：当请求方法不是 GET/POST/HEAD，或 Content-Type 不属于 `application/x-www-form-urlencoded`、`multipart/form-data`、`text/plain` 三者之一时，浏览器会先发一次 `OPTIONS` 请求。向 AI 接口发送 `application/json` 格式的 POST 请求时，必然触发预检，服务端需返回 `Access-Control-Allow-Headers: Content-Type, Authorization`。
 
-### 关键原理分析
+### Streaming 响应与 ReadableStream
 
-Fetch API与网络请求的核心在于掌握Fetch API与网络请求的核心概念和应用。从理论角度看，该概念涉及以下层面：
+大语言模型接口常以 Server-Sent Events（SSE）或 `Transfer-Encoding: chunked` 格式逐步返回 token，Fetch 的 `response.body` 是一个 `ReadableStream`，可通过 `getReader()` 逐块消费：
 
-1. **定义层**：明确Fetch API与网络请求的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解Fetch API与网络请求内部各要素的相互作用方式
-3. **应用层**：将Fetch API与网络请求的原理映射到AI工程的实际场景中
+```javascript
+const reader = response.body.getReader();
+const decoder = new TextDecoder('utf-8');
+while (true) {
+  const { done, value } = await reader.read();
+  if (done) break;
+  const chunk = decoder.decode(value, { stream: true });
+  // 解析 "data: {...}\n\n" 格式，实时更新 UI
+}
+```
 
-思考题：如何判断Fetch API与网络请求的应用是否超出了其理论适用范围？
+每次 `reader.read()` 返回的 `value` 是 `Uint8Array`，需用 `TextDecoder` 转码。`stream: true` 参数告知解码器当前块可能在多字节字符边界截断，避免乱码。
 
-## 关键要点
+### 超时与取消请求
 
-1. **核心定义**：Fetch API与网络请求的本质是掌握Fetch API与网络请求的核心概念和应用，这是理解整个概念的出发点
-2. **多维理解**：掌握Fetch API与网络请求需要同时理解掌握Fetch API和应用等关键维度
-3. **先修关系**：扎实的异步JavaScript(Promise/async)基础对理解Fetch API与网络请求至关重要
-4. **进阶路径**：可广泛应用于AI工程各方面
-5. **实践标准**：真正掌握Fetch API与网络请求的标志是能在具体场景中灵活运用并正确判断适用边界
+Fetch 本身不提供超时参数，必须结合 `AbortController` 实现。创建 `AbortController` 实例，将 `controller.signal` 传入 fetch options，调用 `controller.abort()` 后，对应请求的 Promise 会以 `AbortError` reject：
+
+```javascript
+const controller = new AbortController();
+const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 秒超时
+try {
+  const res = await fetch(url, { signal: controller.signal });
+  clearTimeout(timeoutId);
+} catch (e) {
+  if (e.name === 'AbortError') console.log('请求已超时');
+}
+```
+
+同一个 `AbortController` 的 signal 可同时传给多个 `fetch()` 调用，一次 `abort()` 可批量取消，适用于用户切换页面时中止多个并行 AI 推理请求的场景。
+
+---
+
+## 实际应用
+
+**调用 OpenAI Chat Completions 接口**：将模型参数序列化为 JSON body，设置 `Authorization: Bearer <API_KEY>`，处理 `stream: true` 的 SSE 响应，解析每行 `data: {"choices":[{"delta":{"content":"..."}}]}` 并追加到 UI 文本框，最后一行为 `data: [DONE]` 表示流结束。
+
+**上传图片到视觉模型**：使用 `FormData` 对象将 `File` 实例 append 进去，无需手动设置 `Content-Type`（浏览器会自动填写含 boundary 的 `multipart/form-data`），再通过 Fetch 以 POST 发送。错误地手动设置 `Content-Type: multipart/form-data` 会导致 boundary 缺失，服务端无法解析。
+
+**批量并发请求**：结合 `Promise.all` 同时发起多个 Fetch，例如并行查询向量数据库的多个分片：`const results = await Promise.all(shardUrls.map(url => fetch(url).then(r => r.json())))`，总耗时取决于最慢的单个请求而非累加时间。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将Fetch API与网络请求与Web前端中其他相近概念混为一谈。例如，掌握Fetch API的适用条件与其他网络请求的核心概念概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解异步JavaScript(Promise/async)就学习Fetch API与网络请求，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：Fetch API与网络请求虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：`fetch` 失败等同于 Promise reject**。实际上，只要服务器返回了任意 HTTP 响应（包括 404、500），`fetch` 的 Promise 就会 resolve。必须显式检查 `response.ok` 或 `response.status`，否则会把服务端错误误当成成功处理。正确做法：`if (!response.ok) throw new Error(\`HTTP ${response.status}\`)`。
 
-## 知识衔接
+**误区二：可以多次调用 `response.json()` 或 `response.text()`**。`Response` 的 body 是一次性流，第一次调用消费后，`response.bodyUsed` 变为 `true`，再次调用会抛出 `TypeError: body stream already read`。若需多次读取，应先调用 `response.clone()` 获取副本。
 
-### 先修知识
-先修知识包括：
-- **异步JavaScript(Promise/async)** — 为Fetch API与网络请求提供了必要的概念基础
-- **HTTP协议** — 为Fetch API与网络请求提供了必要的概念基础
+**误区三：Fetch 默认发送 Cookie**。默认情况下 Fetch 的 `credentials` 选项为 `"same-origin"`，跨域请求不携带 Cookie 或 Authorization 头中的凭据。调用需 Session 鉴权的跨域 AI 后端时，需显式设置 `credentials: "include"`，且服务端必须同时返回 `Access-Control-Allow-Credentials: true` 并明确指定 `Access-Control-Allow-Origin`（不能为 `*`）。
 
-### 后续学习
-掌握Fetch API与网络请求后，学习者已具备该方向的核心能力，可将所学应用于实际项目或探索AI工程其他分支。
+---
 
-## 学习建议
+## 知识关联
 
-预计学习时间：2-3小时。建议采用以下策略：
-
-- **主动回忆**：学完后不看笔记复述Fetch API与网络请求的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将Fetch API与网络请求与AI工程中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释Fetch API与网络请求，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于Web前端的章节可作为深入参考
-- Wikipedia: [Fetch Api](https://en.wikipedia.org/wiki/fetch_api) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Fetch Api" 可找到配套视频教程
+Fetch API 以 **Promise** 为返回值基础，`async/await` 语法直接作用于每个 `fetch()` 和 `response.json()` 调用；若未掌握 Promise 的 resolve/reject 机制，会难以理解"网络成功但业务失败"的双层错误处理模式。**HTTP 协议**知识决定了如何正确构造请求头（`Content-Type`、`Authorization`）、理解预检请求的触发条件、以及 chunked 传输与 SSE 的区别，这些均直接影响 Fetch 的配置方式。在 AI 工程实践中，Fetch 与 **Web Workers** 配合可将网络请求移出主线程，与 **Service Worker** 结合可实现模型推理结果的离线缓存，与 **WebSocket** 相比，Fetch+SSE 模式更适合单向流式输出（如 LLM 生成），而 WebSocket 更适合双向实时交互场景。

@@ -20,81 +20,112 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # 疑问句
 
 ## 概述
 
-疑问句是英语中用于提问、请求确认或获取信息的句型，其语法结构与陈述句有本质区别——疑问句通常需要将助动词或be动词提至主语之前，从而形成"倒装"结构。英语疑问句按功能和结构可分为三大类：一般疑问句（Yes/No Questions）、特殊疑问句（Wh- Questions）和选择疑问句（Alternative Questions），每类都有独特的构成规则和语调特征。
+疑问句（Interrogative Sentence）是英语中用于提问的句子类型，与陈述句、祈使句、感叹句并列为英语四大句式之一。疑问句的本质功能是向对方索取信息，语法上通过助动词前置或疑问词引导来实现与陈述句的区别。英语疑问句与中文提问方式有一个显著差异：英语必须改变词序或添加助动词，而中文仅靠语气词"吗""呢"即可完成提问。
 
-英语疑问句的倒装结构源于古英语的语序演变。在现代英语中，助动词系统（do/does/did、will、can、have等）在疑问句构造中起到关键作用。16世纪前，英语中可以直接将主要动词前移来构成疑问，如"Know you him?"，但现代英语规范已要求使用助动词，变为"Do you know him?"。掌握疑问句构造规则是英语学习者进行日常对话、写作采访对话以及应对各类考试的必备技能。
+疑问句的系统化研究可追溯至16世纪英语语法规范化时期。现代英语疑问句分为三个主要类别：一般疑问句（Yes/No Question）、特殊疑问句（Wh- Question）和选择疑问句（Alternative Question）。此外还有附加疑问句（Tag Question），但初学阶段以前三类为主。
+
+掌握疑问句的构成规则对英语学习者至关重要，因为日常英语口语中约有30%的句子属于疑问句形式。错误的疑问句结构是中国英语学习者最常见的语法错误之一，典型错误如把"你喜欢苹果吗？"直译为 "You like apples?"（缺少助动词倒装）。
+
+---
 
 ## 核心原理
 
-### 一般疑问句（Yes/No Questions）
+### 一般疑问句：助动词提前规则
 
-一般疑问句的回答只有"Yes"或"No"两种，其构成公式为：
+一般疑问句的答案只有"Yes"或"No"两种，构成规则是将**助动词或系动词提至主语前**。具体操作分两种情况：
 
-**助动词/be动词 + 主语 + 动词原形/其他成分？**
+- 句子本身含有 be 动词、情态动词（can/will/should 等）或助动词（have/has/had）时，直接将其移至主语前。
+  - 陈述句：She **is** a teacher. → 疑问句：**Is** she a teacher?
+  - 陈述句：You **can** swim. → 疑问句：**Can** you swim?
 
-具体规则如下：
-- **含be动词时**：直接将be动词提前。陈述句"She is a teacher."变为"Is she a teacher?"
-- **含情态动词时**：将情态动词提前。"He can swim."变为"Can he swim?"
-- **含实义动词时**：需引入助动词do/does（现在时）或did（过去时），主动词还原为原形。"They played football."变为"Did they play football?"（注意played须还原为play）
+- 句子为一般现在时或一般过去时的实义动词句时，需要添加助动词 **do/does/did**，原动词还原为原形。
+  - 陈述句：He likes cats. → 疑问句：**Does** he like cats?（注意 likes → like）
+  - 陈述句：They went home. → 疑问句：**Did** they go home?（went → go）
 
-一般疑问句朗读时使用**升调**（↑），这一音调特征是区别于陈述句的重要语音标志。
+一般疑问句的书写以**问号结尾**，朗读时语调为**升调**（↑），这是英语语音的固定规律。
 
-### 特殊疑问句（Wh- Questions）
+### 特殊疑问句：疑问词 + 一般疑问句语序
 
-特殊疑问句以疑问词开头，用于询问具体信息，回答不能仅用yes/no。常见疑问词包括：what（什么）、who（谁）、where（在哪里）、when（何时）、why（为什么）、how（怎样）、which（哪个）、whose（谁的）。
+特殊疑问句用于询问具体信息，以 **Wh- 词**开头（共7个常见疑问词）：
 
-其构成公式为：
+| 疑问词 | 询问内容 | 示例 |
+|--------|----------|------|
+| What | 事物/内容 | What is your name? |
+| Who | 人物（主语） | Who called you? |
+| Whom | 人物（宾语） | Whom did you see? |
+| Where | 地点 | Where do you live? |
+| When | 时间 | When did she arrive? |
+| Why | 原因 | Why are you late? |
+| How | 方式/程度 | How do you feel? |
 
-**疑问词 + 助动词/be动词 + 主语 + 动词原形/其他成分？**
+特殊疑问句的结构公式为：**疑问词 + 助动词 + 主语 + 动词原形 ...?**
 
-例如：
-- "Where does she live?"（疑问词where + 助动词does + 主语she + 动词原形live）
-- "Who broke the window?"（此处who本身作主语，结构为Who + 动词，无需倒装，这是特殊疑问句中的特殊情形）
+但有一个重要例外：当疑问词本身充当句子**主语**时，语序与陈述句相同，无需倒装。例如：
+- "Who broke the window?" 中 Who 是主语，直接接动词 broke，不需要助动词。
+- 对比："Who did you meet?" 中 you 是主语，Who 是宾语，需要助动词 did。
 
-当疑问词how与形容词/副词搭配时，形成固定短语：how old（多大年龄）、how long（多长时间）、how many（多少个，接可数名词复数）、how much（多少，接不可数名词）。例如："How many students are there in your class?"
+特殊疑问句朗读时使用**降调**（↓），与一般疑问句的升调恰好相反。
 
-特殊疑问句朗读时使用**降调**（↓），与一般疑问句的升调相反。
+### 选择疑问句：or 连接两个选项
 
-### 选择疑问句（Alternative Questions）
+选择疑问句提供两个或多个选项，要求对方从中选择一个，**不能用 Yes/No 回答**。结构分两类：
 
-选择疑问句提供两个或两个以上的选项，要求对方从中选择，不能以yes/no作答，必须从所给选项中选取一个作为回答。其结构中必须出现连词**or**连接两个选项。
+**类型一（一般疑问句 + or）：**
+- Is your bag red **or** blue?（回答：It's red. / It's blue.）
+- Do you prefer tea **or** coffee?
 
-构成公式为：
+**类型二（特殊疑问句 + or）：**
+- Which do you like better, cats **or** dogs?
 
-**一般疑问句结构 + A + or + B？**
+选择疑问句的语调规律：前一个选项用**升调**（↑），最后一个选项用**降调**（↓），这个"升—降"模式提示听者选项已经列完。
 
-例如：
-- "Do you prefer tea or coffee?"（你更喜欢茶还是咖啡？答："Tea, please."）
-- "Is your brother older or younger than you?"
-
-选择疑问句的语调规则较为特殊：前一选项用**升调**，后一选项用**降调**，形成"升—降"的音调组合，这与一般疑问句纯升调不同。
+---
 
 ## 实际应用
 
-**课堂场景**：教师在点名或了解学生情况时常用一般疑问句："Are you ready?" / "Did you finish your homework?"；需要了解具体情况时用特殊疑问句："Why were you late today?" / "How do you spell your name?"
+**场景一：课堂问答**
+老师提问 "Does everyone understand this rule?"（一般疑问句），学生回答 "Yes, I do." 或 "No, I don't."。注意回答中必须使用与问句相同的助动词，不能直接说 "Yes, I understand."（虽然意思正确，但正式语法要求使用简短回答）。
 
-**购物场景**：店员使用选择疑问句帮助顾客做选择："Would you like the red one or the blue one?" 顾客用特殊疑问句询问价格："How much does this cost?"
+**场景二：问路**
+"Excuse me, where is the nearest subway station?"（特殊疑问句，where 询问地点，is 为系动词提前）。此句中不使用 do/does，因为谓语是 be 动词。
 
-**日记/作文写作**：在引语（direct speech）的习作中，正确区分三类疑问句至关重要。例如叙述"老师问我是否喜欢音乐"时，间接引语要将一般疑问句改为"if/whether"从句："The teacher asked me if I liked music."而特殊疑问句的间接引语则保留疑问词："She asked where I came from."
+**场景三：餐厅点餐**
+"Would you like soup or salad?"（选择疑问句，使用情态动词 would，语调在 soup 处升调，salad 处降调）。
+
+**场景四：Did 的特殊用法**
+"Did Shakespeare write Hamlet?"（一般疑问句，询问历史事实，原句 Shakespeare wrote Hamlet 中 wrote 变为原形 write）。这个例子同时展示了 did 疑问句中动词必须还原为原形的规则。
+
+---
 
 ## 常见误区
 
-**误区一：使用do/does/did时忘记还原动词原形**
-学习者常写出"Did she went to school?"，正确形式应为"Did she go to school?"因为时态已由did承担，主要动词必须还原为原形go。这一错误在初学者中出现频率极高。
+**误区一：添加 do/does 后忘记还原动词**
+错误：Does she **likes** music?
+正确：Does she **like** music?
+原因：does 已经承担了第三人称单数和时态信息，主动词必须用原形，不能重复标记。这是中国学生最高频的疑问句错误，比例超过60%。
 
-**误区二：混淆who作疑问词时的语序**
-当who/what在句中作主语时，不需要倒装助动词，直接用"Who + 谓语"结构。"Who made this cake?"是正确的；错误写法是"Who did make this cake?"（除非是强调句式）。但当who/what作宾语时，仍需倒装："Who did you invite?"（你邀请了谁？）
+**误区二：疑问词作主语时错误倒装**
+错误：Who **did** call you?
+正确：Who called you?
+原因：Who 已经是主语，不需要借助 did 来构成疑问。一旦添加 did，句子变成 "Who did call you?" 其中 call 成了强调句（do-emphasis）而非普通疑问句，意思发生偏移。
 
-**误区三：选择疑问句错误地用yes/no作答**
-看到含or的疑问句时，许多学习者习惯性地用"Yes"或"No"回答，这在选择疑问句中是错误的。"Do you want milk or juice?"的正确回答是"Milk, please."或"Juice, please."，而非"Yes."或"No."。
+**误区三：选择疑问句用 Yes/No 回答**
+错误提问方式（学生理解错误）："Do you want tea or coffee?" → 错误回答："Yes."
+正确回答："Tea, please." 或 "Coffee, please."
+若对方回答 "Yes." 则表示他没有理解这是选择疑问句，说明问句的 or 重音必须正确标注，否则容易与一般疑问句混淆。
+
+---
 
 ## 知识关联
 
-疑问句的学习以**基本语序**（主语+谓语+宾语的SVO结构）为基础，正是因为理解了陈述句的正常语序，才能判断疑问句中哪个成分被"提前"了。例如，陈述句"You can play the guitar."中，助动词can位于主语you之后；构成疑问句"Can you play the guitar?"时，can被提至句首，这一对比只有在熟悉正常语序后才能清晰理解。
+疑问句的学习以**基本语序**（SVO：主语-动词-宾语）为前提，因为只有熟悉陈述句的正常词序，才能准确判断助动词提前操作改变了哪些成分的位置。一般疑问句与陈述句的转换本质上是对词序规则的"反向操作"。
 
-在掌握三类疑问句的基础之上，学习者可以进一步学习**反意疑问句**（Tag Questions），例如"You like music, don't you?"，其构成规则与一般疑问句的助动词系统直接相关。同时，疑问句也是学习**间接引语**（Indirect Speech/Reported Questions）的前提，因为将直接引语中的疑问句改写为间接引语，需要先准确识别原句属于哪类疑问句，再按照各类疑问句的间接引语转换规则进行改写。
+学习疑问句后，可以直接进入**否定句**的学习，两者共享"添加助动词 do/does/did"这一核心操作——否定句在助动词后加 not，疑问句将助动词移至句首，操作对象完全相同。之后进一步学习**附加疑问句**（Tag Question，如 "It's cold, isn't it?"）时，会发现其构成规则依赖对一般疑问句结构的熟练掌握：附加部分本质上是一个缩略的一般疑问句。

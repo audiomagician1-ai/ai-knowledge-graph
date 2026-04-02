@@ -20,87 +20,80 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 协程系统
 
 ## 概述
 
-协程系统是游戏引擎脚本层提供的一种**协作式多任务机制**，允许一段代码在特定挂起点暂停执行，将控制权归还给引擎主循环，并在未来某个时机自动恢复。与操作系统的抢占式线程不同，协程的切换完全由程序员和引擎逻辑主动控制，不涉及真正的并行执行，因此不需要互斥锁来保护共享状态。
+协程（Coroutine）是一种能够在执行过程中主动暂停并在稍后恢复的函数。与普通函数必须从头运行到尾不同，协程拥有独立的执行状态（包括局部变量和程序计数器），可以在任意`yield`点挂起，将控制权交回给调度器，等待下一帧或特定条件满足后继续执行。游戏引擎中的协程并不是操作系统级别的线程，它们运行在同一个主线程上，通过引擎主循环的调度器轮流切换。
 
-协程（Coroutine）这一概念由 Melvin Conway 于 1958 年在汇编语言实现中首次提出，但在游戏引擎领域的广泛普及主要源于 Unity 引擎于 2009 年发布 Unity 2.x 时将其纳入 C# 脚本体系。Unity 的实现方式是基于 C# 迭代器（`IEnumerator`）的语法糖——开发者在函数中使用 `yield return` 语句声明挂起点，引擎每帧调用 `MoveNext()` 推进协程。这一设计极大地降低了异步逻辑的编写门槛，使"等待两秒后触发爆炸"这类时序逻辑无需状态机即可直接表达。
+Unity 引擎在 2010 年左右将协程机制带入主流游戏开发视野，其底层基于 C# 的 `IEnumerator` 迭代器协议实现。Lua 语言从 5.0 版本（2003年）起内置了原生协程支持，成为许多游戏引擎（如使用 Lua 的 Cocos2d-x 和 LÖVE）实现协程系统的首选语言。
 
-协程系统在游戏开发中的价值在于**将时间维度的逻辑压平为线性代码**。传统 Update 函数中处理跨帧等待需要手动维护计时器变量和状态标志，而协程可以用 `yield return new WaitForSeconds(2f)` 一行代替，大幅减少逻辑碎片化。
-
----
+协程在游戏开发中解决了一个核心痛点：如何在不阻塞主线程的前提下，用线性代码描述跨越多帧的行为序列。例如让角色播放攻击动画、等待 0.5 秒、然后造成伤害，若用状态机或回调链实现会极为繁琐，而用协程可以写成三行顺序代码。
 
 ## 核心原理
 
-### 挂起与恢复机制
+### yield 挂起与恢复机制
 
-协程的执行流依赖一个**延续（Continuation）对象**保存当前局部变量、执行位置（程序计数器偏移）。每次调用 `MoveNext()` 时，引擎恢复这份上下文并继续执行，直到遇到下一个 `yield` 语句或函数结束。以 Unity 为例，`StartCoroutine()` 返回一个 `Coroutine` 句柄，引擎内部维护一张协程列表，在每帧 `Update` 阶段结束后统一推进这些协程。
+协程的关键操作是 `yield`（让步）。当协程执行到 `yield` 语句时，它将当前的调用栈状态保存下来，把执行权交还给协程调度器，自身进入"挂起"状态。下一次被调度器唤醒时，从 `yield` 语句的下一行继续执行，所有局部变量的值保持不变。
 
-### 常见挂起类型及其触发时机
+在 Unity 中，`yield return new WaitForSeconds(1.5f)` 表示挂起当前协程 1.5 秒；`yield return null` 表示挂起一帧，下一帧继续。引擎每帧遍历所有挂起的协程，判断其恢复条件是否满足，满足则将其重新加入执行队列。
 
-不同的 `yield` 指令对应引擎循环中不同的恢复位置：
+### 协程调度器的工作流程
 
-| 挂起指令 | 恢复时机 |
-|---|---|
-| `yield return null` | 下一帧 Update 之后 |
-| `yield return new WaitForSeconds(t)` | 至少经过 `t` 秒（受 `Time.timeScale` 影响）|
-| `yield return new WaitForSecondsRealtime(t)` | 至少经过真实时间 `t` 秒（不受 timeScale 影响）|
-| `yield return new WaitForFixedUpdate()` | 下一次 FixedUpdate 之后 |
-| `yield return new WaitUntil(predicate)` | 谓词函数返回 `true` 的那一帧 |
+游戏引擎主循环每帧按固定顺序处理协程：
+1. **Update 前检查**：处理 `yield return null` 类型的协程（等待一帧）
+2. **FixedUpdate 后检查**：处理 `WaitForFixedUpdate`
+3. **帧末检查**：处理 `WaitForEndOfFrame`
+4. **计时检查**：对 `WaitForSeconds` 类协程，比较当前时间与目标唤醒时间
 
-`WaitForSeconds` 的计时公式为：  
-**累计等待时间 = Σ (Time.deltaTime × Time.timeScale)**，当该值 ≥ 目标秒数时协程恢复。
+Unity 协程调度器内部维护一个协程链表，每帧的时间复杂度为 O(n)，其中 n 是活跃协程数量。当活跃协程超过数百个时，调度开销开始显现，这是为什么游戏中不建议同时运行数千个 `WaitForSeconds` 协程的原因。
 
-### 协程的嵌套与链式执行
+### 定时器的协程实现
 
-协程内部可以用 `yield return StartCoroutine(子协程)` 实现嵌套等待——父协程会阻塞直到子协程全部完成。这使得"加载资源 → 播放动画 → 开始战斗"的顺序流程可以用嵌套协程精确描述，而不必在每个步骤的回调里手动启动下一步。Lua 环境（如 cocos2dx 的 scheduler 或自定义 Lua 协程）则通过 `coroutine.resume()` / `coroutine.yield()` 这对原语实现等效语义。
+传统定时器需要在每帧 Update 中手动递减计时变量，协程定时器则更简洁：
 
-### 定时器与异步任务的关系
+```lua
+-- Lua 协程定时器示例
+function Timer(seconds, callback)
+    local elapsed = 0
+    while elapsed < seconds do
+        elapsed = elapsed + deltaTime
+        coroutine.yield()
+    end
+    callback()
+end
+```
 
-协程系统也是引擎**定时器**功能的底层载体。`WaitForSeconds` 本质上是一个携带截止时间戳的对象，引擎在推进协程列表时比较当前时间与截止时间，决定是否恢复。相比手动 `Invoke("方法名", 延迟秒数)` 的字符串反射调用，协程定时方式具备编译期检查和上下文保留两项优势。Unreal Engine 的 Blueprint 中对应概念是 `Delay` 节点，其内部实现为引擎托管的延迟任务队列。
+引擎层面，`WaitForSeconds` 使用的是游戏内时间（受 `Time.timeScale` 缩放影响），而 `WaitForSecondsRealtime` 使用系统真实时间，两者在暂停菜单、慢动作等场景下行为截然不同。暂停游戏时将 `timeScale` 设为 0，所有 `WaitForSeconds` 协程会冻结，但 `WaitForSecondsRealtime` 协程会继续计时。
 
----
+### 协程与异步任务的关系
+
+Unity 2017 引入了与 C# `async/await` 语法的融合路线，UniTask 库（基于 ValueTask）进一步将协程与异步任务统一，其分配内存从每次 `new WaitForSeconds()` 产生的约 40 字节 GC 压力降低到几乎零分配。Unreal Engine 5 的蓝图系统中的"延迟节点"（Delay Node）本质上也是协程，但通过可视化节点而非代码暴露给开发者。
 
 ## 实际应用
 
-**过场动画序列**：一个 Boss 入场演出需要依次播放飞入动画（1.5 秒）、震屏效果（0.3 秒）、对话框出现（等待玩家按键）。使用协程：
-```csharp
-IEnumerator BossEntrance() {
-    PlayFlyInAnim();
-    yield return new WaitForSeconds(1.5f);
-    ShakeScreen(0.3f);
-    yield return new WaitForSeconds(0.3f);
-    ShowDialogue();
-    yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
-    StartBattle();
-}
-```
-全部时序逻辑在一个函数中一目了然，不需要任何外部状态变量。
+**过场动画序列**：协程可以精确控制多步骤过场，例如：淡入黑幕（等待 `FadeIn` 协程完成）→ 播放角色对话动画（等待动画长度 2.3 秒）→ 触发镜头切换 → 淡出黑幕。整个流程写成一个协程函数，代码可读性远高于嵌套回调。
 
-**异步资源加载**：`yield return Resources.LoadAsync<Texture2D>("ui/portrait")` 将资源加载请求提交给引擎，协程在加载完成的帧自动恢复，紧接着即可安全使用加载结果。
+**技能冷却系统**：技能释放后启动协程 `yield return new WaitForSeconds(cooldownTime)`，协程结束时将技能状态重置为可用，避免在每帧 Update 中维护浮点计时器变量。
 
-**技能冷却 CD 倒计时**：技能触发后启动协程，在协程内将技能按钮设为不可用，`yield return new WaitForSeconds(cooldown)` 等待冷却时间结束，再将按钮恢复可用状态。这将冷却逻辑完整封装在技能对象内部，避免了在全局 Update 中遍历所有技能状态。
+**分帧加载**：加载大量资源时，可将加载逻辑放入协程，每帧只处理一批（如每帧实例化 10 个对象），在每批次之间 `yield return null`，避免单帧卡顿超过 16.6 毫秒（60fps 帧时间预算）。
 
----
+**网络请求等待**：在不使用多线程的情况下，协程可配合 `WWW` 或 `UnityWebRequest` 等待网络响应，`yield return request.SendWebRequest()` 在请求完成前持续挂起，请求完成后自动恢复。
 
 ## 常见误区
 
-**误区一：协程等同于多线程，可以执行耗时计算**  
-协程在 Unity 中运行于主线程，`yield return` 只是让出本帧的剩余执行时间，下一帧仍在主线程恢复。若在协程内执行一次耗时 50ms 的循环，主线程依然会卡顿掉帧。真正的后台计算应使用 `System.Threading.Task` 或 Unity 的 `Job System`，不能用协程替代。
+**误区一：协程是多线程**。协程运行在主线程上，协程内部的代码与 Update、OnCollisionEnter 等回调不会并发执行，因此协程读写游戏对象数据无需加锁。而真正的 `System.Threading.Thread` 或 `Task.Run` 在 Unity 中访问 GameObject 会抛出异常，因为 Unity API 不是线程安全的。协程与线程是完全不同的并发模型。
 
-**误区二：协程在对象销毁后会自动停止**  
-Unity 的协程绑定在 `MonoBehaviour` 实例上，当该 GameObject 被**禁用**（`SetActive(false)`）时协程暂停，被**销毁**（`Destroy`）时协程终止。但若通过另一个活跃的 MonoBehaviour 持有被销毁对象的协程句柄并继续操作，会引发空引用异常。需要在 `OnDestroy` 中主动调用 `StopAllCoroutines()` 清理。
+**误区二：`yield return new WaitForSeconds(0)` 等同于 `yield return null`**。两者都等待一帧，但 `WaitForSeconds(0)` 会创建一个新的 `WaitForSeconds` 对象，产生 GC 分配，在频繁调用时会累积垃圾回收压力；`yield return null` 不分配任何堆内存。在性能敏感的循环协程中应始终使用 `yield return null`，或缓存 `WaitForSeconds` 实例。
 
-**误区三：WaitForSeconds 的等待精度是精确的**  
-`WaitForSeconds(2f)` 不保证恰好在 2 秒后恢复，而是在**累计时间首次超过 2 秒的那一帧**恢复。若游戏帧率为 10fps（deltaTime ≈ 0.1s），实际等待可能达到 2.1 秒。对精度要求极高的场景（如音频同步），应改用 `WaitForSecondsRealtime` 或基于 `AudioSettings.dspTime` 的精确调度。
-
----
+**误区三：协程会在脚本禁用后自动停止**。Unity 中，禁用（Disable）MonoBehaviour 组件不会停止其上运行的协程，只有销毁（Destroy）GameObject 或调用 `StopCoroutine` / `StopAllCoroutines` 才会终止协程。这一行为导致的常见 Bug 是：组件被禁用后协程仍在修改场景状态，而开发者误以为协程已停止。
 
 ## 知识关联
 
-协程系统建立在**脚本系统概述**所介绍的引擎脚本生命周期之上——必须先理解 `Awake → OnEnable → Start → Update → LateUpdate` 的帧循环顺序，才能准确预判不同 `yield` 指令的恢复时机。`WaitForFixedUpdate` 的存在意义只有在知道物理步骤在 Update 之前执行的前提下才能理解。
+协程系统建立在脚本系统概述所介绍的脚本生命周期（`Start`、`Update`、`OnDestroy`）之上：协程由脚本函数启动，其调度完全嵌入引擎主循环，协程的生命周期随宿主 GameObject 终止。理解 `Update` 每帧 16.6ms 的时间窗口，有助于判断何时应将逻辑拆分到协程以避免单帧超时。
 
-在工程实践中，协程系统是通往更高级异步模式的桥梁：Unity 2020 引入的 `UniTask` 库基于 C# 5.0 的 `async/await` 语法，实现了零 GC 分配的协程等效功能，其底层仍依赖引擎的 PlayerLoop 注入机制，与协程共享同一套帧回调基础设施。掌握协程的挂起/恢复模型，是理解 `async/await` 状态机生成原理的直接前置知识。
+协程系统与动画系统的交互体现在 `WaitForAnimationEnd` 等待动画片段播完；与物理系统的交互体现在 `WaitForFixedUpdate` 同步物理步进节奏（Unity 默认 FixedUpdate 间隔为 0.02 秒，即 50Hz）。掌握协程后，开发者会自然接触到 C# `async/await` 异步模型——两者都解决"等待后续续执行"的问题，但协程与引擎帧循环深度绑定，而 `async/await` 基于线程池，各有适用场景。

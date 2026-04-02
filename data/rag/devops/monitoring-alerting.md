@@ -20,81 +20,107 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # 监控与告警
 
 ## 概述
 
-监控与告警（Monitoring & Alerting）是AI工程运维体系中用于持续观测系统状态、检测异常并触发通知的完整闭环机制。具体而言，监控负责采集系统指标（Metrics）、追踪（Traces）和日志（Logs）三类信号，而告警则基于预设阈值或统计规则，在指标偏离正常范围时自动通知运维人员。在AI系统中，监控对象不仅包括CPU、内存等基础资源，还涵盖模型推理延迟、预测置信度分布、特征漂移（Feature Drift）等ML专属指标。
+监控与告警（Monitoring & Alerting）是AI工程运维体系中针对模型服务、数据管道和基础设施进行持续状态采集、阈值判断与异常通知的完整闭环机制。与通用IT系统相比，AI系统的监控需要同时覆盖**基础设施层**（CPU/GPU利用率、内存）、**服务层**（QPS、延迟、错误率）和**模型层**（预测分布漂移、特征缺失率、输出置信度），三层指标缺一不可。
 
-监控与告警体系的现代形态起源于2000年代的互联网基础设施运维需求。Nagios于2002年发布了首个广泛使用的开源监控系统，随后Prometheus在2012年由SoundCloud工程师开发，引入了时序数据库与拉取（Pull）模式的指标采集架构，成为当今AI工程领域最主流的监控方案之一。告警规则引擎Alertmanager则作为Prometheus的配套组件，提供了路由、分组、静默和抑制四种核心告警管理能力。
+该领域的现代实践形成于2010年代中期。Google于2014年在SRE手册中系统化提出"四大黄金信号"（延迟、流量、错误率、饱和度），成为服务级监控的基准框架。Prometheus项目于2012年由SoundCloud发起，2016年成为CNCF第二个毕业项目，确立了**拉取式（Pull-based）指标采集**的行业标准，配合Grafana实现可视化，至今仍是AI工程监控栈的主流选型。
 
-在AI系统中，监控与告警的重要性远超传统软件系统。因为AI模型存在数据漂移（Data Drift）和概念漂移（Concept Drift）问题——即便服务本身运行正常，模型预测质量也可能随时间悄然下降。如果没有针对模型输出分布的实时监控，这种"静默降级"现象可能持续数周才被发现，造成难以挽回的业务损失。
+AI系统特有的模型性能退化（Model Degradation）问题使监控与告警的价值远超传统运维场景。一个上线的推荐模型在训练数据分布与生产数据分布发生偏移后，业务指标（如点击率）可能在数周内悄然下滑而不触发任何服务级告警，这种**静默失败（Silent Failure）**只能通过专门的模型监控指标体系加以发现。
 
 ---
 
 ## 核心原理
 
-### 指标采集与时序数据模型
+### 指标采集与存储模型
 
-Prometheus使用的数据模型将每个指标定义为：`metric_name{label_key="label_value", ...} value timestamp`。例如，AI推理服务的延迟指标可表示为 `inference_latency_seconds{model="resnet50", version="v2.1"} 0.032 1690000000`。Prometheus支持四种指标类型：Counter（单调递增计数器，如请求总数）、Gauge（可升降的瞬时值，如GPU显存占用）、Histogram（分布直方图，用于计算P99延迟）和Summary（客户端分位数统计）。AI系统通常使用Histogram类型记录推理延迟，因为它能在服务端计算任意分位数，公式为：`rate(inference_latency_seconds_bucket[5m])` 配合 `histogram_quantile(0.99, ...)` 可得到过去5分钟的P99延迟值。
+Prometheus使用**时间序列数据库（TSDB）**存储指标，每条数据由指标名称、标签集（Label Set）和时间戳-数值对组成。例如：
 
-### 告警规则与阈值设定
+```
+model_inference_latency_seconds{model="bert-v2", env="prod", quantile="0.99"} 0.312
+```
 
-告警规则在Prometheus的YAML配置中以PromQL表达式形式定义，并设置 `for` 字段表示持续触发时长才真正发送告警，以避免毛刺（Spike）误报。例如，一条典型的AI推理服务告警规则如下：
+上述标签设计允许按模型版本、环境切片查询，是AI多模型共存场景的关键能力。Prometheus默认采集间隔为15秒，数据保留周期默认15天，生产环境通常配置远程写入（Remote Write）到Thanos或Cortex以实现长期存储。
+
+四类指标类型各有用途：
+- **Counter**（只增计数器）：用于统计推理请求总数、错误总数
+- **Gauge**（任意值）：用于记录当前GPU显存占用、批处理队列深度
+- **Histogram**（直方图）：用于推理延迟的分位数（P50/P95/P99）统计
+- **Summary**（摘要）：客户端计算分位数，适合不需要聚合的单实例场景
+
+### 告警规则与PromQL
+
+Prometheus AlertManager通过**PromQL（Prometheus Query Language）**定义告警规则。一条典型的AI服务告警规则如下：
 
 ```yaml
 alert: HighInferenceLatency
-expr: histogram_quantile(0.99, rate(inference_latency_seconds_bucket[5m])) > 0.5
+expr: histogram_quantile(0.99, 
+        rate(model_inference_latency_seconds_bucket[5m])) > 0.5
 for: 2m
 labels:
   severity: critical
 annotations:
-  summary: "模型推理P99延迟超过500ms"
+  summary: "模型P99延迟超过500ms持续2分钟"
 ```
 
-`for: 2m` 表示该条件需连续满足2分钟才会触发告警，这一参数的选择需权衡告警响应速度（越短越快）与误报率（越短越高）。AI场景中，模型首次加载（Cold Start）可能导致延迟短暂飙高，若 `for` 值设置过短，每次模型热重载都会触发虚假告警。
+`for: 2m` 字段定义了**告警持续时长（Pending Duration）**，避免瞬时毛刺触发误报。AlertManager负责对告警进行**去重（Deduplication）**、**分组（Grouping）**和**静默（Silencing）**，并通过Webhook、PagerDuty、Slack等渠道发送通知。
 
-### 告警路由与分级管理
+### 模型专项监控指标
 
-Alertmanager将告警按严重程度（Severity）分级为 `info`、`warning`、`critical` 三档，并通过路由树将不同级别的告警发送至不同接收渠道。`critical` 级别告警通常触发PagerDuty或电话呼叫，`warning` 级别发送至Slack，`info` 级别仅记录到告警历史。分组（Grouping）机制允许将同一时段内来自同一AI服务集群的多条相关告警合并为一条通知，避免告警风暴（Alert Storm）——当一个上游数据管道故障导致100个模型服务同时报错时，若无分组机制，运维人员将同时收到100条告警，严重影响故障定位效率。抑制（Inhibition）规则则允许在更高级别告警激活时自动压制低级别告警，例如当GPU集群宕机时，自动抑制所有依赖该集群的模型服务延迟告警。
+AI系统需要在标准服务指标之外额外监控以下模型特有指标：
 
-### AI系统专属监控维度
+**数据漂移检测**：比较生产特征分布与训练基准分布之间的统计距离，常用KL散度（Kullback-Leibler Divergence）或PSI（Population Stability Index）。PSI计算公式为：
 
-AI工程的监控体系需额外关注三类ML专属指标：  
-1. **数据质量指标**：输入特征的缺失率、超出训练分布范围的样本比例（通常使用KS检验或PSI值量化，PSI > 0.2 通常视为严重漂移）；  
-2. **模型输出指标**：预测标签分布、平均置信度、低置信预测（confidence < 0.5）的占比；  
-3. **业务影响指标**：若存在真实标签反馈，可计算滚动窗口内的实时准确率，Evidently AI等工具专为此类指标的可视化监控而设计。
+$$PSI = \sum_{i=1}^{n}(A_i - E_i) \times \ln\frac{A_i}{E_i}$$
+
+其中 $A_i$ 为实际分布比例，$E_i$ 为期望分布比例。PSI < 0.1 表示分布稳定，0.1-0.25 为需关注区间，> 0.25 应触发模型重训告警。
+
+**预测置信度分布**：监控模型输出softmax概率的均值和方差，当均值长期低于0.6（以分类任务为例）时，可能指示输入质量下降或模型老化。
+
+**特征缺失率**：实时统计各特征字段的空值比例，单特征缺失率超过5%通常需要触发数据管道告警。
+
+### 告警噪声治理
+
+告警风暴（Alert Storm）是运维团队告警疲劳的主要来源。缓解策略包括：
+1. **告警依赖抑制（Inhibition）**：若GPU节点宕机告警触发，则自动抑制该节点上所有模型服务的延迟告警，避免根因掩盖于大量衍生告警中
+2. **告警聚合窗口**：AlertManager的`group_wait`（默认30秒）和`group_interval`（默认5分钟）参数控制同组告警的合并发送节奏
+3. **SLO-based告警**：基于错误预算消耗速率（Burn Rate）而非固定阈值设定告警，Google SRE推荐使用1小时窗口的消耗速率超过14.4倍作为Page级别告警触发条件
 
 ---
 
 ## 实际应用
 
-**推荐系统的实时监控**：电商推荐模型需监控点击率（CTR）的每小时滚动均值，若CTR连续3小时低于历史同期均值的80%，触发 `warning` 告警，提示模型可能因用户行为分布变化而性能下降。同时监控推荐响应时间的P95值是否超过200ms，因为超过该阈值的延迟在电商场景中会显著影响转化率。
+**LLM推理服务监控**：部署GPT类模型的推理服务时，需重点监控Token生成速率（tokens/s）、首Token延迟（Time-to-First-Token, TTFT）和KV Cache命中率。TTFT超过2秒通常是用户体验恶化的临界点，应设置P95 TTFT > 1.5s为Warning级告警。
 
-**NLP服务的异常检测**：大语言模型（LLM）推理服务需监控token生成速率（tokens/second），当使用vLLM等推理框架时，还需监控KV Cache命中率，该值低于60%通常意味着请求批处理策略需要调整。对于内容安全分类模型，需监控"违规"类别输出的日均占比，若24小时内该比例突增超过2倍标准差，触发安全团队告警。
+**训练任务监控**：使用Prometheus结合Grafana的GPU监控面板（dashboard ID: 14574），实时跟踪NVIDIA GPU的SM利用率、显存带宽利用率，当GPU利用率持续低于30%超过10分钟时，告警提示可能存在数据加载瓶颈（DataLoader bottleneck）。
 
-**GPU集群资源监控**：通过NVIDIA DCGM Exporter将GPU指标暴露给Prometheus，监控GPU利用率（`DCGM_FI_DEV_GPU_UTIL`）、显存占用率（`DCGM_FI_DEV_MEM_COPY_UTIL`）和GPU温度（`DCGM_FI_DEV_GPU_TEMP`）。当温度持续超过85°C时立即告警，因为NVIDIA GPU的热保护机制会在90°C时自动降频，导致推理吞吐量骤降。
+**在线特征服务告警**：在特征存储（Feature Store）与模型推理之间，对特征拉取延迟设置多级告警：P99 > 10ms为Info，P99 > 50ms为Warning，P99 > 100ms为Critical，并配置PagerDuty在Critical级别时触发On-Call轮值。
 
 ---
 
 ## 常见误区
 
-**误区一：对所有指标设置固定阈值**  
-许多工程师习惯将告警阈值设为固定数值（如"延迟 > 500ms 则告警"），但AI服务的负载通常具有强烈的周期性——日间请求量可能是夜间的10倍，固定阈值会导致白天大量误报或夜间漏报。正确做法是使用基于历史数据的动态基线，例如Prometheus的 `predict_linear()` 函数可预测指标趋势，或使用Grafana的异常检测插件建立时间感知的动态阈值。
+**误区一：仅监控服务层指标而忽略模型层指标**
+许多团队认为"服务响应正常 = 模型工作正常"。实际上，一个推理服务完全可以在P99延迟达标、错误率为零的情况下，因输入数据的用户行为变化导致模型预测质量持续下降。仅有服务层Prometheus指标而没有PSI检测或预测分布监控的AI系统，等同于在生产环境中盲目飞行。
 
-**误区二：混淆监控与日志的职责边界**  
-监控（Metrics）适合回答"当前系统状态是否正常"，时序数据以低成本保存数值型聚合信息；而日志适合回答"某次异常请求具体发生了什么"，保存高细节的原始事件。常见错误是试图用高频日志打点替代Prometheus指标，在每秒10万次推理的AI服务中，为每条请求写入完整日志会使存储成本膨胀20-50倍，且无法高效计算分位数。正确做法是指标采集覆盖所有请求，日志仅记录异常请求或按1%比例采样。
+**误区二：告警阈值一经设定永不调整**
+固定阈值不适用于具有明显周期性的AI业务。电商推荐系统在双十一期间的QPS可能是平时的50倍，静态QPS告警阈值会在高峰期持续误报。正确做法是使用**动态基线告警**，基于过去4-8周同周期的滚动均值加3个标准差（3-sigma法则）动态设定阈值，或采用Prometheus的`predict_linear()`函数进行趋势预测。
 
-**误区三：忽视告警疲劳（Alert Fatigue）**  
-一个配置不当的监控系统可能每天产生数百条告警，导致运维人员逐渐忽视所有告警通知，形成危险的"告警疲劳"。Google SRE实践建议：`critical` 级别告警每周不应超过5条，否则需要审查告警规则的合理性。解决方案包括提高 `for` 字段的持续时间门槛、合并相关告警、以及对低价值告警降级为 `info` 仅记录而不通知。
+**误区三：混淆告警（Alert）与通知（Notification）的职责边界**
+AlertManager负责告警的路由和去重，而Slack/PagerDuty是通知渠道。将复杂的告警逻辑（如业务含义判断、上下文拼接）写入通知模板而非在AlertManager规则层处理，会导致告警规则难以测试和维护。告警规则应在Prometheus层完整定义条件，通知渠道只负责格式化输出。
 
 ---
 
 ## 知识关联
 
-**与日志与监控的关系**：日志与监控（Logging & Monitoring）覆盖了数据采集的基础层，重点在于如何生成和存储原始观测数据。监控与告警在此基础上增加了决策层——基于采集到的指标数据制定规则、触发响应动作，形成从"观测"到"行动"的完整闭环。Prometheus的 `scrape_interval`（默认15秒）决定了告警系统能够感知异常的最短响应时间，这一参数直接来源于日志与监控阶段的架构设计。
+**前置知识衔接**：日志与监控课程建立了对可观测性（Observability）三支柱（Metrics/Logs/Traces）的基础认知，监控与告警在此基础上专注于**Metrics维度**的闭环自动化处理，将采集到的指标转化为可执行的运维动作（通知、自动扩缩容触发等）。
 
-**与Service Mesh的关联**：学习Service Mesh（如Istio）后，AI服务的监控能力将从应用层指标扩展到网格层面的四黄金信号（延迟、流量、错误率、饱和度）。Istio通过Envoy Sidecar自动为每个AI微服务注入请求级别的遥测数据，无需修改模型服务代码即可获得服务间调用的完整追踪链路，与现有Prometheus告警规则无缝集成。
+**通往Service Mesh**：掌握监控与告警后，Service Mesh（如Istio）将监控能力下沉至网络层，通过Envoy Sidecar自动采集服务间所有流量的延迟、错误率指标，无需业务代码侵入，是对本章手动埋点监控能力的架构级升级。Istio默认与Prometheus集成，告警规则的PromQL语法可直接复用。
 
-**与日志聚合的关联**：当告警触
+**通往日志聚合**：当告警触发后，工程师需要快速关联日志进行根因分析。日志聚合（ELK/Loki栈）与监控告警通过**TraceID**相互打通，形成从Alert → Metric异常时间段 → 关联日志 → 具体错误堆栈的完整排查链路，是AI系统可观测性体系的最终形态。

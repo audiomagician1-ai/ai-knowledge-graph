@@ -20,115 +20,125 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-04-01
 ---
+
 # React基础
 
 ## 概述
 
-React 是由 Facebook（现 Meta）工程师 Jordan Walke 于 2011 年内部开发、2013 年 5 月在 JSConf US 上正式开源的 JavaScript UI 库。它的核心设计思想是**单向数据流**和**组件化**：将页面拆分为独立、可复用的组件，每个组件管理自身状态，通过 props 向下传递数据，而非直接操作 DOM。这一设计解决了当时主流 MVC 框架中双向绑定难以追踪数据变化来源的问题。
+React是由Facebook（现Meta）工程师Jordan Walke于2013年5月在JSConf US上首次开源发布的JavaScript UI库。它的核心设计理念是**声明式渲染**——开发者描述"界面应该长什么样"，而非命令式地告诉浏览器"如何一步步修改DOM"。这一思路与jQuery时代的直接DOM操作截然不同。
 
-React 的版本演进对学习路径有直接影响：2016 年发布的 React 15 确立了类组件模式，2019 年 React 16.8 正式引入 Hooks，使函数组件具备了完整的状态管理能力，这是目前工业界的主流写法。2022 年的 React 18 引入了并发渲染（Concurrent Rendering），但这些高级特性建立在对基础概念的扎实理解之上。
+React引入了**组件化（Component-based）**架构，将界面拆分为可复用的独立单元。每个组件管理自己的状态（state）和属性（props），组件树的数据单向流动（从父到子），避免了双向数据绑定导致的调试困难。截至2024年，React在npm的周下载量超过2000万次，是AI工程前端集成（如AI聊天界面、实时数据看板）的主流选择。
 
-React 在 AI 工程的 Web 前端场景中尤为重要：大量 AI 产品界面（如 ChatGPT、Vercel AI 工具链）均以 React 为基础构建，且 AI 生成的流式文本输出、动态图表渲染等场景恰好需要 React 的高效局部更新机制。
+React之所以在AI工程前端中广泛应用，原因在于它的组件模型非常适合构建动态更新的界面——例如流式输出（streaming）的AI对话框需要频繁局部更新，React的虚拟DOM差量对比机制能高效处理这类场景，而无需手动操作DOM节点。
 
 ---
 
 ## 核心原理
 
-### JSX：JavaScript 的 XML 扩展语法
+### JSX语法
 
-JSX 并非独立语言，而是 Babel 会将其编译为 `React.createElement()` 调用。例如：
+JSX是React特有的语法扩展，允许在JavaScript中直接书写类HTML标记。它**并非HTML**，而是`React.createElement()`函数的语法糖。例如：
 
 ```jsx
-const element = <h1 className="title">Hello</h1>;
+const element = <h1 className="title">Hello, AI</h1>;
 // 等价于：
-const element = React.createElement('h1', { className: 'title' }, 'Hello');
+const element = React.createElement('h1', { className: 'title' }, 'Hello, AI');
 ```
 
-JSX 中使用 `className` 而非 `class`，因为 `class` 是 JavaScript 保留字。所有标签必须闭合（包括 `<img />` 等自闭合标签），否则 Babel 编译会报错。JSX 表达式须被单一根元素包裹，React 16 起可用 `<>...</>` 空标签（Fragment）避免额外 DOM 节点。
+注意两个关键差异：HTML中用`class`，JSX中必须用`className`；HTML中用`for`，JSX中用`htmlFor`。JSX表达式必须有**唯一根元素**，或使用`<React.Fragment>`（简写`<>`）包裹多个子元素，避免多余的DOM节点。
 
-### 组件与 Props：构建 UI 的最小单元
+### 组件与Props
 
-React 组件本质上是一个接收 `props` 对象、返回 JSX 的纯函数（函数组件），或继承自 `React.Component` 的类（类组件）。**函数名必须首字母大写**，以区分原生 HTML 标签。
+React组件分为**函数组件**和类组件两种形式，现代React（16.8版本之后）推荐全面使用函数组件。一个最简单的函数组件如下：
 
 ```jsx
-// 函数组件示例
-function UserCard({ name, score }) {
-  return <div>{name} 的 AI 评分：{score}</div>;
+function ModelCard({ modelName, accuracy }) {
+  return (
+    <div>
+      <h2>{modelName}</h2>
+      <span>准确率：{accuracy}%</span>
+    </div>
+  );
 }
 ```
 
-Props 是**只读**的：子组件不能修改传入的 props。这一"单向数据流"规则使数据变化来源唯一可追溯。当需要在组件间共享状态时，应将 state 提升到最近的公共父组件（状态提升，Lifting State Up）。
+Props（属性）是从父组件向子组件传递数据的唯一方式，**Props是只读的**——子组件不能修改接收到的props。这一约束保证了数据流的可预测性。Props可以传递任意JavaScript值，包括字符串、数字、数组、对象，乃至函数（回调）和其他组件。
 
-### State：组件内部的可变数据
+### State与useState
 
-函数组件通过 `useState` Hook 管理本地状态。`useState` 返回一个二元数组：当前值和更新函数。
-
-```jsx
-import { useState } from 'react';
-
-function Counter() {
-  const [count, setCount] = useState(0); // 初始值为 0
-  return <button onClick={() => setCount(count + 1)}>点击次数：{count}</button>;
-}
-```
-
-调用 `setCount` 会触发组件**重新渲染**（re-render）：React 对比前后两次渲染产生的虚拟 DOM 树差异，仅更新实际发生变化的 DOM 节点，这是 React 性能优化的基础机制。State 更新是**异步批处理**的——React 18 默认对所有事件中的多次 `setState` 进行批量合并，减少渲染次数。
-
-### 条件渲染与列表渲染
-
-React 没有内置的模板指令（如 Vue 的 `v-if`），条件渲染通过 JS 逻辑实现：
+State是组件内部管理的可变数据。在函数组件中，通过`useState` Hook声明状态：
 
 ```jsx
-// 三元表达式
-{isLoading ? <Spinner /> : <DataTable data={rows} />}
-
-// 短路运算符（仅在条件为真时渲染）
-{error && <ErrorBanner message={error.message} />}
+const [count, setCount] = useState(0);
 ```
 
-列表渲染使用 `.map()` 方法，每个列表项**必须提供唯一的 `key` prop**，React 用它在重新渲染时识别哪些元素发生了变化。使用数组下标作为 key 在列表项可能重排序时会导致 Bug，应优先使用数据的唯一 ID。
+`useState`返回一个数组：当前状态值和更新函数。**调用`setCount`不会直接修改`count`变量**，而是触发组件重新渲染，React在下一次渲染时提供新的状态值。State更新是**异步批量处理**的——在React 18中，所有事件处理器内的多次`setState`调用会被自动合并（Automatic Batching），减少不必要的渲染次数。
+
+### 事件处理与条件渲染
+
+React事件使用驼峰命名（`onClick`而非`onclick`），传入函数引用而非字符串。条件渲染常用三种模式：
+
+```jsx
+// 1. 三元运算符
+{isLoading ? <Spinner /> : <Result data={data} />}
+
+// 2. 逻辑与短路
+{error && <ErrorMessage text={error} />}
+
+// 3. 提前返回
+if (!data) return null;
+```
+
+在AI工程场景中，"正在请求模型API"与"已收到响应"两种状态的切换渲染极为常见，这三种模式是处理此类UI状态的标准手段。
 
 ---
 
 ## 实际应用
 
-**AI 对话界面的流式消息组件**是 React 基础概念的典型综合场景。一个消息列表组件将 `messages` 数组作为 state，每收到服务器推送的新词元（token）就调用 `setMessages` 更新最后一条消息的内容，React 的局部更新机制使页面只重绘新增文字所在的节点，而非整页刷新。
+**AI对话界面的消息列表渲染**是React基础的典型应用场景。消息数组存储在父组件的state中，每条消息作为独立的`<MessageBubble>`组件渲染：
 
-**数据大屏的图表切换**利用条件渲染根据用户选中的维度动态展示不同图表组件（如 `<BarChart />` 或 `<LineChart />`）。两个组件定义在同一位置时，切换会触发卸载与重新挂载；若需保留图表的过渡动画状态，需用条件隐藏（`style={{ display: 'none' }}`）而非条件渲染。
+```jsx
+{messages.map((msg) => (
+  <MessageBubble key={msg.id} role={msg.role} content={msg.content} />
+))}
+```
 
-**表单受控组件**在 AI 工程中用于构建 Prompt 编辑器：将 `<textarea>` 的 `value` 绑定到 state，通过 `onChange` 事件实时更新，确保 React state 始终是界面的唯一数据来源（受控模式），便于在提交前对 Prompt 进行格式校验或字数统计。
+`key`属性是React列表渲染的必填项，必须使用稳定且唯一的标识符（如消息ID），**不能使用数组下标作为key**，否则在列表增删时会导致组件状态错位。
+
+**实时数据看板**中，模型推理延迟、Token吞吐量等指标需要定期更新。通过`useState`存储指标数据，配合`useEffect`（React Hooks阶段深入介绍）定时轮询API，组件会在数据变化时自动重新渲染对应的图表子组件，而不影响页面其他部分。
 
 ---
 
 ## 常见误区
 
-**误区一：直接修改 state 对象**
+**误区1：直接修改state对象**
 
 ```jsx
-// 错误：直接修改不会触发重新渲染
-state.count = state.count + 1;
+// 错误
+state.messages.push(newMessage);
+setState(state);
 
-// 正确：使用 setState 传入新对象
-setUser({ ...user, age: user.age + 1 });
+// 正确
+setState(prev => [...prev, newMessage]);
 ```
 
-React 通过对比前后 state 引用是否相同来判断是否需要重渲染。直接修改原对象不改变引用，React 检测不到变化，界面不会更新。
+React通过`Object.is`比较前后两次state引用是否相同来决定是否重渲染。直接修改原对象后传入，引用未变，React认为状态没有改变，界面不会更新。这是初学者最高频的错误之一。
 
-**误区二：混淆 props 与 state 的职责**
+**误区2：认为JSX中可以使用任意JavaScript语句**
 
-初学者常将所有数据都放入 state，包括可以从 props 或其他 state 推导出的数据（派生数据）。例如将 `fullName` 同时存为独立 state，并在 `firstName` 变化时手动同步——这导致数据不一致 Bug。正确做法是在 render 阶段直接计算：`const fullName = firstName + ' ' + lastName;`，不存入 state。
+JSX的花括号`{}`只能包含**表达式**（有返回值），不能直接写`if`语句、`for`循环或`let`声明。`if-else`必须改写为三元运算符，循环必须使用`.map()`等返回数组的数组方法。
 
-**误区三：忽视 key 的作用范围**
+**误区3：混淆Props与State的使用场景**
 
-`key` 不仅用于列表，还可主动利用其"重置组件"的特性：向同一组件传入不同 `key` 会强制 React 销毁旧实例并创建新实例，这是切换不同用户 Profile 时重置所有内部 state 的最简洁方法，无需在 `useEffect` 中手动清空每个字段。
+并非所有数据都需要放入state。如果数据来自父组件且不在本组件内部改变，应使用props；如果数据随用户交互或异步请求改变，且变化需要触发重新渲染，才使用state。将所有数据都放入state会导致不必要的渲染和组件间同步困难。
 
 ---
 
 ## 知识关联
 
-**前置依赖**：JavaScript 的数组方法（`.map()`、`.filter()`）是理解列表渲染的直接基础；DOM 操作的知识帮助理解 React 为何要通过虚拟 DOM 抽象层来减少直接操作真实 DOM 的代价——这是 React 存在的原始动机。
+学习React基础需要扎实的**JavaScript基础**，特别是ES6+特性：箭头函数（函数组件的简洁写法）、解构赋值（props解构和useState返回值解构）、展开运算符（不可变state更新）以及数组方法（`.map()`、`.filter()`用于列表渲染）。**DOM操作**的前置知识帮助理解React为何要引入虚拟DOM层——直接操作真实DOM代价高昂，React通过在内存中维护虚拟DOM树并进行差量比对（Diffing）来最小化实际DOM操作次数，这一机制在**虚拟DOM原理**章节中将详细展开。
 
-**直接延伸**：本文介绍的 `useState` 是 React Hooks 体系的入门钩子，下一步学习 `useEffect`（副作用处理）、`useContext`（跨层传值）等 Hooks 时，组件与 state 的心智模型将被直接复用。组件生命周期的概念（挂载 → 更新 → 卸载）在函数组件中通过 `useEffect` 的不同写法来表达，理解本文的 re-render 触发机制是学习生命周期的前提。
-
-**横向扩展**：虚拟 DOM 原理将揭示 React 协调算法（Reconciliation）如何利用 `key` 和组件类型进行 Diff 比较；SPA 路由（如 React Router v6）本质上是根据 URL state 进行条件渲染的高级封装；设计系统（如 shadcn/ui）则将组件化思想推向极致，建立在对 props 传递和组件组合模式的深刻理解之上。
+掌握组件、props、state和JSX之后，下一步是学习**React Hooks**——`useEffect`处理副作用（API调用、订阅）、`useContext`跨层传递数据、`useCallback`与`useMemo`进行性能优化。**组件生命周期**概念解释了组件从挂载、更新到卸载各阶段的行为，是理解Hooks执行时机的关键。**SPA路由**（如React Router v6）在此基础上实现无刷新页面导航，而**设计系统**则将组件化思想推进到企业级UI规范层面。

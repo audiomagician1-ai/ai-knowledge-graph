@@ -20,89 +20,74 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 片元着色器编写
 
 ## 概述
 
-片元着色器（Fragment Shader）是 GPU 渲染管线中负责逐像素颜色计算的可编程阶段，在 HLSL 中以 `float4 frag(v2f i) : SV_Target` 为标准签名。与顶点着色器处理几何变换不同，片元着色器的输入是光栅化后的插值数据（如 UV 坐标、法线、世界坐标），输出是写入渲染目标的最终颜色值（RGBA 四通量）。
+片元着色器（Fragment Shader，在HLSL/DirectX中称为Pixel Shader）是渲染管线中对每一个像素独立执行的可编程阶段，其输入来自顶点着色器输出经过光栅化插值后的数据，最终输出一个或多个颜色值写入渲染目标（Render Target）。与顶点着色器不同，片元着色器的执行频率极高——在1920×1080的全屏Pass中，单帧就可能触发超过两百万次调用，因此每一条指令的代价都会被放大数百万倍。
 
-片元着色器在 DirectX 9 时代被称为"像素着色器"（Pixel Shader），从 Shader Model 2.0（2002年）起成为图形管线的标配可编程单元。Unity 的 ShaderLab 框架将其封装在 `CGPROGRAM` 或 `HLSLPROGRAM` 块内，开发者通过编写 `frag` 函数直接干预每个像素的最终外观。
+片元着色器的概念随可编程渲染管线的兴起而出现。2001年DirectX 8.0引入了Pixel Shader 1.0模型，最初只支持极少量的指令和寄存器；到了2002年DirectX 9.0/Shader Model 2.0，HLSL语言正式定型，片元着色器才具备了完整的条件分支、循环和浮点运算能力。如今Unity的URP/HDRP均基于Shader Model 4.5及以上，片元着色器可访问结构化缓冲区（StructuredBuffer）、进行原子操作，功能已极为丰富。
 
-片元着色器对游戏画面质量的影响极为直接：屏幕上每一帧渲染的每个像素都必须经过它的计算。在一块 1080p 分辨率的屏幕上，单帧就有约 207 万个像素需要独立执行片元着色器，这使得其 ALU 指令数和纹理采样次数成为影响帧率的关键性能瓶颈。
+片元着色器是所有视觉效果的"最终裁决者"：无论几何形状如何精妙，法线如何精确，最终用户看到的颜色完全由片元着色器决定。光照模型、纹理混合、透明度、自发光、描边——全部在此阶段完成计算并输出。
 
 ---
 
 ## 核心原理
 
-### 输入结构体与插值数据
+### 输入语义与插值数据
 
-片元着色器通过结构体接收来自顶点着色器传递的插值数据，该结构体通常命名为 `v2f`（vertex to fragment）。常见字段包括：
+片元着色器接收的结构体由顶点着色器的输出结构体经GPU光栅化硬件插值而来。常见的输入语义包括：`SV_POSITION`（屏幕空间裁剪坐标，只读）、`TEXCOORD0`~`TEXCOORD7`（用户自定义插值量，如UV、世界法线、切线空间向量）、`COLOR0`（顶点色）。需要特别注意的是，`SV_POSITION`在片元着色器中的值已经是屏幕空间的像素坐标（xy分量为像素中心，z为深度），而非顶点着色器输出时的齐次裁剪空间坐标。如需在片元着色器中重建世界坐标，需要使用`SV_POSITION.xy`结合逆视图投影矩阵或单独传入世界空间位置插值量。
 
-```hlsl
-struct v2f {
-    float4 pos    : SV_POSITION;  // 裁剪空间坐标（不可读取）
-    float2 uv     : TEXCOORD0;    // 纹理坐标
-    float3 normal : TEXCOORD1;    // 世界空间法线
-    float3 worldPos : TEXCOORD2;  // 世界空间位置
-};
-```
+### 纹理采样与采样器状态
 
-`SV_POSITION` 语义在片元阶段是只写的系统值，实际上无法在 `frag` 中读取屏幕坐标；若需要屏幕坐标，应在顶点着色器中用 `ComputeScreenPos()` 额外传入 `TEXCOORD` 槽位。插值类型默认为线性透视矫正插值，可使用 `nointerpolation` 或 `noperspective` 修饰符改变此行为。
-
-### 纹理采样
-
-Unity HLSL 中最常用的纹理采样函数是 `tex2D(sampler2D tex, float2 uv)`，返回 `float4` 的 RGBA 颜色值。对应的 DX11 风格写法为 `_MainTex.Sample(_MainTex_Sampler, i.uv)`，二者在移动端（OpenGL ES 3.0 以上）均可使用。
-
-采样时涉及两个独立的声明，缺一不可：
+在HLSL中，纹理采样分为纹理对象（`Texture2D`）和采样器对象（`SamplerState`）两个独立部分。完整的采样调用形式为：
 
 ```hlsl
-sampler2D _MainTex;          // 纹理对象（含采样器状态）
-float4 _MainTex_ST;          // Tiling 和 Offset，x=TilingX, y=TilingY, z=OffsetX, w=OffsetY
+float4 color = _MainTex.Sample(sampler_MainTex, i.uv);
 ```
 
-UV 变换使用宏 `TRANSFORM_TEX(uv, _MainTex)`，等价于 `uv * _MainTex_ST.xy + _MainTex_ST.zw`。法线贴图解包需要 `UnpackNormal(tex2D(_NormalMap, uv))`，此函数内部执行 `normal.xy = normal.xy * 2 - 1; normal.z = sqrt(1 - dot(normal.xy, normal.xy))` 的还原运算。
+Unity的`tex2D(_MainTex, uv)`是对上述操作的封装，在旧版CG语法中广泛使用。采样函数族还包括`SampleLevel`（手动指定Mip级别，常用于特效中的模糊采样）、`SampleGrad`（传入ddx/ddy手动控制各向异性过滤）、`SampleBias`（对Mip等级施加偏移量）。在片元着色器中，GPU硬件会自动计算相邻像素的UV差分（ddx/ddy）来选择合适的Mip级别，这是在计算Shader中无法自动获得的特性。
 
-### 光照模型计算
+### 颜色计算与光照模型
 
-Blinn-Phong 是片元着色器中实现最频繁的经典光照模型，其高光部分公式为：
+最基础的漫反射光照（Lambertian）计算公式为：
 
-$$\text{Specular} = K_s \cdot \max(0, \hat{n} \cdot \hat{h})^{\text{shininess}}$$
+> **C_diffuse = albedo × max(0, dot(N, L)) × lightColor**
 
-其中 $\hat{h} = \text{normalize}(\hat{l} + \hat{v})$ 是半角向量，$K_s$ 是镜面反射系数，`shininess` 通常取 32～256 之间的幂次值。在 Unity 内置管线中，环境光通过 `UNITY_LIGHTMODEL_AMBIENT` 宏获取，主方向光方向通过 `_WorldSpaceLightPos0.xyz` 访问（点光源时为位置而非方向，需手动计算方向向量）。
+其中 `N` 为片元的世界空间法线（必须在片元着色器中归一化，因为顶点法线插值后模长不保证为1）、`L` 为归一化光源方向向量。Blinn-Phong高光项的计算引入半程向量 `H = normalize(L + V)`，高光强度为 `pow(max(0, dot(N, H)), _Shininess)`，其中 `_Shininess` 控制高光范围，通常在8到256之间取值。这类计算在片元着色器中按像素执行，相比在顶点着色器中插值光照结果（Gouraud Shading）能显著提升曲面高光的精确度。
 
-漫反射分量使用 Lambert 模型：`diffuse = max(0, dot(normal, lightDir)) * _LightColor0.rgb`。将漫反射、镜面反射和环境光三项叠加后，乘以基础颜色纹理采样值，即构成标准 Phong 着色的完整片元着色器输出。
+### 输出控制与深度写入
 
-### 输出控制与混合
-
-`frag` 函数的返回值类型为 `float4`，语义为 `SV_Target`（即 Render Target 0）。Alpha 通道（第 4 分量）在不透明渲染路径中被 GPU 忽略，但在透明混合模式下用于控制混合权重。Unity ShaderLab 的混合命令 `Blend SrcAlpha OneMinusSrcAlpha` 对应标准 Alpha 混合方程：
-
-$$C_{out} = \alpha \cdot C_{src} + (1 - \alpha) \cdot C_{dst}$$
-
-MRT（多渲染目标）输出需要将返回类型改为结构体并标注 `SV_Target0`、`SV_Target1` 等多个语义，Deferred Rendering 的 G-Buffer 填充阶段正是利用此机制在单次 Draw Call 中同时写入 Albedo、Normal、Specular 等多张缓冲区。
+片元着色器的输出使用 `SV_Target` 语义，可以同时输出多个渲染目标（MRT，Multiple Render Targets），例如延迟渲染的G-Buffer Pass会同时输出到 `SV_Target0`（Albedo）、`SV_Target1`（法线）、`SV_Target2`（自发光+Roughness）。若需手动输出深度，使用 `SV_Depth` 语义，但这会禁用GPU的Early-Z优化，导致性能下降，应谨慎使用。在Unity ShaderLab中，透明度测试（clip指令）用于剔除片元：`clip(alpha - _Cutoff)` 当alpha值低于阈值时直接丢弃片元，不写入颜色或深度，这是实现草木等AlphaTest效果的标准做法。
 
 ---
 
 ## 实际应用
 
-**溶解效果**：采样一张噪声纹理的 R 通道值，与材质属性 `_DissolveThreshold`（范围 0～1）做比较，使用 `clip(noiseValue - _DissolveThreshold)` 丢弃满足条件的片元。`clip(x)` 在 x < 0 时丢弃当前片元，不向 RT 写入任何值，配合边缘颜色叠加可实现火焰灼烧风格的溶解边缘。
+**溶解效果**：利用一张噪声纹理采样值与 `_DissolveThreshold` 参数做差后调用 `clip()`，随着阈值从0增大到1，物体像素从边缘到中心逐渐被丢弃，形成溶解消失的效果。在 `clip` 前的边缘区域（如采样值在 `_Threshold` 到 `_Threshold + 0.05` 之间）叠加一个发光颜色，即可形成灼烧边缘。
 
-**Rim Light（边缘光）**：在片元着色器中计算视线方向与法线的点积，`rimFactor = 1.0 - saturate(dot(normalize(viewDir), normalize(normal)))`，当视线与表面趋于垂直时 `rimFactor` 接近 1，将其乘以边缘光颜色叠加即可实现角色轮廓发光效果，无需额外 Pass。
+**边缘光（Rim Light）**：在片元着色器中计算 `rimFactor = 1.0 - saturate(dot(N, V))`，其中V为摄像机方向向量。当法线与视线垂直时（模型边缘），dot接近0，rimFactor接近1，将此值乘以边缘光颜色叠加到最终输出，产生科幻感轮廓发光效果。通过 `pow(rimFactor, _RimPower)` 可控制边缘宽度，_RimPower越大边缘越窄越锐利。
 
-**UV 动画水面**：对时间变量 `_Time.y`（Unity 内置，单位秒）进行利用，对水面纹理 UV 做 `uv += _Time.y * _FlowSpeed` 偏移，再叠加两层不同频率的法线贴图采样结果，可以零运行时开销地模拟水面流动，实现仅靠单 Pass 片元着色器完成的动态水效。
+**UV扰动采样**：先采样一张法线贴图获得扰动偏移量 `float2 offset = normalMap.rg * _DistortionStrength`，再用 `uv + offset` 对主纹理进行偏移采样，可实现热空气扭曲、水面折射等效果，此类技术在屏幕空间GrabPass中尤为常见。
 
 ---
 
 ## 常见误区
 
-**误区一：认为 `SV_POSITION` 可以在片元着色器中读取屏幕坐标**。实际上，`SV_POSITION` 在片元阶段由系统填写为像素中心坐标，但在 DX9/OpenGL ES 2.0 的部分实现中此值不可靠或不可读。正确做法是在顶点着色器中用 `ComputeScreenPos()` 计算并通过 `TEXCOORD` 语义额外传递，在 `frag` 中使用 `i.screenPos.xy / i.screenPos.w` 获取归一化屏幕坐标。
+**误区一：认为法线插值后仍为单位向量**。顶点法线经过双线性插值后，模长会小于1（在两个不平行法线之间插值时结果向量更短），若不在片元着色器中调用 `normalize(i.normal)`，光照计算中的 `dot(N, L)` 结果将偏小，导致高曲率区域出现明显变暗的光照错误。这一问题在低多边形模型上尤为明显。
 
-**误区二：在片元着色器中对法线直接使用顶点插值结果而不归一化**。顶点法线经过插值后长度会偏离 1（两个单位向量的线性插值不再是单位向量），直接参与光照计算会导致高光形状错误、边缘过渡不自然。务必在使用前执行 `normalize(i.normal)`，这是片元着色器法线处理的必要步骤而非可选优化。
+**误区二：滥用clip()实现半透明**。`clip()` 只能实现全透明或完全不透明的二值化剔除（AlphaTest），无法实现半透明混合。半透明效果必须依赖渲染队列（Transparent）配合混合方程（Blend SrcAlpha OneMinusSrcAlpha）在输出阶段由ROP硬件完成，二者是机制完全不同的透明方案，混淆会导致错误的排序或穿帮问题。
 
-**误区三：混淆 `tex2D` 中采样器状态与纹理对象的职责**。`sampler2D` 同时封装了纹理数据与采样器状态（Filter 模式、Wrap 模式），修改 Unity Inspector 中纹理的 Filter 设置会影响该 `sampler2D` 的采样结果。而在 DX11 风格的分离式声明中，`Texture2D` 和 `SamplerState` 是独立对象，可以用一个 `SamplerState` 对多张纹理进行采样，理解这一区别对跨平台 Shader 开发至关重要。
+**误区三：在片元着色器中大量使用动态分支**。GPU采用SIMD架构，同一个Warp（通常32个线程）内所有片元必须执行相同的指令路径。当 `if` 语句的条件在同一Warp内不一致时，两个分支都会实际执行，不满足条件的线程被屏蔽（Masked），造成性能浪费。在片元着色器中应优先使用 `lerp`、`step`、`saturate` 等无分支的数学替代方案，仅在确认分支高度一致（如基于uniform参数的全局开关）时才使用动态 `if`。
 
 ---
 
 ## 知识关联
 
-片元着色器编写以 **HLSL 基础**为直接前置，要求掌握 `float4`、`saturate`、`lerp`、`dot` 等内置函数，以及结构体声明与语义绑定语法。本文档中的 Blinn-Phong 实现是进入**自定义光照模型**的起点，后者将扩展至基于物理的 Cook-Torrance BRDF；掌握多纹理采样与 Alpha 控制后，可直接进入**屏幕空间效果**（后处理中 `_GrabTexture` / `_CameraOpaqueTexture` 的采样逻辑与普通纹理采样完全一致）。**PBR 材质基础**中的金属度/粗糙度工作流依赖片元着色器中法线、视线、光线向量的精确计算，正是本文档光照模型部分的直接延伸。**Shader 变体管理**要求对片元着色器的条件分支进行 `#pragma multi_compile` 拆分，调试问题时配合**Shader 调试
+学习片元着色器编写需要具备HLSL基础，包括数据类型（`float4`、`half3`）、内置函数（`saturate`、`lerp`、`pow`）以及向量运算规则，这些是进行光照和颜色计算的直接工具。
+
+在掌握基础片元着色器编写后，自然过渡到**自定义光照模型**，即将Lambertian/Blinn-Phong替换为更复杂的各向异性或卡通化模型，这需要对本文的漫反射/高光计算公式进行参数化扩展。**PBR材质基础**则将光照模型升级为基于物理的Cook-Torrance BRDF，其片元着色器结构与本文所述相同，但增加了金属度/粗糙度工作流的纹理采样逻辑。**Shader变体管理**处理的是当片元着色器需要支持多关键字（如`#pragma multi_compile _ _RECEIVE_SHADOWS`）时的编译策略问题。**Shader调试技巧**则直接服务于片元着色器开发中的颜色异常、采样错误等问题的排查。**屏幕空间效果**（如SSAO、SSR）将片元着色器从物体材质扩展到全屏后处理Pass，使用 `SV_Position` 重建世界坐标等技术正是片元着色器输入语义知识的进阶应用。

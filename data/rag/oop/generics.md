@@ -20,129 +20,130 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 泛型
 
 ## 概述
 
-泛型（Generics）是一种允许在定义函数、类或接口时使用类型参数（Type Parameter）的编程机制，使得同一段代码可以安全地操作多种不同类型的数据，而不牺牲静态类型检查的能力。其本质是"将类型本身作为参数传递"，用尖括号 `<T>` 语法声明类型占位符，在调用时由编译器推断或由程序员显式指定具体类型。
+泛型（Generics）是一种允许类、函数或接口在定义时不指定具体类型，而在使用时再传入类型参数的编程机制。其核心价值在于：同一段代码逻辑可以安全地作用于多种不同类型，而不必为每种类型重复编写。在 TypeScript 中，泛型语法使用尖括号 `<T>` 表示类型参数，`T` 是约定俗成的占位符名称，全称为 Type Parameter。
 
-泛型的概念最早由 CLU 语言在1970年代提出，后来在 Ada（1983年）和 C++（1991年模板系统）中得到广泛推广。TypeScript 从1.0版本（2014年发布）起就内置了泛型支持，其设计直接借鉴了 C# 和 Java 的泛型系统，但去掉了 Java 中因类型擦除（Type Erasure）导致的运行时缺失问题。
+泛型的概念最早由 ML 语言在 1973 年引入，称为"参数多态"（Parametric Polymorphism）。Java 在 2004 年的 JDK 5.0 中正式加入泛型支持，TypeScript 则从 1.0 版本（2014 年）起就将泛型作为类型系统的核心特性。与运行时多态（通过继承和接口实现）不同，泛型是一种**编译期多态**——类型检查发生在代码编译阶段，而非程序运行时。
 
-在 AI 工程的 TypeScript 代码库中，泛型尤为重要：模型推理结果的类型、批处理数据的容器、各类 API 响应的解析器都高度依赖泛型来保持类型安全，同时避免为每种数据结构重复编写逻辑。
+在 AI 工程中，泛型的重要性体现在模型管道（Pipeline）的抽象上。一个数据预处理器可能处理 `string[]`、`number[][]` 或自定义的 `Tensor<Float32>` 类型——泛型让你写一个 `Processor<T>` 类就能覆盖所有情况，而静态类型检查器会保证在传入 `Tensor<Float32>` 时不会意外调用字符串专属方法。
 
 ---
 
 ## 核心原理
 
-### 类型参数声明与替换
+### 类型参数与类型推断
 
-泛型的语法核心是类型参数列表 `<T, U, V, ...>`，这些字母本身没有特殊含义，只是占位符（习惯上 `T` 代表 Type，`K` 代表 Key，`V` 代表 Value，`E` 代表 Element）。以下是一个最简单的泛型函数：
+泛型函数的基本形式是在函数名后声明类型参数：
 
 ```typescript
-function identity<T>(arg: T): T {
-  return arg;
+function identity<T>(value: T): T {
+    return value;
 }
 ```
 
-调用时，TypeScript 编译器可以自动推断 `T` 的类型：`identity(42)` 中 `T` 被推断为 `number`；`identity("hello")` 中 `T` 被推断为 `string`。也可以显式传入：`identity<boolean>(true)`。关键在于，返回值类型与输入类型被**绑定为同一个 `T`**，这保证了类型层面的一致性——这是 `any` 无法做到的，`any` 会完全放弃类型检查。
+这里 `T` 是类型参数，函数签名约定了"输入什么类型，就返回什么类型"。调用时可以**显式传入**类型 `identity<number>(42)`，也可以让 TypeScript 编译器通过**类型推断**（Type Inference）自动确定：`identity(42)` 会推断 `T = number`。类型推断依赖于实参的静态类型，而不是运行时值。
 
 ### 泛型约束（Generic Constraints）
 
-原始类型参数 `T` 没有任何属性，访问 `arg.length` 会报错，因为编译器不知道 `T` 是否有 `length`。通过 `extends` 关键字可以施加约束：
+未加约束的 `T` 在函数体内几乎一无所知——你不能对 `T` 类型的变量调用 `.length`，因为编译器无法保证 `T` 是字符串或数组。泛型约束用 `extends` 关键字解决这个问题：
 
 ```typescript
-interface HasLength {
-  length: number;
-}
-function logLength<T extends HasLength>(arg: T): T {
-  console.log(arg.length);  // 合法，编译器确认 T 有 length
-  return arg;
+function getLength<T extends { length: number }>(arg: T): number {
+    return arg.length;
 }
 ```
 
-`T extends HasLength` 的含义是：`T` 必须是 `HasLength` 的子类型，即必须包含 `length: number` 属性。这不是继承关系，而是**结构子类型（Structural Subtyping）**检查：任何含有 `length: number` 的类型，包括 `string`、数组、自定义对象，都满足此约束。
+`T extends { length: number }` 约定 `T` 必须是拥有 `length` 属性的类型。这不是运行时的类型检查，而是编译期的**结构子类型**约束，TypeScript 的鸭子类型系统会验证传入的类型是否满足该结构。
+
+在 AI 工程场景中，常见约束形式是 `T extends Tensor | NDArray`，用来限定泛型运算函数只接受张量类型，防止意外传入普通对象。
 
 ### 泛型类与泛型接口
 
-泛型不仅限于函数，还可以用于类和接口。一个典型的泛型容器类：
+泛型不仅限于函数，类和接口同样支持类型参数：
 
 ```typescript
-class DataBatch<T> {
-  private items: T[] = [];
-  
-  add(item: T): void {
-    this.items.push(item);
-  }
-  
-  get(index: number): T {
-    return this.items[index];
-  }
-  
-  map<U>(transform: (item: T) => U): DataBatch<U> {
-    const result = new DataBatch<U>();
-    this.items.forEach(item => result.add(transform(item)));
-    return result;
-  }
+interface Repository<T> {
+    findById(id: string): Promise<T>;
+    save(entity: T): Promise<void>;
+    findAll(): Promise<T[]>;
+}
+
+class ModelRegistry<M extends BaseModel> implements Repository<M> {
+    private store = new Map<string, M>();
+    
+    async findById(id: string): Promise<M> {
+        return this.store.get(id)!;
+    }
+    async save(entity: M): Promise<void> {
+        this.store.set(entity.id, entity);
+    }
+    async findAll(): Promise<M[]> {
+        return [...this.store.values()];
+    }
 }
 ```
 
-注意 `map` 方法引入了第二个类型参数 `U`，表示转换后的类型与原类型 `T` 可以不同。`DataBatch<ModelInput>` 经过 `map` 后可以变成 `DataBatch<ModelOutput>`，全程保持类型安全。
+`ModelRegistry<GPTModel>` 和 `ModelRegistry<DiffusionModel>` 是同一段代码产生的两个**具体化类型**（Instantiated Types），它们共享所有方法逻辑，但 TypeScript 会分别为它们进行独立的类型检查。
 
-### 条件类型与内置工具类型
+### 多类型参数与条件类型
 
-TypeScript 3.0 引入的条件类型 `T extends U ? X : Y` 进一步扩展了泛型的表达力。标准库中大量工具类型基于此实现，例如：
+泛型可以声明多个类型参数，TypeScript 还支持**条件类型**（Conditional Types，TypeScript 2.8 引入）：
 
-- `Partial<T>`：将 `T` 的所有属性变为可选，实现为 `{ [P in keyof T]?: T[P] }`
-- `Record<K, V>`：创建键类型为 `K`、值类型为 `V` 的对象类型
-- `ReturnType<T>`：通过 `T extends (...args: any) => infer R ? R : never` 提取函数返回类型
+```typescript
+type Unwrap<T> = T extends Promise<infer U> ? U : T;
+// Unwrap<Promise<number>> → number
+// Unwrap<string>          → string
+```
 
-这些工具类型本质上是**高阶泛型**，接受类型作为输入并产生新类型作为输出。
+`infer` 关键字在条件类型中用于"提取"嵌套类型，这在处理异步 AI 推理结果（如 `Promise<ModelOutput>`）时极为实用。
 
 ---
 
 ## 实际应用
 
-**AI 推理 API 响应解析**：假设调用不同模型 API，响应结构各不相同。可用泛型定义统一的包装器：
+**AI 推理管道的类型安全封装**：定义泛型 `Pipeline<Input, Output>` 接口，让每个处理步骤都明确声明输入输出类型。当预处理步骤输出 `Tensor<Float32>` 而模型期望 `Tensor<Int8>` 时，编译器会在构建期而非运行期报错，避免线上量化错误。
 
 ```typescript
-interface ApiResponse<T> {
-  data: T;
-  status: number;
-  latencyMs: number;
+interface Stage<I, O> {
+    process(input: I): O;
 }
 
-interface EmbeddingResult {
-  vector: number[];
-  model: string;
+class Pipeline<I, O> {
+    constructor(private stage: Stage<I, O>) {}
+    run(input: I): O {
+        return this.stage.process(input);
+    }
 }
-
-async function callModel<T>(endpoint: string): Promise<ApiResponse<T>> {
-  const raw = await fetch(endpoint);
-  return raw.json() as ApiResponse<T>;
-}
-
-// 调用时指定具体类型
-const result = await callModel<EmbeddingResult>("/api/embed");
-result.data.vector;  // 编译器知道这是 number[]
 ```
 
-**批处理流水线**：在数据预处理流水线中，每个处理步骤可以用 `Processor<TInput, TOutput>` 泛型接口表达，强制要求上一步的输出类型必须匹配下一步的输入类型，在编译时而非运行时发现类型不兼容问题。
+**通用向量存储（Vector Store）**：RAG 系统中的向量数据库客户端可用 `VectorStore<Doc>` 泛型封装，`Doc` 代表存储的文档类型。`VectorStore<PDFDocument>` 和 `VectorStore<CodeSnippet>` 复用同一批查询、插入方法，同时保证返回结果类型正确，不需要类型断言（`as` 强转）。
+
+**批量评估框架**：LLM 评测工具中，`Evaluator<Q, A>` 泛型类可以接受不同格式的问答对（`MCQuestion/MCAnswer` 或 `OpenQuestion/FreeText`），用一套评分逻辑处理多种题型。
 
 ---
 
 ## 常见误区
 
-**误区一：泛型等同于 `any`**。`any` 完全绕过类型检查，`identity<any>(x)` 的返回值类型也是 `any`，后续操作不受保护。而泛型 `identity<T>(x: T): T` 中，输入和输出类型被编译器追踪为同一具体类型，后续代码可以安全地使用该类型的所有方法和属性。两者在运行时都会被 TypeScript 编译为普通 JavaScript，但编译阶段的保护程度完全不同。
+**误区一：认为泛型等同于 `any`**  
+`any` 完全放弃类型检查，而泛型在类型参数确定后会进行严格检查。`identity<number>` 的返回值是 `number`，可以安全地调用 `toFixed()`；而 `any` 的返回值赋给 `number` 变量不会报错，但也不会保护你免于运行时错误。两者的本质区别：`any` 是**类型逃逸**，泛型是**类型参数化**。
 
-**误区二：约束 `T extends SomeClass` 意味着继承**。在泛型约束中，`extends` 不要求 `T` 是 `SomeClass` 的子类，只要求 `T` 的结构上拥有 `SomeClass` 定义的所有属性和方法（结构类型兼容）。一个字面量对象 `{ name: "GPT", predict: () => {} }` 完全可以满足 `extends Model` 的约束，无需使用 `class` 关键字继承。
+**误区二：在所有地方都用 `T` 作为参数名**  
+单字母 `T` 在简单场景可读，但多参数泛型中应使用语义化名称：`<TInput, TOutput>`、`<TEntity, TId>` 等。TypeScript 官方代码库中大量使用 `K`（Key）、`V`（Value）、`E`（Element）等约定名称，盲目使用 `T`、`U`、`V` 会让约束关系难以理解。
 
-**误区三：泛型参数越多越灵活**。过多的类型参数（如 `<A, B, C, D>`）会使函数签名难以理解，且约束关系复杂时编译器推断可能失败，需要调用者手动显式传入所有类型参数。实践中，AI 工程代码应优先用1-2个类型参数覆盖主要变化点，对固定的部分直接使用具体类型。
+**误区三：误以为泛型约束会进行运行时检查**  
+`function fn<T extends Animal>(arg: T)` 中的 `extends Animal` **仅在编译期生效**。TypeScript 编译后生成的 JavaScript 不包含任何泛型约束检查代码，类型参数在编译后被完全抹除（Type Erasure）。如果需要运行时验证，必须额外使用 `instanceof` 或 Zod 等运行时验证库。
 
 ---
 
 ## 知识关联
 
-**与类型系统的关系**：泛型的价值完全建立在静态类型系统之上。在动态类型语言（如纯 JavaScript 或 Python）中，不存在泛型的概念，因为类型检查在运行时才发生，编译期不需要提前指定类型。TypeScript 的静态类型系统正是泛型得以发挥作用的基础——类型参数 `T` 在编译期被替换为具体类型，编译后的 JavaScript 中完全不存在 `T`，这也是 TypeScript 泛型与 C++ 模板（模板在编译后生成多份代码）的核心区别。
+泛型直接建立在**静态类型系统**的能力之上：只有静态类型语言（或带静态扩展的 TypeScript）才能在编译期对类型参数进行约束检查；Python 的 `TypeVar` 是类似机制但依赖 mypy 等外部工具，运行时行为与 TypeScript 不同。**TypeScript 基础**中的接口（interface）和类型别名（type）是泛型约束的常见约束目标——`T extends SomeInterface` 中的 `SomeInterface` 本身就是 TypeScript 类型系统的产物。
 
-**与面向对象多态的关系**：泛型提供的是**参数化多态（Parametric Polymorphism）**，与通过继承实现的**子类型多态（Subtype Polymorphism）**是不同的机制。子类型多态通过 `Animal` 基类引用指向 `Dog` 实例来统一处理，而泛型通过类型参数在保留具体类型信息的前提下统一处理。在 AI 工程中，两者常配合使用：用泛型定义数据容器结构，用继承定义模型的行为层次。
+掌握泛型后，面向对象编程中的**设计模式**实现会发生质变：Repository 模式、Strategy 模式、Observer 模式都因泛型而能写出类型安全的通用版本，而非依赖基类引用或类型断言。在 AI 工程的后续实践中，泛型是构建可复用模型服务客户端、类型安全 Prompt 模板系统和多模态数据管道的基础构件。

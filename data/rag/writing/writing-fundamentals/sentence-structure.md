@@ -21,148 +21,68 @@ sources:
   - type: "textbook"
     name: "Kolln & Gray, Rhetorical Grammar, 8th ed."
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-04-01
 ---
+
 # 句子结构
 
-## 定义与核心概念
+## 概述
 
-句子结构（Sentence Structure）是词语按照语法规则组织成有意义表达单元的方式。Kolln & Gray 在《Rhetorical Grammar》（8th ed.）中将句子定义为包含**主语**和**谓语**、表达完整思想的语法单位。
+句子结构是指句子内部各语法成分的排列方式与组合规则，核心在于主语、谓语、宾语三大成分如何协作，共同表达完整的意思。汉语的基本语序是"主语＋谓语＋宾语"（SVO），例如"猫（主语）追（谓语）老鼠（宾语）"，而英语同样遵循SVO语序，这使得中英互译时句子结构的对应关系相对直接，但各自内部的扩展规则差异显著。
 
-句子结构的核心矛盾：语法正确性（Grammaticality）与修辞有效性（Rhetorical Effectiveness）并不等同。一个语法完美的句子可能晦涩难懂，而一个"违规"的句子片段可能极具表现力。
+句子结构的系统研究可追溯至古希腊学者亚里士多德对"命题"的分析，他在《解释篇》（约公元前350年）中提出命题必须包含主词（subject）和谓词（predicate）。汉语语法学界对句子成分的现代化分析则始于20世纪初，《马氏文通》（1898年）是中国第一部系统语法著作，首次将汉语句子成分用"起词""语词""止词"等概念加以描述。
 
-## 四种基本句型
+掌握句子结构直接决定写作的清晰度与逻辑性。一个缺少主语或谓语的句子会造成歧义，读者无法判断"谁在做什么"。写作者通过有意识地选择简单句、并列复合句或从属复合句，可以控制文章的节奏感和信息密度，这是所有写作技能的起点。
 
-| 句型 | 结构 | 功能 | 示例 |
-|------|------|------|------|
-| **简单句** | 1个独立子句 | 清晰直接 | The experiment failed. |
-| **并列句** | 2+独立子句 (连词连接) | 并列等重信息 | The experiment failed, but the data was valuable. |
-| **复杂句** | 1个独立 + 1+从属子句 | 表达主次关系 | Although the experiment failed, the data proved valuable. |
-| **并列复杂句** | 2+独立 + 1+从属子句 | 表达复杂关系 | Although the experiment failed, the data proved valuable, and the team redesigned the protocol. |
+## 核心原理
 
-### 从属子句的三种类型
+### 主谓宾的基本框架
 
-| 类型 | 引导词 | 功能 | 示例 |
-|------|--------|------|------|
-| 名词性从句 | that, what, whether | 充当主/宾语 | **What he said** surprised us. |
-| 形容词性从句 | who, which, that | 修饰名词 | The book **that you recommended** is excellent. |
-| 副词性从句 | because, although, when, if | 修饰动词/句 | **Because it rained**, we stayed inside. |
+句子的最小完整单位是**主谓结构**，即使没有宾语，"鸟飞了"也是一个完整句子。宾语分为直接宾语（动作的直接承受者）和间接宾语（动作的间接受益者）：在"她（主）给（谓）我（间接宾语）一本书（直接宾语）"中，同时存在两个宾语。
 
-## 信息分布原则
+除主谓宾之外，句子还可以包含定语（修饰名词，回答"什么样的"）、状语（修饰动词或形容词，回答"怎样地""在哪里""什么时候"）和补语（补充说明结果或状态）。完整的句子成分公式可写作：
 
-### 已知-新信息原则（Given-New Contract）
+> **（状语）＋ 主语 ＋（状语）＋ 谓语 ＋（补语）＋（定语）＋ 宾语**
 
-Williams（*Style*, 13th ed.）的核心教学：将**旧信息**放在句首，**新信息**放在句尾——句尾是英语句子的"压力位"（Stress Position）。
+括号内的成分为可选项，括号外的主语和谓语是必须项。任何一个句子，无论长短，都可以用此公式进行成分拆解。
 
-```
-✗ A remarkable innovation in AI was announced by Google yesterday.
-  (新信息"remarkable innovation"在句首，旧信息"Google"在句尾)
+### 简单句的构造
 
-✓ Google yesterday announced a remarkable innovation in AI.
-  (旧信息"Google"在句首，新信息"remarkable innovation"在句尾)
-```
+简单句（Simple Sentence）只含有**一个独立主谓结构**，主语和谓语均可单一或复合。复合主语如"小明和小红喜欢绘画"，两个主语共用一个谓语。简单句的优点是信息聚焦，读者能立刻抓住核心动作；其局限在于连续使用会使文章显得呆板，失去节奏变化。
 
-### 句子重心（End Focus）
+检验一个句子是否为简单句的方法：数一数句子中有几个**限定动词**（finite verb，即带有时态或人称变化的动词）。只有一个限定动词，就是简单句。例如"昨天下午在图书馆认真读书的那个孩子是我弟弟"，虽然句子很长，但只有"是"一个限定动词，因此仍然是简单句。
 
-句尾放置最重要的新信息：
+### 复合句的两种类型
 
-```
-✗ Einstein published his theory of relativity, which transformed physics, in 1905.
-✓ In 1905, Einstein published his theory of relativity, which transformed physics.
-```
+复合句分为**并列复合句**（Compound Sentence）和**主从复合句**（Complex Sentence）。
 
-### 主语-动词距离
+**并列复合句**由两个或多个独立分句构成，分句之间用并列连词（"但是""然而""因此""所以"）连接，各分句的语法地位平等。例如："他努力学习，但成绩始终没有提高。"两个分句各自都能独立成句，删去任何一个不会影响另一个的语法完整性。
 
-读者处理句子时，需要将主语保持在工作记忆中直到遇到动词。主语和动词之间的距离不宜超过 **7-10 个单词**（Miller 的工作记忆容量，约 7±2 个组块）。
+**主从复合句**包含一个主句和至少一个从句，从句在语法上依附于主句，不能独立存在。从句根据功能分为三类：名词性从句（充当主语或宾语）、形容词性从句（充当定语，修饰名词）、副词性从句（充当状语，表示时间、条件、原因、让步等）。例如："因为昨晚下了大雪，所以今天的比赛被取消了。"其中"因为昨晚下了大雪"是副词性从句，表示原因，不能单独成立。
 
-```
-✗ The proposal that the committee reviewing the budget submitted to the board in 
-  the third quarter of the fiscal year was rejected.
-  （主语"proposal"到动词"was rejected"间隔 20+ 词）
+### 句子长度与信息密度的关系
 
-✓ The committee's budget proposal was rejected by the board in Q3.
-  （主语"proposal"到动词"was rejected"间隔 0 词）
-```
+短句（10字以内）信息密度低，语气有力，适合表达关键结论或制造强调效果；长句（30字以上）信息密度高，逻辑关系丰富，适合解释复杂概念或描述连续过程。专业写作建议将**平均句长控制在15至25字之间**，并有意识地交替使用长句与短句，避免句式单一。
 
-## 句子长度与节奏
+## 实际应用
 
-### 经验数据
+**新闻写作**中遵循"倒金字塔结构"，导语要求用一个简单句或简短复合句交代"五个W"（Who, What, When, Where, Why）。例如："昨日下午三时，本市火车站发生一起旅客晕厥事件，现场急救人员迅速处置。"这一句话用主从复合句（时间状语从句）完成了核心信息的集中传递。
 
-| 写作类型 | 平均句长(词) | 建议范围 | 数据来源 |
-|---------|-----------|---------|---------|
-| 学术论文 | 22-28 | 15-35 | APA样本分析 |
-| 新闻报道 | 16-20 | 10-25 | AP Stylebook |
-| 技术文档 | 15-20 | 10-25 | Microsoft Style Guide |
-| 小说 | 12-18 | 高度变化 | 文学风格分析 |
+**学术论文**常使用主从复合句表达条件与结论的逻辑关系。在论证段落中，先用一个简单句提出论点，再用两到三个复合句展开论据，最后用简单句收束，形成"总—分—总"的句式节奏。
 
-### 长短交替创造节奏
+**日常写作修改**中，"句子成分缺失"是最常见错误之一。检查方法是将句子化简：逐步删去定语、状语等修饰成分，直到只剩主干，若主干不通顺，原句必有成分残缺。例如："经过认真学习，使我的成绩提高了。"删去状语后剩"使我的成绩提高了"，主语缺失，应改为"经过认真学习，我的成绩提高了。"
 
-```
-海明威式节奏（主要短句 + 偶尔长句）：
-"He was an old man. He fished alone in a skiff in the Gulf Stream, 
-and he had gone eighty-four days now without taking a fish."
-（4词 → 22词 → 对比节奏）
+## 常见误区
 
-Faulkner式节奏（长句为主，内嵌多层结构）：
-适用于意识流、复杂思维表达
-```
+**误区一：句子越长越正式、越有水平。** 许多初学者认为堆砌从句会让文章显得专业，实际上过度嵌套的句子会让读者迷失主干。"他认为她说的他们之间曾经发生的那件事的影响被夸大了"这类句子连续使用多个定语从句，主谓关系模糊，是结构失控的典型。长句的价值在于逻辑严密，而非单纯追求字数。
 
-## 常见句子问题诊断
+**误区二：汉语无需关注句子成分，意思通顺即可。** 汉语语序比英语灵活，但这并不意味着汉语句子结构可以随意颠倒。状语前置和后置有时会造成语义差异："我只爱你"与"我爱的只有你"在逻辑焦点上完全不同，前者强调"爱的动作"的唯一对象，后者强调"被爱的人"的唯一性。句子成分的位置在汉语中同样承载语义功能。
 
-### 1. 名词化堆积（Nominalization）
+**误区三：并列句与主从句可以互换使用，效果相同。** 将"虽然他很努力，但他没有成功"改成"他很努力，他没有成功"，并列句消除了逻辑上的让步关系，读者会误以为两件事是简单的并列陈述，而非"出乎意料的反差"。句式选择直接影响逻辑关系的表达，不同结构不等价。
 
-```
-✗ The implementation of the optimization of the algorithm
-  resulted in the improvement of performance.
-  （4个名词化：implementation, optimization, improvement, performance-as-subject）
+## 知识关联
 
-✓ Optimizing the algorithm improved its performance.
-  （动词还原：implement→直接动作, optimization→optimizing, improvement→improved）
-```
+句子结构以**写作概述**中"书面表达需要规范性"这一原则为基础，具体落实了什么叫做"一个完整的表达单位"。理解了主谓宾框架之后，学习者才能进入**标点符号运用**——因为逗号、句号、分号的选择本质上是在分隔句子成分或独立分句，不理解分句边界就无法正确使用分号。
 
-Williams 的规则：如果一个名词可以还原为动词而使句子更清晰 → 还原。
-
-### 2. 被动语态的适当使用
-
-被动语态不是错误，而是工具：
-
-| 场景 | 推荐语态 | 理由 |
-|------|---------|------|
-| 行为者重要 | 主动 | "Researchers discovered..." |
-| 行为者不重要/未知 | 被动 | "The compound was synthesized..." |
-| 维持主位连贯 | 被动 | 保持句间话题一致 |
-| 科学方法描述 | 被动 | 学科惯例（但趋势在变） |
-
-### 3. 悬垂修饰语（Dangling Modifier）
-
-```
-✗ Walking through the park, the trees were beautiful.
-  （"walking"的逻辑主语是人，语法主语却是"trees"）
-
-✓ Walking through the park, I found the trees beautiful.
-  （主语"I"与分词一致）
-```
-
-### 4. 平行结构（Parallelism）
-
-```
-✗ The system must be fast, reliable, and have good scalability.
-  （adj, adj, verb phrase — 不平行）
-
-✓ The system must be fast, reliable, and scalable.
-  （adj, adj, adj — 平行）
-
-✓ The system must run fast, respond reliably, and scale efficiently.
-  （verb+adv × 3 — 平行）
-```
-
-## 参考文献
-
-- Williams, J.M. & Bizup, J. (2017). *Style: Lessons in Clarity and Grace*, 13th ed. Pearson. ISBN 978-0134080413
-- Kolln, M. & Gray, L. (2017). *Rhetorical Grammar: Grammatical Choices, Rhetorical Effects*, 8th ed. Pearson. ISBN 978-0134080413
-- Pinker, S. (2014). *The Sense of Style*. Viking. ISBN 978-0670025855
-
-## 教学路径
-
-**前置知识**：基本语法概念（主谓宾、词性）
-**学习建议**：先能识别和写出四种基本句型（各写 5 个），再练习"已知-新信息"排列。日常练习：对自己写的每个段落，检查(1)主语-动词距离，(2)名词化是否可还原，(3)句末是否放了最重要的信息。
-**进阶方向**：修辞句式（排比、对偶、设问）、跨语言句法对比（英-中主题突出 vs 主语突出）。
+在**词语选择**中，动词的及物性（transitive/intransitive）直接决定句子是否需要宾语，选词不当会破坏主谓宾的完整性。**语法要点**将在句子结构的基础上深入讨论时态、语态等动词变化规则。**主动与被动语态**是对谓语动词形式的专项讨论，实质上是将"主语＋谓语＋宾语"转化为"原宾语＋被动谓语＋by原主语"的结构变换。**平行结构**则要求并列复合句或并列词组中各成分保持相同的句子结构类型，这正是对复合句构造规则的延伸应用。

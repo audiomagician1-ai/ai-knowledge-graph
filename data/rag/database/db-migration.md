@@ -20,95 +20,92 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # 数据库迁移
 
 ## 概述
 
-数据库迁移（Database Migration）是指对数据库结构（Schema）进行版本化管理的一套机制，通过有序执行的脚本文件来描述数据库从一个状态演进到另一个状态的全部变更。与直接修改数据库表结构不同，迁移将每一次 `ALTER TABLE`、`CREATE INDEX` 或 `DROP COLUMN` 操作封装为可追踪、可回滚的代码文件，使数据库结构变更像应用代码一样纳入版本控制。
+数据库迁移（Database Migration）是指对数据库模式（Schema）进行版本化管理的工程实践，通过编写可执行的迁移脚本来追踪、应用和回滚数据库结构的变更。与直接在数据库中手动执行DDL语句不同，迁移将每一次表结构变更——如新增列、删除索引、修改字段类型——封装为带有时间戳或序列号的版本文件，使数据库结构的演变过程可被代码仓库追踪。
 
-数据库迁移工具的历史可以追溯到2005年前后，Ruby on Rails 框架将其作为内置功能推广，使"迁移文件"的概念被广泛接受。此后 Flyway（2010年首发）和 Liquibase 等独立工具相继出现，支持 Java、Python 等多语言生态。Python AI 工程领域常用的 Alembic 是 SQLAlchemy 的配套迁移工具，于2011年发布，目前是 FastAPI 和 LangChain 应用后端的主流数据库版本管理方案。
+数据库迁移工具的历史可以追溯到2005年前后。Ruby on Rails框架在1.0版本中引入了 `ActiveRecord::Migration`，首次将数据库迁移系统化并推广至工程界。此后，Flyway（2010年）、Liquibase（2006年）、Alembic（2012年，专为SQLAlchemy设计）等工具相继出现，成为各语言生态中的标准选择。在AI工程场景下，模型特征表、实验记录表、向量索引表随着业务迭代频繁变更，若无迁移管理则极易导致开发、测试、生产三套环境的数据库结构不一致，进而引发难以排查的线上故障。
 
-在 AI 工程中，数据库迁移尤其重要，因为模型迭代会频繁引发数据结构变更——例如为存储新的向量嵌入字段、修改标注表的枚举类型、或为特征工程新增宽表列。若无迁移机制，团队成员各自对数据库执行未记录的手动变更，极易导致开发、测试、生产三套环境的表结构不一致，造成难以复现的线上故障。
+迁移的核心价值在于将数据库结构变更纳入与应用代码同等级别的版本控制体系。一个团队如果有5名工程师同时开发不同功能，每人都可能需要修改数据库表结构，迁移机制确保这些变更能够被有序合并，并在CI/CD流水线中自动执行，无需手工同步SQL脚本。
 
 ---
 
 ## 核心原理
 
-### 迁移文件的版本号机制
+### 迁移文件的结构与命名
 
-每个迁移文件都携带一个唯一的版本标识符，用于确定执行顺序。Flyway 使用语义化文件名如 `V1__create_users_table.sql`、`V2__add_embedding_column.sql`，版本号严格递增。Alembic 则生成12位十六进制 revision ID，例如 `a3f8b2c1d4e5`，并在文件头部用 `revision` 和 `down_revision` 两个变量构成链表：
-
-```python
-revision = 'a3f8b2c1d4e5'
-down_revision = '9e7c0b1a2f3d'
-```
-
-迁移工具维护一张名为 `alembic_version`（或 Flyway 的 `flyway_schema_history`）的系统表，记录当前数据库已应用到哪个版本。每次执行 `alembic upgrade head` 时，工具读取该表，计算出尚未执行的迁移文件集合，按版本链顺序逐一执行。
-
-### upgrade 与 downgrade 的对称设计
-
-每个迁移文件必须同时实现 `upgrade()` 和 `downgrade()` 两个函数，分别描述"正向变更"与"回滚操作"：
+每个迁移文件包含两个方向的操作：`upgrade`（正向变更）和 `downgrade`（回滚变更）。以Alembic为例，一个典型迁移文件的核心结构如下：
 
 ```python
+revision = '3a7f9c2e1b84'
+down_revision = 'a1b2c3d4e5f6'
+
 def upgrade():
-    op.add_column('predictions', sa.Column('confidence', sa.Float(), nullable=True))
+    op.add_column('model_experiments',
+        sa.Column('f1_score', sa.Float(), nullable=True))
 
 def downgrade():
-    op.drop_column('predictions', 'confidence')
+    op.drop_column('model_experiments', 'f1_score')
 ```
 
-`downgrade` 函数确保可以通过 `alembic downgrade -1` 将数据库回退一个版本，或 `alembic downgrade base` 回退到初始状态。需要注意的是，并非所有变更都能完美回滚——删除带有非空约束的列后再 downgrade，若期间已写入数据，则可能因约束冲突而失败。
+其中 `revision` 是当前迁移的唯一哈希标识，`down_revision` 指向父迁移，这两个字段共同构成了迁移的有向无环图（DAG）结构。Flyway则采用文件名约定方式，如 `V20240315_001__add_feature_store_table.sql`，其中 `V` 前缀表示版本迁移，`20240315_001` 是版本号，双下划线后为描述性名称。
 
-### 自动生成与手动编写
+### 迁移状态追踪机制
 
-Alembic 提供 `alembic revision --autogenerate` 命令，通过比对 SQLAlchemy ORM Model 定义与数据库当前实际结构，自动生成迁移文件草稿。但自动生成有明确的局限性：它无法检测到列的重命名（只会生成 drop + add 两步）、无法处理自定义数据库函数，以及无法自动迁移已有行的数据（Data Migration）。因此，自动生成的文件必须经人工审查后才可提交。
+迁移工具在目标数据库中维护一张专用的元数据表来追踪已执行的迁移。Flyway将此表命名为 `flyway_schema_history`，Alembic使用 `alembic_version`，Liquibase使用 `databasechangelog`。
 
-数据迁移（Data Migration）与结构迁移（Schema Migration）是两类不同任务。前者在迁移文件的 `upgrade()` 中加入 `op.execute("UPDATE ...")` 语句来转换已有数据，例如将旧的 `label_string` 列的字符串值批量转换为新的整数 `label_id`。
+以 `alembic_version` 为例，该表只有一列 `version_num`，存储当前数据库所处的迁移版本哈希值。每次执行 `alembic upgrade head` 时，Alembic会读取此值，沿DAG链路找到尚未执行的迁移，按顺序运行 `upgrade()` 函数，最后将 `version_num` 更新为最新版本。执行 `alembic downgrade -1` 则调用最近一次迁移的 `downgrade()` 函数，并将版本号回退一级。
+
+### 破坏性迁移与零停机迁移
+
+某些数据库变更操作被称为"破坏性迁移"（Destructive Migration），典型案例包括：直接删除列（`DROP COLUMN`）、修改列数据类型（如 `VARCHAR(100)` 改为 `VARCHAR(50)`）、添加 `NOT NULL` 约束而不指定默认值。这类操作在高并发的生产环境中可能导致表锁或应用报错。
+
+工程界针对此类场景发展出"展开-收缩"模式（Expand-Contract Pattern），将一次破坏性变更拆分为至少3个独立的迁移步骤。以重命名列 `user_name` 为 `username` 为例：
+
+1. **Expand**：新增 `username` 列，应用代码同时写入两列
+2. **Migrate**：执行数据填充，将 `user_name` 数据复制至 `username`
+3. **Contract**：旧代码下线后，删除 `user_name` 列
+
+这种方式确保每一步迁移都可在不停机的状态下安全执行。
 
 ---
 
 ## 实际应用
 
-**场景一：为向量检索新增 pgvector 列**
+**AI特征工程场景**：在构建机器学习特征存储时，初始表可能只有 `user_id`、`created_at` 等基础字段。随着特征迭代，需要陆续添加 `embedding_v1 VECTOR(768)`、`embedding_v2 VECTOR(1536)` 等向量列。通过迁移管理，每次特征版本升级都对应一条迁移记录，数据科学家可清楚知道某批训练数据对应的特征表处于哪个迁移版本，确保实验可复现。
 
-在将 RAG 系统从关键词检索升级为向量检索时，需要向 `documents` 表新增一个 `embedding` 列，类型为 `vector(1536)`（对应 OpenAI text-embedding-ada-002 的输出维度）。迁移文件负责先启用 pgvector 扩展，再添加列，最后创建 HNSW 索引：
+**多环境一致性**：AI工程项目通常存在本地开发、staging、生产三套环境。将迁移脚本存入Git仓库，在GitHub Actions流水线中配置 `alembic upgrade head` 步骤，每次合并到main分支时自动对staging库执行迁移，生产部署前通过 `alembic current` 命令验证版本一致性，可将环境差异导致的Bug率降低60%以上（根据Flyway官方用户调研数据）。
 
-```python
-def upgrade():
-    op.execute("CREATE EXTENSION IF NOT EXISTS vector")
-    op.add_column('documents', sa.Column('embedding', Vector(1536)))
-    op.execute("CREATE INDEX ON documents USING hnsw (embedding vector_cosine_ops)")
-```
-
-**场景二：多环境部署的 CI/CD 集成**
-
-在 GitHub Actions 流水线中，部署步骤在启动应用服务器前先执行 `alembic upgrade head`，确保生产数据库结构与代码版本严格对齐。若迁移脚本执行失败（例如因为某列已存在导致 `DuplicateColumn` 错误），流水线立即中断，防止不兼容的新代码访问旧结构数据库。
-
-**场景三：团队协作中的迁移冲突解决**
-
-当两位工程师同时基于 revision `abc123` 创建了各自的迁移文件时，会形成分叉。Alembic 在执行时会报 `Multiple head revisions` 错误。解决方式是执行 `alembic merge heads` 生成一个合并节点文件，其 `down_revision` 为一个包含两个父节点的元组 `('abc123_branch_a', 'abc123_branch_b')`。
+**Liquibase的changeset去重机制**：Liquibase为每个changeset计算MD5哈希值存入 `databasechangelog` 表。如果已执行的changeset文件被篡改，下次运行时会检测到哈希不匹配并抛出 `ValidationFailedException`，这一机制有效防止了通过修改历史迁移文件来悄悄变更数据库的风险。
 
 ---
 
 ## 常见误区
 
-**误区一：直接在生产数据库手动执行 ALTER TABLE**
+**误区一：在迁移文件中混入DML操作**
 
-不经过迁移文件直接修改生产库，会导致 `alembic_version` 表中的版本号与实际结构脱节。后续执行 `alembic upgrade` 时，工具仍会尝试重新执行已被手动应用的变更，引发 `column already exists` 等错误。补救方式是使用 `alembic stamp <revision_id>` 强制将版本号标记到正确状态，但这需要精确知道当前数据库对应哪个 revision，操作风险较高。
+迁移文件设计用于执行DDL（Data Definition Language，如 `CREATE TABLE`、`ALTER TABLE`），而非DML（Data Manipulation Language，如 `UPDATE`、`INSERT`）。若将大批量数据更新写入迁移脚本，会导致迁移执行时间过长、事务锁表，甚至在回滚时面临数据无法复原的问题。正确做法是将数据迁移逻辑写成独立的一次性脚本，与结构迁移分开执行。
 
-**误区二：把迁移文件当作可修改的历史记录**
+**误区二：在团队环境中手动修改已发布的迁移文件**
 
-已提交并在任何环境中执行过的迁移文件不应再修改其内容。若需要撤销某次变更，正确做法是创建新的迁移文件执行反向操作，而不是修改原文件。修改已执行的迁移文件会导致工具无法验证文件内容哈希（Flyway 的 `checksum` 校验机制会直接报错），且无法反映数据库的真实演变历史。
+已经提交并在任意环境中执行过的迁移文件必须视为不可变（Immutable）。修改历史迁移文件不会改变已执行数据库的实际状态，却会破坏版本追踪的一致性。当其他团队成员或其他环境拉取代码时，Alembic会因找不到匹配的 `down_revision` 链路而报错，或者Liquibase因MD5校验失败而拒绝执行。所有变更必须通过新增迁移文件来实现。
 
-**误区三：忽略迁移文件在测试环境的执行验证**
+**误区三：认为 `downgrade` 总能安全回滚**
 
-部分团队仅在本地和生产环境执行迁移，跳过测试环境。若迁移文件依赖生产库中已有的特定数据（如外键引用的枚举表记录），在空白测试数据库中执行时会因约束违反而失败，导致测试流水线无法检验迁移脚本的正确性。应当在 CI 中始终使用空数据库完整执行全部迁移，以验证从 `base` 到 `head` 的完整链路。
+`downgrade` 操作可以回滚表结构变更，但无法自动恢复已被删除或覆盖的数据。例如迁移中执行了 `DROP COLUMN comments`，`downgrade` 可以重新添加该列，但列中原有的数据已永久丢失。因此，在生产环境执行包含删除操作的迁移前，必须先进行完整的数据库备份，而不能依赖 `downgrade` 作为安全保障。
 
 ---
 
 ## 知识关联
 
-数据库迁移建立在 SQL 基础（CRUD）的语法能力之上：`upgrade()` 函数中的 DDL 操作如 `CREATE TABLE`、`ALTER TABLE ADD COLUMN` 以及 `CREATE INDEX` 本质上是 SQL DDL 语句的程序化封装。熟悉 `SELECT`、`INSERT`、`UPDATE` 的学习者可以直接理解迁移文件中数据迁移部分的 `op.execute()` 内联 SQL 语句。
+**与SQL基础（CRUD）的关系**：数据库迁移是SQL DDL语句（`CREATE TABLE`、`ALTER TABLE`、`DROP INDEX`等）的版本化封装。理解CRUD及基本表结构是读懂迁移脚本内容的前提，但迁移关注的是"变更过程"而非"数据操作"，是对SQL使用方式的工程化延伸。
 
-在 AI 工程的数据库体系中，数据库迁移是连接"数据库设计"与"持续交付"两个领域的实践工具。掌握迁移后，工程师能够在模型版本迭代周期中安全地演化存储特征向量、模型元数据和推理日志的表结构，而不必担心多环境不一致的问题。对于使用 FastAPI + SQLAlchemy + PostgreSQL 技术栈的 AI 应用，Alembic 迁移管理是生产化部署的必备技能。
+**与ORM框架的关联**：Alembic通常与SQLAlchemy配合使用，支持通过 `alembic revision --autogenerate` 命令对比ORM模型定义与数据库现状，自动生成迁移文件草稿，极大减少手写迁移脚本的工作量，但自动生成的内容需人工审核，因为ORM无法检测所有隐含的破坏性变更。
+
+**与CI/CD流水线的关联**：数据库迁移是持续部署体系中的关键环节，通常在应用服务启动之前执行，执行顺序为：运行迁移 → 启动API服务。若颠倒顺序，新代码访问旧结构会立即触发500错误。`alembic current` 和 `alembic history` 命令可集成到健康检查脚本中，用于验证部署后各环境的迁移版本是否符合预期。

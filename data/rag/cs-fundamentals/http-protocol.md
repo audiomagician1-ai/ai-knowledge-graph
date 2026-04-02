@@ -20,102 +20,117 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # HTTP协议
 
 ## 概述
 
-HTTP（HyperText Transfer Protocol，超文本传输协议）是一种用于在客户端与服务器之间传输超文本数据的应用层协议，运行在TCP/IP协议栈之上，默认使用**端口80**。它由蒂姆·伯纳斯-李（Tim Berners-Lee）于1989年在欧洲核子研究组织（CERN）提出，最初版本HTTP/0.9仅支持GET方法和HTML文档传输。1996年发布的HTTP/1.0（RFC 1945）引入了请求头、响应码和多媒体内容支持；1997年的HTTP/1.1（RFC 2068）增加了持久连接和分块传输；2015年的HTTP/2引入了二进制分帧和多路复用；2022年正式标准化的HTTP/3则基于QUIC协议（运行在UDP上）彻底替代了TCP底层传输。
+HTTP（HyperText Transfer Protocol，超文本传输协议）是用于在客户端与服务器之间传输超文本数据的应用层协议，运行在TCP/IP协议栈之上，默认使用**80端口**。它是万维网数据通信的基础，由蒂姆·伯纳斯-李（Tim Berners-Lee）于1989年在欧洲核子研究组织（CERN）首次提出，1991年发布了最初的HTTP/0.9版本，该版本仅支持GET方法和HTML文档传输。
 
-HTTP是一种**无状态协议**，这意味着服务器在处理完一次请求后不会保留任何关于该客户端的信息，每次请求都是完全独立的。这一设计使得服务器扩展变得简单，但也带来了用户身份识别的挑战，因此后续衍生出了Cookie、Session等机制来弥补无状态带来的不足。在AI工程中，HTTP是调用远程模型推理接口（如OpenAI API、HuggingFace Inference API）的基础传输协议，几乎所有的RESTful API通信都依赖HTTP实现。
+HTTP是一种**无状态（Stateless）**协议，即服务器不会在两次请求之间保留任何客户端的状态信息。每次请求都是独立的，服务器处理完一次请求后不会记住之前的交互。这一特性既带来了水平扩展的便利，也催生了Cookie、Session等状态管理机制的出现。
 
----
+从AI工程视角来看，AI服务的绝大多数对外接口（API）都通过HTTP协议暴露。无论是调用OpenAI的`/v1/chat/completions`端点，还是部署自己的模型推理服务，理解HTTP协议的请求结构、响应码含义和头部字段，是正确调试和集成AI服务的前提。
 
 ## 核心原理
 
-### 请求-响应模型
+### 请求与响应结构
 
-HTTP采用严格的**请求-响应（Request-Response）**模式：客户端发起请求，服务器返回响应，一次交互完成后（HTTP/1.0中）连接即关闭。一个完整的HTTP请求由三部分组成：**请求行**（包含方法、URL、协议版本）、**请求头（Headers）**和可选的**请求体（Body）**。
+HTTP通信遵循严格的**请求-响应（Request-Response）**模型。一个完整的HTTP请求由三部分组成：
 
-典型的HTTP/1.1请求结构如下：
-```
-GET /api/v1/models HTTP/1.1
-Host: api.example.com
-Authorization: Bearer sk-abc123
-Accept: application/json
-```
+1. **请求行（Request Line）**：包含方法（Method）、请求目标URL和协议版本，例如 `GET /api/models HTTP/1.1`
+2. **请求头（Headers）**：键值对形式的元数据，如 `Content-Type: application/json` 指定请求体的数据格式，`Authorization: Bearer sk-xxx` 携带认证令牌
+3. **请求体（Body）**：可选部分，POST/PUT请求用来携带数据，GET请求通常没有请求体
 
-服务器响应同样由三部分组成：**状态行**（协议版本 + 状态码 + 状态文本）、**响应头**和**响应体**。例如，`HTTP/1.1 200 OK` 表示请求成功，`404 Not Found` 表示资源不存在，`429 Too Many Requests` 是AI API限流时最常见的错误码。
+HTTP响应同样包含三部分：**状态行**（如 `HTTP/1.1 200 OK`）、**响应头**和**响应体**。
 
 ### HTTP方法语义
 
-HTTP定义了多种请求方法，每种方法有明确的语义约定：
+HTTP/1.1定义了8种标准方法，AI工程中最常用的是：
 
-| 方法 | 语义 | 是否有Body | 幂等性 |
-|------|------|-----------|--------|
-| GET | 获取资源 | 否 | 是 |
-| POST | 创建资源/提交数据 | 是 | 否 |
-| PUT | 完整替换资源 | 是 | 是 |
-| PATCH | 部分更新资源 | 是 | 否 |
-| DELETE | 删除资源 | 可选 | 是 |
+| 方法 | 语义 | 典型场景 |
+|------|------|----------|
+| GET | 获取资源，幂等且无副作用 | 查询模型列表、获取任务状态 |
+| POST | 提交数据，创建资源或触发操作 | 发送对话请求、上传文件 |
+| PUT | 全量替换指定资源 | 更新整个配置对象 |
+| DELETE | 删除指定资源 | 删除已上传的文件 |
+| PATCH | 局部更新资源 | 修改模型参数的某个字段 |
 
-在AI工程实践中，向大语言模型发送推理请求（如`POST /v1/chat/completions`）使用POST方法，因为每次请求创建一次新的推理计算，且请求体包含输入文本；而查询可用模型列表（如`GET /v1/models`）则使用GET方法。**幂等性**意味着多次执行同一请求结果相同，这对于客户端重试逻辑设计至关重要。
+**幂等性**是关键概念：GET、PUT、DELETE多次执行结果相同；POST不是幂等的，重复发送可能创建多条记录。
 
-### HTTP状态码分类
+### HTTP状态码体系
 
-HTTP状态码是三位数字，按首位数字分为五类：
-- **1xx（信息性）**：如`100 Continue`，服务器告知客户端继续发送请求体
-- **2xx（成功）**：`200 OK`（成功）、`201 Created`（资源已创建）、`204 No Content`（无响应体）
-- **3xx（重定向）**：`301 Moved Permanently`（永久重定向）、`302 Found`（临时重定向）
-- **4xx（客户端错误）**：`400 Bad Request`（请求格式错误）、`401 Unauthorized`（未认证）、`403 Forbidden`（无权限）、`404 Not Found`
-- **5xx（服务端错误）**：`500 Internal Server Error`、`503 Service Unavailable`
+HTTP状态码是三位数字，分为5类，每类有明确的语义范围：
 
-在调用AI推理API时，`422 Unprocessable Entity` 通常表示请求参数格式正确但语义错误（如`temperature`值超出0-2范围），这与`400 Bad Request`（JSON格式本身错误）需要区别处理。
+- **1xx（信息）**：`100 Continue` 表示服务器已收到请求头，客户端可继续发送请求体
+- **2xx（成功）**：`200 OK` 成功，`201 Created` 创建成功，`204 No Content` 成功但无响应体
+- **3xx（重定向）**：`301 Moved Permanently` 永久重定向，`302 Found` 临时重定向
+- **4xx（客户端错误）**：`400 Bad Request` 请求格式错误，`401 Unauthorized` 未认证，`403 Forbidden` 无权限，`404 Not Found` 资源不存在，`429 Too Many Requests` 触发限流
+- **5xx（服务端错误）**：`500 Internal Server Error` 服务器内部错误，`503 Service Unavailable` 服务不可用
 
-### HTTP/1.1的持久连接与HTTP/2的多路复用
+在AI API调用中，`429`状态码尤为重要——它表示超出了请求速率限制（Rate Limit），通常响应头中会包含 `Retry-After` 字段告知客户端需要等待的秒数。
 
-HTTP/1.1通过`Connection: keep-alive`头实现**持久连接**，避免每次请求都重新建立TCP三次握手，但每条TCP连接在同一时刻只能处理一个请求（队头阻塞问题）。HTTP/2引入**二进制分帧层**，将数据切割为帧（Frame），同一TCP连接上的多个请求可以交错传输，真正实现多路复用，延迟显著降低。HTTP/3将底层协议换为QUIC（基于UDP），在弱网环境下（如移动端AI应用）丢包恢复速度比TCP快3-5倍。
+### HTTP版本演进
 
----
+- **HTTP/1.0**（1996年，RFC 1945）：每次请求需建立独立TCP连接，开销大
+- **HTTP/1.1**（1997年，RFC 2068）：引入**持久连接（Keep-Alive）**，默认复用TCP连接；引入**分块传输编码（Chunked Transfer Encoding）**，支持流式响应——这正是AI大模型打字机效果的技术基础
+- **HTTP/2**（2015年，RFC 7540）：引入**多路复用（Multiplexing）**，在同一TCP连接上并行传输多个请求，头部采用HPACK算法压缩，性能大幅提升
+- **HTTP/3**（2022年，RFC 9114）：放弃TCP，改用基于UDP的**QUIC协议**，解决了TCP队头阻塞问题
 
 ## 实际应用
 
-**调用OpenAI Chat Completions API**是HTTP协议在AI工程中的典型场景。完整请求如下：
+### 调用AI推理API
 
-```http
-POST https://api.openai.com/v1/chat/completions
+向OpenAI发送对话请求时，一个完整的HTTP请求如下：
+
+```
+POST /v1/chat/completions HTTP/1.1
+Host: api.openai.com
 Content-Type: application/json
-Authorization: Bearer YOUR_API_KEY
+Authorization: Bearer sk-xxxxxxxxxxxxxxxx
 
 {
   "model": "gpt-4o",
   "messages": [{"role": "user", "content": "你好"}],
-  "temperature": 0.7
+  "stream": true
 }
 ```
 
-服务器返回`200 OK`及JSON格式的响应体，其中`choices[0].message.content`字段包含模型回复。若API密钥无效，返回`401 Unauthorized`；若每分钟请求数超过限额，返回`429 Too Many Requests`，客户端应读取`Retry-After`响应头中的等待秒数后重试。
+当 `stream: true` 时，服务器返回 `Transfer-Encoding: chunked` 头，通过HTTP/1.1的分块传输持续推送 `data: {...}` 格式的SSE（Server-Sent Events）数据，实现逐字输出效果。
 
-**流式响应（Streaming）**是另一个重要应用：通过设置`"stream": true`并配合`Transfer-Encoding: chunked`响应头，服务器以Server-Sent Events（SSE）格式逐块推送生成的token，客户端可实时渲染文字输出，而非等待全部生成完毕。这正是ChatGPT打字机效果的底层HTTP机制。
+### 理解限流与重试
 
----
+AI平台API通常在响应头中返回限流信息：
+```
+x-ratelimit-limit-requests: 500
+x-ratelimit-remaining-requests: 499
+x-ratelimit-reset-requests: 2024-01-01T00:00:01Z
+```
+
+客户端程序需要检查这些头部字段，在收到 `429` 响应时实现指数退避重试策略。
 
 ## 常见误区
 
-**误区一：认为HTTP和HTTPS是两种完全不同的协议。** HTTP本身不加密，明文传输所有内容（包括Authorization头中的API密钥）。HTTPS并非独立协议，而是HTTP运行在TLS（Transport Layer Security）加密层之上，默认端口从80变为443，数据格式与HTTP完全相同，仅在传输层增加了加密和证书验证。因此HTTPS的请求方法、状态码、头部格式与HTTP一致。
+### 误区一：认为GET请求不能携带数据
 
-**误区二：GET请求不能携带Body。** HTTP规范（RFC 7231）技术上并未禁止GET请求包含Body，但强烈不建议——大多数服务器、代理、CDN会忽略GET请求的Body，且语义上GET表示"获取"而非"提交"。在ElasticSearch中`GET /index/_search`携带JSON Body是一个著名的反常规用法，造成许多工程师困惑。
+GET请求虽然没有请求体（Body），但可以通过**查询字符串（Query String）**传递参数，例如 `GET /search?query=llm&limit=10`。GET不应有请求体是HTTP语义规范，而非技术限制——部分工具允许发送带Body的GET请求，但这违反RFC规范，行为不可预期。
 
-**误区三：HTTP/2一定比HTTP/1.1快。** HTTP/2的多路复用优势在高延迟、多资源的场景下才明显。若服务器在单一TCP连接上发生严重丢包（如移动网络），HTTP/2的所有请求会因TCP层队头阻塞而全部停滞，反而不如HTTP/1.1的多连接策略，这正是HTTP/3改用UDP+QUIC的直接原因。
+### 误区二：混淆401与403状态码
 
----
+`401 Unauthorized` 的实际含义是"**未认证**"（Unauthenticated），即服务器不知道你是谁，通常要求客户端提供 `Authorization` 头。`403 Forbidden` 是"**已认证但无权限**"，服务器知道你的身份，但你没有访问该资源的权限。在调试AI API时，API Key填写错误返回401，Key正确但无该模型访问权限则返回403。
+
+### 误区三：认为HTTP/2完全替代了HTTP/1.1
+
+HTTP/2的多路复用解决了并发性能问题，但HTTP/1.1的分块传输编码在流式AI响应场景中仍被广泛使用。许多AI推理框架（如vLLM、Ollama）的默认部署就使用HTTP/1.1的流式传输，而非HTTP/2。两个版本在实际生产中长期共存，选择哪个取决于具体的网络环境和延迟需求。
 
 ## 知识关联
 
-**前置知识**：理解HTTP需要掌握TCP/IP协议——HTTP依赖TCP提供的可靠字节流传输，HTTP的连接建立本质上是TCP三次握手。HTTP的端口号（80/443）属于TCP端口空间，DNS解析域名为IP后，HTTP才能确定目标服务器地址。
+**前置知识（TCP/IP协议）**：HTTP运行在TCP之上，TCP的三次握手为HTTP提供了可靠的连接。HTTP/1.1的Keep-Alive就是减少TCP握手次数的优化手段；HTTP/3改用QUIC（基于UDP）则彻底重构了这一关系。理解TCP的连接建立过程，有助于分析HTTP请求的首字节时间（TTFB）瓶颈。
 
-**后续概念**：
-- **Fetch API与网络请求**：浏览器端发起HTTP请求的现代JavaScript接口，直接对应HTTP的方法、头部和状态码操作
-- **Session与Cookie**：HTTP无状态特性的补充机制，Cookie通过`Set-Cookie`响应头和`Cookie`请求头在HTTP报文中传递
-- **CORS跨域**：浏览器安全策略，通过HTTP的`Origin`请求头和`Access-Control-Allow-Origin`响应头控制跨域HTTP请求权限
-- **SSL/TLS与HTTPS**：在HTTP传输层添加加密，将HTTP的明文通信升级为密文，使用443端口代替80端口
+**后续知识延伸**：
+- **Fetch API**：是浏览器端发起HTTP请求的现代JavaScript接口，所有请求方法、头部设置都直接映射到HTTP协议概念
+- **Session与Cookie**：是为了解决HTTP无状态特性而诞生的机制，通过 `Set-Cookie` 响应头和 `Cookie` 请求头在多次HTTP请求间传递状态
+- **CORS跨域**：是浏览器对HTTP请求的安全限制，通过 `Access-Control-Allow-Origin` 等HTTP响应头来控制跨域访问权限
+- **SSL/TLS与HTTPS**：是在HTTP下层加入TLS握手，使HTTP传输内容加密，端口从80变为443，但HTTP协议本身的报文结构不变

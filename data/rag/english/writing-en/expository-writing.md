@@ -20,78 +20,99 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # 说明文写作
 
 ## 概述
 
-说明文（Expository Writing）是一种以解释、描述或告知为主要目的的写作体裁，要求作者客观、清晰地向读者传递关于某一概念、过程或现象的信息，而不插入个人观点或情感色彩。与议论文不同，说明文的核心任务是"让读者理解"而非"说服读者同意"，因此其语言风格倾向于中立、精确、有逻辑层次。
+说明文（Expository Writing）是英语写作中以客观、清晰的方式向读者解释某一概念、过程或现象的文体。它的核心任务不是说服（Persuasive）也不是叙事（Narrative），而是通过事实、数据和逻辑结构让读者理解"是什么"与"为什么"。例如，解释光合作用的机制、描述火山喷发的过程，或定义"民主"这一政治概念，都属于说明文的典型任务。
 
-说明文的历史可追溯至古希腊哲学家亚里士多德的《修辞学》，他将"说明"列为独立的话语功能。在现代英语教育体系中，说明文写作被普遍纳入K-12课程标准，美国《共同核心州立标准》（Common Core State Standards，2010年发布）将其列为三大核心写作类型之一，与叙事文、议论文并列，并要求学生从小学三年级起便能掌握基本的说明文写作框架。
+说明文这一概念的系统化教学可追溯至20世纪60年代美国的写作课程改革。教育学家詹姆斯·布里顿（James Britton）在1975年的研究中将学生写作分类，将expository writing与transactional writing并列，强调其在学术语境中的基础地位。如今，SAT写作、IELTS学术类Task 1、TOEFL独立写作等国际考试均将说明文能力列为核心评测维度。
 
-掌握说明文写作对英语学习者至关重要，因为这一体裁在学术报告、操作手册、科普文章、百科词条等真实场景中大量出现。能否写出逻辑清晰、层次分明的说明文，直接影响学生在雅思、托福写作模块以及AP英语考试中的得分，其中雅思Task 1（Academic）本质上就是一篇以数据或流程为对象的说明文。
+说明文写作在英语学习中的重要性体现在其广泛的学术应用上：大学入学申请中的"个人陈述"（Personal Statement）、理科的实验报告、社会科学的文献综述，本质上都是说明文结构的延伸。掌握说明文写作，意味着能够控制信息密度、组织逻辑层次，并精确选用解释型语言。
 
 ---
 
 ## 核心原理
 
-### 1. 五段式说明文结构（Five-Paragraph Expository Framework）
+### 1. 说明文的五种组织模式
 
-标准说明文采用"引言—主体—结论"三段结构，在课堂教学中通常扩展为五段式：一段引言 + 三段主体段落 + 一段结论。引言段必须包含**背景句（Hook）**、**过渡信息**和**论点陈述句（Thesis Statement）**，但与议论文的Thesis不同，说明文的Thesis只需明确告知"本文将解释什么"，例如：
+说明文写作有五种公认的信息组织模式，每种对应不同的解释目标：
 
-> *"This essay will explain the three main stages of the water cycle: evaporation, condensation, and precipitation."*
+- **定义模式（Definition）**：用于解释抽象概念，结构为"X is a type of Y that has Z characteristics."
+- **分类模式（Classification）**：将对象按标准分组，如将能源分为可再生与不可再生两类。
+- **比较对比模式（Compare & Contrast）**：使用Block结构或Point-by-Point结构排列信息。
+- **因果模式（Cause & Effect）**：解释现象背后的原因链，使用连接词如therefore、consequently、as a result。
+- **过程/顺序模式（Process/Sequence）**：按时间或操作步骤说明，常用first、then、subsequently、finally等信号词。
 
-三个主体段落各承担一个子话题，每段遵循**PIE结构**：**P**oint（主题句）—**I**llustration（举例或数据）—**E**xplanation（解释与总结）。结论段不引入新信息，而是用不同措辞重述引言的核心内容，强化读者记忆。
+选择错误的组织模式是中学生在说明文写作中最常见的失分点。解释"为什么全球变暖加速"应用因果模式，而非比较对比模式。
 
-### 2. 四种主要说明模式
+### 2. 客观语气与第三人称写作规范
 
-说明文根据内容类型采用不同的组织模式，选择错误会导致文章逻辑混乱：
+说明文要求使用客观语气，核心规则包括：
+- **禁止使用第一人称 "I think" 或 "I believe"**，应改为 "Research indicates…" 或 "Studies show…"
+- 使用**情态动词降调**（hedging）：将"X causes Y"改写为"X may contribute to Y"，以反映科学的不确定性。
+- 被动语态在说明文中合法且频繁出现，如"Carbon dioxide is released into the atmosphere"，因为动作执行者（人类活动）不需要每次都强调。
 
-- **定义说明（Definition）**：用于解释抽象概念，例如解释"光合作用"或"通货膨胀"。常用句型为"X is defined as..."或"X refers to..."。
-- **步骤说明（Sequential/Process）**：按时间或操作顺序排列，解释某一过程如何发生。须使用时序连接词：first, then, subsequently, finally。例如解释"如何制作面包"或"血液如何在体内循环"。
-- **比较对比说明（Compare and Contrast）**：用Venn图式逻辑揭示两个事物的异同，常见组织方式为逐点对比（point-by-point）或整体对比（block format）。
-- **因果说明（Cause and Effect）**：解释某现象的成因或后果，例如解释"为什么北极冰川融化"。须区分直接原因（immediate cause）与根本原因（root cause），避免因果倒置。
+IELTS学术写作的官方评分标准（Band Descriptors）明确指出，使用个人偏见语言（personal bias language）会导致Task Achievement分项扣分。
 
-### 3. 客观语气与信息来源引用
+### 3. 主题句与支撑句的精确配比
 
-说明文严格禁止第一人称情感表达，如"I think""I believe"。写作者须使用被动语态（passive voice）或客观陈述句，例如将"I think plants need sunlight"改写为"Plants require sunlight to perform photosynthesis"。当引用数据或事实时，必须标注来源以增强可信度。在学术说明文中，APA格式要求在句末用括号注明作者姓氏与年份，如（Smith, 2019），而MLA格式则要求括号内注明作者与页码。准确引用的习惯区分了及格水平与优秀水平的说明文写作。
+说明文的每个正文段落（Body Paragraph）遵循以下比例结构：
+- **1条主题句（Topic Sentence）**：陈述该段核心解释点
+- **2-3条支撑句（Supporting Sentences）**：提供事实、数据或具体例子
+- **1条解释句（Elaboration Sentence）**：说明支撑信息与主题句的关联
+- **1条结束句（Concluding/Transition Sentence）**：收束该段并过渡至下段
+
+一个高质量的说明文段落中，**支撑信息应占全段60%以上的篇幅**。若主题句后直接跳至另一个主题句，说明缺乏深度解释（under-explanation），这是说明文有别于提纲型写作的关键特征。
+
+### 4. 说明文的语言标志词
+
+说明文使用特定的词汇框架，这些框架区别于议论文的对立性语言：
+
+| 功能 | 常用表达 |
+|------|----------|
+| 定义 | refers to, is defined as, is known as |
+| 分类 | can be divided into, falls into X categories |
+| 举例 | for instance, a prime example is |
+| 原因 | stems from, is attributed to, results from |
+| 结果 | leads to, gives rise to, results in |
 
 ---
 
 ## 实际应用
 
-**场景一：解释自然现象（科普型说明文）**
+**场景一：IELTS Academic Task 1（图表描述）**
+描述一张折线图时，考生需要综合运用过程模式（时间顺序）和比较模式。如图表显示2000年至2020年间两种能源消耗趋势，标准说明文写法为："Solar energy consumption rose steadily from 5% in 2000 to 23% in 2020, while coal usage declined sharply from 60% to 38% over the same period." 注意此句不含主观判断，只含客观数据描述。
 
-以"解释地震的成因"为例，学生应先用Definition模式定义地震（"An earthquake is a sudden shaking of the ground caused by the movement of tectonic plates"），再用Cause and Effect模式解释板块运动如何积累能量并释放，最后引用数据说明震级测量标准（里氏震级，Richter Scale，由Charles Richter于1935年发明，范围为0至10）。整篇文章不应出现"地震很可怕"等情感性判断。
+**场景二：科学说明文（How Things Work类型）**
+解释蜘蛛如何织网时，应严格使用过程模式：明确每个步骤的先后顺序，使用被动语态（"The frame threads are anchored to a fixed surface"），并在适当位置插入数据（如"a spider web can absorb up to 40% of its weight without breaking"）以增加说明的准确性和可信度。
 
-**场景二：解释操作流程（程序型说明文）**
-
-如解释"如何完成一次图书馆研究"，需使用Sequential模式，将步骤按逻辑顺序编排：选定研究问题→确定关键词→检索数据库→筛选可信来源→记录参考文献。每个步骤的主题句必须包含动词原形或现在式动词，如"The first step is to identify a clear research question"。时序副词的正确使用（first, next, after that, once X is complete, finally）是此类说明文的评分重点。
-
-**场景三：雅思Academic Task 1**
-
-描述一幅表示"英国家庭垃圾分类比例变化（2000–2020年）"的折线图，本质上是数据型说明文。标准做法是：引言段改写题目（paraphrase），概述段（overview paragraph）用两至三句话说明最显著的整体趋势，主体段落按类别逐一描述具体数据变化并使用精确数字。评分标准中"Task Achievement"维度专门考察说明信息是否完整、客观，该维度占总分25%。
+**场景三：学术概念定义（学校考试常见题型）**
+题目要求解释"inflation"（通货膨胀），标准说明文段落结构：先用定义模式给出精确定义，再用因果模式解释其产生原因（货币供应量增加、需求拉动、成本推动），最后用举例说明真实世界案例（如2022年美国CPI同比上涨8.5%）。
 
 ---
 
 ## 常见误区
 
 **误区一：将说明文写成议论文**
+说明文解释现象，议论文为立场辩护。当题目要求"explain the causes of deforestation"时，许多学生会写出"We should stop deforestation because..."——这是错误的文体转换。说明文的任务只是呈现原因（如农业扩张、木材需求、基础设施建设），不需要提出解决方案或表达道德判断。
 
-许多学生在写说明文时不由自主地加入"This is a serious problem that must be solved"之类的倡导性语句。说明文的职责止于"解释现象已发生"，不涉及"应该怎么做"。一旦文章出现"should""must""it is important that we..."等呼吁性措辞，便已越出说明文边界，转变为议论文体裁，在英语写作考试中会导致体裁分严重扣分。
+**误区二：认为说明文不需要论点（Thesis Statement）**
+说明文同样需要明确的中心论点，但其thesis statement的性质与议论文不同。议论文的thesis是"立场"（position），而说明文的thesis是"预告"（preview）。例如："This essay will examine three primary causes of ocean acidification: increased CO₂ absorption, industrial runoff, and rising sea temperatures." 这句话告知读者文章将讨论什么，而非作者支持什么观点。
 
-**误区二：混淆说明模式，导致结构混乱**
-
-常见错误是在同一篇文章中随意切换说明模式——开头用因果模式，主体段突然变成步骤列表，结尾再引入比较对比。例如在解释"互联网对教育的影响"时，部分学生将"互联网的发展历史"（时序模式）和"对教育的影响"（因果模式）混杂在一起，导致读者无法跟随逻辑。选定模式后，全篇的连接词、句型结构和段落排列都必须服从该模式的内在逻辑。
-
-**误区三：过度依赖罗列，忽视Explanation环节**
-
-PIE结构中，许多学生写完Point和Illustration后便直接结束段落，忽略了Explanation（即解释举例与主题句之间的逻辑关联）。例如，主题句说"Solar energy has several advantages"，举例说"Germany generates 10% of its electricity from solar panels"，但不加任何解释便进入下一段——读者无法从这个数据中自动推导出"advantages"体现在何处。Explanation句通常以"This demonstrates that..."或"This shows how..."引导，是说明文中信息传递闭环的关键一步。
+**误区三：混用说明文的五种组织模式**
+在同一段落中同时使用比较模式和因果模式会造成逻辑混乱。例如，在对比太阳能与风能的段落中，突然插入"太阳能导致成本下降"这一因果逻辑，会打断比较的平行结构（parallel structure）。每个正文段落应坚持使用单一组织模式，不同模式的切换应在段落与段落之间通过过渡句完成。
 
 ---
 
 ## 知识关联
 
-说明文写作建立在**文章结构**知识的基础上：段落的主题句写法、连接词的选择以及引言与结论的对应关系，都需要学生已熟悉基本段落写作规范方可运用。学生若尚未掌握段落扩展（paragraph development）技巧，难以独立完成三段主体的PIE拆解。
+**与前置知识"文章结构"的关联**：
+文章结构课程教授的引言—正文—结论三段式框架是说明文的骨架，但说明文对正文段落提出了更高要求：必须明确标注所使用的组织模式，且每段的主题句必须直接服务于中心论点（thesis）中预告的内容。从文章结构过渡到说明文写作，关键升级点在于**信息的逻辑编排方式**而非段落数量。
 
-从说明文写作出发，可自然衔接**报告写作（Report Writing）**的学习。报告是说明文的高级形式，在说明文客观陈述的基础上，还要求加入标题系统（headings/subheadings）、图表说明、数据来源索引以及执行摘要（executive summary）等规范化元素。学生在报告写作中所使用的因果分析、数据描述和流程说明，均源于说明文写作阶段建立的文体意识和结构思维。
+**与后续知识"报告写作"的关联**：
+报告写作（Report Writing）是说明文的专业化形式，新增了摘要（Abstract/Executive Summary）、标题层级（Headings）和数据可视化描述等格式要求。说明文中习得的客观语气、因果模式和过程描述技巧，会在报告写作中被直接沿用并扩展为更正式的学术规范，例如APA或MLA格式的文献引用要求。

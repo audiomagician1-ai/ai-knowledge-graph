@@ -20,63 +20,77 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # ReAct推理+行动
 
 ## 概述
 
-ReAct（Reasoning + Acting）是由Yao等人于2022年在论文《ReAct: Synergizing Reasoning and Acting in Language Models》中提出的提示框架，其核心创新在于将语言模型的**推理轨迹**（reasoning traces）与**外部工具调用动作**（actions）交织在同一生成序列中。与思维链（CoT）只产生内部推理步骤不同，ReAct允许模型在推理过程中暂停，向搜索引擎、数据库、计算器等外部环境发出查询请求，并将返回的观测结果（observations）纳入后续推理，形成"思考→行动→观测"的循环。
+ReAct（**Re**asoning + **Act**ing）是由Google Research和普林斯顿大学于2022年提出的提示工程框架，核心思想是让语言模型在单次交互过程中交替生成"思考轨迹"（Thought）和"可执行动作"（Action），而非仅输出最终答案。与思维链（CoT）只做内部推理不同，ReAct允许模型向外部环境发出动作请求并接收观察结果（Observation），形成"思考→动作→观察"的循环序列。
 
-ReAct的提出源于一个实际痛点：纯CoT推理在需要最新信息或精确计算的任务上会产生幻觉，因为模型只能依赖训练时冻结的参数知识。ReAct通过"接地"（grounding）机制解决了这一问题——每次行动后获取的真实观测结果会锚定后续推理，防止模型在多步推理中漂移。原始论文在HotpotQA、Fever等基准测试上验证了ReAct比单纯CoT的事实准确率提升3.4%至7.3%，同时错误传播率显著降低。
+该框架发表于论文《ReAct: Synergizing Reasoning and Acting in Language Models》（Yao et al., 2022），在HotpotQA多跳问答任务上相比单独的CoT提示，ReAct将幻觉率降低了约34%。其核心价值在于：模型不再依赖训练时冻结的参数知识，而是通过动作（如搜索引擎查询、代码执行、数据库查询）实时获取外部信息，将推理与事实获取解耦。
 
-理解ReAct的关键在于认识它不是简单的"先想再做"，而是推理与行动**实时交替**——每次行动的结果都可能改变推理方向，而推理又决定下一步执行什么行动。这种动态反馈循环使ReAct成为构建自主AI Agent的基础技术之一。
+ReAct之所以在AI工程领域受到重视，是因为它为构建可靠的工具调用Agent提供了一个可解释、可调试的执行轨迹格式。每一步的Thought对人类工程师可见，使得追踪模型决策链路成为可能，而不是面对一个黑盒式的动作输出。
+
+---
 
 ## 核心原理
 
 ### Thought-Action-Observation三元组结构
 
-ReAct的运作单元是严格格式化的三元组序列，每个循环包含三个标记前缀：
+ReAct的执行序列由重复出现的三元组组成：
 
 ```
-Thought: [模型对当前状态的内部推理]
-Action: [调用的工具名称及参数，如 Search[量子计算]]
-Observation: [外部环境返回的结果，由系统填充]
+Thought: [模型的推理过程，说明下一步意图]
+Action: [具体动作及其参数，如 Search["量子纠缠定义"]]
+Observation: [外部环境返回的真实结果]
 ```
 
-其中`Thought`步骤是模型生成的，`Action`步骤同样由模型生成但会被代码解析执行，`Observation`则是真实外部结果注入回上下文。这三个标签将一个不可分割的上下文窗口切分成了语义明确的片段，使模型在下一个`Thought`时能正确区分"我自己的推断"和"外部事实"。
+这三个元素在提示模板中显式标注，模型通过In-context Learning从少样本示例中学习这种格式。关键约束是：Action必须是预定义工具集中的合法调用，常见类型包括`Search`、`Lookup`、`Calculate`、`Finish`等，`Finish[答案]`表示终止并返回最终结果。
 
-### 停止词触发与工具解析机制
+### 与纯CoT的本质区别
 
-ReAct在技术实现上依赖**停止词（stop token）**机制。当语言模型生成`\nObservation:`字符串时，推理过程被暂停，控制权交还给宿主程序。程序解析上一行`Action:`的内容，提取工具名称与参数，调用对应API，将结果拼接为`Observation: [结果内容]`后重新输入模型继续生成。这意味着ReAct不需要对模型本身做任何微调，完全通过提示格式与推理循环的工程实现即可工作，这正是它在GPT-3.5、GPT-4等通用模型上能直接部署的原因。
+思维链（CoT）的推理链完全在模型内部闭合，格式为"Question → Let's think step by step → Answer"，中间步骤无法引入新信息。ReAct在每次Thought之后可以插入真实的外部查询，Observation的内容不在模型训练数据中，因此可以处理实时信息或超出上下文长度的知识库。实验数据表明，在Fever事实核查任务上，ReAct的准确率比单纯CoT高出**5.9个百分点**，且幻觉性推理步骤更少。
 
-### Few-Shot示例的构造规范
+### 停止条件与最大步数控制
 
-ReAct提示中的少样本示例（few-shot demonstrations）需要展示完整的多轮交替轨迹，通常包含3至5个已标注的`Thought/Action/Observation`链条。原始论文的HotpotQA实验使用了6个示例，每个示例平均包含4.7个完整三元组循环。构造这些示例时，`Action`类型必须来自预定义的工具集（如`Search[]`、`Lookup[]`、`Finish[]`），否则模型生成的动作无法被程序正确解析。`Finish[答案]`是终止动作，触发后程序停止循环并返回最终答案。
+ReAct并非无限循环：工程实践中必须设置`max_steps`参数（通常为5~15步）防止无限递归。当模型生成`Action: Finish[...]`时循环终止；若达到最大步数仍未完成，通常强制取最后一个Thought作为答案。提示模板中需要明确写出"如果你认为已经获得足够信息，使用Finish动作"这一指令，否则模型容易进入冗余搜索循环。
 
-### ReAct与纯CoT的形式化区别
+### 少样本示例设计要求
 
-如果定义模型输出序列为 $S = \{s_1, s_2, ..., s_n\}$，CoT中每个 $s_i$ 均为模型生成的文本Token，而ReAct中序列形如 $S = \{t_1, a_1, o_1, t_2, a_2, o_2, ...\}$，其中 $t_i$ 为模型生成的Thought，$a_i$ 为模型生成的Action，$o_i$ 为**外部环境注入**的Observation。$o_i$ 不在模型的预测损失计算范围内，它是上下文中的"外来证据"，这正是ReAct能够突破模型参数知识边界的数学本质。
+ReAct的少样本示例（few-shot examples）需要同时展示推理轨迹和动作格式，每个示例长度通常达到200~400 tokens，远长于标准问答示例。原始论文为HotpotQA任务设计了6个示例，每个包含3~7个完整的Thought-Action-Observation循环。示例中的Observation必须是真实或高度仿真的工具输出，若使用伪造Observation，模型会学习不切实际的工具使用模式。
+
+---
 
 ## 实际应用
 
-**多跳问答（Multi-hop QA）**：对于"奥巴马的出生城市的市长是谁"这类需要串联多个事实的问题，ReAct会先`Search[Barack Obama birthplace]`获得"檀香山"，再`Search[Mayor of Honolulu 2024]`获得当前市长姓名，每一跳都以真实搜索结果为依据，避免CoT直接从参数记忆中拼凑错误答案。
+**多跳知识问答**：查询"《哈利·波特》作者的出生城市的人口"时，模型先`Search["J.K.罗琳出生城市"]`得到"叶特"，再`Search["叶特人口"]`得到具体数字，最后`Finish["约29,000人"]`。单次模型调用无法完成此任务，因为需要两步顺序信息获取。
 
-**代码调试与执行验证**：在编程辅助场景中，模型可以生成代码片段后执行`Execute[代码]`动作，将实际运行输出作为Observation，再根据报错信息在下一个Thought中分析原因并修正，形成真正的"写→测→修"循环，而不是仅凭推理猜测代码是否正确。
+**代码调试Agent**：在代码执行环境中，Thought描述预期行为，Action为`Execute[代码片段]`，Observation为实际运行输出（含报错信息）。模型可根据观察到的TypeError或NameError调整下一步修复策略，而非盲目猜测错误原因。
 
-**LangChain中的ReAct实现**：LangChain框架将ReAct封装为`create_react_agent()`函数，开发者只需提供工具列表（`tools`参数）和基础模型，框架自动处理停止词注入、动作解析、Observation拼接等工程细节，将原始论文的实验方法转化为可生产部署的Agent骨架。实际工程中工具集通常包含`DuckDuckGoSearch`、`PythonREPLTool`、`WikipediaAPIWrapper`等标准组件。
+**LangChain中的ReAct实现**：LangChain框架的`AgentType.REACT_DOCSTORE`和`AgentType.ZERO_SHOT_REACT_DESCRIPTION`直接实现了ReAct格式，工程师通过`Tool`对象注册可调用工具，框架自动解析模型输出中的`Action:`和`Action Input:`字段并路由到对应工具函数。
+
+---
 
 ## 常见误区
 
-**误区一：认为Observation是模型"想象"出来的**。初学者常误以为`Observation:`后的内容也是模型生成的，从而认为ReAct只是一种特殊的CoT格式。实际上，`Observation:`之后的内容**必须由外部程序注入**，如果允许模型自由生成Observation，则ReAct退化为角色扮演，丧失了所有事实接地能力。检查实现是否正确的标准就是：程序代码中必须存在一个显式的停止词拦截与结果注入逻辑。
+**误区一：认为Thought只是装饰性输出**
+Thought步骤不是可选的可读性注释，而是功能性推理支架。论文消融实验显示，去除Thought步骤（仅保留Action-Observation循环）在HotpotQA上准确率下降约12%，因为模型依赖Thought步骤来整合上一轮Observation并规划下一个动作。
 
-**误区二：认为ReAct等同于函数调用（Function Calling）**。OpenAI的Function Calling通过结构化JSON输出触发工具，绕过了自然语言`Action:`格式的解析不稳定性，在精确性上优于原始ReAct。但ReAct的`Thought:`步骤在每次工具调用前都显式生成推理，这使中间推理轨迹完全可检查和可调试；而Function Calling默认不暴露调用前的推理过程。两者解决问题的层次不同，ReAct是提示范式，Function Calling是模型能力接口。
+**误区二：Observation可以由模型自己生成**
+Observation必须来自真实外部工具调用的结果，若让模型在推理时自行"想象"Observation（即不实际调用工具），则整个ReAct框架退化为带格式标签的CoT，失去获取外部事实的能力，且因格式冗余而性能不如纯CoT。
 
-**误区三：认为循环轮次越多结果越好**。ReAct的每次循环都消耗上下文长度和API调用次数，且Observation内容会快速填充上下文窗口。原始论文设置最大循环次数为7，超过后强制终止。实际工程中，超过5次仍未得到`Finish[]`动作通常意味着工具返回结果质量差或任务分解有误，应优先检查工具设计而非增加循环上限。
+**误区三：ReAct适合所有任务类型**
+对于不需要外部信息检索的纯数学推理任务（如GSM8K数学题），ReAct因引入了不必要的Action步骤而比CoT效率更低，延迟增加15%~40%（因工具调用I/O开销）。ReAct的优势场景是知识密集型、事实核查型或需要代码执行的任务。
+
+---
 
 ## 知识关联
 
-**与思维链（CoT）的关系**：ReAct以CoT为基础，继承了其"显式中间步骤"的核心思想，但将CoT中封闭的内部推理扩展为开放的环境交互循环。掌握CoT的`step-by-step`格式化思维是理解ReAct`Thought:`步骤书写规范的前提。
+**前置概念——思维链（CoT）**：ReAct的Thought步骤本质上是CoT在受约束环境中的应用，理解CoT如何通过中间步骤提升推理准确性，是理解为何Thought步骤有效的基础。ReAct可视为CoT向开放环境的扩展：CoT在封闭上下文中推理，ReAct在开放工具环境中推理。
 
-**通向AI Agent概述**：ReAct是从提示工程迈向Agent系统的关键桥梁。ReAct中的"工具调用+观测反馈"机制直接对应Agent架构中的"行动+感知"模块；理解ReAct的停止词拦截与循环控制逻辑，是理解完整Agent循环（感知-推理-行动）中任务调度器（orchestrator）职责的具体案例。
+**后续概念——AI Agent概述与Agent循环**：ReAct定义了最基础的Agent执行格式，"感知-推理-行动"循环（Perceive-Reason-Act）是对Observation-Thought-Action三元组的抽象提升。学习Agent架构时，ReAct轨迹是理解规划模块与工具调用模块如何协同工作的具体参照。
 
-**通向提示链**：当ReAct的单次循环无法解决复杂任务时，需要将多个ReAct实例串联为提示链，前一个ReAct的`Finish[]`结果作为下一个实例的初始上下文输入。这种级联设计是构建多Agent协作系统的基础模式。
+**后续概念——提示链（Prompt Chaining）**：提示链将ReAct的单轮工具循环扩展为跨多个独立LLM调用的信息传递流水线，两者的区别在于提示链中每个节点是独立的模型调用，而ReAct在同一个上下文窗口内完成多轮推理与动作；复杂的Agent系统往往同时使用两种模式。

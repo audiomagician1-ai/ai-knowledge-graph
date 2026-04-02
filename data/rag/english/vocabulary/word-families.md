@@ -20,84 +20,78 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # 词族
 
 ## 概述
 
-词族（Word Family）是指由同一词根通过添加前缀、后缀或词形变化派生出来的一组相关单词的集合。例如，词根 `act` 构成的词族包括：act（动词/名词）、action（名词）、active（形容词）、actively（副词）、activity（名词）、actor（名词）、actress（名词）、activate（动词）、inactive（形容词）等十余个词汇。这些词共享同一语义核心，但通过不同的构词手段承担不同的句法功能。
+词族（Word Family）是指由同一词根或基础词派生出来的一组具有形态关联的单词集合。这些单词共享同一个语义核心，但通过添加不同的前缀或后缀，演变为名词、动词、形容词、副词等不同词性。例如，以 "act" 为核心，可以派生出 action（名词）、active（形容词）、actively（副词）、activate（动词）、activity（名词）、actor（名词）等，这整个集合就构成一个词族。
 
-词族的系统研究可追溯至20世纪80年代。语言学家Paul Nation在其1990年出版的《Teaching and Learning Vocabulary》中将词族作为词汇学习的基本单位加以推广，并提出学习者掌握英语高频词族比孤立记忆单词效率高3至5倍。Nation的研究还表明，英语中最常用的2000个词族可覆盖日常书面语料的95%以上，这使词族成为词汇教学的核心框架。
+词族研究在英语词汇习得领域有明确的数据支撑。语言学家保罗·内申（Paul Nation）在2001年出版的 *Learning Vocabulary in Another Language* 中指出，掌握英语最常用的2000个词族，即可覆盖日常口语文本约95%的词汇量。这一发现使词族成为英语教学中词汇扩展的重要单位——学习者与其孤立记忆1000个单词，不如系统掌握200个核心词族，效率可大幅提升。
 
-学习词族而非孤立单词，能让学习者用一套词根知识同时解锁多个词汇，显著提升阅读理解能力和写作准确性。当学生认识 `decide`，通过词族知识便可自动推导出 `decision`（名词形式）、`decisive`（形容词）、`undecided`（形容词，加否定前缀）等形式，而无需逐一死记硬背。
-
----
+词族学习的价值在于它能将词汇记忆从"点"升级为"网络"。当学生看到 "economy" 这个词，若掌握其词族，便能同时调用 economic、economical、economically、economist、economize 等词，在写作和阅读中灵活切换词性，解决中国学生在英语写作中最常见的"词性误用"问题。
 
 ## 核心原理
 
-### 1. 词族的构成规律：词根 + 派生词缀
+### 词族的构成规律：词根 + 词缀变形
 
-词族的扩展主要依赖三种构词机制：**后缀转换词性**、**前缀改变语义**、**词形屈折变化**。
+词族的形成遵循英语构词法中的派生规则。以词根 "create" 为例，其完整词族包括：
+- **动词形式**：create（创造）、recreate（再创造）
+- **名词形式**：creation（创造物/创造行为）、creator（创造者）、creativity（创造力）、creature（生物）
+- **形容词形式**：creative（有创造力的）、created（被创造的）
+- **副词形式**：creatively（有创意地）
 
-后缀是构建词族最高效的工具。以名词后缀为例：
-- `-tion / -sion`：create → creation；decide → decision
-- `-ment`：develop → development；achieve → achievement
-- `-ness`：happy → happiness；dark → darkness
-- `-er / -or`：teach → teacher；act → actor
+这个词族中，后缀 -ion 将动词变为表示"行为或结果"的名词，后缀 -or 变为"执行者"，后缀 -ity 变为"抽象品质"，后缀 -ive 变为形容词，后缀 -ly 再进一步变为副词。这种层级关系是词族内部的核心逻辑。
 
-形容词后缀如 `-ive`（create → creative）、`-al`（nation → national）、`-ful`（help → helpful）；副词后缀 `-ly` 则可批量将形容词转化为副词：active → actively，careful → carefully。
+### 词族规模的差异性
 
-前缀则在不改变词性的情况下修改语义，常见的有：`un-`（happy → unhappy）、`in- / im-`（possible → impossible）、`re-`（write → rewrite）、`dis-`（agree → disagree）。
+不同词根的词族规模差异显著。功能词（如 "the"、"and"）几乎没有词族成员，而高频实义词的词族可达十余个成员。以 "produce" 为例，其词族多达15个常用成员：produce、producer、production、productive、productively、productivity、product、reproduce、reproduction、reproductive、byproduct 等。相比之下，"comet"（彗星）这类专有名词词族极小，仅有 cometary 一个派生词。
 
-### 2. 词族的"核心词"与"边缘词"
+英语学界通常将词族分为"透明词族"和"不透明词族"。透明词族的派生关系一眼可辨，如 happy→happiness→unhappy→unhappily；不透明词族则因历史音变导致外形差异较大，如 strong→strength，long→length，这要求学生额外记忆形态变化。
 
-每个词族中存在一个**基础形式**（base form），通常是词典收录的最简单形式，其余成员都是由此派生。以 `friend` 为核心词的词族结构如下：
+### 词族与词性转换的关系
 
-| 词形 | 词性 | 中文释义 |
-|------|------|----------|
-| friend | 名词 | 朋友 |
-| friendly | 形容词 | 友好的 |
-| friendship | 名词 | 友谊 |
-| friendliness | 名词 | 友善 |
-| unfriendly | 形容词 | 不友好的 |
-| befriend | 动词 | 与……交朋友 |
-
-需要注意的是，并非每个词根都能生成所有词性。`sleep` 词族中没有常用的 `-tion` 名词形式；`music` 词族没有对应的动词形式（不说 *"to music"）。词族的边界由语言习惯决定，而非机械推导。
-
-### 3. 高频词族的规模差异
-
-不同词族的规模差异悬殊。Nation（2001）统计显示，英语中约有54,000个词族，但其中高频词族（前2,000族）平均每个词族含**7至10个**成员，而低频词族通常只有2至3个成员。以高频词族 `know` 为例，其成员多达15个以上：know, knew, known, knowing, knowledge, knowledgeable, knowingly, unknown, unknowing, foreknow, acknowledge, acknowledgement……这说明越是常用的词根，派生能力越强，学习回报率越高。
-
----
+词族中每个成员的词性是固定的，但同一词根可以承担多个词性。例如 "water" 既是名词（a glass of water）又是动词（to water the plants），这属于词性零变化转换（Zero Derivation），不通过添加词缀而直接改变词性。这类词虽然形式相同，但在词族分析中仍被视为两个不同的词族成员，因为其句法功能和语义均有区别。
 
 ## 实际应用
 
-**写作中避免词性误用**：中国英语学习者最常见的错误之一是混淆词族中同一词根的不同词性。例如写出 "He is very success in business"，正确形式应为 "He is very **successful**"（形容词），或 "He achieved great **success**"（名词）。掌握词族能帮助学习者在句子中选择正确的词性形式。
+### 四级/六级考试中的词族题型
 
-**阅读中猜测生词含义**：当遇到生词 `deforestation` 时，学习者若能识别出词族成员 `forest`（森林），并知道前缀 `de-` 表示"去除"、后缀 `-ation` 表示名词化，即可推断其含义为"砍伐森林/毁林"，无需查字典。
+大学英语四级考试的完形填空和翻译题中，词族的词性辨别是高频考点。例如，原句为"经济的______（develop）对社会有深远影响"，填空处需要名词 "development" 而非动词原形。这类题目直接测试学生能否在词族成员中选取正确词性，统计显示四级写作失分中约30%源于词性误用，即把词族中的某个成员用错了句法位置。
 
-**备考词汇扩展**：准备英语四六级或雅思考试时，以词族为单位复习比以单词为单位效率更高。复习 `economy` 这一词族时，同步掌握 economic（形容词）、economical（形容词，意为"节约的"）、economics（学科名词）、economist（名词，经济学家）、economize（动词，节省），一次复习解决五个高频考点词汇。特别注意 `economic` 与 `economical` 是同一词族内意义不同的两个成员，前者意为"经济的（与经济相关）"，后者意为"经济实惠的、节约的"。
+### 词族扩展学习法的实践
 
----
+以学习 "organize" 为起点，学生可以用"词族卡片"方式一次性掌握：
+- **名词**：organization（组织）、organizer（组织者）、organ（器官，词根更深层）
+- **动词**：organize（组织）、reorganize（重新组织）
+- **形容词**：organized（有条理的）、organizational（组织上的）
+- **副词**：organically（此为 organic 派生，词源相关）
+
+这种方法使每次词汇学习的产出从1个单词扩展为5-8个，是词汇量快速增长的有效路径。
+
+### 写作中词族的灵活运用
+
+在学术写作中，同一语义在一段文字中需要以不同词性出现以避免重复。例如：*The economy has grown significantly. This economic growth reflects the government's economical policies. Economists predict further development.*  这段文字中 economy、economic、economical、economists 来自同一词族，但每个成员承担不同的句法角色，体现了词族掌握的实际写作价值。
 
 ## 常见误区
 
-**误区一：词族成员可以相互替换**
+### 误区一：以为词族中所有成员意思完全相同
 
-许多学习者误以为同一词族内的词义相近，可以互换使用。但词族成员在词性和语义上各有分工，不可混用。`imagine`（动词）、`imagination`（名词）、`imaginative`（形容词，意为"富有想象力的"）、`imaginary`（形容词，意为"虚构的、想象中的"）同属一个词族，但 "an imaginative child"（富有想象力的孩子）与 "an imaginary friend"（虚构的朋友）语义截然不同，绝不能互换。
+"economic" 和 "economical" 同属 economy 词族，但含义截然不同：economic 意为"与经济有关的"（an economic crisis），而 economical 意为"节省的、不浪费的"（an economical car）。同样，"historic"（有历史意义的）与"historical"（历史上存在的）语义差异明显。词族成员共享词根语义，但后缀的加入会产生语义分化，学生必须逐一核对具体含义，不能简单地以为"一个词学会了就全会了"。
 
-**误区二：只需记住词根，后缀自动推导**
+### 误区二：把所有含相似字母的词归为同一词族
 
-学习者有时认为掌握了词根，所有派生形式都可以通过规则推导出来。但英语中存在大量**不规则的词族成员**。例如，`strong` 的名词形式不是 `*strongness`，而是 `strength`；`long` 的动词形式不是 `*longen`，而是 `lengthen`；`broad` 的动词形式是 `broaden`，而非借用形容词本身。这些形式需要单独记忆，不能依赖规则推导。
+"form"（形式）和"formal"确实属于同一词族，但 "former"（前者/以前的）虽然拼写相似，其词源来自古英语 "forma"（第一），与 form 词族无关，语义联系微弱，不属于同一词族。同理，"complete" 和 "complement" 看似相近，但前者来自拉丁语 *complere*（填满），后者来自 *complementum*（补充物），是两个独立词族。判断是否同族，词根来源才是标准，而非表面形态相似。
 
-**误区三：所有词根都能派生出动词、名词、形容词、副词四种词性**
+### 误区三：认为所有词族规则都是完全规则的
 
-事实上，完整的四词性词族在英语中并不多见。`rain` 词族就没有常用副词形式；`dead` 词族中 `deaden`（动词）虽存在但极少使用；`knowledge` 目前没有被广泛接受的动词形式。强行为每个词根"补全"四种词性，会导致造出不存在或不自然的英语单词。
-
----
+学生常以为只要记住后缀规则就能自动生成词族成员，但英语中存在大量不规则派生。"explain" 的名词不是 \*"explaination" 而是 "explanation"；"pronounce" 的名词不是 \*"pronounciation" 而是 "pronunciation"；"maintain" 的名词是 "maintenance" 而非 \*"maintainance"。这些拼写变化在词族学习中必须单独记忆，不能仅靠规则推导。
 
 ## 知识关联
 
-词族的学习建立在**构词法**的基础之上：正是因为掌握了前缀（如 `un-`, `re-`, `pre-`）和后缀（如 `-tion`, `-ness`, `-ful`, `-ly`）的功能，学习者才能看懂词族内部各成员之间的派生关系。同样，**名词**的概念是理解词族的前提——词族扩展的核心逻辑之一，就是将动词或形容词通过加后缀转化为名词（如 develop → development；happy → happiness）。
+词族学习以**构词法**为基础——学生需要先理解前缀（un-, re-, pre-）和后缀（-tion, -ness, -ive, -ly）的功能，才能预测词族成员的词性和大致含义。同时，词族的正确运用依赖对**名词**句法功能的掌握，因为英语名词在词族中数量最多（一个动词词根往往能派生出2-3个不同的名词形式，如 act→action/activity/actor），辨别这些名词的具体用法是词族学习中最复杂的部分。
 
-在词汇学习路径上，词族是从"认识单个单词"进阶到"系统掌握词汇网络"的重要阶段。学习者一旦建立词族意识，便能将零散记忆的单词整合为结构化的词汇群，为精读、翻译和写作中的准确选词打下坚实基础。Nation提出的"词族学习法"至今仍是词汇习得研究中被引用次数最多的方法论框架之一，足见词族视角在英语学习中的持久价值。
+在词汇习得路径上，词族是从单词记忆走向语块运用的关键阶段。掌握词族后，学习者下一步通常转向学习这些词族成员在真实语境中的搭配模式（collocation），例如 "make a decision" 而非 "do a decision"，这是词汇学习从量变走向质变的进阶方向。

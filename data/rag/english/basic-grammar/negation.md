@@ -20,113 +20,133 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # 否定句
 
 ## 概述
 
-否定句是英语中用于表达"不是"、"没有"或"不做某事"的句子结构。与中文的否定方式不同，英语的否定主要依赖助动词加 **not** 的组合来实现，而非简单地在动词前加一个否定词。这一特点意味着构成否定句时，必须先判断句中有无助动词或 be 动词，再决定 not 的插入位置。
+否定句是英语中用来表达"不是"、"没有"或"不做某事"的句型。与汉语常用"不"和"没"两个字来否定不同，英语否定句的构成方式更为多样，核心工具是助动词加上 **not** 这一否定副词。英语中最基本的否定标记词 *not* 必须紧跟在助动词（be、do、have、情态动词）之后，而不能直接放在主动词前，这是中文母语学习者最容易出错的地方。
 
-英语否定结构的系统化可以追溯到中古英语时期（约公元1100—1500年）。那时否定词 "ne" 和 "not" 常同时出现（如 "I ne know not"），属于双重否定的合法用法。随着现代英语的规范化，这种双重否定逐渐被视为语法错误（在标准英语中），最终演变为今天"一个句子只用一个否定词"的主流规则。
+否定句的历史可以追溯到古英语时期。古英语用 *ne* 作为否定词，例如 *ne is*（现代英语 is not），随着语言演变，*ne* 逐渐被 *not* 替代，至13至14世纪中古英语时代，*not* 已成为英语标准否定标记词。莎士比亚时代（16世纪）出现了大量"双重否定"用法，如 *I cannot go no further*，但现代标准英语规定一个否定句中只用一个否定标记。
 
-否定句在日常英语交际中极为高频。无论是拒绝邀请（"I can't come."）、纠正误解（"She doesn't live here."）还是表达缺乏（"There is no milk."），否定表达几乎贯穿全部对话场景。掌握否定句的构造规则，是避免产生语义混乱（尤其是双重否定带来的逻辑翻转）的必要基础。
+否定句的重要性体现在日常交流中——拒绝请求、纠正错误信息、表达禁止，无一不需要它。掌握否定句的构成规则，尤其是 **do/does/did + not** 的助动词插入机制，是从"能说简单陈述句"进入"能表达完整意思"的关键跨越。
 
 ---
 
 ## 核心原理
 
-### 一、not 的基本用法与位置规则
+### 1. not 的位置规则：助动词之后
 
-**not** 必须紧跟在助动词或 be 动词之后，不能直接放在实义动词前。具体规则如下：
+英语否定句的铁律是：**not 只能跟在助动词之后**，不能直接否定主动词。
 
-- **含 be 动词的句子**：直接在 be 动词后加 not。
-  - ✅ She **is not** happy. → 缩写：She **isn't** happy.
-- **含情态动词的句子**：在情态动词后加 not。
-  - ✅ You **should not** run. → 缩写：You **shouldn't** run.
-- **一般现在时/一般过去时的实义动词句**：需要借助助动词 do/does/did，将其变为否定形式 **do not / does not / did not**，原动词还原为原形。
-  - ✅ He **does not** like coffee. （第三人称单数用 does not）
-  - ✅ They **did not** finish the work. （过去时用 did not，动词还原为 finish）
-  - ❌ He **likes not** coffee. （错误，实义动词不可直接加 not）
+- 陈述句：She **likes** coffee.
+- 否定句：She **does not like** coffee.（✓）
+- 错误写法：She **not likes** coffee.（✗）
 
-缩写形式在口语和非正式书面语中非常普遍：is not → isn't，are not → aren't，do not → don't，does not → doesn't，did not → didn't，cannot → can't，will not → **won't**（注意 will not 的缩写形式不规则）。
+当句子本身含有助动词时，直接在助动词后加 not：
+- He **is** a teacher. → He **is not** a teacher.
+- They **have** finished. → They **have not** finished.
+- You **can** swim. → You **can not (cannot)** swim.
 
-### 二、双重否定（Double Negatives）
+当句子只有主动词（无助动词）时，必须引入助动词 **do/does/did** 来"承载"not：
+- 一般现在时第三人称单数用 **does not**（缩写 doesn't）：She **doesn't** like tea.
+- 一般现在时其他人称用 **do not**（缩写 don't）：I **don't** know.
+- 一般过去时用 **did not**（缩写 didn't），且主动词恢复原形：He **didn't go**（而非 didn't went）。
 
-双重否定指在同一个句子中使用两个否定词，在**标准英语（Standard English）**中，双重否定会使语义重新变为肯定，属于语法错误。
+### 2. 缩写形式（Contractions）
 
-- ❌ I don't know **nothing**. （双重否定，逻辑上 = I know something，不符合表意意图）
-- ✅ I don't know **anything**. （正确，用不定代词 anything 替换 nothing）
-- ✅ I know **nothing**. （正确，只用一个否定词）
+口语和非正式书面语中，not 与助动词缩写是常态：
 
-常见引发双重否定的词对包括：
-| 否定词 | 应改用的中性词 |
-|--------|----------------|
-| nobody | anybody |
-| nothing | anything |
-| nowhere | anywhere |
-| never | ever |
+| 完整形式 | 缩写形式 |
+|---------|---------|
+| is not | isn't |
+| are not | aren't |
+| do not | don't |
+| does not | doesn't |
+| did not | didn't |
+| cannot | can't |
+| will not | **won't**（注意拼写不规则，非 willn't）|
+| should not | shouldn't |
 
-需注意：在部分英语方言（如非裔美国人英语 AAVE）及早期文学作品中，双重否定是合法的强调手段，并不意味着语义错误，但在学术写作和标准考试中必须避免。
+*will not* 缩写为 *won't* 而非 *willn't*，这是英语中最特殊的缩写形式，源于古英语 *woll not* 的演变，必须单独记忆。
 
-### 三、否定前缀（Negative Prefixes）
+### 3. 双重否定（Double Negation）
 
-英语可以通过在形容词、名词或动词前添加**否定前缀**来构成词汇层面的否定，这与 not 构成的句法否定不同。
+**现代标准英语规定：一个简单句中只允许一个否定词。** 两个否定词叠加不等于加强否定，而是逻辑上变回肯定，这与汉语"我什么都不知道"（可用多个否定）完全不同。
 
-常见否定前缀及典型例词：
+- 错误（非标准）：I **don't** know **nothing**.（两个否定词）
+- 正确：I **don't** know **anything**.（否定词 + 不定代词 any- 系列）
+- 正确：I know **nothing**.（只用一个否定）
 
-| 前缀 | 例词 | 含义 |
-|------|------|------|
-| **un-** | unhappy, unkind, unusual | 最常见，用于形容词和部分动词 |
-| **dis-** | disagree, dishonest, disappear | 常用于动词和形容词 |
-| **im- / in- / ir- / il-** | impossible, incorrect, irregular, illegal | 用于特定字母开头的词：m/p开头用im-，r开头用ir-，l开头用il- |
-| **non-** | non-fiction, non-stop | 表示"非……类别"，语气较中性 |
-| **mis-** | misunderstand, misspell | 表示"错误地做"，含有"做错"之意，而非单纯否定 |
+否定句中，**some** 系列不定代词/副词须变为 **any** 系列：
+- something → anything
+- somebody → anybody
+- somewhere → anywhere
+- sometimes → ever（在否定句中）
 
-**注意**：前缀 **mis-** 与其他否定前缀含义不同。"misunderstand" 意为"理解错了"，而非"没有理解（not understand）"，两者语义有明显差距。
+例：She **doesn't** have **any** money.（✓）而非 She doesn't have some money.（✗）
+
+### 4. 否定前缀（Negative Prefixes）
+
+否定不仅通过句法实现，英语还大量使用**否定前缀**在词汇层面直接构成反义词，无需助动词 do 的介入。常见否定前缀及其适用规律：
+
+| 前缀 | 典型搭配 | 规律提示 |
+|------|---------|---------|
+| **un-** | unhappy, unfair, unknown | 最常见，多用于形容词和过去分词 |
+| **in-** | incorrect, informal, invisible | 多用于拉丁语源词 |
+| **im-** | impossible, impolite, immature | in- 在 p/b/m 前变形 |
+| **il-** | illegal, illogical, illegible | in- 在 l 前变形 |
+| **ir-** | irregular, irresponsible | in- 在 r 前变形 |
+| **dis-** | disagree, dishonest, dislike | 多表示"相反动作"或"缺乏" |
+| **non-** | non-fiction, non-stop, non-smoker | 中性否定，"非……类别" |
+
+注意：前缀的选择不能随意套用。*unhappy* 正确，但 *inunhappy* 或 *dishappy* 均不存在。每个词的否定前缀需要分别记忆，词典查阅是最可靠的验证方式。
 
 ---
 
 ## 实际应用
 
-**场景一：日常拒绝与说明**
-- "I **don't** have a pen." （没有钢笔，do not 的缩写用于一般现在时）
-- "She **didn't** call me yesterday." （昨天没打电话，did not 用于一般过去时）
+**日常拒绝与纠正：**
+- "I **don't** want to go." 拒绝邀请。
+- "She **isn't** from Japan, she's from Korea." 纠正错误信息。
+- "We **didn't** receive your email." 商务场景中说明未收到邮件。
 
-**场景二：标牌与告示中的否定**
-公共场所常用 **No + 名词/动名词** 的简洁否定结构：
-- "No smoking." / "No entry." / "No parking."
-这类结构省略了助动词，是告示英语的固定格式，不适用于口语否定句的构造规则。
+**禁止告示（书面正式否定）：**
+- "Do **not** feed the animals."（公告牌，用完整形式而非缩写，语气更正式）
+- "Smoking is **not** permitted."
 
-**场景三：否定前缀的词汇辨析**
-- "The instructions were **unclear**." （前缀 un- 否定，不等同于 "not clear" 的完整句）
-- "It is **impossible** to finish in one day." （im- 前缀，因 possible 以字母 p 开头）
+**否定前缀在阅读中的应用：**
+遇到 *The data is **unreliable*** 时，读者须识别 *un-* 前缀，理解整句意思为"数据不可靠"，而非去找句中的 not/don't。这在阅读理解和词汇扩展中极为实用。
 
-**场景四：避免双重否定的改写**
-- 原句（错误）："I can't find it **nowhere**."
-- 改写方案1："I can't find it **anywhere**."
-- 改写方案2："I can find it **nowhere**."
+**双重否定陷阱检测：**
+句子 *"Nobody didn't come to the party"* 含两个否定（nobody + didn't），逻辑含义变为"每个人都来了"，这与说话者的本意恰好相反。正确表达应为 *"Nobody came to the party"* 或 *"Everyone didn't... (avoided the party)"*。
 
 ---
 
 ## 常见误区
 
-**误区一：实义动词直接加 not**
-许多初学者受中文"不喜欢"结构影响，写出 "He **likes not** pizza." 这样的错误句子。英语实义动词不能直接与 not 结合，必须通过 do/does/did 作为助动词承载否定，原动词退回原形：He **does not like** pizza.
+**误区一：直接在主动词前加 not**
 
-**误区二：混淆 no 与 not 的用法**
-- **not** 用于否定动词（置于助动词之后）：I am **not** a student.
-- **no** 用于否定名词（直接修饰名词）：I have **no** money. / There is **no** problem.
-两者不可互换：❌ "I have **not** money." 是错误的，必须用 "I have **no** money." 或 "I do **not** have money."
+中文说"我不喜欢"，直接在动词前加否定词，许多初学者照搬到英语，写出 *I not like it*。英语规定 not 必须依附于助动词，没有助动词时必须借助 do/does/did，正确形式是 *I **do not** like it*。
 
-**误区三：错误选择否定前缀**
-否定前缀的选择有固定搭配，不能随意替换。例如，"不规则的"只能写 **irregular**，而非 ~~unregular~~；"非法的"只能写 **illegal**，而非 ~~unlaw~~。这些搭配需要通过记忆词汇积累，不存在万能规则。
+**误区二：did not 后面使用动词过去式**
+
+学生知道过去时要加 *-ed*，于是写出 *She didn't **went** to school*。实际上，否定句中助动词 *did* 已经承担了过去时信息，主动词必须恢复原形：*She didn't **go** to school*。这是"时态信息只在助动词上体现一次"的原则。
+
+**误区三：混淆 no 与 not 的用法**
+
+*no* 直接修饰名词，*not* 修饰动词短语或形容词：
+- *I have **no** money.* （no + 名词，无需助动词）
+- *I **do not** have money.* （not 依附助动词）
+两者意思相同，但结构完全不同。写出 *I not have money* 或 *I do not no money* 均为错误。
 
 ---
 
 ## 知识关联
 
-**与基本语序的关系**：否定句的构造以陈述句的基本语序（主语 + 谓语 + 宾语/表语）为起点。掌握基本语序后，才能准确判断助动词的位置，从而将 not 插入正确位置，而不会错误地将其放到句末或动词前。
+学习否定句需要以**基本语序**（主—谓—宾结构）为基础：只有清楚主动词的位置，才能判断是否需要插入 do/does/did。若不了解 be 动词与实义动词的区别，就无法确定否定时是否需要额外引入助动词。
 
-**为疑问句学习做铺垫**：否定句中引入的助动词（do/does/did）同样是构成一般疑问句和特殊疑问句的关键成分。例如，从 "She **does not** speak French." 到 "**Does** she speak French?" 的变换，共享同一套助动词提取机制。理解否定句中 does 的作用，能直接加速对疑问句语序倒装的理解。
-
-**词汇扩展方向**：否定前缀的规律是词汇量扩展的高效路径。在学会 happy → unhappy、possible → impossible 的基础上，可以系统地学习 un-、dis-、in- 等前缀族群，一次性掌握数十个相关词汇，显著提升阅读词汇识别能力。
+否定句掌握后，自然延伸至**疑问句**的学习——疑问句同样需要助动词提前（Does she like...? Did he go...?），其助动词运用规则与否定句完全平行，两者互相强化理解。此外，否定前缀知识直接服务于**词汇量扩展**，识别 un-/in-/dis- 等前缀可以帮助推断数百个陌生词汇的含义，是阅读能力提升的重要工具。

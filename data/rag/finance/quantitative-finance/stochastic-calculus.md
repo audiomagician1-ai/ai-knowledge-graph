@@ -24,73 +24,94 @@ sources:
     ref: "Wikipedia - Ito calculus"
     url: "https://en.wikipedia.org/wiki/It%C3%B4_calculus"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # 随机微积分
 
 ## 概述
 
-随机微积分（Stochastic Calculus）是数学的一个分支，专门研究随机过程的积分与微分运算。它由日本数学家**伊藤清**（Kiyosi Ito）在二战期间创立，为处理受随机力作用的系统提供了严谨的数学框架（Wikipedia: Stochastic calculus）。
+随机微积分（Stochastic Calculus）是处理含有随机噪声项的微分方程的数学框架，其核心对象是布朗运动（Brownian Motion，又称维纳过程）和以此为基础构建的随机积分。与经典牛顿-莱布尼茨微积分不同，随机微积分必须应对一个根本性的障碍：布朗运动路径处处连续但处处不可微，导致经典链式法则完全失效。
 
-自 1970 年代起，随机微积分在**金融数学**中得到广泛应用，用于建模股票价格和债券利率随时间的演化。Black-Scholes 期权定价模型、利率期限结构模型等现代金融理论的核心工具，均建立在随机微积分之上。
+该领域由日本数学家伊藤清（Itô Kiyosi）在1944年奠定基础。他在论文《On a Stochastic Integral Equation》中定义了随机积分，并于1951年推导出以他名字命名的伊藤引理（Itô's Lemma）。这一工作在金融领域沉寂了约30年，直到1973年布莱克、肖尔斯和默顿将其用于推导期权定价公式，随机微积分才成为量化金融不可或缺的工具语言。
 
-学习随机微积分之前需要掌握概率论基础和普通微积分；掌握后可深入随机微分方程（SDE）、期权定价理论和风险管理模型。
+在量化金融中，随机微积分的意义在于它提供了对资产价格不确定性进行严格数学描述的手段。股票价格的连续时间运动、利率的随机波动、波动率的均值回归行为，均需要用随机微分方程（SDE）而非普通ODE来建模。没有随机微积分，Black-Scholes公式的推导在数学上是不严格的。
 
-## 核心知识点
+---
 
-### 维纳过程（布朗运动）——随机微积分的基石
+## 核心原理
 
-维纳过程 W(t) 是最基本的连续时间随机过程，具有以下性质：
-- W(0) = 0
-- 增量 W(t) - W(s) ~ N(0, t-s)，服从均值为 0、方差为 t-s 的正态分布
-- 不同时间区间的增量相互独立
-- 路径连续但**处处不可微**——这使得经典微积分无法直接应用
+### 布朗运动与二次变差
 
-维纳过程以 Norbert Wiener 命名，最早由 Louis Bachelier（1900）和 Albert Einstein（1905）用于描述物理扩散过程（Wikipedia: Stochastic calculus）。
+标准布朗运动 $W_t$ 满足四个条件：$W_0 = 0$，增量 $W_t - W_s$（$t > s$）服从 $\mathcal{N}(0, t-s)$，不重叠时间段的增量相互独立，以及路径关于时间连续。
 
-### 伊藤积分——随机积分的核心定义
+布朗运动最反直觉的性质是其**二次变差**（Quadratic Variation）非零且等于时间本身：
 
-伊藤积分将积分概念推广到随机过程：
+$$[W, W]_t = t$$
 
-$$Y_t = \int_0^t H_s \, dX_s$$
+这用符号写作 $(dW_t)^2 = dt$。相比之下，普通可微函数的二次变差恒为零。正是这条规则（以及 $dt \cdot dW_t = 0$，$(dt)^2 = 0$）构成了伊藤微积分区别于经典微积分的运算基础。
 
-其中 H 是**适应过程**（adapted process），X 是半鞅（semimartingale）。关键特性：
-- 使用区间**左端点**计算黎曼和（这是与 Stratonovich 积分的本质区别）
-- 在金融解释中：H_s 代表 t 时刻持有的股票数量，X_s 代表价格变动，积分 Y_t 代表总收益
-- "适应性"条件保证交易策略只能利用当前可得信息，排除了"预知未来"的套利可能（Wikipedia: Ito calculus）
+### 伊藤引理
 
-### 伊藤引理——随机微积分的链式法则
+设 $X_t$ 满足随机微分方程 $dX_t = \mu_t \, dt + \sigma_t \, dW_t$，$f(t, x)$ 是关于 $t$ 和 $x$ 的二阶连续可微函数，则：
 
-伊藤引理是随机微积分中最重要的公式，相当于普通微积分中的链式法则，但包含额外的**二次变差项**：
+$$df(t, X_t) = \frac{\partial f}{\partial t} dt + \frac{\partial f}{\partial x} dX_t + \frac{1}{2} \frac{\partial^2 f}{\partial x^2} (dX_t)^2$$
 
-对于 f(t, X_t)，其中 X_t 满足 dX_t = μdt + σdW_t：
+代入 $(dX_t)^2 = \sigma_t^2 \, dt$ 后展开为：
 
-$$df = \frac{\partial f}{\partial t}dt + \frac{\partial f}{\partial x}dX_t + \frac{1}{2}\frac{\partial^2 f}{\partial x^2}\sigma^2 dt$$
+$$df = \left(\frac{\partial f}{\partial t} + \mu_t \frac{\partial f}{\partial x} + \frac{1}{2}\sigma_t^2 \frac{\partial^2 f}{\partial x^2}\right) dt + \sigma_t \frac{\partial f}{\partial x} dW_t$$
 
-最后一项 ½f''σ²dt 是与经典微积分的**关键区别**——它来自布朗运动的二次变差性质 (dW)² = dt。这一项使得 Black-Scholes 公式的推导成为可能。
+与经典链式法则相比，多出了 $\frac{1}{2}\sigma_t^2 \frac{\partial^2 f}{\partial x^2}$ 这一**伊藤修正项**。该项来源于布朗运动非零的二次变差，在 $\sigma_t = 0$ 时自动退化为经典结果。
 
-### Stratonovich 积分——另一种随机积分
+### 几何布朗运动（GBM）与对数正态分布
 
-Stratonovich 积分使用区间**中点**计算黎曼和：
+Black-Scholes模型假设股价 $S_t$ 服从**几何布朗运动**，其SDE为：
 
-$$\int_0^t X_{s-} \circ dY_s = \int_0^t X_{s-} dY_s + \frac{1}{2}[X,Y]_t^c$$
+$$dS_t = \mu S_t \, dt + \sigma S_t \, dW_t$$
 
-其中 [X,Y]^c 是连续部分的二次协变差。Stratonovich 积分遵循经典链式法则，物理学中更常用；但伊藤积分在金融中更自然，因为交易决策基于当前信息（左端点）而非未来信息（Wikipedia: Stochastic calculus）。
+对 $f(t, S_t) = \ln S_t$ 应用伊藤引理，得到：
 
-## 关键要点
+$$d(\ln S_t) = \left(\mu - \frac{\sigma^2}{2}\right) dt + \sigma \, dW_t$$
 
-1. **维纳过程路径处处不可微**，使得经典微积分失效，必须使用随机微积分
-2. **伊藤引理**比经典链式法则多出 ½f''σ²dt 项，这一项是 (dW)² = dt 的直接结果
-3. 伊藤积分（左端点）vs Stratonovich 积分（中点）：金融用伊藤，物理常用 Stratonovich，两者可互相转换
-4. 几何布朗运动 dS = μSdt + σSdW 是 Black-Scholes 模型的基础假设
-5. 1973 年 Black-Scholes-Merton 公式的推导直接依赖伊藤引理
+积分后得到精确解：
+
+$$S_t = S_0 \exp\left[\left(\mu - \frac{\sigma^2}{2}\right)t + \sigma W_t\right]$$
+
+这说明 $\ln S_t$ 服从正态分布，漂移项为 $\mu - \frac{\sigma^2}{2}$ 而非 $\mu$。两者之差 $\frac{\sigma^2}{2}$ 正是伊藤修正项的直接后果，对于 $\sigma = 0.2$（年化20%波动率），该修正量为每年 $0.02$，在长期定价中不可忽略。
+
+### 随机微分方程的数值解法与蒙特卡洛
+
+当SDE无解析解（如Heston随机波动率模型）时，需要数值离散化方法。**欧拉-丸山格式**（Euler-Maruyama）是最基础的离散化：
+
+$$X_{t+\Delta t} \approx X_t + \mu(t, X_t)\Delta t + \sigma(t, X_t)\sqrt{\Delta t}\, Z_t, \quad Z_t \sim \mathcal{N}(0,1)$$
+
+该格式对GBM的强收敛阶为 $\frac{1}{2}$，即误差与 $\sqrt{\Delta t}$ 成比例。更高精度的**米尔斯坦格式**（Milstein）通过加入二阶伊藤修正项将强收敛阶提升至 $1$，代价是需要计算扩散系数对状态变量的偏导数。在蒙特卡洛模拟中，每一条路径本质上是对SDE的一次数值求解，因此数值格式的选取直接影响模拟结果的偏差与收敛速度。
+
+---
+
+## 实际应用
+
+**期权定价中的测度变换**：Black-Scholes定价公式的推导利用了吉尔萨诺夫定理（Girsanov's Theorem），将真实概率测度 $\mathbb{P}$ 下含风险溢价的漂移项，变换为风险中性测度 $\mathbb{Q}$ 下以无风险利率 $r$ 为漂移的过程。操作方式是将布朗运动重新定义为 $\tilde{W}_t = W_t + \frac{\mu - r}{\sigma} t$，新漂移项 $\frac{\mu - r}{\sigma}$ 称为夏普比率或市场风险价格。
+
+**利率模型**：Vasicek模型用SDE描述短期利率的均值回归行为：$dr_t = \kappa(\theta - r_t)dt + \sigma dW_t$，其中 $\kappa$ 为回归速度，$\theta$ 为长期均值水平。利用伊藤引理可以求得该SDE的解析解，并进一步推导出债券价格的封闭形式。
+
+**随机波动率模型**：Heston模型在GBM基础上引入波动率的独立SDE，波动率 $v_t$ 满足：$dv_t = \kappa(\bar{v} - v_t)dt + \xi\sqrt{v_t}\, dW_t^v$，其中 $W_t^v$ 与股价布朗运动相关系数为 $\rho$（通常为负值，体现杠杆效应）。该二维SDE系统需要用特征函数法或数值PDE方法求解，无法直接用一维伊藤引理处理。
+
+---
 
 ## 常见误区
 
-1. **"布朗运动只是随机游走"**——布朗运动是连续时间的极限，路径连续但处处不可微，与离散随机游走有本质区别
-2. **"伊藤积分和普通积分规则相同"**——忽略二次变差项会导致严重错误，例如 ∫W dW = W²/2 - t/2（而非经典的 W²/2）
-3. **"波动率越大风险越大所以收益越高"**——伊藤引理告诉我们几何布朗运动的对数收益率的漂移项是 μ - σ²/2 而非 μ，高波动率实际**降低**了复合收益率
+**误区一：将 $dW_t$ 当作普通微分处理**。部分初学者直接套用经典链式法则计算 $d(W_t^2)$，得到 $2W_t \, dW_t$，漏掉了伊藤修正项 $dt$。正确结果是 $d(W_t^2) = 2W_t \, dW_t + dt$，对应于 $W_t^2 - t$ 是鞅（martingale）这一重要性质。
 
-## 知识衔接
+**误区二：混淆伊藤积分与斯特拉托诺维奇积分**。斯特拉托诺维奇积分（Stratonovich Integral，记作 $\int f \circ dW$）与伊藤积分的差别在于前者满足经典链式法则，但代价是不再具有鞅性质。在物理随机过程中斯特拉托诺维奇更常用，但金融衍生品定价依赖鞅理论，因此必须使用伊藤约定，否则无风险中性定价框架将失效。
 
-- **先修**：概率论、普通微积分、测度论基础
-- **后续**：随机微分方程（SDE）、Black-Scholes 期权定价、利率模型（Vasicek, CIR）、随机波动率模型
+**误区三：认为漂移项 $\mu$ 决定期权价格**。由于测度变换，在风险中性测度下期权价格与真实世界漂移 $\mu$ 完全无关，仅依赖无风险利率 $r$ 和波动率 $\sigma$。许多初学者在应用Black-Scholes公式时仍然代入历史收益率 $\mu$，这是对伊藤公式与测度变换关系的根本性误解。
+
+---
+
+## 知识关联
+
+随机微积分与**Black-Scholes模型**的关系是推导与结果的关系：Black-Scholes偏微分方程 $\frac{\partial V}{\partial t} + \frac{1}{2}\sigma^2 S^2 \frac{\partial^2 V}{\partial S^2} + rS\frac{\partial V}{\partial S} - rV = 0$ 正是对含GBM的期权价值应用伊藤引理、再通过Delta对冲消去随机项后所得。方程中的 $\frac{1}{2}\sigma^2 S^2$ 项直接对应伊藤修正项，缺少随机微积分基础时该方程的来源无从理解。
+
+与**蒙特卡洛模拟**的关联在于：蒙特卡洛路径模拟的

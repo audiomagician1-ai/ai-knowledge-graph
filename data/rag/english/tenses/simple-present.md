@@ -20,113 +20,85 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # 一般现在时
 
 ## 概述
 
-一般现在时（Simple Present Tense）是英语时态系统中用于表达**习惯性动作**、**客观事实**、**永久状态**以及**普遍真理**的基本时态。其构成形式为动词原形，但第三人称单数主语要求动词词尾加 **-s 或 -es**，这一变化规则是英语学习者最早接触到的形态屈折变化之一。
+一般现在时（Simple Present Tense）是英语时态系统中用于描述**习惯性动作、客观事实、普遍真理**以及固定安排的基本时态形式。其谓语动词的构成极为简洁：主语为第三人称单数时，动词词尾加 **-s 或 -es**；其余人称则使用动词原形。例如，"She walks to school every day"（第三人称单数）与"They walk to school every day"（非第三人称单数）形成对比。
 
-该时态最早在古英语（Old English，约公元450—1100年）中已有对应形式，后随诺曼征服（1066年）逐渐与法语影响融合，简化为现代英语所见的单一形式。在现代英语语法体系中，一般现在时并不代表"此刻正在发生"，而是表达超越具体时间点的状态或规律，这一点与汉语中"现在"的直觉含义存在本质差异。
+一般现在时在英语语法史上可追溯至古英语（Old English，约450–1150年）的现在时形式，彼时动词变位更为复杂，有多套词尾变化。随着中古英语时期词尾的大量脱落，现代英语最终简化为仅保留第三人称单数 **-s** 词尾这一形态特征，这一变化在约15世纪基本完成。
 
-对于英语学习者而言，一般现在时的重要性体现在其覆盖范围极广：科学教材中"Water boils at 100 degrees Celsius"、新闻标题中的历史性现在时、体育解说中的即时描述，以及日常对话中的个人习惯表达，全部调用这一时态框架。掌握其内在逻辑，才能准确区分"I work"与"I am working"所传递的不同信息。
+一般现在时在实际英语表达中使用频率极高，是科学陈述（"Water boils at 100°C at sea level"）、新闻标题（"President Signs New Bill"）以及说明文写作的骨干时态。掌握其适用范围可以帮助学习者避免将中文"现在"的时间概念错误迁移到英语中，因为英语中"现在正在发生"的动作实际使用的是**现在进行时**而非一般现在时。
 
 ---
 
 ## 核心原理
 
-### 构成规则与第三人称单数变化
+### 句式结构与构成规则
 
-一般现在时的基本句式为：**主语 + 动词原形（第三人称单数加 -s/-es）**。
+一般现在时的肯定句、否定句和疑问句遵循严格的助动词规则：
 
-具体变化规则如下：
-- 大多数动词直接加 **-s**：work → works，play → plays
-- 以 -s、-sh、-ch、-x、-o 结尾的动词加 **-es**：watch → watches，go → goes
-- 以"辅音字母 + y"结尾的动词，将 y 改为 i 再加 **-es**：study → studies，carry → carries
-- 不规则变化：be → is（第三人称单数），have → has
+- **肯定句**：主语 + 动词（第三人称单数加 -s/-es）
+  - She **reads** books every evening.
+- **否定句**：主语 + **do not / does not（doesn't）** + 动词原形
+  - She **does not read** books on weekends.
+- **一般疑问句**：**Do / Does** + 主语 + 动词原形？
+  - **Does** she read books every evening?
 
-否定句使用助动词 **do/does + not + 动词原形**，疑问句将 **do/does** 提至主语前。例如：
-> She **does not** speak French. / **Does** she speak French?
+第三人称单数 -s 词尾的拼写规则同样具体：以 -s、-sh、-ch、-x、-o 结尾的动词加 **-es**（如 goes、watches、fixes）；以"辅音字母 + y"结尾的动词将 y 改为 i 再加 **-es**（如 study → studies）；其余动词直接加 **-s**（如 runs, eats）。
 
-### 四大核心用法
+### 四大核心使用场景
 
-**① 习惯性动作与日常例行事务**
-表示某人定期、反复进行的行为，通常与频率副词连用，如 always（总是）、usually（通常）、often（经常）、sometimes（有时）、rarely（很少）、never（从不）。
-> He **gets up** at 6:30 every morning.
-> I **never drink** coffee after 8 p.m.
+一般现在时并非只有一种用途，其四大场景须分别掌握：
 
-**② 客观事实与普遍真理**
-陈述不受时间限制的科学规律或公认事实，无论写作时间，动词均使用一般现在时。
-> The Earth **revolves** around the Sun.（地球绕太阳公转）
-> Light **travels** at approximately 299,792 kilometres per second.
+1. **习惯性或反复发生的动作**：通常与 always、usually、often、sometimes、rarely、never、every day 等频率副词连用。例："He **usually gets up** at 6:30 a.m." 频率副词位置固定在 be 动词之后、行为动词之前。
 
-**③ 永久状态**
-描述长期存在、不易改变的特征或属性，常见动词包括 live、work、belong、own 等。
-> My parents **live** in Shanghai.
-> This building **belongs** to the university.
+2. **客观事实与普遍真理**：此类陈述无论何时说出都为真，不因说话时间改变。例："The Earth **revolves** around the Sun."（地球绕太阳公转）这类句子绝不使用进行时。
 
-**④ 时刻表与固定安排（将来含义）**
-一般现在时可表达基于官方时刻表的固定将来事件，此用法与"现在时表将来"知识点紧密相关。
-> The train **leaves** at 9:15 tomorrow morning.
-> The new semester **starts** on September 1st.
+3. **个人状态与感受（状态动词）**：know、love、believe、belong、contain 等状态动词（stative verbs）几乎只使用一般现在时，而非进行时。例："I **understand** the question."
 
-### 时间状语的识别信号
+4. **固定时刻表与官方安排**：用于描述按时刻表运行的交通、赛事等。例："The train **leaves** at 8:45 a.m. tomorrow." 这是一般现在时表将来的重要用法。
 
-以下时间标志词高频出现于一般现在时语境中，可作为识别线索：
-- every day / every week / every year
-- on Mondays / on weekends
-- always / usually / often / sometimes / rarely / never
-- in general / as a rule
+### 时间信号词识别
 
-注意：这些标志词本身不能决定时态，真正决定时态选择的是说话者对动作性质（习惯性 vs 进行中）的判断。
+识别一般现在时最可靠的方法是关注句中的时间状语。典型信号词包括：**every + 时间单位**（every morning / week / year）、频率副词（always 100% → never 0%）、以及 **on Mondays、twice a week** 等表示规律的短语。相比之下，"now、at the moment、currently"则是现在进行时的信号词，两组信号词绝不混用。
 
 ---
 
 ## 实际应用
 
-**科学写作中的不可替代性**
-学术论文和教材描述实验结论时必须使用一般现在时，而非过去时。例如：
-> "The results **show** that calcium **reacts** with water to produce hydrogen gas."
-即便实验发生在过去，描述规律和结论时仍用一般现在时，因为该结论具有普遍有效性。
+**科学与教材写作**：几乎所有自然科学陈述都使用一般现在时。"Carbon dioxide **absorbs** infrared radiation"（二氧化碳吸收红外辐射）和"Mammals **are** warm-blooded animals"均属客观事实表达，时态不随文章写作年份改变。
 
-**新闻标题的历史性现在时（Historic Present）**
-英语新闻标题大量使用一般现在时代替过去时，以增强即时感和冲击力：
-> "Prime Minister **Announces** New Economic Policy"（首相宣布新经济政策）
-这种用法使读者感受到事件仿佛正在眼前发生，是一般现在时的修辞性延伸。
+**日常对话中的习惯描述**：介绍自己的生活规律时，一般现在时是主要工具。"I **take** the subway to work. I **eat** lunch at noon. My wife **teaches** at a primary school."三句话分别展示了非三单、非三单、三单的动词形式对比。
 
-**食谱与说明书中的指示用法**
-烹饪食谱和操作手册中的步骤说明通常使用一般现在时（命令式与陈述式混用）：
-> "First, **preheat** the oven to 180°C. Then **mix** the flour and butter until the dough **forms** a smooth ball."
+**新闻标题简化**：英语新闻标题大量使用一般现在时表示已发生的近期事件，如"China **Launches** New Satellite"，这一用法被称为"历史性现在时"（historic present），能使叙述更生动有力。
 
-**日常对话中的自我介绍**
-描述职业、居住地、兴趣爱好等个人稳定信息，全部依赖一般现在时框架：
-> "I **teach** mathematics at a secondary school. I **live** in Beijing and **commute** by subway every day."
+**食谱与说明书**：步骤类说明通常以一般现在时写出，将操作步骤描述为普遍有效的指令。"You **preheat** the oven to 180°C, then **add** the flour."
 
 ---
 
 ## 常见误区
 
-**误区一：将一般现在时等同于"此刻正在发生"**
-中文母语者最常见的错误是把"我现在吃饭"直译为 "I eat now"，但该句在英语中表示习惯（我通常吃饭这件事），而非当前动作。表达当前进行中的动作必须使用现在进行时：**I am eating now**。"now"一词出现时，大多数动作动词应触发进行时警觉。
+**误区一：把"现在"等同于"现在正在发生"**
 
-**误区二：忽视第三人称单数 -s 的必要性**
-"He play football every Saturday" 是典型的语法错误，正确形式为 "He **plays** football every Saturday"。这一 -s 并非可有可无的装饰，而是英语动词与主语一致（subject-verb agreement）的强制要求。在正式写作和考试（如雅思、托福写作评分）中，此类错误会直接影响语法准确性得分。
+受汉语思维影响，中国学习者常把"我现在看书"译为 "I **am reading** a book now"（正确），但误将"我每天看书"也处理成进行时，写出 "I **am reading** books every day"（错误）。规律性动作必须用一般现在时："I **read** books every day."
 
-**误区三：误认为 be 动词的一般现在时只有一种形式**
-"Be" 在一般现在时中有三种形式：**am**（I）、**is**（he/she/it及单数名词）、**are**（you/we/they及复数名词）。学习者有时将 is 与 are 混淆，如 "The informations are correct"（information 为不可数名词，正确形式应为 "The information **is** correct"）。be 动词的形式选择同时受主语人称与名词可数性双重制约。
+**误区二：第三人称单数 -s 遗漏**
+
+在口语和写作中，忘记为第三人称单数主语添加 -s/-es 是最高频错误之一。"She go to school every day" 是严重语法错误，正确形式为 "She **goes** to school every day."。这一错误在中高年级学习者中的错误率仍高达约30%（依据多项英语学习者语料库统计），需要专项训练强化。
+
+**误区三：将一般现在时限定为"只说现在的事"**
+
+一般现在时实际上是**非时间锚定**的时态，它描述的是超越具体时间点的规律或事实。"Shakespeare **writes** plays"（文学评论语境中使用现在时谈论作品）和"The sun **rises** in the east"均不指"此刻正在发生"，而是跨越过去、现在和将来的永恒事实。
 
 ---
 
 ## 知识关联
 
-**与情态动词（先修知识）的衔接**
-情态动词（can、must、should 等）本身不发生人称变化，且后接动词原形——这一规则正是一般现在时第三人称单数加 -s 规则的**反例**。理解情态动词"永远接原形"的特性，有助于学习者建立"什么情况下动词需要屈折变化"的系统意识，为一般现在时的变化规则提供对比参照。
+**先修概念衔接**：学习一般现在时之前，学习者应已掌握**情态动词**（can, must, should 等），因为情态动词后接动词原形的规则与一般现在时非三单形式（动词原形）逻辑一致，降低了新规则的记忆负担。同时，情态动词本身不加 -s（She **can** swim，而非 She cans swim），这与行为动词的第三人称单数规则形成有意义的对比。
 
-**通往现在进行时的关键对比**
-掌握一般现在时后，下一步学习**现在进行时**（be + V-ing）的核心任务是区分"习惯性动作"与"当前进行中的动作"。例如 "She teaches English"（习惯）vs "She is teaching English"（此刻正在教）。这一对比是英语时态系统中最基础、也最容易混淆的区分之一。
-
-**一般过去时与一般将来时的共同基础**
-**一般过去时**（V-ed）与**一般将来时**（will + V）在用法逻辑上均沿用一般现在时对"完整动作"的处理方式——即描述的是动作本身，而非动作的持续过程。因此，一般现在时建立的"非进行性描述"思维，直接延伸至这两个时态的学习。
-
-**状态动词（Stative Verbs）的特殊限制**
-一般现在时与**状态动词**（know、believe、love、contain、seem 等）存在密不可分的关系：状态动词通常只用一般现在时，而不用进行时，即英语母语者不说 "I am knowing the answer"，而说 "I know the answer"。识别哪些动词属于状态动词，是正确使用一般现在时的重要延伸课题。
+**后续概念延伸**：掌握一般现在时后，**现在进行时**（be + V-ing）是最直接的对比学习目标，两者共同构成"状态 vs 动作""规律 vs 正在进行"的核心对立。**一般过去时**在结构上与一般现在时平行（否定句同样使用助动词 did + 原形），迁移学习效率高。**一般将来时**（will + 原形 / be going to + 原形）则进一步扩展时间维度。此外，"时刻表表将来"这一用法直接连接至**现在时表将来**专题，以及**状态动词**专题中对 know、want、contain 等动词不能用进行时的系统解释。

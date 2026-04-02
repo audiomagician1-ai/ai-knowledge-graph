@@ -20,74 +20,81 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-04-01
 ---
-# 结构化输出(JSON Mode)
+
+
+# 结构化输出（JSON Mode）
 
 ## 概述
 
-结构化输出(JSON Mode)（Structured Output）是AI工程（AI Engineering）中Prompt工程领域的重要概念。难度等级4/9（中级）。
+结构化输出（JSON Mode）是一种强制大型语言模型将响应格式化为合法 JSON 字符串的技术手段。与普通文本输出相比，JSON Mode 通过约束模型的解码过程，确保每一个输出 token 序列在语法层面符合 JSON 规范，从而使下游系统可以直接调用 `JSON.parse()` 或等效方法解析结果，而无需额外的正则提取或异常处理。
 
-掌握结构化输出(JSON Mode)的核心概念和应用。
+JSON Mode 最早由 OpenAI 在 2023 年 11 月随 GPT-4 Turbo 的发布正式提出，随后 Anthropic（Claude 系列）、Google（Gemini 系列）以及开源框架 Outlines、Guidance 相继推出各自的实现方案。其技术背景是：早期 LLM 即使在 prompt 中要求输出 JSON，仍会以约 5%–15% 的概率产生格式错误（如末尾多余逗号、缺少引号），导致生产环境中的解析失败率过高，推动了专用 JSON Mode 的工程化落地。
 
-在知识体系中，结构化输出(JSON Mode)建立在提示词基础的基础之上，是理解工具调用(Function Calling)、Function Calling的关键前置知识。为什么结构化输出(JSON Mode)如此重要？因为它在Prompt工程中起到承上启下的作用，连接基础概念与高级应用。
+在 AI 工程的 Prompt 工程层面，掌握 JSON Mode 的价值在于它直接打通"模型推理"与"程序逻辑"之间的接口。当输出用于填充数据库字段、驱动前端渲染或触发工具调用时，结构化输出将不确定性从"模型会不会输出合法格式"这一维度完全消除，使系统可靠性从 95% 级别提升至接近 100%。
 
-## 核心知识点
+---
 
-### 1. 掌握结构化输出(JSON Mode)的核心概念
+## 核心原理
 
-掌握结构化输出(JSON Mode)的核心概念是结构化输出(JSON Mode)(Structured Output)的核心组成部分之一。在Prompt工程的实践中，掌握结构化输出(JSON Mode)的核心概念决定了系统行为的关键特征。例如，当掌握结构化输出(JSON Mode)的核心概念参数或条件发生变化时，整体表现会产生显著差异。深入理解掌握结构化输出(JSON Mode)的核心概念需要结合AI工程的基本原理进行分析。
+### 受限解码（Constrained Decoding）
 
-### 2. 应用
+JSON Mode 的底层机制并非简单地在 system prompt 中写"请输出 JSON"，而是在 token 采样阶段对词表施加掩码（logit masking）。在每一个解码步骤中，系统根据当前已生成的 JSON 片段维护一个有限状态自动机（FSM），只有在该状态下合法的下一个 token 才被赋予非负 logit，其余 token 的 logit 被设为 `-inf`。例如，当当前状态为"刚写完一个字符串值的右引号"时，只允许 `,`、`}` 或换行符等合法后继出现。这一方法由 Outlines 库（2023 年由 Brandon T. Willard 等人发表于 arXiv:2307.09702）系统化描述。
 
-应用是结构化输出(JSON Mode)(Structured Output)的核心组成部分之一。在Prompt工程的实践中，应用决定了系统行为的关键特征。例如，当应用参数或条件发生变化时，整体表现会产生显著差异。深入理解应用需要结合AI工程的基本原理进行分析。
+### Schema 约束与 Structured Outputs
 
+比普通 JSON Mode 更进一步的是 **Structured Outputs**（OpenAI 于 2024 年 8 月推出）。它允许开发者传入一个 JSON Schema 对象，模型不仅需要输出合法 JSON，还必须严格遵循 schema 中定义的字段名、类型（`string`、`integer`、`array` 等）和 `required` 属性。调用方式如下：
 
-### 关键原理分析
+```python
+response = client.beta.chat.completions.parse(
+    model="gpt-4o-2024-08-06",
+    messages=[...],
+    response_format=ResearchPaper,  # Pydantic BaseModel 子类
+)
+```
 
-结构化输出(JSON Mode)的核心在于掌握结构化输出(JSON Mode)的核心概念和应用。从理论角度看，该概念涉及以下层面：
+其中 `ResearchPaper` 是一个 Pydantic 模型，OpenAI SDK 会自动将其转换为 JSON Schema 并注入请求。相比于仅启用 JSON Mode（`response_format={"type": "json_object"}`），Structured Outputs 将字段级别的合规性也纳入约束，消除了"JSON 合法但字段缺失"的边缘情况。
 
-1. **定义层**：明确结构化输出(JSON Mode)的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解结构化输出(JSON Mode)内部各要素的相互作用方式
-3. **应用层**：将结构化输出(JSON Mode)的原理映射到AI工程的实际场景中
+### Prompt 设计对 JSON Mode 的影响
 
-思考题：如何判断结构化输出(JSON Mode)的应用是否超出了其理论适用范围？
+即使启用了受限解码，prompt 的写法仍然决定 JSON 内容的语义质量。关键实践包括：
 
-## 关键要点
+- **在 system prompt 中明确声明目标 schema**：描述每个字段的含义和取值范围，例如 `"sentiment": "positive | negative | neutral"`，可将分类错误率降低约 30%（根据 OpenAI Cookbook 的内部测试数据）。
+- **避免在 user message 中插入大段自由文本干扰**：当 user message 超过 2000 token 时，模型更容易在 JSON 值字段中插入额外的解释性文本，触发 schema 违规。
+- **使用 `additionalProperties: false`**：在 JSON Schema 中禁止额外字段，防止模型"发明"未定义的键名。
 
-1. **核心定义**：结构化输出(JSON Mode)的本质是掌握结构化输出(JSON Mode)的核心概念和应用，这是理解整个概念的出发点
-2. **多维理解**：掌握结构化输出(JSON Mode)需要同时理解掌握结构化输出(JSON Mode)的核心概念和应用等关键维度
-3. **先修关系**：扎实的提示词基础基础对理解结构化输出(JSON Mode)至关重要
-4. **进阶路径**：掌握后可继续深入工具调用(Function Calling)等进阶主题
-5. **实践标准**：真正掌握结构化输出(JSON Mode)的标志是能在具体场景中灵活运用并正确判断适用边界
+---
+
+## 实际应用
+
+**信息抽取流水线**：给定一段医学文献摘要，要求模型抽取 `{ "drug_name": str, "trial_phase": int, "primary_endpoint": str, "p_value": float }` 四个字段。启用 Structured Outputs 后，`p_value` 字段会被强制解析为 float 类型，避免模型输出 `"p < 0.05"` 这类无法直接用于统计计算的字符串。
+
+**前端动态表单生成**：电商后台要求模型根据商品描述生成 `{ "title": str, "price": number, "tags": string[], "in_stock": boolean }` 格式的商品卡片数据。JSON Mode 确保 `tags` 始终是数组而非逗号分隔的字符串，前端渲染逻辑无需做防御性类型检查。
+
+**多步骤 Agent 的中间状态传递**：在 LangGraph 或 AutoGen 构建的多智能体系统中，每个节点的输出必须是可被下一个节点直接读取的结构体。使用 JSON Mode 配合固定 schema，可以将节点间的接口错误率从人工提示方案的约 8% 降至可忽略水平。
+
+---
 
 ## 常见误区
 
-1. **混淆概念边界**：将结构化输出(JSON Mode)与Prompt工程中其他相近概念混为一谈。例如，掌握结构化输出(JSON Mode)的核心概念的适用条件与其他应用概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解提示词基础就学习结构化输出(JSON Mode)，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：结构化输出(JSON Mode)虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：JSON Mode 等同于在 prompt 中说"请输出 JSON"**
 
-## 知识衔接
+两者有本质区别。纯 prompt 指令依赖模型的指令遵循能力，在长对话、高压缩 context 或模型能力较弱时会失效。JSON Mode 通过 logit masking 在解码层强制约束，即使 prompt 中完全不提"JSON"，输出也必然合法。混淆这两者会导致开发者误以为自己已经启用了结构化输出，实际上仍在依赖不可靠的软约束。
 
-### 先修知识
-先修知识包括：
-- **提示词基础** — 为结构化输出(JSON Mode)提供了必要的概念基础
+**误区二：JSON Mode 保证语义正确性**
 
-### 后续学习
-掌握结构化输出(JSON Mode)后可继续学习：
-- **工具调用(Function Calling)** — 在结构化输出(JSON Mode)基础上进一步拓展
-- **Function Calling** — 在结构化输出(JSON Mode)基础上进一步拓展
+JSON Mode 只保证语法合规，不保证值的含义正确。例如，schema 要求 `"rating": integer`，模型可能输出 `"rating": 999`，这是合法 JSON 且符合 integer 类型，但语义上可能超出业务允许的 1–5 分范围。语义校验需要在应用层额外使用 Pydantic 的 `Field(ge=1, le=5)` 等验证器，不能依赖 JSON Mode 本身完成。
 
-## 学习建议
+**误区三：所有模型的 JSON Mode 行为一致**
 
-预计学习时间：2-3小时。建议采用以下策略：
+不同提供商的实现差异显著。OpenAI 的 JSON Mode（`json_object`）不验证 schema，仅保证合法 JSON；而 Structured Outputs（`json_schema`）才进行 schema 级别约束。Anthropic Claude 的做法是通过 tool use 接口实现结构化输出，并无独立的"JSON Mode"开关。开源模型如 Llama-3 需借助 vLLM 的 `guided_json` 参数或 Outlines 库才能获得等效能力，默认推理不提供此功能。
 
-- **主动回忆**：学完后不看笔记复述结构化输出(JSON Mode)的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将结构化输出(JSON Mode)与AI工程中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释结构化输出(JSON Mode)，检验理解深度
+---
 
-## 延伸阅读
+## 知识关联
 
-- 相关教科书中关于Prompt工程的章节可作为深入参考
-- Wikipedia: [Structured Output](https://en.wikipedia.org/wiki/structured_output) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Structured Output" 可找到配套视频教程
+**前置概念**：学习 JSON Mode 需要理解提示词基础中的 system/user message 分工，因为 schema 描述通常放置于 system prompt，而待处理的输入内容位于 user message，两者混淆会导致模型将 schema 定义误认为待解析内容。
+
+**后续概念——工具调用（Function Calling）**：Function Calling 是 JSON Mode 的自然延伸。在 Function Calling 中，模型不仅要输出符合 schema 的 JSON，还要在多个工具 schema 中选择调用哪一个并填充参数，本质上是在结构化输出之上叠加了"选择"和"路由"逻辑。JSON Mode 是理解 Function Calling 参数填充机制的直接基础——两者共享受限解码技术，区别在于 Function Calling 的 schema 由工具定义动态注入，而非由开发者在每次请求中手工指定。

@@ -20,76 +20,64 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # 语气与情感
 
 ## 概述
 
-语气（tone）是作者通过词汇选择、句式结构和修辞手段向读者传达的态度，情感基调（mood）则是文本在读者心中激发的整体情绪氛围。两者共同构成文本的情感维度，但方向不同：语气属于作者端的输出，情感基调属于读者端的接收。例如，同样描述一场战争，作者可能用"heroic sacrifice（英勇牺牲）"营造崇高语气，也可能用"senseless slaughter（毫无意义的屠杀）"创造悲愤基调。
+语气（tone）与情感（emotion/sentiment）是指作者在书写文本时所传递的态度和情绪色彩。语气是作者对其写作对象或读者所持有的态度，如讽刺（sarcastic）、严肃（solemn）、轻松（lighthearted）或愤慨（indignant）；情感则是文本整体营造的情绪氛围，如悲伤、喜悦、恐惧或愤怒。两者共同构成文本的"情感基调"（emotional register），直接影响读者对文本意义的理解。
 
-英语阅读中对语气情感的系统研究可追溯至修辞学传统，亚里士多德在《修辞学》中将"ethos（信誉）、pathos（情感）、logos（逻辑）"列为说服三要素，其中pathos专指语言的情感诉求。现代英语阅读测试（如SAT、ACT、AP English）大量考查语气题，SAT阅读中约有15%–20%的题目涉及语气或情感基调的判断。
+这一概念在文学批评史上早有记录。亚里士多德在《修辞学》（约公元前4世纪）中将"语气"作为修辞三要素之一的"情感诉求"（pathos）的重要载体。到20世纪，I.A. Richards在1929年的著作《实用批评》中系统提出"语气"是文学分析的四大核心维度之一（另外三个为意义、感情和意图）。在英语阅读理解考试中，语气与情感题型通常占全篇题目的15%–25%，是SAT、ACT、IELTS阅读部分的高频考查点。
 
-识别语气与情感之所以重要，是因为同一事实可以用截然不同的语气呈现，读者若只看字面意思，便会误解作者真实立场。讽刺文（satire）和反语（irony）尤其如此——乔纳森·斯威夫特在《一个小小的建议》（1729年）中用冷静克制的理性语气建议"食用爱尔兰婴儿"，表面语气与实际批判意图完全相反，不理解语气便无法读懂文章的真正主旨。
-
----
+识别语气与情感之所以关键，是因为同一字面意思的文字，在不同语气下传递的信息截然相反。例如"What a brilliant idea"在字面上是赞美，但配合讽刺语气则完全是批评。掌握这一能力，能使读者超越表层字义，准确捕捉作者的真实立场。
 
 ## 核心原理
 
-### 通过词汇选择识别语气
+### 词汇选择（Diction）是语气的首要信号
 
-词汇的情感色彩（connotation）是判断语气最直接的线索。带有强烈正面内涵的词如"illuminate（启迪）、resilient（坚韧）、flourish（蓬勃）"暗示赞扬或鼓励的语气；而"mediocre（平庸）、squander（挥霍）、feeble（软弱）"则传达批评或轻蔑。学生需区分词语的外延意义（denotation）与内涵意义（connotation）：例如"slim"和"scrawny"的外延相近（都指瘦），但"slim"语气中性偏正面，"scrawny"则含负面批判意味。
+作者选用的词汇带有内置的情感倾向，语言学中称为"connotation"（内涵义），与词的字典义"denotation"（外延义）相对。形容同一个人坚持己见，使用"determined"（坚定）与"stubborn"（固执）传递的语气截然不同——前者带中性偏正面语气，后者带贬义语气。在阅读时，应重点标注高情感负载词（emotionally charged words），如"devastate""triumph""condemn""cherish"等，这些词直接指向作者的情感立场。副词和形容词往往是语气密度最高的词类，如"merely""shockingly""inevitably"等能瞬间改变句子的情感温度。
 
-在练习中，可将文本中的形容词和动词单独提取，统计正面词与负面词的比例，若正面词占多数（≥60%），语气通常为肯定、乐观或赞扬；若负面词居多，则倾向批评、讽刺或悲观。
+### 句式结构与修辞手法
 
-### 修辞手段如何塑造情感基调
+句式长短和修辞格同样承载语气信息。短促的陈述句（"He failed. She left. Nothing remained."）制造冷峻、绝望的语气；而长句叠加从句往往传递沉思、复杂或郑重的情感。修辞反问（rhetorical question）如"Can we truly call this justice?"暗示作者对现状的不满与质疑。排比（parallelism）结构常见于激励性或庄严的语气，例如马丁·路德·金的演讲中大量"I have a dream that..."的重复结构，强化了希望与呼吁的情感基调。夸张（hyperbole）通常服务于幽默或强调语气，而委婉语（euphemism）则常见于回避性或外交性语气。
 
-特定修辞格与特定语气高度相关。**排比（anaphora）**——如马丁·路德·金"I have a dream"的反复使用——营造宏大激昂的情感基调；**轻描淡写（understatement）**制造幽默或讽刺效果；**夸张（hyperbole）**可强化愤怒或喜悦；**问句（rhetorical question）**常带质疑或挑战的语气，如"How long must we wait?"隐含对不公正的强烈不满。
+### 语气的类型分类
 
-句式长短同样影响语气：短促的断句（如海明威风格）产生紧张、直接、甚至冷峻的效果；长句迭加则可能形成庄重、沉思或悲悼的基调。
+英语阅读中常考的语气类型可分为以下几组：
+- **正面语气**：admiring（钦佩的）、optimistic（乐观的）、celebratory（颂扬的）、reverent（崇敬的）
+- **负面语气**：critical（批评的）、cynical（愤世嫉俗的）、mournful（悲哀的）、contemptuous（蔑视的）
+- **中立/复杂语气**：objective（客观的）、nostalgic（怀旧的）、ambivalent（矛盾的）、ironic（反讽的）
 
-### 语气词汇的精确分类
+其中，"ironic"（反讽）和"sarcastic"（讽刺）是高频混淆对，两者区别在于：讽刺（sarcasm）带有明显的嘲弄和伤害意图，而反讽（irony）是一种更广泛的文学手法，言在此而意在彼，未必带有攻击性。
 
-英语阅读中常考的语气词汇按情感维度分为以下几类，需准确区分：
+### 上下文线索与叙述视角
 
-- **批评类**：critical（批评）、condescending（居高临下）、disdainful（轻蔑）、scathing（严厉批评）
-- **赞扬类**：admiring（钦佩）、reverential（尊崇）、laudatory（颂扬）
-- **中立客观类**：objective（客观）、detached（超然）、impartial（公正）
-- **讽刺类**：ironic（反语的）、sardonic（冷嘲的）、sarcastic（挖苦的）——三者强度依次递增，sarcastic最为尖刻
-- **情感类**：nostalgic（怀旧）、melancholic（忧郁）、wistful（若有所思的惆怅）
-
-在SAT考试中，"wistful"和"sardonic"是高频语气形容词，考生常因混淆"melancholic（忧郁悲伤）"与"wistful（带甜蜜回忆的惆怅）"而失分。
-
-### 语境与语气转变
-
-文章中语气可能发生转折（shift in tone），通常由转折连词（however、yet、but、although）或段落过渡触发。例如，一篇文章前半段用热情赞扬的语气描述某项技术的潜力，后半段转为忧虑警惕的语气探讨其风险，整体形成"先扬后抑"的结构。识别语气转变点对于回答"作者态度如何变化"类题目至关重要。
-
----
+除词汇外，作者选择揭示哪些细节、省略哪些信息，同样塑造语气。一篇关于工厂污染的报道，若只描述儿童患病的具体细节而不提企业辩解，语气倾向于控诉（accusatory）。叙述视角（narrative voice）也至关重要：第一人称叙述通常增加亲密感和主观情感浓度；第三人称客观叙述则制造距离感，服务于中立或分析性语气。
 
 ## 实际应用
 
-**新闻报道 vs. 社论的语气对比**：同一起环境污染事件，新闻报道使用"Officials reported elevated toxin levels（官员报告毒素水平升高）"——语气客观中立；而社论写道"Negligent corporations poisoned our children's futures（玩忽职守的企业毒害了我们孩子的未来）"——语气愤慨控诉。阅读理解题常要求学生区分这两种语气差异。
+**题型一：直接问语气** 题干通常为"The tone of the passage is best described as..."或"The author's attitude toward X can be characterized as..."。此类题选项往往提供4–5个语气形容词，需逐一回到文中验证词汇证据。
 
-**诗歌与散文的情感基调识别**：在AP English Literature考试中，常见题型为"The tone of the passage shifts from ___ to ___"，要求学生填入准确的语气词汇。例如分析狄金森诗歌时，"Because I could not stop for Death"整体基调从平静接受（calm acceptance）转向对永恒的惊悸（quiet awe），这种微妙转变需通过具体词汇"Civility（礼貌）""Immortality（永恒）"的内涵来证明。
+**题型二：对比语气变化** 部分文章前后段落语气发生转变，如从悲观转向希望。考生需定位转折词（如"however""yet""but""nevertheless"）和情感词汇的变化节点。SAT阅读中曾出现"The tone shifts from ______ to ______"的双空填写题型，要求精确识别两个不同阶段的语气特征。
 
-**商业写作中的情感操控**：广告文案通过选用"transform（改变）、breakthrough（突破）、empower（赋能）"等词汇营造激励振奋的语气，与学术文本的中立语气形成对比，这一差异是阅读理解中分析文体特征的常见考点。
-
----
+**具体文本示例**：原文"The policy, hailed as a triumph of modern governance, managed to achieve little beyond exhausting the public coffers and the patience of its citizens."——此处"hailed as a triumph"随后被"managed to achieve little"否定，形成典型的反讽语气（ironic tone），作者对该政策的真实态度是批评（critical）。
 
 ## 常见误区
 
-**误区一：将作者语气与文章内容情感混为一谈**
-作者可以用冷静甚至幽默的语气描写悲剧事件。例如某篇文章用轻松诙谐的语气（humorous tone）叙述自己在病房中的遭遇，但文章内容本身涉及痛苦经历。此时语气是"humorous"，而非"sorrowful"。混淆二者会导致语气判断题全部答错。
+**误区一：将"情绪化内容"等同于"情绪化语气"**
+文章描述战争伤亡等悲剧内容，不代表作者语气是悲伤的。历史学家可以用完全客观、分析性的语气（objective/analytical tone）描述极端痛苦的事件。语气判断依据的是**作者的表达方式**，而非事件本身的情感属性。
 
-**误区二：认为语气只能是单一的**
-长文本中语气通常是复合的或递进变化的。作者对某政策可能同时持"admiring（赞扬其初衷）"又带"skeptical（质疑其执行）"的复合语气。SAT和ACT题目中常出现"The author's tone is best described as ___"选项包含复合描述，如"cautiously optimistic（谨慎乐观）"或"nostalgic yet critical（怀旧而又批判）"。
+**误区二：混淆"叙述者语气"与"作者语气"**
+在小说或戏剧选段中，叙述者可能是一个愤世嫉俗的角色，但作者本身可能持讽刺或批评该角色的立场。例如《名利场》中萨克雷以一个虚伪的叙述者展示维多利亚社会的虚荣，作者语气是讽刺性的，叙述者语气则可能表现为奉承或炫耀。阅读时需区分叙述者（narrator）与作者（author）的声音。
 
-**误区三：只依赖单个词汇判断语气，忽略整体语境**
-孤立的词汇判断极易被反语误导。在讽刺文中，"magnificent（壮观的）""brilliant（绝妙的）"等正面词实际表达嘲讽。因此，必须结合句式、段落逻辑和上下文推断语气，而非依赖单个词的表面意义。
-
----
+**误区三：选择"最极端"的语气词**
+考生倾向于选择"furious"而非"displeased"，或"ecstatic"而非"pleased"，认为越强烈越准确。实际上，语气强度须与文本证据匹配，过度解读（over-interpretation）是语气题失分的首要原因。文中若无"outrage""rage""infuriated"等极端词汇支撑，不应选择"furious"这样的强度词。
 
 ## 知识关联
 
-**与作者目的的关联**：作者目的（author's purpose）是语气的逻辑前提——若作者目的是说服，语气通常是热情的（passionate）或严肃的（earnest）；若目的是娱乐，语气可能是轻松（lighthearted）或幽默的（humorous）。因此，识别语气是验证作者目的判断是否准确的有效手段。掌握了作者目的分析后，语气判断便有了功能性框架支撑。
+语气与情感的识别建立在**作者目的**分析的基础上——了解作者为何写作（说服、告知、娱乐、批评），能为预判语气提供方向。例如，一篇目的是说服读者反对某政策的文章，其语气极可能落在"critical""urgent"或"impassioned"的范围内，而非"objective"或"celebratory"。
 
-**通往批判性阅读的桥梁**：批判性阅读（critical reading）要求评估作者论点的可靠性和偏见，而语气分析是其基础工具。当读者能识别出作者使用了"dismissive（不屑一顾的）"或"inflammatory（煽动性的）"语气时，便能进一步质疑：这种语气是否影响了论据的客观性？是否存在情感操控？这一追问正是批判性阅读的核心操作，语气识别能力直接决定批判性分析的深度。
+掌握语气与情感分析后，学生将进入**批判性阅读**阶段。批判性阅读要求读者不仅识别语气，还需评估作者使用特定语气的合理性与效果：这种讽刺语气是否有事实依据？这种煽情语气是否在掩盖论证漏洞？语气识别是批判性分析的前置技能——只有准确判断作者的情感立场，才能进一步质疑其论证是否以情感代替逻辑（即"诉诸情感谬误"，appeal to emotion fallacy）。

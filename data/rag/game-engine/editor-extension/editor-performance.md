@@ -20,94 +20,75 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 编辑器性能
 
 ## 概述
 
-编辑器性能是指游戏引擎编辑器（如Unity Editor、Unreal Editor）在执行脚本回调、绘制Inspector面板、处理Scene视图刷新等操作时的响应速度与资源占用水平。当编辑器出现卡顿时，其根源往往集中在三类具体位置：每帧执行的`Update`/`OnSceneGUI`回调、每次选中对象触发的`OnInspectorGUI`重绘、以及资产导入管道中的`AssetPostprocessor`钩子函数。
+编辑器性能专指游戏引擎编辑器（如Unity Editor、Unreal Editor）在执行编辑操作时的响应速度与资源消耗效率。区别于运行时（Runtime）性能，编辑器性能问题直接影响开发者的工作效率，表现为界面卡顿、Inspector刷新延迟、Scene视图帧率下降或资产导入时间过长等具体症状。
 
-Unity编辑器的性能问题在项目规模扩大后尤为突出。2019年Unity官方性能报告显示，超过60%的编辑器卡顿投诉来自自定义Inspector和Editor窗口中未经优化的GUI绘制代码。识别并修复这些问题不仅影响开发者日常工作效率，还直接影响迭代周期——一个每次编译后重建需要耗时8秒的自定义工具栏，在一个月内可以累计浪费超过2小时的开发时间。
+Unity编辑器的更新循环由`EditorApplication.update`驱动，其回调频率不受玩家帧率控制，而是依赖操作系统消息队列与编辑器内部事件触发。当自定义扩展代码在这个回调中执行耗时操作时，主线程被阻塞，直接导致编辑器UI无响应。Unreal Editor同样基于单主线程处理Slate UI事件，Blueprint编译或大量Actor属性更新都会在主线程产生可测量的停顿。
 
-编辑器性能优化与运行时性能优化有本质区别：编辑器代码运行在非IL2CPP的Mono虚拟机上，且受编辑器主循环频率约束（默认刷新率约为100ms/帧，即10FPS），这意味着优化策略必须针对编辑器特有的执行模型来设计，而非照搬游戏运行时的优化手段。
-
----
+编辑器性能问题之所以值得专门研究，是因为开发团队往往在编写自定义工具时忽视性能影响——一段在编辑器中每帧调用`AssetDatabase.FindAssets`的代码，可能将Unity Editor的帧时间从16ms拉升至500ms以上，造成整个团队数周内生产力损失。
 
 ## 核心原理
 
-### 编辑器主循环与回调开销
+### EditorApplication.update 与主线程阻塞
 
-Unity编辑器的主循环由`EditorApplication.update`驱动，默认约每100毫秒触发一次（可通过`EditorApplication.QueuePlayerLoopUpdate`请求更高频次更新）。每次循环中，所有注册了`[InitializeOnLoad]`静态构造函数的类都会在域重载后立即执行，而域重载本身（Domain Reload）平均耗时在中型项目中为1.5～5秒。因此，减少注册到`EditorApplication.update`的委托数量，或在委托内部设置执行节流（throttle），是降低编辑器主循环开销的直接手段。
+Unity编辑器的主线程每帧执行以下操作：处理输入事件、调用所有注册到`EditorApplication.update`的回调、刷新所有可见的Editor窗口与Inspector面板、执行Repaint请求。任何在`update`回调中超过约1ms的同步操作都会产生可感知的卡顿。常见的高消耗操作包括：`AssetDatabase.FindAssets`（在大型项目中单次调用可达50-200ms）、`AssetDatabase.LoadAssetAtPath`（触发资产反序列化）以及`Object.FindObjectsOfType`（遍历场景中全部对象）。
 
-具体策略：使用时间戳限流，只在距上次执行超过500ms时才运行检查逻辑：
+### OnInspectorGUI 的重绘机制
+
+`OnInspectorGUI`并非按固定频率调用，而是在以下情况触发重绘：鼠标移入Inspector窗口、属性值发生变化、调用`Repaint()`方法。错误的做法是在`OnInspectorGUI`内部调用`Repaint()`，这会形成重绘→调用Repaint→再次重绘的无限循环，使Inspector面板每帧都在强制刷新。可通过Unity Profiler的"Editor"模式验证：若`IMGUI.RepaintEvent`在CPU采样中持续高居榜首，通常意味着存在此类循环。
+
+### 序列化与`SerializedObject`的性能差异
+
+访问组件属性有两种方式：直接访问目标对象的字段（`((MyComponent)target).myValue`），或通过`SerializedObject`与`SerializedProperty` API访问。直接访问在每次调用时可能触发Unity的C#托管堆与Native层之间的数据同步（Marshal开销），而`SerializedObject.Update()`将这一同步集中执行一次。在包含100个属性的复杂Inspector中，使用`SerializedObject`统一批量读取比逐字段直接访问快约3-8倍，且能正确支持多对象编辑（Multi-Object Editing）与Undo系统。
+
+### Asset数据库查询的缓存策略
+
+`AssetDatabase.FindAssets`每次调用都会扫描整个资产数据库文件索引，属于O(n)操作。正确的优化策略是将查询结果缓存到静态字典中，并仅在`AssetDatabase.importPackageCompleted`、`AssetDatabase.onAssetsChanged`等回调触发时使主动令缓存失效。示例伪代码结构如下：
 
 ```csharp
-private static double _lastCheckTime;
-[InitializeOnLoadMethod]
-static void RegisterUpdate() {
-    EditorApplication.update += () => {
-        if (EditorApplication.timeSinceStartup - _lastCheckTime < 0.5) return;
-        _lastCheckTime = EditorApplication.timeSinceStartup;
-        // 实际逻辑放这里
-    };
+static Dictionary<string, string[]> _assetCache;
+static bool _cacheValid = false;
+
+static string[] GetCachedAssets(string filter) {
+    if (!_cacheValid) {
+        _assetCache[filter] = AssetDatabase.FindAssets(filter);
+        _cacheValid = true;
+    }
+    return _assetCache[filter];
 }
 ```
 
-### Inspector重绘的GC压力
-
-`OnInspectorGUI`在以下情况下会被频繁调用：鼠标在Inspector窗口内移动、任何字段值发生变化、以及Unity内部的脏标记（dirty flag）触发重绘。问题在于，每次调用`EditorGUILayout.BeginVertical()`等布局函数时，Unity会在内部分配`GUILayoutOption[]`数组。若`OnInspectorGUI`每秒被调用30次，且每次分配10个临时对象，则每秒产生约300个短生命周期对象，频繁触发GC（垃圾回收），导致编辑器出现周期性帧率抖动。
-
-优化方法是缓存`GUIContent`与`GUILayoutOption`对象，将其从方法体移到静态字段，并使用`EditorGUI.BeginChangeCheck()` / `EditorGUI.EndChangeCheck()`来跳过不必要的序列化写回操作：
-
-```csharp
-private static readonly GUIContent _labelContent = new GUIContent("Speed");
-private static readonly GUILayoutOption _widthOption = GUILayout.Width(120f);
-```
-
-### Profiler定位编辑器热点
-
-Unity Profiler支持通过菜单"Window > Analysis > Profiler"并勾选"Editor"模式来捕获编辑器帧数据。关键指标是`EditorLoop`下的`GUI.Repaint`耗时以及`AssetDatabase.Refresh`的调用频次。典型的问题信号：若`GUI.Repaint`单帧耗时超过**16ms**，则说明GUI绘制本身已超出单帧预算；若`AssetDatabase.Refresh`在非手动触发情况下每分钟超过5次，则需检查是否有代码在循环中写入磁盘文件（如配置JSON）。
-
-此外，`[ProfilerMarker]`属性可以在自定义编辑器代码中插入具名标记，使Profiler时间轴中出现可识别的代码段，精度达微秒级：
-
-```csharp
-private static readonly ProfilerMarker _marker = 
-    new ProfilerMarker("MyEditor.RebuildTree");
-using (_marker.Auto()) { RebuildTree(); }
-```
-
----
+通过这一模式，在资产未变更的情况下，后续查询时间从200ms降至接近0ms。
 
 ## 实际应用
 
-**案例1：层级树形视图的延迟加载**
+**场景一：自定义EditorWindow的帧率控制**
+一个显示实时数据统计的EditorWindow若在`OnGUI`末尾无条件调用`Repaint()`，会导致编辑器整体帧率从60fps跌至15fps。正确做法是使用`EditorApplication.timeSinceStartup`计算距上次重绘的间隔，仅当间隔超过0.1秒（即限制为10fps刷新）时才调用`Repaint()`，将无关窗口的CPU消耗降低约80%。
 
-在自定义EditorWindow中展示包含500+节点的技能树时，若每帧对全部节点调用`EditorGUILayout.Foldout`，帧耗时可达40ms以上。解决方案是引入虚拟滚动（Virtual Scrolling）：只渲染当前滚动视口内可见的节点（通常不超过20个），并记录每个节点的像素高度用于占位。这将GUI绘制开销从O(n)降为O(1)（相对于可见窗口高度）。
+**场景二：Inspector批量处理大型列表**
+当Inspector需要渲染一个包含1000个元素的`List<GameObject>`时，逐一绘制`PropertyField`会导致每次Inspector重绘耗时超过100ms。使用`ReorderableList`并限制可见行数（虚拟化滚动），或使用`EditorGUILayout.Foldout`折叠默认隐藏超过50个元素以上的列表，可将重绘时间控制在5ms以内。
 
-**案例2：资产后处理器（AssetPostprocessor）的条件过滤**
-
-一个对所有纹理应用自定义压缩设置的`OnPostprocessTexture`回调，在项目含有3000张纹理时，每次`AssetDatabase.Refresh`会触发全量处理，耗时可超过2分钟。正确做法是在方法开头通过`assetPath.StartsWith("Assets/UI/")`进行路径过滤，将处理范围收窄到需要特殊处理的资产子目录，可将耗时压缩至原来的1/10以下。
-
----
+**场景三：Unreal编辑器中的Details面板性能**
+在Unreal Engine中，自定义`IPropertyTypeCustomization`实现若在`CustomizeHeader`中每帧调用`FPropertyAccess::GetValue`获取整个数组属性，会造成Details面板选中Actor时编辑器卡顿约300ms。正确方案是缓存`TSharedPtr<IPropertyHandle>`并仅在`OnPropertyValueChanged`委托触发时更新本地缓存副本。
 
 ## 常见误区
 
-**误区1：认为`[ExecuteInEditMode]`不影响编辑器性能**
+**误区一：认为编辑器性能只影响自己的机器**
+团队成员往往在高性能开发机上开发编辑器工具，本地测试时感觉流畅，但当工具部署到配置较低的美术机器上时，同样的`FindAssets`调用可能将卡顿时间放大3-5倍。编辑器扩展应当像游戏代码一样设定性能预算，建议将单次`OnInspectorGUI`执行时间控制在2ms以内。
 
-`[ExecuteInEditMode]`会让MonoBehaviour的`Update`在编辑器中以与场景视图刷新同步的频率执行。若场景视图开启了"持续刷新"（Always Refresh）模式，该Update每秒会被调用数十次，与运行时无异。开发者常误以为此标签仅"让组件在编辑器中可见"，而忽视了其带来的CPU开销。应使用`OnValidate`替代只需要在属性修改时执行的逻辑。
+**误区二：频繁调用`EditorUtility.SetDirty`触发不必要的序列化**
+`EditorUtility.SetDirty`会将目标对象标记为"已修改"并触发序列化流程，若在鼠标移动事件中对场景中数百个对象调用此函数，会导致Unity序列化系统每帧写入大量数据到内存中间格式，造成明显卡顿。正确做法是使用`Undo.RecordObject`配合`EditorUtility.SetDirty`，且仅在数值确实改变时才调用，而非每帧无条件调用。
 
-**误区2：`AssetDatabase.Refresh()`可以在循环中多次调用**
-
-`AssetDatabase.Refresh()`会触发一次完整的资产扫描与导入流程，在含有5000个资产的项目中单次耗时通常为0.5～3秒。在批量资产操作中，若每创建一个文件就调用一次Refresh，10个文件意味着10次全量扫描。正确做法是用`AssetDatabase.StartAssetEditing()` / `AssetDatabase.StopAssetEditing()`包裹批量操作，将多次刷新合并为一次，耗时可降低90%以上。
-
-**误区3：只需优化运行时代码，编辑器代码无所谓**
-
-编辑器代码在整个项目的生命周期内持续运行，而运行时代码只在发布版本中执行。一个存在性能缺陷的自定义编辑器工具可能在项目开发的18个月中每天都在消耗开发团队的时间，其累计成本远超一个出现在已发布游戏中的同等级别性能问题。
-
----
+**误区三：认为`EditorCoroutine`能解决主线程阻塞问题**
+Unity Editor的`EditorCoroutine`（来自`Unity.EditorCoroutines.Editor`包）并非真正的多线程，它仍在主线程上按帧分片执行。一个每步执行1ms的协程分100步完成，总耗时100帧约1.67秒仍在主线程运行，期间用户的每次操作响应都要等待当前分片完成。真正的后台处理需要使用`System.Threading.Task`或`Thread`，并在完成后通过`EditorApplication.delayCall`回到主线程更新UI。
 
 ## 知识关联
 
-本文所涉及的优化技术以**编辑器扩展概述**中介绍的`CustomEditor`、`EditorWindow`、`PropertyDrawer`三类扩展点为操作对象——只有理解这三类扩展点的回调时机（何时触发`OnInspectorGUI`、何时触发`OnGUI`），才能准确判断性能开销发生在哪一层。`[InitializeOnLoad]`的域重载机制与编辑器扩展概述中介绍的编辑器脚本生命周期直接挂钩，是分析启动耗时的前置知识。
-
-在工具链层面，编辑器性能的诊断结果往往引导开发者进一步设计**资产管道（Asset Pipeline）** 的批处理策略，以及基于`UIElements`（UnityEditor.UIElements命名空间，Unity 2019.1引入）的声明式UI框架——后者通过数据绑定的脏检查机制，从架构层面减少了不必要的GUI重绘，是IMGUI性能问题的结构性替代方案。
+编辑器性能优化以**编辑器扩展概述**中介绍的`Editor`类生命周期、`SerializedObject`系统和`AssetDatabase` API为直接操作对象——对这些API的错误使用频率正是产生性能问题的根本来源。掌握Unity Profiler的"Editor"采样模式（通过`Profiler.BeginSample("MyTool")`插装自定义代码）是定量诊断编辑器卡顿的前提，该技能与运行时性能分析共享同一工具链但分析重点不同：编辑器性能关注`IMGUI`、`AssetDatabase`和`SerializedProperty`相关的调用堆栈，而非游戏逻辑代码。对编辑器性能的理解还与**自定义资产导入器**（`AssetImporter`性能直接影响编辑器响应速度）以及**ScriptableWizard与EditorWindow设计模式**等更高级的编辑器架构主题存在直接联系。

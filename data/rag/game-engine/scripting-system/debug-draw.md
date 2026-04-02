@@ -20,55 +20,75 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 调试绘制
 
 ## 概述
 
-调试绘制（Debug Draw）是游戏引擎脚本系统提供的一组运行时可视化工具，允许开发者在游戏运行过程中动态绘制线条、球体、盒体、文字等几何图元，这些图元仅在开发阶段可见，不会出现在最终发布版本中。调试绘制的输出直接渲染到屏幕上，叠加在游戏画面之上，无需创建任何游戏实体或材质资源。
+调试绘制（Debug Draw）是游戏引擎脚本系统提供的一组运行时可视化工具，允许开发者在游戏运行过程中直接在3D场景或2D屏幕空间中绘制线条、球体、立方体、文字标签等几何图元，这些图元**不会**出现在最终发布版本中，专门用于辅助逻辑验证和行为观察。其本质是绕过常规渲染管线，通过引擎内部的即时模式（Immediate Mode）接口在每帧末尾批量提交绘制命令。
 
-调试绘制最早在早期3D游戏开发工具链中以简单的线框渲染形式出现，随着游戏引擎的成熟，Unreal Engine、Unity等主流引擎将其标准化为脚本API的固定组成部分。Unreal Engine 4中对应的函数前缀为`DrawDebug`（如`DrawDebugLine`、`DrawDebugSphere`），Unity中则通过`Debug.DrawLine`和`Gizmos.DrawWireSphere`等静态方法调用。
+调试绘制的概念最早在2000年代初随Havok物理引擎的`HkDebugDisplay`接口普及开来，Unity引擎在2005年首发版本中即以`Debug.DrawLine()`和`Debug.DrawRay()`的形式将其暴露给脚本层，Unreal Engine则通过`DrawDebugLine()`系列全局函数提供同等功能。这一设计使程序员无需打开3D建模工具或添加临时网格体，就能在毫秒级时间内将抽象的向量、碰撞体范围、寻路路径等数据直观呈现。
 
-调试绘制对于脚本开发至关重要的原因在于：AI导航路径、碰撞检测范围、物理射线投射（Raycast）的命中点等逻辑数据在引擎默认视图中完全不可见，而调试绘制能够将这些抽象的数值数据转化为直观的几何形状，将一个坐标`(x, y, z)`变成屏幕上一个可见的红色球体，使程序员在数秒内定位到原本需要数小时才能发现的逻辑错误。
+对于游戏逻辑开发而言，调试绘制的价值在于将"不可见的运行时数据"转化为"可见的空间形状"。AI敌人的视野锥角、物理投射物的预测轨迹、角色骨骼的局部坐标轴——这些信息打印到控制台时毫无空间意义，但通过调试绘制可以立即揭示错误发生的几何原因。
+
+---
 
 ## 核心原理
 
-### 绘制持续时间与帧生命周期
+### 绘制调用的生命周期
 
-调试绘制的图元默认生命周期为**单帧（0秒）**，即每次调用后仅在当前帧显示一次，下一帧自动消失。若要持续显示，需传入`duration`（持续时间）参数，例如Unreal Engine中`DrawDebugSphere(World, Center, Radius, Segments, Color, false, 5.0f)`中第7个参数`5.0f`表示该球体持续显示5秒。在`Tick`函数（每帧执行一次）中调用绘制函数且`duration=0`，效果等同于每帧刷新，适合追踪移动中的对象位置。
+调试绘制命令并非持久存在，每次绘制调用都携带一个**持续时间（duration）参数**，单位为秒。当duration为`0`时，该图元仅在调用当帧可见，即每帧必须重新调用才能保持持续显示；当duration为正值（例如`5.0f`秒）时，引擎内部维护一个调试图元缓冲区，记录每个图元的创建时间戳和过期时间，在渲染阶段统一提交直到超时自动移除。这与普通Mesh的生命周期完全不同——调试图元不占用场景对象树节点，也不触发任何碰撞或物理计算。
 
-### 常用图元类型及参数
+### 坐标系与空间类型
 
-不同图元对应不同的空间概念，各有专用参数：
+调试绘制在**世界空间（World Space）**中运行，传入的起点、终点或中心位置均为世界坐标。例如Unity的`Debug.DrawLine(Vector3 start, Vector3 end, Color color, float duration)`中，`start`和`end`直接对应场景的世界坐标原点偏移量。若需在局部空间绘制（例如跟随某个对象），开发者需手动将局部坐标通过`transform.TransformPoint()`转换为世界坐标后再传入——这是初学者频繁出错的位置。Unreal Engine的`DrawDebugSphere(World, Center, Radius, Segments, Color, bPersistentLines, LifeTime)`中`Segments`参数控制球体近似多边形数，默认值为12，数值越大球体越圆滑但绘制开销越高。
 
-- **线段（Line）**：需要起点`Start`和终点`End`两个三维坐标向量，常用于可视化射线投射的方向和距离。`DrawDebugLine(World, Start, End, FColor::Red, false, -1.f, 0, 2.f)`中最后一个参数`2.f`控制线条粗细（单位：像素）。
-- **球体（Sphere）**：需要球心坐标和半径，还需要`Segments`参数控制球体的分段数，通常取12或16，分段数越高球体越平滑但绘制开销越大。
-- **盒体（Box）**：通过中心点和`Extent`（半边长向量）定义，`Extent=(50,50,50)`表示一个边长为100单位的正方体。
-- **文字（Text）**：在指定三维坐标处渲染字符串，Unreal中对应`DrawDebugString`，常用于在NPC头顶显示当前AI状态名称（如"Patrol"、"Chase"）。
+### 常用图元类型与函数签名
 
-### 颜色与深度测试
+调试绘制通常提供以下几类基础图元：
 
-调试绘制通常可通过参数控制是否启用**深度测试**（Depth Test）。启用深度测试时，被场景几何体遮挡的调试图元不会显示；禁用深度测试（传入`bDepthIsForeground=true`或类似参数）时，调试图元始终绘制在所有物体之上，即使它们在墙壁后面也完全可见，常用于追踪穿越障碍物的AI路径点。颜色参数通常使用引擎内置的颜色常量，如`FColor::Green`（绿色，常表示正常状态）和`FColor::Red`（红色，常表示警告或命中状态）。
+- **线段（Line）**：最轻量，常用于绘制速度向量、法线方向。Unity: `Debug.DrawLine(start, end, color)`；Unreal: `DrawDebugLine(World, LineStart, LineEnd, Color)`
+- **射线（Ray）**：以起点+方向+长度描述，内部转换为线段。Unity: `Debug.DrawRay(origin, direction * length, color)`
+- **球体（Sphere）**：用于可视化碰撞半径或感知范围。Unreal的`DrawDebugSphere`将球体分解为三个互相垂直的圆圈（XY/YZ/XZ平面），并非实体球。
+- **立方体/盒体（Box）**：用于AABB包围盒可视化。
+- **文字（String）**：在三维世界位置渲染2D文字标签，例如Unreal的`DrawDebugString(World, TextLocation, Text, TestBaseActor, TextColor, Duration)`，文字始终面向摄像机（Billboard方式）。
+
+### 性能特征
+
+调试绘制虽然轻量，但大量图元仍会产生CPU端提交开销。Unity官方文档说明`Debug.Draw`系列函数**仅在编辑器模式或Development Build下生效**，Release Build中这些调用被编译器条件剔除（通过`[Conditional("UNITY_EDITOR")]`特性实现）。因此开发者无需手动用`#if DEBUG`包裹每一处调试绘制代码，引擎已在构建流水线层面保证零运行时开销。
+
+---
 
 ## 实际应用
 
-**射线检测可视化**：在编写角色攻击判定脚本时，开发者对`LineTraceSingleByChannel`（Unreal的单射线检测函数）的起点和终点各绘制一个半径为5单位的绿色球体，并在两点之间绘制一条蓝色线段。若射线命中目标，则在命中坐标处额外绘制一个半径为10单位的红色球体并持续显示0.5秒，从而直观确认命中点是否符合预期。
+**AI视野检测可视化**：在敌人AI的`Update`函数中，每帧用`Debug.DrawRay`从敌人眼睛位置向玩家方向绘制射线，颜色根据是否检测到玩家分别设为红色（已发现）和绿色（未发现）。这样在编辑器Play Mode中可以实时看到每个AI的探测状态，无需打断点即可发现"敌人看向错误方向"的逻辑漏洞。
 
-**AI行为状态标注**：在行为树脚本的每个节点执行时，通过`DrawDebugString`在NPC头顶上方50单位处显示当前执行的行为节点名称，如"SearchForPlayer"或"ReturnToBase"，使测试人员无需打开控制台输出也能直接观察每个NPC的实时行为。
+**物理碰撞范围预览**：角色攻击判定使用`Physics.OverlapSphere`时，对应在同位置调用`DrawWireSphere`（Unreal）或用多段`Debug.DrawLine`手动拼接圆弧（Unity没有内置DrawSphere，开发者常封装工具函数），直观验证攻击半径是否与动画动作匹配。
 
-**碰撞体积验证**：当角色的碰撞胶囊体（Capsule）参数调整后，通过脚本在`BeginPlay`中调用`DrawDebugCapsule`，传入实际的碰撞半径（如`Radius=42`）和半高（如`HalfHeight=96`）并持续显示30秒，直观对比碰撞体积与角色模型之间是否存在穿模或间隙。
+**寻路路径绘制**：NavMesh寻路完成后，遍历路径点数组，用`Debug.DrawLine`依次连接相邻路径节点，绘制出完整路径折线，颜色随时间渐变（从蓝到红）表示路径段的顺序，帮助验证寻路算法是否生成了预期的绕行路线。
+
+**骨骼局部坐标轴**：在角色动画系统调试中，对每根骨骼绘制三条长度为`0.1`米的彩色轴线（红=X轴，绿=Y轴，蓝=Z轴），通过`transform.TransformDirection`将骨骼局部轴方向转换到世界空间后绘制，可快速识别骨骼旋转是否异常。
+
+---
 
 ## 常见误区
 
-**误区一：调试绘制函数在发布版本中会被自动剔除**
-部分开发者误认为只要使用调试绘制就不影响性能，实际上在Unreal Engine中，`DrawDebug`系列函数在`Shipping`（发布）构建配置下会被宏`UE_BUILD_SHIPPING`自动编译剔除，但在`Development`和`Test`构建中均会执行实际的渲染开销。若在`Tick`函数中大量调用（如同时绘制数百个球体），即使在开发阶段也会产生可测量的帧率下降，建议通过自定义布尔变量或控制台变量（CVar）控制调试绘制的开关。
+**误区一：认为调试绘制在Release版本中也能使用**
+部分初学者会在游戏发布后期望通过调试绘制实现某些"轻量UI提示"效果。实际上Unity中`Debug.DrawLine`系列在`UnityEngine.Debug`类下，该类所有绘制方法在非Development Build中会被完全剔除，运行时不执行任何代码。若需要在Release版本中绘制辅助线，必须使用`GL`类（Unity）或创建`LineRenderer`组件，这是两套完全不同的接口。
 
-**误区二：调试文字坐标与屏幕坐标相同**
-`DrawDebugString`的坐标参数是**世界空间三维坐标**，而非屏幕像素坐标。将一个对象在世界中的位置`(0, 0, 100)`直接传入即可让文字悬浮在该位置，引擎内部自动完成世界坐标到屏幕坐标的投影变换。若需要在屏幕固定位置显示文字，应改用UI系统（如Unreal的`HUD::DrawText`）而不是调试绘制。
+**误区二：混淆`Debug.DrawRay`的第二个参数语义**
+`Debug.DrawRay(origin, direction, color)`的第二个参数是**方向向量本身**，而非终点坐标。新手常传入目标点坐标，导致射线从origin绘制到一个错误的世界位置。正确用法是传入`(target - origin).normalized * length`或直接传入`target - origin`（向量自带长度信息）。
 
-**误区三：调试绘制可以替代正式的可视化系统**
-调试绘制的渲染采用无光照的纯色线框，不支持透明度混合、阴影或自定义着色器。它只适用于开发阶段的诊断，若游戏玩法本身需要向玩家展示辅助线或范围指示器，必须使用正式的程序化网格体（Procedural Mesh）或粒子系统来实现，而不能直接将调试绘制代码保留在发布版本中。
+**误区三：duration=0时以为图元会持续到手动移除**
+duration为`0`的图元仅存活**一帧**，若在`FixedUpdate`（物理更新，频率默认50Hz）中绘制但在`Update`（渲染更新，帧率可变）中显示，有时会出现闪烁或看不见的情况。正确做法是在`Update`中重新调用绘制，或将duration设为`Time.fixedDeltaTime`以覆盖一个物理帧的时长。
+
+---
 
 ## 知识关联
 
-调试绘制建立在**脚本系统概述**中介绍的`Tick`函数和引擎API调用机制之上——理解每帧回调的执行时机是正确使用`duration=0`持续刷新模式的前提。调试绘制与**物理系统**的射线检测（Raycast/LineTrace）高度协同使用，几乎每一个射线检测脚本都会配套使用调试线段来可视化检测路径。此外，调试绘制的坐标体系与引擎的**坐标系与变换**概念直接相关，世界坐标、局部坐标的转换错误是导致调试球体出现在错误位置的最常见原因。掌握调试绘制后，开发者在编写任何涉及空间逻辑的脚本（导航、碰撞、感知系统）时都能以数倍的效率进行验证和迭代。
+调试绘制依赖脚本系统的**生命周期回调**（如`Update`、`OnDrawGizmos`）作为调用入口，理解脚本每帧执行时序是正确使用duration参数的前提。在Unity中，`OnDrawGizmos`是专用于编辑器Scene视图的另一套绘制回调，与`Debug.Draw`系列相互独立——`OnDrawGizmos`即便游戏未运行也会执行，而`Debug.Draw`只在运行时生效，两者应用场景不同。
+
+调试绘制与**Gizmo系统**（编辑器可视化工具）共同构成引擎的运行时/编辑时可视化体系：前者服务于Play Mode的动态数据观察，后者服务于Inspector中的静态配置预览。掌握调试绘制后，开发者可进一步学习自定义Gizmo绘制（`Gizmos.DrawWireSphere`等），两者的API设计风格高度相似，迁移学习成本极低。

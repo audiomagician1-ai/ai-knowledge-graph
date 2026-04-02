@@ -20,72 +20,85 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 偏导数
 
 ## 概述
 
-偏导数是多元函数微分学的基本工具，用于描述函数值随某一个自变量变化时的瞬时变化率，同时将所有其他自变量视为常数固定不变。对于函数 $f(x, y)$，关于 $x$ 的偏导数记作 $\frac{\partial f}{\partial x}$ 或 $f_x$，其定义为极限 $\frac{\partial f}{\partial x} = \lim_{\Delta x \to 0} \frac{f(x + \Delta x, y) - f(x, y)}{\Delta x}$。这与一元函数导数的区别不在于运算技巧，而在于"固定其他变量"这一本质操作。
+偏导数是多元函数微分学的基本工具，描述一个多元函数沿某一坐标轴方向的瞬时变化率。对于二元函数 $f(x, y)$，关于变量 $x$ 的偏导数定义为：固定 $y$ 不变，只让 $x$ 发生微小变化，函数值变化量与自变量变化量之比的极限。其精确定义为：
 
-偏导数的符号 $\partial$（读作"偏"或"rounded d"）由德国数学家雅可比（Carl Gustav Jacob Jacobi）在19世纪推广使用，以区别于全导数符号 $d$。偏导数概念的形成伴随着18世纪热传导方程、流体力学等物理问题的需求，欧拉和拉格朗日在分析多变量系统时已隐含使用了这一思想。
+$$\frac{\partial f}{\partial x} = \lim_{\Delta x \to 0} \frac{f(x + \Delta x, y) - f(x, y)}{\Delta x}$$
 
-偏导数的重要性体现在它是理解曲面切平面、全微分以及梯度的直接基础。在机器学习的反向传播算法中，损失函数对每个参数的偏导数构成了梯度的分量，决定了参数更新的方向与步长。
+偏导数符号 $\partial$（读作"偏"）由德国数学家雅可比（Carl Gustav Jacob Jacobi）在19世纪30年代引入，以区别于单变量导数符号 $d$。这一符号的发明使得多元微分运算有了统一规范的书写方式。
+
+偏导数的重要性体现在：几乎所有涉及多变量的物理、工程和机器学习问题都需要它。例如，热传导方程 $\frac{\partial u}{\partial t} = \alpha \nabla^2 u$ 中的每一项都是偏导数；神经网络的反向传播算法本质上就是对每个权重参数计算损失函数的偏导数，再进行梯度下降更新。
+
+---
 
 ## 核心原理
 
 ### 偏导数的计算规则
 
-计算偏导数时，将所有不求导的变量视为数值常数，然后应用一元函数的全部求导法则。例如对 $f(x, y) = x^2 y + \sin(xy) + y^3$，对 $x$ 求偏导时，$y$ 视为常数：
+计算偏导数时，将其他变量视为常数，然后使用单变量求导法则。例如，对 $f(x, y) = x^3 y^2 + \sin(xy) + e^y$：
 
-$$\frac{\partial f}{\partial x} = 2xy + y\cos(xy)$$
+- 对 $x$ 求偏导：$\frac{\partial f}{\partial x} = 3x^2 y^2 + y\cos(xy)$（将 $y$ 视为常数，$e^y$ 对 $x$ 的偏导为0）
+- 对 $y$ 求偏导：$\frac{\partial f}{\partial y} = 2x^3 y + x\cos(xy) + e^y$（将 $x$ 视为常数）
 
-对 $y$ 求偏导时，$x$ 视为常数：
-
-$$\frac{\partial f}{\partial y} = x^2 + x\cos(xy) + 3y^2$$
-
-注意 $y^3$ 对 $x$ 的偏导数为 $0$，因为它被视为常数，这是初学者最容易出错的地方。
+注意 $e^y$ 一项：对 $x$ 求偏导时它消失，对 $y$ 求偏导时它保留。这一"消失"效应是偏导数计算中最容易出错的地方。
 
 ### 高阶偏导数与混合偏导数
 
-对偏导数再次求偏导可得高阶偏导数。二阶纯偏导数 $\frac{\partial^2 f}{\partial x^2}$ 表示先对 $x$ 求两次偏导，混合偏导数 $\frac{\partial^2 f}{\partial y \partial x}$ 表示先对 $x$ 再对 $y$ 求偏导。
+对偏导数再次求偏导，可得到二阶偏导数。$f(x,y)$ 有四种二阶偏导数：
 
-克莱罗定理（Clairaut's Theorem，1740年）指出：若函数 $f$ 的两个混合偏导数 $\frac{\partial^2 f}{\partial x \partial y}$ 和 $\frac{\partial^2 f}{\partial y \partial x}$ 在某点连续，则两者在该点相等。这一条件在绝大多数工程和物理应用场景中自动满足，但数学上确实存在违反克莱罗定理的反例，例如：
+$$f_{xx} = \frac{\partial^2 f}{\partial x^2}, \quad f_{yy} = \frac{\partial^2 f}{\partial y^2}, \quad f_{xy} = \frac{\partial^2 f}{\partial x \partial y}, \quad f_{yx} = \frac{\partial^2 f}{\partial y \partial x}$$
 
-$$f(x,y) = \begin{cases} \frac{xy(x^2 - y^2)}{x^2 + y^2}, & (x,y) \neq (0,0) \\ 0, & (x,y) = (0,0) \end{cases}$$
+其中 $f_{xy}$ 和 $f_{yx}$ 是混合偏导数（先对 $x$ 后对 $y$，以及先对 $y$ 后对 $x$）。**克莱罗定理（Clairaut's Theorem，1740年）** 保证：若混合偏导数在某点连续，则 $f_{xy} = f_{yx}$，即求偏导的顺序可以交换。但这一条件不可忽视——存在经典反例：
 
-该函数在原点处 $\frac{\partial^2 f}{\partial x \partial y}(0,0) = 1$ 而 $\frac{\partial^2 f}{\partial y \partial x}(0,0) = -1$，两者不相等，因为混合偏导数在原点不连续。
+$$f(x,y) = \frac{xy(x^2 - y^2)}{x^2 + y^2}, \quad (x,y) \neq (0,0)$$
+
+在原点处 $f_{xy}(0,0) = 1 \neq -1 = f_{yx}(0,0)$，因为混合偏导数在该点不连续。
 
 ### 全微分与偏导数的关系
 
-全微分 $df$ 描述了函数值的总变化量，由各偏导数乘以对应自变量微分之和构成：
+全微分 $df$ 刻画函数在各方向上的综合变化：
 
 $$df = \frac{\partial f}{\partial x}dx + \frac{\partial f}{\partial y}dy$$
 
-这里需要特别注意：偏导数存在并不保证全微分存在（即函数可微）。函数在某点可微的充分条件是所有偏导数在该点邻域内存在且连续。反例是 $f(x,y) = \frac{xy}{\sqrt{x^2+y^2}}$（原点处补充定义为0），该函数在原点处两个偏导数均为0，但函数在原点不可微，因为沿方向 $(1,1)$ 趋近原点时增量不满足线性近似条件。
+**偏导数存在不等于全微分存在**，这是多元微分学区别于一元微分学的关键结论。反例：
+
+$$f(x,y) = \begin{cases} \frac{xy}{x^2+y^2}, & (x,y)\neq(0,0) \\ 0, & (x,y)=(0,0) \end{cases}$$
+
+在原点处，$f_x(0,0) = 0$，$f_y(0,0) = 0$，两个偏导数均存在，但 $f$ 在原点处甚至不连续，更谈不上可微。**可微的充分条件**是：偏导数在该点连续（充分非必要）。
+
+---
 
 ## 实际应用
 
-**热传导方程**：物理中描述温度分布 $T(x,t)$ 随时间演变的一维热方程为 $\frac{\partial T}{\partial t} = \alpha \frac{\partial^2 T}{\partial x^2}$，其中 $\alpha$ 是热扩散率。方程左侧是 $T$ 对时间 $t$ 的偏导数，右侧是 $T$ 对位置 $x$ 的二阶偏导数，两者均是固定另一变量后的偏导数。
+**热力学中的状态方程**：理想气体 $PV = nRT$ 中，可以计算任一变量对其他变量的偏导数。例如 $\left(\frac{\partial P}{\partial T}\right)_V = \frac{nR}{V}$，其中下标 $V$ 明确标注了固定变量，这是热力学中偏导数记号的标准写法。有趣的是，热力学中存在"循环关系"：$\left(\frac{\partial P}{\partial T}\right)_V \cdot \left(\frac{\partial T}{\partial V}\right)_P \cdot \left(\frac{\partial V}{\partial P}\right)_T = -1$，这个结果反直觉（不等于 $+1$），是偏导数的重要性质。
 
-**经济学中的边际分析**：柯布-道格拉斯生产函数 $Q = A L^\alpha K^\beta$ 中，$\frac{\partial Q}{\partial L} = A\alpha L^{\alpha-1} K^\beta$ 表示劳动力的边际产出，即在资本 $K$ 固定时，追加单位劳动力带来的产量增加。当 $\alpha = 0.7, \beta = 0.3$ 时，劳动力边际产出与 $L$ 成 $-0.3$ 次幂关系，体现边际递减规律。
+**机器学习中的反向传播**：对于损失函数 $L(w_1, w_2, \ldots, w_n)$，梯度下降的参数更新公式为 $w_i \leftarrow w_i - \eta \frac{\partial L}{\partial w_i}$，其中 $\eta$ 为学习率。对每个权重 $w_i$ 计算偏导数，就是将其他所有权重视为固定常数，这正是偏导数定义的直接应用。一个含有百万参数的神经网络，就需要计算百万个偏导数。
 
-**神经网络反向传播**：设损失函数 $L$ 依赖于权重 $w_{ij}$，反向传播通过链式法则计算 $\frac{\partial L}{\partial w_{ij}}$，这是 $L$ 对 $w_{ij}$ 的偏导数，其他所有权重在计算此偏导数时均被视为常数。整个梯度下降算法的每一步更新 $w_{ij} \leftarrow w_{ij} - \eta \frac{\partial L}{\partial w_{ij}}$ 都以偏导数计算为基础。
+**隐函数求导**：对方程 $F(x, y) = 0$ 确定的隐函数 $y = f(x)$，其导数公式为 $\frac{dy}{dx} = -\frac{F_x}{F_y}$（要求 $F_y \neq 0$）。例如圆 $x^2 + y^2 - 1 = 0$，$F_x = 2x$，$F_y = 2y$，故 $\frac{dy}{dx} = -\frac{x}{y}$。
+
+---
 
 ## 常见误区
 
-**误区一：偏导数存在等于函数连续**
-一元函数中导数存在蕴含连续，但多元函数的偏导数存在不蕴含连续，更不蕴含可微。函数 $f(x,y) = \frac{xy}{x^2+y^2}$（原点处为0）在原点处 $f_x(0,0) = f_y(0,0) = 0$，两个偏导数都存在，但函数在原点处不连续——沿直线 $y = x$ 趋近原点时极限为 $\frac{1}{2} \neq 0$。
+**误区一：偏导数存在意味着函数连续**。一元微分学中，可导必连续；但多元函数中，偏导数存在与连续性没有必然关系。上文的分段函数例子就说明了这一点——偏导数存在，但函数在原点不连续。这是因为偏导数只沿坐标轴方向趋近，而连续性要求从所有方向趋近。
 
-**误区二：混合偏导数的求导顺序总可以互换**
-初学者常默认 $\frac{\partial^2 f}{\partial x \partial y} = \frac{\partial^2 f}{\partial y \partial x}$ 无条件成立。实际上这需要克莱罗定理的连续性条件作保证。注意符号约定：$\frac{\partial^2 f}{\partial x \partial y}$ 表示先对 $y$ 后对 $x$（从右往左读），而 $f_{xy}$ 表示先对 $x$ 后对 $y$（从左往右读），两种记法的顺序恰好相反，这是另一个常见的符号混淆来源。
+**误区二：混合偏导数求导顺序总可以互换**。初学者常默认 $\frac{\partial^2 f}{\partial x \partial y} = \frac{\partial^2 f}{\partial y \partial x}$ 恒成立。实际上，这需要混合偏导数连续这一额外条件（克莱罗定理的前提）。在工程问题中，绝大多数函数满足此条件；但在分析数学中，顺序交换需要严格验证。
 
-**误区三：偏导数即为曲面的斜率**
-偏导数 $\frac{\partial f}{\partial x}\big|_{(x_0,y_0)}$ 仅是曲面 $z = f(x,y)$ 沿 $x$ 轴正方向的切线斜率，不代表曲面在该点沿任意方向的变化率。曲面沿任意单位向量方向的变化率需要用方向导数来描述，而方向导数可以通过偏导数（即梯度分量）与方向向量的内积来计算，这正是从偏导数过渡到梯度概念的桥梁。
+**误区三：$\frac{\partial f}{\partial x}$ 中的 $\partial x$ 可以像 $dx$ 一样参与代数运算**。在一元微分学中，$\frac{dy}{dx}$ 在某些情形可以"分离"（如分离变量法）。但 $\frac{\partial f}{\partial x}$ 是一个整体记号，$\partial f$ 和 $\partial x$ 单独没有意义。热力学循环关系 $\left(\frac{\partial P}{\partial T}\right)_V \cdot \left(\frac{\partial T}{\partial V}\right)_P \cdot \left(\frac{\partial V}{\partial P}\right)_T = -1$（而非 $+1$）正是因为偏导数不能像分数一样直接相消。
+
+---
 
 ## 知识关联
 
-偏导数直接继承了一元函数导数的极限定义和运算法则——链式法则、乘积法则、商法则在固定其他变量后完全适用，因此一元导数是计算偏导数的操作前提。
+**前置概念衔接**：偏导数的计算直接使用单变量导数的所有法则（链式法则、乘积法则、商式法则），因为固定其他变量后，偏导数退化为单变量函数的导数。理解极限的 $\varepsilon$-$\delta$ 定义有助于理解为何偏导数存在不等价于可微。
 
-掌握偏导数后，将 $n$ 个偏导数 $\left(\frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}, \ldots, \frac{\partial f}{\partial x_n}\right)$ 组合成向量即得到**梯度** $\nabla f$，梯度指向函数值增长最快的方向，其模长等于该最大增长率。梯度是方向导数计算的核心工具：函数沿单位向量 $\hat{u}$ 的方向导数等于 $\nabla f \cdot \hat{u}$。
+**通向梯度**：将函数 $f(x_1, x_2, \ldots, x_n)$ 对所有变量的偏导数组成向量，就得到梯度 $\nabla f = \left(\frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}, \ldots, \frac{\partial f}{\partial x_n}\right)$。梯度是偏导数的向量化封装，方向导数则可以用梯度通过点积 $D_{\mathbf{u}}f = \nabla f \cdot \mathbf{u}$ 来统一表达。
 
-在**无约束优化**中，多元函数极值的必要条件是所有偏导数同时为零，即 $\nabla f = \mathbf{0}$，这将优化问题转化为求解偏导数方程组。进一步判断极值类型需要计算二阶偏导数构成的**黑塞矩阵**（Hessian Matrix）$H_{ij} = \frac{\partial^2 f}{\partial x_i \partial x_j}$，分析其正定性，这是偏导数概念在最优化理论中的核心应用。
+**通向优化**：无约束优化的必要条件是所有偏导数同时为零，即 $\frac{\partial f}{\partial x_i} = 0$（$i = 1, \ldots, n$），形成方程组。进一步判断极值类型需要海森矩阵（Hessian Matrix），其元素恰好是所有二阶偏导数 $H_{ij} = \frac{\partial^2 f}{\partial x_i \partial x_j}$，偏导数的知识直接支撑了多元函数极值判别法。

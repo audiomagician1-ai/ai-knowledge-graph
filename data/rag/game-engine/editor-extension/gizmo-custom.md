@@ -20,64 +20,93 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 自定义Gizmo
 
 ## 概述
 
-自定义Gizmo是指在游戏引擎编辑器的场景视图（Scene View）中，由开发者手动绘制并实现交互逻辑的可视化操控手柄。与引擎内置的位移、旋转、缩放Gizmo不同，自定义Gizmo专门服务于特定组件的参数调整需求，例如用一根可拖动的射线表示探照灯的照射角度，或用一个可缩放的球体表示音频源的衰减半径。其核心价值在于将组件的抽象数值参数转化为场景内可直接操作的三维图形控件，使关卡设计师无需查阅Inspector面板中的数字就能直观地调整组件行为范围。
+自定义Gizmo（编辑手柄）是游戏引擎编辑器中一种可在场景视口（Scene View）内直接交互的可视化控件，允许开发者为自定义组件绘制专属图形并响应鼠标拖拽、点击等操作，从而在不打开属性面板的情况下直接在3D/2D空间中修改组件数据。与只读的 `OnDrawGizmos` 调试绘制不同，自定义Gizmo同时承担**视觉反馈**与**输入处理**两项职责。
 
-自定义Gizmo的概念最早在Unity编辑器扩展API中被系统化，通过`OnDrawGizmos`和`OnDrawGizmosSelected`这两个MonoBehaviour回调方法实现基本绘制，而更完整的交互式Gizmo则依赖`Handles`类（Editor专属API）完成。在Unreal Engine中对应功能通过`FComponentVisualizer`类实现，两种引擎的实现路径虽然不同，但核心思想一致：将运行时不可见的编辑辅助图形与鼠标点击、拖拽事件绑定，形成编辑器内的专属交互层。
+在Unity引擎的历史演进中，早期版本（Unity 4.x 及之前）只提供 `Gizmos` 静态类用于调试绘制，开发者若想实现交互必须手写大量射线检测与句柄变换代码。Unity 5.0 引入 `Handles` API 并将其标准化，使得绘制带交互的手柄成为官方支持的工作流。Unreal Engine 则通过 `FEdMode` 和 `UPrimitiveComponent::GetEditorVisualizationComponent()` 体系实现同等能力。
 
-对游戏工具链而言，自定义Gizmo直接影响关卡设计的迭代效率。一个设计良好的Gizmo可以把原本需要"输入数值→切换视角确认→再次调整"的多步操作压缩为一次鼠标拖拽，对于需要频繁微调碰撞体积、AI感知范围或样条曲线控制点的工作流来说，节省的时间非常可观。
+自定义Gizmo的核心价值在于**减少设计师在属性面板与场景视图之间的上下文切换**。例如，一个自定义的视野角（Field of View）Gizmo可以直接在场景中展示扇形锥体并允许拖拽边缘修改角度，比在Inspector中输入数字直观得多，显著降低关卡设计迭代时间。
 
 ---
 
 ## 核心原理
 
-### 绘制层与编辑器事件分离
+### Unity中的 `Handles` API 与编辑器生命周期
 
-自定义Gizmo的绘制代码必须置于Editor类或`OnDrawGizmos`回调中，而不能混入运行时逻辑。在Unity中，`Gizmos`类提供的方法（如`Gizmos.DrawWireSphere`、`Gizmos.DrawLine`）仅在编辑器模式下执行，打包后完全剥离，不会产生任何运行时开销。`Handles`类则更进一步，其`Handles.PositionHandle(position, rotation)`方法能返回用户拖拽后的新位置坐标，实现参数的反向写回——这是普通`Gizmos`绘制做不到的。
+自定义Gizmo的代码必须放置在 `Editor` 文件夹内，并通过 `[CustomEditor(typeof(MyComponent))]` 特性绑定目标组件。实际绘制发生在重写的 `OnSceneGUI()` 方法内，该方法在每次场景视口重绘时被调用（帧率与编辑器刷新率一致，通常为每秒数十次）。
 
-### HandleUtility与控制ID机制
+```csharp
+[CustomEditor(typeof(PatrolAgent))]
+public class PatrolAgentEditor : Editor
+{
+    void OnSceneGUI()
+    {
+        PatrolAgent agent = (PatrolAgent)target;
+        EditorGUI.BeginChangeCheck();
+        Vector3 newPos = Handles.PositionHandle(agent.patrolTarget, Quaternion.identity);
+        if (EditorGUI.EndChangeCheck())
+        {
+            Undo.RecordObject(agent, "Move Patrol Target");
+            agent.patrolTarget = newPos;
+        }
+    }
+}
+```
 
-交互式Gizmo能够正确响应鼠标操作的关键在于控制ID（Control ID）系统。每个可交互的Gizmo元素在绘制前必须通过`GUIUtility.GetControlID(FocusType.Passive)`申请一个唯一ID，系统据此判断当前哪个手柄正在被拖拽。若跳过这一步，多个Gizmo叠加时会出现抢占焦点的混乱行为。`HandleUtility.DistanceToCircle`和`HandleUtility.DistanceToCube`等函数用于计算鼠标与Gizmo几何体的屏幕空间距离，距离阈值通常设定为5像素，低于此值则判定为鼠标悬停。
+`EditorGUI.BeginChangeCheck()` / `EndChangeCheck()` 配对检测值是否被用户修改，只有在发生修改时才调用 `Undo.RecordObject`，避免每帧写入撤销历史导致内存膨胀。
 
-### 坐标空间变换
+### 坐标空间变换：`Handles.matrix`
 
-Gizmo的绘制坐标默认为世界空间，但组件参数往往储存在局部空间。以一个扇形视野Gizmo为例，AI的视野角度`fieldOfView = 120°`和视野距离`viewDistance = 15f`是局部参数，绘制时需要通过`transform.TransformPoint`将局部坐标转换为世界坐标，而用户拖拽后返回的世界坐标则需要用`transform.InverseTransformPoint`转换回局部坐标才能正确写入组件字段。忽略这一转换会导致当物体发生旋转后，Gizmo的位置与实际参数严重错位。
+所有 `Handles` 绘制调用默认在**世界空间**下进行。若需要在对象本地空间绘制（例如绘制相对于骨骼的偏移球体），需在绘制前设置：
 
-### Undo/Redo集成
+```csharp
+Handles.matrix = target.transform.localToWorldMatrix;
+```
 
-任何会修改组件数据的Gizmo操作必须在赋值前调用`Undo.RecordObject(target, "操作描述字符串")`，否则用户按下Ctrl+Z时无法撤销Gizmo造成的修改。这是自定义Gizmo中最容易被遗漏的步骤，也是导致美术和关卡设计师投诉"撤销不了"的直接原因。
+此后所有坐标输入均视为本地空间坐标，`Handles` 内部乘以该矩阵后转换为世界空间绘制。忘记此步骤会导致Gizmo在对象旋转时"飘移"到错误位置——这是初学者最常见的视觉错误之一。
+
+### 控件ID与热控件系统（Hot Control）
+
+Unity的Handles交互依赖`GUIUtility.hotControl`机制。每个可交互手柄通过 `GUIUtility.GetControlID(FocusType.Passive)` 申请唯一ID。当用户按下鼠标时，系统将该ID写入 `GUIUtility.hotControl`，后续的 `MouseDrag` 和 `MouseUp` 事件只会路由给热控件拥有者，防止多个重叠Gizmo同时响应同一次拖拽。自定义交互式Gizmo（非使用内置 `Handles.PositionHandle` 等预制件时）必须手动管理这套ID系统，否则点击穿透问题无法解决。
+
+### 颜色、透明度与深度遮挡
+
+`Handles.color` 接受 `Color` 结构体，Alpha值小于1时Gizmo呈半透明。Unity编辑器中Gizmo绘制**不参与深度缓冲测试**（ZTest Always），这意味着Gizmo会穿透场景几何体显示，这是设计上的有意选择——确保编辑手柄永远可见。如需模拟遮挡效果，开发者需分两次绘制：先用 `Handles.zTest = CompareFunction.LessEqual` 绘制不被遮挡部分（实线），再用 `CompareFunction.Greater` 绘制被遮挡部分（虚线或低饱和度色）。
 
 ---
 
 ## 实际应用
 
-**音频衰减范围Gizmo**：为`AudioSource`组件绘制两个同心球体，内球（黄色）代表`minDistance`，外球（红色渐变）代表`maxDistance`，两个球面均可通过拖拽手柄直接调整对应数值。这是Unity官方Editor扩展文档中的经典示例，用`Handles.RadiusHandle`方法仅需约20行代码即可实现。
+**AI巡逻路径编辑器**：为 `PatrolAgent` 组件绘制路径折线，每个路径点显示为可拖拽的球形手柄（`Handles.SphereHandleCap`，半径建议取 0.3~0.5 世界单位以便点击），路径线段用 `Handles.DrawAAPolyLine`（线宽2.0f）连接，选中某节点后高亮为黄色，其余保持蓝色。这样关卡设计师无需逐一展开 Inspector 数组元素即可调整全部路径点。
 
-**样条曲线控制点编辑**：在赛道编辑工具中，每个样条节点显示为场景内的圆形手柄，切线控制杆以线段延伸显示。设计师可以直接在场景视图中拖动控制点修改曲线形状，而不必在Inspector中手动输入Vector3坐标。Unreal Engine的`FSplineComponentVisualizer`是这一模式的标准实现参考。
+**音频触发区域可视化**：为 `AudioTriggerZone` 绘制一个可缩放的球形范围Gizmo，使用 `Handles.RadiusHandle` 返回新半径值，配合 `Handles.DrawWireArc` 在X/Y/Z三个平面各绘制一圈圆弧表示完整球体。当组件 `enabled` 为false时，将 `Handles.color` 的Alpha设为0.3以示禁用状态。
 
-**AI感知扇形区域Gizmo**：用`Handles.DrawSolidArc`绘制一个透明扇面，扇面边缘端点配置为可拖拽的方块手柄，分别控制`detectionAngle`和`detectionRange`两个参数。当物体被选中时显示完整扇面（`OnDrawGizmosSelected`），未选中时只显示一条中心轴线（`OnDrawGizmos`），避免场景视图中Gizmo过多导致视觉污染。
+**摄像机视锥预览**：利用 `Handles.DrawCamera` 或手动计算四个近平面顶点后调用 `Handles.DrawLines`，实时展示当前FOV（如60°）对应的视锥形状，并在顶部放置 `Handles.ScaleValueHandle` 让设计师直接拖拽改变FOV数值。
 
 ---
 
 ## 常见误区
 
-**误区一：在`OnDrawGizmos`中直接修改组件数据**  
-`OnDrawGizmos`在每次场景视图重绘时都会调用，每秒可能执行数十次。若在此函数中直接对组件字段赋值（而非在检测到拖拽事件后赋值），会导致数据被反复覆盖，Inspector中的手动输入完全失效。正确做法是仅在`EventType.MouseDrag`或`EventType.MouseUp`事件发生时才执行数据写回。
+**误区1：在 `OnDrawGizmos` 中实现交互**
+`MonoBehaviour.OnDrawGizmos` 是运行时与编辑器均可调用的方法，仅支持 `Gizmos` 静态类（绘制球、线、图标），**完全不支持 `Handles` API 也不处理鼠标事件**。交互式Gizmo必须且只能在 `Editor` 子类的 `OnSceneGUI()` 中实现。混淆这两个方法会导致编译错误（`Handles` 类在非编辑器程序集中不存在）或功能完全失效。
 
-**误区二：混淆`Gizmos`类和`Handles`类的职责**  
-`Gizmos`类（命名空间`UnityEngine`）只能绘制，无法获取用户输入，可用于普通MonoBehaviour脚本中；`Handles`类（命名空间`UnityEditor`）既能绘制又能处理交互，但只能在Editor程序集中使用。若在普通MonoBehaviour脚本中引用`Handles`类，打包时会因缺失`UnityEditor`程序集而报错，必须用`#if UNITY_EDITOR`宏包裹相关代码。
+**误区2：每帧调用 `Undo.RecordObject` 而不判断值是否变化**
+不使用 `BeginChangeCheck`/`EndChangeCheck` 包裹，直接在每次 `OnSceneGUI` 调用时记录撤销，会导致撤销栈以60fps速度堆积空记录，按下Ctrl+Z时需要撤销数百步才能回到上一个有意义的状态。正确做法是检测到值真正改变后才调用一次 `RecordObject`。
 
-**误区三：认为`OnDrawGizmosSelected`只在首次选中时调用一次**  
-实际上，只要场景视图处于焦点且对应对象保持选中状态，`OnDrawGizmosSelected`会持续每帧调用。这意味着Gizmo内不应包含任何带副作用的初始化逻辑（如实例化对象、申请资源），所有状态应存储在Editor类的成员字段或序列化组件字段中。
+**误区3：忘记 `serializedObject.ApplyModifiedProperties()` 导致修改不持久化**
+当Gizmo通过 `SerializedProperty` 路径修改数据时（而非直接赋值给 `target`），若省略 `ApplyModifiedProperties()` 调用，修改只存在于序列化缓冲区中，保存场景后数据丢失。直接赋值给 `target` 字段时则通过 `Undo.RecordObject` 路径持久化，两种方式不可混用。
 
 ---
 
 ## 知识关联
 
-自定义Gizmo建立在编辑器扩展概述所介绍的`Editor`类继承体系之上——只有为组件创建了对应的`[CustomEditor(typeof(MyComponent))]`编辑器类，才能在其中编写`OnSceneGUI`方法来使用`Handles` API实现完整的交互式Gizmo。反过来，Gizmo开发过程中频繁用到的`SerializedObject`/`SerializedProperty`写回机制，也会加深对编辑器序列化系统的理解。
+**前置概念**：编辑器扩展概述中介绍的 `CustomEditor` 特性、`Editor` 基类生命周期（`OnInspectorGUI`、`OnEnable`）以及 Unity 的编辑器程序集隔离规则（`#if UNITY_EDITOR` 或 `Editor` 文件夹）是实现自定义Gizmo的必要基础——不了解编辑器类只能在编辑器程序集中存在这一规则，将导致发布版本出现编译错误。
 
-在工具链的更广泛视角下，自定义Gizmo与自定义编辑器窗口（`EditorWindow`）构成两种互补的编辑器扩展形式：前者将交互嵌入场景三维空间，适合需要空间感知的参数；后者提供独立的二维UI面板，适合批量操作和数据概览。掌握自定义Gizmo后，开发者通常会进一步探索Property Drawer（属性抽屉）来完善Inspector端的配套显示，形成"场景内Gizmo + Inspector面板"的完整工具组件。
+**延伸方向**：掌握自定义Gizmo后，可进一步研究 **EditorTool API**（Unity 2019.1引入，`EditorTool` 基类），它将Gizmo逻辑与工具栏按钮集成，支持在不选中对象时激活特定手柄工具，是自定义Gizmo能力的超集。此外，Unreal Engine中与之对应的技术路线是实现 `FEdMode` 并重写 `Render()` 与 `HandleClick()` 方法，核心的坐标空间管理和热控件概念与Unity版本高度相似。

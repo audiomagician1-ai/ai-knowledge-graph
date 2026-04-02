@@ -20,109 +20,111 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 依赖注入
 
 ## 概述
 
-依赖注入（Dependency Injection，简称 DI）是一种将对象所依赖的外部资源从对象内部创建改为由外部传入的设计模式。其核心思想是：一个类不应该自己负责实例化它所需要的依赖对象，而应该通过构造函数、属性或方法参数接收这些依赖。这一模式是 SOLID 原则中依赖倒置原则（DIP）的具体实现方式——高层模块依赖抽象接口，而不是依赖具体实现类。
+依赖注入（Dependency Injection，简称DI）是一种设计模式，其核心思想是：对象不应自行创建它所依赖的对象，而应由外部"注入者"将依赖对象传递给它。这直接实现了SOLID原则中的"依赖倒置原则"（DIP）——高层模块不依赖低层模块，二者都依赖抽象接口。
 
-依赖注入的概念由 Martin Fowler 在 2004 年的文章《Inversion of Control Containers and the Dependency Injection pattern》中正式命名和系统化阐述。在此之前，该模式已经以"控制反转（IoC）"的名称存在于 Spring 等框架的早期实践中。Fowler 指出，IoC 过于宽泛，DI 才是准确描述这种"依赖关系由外部注入"特征的术语。
+依赖注入的概念由Martin Fowler在2004年的文章《Inversion of Control Containers and the Dependency Injection Pattern》中正式命名和系统阐述，将其从"控制反转"（IoC）这一更宽泛的概念中分离出来，明确了"注入"的机制。在此之前，Spring框架（2002年发布）已经将这一模式广泛应用于Java生态。
 
-在 AI 工程场景中，依赖注入的价值尤为突出。一个机器学习推理服务往往需要切换不同的模型后端（如 TensorFlow、PyTorch、ONNX Runtime），若模型加载逻辑硬编码在业务类内部，替换成本极高。通过 DI，推理类只依赖抽象的 `ModelBackend` 接口，具体的 `TorchBackend` 或 `ONNXBackend` 由外部注入，使得 A/B 测试和模型热替换变得可行。
+在AI工程的面向对象设计中，依赖注入尤为关键：一个模型推理类（`ModelInferencer`）不应硬编码使用某个特定的模型加载器，而应接受任意满足`ModelLoader`接口的对象。这样，在训练环境中注入`LocalModelLoader`，在生产环境注入`RemoteModelLoader`，测试时注入`MockModelLoader`，无需修改`ModelInferencer`本身的代码。
+
+---
 
 ## 核心原理
 
 ### 三种注入方式
 
-依赖注入有三种标准实现形式，各有其适用场景：
+依赖注入有三种具体实现方式，各有其适用场景：
 
-**构造函数注入（Constructor Injection）** 是最推荐的方式。依赖项在类实例化时通过构造函数传入，使对象一旦创建便处于完整可用状态。以 Python 为例：
+**构造器注入（Constructor Injection）**：依赖通过构造函数参数传入，注入后不可更改，适合必需依赖。
 
 ```python
-class InferenceService:
-    def __init__(self, model_backend: ModelBackend, logger: Logger):
-        self._backend = model_backend
+class ModelInferencer:
+    def __init__(self, model_loader: ModelLoader, logger: Logger):
+        self._loader = model_loader
         self._logger = logger
 ```
 
-构造函数注入使依赖关系一目了然，且依赖项为 `final`（或 Python 中的 `__slots__`），防止运行时被意外替换。
+**属性注入（Setter/Property Injection）**：依赖通过公开属性或setter方法设置，适合可选依赖或需要在运行时更换的依赖。
 
-**属性注入（Property/Setter Injection）** 适用于可选依赖，即存在合理默认值的场景。缺点是对象可能在依赖未完全设置前被调用，需要额外的空值检查。
+**接口注入（Interface Injection）**：对象实现一个"接收注入"的接口，由容器调用该接口传入依赖。此方式在Python中较少见，常见于Java的早期IoC框架。
 
-**方法注入（Method Injection）** 仅在某次特定方法调用需要某个依赖时使用，例如 `process(data, validator: Validator)` 中的 `validator` 只在该次调用有效，不作为对象的长期状态。
+三种方式中，**构造器注入**是最推荐的，因为它强制要求依赖在对象构建时完备，避免"对象构建成功但无法正常工作"的半初始化状态。
 
-### 依赖倒置与接口抽象
+### 依赖倒置的数学含义
 
-DI 要真正发挥作用，必须配合接口（抽象基类）使用。注入的不应是具体类，而应是抽象契约：
+若未使用依赖注入，依赖关系为：`A → B`（A直接依赖B的具体实现）。引入接口`IB`后，关系变为：`A → IB ← B`。高层模块`A`和低层模块`B`都依赖抽象`IB`，依赖方向被"倒置"。这种结构使得替换`B`为`B'`时，`A`的代码无需改动，满足开闭原则。
+
+### IoC容器的角色
+
+在大型AI系统中，手动管理依赖注入会随着组件数量增加变得繁琐。IoC容器（如Python的`dependency-injector`库、Java的Spring）负责：
+1. **注册**：将接口与具体实现类绑定（例如将`ModelLoader`绑定至`OnnxModelLoader`）
+2. **解析**：在需要时自动实例化并注入依赖，支持递归解析（被注入的对象本身也有自己的依赖）
+3. **生命周期管理**：控制依赖对象是单例（Singleton）、每次请求新建（Transient），还是按请求作用域（Scoped）
+
+---
+
+## 实际应用
+
+### AI推理服务的可测试设计
+
+假设构建一个文本分类服务：
 
 ```python
 from abc import ABC, abstractmethod
 
-class EmbeddingModel(ABC):
+class TextPreprocessor(ABC):
     @abstractmethod
-    def encode(self, text: str) -> list[float]: ...
+    def preprocess(self, text: str) -> list: ...
 
-class OpenAIEmbedding(EmbeddingModel):
-    def encode(self, text: str) -> list[float]:
-        # 调用 OpenAI API
-        ...
+class ClassificationModel(ABC):
+    @abstractmethod
+    def predict(self, features: list) -> str: ...
 
-class LocalSentenceTransformer(EmbeddingModel):
-    def encode(self, text: str) -> list[float]:
-        # 本地模型推理
-        ...
+class TextClassificationService:
+    def __init__(self, preprocessor: TextPreprocessor, model: ClassificationModel):
+        self._preprocessor = preprocessor
+        self._model = model
+
+    def classify(self, text: str) -> str:
+        features = self._preprocessor.preprocess(text)
+        return self._model.predict(features)
 ```
 
-`RAGPipeline` 类在构造时接收 `EmbeddingModel` 类型的参数，无论注入 `OpenAIEmbedding` 还是 `LocalSentenceTransformer`，其内部逻辑完全不变。这正是依赖倒置原则的精髓。
+测试时只需注入`MockTextPreprocessor`和`MockClassificationModel`，整个测试无需加载真实模型，运行速度从分钟级降至毫秒级。生产环境则注入`BertPreprocessor`和`TorchClassificationModel`，无需修改`TextClassificationService`的任何代码。
 
-### 依赖注入容器
+### 多环境配置切换
 
-当项目中依赖层级复杂时（A 依赖 B，B 依赖 C、D），手动管理注入顺序变得繁琐。依赖注入容器（DI Container）自动解析依赖图并完成实例化。Python 生态中常用的 DI 框架包括 `dependency-injector`（GitHub stars 超过 3000）和 `injector`。以 `dependency-injector` 为例：
+在AI工程中，同一套代码需要在本地开发（使用CPU小模型）、云端生产（使用GPU大模型）、CI测试（使用存根Mock）三种环境下运行。通过依赖注入，只需在启动入口（Composition Root）按环境变量决定注入哪个具体实现，业务逻辑代码完全不感知环境差异。
 
-```python
-from dependency_injector import containers, providers
-
-class Container(containers.DeclarativeContainer):
-    config = providers.Configuration()
-    embedding_model = providers.Singleton(
-        OpenAIEmbedding,
-        api_key=config.openai.api_key
-    )
-    rag_pipeline = providers.Factory(
-        RAGPipeline,
-        embedding_model=embedding_model
-    )
-```
-
-`Singleton` 提供者确保全局只创建一个 `OpenAIEmbedding` 实例（适合昂贵的模型加载），`Factory` 则每次请求创建新实例（适合无状态的处理管道）。
-
-## 实际应用
-
-**AI 推理服务的模型切换**：在生产 RAG 系统中，`RetrieverService` 通过构造函数注入接收 `VectorStore` 接口，测试时注入 `InMemoryVectorStore`，生产时注入 `PineconeVectorStore`，两套代码路径完全共享业务逻辑。
-
-**单元测试中的 Mock 注入**：这是 DI 最直接的工程收益。若 `DataProcessor` 内部硬编码 `self.db = PostgresClient()`，测试时必须启动真实数据库。通过 DI，测试代码传入 `MockDatabase`，使测试在毫秒级完成且无需任何外部服务：
-
-```python
-def test_data_processor():
-    mock_db = MockDatabase(return_data=[{"id": 1}])
-    processor = DataProcessor(database=mock_db)  # 注入 mock
-    result = processor.run()
-    assert result == expected
-```
-
-**LLM 客户端抽象**：构建支持多 LLM 供应商的 Agent 框架时，定义 `LLMClient` 抽象接口，`OpenAIClient`、`AnthropicClient`、`LocalLlamaClient` 分别实现。Agent 类通过 DI 接收具体客户端，切换供应商无需修改 Agent 业务逻辑，满足开闭原则。
+---
 
 ## 常见误区
 
-**误区一：将依赖注入与依赖注入框架混为一谈**。DI 是一种设计模式，不需要任何框架即可实践——手动在调用处传入依赖对象本身就是 DI。`dependency-injector` 等框架只是自动化了依赖图的组装过程，对于小型项目，手动组装（即"穷人的 DI"，Poor Man's DI）往往更清晰。切勿因"没有用框架"而认为自己没有使用依赖注入。
+### 误区一：把依赖注入等同于使用IoC容器框架
 
-**误区二：构造函数注入导致"构造函数爆炸"时应加参数**。当一个类的构造函数需要注入 7、8 个依赖时，真正的问题通常是该类违反了单一职责原则，应当拆分类而非容忍过长的依赖列表。依赖注入暴露了设计问题，但它本身不是问题所在。
+依赖注入是一种**设计模式**，不需要任何框架即可实现——手动在`main()`函数或工厂方法中传入依赖对象，就已经是依赖注入。IoC容器只是自动化管理注入过程的工具，适用于依赖关系复杂的大型项目。在小型AI脚本中，手动注入往往更清晰。
 
-**误区三：Service Locator 模式与依赖注入等价**。Service Locator 通过全局注册表（如 `ServiceLocator.get(EmbeddingModel)`）在类内部主动拉取依赖，类仍然控制着依赖获取过程。而 DI 是被动接收，外部推送依赖。Service Locator 的隐患在于依赖关系被隐藏在方法体内，无法从构造函数签名直接看出类的全部依赖，使代码可维护性下降。
+### 误区二：构造函数参数越多，说明依赖注入做得越好
+
+一个类的构造函数接受7个以上依赖参数，通常意味着该类承担了过多职责，违反了单一职责原则（SRP），而非依赖注入本身的问题。依赖注入揭露了这种"过度耦合"，但不应被用来掩盖它——正确做法是重新划分类的职责。
+
+### 误区三：依赖注入会导致性能开销
+
+构造器注入的本质只是将对象引用作为参数传递，Python中一次参数赋值的开销约为纳秒级。IoC容器的反射解析在首次构建时有开销，但通常在初始化阶段发生，不影响推理路径上的热代码性能。将"使用了DI容器"与"运行时性能差"混为一谈，是对依赖注入的误解。
+
+---
 
 ## 知识关联
 
-**与 SOLID 原则的关系**：依赖注入是依赖倒置原则（DIP，SOLID 中的 D）的落地机制，同时促进了开闭原则（OCP）——通过注入新的实现类扩展行为，而不修改已有类。单一职责原则（SRP）与 DI 相互强化：职责单一的类通常依赖较少，DI 的构造函数也更整洁。
+**与SOLID原则的关系**：依赖注入是实现SOLID中"D"（依赖倒置原则）的最直接机制，同时支撑"O"（开闭原则，通过注入不同实现而非修改代码来扩展行为）和"L"（里氏替换原则，注入的子类实现必须能替换基类接口）。没有对SOLID原则的理解，依赖注入只是一种"把参数传进去"的表面操作，无法理解其架构价值。
 
-**在 AI 工程架构中的位置**：掌握 DI 后，可以进一步理解 Clean Architecture 中的端口与适配器（Ports & Adapters）模式，其中"端口"对应抽象接口，"适配器"对应通过 DI 注入的具体实现。这一架构在构建可测试、可替换模型后端的 AI 系统时是主流选择。此外，Python 的 `FastAPI` 框架内置了基于类型注解的 DI 系统（`Depends()`），理解 DI 原理是高效使用该特性的前提。
+**与工厂模式的区别**：工厂模式在内部创建对象（`A`调用`Factory.create()`获得`B`），创建控制权仍在`A`内部；依赖注入则是将创建权完全移至外部，`A`不知道也不关心`B`是如何被创建的。两者都解决"谁来创建依赖"的问题，但控制权的归属相反。
+
+**在AI工程系统设计中的延伸**：掌握依赖注入后，可进一步理解面向接口编程在模型版本管理（热替换模型实现）、A/B测试框架（注入不同策略对象）和分布式推理系统（注入本地或远程推理客户端）中的具体应用，这些场景都以依赖注入为基础设计技术。

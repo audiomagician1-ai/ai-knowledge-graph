@@ -20,16 +20,19 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 建造者模式
 
 ## 概述
 
-建造者模式（Builder Pattern）是一种创建型设计模式，专门用于分步骤构建由多个可选部件组成的复杂对象，同时将对象的**构建过程**与其**最终表示**彻底分离。与工厂模式一次性返回完整对象不同，建造者模式允许客户端代码逐步指定构建步骤，最终通过调用 `build()` 方法获得成品对象。
+建造者模式（Builder Pattern）是一种创建型设计模式，专门用于分步骤构建复杂对象，其核心思想是将对象的**构建过程**与该对象的**最终表示**彻底分离。当一个对象需要多个可选参数、多个构建步骤或需要支持多种不同表示时，建造者模式可以避免"构造函数爆炸"——即因参数组合过多导致需要数十个重载构造函数的困境。
 
-该模式由 GoF（Gang of Four）在1994年出版的《设计模式：可复用面向对象软件的基础》中正式收录，属于23种经典设计模式之一。建造者模式最早的应用场景是文档转换系统——同一份内容可以被"建造"成 PDF、HTML 或纯文本三种不同表示，三种表示共享相同的构建流程，但各自的装配细节不同。
+建造者模式由GoF（Gang of Four）在1994年出版的《设计模式：可复用面向对象软件的基础》中正式归类。GoF给出的经典意图是：将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。该书将其列为23种经典设计模式中的第3类创建型模式之一。
 
-在 AI 工程场景中，建造者模式尤其适合构建"配置对象"。一个大语言模型的推理请求往往包含十几个可选参数：`model`、`temperature`、`max_tokens`、`top_p`、`system_prompt`、`stop_sequences` 等。如果用构造函数传递所有参数，函数签名会极度臃肿且易出错（即所谓的"伸缩构造函数反模式"，Telescoping Constructor Anti-Pattern）。建造者模式将每个参数的赋值封装为独立的链式调用方法，使代码可读性和可维护性大幅提升。
+在AI工程实践中，建造者模式尤为重要。构建一个机器学习训练管道（Training Pipeline）往往涉及数据加载器、预处理步骤、模型结构、优化器、损失函数等十余个可选组件，每种组件都有多种候选实现。若使用普通构造函数，仅超参数组合就可能产生数百种函数签名；使用建造者模式则可以用流畅的链式调用逐步配置，最终调用 `build()` 生成一致的训练对象。
 
 ---
 
@@ -37,98 +40,71 @@ scorer_version: "scorer-v2.0"
 
 ### 四个角色及其职责
 
-建造者模式的标准结构包含四个角色：
+建造者模式标准结构由四个角色构成：
 
-| 角色 | 名称 | 职责 |
-|------|------|------|
-| Product | 产品 | 最终要构建的复杂对象 |
-| Builder | 抽象建造者 | 声明构建各部件的抽象方法 |
-| ConcreteBuilder | 具体建造者 | 实现构建步骤，维护部件状态 |
-| Director | 指挥者 | 定义构建步骤的调用顺序（可选）|
+- **Product（产品）**：最终被构建的复杂对象，如 `NeuralNetworkConfig`。
+- **Builder（抽象建造者）**：定义创建产品各部件的抽象接口，如 `abstract buildOptimizer()`、`abstract buildLoss()`。
+- **ConcreteBuilder（具体建造者）**：实现Builder接口，负责具体部件的构造与组装，如 `AdamModelBuilder`。
+- **Director（指挥者）**：按照固定顺序调用Builder中的方法，封装构建流程，但不关心具体实现，如 `TrainingDirector.construct(builder)`。
 
-`Director` 不是必须的。在现代"流式建造者"（Fluent Builder）风格中，客户端代码直接调用链式方法，省略 Director，这在 Python 和 Java 中均已成为主流写法。
+Director与ConcreteBuilder之间是**依赖注入**关系——Director只持有Builder的抽象接口引用，运行时注入不同的ConcreteBuilder即可产出不同产品，这正是"同样构建过程，不同表示"的实现机制。
 
-### 方法链（Method Chaining）实现机制
+### 流式建造者（Fluent Builder）变体
 
-流式建造者的关键在于每个 `setXxx()` 方法都返回 `self`（Python）或 `this`（Java），从而支持链式调用：
+现代Python和Java代码中更常见的是省略Director的**流式建造者**，每个设置方法返回 `self`（Python）或 `this`（Java），支持方法链调用：
 
 ```python
-class LLMRequestBuilder:
-    def __init__(self):
-        self._config = {}
-
-    def model(self, name: str) -> "LLMRequestBuilder":
-        self._config["model"] = name
-        return self  # 返回自身，支持链式调用
-
-    def temperature(self, t: float) -> "LLMRequestBuilder":
-        assert 0.0 <= t <= 2.0, "temperature 必须在 [0.0, 2.0] 之间"
-        self._config["temperature"] = t
-        return self
-
-    def max_tokens(self, n: int) -> "LLMRequestBuilder":
-        self._config["max_tokens"] = n
-        return self
-
-    def build(self) -> dict:
-        if "model" not in self._config:
-            raise ValueError("model 字段为必填项")
-        return self._config.copy()
-
-# 客户端调用
-request = (LLMRequestBuilder()
-           .model("gpt-4o")
-           .temperature(0.7)
-           .max_tokens(1024)
-           .build())
+config = (ModelConfigBuilder()
+          .set_layers([256, 128, 64])
+          .set_dropout(0.3)
+          .set_optimizer("adam", lr=1e-3)
+          .set_loss("cross_entropy")
+          .build())
 ```
 
-注意 `build()` 方法中的校验逻辑——这是建造者模式的另一大优势：可以在对象正式生成前集中做参数合法性检查，而不是将校验分散在对象各处。
+`build()` 方法在最后执行参数校验，例如检测 `dropout` 是否在 `[0, 1)` 区间、`layers` 列表是否非空，若校验失败则抛出 `ValueError`，而非等到训练开始时才出错。这种"构建时验证"是流式建造者相比直接赋值属性的关键优势。
 
-### 建造者模式与工厂模式的本质区别
+### 与工厂模式的结构差异
 
-工厂模式解决的问题是"**创建哪种类型**的对象"（多态选择），而建造者模式解决的是"**如何一步步装配**同一类对象"（构建过程控制）。具体区分标准如下：
-
-- **参数数量**：当构造参数超过 **4个** 时，业界普遍建议改用建造者模式（来自《Effective Java》第3版 Item 2）。
-- **参数可选性**：工厂模式通常所有参数都必须提供；建造者模式天然支持大量可选参数。
-- **对象一致性**：建造者可在 `build()` 前做跨字段联合校验，工厂方法无此能力。
+工厂模式（Factory Pattern）一次性调用单个方法返回对象，适合构建步骤简单、产品类型依类型参数区分的场景；建造者模式则通过**多次方法调用逐步积累状态**，适合同一类型产品但内部配置高度可变的场景。用Python中的 `dataclass` 来比喻：工厂模式相当于调用 `__init__` 时一次性传入全部参数，建造者模式相当于逐字段赋值后调用 `frozen=True` 的 `replace()` 生成最终不可变对象。二者解决的问题规模不同，并非替代关系。
 
 ---
 
 ## 实际应用
 
-### AI 推理管道的 Pipeline 构建
+### LLM推理客户端构建
 
-在 AI 工程中，LangChain 框架大量使用建造者风格构建 `Chain` 对象。例如，一个 RAG（检索增强生成）管道可以通过链式调用逐步装配：向量检索器、提示模板、LLM 模型、输出解析器四个组件，最终调用 `.build()` 或 `|` 运算符（LangChain的LCEL语法）组装为可运行管道。每个组件相互独立，替换某一组件不影响其余部分的构建逻辑。
+在调用大型语言模型API时，请求对象包含 `model`、`temperature`、`max_tokens`、`system_prompt`、`tools`、`response_format` 等十余个可选字段。以下是使用建造者模式构建OpenAI请求对象的典型实现：
 
-### 神经网络模型配置
+```python
+request = (ChatRequestBuilder(model="gpt-4o")
+           .with_system("你是一个代码审查助手")
+           .with_temperature(0.2)
+           .with_max_tokens(2048)
+           .with_json_response()
+           .build())
+```
 
-PyTorch 生态中的 `torchvision.models` 以及 Hugging Face 的 `TrainingArguments` 类均体现建造者思想。`TrainingArguments` 接收超过 **80个** 可选参数，通过 dataclass 配合默认值实现类似建造者的效果：用户只需显式指定需要修改的字段，其余使用默认值，最终传入 `Trainer` 完成构建。
+若某项目同时支持OpenAI和本地Ollama两套API，只需实现 `OpenAIRequestBuilder` 和 `OllamaRequestBuilder` 两个ConcreteBuilder，Director中的构建逻辑完全不变，切换后端只需替换注入的Builder实例。
 
-### 测试数据工厂
+### PyTorch数据管道构建
 
-在 AI 系统的单元测试中，建造者模式常用于构造测试用的复杂数据对象。例如构建一条包含"用户输入、对话历史、系统提示、工具调用结果"的多轮对话样本时，使用 `ConversationBuilder` 可以针对不同测试场景灵活组合字段，而无需为每种场景单独定义数据结构。
+`torchvision.transforms.Compose` 本质上是一种简化的建造者模式——将多个变换步骤逐一添加后组合成最终的变换管道。更完整的建造者应用是构建 `DataLoader`：批大小、采样策略、`num_workers`、`pin_memory` 等参数适合通过建造者按需配置，并在 `build()` 时验证 `num_workers` 不超过系统CPU核心数（如 `os.cpu_count()`）。
 
 ---
 
 ## 常见误区
 
-### 误区一：认为所有复杂对象都需要建造者模式
+**误区一：认为建造者模式必须包含Director类。** 在实际AI工程代码（尤其是Python生态）中，Director往往被省略，直接由调用方通过方法链控制构建顺序。GoF定义的四角色结构适合Java等强类型语言中需要严格封装构建流程的场景；Python中的流式建造者变体同样合法，且更符合"Pythonic"风格。
 
-建造者模式引入了额外的 Builder 类，增加代码量约 30%~50%。对于参数少于 4 个、构建过程简单的对象，直接使用构造函数或工厂方法反而更清晰。过度使用建造者模式会造成"设计模式堆砌"，降低代码可读性。判断标准：构造参数是否超过 4 个，且其中是否有大量可选参数。
+**误区二：将建造者模式用于参数较少的简单对象。** 当一个对象只有2-3个必填参数时，引入Builder会增加不必要的类数量和代码量。建造者模式的收益随**可选参数数量**增加而显著提升，通常以超过4个可选参数作为引入该模式的经验阈值。对于简单对象，使用Python的关键字参数默认值（`def __init__(self, lr=1e-3, dropout=0.0)`）即可满足需求。
 
-### 误区二：将建造者模式与原型模式混淆
-
-原型模式通过**克隆已有对象**来创建新对象（调用 `clone()` 或 `copy.deepcopy()`），适用于对象创建成本高的场景；建造者模式是从**零开始按步骤构造**新对象。两者共同点是都返回复杂对象，但解决路径截然不同。在 AI 场景中，克隆一个已训练的模型权重对象应用原型模式，而组装一个新的推理请求配置应使用建造者模式。
-
-### 误区三：忽略 `build()` 方法中的校验职责
-
-很多初学者将 `build()` 写成仅仅返回 `self._product` 的空壳方法，把校验逻辑放在各个 `setXxx()` 方法中。这会导致无法做**跨字段联合校验**——例如，只有当 `use_beam_search=True` 时 `num_beams` 字段才有意义。这类跨字段约束必须在 `build()` 中统一检查，这正是建造者模式集中校验能力的核心价值所在。
+**误区三：`build()` 方法可有可无，随时都能获取半成品对象。** 建造者模式的一个重要契约是：只有调用 `build()` 之后，产品对象才处于完整、有效的状态。若允许外部直接访问中间状态的产品，校验逻辑就无法集中执行，导致运行时出现意外的 `None` 属性错误，彻底破坏了建造者模式的防御性构建优势。
 
 ---
 
 ## 知识关联
 
-**前置知识衔接**：建造者模式是创建型设计模式家族的成员，与工厂模式共享"封装对象创建逻辑"的出发点。工厂模式处理"创建哪种子类"的多态决策，而建造者模式接管工厂模式无法优雅处理的场景——当同一类产品需要多个可选配置步骤时。理解工厂模式中"客户端不直接调用构造函数"的原则，有助于快速接受建造者模式中"必须通过 `build()` 获取对象"的约束。
+建造者模式直接依赖**设计模式概述**中介绍的创建型模式分类框架——理解"创建型模式负责对象实例化逻辑"是正确选择建造者模式使用场景的前提。与**工厂模式**的对比理解同样关键：工厂模式通过多态决定"创建哪种类型"，建造者模式通过分步配置决定"如何组装同一类型的内部结构"，两者在AI工程中经常组合使用——工厂方法负责选择并返回合适的Builder实例，Builder负责装配具体产品。
 
-**横向关联**：建造者模式产出的对象往往是**不可变对象（Immutable Object）**——一旦 `build()` 返回，对象不再允许修改。这与 Python dataclass 的 `frozen=True` 选项、Java 的 `final` 字段设计一脉相承，在多线程 AI 推理服务中尤其重要，可避免请求配置在并发环境下被意外篡改。
+在Python AI工程栈中，`sklearn.pipeline.Pipeline`、Hugging Face的 `TrainingArguments`（通过`dataclasses`实现的建造者变体）以及LangChain的 `LLMChain` 构建流程，均体现了建造者模式的设计思想，是学习完本模式后可直接对照阅读的真实代码案例。

@@ -20,68 +20,77 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 材质实例
 
 ## 概述
 
-材质实例（Material Instance）是虚幻引擎材质系统中的一种派生资产，它允许美术师在不重新编译着色器的前提下，通过修改预定义参数来创建同一母材质的多种视觉变体。母材质（Parent Material）中使用 `ScalarParameter`、`VectorParameter`、`TextureParameter` 等节点暴露的参数，可以在实例中被独立覆写，而底层 HLSL 代码和编译后的着色器字节码保持完全一致。
+材质实例（Material Instance）是基于同一父级材质（Parent Material，又称母材质）创建的参数化变体，允许美术人员在不重新编译着色器的情况下，通过修改预定义参数来生成视觉差异化的材质表现。在虚幻引擎（Unreal Engine）的材质系统中，材质实例是解决"同系列物件需要数十种颜色/纹理变体"这一问题的标准方案。
 
-材质实例的概念随虚幻引擎 3（2006年）的大规模商业化普及而被广泛采用，并在 UE4 正式将其分为"材质实例常量"（Material Instance Constant，MIC）和"材质实例动态"（Material Instance Dynamic，MID）两类，前者用于静态资产，后者支持运行时参数修改。这一区分在 UE5 中依然延续。
+材质实例这一概念随着现代游戏引擎的材质编译优化需求而诞生。UE3时代（2006年）开始将材质实例作为一级工作流引入，核心动机是着色器编译耗时长——一个复杂母材质的完整编译可能需要数十秒甚至数分钟，若每次微小参数调整都触发重编译，迭代效率将极低。材质实例通过将"结构固定、参数可变"分离的方式解决了这一痛点。
 
-材质实例的核心价值在于**着色器编译复用**。一个复杂的 PBR 材质从源码编译到 GPU 可执行指令可能耗时数秒乃至数分钟；通过实例机制，一套编译结果可以支撑数百个外观各异的表面变体，显著压缩项目构建时间和内存中的着色器排列（Shader Permutation）数量。
+材质实例在大规模游戏项目中的意义体现在资产管理层面：一个角色换装系统可以用1个母材质 + 数百个材质实例替代数百个独立材质文件，不仅减少了着色器排列组合（Shader Permutation）的数量，也让参数修改可以通过蓝图或C++在运行时动态完成，这是独立材质文件做不到的。
 
 ---
 
 ## 核心原理
 
-### 参数继承与覆写机制
+### 着色器编译与参数绑定机制
 
-母材质中每一个暴露的参数节点都具备一个**默认值**和一个**参数名称（Parameter Name）**。材质实例本质上是一份存储"参数差异表"的轻量资产：只记录与母材质默认值不同的那些参数键值对，未被覆写的参数自动回退到母材质的默认值。这意味着一个只改变底色颜色的实例，其磁盘占用可能仅有几千字节，而完整母材质资产可能有数百 KB。
+母材质在保存时会编译生成实际的 HLSL 着色器字节码，材质实例本身**不持有独立的着色器代码**，而是持有一份参数覆盖表（Parameter Override Table）。渲染时，GPU 使用母材质的着色器程序，但通过常量缓冲区（Constant Buffer）注入实例特有的参数值。正是因为着色器程序已经固化，修改材质实例参数时无需触发任何编译操作，参数更新可在毫秒级完成。
 
-在渲染管线执行时，引擎将实例的参数表与编译好的着色器字节码合并，通过 Constant Buffer（D3D 术语，对应 GLSL 的 Uniform Block）将参数数据传入 GPU，整个过程不涉及任何重新编译。
+### 可暴露的参数类型
 
-### 静态开关参数（Static Switch Parameter）
+母材质中需要通过特定节点将属性声明为"实例可修改参数"，UE 中主要有以下几类：
 
-静态开关参数（`StaticSwitchParameter`）是材质实例中一种特殊的参数类型，它的值决定编译时哪条代码路径被保留。由于静态开关改变了实际着色器代码结构，**每一种静态开关组合都会生成独立的着色器变体（Permutation）**，因此修改静态开关参数会触发该实例对应排列的重编译，而非普通标量/纹理参数的无编译覆写。这是材质实例中唯一需要等待编译的参数类型，也是最常见的性能误解来源。
+- **Scalar Parameter**：单个浮点数，如粗糙度强度倍数、自发光亮度等
+- **Vector Parameter**：四维向量（RGBA），常用于颜色或UV平铺系数
+- **Texture Parameter**：纹理槽位，允许实例替换为不同贴图资产
+- **Static Switch Parameter**：编译期布尔开关，不同开关状态的实例**会产生独立的着色器排列**，因此需谨慎使用
 
-### 动态材质实例（MID）的运行时修改
+以 Scalar Parameter 为例，在母材质中创建该节点时需要填写 Parameter Name（如 `Roughness_Multiplier`）和 Default Value（如 `0.5`），材质实例只能在此节点存在的前提下才能覆盖对应值。
 
-通过蓝图或 C++ 调用 `CreateDynamicMaterialInstance()` 可在运行时从任意材质或材质实例创建 MID。MID 持有独立的参数状态，与原始实例资产互不干扰。修改 MID 参数使用 `SetScalarParameterValue`、`SetVectorParameterValue`、`SetTextureParameterValue` 三类函数，参数值直接写入该 MID 独占的 Constant Buffer，下一帧渲染时即生效，GPU 端耗时约 0.01ms 量级（参数更新本身），不存在任何着色器重编译开销。
+### 静态实例与动态实例的区别
 
-需要注意的是，MID 会打破静态批处理（Static Batching）和 GPU Instancing，因为每个持有不同 MID 的网格体无法共享同一 Draw Call 的参数状态，这在移动平台上对 Draw Call 数量影响显著。
+材质实例分为两种子类型：**材质实例常量（Material Instance Constant，MIC）** 和 **动态材质实例（Dynamic Material Instance，DMI）**。
+
+MIC 保存在磁盘上，参数在编辑器中设置后不再运行时修改，渲染开销与普通材质几乎一致。DMI 则通过 `CreateDynamicMaterialInstance()` 函数在运行时创建，支持逐帧修改参数（如水面波动相位、角色受击变红效果），但每个 DMI 是独立对象，若同屏存在大量不同参数的 DMI，会打断 GPU 实例化合批（GPU Instancing），需要权衡性能。
 
 ---
 
 ## 实际应用
 
-**角色换装系统**：一套写实人体皮肤母材质暴露 `SkinTone`（Vector3）、`ScatterRadius`（Scalar）、`TattooMask`（Texture2D）三个参数，可为游戏中 50 个 NPC 创建 50 个材质实例常量，着色器只编译一次，内存中的 PSO（Pipeline State Object）仅一份。
+**场景一：角色皮肤颜色变体**  
+一款 RPG 游戏需要为同一套盔甲提供 8 种金属颜色。美术只需制作 1 个包含 `Tint_Color`（Vector Parameter）和 `Metal_Roughness`（Scalar Parameter）的母材质，再创建 8 个 MIC，分别覆盖颜色向量值。8 个实例共用同一着色器，Draw Call 层面也可以合批，内存中仅存储 1 份着色器字节码。
 
-**环境资产批量变体**：一个砖墙材质实例化后通过 `TilingScale`（Scalar）和 `MossAmount`（Scalar）参数，能让同一贴图资产在街道、地牢、废墟场景中呈现截然不同的视觉风格，三个场景的 DrawCall Shader Hash 完全相同，利于 PSO 缓存命中。
+**场景二：运行时血迹/污损系统**  
+角色受伤时需要动态叠加血迹纹理。程序员在角色受击事件中调用 `CreateDynamicMaterialInstance()`，随后每帧通过 `SetScalarParameterValue("BloodAmount", CurrentBloodLevel)` 驱动遮罩强度，无需修改任何着色器代码，美术只需在母材质中预留 `BloodAmount` 这个 Scalar Parameter 节点。
 
-**运行时车辆喷漆**：赛车游戏中玩家自定义车身颜色时，服务端为每辆车调用 `CreateDynamicMaterialInstance()` 并 `SetVectorParameterValue("CarColor", selectedColor)`，整个流程在游戏线程完成，不阻塞渲染线程重编译。
-
-**材质实例层级嵌套**：实例的母材质可以是另一个材质实例，形成最多约 16 层的继承链（UE5 的实际软限制）。常见用法是"基础岩石实例 → 覆雪岩石实例 → 特定关卡覆雪岩石实例"，越靠近叶节点的实例覆写参数越少，维护成本越低。
+**场景三：关卡美术批量替换贴图**  
+开放世界中有 500 个地面网格使用同一母材质，但关卡分区需要不同地貌纹理。通过创建5个 MIC 并分别设置 `Albedo_Texture`（Texture Parameter）为沙漠、草地、雪地等贴图，500个网格按区域分配实例，美术无需接触任何材质节点编辑，贴图替换在 Content Browser 中直接完成。
 
 ---
 
 ## 常见误区
 
-**误区一：修改任何实例参数都不需要重编译**
-这一说法对标量、向量、纹理参数成立，但对静态开关参数（Static Switch Parameter）不成立。静态开关的每种 true/false 组合对应一个独立的着色器排列，改变它就等同于切换到另一个预编译版本，如果该版本尚未编译则会触发即时编译，导致游戏卡顿（Shader Hitch）。项目中应尽量在 Cook 阶段预热（Warm Up）所有静态排列。
+**误区一：认为修改材质实例参数一定不影响性能**  
+对 Scalar/Vector/Texture Parameter 的修改确实无需重编译，但**修改 Static Switch Parameter 会导致引擎为该状态生成一个新的着色器排列并触发编译**。项目中若有20个 Static Switch，理论上最多会产生 2²⁰ ≈ 100 万种排列，实际使用中需严格控制 Static Switch 数量，UE 官方建议单个材质的 Static Switch 不超过 4-5 个。
 
-**误区二：MID 与材质实例常量可以随意互换**
-材质实例常量（MIC）的参数在资产层固定，引擎可将其归入 Static Draw Policy 并参与合批；MID 因参数在运行时可变，引擎无法保证批处理安全，会强制分离 Draw Call。在不需要运行时修改的场合使用 MID 会无谓地增加 Draw Call 数量，在手机平台上可能造成每帧多出数十个 Draw Call 的性能损失。
+**误区二：将 DMI 视为"免费"的动态效果手段**  
+每次调用 `CreateDynamicMaterialInstance()` 会在内存中分配新对象，若在 `Tick` 函数或频繁触发的事件中不加缓存地重复创建，会产生大量内存碎片和 GC 压力。正确做法是在 `BeginPlay` 时创建并缓存 DMI 引用，后续只调用 `SetScalarParameterValue` 等参数更新接口。
 
-**误区三：材质实例层级越深越灵活因此应尽量加深**
-嵌套层级越深，引擎在参数查找时需要遍历的继承链越长。虽然参数查找本身开销极小，但过深的继承关系（超过 4～5 层）会使参数来源难以追踪，当父级参数默认值修改时，下游实例的视觉变化难以预测，增加维护成本，并非层数越多越好。
+**误区三：母材质与材质实例可以无限嵌套**  
+UE 支持材质实例继承链（Instance A → Instance B → Mother Material），但继承层级越深，参数查找的覆盖逻辑越复杂，且**最大继承深度为 13 层**，超过此限制会导致编辑器报错。实际项目中通常只使用 1-2 级继承，超过 2 级的设计往往意味着母材质的参数职责划分不合理。
 
 ---
 
 ## 知识关联
 
-**前置概念——PBR材质基础**：理解材质实例首先需要知道 `BaseColor`、`Roughness`、`Metallic` 等 PBR 通道的物理含义，因为母材质中暴露的参数通常直接驱动这些通道或它们的调制系数。没有 PBR 语义的背景，参数名称本身没有意义。
+材质实例建立在 **PBR 材质基础**之上——学习者需要先理解 Roughness、Metallic、Base Color 等 PBR 属性的物理含义，才能有目的地在母材质中将这些属性暴露为参数供实例修改。没有 PBR 基础直接操作材质实例，容易出现"不知道该暴露哪些参数"的困惑。
 
-**后续概念——材质函数（Material Function）**：材质函数是可复用的节点子图，可以在母材质内部封装复杂逻辑。材质实例负责参数的运行时/编辑时变化，而材质函数负责母材质内部逻辑的结构化复用，两者分别在"参数层"和"逻辑层"服务于材质的可维护性。
+向上延伸，**材质函数（Material Function）** 是进一步减少母材质内部重复逻辑的工具——当多个母材质都需要相同的混合逻辑（如三平面映射 Triplanar Mapping），将该逻辑封装为材质函数后可被所有母材质复用，配合材质实例形成"材质函数 → 母材质 → 材质实例"的三层资产架构。
 
-**后续概念——材质指令数（Material Instruction Count）**：材质实例的所有变体共享母材质的指令数，因此优化母材质的 Instruction Count 能同时惠及它的所有实例。了解材质实例的复用机制后，自然引申出"如何衡量共享着色器的 GPU 代价"这一话题，即材质指令数的分析方法。
+**材质指令数（Material Instruction Count）** 与材质实例直接相关：母材质的指令数决定了所有派生实例的基础渲染开销，优化母材质的 Instruction Count 等效于同时优化其所有实例。在性能分析时，通过 `stat shaderscomplex` 或 UE 的 Shader Complexity 视图查看的是母材质的指令数，而非单个实例的独立数值。

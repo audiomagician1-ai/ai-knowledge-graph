@@ -20,92 +20,87 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-04-01
 ---
+
 # 游标分页
 
 ## 概述
 
-游标分页（Cursor-based Pagination）是一种基于"书签"位置进行数据集分割的API分页技术。与传统的 `LIMIT offset, count` 不同，游标分页通过将某一行的唯一标识（通常是自增主键ID或时间戳）编码为不透明的游标字符串，每次请求时告诉数据库"从这条记录之后开始取N条"，从而避免数据库在深翻页时扫描大量无用行。
+游标分页（Cursor-based Pagination）是一种基于"位置标记"而非"行偏移量"来分割数据集的分页技术。不同于传统的 `LIMIT offset, count` SQL 语法，游标分页使用某个字段的具体值（通常是自增主键 ID 或时间戳）作为查询的起点，通过 `WHERE id > cursor_value LIMIT n` 的方式获取下一页数据，从根本上规避了偏移量扫描的性能问题。
 
-这一模式由Facebook Graph API在2010年前后推广，Twitter的Timeline API、GitHub的REST API（v3）和Stripe的API均采用此设计。其根本动机在于解决海量数据下分页性能崩溃的问题：当一个用户表已有1000万行时，`OFFSET 9999000 LIMIT 10` 会迫使数据库引擎跳过999.9万行数据，而游标分页通过索引范围扫描将这个操作降为 O(log n) 的索引查找。
+该技术在 2010 年代随着社交媒体无限滚动（Infinite Scroll）场景的爆发而得到广泛应用。Twitter、Facebook 的公开 API 均采用此方案，Twitter API v2 使用 `next_token` 字段作为游标返回值。游标分页的核心优势在于：当数据集达到百万行规模时，Offset 分页的 `LIMIT 1000000, 20` 会触发全表扫描并丢弃前 100 万行，而游标分页只需从索引直接定位到游标位置，时间复杂度从 O(offset) 降至 O(log n)（B+树索引下）。
 
-游标分页对AI工程后端尤为重要，因为训练数据集导出、推理日志检索、向量数据库结果流式返回等场景都涉及对千万级数据的高效遍历，一旦使用Offset分页，接口响应时间会随翻页深度线性恶化，在深翻页时甚至达到秒级超时。
-
----
+游标分页特别适用于实时数据流场景。当用户翻页期间有新数据插入时，Offset 分页会导致同一条记录在第 N 页和第 N+1 页均出现（幽灵记录问题），而游标分页以具体值为锚点，彻底免疫插入和删除导致的数据偏移。
 
 ## 核心原理
 
-### Offset分页的性能缺陷
+### 游标的数学本质
 
-传统Offset分页的SQL形式为：
-
-```sql
-SELECT * FROM logs ORDER BY id LIMIT 10 OFFSET 50000;
-```
-
-即使 `id` 列有B+树索引，MySQL/PostgreSQL仍需**读取并丢弃**前50000行，因为 `OFFSET` 是在索引定位后按顺序跳过的，无法直接跳转。实测在PostgreSQL 14中，对1000万行的表执行 `OFFSET 5000000` 耗时约2.3秒，而同等数据量的游标查询仅需约4毫秒——性能差距达500倍量级。此外，Offset分页存在**幻读问题**：若在第一页和第二页之间有新数据插入，第二页请求会漏掉或重复返回边界数据。
-
-### 游标的构造与编码
-
-游标本质是一个稳定的排序锚点。假设按 `created_at`（时间戳）升序分页，当前页最后一条记录的 `created_at = 2024-03-15T10:23:45Z`，`id = 8821`，则游标可以编码为：
-
-```
-cursor = Base64( "created_at:2024-03-15T10:23:45Z,id:8821" )
-       = "Y3JlYXRlZF9hdDoyMDI0LTA..."
-```
-
-对客户端而言，游标是不透明的字符串，不暴露内部结构。服务端解码后，下一页查询变为：
+游标本质上是一个**稳定的排序锚点**。设数据按字段 `id` 升序排列，第一页查询为：
 
 ```sql
-SELECT * FROM events
-WHERE (created_at, id) > ('2024-03-15T10:23:45Z', 8821)
-ORDER BY created_at ASC, id ASC
-LIMIT 10;
+SELECT * FROM posts ORDER BY id ASC LIMIT 20;
 ```
 
-这个**行值比较**（Row Value Comparison）直接利用复合索引 `(created_at, id)` 做范围扫描，索引定位精确，无需跳过任何行。PostgreSQL自9.0版本起、MySQL自5.7.3起均原生支持行值比较语法。
+返回结果中最后一行的 `id` 值（设为 `last_id = 842`）即为游标。第二页查询变为：
 
-### 双向游标与API设计规范
-
-完整的游标分页响应体应同时返回 `next_cursor` 和 `prev_cursor`，以支持前向和后向翻页。GitHub API的实际响应头格式如下：
-
-```
-Link: <https://api.github.com/repos/owner/repo/issues?cursor=abc123&per_page=30>; rel="next",
-      <https://api.github.com/repos/owner/repo/issues?cursor=xyz789&per_page=30>; rel="prev"
+```sql
+SELECT * FROM posts WHERE id > 842 ORDER BY id ASC LIMIT 20;
 ```
 
-计算 `prev_cursor` 时，需将排序方向取反：若正向是 `(created_at, id) > (anchor_time, anchor_id)`，则反向是 `(created_at, id) < (first_record_time, first_record_id) ORDER BY created_at DESC`，取结果后再在应用层翻转顺序。
+这个不等式过滤配合 `id` 字段上的 B+树索引，数据库引擎可以通过索引范围扫描（Index Range Scan）直接跳转到 id=842 之后的叶节点，完全跳过前 842 行的读取。MySQL InnoDB 中主键索引即为聚簇索引，此查询的 IO 开销固定为常量级。
 
----
+### 游标编码与传输格式
+
+游标值通常不直接暴露原始字段值，而是通过 Base64 编码进行不透明封装（Opaque Cursor），原因有二：① 防止客户端对游标值进行算术操作（如手动构造 `cursor - 1` 来回翻页）；② 便于在不修改 API 接口的情况下更换内部游标字段。
+
+例如，游标值 `{"id": 842, "created_at": "2024-01-15T10:30:00Z"}` 编码后返回为：
+```
+eyJpZCI6IDg0MiwgImNyZWF0ZWRfYXQiOiAiMjAyNC0wMS0xNVQxMDozMDowMFoifQ==
+```
+
+GraphQL 规范中的 Relay Cursor Connection 规范（2015 年发布）将此格式标准化，定义了 `edges`、`node`、`cursor`、`pageInfo` 四个字段的固定结构，`pageInfo` 中包含 `hasNextPage`、`hasPreviousPage`、`startCursor`、`endCursor` 四个元数据字段。
+
+### 复合游标处理非唯一排序字段
+
+当排序字段为非唯一值（如 `likes_count`）时，单字段游标会产生歧义——多行具有相同 `likes_count=100` 时无法确定断点位置。解决方案是构造**复合游标**，以辅助唯一字段（通常是 `id`）消除歧义：
+
+```sql
+SELECT * FROM posts
+WHERE (likes_count < 100) 
+   OR (likes_count = 100 AND id < 8421)
+ORDER BY likes_count DESC, id DESC
+LIMIT 20;
+```
+
+此 SQL 中的 `(likes_count, id)` 联合索引需要预先创建，且字段顺序必须与 `ORDER BY` 一致，否则查询优化器无法使用索引。这是使用复合排序时游标分页实现中最容易出错的环节。
 
 ## 实际应用
 
-**场景一：AI推理日志导出**
-一个在线推理服务每天产生约800万条推理日志，运营人员需要将过去30天日志导出到数据湖。若用Offset分页，第2400万条之后的请求平均耗时超过8秒。改用游标分页后，每页10000条的导出脚本维持恒定的约120ms响应，整批导出总时长从3.5小时降至约11分钟。
+**场景一：AI 模型训练日志 API**
+AI 训练平台通常需要实时展示亿级训练日志。使用游标分页，以 `log_id`（自增 BIGINT）为游标，每页返回 100 条，服务端响应时间稳定在 5-10ms。相比之下，若使用 Offset 分页查询第 10 万页（`LIMIT 10000000, 100`），MySQL 在无缓存情况下响应时间可超过 30 秒。
 
-**场景二：向量数据库结果分页**
-Pinecone、Weaviate等向量数据库的官方SDK均使用游标分页返回相似度搜索结果。Weaviate的GraphQL接口中，`after` 参数就是游标ID，内部实现为对HNSW索引节点ID的范围迭代，不支持任意跳页正是其文档明确说明的设计取舍。
+**场景二：用户动态时间线**
+Twitter-like 应用中，首次加载调用 `GET /timeline?limit=20`，响应体包含 `next_cursor: "eyJpZCI6IDM4OTJ9"`。用户下滑触发 `GET /timeline?after=eyJpZCI6IDM4OTJ9&limit=20`。因为锚点是具体 ID 值，在用户查看期间新发布的帖子不会导致已看内容重复出现。
 
-**场景三：Stripe账单系统**
-Stripe API每个列表接口（如 `/v1/charges`）都使用 `starting_after={charge_id}` 作为游标，`charge_id` 本身即为自增有序ID（如 `ch_3Oab...`），无需额外编码，直接作为 `WHERE id > 'ch_3Oab...' LIMIT 10` 的条件。
-
----
+**场景三：向量数据库检索结果分页**
+Pinecone、Weaviate 等向量数据库的 REST API 均采用游标分页，以保证大规模语义搜索结果在多次请求间的一致性。Weaviate 的 `after` 参数即为游标分页实现，要求配合 `sort` 字段使用。
 
 ## 常见误区
 
-**误区一：游标分页可以实现任意跳页**
-游标分页天然不支持"跳到第50页"这类随机访问。游标是线性书签，只能基于上一页的终点定位下一页起点。若业务确实需要"第N页"跳转功能（如搜索结果展示），必须保留Offset分页，或改用Elasticsearch的 `search_after` + `pit`（Point In Time）机制，两者在架构上是互斥取舍，而非游标分页的缺失功能。
+**误区一：认为游标分页支持随机跳页**
+游标分页天然不支持"跳转到第 50 页"这类操作，因为获取第 50 页的游标必须先获取前 49 页的最后一条记录。若业务需求包含页码跳转（如搜索引擎结果页），应混合使用 Offset 分页（限制最多跳转到第 100 页）或预计算页码表。盲目将所有分页场景替换为游标分页是错误的架构决策。
 
-**误区二：任何列都可以作为游标字段**
-游标字段必须满足两个条件：**唯一性**（或与其他字段组合唯一）和**单调有序性**。使用 `status`（如 `pending/completed`）或 `score`（浮点数，可能重复）作为单一游标字段，会导致边界记录被跳过或重复返回。正确做法是将主键 `id` 作为后备排序键构成复合游标，即 `(sort_field, id)` 的组合，以保证全局唯一定位。
+**误区二：游标值可以用时间戳代替 ID**
+使用 `created_at` 时间戳作为游标字段在高并发写入场景下存在精度问题：同一毫秒内插入的多条记录具有相同时间戳，导致游标定位歧义，可能丢失最多 `qps × 1ms` 条记录。正确做法是以数据库自增 ID 为主游标，时间戳仅作为复合游标的辅助字段。
 
-**误区三：游标字符串是安全的访问控制机制**
-Base64编码的游标不是加密，仅是混淆。恶意用户可以解码游标、伪造任意位置的游标来探测数据。若需访问控制，必须在服务端验证游标指向的记录对该用户可见，游标本身不提供任何安全保障。
-
----
+**误区三：游标在所有数据库中性能表现一致**
+游标分页的性能优势依赖于游标字段上存在索引。若开发者在 `created_at` 字段上建游标但忘记创建索引，查询将退化为全表扫描，性能甚至差于 Offset 分页（因为多了一个 `WHERE` 过滤运算）。在 PostgreSQL 中可通过 `EXPLAIN ANALYZE` 确认查询使用了 `Index Scan` 而非 `Seq Scan`。
 
 ## 知识关联
 
-游标分页建立在**索引原理**的基础上：复合索引 `(sort_key, id)` 是游标查询性能保障的直接依赖，若该索引缺失，游标查询会退化为全表扫描，性能反而可能不如小数据量下的Offset查询。在设计游标时需要确认查询的 `WHERE` 条件与 `ORDER BY` 字段完全匹配已有索引的前缀顺序。
+游标分页的性能优势完全依赖**索引原理与优化**中 B+树索引的范围扫描特性：游标的 `WHERE id > value` 正是利用 B+树叶节点的有序链表结构做 O(log n) 定位，若索引概念不清晰，无法理解为何游标分页在第 100 万页仍保持稳定的响应时间。
 
-从**RESTful API设计**角度，游标分页改变了分页参数的语义：`page=3` 这类绝对位置参数被 `cursor=<opaque_string>` 替代，API的幂等性增强（同一游标永远返回同一批数据），但可书签性（bookmarkability）依赖游标字符串的持久有效期，后端需要明确约定游标的过期策略（Stripe的游标不过期，而部分Elasticsearch PIT默认1分钟过期），这一策略应写入API文档作为合约。
+在 **RESTful API 设计**层面，游标分页改变了分页参数的语义：传统 `?page=3&size=20` 参数体系需替换为 `?after=<cursor>&limit=20`，响应体中的 `Link` Header（RFC 5988 定义）也需要携带 `next` 和 `prev` 关系链接。游标应通过 Base64 编码封装为不透明字符串，以符合 RESTful API 中"接口稳定性"的设计原则，避免客户端对游标内部结构产生依赖。

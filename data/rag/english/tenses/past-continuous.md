@@ -20,107 +20,100 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # 过去进行时
 
 ## 概述
 
-过去进行时（Past Continuous Tense，又称 Past Progressive Tense）用于描述**过去某一具体时刻或时间段内正在持续进行的动作**。它捕捉的是动作的"进行状态"，而非动作的完成结果，这是它区别于一般过去时的根本特征。例如，"昨晚八点，我正在看电视"描述的是八点这个时刻动作尚未结束的状态。
+过去进行时（Past Continuous Tense）用于描述**过去某个具体时间点上正在进行的动作**，强调动作在过去的某一时刻处于持续进行的状态，而非已经完成。其基本结构为：**was/were + 动词现在分词（V-ing）**，其中主语为第一、三人称单数时用 was，主语为复数或第二人称时用 were。
 
-该时态的使用可追溯至英语语法系统的进行体（progressive aspect）发展历史。进行体在英语中大约于14至16世纪逐渐成熟，到18世纪时过去进行时在书面语中已有稳定的使用规范。现代英语语法学家将其归类为"体"（aspect）与"时"（tense）的复合形式，即过去时间框架下的进行体。
+过去进行时在英语语法体系中的正式系统化描述可追溯至19世纪英国语法学家的著作，随着英语语法教学的规范化逐渐成为基础语法教学的固定内容。它与一般过去时最本质的区别在于：一般过去时（did）表示动作已经完成，而过去进行时强调的是动作在过去某刻**尚未结束、仍在持续**的状态，例如 "I read the book last night"（读完了）与 "I was reading the book at 9 p.m."（当时正在读）传达了截然不同的含义。
 
-掌握过去进行时对于英语叙事写作至关重要。它能在故事中制造"背景动作"与"前景事件"的对比层次，使叙述更加生动立体。在英语考试（如中考、高考、雅思）的写作和语法填空题中，过去进行时是高频考点之一。
+过去进行时在叙事写作和口语描述中极为常用，尤其是在描述过去某个场景的"背景动作"时不可替代。理解这一时态有助于学生准确区分"发生了什么"和"当时正在做什么"，是写出层次丰富叙述文的基础语言工具。
 
 ---
 
 ## 核心原理
 
-### 基本构成公式
+### 构成规则
 
-过去进行时的结构为：
+过去进行时的构成公式为：
 
-**主语 + was/were + 现在分词（动词原形 + -ing）**
+> **主语 + was/were + V-ing + 其余成分**
 
-- was 用于第一人称单数（I）和第三人称单数（he/she/it）
-- were 用于第二人称（you）及所有复数主语（we/they）
+助动词的选择完全取决于主语人称和数：
+- **was**：I、he、she、it 及单数名词主语
+- **were**：you、we、they 及复数名词主语
 
-例句：
-- *She was reading a novel at 9 p.m. last night.*（昨晚9点她正在读小说。）
-- *They were playing football when it started to rain.*（他们正在踢足球，这时下起了雨。）
+否定句在 was/were 后加 not，即 **was not (wasn't) / were not (weren't)**；疑问句将 was/were 提至句首，例如：
+- 肯定：She **was sleeping** at midnight.
+- 否定：They **weren't watching** TV at that time.
+- 疑问：**Were** you **studying** when I called?
 
-否定句在 was/were 后加 not（was not = wasn't，were not = weren't）；疑问句将 was/were 提至主语前。
+V-ing 的拼写规则与现在进行时完全相同：以不发音 e 结尾的动词去 e 加 ing（make → making），以"辅元辅"结尾的单音节动词双写末尾辅音（run → running）。
 
-### 四种核心用法
+### 三大核心用法
 
-**用法一：过去特定时刻正在进行的动作**
+**用法一：描述过去特定时刻正在进行的动作**
 
-常与"at + 具体时间点"连用，如 *at 8 o'clock yesterday*、*at this time last Monday*。这一用法中，时间点是动作持续区间内的一个截面。
+当句中出现具体的过去时间状语，如 at 7 o'clock yesterday、at this time last Monday 时，过去进行时描述该时刻的持续动作。例如："At 8 o'clock last night, he **was doing** his homework."——8点钟是参照时间点，作业在那个点尚未完成。
 
-**用法二：与一般过去时配合，描述"长动作被短动作打断"**
+**用法二：过去进行时与一般过去时连用，描述"长动作被短动作打断"**
 
-这是过去进行时最典型的语法场景，通常与连词 **when** 或 **while** 搭配：
-- when 后接一般过去时（短暂动作发生）：*I was taking a shower when the phone rang.*
-- while 后接过去进行时（持续背景动作）：*While she was cooking, he set the table.*
+这是过去进行时最典型且最易考查的用法，常与连词 **when** 和 **while** 配合：
+- **while + 过去进行时**，**when + 一般过去时**：While I **was walking** home, I **met** an old friend.（走路是持续的背景动作，相遇是突发的短暂动作）
+- 也可倒置：I **was taking** a shower **when** the phone **rang**.
 
-**用法三：两个过去进行时并列，描述同时进行的背景动作**
+注意：when 引导的从句用一般过去时，while 引导的从句用过去进行时，两者不能随意互换。
 
-*While I was studying, my sister was listening to music.*
+**用法三：描述过去某段时间内同时进行的两个持续动作**
 
-**用法四：表示过去某段时间内重复发生的令人烦恼的动作（带情感色彩）**
+当两个动作在过去同一时段同时延续时，两个从句均用过去进行时：
+"While my mother **was cooking**, my father **was reading** the newspaper."
 
-常与 always、constantly、forever 等副词连用：*He was always interrupting me during meetings.*（他总是在会议中打断我——带有不满语气。）
+此用法中 while 是唯一可用的连词，because/when 均不适用于此结构。
 
-### 时间信号词识别
+### 时间状语标志词
 
-过去进行时的常见时间标志词包括：*at that moment、at that time、when、while、all morning/afternoon/evening（yesterday）、from 3 to 5 o'clock*。其中 while 引导的从句**几乎必然**使用进行时，是识别该时态的强信号。
+过去进行时的常见时间标志词包括：
+- **at + 具体过去时间点**：at 9:00 last night
+- **this time yesterday / last Monday**
+- **when** 引导时间从句（主句用过去进行时）
+- **while** 引导时间从句（从句用过去进行时）
 
 ---
 
 ## 实际应用
 
-**叙事写作中的背景设置**
+**叙事写作中的场景铺垫**：在叙述故事开头，作家常用过去进行时交代背景，再用一般过去时引入事件。例如描述一次事故："It **was raining** heavily and the driver **was speeding** when the accident **happened**."——前两个过去进行时构建了危险背景，happened 标志事件突然发生。
 
-在英语记叙文中，过去进行时承担"场景铺垫"功能。开篇常见模式：*The sun was setting, birds were singing, and I was walking alone along the river bank, when suddenly I heard a cry for help.* 三个过去进行时构成静态背景，一般过去时 *heard* 推动情节发展。
+**警察报告与目击者证词**：目击者描述犯罪现场时大量使用过去进行时，例如："A man **was wearing** a red jacket and **was carrying** a black bag when he **entered** the bank." 这种表述在法律英语场景中准确区分持续状态与发生动作。
 
-**新闻报道中的现场还原**
-
-新闻英语常用过去进行时描述事发时的现场状态：*Witnesses said people were running and screaming when the earthquake struck at 2:17 a.m.* 这句话中 *were running and screaming* 呈现地震发生那一刻（2:17 a.m.）的进行状态。
-
-**语法填空真题应用**
-
-高考英语语法填空中，判断是否用过去进行时的步骤为：① 确认时间参照点在过去；② 确认动作在该时间点"进行中"而非"完成"；③ 确认动词为**动态动词**（action verb），而非状态动词。
+**英语考试高频考点**：过去进行时是中学英语语法填空和完形填空的必考项。典型考题格式为：给出 when 或 while 连接的复合句，要求填写正确时态的动词形式，学生须判断哪个动作是"背景动作"（用过去进行时），哪个是"打断动作"（用一般过去时）。
 
 ---
 
 ## 常见误区
 
-**误区一：将过去进行时用于状态动词**
+**误区一：将 when 和 while 的从句时态混淆**
 
-过去进行时只能与动态动词（如 run、talk、eat）搭配，**不能**与状态动词（stative verbs）搭配。以下句子是错误的：
-- ❌ *I was knowing the answer at that time.*
-- ✓ *I knew the answer at that time.*（用一般过去时）
+许多学生认为 when 和 while 可以互换，但两者对从句时态有严格要求。"When she **came** in, I **was reading**."（when 从句用一般过去时，主句用过去进行时）若改为 "While she **was coming** in..."，语义变成她进来的过程持续了一段时间，与原意不符。记忆口诀：**when 接瞬间动作（一般过去时），while 接持续动作（过去进行时）**。
 
-常见状态动词包括：know、believe、love、hate、own、seem、contain 等，这类动词描述持续状态而非进行中的动作，天然不与进行时搭配。
+**误区二：状态动词误用过去进行时**
 
-**误区二：混淆 when 引导从句的时态逻辑**
+与现在进行时相同，过去进行时同样不能用于状态动词（stative verbs），包括 know、believe、want、love、have（拥有）、seem 等。说 "I was knowing the answer" 是错误的，正确表达仍为 "I knew the answer"。这类动词描述的是静止状态而非动态过程，无论哪种进行时均不适用。
 
-许多学生在 when 句中随意使用过去进行时，忽视主从句的时态配合逻辑。规则是：**when 引导的从句若表示"打断动作"，用一般过去时；主句的被打断动作，用过去进行时。**
+**误区三：认为过去进行时比一般过去时"更过去"**
 
-- ❌ *I was cooking when she was arriving.*
-- ✓ *I was cooking when she arrived.*（arrived 是短暂打断动作，用一般过去时）
-
-**误区三：认为过去进行时意味着动作已完成**
-
-过去进行时强调动作在过去某刻**尚在进行**，不包含动作完成的信息。*He was writing the report at noon* 只说明中午他在写报告，并不代表报告最终写完了。若要表达完成，需改用一般过去时：*He wrote the report.*
+部分学生误以为使用过去进行时表示动作发生在更早的时间，实际上两者描述的可以是同一时间段的不同侧面。"She **was cooking** dinner **when** he **arrived**"中，cooking 和 arrived 发生在同一时刻，进行时只是强调动作的持续性，而非时间顺序的先后。
 
 ---
 
 ## 知识关联
 
-**与一般过去时的关系**
+**与一般过去时（前置知识）的关系**：过去进行时以一般过去时为基础——学生须先能够正确构成规则动词的过去式（如 walked）和不规则动词的过去式（如 went），才能理解 when/while 句型中两种时态的分工。事实上，过去进行时在复合句中几乎总与一般过去时成对出现，孤立学习而不与一般过去时对比练习极易导致混淆。
 
-学习过去进行时需以一般过去时为基础。一般过去时（如 *ran、ate*）表示动作已完结，是过去事件的"点"；过去进行时表示动作进行中，是过去事件的"段"。两者在 when/while 句型中形成互补的主从关系，是英语叙事的核心时态搭配。
-
-**通往过去完成进行时**
-
-过去进行时是理解**过去完成进行时**（Past Perfect Continuous Tense：*had been + 现在分词*）的直接前提。过去完成进行时在过去进行时基础上增加了"在过去某时刻之前已持续了一段时间"的维度，例如：*He had been waiting for two hours when she finally arrived.* 在掌握过去进行时的进行体概念后，再引入完成体的"延续至某时刻"含义，学习路径更加顺畅。
+**与过去完成进行时（后续知识）的衔接**：过去完成进行时（had been + V-ing）是过去进行时的延伸形式，在过去进行时的持续性含义上增加了"在更早时间点就已开始"的层次，例如 "She **had been waiting** for two hours when he finally arrived."——这里 had been waiting 表示等待在 arrived 之前就已持续了两小时。牢固掌握过去进行时的 was/were + V-ing 结构，有助于学生在接触过去完成进行时时快速理解其额外的"完成"维度所代表的时间先后关系。

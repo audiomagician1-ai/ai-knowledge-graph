@@ -20,86 +20,83 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-04-01
 ---
+
 # 相机交互
 
 ## 概述
 
-相机交互（Camera Interaction）是Niagara粒子系统中处理粒子与场景摄像机之间空间关系的机制，涵盖距离衰减、粒子朝向对齐以及近裁剪面穿透处理三大核心功能。与静态网格体或材质不同，粒子系统的生命周期极短且数量庞大，若不处理粒子与摄像机的位置关系，会出现粒子在相机近裁剪面处"切断"显示、billboard粒子因未朝向摄像机而露出薄片边缘、以及远处粒子与近处粒子同等密度导致视觉噪点过多等问题。
+相机交互（Camera Interaction）是 Niagara 粒子系统中控制粒子与场景摄像机之间动态关系的一套机制，涵盖距离衰减（Distance Falloff）、公告板朝向（Billboard Orientation）以及近裁剪面（Near Clip Plane）穿插处理三个主要方向。与静态粒子设置不同，相机交互的参数值会随摄像机的实时位置和角度每帧重新计算，直接影响渲染输出结果。
 
-Niagara的相机交互模块在UE5中以`Camera Query`节点形式集成进模拟阶段（Simulation Stage），可直接获取`CameraPosition`、`CameraForwardVector`和`CameraFOV`三个原生参数，无需手动传递蓝图变量。这一机制最早在UE4.25版本的Niagara正式化，替代了早期Cascade系统中需要在材质层面才能完成的摄像机对齐计算，将逻辑前移到GPU粒子模拟阶段，显著降低了材质复杂度。
+该机制在 Unreal Engine 5 的 Niagara 中通过内置模块 **Camera Offset** 和 **Camera Velocity** 节点实现，最早在 UE4.26 版本的 Niagara 重构中被系统化整合进粒子模拟管线。在此之前，开发者往往需要在 Material 层借助 `CameraPositionWS` 节点手动计算距离，流程分散且难以批量控制。
 
-正确配置相机交互对于特效的真实感至关重要。距离超过10000cm的粒子若不做衰减剔除，在复杂场景中会无谓占用渲染带宽；billboard粒子若偏转角度超过5°就会在侧视时露出穿帮；而火焰、烟雾等效果穿过近裁剪面（默认10cm）时若无软裁剪处理，会产生硬边切割，破坏沉浸感。
+在第三人称游戏的近景特效、VR 中的粒子爆炸、以及电影级过场动画里，粒子与摄像机的距离可能从 0.1 米变化到 500 米。如果不对这一范围做显式处理，相同的粒子在远处几乎不可见，而在镜头前则会因为尺寸过大或穿入近裁剪面而产生硬切瑕疵（Hard Clip Artifact）。相机交互模块正是为解决这类极端距离差异而存在的。
 
 ---
 
 ## 核心原理
 
-### 距离衰减（Distance Fade）
+### 距离衰减（Distance Falloff）
 
-距离衰减基于粒子世界位置与摄像机位置的欧氏距离计算透明度或缩放系数。在Niagara的Particle Update阶段，可通过以下公式实现线性淡出：
+距离衰减的核心公式为：
 
-```
-Alpha = 1 - saturate((Distance - FadeStartDistance) / (FadeEndDistance - FadeStartDistance))
-```
+$$
+\alpha_{fade} = \text{clamp}\left(\frac{D - D_{min}}{D_{max} - D_{min}},\ 0,\ 1\right)
+$$
 
-其中 `Distance = length(ParticlePosition - CameraPosition)`，`FadeStartDistance` 为开始衰减的距离阈值，`FadeEndDistance` 为完全透明的距离阈值。典型的火焰特效设置中，`FadeStartDistance` 约为800cm，`FadeEndDistance` 约为1500cm。此公式通过`saturate()`将结果钳制在[0,1]区间，避免负值或超出1的异常。
+其中 $D$ 为粒子世界坐标与摄像机位置的欧几里得距离，$D_{min}$ 和 $D_{max}$ 分别为淡入起始距离和完全不透明距离。在 Niagara 的 **Particle Update** 阶段，该值被写入粒子的 `DynamicParameter` 或直接驱动 `Color.Alpha` 通道。典型配置中，$D_{min}$ 设为 50 cm，$D_{max}$ 设为 200 cm，确保粒子在进入镜头 50 cm 内时开始淡出，而非突然消失。
 
-远距离衰减还可结合`Camera Distance`模块的**Cull Distance**参数，直接在粒子生命周期判断阶段（Kill Particles）终止距离超出阈值的粒子，避免透明粒子仍参与overdraw计算，这比仅调整Alpha的性能优化更为彻底。
+该计算发生在 GPU 粒子的 Simulation Stage，每个粒子独立读取 `Engine.Camera.Position` 系统变量。注意：当同一场景中存在多个摄像机（如分屏或安全摄像机渲染）时，Niagara 默认只读取**主渲染摄像机**的位置，需要通过 `User Parameter` 手动传入副摄像机位置以支持多视口场景。
 
-### Billboard朝向对齐（Camera Facing）
+### 公告板朝向（Billboard Orientation）
 
-billboard粒子的精髓在于始终将粒子Sprite的法线朝向摄像机，使玩家无论从何角度观察都看到完整正面。Niagara提供四种朝向模式：
+Sprite 渲染器默认使用 **FacingMode = FaceCamera** 模式，粒子的本地 Z 轴始终指向摄像机位置向量。但当粒子位于摄像机正上方或正下方（仰角接近 ±90°）时，朝向计算会因向量叉积趋近于零向量而产生翻转（Gimbal Lock 类似问题），表现为粒子在镜头前快速旋转抖动。
 
-- **Camera Facing**：法线精确指向摄像机位置，适合近距离特效（烟雾、火花）
-- **Camera Plane Facing**：法线平行于摄像机视平面法线，适合大面积效果（云层、远景烟）
-- **Velocity Aligned**：粒子X轴对齐速度方向，Y轴朝向摄像机，适合曳尾、激光
-- **Custom Facing Vector**：使用自定义向量，适合角色周围固定朝向光晕
+解决方案是切换至 **FacingMode = FaceCameraDistanceBlend** 模式，该模式在粒子到摄像机距离小于阈值（可配置，默认 100 cm）时，将朝向从"面向摄像机位置"平滑混合为"面向摄像机前向向量"，避免极端角度下的数值奇点。混合权重同样由距离线性插值控制，参数路径位于 `Sprite Renderer > Facing Mode > Distance Blend` 分区。
 
-Camera Facing模式在摄像机距粒子极近（小于50cm）时，会因透视畸变导致sprite边缘拉伸，此时应切换为Camera Plane Facing。朝向计算发生在Niagara的Sprite Renderer阶段，计算出的旋转矩阵直接写入顶点着色器，不经过材质节点，因此无法在材质中覆盖此旋转。
+对于需要物理真实感的烟雾、水汽粒子，可改用 **FacingMode = Velocity**，粒子法线沿运动速度方向对齐，这与摄像机位置完全解耦，但必须配合速度阈值保护（低于 1 cm/s 时回退至 FaceCamera）防止静止粒子的朝向随机翻转。
 
-### 近裁剪软处理（Soft Near Clip）
+### 近裁剪面处理（Near Clip Plane Handling）
 
-当粒子穿入摄像机近裁剪面（Near Clip Plane，UE默认值为10cm）时，粒子几何体会被硬性裁切，露出粒子sprite的截面边缘。软裁剪处理通过在材质中采样`SceneDepth`纹理并与粒子到摄像机的距离比较，在接近近裁剪面的区域逐渐降低粒子透明度：
+UE5 默认近裁剪面距离为 **10 cm**（由 `r.SetNearClipPlane` 控制）。当粒子的任意顶点进入该平面时，标准光栅化会将其直接裁切，产生几何硬边。对于体积感较强的大型 Sprite 粒子（半径 > 20 cm），这个问题尤为明显。
 
-```
-SoftClipAlpha = saturate((ParticleDepth - NearClipDistance) / SoftClipRange)
-```
+Niagara 的解决方案分为两层：
 
-`NearClipDistance`通常设为10~15cm，`SoftClipRange`为5~20cm，具体取值取决于特效类型。在Niagara中，此处理需在Sprite材质的**Opacity**输出中乘以`SoftClipAlpha`，并开启材质的**Translucent**混合模式和**Disable Depth Test**选项。
-
-此外，UE5的`r.NearClip`控制台变量可在运行时动态调整近裁剪距离，第一人称游戏常将此值设为5cm以支持武器模型，这要求特效的软裁剪Range也相应调窄至3cm左右，否则过渡带会显得过于明显。
+1. **软淡出层**：在 Particle Update 中添加 `Camera Distance Fade` 模块，当 $D < D_{clip}$（通常设为 30～50 cm，略大于 10 cm 近裁剪值）时，将粒子 Alpha 乘以一个从 1 渐变到 0 的系数，使粒子在进入裁剪面前就已经透明。
+2. **深度偏移层**：在 Material 中使用 `Pixel Depth Offset` 节点输出正值（例如 15 cm），让粒子在深度缓冲中"后退"，从而避免与近裁剪面产生物理穿插。两种方法通常联合使用以覆盖不同尺寸的粒子。
 
 ---
 
 ## 实际应用
 
-**第一人称武器开枪特效**：枪口火焰粒子距摄像机约20~40cm，极易触发近裁剪问题。正确做法是在枪口火焰的Sprite材质中添加软裁剪节点，并将`SoftClipRange`设为8cm。同时由于玩家俯仰角变化频繁，朝向模式应选择Camera Plane Facing而非Camera Facing，避免仰射时粒子形状失真。
+**近战特效中的剑气**：玩家挥剑时剑气粒子可能在 0.3 秒内从角色手部飞至镜头前方。若不处理，粒子在进入摄像机 30 cm 范围时会被近裁剪面切割。设置 `Camera Distance Fade`，令 $D_{min} = 15\ \text{cm}$，$D_{max} = 40\ \text{cm}$，粒子会在进入危险区域前平滑消失，玩家感知不到裁剪发生。
 
-**大型爆炸烟雾**：爆炸烟雾粒子寿命约3~8秒，扩散半径可达500~2000cm。需为每个烟雾粒子添加距离衰减，将`FadeStartDistance`设为1200cm，`FadeEndDistance`设为2000cm，并在超过2500cm时通过Cull Distance直接Kill粒子，避免远景中大量半透明overdraw拖慢渲染。
+**VR 头显场景**：VR 应用的近裁剪面通常设置为 **5 cm**（比桌面端更小），且存在左右两个独立摄像机。在 Niagara 的 Emitter Properties 中启用 `Support VR Instance Stereo` 后，距离计算会自动取左右眼摄像机位置的**平均值**进行距离判断，防止粒子在双眼间出现不一致的淡出状态，避免引发眩晕感。
 
-**角色技能范围指示器**：地面投影式指示器粒子贴近地面，当摄像机低角度俯视时摄像机与粒子距离缩短至近裁剪边界。此场景中应将指示器粒子的Renderer由Sprite切换为Mesh Renderer（使用薄片平面网格），因为Mesh Renderer不受近裁剪软处理的overdraw限制，且不需要Billboard朝向计算，渲染效率更高。
+**过场镜头缓推场景**：摄像机缓慢推入粒子群（如魔法阵）时，距离从 300 cm 降至 20 cm。将 $D_{max}$ 设为 280 cm，可在摄像机开始推进时粒子就缓缓淡化，营造"进入效果内部"的沉浸感，而非在镜头极近处突兀消失。
 
 ---
 
 ## 常见误区
 
-**误区一：认为Camera Facing可以解决所有朝向问题**
+**误区一：认为距离衰减在 CPU 和 GPU 模拟中行为相同**
 
-Camera Facing仅保证粒子法线指向摄像机，但不处理粒子自身的Roll（滚转）轴旋转。当粒子有`Initial Rotation`或`Dynamic Rotation`时，Camera Facing下粒子仍会在摄像机面前旋转，效果正常；但若切换至Velocity Aligned模式，粒子的Roll角会跟随速度方向剧烈变化，导致特效看起来"乱转"。需在Velocity Aligned基础上锁定Roll轴：在Sprite Renderer的`Rotation`参数中将Z分量固定为0。
+CPU 粒子的 `Camera Distance Fade` 模块在每帧的游戏线程中计算，而 GPU 粒子在 Simulation Stage 中并行计算。GPU 粒子的距离计算使用的是上一帧提交到 GPU 的摄像机位置（存在 1 帧延迟），在摄像机高速移动（如快速切镜）时会出现约 16 ms 的淡出滞后。对于需要精确同步的 Cinematic 场景，应使用 CPU 粒子或在 Material 层用 `CameraPositionWS` 实时计算。
 
-**误区二：软裁剪在GPU粒子模拟中直接可用**
+**误区二：对所有粒子统一设置相同的近裁剪淡出距离**
 
-软裁剪的`SceneDepth`采样在材质中执行，而非在Niagara模拟阶段。部分开发者误以为可在Niagara的Particle Update模块中通过HLSL直接访问SceneDepth来剔除粒子，但GPU粒子模拟阶段（Compute Shader Pass）无法采样场景深度缓冲，因为深度缓冲在渲染通道（Render Pass）结束前尚未完整写入。软裁剪必须放在材质的Translucency Pass中处理。
+粒子的世界尺寸差异巨大——直径 5 cm 的火星与直径 80 cm 的烟云需要截然不同的淡出起始距离。若对 80 cm 烟云也使用 $D_{min} = 15\ \text{cm}$，则在摄像机距离 50 cm 时粒子边缘已经进入近裁剪面但 Alpha 仍为 1，依然产生硬切边。正确做法是将淡出距离与粒子 Sprite 尺寸关联，通过 `Particle.SpriteSize * 0.8` 动态计算淡出阈值，写入 `User.FadeDistance` 参数再传递给模块。
 
-**误区三：距离衰减与LOD系统功能重复**
+**误区三：FaceCamera 模式与 FaceCameraPosition 模式等价**
 
-Niagara的Scalability（LOD）系统控制的是粒子数量和模拟频率，而距离衰减控制的是单个粒子的视觉透明度过渡。两者针对不同层面：LOD在超过设定距离时直接停止生成新粒子（Spawn Rate降为0），但已存活粒子不会消失；距离衰减则让所有存活粒子在远距离时平滑淡出。正确做法是两者配合使用：LOD控制宏观数量，距离衰减负责微观视觉过渡。
+`FaceCamera` 让粒子法线平行于摄像机**前向向量**（与摄像机距离无关），而 `FaceCameraPosition` 让粒子法线指向摄像机**世界坐标位置**。两者仅在摄像机视野中心的粒子上表现一致；位于视野边缘的粒子，`FaceCameraPosition` 会轻微旋转以"看向"摄像机，产生鱼眼球形感，在广角镜头（FOV > 90°）下边缘粒子会明显倾斜，这在某些特效中是瑕疵，在全景魔法阵中却可能是刻意追求的效果。
 
 ---
 
 ## 知识关联
 
-前置知识**音频可视化**中建立了通过外部参数（音频频谱数据）驱动粒子属性的思维模型——相机交互同样是将外部状态（摄像机Transform）注入粒子系统，只不过摄像机参数由引擎自动传递，无需手动绑定。理解了"外部驱动粒子属性"的范式后，Camera Query节点的使用会非常自然。
+相机交互建立在**音频可视化**模块之后，原因是音频可视化已经介绍了 Niagara 的 `User Parameter` 绑定机制和每帧动态数据注入流程——相机交互同样依赖这一机制将 `Engine.Camera.Position` 从引擎系统变量注入到粒子模拟阶段。理解摄像机位置作为逐帧变化的外部参数这一概念，是使用距离衰减公式的前置认知。
 
-后续学习**调试工具**时，相机交互的调试是重点难点之一：近裁剪软处理的效果难以直接目视检查，需要借助`vis SceneDepth`命令查看深度缓冲状态，以及`Niagara Debugger`的Attribute Spreadsheet功能逐帧检查每个粒子的Distance值和Alpha衰减输出，才能准确定位软裁剪参数是否生效。
+掌握相机交互后，下一个主题**调试工具**将直接用到本节内容：Niagara 调试器中的 `Camera Relative` 可视

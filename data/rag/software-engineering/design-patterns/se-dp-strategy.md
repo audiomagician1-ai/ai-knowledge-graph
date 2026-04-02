@@ -20,16 +20,19 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 策略模式
 
 ## 概述
 
-策略模式（Strategy Pattern）是一种行为型设计模式，其核心思想是将一组可互换的算法分别封装成独立的类，使得这些算法可以在运行时根据需要自由切换，而调用方无需了解算法的具体实现细节。策略模式的正式定义来自1994年出版的《设计模式：可复用面向对象软件的基础》（即"GoF四人帮"著作），书中将其归类为行为型模式，并给出了Context（上下文）、Strategy（策略接口）、ConcreteStrategy（具体策略）三角结构。
+策略模式（Strategy Pattern）是一种行为型设计模式，其核心思想是将一族可互换的算法分别封装到独立的类中，使得算法可以独立于使用它的客户端而变化。GoF（Gang of Four）在1994年出版的《Design Patterns》中将其定义为："定义一系列算法，把每一个算法封装起来，并且使它们可以相互替换。"与观察者模式关注对象间通知机制不同，策略模式专注于将"做什么"与"怎么做"分离。
 
-策略模式起源于对"条件分支爆炸"问题的解决需求。当一个函数中出现大量`if-else`或`switch-case`来选择不同算法时，每次新增算法都必须修改原有代码，违反了开闭原则（对扩展开放、对修改关闭）。策略模式通过将每个分支提取为一个独立的ConcreteStrategy类，使新增算法只需新建一个类即可完成，无需触碰已有代码。
+策略模式的本质是面向接口编程而非面向实现编程。一个 `Context`（上下文）对象持有对某个 `Strategy`（策略接口）的引用，在运行时可以将该引用指向不同的 `ConcreteStrategy`（具体策略）实例，从而切换算法行为，而 `Context` 自身的代码无需修改。这直接体现了开闭原则：对扩展开放，对修改关闭。
 
-该模式在排序算法选择、支付方式切换、数据压缩格式选择等场景中极为常见。例如Java标准库中的`java.util.Comparator`接口就是策略模式的直接体现——`Collections.sort(list, comparator)`允许调用方在运行时传入不同的比较策略，而排序逻辑本身无需改动。
+策略模式在排序、支付方式切换、文件压缩算法选择等场景中极为常见。一个没有策略模式的系统往往依赖大量 `if-else` 或 `switch-case` 来分支不同算法，每次新增算法都需要修改已有代码，引入回归风险。策略模式将这些分支替换为多态调用，把复杂度从条件判断转移到类的组织结构中。
 
 ---
 
@@ -37,70 +40,73 @@ scorer_version: "scorer-v2.0"
 
 ### 三角色结构
 
-策略模式由三个固定角色构成：
+策略模式由三个核心角色构成：
 
-- **Context（上下文）**：持有一个Strategy接口的引用，负责将客户端的请求委托给当前持有的策略对象执行。Context本身不实现任何算法逻辑。
-- **Strategy（策略接口）**：定义所有具体策略必须实现的公共方法，例如`execute(data)`。这是Context与具体算法之间的唯一契约。
-- **ConcreteStrategy（具体策略）**：实现Strategy接口，每个类封装一种完整的算法实现，如`BubbleSortStrategy`、`QuickSortStrategy`、`MergeSortStrategy`。
+- **Strategy（策略接口）**：声明所有具体策略必须实现的方法签名，例如 `execute(int[] data): int[]`。
+- **ConcreteStrategy（具体策略）**：实现 `Strategy` 接口的具体算法类，如 `BubbleSortStrategy`、`QuickSortStrategy`、`MergeSortStrategy`，每个类只负责一种排序算法。
+- **Context（上下文）**：持有一个 `Strategy` 类型的成员变量，通过构造函数注入或 `setStrategy()` 方法在运行时替换策略，然后通过 `context.executeStrategy()` 委托给当前策略执行。
 
-Context类的关键代码结构如下：
+`Context` 与具体策略之间是**组合关系而非继承关系**，这是策略模式区别于模板方法模式的根本差异。
 
-```python
-class Context:
-    def __init__(self, strategy: Strategy):
-        self._strategy = strategy
+### 运行时切换机制
 
-    def set_strategy(self, strategy: Strategy):
-        self._strategy = strategy   # 运行时切换入口
+策略的切换发生在运行时，不需要重新编译。以Java为例：
 
-    def execute(self, data):
-        return self._strategy.algorithm(data)
+```java
+Context ctx = new Context(new QuickSortStrategy());
+ctx.executeStrategy(data);           // 使用快速排序
+
+ctx.setStrategy(new MergeSortStrategy());
+ctx.executeStrategy(data);           // 切换为归并排序，零改动Context
 ```
 
-`set_strategy()`方法是运行时切换的核心入口，客户端可在任意时刻调用它替换当前策略，而Context的其他部分完全不受影响。
+`setStrategy()` 方法接收 `Strategy` 接口类型的参数，而非任何具体类。这意味着新增第N种策略只需新建一个实现类，`Context` 代码保持不变，符合依赖倒置原则（DIP）。
 
-### 算法封装的边界
+### 消除条件分支
 
-每个ConcreteStrategy只负责自己那一种算法的完整逻辑，不应与其他策略有任何耦合。策略对象通常是**无状态**的——即它不存储算法执行过程中的中间结果。这使得同一个策略实例可以被多个Context对象安全共享，从而降低内存开销。若算法确实需要参数，应通过`algorithm(data, params)`方法参数传入，而非存入策略对象的成员变量。
+假设一个电商系统支持三种促销计算：满减、折扣、返现。不使用策略模式时，代码为：
 
-### 与多态的关系
+```java
+if (type == "discount") { price *= 0.9; }
+else if (type == "full_minus") { price -= 50; }
+else if (type == "cashback") { cashback += 20; }
+```
 
-策略模式本质上是对多态机制的一种**有意识的结构化使用**。其区别于普通继承多态的关键在于：策略对象是Context的**组合成员**，而非Context的父类。这体现了"优先使用组合而非继承"的设计原则。组合方式允许在运行时动态替换行为，而继承方式在编译期就已固化了行为。
+每增加一种促销，上述代码块就必须被修改。使用策略模式后，每种促销封装为独立的 `PromotionStrategy` 实现类，`Context` 只调用 `strategy.calculate(price)`，新增促销类型时零修改已有代码。这种转变将 O(n) 的条件判断复杂度分散到 n 个独立的、可单独测试的类中。
 
 ---
 
 ## 实际应用
 
-**电商支付系统**：一个订单结算模块需要支持微信支付、支付宝、银行卡三种方式。将`PaymentStrategy`定义为接口，`WeChatPayStrategy`、`AlipayStrategy`、`BankCardStrategy`各自实现。用户在结算页面选择支付方式时，Context的`set_strategy()`被调用切换策略，结算流程代码无需任何修改。
+**Java标准库中的策略模式**：`java.util.Comparator` 接口是策略模式最典型的标准库实现。`Collections.sort(list, comparator)` 中，`comparator` 即为策略对象，传入不同的 `Comparator` 实现（如按姓名排序、按年龄排序）即可在运行时切换排序规则，`Collections.sort` 方法本身（Context）不做任何修改。
 
-**游戏角色AI难度切换**：射击游戏中的敌方AI可设置为简单、普通、困难三档，分别对应`EasyAIStrategy`、`NormalAIStrategy`、`HardAIStrategy`。玩家在设置菜单中调整难度时，游戏上下文立即替换策略对象，AI行为在下一帧即刻生效，而游戏主循环代码保持不变。
+**支付系统**：电商平台的结算模块通常将支付方式抽象为 `PaymentStrategy`，包含 `pay(int amount)` 方法。`WeChatPayStrategy`、`AlipayStrategy`、`CreditCardStrategy` 分别实现该接口。用户在购物车页面选择支付方式时，系统将对应策略注入 `PaymentContext`，调用统一入口完成支付，新接入银联只需新增 `UnionPayStrategy` 类即可。
 
-**文件压缩工具**：支持ZIP、GZIP、BZIP2三种压缩算法的工具类，通过`CompressionStrategy`接口统一暴露`compress(file)`方法。用户根据文件类型或大小需求选择压缩策略，主程序逻辑只调用`context.execute(file)`，与具体压缩算法完全解耦。
+**游戏AI行为**：在游戏开发中，NPC的移动算法（`PathfindingStrategy`）可在运行时根据地形切换：开阔地使用 `AStarStrategy`，迷宫中使用 `BFSStrategy`，追逐玩家时使用 `DirectChaseStrategy`。Unity和Unreal的行为树插件底层均采用了策略模式变体来处理行为节点的替换。
 
-**Java标准库实例**：`ThreadPoolExecutor`构造函数中的`RejectedExecutionHandler`参数接受`AbortPolicy`、`CallerRunsPolicy`、`DiscardPolicy`等策略，这是Java原生API中策略模式的教科书级案例，在JDK 1.5版本中正式引入。
+**文件压缩工具**：压缩软件将 `CompressionStrategy` 定义为接口，包含 `compress(byte[] data): byte[]`，由 `ZipStrategy`、`GzipStrategy`、`LzmaStrategy` 实现。用户界面根据用户选择动态设置策略，`Compressor`（Context）无需关心底层算法细节。
 
 ---
 
 ## 常见误区
 
-**误区一：策略模式与简单工厂的混淆**
+**误区1：策略模式与简单工厂模式是同一回事**
+简单工厂负责"创建哪个对象"，其返回值通常直接被使用一次；策略模式的 `Context` 持有策略对象的引用，强调在整个生命周期内可以**多次切换**同一个 Context 的算法。两者常配合使用——工厂负责根据条件创建具体策略对象，策略模式负责将其注入并使用，但本质职责不同，混淆会导致 Context 承担了本不属于它的对象创建责任。
 
-初学者常将选择策略的逻辑（"根据条件决定用哪个策略"）也塞入Strategy接口或Context中，退化成了简单工厂模式。策略模式的正确用法是：**Context不负责创建策略对象**，策略的创建与注入由客户端或依赖注入容器完成。Context只负责"使用"传入的策略，而不做"决策"。
+**误区2：所有 if-else 都应替换为策略模式**
+策略模式引入了至少3个新类（接口 + 若干实现），如果算法分支只有2种且极少变化，直接用 `if-else` 反而更清晰、维护成本更低。策略模式适用的判断标准是：**算法族有3种以上、且未来有扩展预期、且客户端需要在运行时切换**。盲目应用导致类爆炸（Class Explosion）是过度设计的典型症状。
 
-**误区二：策略数量少时滥用策略模式**
-
-若一个算法只有2种变体，且在可预见的未来不会扩展，直接使用布尔参数或简单`if-else`反而更清晰。策略模式引入了至少3个类（接口+2个实现），在变体数量少且稳定的场景下增加了不必要的类爆炸（class explosion）。通常在算法变体≥3种，或者需要运行时切换时，才值得引入策略模式。
-
-**误区三：忽略策略对象的无状态要求**
-
-将算法执行过程中的临时数据（如排序的中间数组）存入策略对象的成员变量，会导致策略对象无法被多个Context安全共享，还可能引发并发问题。正确做法是将所有中间数据作为局部变量放在`algorithm()`方法栈帧内，或通过方法参数传递。
+**误区3：策略模式的 Context 应该知道所有具体策略**
+正确的策略模式中，`Context` 只依赖 `Strategy` 接口，完全不知道任何 `ConcreteStrategy` 的存在。一旦 `Context` 内部出现 `instanceof BubbleSortStrategy` 或 `if (strategy is QuickSort)` 的判断，说明设计已退化，违反了依赖倒置原则，此时策略模式形同虚设。
 
 ---
 
 ## 知识关联
 
-**与状态模式的联系与区别**：状态模式（State Pattern）与策略模式结构几乎相同——同样是Context持有一个接口引用，同样支持运行时替换。关键差异在于**谁来触发切换**：策略模式中切换由**外部客户端**主动调用`set_strategy()`完成；状态模式中切换由**状态对象自身**或Context根据内部逻辑自动触发。理解这一差异是区分两种模式适用场景的核心。
+**与观察者模式的关系**：观察者模式中，`Observer` 接口定义了 `update()` 回调，多个观察者实现同一接口，这与策略模式的 `ConcreteStrategy` 实现 `Strategy` 接口在结构上高度相似。区别在于语义：观察者模式用于"当事件发生时通知多个监听者"（1对N），策略模式用于"在同一时刻只有一个算法处于活跃状态"（1对1的可替换关系）。理解了观察者的接口多态机制，策略模式的接口设计水到渠成。
 
-**与模板方法模式的对比**：模板方法模式通过**继承**来变化算法的某个步骤，父类定义算法骨架，子类重写特定步骤。策略模式则通过**组合**来替换整个算法。前者适合"算法结构固定，局部步骤可变"的场景；后者适合"整个算法可以整体替换"的场景。
+**与状态模式的区别**：状态模式与策略模式在类图上几乎相同，但状态模式中的 `ConcreteState` 类可以**主动触发** `Context` 的状态转换（即具体状态知道下一个状态是什么），而策略模式中具体策略类对 `Context` 一无所知，切换权完全在客户端或 `Context` 自身。
 
-**对对象池模式的铺垫**：在高频切换策略的场景中（如每次请求都需要一个新的策略实例），频繁创建和销毁策略对象会产生GC压力。对象池模式（Object Pool）可以预先创建并缓存无状态的策略对象，供Context反复取用归还，从而与策略模式配合优化性能。
+**与模板方法模式的对比**：模板方法模式用继承实现算法骨架的固定与步骤的扩展，编译时确定；策略模式用组合在运行时替换整个算法，更灵活但类数量更多。两者都解决算法变化问题，选择依据是"变化点在算法的局部步骤还是整个算法"。
+
+**向命令模式的延伸**：命令模式可视为策略模式的扩展——`Command` 接口同样封装了一个"行为"，但额外支持撤销（`undo()`）、排队执行和日志记录等功能，将"行为对象化"的思路推向更复杂的场景。

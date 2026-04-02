@@ -20,72 +20,101 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-04-01
 ---
+
+
 # Blender Python脚本
 
 ## 概述
 
-Blender Python脚本（Ta Python Blender）是技术美术（Technical Art）中工具开发领域的重要概念。难度等级2/9（基础级）。
+Blender Python脚本是通过Blender内置的`bpy`模块，使用Python语言直接操控Blender软件功能的编程方式。`bpy`模块是Blender暴露给Python的完整API接口，涵盖场景管理、网格操作、材质控制、渲染设置、动画关键帧等几乎所有编辑器功能。自Blender 2.5版本（2010年）起，Blender正式将Python 3作为唯一脚本语言，彻底取代了此前的Blender内部脚本语言，形成了如今稳定的`bpy` API体系。
 
-bpy模块——Blender中的自动化与插件开发。
+Blender 2.80版本（2019年）是`bpy` API的重要分水岭，该版本对API进行了大规模重构，引入了`collections`、`eevee`等新模块，同时废弃了大量旧接口。技术美术工程师必须意识到：为Blender 2.79编写的脚本通常无法直接在2.80+版本运行，因为`bpy.context.scene.objects.link(obj)`这类旧式写法已被`bpy.context.collection.objects.link(obj)`所替代。
 
-在知识体系中，Blender Python脚本建立在技美工具开发概述的基础之上，是理解可进入更高级主题的关键前置知识。为什么Blender Python脚本如此重要？因为它在工具开发中起到承上启下的作用，连接基础概念与高级应用。
+在技术美术的工具开发场景中，Blender Python脚本的核心价值在于批量处理资产——例如一次性为场景中200个网格对象统一重命名、批量设置UV展开参数或自动化导出FBX文件，将原本数小时的重复操作压缩至数秒完成。
 
-## 核心知识点
+## 核心原理
 
-### 1. bpy模块——Blender中的自动化
+### bpy模块的三大命名空间
 
-bpy模块——Blender中的自动化是Blender Python脚本(Ta Python Blender)的核心组成部分之一。在工具开发的实践中，bpy模块——Blender中的自动化决定了系统行为的关键特征。例如，当bpy模块——Blender中的自动化参数或条件发生变化时，整体表现会产生显著差异。深入理解bpy模块——Blender中的自动化需要结合技术美术的基本原理进行分析。
+`bpy`模块分为三个最常用的顶层命名空间，各司其职：
 
-### 2. 插件开发
+- **`bpy.data`**：访问Blender的数据块（Data-Block），包括`bpy.data.meshes`、`bpy.data.materials`、`bpy.data.objects`等。这里存储的是Blender文件（.blend）中的真实数据，与是否在视口中可见无关。
+- **`bpy.context`**：访问当前编辑器的上下文状态，如`bpy.context.active_object`获取当前激活物体，`bpy.context.selected_objects`获取所有被选中的物体列表。注意`bpy.context`是只读的反映，不能直接赋值修改。
+- **`bpy.ops`**：调用Blender的操作符（Operator），如`bpy.ops.mesh.subdivide(number_cuts=2)`执行细分操作。操作符依赖上下文，在错误的上下文下调用会抛出`RuntimeError: Operator bpy.ops.xxx.poll() failed`错误。
 
-插件开发是Blender Python脚本(Ta Python Blender)的核心组成部分之一。在工具开发的实践中，插件开发决定了系统行为的关键特征。例如，当插件开发参数或条件发生变化时，整体表现会产生显著差异。深入理解插件开发需要结合技术美术的基本原理进行分析。
+### 物体操作的基本流程
 
+创建并添加一个Cube网格物体的完整代码如下：
 
-### 关键原理分析
+```python
+import bpy
 
-Blender Python脚本的核心在于bpy模块——Blender中的自动化与插件开发。从理论角度看，该概念涉及以下层面：
+# 新建网格数据块
+mesh = bpy.data.meshes.new("MyCube")
+# 新建物体并关联网格
+obj = bpy.data.objects.new("MyCube", mesh)
+# 将物体链接到当前集合中（2.80+语法）
+bpy.context.collection.objects.link(obj)
+# 使用bmesh填充几何数据
+import bmesh
+bm = bmesh.new()
+bmesh.ops.create_cube(bm, size=2.0)
+bm.to_mesh(mesh)
+bm.free()
+```
 
-1. **定义层**：明确Blender Python脚本的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解Blender Python脚本内部各要素的相互作用方式
-3. **应用层**：将Blender Python脚本的原理映射到技术美术的实际场景中
+其中`bmesh`是独立于`bpy`的网格编辑模块，专门处理顶点、边、面的几何级操作，拥有`bmesh.ops.create_cube`、`bmesh.ops.extrude_face_region`等专用操作函数。
 
-思考题：如何判断Blender Python脚本的应用是否超出了其理论适用范围？
+### 插件的注册机制
 
-## 关键要点
+Blender插件（Add-on）的本质是一个包含特定元数据字典的Python模块。每个插件文件必须包含名为`bl_info`的字典，以及`register()`和`unregister()`两个函数：
 
-1. **核心定义**：Blender Python脚本的本质是bpy模块——Blender中的自动化与插件开发，这是理解整个概念的出发点
-2. **多维理解**：掌握Blender Python脚本需要同时理解bpy模块——Blender中的自动化和插件开发等关键维度
-3. **先修关系**：扎实的技美工具开发概述基础对理解Blender Python脚本至关重要
-4. **进阶路径**：可广泛应用于技术美术各方面
-5. **实践标准**：真正掌握Blender Python脚本的标志是能在具体场景中灵活运用并正确判断适用边界
+```python
+bl_info = {
+    "name": "My Tool",
+    "author": "Artist",
+    "version": (1, 0, 0),
+    "blender": (3, 0, 0),  # 最低兼容版本
+    "category": "Object",
+}
+
+def register():
+    bpy.utils.register_class(MyOperator)
+
+def unregister():
+    bpy.utils.unregister_class(MyOperator)
+```
+
+自定义操作符类必须继承`bpy.types.Operator`，并定义`bl_idname`（格式为`"category.name"`）、`bl_label`和`execute(self, context)`方法。`bl_idname`中的点号分隔了命名空间，例如`"object.my_batch_rename"`将出现在Object分类下。
+
+## 实际应用
+
+**批量重命名材质**：游戏项目中常需将所有材质名称统一添加前缀`M_`，以下代码遍历`.blend`文件中的所有材质并重命名：
+
+```python
+import bpy
+for mat in bpy.data.materials:
+    if not mat.name.startswith("M_"):
+        mat.name = "M_" + mat.name
+```
+
+**自动化FBX批量导出**：技术美术可以遍历场景中的每个物体，单独选中后调用`bpy.ops.export_scene.fbx()`，并通过`filepath`参数指定以物体名命名的输出路径，实现将100个道具模型一键导出为100个独立FBX文件。
+
+**设置PBR材质节点**：通过`bpy.data.materials["M_Rock"].node_tree.nodes["Principled BSDF"].inputs["Roughness"].default_value = 0.8`，可以精确控制材质球中Principled BSDF节点的粗糙度参数值为0.8，而无需手动打开材质编辑器。
 
 ## 常见误区
 
-1. **混淆概念边界**：将Blender Python脚本与工具开发中其他相近概念混为一谈。例如，bpy模块——Blender中的自动化的适用条件与其他插件开发概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解技美工具开发概述就学习Blender Python脚本，导致基础不牢**。建议先确认先修知识扎实
-3. **满足于表面理解：Blender Python脚本虽然入门门槛较低，但深入掌握需要理解其设计哲学和内在逻辑**
+**误区一：混淆`bpy.data`与`bpy.context`的用途**。许多初学者尝试用`bpy.context.selected_objects`来处理文件中所有网格，实际上这只返回当前视口中被选中的物体。若需处理.blend文件中的全部物体，应使用`bpy.data.objects`，前者依赖交互状态，后者访问完整数据库。
 
-## 知识衔接
+**误区二：在错误模式下调用操作符**。`bpy.ops.mesh.loop_cut()`必须在编辑模式（Edit Mode）下的活动网格物体上调用，若当前处于物体模式则会报`poll()`失败。正确做法是在调用前使用`bpy.ops.object.mode_set(mode='EDIT')`切换模式，操作完成后再切回`'OBJECT'`模式。
 
-### 先修知识
-先修知识包括：
-- **技美工具开发概述** — 为Blender Python脚本提供了必要的概念基础
+**误区三：直接修改`bpy.context`属性**。`bpy.context.active_object = some_obj`会抛出`AttributeError`，因为`bpy.context`中的大多数属性是只读的运行时映射。要切换激活物体，需使用`bpy.context.view_layer.objects.active = some_obj`，通过`view_layer`层级间接设置。
 
-### 后续学习
-掌握Blender Python脚本后，学习者已具备该方向的核心能力，可将所学应用于实际项目或探索技术美术其他分支。
+## 知识关联
 
-## 学习建议
+学习Blender Python脚本之前，需要掌握技术美术工具开发的基本思维——即识别哪些美术工作流程具有重复性、可参数化，从而确定脚本化的价值目标。没有这一判断能力，编写出的脚本往往解决了不存在的问题。
 
-预计学习时间：30-60分钟。建议采用以下策略：
-
-- **主动回忆**：学完后不看笔记复述Blender Python脚本的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将Blender Python脚本与技术美术中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释Blender Python脚本，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于工具开发的章节可作为深入参考
-- Wikipedia: [Ta Python Blender](https://en.wikipedia.org/wiki/ta_python_blender) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Ta Python Blender" 可找到配套视频教程
+Blender Python脚本是后续开发完整Blender插件（带UI面板、自定义属性、偏好设置）的直接前置技能。掌握`bpy.types.Panel`面板类的开发后，可在Blender的N面板（侧边栏）中嵌入专属的工具面板，将批量处理功能可视化，供无编程背景的美术人员使用。此外，`bpy`的`bpy.app.handlers`模块提供了事件钩子（如`load_post`、`frame_change_post`），可进一步扩展为响应式的自动化管线工具。

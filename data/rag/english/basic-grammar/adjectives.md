@@ -20,105 +20,105 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # 形容词
 
 ## 概述
 
-形容词（Adjective）是英语中用于修饰名词或代词、描述其性质、状态、数量或特征的词类。例如 *a tall building*（高楼）中的 *tall*，直接告诉读者建筑物的高度特征。形容词通常回答"What kind?"（什么类型？）或"Which one?"（哪一个？）这两类问题，使名词所指的事物更加具体清晰。
+形容词（Adjective）是英语中用于描述或修饰名词、代词特征的词类，能够表达颜色（red、blue）、大小（big、small）、形状（round、flat）、性质（kind、honest）、状态（tired、hungry）等属性信息。形容词回答的核心问题是"what kind of"（什么样的）或"which one"（哪一个），直接丰富名词所携带的语义内容。
 
-英语形容词的系统化研究可追溯至中世纪拉丁语法传统，但现代英语形容词已与拉丁语的形态变化大为简化——英语形容词本身不随名词的性（gender）、数（number）或格（case）变化，仅在构成比较级和最高级时改变形式。这一特点使英语形容词比法语或德语同类词简单许多。
+英语形容词的系统化研究可追溯至古英语时期（约450–1150年），彼时英语形容词仍保留格变化（case inflection）。随着中古英语演变，格变化逐渐消失，现代英语形容词本身不因名词的性、数、格而改变形式，这一特征与法语、德语等语言的形容词有根本区别——法语形容词仍需与名词在性（masculin/féminin）和数（singulier/pluriel）上保持一致。
 
-形容词的重要性体现在它直接影响交际精确度。将 *a dog* 描述为 *a fierce, stray dog*，接收者对危险程度的判断截然不同。在书面写作评分中，形容词的准确运用是雅思写作（IELTS Writing）词汇多样性评分的重要指标之一。
+英语学习者必须掌握形容词的三个核心用法：**限定用法**（attributive use，置于名词前）、**表语用法**（predicative use，置于连系动词后）以及**比较结构**（comparative structures）。错误使用形容词不仅影响表达准确性，还会造成语法错误，例如将形容词与副词混淆（说 "She runs quick" 而非 "She runs quickly"）。
 
 ---
 
 ## 核心原理
 
-### 形容词的位置：定语与表语
+### 1. 位置规则：限定用法与表语用法
 
-英语形容词有两种基本语法位置：
+形容词在句中有两种主要位置，且部分形容词只能出现在其中一种位置。
 
-- **定语（Attributive Position）**：直接放在名词前修饰，例如 *the red car*、*a clever student*。
-- **表语（Predicative Position）**：位于系动词（linking verb）之后，对主语进行描述，例如 *The car is red.*、*She seems tired.*
+**限定用法（Attributive）**：形容词直接置于所修饰名词之前，例如 *a **beautiful** garden*、*the **tall** man*。当一个名词前有多个形容词时，必须遵循**形容词顺序规则（Order of Adjectives）**：
 
-少数形容词只能用于其中一种位置。*Afraid*、*asleep*、*awake* 只能作表语，不能说 *an afraid child*，只能说 *The child is afraid.*；而 *utter*、*mere*、*sole* 只能作定语，说 *an utter failure* 而不能说 *The failure is utter.*
+> 数量 → 观点 → 大小 → 形状 → 年龄 → 颜色 → 国籍 → 材料 → 名词
 
-### 形容词的顺序规则
+例如：*three beautiful small round old black French silver coins*（三枚漂亮的小圆旧黑色法国银币）。违反此顺序会让母语者感到别扭，尽管语法书直到20世纪才对此规则进行系统整理。
 
-当多个形容词同时修饰一个名词时，英语有严格的排列顺序，通常遵循以下8类顺序：
+**表语用法（Predicative）**：形容词置于连系动词（be、seem、look、feel、taste、smell、sound、become、remain等）之后，例如 *The garden **is beautiful**.* 某些形容词只能作表语，包括 *asleep、afraid、alive、alone、awake、aware*，不能说 *an asleep child*，只能说 *The child is asleep.*
 
-> **数量 → 观点/评价 → 尺寸 → 年龄 → 形状 → 颜色 → 来源/国籍 → 材料 → 名词**
+### 2. 比较级（Comparative）
 
-例如：*three beautiful large old rectangular green French silver knives*（三把漂亮的、大的、古老的、长方形的、绿色的、法国银制刀）。在实际写作中同时叠用超过三四个形容词较为罕见，但顺序规则始终适用。违反此顺序会让母语者感到不自然，即使单个词意均正确。
+比较级用于比较两个对象，其构成规则依音节数量而定：
 
-### 比较级与最高级的构成规则
+| 音节数 | 规则 | 示例 |
+|---|---|---|
+| 单音节 | 词尾加 **-er** | tall → taller，big → **bigger**（双写末尾辅音） |
+| 双音节（辅音+y结尾） | 去y加 **-ier** | happy → **happier**，busy → busier |
+| 多音节（≥2音节，其他） | 前加 **more** | beautiful → **more beautiful** |
 
-形容词有三个级别：原级（Positive）、比较级（Comparative）、最高级（Superlative）。
+比较级结构为：**A + is + 比较级 + than + B**，例如 *She is **taller than** her brother.*
 
-**规则变化（一音节及部分二音节词）：**
+英语中有**8个常用不规则比较级**：
+- good → **better**
+- bad → **worse**
+- many/much → **more**
+- little → **less**
+- far → **farther/further**
+- old → **older/elder**
+- late → **later/latter**
+- fore → **former**
 
-| 原级 | 比较级 | 最高级 |
-|------|--------|--------|
-| tall | taller | tallest |
-| big | bigger | biggest |
-| happy | happier | happiest |
+### 3. 最高级（Superlative）
 
-*big* → *bigger* 的双写规则：单音节词结尾为"辅音+元音+辅音"结构时，须双写末尾辅音再加 *-er/-est*。
+最高级用于在三个或三个以上对象中比较，表示程度最高。构成规则与比较级平行：
 
-**不规则变化（必须记忆）：**
+| 音节数 | 规则 | 示例 |
+|---|---|---|
+| 单音节 | 加 **-est** | tall → the tallest |
+| 双音节（辅音+y结尾） | 去y加 **-iest** | happy → the **happiest** |
+| 多音节 | 前加 **the most** | beautiful → the **most beautiful** |
 
-| 原级 | 比较级 | 最高级 |
-|------|--------|--------|
-| good | better | best |
-| bad | worse | worst |
-| little | less | least |
-| many/much | more | most |
-| far | farther/further | farthest/furthest |
+最高级前**必须加定冠词 the**，例如 *She is **the most talented** student in the class.*
 
-**多音节词（通常三音节及以上，以及部分二音节词）：**
-在原级前加 *more/most*，例如 *more beautiful / most beautiful*，不能说 *beautifuller*。
-
-### 比较级的句型结构
-
-使用比较级时，搭配连词 *than*：
-> *She is taller **than** her brother.*（她比她哥哥高。）
-
-使用最高级时，通常搭配定冠词 *the* 以及范围限定短语：
-> *Mount Everest is **the** highest mountain **in the world**.*（珠穆朗玛峰是世界上最高的山。）
-
-注意：比较级前不加 *the*（少数固定搭配除外，如 *the sooner, the better*）。
+不规则最高级与比较级对应：good → better → **best**；bad → worse → **worst**；many → more → **most**。
 
 ---
 
 ## 实际应用
 
-**日常描述场景：**
-在描述天气时，*It is hot today* 中 *hot* 作表语；在询问商品时，*Do you have a smaller size?* 用比较级表达尺寸需求，比直接说 *I want a small size* 更礼貌、更精准。
+**写作场景：描写人物**
+在写人物描写段落时，正确使用限定和表语形容词至关重要。*She has **long, curly, dark** hair*（遵循大小→形状→颜色顺序）比 *She has dark curly long hair* 更地道。
 
-**写作中的程度副词搭配：**
-形容词常与程度副词连用以增强或减弱语气：*very cold*（很冷）、*extremely dangerous*（极度危险）、*slightly warm*（微暖）。雅思写作中，使用 *significant*、*substantial* 等替代简单的 *big* 或 *large* 可提升词汇分数。
+**口语场景：购物比较**
+英语购物场景中比较级使用频率极高：*This jacket is **more expensive than** that one, but it's **better quality**.* 注意 *expensive* 三音节必须用 *more*，而 *good* 使用不规则形式 *better*。
 
-**广告与新闻标题：**
-广告语大量使用形容词最高级，如 *The fastest laptop ever made*（有史以来最快的笔记本电脑），这是因为最高级天然带有排他性，暗示产品在同类中无可替代。
+**阅读理解：识别后置形容词**
+英语中存在少数形容词后置的固定表达，如 *the president **elect**（当选总统）、something **strange**（奇怪的事情）、Attorney General**（总检察长）*。这些是从法语借入的构词模式，理解它们有助于阅读正式文本。
+
+**考试场景：as...as 结构**
+表示"同等程度"时使用 *as + 形容词原级 + as* 结构，例如 *She is **as tall as** her father.*，否定形式为 *not as/so tall as*。这一结构与比较级和最高级共同构成英语形容词比较的完整体系。
 
 ---
 
 ## 常见误区
 
-**误区1：比较级前误加定冠词 *the***
-学习者常说 *She is the taller than him*，但比较级前通常不加 *the*，正确说法是 *She is taller than him.*。例外情况仅限于比较两者中较高的那个，如 *She is the taller of the two sisters.*（两姐妹中她更高），此时有明确的二者对比范围。
+**误区一：混淆形容词与副词**
+"She is a **quick** runner"（形容词修饰名词runner，正确）与 "She runs **quickly**"（副词修饰动词runs，正确）是不同结构。中文母语者常错说 *She runs quick*，将形容词 *quick* 误用为副词。但有一个例外：*fast* 既是形容词又是副词，*She runs fast* 完全正确。
 
-**误区2：双重比较级的错误叠用**
-部分学习者说 *more better* 或 *more taller*，这是双重比较级错误。*better* 已经是 *good* 的比较级，无需再加 *more*。此类错误在莎士比亚时代的英语中曾存在，但现代标准英语中已视为语法错误。
+**误区二：双重比较级/最高级（Double Comparison）**
+绝不能同时使用 *-er* 和 *more*，或 *-est* 和 *most*。说 *more taller* 或 *most tallest* 是严重语法错误。莎士比亚时代的英语（16世纪）确实存在双重比较级，如《凯撒大帝》中的 *"the most unkindest cut of all"*，但现代英语已不允许此用法。
 
-**误区3：*fewer* 与 *less* 的混用**
-*less* 用于不可数名词（*less water*），*fewer* 用于可数名词（*fewer students*）。说 *less students* 在口语中虽然常见，但在正式写作和考试中仍被标记为错误。
+**误区三：最高级忘加 the**
+中文没有冠词系统，学习者常省略最高级前的定冠词。*She is **the** most intelligent student*（正确）vs. *She is most intelligent student*（错误）。唯一例外是当最高级作表语且含有所有格时，可省略 *the*：*She is at her best today.*
 
 ---
 
 ## 知识关联
 
-学习形容词之前，需要掌握**词性概述**中关于名词和系动词的基本概念，因为形容词的定语和表语用法都直接依赖对名词和系动词的识别能力。
+学习形容词之前需要了解**词性概述**的基本框架，知道英语词类的分工——形容词与名词、动词、副词各自扮演不同角色，形容词专门负责"描述名词特征"这一语义功能，副词才负责修饰动词和形容词本身。
 
-掌握形容词后，学习者将进入**名词修饰语**这一更宽泛的话题。名词修饰语不仅包括形容词，还涵盖分词短语（如 *the running water* 中的 *running*）和名词作定语（如 *stone wall* 中的 *stone*）。理解形容词位置规则和排列顺序，是处理复杂名词修饰语组合时的重要基础，因为同样的顺序规则适用于混合多类修饰语的情况。
+掌握形容词之后，学习者将进入**名词修饰语**的学习。名词修饰语涵盖更广泛的修饰手段，包括名词作定语（*a stone wall*）、分词短语作定语（*the man standing there*）、定语从句（*the book that I read*）等，这些结构都是在形容词限定用法基础上的扩展。此外，比较级和最高级的句型在**状语从句**（尤其是 *than* 引导的比较从句）中还有更复杂的变化，例如 *She works harder than I do.* 中省略与补全的规则。

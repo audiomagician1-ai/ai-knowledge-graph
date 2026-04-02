@@ -20,86 +20,83 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-04-01
 ---
+
 # CSS基础
 
 ## 概述
 
-CSS（Cascading Style Sheets，层叠样式表）是用于描述HTML文档视觉呈现的语言，由W3C于1996年12月发布CSS1规范，标志着样式与结构正式分离。CSS通过选择器定位HTML元素，再用属性-值对（property: value）为其赋予颜色、尺寸、字体、间距等视觉特征，让同一份HTML能呈现出截然不同的视觉风格。
+CSS（Cascading Style Sheets，层叠样式表）是一种用于描述HTML文档视觉呈现的样式语言，由万维网联盟（W3C）于1996年发布CSS1规范，当前主流版本为CSS3（2011年起模块化发布）。CSS的核心职责是将内容结构（HTML）与视觉表现分离，使同一段HTML可以通过切换CSS文件呈现出完全不同的外观。
 
-CSS最关键的设计哲学来自其名称中的"层叠"（Cascading）机制——当多条规则同时作用于同一元素时，浏览器依据**优先级（Specificity）**和来源顺序决定最终生效的样式，而不是简单地覆盖。目前最广泛使用的是CSS3，它将样式系统拆分为独立模块（如Color Module、Selectors Level 4），各模块可独立演进和发布。
+CSS之所以在Web前端中不可替代，在于它提供了一套声明式的样式规则系统，开发者只需告诉浏览器"这个元素应该是什么样子"，而无需编写像素级操作逻辑。对于AI工程中的前端开发场景——无论是构建模型演示界面、数据可视化仪表盘还是交互式标注工具——CSS都是控制界面美观度和可用性的直接手段。
 
-在AI工程的Web前端开发场景中，CSS决定了模型推理界面、数据可视化面板、聊天机器人对话框等组件的视觉一致性。掌握CSS基础是后续实现响应式布局、集成TailwindCSS原子类框架的前提条件。
-
----
+CSS的名称中"层叠"（Cascading）一词揭示了其最独特的机制：当多条样式规则同时作用于一个元素时，浏览器依据特定的优先级算法决定最终生效的样式，而非简单覆盖。
 
 ## 核心原理
 
-### 选择器与优先级计算
+### 选择器与声明块
 
-CSS选择器分为五类：通用选择器（`*`）、标签选择器（`div`）、类选择器（`.class`）、ID选择器（`#id`）和属性选择器（`[type="text"]`）。优先级采用三位数计分系统 **(a, b, c)**：
+CSS规则由**选择器**和**声明块**两部分组成，格式为：
 
-- **a**：ID选择器数量，每个计100分
-- **b**：类选择器、属性选择器、伪类数量，每个计10分
-- **c**：标签选择器、伪元素数量，每个计1分
+```
+selector { property: value; }
+```
 
-例如选择器 `#nav .item:hover` 的优先级为 **(1, 2, 0) = 120分**，而 `div.item` 为 **(0, 1, 1) = 11分**。`!important` 声明会跳过这一计分体系，直接强制生效，因此应谨慎使用。行内样式（`style=""`）优先级等效于1000分。
+选择器精确指向HTML元素，常见类型包括：元素选择器（`p`）、类选择器（`.highlight`）、ID选择器（`#header`）、属性选择器（`input[type="text"]`）以及伪类选择器（`a:hover`）。选择器可组合使用，例如 `div.card > p:first-child` 表示"class为card的div的直接子元素中的第一个p标签"。
+
+### 层叠与优先级（Specificity）
+
+CSS优先级通过一个三元组 **(a, b, c)** 计算：
+- **a**：ID选择器数量（每个计100分）
+- **b**：类选择器、属性选择器、伪类数量（每个计10分）
+- **c**：元素选择器、伪元素数量（每个计1分）
+
+例如选择器 `#nav .menu li` 的优先级为 **(1, 1, 1)**，即111分；`div p` 为 **(0, 0, 2)**，即2分。`!important` 声明会强制覆盖所有优先级计算，但滥用会导致样式维护困难，应谨慎使用。当优先级相同时，**后定义的规则覆盖先定义的规则**，这是"层叠"行为的具体表现。
 
 ### 盒模型（Box Model）
 
-每个HTML元素在浏览器中都以盒子的形式存在，由四层结构组成：**content → padding → border → margin**，从内到外依次嵌套。CSS提供两种盒模型计算方式，通过 `box-sizing` 属性切换：
+每个HTML元素在CSS中被视为一个矩形盒子，由四层组成（由内到外）：
 
-- `box-sizing: content-box`（默认）：`width` 仅指内容区域，实际占用宽度 = width + padding×2 + border×2
-- `box-sizing: border-box`：`width` 包含padding和border，实际占用宽度就是设定的width值
+1. **content**：实际内容区域，由 `width` 和 `height` 控制
+2. **padding**：内边距，内容与边框之间的透明空间
+3. **border**：边框，可设置宽度、样式和颜色
+4. **margin**：外边距，该元素与相邻元素之间的空间
 
-在实际项目中，通常在CSS重置文件中添加 `*, *::before, *::after { box-sizing: border-box; }` 全局切换为border-box，避免因padding和border导致布局计算错误。
+CSS提供两种盒模型计算方式，由 `box-sizing` 属性控制：
+- `content-box`（默认）：`width` 仅指content区域，实际占用宽度 = width + padding×2 + border×2
+- `border-box`：`width` 包含content + padding + border，实际占用宽度等于设置的 `width`
 
-### 层叠与继承机制
+现代前端项目通常全局设置 `* { box-sizing: border-box; }` 以避免布局计算困惑。
 
-CSS属性分为两类：**可继承属性**（如`color`、`font-size`、`line-height`、`text-align`）会从父元素自动传递给子元素；**不可继承属性**（如`margin`、`padding`、`border`、`width`）不会传递。当需要强制继承不可继承属性时，可使用 `inherit` 关键字，例如 `border: inherit`。
+### 继承与默认样式
 
-层叠的解析顺序按以下优先级从低到高排列：浏览器默认样式 → 外部样式表 → 内部`<style>`标签 → 行内样式 → `!important`声明。当优先级相同时，后定义的规则覆盖先定义的规则，这就是"层叠"中"顺序"维度的体现。
-
-### 定位与文档流
-
-CSS提供五种 `position` 值控制元素在页面中的位置：
-
-| 值 | 说明 |
-|---|---|
-| `static` | 默认值，遵循正常文档流 |
-| `relative` | 相对自身原位置偏移，仍占据原空间 |
-| `absolute` | 脱离文档流，相对最近的非static祖先定位 |
-| `fixed` | 脱离文档流，相对浏览器视口定位，不随滚动移动 |
-| `sticky` | 滚动到阈值前为relative，超过阈值后表现为fixed |
-
-`absolute` 和 `fixed` 定位的元素会脱离文档流，不再占据原始空间，常用于模态框（Modal）和悬浮提示（Tooltip）等AI界面组件。
-
----
+CSS属性分为**可继承属性**和**不可继承属性**。`color`、`font-size`、`line-height` 等文本相关属性默认可继承，子元素无需重复声明即可获得父元素的文字样式。而 `margin`、`padding`、`border`、`width` 等盒模型属性不继承，每个元素需独立设置。浏览器本身携带一套默认样式（User Agent Stylesheet），例如 `h1` 默认字体大小为 `2em`，`ul` 默认带有缩进和圆点，开发中常用 `normalize.css` 或 `reset.css` 来统一各浏览器的默认样式差异。
 
 ## 实际应用
 
-**AI聊天界面的消息气泡**：用户消息和AI回复消息分别向右和向左对齐，通常使用 `text-align` 结合 `max-width: 70%`、`border-radius: 18px` 和差异化的 `background-color` 实现。消息气泡内部的代码块需要单独设置 `white-space: pre-wrap` 确保代码换行正常显示。
+**AI模型演示界面的基础样式设置**：构建一个GPT对话界面时，可通过CSS实现用户消息右对齐、模型回复左对齐，利用 `border-radius: 12px` 制作气泡效果，用 `background-color: #f0f4ff` 区分两种消息的视觉层次。
 
-**数据可视化仪表盘的卡片布局**：通过 `box-shadow: 0 2px 8px rgba(0,0,0,0.12)` 和 `border-radius: 8px` 创建卡片视觉效果，配合 `padding: 16px 24px` 保证内容呼吸感。颜色系统使用CSS自定义属性（Custom Properties）：`:root { --primary: #4F46E5; }` 定义全局主题色，后续通过 `color: var(--primary)` 引用，实现主题统一管理。
+**数据标注工具的状态反馈**：在图像标注工具中，使用 `:hover` 伪类给标注框添加高亮边框（`border: 2px solid #ff6b35`），用 `.selected` 类切换背景色表示选中状态，通过 `cursor: crosshair` 改变鼠标指针样式提示用户当前处于绘框模式。
 
-**表单样式与伪类**：模型参数配置表单使用 `:focus` 伪类高亮当前激活的输入框，`:disabled` 设置不可编辑字段的灰色样式，`:valid` 和 `:invalid` 提供实时的输入验证视觉反馈，无需JavaScript即可完成基础交互样式。
-
----
+**响应式字体大小**：使用CSS单位 `rem`（相对于根元素字体大小，默认1rem = 16px）而非 `px` 定义字体，确保用户调整浏览器基础字号时整个界面等比缩放，提升可访问性。
 
 ## 常见误区
 
-**误区1：`margin: auto` 可以垂直居中**。`margin: auto` 在水平方向（当元素有明确宽度时）确实能实现水平居中，但垂直方向的 `margin: auto` 在普通文档流中计算结果为0，不会产生垂直居中效果。垂直居中需要借助 `flexbox`（`align-items: center`）或 `position: absolute` 配合 `transform: translateY(-50%)` 实现。
+**误区一：`margin` 折叠让间距"消失"**
+当两个块级元素上下相邻时，它们的垂直margin不会叠加而是**取较大值**，这称为"外边距折叠"（Margin Collapse）。例如上方元素 `margin-bottom: 20px`、下方元素 `margin-top: 30px`，实际间距是30px而非50px。水平方向的margin不存在折叠，Flex/Grid容器内的子元素也不发生折叠。
 
-**误区2：`display: none` 与 `visibility: hidden` 效果相同**。两者都让元素不可见，但 `display: none` 会将元素完全从渲染树中移除，元素不再占据任何空间，而 `visibility: hidden` 仅使元素透明，但仍占据原有空间，不会导致周围元素位置改变。在AI界面中控制加载骨架屏的显隐时，选错这两个属性会导致布局抖动。
+**误区二：`display: none` 与 `visibility: hidden` 效果相同**
+`display: none` 将元素完全从文档流中移除，不占据任何空间，屏幕阅读器也无法读取；`visibility: hidden` 隐藏元素但**保留其占据的空间**，周围元素的位置不受影响。在AI界面中动态显示/隐藏加载动画时，选错属性会导致布局跳动。
 
-**误区3：class命名可以用数字开头**。CSS类选择器不允许以数字开头，例如 `.2col-layout` 会导致选择器解析失败，需改写为 `.col-2-layout` 或 `._2col-layout`。但HTML `class` 属性本身允许数字开头，这种差异容易造成"HTML写对了但CSS不生效"的困惑。
-
----
+**误区三：CSS优先级与代码顺序相同**
+不少初学者认为"写在后面的样式一定覆盖前面的"，但优先级计算优先于顺序判断。一个ID选择器（100分）写在100个类选择器（各10分）之前，仍然会覆盖这100个类选择器的样式，因为100 > 10×n（n<10）时ID优先，100 > 10×1 = 10，ID依然胜出。
 
 ## 知识关联
 
-**与HTML基础的关系**：CSS依赖HTML提供的文档树（DOM Tree）作为作用对象，选择器本质上是对DOM节点的查询语言。理解HTML的块级元素（`div`、`p`）和行内元素（`span`、`a`）的默认 `display` 值，是理解CSS布局行为的基础——例如为什么 `width` 对 `<span>` 默认无效（因为其 `display: inline`）。
+CSS基础以HTML基础为前提，选择器的有效使用依赖于对HTML标签语义和DOM树结构的理解——只有清楚元素的父子、兄弟关系，才能正确编写后代选择器和组合选择器。
 
-**通向CSS布局（Flex/Grid）**：盒模型和文档流的概念是学习Flexbox和Grid的前置知识。Flexbox中的 `flex-direction`、`align-items` 本质上是对默认文档流方向和对齐方式的重新定义；理解 `border-box` 计算模型后，Grid中的 `gap` 和 `fr` 单位才不会产生宽度溢出的困惑。
+掌握盒模型和文档流是学习**CSS布局（Flex/Grid）**的必要基础，Flex布局通过改变子元素在主轴上的排列方式解决盒模型默认流式排列的局限，Grid布局则在二维平面上划分区域，两者都依赖对 `display`、`width`、`margin` 等基础属性的熟练运用。
 
-**通向TailwindCSS**：TailwindCSS的每一个原子类（如 `p-4`、`text-blue-500`、`rounded-lg`）都直接对应一条或几条CSS属性声明，`p-4` 等于 `padding: 1rem`，`text-blue-500` 等于 `color: #3B82F6`。只有熟悉原生CSS属性语义，才能准确理解和选用Tailwind类名，而不是盲目试错。
+在进入**CSS-in-JS和TailwindCSS**工具时，CSS基础中的选择器优先级知识直接对应TailwindCSS的类名覆盖规则，而盒模型概念则映射到Tailwind的 `p-4`（padding: 1rem）、`m-2`（margin: 0.5rem）等原子类设计逻辑。**Web动画**方向则需要在CSS基础的 `transition` 和 `transform` 属性上扩展，例如 `transition: all 0.3s ease` 实现平滑过渡，这些属性在掌握盒模型和显示模式后才能正确应用。

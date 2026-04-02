@@ -20,59 +20,66 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 内存泄漏检测
 
 ## 概述
 
-内存泄漏（Memory Leak）是指程序在运行过程中动态分配的内存未能被正确释放，导致可用内存持续减少的现象。在游戏和实时渲染应用中，即便是每帧仅泄漏 1KB 的资源，经过 3600 帧（约 60 秒）后累积泄漏量也将达到 3.5MB，长时间运行后会引发显著的性能下降乃至崩溃。与内存池管理关注"分配策略"不同，内存泄漏检测专注于验证"已分配内存是否被归还"这一问题。
+内存泄漏（Memory Leak）是指程序在运行过程中申请了内存空间，但在使用完毕后未能正确释放，导致这些内存块永久占用直至进程结束。在游戏和实时渲染场景中，内存泄漏尤为危险——一个典型的移动端游戏如果每帧泄漏256字节，在60帧/秒的运行速率下，60分钟后将累积约879MB的无效内存占用，足以触发iOS系统的低内存警告并强制终止应用。
 
-内存泄漏检测技术最早在 1990 年代随 C++ 程序的普及而系统化发展。1992 年发布的 Purify 工具首次将二进制插桩（Binary Instrumentation）技术应用于内存追踪，奠定了现代检测工具的基本原理。在技术美术工作流中，纹理、网格、渲染目标（Render Target）等 GPU 资源的泄漏尤其隐蔽，因为这些资源不由操作系统垃圾回收机制管理，必须依赖专门工具才能发现。
+内存泄漏检测技术的系统性发展始于1992年前后，随着C++的普及和动态内存分配的广泛使用，开发者开始构建专用工具。Valgrind工具套件于2002年首次发布，其核心子工具Memcheck通过"影子内存"（shadow memory）机制为每个被分配的字节维护一份元数据记录，能精确定位未释放的堆内存。现代游戏引擎（如Unreal Engine和Unity）则内置了各自的内存分析框架，以满足实时渲染管线对检测性能的要求。
 
-对于技术美术而言，内存泄漏检测是控制游戏内存预算的防线之一。一个未被发现的 512×512 RGBA 纹理泄漏（占用约 1MB VRAM）在加载卸载关卡时重复累积，会直接压缩给其他高优先级资源的预算空间。
+对技术美术而言，内存泄漏检测是保障项目在目标平台上稳定运行的重要手段。技术美术往往负责材质系统、粒子系统、动态加载资源等模块的资源生命周期管理，这些模块是游戏项目中内存泄漏的高发区。掌握检测方法可以帮助技术美术快速定位是哪一批纹理资产、Shader变体或Mesh未被正确卸载。
+
+---
 
 ## 核心原理
 
-### 引用计数与标记清除
+### 引用计数与追踪式检测
 
-最基础的泄漏检测原理是**引用计数（Reference Counting）**：每个资源对象维护一个整数计数器，每次被引用时 +1，引用解除时 -1，计数归零时触发释放。泄漏检测即检查程序退出时或资源卸载后是否存在计数仍大于 0 的对象。Unreal Engine 的 `TSharedPtr<T>` 和 Unity 的 `UnityEngine.Object` 均基于类似机制。
+内存泄漏检测存在两类主流机制。**引用计数法**为每个内存对象维护一个整型计数器，每次新增引用时计数+1，引用失效时计数-1，计数归零时自动释放。这种方法在Unity的`UnityEngine.Object`系统中有所体现，但它无法检测**循环引用**（Circular Reference）——例如对象A持有对象B的引用，B又持有A，两者计数永远不为零。**追踪式检测（Tracing Detection）**则从一组"根"对象出发，递归标记所有可达内存块，程序结束时仍未被标记的块即为泄漏点，Valgrind的Memcheck正是采用此原理。
 
-**标记清除（Mark-and-Sweep）**则用于检测循环引用导致的泄漏：从根节点集合出发遍历所有可达对象并标记，扫描结束后未被标记的对象即为泄漏候选。Lua 脚本的垃圾回收器使用三色标记法（Tri-color Marking），在游戏逻辑脚本中可捕获由循环引用引发的 Lua 对象泄漏。
+### 分配记录与堆栈快照
 
-### 内存快照对比法
+一种实用的检测手段是在内存分配点（`malloc`/`new`调用处）注入钩子函数，记录分配地址、大小和调用堆栈信息。程序退出时，检测系统将所有已分配但未释放的记录输出为报告。Unreal Engine提供了`FMemory::MallocTag`机制，可以在编辑器构建中为每次分配打上标签，在`stat memory`命令输出中精确显示哪个子系统的内存持续增长。
 
-在游戏引擎语境下，最实用的泄漏检测方式是**前后快照对比（Snapshot Diffing）**：在某操作（如加载/卸载一个关卡）前后各采集一次内存分配快照，然后对比差集。差集中持续存在的分配记录即泄漏嫌疑项。
+常见的堆快照对比公式为：
 
-Unity Profiler 的 Memory 模块支持"Take Sample"功能，可对比两次快照中 `ManagedHeap`、`NativeAllocations` 和 `GraphicsDriver` 三个独立区域的变化。Unreal Engine 则通过控制台命令 `obj list` 配合 `memreport -full` 导出完整对象列表，操作前后的 diff 可精确定位未销毁的 UObject 实例。实际操作中建议将同一操作重复执行 5~10 次，排除缓存预热的干扰，只有每次循环都稳定增长的分配才是真正的泄漏。
+$$\text{泄漏量} = \sum_{i} \text{Alloc}(t_2)_i - \sum_{j} \text{Free}(t_2)_j - \left(\sum_{i} \text{Alloc}(t_1)_i - \sum_{j} \text{Free}(t_1)_j\right)$$
 
-### 地址消毒器与插桩工具
+其中 $t_1$ 为基准时刻快照，$t_2$ 为检测时刻快照，通过比较两个时刻的净分配差值来量化泄漏。
 
-**AddressSanitizer（ASan）** 是由 Google 于 2011 年开源的运行时内存错误检测工具，通过编译时插桩（Compile-time Instrumentation）在每次内存访问前插入合法性检查代码。其典型开销约为原程序运行速度的 1.5~2 倍、内存占用增加约 3 倍，但可精确报告泄漏的分配调用栈（Allocation Callstack）。在 UE4/UE5 项目中，可通过编译选项 `-fsanitize=address` 启用 ASan，配合 LeakSanitizer（LSan）在程序退出时输出所有未释放块的详细信息。
+### 工具链与平台专用方案
 
-**Valgrind** 的 Massif 工具则提供堆内存随时间变化的可视化曲线（Heap Profile），横轴为程序执行快照点，纵轴为字节数，峰值点周围的调用树往往揭示泄漏的根源函数。
+不同平台有各自专属的检测工具。在PC/主机端，**RenderDoc**的内存视图可追踪GPU资源（纹理、缓冲区）的分配状态；**Visual Studio诊断工具**中的"内存使用率"快照可逐帧对比托管堆与原生堆的变化。在移动端，**Xcode Instruments**的Leaks模板可实时标记iOS应用中的泄漏对象，并通过Allocation Backtraces追溯到具体的Objective-C或C++调用链；Android平台则使用**Android Studio Profiler**的Memory Profiler，可监控Java堆、Native堆和图形内存的分类增长曲线。Unity专项检测依赖**Memory Profiler Package**（版本1.1.0+），其"Compare Snapshots"功能能以对象类型为维度显示两帧之间的净增对象数量，可有效发现`RenderTexture`或`ComputeBuffer`未调用`Release()`导致的泄漏。
 
-### GPU 资源泄漏检测
-
-GPU 端泄漏检测需要独立工具。**RenderDoc** 的 Resource Inspector 面板可列出当前帧所有存活的 D3D12/Vulkan 资源对象及其创建时的调用栈。**PIX for Windows** 的 GPU Captures 功能可对比两次捕获之间新增但未销毁的资源描述符（Resource Descriptor），常用于定位 RenderTexture 在相机切换后未调用 `Release()` 的问题。在 Unity 中，每个未手动释放的 `RenderTexture` 对象会在 Profiler 的 `RenderTexture.active` 路径下持续占用 VRAM，可通过帧调试器验证。
+---
 
 ## 实际应用
 
-**场景一：角色换装系统的纹理泄漏。** 一个换装系统在运行 50 次换装操作后报告 VRAM 占用从 800MB 攀升至 1.2GB。使用 Unity Memory Profiler 2.0 对比第 1 次和第 51 次换装前后的快照，发现 `NativeAllocations` 区域新增了 50 份 `Texture2D` 实例，定位到代码中 `AssetBundle.LoadAsset<Texture2D>()` 之后缺少对旧纹理调用 `Resources.UnloadAsset()` 的逻辑。修复后每次换装的净分配变化归零。
+**动态材质实例泄漏**是技术美术最常遇到的场景。在Unity中，通过`renderer.material`（注意不是`renderer.sharedMaterial`）访问材质时，引擎会自动创建该材质的副本。如果代码在循环中反复访问此属性而不手动销毁，将在堆上持续累积`Material`实例。使用Memory Profiler对场景加载前后各取一个快照，"Objects"视图中`Material`类型的Count列若持续增大，即可确认该泄漏。修复方式是将引用缓存至局部变量并在`OnDestroy()`中调用`Destroy(mat)`。
 
-**场景二：关卡流送中的粒子系统泄漏。** 在 Unreal Engine 项目中，使用关卡流送（Level Streaming）反复加载卸载同一关卡，运行 `memreport -full` 10 次后对比报告，发现 `ParticleSystemComponent` 数量每轮增加 12 个。追踪至某个粒子蓝图在 `BeginDestroy` 事件中未正确注销计时器句柄，导致计时器持有对粒子组件的强引用，阻止 GC 回收。将计时器句柄改为弱引用后泄漏消除。
+**RenderTexture未释放**是另一高频问题。后处理效果或自定义渲染流程常在运行时通过`RenderTexture.GetTemporary()`申请临时RT，若对应的`ReleaseTemporary()`调用遗漏，每次调用将永久占用显存。在Xcode Instruments的GPU Frame Capture中，"Resources"列表的Texture条目计数会随时间线性增长，增长斜率可直接反映泄漏速率。
 
-**场景三：材质实例的隐性泄漏。** 技术美术在运行时通过 `Material.SetFloat()` 创建动态材质实例，但在对象销毁时未调用 `Destroy(material)`。在 Profiler 中 `Material` 类的实例计数随游戏时长线性增长，使用 Memory Profiler 的 "Objects" 视图按类型过滤后一览无余，15 分钟游戏会话积累了 340 个孤立材质实例，占用约 27MB 托管内存。
+**Unreal Engine中的UObject孤岛**也是常见漏洞类型。当一个UObject被创建但未被任何其他UObject强引用，且未调用`MarkPendingKill()`，垃圾回收器（GC）将无法回收它。使用控制台命令`obj list class=StaticMeshComponent`可列出当前所有存活实例数量，结合关卡切换前后的数量对比，可以定位未被GC处理的孤立组件。
+
+---
 
 ## 常见误区
 
-**误区一：对象被置为 null 就等于内存被释放。** 在 C# 和 Lua 中，将变量赋值为 `null` 或 `nil` 只是解除了该变量对对象的引用，对象本身是否被回收取决于是否还存在其他引用路径。事件委托（Event Delegate）是最常见的隐藏引用来源——若一个 MonoBehaviour 订阅了静态事件但在销毁时未取消订阅，垃圾回收器将无法回收该对象，但 Profiler 的托管堆快照会明确显示该对象仍然存活且被事件系统持有。
+**误区一：帧率稳定就代表没有内存泄漏。** 内存泄漏的影响是累积性的，在短时测试中可能完全不体现在帧率上。典型情况是游戏运行30分钟内表现正常，但在长会话（90分钟+）后因内存耗尽而崩溃。正确的验证方式是执行至少两轮完整的关卡加载/卸载循环，对比两轮结束时的内存基线值——若第二轮基线明显高于第一轮，则存在泄漏。
 
-**误区二：依赖引擎自动 GC 可以完全规避泄漏。** Unity 的垃圾回收仅负责托管内存（Managed Heap），对 `Texture2D`、`RenderTexture`、`ComputeBuffer` 等 Native 资源无效。这些对象在托管侧的封装器（Wrapper）可能被 GC 回收，但底层 Native 分配在未显式调用 `Destroy()` 或 `Release()` 之前永远不会被释放，VRAM 的消耗会持续存在。这也是为什么 Memory Profiler 需要单独区分 `ManagedHeap` 和 `NativeAllocations` 两个数据视图。
+**误区二：只检测CPU内存，忽略GPU显存泄漏。** GPU显存泄漏同样致命，尤其在移动端GPU与CPU共享物理内存的架构（如Apple Silicon、Adreno、Mali）上，显存泄漏会直接压缩操作系统可用内存。技术美术应将Texture、RenderBuffer、ComputeBuffer的GPU内存占用纳入检测范围，而非仅关注托管堆或原生堆的C++对象。
 
-**误区三：运行时无泄漏报告代表没有泄漏。** AddressSanitizer 和 Valgrind 的 LeakSanitizer 默认在程序正常退出时才输出泄漏报告，若程序因崩溃而中止则不会生成报告。此外，周期性但非单调递增的内存波动有时会掩盖缓慢泄漏，建议配合 **长时运行压测（Soak Test）**，将同一场景运行 30 分钟以上，在 Profiler 时间线上观察内存曲线是否具有上升趋势，斜率为正即可怀疑存在泄漏。
+**误区三：内存池管理等同于不会泄漏。** 内存池（Memory Pool）从操作系统预申请一块大内存后统一分配，即使池内对象未被正确归还（Return to Pool），操作系统层面并不会报告泄漏（因为整块内存仍被进程持有），但池内的"游离"对象会导致池容量快速耗尽，引发溢出分配或功能失效。这类问题需要在池层面而非操作系统层面进行引用追踪。
+
+---
 
 ## 知识关联
 
-内存泄漏检测建立在**内存池管理**的概念基础之上：当使用自定义内存池时，泄漏检测需同时追踪"从系统申请的总块数"与"归还给系统的总块数"，两者之差即为活跃分配数，若活跃分配数在操作前后不一致即为泄漏。内存池的分配/释放接口（如 `PoolAlloc()`/`PoolFree()`）是插桩检测的天然埋点，比追踪系统级 `malloc`/`free` 的颗粒度更粗但噪声更小。
+内存泄漏检测建立在**内存池管理**的实践基础上：当技术美术已掌握内存池的分配边界和归还机制后，才能有效区分"对象被正确归还至池"与"对象被操作系统释放"这两种不同的生命周期终结路径，从而在池层面正确埋设泄漏检测点。内存池的分配记录表本身也可直接复用为泄漏检测的数据来源——池中所有已分配、未归还且超出预期存活时长的对象，均是潜在的泄漏候选。
 
-在纹理流送（Texture Streaming）和资源热
+在纵向技术链条上，掌握内存泄漏检测后，技术美术可进一步向资产流管线的自动化质检方向延伸，将检测规则集成到CI/CD流程中，在每次资产提交时自动运行轻量级内存快照对比，将人工排查转变为系统性的预防机制。

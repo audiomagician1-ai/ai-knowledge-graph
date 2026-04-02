@@ -20,105 +20,72 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # 不规则动词
 
 ## 概述
 
-不规则动词（Irregular Verbs）是英语动词系统中一类不遵循"动词原形 + -ed"规则的动词，其过去式和过去分词形式必须单独记忆。英语中约有200个常用不规则动词，其中使用频率最高的50个动词中，超过70%是不规则动词，例如 go、be、have、do、say 等。
+不规则动词（Irregular Verbs）是指在构成过去式和过去分词时，不遵循"动词原形 + -ed"规则的英语动词。规则动词如 walk → walked → walked 只需加 -ed，而不规则动词如 go → went → gone 则需要单独记忆，每个词都有其独特的变化形式。英语中常用不规则动词约有 150-200 个，其中高频使用的核心不规则动词大约有 50 个，涵盖日常表达中最基本的动作词汇。
 
-不规则动词的存在有其历史渊源。现代英语中大多数不规则动词来自古英语（Old English）的"强变化动词"（Strong Verbs）系统，这些动词通过改变词根元音来表达时态变化，称为"元音交替"（Ablaut）。例如 sing → sang → sung，这三个形式的元音 i → a → u 变化是一千多年前日耳曼语言中的语法规律留存至今的痕迹，而非随机混乱。
+不规则动词的存在源于英语的历史演变。现代英语中的大多数不规则动词来自古英语（Old English）的"强变化动词"系统，这类动词通过内部元音交替来表示时态变化，这一语言学现象称为"元音变换"（Ablaut）。例如 sing → sang → sung 就是典型的元音交替模式，保留了公元700年前后古英语的语法特征。随着语言演化，规则动词逐渐成为主流，但最高频的核心动词因使用频繁而保留了古老的不规则形式。
 
-不规则动词的重要性在于：它们几乎全部属于高频核心词汇。一旦将不规则动词的三种形式用错，句子意义会发生根本性偏差。例如将"I seen it"误用（正确应为"I saw it"），在母语者听来是严重语法错误，而非轻微失误。掌握不规则动词三态是正确使用一般过去时、现在完成时、被动语态等多个语法结构的前提条件。
-
----
+掌握不规则动词对于正确使用英语一般过去时至关重要。由于 be、have、do、go、say 这五个使用频率最高的英语动词全部是不规则动词，学习者若不记住其变化形式，将无法准确表达绝大多数过去发生的事件，也无法理解英语阅读材料中的基础句子。
 
 ## 核心原理
 
-### 三态结构：原形、过去式、过去分词
+### 不规则动词的三种形式
 
-每个不规则动词都有三种基本形式，语法上称为"三态"：
-- **V1（原形）**：动词基本形式，用于现在时和将来时
-- **V2（过去式）**：仅用于一般过去时
-- **V3（过去分词）**：用于完成时态和被动语态
+每个英语动词有三种核心形式：原形（Base Form）、过去式（Past Simple）、过去分词（Past Participle）。规则动词三者关系为 V → V+ed → V+ed，而不规则动词的三种形式必须逐一掌握。例如：
 
-例如：
 | 原形 | 过去式 | 过去分词 |
 |------|--------|----------|
 | go | went | gone |
-| write | wrote | written |
-| cut | cut | cut |
-| break | broke | broken |
+| see | saw | seen |
+| eat | ate | eaten |
+| come | came | come |
+| buy | bought | bought |
 
-注意：V2 和 V3 是两个完全独立的形式，不可混用。"I have went"是错误的，正确写法是"I have **gone**"，因为 have 后面必须接 V3（过去分词），而非 V2（过去式）。
+过去式用于一般过去时（I saw him yesterday），过去分词用于现在完成时（I have seen him）和被动语态（He was seen）。三种形式的混淆是中国学习者最常见的错误来源。
 
-### 变化模式分类
+### 不规则动词的变化规律分类
 
-尽管不规则，这200个动词仍可归纳为若干变化模式：
+不规则动词并非完全无规律可循，可按变化模式分为五类：
 
-**模式一：三态相同（A-A-A型）**
-cut-cut-cut、hit-hit-hit、put-put-put、let-let-let。这类动词原形与过去式外形完全相同，学习者需特别注意语境判断时态。
+**A-A-A 型（三形式相同）**：cut → cut → cut，put → put → put，let → let → let，hit → hit → hit。这类动词约有15个，原形、过去式、过去分词完全一致，是最容易掌握的一类。
 
-**模式二：过去式与过去分词相同（A-B-B型）**
-这是数量最多的一类，占全部不规则动词约40%：
-bring-brought-brought、buy-bought-bought、teach-taught-taught、find-found-found、feel-felt-felt
+**A-B-A 型（首尾相同）**：come → came → come，run → ran → run，become → became → become。过去分词与原形相同，只需记忆过去式形式。
 
-**模式三：三态各不相同（A-B-C型）**
-这类变化最复杂，需要逐一记忆：
-be-was/were-been、go-went-gone、give-gave-given、take-took-taken、write-wrote-written、sing-sang-sung
+**A-B-B 型（后两形相同）**：buy → bought → bought，bring → brought → brought，think → thought → thought，catch → caught → caught。这类动词数量最多，约占不规则动词总数的40%，过去式与过去分词相同。
 
-**模式四：仅原形与过去分词相同（A-B-A型）**
-此类极少，come-came-come、run-ran-run 是典型例子。
+**A-B-C 型（三形式各异）**：go → went → gone，be → was/were → been，see → saw → seen，take → took → taken，write → wrote → written。这类动词需要记忆三个不同形式，是难度最高的一类。
 
-### 元音交替规律
+**元音规律变化型**：ring → rang → rung，sing → sang → sung，swim → swam → swum，drink → drank → drunk。这组动词遵循 i → a → u 的元音交替规律，共同记忆效率更高。
 
-A-B-C 型中很多词遵循"i → a → u"的元音交替规律，这是古日耳曼语"强变化动词"第三类的遗留：
-- sing-sang-sung
-- ring-rang-rung
-- swim-swam-swum
-- begin-began-begun
-- drink-drank-drunk
+### 高频不规则动词重点清单
 
-识别这一规律后，当学习者遇到 spring（跳跃）时，可以合理推断其变化为 spring-sprang-sprung，而无需死记。
-
----
+以下20个动词出现在英语日常交流中频率极高，必须优先记忆：be（was/were/been）、have（had/had）、do（did/done）、go（went/gone）、say（said/said）、get（got/got）、make（made/made）、know（knew/known）、think（thought/thought）、take（took/taken）、see（saw/seen）、come（came/come）、give（gave/given）、find（found/found）、tell（told/told）、feel（felt/felt）、become（became/become）、leave（left/left）、put（put/put）、bring（brought/brought）。
 
 ## 实际应用
 
-**日记与叙事写作中的过去式**
-写英语日记时，go、have、see、eat、meet 是最常用的不规则动词。一篇标准的日记段落可能包含："I **went** to the market, **bought** some apples, and **met** my old friend." 三个词 went、bought、met 均为不规则过去式，对应 V1 为 go、buy、meet。
+**句子构成练习**：不规则动词过去式直接用于一般过去时肯定句，例如 "She went to school."、"He bought a new phone."；在否定句和疑问句中，助动词 did 出现后，主动词必须还原为原形：Did she go to school? / She didn't go to school. 许多学习者错误地说 "Did she went"，这是因为混淆了助动词与主动词的分工。
 
-**新闻标题与口语中的区别**
-英语新闻标题常用原形代替过去式（称为"标题时态"），如"President **signs** new law"，但正文会写"The president **signed** the law yesterday"。学习者需清楚 sign 是规则动词（signed），而 write 是不规则动词（wrote），不能说"he writed"。
+**过去分词的多场景应用**：以 write → wrote → written 为例，过去分词 written 出现在多种结构中：现在完成时（I have written the letter）、被动语态（The letter was written by Mary）、过去完成时（She had written the email before noon）。因此不规则动词的第三形式使用频率不亚于第二形式。
 
-**被动语态中过去分词的使用**
-被动语态结构为 be + V3，因此必须使用正确的过去分词。"The letter was **written** by her."（written 是 write 的 V3）如果误用 V2 wrote，写成"The letter was wrote"，是严重语法错误，在英语写作考试中会被直接扣分。
-
----
+**阅读识别训练**：在真实英语文本中，遇到 found、told、grew、drew、flew 等形式时，需要识别其原形分别是 find、tell、grow、draw、fly，才能查词典理解语义，这是阅读理解中的基础能力。
 
 ## 常见误区
 
-**误区一：将 V2 当 V3 使用**
-最常见错误是在现在完成时中使用过去式代替过去分词，例如：
-- ❌ "I have **saw** the movie." → ✅ "I have **seen** the movie."
-- ❌ "She has **went** home." → ✅ "She has **gone** home."
-saw 和 went 是 V2（过去式），只能单独使用，不能跟在 have/has 后面。
+**误区一：以为 A-B-B 型动词的过去分词也加 -ed**。学习者记住了 brought 是 bring 的过去式，但在构成完成时时错误地说 "I have bringed" 或 "I have bring"，而正确形式是 "I have brought"。A-B-B 型动词的过去式和过去分词形式相同，都是变化后的形式，不存在加 -ed 的情况。
 
-**误区二：对三态相同的动词误加 -ed**
-cut、put、hit 等 A-A-A 型动词过去式与原形相同，但部分学习者习惯性地类推规则动词的变化，错误写出：
-- ❌ "She **cutted** the paper." → ✅ "She **cut** the paper."
-- ❌ "He **putted** the book on the table." → ✅ "He **put** the book on the table."
-（注意 putt 是高尔夫球术语，putted 是 putt 的规则过去式，语义完全不同。）
+**误区二：混淆 A-B-A 型动词的过去分词**。以 come 为例，学习者常说 "I have came"，将过去式 came 用作过去分词，但正确形式是 "I have come"。同样，run 的过去分词是 run 而非 ran，需要特别注意首尾相同型动词"回归原形"的特点。
 
-**误区三：混淆 be 动词的多种不规则形式**
-be 是英语中变化形式最多的动词，其过去式有两种：单数主语用 was，复数主语用 were，而过去分词统一为 been。学习者常将 was/were 的选择规则与 been 混淆，或误用"be + been"结构。正确区分：一般过去时用 was/were，现在完成时用 have/has been。
-
----
+**误区三：认为 went 是 go 的过去分词**。went 仅是 go 的过去式，go 的过去分词是 gone。"He has went" 是错误表达，"He has gone" 才正确。went 来自完全不同的古英语词根 wendan，属于英语中极少数"异根补位"（suppletion）现象，即过去式和原形来自不同词源，因此三种形式（go/went/gone）之间没有任何形态上的关联。
 
 ## 知识关联
 
-**前置知识：一般过去时**
-一般过去时是不规则动词学习的直接应用场景。学习者在掌握"一般过去时表示过去已完成的动作"之后，会立即遭遇不规则动词的挑战——因为绝大多数高频动词（go、see、come、take、give 等）都是不规则的。能否正确写出 V2 形式，直接决定了一般过去时语句是否成立。
+**与一般过去时的关系**：一般过去时是学习不规则动词的直接驱动场景。学习者在构造 "I ate breakfast this morning"、"She wrote a letter" 等过去时句子时，会直接遇到 eat → ate、write → wrote 的变化需求，因此不规则动词的记忆应与一般过去时句型同步练习，结合具体语境而非孤立背单词表。
 
-**后续应用：现在完成时与被动语态**
-虽然本概念难度为 3/9，但其影响延伸至整个英语时态体系。V3（过去分词）是现在完成时（have/has + V3）和被动语态（be + V3）的构成要素。一旦不规则动词的 V3 形式记错，这两个语法结构将无法正确使用。因此，在学习现在完成时之前，系统整理不规则动词的 V3 形式是必要准备。建议按照上文的四种模式分组记忆，优先掌握 A-B-B 型（约40个高频词）和 A-B-C 型中的元音交替组。
+**为后续时态学习奠基**：现在完成时（have/has + 过去分词）、过去完成时（had + 过去分词）和被动语态（be + 过去分词）都需要使用过去分词形式。不规则动词过去分词的掌握程度，直接影响这三类语法结构能否正确使用，例如 "I have never driven a car"（drive → drove → driven）中，driven 是过去分词而非过去式，两者形态完全不同。

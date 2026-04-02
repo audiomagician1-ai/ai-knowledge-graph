@@ -20,76 +20,71 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-04-01
 ---
+
+
 # Temperature与采样策略
 
 ## 概述
 
-Temperature与采样策略（Temperature Sampling）是AI工程（AI Engineering）中Prompt工程领域的重要概念。难度等级5/9（中高级）。
+Temperature（温度）是控制大型语言模型输出随机性的关键超参数，本质上是在模型的softmax输出层对logit值进行缩放的一个系数。具体而言，模型在生成每个token时会计算词汇表中所有候选词的概率分布，Temperature通过除以这个参数值来"拉伸"或"压缩"该分布，从而影响最终采样结果的确定性程度。
 
-掌握Temperature与采样策略的核心概念和应用。
+Temperature的概念源自统计力学中的玻尔兹曼分布（Boltzmann Distribution），物理学中温度越高，粒子能量分布越均匀；类比到语言模型中，Temperature越高，候选token的概率分布越趋于均匀，模型越倾向于选择低概率词汇。OpenAI在2020年发布GPT-3时正式将Temperature作为API参数对外暴露，此后成为所有主流LLM推理接口的标配参数，取值范围通常为0到2之间。
 
-在知识体系中，Temperature与采样策略建立在LLM API调用(OpenAI/Claude)的基础之上，是理解可进入更高级主题的关键前置知识。为什么Temperature与采样策略如此重要？因为它在Prompt工程中起到承上启下的作用，连接基础概念与高级应用。
+理解Temperature的意义在于它直接决定了模型输出的创造性与确定性之间的权衡。代码生成任务需要Temperature接近0以确保语法正确性；创意写作任务则需要0.8至1.2的较高值来产生多样化表达。错误配置Temperature会导致代码任务输出语法错误、创意任务输出重复内容等实际工程问题。
 
-## 核心知识点
+## 核心原理
 
-### 1. 掌握Temperature
+### Softmax温度缩放的数学机制
 
-掌握Temperature是Temperature与采样策略(Temperature Sampling)的核心组成部分之一。在Prompt工程的实践中，掌握Temperature决定了系统行为的关键特征。例如，当掌握Temperature参数或条件发生变化时，整体表现会产生显著差异。深入理解掌握Temperature需要结合AI工程的基本原理进行分析。
+模型输出层产生的原始logit向量记为 $z = [z_1, z_2, ..., z_n]$，标准softmax计算为：
 
-### 2. 采样策略的核心概念
+$$P(x_i) = \frac{e^{z_i}}{\sum_j e^{z_j}}$$
 
-采样策略的核心概念是Temperature与采样策略(Temperature Sampling)的核心组成部分之一。在Prompt工程的实践中，采样策略的核心概念决定了系统行为的关键特征。例如，当采样策略的核心概念参数或条件发生变化时，整体表现会产生显著差异。深入理解采样策略的核心概念需要结合AI工程的基本原理进行分析。
+引入Temperature参数 $T$ 后，公式变为：
 
-### 3. 应用
+$$P(x_i | T) = \frac{e^{z_i / T}}{\sum_j e^{z_j / T}}$$
 
-应用是Temperature与采样策略(Temperature Sampling)的核心组成部分之一。在Prompt工程的实践中，应用决定了系统行为的关键特征。例如，当应用参数或条件发生变化时，整体表现会产生显著差异。深入理解应用需要结合AI工程的基本原理进行分析。
+当 $T \to 0$ 时，概率质量集中于logit最大的token（等价于贪心解码，greedy decoding）；当 $T = 1$ 时，使用模型训练时的原始概率分布；当 $T \to \infty$ 时，所有token概率趋向于均等的 $1/n$。这一机制意味着Temperature并不改变tokens的相对排名，只改变概率质量的集中程度。
 
+### Top-p（Nucleus Sampling）采样策略
 
-### 关键原理分析
+Top-p采样由Holtzman等人在2020年论文《The Curious Case of Neural Text Degeneration》中提出，是与Temperature配合使用的核心采样策略。其工作方式为：按概率从高到低排列所有候选tokens，累加概率直到总和达到阈值 $p$，然后仅从这个"核"（nucleus）中采样。
 
-Temperature与采样策略的核心在于掌握Temperature与采样策略的核心概念和应用。从理论角度看，该概念涉及以下层面：
+例如设定 $p = 0.9$，模型会找到最小的token集合使其概率之和 ≥ 0.9，再从该集合中按归一化概率采样。这种方式的优势在于候选集合的大小随上下文动态变化：当模型非常确定时（如句子开头填写冠词"the"），候选集合可能只有3-5个词；当模型不确定时，候选集合自动扩大。OpenAI API中该参数名为`top_p`，Claude API中同名，默认值通常为1（即不限制）。
 
-1. **定义层**：明确Temperature与采样策略的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解Temperature与采样策略内部各要素的相互作用方式
-3. **应用层**：将Temperature与采样策略的原理映射到AI工程的实际场景中
+### Top-k采样策略
 
-思考题：如何判断Temperature与采样策略的应用是否超出了其理论适用范围？
+Top-k采样是一种固定候选集合大小的策略：每次只从概率最高的 $k$ 个tokens中采样。Google的GPT-2复现工作以及许多早期语言模型广泛使用 $k = 40$ 作为默认值。Top-k的局限性在于 $k$ 是固定数量，无法自适应模型的当前不确定性——在模型高度确定的情况下，强制从40个候选中采样会引入不必要的噪声；在模型高度不确定的情况下，限制40个候选又可能截断合理选项。
 
-## 关键要点
+OpenAI的GPT-4 API不直接暴露top-k参数，而Anthropic的Claude API和Google的Gemini API均提供该参数。实践中，top-p通常优于top-k，但两者可叠加使用（先top-k再top-p）。
 
-1. **核心定义**：Temperature与采样策略的本质是掌握Temperature与采样策略的核心概念和应用，这是理解整个概念的出发点
-2. **多维理解**：掌握Temperature与采样策略需要同时理解掌握Temperature和应用等关键维度
-3. **先修关系**：扎实的LLM API调用(OpenAI/Claude)基础对理解Temperature与采样策略至关重要
-4. **进阶路径**：可广泛应用于AI工程各方面
-5. **实践标准**：真正掌握Temperature与采样策略的标志是能在具体场景中灵活运用并正确判断适用边界
+### Temperature与采样策略的交互效应
+
+Temperature和top-p是相互作用的参数，同时调高两者会产生极度随机的输出。OpenAI官方文档明确建议"只修改其中一个，而非同时修改两个"。常见工程实践是：固定 $T = 1$，调节top-p；或固定top-p = 1，调节Temperature。当Temperature设为0时，top-p的设置实际上失效，因为贪心解码总是选择概率最高的单个token。
+
+## 实际应用
+
+**代码生成场景**：调用OpenAI Codex或GPT-4生成Python函数时，推荐设置`temperature=0`或`temperature=0.2`，`top_p=1`。过高的Temperature（如1.5）会导致变量名拼写变体、括号不匹配等语法错误，这在单元测试中会直接报错。
+
+**对话系统场景**：客服机器人需要一致性和准确性，通常使用`temperature=0.3`至`0.5`；开放域闲聊机器人则使用`temperature=0.8`至`1.0`以避免重复性回复。实验表明，temperature低于0.3时，对话机器人在多轮对话中会高频重复相同措辞。
+
+**创意写作与头脑风暴**：生成广告文案变体时，设置`temperature=1.2`、`top_p=0.95`，并通过`n=5`参数一次生成5个候选，再由人工筛选。这种"过度采样后筛选"的工程模式比单次低温采样产出的最终质量更高。
+
+**数学推理与事实问答**：Temperature必须设为0，使用贪心解码。微软研究院2023年对GPT-4的测试显示，在数学解题任务中Temperature从0升至0.7会使准确率下降约15个百分点。
 
 ## 常见误区
 
-1. **混淆概念边界**：将Temperature与采样策略与Prompt工程中其他相近概念混为一谈。例如，掌握Temperature的适用条件与其他采样策略的核心概念概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解LLM API调用(OpenAI/Claude)就学习Temperature与采样策略，导致基础不牢**。建议先确认先修知识扎实
-3. **过度简化：Temperature与采样策略的复杂度为5/9，初学者容易忽略其中的细微但关键的区别**
+**误区一：Temperature=0等于"关闭随机性"**。Temperature=0在实现上等价于argmax（贪心解码），选择每步概率最高的token。然而，当两个tokens的logit值极为接近时，浮点运算的舍入误差可能导致不同硬件或批次大小下产生不同结果。因此Temperature=0并不保证跨平台的完全可复现性，严格可复现需要额外固定随机种子（seed参数）。
 
-## 知识衔接
+**误区二：Temperature越高输出质量越好**。Temperature高于1.5后，模型会大量采样到训练数据中极低频的token序列，这些序列往往在语义上不连贯。Holtzman等人的研究正是发现了高Temperature会导致"退化文本"（degenerate text）——包括无意义的重复和语法混乱，这也是nucleus sampling被提出的直接动因。
 
-### 先修知识
-先修知识包括：
-- **LLM API调用(OpenAI/Claude)** — 为Temperature与采样策略提供了必要的概念基础
+**误区三：Top-p=0.9意味着每次从"90%的词汇"中采样**。实际上top-p=0.9是从累计概率达到90%的最小token集合中采样，这个集合的实际大小可能只有5个词（模型高度确定时）或数千个词（模型高度不确定时）。将其误解为"词汇表的90%"会导致对模型行为的错误预判。
 
-### 后续学习
-掌握Temperature与采样策略后，学习者已具备该方向的核心能力，可将所学应用于实际项目或探索AI工程其他分支。
+## 知识关联
 
-## 学习建议
+掌握LLM API调用（OpenAI/Claude）是理解本主题的基础，Temperature和top-p均通过API参数直接控制，需要熟悉`chat.completions.create()`接口中`temperature`、`top_p`、`top_k`、`seed`等参数的传递方式。理解tokenization机制有助于更直观地理解概率分布作用于token而非字符层面的本质。
 
-预计学习时间：3-5小时。建议采用以下策略：
-
-- **主动回忆**：学完后不看笔记复述Temperature与采样策略的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将Temperature与采样策略与AI工程中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释Temperature与采样策略，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于Prompt工程的章节可作为深入参考
-- Wikipedia: [Temperature Sampling](https://en.wikipedia.org/wiki/temperature_sampling) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Temperature Sampling" 可找到配套视频教程
+在Prompt工程的完整链路中，Temperature策略与few-shot示例设计、系统提示词（system prompt）共同构成输出质量的三个可调维度：few-shot示例影响模型的"意图理解"，system prompt设定输出格式约束，而Temperature策略则控制在满足约束后的随机性程度。对于需要多次调用LLM进行自我批评或链式思考（Chain-of-Thought）的高级应用场景，通常在初始生成阶段使用较高Temperature产生多样候选，在验证/评分阶段使用Temperature=0以确保评判一致性。

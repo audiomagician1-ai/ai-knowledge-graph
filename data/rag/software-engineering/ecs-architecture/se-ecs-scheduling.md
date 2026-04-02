@@ -20,59 +20,66 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # System调度
 
 ## 概述
 
-System调度（System Scheduling）是ECS架构中负责决定各个System执行顺序、并行策略与分组方式的管理机制。调度器（Scheduler）通过分析每个System声明的组件读写依赖，自动推导哪些System可以安全地并行运行，哪些必须串行执行，从而在保证数据正确性的前提下最大化CPU利用率。
+System调度是ECS架构中负责决定各System执行顺序、并行策略和阶段分组的机制。与手动调用函数不同，ECS调度器通过分析每个System声明的组件读写权限，自动推导出哪些System可以安全并行，哪些必须串行执行。这一机制使得开发者无需手动管理线程竞争，框架层面就能保证数据安全。
 
-ECS调度思想最早由Unity DOTS（Data-Oriented Technology Stack）在2018年前后系统化提出，Bevy引擎则在其0.9至1.0版本期间将调度系统重构为基于阶段（Stage）和集合（Schedule）的层级模型，成为现代ECS调度设计的重要参考实现。Flecs、EnTT等框架也各自发展出类似的依赖驱动调度体系。
+调度机制的核心思想可以追溯到数据流图（Dataflow Graph）并行编程模型，该模型在1970年代的MIT研究中被系统化描述。现代ECS框架如Bevy（Rust）、Unity DOTS和FLECS均实现了基于依赖图的自动调度，其中Bevy在0.6版本起将调度器全面重写为基于有向无环图（DAG）的执行模型，成为业界参考实现之一。
 
-调度策略直接影响游戏或仿真应用的帧率瓶颈。一个未经调度优化的ECS场景中，数十个System全部串行执行时CPU核心利用率可能低至10%以下；而经过依赖图并行化之后，相同逻辑在8核机器上可将帧处理时间缩短60%至75%。因此理解System调度是将ECS架构真正发挥多核性能优势的必要步骤。
+在游戏引擎开发中，一帧可能涉及数百个System，若按顺序执行会严重浪费多核CPU资源。System调度的价值在于：在保证正确性（无数据竞争）的前提下，最大化CPU利用率，将理论上可并行的System真正分配到不同线程上同步执行。
 
 ## 核心原理
 
-### 依赖图（Dependency Graph）构建
+### 依赖图构建
 
-调度器在启动阶段对所有已注册的System进行静态分析，收集每个System声明的**读集合（Read Set）**和**写集合（Write Set）**——即该System访问哪些组件类型，以及访问方式是只读还是可写。两个System之间存在依赖关系，当且仅当满足以下任意一条：
+调度器在启动时，遍历所有已注册的System，读取每个System声明的组件访问模式，分为三类：`Read`（共享只读）、`Write`（独占写入）和`With/Without`（过滤，不访问数据）。调度器依据以下规则建立有向依赖边：
 
-- **写后读（WAR）**：System B读取某组件C，而System A在其之前写入C；
-- **读后写（RAW）**：System B写入某组件C，而System A仍在读取C；
-- **写后写（WAW）**：System A与System B均写入同一组件C。
+- 两个System同时对同一组件类型持有`Write`权限 → 必须串行，建立依赖边
+- 一个System持有`Write`，另一个持有`Read`，且访问同一组件类型 → 必须串行
+- 两个System均只持有`Read`权限 → 可并行，无依赖边
 
-调度器将这些依赖关系构建为有向无环图（DAG），节点为System，边表示"必须先完成"的约束。若图中出现环路，则说明System声明存在循环依赖，框架将在注册阶段抛出错误而非运行时崩溃。
+最终构造出一张有向无环图（DAG）。若图中出现环路，说明System间存在循环依赖，调度器会在启动时抛出错误而非等到运行时崩溃。
 
-### 并行执行与拓扑排序
+### 并行执行策略
 
-依赖图构建完毕后，调度器对其执行**拓扑排序（Topological Sort）**，将无依赖冲突的System识别为可并行的同层节点。以Bevy为例，其调度器使用多线程任务池（默认使用`rayon`库），将同一拓扑层内的System分发到不同线程执行，层与层之间设置同步屏障（Barrier）。
+调度器对DAG执行拓扑排序（Kahn算法或DFS后序遍历），得到一个偏序（partial order）序列。入度为0的所有节点即为"当前可执行集合"，调度器将这些System提交到线程池并发执行。当某个System执行完毕后，调度器将其后继节点的入度减1，若后继入度变为0则立即加入就绪队列。
 
-具体地，若System集合 {S₁, S₂, S₃} 中S₃同时依赖S₁和S₂，则S₁与S₂可并行执行，待两者均完成后S₃才能开始。这种"宽度优先"的执行方式将关键路径（Critical Path）长度最小化，而不是追求所有System的总执行时间最短。
+以一个具体场景为例：假设有三个System——`PhysicsSystem`（Write: Position, Read: Velocity）、`RenderSystem`（Read: Position, Read: Mesh）、`InputSystem`（Write: Velocity）。依赖分析结果为：`InputSystem` → `PhysicsSystem` → `RenderSystem`，三者须串行。但若再加入`AudioSystem`（Read: AudioBuffer，与Position/Velocity无关），它与上述链条无任何数据依赖，可在任意时刻并行执行。
 
-### 阶段分组（Phase/Stage Grouping）
+### 阶段分组（Stage/Schedule）
 
-除了自动依赖推导，ECS框架还提供手动的阶段分组机制，用于强制建立跨组件的执行顺序语义。Bevy内置的标准阶段包括`PreUpdate`、`Update`、`PostUpdate`和`Last`，每个阶段内部再进行独立的依赖图并行调度，但阶段之间严格串行。
+ECS框架通常将System划分到若干预定义阶段（Stage），以解决纯依赖图无法表达的语义顺序需求。Bevy定义了`PreUpdate`、`Update`、`PostUpdate`、`Last`等阶段，Unity DOTS中对应`InitializationSystemGroup`、`SimulationSystemGroup`、`PresentationSystemGroup`等。
 
-阶段分组解决了依赖图无法表达的**语义顺序**问题：例如物理积分System与渲染System之间并不共享任何组件，依赖图无法判断它们的先后关系，但业务逻辑要求物理计算必须完成后才能渲染。将物理System放入`Update`阶段、渲染System放入`PostUpdate`阶段，即可强制保证正确的执行语义。
+阶段之间强制串行，阶段内部按依赖图并行执行。这种设计解决了一类特殊问题：开发者可能并不关心某两个System的具体数据依赖，只是希望A在B之前执行（例如物理积分必须在碰撞检测之前）。此时可使用显式顺序标注（如Bevy的`.before(SystemB)`或`.after(SystemA)`），调度器将其转化为依赖图中的强制边。
 
-开发者还可以使用`add_systems`并配合`.before()`、`.after()`、`.chain()`等顺序约束API，在同一阶段内手动补充依赖图未能自动推导的顺序关系，最终形成阶段内的增强依赖图。
+### Sparse Set与调度的关联
+
+调度器在并行执行System时，需要安全地将World（组件存储）的访问权分发给多个线程。基于Sparse Set实现的组件存储可以通过组件类型ID（ComponentId）进行精细的借用检查：调度器持有World的独占引用，再按System声明的权限拆分出多个不重叠的子借用（disjoint borrows），每个子借用传入对应的System线程。这一操作在Rust中需要通过`unsafe`指针转换实现，但正确性由调度器的依赖分析在前置步骤中保证。
 
 ## 实际应用
 
-**游戏帧循环中的典型调度场景**：在一个包含输入处理、AI决策、移动积分、碰撞检测、动画更新五个System的游戏中，输入System写入`InputState`组件，AI System读取`InputState`并写入`Velocity`，移动System读写`Position`和`Velocity`，碰撞System读取`Position`并写入`CollisionEvent`，动画System读取`Position`和`Velocity`。调度器分析后得出：AI System依赖输入System，移动System依赖AI System，动画System依赖移动System，而碰撞System与动画System可以并行执行——因为二者均只读`Position`，不存在写冲突。
+**性能优化场景**：在一款包含10000个实体的策略游戏中，开发者将AI决策（Write: AIState）、动画更新（Write: AnimationFrame, Read: AIState）、粒子模拟（Write: ParticlePosition）三个System注册到Update阶段。调度器分析后发现AI决策与粒子模拟无数据依赖，将它们分配到两个工作线程并行执行，动画更新等待AI决策完成后执行。实测帧时间从12ms降低至7ms。
 
-**ECS在服务端仿真中的批量调度**：在一个处理10,000个实体的服务端MMO仿真中，将NPC行为System、寻路System、战斗结算System分配到`Update`阶段的并行层后，实测帧处理时间从单线程的18ms降至4核并行的5ms，接近理论4倍加速比的75%（因存在少量串行依赖链）。
+**调试依赖图**：Bevy提供`bevy_mod_debugdump`工具，可将当前注册的System依赖图导出为`.dot`格式文件，用Graphviz渲染为可视化图像。开发者可清晰看到哪些System形成了串行瓶颈链，从而考虑拆分System或调整组件权限以增加并行度。
+
+**条件执行（Run Criteria）**：调度器还支持为System附加运行条件，例如仅在游戏状态为`Playing`时执行某System。FLECS中称为`filters`，Bevy中为`run_if`。调度器在每帧开始时评估条件，跳过不满足条件的System节点，其后继节点重新计算入度，保证DAG遍历的正确性。
 
 ## 常见误区
 
-**误区一：认为只要两个System无共享组件就可以任意并行**。实际上，若两个System均访问同一个**资源（Resource）**而非组件，且至少一个以写方式访问，则同样存在数据竞争。调度器对Resource的依赖分析与组件相同，开发者不能只关注组件依赖而忽略共享资源。
+**误区一：认为阶段内的System顺序由注册顺序决定**。实际上，未添加显式`.before()`或`.after()`标注的System，在同一阶段内的执行顺序是不确定的（非确定性调度）。Bevy明确文档指出：若两个System无依赖关系，其相对顺序在不同帧、不同平台上可能不同。依赖逻辑必须通过组件权限或显式顺序标注来表达，而不能依赖注册顺序的偶然性。
 
-**误区二：认为阶段越多调度越精细**。每个阶段边界都是强制同步点，过多阶段会导致线程频繁等待，反而将并行度碎片化。Unity DOTS的最佳实践建议将强语义分界控制在4至6个阶段以内，阶段内部依靠依赖图完成细粒度并行，而非为每对有顺序关系的System各建一个阶段。
+**误区二：认为并行执行的System一定比串行快**。线程调度本身有开销，若System的执行体非常轻量（如仅处理少量实体），线程切换的开销可能超过并行收益。Unity DOTS建议单个System的执行时间至少达到约0.1ms以上，才值得安排到Job线程并行执行，否则应将多个轻量System合并或保持在主线程运行。
 
-**误区三：`.before()`约束等同于数据依赖**。`.before(SystemB)`只保证System A在B之前开始，但若A与B无组件写冲突，调度器并不会阻止B提前完成的情况被后续System读取。顺序约束是执行启动顺序的保证，不是数据可见性的保证——在需要数据依赖语义时，必须通过声明组件读写访问模式来建立真正的调度依赖边。
+**误区三：在System内部直接修改World结构（添加/删除实体或组件类型）会导致调度失效**。添加新Archetype或销毁Entity会使组件存储的内存布局失效，而并行执行中的其他System可能正在读取这些内存。正确做法是使用延迟命令队列（Command Buffer / Deferred Commands），将结构性修改缓存起来，在当前阶段所有System执行完毕后的同步点统一应用。
 
 ## 知识关联
 
-System调度以**System系统**的声明式访问模式为前提，调度器只有在System正确声明了`Query<&Component>`（只读）与`Query<&mut Component>`（可写）的前提下，才能推导出准确的依赖图。若System通过裸指针或全局变量绕过ECS访问组件数据，调度器将无法感知该访问，从而产生未检测到的数据竞争。
+**前置知识**：理解System调度需要先掌握System系统的基本定义——每个System必须明确声明Query参数（即对哪些组件类型以何种权限访问），调度器正是解析这些Query参数来建立依赖图。Sparse Set的结构决定了组件存储的内存分布，这直接影响调度器如何安全地拆分World访问权并传递给并行线程。
 
-在ECS架构的学习路径上，掌握System调度标志着从"能写出运行正确的ECS代码"迈向"能写出高效利用硬件的ECS代码"。后续可延伸学习的方向包括：基于调度分析的**性能Profiling**（识别关键路径上的瓶颈System）、**动态调度**（运行时根据实体数量动态开关System）以及**分布式ECS**（跨进程/跨节点的调度协调）。这些进阶主题均建立在本文所述的依赖图与阶段分组概念之上。
+**后续概念**：掌握System调度后，可以进入ECS事件系统的学习。事件系统（Event）本质上是一种特殊的共享资源，多个System可能在同一帧内写入或读取事件队列。调度器需要将事件队列的读写权纳入依赖分析，与普通组件访问统一处理。此外，事件的双缓冲清除时机（通常在`Last`阶段）也由调度器的阶段机制控制。

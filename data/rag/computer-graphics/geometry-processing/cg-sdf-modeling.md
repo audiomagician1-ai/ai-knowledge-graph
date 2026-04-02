@@ -20,71 +20,76 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # SDF建模
 
 ## 概述
 
-有符号距离场（Signed Distance Field，SDF）是一种将三维空间中每个点映射为该点到最近几何表面距离的标量场表示方法，其中正值表示点位于几何体外部，负值表示点位于几何体内部，零值对应几何表面本身。与体素网格或多边形网格不同，SDF以连续函数 $f: \mathbb{R}^3 \to \mathbb{R}$ 的形式隐式描述几何形状，满足 Eikonal 方程 $|\nabla f(\mathbf{x})| = 1$，即梯度模长处处为1。
+SDF（Signed Distance Field，有符号距离场）建模是一种将几何形体表示为距离函数的隐式建模方法。对于空间中任意一点 **p**，SDF函数 f(**p**) 返回该点到最近几何表面的有符号距离：若点在形体内部则返回负值，在外部返回正值，恰好位于表面时返回零。这条零等值线（零等值面）即为几何体的边界，与等值面提取技术天然衔接。
 
-SDF建模方法在图形学中的早期系统应用可追溯至1996年Blinn提出的元球（Metaball）概念的延伸，以及2002年Hart对光线步进（Sphere Tracing）算法的形式化描述。Sphere Tracing利用SDF的距离保证特性，允许光线以当前点的SDF值为步长安全前进而不穿透表面，这使得无需三角形网格即可完成精确渲染。
-
-SDF建模的重要性体现在三个方面：其一，布尔运算（并集、交集、差集）可通过简单的 $\min$/$\max$ 操作近似实现，避免了多边形网格布尔运算的拓扑复杂性；其二，SDF天然支持平滑混合（Smooth Blending）操作，能在不同几何体之间生成有机过渡形态；其三，SDF是神经隐式曲面（如DeepSDF、NeRF衍生方法）的核心表示基础。
+SDF建模的现代形态由 John Hart 于1996年在论文《Sphere Tracing》中系统化奠基，他提出了利用SDF值作为步长进行光线行进的球追踪算法，使隐式曲面渲染从理论走向实用。此前，Blinn于1982年已使用隐函数描述"水滴"融合效果（Blobby模型），但彼时尚未标准化符号约定。SDF建模的价值在于：布尔运算退化为简单的数学函数组合，拓扑自动处理，且天然支持平滑过渡与形变，是实时渲染、物理仿真与几何深度学习的共同基础。
 
 ## 核心原理
 
-### SDF的构建方法
+### 基本几何体的精确SDF公式
 
-构建SDF有三条主要路径：
+每种基本形体都有解析SDF表达式。以球体为例，圆心在原点、半径为 r 的球体：
 
-**解析构建**适用于基本几何体。例如，球心在原点、半径为 $r$ 的球体SDF为 $f(\mathbf{x}) = |\mathbf{x}| - r$；无限长轴对齐长方体（半尺寸为 $\mathbf{b}$）的SDF为 $f(\mathbf{x}) = |\text{length}(\max(\mathbf{|x|} - \mathbf{b}, \mathbf{0}))| + \min(\max(|x|-b), 0)$。Inigo Quilez维护的SDF公式库收录了超过50种基本形状的解析表达式，是行业标准参考。
+$$f(\mathbf{p}) = |\mathbf{p}| - r$$
 
-**从网格计算**需要对每个离散采样点求最近点距离并附加符号。符号判断通常通过检查点与最近三角面的法线夹角确定：若夹角小于90°则为正（外部），否则为负（内部）。实践中常用的快速算法是基于BVH（包围体层次结构）加速的最近点查询，复杂度约为 $O(\log N)$（$N$为三角面数量）。
+对于轴对齐包围盒（AABB），半边长向量为 **b**，则：
 
-**快速行进法（Fast Marching Method）**和**快速扫描法（Fast Sweeping Method）**用于在已知窄带SDF的情况下向外传播距离场。Fast Sweeping在规则网格上的时间复杂度为 $O(N)$，其中 $N$ 为网格点总数，需进行 $2^d$（$d$为维度）次扫描方向的更新。
+$$f(\mathbf{p}) = |\text{max}(|\mathbf{p}| - \mathbf{b},\ \mathbf{0})| + \min(\max(p_x - b_x,\ p_y - b_y,\ p_z - b_z),\ 0)$$
 
-### 布尔运算与平滑混合
+圆环（Torus）的SDF涉及两个半径参数 R（大半径）和 r（管道半径）：
 
-SDF布尔运算的数学表达极为简洁：
-- **并集**：$f_{A \cup B}(\mathbf{x}) = \min(f_A(\mathbf{x}), f_B(\mathbf{x}))$
-- **交集**：$f_{A \cap B}(\mathbf{x}) = \max(f_A(\mathbf{x}), f_B(\mathbf{x}))$
-- **差集**：$f_{A \setminus B}(\mathbf{x}) = \max(f_A(\mathbf{x}), -f_B(\mathbf{x}))$
+$$f(\mathbf{p}) = \sqrt{(\sqrt{p_x^2 + p_z^2} - R)^2 + p_y^2} - r$$
 
-需要注意的是，上述 $\min$/$\max$ 操作会在结合处产生 $C^0$ 不连续（梯度跳变），严格来说结果不再满足 Eikonal 方程，仅为近似SDF。
+这些解析公式的关键特性是它们均满足 **Lipschitz常数为1**，即 $|\nabla f| = 1$（几乎处处成立），这一特性称为"精确SDF"或"1-Lipschitz条件"，是球追踪算法收敛性的理论保证。
 
-为获得有机融合效果，Inigo Quilez提出了基于参数 $k$ 的**平滑最小值函数（smin）**：
-$$\text{smin}(a, b, k) = \min(a, b) - \frac{k}{4} \cdot \max\left(k - |a - b|, 0\right)^2 \cdot \frac{1}{k}$$
-当 $k$ 趋近0时退化为精确的 $\min$ 操作，$k$ 增大时在结合区域产生宽度约为 $k$ 的平滑过渡带，广泛用于角色建模和生物形态设计。
+### 布尔运算的函数组合
 
-### SDF的可视化与渲染
+SDF最大的建模优势在于布尔运算可直接用数学函数实现，无需处理网格拓扑：
 
-将SDF可视化为几何表面最常用的方法是**Marching Cubes等值面提取**（等值面取 $f=0$），在分辨率为 $N^3$ 的网格上时间复杂度为 $O(N^3)$。Marching Cubes的256种构型可通过对称性压缩为15种基本情况处理，由Lorensen和Cline于1987年发表于SIGGRAPH。
+- **并集（Union）**：$f_{A \cup B}(\mathbf{p}) = \min(f_A(\mathbf{p}),\ f_B(\mathbf{p}))$
+- **交集（Intersection）**：$f_{A \cap B}(\mathbf{p}) = \max(f_A(\mathbf{p}),\ f_B(\mathbf{p}))$
+- **差集（Subtraction）**：$f_{A \setminus B}(\mathbf{p}) = \max(f_A(\mathbf{p}),\ -f_B(\mathbf{p}))$
 
-**Sphere Tracing**是SDF特有的直接光线渲染方式：从相机出发的光线沿方向 $\mathbf{d}$ 步进，每步步长取当前点的SDF值 $t_{n+1} = t_n + f(\mathbf{x}_n)$，当 $f(\mathbf{x}) < \epsilon$（通常取 $10^{-4}$）时判定命中表面。相比传统光线投射无需三角形求交，渲染程序可仅用几百行GLSL代码实现完整的SDF场景渲染。
+需要注意的是，min/max操作会**破坏精确SDF特性**——合并后的函数不再满足 $|\nabla f| = 1$，在两个形体的边界交汇处梯度不连续。为解决此问题，Inigo Quilez（shadertoy社区核心贡献者）引入了**平滑并集（Smooth Union）**：
+
+$$f_{\text{smooth}}(\mathbf{p}) = \min(f_A, f_B) - h^2/(4k)$$
+
+其中 $h = \max(k - |f_A - f_B|,\ 0)$，参数 k 控制融合半径，k=0 退化为普通并集。
+
+### 离散化存储与梯度计算
+
+在实时渲染和物理引擎中，SDF常被预计算并存储在三维体素网格（3D Texture）中，典型分辨率为 $128^3$ 至 $512^3$。查询时用三线性插值获得连续值，梯度（即表面法向量）通过中心差分估计：
+
+$$\mathbf{n} \approx \frac{\nabla f}{|\nabla f|}, \quad \frac{\partial f}{\partial x} \approx \frac{f(\mathbf{p} + \epsilon\hat{x}) - f(\mathbf{p} - \epsilon\hat{x})}{2\epsilon}$$
+
+典型 $\epsilon$ 取值为网格间距的0.5倍。离散SDF还可通过**快速行进法（Fast Marching Method）**或 **CUDA并行距离变换**（如 cuSDFGen 工具）从网格直接生成，后者在 $256^3$ 分辨率下可在GPU上50毫秒内完成。
 
 ## 实际应用
 
-**游戏与实时图形**：Epic Games在Unreal Engine 5中引入了基于SDF的全局光照系统（Lumen），使用Mesh Distance Fields为场景中每个静态网格预计算SDF，并在屏幕空间追踪软阴影和间接光，阴影计算的锥体追踪步数通常设置为64步。
+**实时游戏中的碰撞检测**：Unreal Engine 的 Distance Field Ambient Occlusion（DFAO）功能为场景中每个静态网格预生成体素SDF，在着色器中通过8次球追踪步骤近似计算环境光遮蔽，相比SSAO在大半径遮蔽上表现更准确。每个网格的SDF存储在 $8^3$ 到 $128^3$ 的体素中，引擎默认精度为网格包围盒的 $1/128$。
 
-**程序化建模工具**：ShaderToy平台上超过10万个项目使用SDF建模技术实时渲染复杂有机形态，开发者在片段着色器中以函数组合方式定义整个场景，代码量通常在50到300行之间。
+**程序化建模与Shadertoy**：在片段着色器中，整个场景可由SDF函数树描述，不需要任何网格数据。Inigo Quilez的经典示例"Primitives"展示了如何在100行GLSL中构建含20种基本体的完整场景，球追踪最多迭代100步，步长精度阈值设为 0.001。
 
-**医学影像**：CT/MRI体数据处理中，将组织分割结果转化为SDF后可精确测量肿瘤与周围器官的安全间距，用于放射治疗的剂量规划，精度达亚毫米级别。
-
-**字体渲染**：Valve公司于2007年提出将字体轮廓烘焙为低分辨率SDF纹理（通常为64×64像素），在着色器中以 $f \geq 0.5$ 为阈值重建字形边缘，在任意缩放比例下均可获得无锯齿的清晰文字，该技术已被几乎所有主流游戏引擎采用。
+**医学影像分割**：将CT/MRI扫描的二值分割掩膜转换为SDF，使得器官边界可用连续函数表示。以肝脏分割为例，将体素标注转为SDF后，网络预测的符号距离可直接施加物理约束（如梯度幅值接近1），比直接预测二值标签的网络泛化性提升约3-5%（基于Medical Image Analysis 2020的报告数据）。
 
 ## 常见误区
 
-**误区一：SDF布尔运算后仍然是精确距离场**
-min/max布尔运算得到的结果仅在两个输入SDF的零等值面附近有效，远离表面的区域距离值可能严重失真。例如两个球体的并集SDF在两球重叠区域以外表现正常，但若对其结果再进行嵌套布尔运算，误差会迅速累积。需要精确SDF时必须在布尔运算后重新执行距离场传播（如Fast Sweeping重算）。
+**误区一：布尔运算后仍是精确SDF**。使用 min/max 进行布尔组合后，结果函数的梯度幅值不再处处等于1，尤其在两个形体距离相近的区域梯度会偏小（小于1）。若此时直接用该函数的值作为球追踪步长，步长会被低估，导致渲染速度降低但不会产生穿透，这是安全失效；但若用于物理碰撞，则距离估计偏保守。区分精确SDF（exact SDF）与有界SDF（bounded SDF）非常重要。
 
-**误区二：Sphere Tracing不会错过细小几何特征**
-当场景中存在极细的几何结构（厚度远小于光线初始步长）时，Sphere Tracing可能直接跳过该结构而不命中。这不是光线步长设置问题，而是SDF自身在细薄结构附近的正确值就很小，此时需要限制最大步长或使用增强步进策略（Relaxed Sphere Tracing）。
+**误区二：SDF的零值面精度与分辨率无关**。对于离散存储的SDF，零等值面的几何精度直接受体素分辨率约束。一个 $64^3$ 的SDF网格，在1米×1米×1米的包围盒内，最小可分辨特征约为 1000/64 ≈ 15.6毫米。通过对存储值做三线性插值后提取等值面（如用Marching Cubes），可以恢复亚体素精度的法向量，但无法恢复被混叠的细节几何。
 
-**误区三：平滑混合smin保持距离场性质**
-使用smin进行平滑混合后，结合区域内SDF的梯度模长不再等于1，即结果不再是距离场而是一般标量场。直接在此结果上应用Sphere Tracing会导致步进过量（Over-stepping），可能穿透表面或引发渲染黑斑，需通过缩放修正因子（通常乘以0.8至0.95）或迭代修正来补偿。
+**误区三：平滑并集在所有形体之间都产生圆滑过渡**。平滑并集的融合效果只在两形体距离小于参数 k 时生效；当两形体相距超过 k 时，行为与普通并集完全一致。若场景中多个形体共用同一 k 值，融合半径是固定的绝对值（如 k=0.1 意味着0.1单位的融合区），因此不同尺寸形体之间的融合视觉效果会显得不一致。
 
 ## 知识关联
 
-SDF建模以**等值面提取**为可视化出口——Marching Cubes算法正是将SDF的零等值面转化为三角网格的桥梁，理解等值面提取中的歧义情况（Ambiguous Cases）有助于解释SDF建模时某些细薄特征丢失的原因。
+SDF建模以**等值面提取**为下游可视化工具：通过Marching Cubes或Dual Contouring算法，将SDF的零等值面转换为三角网格，进而可导入传统渲染管线。SDF中的梯度场即为法向量场，等值面提取的质量（尤其是特征边保留）直接依赖SDF的精确程度。
 
-SDF建模是**神经网络几何**的直接前驱。DeepSDF（Park等，2019，CVPR）将SDF的解析公式替换为神经网络 $f_\theta(\mathbf{z}, \mathbf{x})$，用潜在向量 $\mathbf{z}$ 编码形状变化，本质上是学习一族SDF函数的参数化表示。理解标准SDF的Eikonal约束和布尔运算局限性，有助于理解为何神经SDF训练需要加入梯度正则化损失项 $\lambda \cdot \mathbb{E}[|\nabla_\mathbf{x} f_\theta - 1|^2]$。
+向前延伸，SDF建模是**神经网络几何**（Neural Implicit Representation）的直接前身。DeepSDF（Park et al., CVPR 2019）将SDF解码器设计为8层MLP，输入三维坐标和128维潜在向量，直接回归有符号距离值；NeRF及后续方法中的密度场可看作SDF的软化变体（用密度替代硬边界）。理解精确SDF的Lipschitz约束，有助于理解为何神经SDF训练时需要引入Eikonal损失项 $\mathcal{L}_\text{eikonal} = (|\nabla f| - 1)^2$ 来正则化梯度。

@@ -20,92 +20,79 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 适配器模式
 
 ## 概述
 
-适配器模式（Adapter Pattern）是一种结构型设计模式，其核心机制是将一个类的接口转换成客户端所期望的另一种接口形式，使得原本因接口不匹配而无法协同工作的类能够正常合作。该模式的典型类比是现实中的电源适配器——一台美国设备使用110V插头，但中国插座提供220V/50Hz的三孔接口，适配器在两者之间完成电气转换，双方无需改变自身结构。
+适配器模式（Adapter Pattern）是一种结构型设计模式，其核心目标是将一个类的接口转换成客户端所期望的另一种接口形式，使原本因接口不兼容而无法协作的类能够共同工作。就像现实中的电源适配器将220V交流电转换为笔记本需要的19V直流电一样，适配器模式在软件层面充当了"翻译器"的角色。
 
-适配器模式最早由Gang of Four（GoF）在1994年出版的《设计模式：可复用面向对象软件的基础》中正式提出，归类于结构型模式（Structural Patterns）。它解决的是已有代码的兼容性问题——当系统中存在无法修改的遗留代码（Legacy Code），或需要整合第三方库时，强行修改原有接口往往会破坏现有功能或违反开放封闭原则。适配器模式提供了一种"包装"机制，让新旧接口之间形成桥接层，而不必触动任何一方的内部实现。
+该模式由GoF（Gang of Four）在1994年出版的《设计模式：可复用面向对象软件的基础》中首次系统化描述，被归类为结构型模式。其诞生背景是大量遗留系统（Legacy System）集成问题——开发者经常需要将不受自己控制的第三方库或旧代码与新系统对接，而无法修改原始接口定义。
 
-在AI工程场景中，适配器模式极为常见：不同深度学习框架（如PyTorch与TensorFlow）之间的模型转换层、统一封装多个LLM供应商API（OpenAI、Anthropic、百度文心）的抽象接口，以及将旧版数据预处理管道对接新版训练框架，都是典型应用场景。
+在AI工程领域，适配器模式尤为常见。当需要将不同深度学习框架（如PyTorch模型接口与TensorFlow Serving接口）对接时，或将不同数据源的格式统一为模型训练管道期望的标准格式时，适配器模式提供了一种无需修改原有代码即可实现接口兼容的系统化方法。
 
 ## 核心原理
 
-### 组成角色与结构
+### 两种实现形式：类适配器与对象适配器
 
-适配器模式包含三个固定角色：
+适配器模式有两种经典实现形式，它们的结构差异直接影响使用场景的选择。
 
-- **Target（目标接口）**：客户端所期望调用的接口，定义了客户端使用的方法签名
-- **Adaptee（被适配者）**：已存在的类或接口，拥有客户端所需的功能，但接口形式不兼容
-- **Adapter（适配器）**：核心类，持有或继承Adaptee的实例，同时实现Target接口，在内部完成接口转换逻辑
-
-客户端仅依赖Target接口编写代码，完全感知不到Adaptee的存在。调用链为：`Client → Target接口 → Adapter → Adaptee`。
-
-### 对象适配器与类适配器
-
-适配器模式有两种实现方式，区别在于Adapter与Adaptee的关系类型：
-
-**对象适配器（Object Adapter）** 使用组合（Composition）：Adapter内部持有一个Adaptee的实例，通过调用该实例的方法完成转换。这是更推荐的方式，因为它遵循"优先使用组合而非继承"原则，且可以适配Adaptee的子类。
+**类适配器**通过多重继承实现：适配器类同时继承目标接口（Target）和被适配者（Adaptee），直接重写目标接口方法并在内部调用被适配者的方法。在Python中，由于支持多重继承，类适配器写法如下：
 
 ```python
-class OldDataLoader:
-    def load_csv(self, path: str) -> list:
-        return [...]  # 返回list格式
-
-class NewTrainingInterface:
-    def get_batch(self) -> dict:
-        pass  # 期望返回dict格式，含'features'和'labels'键
-
-class DataLoaderAdapter(NewTrainingInterface):
-    def __init__(self, old_loader: OldDataLoader, path: str):
-        self._loader = old_loader
-        self._path = path
-    
-    def get_batch(self) -> dict:
-        raw = self._loader.load_csv(self._path)
-        return {'features': raw[:-1], 'labels': raw[-1]}
+class ClassAdapter(Target, Adaptee):
+    def request(self):           # Target接口期望的方法
+        return self.specific_request()  # 调用Adaptee的方法
 ```
 
-**类适配器（Class Adapter）** 使用多重继承：Adapter同时继承Target和Adaptee，通过继承关系直接获得Adaptee的方法。此方式在Python中可行，但在不支持多重继承的Java中无法直接实现，且与具体类紧密耦合，灵活性较低。
+**对象适配器**通过组合（Composition）实现：适配器类实现目标接口，并在内部持有一个被适配者的实例引用。GoF更推荐对象适配器，因为它遵循"优先使用组合而非继承"原则，耦合度更低，且允许适配同一个被适配者类的不同子类。
 
-### 接口转换的三种典型操作
+### 四个参与角色及其职责
 
-适配器内部的转换逻辑通常涉及以下三类操作：
+适配器模式由以下四个角色构成，缺一不可：
 
-1. **方法名映射**：将`get_batch()`调用转发给`load_csv()`，仅做名称层面的重命名
-2. **数据格式转换**：如将NumPy数组转换为PyTorch Tensor：`torch.from_numpy(adaptee.get_array())`
-3. **参数重组**：目标接口接收单个配置字典，而被适配者需要多个独立参数，适配器负责拆包重组
+1. **Target（目标接口）**：客户端代码直接依赖的接口，定义了客户端期望调用的方法，例如 `predict(input_tensor)` 。
+2. **Client（客户端）**：只知道Target接口的存在，完全不了解Adaptee的代码。
+3. **Adaptee（被适配者）**：已有的类，拥有实际功能但接口与Target不兼容，例如某旧版模型库的 `run_inference(numpy_array)` 方法。
+4. **Adapter（适配器）**：核心角色，实现Target接口，内部将对Target方法的调用委托给Adaptee的对应方法，并负责必要的数据格式转换。
+
+### 数据转换逻辑的封装
+
+适配器不仅是方法名的映射，往往还承担数据格式转换职责。以AI推理服务为例，一个典型的适配器需要完成：将客户端传入的JSON字符串反序列化 → 转换为Numpy数组 → 调用旧版推理引擎 → 将返回的原始概率数组重新封装为标准ResponseObject。这些转换逻辑全部封装在Adapter内部，Client和Adaptee双方均无感知。
 
 ## 实际应用
 
-### 统一多LLM供应商接口
+### AI框架接口统一
 
-在AI工程实践中，团队常需同时支持多个大语言模型供应商。OpenAI的调用格式为`client.chat.completions.create(model="gpt-4", messages=[...])`，而Anthropic Claude的格式为`client.messages.create(model="claude-3", max_tokens=1024, messages=[...])`，两者参数结构和返回值格式均不相同。
+在MLOps流水线中，团队常需同时支持多个模型框架。可定义统一的 `ModelInferenceInterface`（Target），要求实现 `infer(self, input: dict) -> dict` 方法。针对PyTorch模型创建 `PyTorchModelAdapter`，内部将输入dict转换为 `torch.Tensor`，调用 `model.forward()`，再将结果转回dict。针对sklearn模型创建 `SklearnModelAdapter`，内部调用 `model.predict_proba()`。业务代码统一调用 `ModelInferenceInterface`，无需关心底层框架差异。
 
-通过定义统一的`LLMInterface`目标接口，分别为OpenAI和Anthropic编写适配器类，业务代码只调用`llm.generate(prompt, max_tokens)`，切换模型供应商只需替换适配器实例，业务逻辑零改动。
+### 数据集格式适配
 
-### 旧版数据管道对接新框架
+HuggingFace的 `datasets` 库返回 `Dataset` 对象，而某自定义训练循环期望接收标准Python迭代器。通过编写 `HuggingFaceDatasetAdapter` 实现 `__iter__` 和 `__len__` 方法，内部调用Dataset的批量获取逻辑，即可无缝接入原有训练代码，无需修改训练循环的任何一行。
 
-某AI团队有一套基于scikit-learn的数据预处理管道，其`transform(X)`方法返回NumPy数组。新引入的PyTorch训练框架要求DataLoader返回`(Tensor, Tensor)`格式的元组。编写`SklearnPipelineAdapter`，在其`__iter__`方法中调用原管道的`transform()`并执行`torch.FloatTensor()`转换，使两套系统无缝对接，同时完整保留了原管道中已调优的特征工程逻辑。
+### 第三方API接入
+
+当从OpenAI API切换至Azure OpenAI或本地部署的Ollama时，两者的请求参数结构存在差异。通过为每个服务实现统一的 `LLMClient` 适配器接口（定义 `chat_complete(messages: list, model: str) -> str`），可以在不修改调用方代码的前提下自由切换底层LLM服务提供商。
 
 ## 常见误区
 
 ### 误区一：将适配器模式与装饰器模式混淆
 
-两者都对目标类进行"包装"，但目的截然不同。装饰器模式在**保持接口不变**的前提下为对象动态添加功能；适配器模式的目的是**转换接口**，使不兼容的接口变得兼容，被包装后接口形式本身发生了改变。判断依据：如果包装前后客户端调用的方法签名完全相同，是装饰器；如果方法名或参数格式发生了变化，是适配器。
+两者都对已有类进行包装，但目的截然不同。**适配器模式的目的是转换接口**——Adapter实现的是与Adaptee完全不同的Target接口；而**装饰器模式的目的是增强功能**——Decorator实现的是与被装饰对象完全相同的接口，只是在调用前后附加额外行为。判断标准很简单：如果包装后对外暴露的方法签名与原始类不同，那是适配器；如果方法签名相同只是行为增强，那是装饰器。
 
-### 误区二：将适配器用于"应该统一设计"的新系统
+### 误区二：适配器应承担业务逻辑
 
-适配器模式是应对**已有不兼容代码**的解决方案，专门用于无法或不宜修改原有类的场景。如果是正在设计的全新系统，各模块接口不兼容是设计缺陷，应当在设计阶段统一接口规范，而不是堆砌适配器。过度使用适配器会在系统中引入额外的间接层，增加调试难度，掩盖真实的设计问题。
+适配器的职责仅限于**接口转换和数据格式转换**，不应包含任何业务逻辑判断。如果在适配器中加入"当输入长度超过512时截断"这样的业务规则，会导致该规则被隐藏在适配层，难以测试和维护。业务逻辑应放在Client或Adaptee自身中，适配器只做纯粹的"翻译"工作。
 
-### 误区三：认为适配器必须一对一转换
+### 误区三：过度使用适配器导致"适配器地狱"
 
-一个适配器可以适配多个Adaptee，称为"双向适配器"或"多路适配器"。例如在LLM路由场景中，单个`UniversalLLMAdapter`可以根据`model_name`参数在内部选择调用OpenAI、Anthropic或本地Ollama实例，对外仍暴露统一的`generate()`接口。这种模式在AI网关产品（如LiteLLM）中被广泛采用。
+当系统中有大量相互不兼容的接口时，开发者容易为每一对接口都创建适配器，最终形成复杂的适配器链（A适配B，B适配C，C适配D）。正确的做法是：如果接口不兼容是系统性问题，应优先通过定义统一的**门面（Facade）接口**来从根本上解决，而不是无限叠加适配器层。
 
 ## 知识关联
 
-适配器模式建立在**接口（Interface）**概念之上——Target角色本质上是一个接口契约，Adapter通过实现该接口获得与客户端通信的资格。没有对接口与实现分离机制的理解，就无法解释为什么客户端可以"透明地"替换不同的Adapter实例。
+适配器模式依赖对**接口（Interface）**概念的理解——必须能够区分Target接口与Adaptee实现，才能判断何处需要适配以及适配的边界在哪里。同时需要理解**设计模式概述**中结构型模式与行为型模式的分类逻辑，明确适配器解决的是"结构兼容性"问题而非"行为协调"问题。
 
-在**设计模式概述**中学到的"针对接口编程，而非针对实现编程"原则，在适配器模式中得到了直接体现：客户端代码依赖抽象的Target接口，对Adapter的具体类型一无所知，因此可以在运行时注入不同的适配器实现（如切换LLM供应商），而不触发任何代码修改。这也是适配器模式能够支持依赖注入实践的结构原因。
+在AI工程的实践脉络中，适配器模式与**策略模式**形成互补关系：策略模式用于在运行时切换算法实现，而适配器模式使得那些原本接口不兼容的算法实现能够被纳入策略模式的统一框架中。两者结合使用，是构建可扩展AI推理服务的常见架构手法。理解适配器模式还为后续学习**门面模式（Facade）**奠定基础——当需要适配的接口从"一对一"扩展到"多个子系统统一入口"时，门面模式接替了适配器模式的工作。

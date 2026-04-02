@@ -20,72 +20,78 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 输入设备抽象
 
 ## 概述
 
-输入设备抽象是游戏引擎输入系统中的一种架构模式，其核心目标是将键盘、鼠标、手柄、触摸屏等不同物理设备的原始信号，通过统一的接口层暴露给游戏逻辑代码。游戏代码不需要知道"玩家按下了Xbox控制器的A键"还是"玩家按下了键盘空格键"，只需要查询一个标准化的状态对象即可获取输入结果。
+输入设备抽象是游戏引擎输入系统中的一种设计模式，其核心目标是将键盘、鼠标、手柄、触摸屏等物理差异极大的硬件设备，通过统一的软件接口层暴露给游戏逻辑代码，使得游戏代码无需感知底层硬件的具体类型即可读取玩家输入。以按下"确认"按钮为例，键盘上可能是 Enter 键，Xbox 手柄上是 A 键，PlayStation 手柄上是 Cross 键，触屏上是点击 UI 按钮——输入设备抽象层使这四种行为在游戏逻辑层面归一为同一个事件。
 
-这一抽象概念在PC游戏多平台移植需求兴起后逐渐成熟。DirectInput（1995年随DirectX 1.0推出）是早期尝试统一PC输入设备API的代表，但它对手柄和键盘采用不同的查询方式，并未实现真正的统一抽象。SDL（Simple DirectMedia Layer）的输入子系统在1998年发布时提出了更彻底的统一方案，将所有设备归入同一事件队列，这一设计影响了后来许多引擎的架构。
+该设计模式在游戏引擎发展史上的必要性，随着多平台发布需求的兴起而急剧上升。1990年代早期的 PC 游戏通常只需处理键盘和鼠标，代码直接读取硬件中断或操作系统消息即可。到了 2000 年代，Xbox/PlayStation 手柄的普及使得跨设备支持成为刚需。2010 年代触屏设备的爆发式增长，以及如今主机、PC、移动端三端并行的发布模式，使得没有输入设备抽象层的引擎几乎无法维护。Unity 的 `Input` 类（旧系统）和 Unreal Engine 的 `UPlayerInput` 均是这一模式的具体实现。
 
-输入设备抽象的价值在于支持多平台与多外设的同时存在。一款游戏可能同时运行在PC、主机和移动端，玩家可能同时连接键盘和手柄。没有设备抽象层，游戏逻辑代码会被大量的 `if (platform == PC)` 条件分支污染，维护成本极高。
+从架构价值看，输入设备抽象将"硬件是什么"与"玩家意图是什么"分离成两个独立的关注点。游戏逻辑程序员只需调用 `GetAxis("Horizontal")` 或 `IsButtonPressed(ActionButton.Jump)` 这类与硬件无关的接口，而不必在游戏逻辑中散落大量 `if (isKeyboard) ... else if (isGamepad) ...` 的条件分支。
+
+---
 
 ## 核心原理
 
-### 设备接口的统一化设计
+### 设备能力的最小公共接口
 
-输入设备抽象的基础是定义一个所有设备类型都必须实现的基础接口（Interface）或抽象基类（Abstract Base Class）。以C++为例，典型结构如下：
+不同输入设备的原始数据类型差异极大：键盘产生离散的按键状态（按下/抬起），鼠标产生二维坐标增量和按键状态，模拟摇杆产生 -1.0 到 1.0 之间的浮点值，触摸屏产生多点触控坐标列表。输入设备抽象的第一项工作是将这些异构数据归纳为有限的几种原语类型：
+
+- **数字输入（Digital Input）**：值域为 {0, 1}，代表"按下"或"未按下"，键盘每个按键、手柄肩键均属此类。
+- **模拟输入（Analog Input）**：值域为 [−1.0, 1.0] 或 [0.0, 1.0] 的浮点数，PS5 DualSense 的自适应扳机即输出此类数据。
+- **二维轴输入（2D Axis）**：由两个模拟值组成的向量，如鼠标位移 `(dx, dy)` 或左摇杆 `(x, y)`。
+- **触控点（Touch Point）**：包含 ID、坐标、压力值的结构体，专门用于触摸屏的多点输入。
+
+键盘的按键也可以**模拟**为模拟输入：W 键被按住时输出 1.0，未按时输出 0.0，从而使键盘玩家和摇杆玩家使用同一套移动代码。这种"数字转模拟"的转换是抽象层内部完成的，游戏逻辑对此无感知。
+
+### 设备轮询与事件驱动的统一封装
+
+物理硬件的驱动程序有两种数据推送模式：轮询（Polling）和事件回调（Event Callback）。Windows 的 DirectInput 和 XInput 都以轮询为主，每帧调用一次获取当前快照；而 Android 和 iOS 的触摸事件则以回调方式推送。输入设备抽象层在内部将这两种模式统一为一个"每帧状态快照 + 本帧事件队列"的混合模型：
 
 ```
-class IInputDevice {
-public:
-    virtual void Update() = 0;
-    virtual bool IsButtonDown(int buttonCode) const = 0;
-    virtual float GetAxis(int axisCode) const = 0;
-    virtual DeviceType GetType() const = 0;
+struct InputDeviceState {
+    float axes[MAX_AXES];         // 当前帧所有轴的浮点值
+    uint64_t buttonsDown;         // 位掩码：本帧被按住的键
+    uint64_t buttonsPressed;      // 位掩码：本帧刚按下的键
+    uint64_t buttonsReleased;     // 位掩码：本帧刚抬起的键
 };
 ```
 
-`Keyboard`、`Mouse`、`Gamepad`、`TouchScreen` 都继承自 `IInputDevice`，各自在 `Update()` 中向操作系统查询原始状态，并将结果转换为引擎内部的标准按键码（Button Code）体系。游戏逻辑层只持有 `IInputDevice*` 指针，完全不接触具体设备类型。
+`buttonsPressed` 的计算公式为：`buttonsPressed = currentDown & ~previousDown`，即当前帧按住但上一帧未按住的位。这个公式在所有平台的抽象层实现中都以完全相同的方式计算，无论底层是 XInput 的轮询还是 iOS 的 `touchesBegan` 回调。
 
-### 按键码（Button Code）标准化
+### 设备发现与热插拔管理
 
-不同设备的原始标识符差异巨大：Windows虚拟键码（Virtual Key Code）中空格键是 `0x20`，Xbox手柄A键在XInput中是 `XINPUT_GAMEPAD_A`（值为 `0x1000`），触摸屏没有按键概念只有触点。设备抽象层的职责之一就是将这些杂乱的原始值映射到引擎自定义的枚举表。
+现代输入抽象层还需要处理设备的动态连接与断开。Xbox One 手柄通过 USB 或无线接收器连接时，操作系统会触发设备到达通知；蓝牙手柄断线时会触发设备离开通知。抽象层维护一个设备注册表（Device Registry），每个物理设备被映射为一个虚拟设备句柄（Device Handle），通常以整数 ID 表示，如玩家 0 到玩家 3 对应手柄槽位 0 到 3。
 
-Unity引擎使用 `KeyCode` 枚举（共超过430个枚举值）来覆盖所有设备的所有按键，Godot 4 则使用 `Key`、`JoyButton`、`MouseButton` 三个独立枚举，并通过 `InputEvent` 基类进行多态分发。两种方案各有取舍，前者更扁平化，后者类型更安全。
+当手柄断线时，抽象层有两种策略：立即将所有输入值清零，或保持最后一帧的状态直到超时。Unity 的旧版输入系统采用前者，而 Unreal Engine 允许开发者配置"断线行为"。热插拔管理的另一个职责是设备重分配：若玩家 1 的手柄断线后重连，抽象层需判断是恢复原有槽位还是分配新槽位，这一策略直接影响本地多人游戏的体验。
 
-### 轴（Axis）数据的归一化
-
-手柄摇杆输出的是硬件原始整数值（XInput中为 -32768 到 32767），鼠标输出的是像素偏移量，触摸屏输出的是屏幕坐标。设备抽象层必须将所有连续输入统一归一化到 **[-1.0, 1.0]** 或 **[0.0, 1.0]** 的浮点范围。
-
-归一化公式为：`normalizedValue = rawValue / maxRawValue`。对于手柄摇杆，还需要在归一化之后应用死区（Deadzone）处理，通常将绝对值小于 0.1 的输入截断为 0，防止摇杆物理磨损导致的漂移问题。触摸屏的轴坐标通常归一化为屏幕宽高比的百分比，而非简单的像素值。
-
-### 设备的动态连接与断开
-
-与键盘鼠标不同，手柄和触摸屏存在运行时热插拔的问题。设备抽象层需要维护一个 `DeviceManager`，在操作系统触发设备连接/断开事件时（Windows的 `WM_DEVICECHANGE` 消息，或SDL的 `SDL_JOYDEVICEADDED` 事件），动态增删设备对象，并向游戏逻辑发出设备状态变更通知，避免游戏代码访问已断开设备时发生空指针崩溃。
+---
 
 ## 实际应用
 
-**多平台移植场景**：一款同时发布于PC和PlayStation 5的游戏，在PC上使用 `KeyboardDevice` 和 `XInputGamepadDevice`，在PS5上使用 `DualSenseDevice`。由于三者都实现了 `IInputDevice` 接口，角色的跳跃逻辑只调用 `device->IsButtonDown(BTN_ACTION_PRIMARY)`，不包含任何平台判断代码。
+**Unity 新版输入系统（Input System 1.0，2020年发布）**是输入设备抽象的典型工程案例。它引入了 `InputDevice` 基类，`Keyboard`、`Mouse`、`Gamepad`、`Touchscreen` 均继承自该基类。游戏代码通过 `InputAction` 绑定动作，而非直接引用特定设备的特定按键。一个 `InputAction` 的 `performed` 回调会在任意绑定设备触发条件时被调用，回调参数 `InputAction.CallbackContext` 的 `ReadValue<Vector2>()` 方法无论底层是鼠标移动还是摇杆偏移，均返回相同类型的数据。
 
-**本地多人游戏**：游戏需要支持2-4名玩家同时使用手柄游玩。`DeviceManager` 维护一个 `IInputDevice*` 的数组（最多索引0-3），每个 `PlayerController` 持有对应索引的设备指针。当第3个手柄接入时，`DeviceManager` 在索引2处插入新的 `GamepadDevice` 实例，无需修改任何游戏逻辑代码。
+**Godot 4 的 `InputEvent` 类层级**同样体现了此设计：`InputEventKey`、`InputEventMouseButton`、`InputEventJoypadButton`、`InputEventScreenTouch` 均继承自 `InputEvent`，共享 `is_pressed()` 方法。开发者在 `_input(event: InputEvent)` 回调中可以用 `event.is_action_pressed("jump")` 统一处理所有设备的跳跃输入，无需逐一检查事件子类型。
 
-**移动端虚拟摇杆**：触摸屏本身没有物理摇杆，但抽象层可以创建一个 `VirtualGamepadDevice`，它内部解析触摸点坐标，将触摸位移换算成归一化的摇杆轴值后，以完全相同的 `IInputDevice` 接口暴露给游戏逻辑。游戏代码查询虚拟手柄与查询真实手柄使用完全相同的 API 调用。
+**跨平台移植场景**：一款原本只支持键鼠的 PC 游戏移植到 Nintendo Switch 时，若游戏逻辑全程通过输入抽象接口读取数据，移植工作仅需在引擎层新增一个 Switch Joy-Con 的设备驱动适配器，注册到设备抽象层的设备工厂中，游戏逻辑代码理论上零改动。这正是输入设备抽象层存在的工程价值所在。
+
+---
 
 ## 常见误区
 
-**误区一：将设备抽象与输入映射混为一谈**
-设备抽象解决的是"如何用统一接口读取不同硬件"的问题，而输入映射（Input Mapping）解决的是"如何将按键绑定到游戏动作"的问题。设备抽象层输出的仍然是 `BTN_GAMEPAD_A` 或 `KEY_SPACE` 这样的设备相关标识符，只有经过输入映射系统的转换，才会变成 `Action::Jump` 这样的游戏语义。将两层职责写在同一个类中会导致类职责过重，也无法独立替换其中一层。
+**误区一：认为输入设备抽象等同于按键重映射**。按键重映射（Key Remapping）是输入映射（Input Mapping）层的功能，位于设备抽象层之上。设备抽象层只负责"把各种硬件的原始信号统一成相同的数据格式"，而不负责"把 A 键映射到跳跃动作"这件事。混淆两者会导致在抽象层实现中错误地硬编码动作语义。
 
-**误区二：认为一套按键码枚举可以"完美"覆盖所有设备**
-Unity的 `KeyCode` 枚举包含了 `JoystickButton0` 到 `JoystickButton19` 这样的通用手柄按键名，但不同手柄厂商的按键布局不一致，同一个 `JoystickButton0` 在罗技手柄和Xbox手柄上对应不同的物理按键位置。这是过度追求"绝对统一"带来的副作用。现代引擎更倾向于采用"设备族（Device Family）+ 标准布局（Standard Layout）"的两级方案，例如区分 `XboxLayout` 和 `PlayStationLayout`，而不是强行用一个枚举覆盖所有手柄。
+**误区二：认为触屏输入只需映射为鼠标输入即可**。这种简化处理会丢失触屏特有的多点触控信息——鼠标同一时刻只有一个坐标点，而触屏可以同时追踪 10 个触控点（iOS 支持最多 5 个同时活跃的 touch 点，Android 因设备而异）。如果抽象层将触屏强行降级为鼠标，捏合缩放、双指旋转等手势的底层数据就会在抽象层被丢弃，导致后续手势识别模块无原始数据可用。
 
-**误区三：在抽象层中处理业务逻辑**
-有些实现会在 `GamepadDevice::Update()` 中直接判断"如果A键按下则触发跳跃"，这破坏了抽象层的职责单一性。设备抽象层只负责状态读取和格式标准化，绝不应包含任何游戏规则判断。一旦游戏逻辑写入设备类，同一设备就无法被不同游戏场景（菜单导航、战斗、载具驾驶）复用，且单元测试也会变得困难。
+**误区三：抽象层应当完全隐藏设备类型信息**。实际工程中，游戏 UI 需要根据当前活跃设备显示对应的按键图标（键盘显示 "Space"，Xbox 手柄显示 A 键图标，PS 手柄显示 ✕ 图标）。因此，抽象层在统一接口的同时，还必须提供"查询当前活跃设备类型"的 API，如 `GetLastActiveDeviceType()` 返回一个设备类型枚举值，供 UI 系统读取。过度抽象导致设备类型完全不可查询，反而使 UI 适配工作无从下手。
+
+---
 
 ## 知识关联
 
-**前置概念**：输入系统概述建立了输入系统的整体架构认知，包括轮询（Polling）与事件驱动（Event-Driven）两种读取模式的区别，这是理解设备抽象层 `Update()` 函数为何需要每帧调用的前提。
-
-**后续概念**：输入映射系统以设备抽象层输出的标准按键码为输入，构建动作（Action）到按键的绑定关系表，是设备抽象层的直接消费者。鼠标光标处理和手柄震动反馈则是在设备抽象基础上，针对特定设备类型增加专有接口（如 `IMouseDevice::SetCursorPosition()` 和 `IGamepadDevice::SetVibration(float left, float right)`）的扩展模式。触屏手势识别则需要在 `TouchDevice` 的原始触点数据之上构建新的抽象层，是设备抽象思想在更高维度的应用。
+学习本概念需要已掌握**输入系统概述**中的操作系统消息循环与硬件驱动通信基础，因为设备抽象层的底层数据来源正是这些 OS 级 API（如 Windows 的 `WM_KEYDOWN` 消息、Linux 的 `/dev

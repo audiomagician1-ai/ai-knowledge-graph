@@ -20,61 +20,85 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 跨平台存档
 
 ## 概述
 
-跨平台存档（Cross-Platform Save Data）是指在游戏引擎的平台抽象层中，将玩家的游戏进度、配置和状态数据以统一格式存储，并在 PC、主机、移动端等不同平台之间实现读写同步的系统机制。其核心目标是让玩家在 PlayStation 上的存档可以无缝迁移到 Nintendo Switch 上继续游戏，或通过云端在任意设备上读取最新进度。
+跨平台存档（Cross-Platform Save Data）是指在游戏引擎的平台抽象层中，将玩家的游戏进度、设置和状态数据序列化并同步到不同硬件平台或云端服务的机制。其核心目标是让玩家在PC、主机和移动设备之间无缝切换时，始终访问同一份存档。这一需求随着多平台游戏发布的普及而变得不可或缺——以《堡垒之夜》为例，Epic在2018年通过Epic Online Services将跨平台存档作为标准功能推出，玩家皮肤和战斗通行证进度在所有平台上完全共享。
 
-这一技术需求随着多平台发行策略的普及而急剧上升。2013 年 Xbox One 和 PS4 世代开始，云存档逐渐成为主流平台的标配服务，Valve 的 Steam Cloud 在 2008 年即已推出，允许开发者为每位用户分配最多 100MB 的云端存储配额。进入移动时代后，Apple Game Center 和 Google Play Games 也分别提供了各自的云存档 API，但接口格式互不兼容，这正是平台抽象层需要解决的核心矛盾。
+从技术背景来看，跨平台存档并非单一技术，而是平台抽象层中三个子问题的集合：云存档（将数据上传至远程服务器）、平台本地存储（写入设备文件系统的路径与权限差异）以及存储配额管理（各平台对存档大小的限制不同）。PlayStation的PSN云存档为普通用户提供100GB总配额，而Nintendo Switch Online为每款游戏提供的存档空间上限仅为512MB。这些差异要求引擎的存档模块必须具备平台感知能力，而不能使用统一的硬编码逻辑。
 
-跨平台存档之所以在引擎架构中需要专门的抽象层处理，是因为不同平台对存档的写入时机、加密要求、配额限制和冲突解决策略各有强制规定。PlayStation 平台要求存档数据必须通过 `SCE_NP_TROPHY_CONTEXT` 相关接口写入，而不能直接操作文件系统；Nintendo Switch 则要求所有存档操作必须在特定的 `IAccountManager` 上下文中完成。引擎的存档抽象层将这些差异隐藏在统一的 `ISaveGame` 接口之后，使游戏逻辑代码与平台无关。
+理解跨平台存档对游戏开发者的意义在于：存档格式设计失误往往在多平台上线后才暴露，修复成本极高。2019年《边境之地3》发布时，因存档系统未正确处理PC与主机端字节序（endianness）差异，导致部分跨平台迁移存档损坏，成为行业典型教训。
 
 ## 核心原理
 
-### 统一存档接口与序列化格式
+### 存档数据的序列化与跨平台兼容性
 
-跨平台存档抽象的第一要素是定义一套与平台无关的序列化格式。主流方案采用二进制格式（如 Protocol Buffers 或自定义二进制流）而非纯文本 JSON，原因在于二进制格式在主机平台上的读写速度更快，且压缩后体积更小，有助于控制在各平台配额内。
+跨平台存档的首要技术挑战是二进制兼容性。不同架构的CPU（如x86与ARM）在存储多字节整数时字节顺序不同：x86使用小端序（little-endian），而部分主机历史上使用大端序（big-endian，如PS3的Cell处理器）。若直接将内存中的结构体以`memcpy`方式写入文件，在另一平台读取时数值会完全错误。
 
-以 Unreal Engine 5 为例，其 `USaveGame` 类通过 `UGameplayStatics::SaveGameToSlot()` 和 `LoadGameFromSlot()` 提供统一的槽位（Slot）概念。槽位名称是一个字符串标识符，引擎内部将其映射到各平台的实际存储路径：在 PC 上为 `%LOCALAPPDATA%/GameName/Saved/SaveGames/`，在主机上则转换为对应平台 SDK 要求的存储区域。序列化时，引擎通过 `FMemoryWriter` 将 `USaveGame` 对象写成字节数组，再交由平台特定的写入后端处理。
+解决方案是采用**平台无关的序列化格式**，目前主流选择包括JSON（人类可读但体积较大）、MessagePack（二进制JSON，体积比JSON小约50%）以及Protocol Buffers（Google开发，字段向前/向后兼容性极佳）。Unreal Engine内置的`FArchive`序列化系统会在写入时强制将所有数值转换为小端序，读取时再根据当前平台决定是否进行字节翻转，以此保证存档文件在不同平台间可互读。
+
+### 平台本地存储路径抽象
+
+各平台规定了严格的存档写入路径，直接使用硬编码路径会导致拒绝访问错误：
+
+- **Windows**：`%APPDATA%\[Publisher]\[GameName]\`
+- **macOS**：`~/Library/Application Support/[GameName]/`
+- **iOS/Android**：沙盒隔离目录，只能通过操作系统API获取
+- **Nintendo Switch**：通过`nn::fs`挂载专用存档分区`save:/`
+- **PlayStation 5**：使用`libSceSaveData` API，存档文件名限制为ASCII字符
+
+游戏引擎的平台抽象层将上述差异封装为统一接口，例如Unity的`Application.persistentDataPath`属性在运行时自动返回当前平台的合法存档根目录，开发者无需编写平台判断分支。
 
 ### 云存档同步与冲突解决
 
-云存档同步的难点在于多端修改后的冲突处理。常见的冲突解决策略有三种：**时间戳优先**（取最新修改时间的存档）、**版本号优先**（取版本号最高的存档）以及**人工选择**（弹出对话框让玩家决定）。
+云存档系统的核心难题是**写冲突（Write Conflict）**：玩家在离线状态下修改了本地存档，同时云端也保存了另一份更新（例如在另一台设备上游玩）。解决此类冲突有三种常见策略：
 
-Steam Cloud 采用的是时间戳优先策略，并在本地和云端分别维护一份 `remotecache.vdf` 文件记录各存档文件的状态（已同步/待上传/冲突）。当检测到冲突时（即本地时间戳和云端时间戳均比上次同步后的基准时间更新），Steam 会将决策权交给玩家。引擎的抽象层需要将这类冲突事件通过回调函数暴露给游戏逻辑，典型接口形式为：
+1. **时间戳优先（Last-Write-Wins）**：以修改时间较新的存档为准，实现简单但可能丢失较早设备上的进度，Steam Cloud默认使用此策略。
+2. **玩家选择（User Resolution）**：弹出界面让玩家手动选择保留哪份存档，《黑暗之魂》系列采用此方案。
+3. **三路合并（Three-Way Merge）**：以上次同步时的存档为基准版本，对本地版本和云端版本的差异进行合并，适用于数据结构较清晰的RPG存档（如物品栏数量叠加），实现复杂度最高。
 
-```
-OnSaveConflictDetected(localSlot, cloudSlot) -> ConflictResolution
-```
+### 存储配额管理
 
-其中 `ConflictResolution` 枚举值包含 `UseLocal`、`UseCloud`、`MergeData` 三个选项，游戏可根据自身逻辑（例如对比金币数量取较大值）实现自定义合并。
+不同平台对单个游戏的存档空间设有硬性上限，引擎存档模块必须主动追踪已用空间：
 
-### 配额管理与存档大小控制
+| 平台 | 单游戏云存档配额 |
+|------|--------------|
+| Steam Cloud | 默认100MB，开发者可在Steamworks后台申请提高 |
+| PlayStation Now | 单游戏上限约100MB |
+| Xbox Cloud | 单游戏上限256MB |
+| Nintendo Switch Online | 单游戏上限512MB |
 
-各平台对单用户存档存储有严格的配额上限：PlayStation Network 为每个游戏 100MB、Nintendo Switch Online 为每个游戏 40MB、Xbox Live 为每个游戏 256MB，而 Steam Cloud 默认仅 100MB（开发者可申请扩大）。配额管理要求引擎抽象层在写入前检查可用空间，并在超限时给出明确的错误码而非静默失败。
-
-存档数据的压缩是控制配额的关键手段。使用 zlib 压缩典型 RPG 存档数据（包含地图探索状态、物品栏等），压缩率通常可达 60%–75%，即 100KB 的原始数据压缩后约为 25–40KB。引擎在写入时应自动完成压缩，读取时自动解压，使游戏逻辑层完全感知不到压缩过程。
+当存档数据接近配额时，引擎应提前触发清理逻辑（如删除旧的快照存档），而不是在写入失败时才报错。配额检查API在各平台中均为异步调用，需要正确处理回调或`async/await`流程，避免阻塞主线程。
 
 ## 实际应用
 
-**《堡垒之夜》的跨平台存档实现**是业界著名案例。Epic Games 使用其自研的 Epic Online Services（EOS）SDK，将 PC、PS5、Xbox Series X 和 Nintendo Switch 的存档数据统一存储在 Epic 账号服务器上。玩家的皮肤解锁、战斗通行证进度和战绩数据通过 EOS 的 `EOS_PlayerDataStorage` 接口读写，所有平台调用相同的 C 语言接口，差异由 SDK 内部处理。
+**Unity + Steam Cloud实现示例**：在Unity中启用Steam Cloud存档需在Steamworks SDK的App Settings中勾选"Enable Cloud"，并设置根同步路径（如`./SaveData/`）。代码层面通过`SteamRemoteStorage.FileWrite(fileName, data)`写入，`SteamRemoteStorage.FileRead(fileName, buffer, bufferSize)`读取，返回值为实际读取的字节数，等于0时说明文件不存在或配额已满。需要在写入前调用`SteamRemoteStorage.GetQuota(out totalBytes, out availableBytes)`预检查剩余空间。
 
-**《Celeste》**的存档系统则展示了小型独立游戏的轻量方案：使用 XNA/FNA 框架的 `StorageDevice` 接口，在 PC 上以纯文本 XML 存储，在主机上通过平台 SDK 写入加密存档区域，同一套游戏逻辑代码无需修改即可在 PC 和主机上运行。
+**Nintendo Switch存档处理**：Switch要求在访问存档前必须先挂载存档分区，并在所有操作完成后显式提交（`nn::fs::CommitSaveData`），若程序崩溃前未提交，本次写入的数据全部丢失。这与PC文件系统的行为完全不同，是Switch移植中最常见的存档Bug来源之一。
 
-在 Unity 引擎中，开发者通常使用 `Application.persistentDataPath` 获取当前平台的标准存档路径，在 Android 上返回 `/storage/emulated/0/Android/data/com.company.game/files/`，在 iOS 上返回应用沙箱内的 `Documents` 目录，在 PC 上返回 `%APPDATA%` 下的路径，配合 `PlayerPrefs` 或自定义二进制序列化实现跨平台存档。
+**移动平台iCloud Drive存档**：iOS游戏使用`NSUbiquitousKeyValueStore`存储小型键值对数据（总上限1MB），或使用`NSFileManager`将文件标记为`NSFileProtectionComplete`以启用iCloud文档同步。前者在网络恢复后自动合并，后者需处理`NSMetadataQuery`通知来检测云端文件变化。
 
 ## 常见误区
 
-**误区一：认为 `PlayerPrefs` 可以作为跨平台存档的完整方案。** `PlayerPrefs` 在 PC 上将数据写入注册表（Windows）或 `plist` 文件（macOS），在主机平台上很可能根本不可用或有严重限制。更重要的是，`PlayerPrefs` 没有任何加密保护，玩家可轻易修改存储的键值对，且无法接入任何平台的云存档服务。它只适合存储音量、画质等本地偏好设置，不适合存储需要跨平台同步的游戏进度。
+**误区一：存档文件格式不需要版本号**
 
-**误区二：假设所有平台的存档写入都是同步操作。** 在 PlayStation 和 Nintendo Switch 上，存档写入是异步的，函数调用立即返回但数据可能尚未落盘。若游戏在写入回调到来之前就退出或崩溃，存档将丢失。正确做法是在异步写入完成的回调中才允许用户退出游戏，抽象层应提供 `OnSaveCompleted(success)` 形式的异步回调接口，而非让游戏假设写入是即时完成的。
+许多初学者直接将游戏数据结构序列化存储，不附带任何版本标识。游戏更新后，一旦数据结构新增或删除字段，旧存档加载时会出现字段错位或反序列化失败。正确做法是在每个存档文件头部写入4字节的版本号（如`uint32_t saveVersion = 3`），加载时根据版本号选择对应的反序列化逻辑并执行数据迁移（migration）。
 
-**误区三：认为跨平台存档只需处理文件格式兼容性。** 实际上，平台账号系统的绑定是更复杂的问题。同一位玩家在 PC 上登录 Steam 账号，在 PS5 上登录 PSN 账号，这两个账号本质上是独立的，存档共享需要游戏发行商建立账号关联机制（如 Epic Account 关联）。引擎的存档抽象层无法自动解决账号关联问题，这需要在设计阶段就决定采用第三方统一账号服务（如 EOS、GameSparks）还是仅支持同平台账号内的存档同步。
+**误区二：云存档同步是即时完成的**
+
+Steam Cloud的上传通常在游戏退出后由Steam客户端在后台完成，而非调用`FileWrite`时立即上传。若开发者假设写入即同步，在多设备测试时会发现"明明保存了却读不到"的问题。Nintendo Switch的云存档同步同样是异步的，且只在系统联网且插电的特定时机触发，游戏内代码无法强制触发立即同步。
+
+**误区三：所有平台的存档路径都允许中文字符**
+
+部分主机平台的文件系统或存档API对文件名有严格的字符集限制，仅允许ASCII字符（A-Z、0-9和下划线）。如果开发者使用包含中文的游戏名或动态生成包含玩家名称的文件名，在这些平台上会导致文件创建失败。引擎抽象层应对文件名进行哈希处理或严格过滤，确保生成的文件名仅包含安全字符。
 
 ## 知识关联
 
-跨平台存档建立在**平台抽象概述**所讲述的接口隔离原则之上：平台抽象层通过虚函数接口将平台特定的存储 API 封装为统一的 `ISaveSystem` 或 `ISaveGame` 接口，游戏逻辑代码仅依赖这个抽象接口，而具体实现（`SteamSaveSystem`、`PSNSaveSystem`、`NintendoSaveSystem`）在编译时或运行时根据目标平台选择。
+跨平台存档建立在**平台抽象概述**所介绍的核心思想之上：通过统一接口隐藏平台差异。具体而言，存档系统正是平台抽象层中文件I/O抽象的直接应用——`IFileSystem`等抽象接口使上层游戏逻辑代码无需感知当前运行在哪个平台的文件系统上。
 
-跨平台存档还与**输入抽象**、**成就系统抽象**紧密相关：成就解锁状态往往需要随存档一同同步，而各平台对成就数据的存储位置有各自规定（PSN 将成就数据存储在服务器端而非本地存档中），因此成就系统的平台抽象层与存档抽象层需要协同设计，避免在迁移存档时出现成就状态与游戏进度不一致的问题。
+掌握跨平台存档后，开发者将具备处理平台抽象层中所有"有状态持久化"问题的能力，这与成就系统（不同平台使用PSN Trophies、Xbox Achievements或Steam Achievements）以及用户账号系统的跨平台对接面临相同的平台差异挑战，处理思路高度一致。在游戏引擎架构设计层面，存档系统的设计决策（序列化格式选择、冲突解决策略）往往在项目早期就需确定，因为后期迁移存档格式的成本会随着玩家基数增长而急剧上升。

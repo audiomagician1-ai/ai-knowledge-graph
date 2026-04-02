@@ -20,89 +20,104 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 装饰器模式
 
 ## 概述
 
-装饰器模式（Decorator Pattern）是一种结构型设计模式，其核心思想是在不修改原有类的前提下，通过将对象包裹在装饰器对象中，动态地为该对象添加新的职责或行为。与继承不同，装饰器模式在运行时组合功能，而非在编译期固定类层次结构。这一模式最早由"四人帮"（Gang of Four）在1994年出版的《设计模式：可复用面向对象软件的基础》中正式归类，书中将其定义为"动态地给一个对象增加一些额外的职责"。
+装饰器模式（Decorator Pattern）是一种结构型设计模式，其核心思想是通过将对象放入包含特定行为的包装器对象中，来为原始对象动态添加新的功能，而不修改原始类的代码。GoF（Gang of Four）在1994年出版的《设计模式：可复用面向对象软件的基础》中正式定义了这一模式，将其归类为结构型模式第4号。
 
-装饰器模式解决的是"功能组合爆炸"问题。假设一个基础文本处理器需要支持加粗、斜体、加下划线三种格式，若使用继承，需要创建 2³=8 个子类（BoldText、ItalicText、UnderlineText、BoldItalicText……）来覆盖所有组合。而装饰器模式只需定义3个装饰类，在运行时按需叠加，类的数量从指数级降为线性级。
+装饰器模式的关键特性是它与继承的本质区别：继承在编译时静态扩展类功能，而装饰器在运行时动态叠加行为。假设有5种咖啡基础类型和10种配料选项，用继承实现需要 5×2^10 = 5120 个子类，而装饰器模式只需15个类（5个基础类 + 10个装饰器类）。这种组合爆炸问题是装饰器模式诞生的直接动因。
 
-在AI工程领域，装饰器模式被广泛用于为模型推理管道动态附加日志记录、缓存、超时控制、输入验证等横切关注点（cross-cutting concerns），而不污染核心推理逻辑。Python语言的`@decorator`语法糖也源自这一设计模式的思想，使其在AI框架开发中极为常见。
+在AI工程领域，装饰器模式被广泛应用于模型推理管道的构建——例如为基础推理函数动态叠加日志记录、性能计时、输入校验、结果缓存等能力，无需修改核心推理逻辑。Python语言内置的 `@decorator` 语法糖正是对这一模式的语言级支持。
 
 ## 核心原理
 
-### 组件结构与UML关系
+### 结构组成与UML定义
 
-装饰器模式包含四个角色：
-- **Component（抽象组件）**：定义对象的接口，例如抽象类`TextProcessor`，声明`process(text: str) -> str`方法。
-- **ConcreteComponent（具体组件）**：实现基本功能的原始对象，例如`BasicTextProcessor`。
-- **Decorator（抽象装饰器）**：持有一个Component类型的引用，并实现相同的Component接口。关键在于它与Component是"组合"关系而非"继承"关系——Decorator内部有一个`_wrapped: Component`成员变量。
-- **ConcreteDecorator（具体装饰器）**：在调用被装饰对象的同名方法前后插入新逻辑，例如`LoggingDecorator`在调用`self._wrapped.process(text)`前后写入日志。
+装饰器模式由4个角色构成：
+- **Component（抽象组件）**：定义基础接口，声明被装饰对象和装饰器的公共方法。
+- **ConcreteComponent（具体组件）**：被装饰的原始对象，实现Component接口。
+- **Decorator（抽象装饰器）**：持有一个Component类型的引用（组合关系），并实现相同的Component接口。
+- **ConcreteDecorator（具体装饰器）**：在调用被包装对象方法的前后添加额外逻辑。
 
-### 装饰链的调用机制
+关键结构约束：Decorator类必须**既持有Component的引用，又实现Component接口**，这形成了递归嵌套的能力——装饰器可以嵌套装饰另一个装饰器。
 
-当多个装饰器叠加时，形成一条调用链。以`LoggingDecorator(CachingDecorator(BasicProcessor()))`为例：
-1. 调用最外层`LoggingDecorator.process(text)`，记录入口日志
-2. 内部调用`CachingDecorator.process(text)`，检查缓存
-3. 缓存未命中时，调用`BasicProcessor.process(text)`执行实际逻辑
-4. 结果沿链条反向返回，各层依次完成收尾操作
+### 行为叠加的递归调用链
 
-这一链式调用保证了"职责的透明性"：调用方持有的仍然是`Component`接口引用，完全不知道背后叠加了多少层装饰器。时间复杂度方面，每增加一层装饰器仅增加O(1)的方法调用开销。
+当多个装饰器嵌套时，方法调用沿链传递。设基础组件为 `C`，两层装饰器分别为 `D1`、`D2`，调用 `D2.operation()` 的执行顺序为：
 
-### Python中的语法糖实现
-
-Python的`@`语法本质上是`func = decorator(func)`的简写。以下是AI推理服务中典型的装饰器实现：
-
-```python
-def retry(max_attempts=3):
-    def decorator(func):
-        def wrapper(*args, **kwargs):
-            for attempt in range(max_attempts):
-                try:
-                    return func(*args, **kwargs)
-                except Exception as e:
-                    if attempt == max_attempts - 1:
-                        raise
-        return wrapper
-    return decorator
-
-@retry(max_attempts=3)
-def call_llm_api(prompt: str) -> str:
-    # 实际调用大模型API
-    ...
+```
+D2.pre_logic → D1.pre_logic → C.operation() → D1.post_logic → D2.post_logic
 ```
 
-注意`functools.wraps`装饰器的使用——若省略它，`wrapper.__name__`会遮蔽原函数名，导致调试时堆栈信息失真。这是Python装饰器实现中最易忽略的细节。
+这种**洋葱模型**（Onion Model）是装饰器链执行的标准形式。在Python中，多个`@decorator`的叠加顺序遵循从下至上的包装规则：先声明的装饰器在外层，后声明的在内层。
+
+### Python装饰器的函数式实现
+
+Python中的装饰器本质是一个接收函数并返回新函数的高阶函数，与GoF经典面向对象实现等价但形式不同：
+
+```python
+def timing_decorator(func):
+    import time
+    def wrapper(*args, **kwargs):
+        start = time.perf_counter()
+        result = func(*args, **kwargs)
+        elapsed = time.perf_counter() - start
+        print(f"{func.__name__} 耗时: {elapsed:.4f}s")
+        return result
+    return wrapper
+
+@timing_decorator
+def run_inference(model, input_data):
+    return model.predict(input_data)
+```
+
+`functools.wraps` 是使用Python装饰器时的关键补充——不加它会导致 `wrapper.__name__` 覆盖原函数名，破坏调试信息和文档字符串。正确写法是在 `wrapper` 上方加 `@functools.wraps(func)`。
 
 ## 实际应用
 
-**AI推理管道的中间件叠加**：在LangChain等框架中，`Chain`对象支持通过装饰器模式叠加`CallbackHandler`。例如，`with_config(callbacks=[TokenCounterHandler(), LatencyTrackerHandler()])`实质上将原始Chain对象包裹在两层装饰器中，分别统计token消耗和推理延迟，而Chain的`invoke()`接口签名保持不变。
+### AI推理管道的能力叠加
 
-**模型服务的限流与缓存**：在FastAPI构建的模型服务中，常见的装饰器叠加方式为：
+在构建LLM推理服务时，可以用装饰器模式将横切关注点（cross-cutting concerns）从核心推理逻辑中分离：
+
 ```python
-@app.post("/predict")
-@rate_limiter(max_rps=100)
-@cache(ttl=300)
-@validate_input(schema=PredictRequest)
-async def predict(request: PredictRequest):
-    ...
+@cache_decorator(ttl=300)        # 第3层：结果缓存300秒
+@retry_decorator(max_retries=3)  # 第2层：失败自动重试3次
+@log_decorator(level="INFO")     # 第1层：记录输入输出日志
+def call_llm_api(prompt: str) -> str:
+    return openai_client.chat(prompt)
 ```
-三个业务装饰器按从内到外的顺序依次生效：先验证输入，再查缓存，最后限流。执行时则以相反顺序（从外到内）逐层调用。
 
-**PyTorch的`nn.Module`包装**：PyTorch中的`DataParallel`和`DistributedDataParallel`均是对`nn.Module`的装饰器式包装——`model = torch.nn.DataParallel(model)`在不改变`model.forward()`签名的前提下，附加了多GPU数据并行的能力，是装饰器模式在深度学习框架中的经典工业应用。
+三个装饰器各司其职，`call_llm_api` 函数本身只包含API调用逻辑，符合单一职责原则。任何一个装饰器可独立替换，例如将 `cache_decorator` 从本地内存缓存切换到Redis缓存，不影响其他层。
+
+### 模型评估指标的动态注入
+
+在模型训练框架中，可以用面向对象装饰器模式为不同数据集的评估器动态附加指标收集功能：基础 `Evaluator` 类只负责计算准确率，`MetricsDecorator` 在其外层追加F1-score计算，`TimingDecorator` 再外层追加推理延迟统计，整个评估管道在实验配置文件中通过组合构建，无需修改 `Evaluator` 源码。
 
 ## 常见误区
 
-**误区一：将装饰器模式与Python `@`语法等同**。Python的`@`语法是函数式装饰器，它操作的是函数对象；而GoF装饰器模式是面向对象设计，操作的是实现同一接口的类实例。前者无需共同接口，后者严格要求装饰器与被装饰对象实现相同的Component接口。两者目的相似，但Python的类装饰器（`class LoggingDecorator`包裹`instance`）才更接近GoF原意。
+### 误区一：将Python的@语法糖等同于GoF装饰器模式
 
-**误区二：认为装饰器模式可以完全替代继承**。装饰器模式仅适合在接口稳定的前提下叠加行为，若新行为需要改变对象的核心数据结构（例如为神经网络层添加新的可学习参数），仍需继承或组合到子类中实现。装饰器无法访问被装饰对象的私有成员，这是其根本限制。
+Python的`@decorator`语法本质是函数包装，而GoF装饰器模式要求装饰器与被装饰对象**共享同一接口**。纯函数式Python装饰器绕过了接口约束，导致类型检查失效。在严格的面向对象AI工程代码中，如果 `run_inference` 是某接口的实现，应使用继承自同一抽象基类的装饰器类，而非函数式装饰器，以确保 `isinstance` 检查和类型标注的正确性。
 
-**误区三：忽视装饰顺序的影响**。`GzipDecorator(EncryptDecorator(data))`与`EncryptDecorator(GzipDecorator(data))`产生完全不同的结果——正确顺序应先压缩再加密（因加密后数据熵极高，压缩效果接近零）。在AI服务中，`CacheDecorator(RateLimiterDecorator(...))`与`RateLimiterDecorator(CacheDecorator(...))`的限流粒度也截然不同：前者对缓存未命中请求限流，后者对所有请求限流。
+### 误区二：装饰器模式与继承可以随意互换
+
+装饰器模式解决的是**运行时动态组合**问题，而非继承的简单替代。若AI系统在启动时就确定功能固定不变，继承更简洁直接。但若需要根据配置文件或运行时参数决定是否启用缓存、是否开启监控，装饰器模式是唯一能优雅处理这种动态性的选择。混淆两者会导致过度设计——对静态功能叠加使用装饰器链会增加不必要的类数量和调用开销。
+
+### 误区三：装饰器链越长越灵活
+
+每增加一层装饰器都引入一次额外的函数调用和闭包创建开销。在高频推理场景（如每秒数千次的向量检索调用）中，5层以上的装饰器链可能带来可量化的延迟累积。实际工程中应合并职责相近的装饰器，例如将日志和计时合并为 `ObservabilityDecorator`，保持装饰器链不超过3层。
 
 ## 知识关联
 
-**前置知识——设计模式概述**：装饰器模式在GoF的23种模式中属于结构型模式，理解"组合优于继承"这一面向对象原则（Open/Closed Principle，即开闭原则）是掌握装饰器模式的前提——对扩展开放意味着可叠加装饰器，对修改封闭意味着不触碰原始ConcreteComponent代码。
+### 与设计模式概述的关联
 
-**后续概念——代理模式**：代理模式（Proxy Pattern）与装饰器模式在代码结构上几乎相同，都持有对目标对象的引用并实现相同接口，但两者意图不同。装饰器模式的意图是**增强**对象功能（对象自身可在客户端直接使用，装饰是可选的增量），而代理模式的意图是**控制**对象访问（客户端通常不持有也不应直接持有被代理对象）。在AI工程中，模型服务的访问鉴权属于代理模式，而为模型调用附加性能追踪属于装饰器模式——这一区分是学习代理模式时最需厘清的边界。
+在学习设计模式概述时已接触到"组合优于继承"（Composition over Inheritance）原则，装饰器模式是这一原则最直接的体现——Decorator类通过**组合**持有Component引用，而非继承ConcreteComponent。装饰器模式是将这一原则从理论落地为具体结构约束的标准范例。
+
+### 向代理模式的延伸
+
+代理模式（Proxy Pattern）与装饰器模式在结构上高度相似，两者都使用包装器持有原始对象的引用。核心区分点在于**意图**：装饰器模式的目的是**添加功能**，调用方知道自己在使用被增强的对象；代理模式的目的是**控制访问**（延迟加载、权限检查、远程代理），调用方通常不知道代理的存在。在AI服务网关中，限流和鉴权逻辑应使用代理模式实现，而非装饰器模式，尽管两者代码结构几乎相同。

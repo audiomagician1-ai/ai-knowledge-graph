@@ -20,70 +20,77 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # Alpha混合
 
 ## 概述
 
-Alpha混合（Alpha Blending）是光栅化管线中用于模拟透明效果的技术，其核心思想是将新绘制的片元颜色与帧缓冲区中已有的颜色按比例叠加，而非直接覆盖。Alpha值表示不透明度，范围为 [0.0, 1.0]，其中 0.0 表示完全透明，1.0 表示完全不透明。该技术最早在20世纪80年代由 Porter 和 Duff 于1984年在论文《Compositing Digital Images》中正式系统化，提出了"over"操作等经典合成运算。
+Alpha混合（Alpha Blending）是光栅化管线中将半透明像素叠加到已有颜色缓冲区的技术。其本质是用一个0到1之间的Alpha值作为不透明度权重，按比例融合新片元颜色（源颜色）与缓冲区中已有颜色（目标颜色），从而模拟玻璃、烟雾、半透明材质等视觉效果。
 
-Alpha混合区别于简单的颜色覆盖：当玻璃、水体、烟雾等半透明物体需要同时显示自身颜色与背后物体时，只有按Alpha权重混合两个颜色才能得到正确结果。在游戏、UI渲染和特效系统中，几乎所有粒子、窗口、HUD元素都依赖Alpha混合实现。
+Alpha通道的概念最早由Thomas Porter和Tom Duff于1984年在SIGGRAPH论文《Compositing Digital Images》中正式提出，同时定义了至今仍在使用的"over"合成运算。这篇论文奠定了数字合成领域的数学基础，Porter-Duff合成规则直接成为OpenGL、Direct3D等现代图形API中混合方程的理论来源。
+
+Alpha混合在实时渲染中的重要性体现在：几乎所有粒子效果（烟、火、爆炸）、UI元素、植被（草、树叶）以及水面都依赖它。若没有正确的Alpha混合，半透明物体会呈现为完全不透明或产生错误的颜色叠加，整个场景将缺乏视觉层次感。
 
 ## 核心原理
 
 ### 标准混合方程
 
-OpenGL/Vulkan中最常用的混合方程为"over"操作，公式如下：
+经典Alpha混合公式（即Porter-Duff "over"操作）为：
 
-$$C_{out} = \alpha_s \cdot C_{src} + (1 - \alpha_s) \cdot C_{dst}$$
+**C_out = α_src × C_src + (1 − α_src) × C_dst**
 
-其中 $C_{src}$ 为源片元颜色（新绘制的透明物体），$C_{dst}$ 为目标颜色（已在帧缓冲区中的颜色），$\alpha_s$ 为源片元的Alpha值。这一公式表达了：透明物体透出的光 = 自身贡献 + 背景透过部分的贡献。
+其中：
+- **C_src**：源颜色（当前片元的RGB值）
+- **C_dst**：目标颜色（帧缓冲区中已有的RGB值）
+- **α_src**：源片元的Alpha值，范围[0, 1]，0为完全透明，1为完全不透明
+- **C_out**：写回缓冲区的最终颜色
 
-对于Alpha通道本身，叠加后的Alpha值可写为：
-
-$$\alpha_{out} = \alpha_s + (1 - \alpha_s) \cdot \alpha_{dst}$$
-
-在 OpenGL 中，通过 `glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)` 即可配置上述标准混合方式。除"over"之外，Porter-Duff 还定义了 in、out、atop、xor 等12种合成操作，分别对应不同的遮罩逻辑。
+在OpenGL中，这对应 `glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)` 的设置。α_src = 0.5 时，源色与目标色各贡献50%，结果是两者的算术平均值。除"over"之外，Porter-Duff还定义了"in"、"out"、"atop"、"xor"等共12种合成操作，分别对应不同的遮罩与叠加语义。
 
 ### 预乘Alpha（Premultiplied Alpha）
 
-预乘Alpha是指将颜色通道的RGB值预先乘以Alpha，即存储形式变为 $(\alpha R, \alpha G, \alpha B, \alpha)$，而非原始的 $(R, G, B, \alpha)$。在预乘格式下，"over"操作简化为：
+标准格式将颜色与Alpha分开存储：(R, G, B, A)。预乘Alpha则将RGB分量预先乘以Alpha值：**(αR, αG, αB, α)**。
 
-$$C_{out} = C_{src}^{pre} + (1 - \alpha_s) \cdot C_{dst}^{pre}$$
+使用预乘Alpha后，混合公式简化为：
 
-预乘Alpha的优势体现在：双线性插值时不会产生"黑边"（Dark Fringe）。未预乘时，透明像素边缘的RGB值往往是不确定的垃圾数据，插值到半透明像素时会被错误地混入计算，导致深色锯齿轮廓；预乘后透明区域的RGB全部为0，插值结果干净。大量纹理贴图工具（如 Unity、Photoshop 的"Generate Mip Maps"选项）默认输出预乘Alpha格式正是出于这一原因。
+**C_out = C_src_premul + (1 − α_src) × C_dst**
 
-### 顺序无关透明（Order-Independent Transparency，OIT）
+预乘Alpha的优势具体体现在两点：第一，对纹理进行双线性过滤时，标准Alpha在边缘会出现"黑边（Dark Fringe）"伪影——这是因为透明区域的RGB值（通常为0）参与了插值计算；预乘格式使透明像素的RGB贡献自然归零，消除此伪影。第二，在连续执行多次混合时（如粒子系统的逐帧累积），预乘Alpha可直接结合律运算，避免因多次除以Alpha而产生精度损失。DirectX的DXGI_FORMAT纹理格式中，`_SRGB`变体默认假定使用预乘Alpha。
 
-标准Alpha混合要求物体从后到前排序（即"画家算法"），否则混合结果出错。例如两个半透明面片 $A$（$\alpha=0.5$）在 $B$ 前面时，正确顺序为先画 $B$ 再画 $A$；若反转顺序，计算得到的颜色将完全不同。这一约束在实时渲染中代价高昂，三角形级别排序在复杂场景中甚至无解（环形互遮挡）。
+### 顺序相关性与顺序无关透明
 
-为解决顺序依赖问题，业界发展出多种OIT技术：
+标准Alpha混合对绘制顺序敏感：必须从后向前（Back-to-Front）绘制半透明物体，即"画家算法"。若顺序错误，先绘制前方物体会将目标颜色定为前方物体色，后绘制的后方物体再与之混合，结果在视觉上相当于前方物体变透明地显示出后方物体，完全违背物理直觉。
 
-- **深度剥离（Depth Peeling，2001年 Everitt 提出）**：多Pass渲染，每次剥离最前一层透明面，逐层从前到后合成，结果精确但Pass数量与层数成正比。
-- **逐像素链表（Per-Pixel Linked Lists，2010年 DirectX 11 引入）**：利用UAV原子操作将所有片元按像素存入链表，一次全屏Pass完成排序与合成，显存占用较大。
-- **加权混合OIT（Weighted Blended OIT，2013年 McGuire & Bavoil）**：使用权重函数近似估计透明度贡献，无需排序，一个Pass完成，精度略有损失但性能极优，被 Filament 等引擎广泛采用。
+顺序无关透明（Order-Independent Transparency，OIT）是解决这一问题的技术族，常见方案包括：
+
+- **深度剥离（Depth Peeling）**：由Everitt于2001年提出，通过多遍渲染逐层剥离透明面，每遍使用上一遍的深度缓冲排除已处理层。每增加一层透明面需要一次完整的几何遍历，开销线性增长。
+- **逐像素链表（Per-Pixel Linked Lists）**：利用DirectX 11的UAV（Unordered Access View）和原子操作，在一个Pass内将所有透明片元存入链表，第二个Pass对每像素链表排序后再混合，适合现代GPU的并行架构。
+- **加权混合OIT（Weighted Blended OIT）**：McGuire和Bavoil于2013年提出，用近似权重函数代替精确排序，单Pass即可完成，误差在大多数场景可接受，性能开销极低。
 
 ## 实际应用
 
-**粒子系统**：烟雾、火焰粒子通常使用加法混合（Additive Blending），即 `glBlendFunc(GL_SRC_ALPHA, GL_ONE)`，使粒子叠加处更亮，模拟发光效果。与标准"over"操作不同，加法混合完全忽略目标颜色的遮挡关系，但粒子本身无需排序即可得到视觉合理结果。
+**粒子系统**：火焰和烟雾粒子通常采用 `GL_SRC_ALPHA, GL_ONE`（加法混合）而非标准混合。加法混合公式为 C_out = α_src × C_src + C_dst，这使多个粒子叠加后亮度累加，自然模拟出发光效果，且无需排序（因为加法运算满足交换律）。
 
-**UI渲染**：文字抗锯齿（如 FreeType 输出的灰度位图）依赖Alpha混合将字形平滑地合成到背景上。若UI纹理以预乘Alpha格式存储，在 sRGB 帧缓冲区渲染时需额外注意线性空间与gamma空间的转换顺序，否则边缘颜色偏暗。
+**UI渲染**：游戏引擎（如Unity的UI Canvas）将HUD元素渲染到单独的透明层，最后与场景做"over"合成。此处通常使用预乘Alpha纹理，以避免字体和图标边缘在抗锯齿后出现半透明像素产生的颜色溢出。
 
-**水体与玻璃**：折射效果通常通过在透明物体的Alpha混合阶段采样一张扭曲后的背景纹理实现，此时 $C_{dst}$ 被替换为折射采样颜色，Alpha混合方程在形式上不变，但输入含有屏幕空间信息。
+**延迟渲染中的透明物体**：延迟渲染（Deferred Shading）的G-Buffer无法直接支持Alpha混合，因此引擎通常将不透明物体走延迟管线，透明物体单独走一个前向（Forward）Pass，在不透明几何完成后叠加，这是当前主流引擎（Unreal Engine、Unity HDRP）的标准做法。
 
 ## 常见误区
 
-**误区1：Alpha=0的像素无需处理**  
-即使片元完全透明（$\alpha=0$），若启用了深度写入，该片元仍会写入深度缓冲区，导致后续不透明物体被错误遮挡。正确做法是对透明物体关闭深度写入（`glDepthMask(GL_FALSE)`），或在着色器中对 $\alpha < 0.01$ 的片元执行 `discard`。
+**误区一：Alpha为0的像素不需要写入深度缓冲区。**
+实际上，是否写入深度取决于渲染意图。对于树叶等使用Alpha测试（Alpha Cutout）的几何体，完全透明的像素应当丢弃（`discard`）且不写深度；但对于烟雾粒子，通常要关闭深度写入（保留深度测试），否则后方粒子会被前方粒子的深度挡住，导致粒子在彼此遮挡时出现硬边。两种情况需要显式区分配置。
 
-**误区2：预乘Alpha与非预乘Alpha可以混用**  
-若纹理以预乘格式存储，却在混合时使用 `GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA`（非预乘公式），会对Alpha进行二次乘法，导致颜色整体偏暗。预乘纹理的正确混合参数应为 `GL_ONE, GL_ONE_MINUS_SRC_ALPHA`，两者不可混用。
+**误区二：预乘Alpha只是存储格式的变化，对渲染结果没有影响。**
+这是错误的。对于运行时动态生成的渲染目标，若混合方程与纹理格式不匹配（例如用标准混合方程处理预乘Alpha的渲染目标），会导致颜色被Alpha值平方级地衰减，产生比预期更暗的结果。Render Texture的混合配置必须与存储格式保持一致。
 
-**误区3：画家算法对所有透明物体都有效**  
-画家算法仅对凸体或无交叉的面片有效。当两个透明三角形在3D空间中互相穿插时，无论以何种整体顺序排列，都无法通过单一排序获得正确结果——此类场景必须使用OIT技术，或将几何体细分到不再交叉。
+**误区三：顺序无关透明可以完全替代排序。**
+加权混合OIT等近似方法在多层高对比度透明面叠加时（如彩色玻璃堆叠）会产生明显的颜色偏差，因为权重函数是经验公式而非精确解。对于需要物理正确结果的渲染（如光线追踪预览或影视特效），精确排序或深度剥离仍然是必要的。
 
 ## 知识关联
 
-Alpha混合直接依赖属性插值：片元的Alpha值来自顶点Alpha经过重心坐标插值后的结果，插值精度直接影响透明边缘的平滑程度。若顶点着色器输出了 `flat` 修饰的Alpha（不插值），则整个图元使用同一Alpha值，效果截然不同。
+Alpha混合的输入直接来自光栅化阶段的**属性插值**：顶点着色器输出的Alpha值经过重心坐标插值后传入片元着色器，插值精度（perspective-correct vs. linear）会影响渐变透明效果的正确性。若属性插值未做透视校正，曲面上的Alpha渐变会在投影空间产生非线性畸变。
 
-Alpha混合与多重采样抗锯齿（MSAA）存在交互问题：MSAA对每个子采样点独立执行覆盖测试，但Alpha混合通常在子采样点合并后的片元级别运行，这导致透明物体的锯齿比不透明物体更难消除。为此，OpenGL 提供了 `GL_SAMPLE_ALPHA_TO_COVERAGE` 模式，将Alpha值转换为覆盖掩码参与MSAA，是连接两个概念的标准桥梁技术。
+Alpha混合与**多重采样抗锯齿（MSAA）**存在直接交互问题。MSAA对覆盖率子样本做几何超采样，但颜色着色通常仍是每像素一次；半透明物体的边缘在MSAA下会因子样本覆盖与Alpha值的语义冲突产生"Alpha转覆盖（Alpha-to-Coverage）"需求——GPU提供专用硬件功能，将Alpha值映射为覆盖掩码，使透明度参与MSAA的多样本解析，从而改善植被等半透明几何体的边缘质量。

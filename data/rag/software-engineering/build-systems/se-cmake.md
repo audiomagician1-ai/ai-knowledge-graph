@@ -20,106 +20,82 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # CMake
 
 ## 概述
 
-CMake 是由 Kitware 公司开发的跨平台构建系统生成器（Build System Generator），首个正式版本发布于 2000 年，用于解决 ITK（Insight Toolkit）医学图像处理项目在多平台编译上的困难。CMake 本身不直接编译代码，而是读取用户编写的 `CMakeLists.txt` 配置文件，生成对应平台的原生构建系统文件（如 Makefile、Visual Studio `.sln`、Ninja `build.ninja`），再由这些构建系统完成实际编译链接。
+CMake 是一个跨平台的开源构建系统生成器（Build System Generator），由 Kitware 公司的 Bill Hoffman 于 2000 年首次发布，最初是为了解决 ITK（Insight Segmentation and Registration Toolkit）医学图像处理库在不同操作系统上构建困难的问题。CMake 本身不直接编译代码，而是读取 `CMakeLists.txt` 文件，生成适合目标平台的原生构建文件，例如 Unix 上的 `Makefile`、Windows 上的 Visual Studio `.sln` 项目，以及跨平台的 `build.ninja` 文件。
 
-CMake 的设计理念围绕"描述构建意图而非构建步骤"展开。开发者用 CMake 语言声明一个可执行程序需要哪些源文件、依赖哪些库、适用哪些编译选项，而不必为 Linux、Windows、macOS 各写一套 Makefile 或项目文件。这一层抽象使得 CMake 成为 C/C++ 生态中实际占据主导地位的构建配置工具，LLVM、OpenCV、Qt 6 等重量级项目均以 CMake 作为官方构建系统。
-
-CMake 3.0（2014 年发布）引入了"Modern CMake"风格，以 **Target（目标）** 为中心组织构建信息，取代了早期基于全局变量的写法。理解这一版本节点是区分现代 CMake 和过时用法的关键分界线。
-
----
+CMake 3.0（2014年）引入了"Modern CMake"的概念，以 **Target（目标）** 为核心替代了旧式的全局变量风格。这一转变意义重大：开发者从直接操作编译器标志转向描述目标的属性及其依赖关系，使得大型项目的依赖管理变得可维护。截至 CMake 3.28（2023年），CMake 已支持 C++20 模块（Modules）的原生构建，成为 C/C++ 生态中最广泛使用的构建描述工具，被 LLVM、Qt、OpenCV 等数百个主流开源项目采用。
 
 ## 核心原理
 
-### CMakeLists.txt 文件结构
+### CMakeLists.txt 的结构与作用域
 
-每个 CMake 项目的根目录必须包含一个 `CMakeLists.txt`，子目录可通过 `add_subdirectory()` 命令引入各自的 `CMakeLists.txt`，形成树状结构。一个最小可用的配置如下：
+每个 CMake 项目的根目录及每个子目录都必须包含一个 `CMakeLists.txt` 文件。根文件通常以 `cmake_minimum_required(VERSION 3.20)` 和 `project(MyProject VERSION 1.0 LANGUAGES CXX)` 开头，这两行不能省略，否则 CMake 会报错或行为未定义。
 
-```cmake
-cmake_minimum_required(VERSION 3.20)
-project(MyApp VERSION 1.0 LANGUAGES CXX)
+CMake 的变量具有目录作用域：父目录的变量对子目录可见，但子目录对父目录中变量的修改默认不向上传播，除非使用 `set(VAR value PARENT_SCOPE)`。使用 `add_subdirectory(src)` 引入子目录时，CMake 会进入该目录读取其 `CMakeLists.txt`，形成树状的作用域结构。
 
-add_executable(my_app main.cpp utils.cpp)
-target_compile_features(my_app PRIVATE cxx_std_17)
-```
+### Target 与属性传播机制
 
-`cmake_minimum_required` 必须是文件的第一条有效命令，它锁定 CMake 的行为策略（Policy）版本，防止新版 CMake 改变语义导致构建失败。`project()` 命令设置项目名称并定义 `PROJECT_SOURCE_DIR`、`PROJECT_BINARY_DIR` 等内置变量。
-
-### Target（目标）与属性传播
-
-Target 是 Modern CMake 的核心抽象单元，代表一个编译产物——可执行文件（`add_executable`）、静态库或动态库（`add_library`）、或纯接口库（`INTERFACE` 类型）。每个 Target 携带三类属性，通过关键字控制传播范围：
-
-| 关键字 | 含义 |
-|---|---|
-| `PRIVATE` | 仅对本 Target 生效 |
-| `PUBLIC` | 对本 Target 及所有链接它的 Target 生效 |
-| `INTERFACE` | 仅对链接本 Target 的其他 Target 生效，本身不使用 |
-
-例如，一个头文件库（Header-only library）应使用 `INTERFACE` 传播包含路径：
+Target 是 Modern CMake 的基本单元，通过 `add_executable()`、`add_library()` 或 `add_custom_target()` 创建。每个 Target 都持有一组**属性**，最重要的是编译选项、头文件路径和链接库，通过以下命令管理：
 
 ```cmake
-add_library(my_header_lib INTERFACE)
-target_include_directories(my_header_lib INTERFACE include/)
+target_include_directories(mylib PUBLIC include/)
+target_compile_options(mylib PRIVATE -Wall -Wextra)
+target_link_libraries(myapp PRIVATE mylib)
 ```
 
-当另一个 Target 执行 `target_link_libraries(app PRIVATE my_header_lib)` 时，`include/` 路径会自动传递给 `app`，无需手动重复设置。这种传播机制消除了手动管理头文件路径的大量重复代码。
+其中 `PUBLIC`、`PRIVATE`、`INTERFACE` 三个关键字控制属性的传播范围：
+- **PRIVATE**：属性仅作用于当前 Target 自身的构建。
+- **INTERFACE**：属性不作用于当前 Target，但传播给所有依赖它的 Target。
+- **PUBLIC**：等于 PRIVATE + INTERFACE，自身使用且向外传播。
 
-### Generator（生成器）
+这种机制使得当 `myapp` 链接 `mylib` 时，`mylib` 的 `PUBLIC` 头文件路径自动被 `myapp` 继承，无需手动重复指定。
 
-CMake 在配置阶段（`cmake -S . -B build`）必须指定一个 Generator，决定生成哪种构建系统文件。常用 Generator 包括：
+### Generator 的分类与选择
 
-- `Unix Makefiles`：生成标准 `Makefile`，Linux 默认
-- `Ninja`：生成 `build.ninja`，构建速度快，推荐搭配
-- `Visual Studio 17 2022`：生成 `.sln` 和 `.vcxproj` 文件
-- `Xcode`：生成 macOS 的 Xcode 项目
+CMake Generator 决定最终生成的构建文件格式，在 `cmake -G "<generator>"` 参数中指定。常见的 Generator 分为两类：
 
-指定方式为 `cmake -G "Ninja" -S . -B build`。Generator 一旦选定，同一 build 目录不可更改，必须清空 build 目录重新配置。CMake 3.15 引入了 `cmake --build build` 统一构建命令，屏蔽了不同 Generator 之间的调用差异（`make` vs `ninja` vs `msbuild`）。
+**单配置 Generator（Single-Config）**：如 `Unix Makefiles` 和 `Ninja`，在 configure 阶段就确定 Debug/Release 等构建类型，通过 `-DCMAKE_BUILD_TYPE=Release` 传入。一个构建目录对应一种配置。
 
-### 构建类型与缓存变量
+**多配置 Generator（Multi-Config）**：如 `Visual Studio 17 2022` 和 `Ninja Multi-Config`，生成的项目文件内含多种配置，构建时通过 `cmake --build . --config Release` 切换，一个构建目录可输出多种配置的产物。
 
-`CMAKE_BUILD_TYPE` 变量控制优化与调试信息，标准取值为 `Debug`、`Release`、`RelWithDebInfo`（带调试信息的 Release）、`MinSizeRel`。设置方式：
+CMake 采用**源外构建（Out-of-Source Build）**策略，将生成的中间文件放置于独立的 build 目录，保持源码目录干净：
 
 ```bash
-cmake -DCMAKE_BUILD_TYPE=Release -S . -B build
+cmake -S . -B build -G "Ninja" -DCMAKE_BUILD_TYPE=Release
+cmake --build build
 ```
 
-CMake 变量分为普通变量和缓存变量（Cache Variable）。缓存变量存储在 `build/CMakeCache.txt` 中，跨次配置持久化，可通过 `cmake-gui` 或 `ccmake` 可视化编辑。`option()` 命令是定义布尔型缓存变量的便捷写法，常用于控制功能开关：`option(BUILD_TESTS "Build unit tests" ON)`。
+### find_package 与包管理集成
 
----
+CMake 通过 `find_package(OpenSSL REQUIRED)` 查找系统已安装的库，该命令会搜索 `FindOpenSSL.cmake` 模块文件或 OpenSSL 提供的 `OpenSSLConfig.cmake`。找到后，现代包会暴露形如 `OpenSSL::SSL` 的 Import Target，可直接用于 `target_link_libraries()`，不需要手动拼接头文件路径和库文件路径。
+
+与 Conan 或 vcpkg 集成时，通常需要在 cmake 命令中传入对应的 toolchain 文件，例如：`-DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake`，该文件会设置 CMake 的搜索路径，使 `find_package` 能够定位由包管理器安装的依赖。
 
 ## 实际应用
 
-**查找并链接第三方库：** CMake 提供 `find_package()` 命令搜索已安装的库。以 OpenSSL 为例：
+**OpenCV 项目构建**：OpenCV 使用 CMake 管理其数百个模块，通过 `-DBUILD_opencv_dnn=ON` 这样的 CMake 缓存变量（Cache Variable）来控制可选模块的编译开关。其 `CMakeLists.txt` 使用了 `ocv_add_module()` 宏封装了标准的 `add_library()` 流程，展示了 CMake 如何在大型项目中通过宏和函数进行模块化组织。
 
-```cmake
-find_package(OpenSSL REQUIRED)
-target_link_libraries(my_app PRIVATE OpenSSL::SSL OpenSSL::Crypto)
-```
+**安装与导出规则**：一个完整的可发布 CMake 项目需要配置 `install()` 命令和 `export()` 命令，生成供其他项目使用的 `<PackageName>Config.cmake` 文件。这样下游项目可以直接 `find_package(MyLib REQUIRED)` 并得到 `MyLib::mylib` 这样的 Import Target，实现构建系统层面的接口标准化。
 
-`OpenSSL::SSL` 这种 `命名空间::组件` 格式是 Modern CMake 的 Imported Target，其中已内置了头文件路径和链接选项，不再需要手动写 `include_directories`。
-
-**与 Conan/vcpkg 集成：** 当使用 Conan 2.x 时，执行 `conan install` 后会生成 `conan_toolchain.cmake`，通过 `cmake -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake` 传入，CMake 的 `find_package()` 便能自动找到 Conan 管理的依赖包。vcpkg 同样通过 toolchain 文件集成，路径通常为 `vcpkg/scripts/buildsystems/vcpkg.cmake`。
-
-**安装规则：** `install()` 命令定义 `cmake --install build` 时的文件拷贝规则，是制作可分发包的标准方式，与 CPack 配合可生成 `.deb`、`.rpm`、NSIS 安装包。
-
----
+**预编译头（PCH）支持**：从 CMake 3.16 起，可用 `target_precompile_headers(myapp PRIVATE pch.h)` 启用预编译头，CMake 会自动处理各编译器（MSVC 的 `.pch` 格式、GCC/Clang 的 `.gch` 格式）的差异。
 
 ## 常见误区
 
-**误区一：在 target 命令出现前使用全局命令设置编译选项。** 许多旧教程使用 `include_directories()`、`add_definitions()`、`link_libraries()` 等全局命令，这些命令对当前目录下所有 Target 生效，极易污染不相关的 Target。正确做法是始终使用 `target_include_directories()`、`target_compile_definitions()`、`target_link_libraries()`，并明确指定 `PRIVATE/PUBLIC/INTERFACE`。
+**误区一：混用旧式全局命令与 Modern CMake**。`include_directories()`、`link_libraries()` 等命令会污染整个目录作用域下所有 Target，而非特定 Target。在含有多个 Target 的项目中，这会导致意外的头文件路径泄漏。正确做法是始终使用 `target_include_directories()` 等带 `target_` 前缀的命令，并明确指定 `PUBLIC/PRIVATE/INTERFACE`。
 
-**误区二：混淆"源码目录"与"构建目录"，在源码目录内执行 cmake。** 在源码目录直接运行 `cmake .`（in-source build）会将 `CMakeCache.txt`、生成的 Makefile 等大量文件散落在源码目录中，污染版本控制。标准实践是始终使用 `cmake -S . -B build` 进行 out-of-source 构建。
+**误区二：在多配置 Generator 下设置 CMAKE_BUILD_TYPE**。当使用 Visual Studio Generator 时，`CMAKE_BUILD_TYPE` 变量实际上不起作用，构建类型由 `--config` 参数在构建阶段控制。许多开发者在 CI 脚本中设置了 `-DCMAKE_BUILD_TYPE=Release` 却在 Windows 上以 Visual Studio Generator 生成，结果发现构建出的仍是 Debug 版本，原因正在于此。可以通过检测 `CMAKE_CONFIGURATION_TYPES` 变量是否被定义来判断当前是否处于多配置 Generator 环境。
 
-**误区三：误以为修改 CMakeLists.txt 后需要手动重新运行 cmake。** CMake 会自动检测 `CMakeLists.txt` 的修改时间，当构建系统（如 ninja）执行时若检测到配置文件变更，会自动重新触发 CMake 的配置步骤，无需手动干预。但新增源文件到 `file(GLOB ...)` 采集到的变量中，CMake 无法感知，这也是官方不推荐 `GLOB` 的原因。
-
----
+**误区三：认为 CMake 等同于编译器**。CMake 的 configure 阶段（`cmake -S . -B build`）只生成构建文件，实际编译由底层工具（Make、Ninja、MSBuild）完成。因此编译报错中看到的是 GCC/Clang/MSVC 的错误信息，而非 CMake 的错误。CMake 的错误通常在 configure 阶段输出，形如 `CMake Error at CMakeLists.txt:12`。
 
 ## 知识关联
 
-**前置概念：** 理解"构建系统概述"中编译、链接两阶段的区分，有助于理解为何 CMake 要将 `target_compile_options` 和 `target_link_options` 分开设置。Conan/vcpkg 的 toolchain 文件机制在学习 CMake 的 `CMAKE_TOOLCHAIN_FILE` 变量时会直接复用。
+理解 CMake 需要先掌握**构建系统概述**中关于编译、链接两阶段流程的概念，否则 Target 的 `INTERFACE` 传播机制会显得抽象难懂。**Conan/vcpkg** 的 toolchain 集成方式直接影响 `find_package` 的行为，两者配合使用时对 CMake 缓存变量的设置顺序有严格要求。
 
-**后续概念：** CMake 生成的 `build.ninja` 文件是学习 Ninja 构建系统的最佳真实样本——通过观察 `cmake -G Ninja` 后生成的文件，可以具体看到编译规则（rule）和目标（build）节点的组织方式。交叉编译在 CMake 中依赖 toolchain 文件设置 `CMAKE_SYSTEM_NAME`、`CMAKE_C_COMPILER` 等变量，是对 CMake Generator 和 Target 概念的综合运用。预编译头（PCH）在 CMake 3.16 中通过 `target_precompile_headers()` 命令原生支持，直接作用于 Target 对象。
+CMake 生成的构建文件中，**Ninja** 是性能最优的选项，其 `build.ninja` 文件由 CMake 完整生成，了解 Ninja 的规则语法有助于调试并行构建问题。在嵌入式和游戏开发场景中，CMake 的**交叉编译**通过 `CMAKE_TOOLCHAIN_FILE` 指定目标平台的编译器路径、sysroot 和系统库位置，与本机构建流程存在本质差异。CMake 3.16 引入的 `target_precompile_headers()` 将 **预编译头** 的管理纳入 Target 属性体系，与普通头文件依赖跟踪统一处理。

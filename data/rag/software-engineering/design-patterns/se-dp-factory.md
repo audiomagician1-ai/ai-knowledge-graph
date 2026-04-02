@@ -20,102 +20,108 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 工厂模式
 
 ## 概述
 
-工厂模式是一组专门用于**对象创建**的设计模式，其核心思想是将"如何创建对象"的逻辑从"使用对象"的代码中分离出来，通过一个专门的"工厂"角色来负责实例化。客户端代码只需声明需要什么类型的产品，而不关心产品是如何被 `new` 出来的。这种分离使得新增产品类型时，调用方代码无需修改。
+工厂模式是一类专门处理**对象创建**问题的设计模式，其核心思想是将"使用对象"与"创建对象"的代码分离，让调用方无需知道具体类名即可获得所需对象。与直接使用 `new ClassName()` 的方式相比，工厂模式将实例化逻辑集中管理，使系统在新增产品类型时只需修改工厂，而无需修改所有调用点。
 
-工厂模式家族源于1994年GoF（Gang of Four）出版的《Design Patterns: Elements of Reusable Object-Oriented Software》，书中正式定义了**工厂方法模式（Factory Method）**和**抽象工厂模式（Abstract Factory）**两种形态。简单工厂（Simple Factory）虽未被GoF收录为正式模式，但因其使用广泛，常被作为入门形态一并讲解。三者的复杂度和适用场景依次递增，构成一条清晰的学习路径。
+工厂模式并非单一模式，而是一个由三个层次组成的模式家族：**简单工厂（Simple Factory）**、**工厂方法（Factory Method）**和**抽象工厂（Abstract Factory）**。GoF（四人帮）在1994年出版的《设计模式：可复用面向对象软件的基础》中正式收录了工厂方法和抽象工厂，简单工厂虽未被收录其中，但因使用频率极高而被广泛讨论。
 
-工厂模式在实际开发中极为常见，Java标准库中的 `Calendar.getInstance()`、`NumberFormat.getInstance()` 均是工厂方法的典型应用；Spring框架的 `BeanFactory` 则是抽象工厂思想的工业级实践。理解三种工厂的区别，能帮助开发者在面对不同规模的对象创建需求时，选用复杂度最适配的方案。
+工厂模式在框架开发中极为重要。例如，Java 的 `Calendar.getInstance()` 就是简单工厂的典型应用，它根据系统语言环境返回不同的 `Calendar` 子类实例。理解三种工厂的差异，是选择合适创建策略的基础。
 
 ---
 
 ## 核心原理
 
-### 简单工厂（Simple Factory）
+### 简单工厂：集中判断，静态分发
 
-简单工厂并非GoF正式模式，但结构最直观。它由**一个工厂类**承担所有产品的创建，内部通常使用 `if-else` 或 `switch` 根据传入的类型参数决定实例化哪个具体类。
+简单工厂通常表现为**一个静态方法**，接收一个类型标识（字符串或枚举），内部用 `if-else` 或 `switch` 决定返回哪个具体类的实例。以下是一个日志器工厂示例：
 
 ```java
-class ShapeFactory {
-    public static Shape create(String type) {
-        if ("circle".equals(type)) return new Circle();
-        if ("square".equals(type)) return new Square();
-        throw new IllegalArgumentException("Unknown type");
+public class LoggerFactory {
+    public static Logger createLogger(String type) {
+        switch (type) {
+            case "file":   return new FileLogger();
+            case "db":     return new DatabaseLogger();
+            default:       throw new IllegalArgumentException("Unknown type: " + type);
+        }
     }
 }
 ```
 
-问题在于：每次新增产品（如 `Triangle`），都必须修改 `ShapeFactory` 的源代码，违反了**开闭原则（OCP）**。因此简单工厂适用于产品种类固定、数量少（通常不超过5种）的场景。
+简单工厂的致命缺陷在于**违反开闭原则（OCP）**：每新增一种 Logger 类型，都必须修改 `createLogger` 方法本身。因此，当产品类型稳定（不超过3~5种）时使用简单工厂是合理的，但产品类型频繁扩展时应升级为工厂方法。
 
-### 工厂方法模式（Factory Method）
+### 工厂方法：子类决定实例化
 
-工厂方法通过**将创建逻辑下放到子类**解决了简单工厂的扩展问题。其结构包含4个角色：
-- **Product（抽象产品）**：定义产品接口
-- **ConcreteProduct（具体产品）**：实现产品接口
-- **Creator（抽象工厂）**：声明工厂方法 `factoryMethod()`，返回 `Product`
-- **ConcreteCreator（具体工厂）**：重写 `factoryMethod()` 返回具体产品
-
-新增一种产品只需新增一对 `ConcreteProduct + ConcreteCreator`，**无需修改已有代码**，完全遵守开闭原则。代价是类的数量随产品种类线性增长：产品种类为 *n* 时，需要 *n* 个具体工厂类 + *n* 个具体产品类，共 **2n** 个额外类。
-
-### 抽象工厂模式（Abstract Factory）
-
-抽象工厂处理的是**产品族**问题——多个相关产品需要协同使用，且存在多套风格（称为"产品族"）时使用。例如，UI组件库存在 `Windows风格` 和 `macOS风格` 两族，每族都包含 `Button`、`Checkbox`、`Dialog` 三种产品。
-
-抽象工厂接口定义**一组**创建方法：
+工厂方法模式定义一个**创建对象的接口（抽象方法）**，但由子类决定具体实例化哪个类。其结构包含四个角色：抽象产品（`Logger`）、具体产品（`FileLogger`）、抽象工厂（`LoggerCreator`，含抽象方法 `createLogger()`）、具体工厂（`FileLoggerCreator`）。
 
 ```java
-interface GUIFactory {
-    Button createButton();
-    Checkbox createCheckbox();
-    Dialog createDialog();
+public abstract class LoggerCreator {
+    public abstract Logger createLogger();   // 工厂方法
+    public void writeLog(String msg) {
+        Logger logger = createLogger();      // 依赖抽象，而非具体类
+        logger.log(msg);
+    }
 }
-class WindowsFactory implements GUIFactory { ... }
-class MacOSFactory implements GUIFactory { ... }
+public class FileLoggerCreator extends LoggerCreator {
+    @Override
+    public Logger createLogger() { return new FileLogger(); }
+}
 ```
 
-抽象工厂的关键限制：**新增产品族容易，新增产品种类困难**。若要在所有风格中追加 `TextField`，必须修改 `GUIFactory` 接口及所有具体工厂类，这与工厂方法的扩展方向恰好相反。
+工厂方法遵循**开闭原则**：新增 `DatabaseLogger` 只需新建 `DatabaseLoggerCreator`，不修改任何已有代码。代价是类的数量随产品种类线性增长——每增加1种产品，至少增加1个具体工厂类。
 
-### 三种工厂对比总结
+### 抽象工厂：产品族的整体切换
 
-| 维度 | 简单工厂 | 工厂方法 | 抽象工厂 |
-|------|----------|----------|----------|
-| GoF收录 | 否 | 是 | 是 |
-| 扩展产品种类 | 需改工厂类 | 新增子类 | 需改接口 |
-| 扩展产品族 | 需改工厂类 | 不涉及 | 新增实现类 |
-| 产品维度 | 单一 | 单一 | 多维 |
-| 适用规模 | 小型 | 中型 | 大型 |
+抽象工厂处理的是**多个相互关联产品的创建**，即"产品族"问题。例如 UI 框架中，Windows 风格的 `Button + Checkbox + TextInput` 是一族，macOS 风格又是另一族。抽象工厂接口同时声明多个工厂方法：
+
+```java
+public interface UIFactory {
+    Button createButton();
+    Checkbox createCheckbox();
+    TextInput createTextInput();
+}
+public class WindowsUIFactory implements UIFactory {
+    public Button createButton()     { return new WindowsButton(); }
+    public Checkbox createCheckbox() { return new WindowsCheckbox(); }
+    public TextInput createTextInput(){ return new WindowsTextInput(); }
+}
+```
+
+抽象工厂的**关键约束**是：它擅长切换整个产品族（将 `UIFactory` 实现从 `WindowsUIFactory` 换为 `MacOSUIFactory`），但若要新增一种产品类型（如 `Dialog`），则必须修改抽象接口及**所有**具体工厂实现，代价很高。这是抽象工厂固有的扩展难点。
 
 ---
 
 ## 实际应用
 
-**日志框架 SLF4J** 使用工厂方法模式：`LoggerFactory.getLogger(Class)` 是工厂方法，调用方只依赖 `Logger` 接口，底层可无缝切换 Logback、Log4j2 等具体实现，编译期无需任何改动。
+**Spring 框架的 BeanFactory** 是工厂方法模式的经典工程实践。`BeanFactory` 接口定义了 `getBean(String name)` 抽象方法，`XmlBeanFactory`、`AnnotationConfigApplicationContext` 等具体类分别实现不同的 Bean 实例化策略。调用方只依赖 `BeanFactory` 接口，与具体创建逻辑完全解耦。
 
-**数据库访问层**是抽象工厂的经典场景：定义 `DbFactory` 接口包含 `createConnection()`、`createCommand()`、`createTransaction()` 三个方法，分别实现 `MySQLFactory` 和 `PostgreSQLFactory`。切换数据库时，只需替换工厂实例，业务代码中所有 `Connection`、`Command` 的创建代码均无需修改。
+**JDBC 的 `DriverManager.getConnection()`** 是简单工厂的真实案例：传入不同的 URL 前缀（`jdbc:mysql://` 或 `jdbc:postgresql://`），返回对应数据库驱动的 `Connection` 对象，调用方无需感知 `MySQLConnection` 或 `PostgreSQLConnection` 的存在。
 
-**游戏开发中的地图生成**：不同关卡风格（雪地、沙漠、丛林）各自是一个产品族，每族需要创建 `地形`、`敌人`、`道具` 等多种配套对象。用抽象工厂可保证同一关卡内所有元素风格统一，避免出现"雪地关卡却刷新出沙漠敌人"的逻辑错误。
+**跨平台 GUI 框架**（如早期的 Java Swing Look&Feel 或 Qt 的样式系统）则是抽象工厂的教科书案例：切换主题时，只需将抽象工厂实现替换为另一个平台的具体工厂，整套组件风格同步切换，不影响任何业务逻辑代码。
 
 ---
 
 ## 常见误区
 
-**误区一：认为工厂方法等价于"静态工厂方法"**
-工厂方法模式中的 `factoryMethod()` 必须是**可被子类重写的实例方法**（通常是 `protected`），依靠多态实现扩展。而 `static` 静态方法无法被重写，本质上属于简单工厂的变体，将两者混淆会导致误以为自己在使用工厂方法模式，实际上扩展时仍需修改工厂类。
+**误区1：简单工厂等于工厂方法**  
+两者最本质的区别在于**扩展方式**。简单工厂通过修改已有方法添加分支来扩展；工厂方法通过新增子类来扩展。GoF 未将简单工厂列为正式模式，原因正是它无法满足开闭原则，而工厂方法可以。判断依据：若创建逻辑写在一个静态方法的 switch/if 里，就是简单工厂。
 
-**误区二：产品维度少时强行使用抽象工厂**
-如果系统只有一类产品（如只有 `Button`），即便存在多种风格，抽象工厂也退化成了工厂方法，此时引入抽象工厂接口反而增加了不必要的间接层。抽象工厂的价值在于**强制保证同族产品的一致性**，单维产品无此需求。
+**误区2：抽象工厂只是"更大的工厂方法"**  
+工厂方法解决的是**单一产品的创建族谱**问题（不同子类决定创建哪种具体产品），抽象工厂解决的是**多产品的配套创建**问题（一次性确保一组产品属于同一风格/平台）。若一个工厂接口里只有一个 `create()` 方法，它退化为工厂方法；只有当接口同时定义多个相关产品的创建方法时，才是真正的抽象工厂。
 
-**误区三：认为简单工厂"不够好"应被淘汰**
-产品种类固定（如支付方式仅有微信、支付宝、银行卡三种，几乎不会扩展）时，简单工厂的代码量最少、最易读。过度设计引入工厂方法会产生6个额外类却毫无收益。选择模式的依据是**变化点**，而非追求"高级"。
+**误区3：工厂模式会增加代码量，因此适合"大项目"才用**  
+工厂模式适用的判断依据是**变化点是否在对象创建上**，而非项目规模。即便是小型项目，若创建逻辑散落在业务代码各处（每处都 `new ConcreteClass()`），一旦需要替换实现（例如单元测试时替换为 Mock 对象），修改成本极高。此时引入哪怕是最简单的简单工厂，也能显著降低测试与维护成本。
 
 ---
 
 ## 知识关联
 
-学习工厂模式需要熟悉**面向接口编程**和**多态**，这是工厂方法依靠子类重写实现扩展的语言基础；同时需了解设计模式概述中的**开闭原则**，才能理解三种工厂在扩展性上的取舍逻辑。
+**前置概念衔接**：学习单例模式时已接触"控制实例化过程"的思想——单例通过私有构造器限制创建，工厂模式则通过专属类承接创建职责。两者都是对 `new` 操作符的封装，但单例关注"只有一个"，工厂关注"由谁来创建"。
 
-工厂模式专注于**单步创建**一个产品对象，后续的**建造者模式（Builder）**则专注于分步骤构建一个内部结构复杂的对象——例如拥有十余个可选参数的 `HttpRequest`，用工厂方法无法优雅处理参数组合爆炸问题，这正是建造者模式登场的场景。**原型模式（Prototype）**则通过克隆已有实例来创建对象，是工厂模式之外另一条解决对象创建问题的路径，两者在创建成本高昂的对象（如深度拷贝配置对象）时可以互补使用。
+**后续概念过渡**：**建造者模式**处理的是单个复杂对象的分步构造（例如构建含有20个可选参数的 `HttpRequest` 对象），与工厂模式的区别在于：工厂关注创建"哪种类型"，建造者关注创建"怎样的配置"。**原型模式**则通过克隆已有对象来创建新对象，当对象创建成本极高（如需要大量数据库查询初始化）时，原型模式比工厂模式更高效。三种模式在实际系统中常组合使用：工厂方法决定原型对象的类型，原型负责具体复制。

@@ -20,69 +20,59 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-04-01
 ---
+
+
 # Graph RAG
 
 ## 概述
 
-Graph RAG（Graph Rag）是AI工程（AI Engineering）中RAG与知识库领域的重要概念。难度等级7/9（进阶级）。
+Graph RAG（图检索增强生成）是微软研究院于2024年提出的一种将知识图谱与RAG技术深度融合的架构，其核心论文《From Local to Global: A Graph RAG Approach to Query-Focused Summarization》发表后迅速引发业界广泛关注。与传统向量检索RAG不同，Graph RAG不是在文本块向量空间中搜索相似片段，而是先从原始语料中自动抽取实体与关系，构建知识图谱，再通过图社区算法对节点进行层级聚类，生成多粒度的社区摘要，最终利用这些摘要回答查询。
 
-Master the Graph RAG architecture combining knowledge graphs with RAG and community summarization methods。
+Graph RAG的设计动机来自于传统RAG在"全局性问题"上的根本性缺陷。当用户提问"这份企业年报中最主要的风险主题是什么？"时，答案散布于整个文档的每一处，没有任何单一文本块能单独回答它。Graph RAG通过社区摘要将整个语料库的宏观结构压缩进可检索的层级摘要，使得大规模语料的全局推理成为可能，这是其区别于Naive RAG和HyDE等方案的根本所在。
 
-在知识体系中，Graph RAG建立在知识图谱+RAG、RAG管道架构的基础之上，是理解可进入更高级主题的关键前置知识。为什么Graph RAG如此重要？因为它在RAG与知识库中起到承上启下的作用，连接基础概念与高级应用。
+## 核心原理
 
-## 核心知识点
+### 索引阶段：从文本到图谱
 
-### 1. Master the Graph RAG architecture combining knowledge graphs with RAG and community summarization methods
+Graph RAG的索引管道分为五个明确步骤。第一步，使用LLM对切分后的文本块逐一进行实体与关系抽取，每个文本块默认调用`gleanings`机制（最多执行N次追问）以降低LLM漏提实体的概率，微软官方实现中默认`gleanings=1`。第二步，对跨文本块提及同一实体的节点执行合并（entity resolution），通过余弦相似度或LLM判断决定是否将"苹果公司"与"Apple Inc."合并为同一节点。第三步，为每个节点生成自然语言描述摘要，将该节点出现的所有上下文浓缩为一段文字，存储于图节点属性中。
 
-Master the Graph RAG architecture combining knowledge graphs with RAG and community summarization methods是Graph RAG(Graph Rag)的核心组成部分之一。在RAG与知识库的实践中，Master the Graph RAG architecture combining knowledge graphs with RAG and community summarization methods决定了系统行为的关键特征。例如，当Master the Graph RAG architecture combining knowledge graphs with RAG and community summarization methods参数或条件发生变化时，整体表现会产生显著差异。深入理解Master the Graph RAG architecture combining knowledge graphs with RAG and community summarization methods需要结合AI工程的基本原理进行分析。
+### 社区检测：Leiden算法的使用
 
+Graph RAG选择Leiden算法（而非简单的Louvain算法）对知识图谱进行社区划分，原因在于Leiden算法能保证每个社区内部的强连通性，避免Louvain算法产生"断裂社区"的问题。算法执行后产生多个层级（Level 0最细粒度、Level N最粗粒度），每个层级的社区都会被单独送入LLM生成社区摘要（Community Report），摘要包含该社区的关键实体、关键关系、潜在主题与重要发现。一个典型的中等规模语料库（约百万词级别）在Level 1层级可能产生数百个社区报告。
 
-### 关键原理分析
+### 查询阶段：Local与Global两种模式
 
-Graph RAG的核心在于Master the Graph RAG architecture combining knowledge graphs with RAG and community summarization methods。从理论角度看，该概念涉及以下层面：
+Graph RAG提供两种截然不同的查询模式，对应不同的应用场景：
 
-1. **定义层**：明确Graph RAG的边界和适用条件，区分它与相近概念的差异
-2. **机制层**：理解Graph RAG内部各要素的相互作用方式
-3. **应用层**：将Graph RAG的原理映射到AI工程的实际场景中
+**Global Search模式**：用于回答需要理解整个语料库的宏观问题。系统将所有相关层级的社区报告进行Map-Reduce式处理——先让LLM对每份社区报告独立打分并提取与查询相关的要点（Map阶段），再将所有要点汇总让LLM综合生成最终答案（Reduce阶段）。该模式的token消耗远高于传统RAG，成本是其主要限制。
 
-思考题：如何判断Graph RAG的应用是否超出了其理论适用范围？
+**Local Search模式**：用于回答针对特定实体或关系的具体问题。系统从向量数据库中检索与查询最相关的实体节点，然后沿图的邻居关系扩展上下文，同时混入相关的文本块、实体摘要与社区报告，最终拼接成增强提示词。这一过程结合了向量检索与图遍历两种机制。
 
-## 关键要点
+### 存储结构
 
-1. **核心定义**：Graph RAG的本质是Master the Graph RAG architecture combining knowledge graphs with RAG and community summarization methods，这是理解整个概念的出发点
-2. **多维理解**：掌握Graph RAG需要同时理解Master the Graph RAG architecture combining knowledge graphs with RAG and community summarization methods等关键维度
-3. **先修关系**：扎实的知识图谱+RAG基础对理解Graph RAG至关重要
-4. **进阶路径**：可广泛应用于AI工程各方面
-5. **实践标准**：真正掌握Graph RAG的标志是能在具体场景中灵活运用并正确判断适用边界
+Graph RAG的存储层需要同时维护四类数据：（1）原始文本块及其向量嵌入（向量数据库）；（2）实体节点及其摘要（图数据库或Parquet文件）；（3）关系边及权重（图数据库）；（4）社区报告及其层级归属（结构化存储）。微软官方实现`graphrag`库默认使用本地Parquet文件存储图结构，可配置为Azure AI Search或Neo4j。
+
+## 实际应用
+
+**学术文献分析**：将数百篇医学论文导入Graph RAG后，系统可自动构建"疾病-药物-靶点-副作用"知识图谱，社区检测会自然将"心血管疾病研究社区"与"肿瘤免疫疗法社区"分离，研究者可直接查询"当前治疗耐药性的主流机制是什么"这类全局问题，这在传统分块检索中几乎不可能获得高质量答案。
+
+**企业知识管理**：将公司内部文档（合同、会议纪要、技术文档）构建为知识图谱后，Graph RAG的Local Search模式可以在回答"张总和李工在Q3项目中有哪些决策分歧"时，自动将两个人名节点的邻居（相关会议纪要片段、项目决策节点）一并纳入上下文，比单纯关键词检索精准得多。
+
+**法律合规审查**：针对监管文件库，Global Search模式能够跨越数百个文件生成"当前法规对数据跨境传输的整体要求"的综合性摘要，而非仅返回某几条法规条文。
 
 ## 常见误区
 
-1. **混淆概念边界**：将Graph RAG与RAG与知识库中其他相近概念混为一谈。例如，Master the Graph RAG architecture combining knowledge graphs with RAG and community summarization methods的适用条件与其他同类概念存在明确区别，需要准确辨析
-2. **忽略先修知识：未充分理解知识图谱+RAG就学习Graph RAG，导致基础不牢**。建议先确认先修知识扎实
-3. **过度简化：Graph RAG的复杂度为7/9，初学者容易忽略其中的细微但关键的区别**
+**误区一：Graph RAG等于"用图数据库替换向量数据库"**。事实上Graph RAG的图并非用来做向量检索的替代品，其图结构的核心价值在于支撑社区检测与多跳关系推理。即使在官方实现中，Local Search模式依然保留了向量检索步骤来定位种子实体，图与向量是互补而非替代关系。
 
-## 知识衔接
+**误区二：Graph RAG在所有场景下都优于传统RAG**。微软原论文的评测数据显示，Global Search在"comprehensiveness"（全面性）和"diversity"（多样性）两个维度上显著优于Naive RAG，但在单点事实查询（如"某条约的签署日期"）上，传统向量RAG的延迟更低、成本更小，效果相当。Graph RAG的优势域是全局摘要型查询，而非所有查询类型。
 
-### 先修知识
-先修知识包括：
-- **知识图谱+RAG** — 为Graph RAG提供了必要的概念基础
-- **RAG管道架构** — 为Graph RAG提供了必要的概念基础
+**误区三：索引阶段只需运行一次即可永久使用**。当源文档频繁更新时，图中实体合并与社区检测需要增量重建，实体描述摘要也需要重新生成，这涉及大量LLM调用。微软官方文档明确指出增量索引（incremental indexing）在2024年版本中仍属实验性功能，不建议在高频更新场景下直接使用。
 
-### 后续学习
-掌握Graph RAG后，学习者已具备该方向的核心能力，可将所学应用于实际项目或探索AI工程其他分支。
+## 知识关联
 
-## 学习建议
+Graph RAG以**知识图谱+RAG**为直接前置基础——学习者需要已经理解实体关系抽取、图嵌入与传统向量RAG的管道结构，才能理解Graph RAG索引阶段为何需要两个独立存储层。**RAG管道架构**中的分块策略、检索召回率与上下文窗口管理等概念在Graph RAG中均有对应的演化版本：传统RAG的文本块在Graph RAG中升级为携带图结构上下文的增强块，检索步骤从单一向量检索变为向量检索+图遍历的混合策略。
 
-预计学习时间：1-2周。建议采用以下策略：
-
-- **主动回忆**：学完后不看笔记复述Graph RAG的核心要点
-- **间隔复习**：在第1天、第3天、第7天分别回顾关键内容
-- **关联构建**：将Graph RAG与AI工程中已学概念建立思维导图
-- **费曼检验**：尝试用简单语言向非专业人士解释Graph RAG，检验理解深度
-
-## 延伸阅读
-
-- 相关教科书中关于RAG与知识库的章节可作为深入参考
-- Wikipedia: [Graph Rag](https://en.wikipedia.org/wiki/graph_rag) 提供了概念的全面介绍
-- 在线课程平台（如 Khan Academy、Coursera）中搜索 "Graph Rag" 可找到配套视频教程
+Leiden社区检测算法是Graph RAG架构中的关键图算法组件，其参数`resolution`控制社区粒度（值越大社区越小越细），直接决定社区报告的数量与覆盖深度，调整这一参数是Graph RAG工程落地中最重要的超参数调优步骤之一。理解这一算法的收敛机制有助于解释为什么同一语料在不同`resolution`设置下会产生截然不同的问答表现。

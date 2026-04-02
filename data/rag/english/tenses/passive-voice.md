@@ -20,84 +20,106 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-30
 ---
+
 # 被动语态
 
 ## 概述
 
-被动语态（Passive Voice）是英语语法中表达"主语承受动作"而非"主语执行动作"的一种语态形式。其核心构成公式为：**be + 过去分词（Past Participle）**，其中be动词随时态、人称和数的变化而变形，过去分词则保持不变。例如，主动句"Tom broke the window"转化为被动句后变为"The window was broken by Tom"——主语window从施动者变成了受动者。
+被动语态（Passive Voice）是英语中表示主语接受动作而非执行动作的语法结构，其核心公式为：**be + 过去分词（past participle）**。与主动语态相反，被动句的逻辑宾语（即动作的承受者）充当句子的语法主语。例如，"The window was broken by Tom" 中，"the window" 承受了破碎这一动作，而非主动去打破什么。
 
-被动语态在英语中的系统化使用可追溯至中古英语时期（约公元1100—1500年），彼时已出现"be + 过去分词"的雏形结构。在现代英语书面语中，被动语态的使用频率在科学报告、新闻报道和法律文本中尤为突出——据语料库统计，学术英语中约25%至35%的谓语动词使用被动形式，远高于日常会话中的比例。
+被动语态在英语中有着悠久的使用历史，尤其在科学论文、新闻报道和法律文件中极为常见。16世纪英语语法学家首次系统描述了该结构，而现代英语中被动语态约占书面语动词用法的15%至25%。这一比例说明被动语态并非边缘语法，而是英语表达中不可或缺的手段。
 
-被动语态之所以重要，在于它允许说话者将施动者（agent）置于次要位置甚至完全省略，从而将信息焦点转移到动作的承受者上。当施动者未知、不重要或刻意回避责任时（如政治声明中的"Mistakes were made"），被动语态提供了主动语态无法实现的表达功能。
+被动语态之所以重要，是因为它允许说话者将信息焦点从"谁做了"转移到"什么被做了"。在不知道动作执行者、不想说明执行者或执行者不重要的场合，被动语态提供了简洁表达的途径。例如科学实验报告中常写 "The solution was heated to 100°C"，故意省略实验者，让结果本身成为焦点。
 
 ---
 
 ## 核心原理
 
-### 1. 被动语态的基本构成与各时态变化
+### 基本构成公式与时态变化
 
-被动语态的骨架公式是 **be（变化形式）+ 过去分词**，be动词必须与时态严格对应。以动词"write"为例，其过去分词形式为"written"，不同时态下的被动构成如下：
+被动语态的核心是 **be + 过去分词**，但 "be" 动词必须随时态变化而变形。过去分词本身不变，时态信息完全由 "be" 承载。主要时态的被动形式如下：
 
-| 时态 | be的形式 | 被动结构示例 |
-|------|----------|------------|
-| 一般现在时 | am/is/are | The letter **is written** every day. |
-| 一般过去时 | was/were | The letter **was written** yesterday. |
-| 一般将来时 | will be | The letter **will be written** tomorrow. |
-| 现在进行时 | am/is/are being | The letter **is being written** now. |
-| 过去进行时 | was/were being | The letter **was being written** then. |
-| 现在完成时 | has/have been | The letter **has been written** already. |
-| 过去完成时 | had been | The letter **had been written** before he arrived. |
-| 情态动词被动 | modal + be | The letter **must be written** carefully. |
+| 时态 | 主动例句 | 被动结构 | 被动例句 |
+|------|----------|----------|----------|
+| 一般现在时 | They clean the room. | am/is/are + p.p. | The room **is cleaned** every day. |
+| 一般过去时 | She wrote the letter. | was/were + p.p. | The letter **was written** by her. |
+| 现在进行时 | They are building a bridge. | am/is/are being + p.p. | A bridge **is being built**. |
+| 过去进行时 | He was fixing the car. | was/were being + p.p. | The car **was being fixed**. |
+| 现在完成时 | They have finished the project. | have/has been + p.p. | The project **has been finished**. |
+| 过去完成时 | We had sent the email. | had been + p.p. | The email **had been sent**. |
+| 一般将来时 | She will sign the contract. | will be + p.p. | The contract **will be signed**. |
 
-注意：**将来进行时被动**（will be being written）和**将来完成时被动**（will have been written）在实际使用中极为罕见，考试中几乎不考查前者。
+值得注意的是，现在完成时被动结构为 **have/has been + 过去分词**，其中 "been" 是 be 的过去分词，整体形成双重分词结构。
 
-### 2. 过去分词的正确构成
+### 主动句转换为被动句的三步规则
 
-被动语态中过去分词的形式直接决定整个句子的语法正确性，错误往往集中于不规则动词。规则动词的过去分词在动词原形后加**-ed**（如write→written是不规则变化，而look→looked是规则变化）；不规则动词必须单独记忆，例如：break→broken、steal→stolen、choose→chosen、know→known。若将主动语态中的过去式误用为被动语态中的过去分词（如错误地写成"The book was wrote"），则整个被动结构错误，因为被动语态中的be已经承担了时态信息，过去分词不能再携带时态形态。
+将主动句转换为被动句遵循固定的三步操作：
 
-### 3. by短语的使用规则
+1. **将主动句的宾语提前**，使其成为被动句的主语。
+2. **将谓语动词改为 be + 过去分词**，be 动词的时态与原句一致，人称和数与新主语一致。
+3. **将原主语置于 by 短语中**（可省略）。
 
-被动语态中施动者通过介词**by**引导的短语来表达，位于句尾：**The painting was created by Picasso in 1907**。然而，当施动者为泛指的"人们"（people/someone/they）时，by短语通常省略，例如"Spanish is spoken in many countries"不需要"by people"。除by以外，某些动词的被动式使用固定介词搭配，如：be interested **in**、be covered **with**、be made **of/from**、be known **for/as/to**——这些搭配中的介词不能替换为by，这是被动语态的高频考点。
+示例：  
+主动：*Scientists discovered penicillin in 1928.*  
+→ 被动：*Penicillin **was discovered** by scientists in 1928.*
 
-### 4. 主动语态转被动语态的操作步骤
+主语 "Penicillin" 为第三人称单数，动词原为一般过去时，故用 "was"；"discovered" 的过去分词仍为 "discovered"。
 
-将主动句转换为被动句需要严格遵循三步骤：
-1. **将主动句的宾语提升为被动句的主语**（The teacher explains the grammar → The grammar...）
-2. **将谓语动词改为"be + 过去分词"形式，be动词时态与原句一致**（...is explained...）
-3. **将原来的主语降级为by短语，或省略**（...by the teacher）
+### by 短语的使用与省略规则
 
-双宾语动词（如give、send、teach）转换时存在两种被动形式：主动句"She gave me a book"可转换为"**I was given a book** by her"或"**A book was given to me** by her"，两者均正确，但前者更为常见。
+"by + 动作执行者" 构成被动句的施事短语（agent phrase），但英语中约有 **80%** 的被动句省略了 by 短语。以下三种情况通常省略：
+
+- **执行者未知**：The ancient ruins were built over 2,000 years ago.（建造者不知）
+- **执行者显而易见**：The thief was arrested last night.（显然是警察）
+- **刻意不提执行者**：Mistakes were made.（政客常用此句回避责任）
+
+相反，当执行者信息对读者有价值时，必须保留 by 短语，如：*The theory of relativity was developed by Albert Einstein.*
 
 ---
 
 ## 实际应用
 
-**科学写作场景**：实验报告中大量使用被动语态以强调实验过程而非操作者，例如"The solution **was heated** to 100°C"、"The results **were recorded** every 30 minutes"、"The hypothesis **has been confirmed** by three independent studies"。这种用法使陈述显得客观中立。
+### 科学与学术写作
 
-**新闻报道场景**：当施动者身份敏感或尚未确认时，记者使用被动语态回避指名道姓：例如"Three people **were arrested** last night"（不说由谁逮捕）、"The decision **has been made** to cut funding"（不点明决策者）。
+在学术英语中，被动语态是标准化写法。实验步骤通常写作："The samples **were collected** from three different sites" 或 "The data **were analyzed** using SPSS 26.0"。这种写法强调研究过程的客观性，刻意淡化研究者主观色彩。许多学术期刊的投稿指南明确建议在方法论部分使用被动语态。
 
-**日常口语场景**：描述偶发事故时使用被动语态可以淡化个人责任，例如"The vase **was broken**"比"I broke the vase"语气更为含糊。此外，宾馆告示、指示牌等场合常见不带by短语的被动形式："Smoking **is not permitted**"、"Valuables **should be kept** in the safe"。
+### 新闻报道与公告
+
+新闻标题常使用被动语态简化表达，如 *"Three people were killed in the explosion"* 或公告语 *"The meeting has been postponed until further notice."* 后者使用现在完成时被动，表示动作对现在的影响——会议目前处于推迟状态。
+
+### 表示"被允许/被要求"的固定搭配
+
+被动语态与情态动词结合，形成重要的功能表达：
+- **must be done** / **should be submitted** / **can be found**  
+- 例：*All assignments must be submitted before midnight on Friday.*
+
+情态动词被动结构公式为：**情态动词 + be + 过去分词**，be 不随人称变化，始终用原形。
 
 ---
 
 ## 常见误区
 
-**误区一：混淆"be + 过去分词"的被动含义与系表结构**
-句子"The window is broken"既可以是被动语态（窗户被人打破了——强调动作），也可以是系表结构（窗户处于破碎状态——强调状态）。区分方法：若能在句中加入by短语并逻辑通顺（"The window is broken **by someone**"），则为被动语态；若表达的是持续状态（"The window is broken and needs repair"），则为系表结构。两种解读在时态和语境分析中产生完全不同的含义。
+### 误区一：过去分词与一般过去式混淆
 
-**误区二：进行时被动语态中漏写"being"**
-现在进行时被动结构是"am/is/are **being** + 过去分词"，许多学生误写成"am/is/are + 过去分词"，例如将"The road is being repaired"错误地写成"The road is repaired"——后者是一般现在时被动，表示经常性动作，而非正在进行的动作。"being"是进行时被动的标志，不可省略。
+学习者常将 "be + 动词一般过去式" 误当被动语态。例如将 "The door was open" 误认为被动句——实际上 "open" 此处是形容词，不是过去分词。真正的被动应为 "The door was opened（by someone）"，强调有人打开了门这一动作。区分标准：过去分词表示动作完成后的状态变化，而形容词描述静态性质。
 
-**误区三：不及物动词不能构成被动语态**
-只有及物动词（transitive verbs）才能构成被动语态，因为只有及物动词才有宾语可以提升为主语。不及物动词如happen、arrive、appear、occur、rise、fall等没有宾语，因此不能被动化。常见错误包括"The accident was happened"或"She was arrived"，这类句子在英语中均不合法。判断一个动词能否被动化的依据正是它在主动句中是否带宾语。
+### 误区二：不及物动词误用被动语态
+
+被动语态只能由**及物动词**（transitive verbs）构成，因为只有及物动词才有宾语可以提前充当主语。"happen"、"arrive"、"occur"、"consist" 等不及物动词不能构成被动语态。因此 *"The accident was happened"* 是错误的，正确说法是 *"The accident happened."* 同理，*"The meeting was consisted of ten members"* 也是错误的。
+
+### 误区三：现在完成时被动与一般过去时被动混淆
+
+"The report **was written**"（一般过去时被动）与 "The report **has been written**"（现在完成时被动）含义不同。前者强调过去某时刻写完这一事件，后者强调报告现在已经处于完成状态，与当下有关联。试比较：  
+- *The letter was sent yesterday.* ——强调昨天这个时间节点  
+- *The letter has been sent.* ——强调信已经发出，现在无需再发
 
 ---
 
 ## 知识关联
 
-**与一般过去时的关联**：一般过去时的be动词形式was/were直接用于构成**一般过去时被动**（was/were + 过去分词），因此理解was/were在不同人称下的分布（第一、三人称单数用was，其余用were）是正确构造过去时被动的前提。错误使用"were"搭配第三人称单数（如"He were invited"）是一般过去时掌握不牢固导致的被动语态错误。
+被动语态直接依赖**一般过去时**（was/were）和**现在完成时**（have/has been）的 be 动词变化规则，若这两种时态的动词形式不熟练，被动语态中的时态选择将频繁出错。同时，**be 动词**的人称配合规则（is/are/was/were 与主语的一致性）在被动语态中同样严格执行——新主语决定 be 的形式，而非原来的施事者。
 
-**与现在完成时的关联**：现在完成时主动式"have/has + 过去分词"与现在完成时被动式"have/has + **been** + 过去分词"仅相差一个"been"。学习被动语态后，学生能够区分"She has finished the report"（主动，她完成了报告）与"The report has been finished"（被动，报告已被完成），这两种形式在商务英语写作中均极为常用，须能在语境中准确切换。
-
-**与情态动词的关联**：情态动词（can、must、should、might等）后接被动结构时，公式固定为**情态动词 + be + 过去分词**，be永远用原形，不随人称变化。这是情态动词被动式与时态被动式的核心区别：时态被动中be要根据时态和人称变形，而情态动词后的be始终保持原形不变。
+过去分词的不规则变化表（如 write→written, break→broken, choose→chosen）是掌握被动语态的必要词汇基础，建议学习者重点记忆英语中最高频的 50 个不规则动词的过去分词形式。在实际写作练习中，从改写主动句入手，逐步扩展到自主构建各时态被动句，是巩固该结构最有效的训练方式。

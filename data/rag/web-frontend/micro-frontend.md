@@ -20,77 +20,64 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-04-01
 ---
+
 # 微前端架构
 
 ## 概述
 
-微前端（Micro-Frontends）是一种将单体前端应用拆分为多个独立部署、独立开发的子应用的架构模式，由ThoughtWorks于2016年在技术雷达中首次提出。每个子应用可以由不同团队使用不同技术栈（React、Vue、Angular等）独立开发，最终通过一个容器应用（Shell App）组合呈现给用户。
+微前端（Micro Frontends）是将大型单体前端应用拆分为多个可独立开发、独立部署、独立运行的子应用的架构模式，最早由 ThoughtWorks 在 2016 年技术雷达报告中提出。其核心思想借鉴自后端微服务：将一个前端团队的单一代码仓库，拆分为多个团队可以分别负责的子系统，每个子应用可以选择不同的技术栈（如 React、Vue、Angular 混用）。
 
-这种架构的核心诉求来自大型前端项目的治理困境：当一个SPA代码库膨胀到数十万行时，构建时间可能超过10分钟，任何微小改动都需要全量重新部署。微前端通过按业务域拆分，使每个子应用的构建时间降低到1-2分钟，并支持独立版本发布。
-
-微前端不等于简单的iframe嵌套。现代微前端框架（如qiankun、single-spa、Module Federation）在保证技术栈隔离的同时，提供共享路由、状态通信、样式隔离等机制，使多个子应用在同一页面内无缝协作，用户体验与SPA一致。
+微前端架构的必要性体现在企业级应用的演进痛点上。当一个 SPA 项目积累了 200+ 个路由、50+ 名开发者共同提交代码时，每次发布都需要整体构建（构建时间可能超过 15 分钟）、任何一个模块的 bug 都会阻断全量发布。微前端通过将这些子模块变成独立可部署的单元，让电商系统的"商品详情"子团队能在不影响"购物车"团队的前提下独立上线。
 
 ## 核心原理
 
 ### 拆分策略
 
-微前端的拆分粒度直接决定架构的维护成本。常见策略有三种：
-
-**按业务域垂直拆分**是最推荐的方式，例如将电商平台拆分为"商品子应用"、"订单子应用"、"用户中心子应用"，每个子应用对应一组相关路由（如 `/products/**`、`/orders/**`）。这种拆分边界清晰，团队职责明确。
-
-**按页面拆分**适合迁移旧系统，将每个旧页面包装成独立子应用，逐步替换而不影响其他页面。
-
-**按功能组件拆分**（Widget模式）将页面内的独立模块（如推荐组件、广告位）做成子应用，但这种方式通信复杂度高，仅在组件需要独立技术栈时使用。
-
-拆分时需遵循**单一职责原则**：一个子应用不应依赖另一个子应用的内部模块，所有跨应用依赖必须通过公开接口进行。
+微前端的拆分维度通常有三种方式。**按路由拆分**是最常见的方式：容器应用（Shell App）根据 URL 前缀决定加载哪个子应用，例如 `/order/*` 加载订单子应用，`/product/*` 加载商品子应用。这种方式下子应用在运行时互不重叠。**按页面模块拆分**允许同一页面内同时渲染多个子应用，适用于 Dashboard 类页面，但需要严格管理 DOM 挂载点和 CSS 隔离。**按业务域垂直拆分**则将整个前端栈（含 BFF 层）按业务能力划分，每个团队端到端负责自己的业务切片。
 
 ### 集成方式
 
-微前端有三种主要集成时机：
+微前端集成有三个技术层面的实现路径：
 
-**构建时集成**：各子应用发布npm包，主应用统一安装依赖后构建。优点是最终产物优化充分，缺点是失去了独立部署能力——任何子应用更新都需要重新构建主应用，违背微前端的核心价值。
+**构建时集成**：通过 npm 包将子应用发布为组件库，在构建阶段被宿主应用引入。优点是类型安全、tree-shaking 有效；缺点是失去独立部署能力，实质上退化为 monorepo，违背微前端的核心价值。
 
-**运行时集成（JS Entry）**：主应用在浏览器端动态加载子应用的JS bundle。以qiankun为例，注册子应用时指定 `entry: 'https://sub-app.example.com'`，主应用在路由匹配时通过 `fetch` 获取子应用的HTML entry，解析其中的JS/CSS资源并动态插入DOM。
+**运行时集成（主流方案）**：包括 iframe 嵌入、JavaScript 动态加载、以及以 Single-SPA 和 qiankun 为代表的框架方案。qiankun 基于 Single-SPA 封装，通过 `import-html-entry` 解析子应用的 HTML 入口，动态注入 `<script>` 和 `<style>` 标签，子应用需暴露 `bootstrap`、`mount`、`unmount` 三个生命周期钩子函数。
 
-**Module Federation（模块联邦）**：Webpack 5引入的原生能力，通过在 `webpack.config.js` 中配置 `ModuleFederationPlugin`，子应用声明 `exposes` 导出模块，主应用声明 `remotes` 消费远程模块。与JS Entry不同，Module Federation支持共享依赖（`shared: ['react', 'react-dom']`），避免React等大型库被多次加载，是目前最接近原生语言链接机制的前端集成方案。
+**Module Federation（模块联邦）**：Webpack 5 在 2020 年引入的特性，允许一个构建产物在运行时从另一个独立部署的远程构建中加载模块。配置示例：`remotes: { orderApp: 'orderApp@https://cdn.example.com/remoteEntry.js' }`，宿主应用通过这个 `remoteEntry.js` 清单文件动态拉取子应用暴露的模块，实现真正的代码级别共享而非整包加载。
+
+### 隔离机制
+
+微前端最关键的技术挑战是**沙箱隔离**，包含两个层面：
+
+**JS 沙箱**：防止子应用污染全局 `window` 对象。qiankun 提供两种沙箱模式：`LegacySandbox` 通过 Proxy 拦截对 `window` 的读写并记录变更，子应用卸载时恢复现场；`ShadowRealm` 模式（实验性）使用 ECMAScript 提案中的 `ShadowRealm` API 提供更彻底的隔离。
+
+**CSS 隔离**：通过 `Shadow DOM` 或动态给子应用 CSS 添加属性选择器前缀（如 `[data-qiankun="order-app"] .container { ... }`）实现样式作用域。Shadow DOM 隔离彻底但会导致弹窗、全局 Toast 等组件无法穿透边界渲染。
 
 ### 通信机制
 
-子应用间通信需要严格约束，避免强耦合。主要有四种方式：
-
-**CustomEvent（浏览器原生事件）**：通过 `window.dispatchEvent(new CustomEvent('orderCreated', { detail: { orderId: 123 } }))` 发布事件，其他子应用监听。优点是零依赖，缺点是无法追踪事件来源，调试困难。
-
-**全局状态管理**：在Shell App中初始化一个共享store（如Redux store实例），通过 `props` 传递给子应用，子应用通过该实例读写状态。qiankun框架的 `initGlobalState` API实现了这一模式，提供 `setGlobalState` 和 `onGlobalStateChange` 两个方法。
-
-**URL参数**：对于导航类通信（如子应用A跳转并携带参数给子应用B），直接使用URL查询参数是最可靠的方式，天然支持浏览器刷新后状态恢复。
-
-**Props传递**：Shell App在激活子应用时注入props，适合传递用户信息、权限令牌等初始化数据，但只能单向传递。
-
-### 样式与JS隔离
-
-**样式隔离**：qiankun的 `strictStyleIsolation` 模式使用Shadow DOM将子应用渲染在独立的shadow root中，完全隔离CSS。但Shadow DOM会阻断部分第三方组件库（如Ant Design的Modal）的样式，因此更常用的是 `experimentalStyleIsolation` 模式——qiankun通过解析子应用CSS，给每条规则添加 `[data-qiankun="sub-app-name"]` 前缀选择器来限定作用域。
-
-**JS隔离**：qiankun使用Proxy沙箱，为每个子应用创建一个代理对象替代 `window`，子应用对 `window.foo = 'bar'` 的写操作只作用于该代理对象，子应用卸载时代理销毁，不污染全局环境。Webpack的 `output.library` 配置决定子应用以何种格式导出生命周期钩子（`bootstrap`、`mount`、`unmount`），这三个钩子是single-spa规范的核心约定。
+子应用间的通信有三种模式：**基于 URL 的通信**（query params 和 hash）适合轻量状态传递；**全局状态管理**使用宿主应用维护的共享 Store（qiankun 提供 `initGlobalState` API，返回 `onGlobalStateChange` 和 `setGlobalState` 方法）；**CustomEvent 自定义事件**通过 `window.dispatchEvent(new CustomEvent('userLogin', { detail: { userId: 123 } }))` 实现松耦合的发布-订阅通信，是技术栈异构场景下最通用的方案。
 
 ## 实际应用
 
-**AI平台控制台**是微前端的典型场景：模型训练模块使用Vue 3开发，数据标注模块使用React开发，实验管理模块可能是收购公司的旧Angular代码。微前端架构允许三个团队各自维护技术栈，通过统一的Shell App将三个模块整合为一个控制台，用户无感知技术栈切换。
+**大型电商平台改造**：京东、阿里等平台将商品、交易、营销等子系统改造为微前端，每个子系统由独立团队用不同 React 版本维护，通过 qiankun 的路由分发实现统一入口。改造后各子系统的发布频率从每周 1 次提升到每天多次。
 
-**渐进式迁移遗留系统**：将一个jQuery单体应用迁移至React时，可先用微前端框架将旧应用整体作为一个子应用，新功能模块逐步以React子应用形式上线，新旧模块共存运行，避免大爆炸式重写的风险。
+**AI 平台 Dashboard**：AI 工程平台通常包含模型训练监控、数据集管理、推理服务控制台等模块，各模块技术演进速度不同。使用 Module Federation 可以让推理服务控制台（需要 WebGL 图表库，包体积 2MB+）仅在用户导航到该模块时才触发加载，而非在主应用初始化时一次性打包。
 
-**独立部署降低发布风险**：订单系统的bug修复只需重新部署订单子应用，其他子应用不受影响。结合灰度发布，可以让5%用户访问新版子应用，通过监控确认稳定后再全量切换。
+**渐进式迁移遗留系统**：将 Angular.js 老应用的某一路由段注册为微前端子应用，同时新功能用 React 开发，两者并行运行在同一页面的不同 DOM 节点，实现按模块逐步替换而无需大爆炸式重写。
 
 ## 常见误区
 
-**误区一：把微前端当银弹，在小型项目中使用。** 微前端引入了子应用注册、沙箱隔离、跨应用通信等额外复杂度，并且多个子应用各自打包会导致bundle体积增大（即使Module Federation共享依赖，也有额外的运行时开销约25KB）。团队人数少于5人、代码库少于5万行的项目几乎没有使用微前端的收益，标准SPA加上良好的模块划分即可。
+**误区一：微前端等于 iframe**。iframe 确实提供了最强的隔离性，但它无法共享浏览器历史记录（导致前进/后退按钮行为异常）、无法共享 Cookie/LocalStorage 的同源策略、且子页面的弹窗会被 iframe 边框裁剪。微前端框架方案的核心价值恰恰是在保持一定隔离性的同时解决这些 iframe 的固有缺陷。
 
-**误区二：认为子应用间可以随意共享组件。** 直接import另一个子应用的组件会在构建时形成强耦合，破坏独立部署能力。正确做法是将共享UI组件提取为独立npm包（Design System），所有子应用安装相同版本；或通过Module Federation的 `exposes` 机制在运行时共享，但需要明确版本兼容策略。
+**误区二：子应用越多越好**。拆分粒度过细会导致共享依赖（如 React 18 运行时）在每个子应用中重复加载。若 10 个子应用各自打包 React（~130KB gzip），用户首屏需多下载 1.17MB。正确做法是通过 Module Federation 的 `shared` 配置声明共享单例：`shared: { react: { singleton: true, requiredVersion: '^18.0.0' } }`。
 
-**误区三：混淆微前端与SPA子路由。** SPA子路由（如React Router的嵌套路由）是在同一个代码库、同一个构建产物内切换视图，所有代码在首次加载时全部下载。微前端的子应用在路由激活前完全不加载，资源完全独立，这是两者本质区别。单纯想要懒加载的场景应使用Webpack的动态 `import()` 而非微前端。
+**误区三：微前端解决了代码耦合问题**。微前端是部署边界的隔离，如果子应用间通过全局状态频繁传递复杂对象、或者直接 import 彼此的内部模块，耦合依然存在。微前端的通信协议本身需要被纳入接口契约管理，否则一个子应用修改 `globalState` 的数据结构会级联破坏其他子应用。
 
 ## 知识关联
 
-**SPA路由**是微前端的前置基础：Shell App依赖客户端路由（History API）拦截URL变化，根据路由规则决定激活哪个子应用。理解 `popstate` 事件和 `pushState` API的工作原理，才能理解微前端框架如何劫持路由以管理子应用生命周期。
+微前端架构建立在 **SPA 路由**机制之上：容器应用的路由监听（`history.pushState` 事件或 `hashchange` 事件）是触发子应用加载/卸载的驱动力，Single-SPA 的核心实现就是对这两种路由事件的劫持和重新分发。
 
-**Webpack/Vite打包工具**决定子应用以何种格式输出：子应用必须将 `output.libraryTarget` 设为 `umd`（Webpack）或等效格式，才能被主应用动态加载并调用 `bootstrap/mount/unmount` 生命周期。Module Federation更是直接内嵌于Webpack 5，理解 `entry`、`chunks`、`externals` 等打包概念是配置Module Federation的前提。理解这两个工具的输出格式与模块系统，是排查微前端加载失败问题的关键能力。
+对 **Webpack/Vite 打包工具**的理解直接决定微前端方案的选择：Module Federation 是纯 Webpack 5 特性，Vite 生态对应的方案是 `vite-plugin-federation`，但两者在处理 ESM/CJS 模块格式兼容性时存在差异。熟悉打包工具的 `externals` 配置、`output.library` 格式（`umd` vs `esm`）是正确配置子应用构建产物的前提——qiankun 要求子应用将 `output.library` 设为 `umd` 格式才能被宿主正确识别三个生命周期钩子。

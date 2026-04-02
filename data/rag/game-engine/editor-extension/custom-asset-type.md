@@ -20,89 +20,99 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
+quality_method: intranet-llm-rewrite-v2
+updated_at: 2026-03-31
 ---
+
 # 自定义资产类型
 
 ## 概述
 
-自定义资产类型（Custom Asset Type）是虚幻引擎编辑器扩展体系中允许开发者创建自己的`.uasset`资源种类的机制。通过注册专属的 Factory、Editor 和 Thumbnail 三类组件，一个新的资产类型便能在内容浏览器（Content Browser）中被创建、双击打开编辑窗口、并显示独立的缩略图预览，行为上与引擎内置的蓝图、材质等资产完全一致。
+自定义资产类型（Custom Asset Type）是 Unreal Engine 编辑器扩展体系中允许开发者将自己的 `UObject` 派生类注册为第一类编辑器资产的机制。通过该机制，自定义数据类（例如技能配置表、对话脚本、AI 行为参数包）可以像引擎内置的 `UTexture2D` 或 `USoundCue` 一样，在内容浏览器中拥有独立图标、右键菜单、双击打开行为以及缩略图预览。
 
-该机制最早在虚幻引擎 4.x 时代随模块化插件系统的成熟而被广泛采用，到 UE5 时期已形成稳固的三件套注册模式。它的价值在于让工具程序员把配置数据、行为逻辑或场景规则以**结构化资产**的形式暴露给关卡/内容设计师，避免使用裸 DataTable 或手写 JSON 所带来的格式不可见、版本管理混乱等问题。
+该机制在 UE4 时代已通过 `AssetTypeActions` 框架正式成型，核心接口定义于 `AssetTypeCategories.h` 与 `IAssetTypeActions` 中。UE5 引入 `FAssetDefinition` 新路径，但旧框架仍完整保留。注册流程涉及三个独立但协作的子系统：**Factory**（资产创建工厂）、**Editor**（资产编辑器）、**Thumbnail Renderer**（缩略图渲染器），缺少任一子系统时资产仍可使用，但编辑器体验会相应降级。
+
+自定义资产类型的价值在于消除游戏逻辑数据与引擎工具链之间的隔阂。若不注册，开发者只能通过右键"杂项 > 数据资产"创建对象，丧失类型过滤、批量导入、版本提示等工作流能力，大型团队协作效率会显著下降。
 
 ---
 
 ## 核心原理
 
-### 1. UFactory —— 资产的出生证明
+### Factory 注册：控制资产的创建入口
 
-`UFactory` 是让引擎知道"如何创建该资产"的关键类。开发者需继承它并重写三个方法：
+`UFactory` 是所有资产创建工厂的基类，自定义资产需要继承它并重写三个关键函数：
 
-- `ShouldShowInNewMenu()`：返回 `true` 使其出现在内容浏览器右键菜单的 **Miscellaneous** 或自定义分类下。
-- `FactoryCreateNew()`：实际构造并返回 `UObject*`，通常调用 `NewObject<UMyAsset>(InParent, InClass, InName, Flags)` 完成分配。
-- `GetSupportedClass()`：返回对应的 C++ 资产类，使引擎建立 Factory → Asset 的一对一映射。
+```cpp
+// 声明支持的资产类
+SupportedClass = UMySkillData::StaticClass();
+// 允许在内容浏览器右键菜单中显示
+bCreateNew = true;
+// 工厂优先级，数值越高越优先匹配
+CreatePriority = 1;
+```
 
-Factory 类必须放在以 `Editor` 为目标模块（`Type = "Editor"`）的模块中，否则在 Shipping 构建时会导致链接错误或资产无法打包。
+`FactoryCreateNew()` 是实际创建逻辑所在：它接收 `UClass* InClass`、`UObject* InParent`、`FName Name` 三个参数，返回 `NewObject<UMySkillData>(InParent, InClass, Name, Flags)`。若工厂同时需要支持从外部文件导入（如从 `.csv` 解析为自定义结构），还需将 `bEditorImport = true` 并重写 `FactoryCreateFile()`，此时工厂会同时出现在"导入"对话框的格式列表中。
 
-### 2. AssetTypeActions —— 资产行为描述符
+工厂注册本身不需要显式调用注册函数——UE 的对象系统会在模块加载时扫描所有 `UFactory` 子类并自动收录，但工厂类必须定义在已加载的 Editor 模块中（`Build.cs` 的 `PrivateDependencyModuleNames` 需包含 `"UnrealEd"`）。
 
-继承 `FAssetTypeActions_Base` 并实现 `IAssetTypeActions` 接口，是向编辑器描述该资产"是什么、属于哪个颜色分类、能做什么操作"的机制。关键重写方法包括：
+### AssetTypeActions 注册：定义资产在内容浏览器中的行为
 
-| 方法 | 作用 |
-|---|---|
-| `GetName()` | 返回在内容浏览器中显示的本地化名称 |
-| `GetTypeColor()` | 返回资产卡片左侧色条的 `FColor`，例如 `FColor(201, 29, 85)` |
-| `GetCategories()` | 返回 `EAssetTypeCategories::Misc` 或自定义分类枚举值 |
-| `OpenAssetEditor()` | 触发自定义编辑器窗口，通常构建一个基于 `FAssetEditorToolkit` 的 Standalone 编辑器 |
+`IAssetTypeActions` 接口决定资产在内容浏览器中的分类、颜色标签、右键菜单操作以及双击行为。自定义实现类需重写以下函数：
 
-在模块的 `StartupModule()` 函数内，必须通过以下代码完成注册，模块关闭时对应调用 `UnregisterAssetTypeActions`：
+| 函数 | 返回示例 | 作用 |
+|---|---|---|
+| `GetName()` | `"技能数据"` | 内容浏览器中的类型显示名 |
+| `GetTypeColor()` | `FColor(0, 128, 255)` | 资产卡片左侧色条颜色 |
+| `GetAssetTypeCategory()` | `EAssetTypeCategories::Gameplay` | 所属过滤分类 |
+| `OpenAssetEditor()` | 打开自定义 SlateEditor | 双击资产时的响应 |
+
+注册必须在模块的 `StartupModule()` 中主动完成：
 
 ```cpp
 IAssetTools& AssetTools = FModuleManager::LoadModuleChecked<FAssetToolsModule>("AssetTools").Get();
-AssetTools.RegisterAssetTypeActions(MakeShareable(new FMyAssetTypeActions()));
+AssetTools.RegisterAssetTypeActions(MakeShareable(new FMySkillDataAssetTypeActions()));
 ```
 
-注意 `RegisterAssetTypeActions` 接收的是 `TSharedRef<IAssetTypeActions>`，若传入裸指针会触发编译期错误。
+对应地，`ShutdownModule()` 必须调用 `UnregisterAssetTypeActions()`，否则引擎关闭时会产生悬空指针崩溃。
 
-### 3. Thumbnail 渲染器 —— 缩略图注册
+### Thumbnail Renderer 注册：提供可视化预览
 
-自定义缩略图通过继承 `UThumbnailRenderer` 并重写 `Draw()` 方法实现。注册时调用：
+缩略图渲染器继承 `UThumbnailRenderer` 并重写 `Draw()` 函数。`Draw()` 接收目标资产的 `UObject*` 指针和一个 `FCanvas*` 渲染目标，开发者可在其中绘制文字、图标或基于资产数据的可视化内容。注册代码如下：
 
 ```cpp
-UThumbnailManager::Get().RegisterCustomRenderer(UMyAsset::StaticClass(), UMyAssetThumbnailRenderer::StaticClass());
+UThumbnailManager::Get().RegisterCustomRenderer(
+    UMySkillData::StaticClass(),
+    UThumbnailRenderer::StaticClass() // 替换为自定义渲染器类
+);
 ```
 
-`Draw()` 方法接收 `FCanvas* Canvas` 和 `FRenderTarget* RenderTarget`，可以使用 `FCanvasTextItem` 绘制文字、或通过 `UTexture2D*` 字段直接将资产内嵌的图片渲染为缩略图。若不注册自定义渲染器，内容浏览器将回退到默认的灰色通用图标，视觉上无法与其他资产区分。
+注意 `UThumbnailManager` 仅在编辑器模式下存在，调用前必须用 `GIsEditor` 或模块类型检查保护。若不注册缩略图渲染器，内容浏览器会显示通用的灰色齿轮图标，但不影响运行时功能。
 
 ---
 
 ## 实际应用
 
-**对话数据资产（Dialogue Asset）示例**：假设游戏需要一种 `.uasset` 存储 NPC 对话树。开发者定义 `UDialogueAsset : public UPrimaryDataAsset`，其中包含 `TArray<FDialogueNode> Nodes` 字段。接着：
+**技能配置资产的完整注册案例**：一款 RPG 游戏的 `USkillDefinition` 类存储技能名称、伤害系数、冷却时间等字段。通过注册 `USkillDefinitionFactory`，策划可在内容浏览器右键"游戏内容 > 技能定义"直接新建资产。注册 `FSkillDefinitionTypeActions` 后，所有技能资产在内容浏览器中显示为蓝绿色标签（`FColor(0, 200, 180)`），右键菜单新增"验证技能数值"选项（通过 `GetActions()` 返回 `FUIAction`）。注册自定义缩略图渲染器后，预览图直接显示技能图标 Texture 和伤害系数数值，策划无需打开资产即可快速区分。
 
-1. `UDialogueAssetFactory::FactoryCreateNew()` 返回 `NewObject<UDialogueAsset>`，菜单分类设置为自定义的"叙事工具"。
-2. `FDialogueAssetTypeActions::GetTypeColor()` 返回 `FColor(72, 199, 142)`（绿色），使对话资产在内容浏览器中视觉上与普通蓝图明显区分。
-3. `OpenAssetEditor()` 启动基于 `SGraphEditor` 的节点图编辑器，设计师可拖拽连线构建对话分支。
-4. `UDialogueThumbnailRenderer::Draw()` 读取资产的第一条对话文本前 20 个字符，渲染到缩略图左上角，让设计师无需打开资产即可识别内容。
-
-这套流程使对话树从"只有程序员能维护的代码配置"变成"设计师可视化编辑的内容资产"，并通过资产引用系统支持热加载与版本控制。
+**DataTable 扩展场景**：若自定义资产类型内嵌了 `FTableRowBase` 子结构，工厂的 `CanImportBeCancelled()` 应返回 `true` 以支持 CSV 导入预览，同时 `ResolveName()` 需处理同名资产冲突逻辑，避免批量导入时覆盖现有数据。
 
 ---
 
 ## 常见误区
 
-**误区一：把 Factory 类放在 Runtime 模块中**
-`UFactory` 的父类链中包含编辑器专属头文件，若将其放在 `Type = "Runtime"` 的模块，打包时会因 `WITH_EDITOR` 宏未定义而产生编译错误，或在 Shipping 包体中残留多余编辑器代码。Factory 及 AssetTypeActions 必须严格限定在 `Editor` 类型模块，`.Build.cs` 文件中需将对应依赖（如 `"AssetTools"`, `"UnrealEd"`）列入 `PrivateDependencyModuleNames`。
+**误区一：将 Factory 和 AssetTypeActions 混为一谈**
+`UFactory` 控制资产**如何被创建**，`IAssetTypeActions` 控制资产**在编辑器中如何被展示和交互**。有些开发者只注册 Factory 后发现双击没有打开编辑器——这是因为打开逻辑属于 `AssetTypeActions::OpenAssetEditor()` 的职责，Factory 不负责任何双击后行为。
 
-**误区二：未在 ShutdownModule 中注销 AssetTypeActions**
-`RegisterAssetTypeActions` 持有 `TSharedPtr`，若模块卸载时不调用 `UnregisterAssetTypeActions`，AssetTools 子系统会持有悬空的弱引用。在编辑器热重载（Live Coding）场景下，这会导致右键菜单出现两条重复的创建选项，或在下次加载时触发 ensure 断言。正确做法是在 `StartupModule` 中缓存注册句柄 `TSharedPtr<IAssetTypeActions> RegisteredActions`，在 `ShutdownModule` 中传回 `UnregisterAssetTypeActions`。
+**误区二：在运行时模块中注册编辑器资产类型**
+`UFactory`、`IAssetTypeActions`、`UThumbnailRenderer` 的注册代码必须位于类型为 `Editor` 的模块中（`Build.cs` 中 `Type = ModuleType.Editor`）。若写在 `Runtime` 类型模块中，打包时这些类会被包含进游戏包，增大包体且可能引发"Editor-only code in runtime module"编译错误。
 
-**误区三：混淆 UFactory 与 UAssetImportTask 的用途**
-`UFactory` 用于在编辑器内**从零创建**资产；而将外部文件（如 `.png`、`.fbx`）导入为 uasset 使用的是带有 `bEditorImport = true` 标志的 Factory 子类，或独立的 `UAssetImportTask` 流程。对于纯数据类自定义资产（不依赖外部文件），只需重写 `FactoryCreateNew()`，不应将 `bEditorImport` 设为 `true`，否则资产会出现在"导入"对话框而非"新建"菜单。
+**误区三：忘记在 ShutdownModule 中注销**
+`FAssetToolsModule` 持有 `IAssetTypeActions` 的弱引用，模块卸载后若未调用 `UnregisterAssetTypeActions()`，该弱引用指向已释放内存，在编辑器热重载（Live Coding）场景下极易触发崩溃。同理，`UThumbnailManager::Get().UnregisterCustomRenderer()` 也必须在模块关闭时调用。
 
 ---
 
 ## 知识关联
 
-**前置概念**：编辑器扩展概述中介绍的模块类型划分（Runtime / Editor / Developer）和 `StartupModule` / `ShutdownModule` 生命周期，是正确放置 Factory 和 AssetTypeActions 注册代码的基础——不理解模块类型边界，就无法解释为何 Factory 不能进 Runtime 模块。
+**前置依赖**：自定义资产类型注册依赖对编辑器模块结构的理解，即区分 `Editor` 模块与 `Runtime` 模块的加载时机、`Build.cs` 中 `PrivateDependencyModuleNames` 对 `"AssetTools"`、`"UnrealEd"` 的依赖声明，以及 `IMPLEMENT_MODULE` 宏与 `StartupModule`/`ShutdownModule` 生命周期。
 
-**横向关联**：自定义资产类型完成后，若需要更复杂的属性编辑界面，可进一步为资产的特定字段编写 `IDetailCustomization`（属性面板定制）；若资产需要在运行时被 `AssetManager` 按标签批量加载，则需在 `UMyAsset` 中正确实现 `FPrimaryAssetId GetPrimaryAssetId()` 并在 `DefaultGame.ini` 中配置 Primary Asset Type 扫描路径，这两个方向都以本文介绍的资产类型注册为前提。
+**横向关联**：自定义资产类型的 `OpenAssetEditor()` 通常会启动一个基于 `FAssetEditorToolkit` 的自定义资产编辑器窗口，该编辑器窗口的布局管理涉及 Slate 框架中的 `FTabManager` 和 `FWorkspaceItem` 体系。缩略图渲染器的 `Draw()` 实现若需要渲染 3D 预览，则需对接 `FObjectThumbnail` 的离屏渲染管线。掌握这三个注册子系统后，开发者便具备了构建完整工具插件（Plugin）所需的资产层工具链能力。
