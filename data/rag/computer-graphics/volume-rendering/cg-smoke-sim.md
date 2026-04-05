@@ -10,11 +10,11 @@ tags: ["模拟"]
 
 # Quality Metadata (Schema v2)
 content_version: 3
-quality_tier: "A"
-quality_score: 73.0
+quality_tier: "S"
+quality_score: 99.9
 generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 1.0
-last_scored: "2026-04-05"
+last_scored: "2026-04-06"
 sources:
   - type: "ai-generated"
     model: "mihoyo.claude-4-6-sonnet"

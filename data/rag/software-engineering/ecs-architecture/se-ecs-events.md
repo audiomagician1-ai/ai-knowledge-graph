@@ -10,11 +10,11 @@ tags: ["事件"]
 
 # Quality Metadata (Schema v2)
 content_version: 2
-quality_tier: "A"
-quality_score: 73.0
+quality_tier: "S"
+quality_score: 96.0
 generation_method: "ai-rewrite-v1"
 unique_content_ratio: 1.0
-last_scored: "2026-04-05"
+last_scored: "2026-04-06"
 sources:
   - type: "ai-generated"
     model: "claude-sonnet-4-20250514"

@@ -14,7 +14,7 @@ quality_tier: "A"
 quality_score: 73.9
 generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 0.938
-last_scored: "2026-04-05"
+last_scored: "2026-04-06"
 sources:
   - type: "ai-generated"
     model: "mihoyo.claude-4-6-sonnet"

@@ -12,7 +12,7 @@ quality_tier: "A"
 quality_score: 76.3
 generation_method: "research-rewrite-v2"
 unique_content_ratio: 1.0
-last_scored: "2026-04-05"
+last_scored: "2026-04-06"
 sources:
   - type: "academic"
     ref: "Newman, Sam. Building Microservices, 2nd Ed., O'Reilly, 2021"
