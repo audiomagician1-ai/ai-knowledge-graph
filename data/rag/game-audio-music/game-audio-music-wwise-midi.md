@@ -20,57 +20,180 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
-quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-03-26
+quality_method: tier-s-booster-v1
+updated_at: 2026-04-05
 ---
+
 
 
 # Wwise MIDI
 
 ## 概述
 
-Wwise MIDI 是 Audiokinetic Wwise 引擎中用于驱动交互式音乐播放的 MIDI 消息处理系统。它允许游戏逻辑通过发送标准 MIDI 消息（音符开/关、控制器变化、音高弯曲等）来实时控制 Wwise 内部合成器或触发采样播放，从而实现无需预先录制音频即可动态生成音乐内容的能力。
+Wwise MIDI 是 Audiokinetic Wwise 引擎中专门处理 MIDI 消息驱动的交互式音乐播放子系统。它允许游戏逻辑通过发送标准 MIDI 1.0 规范定义的消息（音符开/关 Note On/Off、控制器变化 CC、音高弯曲 Pitch Bend、通道压力 Aftertouch 等）来实时控制 Wwise 内部合成器或触发采样播放，从而在不预先录制完整音频的前提下动态生成音乐内容。
 
-这一功能自 Wwise 2015.1 版本起逐渐成熟，主要面向需要程序化生成音乐或将 DAW 工作流直接移植到游戏引擎的音频设计师。其核心价值在于：同一段 MIDI 数据可以驱动截然不同的音色方案，允许在运行时切换乐器，而无需重新导出大量音频文件。
+该功能自 **Wwise 2015.1** 版本起趋于成熟，并在 **Wwise 2019.2** 引入 Wwise Spatial Audio 扩展后，MIDI 驱动的程序化音乐可进一步与空间化混音流程结合（参见 Audiokinetic 官方文档 *Wwise SDK 2023.1 — MIDI API Reference*）。其核心价值在于：同一套 MIDI 序列数据可以驱动截然不同的音色方案，允许在运行时通过切换 Source Plugin 改变乐器，而无需重新导出大量 PCM 音频文件。
 
-Wwise MIDI 在技术上分为两个独立方向：一是作为 MIDI 事件的**接收端**，由 Wwise Music 对象消费 MIDI 数据；二是作为 MIDI 消息的**发送端**，通过 Music Callbacks 将 Wwise 内部 MIDI 节点的播放数据传递给外部软件合成器。两个方向在 Wwise 项目配置和 API 调用上差异显著，混淆两者是初学者最常见的错误。
+在架构层面，Wwise MIDI 分为两个独立方向：其一是作为 MIDI 消息的**接收端**（Input），游戏代码通过 `PostMIDIOnEvent()` 将 MIDI 数据推送给 Wwise Sound/Music 对象；其二是作为 MIDI 消息的**发送端**（Output），通过 Music Callbacks 机制将 Wwise 内部 MIDI Track 的播放数据反向传递给外部软件合成器或游戏逻辑。两个方向在 Wwise Authoring 工具配置和 API 调用上差异显著，本文将分别展开。
+
+---
 
 ## 核心原理
 
-### MIDI 消息的传递路径
+### MIDI 消息在 Wwise 引擎中的传递路径
 
-在 Wwise 中，MIDI 消息的起点通常是游戏代码调用 `AK::SoundEngine::PostMIDIOnEvent()` 函数。该函数接受一个 `AkMIDIPost` 结构体数组，每条记录包含 `byType`（消息类型，如 `AK_MIDI_EVENT_TYPE_NOTE_ON = 0x90`）、`byChan`（0-15 的 MIDI 通道）、`byOnOffNote`（音符编号，中央 C 为 60）以及 `byVelocity`（力度 0-127）等字段。消息被投递到与指定 Event 绑定的 Wwise Sound 对象上，该对象必须在 Wwise 设计工具中勾选 **"MIDI Playback: Use note tracking"** 选项才能响应。
+游戏代码调用的入口函数为：
 
-### Wwise 中 MIDI 驱动的对象类型
+```cpp
+// 构造 MIDI 消息数组
+AkMIDIPost midiPosts[2];
 
-并非所有 Wwise 对象都能消费 MIDI 数据。能够响应 MIDI 的对象仅限于：**Sound SFX** 对象（启用 MIDI note tracking 后可根据音符编号改变音高）、**Music Track** 对象（可在 Sequence 或 Random 容器中直接内嵌 MIDI 剪辑），以及连接了第三方 VST 插件（如 Wwise Synth One 或 Tonal Freeze）的 **Source Plugin** 对象。每类对象在 Authoring 工具的 MIDI 标签页中有各自独立的音调映射配置，其中 Sound SFX 的音高偏移公式为：`semitone_shift = received_MIDI_note - 60`（以中央 C 为基准音）。
+// 音符开启：通道0，音符60（中央C），力度100
+midiPosts[0].byType      = AK_MIDI_EVENT_TYPE_NOTE_ON;  // 0x90
+midiPosts[0].byChan      = 0;
+midiPosts[0].byOnOffNote = 60;   // Middle C (MIDI note 60)
+midiPosts[0].byVelocity  = 100;
+midiPosts[0].uOffset     = 0;    // 相对于当前帧，以采样为单位的偏移量
 
-### MIDI 通道与 Wwise Bus 路由的关系
+// 音符关闭：500ms 后
+midiPosts[1].byType      = AK_MIDI_EVENT_TYPE_NOTE_OFF; // 0x80
+midiPosts[1].byChan      = 0;
+midiPosts[1].byOnOffNote = 60;
+midiPosts[1].byVelocity  = 0;
+midiPosts[1].uOffset     = 22050; // 48000Hz 采样率下约 500ms
 
-Wwise 的 MIDI 通道（0-15）不等同于 Wwise 的 Audio Bus 通道。一个 Wwise Event 可以同时接收多个 MIDI 通道的消息，而每个通道对应的 Sound 对象可以路由到完全不同的 Audio Bus 上。这意味着可以用单一 `PostMIDIOnEvent` 调用同时驱动鼓组（通道 9）和旋律线（通道 0），鼓组走 Dry Bus，旋律线走带混响的 Wet Bus，在 Wwise 内部完成混音分离，无需游戏代码进行任何额外分配操作。
+AK::SoundEngine::PostMIDIOnEvent(
+    AK::EVENTS::PLAY_SYNTH_MELODY,  // Event ID
+    gameObjectID,                    // 关联的 Game Object
+    midiPosts,
+    2                                // 消息数量
+);
+```
 
-### MIDI Tempo 与 Wwise Music System 的同步
+消息进入引擎后，Wwise 将其分发给与该 Event 绑定的所有启用了 **"MIDI Playback: Use note tracking"** 的 Sound 对象。`uOffset` 字段支持以**采样点（sample）**为单位的精确定时，在 48000 Hz 采样率下，1个采样点的时间精度约为 **20.8 微秒**，远优于基于帧率的游戏逻辑调度，适合需要严格节拍对齐的音乐场景。
 
-当 MIDI 剪辑被嵌入 **Music Segment** 时，Wwise 会以 Music Segment 自身的 Tempo（单位 BPM）为主时钟驱动 MIDI 回放，忽略 MIDI 文件本身的 header tempo 信息。如果需要将 MIDI 剪辑的速度从原始的 120 BPM 改变为游戏中动态设置的 95 BPM，必须在 Wwise Authoring 的 Music Track Editor 中将剪辑的 **"Stretch Duration"** 选项关联到 Music Segment 的 Tempo 参数，否则 MIDI 音符时间轴将发生偏移，导致与其他音频层不同步。
+### 能够响应 MIDI 的 Wwise 对象类型
 
-## 实际应用
+并非所有 Wwise 对象都能消费 MIDI 数据，仅以下三类对象支持：
 
-**程序化弦乐伴奏系统**：在角色扮演游戏的战斗场景中，游戏代码可根据玩家血量实时计算和弦类型，然后调用 `PostMIDIOnEvent()` 发送对应的音符组合（如紧张时发送 Cm 小调和弦：音符 60、63、67），驱动 Wwise 中加载了弦乐采样的 Sound SFX 对象。血量恢复时切换为 C 大调（60、64、67），整个切换无需加载新的音频文件，内存占用仅为一套弦乐采样的大小。
+1. **Sound SFX 对象**：勾选 MIDI note tracking 后，接收到的 MIDI 音符编号将直接映射为音高偏移。音高偏移计算公式为：
 
-**外部 MIDI 控制器的实时演奏**：通过 Unity 的 `InputSystem` 捕获物理 MIDI 键盘的输入，将其转化为 `AkMIDIPost` 结构体后传入 Wwise，玩家可以在游戏内实时"演奏"绑定了合成器插件的 Wwise Sound 对象。这一流程中需要注意 Unity 与 Wwise 的线程安全问题：`PostMIDIOnEvent` 必须在 Wwise 的音频线程或通过 `AkCallbackManager` 的主线程代理调用，在 `Update()` 中直接调用可能导致音符卡顿。
+$$\Delta_{semitone} = N_{received} - N_{base}$$
 
-**自适应音乐层叠**：将一首多轨乐曲的各声部分别存为独立的 MIDI 剪辑，放置在同一个 Music Segment 的不同 Music Track 上，再为每条 Track 设置不同的 MIDI 通道（0=旋律，1=低音，2=打击乐）。游戏通过 RTPC（Real-Time Parameter Control）参数控制哪些通道静音，可在不重新触发 Event 的情况下动态增减音乐层次，比传统的多段音频切换响应延迟低约 20ms。
+其中 $N_{received}$ 是接收到的 MIDI 音符编号（0–127），$N_{base}$ 是在 Authoring 工具中设定的基准音（默认为 60，即中央 C）。例如，若游戏代码发送音符 64（E4），而基准音为 60，则 Sound 对象将被升高 **+4 个半音**播放。
+
+2. **Music Track 对象**：可在其 Sequence 或 Random 容器中内嵌 MIDI 剪辑（.mid 文件），与音频剪辑混合排布在同一时间轴上，MIDI 剪辑中的音符事件将驱动挂载于同一 Music Track 的 Source Plugin。
+
+3. **Source Plugin 对象**（如 Wwise 自带的 **Wwise Synth One** 或第三方 **Tonal Freeze**）：这类插件本身即为软件合成器，可直接消费 MIDI 数据产生音频，是实现完全程序化生成音乐的核心组件。
+
+### MIDI 通道与 Audio Bus 路由的解耦关系
+
+Wwise 的 MIDI 通道（0–15）与 Audio Bus 的声道（Mono/Stereo/5.1）在概念上完全无关。单个 Wwise Event 可同时接收全部 16 个 MIDI 通道的消息，每个通道对应的 Sound 对象可路由至独立的 Audio Bus。例如：
+
+- 通道 **9**（General MIDI 打击乐专用通道）→ 鼓组 Sound → **Dry Bus**（无混响）
+- 通道 **0** 旋律线 → Synth One Plugin → **Wet Bus**（带 Convolution Reverb）
+- 通道 **1** 贝斯线 → Sampler Sound → **Sub Bus**（低频增强）
+
+这三路信号在 Wwise Mixer 内部完成分离，Unity 侧的 C# 脚本**无需**对音频数据做任何处理，仅需正确填写 `byChan` 字段即可。
+
+---
+
+## 关键 API 与配置参数
+
+### PostMIDIOnEvent 与 StopMIDIOnEvent 的配对使用
+
+`AK::SoundEngine::PostMIDIOnEvent()` 将 MIDI 消息推入引擎的实时处理队列，但若游戏逻辑在音符持续期间需要中止播放（如玩家死亡打断音乐），必须显式调用：
+
+```cpp
+AK::SoundEngine::StopMIDIOnEvent(
+    AK::EVENTS::PLAY_SYNTH_MELODY,
+    gameObjectID
+);
+```
+
+若仅调用通用的 `AK::SoundEngine::StopAll()`，**只会停止音频输出，不会发送隐式 Note Off**，可能导致 Synth One 等有状态合成器出现音符"卡住"（stuck note）现象——这是集成阶段最高频的运行时 bug 之一。
+
+### MIDI Tempo 与 Wwise Music System 的节拍同步
+
+当 MIDI 剪辑嵌入 Music Track 时，Wwise 内部维护一个以 **PPQ（Pulses Per Quarter Note）** 为单位的时间轴，默认分辨率为 **480 PPQ**。若外部 MIDI 序列的 Tempo 为 **120 BPM**，则每个 PPQ 对应的实际时间为：
+
+$$t_{PPQ} = \frac{60}{BPM \times PPQ} = \frac{60}{120 \times 480} \approx 1.042 \text{ ms}$$
+
+Wwise 会将此 Tempo 信息存入 Music Segment 的元数据，供 Music Callbacks 系统向外暴露节拍事件（Beat、Bar、Grid 三个粒度），从而使 Unity 的游戏逻辑可在严格节拍点执行操作，如在第 3 小节第 1 拍切换战斗状态。
+
+---
+
+## 在 Unity-Wwise 集成中的实际应用
+
+### 通过 Wwise Unity Integration 发送 MIDI
+
+在已完成 Wwise-Unity 集成（即安装了 Wwise Integration Package）的项目中，C# 侧封装了与 C++ API 等价的接口。发送一个持续四分音符长度（120BPM 下 500ms）的 MIDI 音符示例如下：
+
+```csharp
+using UnityEngine;
+
+public class MidiMelodyTrigger : MonoBehaviour
+{
+    public AK.Wwise.Event synthEvent;
+
+    void TriggerNote(int midiNote, int velocity, int durationMs)
+    {
+        AkMIDIPost noteOn = new AkMIDIPost();
+        noteOn.byType      = AkMIDIEventTypes.NOTE_ON;
+        noteOn.byChan      = 0;
+        noteOn.byOnOffNote = (byte)midiNote;
+        noteOn.byVelocity  = (byte)velocity;
+        noteOn.uOffset     = 0;
+
+        AkMIDIPost noteOff = new AkMIDIPost();
+        noteOff.byType      = AkMIDIEventTypes.NOTE_OFF;
+        noteOff.byChan      = 0;
+        noteOff.byOnOffNote = (byte)midiNote;
+        noteOff.byVelocity  = 0;
+        // 在 48000Hz 下，durationMs 毫秒对应的采样点数
+        noteOff.uOffset     = (uint)(48000 * durationMs / 1000);
+
+        AkMIDIPostArray posts = new AkMIDIPostArray(2);
+        posts[0] = noteOn;
+        posts[1] = noteOff;
+
+        synthEvent.PostMIDI(gameObject, posts);
+    }
+
+    void Start()
+    {
+        // 触发中央C，力度90，持续500ms
+        TriggerNote(60, 90, 500);
+    }
+}
+```
+
+### 案例：程序化生成战斗音乐和声
+
+在某 RPG 战斗系统中，设计师将 Wwise Synth One 配置为弦乐 Pad 音色，并预先在 Wwise Authoring 中设置 7 个 Sound 对象分别映射至自然小调音阶的各级音。当战斗难度评分（0–100）超过 **70** 时，Unity 脚本将实时发送 Am 和弦（音符 57/60/64）的 Note On 消息，并将 MIDI CC#7（主音量控制器，0–127）值从 **40 提升至 110**，使弦乐 Pad 在保持和声不断的同时动态增强紧张感，整个过程不涉及任何音频文件的加载与解码，内存开销可忽略不计。
+
+---
 
 ## 常见误区
 
-**误区一：认为 Wwise MIDI 可以直接替代 General MIDI 音源**。Wwise 本身不内置 GM 音色库，`PostMIDIOnEvent` 发出的 Program Change 消息（0xC0）在没有外部插件的情况下会被静默忽略。要获得钢琴、铜管等标准音色，必须在 Wwise 项目中安装并配置支持 Program Change 响应的 Source Plugin（如 McDSP 或 Audiokinetic 官方示例中使用的 Wwise Synth One）。
+### 误区一：认为 MIDI 通道 10 在 Wwise 中自动对应打击乐
 
-**误区二：混淆 MIDI note 编号与 Wwise 音调参数的单位**。`PostMIDIOnEvent` 中的音符编号是 0-127 的整数，而 Wwise 中 Pitch 参数的单位是"百分音（cents）"，100 cents = 1 个半音。当通过 MIDI note tracking 自动计算音高偏移时，Wwise 内部会将音符差值转换为 cents（公式：`Δcents = (note - 60) × 100`），但如果同时叠加了手动设置的 Pitch RTPC，两者会相加，容易造成音高偏移双倍计算的问题。
+在 General MIDI 标准（由 MIDI Manufacturers Association 于 1991 年制定）中，通道 10（程序编号，对应 `byChan = 9`）约定用于打击乐。但 Wwise **不会**自动对通道 9 做任何特殊处理——打击乐逻辑需要设计师在 Authoring 工具中手动将通道 9 的 Sound 对象配置为使用 **note-to-asset 映射表**，将不同音符编号（如 36=BassDrum、38=Snare、42=HiHat）映射至对应的采样文件。若忽略此配置，通道 9 的行为与其他通道完全相同，会对同一音频文件施加音高偏移而非触发不同采样。
 
-**误区三：认为 Music Segment 内嵌的 MIDI 剪辑与 PostMIDIOnEvent 是同一套机制**。前者是 Wwise Authoring 工具中预编排的静态 MIDI 数据，随 Music Segment 自动播放；后者是运行时由游戏代码动态注入的 MIDI 消息流，两套机制的优先级和调度方式完全独立，无法互相覆盖或取消对方已发出的 Note On 消息。
+### 误区二：混淆 MIDI Output（发送端）与 MIDI Input（接收端）的配置流程
+
+**MIDI Input** 的配置路径：Sound 属性面板 → MIDI 标签页 → 勾选"Use note tracking"，并在 Wwise 工程的 Project Settings 中无需任何额外设置。
+
+**MIDI Output** 的配置路径：需要在 Music Track 上启用"MIDI Metronome"或通过 `AK_MusicSyncMIDI` 类型的 Music Callback 回调，在 Unity 侧注册 `AkCallbackType.AK_MusicSyncMIDI` 才能接收 MIDI 事件流。两套流程完全独立，在 Authoring 工具中对应不同的属性面板页，将两者混淆会导致调试时耗费大量时间却找不到数据流向。
+
+### 误区三：忽略采样率对 uOffset 计算的影响
+
+`uOffset` 字段以**目标平台的实际音频采样率**为单位，而非固定的 48000 Hz。若项目在移动平台使用 **44100 Hz**，则 500ms 对应 `44100 × 0.5 = 22050` 个采样点；若 PC 平台使用 **48000 Hz**，则为 `48000 × 0.5 = 24000`。将平台采样率硬编码为 48000 是常见的跨平台 bug 根源，正确做法是在运行时调用 `AK::SoundEngine::GetAudioSettings()` 获取 `uNumSamplesPerFrame` 与实际采样率后再行换算。
+
+---
 
 ## 知识关联
 
-学习 Wwise MIDI 需要先掌握 **Wwise-Unity 集成**的 API 调用规范，具体是熟悉 `AkSoundEngine` 静态类的事件投递模式——`PostMIDIOnEvent` 与 `PostEvent` 共享同一套 GameObject 绑定逻辑，未挂载 `AkGameObj` 组件的对象无法接收 MIDI 消息，这一点在从 Unity 侧调试时尤为关键。
+### 与 Music Callback 系统的衔接
 
-完成 Wwise MIDI 的学习后，自然过渡到 **Music Callback** 机制，后者允许游戏代码在 Wwise MIDI 序列播放的特定节拍（Bar/Beat/Grid）接收回调通知，从而实现游戏视觉效果与 MIDI 驱动的音乐节奏精确对齐。两者组合使用时，常见模式是：Music Callback 告知游戏"当前是第 3 拍"，游戏逻辑据此决定下一个 `PostMIDIOnEvent` 应发送何种和弦，形成一个实时的音乐生成闭环。
+Wwise MIDI 的
