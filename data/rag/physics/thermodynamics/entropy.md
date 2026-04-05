@@ -10,11 +10,11 @@ tags: ["里程碑"]
 
 # Quality Metadata (Schema v2)
 content_version: 2
-quality_tier: "B"
-quality_score: 52.8
+quality_tier: "S"
+quality_score: 81.4
 generation_method: "ai-rewrite-v1"
-unique_content_ratio: 0.594
-last_scored: "2026-03-22"
+unique_content_ratio: 0.962
+last_scored: "2026-04-05"
 sources:
   - type: "ai-generated"
     model: "claude-sonnet-4-20250514"

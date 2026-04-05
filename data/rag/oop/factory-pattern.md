@@ -10,11 +10,11 @@ tags: ["设计模式"]
 
 # Quality Metadata (Schema v2)
 content_version: 4
-quality_tier: "pending-rescore"
-quality_score: 42.0
+quality_tier: "S"
+quality_score: 81.7
 generation_method: "intranet-llm-rewrite-v2"
-unique_content_ratio: 0.429
-last_scored: "2026-03-24"
+unique_content_ratio: 0.971
+last_scored: "2026-04-05"
 sources:
   - type: "ai-generated"
     model: "mihoyo.claude-4-6-sonnet"

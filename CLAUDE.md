@@ -81,7 +81,7 @@ data/rag/          — RAG知识文档 (6,156篇)
 | **测试总数** | 1,143 (897 BE + 238 FE + 8 FSRS review) | 2026-04-05 |
 | **tsc errors** | 0 | 2026-03-21 |
 | **Open Issues** | 0 | 2026-03-27 |
-| **RAG 质量** | v2覆盖 3934/6156 (63.9%), S6.5进行中→100% | 2026-03-30 |
+| **RAG 质量** | 6156/6156 rescored (100%), avg 78.4, S:696 A:5459 B:1 C:0 | 2026-04-05 |
 
 ---
 
@@ -98,8 +98,8 @@ data/rag/          — RAG知识文档 (6,156篇)
 > | Sprint 0-4 | ✅ | Schema v2 + Scorer + 手动精写 + research-rewrite + ai-rewrite + Tier-C消除 |
 > | Sprint 5 | ✅ | intranet-llm-rewrite-v2 Tier-B批量提升 (Batch 1-3 + P2) |
 > | Sprint 6 | ✅ | 全量Tier-B升级 — 3353/3353完成 (100%), 0 errors |
-> | Sprint 6.5 | 🔥 | 孤儿文件补全 — 192/2573进行中 (7.5%), PID 2856, ~63/hr |
-> | Sprint 7 | ⏸ | Tier-S Booster — 等Sprint 6.5完成, S6已就绪 |
+> | Sprint 6.5 | ✅ | 全量rescore完成 — 6156/6156 (100%), avg 78.4, 0 pending |
+> | Sprint 7 | 🔥 | Tier-S Booster — 目标均分80+, 5459 Tier-A待提升 |
 >
 > **目标**: 全量v2覆盖 + 均分80+
 > **脚本**: scripts/_batch_sprint6.py, scripts/_batch_sprint6_5.py, scripts/_batch_tier_b_parallel.py
@@ -278,4 +278,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-05 | **Scope**: FSRS Review UI integrated (.gitignore cleanup + ReviewPage + hub bar + API client + 8 tests) | **Result**: V1.0 feature-complete, 238 FE tests pass
+**Date**: 2026-04-05 | **Scope**: Full RAG rescore — 2701 pending-rescore files resolved, avg 78.4, S:696/A:5459/B:1/C:0 | **Result**: V1.0 feature-complete + RAG quality fully scored

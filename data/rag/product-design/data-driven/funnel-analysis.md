@@ -9,10 +9,10 @@ is_milestone: false
 tags: ["分析"]
 content_version: 3
 quality_tier: "S"
-quality_score: 92.0
+quality_score: 82.9
 generation_method: "research-rewrite-v2"
-unique_content_ratio: 0.93
-last_scored: "2026-03-22"
+unique_content_ratio: 1.0
+last_scored: "2026-04-05"
 sources:
   - type: "industry"
     ref: "Croll, Alistair & Yoskovitz, Benjamin. Lean Analytics, O'Reilly, 2013"

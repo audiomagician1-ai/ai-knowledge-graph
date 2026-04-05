@@ -11,10 +11,10 @@ tags: ["基础"]
 # Quality Metadata (Schema v2)
 content_version: 3
 quality_tier: "S"
-quality_score: 95.9
+quality_score: 82.9
 generation_method: "research-rewrite-v2"
-unique_content_ratio: 0.91
-last_scored: "2026-03-22"
+unique_content_ratio: 1.0
+last_scored: "2026-04-05"
 sources:
   - type: "reference"
     title: "Game Engine Architecture (3rd Edition)"

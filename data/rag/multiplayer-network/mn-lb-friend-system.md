@@ -8,11 +8,11 @@ difficulty: 3
 is_milestone: false
 tags: ["社交"]
 content_version: 3
-quality_tier: "S"
-quality_score: 89.0
+quality_tier: "A"
+quality_score: 76.3
 generation_method: "research-rewrite-v2"
-unique_content_ratio: 0.92
-last_scored: "2026-03-22"
+unique_content_ratio: 1.0
+last_scored: "2026-04-05"
 sources:
   - type: "industry"
     ref: "Glazer, Joshua & Madhav, Sanjay. Multiplayer Game Programming, Addison-Wesley, 2016, Ch.8"

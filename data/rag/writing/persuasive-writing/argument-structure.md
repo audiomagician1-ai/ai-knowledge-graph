@@ -8,11 +8,11 @@ difficulty: 2
 is_milestone: false
 tags: ["结构"]
 content_version: 3
-quality_tier: "S"
-quality_score: 92.0
+quality_tier: "A"
+quality_score: 79.6
 generation_method: "research-rewrite-v2"
-unique_content_ratio: 0.93
-last_scored: "2026-03-22"
+unique_content_ratio: 1.0
+last_scored: "2026-04-05"
 sources:
   - type: "academic"
     ref: "Toulmin, Stephen. The Uses of Argument, Cambridge UP, 1958/2003"

@@ -10,11 +10,11 @@ tags: ["思维"]
 
 # Quality Metadata (Schema v2)
 content_version: 3
-quality_tier: "pending-rescore"
-quality_score: 35.5
+quality_tier: "A"
+quality_score: 74.2
 generation_method: "intranet-llm-rewrite-v1"
-unique_content_ratio: 0.387
-last_scored: "2026-03-22"
+unique_content_ratio: 0.95
+last_scored: "2026-04-05"
 sources:
   - type: "ai-generated"
     model: "mihoyo.claude-4-6-sonnet"

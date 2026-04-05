@@ -22,5 +22,18 @@
       "C": 0
     },
     "report_generated": "2026-03-21T23:50:55.220880"
+  },
+  {
+    "timestamp": "2026-04-05T16:13:40.246596",
+    "total": 6156,
+    "avg_score": 78.4,
+    "tiers": {
+      "S": 696,
+      "A": 5459,
+      "B": 1,
+      "C": 0
+    },
+    "report_generated": "2026-04-05T16:13:40.246596",
+    "note": "Full rescore: 2701 pending-rescore resolved, 0 remaining"
   }
 ]

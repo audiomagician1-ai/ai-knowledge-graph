@@ -10,11 +10,11 @@ tags: ["工具"]
 
 # Quality Metadata (Schema v2)
 content_version: 3
-quality_tier: "pending-rescore"
-quality_score: 42.6
+quality_tier: "S"
+quality_score: 82.9
 generation_method: "intranet-llm-rewrite-v2"
-unique_content_ratio: 0.444
-last_scored: "2026-03-25"
+unique_content_ratio: 1.0
+last_scored: "2026-04-05"
 sources:
   - type: "ai-generated"
     model: "mihoyo.claude-4-6-sonnet"

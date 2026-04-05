@@ -10,11 +10,11 @@ tags: ["里程碑"]
 
 # Quality Metadata (Schema v2)
 content_version: 4
-quality_tier: "pending-rescore"
-quality_score: 41.1
+quality_tier: "A"
+quality_score: 79.6
 generation_method: "intranet-llm-rewrite-v2"
-unique_content_ratio: 0.371
-last_scored: "2026-03-24"
+unique_content_ratio: 1.0
+last_scored: "2026-04-05"
 sources:
   - type: "ai-generated"
     model: "mihoyo.claude-4-6-sonnet"

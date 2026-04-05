@@ -10,11 +10,11 @@ tags: ["基因", "调控", "表达"]
 
 # Quality Metadata (Schema v2)
 content_version: 3
-quality_tier: "S"
-quality_score: 92.0
+quality_tier: "A"
+quality_score: 79.6
 generation_method: "research-rewrite-v2"
-unique_content_ratio: 0.85
-last_scored: "2026-03-22"
+unique_content_ratio: 1.0
+last_scored: "2026-04-05"
 sources:
   - type: "textbook"
     name: "Alberts et al., Molecular Biology of the Cell, 7th ed."

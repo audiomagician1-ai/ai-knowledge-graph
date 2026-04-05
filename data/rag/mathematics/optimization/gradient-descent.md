@@ -10,11 +10,11 @@ tags: ["核心"]
 
 # Quality Metadata (Schema v2)
 content_version: 3
-quality_tier: "pending-rescore"
-quality_score: 32.6
+quality_tier: "A"
+quality_score: 76.3
 generation_method: "llm-rewrite-v2"
-unique_content_ratio: 0.333
-last_scored: "2026-03-22"
+unique_content_ratio: 1.0
+last_scored: "2026-04-05"
 sources:
   - type: "encyclopedia"
     ref: "Wikipedia - Gradient descent"

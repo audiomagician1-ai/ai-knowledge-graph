@@ -8,11 +8,11 @@ difficulty: 1
 is_milestone: false
 tags: ["基础"]
 content_version: 3
-quality_tier: "S"
-quality_score: 89.0
+quality_tier: "A"
+quality_score: 79.6
 generation_method: "research-rewrite-v2"
-unique_content_ratio: 0.92
-last_scored: "2026-03-22"
+unique_content_ratio: 1.0
+last_scored: "2026-04-05"
 sources:
   - type: "textbook"
     ref: "Huddleston, Rodney & Pullum, Geoffrey. The Cambridge Grammar of the English Language, Cambridge UP, 2002"
