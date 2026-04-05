@@ -81,7 +81,7 @@ data/rag/          — RAG知识文档 (6,156篇)
 | **测试总数** | 1,143 (897 BE + 238 FE + 8 FSRS review) | 2026-04-05 |
 | **tsc errors** | 0 | 2026-03-21 |
 | **Open Issues** | 0 | 2026-03-27 |
-| **RAG 质量** | 6156/6156, avg 78.5, S:706 A:5450 B:0 C:0, Sprint 7 boosting (414 bg) | 2026-04-05 |
+| **RAG 质量** | 6156/6156, avg 79.5, S:1096 A:5060 B:0 C:0 | 2026-04-06 |
 
 ---
 
@@ -99,10 +99,10 @@ data/rag/          — RAG知识文档 (6,156篇)
 > | Sprint 5 | ✅ | intranet-llm-rewrite-v2 Tier-B批量提升 (Batch 1-3 + P2) |
 > | Sprint 6 | ✅ | 全量Tier-B升级 — 3353/3353完成 (100%), 0 errors |
 > | Sprint 6.5 | ✅ | 全量rescore完成 — 6156/6156 (100%), avg 78.4, 0 pending |
-> | Sprint 7 | 🔥 | Tier-S Booster — 11/425 完成 (2.6%), 414 bg运行中 PID 13828, ~47/hr, avg 78.5 |
+> | Sprint 7 | ✅ | Tier-S Booster — 416/425 完成 (98%), 9 skipped (name mismatch), S:706→1096, avg 78.5→79.5 |
 >
-> **目标**: 全量v2覆盖 + 均分80+
-> **脚本**: scripts/_batch_sprint6.py, scripts/_batch_sprint6_5.py, scripts/_batch_tier_b_parallel.py
+> **目标**: 全量v2覆盖 + 均分80+ ← 当前 79.5 (接近达成)
+> **脚本**: scripts/_batch_sprint6.py, scripts/_batch_sprint6_5.py, scripts/_batch_tier_b_parallel.py, scripts/_batch_tier_s_booster.py
 
 ### V1.0 剩余任务
 - ✅ FSRS 间隔重复引擎 (#34/#35)
@@ -278,4 +278,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-05 | **Scope**: Sprint 7 Tier-S Booster started — 11 docs boosted (73→80+), Tier-B→0, 414 bg batch running | **Result**: V1.0 feature-complete + avg 78.5
+**Date**: 2026-04-06 | **Scope**: Sprint 7 Tier-S Booster COMPLETE — 416/425 boosted, S:706→1096 (+55%), avg 78.5→79.5, B:0 C:0 | **Result**: V1.0 feature-complete + RAG quality near-80
