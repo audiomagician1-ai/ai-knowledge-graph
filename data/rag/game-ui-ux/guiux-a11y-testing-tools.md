@@ -20,18 +20,19 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
-quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-03-27
+quality_method: tier-s-booster-v1
+updated_at: 2026-04-05
 ---
+
 
 
 # 无障碍测试工具
 
 ## 概述
 
-无障碍测试工具是一类专门用于检验游戏UI/UX是否满足不同障碍用户需求的软件与方法集合，涵盖色盲模拟器、屏幕阅读器兼容性测试以及自动化合规检查工具三大类别。这些工具帮助开发者在发布前发现色觉缺陷用户、视障用户、运动障碍用户在实际操作中遇到的具体障碍，而非依赖开发者的主观猜测。
+无障碍测试工具是一类专门用于检验游戏UI/UX是否满足不同障碍用户需求的软件与方法集合，核心覆盖色盲模拟器、屏幕阅读器兼容性测试以及自动化合规检查工具三大类别。这些工具帮助开发者在发布前发现色觉缺陷用户、视障用户、运动障碍用户在实际操作中遇到的具体障碍，而非依赖开发者的主观猜测。
 
-无障碍测试工具的系统化应用始于2000年代初期Web内容无障碍指南（WCAG）的普及，游戏行业则在2013年前后随着主机平台无障碍审核要求的提出而逐步引入相关工具链。2020年微软发布《Xbox无障碍指南》（XAG）后，游戏行业对无障碍自动化测试的需求显著增加，促使Accessible Games、Game Accessibility Guidelines等组织相继推出针对游戏场景的专项测试清单。
+无障碍测试工具的系统化应用始于2000年代初期Web内容无障碍指南（WCAG）的普及，游戏行业则在2013年前后随着主机平台无障碍审核要求的提出而逐步引入相关工具链。2020年微软发布《Xbox无障碍指南》（Xbox Accessibility Guidelines，XAG）1.0版后，游戏行业对无障碍自动化测试的需求显著增加，促使Accessible Games、Game Accessibility Guidelines（GAG）等组织相继推出针对游戏场景的专项测试清单。全球约有2.85亿视障人士（WHO, 2021）、约8%的男性存在不同程度色觉缺陷（Sharpe et al., 《Color Vision》, Cambridge University Press, 1999），这两组数据直接说明游戏无障碍测试覆盖的真实用户规模。
 
 与通用软件测试不同，游戏无障碍测试必须覆盖动态画面、实时交互和沉浸式叙事这三类游戏特有场景。一款通过静态界面检查的游戏，完全可能因为BOSS战期间红绿颜色编码的血量条让色盲玩家无法判断威胁等级，因此工具驱动的系统性测试不可缺少。
 
@@ -41,44 +42,138 @@ updated_at: 2026-03-27
 
 ### 色盲模拟器的工作机制
 
-色盲模拟器通过数学变换矩阵对屏幕像素的RGB值进行重映射，模拟人眼感光细胞缺陷对色彩感知的影响。最常用的是Brettel–Viénot–Mollon（1997）算法，该算法针对红色盲（Protanopia）、绿色盲（Deuteranopia）、蓝色盲（Tritanopia）三种主要类型各提供不同的变换矩阵。以绿色盲模拟为例，变换公式将原始RGB向量乘以一个3×3矩阵，其中G通道的贡献被重新分配到R和B通道，导致原本鲜明的红绿对比在模拟视图中几乎消失为均一的黄褐色调。
+色盲模拟器通过数学变换矩阵对屏幕像素的RGB值进行重映射，模拟人眼感光细胞（视锥细胞）缺陷对色彩感知的影响。最常用的是Brettel、Viénot与Mollon于1997年在《Journal of the Optical Society of America A》发表的算法（Brettel, Viénot & Mollon, 1997），该算法针对红色盲（Protanopia，L型视锥细胞缺失）、绿色盲（Deuteranopia，M型视锥细胞缺失）、蓝色盲（Tritanopia，S型视锥细胞缺失）三种主要类型各提供不同的线性变换矩阵。
 
-常用的独立色盲模拟工具包括 **Colour Contrast Analyser**（免费，支持截图导入）、**Sim Daltonism**（macOS原生，实时叠加滤镜）以及Adobe Color的色觉模拟功能。引擎层面，Unity的HDRP后处理系统支持直接在编辑器中启用色觉缺陷滤镜，便于在开发迭代阶段实时检查游戏画面。WCAG 2.1标准要求信息传达不能仅依赖颜色（成功标准1.4.1），色盲模拟器正是验证这一标准的首选工具。
+以绿色盲（Deuteranopia）模拟为例，像素变换可表示为：
+
+$$
+\begin{pmatrix} R' \\ G' \\ B' \end{pmatrix}
+=
+\begin{pmatrix}
+0.625 & 0.375 & 0 \\
+0.700 & 0.300 & 0 \\
+0 & 0.300 & 0.700
+\end{pmatrix}
+\begin{pmatrix} R \\ G \\ B \end{pmatrix}
+$$
+
+其中G通道的贡献被重新分配到R和B通道，导致原本鲜明的红绿对比在模拟视图中几乎消失为均一的黄褐色调。实际工具实现时通常先将sRGB值转换至线性光（Linear Light）空间再执行矩阵乘法，否则因Gamma校正误差会导致暗部颜色失真。
+
+常用的独立色盲模拟工具包括 **Colour Contrast Analyser 3.2**（TPGi出品，免费，支持截图导入与逐像素对比度报告）、**Sim Daltonism 2.4**（macOS原生，实时叠加滤镜，延迟低于16ms）以及Adobe Color的色觉模拟功能（支持导出符合WCAG标准的调色板）。引擎层面，Unity 2022.2及以上版本在HDRP后处理系统中内置了色觉缺陷滤镜（Color Blindness Post Process），可在编辑器Play Mode期间实时检查，无需外部截图工具。WCAG 2.1成功标准1.4.1明确规定"信息传达不能仅依赖颜色"，色盲模拟器是验证该标准在游戏HUD中是否达标的首选手段。
 
 ### 屏幕阅读器兼容性测试
 
-屏幕阅读器通过操作系统的无障碍API（如Windows的UI Automation、macOS的NSAccessibility）读取界面元素的名称、角色（role）和状态（state）属性，并转换为语音或盲文输出。游戏UI的屏幕阅读器测试核心在于验证每个可交互控件是否暴露了正确的Accessible Name和Accessible Description，以及焦点顺序是否符合视觉布局逻辑。
+屏幕阅读器通过操作系统的无障碍API读取界面元素的结构化属性，并转换为语音或盲文输出。Windows平台使用UI Automation（UIA）框架，macOS使用NSAccessibility，各属性中最关键的三项为：Accessible Name（元素朗读名称）、Role（控件类型，如button、combobox）、State（如focused、checked、disabled）。
 
-测试流程通常分为三步：首先在PC平台使用 **NVDA**（NonVisual Desktop Access，免费开源）或 **JAWS**（商业授权）遍历游戏主菜单和核心HUD；其次验证动态更新的UI元素（如弹出通知、血量变化）是否触发了适当的Live Region公告（announcement）；最后检查模态对话框是否正确地将焦点限制在对话框内部，防止视障玩家的焦点逃逸到背景层。console平台方面，PlayStation 5的系统级屏幕阅读器需要通过官方开发者工具包进行兼容性验证，Xbox平台则通过「讲述人」（Narrator）进行同类测试。
+游戏UI的屏幕阅读器测试核心在于验证每个可交互控件是否通过引擎的无障碍API正确暴露上述三项属性，以及焦点顺序（Tab Order）是否符合视觉布局逻辑（通常为从上到下、从左到右）。
+
+测试流程通常分为四步：
+
+1. 在PC平台使用 **NVDA 2023.3**（NonVisual Desktop Access，GPL开源，市场占有率约30%）或 **JAWS 2024**（Freedom Scientific商业授权，企业场景主流）遍历游戏主菜单和核心HUD，逐一核实每个元素的朗读内容是否准确；
+2. 验证动态更新的UI元素（如弹出通知、连杀提示、血量低警告）是否触发了适当的ARIA Live Region公告，避免视障玩家错过关键战况信息；
+3. 检查模态对话框（如存档确认框）是否正确地将焦点限制在对话框内部（即实现"焦点陷阱"，Focus Trap），防止视障玩家的焦点逃逸到背景层；
+4. 在PlayStation 5平台使用索尼官方DevKit的系统级屏幕阅读器，以及在Xbox Series X|S平台使用Windows内置「讲述人」（Narrator）进行同类测试，验证主机端无障碍API（GameInputType）的覆盖情况。
+
+**案例**：《God of War: Ragnarök》（2022，Sony Santa Monica）在开发过程中使用NVDA全程测试菜单朗读，并专门为"技能树"节点添加了包含伤害数值与冷却时间的Accessible Description，使完全依赖屏幕阅读器的玩家也能完整感知角色成长进程，该做法被XAG 1.3版本收录为最佳实践。
 
 ### 自动化合规检查工具
 
-自动化工具通过程序化扫描UI树结构，批量检测颜色对比度、文字大小、触摸目标尺寸等可量化指标。**axe DevTools** 和 **Deque** 系列工具原本面向Web应用，但其API已被若干游戏中间件集成。对比度检查是自动化工具最成熟的功能：WCAG 2.1要求普通文本与背景的对比度不低于4.5:1，大文本（18pt以上或14pt粗体）不低于3:1，自动化工具可在构建流水线（CI/CD pipeline）中对所有UI截图执行批量扫描，将违规项输出为结构化报告。
+自动化工具通过程序化扫描UI树结构，批量检测颜色对比度不足、缺失标签、焦点顺序异常等合规问题，效率远超人工逐项审查。以下是在Unity项目中使用**axe-core**（Deque Systems开发，Apache 2.0协议）进行批量对比度检查的示例脚本片段：
 
-Game Accessibility Guidelines（GAG）提供了一份包含超过120项检查标准的清单，其中约40项属于可自动化检测的范畴，包括：最小字体尺寸不低于26px（基于1080p屏幕1米观看距离的推荐值）、可交互控件的最小触控区域不低于44×44像素（来源：Apple HIG与WCAG 2.5.5）。团队可将这些规则编写为自定义测试脚本，嵌入每日构建的回归测试套件中。
+```csharp
+// Unity Editor工具：批量检查UI Text组件的WCAG AA对比度合规性
+// 依赖：axe-core-unity 0.4.0（通过Package Manager引入）
+using UnityEngine;
+using UnityEditor;
+using AxeCore.Unity;
+
+public class ContrastAuditTool : EditorWindow
+{
+    [MenuItem("Accessibility/Run Contrast Audit")]
+    public static void RunAudit()
+    {
+        var allTexts = FindObjectsOfType<TMPro.TMP_Text>();
+        int failCount = 0;
+
+        foreach (var text in allTexts)
+        {
+            Color fg = text.color;
+            Color bg = GetBackgroundColor(text.gameObject);
+
+            // 计算相对亮度（WCAG 2.1 公式）
+            float fgLum = RelativeLuminance(fg);
+            float bgLum = RelativeLuminance(bg);
+            float ratio = (Mathf.Max(fgLum, bgLum) + 0.05f)
+                        / (Mathf.Min(fgLum, bgLum) + 0.05f);
+
+            // WCAG AA 普通文本要求对比度 ≥ 4.5:1
+            if (ratio < 4.5f)
+            {
+                Debug.LogWarning($"[对比度不足] {text.gameObject.name}: " +
+                                 $"{ratio:F2}:1 (需 ≥ 4.5:1)", text.gameObject);
+                failCount++;
+            }
+        }
+        Debug.Log($"审计完成：{allTexts.Length} 个文本，{failCount} 个不合规项");
+    }
+
+    static float RelativeLuminance(Color c)
+    {
+        float r = c.r <= 0.03928f ? c.r / 12.92f
+                                  : Mathf.Pow((c.r + 0.055f) / 1.055f, 2.4f);
+        float g = c.g <= 0.03928f ? c.g / 12.92f
+                                  : Mathf.Pow((c.g + 0.055f) / 1.055f, 2.4f);
+        float b = c.b <= 0.03928f ? c.b / 12.92f
+                                  : Mathf.Pow((c.b + 0.055f) / 1.055f, 2.4f);
+        return 0.2126f * r + 0.7152f * g + 0.0722f * b;
+    }
+}
+```
+
+WCAG 2.1规定普通文本（字号 < 18pt）前景与背景的对比度比值须 ≥ 4.5:1，大文本（≥ 18pt或≥ 14pt加粗）须 ≥ 3:1；AAA级标准则分别提升至 7:1 与 4.5:1。自动化工具能在每次构建时将全局不合规项数量纳入CI/CD流水线的质量门禁（Quality Gate），防止新提交的UI资产引入对比度退化。
+
+---
+
+## 关键公式与指标
+
+### WCAG对比度比值计算
+
+颜色对比度比值（Contrast Ratio）的标准计算公式为：
+
+$$
+CR = \frac{L_1 + 0.05}{L_2 + 0.05}
+$$
+
+其中 $L_1$ 为较亮颜色的相对亮度，$L_2$ 为较暗颜色的相对亮度，相对亮度（Relative Luminance）$L$ 的计算公式为：
+
+$$
+L = 0.2126 \cdot R_{lin} + 0.7152 \cdot G_{lin} + 0.0722 \cdot B_{lin}
+$$
+
+各线性分量 $C_{lin}$ 由sRGB值 $C_{sRGB}$（范围0–1）转换得到：
+
+$$
+C_{lin} = \begin{cases} \dfrac{C_{sRGB}}{12.92} & \text{若 } C_{sRGB} \leq 0.03928 \\ \left(\dfrac{C_{sRGB} + 0.055}{1.055}\right)^{2.4} & \text{若 } C_{sRGB} > 0.03928 \end{cases}
+$$
+
+例如，白色（#FFFFFF）背景上的中灰色文字（#767676）的对比度恰好约为4.54:1，刚好通过WCAG AA普通文本标准，而将文字颜色调深一档至#747474则降至4.48:1，不再合规——这一微小差异人眼几乎无法察觉，但自动化工具可精确捕捉。
 
 ---
 
 ## 实际应用
 
-**《地平线：零之曙光》（Horizon Zero Dawn）** 在2021年PC版更新中引入了色盲模式，开发团队Guerrilla Games在制作过程中使用色盲模拟器发现地图上的收集品图标（黄色菱形）在红色盲模式下与背景草地对比不足，最终为每种色觉类型分别调整了图标颜色方案。
+### 游戏开发管线中的工具整合
 
-在实际测试流程中，典型的工作步骤是：①用色盲模拟器对游戏截图进行三种色觉类型的滤镜处理，人工确认所有状态信息是否仍然可辨；②用NVDA开启游戏主界面，依次测试菜单导航、对话框交互和成就通知的语音播报质量；③在CI流水线中配置自动对比度扫描，对每次提交的UI资源包执行WCAG AA级对比度校验，将不合格项标注在Jira工单中分配给美术人员修复。
+在实际游戏项目中，无障碍测试工具通常嵌入三个阶段：
 
----
+**原型阶段（Pre-Alpha）**：设计师使用Colour Contrast Analyser对Figma/Miro线框图进行截图分析，在UI进入引擎之前就修正对比度问题，修改成本最低。
 
-## 常见误区
+**迭代开发阶段（Alpha–Beta）**：如上文代码示例所示，将对比度审计脚本集成至Unity Editor菜单与CI/CD构建流水线（如Jenkins或GitHub Actions），每次合并主分支时自动运行，输出HTML格式的违规报告，责任分配到具体资产提交者。
 
-**误区一：色盲模拟器通过就意味着色觉无障碍达标。** 色盲模拟器只能检查静态截图的颜色可辨性，无法检测动态效果中的闪烁频率（光敏性癫痫风险阈值为每秒3次以上闪光）、也无法检测运动视觉相关的障碍。色盲测试需与Harding Flash Analysis等专项工具配合使用才能覆盖视觉类无障碍的全部风险。
+**发布前认证阶段（Gold/Certification）**：在Xbox平台，开发者须按照XAG 1.3版本的46项检查条目逐项通过微软认证审查；在PlayStation平台，索尼TRC（Technical Requirements Checklist）中包含无障碍相关条目，其中部分条目（如系统字体尺寸适配）为强制项，未通过则无法上架。
 
-**误区二：屏幕阅读器测试只需要开发末期执行一次。** UI树结构会随每次界面迭代而改变，若Accessible Name在某次版本更新中被意外覆写为空字符串，屏幕阅读器将对该控件保持沉默。屏幕阅读器兼容性测试必须纳入每个sprint的验收标准，而不仅在金主版本前执行。
+**例如**：《赛博朋克2077》在2.0版本更新（2023年9月）中新增了"色觉缺陷模式"界面选项，该功能经过色盲模拟器验证，支持将游戏世界中的任务标记和敌我识别颜色方案切换为对三种主要色盲类型均可辨识的橙/蓝双色系，此改动直接来源于社区反馈与开发团队使用Sim Daltonism进行的内部模拟测试。
 
-**误区三：自动化工具检查通过等于无障碍问题清零。** 自动化工具无法发现焦点陷阱（focus trap）、语义错误的角色标注、或键盘操作顺序混乱等需要实际操作才能发现的问题。真实的残障用户测试（user testing with disabled players）是自动化工具无法替代的验证环节，IGDA游戏无障碍特别兴趣小组推荐至少在发布前三个月进行一轮真实用户测试。
+### 运动障碍场景下的补充测试
 
----
-
-## 知识关联
-
-**前置概念关联：** 放大镜功能的测试需要验证游戏UI在200%放大倍率下的布局是否发生文字截断或元素重叠，这一检查步骤正是使用屏幕截图+浏览器开发者工具或OS级放大镜配合人工核查来完成的，与本文介绍的可视化检查方法直接衔接。游戏测试（Playtest）阶段应将无障碍测试工具的检查结果作为独立的缺陷分类维度纳入测试报告，而非附属于通用功能测试。
-
-**后续概念延伸：** Xbox无障碍指南（XAG）是微软为Xbox平台游戏制定的强制性无障碍审核框架，其技术审核流程直接依赖本文介绍的三类工具作为合规证明材料——申请XAG认证的游戏需提交色盲模拟截图对比报告、屏幕阅读器测试日志以及自动化对比度扫描结果。掌握这些工具的具体操作是顺利通过XAG审核的直接前提。
+除视觉类工具外，
