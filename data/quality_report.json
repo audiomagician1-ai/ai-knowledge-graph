@@ -1,23 +1,23 @@
 {
-  "_generated": "2026-04-05T16:13:17.299335",
+  "_generated": "2026-04-05T16:35:31.112240",
   "_version": "scorer-v2.0",
   "total_docs": 6156,
-  "avg_score": 78.4,
+  "avg_score": 78.5,
   "tier_distribution": {
-    "S": 696,
-    "A": 5459,
-    "B": 1,
+    "S": 706,
+    "A": 5450,
+    "B": 0,
     "C": 0
   },
   "domain_summary": {
     "3d-art": {
       "count": 226,
-      "avg_score": 76.9,
+      "avg_score": 77.5,
       "min_score": 73.0,
-      "max_score": 83.0,
+      "max_score": 95.9,
       "tiers": {
-        "S": 11,
-        "A": 215,
+        "S": 19,
+        "A": 207,
         "B": 0,
         "C": 0
       }
@@ -145,11 +145,11 @@
     "game-design": {
       "count": 250,
       "avg_score": 77.9,
-      "min_score": 70.3,
+      "min_score": 73.0,
       "max_score": 82.9,
       "tiers": {
-        "S": 7,
-        "A": 243,
+        "S": 8,
+        "A": 242,
         "B": 0,
         "C": 0
       }
@@ -288,13 +288,13 @@
     },
     "physics": {
       "count": 194,
-      "avg_score": 78.6,
-      "min_score": 43.5,
+      "avg_score": 78.8,
+      "min_score": 73.0,
       "max_score": 82.9,
       "tiers": {
-        "S": 30,
+        "S": 31,
         "A": 163,
-        "B": 1,
+        "B": 0,
         "C": 0
       }
     },
@@ -445,83 +445,6 @@
   ],
   "top20_worst": [
     {
-      "file": "physics\\fluid-mechanics\\navier-stokes-intro.md",
-      "concept": "纳维-斯托克斯方程简介",
-      "score": 43.5,
-      "tier": "B",
-      "domain": "physics"
-    },
-    {
-      "file": "game-design\\combat-design\\lock-on-system.md",
-      "concept": "锁定系统",
-      "score": 70.3,
-      "tier": "A",
-      "domain": "game-design"
-    },
-    {
-      "file": "3d-art\\3da-bake-ao.md",
-      "concept": "AO烘焙",
-      "score": 73.0,
-      "tier": "A",
-      "domain": "3d-art"
-    },
-    {
-      "file": "3d-art\\3da-bake-id-map.md",
-      "concept": "ID贴图烘焙",
-      "score": 73.0,
-      "tier": "A",
-      "domain": "3d-art"
-    },
-    {
-      "file": "3d-art\\3da-bake-thickness.md",
-      "concept": "厚度烘焙",
-      "score": 73.0,
-      "tier": "A",
-      "domain": "3d-art"
-    },
-    {
-      "file": "3d-art\\3da-env-atmosphere.md",
-      "concept": "大气效果",
-      "score": 73.0,
-      "tier": "A",
-      "domain": "3d-art"
-    },
-    {
-      "file": "3d-art\\3da-env-composition.md",
-      "concept": "场景构图",
-      "score": 73.0,
-      "tier": "A",
-      "domain": "3d-art"
-    },
-    {
-      "file": "3d-art\\3da-env-water.md",
-      "concept": "水体制作",
-      "score": 73.0,
-      "tier": "A",
-      "domain": "3d-art"
-    },
-    {
-      "file": "3d-art\\3da-hs-decal-mesh.md",
-      "concept": "Decal Mesh",
-      "score": 73.0,
-      "tier": "A",
-      "domain": "3d-art"
-    },
-    {
-      "file": "3d-art\\3da-hs-greeble.md",
-      "concept": "Greeble细节",
-      "score": 73.0,
-      "tier": "A",
-      "domain": "3d-art"
-    },
-    {
-      "file": "3d-art\\3da-org-body-modeling.md",
-      "concept": "躯干建模",
-      "score": 73.0,
-      "tier": "A",
-      "domain": "3d-art"
-    },
-    {
       "file": "3d-art\\3da-org-edge-loops-organic.md",
       "concept": "有机体布线环",
       "score": 73.0,
@@ -580,6 +503,83 @@
     {
       "file": "3d-art\\3da-retopo-manual.md",
       "concept": "手动拓扑重构",
+      "score": 73.0,
+      "tier": "A",
+      "domain": "3d-art"
+    },
+    {
+      "file": "3d-art\\3da-retopo-shrinkwrap.md",
+      "concept": "ShrinkWrap投射",
+      "score": 73.0,
+      "tier": "A",
+      "domain": "3d-art"
+    },
+    {
+      "file": "3d-art\\3da-retopo-validation.md",
+      "concept": "拓扑验证",
+      "score": 73.0,
+      "tier": "A",
+      "domain": "3d-art"
+    },
+    {
+      "file": "3d-art\\3da-rig-export.md",
+      "concept": "绑定导出",
+      "score": 73.0,
+      "tier": "A",
+      "domain": "3d-art"
+    },
+    {
+      "file": "3d-art\\3da-rig-spine.md",
+      "concept": "脊柱绑定",
+      "score": 73.0,
+      "tier": "A",
+      "domain": "3d-art"
+    },
+    {
+      "file": "3d-art\\3da-scale-proportion.md",
+      "concept": "比例与尺度",
+      "score": 73.0,
+      "tier": "A",
+      "domain": "3d-art"
+    },
+    {
+      "file": "3d-art\\3da-sculpt-3dcoat.md",
+      "concept": "3DCoat雕刻",
+      "score": 73.0,
+      "tier": "A",
+      "domain": "3d-art"
+    },
+    {
+      "file": "3d-art\\3da-sculpt-detailing.md",
+      "concept": "细节雕刻",
+      "score": 73.0,
+      "tier": "A",
+      "domain": "3d-art"
+    },
+    {
+      "file": "3d-art\\3da-sculpt-intro.md",
+      "concept": "数字雕刻概述",
+      "score": 73.0,
+      "tier": "A",
+      "domain": "3d-art"
+    },
+    {
+      "file": "3d-art\\3da-subdivision-surface.md",
+      "concept": "细分曲面修改器",
+      "score": 73.0,
+      "tier": "A",
+      "domain": "3d-art"
+    },
+    {
+      "file": "3d-art\\3da-uv-auto-uv.md",
+      "concept": "自动UV展开",
+      "score": 73.0,
+      "tier": "A",
+      "domain": "3d-art"
+    },
+    {
+      "file": "3d-art\\3da-uv-checker-map.md",
+      "concept": "棋盘格检查",
       "score": 73.0,
       "tier": "A",
       "domain": "3d-art"
