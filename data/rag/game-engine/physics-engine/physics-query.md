@@ -20,56 +20,155 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
-quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-03-31
+quality_method: tier-s-booster-v1
+updated_at: 2026-04-05
 ---
+
 
 # 物理查询
 
 ## 概述
 
-物理查询（Physics Query）是游戏引擎物理系统提供的一类主动探测接口，允许开发者在不创建刚体或碰撞对象的前提下，向物理场景发射几何形状并获取与场景中碰撞体的相交信息。与被动的碰撞回调不同，物理查询由代码逻辑主动触发，返回命中点坐标、法线方向、被命中对象引用等具体数据。
+物理查询（Physics Query）是游戏引擎物理系统提供的一类主动探测接口，允许开发者在不创建刚体或碰撞对象的前提下，向物理场景发射几何形状并同步获取与场景中碰撞体的相交信息。与被动的碰撞回调（Collision Callback）不同，物理查询由游戏逻辑代码主动触发，返回命中点世界坐标、接触法线方向、命中距离参数 `t`、被命中对象引用等具体数据，且结果在同一帧内立即可用。
 
-物理查询的概念最早在PhysX 2.x版本中以`NxScene::raycastSingleShape`等函数形式正式成型，后经NVIDIA在PhysX 3.0的重构中统一归入`PxScene`的查询体系，形成了Raycast、Sweep、Overlap三大类接口的现代标准架构。Unity和Unreal Engine均直接封装了PhysX的查询层，其中Unreal Engine 4的`UWorld::LineTraceSingleByChannel`函数族至今仍是行业参考实现。
+物理查询的概念最早在 NVIDIA PhysX 2.x 版本中以 `NxScene::raycastSingleShape` 等函数形式正式成型。2010 年 PhysX 3.0 的架构重构将所有查询接口统一归入 `PxScene` 的查询体系，形成了 **Raycast、Sweep、Overlap** 三大类接口的现代标准架构，并引入了两级过滤机制（层掩码 + 查询回调）。Unity 自 2.x 起、Unreal Engine 自 UE3 起均直接封装了 PhysX 的查询层。Unreal Engine 4 的 `UWorld::LineTraceSingleByChannel` 函数族至今仍是行业参考实现，而 Unity 6 在底层已将默认物理后端切换为 PhysX 5.1，查询接口 API 保持向后兼容。
 
-物理查询在游戏开发中具有不可替代性，因为绝大多数游戏玩法逻辑——包括命中判定、视线检测、角色站立检测、AI感知范围——都依赖于对场景几何的精确探测，而这些探测必须在单帧内完成并返回精确的几何信息，传统碰撞事件机制无法满足这一同步性要求。
+物理查询的不可替代性在于**同步性**：绝大多数游戏玩法逻辑——命中判定、视线检测、角色站立检测、AI 感知范围——都要求在单帧（通常 16.67ms 或 8.33ms 预算）内返回精确几何信息。传统碰撞事件机制依赖物理步进后的异步回调，无法满足这一约束。
+
+参考资料：Erin Catto 在 GDC 2010《Computing Distance Using GJK》中系统阐述了 Sweep/Overlap 查询的数学基础；《游戏引擎架构》（Game Engine Architecture，Jason Gregory，2018，电子工业出版社）第 13 章对物理查询系统有完整的工程描述。
+
+---
 
 ## 核心原理
 
 ### Raycast（射线检测）
 
-Raycast向场景中投射一条无限细的射线，定义为起点`origin`加方向向量`direction`乘以最大距离`maxDistance`。物理引擎对场景中所有启用查询标志（`PxQueryFlag`）的碰撞形状执行射线-AABB宽相（Broad Phase）过滤，再进行精确的射线-凸多面体或射线-三角网格窄相测试。命中结果包含`hitPoint = origin + direction × t`，其中`t`为射线参数（0到maxDistance之间的浮点数）。Raycast分为Single（返回最近命中）、Any（返回任意命中，性能更优）和All（返回全部命中，按距离排序）三种模式。
+Raycast 向场景投射一条无限细的射线，数学定义为：
+
+$$P(t) = \text{origin} + t \cdot \hat{d}, \quad t \in [0,\ \text{maxDistance}]$$
+
+其中 $\hat{d}$ 为单位化方向向量，$t$ 为射线参数。物理引擎处理流程分两阶段：
+
+1. **宽相（Broad Phase）**：对场景中所有启用 `PxQueryFlag::eSTATIC` 或 `eANY_HIT` 标志的形状，用射线与其轴对齐包围盒（AABB）做相交测试，时间复杂度 $O(\log N)$（PhysX 使用 SAP 或 BVH 加速结构）；
+2. **窄相（Narrow Phase）**：对通过宽相的候选形状执行精确射线-凸多面体或射线-三角网格测试，返回最小 $t$ 值即为最近命中距离。
+
+命中点计算：$\text{hitPoint} = \text{origin} + t_{\min} \cdot \hat{d}$
+
+Raycast 提供三种命中模式：
+- **Single**：返回最近命中，$O(\log N + K)$，$K$ 为窄相候选数；
+- **Any**：返回任意一个命中（不保证最近），一旦找到即提前退出，性能比 Single 高约 20%–40%；
+- **All**：收集所有命中并按 $t$ 升序排列，用于穿透弹道或激光穿透多层墙壁场景。
 
 ### Sweep（扫掠检测）
 
-Sweep将一个实心几何体（球体、胶囊体、Box或凸多面体）沿指定方向滑动，检测其运动路径上最早发生接触的碰撞体。其数学本质是闵可夫斯基和（Minkowski Sum）：将查询体与场景中每个碰撞体做闵可夫斯基差后，对结果形状执行Raycast。球体Sweep性能最优，因为球-球或球-凸体的GJK求解只需约3-5次迭代；Box Sweep最慢，凸多面体对之间的GJK通常需要10-20次迭代。Unity中的`Physics.CapsuleCast`是Sweep的典型用例，角色控制器用它检测移动路径上的障碍物。
+Sweep 将一个实心几何体（球体、胶囊体、Box 或凸多面体）沿方向 $\hat{d}$ 滑动距离 $d_{\max}$，检测运动路径上最早发生接触的碰撞体。其数学本质是**闵可夫斯基和（Minkowski Sum）**：
+
+$$\text{Swept Volume} = \text{QueryShape} \oplus \text{Ray}(0 \to d_{\max} \cdot \hat{d})$$
+
+对两个凸体 $A$（查询体）和 $B$（场景体）的 Sweep，等价于对 $A \oplus (-B)$ 执行 Raycast——即先求闵可夫斯基差，再做射线检测。各形状的性能差异显著：
+
+| 查询形状 | GJK 平均迭代次数 | 相对耗时（PhysX 基准） |
+|----------|----------------|----------------------|
+| 球体     | 1–3 次         | 1×（基准）            |
+| 胶囊体   | 3–6 次         | 1.4×                 |
+| Box      | 8–15 次        | 2.8×                 |
+| 凸多面体 | 10–20 次       | 4.5×                 |
+
+Unity 中的 `Physics.CapsuleCast` 是 Sweep 的典型用例，角色控制器（Character Controller）用它检测移动路径上的障碍物，胶囊形状与人形角色碰撞体一致，精度与性能兼顾。
 
 ### Overlap（重叠检测）
 
-Overlap测试一个静置几何体是否与场景中任何碰撞体相交，不涉及运动方向，返回所有与之重叠的碰撞体列表。Overlap不返回接触点或穿透深度，只返回碰撞体引用（`PxOverlapHit`只含`actor`和`shape`字段）。其性能开销介于单次Raycast和全All模式Raycast之间，常用于范围技能检测（如爆炸范围内的所有单位）和传送前的目标点安全性校验。PhysX内部对Overlap使用SAT（Separating Axis Theorem）而非GJK，对于凸多面体对测试最多检查15个分离轴。
+Overlap 测试一个**静置**几何体是否与场景中的碰撞体相交，不涉及运动方向，返回所有重叠碰撞体的引用列表。PhysX 的 `PxOverlapHit` 结构只含 `actor` 和 `shape` 两个字段，**不返回接触点或穿透深度**——若需穿透深度，应改用 `PxScene::computePenetration`。
 
-### 查询过滤层（Query Filter）
+内部实现上，PhysX 对凸体 Overlap 使用 **SAT（Separating Axis Theorem）**而非 GJK：两个凸多面体之间最多测试 $m + n + m \cdot n$ 条分离轴（$m$、$n$ 分别为两体的面数），对常见的 Box-Box 组合（各 3 面）最多测试 $3 + 3 + 9 = 15$ 条轴，一旦找到分离轴即提前终止。Overlap 常用于范围技能（爆炸半径 5m 内所有单位）和传送前目标点安全性校验。
 
-三类查询均支持两级过滤机制：第一级为层掩码（Layer Mask），以32位整数位运算排除无关层，在宽相阶段完成，零性能开销；第二级为查询过滤回调（`PxQueryFilterCallback`），允许开发者以自定义C++函数逐个审查候选命中对象，可实现"忽略自身碰撞体""忽略无敌状态单位"等逻辑。Unity将这两级分别暴露为`layerMask`参数和`QueryTriggerInteraction`枚举，Unreal Engine通过`FCollisionQueryParams`结构提供`AddIgnoredActor`等方法。
+---
+
+## 关键公式与代码示例
+
+### 射线命中点与反射方向计算
+
+入射射线方向 $\hat{d}$，命中点法线 $\hat{n}$，反射方向为：
+
+$$\hat{r} = \hat{d} - 2(\hat{d} \cdot \hat{n})\hat{n}$$
+
+该公式在弹跳子弹、激光反射等玩法中直接使用命中结果的 `normal` 字段即可实现。
+
+### Unity C# 代码示例
+
+```csharp
+// Raycast Single：检测鼠标指向的物体
+void Update()
+{
+    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    RaycastHit hit;
+    // layerMask = ~(1 << 2) 排除 IgnoreRaycast 层（Layer 2）
+    int layerMask = ~(1 << 2);
+    if (Physics.Raycast(ray.origin, ray.direction, out hit, 100f, layerMask))
+    {
+        // hit.point    : 命中点世界坐标
+        // hit.normal   : 命中面法线
+        // hit.distance : 射线参数 t（等于 origin 到 hitPoint 的距离）
+        Debug.DrawLine(ray.origin, hit.point, Color.red);
+        Debug.Log($"命中: {hit.collider.name}, 距离: {hit.distance:F2}m");
+    }
+}
+
+// SphereCast Sweep：角色前方障碍检测（半径 0.5m，距离 2m）
+bool CheckObstacle(Vector3 origin, Vector3 direction)
+{
+    RaycastHit sweepHit;
+    return Physics.SphereCast(origin, 0.5f, direction, out sweepHit, 2f);
+}
+
+// OverlapSphere：爆炸范围 5m 内所有碰撞体
+void Explode(Vector3 center)
+{
+    Collider[] targets = Physics.OverlapSphere(center, 5f,
+        LayerMask.GetMask("Enemy", "Destructible"));
+    foreach (var col in targets)
+    {
+        col.GetComponent<IDamageable>()?.TakeDamage(100);
+    }
+}
+```
+
+---
+
+## 查询过滤系统
+
+物理查询支持两级过滤机制，两级均需通过才会进入窄相测试：
+
+**第一级：层掩码（Layer Mask）**
+以 32 位整数的位运算在宽相阶段完成过滤，零额外性能开销。Unity 支持最多 32 个物理层，Unreal Engine 使用 `ECollisionChannel` 枚举提供 32 个通道，其中前 18 个为引擎保留通道，`ECC_GameTraceChannel1` 至 `ECC_GameTraceChannel14` 供项目自定义。
+
+**第二级：查询过滤回调（PxQueryFilterCallback）**
+对通过层掩码的每个候选形状调用 `preFilter` 回调，开发者可在此检查自定义标签、动态游戏状态（如"无敌帧"期间跳过角色碰撞体）。回调返回 `PxQueryHitType::eNONE`（跳过）、`eTOUCH`（记录但继续）或 `eBLOCK`（阻挡，终止搜索）。滥用 `preFilter` 回调（每帧对 500+ 候选形状逐一回调）会导致 CPU 端性能瓶颈，建议优先通过层掩码缩小候选集。
+
+---
 
 ## 实际应用
 
-**射击游戏命中判定**：服务端在每帧处理玩家开枪事件时，从枪口位置沿准星方向执行Raycast Single，最大距离设为武器射程（如步枪800米）。命中后取`hitNormal`用于计算弹孔贴花的旋转方向，取`hitPoint`传递给伤害系统计算距离衰减。
+**1. 第一人称射击命中判定**
+典型 FPS 游戏中，`Physics.Raycast` 从摄像机原点沿准心方向发射，`maxDistance` 设为武器有效射程（如步枪 500m，手枪 50m）。命中后读取 `hit.rigidbody` 判断是否为可击杀目标，读取 `hit.textureCoord`（需 Mesh Collider 且开启 `convex = false`）获取贴图坐标以播放弹孔特效。
 
-**第三人称摄像机碰墙检测**：在理想摄像机位置与角色头部之间执行球体Sweep（半径通常0.2米），若命中则将摄像机拉近至命中点的`sweepFraction × armLength`处，避免摄像机穿入墙壁。
+例如，《Apex Legends》使用 Respawn 自研引擎 Source 衍生版，射线命中判定在服务端以 20 tick（每帧 50ms）频率重放客户端时间戳对应的场景快照，避免客户端预测与服务端不一致导致的幽灵子弹问题。
 
-**AI视线检测**：AI每隔0.1秒从眼部位置向目标位置执行Raycast Any（层掩码仅包含遮挡层，不含敌我单位层），若无命中则视线畅通，触发警觉状态切换。使用Any模式而非Single模式可将该检测耗时降低约40%。
+**2. 角色控制器站立检测**
+角色控制器每帧在脚底向下发射一条长度为 0.1m 的 Raycast（或 SphereCast，半径等于角色碰撞胶囊底部半径 0.3m），检测地面法线夹角：若法线与世界 Y 轴夹角 $\theta < 45°$ 则判定为可行走斜坡，否则触发滑落逻辑。Unity 内置 `CharacterController` 组件的 `slopeLimit` 参数默认值即为 45°。
 
-**角色站立地面检测**：胶囊体角色每帧向正下方执行胶囊体Sweep，距离为0.05米，检测是否仍站在地面上。命中法线角度超过45°（与世界上向量点积小于0.707）则判定为斜坡不可站立，切换为滑落状态。
+**3. AI 视线检测（Line of Sight）**
+AI 感知系统中，从 NPC 眼睛位置向玩家位置发射 Raycast，使用 `Any` 模式（找到任意遮挡即返回），检测是否被静态遮蔽物阻断。Unreal Engine 的 `AIPerceptionComponent` 内部每 0.1 秒执行一次此类检测，并对多个感知目标进行批量查询以均摊开销。
+
+**4. 传送目标点合法性校验**
+《传送门》类玩法中，每帧用 `Physics.OverlapBox` 在传送目标位置测试玩家碰撞体大小的 Box 是否与任何实体碰撞体重叠，若重叠则禁用传送提示 UI。此处使用 Overlap 而非 Sweep，因为目标点是静态候选位置，无需方向信息。
+
+---
 
 ## 常见误区
 
-**误区一：将Overlap用于连续运动检测**。Overlap仅检测静态位置的相交，若用于快速移动的子弹（每帧位移超过碰撞体直径），会因两帧之间完全穿越目标而漏检。正确做法是对子弹使用两帧位置之间的Sweep，或改用连续碰撞检测（CCD）。
+**误区 1：在每帧 Update 中对场景内所有角色各自执行 OverlapSphere**
+OverlapSphere 对 $N$ 个角色各查询一次的开销为 $O(N \log M)$（$M$ 为场景形状总数），当 $N = 200$、$M = 5000$ 时，每帧窄相候选测试量可达数万次。正确做法是将范围感知改为事件驱动（角色进入特定区域触发），或使用空间分区数据结构（如八叉树）在游戏逻辑层预筛选，将 Overlap 的候选集控制在 20 以内。
 
-**误区二：每帧对所有AI执行Raycast而不做时间分片**。100个AI每帧各做一次Raycast视线检测，在复杂场景中可能消耗2-3毫秒。正确做法是将AI视线查询分散到多帧（每个AI每3-5帧检测一次），或使用Unreal Engine的`AsyncLineTrace`接口在工作线程上异步执行查询。
-
-**误区三：混淆查询层掩码与碰撞矩阵**。查询层掩码（Query Filter Layer Mask）只控制物理查询接口的可见性，碰撞矩阵控制刚体之间的物理模拟碰撞响应，两者完全独立。一个碰撞体可以对刚体物理模拟不可见（碰撞矩阵排除），但对Raycast可见（查询掩码包含），这在实现"只对子弹检测、不受重力影响"的触发区时非常有用。
-
-## 知识关联
-
-物理查询建立在物理引擎概述中介绍的宽相/窄相分层加速结构之上——没有BVH（层次包围盒树）或八叉树等宽相结构，Raycast对复杂场景的遍历成本将从O(log n)退化到O(n)，无法在帧预算内完成。掌握物理查询后，导航网格系统的学习将直接受益：导航代理的落地检测（验证采样点是否在可行走表面上）正是通过向下的Raycast实现的，而NavMesh烘焙过程中的可达性连通测试也依赖Overlap查询排除被几何体占据的采样位置。
+**误区 2：将 Sweep 的 `sweepHit.distance` 直接作为安全移动距离**
+`distance` 返回的是几何接触点对应的扫掠距离，物体移动时若直接移动该距离会导致碰撞体穿透（浮点精度问题）。PhysX

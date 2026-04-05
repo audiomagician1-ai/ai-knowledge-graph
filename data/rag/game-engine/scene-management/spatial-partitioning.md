@@ -20,19 +20,20 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
-quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-03-31
+quality_method: tier-s-booster-v1
+updated_at: 2026-04-05
 ---
+
 
 # 空间分区
 
 ## 概述
 
-空间分区（Spatial Partitioning）是游戏引擎场景管理中将三维世界划分为多个子区域，从而加速空间查询的一类数据结构与算法。其核心思想是：若一个物体不在某个区域内，则与该区域相交的查询结果可以直接跳过该物体，将碰撞检测、渲染可见性判断、射线投射等操作的复杂度从 O(n) 降至 O(log n) 甚至更优。
+空间分区（Spatial Partitioning）是游戏引擎场景管理中将三维世界划分为多个子区域，以加速空间查询的一类数据结构与算法。其核心思想是：若某个物体不在特定区域内，与该区域相交的查询便可直接跳过该物体，将碰撞检测、渲染可见性判断、射线投射等操作的最坏复杂度从 $O(n)$ 降至 $O(\log n)$ 甚至接近 $O(1)$。
 
-空间分区的研究可追溯至1969年 Bentley 提出的 k-d 树，以及1980年代早期图形学中广泛使用的 BSP（Binary Space Partitioning）树。Quake（1996年）是第一款在商业游戏中将 BSP 树用于完整室内场景可见性预计算的引擎，其 .bsp 文件格式至今仍被 Source 引擎继承。现代引擎（如 Unreal Engine 5 和 Unity）则普遍使用八叉树（Octree）或均匀网格（Uniform Grid）作为运行时动态对象的空间索引。
+空间分区的理论根基来自 Jon Bentley 于1975年在《Communications of the ACM》发表的论文《Multidimensional binary search trees used for associative searching》，其中提出了 k-d 树（k-dimensional tree）的完整构造与查询算法。BSP（Binary Space Partitioning）树由 Henry Fuchs、Zvi Kedem 和 Bruce Naylor 于1980年的 SIGGRAPH 论文《On Visible Surface Generation by A Priori Tree Structures》中引入计算机图形学，之后被 id Software 用于 Quake（1996）引擎，实现了室内场景的实时可见性预计算。Quake 的 `.bsp` 编译工具链 QBSP 将关卡几何体离线切割为 BSP 树，生成的文件格式被 Valve 的 Source 引擎沿用至今。
 
-空间分区直接决定了引擎每帧可处理的实体规模上限。一个未经任何空间分区优化的场景，若存在 10,000 个碰撞体，每帧潜在碰撞测试对数为 n(n-1)/2 ≈ 5000 万次；引入四叉树或八叉树后，平均测试次数可下降至数百次量级。
+未经空间分区优化的场景在规模扩大时代价极为惨烈：若场景中存在 $n = 10000$ 个碰撞体，暴力两两配对的潜在测试次数为 $n(n-1)/2 \approx 5 \times 10^7$ 次/帧；引入均匀网格或八叉树后，平均测试次数可压缩至数百次量级，使 60 fps 的物理更新成为可能。
 
 ---
 
@@ -40,57 +41,126 @@ updated_at: 2026-03-31
 
 ### 均匀网格（Uniform Grid）
 
-均匀网格将世界空间切割为等大小的单元格（Cell），每个物体根据其 AABB（轴对齐包围盒）注册到它所覆盖的单元格列表中。查询时只需检索目标区域覆盖的单元格集合，时间复杂度在物体均匀分布时接近 O(1)。
+均匀网格将世界空间切割为边长固定的单元格（Cell），每个物体依据其 AABB（轴对齐包围盒）注册到所有被覆盖的单元格中。查询时仅检索目标区域所覆盖的单元格集合，物体均匀分布时时间复杂度接近 $O(1)$。
 
-均匀网格的主要参数是**格子边长 cellSize**，通常建议设为场景中最大移动物体直径的 1.5～2 倍。若 cellSize 过小，单个物体跨越的格子数爆炸；若 cellSize 过大，每个格子包含的物体数过多，查询效率退化回暴力遍历。均匀网格对静态、密度均匀的场景（如 RTS 游戏的单位管理）效果极好，但对稀疏大场景浪费严重。
+关键参数是**格子边长 `cellSize`**，工程经验建议将其设为场景中最大移动物体直径的 1.5～2 倍。若 `cellSize` 过小，单个大物体跨越的格子数爆炸（一个直径 10 m 的对象在 0.5 m 格子中需注册 $8000$ 个格子）；若 `cellSize` 过大，每格包含物体过多，退化为暴力遍历。均匀网格对静态、密度均匀的场景（如 RTS 游戏的单位空间管理）效果极好，但对具有极端稀疏区域的开放世界地图内存浪费严重。
 
-### 八叉树（Octree）
+### 四叉树与八叉树（Quadtree / Octree）
 
-八叉树递归地将三维 AABB 沿 X、Y、Z 轴的中点各切一刀，将父节点分裂为 8 个子节点（四叉树 Quadtree 是其在 2D 的对应结构，分为 4 个子节点）。分裂条件通常为：节点内物体数量超过阈值（常用值为 8～16 个），且当前深度未超过最大深度（常用值为 8～12 层）。
+八叉树（Octree）递归地将三维 AABB 沿 X、Y、Z 轴的中点各切一刀，将父节点分裂为 8 个子节点；四叉树（Quadtree）是其二维对应，分裂为 4 个子节点，常用于地形高度图的 LOD 管理。
 
-设根节点包围盒边长为 L，则第 d 层节点的边长为 L / 2^d。一个深度为 10 的八叉树，最细粒度格子边长为根节点边长的 1/1024。八叉树适合**动静混合场景**：静态物体构建一次后缓存，动态物体每帧重新插入"动态八叉树"层。Unreal Engine 使用层级式 Octree 管理 Actor 的可见性和碰撞查询，其实现位于 `Engine/Source/Runtime/Core/Public/Math/GenericOctree.h`。
+分裂条件通常为：节点内物体数量超过阈值（常用 8～16 个），**且**当前深度未超过最大深度（常用 8～12 层）。设根节点包围盒边长为 $L$，则第 $d$ 层节点的边长为：
+
+$$
+\ell_d = \frac{L}{2^d}
+$$
+
+深度 $d = 10$ 时，最细粒度格子边长为根节点的 $1/1024$。若根节点代表 1024 m 的场景，最小叶节点精度为 1 m，恰好满足典型角色碰撞需求。
+
+Unreal Engine 5 中，世界场景的 Actor 可见性和碰撞查询由层级式 Octree 管理，源码位于 `Engine/Source/Runtime/Core/Public/Math/GenericOctree.h`，其模板参数 `OctreeSemantics` 允许用户自定义元素的 AABB 获取方式与叶节点容量。
 
 ### BSP 树（Binary Space Partitioning Tree）
 
-BSP 树使用任意方向的超平面（而非轴对齐平面）将空间递归分为"前"与"后"两个半空间。平面方程为 **ax + by + cz + d = 0**，其中 (a, b, c) 为平面法向量。判断点 P = (x₀, y₀, z₀) 在平面哪一侧，计算 ax₀ + by₀ + cz₀ + d 的正负即可。
+BSP 树使用任意方向的超平面（不限于轴对齐）将空间递归分为"正面"与"背面"两个半空间，适合表达多边形拓扑复杂的室内几何体。分割平面方程为：
 
-BSP 树的最大优势是可以离线预计算场景的**正确深度排序**（画家算法），这正是 Quake 时代用来解决室内场景可见性（PVS，Potentially Visible Sets）的关键。BSP 树的构建代价很高，面数较多的场景可能需要数分钟预计算，因此只适合静态几何体，运行时不可动态修改。BSP 树已基本退出现代实时引擎的动态场景管理，但在 Constructive Solid Geometry（CSG）编辑器和光线追踪预处理中仍有使用。
+$$
+ax + by + cz + d = 0, \quad (a,b,c) \text{ 为单位法向量}
+$$
 
-### 层次包围体（BVH）
+判断点 $P = (x_0, y_0, z_0)$ 位于平面哪一侧，只需计算符号值 $s = ax_0 + by_0 + cz_0 + d$：$s > 0$ 在正面，$s < 0$ 在背面，$s = 0$ 恰好在平面上。
 
-BVH（Bounding Volume Hierarchy）是一种自底向上构建的树形空间分区，每个叶节点包含一个几何体，每个内部节点存储子节点的合并包围盒。射线与 BVH 相交测试遵循剪枝规则：若射线不与父节点包围盒相交，则跳过整棵子树。GPU 光线追踪（DXR / Vulkan Ray Tracing）标准的 TLAS/BLAS（Top-Level / Bottom-Level Acceleration Structure）本质上就是两层 BVH。
+BSP 树的核心优势是可以**离线预计算正确深度排序**（画家算法），这正是 Quake 时代解决室内场景"可见性集合"（PVS, Potentially Visible Set）问题的关键。QBSP 编译一张中等复杂度关卡通常需要数分钟 CPU 时间，但换来运行时每帧 $O(\log n)$ 的精确可见性查询。BSP 树的缺陷在于：当场景多边形被分割平面切穿时，会产生**T-junction**（T 型接缝），总多边形数膨胀；动态对象频繁更新时重建代价不可接受，因此现代引擎仅将 BSP 用于静态场景或编辑器碰撞几何体。
+
+---
+
+## 关键公式与算法
+
+### AABB 与格子的映射
+
+将 AABB 最小角 $P_\min = (x_\min, y_\min, z_\min)$ 映射到均匀网格单元格索引的公式：
+
+$$
+(i, j, k) = \left\lfloor \frac{P_\min - W_\min}{\text{cellSize}} \right\rfloor
+$$
+
+其中 $W_\min$ 为世界空间原点偏移。对 AABB 的最大角同理，遍历 $[i_\min, i_\max] \times [j_\min, j_\max] \times [k_\min, k_\max]$ 所有格子完成注册。
+
+### 八叉树插入的伪代码
+
+```python
+class OctreeNode:
+    MAX_OBJECTS = 8   # 分裂阈值
+    MAX_DEPTH   = 12  # 最大深度
+
+    def insert(self, obj, depth=0):
+        if self.is_leaf():
+            self.objects.append(obj)
+            # 超出阈值且未达最大深度时分裂
+            if len(self.objects) > self.MAX_OBJECTS and depth < self.MAX_DEPTH:
+                self.subdivide()          # 创建 8 个子节点
+                for o in self.objects:
+                    self.push_down(o, depth + 1)
+                self.objects.clear()
+        else:
+            # 找到与 obj.aabb 相交的子节点并递归插入
+            for child in self.children:
+                if child.bounds.intersects(obj.aabb):
+                    child.insert(obj, depth + 1)
+
+    def query_frustum(self, frustum, result):
+        if not frustum.intersects(self.bounds):
+            return                        # 整个子树剔除
+        if self.is_leaf():
+            result.extend(self.objects)
+        else:
+            for child in self.children:
+                child.query_frustum(frustum, result)
+```
+
+`query_frustum` 的剔除效果直接体现在视锥剔除（Frustum Culling）阶段：一棵深度为 8 的八叉树在典型相机角度下可剔除约 85%～95% 的叶节点，将可见性测试的物体数从数万压缩至数百。
 
 ---
 
 ## 实际应用
 
-**碰撞检测宽相（Broad Phase）**：PhysX（Unreal 和 Unity 的物理后端）使用 SAP（Sweep And Prune）结合 AABB 树实现宽相剔除，在 10,000 个刚体场景下将每帧碰撞对候选数量控制在数百以内。
+**案例：《我的世界》（Minecraft）区块系统**
 
-**射线投射（Raycasting）**：Minecraft 的方块拾取使用均匀网格进行射线-方块测试，每次投射只需遍历射线经过的格子序列（DDA 算法），与总方块数无关。
+Minecraft 将无限世界划分为 16×16×256（Java 版，1.18 后扩展为 16×16×384）的区块（Chunk），本质上是均匀网格的二维变种加垂直叠加。每个区块独立管理其内部方块的光照传播和碰撞网格，客户端仅加载以玩家为中心、半径为"视距"（默认 8 区块 = 128 m）的区块，其余区块完全不参与渲染或物理计算。这一设计使游戏可以在消费级硬件上管理"事实上无限"的世界。
 
-**AI 视野与寻路**：Unreal Engine 的 Environment Query System（EQS）在生成候选点时，依赖八叉树快速查询半径 R 内的所有 Actor，避免遍历全图实体列表。
+**案例：Unreal Engine 5 的 World Partition**
 
-**编辑器场景拾取**：Unity Editor 的 Scene View 点击选取物体，使用 BVH 进行屏幕空间射线与场景所有 Renderer 的相交测试，而非逐三角面检测。
+UE5 引入的 World Partition 系统以 $100 \times 100$ m（可配置）的 Cell 网格将整个关卡分块，结合流送（Streaming）机制按相机距离动态加载/卸载 Cell，其底层正是均匀网格空间分区的工程化实现。官方文档指出，《黑客帝国觉醒》技术演示地图面积约 97 km²，正是依赖 World Partition 实现无缝流送。
+
+**案例：物理引擎的宽相（Broad Phase）**
+
+Nvidia PhysX 与 Bullet Physics 均在碰撞检测管线的"宽相"阶段使用空间分区剔除不可能相交的物体对。PhysX 默认采用**SAP（Sweep and Prune）**算法结合轴排序列表，而 Bullet 提供 `btDbvtBroadphase`（动态包围体树，类似松散八叉树）和 `bt32BitAxisSweep3`（均匀网格变种）两种可选后端，用户可根据场景密度特征手动切换。
 
 ---
 
 ## 常见误区
 
-**误区一：八叉树适用于所有场景类型**
-八叉树在物体分布极度不均匀（如大型开放世界，99% 的物体集中在地表 5% 的区域）时会退化为不平衡树，导致某些叶节点包含大量物体。此时分层网格（Hierarchical Grid）或 k-d 树通常效果更好，后者能根据数据分布自适应选择分割平面。
+**误区1：八叉树一定优于均匀网格**
 
-**误区二：BSP 树可以用于动态物体**
-BSP 树的构建（特别是多边形分裂步骤）时间复杂度为 O(n²) 甚至更高，无法在运行时对移动物体重建。把 BSP 用于管理动态角色或抛射物会造成每帧毫秒级卡顿。动态物体应使用可增量更新的结构，如松散八叉树（Loose Octree）或动态 AABB 树。
+均匀网格在物体密度**均匀**且尺寸**相近**时，其 $O(1)$ 的插入与查询常数因子远小于八叉树的递归开销。例如 RTS 游戏中数百个尺寸相近的单位，均匀网格通常比八叉树快 2～3 倍，因为后者需要额外的指针追踪和动态内存分配。
 
-**误区三：空间分区节点数越多越快**
-将八叉树最大深度设置过大（如 20 层），导致叶节点边长小于 1 厘米，单次插入需要沿树路径更新 20 个节点，内存访问的缓存缺失（Cache Miss）反而使总体性能低于深度为 8 的版本。游戏引擎性能分析工具（如 Unreal Insights）中，可以通过追踪 `PhysicsTree::Insert` 耗时来诊断此类问题。
+**误区2：BSP 树可以处理动态场景**
+
+BSP 树的构建是 NP-hard 问题（寻找最优分割顺序），实践中使用启发式（如选择分割多边形数最少的平面），编译时间以分钟计。将 BSP 用于每帧更新的动态物体是不现实的；现代引擎仅用 BSP 处理**编译期确定的静态几何体**（如关卡碰撞网格），动态对象另设 Octree 或 DBVT 层管理。
+
+**误区3：深度越大，八叉树查询越快**
+
+过深的八叉树（$d > 12$）会导致叶节点边长极小，一个跨多格的大型物体（如直径 50 m 的爆炸效果）需要被注册进大量叶节点，插入和删除开销反而急剧上升。正确做法是引入**松散八叉树（Loose Octree）**：将每个节点的实际 AABB 扩大为其名义尺寸的 $2\times$（扩大系数 $k=2$ 是常用值），使得 87.5% 以上的物体只需存储在单个节点中，避免跨节点重复注册（参见 Ulrich, 2000，《Loose Octrees》，*Game Programming Gems*）。
+
+**误区4：空间分区替代场景图**
+
+空间分区与场景图（Scene Graph）解决的是不同问题：场景图管理物体的层级变换（父子坐标系），空间分区加速空间查询。两者在引擎中通常**并行存在**——场景图的叶节点（Mesh Component）向空间分区结构注册其 AABB，更新变换时同步更新注册信息。
 
 ---
 
 ## 知识关联
 
-**前置概念——场景图（Scene Graph）**：场景图描述物体的层级变换关系（父子节点的 Transform 继承），而空间分区描述物体的**空间位置索引**关系。两者独立存在于引擎中：场景图节点变换更新后，引擎需将新的世界坐标 AABB 同步写入空间分区结构。理解场景图的世界坐标计算是正确使用空间分区插入接口的前提。
+**前置概念——场景图（Scene Graph）**：场景图中每个节点的 World AABB 是空间分区注册的基本输入。理解场景图的变换传播机制（从局部坐标到世界坐标的矩阵级联）有助于理解为何 AABB 需要在 Transform 更新后重新计算并重新插入空间分区结构。
 
-**后续概念——视锥剔除（Frustum Culling）**：视锥剔除需要快速找出摄像机视锥体内的所有物体，其高效实现依赖空间分区提供候选集——先用视锥与八叉树/BVH 节点的包围盒做快速测试，通过的节点再做精确的每物体视锥测试，从而避免对场景内所有物体逐一判断。
+**后续概念——视锥剔除（Frustum Culling）**：视锥剔除的高效实现依赖八叉树或 BVH 的层次遍历，`query_frustum` 函数（见上方代码）正是视锥剔除的核心子程序。六平面测试（Six-Plane Test）对每个八叉树节点的 AABB 执行，单次测试仅需 6 次点积和比较。
 
-**后续概念——环境查询系统（EQS）与程序化放置**：EQS 的"查询半径 R 内所有障碍物"以及程序化放置的"避免在已有物体 D 米范围内重复生成"，都需要调用空间分区的**球形范围查询**或**AABB 重叠查询**接口。没有高效的空间分区，这两个系统在实体数量超过数千时将无法在单帧预算内完成计算。
+**后续概念——环境查询系统（EQS）**：Unreal Engine 的 EQS（Environment Query System）在寻路和 AI 决策中大量使用空间查询

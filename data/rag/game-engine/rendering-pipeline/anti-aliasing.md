@@ -20,9 +20,10 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
-quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-03-26
+quality_method: tier-s-booster-v1
+updated_at: 2026-04-05
 ---
+
 
 
 
@@ -30,11 +31,11 @@ updated_at: 2026-03-26
 
 ## 概述
 
-抗锯齿（Anti-Aliasing）技术是消除三维图形渲染中"锯齿"（Aliasing）伪影的方法集合。锯齿产生的根本原因是奈奎斯特采样定理：当屏幕像素格栅的采样频率低于图形边缘的信号频率时，高频细节无法被准确表达，几何边缘会呈现出阶梯状断裂，这一现象在斜线和曲线边缘最为明显。
+抗锯齿（Anti-Aliasing）技术是消除三维图形渲染中"锯齿"（Aliasing）伪影的方法集合。锯齿产生的根本原因源自奈奎斯特采样定理（Nyquist Sampling Theorem）：当屏幕像素格栅的采样频率低于图形边缘的信号频率时，高频细节无法被准确重建，几何边缘呈现出阶梯状断裂，在斜线（尤其是接近30°或45°的边缘）和曲线轮廓处最为明显。
 
-抗锯齿技术的演进历程跨越四十余年。早期的超采样抗锯齿（SSAA）在1980年代随光栅化渲染普及，原理最直接但代价极高。2000年代，MSAA随着GPU硬件支持被广泛采用。2009年，NVIDIA的FXAA作为后处理方案问世，将抗锯齿开销降低至几乎可忽略不计的程度。2018年，基于时间累积的TAA成为主流游戏引擎标配，随后深度学习超采样技术DLSS（2018年）和开源方案FSR（2021年）的出现将抗锯齿与图像重建（Image Reconstruction）深度结合，彻底改变了渲染分辨率与输出分辨率的关系。
+抗锯齿技术的演进跨越四十余年。超采样抗锯齿（SSAA）随1980年代光栅化渲染普及，原理直接但性能代价极高。2000年代，MSAA随GPU硬件覆盖测试单元（Coverage Test Unit）的普及进入主流。2009年，NVIDIA工程师Timothy Lottes发布FXAA，将全屏后处理抗锯齿开销压缩至0.5ms以内。2018年起，基于时间累积的TAA成为Unreal Engine与Unity等主流引擎的默认选项。同年NVIDIA发布DLSS 1.0，引入深度学习超采样；AMD则于2021年发布开源方案FSR 1.0，基于Lanczos空间上采样。这一演进轨迹从"多采样几何边缘"到"时间域积分"再到"神经网络图像重建"，彻底改变了渲染分辨率与输出分辨率之间的固定关系。
 
-抗锯齿对游戏视觉质量影响极大，但不同方案在性能开销、画质、对运动物体的处理能力上存在本质差异。开发者选择错误的方案会导致画面模糊（TAA拖影）、几何边缘残留锯齿（FXAA遗漏）或视频内存压力骤增（MSAA在延迟渲染管线中的高兼容成本）。
+参考资料：Tomas Akenine-Möller等著《Real-Time Rendering, 4th Edition》(CRC Press, 2018) 第5章对各类采样与重建策略有系统性论述。
 
 ---
 
@@ -42,50 +43,97 @@ updated_at: 2026-03-26
 
 ### MSAA：多重采样抗锯齿
 
-MSAA（Multisample Anti-Aliasing）在每个像素内设置多个子采样点（Sub-samples），但只对每个采样点执行一次片元着色器（Fragment Shader）。以4×MSAA为例，每个像素含4个采样点，像素覆盖率（Coverage）决定最终颜色的混合权重，着色计算仅执行一次。这使得MSAA的性能开销大约是SSAA的1/4，同等质量下显存带宽需求约为2×MSAA时增加40%、4×MSAA时增加70%。
+MSAA（Multisample Anti-Aliasing）在每个像素内设置多个子采样点（Sub-sample），但只为每个像素执行**一次**片元着色器（Fragment Shader）调用。以4×MSAA为例，每个像素含4个子采样点，GPU的覆盖测试单元判断三角形覆盖了哪些采样点，覆盖率（Coverage）决定最终混合权重，着色计算本身仅发生一次。相比于4×SSAA需要4次完整着色调用，MSAA的着色开销接近原生分辨率渲染，但显存带宽需求在4×MSAA时约增加70%（需要存储4份深度与模板缓冲）。
 
-MSAA的核心问题在于与延迟渲染（Deferred Rendering）的不兼容性。延迟渲染将几何信息存储于G-Buffer，MSAA的多采样点需要G-Buffer中每个采样点独立存储法线、深度等信息，导致显存占用成倍增加。Unreal Engine 4因此默认使用TAA而非MSAA。MSAA对透明物体和粒子系统同样无效，因为这类物体通常通过Alpha测试或混合实现，而非真正的几何边缘覆盖。
+MSAA与延迟渲染（Deferred Rendering）存在根本性不兼容：延迟渲染将法线、反射率等信息写入G-Buffer，若要在G-Buffer阶段支持MSAA，每个子采样点需独立存储一份G-Buffer数据，使显存占用与采样倍率成正比翻倍。这也是为何Unreal Engine 4/5默认禁用MSAA而改用TAA。MSAA对粒子、透明物体（Alpha-Blend模式）、屏幕空间反射等后处理特效完全无效，因为这些效果绕过了几何覆盖测试阶段。
 
 ### FXAA：快速近似抗锯齿
 
-FXAA（Fast Approximate Anti-Aliasing）由NVIDIA的Timothy Lottes于2009年设计，完全作为屏幕空间后处理（Screen-Space Post-Process）运行，输入是渲染完成后的LDR颜色缓冲，输出是经过模糊处理的抗锯齿图像。其核心算法通过对比相邻像素的亮度差异来检测边缘，然后沿边缘方向进行亚像素混合。
+FXAA由NVIDIA的Timothy Lottes于2009年设计（发表于NVIDIA白皮书 *FXAA 3.11 White Paper*），以屏幕空间后处理（Screen-Space Post-Process）方式运行，输入为渲染完成后的LDR颜色缓冲（通常是RGB888或R11G11B10格式），不依赖深度缓冲或额外G-Buffer。其算法核心步骤如下：
 
-FXAA的运行开销通常低于0.5ms（在现代GPU上），与渲染分辨率的耦合度低，不依赖任何额外缓冲区。代价是：FXAA无法区分几何边缘和纹理内部的高频细节，会对UI文字、细线纹理等造成不必要的模糊。FXAA对斜线边缘的覆盖率约为80%，无法处理着色器内部的高频变化（如镜面高光闪烁）。
+1. **亮度检测**：将颜色缓冲转换为感知亮度 $L = 0.299R + 0.587G + 0.114B$，计算当前像素与上下左右四邻像素的亮度差 $\Delta L$。
+2. **边缘方向判断**：比较水平与垂直方向的亮度梯度，确定边缘走向（水平或垂直）。
+3. **端点搜索**：沿边缘方向向两端步进（最多搜索约32像素），寻找亮度反转点，确定边缘在屏幕上的跨度。
+4. **亚像素混合**：依据当前像素在边缘长度上的相对位置，对当前像素与相邻像素的颜色进行插值混合。
+
+FXAA的全屏开销在GTX 1080上约为0.3ms（1080p），与渲染管线几乎零耦合。代价是：FXAA无法区分几何边缘与纹理内部的高频细节，对UI文字、细格线纹理等会产生不必要的模糊；同时对着色器内部产生的高频变化（如镜面高光闪烁）完全无能为力。
 
 ### TAA：时间性抗锯齿
 
-TAA（Temporal Anti-Aliasing）利用相邻帧之间的信息累积，将每帧的抖动采样（Jittered Sampling，通常使用Halton序列）的结果混合到历史帧中。标准TAA使用指数移动平均（Exponential Moving Average）进行帧混合，混合权重α通常设置为0.1左右，意味着当前帧贡献10%，历史帧贡献90%。
+TAA（Temporal Anti-Aliasing）通过对连续帧的抖动采样结果进行时间域积分来实现超采样效果。每帧渲染时，投影矩阵（Projection Matrix）被施加一个亚像素偏移（Jitter），偏移序列通常采用低差异序列中的**Halton(2,3)序列**，使得多帧的采样点在一个像素内均匀分布。帧混合采用指数移动平均（Exponential Moving Average，EMA）：
 
-TAA的核心挑战是历史帧的"重投影"（Reprojection）：通过运动向量（Motion Vector）将历史帧像素对齐到当前帧视角。当运动向量不准确（如透明物体、粒子、皮肤变形）或场景出现遮挡变化时，会产生"鬼影"（Ghosting）伪影。TAA还会引入画面模糊，需配合锐化滤波器（如Luma锐化）补偿。Unreal Engine 5的Temporal Super Resolution（TSR）在TAA基础上加入邻域裁剪（Neighborhood Clamping）和更激进的拒绝策略，将鬼影降低约60%。
+$$C_{\text{out}} = \alpha \cdot C_{\text{current}} + (1 - \alpha) \cdot C_{\text{history\_reprojected}}$$
 
-### DLSS与FSR：超分辨率抗锯齿
+其中 $\alpha$ 通常取 $0.1$（即当前帧权重10%，历史帧权重90%），等效于对约10帧内的采样结果做加权平均，显著压制了时间域内的采样噪声。
 
-DLSS（Deep Learning Super Sampling）是NVIDIA专有技术，在低于目标分辨率（如1080p渲染→4K输出）下运行，利用Tensor Core执行神经网络推理，将低分辨率帧上采样至高分辨率，同时完成抗锯齿。DLSS 2.0+使用通用权重模型（不再针对单独游戏训练），输入包括当前帧、运动向量、曝光信息和深度缓冲，运行在NVIDIA RTX架构（2018年发布的Turing架构起支持）。在1080p渲染4K输出的"质量"模式下，DLSS的渲染分辨率为目标的约67%（即1440p等效）。
+历史帧的重投影（Reprojection）通过运动向量（Motion Vector）实现：对于静态物体，依据当前帧与上一帧的摄像机变换矩阵推导像素位移；对于动态物体，渲染阶段需将蒙皮动画的速度信息写入单独的运动向量缓冲（Motion Vector Buffer）。当重投影坐标超出屏幕边界或历史像素被遮挡（Disocclusion）时，TAA需要放弃历史数据（将 $\alpha$ 强制设为1.0），此处理若不当会在快速移动边缘产生明显的"鬼影"（Ghosting）。
 
-AMD FSR（FidelityFX Super Resolution）1.0于2021年6月发布，采用EASU（Edge Adaptive Spatial Upsampling）空间算法，不依赖运动向量或历史帧，无需特定硬件支持，跨平台兼容。FSR 2.0（2022年发布）改为时间累积算法，需要运动向量，整体质量接近DLSS 2.x。两者的渲染分辨率倍率相同时（如"质量"模式下渲染分辨率为目标的67%），DLSS的锐度和细节保留通常优于FSR 1.0，但FSR 2.0的差距已显著缩小。
+TAA的另一核心步骤是**历史颜色裁剪（History Clipping/Clamping）**：将历史颜色值限制在当前像素周围 $3 \times 3$ 邻域的颜色包围盒（Color AABB）内，以减少运动导致的残影，但过于激进的裁剪会重新引入闪烁噪声。
+
+### DLSS 与 FSR：超分辨率重建
+
+DLSS（Deep Learning Super Sampling）由NVIDIA于2018年随RTX 2080系列显卡推出，利用Tensor Core加速的卷积神经网络（CNN）将低分辨率渲染帧上采样至目标分辨率。DLSS 2.0（2020年）引入通用神经网络，输入包括当前低分辨率帧、运动向量和深度缓冲，输出高分辨率重建帧。DLSS 3.0（2022年）进一步加入帧生成（Frame Generation），在两帧之间插入AI合成帧，使帧率几乎翻倍。常见质量档位如下：
+
+| 档位 | 渲染分辨率（输出1080p） | 性能提升（相对原生） |
+|------|------------------------|----------------------|
+| 质量（Quality） | 720p（1.5× 上采样）    | ~1.5×               |
+| 平衡（Balanced）| 640p（约1.7×）          | ~1.7×               |
+| 性能（Performance）| 540p（2×）           | ~2.0×               |
+| 超性能（Ultra Performance）| 360p（3×）   | ~3.0×               |
+
+FSR（FidelityFX Super Resolution）由AMD于2021年6月发布，FSR 1.0基于空间算法（Lanczos衍生核 EASU + 锐化阶段 RCAS），不依赖运动向量，与GPU型号无关；FSR 2.0（2022年）引入时间反馈，算法逻辑接近DLSS 2.x，质量接近但不依赖专用AI硬件，开源代码托管于GPUOpen平台。
+
+---
+
+## 关键公式与算法
+
+TAA的亚像素抖动采用Halton序列生成。Halton序列基于素数基底的反射小数（Van der Corput序列）：
+
+$$h(i, b) = \sum_{k=0}^{\infty} d_k(i) \cdot b^{-(k+1)}$$
+
+其中 $d_k(i)$ 是 $i$ 在 $b$ 进制下第 $k$ 位的数字。TAA常用 $b=2$（X轴）和 $b=3$（Y轴）的组合，生成8或16个均匀分布于 $[0,1)^2$ 的亚像素偏移点。
+
+以下是Unity HDRP中TAA抖动偏移的核心代码逻辑（简化版）：
+
+```csharp
+// 生成第 frameIndex 帧的Halton(2,3)亚像素抖动偏移
+float HaltonSequence(int index, int baseValue)
+{
+    float result = 0f;
+    float fraction = 1f / baseValue;
+    while (index > 0)
+    {
+        result += (index % baseValue) * fraction;
+        index /= baseValue;
+        fraction /= baseValue;
+    }
+    return result;
+}
+
+Vector2 GetJitter(int frameIndex, int sampleCount = 8)
+{
+    int i = (frameIndex % sampleCount) + 1;
+    // 偏移至 [-0.5, 0.5] 范围，以像素为单位
+    float jitterX = HaltonSequence(i, 2) - 0.5f;
+    float jitterY = HaltonSequence(i, 3) - 0.5f;
+    return new Vector2(jitterX / screenWidth, jitterY / screenHeight);
+}
+```
+
+投影矩阵的 $P_{02}$ 和 $P_{12}$ 分量加上上述偏移后，光栅化阶段每帧的采样点便在亚像素范围内系统性移位，8帧后覆盖一个像素内均匀分布的8个位置，等效于8×SSAA的采样密度——但只需要1倍的渲染开销（代价是引入跨帧的运动依赖）。
 
 ---
 
 ## 实际应用
 
-在Unreal Engine 5中，默认抗锯齿方案为TSR（Temporal Super Resolution），通过控制台变量`r.AntiAliasingMethod 4`启用；TAA对应数值为`2`，MSAA为`1`，FXAA为`3`。移动端项目通常选择MSAA（OpenGL ES对MSAA有硬件加速支持）或FXAA（低端设备的fallback方案），因为移动端不支持高效运动向量计算，TAA的鬼影问题在低帧率下更严重。
+**延迟渲染管线中的选择**：Unreal Engine 5默认启用TAA（或其升级版TAAU），在 `r.TemporalAA.Upsampling=1` 时同时执行时间超采样；Epic在内部项目中对静止画面质量要求极高时使用 `r.TemporalAASamples=8` 将TAA累积帧数扩展到8帧。对于移动端（如Mali G78 GPU），受限于带宽，MSAA 4× 仍是前向渲染（Forward Rendering）管线的首选，因为移动GPU的tile-based架构可在片上缓存内完成MSAA解析（Resolve），实际带宽增量接近0。
 
-Unity HDRP管线中，DLSS、FSR和TAA均通过`Volume`后处理框架配置，与景深（Depth of Field）、运动模糊等后处理效果共享同一个运动向量缓冲区。当同时启用TAA和运动模糊时，需注意运动模糊已经模糊了运动中的物体，TAA对这部分区域的历史帧混合应降低权重（通过速度阈值屏蔽），否则运动拖影会加倍。
+**案例：《赛博朋克2077》的TAA鬼影问题**：CD Projekt RED在2020年发布时，游戏中的霓虹灯牌、雨滴粒子等高亮动态元素因运动向量精度不足，导致TAA历史帧颜色裁剪失效，产生明显的发光拖影（Bloom Ghosting）。后续补丁通过收紧 AABB 裁剪包围盒边距、强制对高亮像素降低历史帧权重（$\alpha$ 从0.1提升至0.3）修复了该问题。
 
-第一人称射击类游戏（如《战地》系列）倾向于保留MSAA或在TAA基础上降低历史权重（α提升至0.2），以保证运动中的画面清晰度；慢节奏写实游戏（如《荒野大镖客2》）可将TAA α降低至0.05以充分利用时间累积，换取最佳静态画质。
+**DLSS vs FSR 的工程决策**：若目标平台为PC且玩家普遍使用RTX 20系列以上GPU（Steam 2023年硬件调查显示RTX系列占PC游戏玩家约35%），优先集成DLSS 2/3可提供最优画质。若需要覆盖AMD及Intel Arc GPU用户，FSR 2.x或XeSS（Intel，2022年）是兼容性更广的选项，两者均可通过同一套运动向量接口接入。
 
 ---
 
 ## 常见误区
 
-**误区一：FXAA/TAA可以替代高分辨率渲染。** 抗锯齿消除的是已发生的采样错误，而高频着色伪影（如镜面高光在1帧内的单像素闪烁）在FXAA下因为只看单帧无法被时间平均，在TAA下则会产生闪烁的"星点"（Fireflies），需要额外的时间性稳定化（Temporal Stabilization）着色器处理，并非单靠提高AA强度能解决。
-
-**误区二：MSAA在延迟渲染中完全不可用。** 实际上可通过MSAA + 延迟渲染的混合方案解决：仅对前向渲染通道（Forward Pass）的几何体使用MSAA，延迟渲染部分依赖TAA或后处理AA。Unreal Engine的"Forward Shading"选项就是为了让VR项目能使用MSAA而保留的前向渲染模式。
-
-**误区三：DLSS和FSR总是比原生分辨率更模糊。** 在DLSS"质量"或"超性能"模式下，由于神经网络能恢复TAA丢失的高频细节，输出图像的锐度有时**高于**原生分辨率+TAA的组合——特别是在纹理细节和几何边缘上。这是因为原生TAA的模糊本身是一种信息损失，DLSS通过多帧累积和超分能部分恢复这些细节。
-
----
-
-## 知识关联
-
-抗锯齿技术与**后处理效果**紧密依存：FXAA、TAA及DLSS/FSR均在后处理阶段运行，需要访问颜色缓冲、深度缓冲和运动向量缓冲，其执行顺序在后处理链中通常位
+**误区1：TAA 等同于模糊**。TAA在静止画面或慢速运动场景中，历史帧累积等效于多帧超采样，实际细节密度高于原生分辨率渲染。画面"模糊感"通常来自以下原因：（a）历史颜色裁剪过于激进导致有效累积帧数降低；（b）抖动偏移未配合重建滤波（通常是 Mitchell-Netravali 滤波器）正确补偿，导致频率响应在 Nyquist 频率附近出现衰减。正确配置的TAA应搭配锐化（Sharpening Pass，如RCAS）使

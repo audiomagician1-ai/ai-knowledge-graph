@@ -20,86 +20,138 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
-quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-03-26
+quality_method: tier-s-booster-v1
+updated_at: 2026-04-05
 ---
+
 
 
 # 后处理效果
 
 ## 概述
 
-后处理效果（Post-Processing Effects）是指在渲染管线完成几何体光栅化、光照计算之后，对最终颜色缓冲区（Color Buffer）执行的一系列全屏图像处理操作。与前向渲染阶段不同，后处理不关心三维几何信息，而是将已渲染完成的帧缓冲当作一张2D纹理，通过全屏四边形（Full-Screen Quad）或计算着色器（Compute Shader）逐像素修改颜色、深度或运动信息。这一技术本质上是将图形学与图像处理算法在GPU上融合的产物。
+后处理效果（Post-Processing Effects）是渲染管线完成几何体光栅化、光照计算之后，对最终颜色缓冲区（Color Buffer）执行的一系列全屏图像处理操作。后处理不关心三维几何信息，而是将已渲染完成的帧缓冲当作一张2D纹理，通过全屏三角形（Full-Screen Triangle，比传统四边形节省约1/8的过度绘制）或计算着色器（Compute Shader）逐像素修改颜色、深度或运动向量信息。
 
-后处理效果的工业化应用始于PS3/Xbox 360世代（约2005年前后），当时Bloom效果首次被广泛应用于《光晕2》等AAA游戏，此后技术栈不断扩展。延迟渲染架构的普及（G-Buffer保存了世界法线、深度等中间数据）为SSAO、DoF等需要访问场景几何信息的后处理效果提供了必要的数据来源，因此现代游戏引擎的后处理系统通常深度依赖延迟渲染的G-Buffer输出。
+后处理效果的工业化应用始于第七世代主机（PS3/Xbox 360，约2005—2006年）。Bloom效果最早大规模出现于《光晕2》（Halo 2，2004年），SSAO首次在商业游戏中亮相于Crytek的《孤岛危机》（Crysis，2007年），TAA的现代变体则由Brian Karis于2014年在Unreal Engine 4中系统化落地（参见 Karis, 2014, *High Quality Temporal Supersampling*, SIGGRAPH Advances in Real-Time Rendering）。延迟渲染架构（Deferred Rendering）的普及使G-Buffer中存储的世界法线、线性深度、表面粗糙度等中间数据可直接被后处理效果消费，现代引擎（UE5、Unity HDRP、Frostbite）的后处理系统因此高度依赖延迟渲染输出。
 
-后处理效果的实际价值体现在两方面：其一，以极低的额外几何运算成本实现电影级视觉质量；其二，通过TAA（Temporal Anti-Aliasing）和Motion Blur等效果改善帧与帧之间的时间连贯性，弥补光栅化渲染固有的走样问题。Unreal Engine 5的后处理体积（Post Process Volume）系统允许设计师在运行时混合多个后处理参数集，这正是该技术在现代引擎中的标准实现形态。
+后处理的实际价值体现在两个维度：第一，以极低的额外几何运算成本实现电影级视觉质量，一帧完整的后处理栈（Bloom + SSAO + DoF + TAA + Motion Blur）在RTX 3080上通常仅消耗约2~4ms；第二，通过TAA和Motion Blur等时域效果在帧与帧之间建立连贯性，弥补光栅化渲染固有的空间走样与时域抖动问题。
 
 ---
 
 ## 核心原理
 
-### Bloom（泛光）
+### Bloom（泛光效果）
 
-Bloom模拟人眼晶状体和相机镜头对强光散射的光学现象。其标准实现流程为：首先对颜色缓冲执行亮度阈值提取（通常阈值设为1.0，即HDR范围超过白色的部分），随后对提取结果进行多轮下采样（Downsample）与高斯模糊（Gaussian Blur），最后将模糊结果以加法混合（Additive Blending）叠加回原始帧。
+Bloom模拟人眼晶状体和相机镜头对高亮区域的光学散射现象（lenticular diffraction与veiling glare）。标准实现分为三个阶段：
 
-Unreal Engine 4采用的是基于**双重模糊（Dual Kawase Blur）**的变体实现，Unity HDRP则使用**物理Bloom（Physical Bloom）**模型，其散射权重通过透镜衍射参数驱动。Bloom强度过高会导致"发光皂"（Glowing Soap）现象，即整个画面失去对比度，这是美术团队最常见的调参失误之一。
+1. **阈值提取（Threshold Pass）**：对HDR颜色缓冲提取亮度超过阈值的像素，阈值通常取曝光后亮度 $L > 1.0$，提取公式为：
+
+$$B(x,y) = \max(L(x,y) - \text{threshold},\ 0)$$
+
+其中 $L(x,y) = 0.2126R + 0.7152G + 0.0722B$（基于ITU-R BT.709标准的感知亮度）。
+
+2. **多级模糊（Pyramid Blur）**：对提取结果进行6~8级迭代下采样（每级分辨率减半）再上采样，每级使用13-tap双线性过滤核（Dual Kawase Blur变体），总计算量远低于等效分辨率的单次高斯模糊。Unreal Engine 4/5采用的正是该方案，而非传统的分离式高斯模糊。
+
+3. **加法混合（Additive Blend）**：将模糊结果以权重 $w \in [0, 8]$（UE5默认值0.675）叠加回原始HDR帧：
+
+$$\text{Output} = \text{HDR}_{\text{original}} + w \cdot \text{BloomMip}_{\text{combined}}$$
+
+Unity HDRP的物理Bloom（Physical Bloom）引入了镜头衍射参数（Lens Scatter），通过快速傅里叶变换（FFT）卷积模拟星芒（Anamorphic Flares）效果，但FFT Bloom的GPU成本比Pyramid Bloom高约3倍，仅适合离线或高端平台。
+
+> **常见失误**：Bloom阈值设置过低（如0.5）会使整个画面产生"发光皂"（Glowing Soap）现象——所有中亮度区域被虚化，对比度大幅下降，这是美术资产验收时最常见的视觉缺陷之一。
 
 ### SSAO（屏幕空间环境光遮蔽）
 
-SSAO（Screen-Space Ambient Occlusion）由Crytek于2007年在《孤岛危机》中首次引入商业游戏。其核心思想是：对每个像素，在其法线半球内随机采样若干相邻点（通常16~64个样本），通过G-Buffer中的深度值重建这些采样点的世界位置，若采样点位于当前像素下方（即被遮蔽），则累计遮蔽贡献，最终输出0~1的遮蔽系数AO值。
+SSAO（Screen-Space Ambient Occlusion）的物理依据是漫反射表面接收环境光的几何遮蔽积分：
 
-SSAO的数学核心是以下积分的蒙特卡洛近似：
+$$\text{AO}(\mathbf{p}) = \frac{1}{\pi} \int_\Omega V(\mathbf{p},\ \boldsymbol{\omega}) \cdot (\mathbf{n} \cdot \boldsymbol{\omega})\ d\boldsymbol{\omega}$$
 
-**AO(p) = 1 - (1/π) ∫ V(p, ω) · (n·ω) dω**
+其中 $V(\mathbf{p}, \boldsymbol{\omega})$ 是方向 $\boldsymbol{\omega}$ 上的二值可见性函数，$\mathbf{n}$ 为表面法线，$\Omega$ 为法线半球。实际实现中以蒙特卡洛方法用 $N = 16 \sim 64$ 个半球面随机样本近似上述积分：对每个样本点通过G-Buffer深度重建世界坐标，若样本深度大于当前像素深度（即被场景遮挡），则该样本贡献遮蔽系数。
 
-其中 **V(p, ω)** 是方向 ω 上的可见性函数，**n** 是表面法线。HBAO+（Horizon-Based Ambient Occlusion Plus）通过沿水平方向搜索地平线角来改进这一估算，显著减少了SSAO的"光晕"伪影（Light Bleeding）。
+SSAO的主要变体与其发布时间线：
 
-### DoF（景深）
+| 变体 | 发布时间 | 关键改进 |
+|------|----------|----------|
+| SSAO（原版）| Crytek，2007年 | 基础法线半球采样 |
+| HBAO（Horizon-Based AO）| NVIDIA，2008年 | 沿4~8个方向搜索地平线角，减少光晕伪影 |
+| HBAO+（NVIDIA VXAO前身）| NVIDIA，2012年 | 引入步进积分，支持法线贴图级别的细节 |
+| GTAO（Ground Truth AO）| Jimenez等，2016年 | 多次弯曲法线积分，与光线追踪AO在视觉上接近 |
 
-景深（Depth of Field）模拟相机焦平面之外物体的失焦模糊效果，其物理依据是薄透镜公式：**1/f = 1/d_o + 1/d_i**，其中 f 为焦距，d_o 为物距，d_i 为像距。GPU实现中通常用**弥散圆（Circle of Confusion，CoC）半径**描述每个像素的失焦程度：
+GTAO（Ground Truth Ambient Occlusion）目前是UE5 Lumen关闭时的默认AO方案，其核心在于将每个方向的地平线角（Horizon Angle）转化为弯曲法线（Bent Normal），使AO值与方向性环境光遮蔽相耦合（参见 Jimenez et al., 2016, *Practical Real-Time Strategies for Accurate Indirect Occlusion*, SIGGRAPH）。
 
-**CoC = (A · f · |d - d_focus|) / (d · (d_focus - f))**
+### DoF（景深）与 Motion Blur（运动模糊）
 
-其中 A 为光圈直径，d 为像素深度。Bokeh DoF算法通过在CoC范围内对多个样本加权平均来模拟镜头光斑形状。游戏引擎中常用Separable DoF（可分离景深）将二维模糊分解为横向+纵向两次Pass以降低采样成本。
+**景深**的物理基础是薄透镜公式 $\frac{1}{f} = \frac{1}{d_o} + \frac{1}{d_i}$，焦外模糊的圆形扩散斑（Circle of Confusion，CoC）半径为：
 
-### TAA（时间性抗锯齿）
+$$r_{\text{CoC}} = \frac{A \cdot |d - d_f|}{d} \cdot \frac{d_i}{d_o}$$
 
-TAA通过累积连续多帧的颜色信息来提升画面质量，其核心操作是将当前帧像素坐标偏移一个亚像素抖动量（Jitter Offset，通常使用Halton序列生成8帧或16帧的偏移模式），再使用运动向量（Motion Vector）将上一帧的颜色重投影到当前帧坐标，进行指数移动平均混合：
+其中 $A$ 为光圈直径，$d_f$ 为对焦距离，$d$ 为像素对应的场景深度。实时DoF通常用散景（Bokeh）卷积核对CoC半径内的像素执行可分离模糊，UE5的Cinematic DoF（基于Jimenez的2018年GDC方案）使用了混合散景（Hybrid Bokeh）：近场（Near Field）与远场（Far Field）分别在半分辨率渲染后混合，避免前景遮挡物的"光晕出血"（Foreground Bleeding）。
 
-**C_out = lerp(C_history, C_current, α)**，典型 α 值为 0.1。
+**运动模糊**分两类：摄像机运动模糊（Camera Motion Blur）与物体运动模糊（Per-Object Motion Blur）。其核心数据来源是Motion Vector Buffer（存储每个像素在当前帧与上一帧之间的屏幕空间位移）。每个像素沿运动向量方向采样 $k = 8 \sim 16$ 个样本并取均值：
 
-TAA必须处理**历史帧幽灵（Ghosting）**问题：当像素运动向量无效（如粒子、透明物体）或场景快速变化时，历史帧颜色会产生拖影。邻域裁剪（Neighborhood Clamping）算法将历史颜色约束在当前帧3×3邻域的颜色包围盒（AABB）内，可有效抑制Ghosting。
+$$\text{BlurOutput}(x,y) = \frac{1}{k} \sum_{i=0}^{k-1} \text{Color}\!\left(x + \frac{i}{k-1} \cdot v_x,\ y + \frac{i}{k-1} \cdot v_y\right)$$
 
-### Motion Blur（运动模糊）
+其中 $(v_x, v_y)$ 为该像素的运动向量（单位：像素），运动向量由顶点着色器中当前帧与上一帧的裁剪空间坐标差计算得出。
 
-Motion Blur模拟相机快门开合时间内场景运动形成的拖影，分为**相机运动模糊**（Camera Motion Blur）和**物体运动模糊**（Per-Object Motion Blur）两种。屏幕空间实现中，每个像素根据其运动向量长度（像素/帧）决定沿运动方向采样的样本数，通常8~32个样本。UE5中相机快门速度参数（Shutter Speed）直接控制模糊强度，与物理相机参数保持一致。
+---
+
+## 关键算法：TAA（时域抗锯齿）
+
+TAA（Temporal Anti-Aliasing）是现代后处理栈中技术复杂度最高的一环，由Brian Karis在2014年SIGGRAPH课程中系统化阐述。其核心思路是：每帧对投影矩阵施加亚像素抖动（Jitter，通常使用Halton序列 $\{H(2,n), H(3,n)\}$ 覆盖 $n = 8$ 或 $16$ 帧），将历史帧的超采样信息累积到当前帧：
+
+$$\text{Output}_t = \alpha \cdot \text{Current}_t + (1 - \alpha) \cdot \text{History}_{t-1}$$
+
+其中 $\alpha \approx 0.1$（即历史帧权重约0.9），但直接混合会在运动区域产生"鬼影"（Ghosting）。解决方案是**邻域颜色裁剪（Neighborhood Color Clamping/Clipping）**：将历史帧颜色裁剪到当前像素 $3\times3$ 邻域的颜色AABB包围盒（YCoCg色彩空间下效果更优）内，过滤掉无效历史信息。
+
+以下为GLSL伪代码示意：
+
+```glsl
+// TAA Resolve Pass (simplified)
+vec3 current = texture(currentBuffer, uv).rgb;
+vec2 motionVec = texture(motionBuffer, uv).rg;
+vec3 history = texture(historyBuffer, uv - motionVec).rgb;
+
+// 邻域3x3颜色包围盒（YCoCg空间）
+vec3 minColor = vec3(1e9), maxColor = vec3(-1e9);
+for (int i = -1; i <= 1; i++)
+  for (int j = -1; j <= 1; j++) {
+    vec3 s = RGBToYCoCg(texture(currentBuffer, uv + vec2(i,j)*texelSize).rgb);
+    minColor = min(minColor, s);
+    maxColor = max(maxColor, s);
+  }
+
+// 裁剪历史帧到邻域包围盒
+vec3 histYCoCg = clamp(RGBToYCoCg(history), minColor, maxColor);
+history = YCoCgToRGB(histYCoCg);
+
+// 时域混合
+vec3 output = mix(history, current, 0.1); // alpha=0.1
+```
+
+TAA的主要副作用是在慢速运动或次像素细节区域产生时域模糊（Temporal Blur），这正是后续**DLSS**（NVIDIA，2018年）、**FSR 2**（AMD，2022年）等神经网络超分辨率技术要解决的问题——它们本质上是将TAA替换为带有超分功能的智能时域累积器。
 
 ---
 
 ## 实际应用
 
-在实际项目中，后处理效果通常被组织进**后处理栈（Post Process Stack）**按顺序执行。Unity URP的默认后处理执行顺序为：SSAO → Bloom → DoF → Motion Blur → TAA → Color Grading → Tonemapping。该顺序并非随意排列：TAA必须在Bloom之后执行，否则Bloom的散射会被错误地引入时间累积；Color Grading应在最后进行，避免HDR值被提前压缩到LDR范围。
+**案例：UE5后处理体积（Post Process Volume）参数调优**
 
-《赛博朋克2077》中大量使用了景深与Bokeh效果模拟电影镜头语言，其光圈形状（六边形/圆形可切换）通过自定义CoC形状纹理实现。《荒野大镖客：救赎2》的SSAO实现中结合了HBAO+与间接光照缓存，使室内场景的接触阴影达到了路径追踪的近似质感。
+UE5中后处理体积（Post Process Volume）支持在世界空间中对多组后处理参数集进行权重混合（Blend Weight 0~1），典型的影视级后处理栈配置如下：
+
+- **Bloom**：Intensity = 0.675，Threshold = -1（负值意味着对所有像素生效，HDR场景中常用），Size = 64
+- **SSAO（环境光遮蔽）**：Intensity = 0.5，Radius = 200cm，Quality = 100%（对应GTAO算法）
+- **Cinematic DoF**：Focal Distance = 目标物体深度，Aperture = f/2.8（对应CoC半径约4像素@1080p），Blade Count = 7（产生七边形散景）
+- **Motion Blur**：Max Distortion = 5%（防止高速物体产生过度模糊），Target FPS = 30（运动向量缩放基准）
+- **TAA**：UE5默认启用，Jitter = Halton(8)，Screen Percentage = 100%（关闭TSR时）
+
+**例如**：在赛车游戏中将Motion Blur的Max Distortion提高到10%、DoF的Aperture调为f/1.4，可以显著强化速度感与镜头真实感，但需同时将TAA的Anti-Ghost强度提高以对抗运动向量噪声。
 
 ---
 
 ## 常见误区
 
-**误区1：Bloom可以在LDR管线中正常工作**
-Bloom的亮度阈值提取依赖HDR颜色值（超过1.0的部分代表真实过曝光源）。若在8位LDR管线中运行，所有颜色已被Tonemapping压缩至[0,1]，阈值提取将无法正确识别高亮区域，导致Bloom效果平淡或完全失效。这是初学者将Bloom添加至LDR前向渲染管线时最常遇到的问题。
+**误区1：Bloom是LDR渲染时代的遗留技术**
+Bloom在HDR渲染管线中同样不可或缺。LDR Bloom的阈值截断（clamp to 1.0）会丢失高光细节，而HDR Bloom从浮点颜色缓冲提取亮度，能保留高光区域的完整能量分布，产生更物理准确的散射效果。二者视觉差异在金属高光、火焰、霓虹灯等材质上极为明显。
 
-**误区2：SSAO可以替代烘焙AO贴图**
-SSAO受屏幕空间限制，对视锥体外的几何体一无所知，因此在相机靠近墙角或物体处于屏幕边缘时会产生明显的遮蔽缺失。而烘焙AO贴图在离线阶段考虑了全局几何信息，质量更稳定。实际生产中两者通常叠加使用：烘焙AO提供稳定的全局接触遮蔽，SSAO补充运行时动态几何的实时遮蔽。
-
-**误区3：TAA开启后就不需要其他抗锯齿技术**
-TAA在静止场景效果极佳，但对运动物体边缘的Ghosting问题需要额外的Velocity Buffer支持，而大量游戏引擎中透明物体和粒子系统默认不写入Motion Vector缓冲，导致这些物体在开启TAA后产生明显拖影。DLSS 3/FSR 3等技术正是在TAA框架基础上引入光流网络来解决这一问题的。
-
----
-
-## 知识关联
-
-后处理效果直接依赖延迟渲染所生成的G-Buffer数据：SSAO需要法线缓冲和深度缓冲，DoF需要深度缓冲计算CoC，Motion Blur需要运动向量缓冲。因此理解G-Buffer的布局（通常包含Albedo/Roughness/Metallic/Normal/Depth五个附件）是正确实现后处理效果的前提。
-
-在学习路径上，掌握后处理效果之后，下一个重要主题是**抗锯齿技术**的深度研究——包括MSAA的多重采样原理、FXAA的边缘检测算法、DLSS的超分辨率神经网络架构，以及TAA与这些技术的协同或竞争关系。TAA本身已在后处理章节介绍，但其与DLSS/FSR的关系（均基
+**误区2：SSAO采样数越多越好**
+SSAO的遮蔽质量在样本数超过64个后提升极为有限，因为屏幕空间信息量是固定的——深
