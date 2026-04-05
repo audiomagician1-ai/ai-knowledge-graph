@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,156篇)
 | **边** | 7,015 | 2026-03-27 |
 | **跨球链接** | 595 (0 断引用) | 2026-03-27 |
 | **RAG 覆盖** | 6,156 (100% 覆盖) | 2026-03-27 |
-| **测试总数** | 1,126 (897 BE + 229 FE) | 2026-03-21 |
+| **测试总数** | 1,143 (897 BE + 238 FE + 8 FSRS review) | 2026-04-05 |
 | **tsc errors** | 0 | 2026-03-21 |
 | **Open Issues** | 0 | 2026-03-27 |
 | **RAG 质量** | v2覆盖 3934/6156 (63.9%), S6.5进行中→100% | 2026-03-30 |
@@ -109,7 +109,7 @@ data/rag/          — RAG知识文档 (6,156篇)
 - ✅ BKT 知识追踪引擎 (#36)
 - ✅ 成就系统 + UI (#37/#38)
 - ✅ 统一日志系统 (FE 23模块 + BE 16模块)
-- 待做 FSRS 复习UI集成
+- ✅ FSRS 复习UI集成 (ReviewPage + Hub按钮 + API客户端 + 8测试)
 
 ---
 
@@ -278,4 +278,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-03-30 | **Scope**: Sprint 6 completed (3353/3353), Sprint 6.5 resumed (192/2573 running PID 2856) | **Result**: S6 done, S6.5 in progress
+**Date**: 2026-04-05 | **Scope**: FSRS Review UI integrated (.gitignore cleanup + ReviewPage + hub bar + API client + 8 tests) | **Result**: V1.0 feature-complete, 238 FE tests pass
