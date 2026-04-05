@@ -20,56 +20,140 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
-quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-03-31
+quality_method: tier-s-booster-v1
+updated_at: 2026-04-05
 ---
+
 
 # LLM 高性能服务框架（vLLM / TGI）
 
 ## 概述
 
-LLM Serving 框架是专为大语言模型在线推理场景设计的高吞吐量服务系统，其核心挑战在于 GPU 显存的碎片化利用率极低（传统静态分配方式下 KV Cache 显存利用率仅约 20%–40%）以及多并发请求下的批处理调度效率。vLLM（由 UC Berkeley 于 2023 年发布，论文《Efficient Memory Management for Large Language Model Serving with PagedAttention》）和 HuggingFace TGI（Text Generation Inference）是目前生产环境中最广泛部署的两大框架，分别代表了学术驱动的创新路径与工程导向的全栈集成路径。
+LLM Serving 框架专为大语言模型在线推理场景设计，核心挑战有两点：一是 GPU 显存的碎片化问题——传统静态分配方式下 KV Cache 显存利用率仅约 20%–40%，大量显存因请求序列长度不确定而被预留浪费；二是多并发请求下的批处理调度效率，naive 逐请求串行推理的 GPU 利用率通常低于 15%。
 
-vLLM 的核心贡献是 PagedAttention 机制，将 KV Cache 的显存管理从连续块改为类似操作系统虚拟内存的分页机制，每个 page 默认存储 16 个 token 的键值对，显存利用率可提升至 96% 以上。TGI 则以对 HuggingFace 模型生态的深度兼容性著称，内建 Tensor Parallelism、量化加载（GPTQ/AWQ/EETQ）以及 Continuous Batching 支持，并通过 gRPC 与 REST 双协议暴露服务端点。两者在实际基准测试中，处理并发 100+ 请求时的吞吐量相比 naive 逐请求推理提升可达 **10–24 倍**。
+vLLM（由 UC Berkeley RISE Lab 于 2023 年 6 月发布，论文 "Efficient Memory Management for Large Language Model Serving with PagedAttention"，作者 Kwon 等，发表于 SOSP 2023）和 HuggingFace TGI（Text Generation Inference，首个生产版本 v0.9 发布于 2023 年初）是目前生产环境中最广泛部署的两大框架。vLLM 代表学术驱动的创新路径，以 PagedAttention 为核心突破；TGI 代表工程导向的全栈集成路径，以对 HuggingFace 模型生态的深度兼容性著称。在 A100-80GB 单卡上，使用 LLaMA-2-13B 模型处理 128 并发请求时，vLLM 相比 Hugging Face 原生 `generate()` 方法吞吐量提升达 **24 倍**（Kwon et al., SOSP 2023）。
 
 ## 核心原理
 
 ### PagedAttention 与显存分页管理（vLLM）
 
-PagedAttention 将每个请求的 KV Cache 切分为固定大小的 **logical block**（默认 block_size=16 tokens），每个 block 映射到一个 **physical block**，由 Block Manager 维护逻辑块到物理块的映射表（类似页表）。当两个请求共享相同的系统提示词（system prompt）时，物理块可以被 **Copy-on-Write** 方式共享，无需复制显存，这在 prefix caching 场景下可节省大量显存。调度器采用 **FCFS + 抢占** 策略：当显存不足时，可将低优先级请求的 KV Cache 换出到 CPU 内存（swap），或直接重新计算（recompute），保证高优先级请求不被饿死。
+PagedAttention 的灵感直接来源于操作系统的虚拟内存与分页机制。每个请求的 KV Cache 被切分为固定大小的 **logical block**（默认 `block_size=16` tokens），每个 logical block 映射到一个 **physical block**，由 `BlockSpaceManager` 维护逻辑块到物理块的映射表，其结构类似 CPU 的页表（page table）。
+
+Physical block 的大小计算公式如下：
+
+$$\text{block\_memory} = 2 \times \text{num\_layers} \times \text{num\_heads} \times \text{head\_dim} \times \text{block\_size} \times \text{dtype\_bytes}$$
+
+以 LLaMA-2-7B（32 层，32 头，head\_dim=128，block\_size=16，FP16）为例：
+
+$$\text{block\_memory} = 2 \times 32 \times 32 \times 128 \times 16 \times 2 = 8{,}388{,}608 \text{ bytes} \approx 8 \text{ MB}$$
+
+一张 40GB A100 扣除模型权重（约 14GB for FP16）后，剩余约 26GB 可分配约 **3250 个 physical block**，对应最多容纳约 52,000 个 token 的 KV Cache。
+
+当两个请求共享相同的系统提示词（system prompt）时，对应的 physical block 以 **Copy-on-Write（COW）** 方式共享，仅当某请求需要写入新 token 时才触发复制。这在 prefix caching 场景下（例如大量用户请求共享同一段 RAG 检索文本）可节省 30%–60% 的 KV Cache 显存。
+
+调度器采用 **FCFS + 抢占（preemption）** 策略：当显存不足时，可将低优先级请求的 KV Cache 换出到 CPU 内存（swap out），或直接丢弃并重新计算（recompute），保证高优先级请求不被饿死。vLLM v0.3 之后引入了 `chunked prefill`，将长 prefill 请求拆分为多个 chunk 与 decode 请求交错执行，进一步降低 prefill 阶段对 decode 请求的延迟干扰（即降低 time-to-first-token，TTFT）。
 
 ### Continuous Batching（连续批处理）
 
-传统静态批处理（static batching）要求批内所有请求同时开始、同时结束，导致短请求必须等待最长请求完成才能释放槽位，GPU 利用率低。Continuous Batching（又称 iteration-level scheduling）在**每个解码步骤**后动态检查已完成的序列并插入新请求，将批次填充率从约 30% 提升到接近满载。vLLM 的调度器以 `scheduler_config.max_num_seqs`（默认 256）为并发上限，TGI 通过 `--max-batch-total-tokens` 控制批内 token 总量上限，两者均在迭代粒度而非请求粒度做调度决策。
+传统静态批处理（static batching）要求批内所有请求同时开始、同时结束，短请求必须等待批内最长请求完成才能释放槽位，GPU 实际利用率仅约 30%。Continuous Batching（又称 **iteration-level scheduling**，由 Yu et al. 在论文 "Orca: A Distributed Serving System for Transformer-Based Generative Models"，OSDI 2022 首次提出）在**每个解码迭代步骤后**动态检查已完成的序列并立即插入新等待请求，将批次填充率提升到接近满载。
+
+vLLM 的调度器关键参数：
+- `max_num_seqs`：同时处于运行状态的最大序列数，默认 256
+- `max_num_batched_tokens`：单次迭代最大 token 数，默认值等于 `max_model_len`（通常 4096 或 8192）
+- `max_paddings`：允许的最大 padding token 数，控制批内碎片
+
+TGI 对应参数为 `--max-batch-total-tokens`（通常设为显存允许的最大值，如 A100-80G 上跑 LLaMA-2-13B 可设为 32000）和 `--max-concurrent-requests`。
 
 ### 张量并行与流水线并行
 
-在多 GPU 部署中，vLLM 通过 **Megatron-LM 风格的张量并行**将每个 Attention 头和 FFN 的权重矩阵按列/行切分到不同 GPU，每个 Tensor Parallel rank 只持有 `num_heads / tp_size` 个注意力头，通过 `AllReduce` 同步激活值。TGI 的张量并行实现依赖 `safetensors` 格式的预切分权重，启动时通过 `--num-shard` 参数指定 GPU 数量。对于超过单节点显存的超大模型（如 LLaMA-3 405B），还需结合 **Pipeline Parallelism** 将 Transformer 层按深度切分到不同节点，此时需要额外处理 micro-batch 流水线气泡（bubble）带来的效率损失，通常使用 1F1B 调度策略将气泡比率压缩到 `1 / (pipeline_stages)` 以下。
+在多 GPU 部署中，vLLM 采用 **Megatron-LM 风格的张量并行（Tensor Parallelism, TP）**：每个 Transformer 层中 Attention 的 Q/K/V 投影矩阵按 `num_heads / tp_size` 列切分分布到不同 GPU，输出投影矩阵按行切分，FFN 的第一个线性层按列切分，第二个按行切分，每个 TP 步骤末尾通过 `AllReduce` 合并结果，通信量为 $2 \times \text{sequence\_length} \times \text{hidden\_size} \times \text{dtype\_bytes}$。
 
-### 量化与精度混合推理
+**流水线并行（Pipeline Parallelism, PP）** 将模型层按组切分到不同 GPU（如 LLaMA-2-70B 的 80 层可 4 卡 PP，每卡 20 层），适合显存容量瓶颈场景，但会引入气泡（pipeline bubble）开销，通常 PP 优先于 TP 仅在单机多卡显存不足时使用。vLLM 从 v0.2 开始支持 TP，从 v0.4 开始支持 PP，可通过 `tensor_parallel_size` 和 `pipeline_parallel_size` 参数控制。
 
-vLLM 原生支持 AWQ（4-bit）、GPTQ（4/8-bit）、FP8（通过 `--dtype fp8`）以及 bitsandbytes 的 NF4 量化格式，在 H100 GPU 上使用 FP8 推理 LLaMA-3 70B 模型时，吞吐量相比 BF16 提升约 **1.8 倍**，显存占用下降 50%。TGI 额外支持 **EETQ**（Efficient Engine for Transformers Quantization），可在不预量化权重文件的情况下实时 INT8 量化，适用于快速部署场景。两者均通过 **CUDA kernel fusion** 将量化反量化操作与矩阵乘法融合，避免额外的显存读写往返。
+## 关键配置与部署示例
 
-### Speculative Decoding 集成
+### vLLM 快速部署
 
-vLLM 从 v0.3.0 起支持 **Draft Model + Target Model** 的 Speculative Decoding，使用小模型（如 68M 参数的 Eagle draft）并行生成 `k`（默认 k=5）个候选 token，再由大模型一次性验证，接受率 β 通常在 0.7–0.85 之间，使实际生成速度（tokens/s）提升 2–3 倍。TGI 通过 `--speculate` 参数开启 Medusa 头（在目标模型顶层添加多个并行预测头），无需额外 draft 模型，在 CodeLLaMA-34B 等代码生成任务上加速比约为 **1.9×**。
+```python
+# 安装: pip install vllm>=0.4.0
+from vllm import LLM, SamplingParams
 
-## 实际应用
+llm = LLM(
+    model="meta-llama/Llama-2-13b-chat-hf",
+    tensor_parallel_size=2,       # 2 GPU 张量并行
+    gpu_memory_utilization=0.90,  # 使用 90% GPU 显存分配 KV Cache
+    max_model_len=4096,
+    quantization="awq",           # 加载 AWQ 量化权重
+    block_size=16,                # PagedAttention block size
+    enable_prefix_caching=True,   # 开启 prefix KV Cache 共享
+)
 
-**OpenAI 兼容 API 服务部署**：vLLM 提供 `vllm serve meta-llama/Llama-3-70B-Instruct --tensor-parallel-size 4 --quantization awq` 命令，即可在 4× A100 80GB 上以 OpenAI Chat Completion 格式对外提供服务，内建的 `/metrics` 端点输出 Prometheus 格式指标，包括 `vllm:gpu_cache_usage_perc`（显存块使用率）和 `vllm:num_requests_running` 等关键 SLO 监控指标。
+sampling_params = SamplingParams(
+    temperature=0.7,
+    top_p=0.9,
+    max_tokens=512,
+    repetition_penalty=1.1,
+)
 
-**Prefix Caching 加速 RAG 场景**：当系统提示词（system prompt）长度固定时，vLLM 的 automatic prefix caching（APC）功能可将重复 prefix 的 KV Cache 物理块标记为已缓存，后续请求直接复用。在 context length 为 8192、system prompt 占 2048 tokens 的典型 RAG 场景中，首次生成延迟（TTFT，Time to First Token）可降低约 **40%**。
+outputs = llm.generate(["请介绍 PagedAttention 的原理", "什么是 Continuous Batching？"], sampling_params)
+for output in outputs:
+    print(output.outputs[0].text)
+```
 
-**TGI 在 HuggingFace Inference Endpoints 中的生产应用**：HuggingFace 的托管推理服务 Inference Endpoints 底层使用 TGI，通过 `--trust-remote-code --max-input-length 4096 --max-total-tokens 8192` 等参数组合实现对 Mistral、Falcon、CodeLLaMA 等数十种架构的零配置部署，其内部 token streaming 通过 SSE（Server-Sent Events）推送，P99 首 token 延迟在单 A10G GPU 部署 7B 模型时约为 **200–400ms**。
+### TGI 部署命令
+
+```bash
+# 使用 Docker 部署 TGI，适合 LLaMA-2-13B on 2xA100-40GB
+docker run --gpus all --shm-size 1g \
+  -p 8080:80 \
+  -v /data/models:/data \
+  ghcr.io/huggingface/text-generation-inference:2.0 \
+  --model-id meta-llama/Llama-2-13b-chat-hf \
+  --num-shard 2 \
+  --max-batch-total-tokens 32000 \
+  --max-input-length 2048 \
+  --max-total-tokens 4096 \
+  --quantize awq \
+  --rope-scaling dynamic \
+  --rope-factor 2.0
+```
+
+TGI 的 `/generate` REST 端点返回 JSON，`/generate_stream` 支持 SSE 流式输出；同时暴露 `/metrics` Prometheus 端点，可直接对接 Grafana 监控 `tgi_request_duration_seconds` 等指标。
+
+## 实际应用与性能调优
+
+### 吞吐量 vs 延迟的权衡
+
+LLM Serving 存在根本性的吞吐量与延迟权衡：增大批次大小（batch size）可显著提升每秒生成 token 数（tokens/s），但同时增加每个请求的排队延迟和 time-to-first-token（TTFT）。
+
+实践调优经验：
+- **在线服务（chatbot）**：优先控制 P99 TTFT < 1s，设置 `max_num_seqs=64`，`max_num_batched_tokens=8192`，避免超长 prefill 抢占 decode。
+- **离线批量推理**：最大化吞吐量，设置 `gpu_memory_utilization=0.95`，`max_num_seqs=512`，开启 `chunked_prefill`。
+- **混合负载**：使用 vLLM 的 `priority scheduling`（v0.5 引入）按请求优先级分配 KV Cache 槽位。
+
+以 LLaMA-2-70B（4xA100-80GB，TP=4，AWQ 4bit 量化）为例，TGI 在 `max-batch-total-tokens=20000` 配置下可达到约 **1200 tokens/s** 的生成吞吐量，而 naive 单请求推理仅约 **55 tokens/s**，差距约 22 倍。
+
+### 量化集成对显存与速度的影响
+
+| 量化方式 | LLaMA-2-70B 显存占用 | 相对 FP16 速度 | 精度损失（PPL 增量） |
+|----------|----------------------|---------------|----------------------|
+| FP16     | ~140 GB              | 1.0×          | 0                    |
+| GPTQ-4bit | ~38 GB             | 1.3×–1.8×     | +0.3–0.8             |
+| AWQ-4bit  | ~38 GB             | 1.5×–2.0×     | +0.2–0.5             |
+| EETQ-8bit | ~75 GB             | 0.95×         | +0.05–0.1            |
+
+vLLM 通过 `quantization="awq"` 或 `"gptq"` 参数直接加载量化权重，使用 `AutoAWQ` 或 `auto-gptq` 内核；TGI 通过 `--quantize awq/gptq/eetq` 选项实现相同功能，内部调用同一套 CUDA 内核。
 
 ## 常见误区
 
-**误区一：吞吐量越高，延迟一定越低**。Continuous Batching 提高了系统吞吐量（tokens/second/GPU），但单请求的平均生成延迟（inter-token latency）会因批次变大而上升。在 vLLM 中，`--max-num-seqs=256` 时单请求延迟可能是 `--max-num-seqs=1` 时的 3–5 倍，需根据 SLO 要求（延迟 vs. 吞吐量）在 `max_num_seqs` 和 `max_tokens_in_batch` 上做出权衡，而非无脑最大化批次大小。
+**误区一：`gpu_memory_utilization=1.0` 可以最大化吞吐量。**  
+实际上，将显存利用率设为 100% 会导致 CUDA OOM 因为 vLLM 在运行时还需要少量显存用于 CUDA 图（CUDA Graph）缓存和激活值，推荐值为 0.88–0.92。A100-80GB 上跑 LLaMA-2-13B FP16，`gpu_memory_utilization=0.90` 可分配约 4800 个 KV block，而设为 1.0 则极大概率在首批大请求时 OOM 崩溃。
 
-**误区二：PagedAttention 适用于所有模型架构**。PagedAttention 依赖对 Attention 计算的 block-wise 重构，对于使用 Sliding Window Attention（如 Mistral）的模型，window 边界处的 block 切分可能导致跨 block 的注意力计算额外开销。此外，对 MoE 模型（如 Mixtral 8×7B）的路由专家调度与 block 管理存在交互复杂性，vLLM 的 MoE 支持需要额外启用 `--enable-expert-tensor-parallelism` 才能获得最优性能。
+**误区二：PagedAttention 必然优于静态 KV Cache。**  
+在极短序列（< 64 tokens）且并发极低（< 4 请求）的场景下，PagedAttention 的 block 映射表维护开销（每个 token 生成步骤需查询块表）反而可能引入 5%–10% 的额外延迟。这种场景更适合直接使用 `transformers` 库的 `generate()` 配合 `static_cache`（v4.39 引入）。
 
-**误区三：TGI 和 vLLM 的量化格式完全互换**。vLLM 的 AWQ 实现使用 `llm-awq` 的 CUDA kernel，而 TGI 使用自己维护的 `text-generation-inference` 版本的 AWQ kernel，两者对同一 AWQ 量化权重文件的推理精度和速度存在差异（在 LLaMA-2 7B AWQ 4-bit 上测试，TGI 吞吐量约比 vLLM 低 8%，但 TTFT 更稳定）。直接将为 vLLM 优化的量化配置迁移到 TGI 可能无法获得预期性能。
+**误区三：Tensor Parallelism 越大越快。**  
+TP=8 相比 TP=4 需要额外的 `AllReduce` 通信，在 NVLink 带宽充足时（A100/H100 NVLink 600 GB/s）TP=8 仍有加速，但在 PCIe 连接的多卡环境（带宽 ~64 GB/s）下，TP 超过 2 时通信开销可能抵消并行收益，实测 LLaMA-2-13B on 4xA100-PCIe 时 TP=2 比 TP=4 吞吐量高约 18%。
 
-## 知识关联
-
-**依赖 KV Cache 与 FlashAttention**：PagedAttention 本质上是对 KV Cache 显存分配策略的重构，其物理 block 内的注意力计算直接调用 FlashAttention-2 kernel（`flash_attn_varlen_func`），因此 FlashAttention 的 IO-aware tiling 算法是 PagedAttention 性能的底层保障。理解 KV Cache 的 `[batch, num_heads, seq_len, head_dim]` 张量结构，是理解 block_size 选择对显
+**误区四：vLLM 和 TGI 功能完全等价。**  
+截至 2024 年，vLLM 支持更多量化格式（包括 `marlin`、`squeezellm`）和实验性多模态推理（LLaVA、InternVL），而 TGI 对 PEFT/LoRA 的动态切换支持（`--adapter-id`）更成熟，可在单个基础模型上热切换多个 LoRA adapter，vLLM 的多 LoRA 支持（`enable_l
