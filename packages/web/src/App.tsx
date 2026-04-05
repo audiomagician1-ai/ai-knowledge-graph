@@ -6,6 +6,7 @@ import { ToastContainer } from './components/common/ToastContainer';
 import { HomePage } from './pages/HomePage';
 import { GraphPage } from './pages/GraphPage';
 import { LearnPage } from './pages/LearnPage';
+import { ReviewPage } from './pages/ReviewPage';
 import { LoginPage } from './pages/LoginPage';
 import { useAuthStore } from './lib/store/auth';
 // Side-effect: registers onAuthLogin callback for cloud sync
@@ -32,6 +33,9 @@ export function App() {
             <Route path="/domain/:domainId/:conceptId" element={<GraphPage />} />
             {/* Learn — deep learning page */}
             <Route path="/learn/:domainId/:conceptId" element={<LearnPage />} />
+            {/* Review — FSRS spaced repetition review */}
+            <Route path="/review" element={<ReviewPage />} />
+            <Route path="/review/:domainId" element={<ReviewPage />} />
             {/* Legacy fallback — redirect old /learn/:conceptId to home */}
             <Route path="/learn/:conceptId" element={<Navigate to="/" replace />} />
             {/* Catch-all → home */}

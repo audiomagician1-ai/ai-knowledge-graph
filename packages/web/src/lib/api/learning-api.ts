@@ -99,6 +99,69 @@ export async function apiFetchRecommendations(topK = 5, domain?: string): Promis
   } catch { return null; }
 }
 // ═══════════════════════════════════════════════
+// FSRS Spaced Repetition API
+// ═══════════════════════════════════════════════
+
+export interface DueReviewItem {
+  concept_id: string;
+  status: string;
+  mastery_score: number;
+  fsrs_state: number;
+  fsrs_stability: number;
+  fsrs_difficulty: number;
+  fsrs_due: number;
+  fsrs_reps: number;
+  fsrs_lapses: number;
+  overdue_days: number;
+}
+
+export interface DueReviewsResponse {
+  due_count: number;
+  items: DueReviewItem[];
+}
+
+export interface ReviewResult {
+  success: boolean;
+  concept_id: string;
+  rating: number;
+  card: {
+    state: number;
+    stability: number;
+    difficulty: number;
+    due: number;
+    scheduled_days: number;
+    reps: number;
+    lapses: number;
+    retrievability: number;
+  };
+  achievements_unlocked: Array<{ key: string; name: string; icon: string; tier: string }>;
+}
+
+/** GET /api/learning/due — concepts due for spaced repetition review */
+export async function apiFetchDueReviews(limit = 20, domain?: string): Promise<DueReviewsResponse | null> {
+  try {
+    const params = new URLSearchParams({ limit: String(limit) });
+    if (domain) params.set('domain', domain);
+    const res = await fetch(`${API_BASE}/learning/due?${params}`);
+    if (!res.ok) return null;
+    return await res.json();
+  } catch { return null; }
+}
+
+/** POST /api/learning/review — submit a review rating (1=Again, 2=Hard, 3=Good, 4=Easy) */
+export async function apiSubmitReview(conceptId: string, rating: number): Promise<ReviewResult | null> {
+  try {
+    const res = await fetch(`${API_BASE}/learning/review`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ concept_id: conceptId, rating }),
+    });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch { return null; }
+}
+
+// ═══════════════════════════════════════════════
 // Achievement API
 // ═══════════════════════════════════════════════
 

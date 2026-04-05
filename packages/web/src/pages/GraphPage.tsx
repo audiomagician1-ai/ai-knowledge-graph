@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useGraphStore } from '@/lib/store/graph';
 import { useLearningStore } from '@/lib/store/learning';
 import { useDomainStore } from '@/lib/store/domain';
-import { apiFetchRecommendations } from '@/lib/api/learning-api';
+import { apiFetchRecommendations, apiFetchDueReviews } from '@/lib/api/learning-api';
 import type { GraphNode, GraphData } from '@akg/shared';
 import { ChatPanel } from '@/components/chat/ChatPanel';
 import { DraggableModal } from '@/components/common/DraggableModal';
@@ -16,6 +16,7 @@ import {
   Search, X, Star, ChevronRight, Clock, BookOpen, Zap,
   Trophy, Loader, Compass, BarChart3, Settings, Network,
   Globe, Check, LogIn, User, Home, MessageCircle, AlertTriangle,
+  RotateCcw,
 } from 'lucide-react';
 import { useSettingsStore } from '@/lib/store/settings';
 import { useAuthStore } from '@/lib/store/auth';
@@ -50,6 +51,7 @@ export function GraphPage() {
   const [recommendLoading, setRecommendLoading] = useState(false);
   const [showRecommend, setShowRecommend] = useState(false);
   const [showDomainPicker, setShowDomainPicker] = useState(false);
+  const [dueReviewCount, setDueReviewCount] = useState(0);
 
   // Auth
   const { user, supabaseConfigured, signOut } = useAuthStore();
@@ -99,6 +101,13 @@ export function GraphPage() {
     setShowDomainPicker(false);
     navigate(`/domain/${domainId}`);
   };
+
+  // ── Fetch FSRS due review count ──
+  useEffect(() => {
+    apiFetchDueReviews(1, activeDomain || undefined).then((data) => {
+      if (data) setDueReviewCount(data.due_count);
+    });
+  }, [activeDomain]);
 
   // ── Node click → update URL ──
   const handleNodeClick = (node: GraphNode) => {
@@ -314,6 +323,21 @@ export function GraphPage() {
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 lineHeight: 1,
               }}>{achievementBadge > 9 ? '9+' : achievementBadge}</span>
+            )}
+          </div>
+
+          {/* Review — FSRS spaced repetition with due count badge */}
+          <div style={{ position: 'relative' }}>
+            <HubButton icon={RotateCcw} label="复习" active={false} onClick={() => navigate(activeDomain ? `/review/${activeDomain}` : '/review')} />
+            {dueReviewCount > 0 && (
+              <span style={{
+                position: 'absolute', top: 2, right: 4,
+                minWidth: 16, height: 16, borderRadius: '50%',
+                backgroundColor: 'var(--color-accent-amber)',
+                color: '#fff', fontSize: 10, fontWeight: 700,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                lineHeight: 1, padding: '0 3px',
+              }}>{dueReviewCount > 99 ? '99+' : dueReviewCount}</span>
             )}
           </div>
 
