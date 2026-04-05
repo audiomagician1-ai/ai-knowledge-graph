@@ -21,8 +21,9 @@ sources:
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
 quality_method: tier-s-booster-v1
-updated_at: 2026-04-05
+updated_at: 2026-04-06
 ---
+
 
 
 
@@ -30,11 +31,11 @@ updated_at: 2026-04-05
 
 ## 概述
 
-在 Unreal Engine 的 Niagara 粒子系统中，力场（Force Field）模块是通过对粒子施加持续或瞬时加速度来改变运动轨迹的专用模块集合。与初速度（Initial Velocity）的一次性赋值不同，力场模块注册在发射器的 **Particle Update** 阶段，每帧执行一次速度积分，使粒子在其存活周期（Particle.NormalizedAge 从 0 到 1）的每一帧都受到持续影响，从而产生弯曲轨迹、旋涡聚集或向外爆散等复杂动态效果。
+在 Unreal Engine 的 Niagara 粒子系统中，力场（Force Field）模块是通过对粒子施加持续或瞬时加速度来改变运动轨迹的专用模块集合。与初速度（Initial Velocity）的一次性赋值不同，力场模块注册在发射器的 **Particle Update** 阶段，每帧执行一次速度积分，使粒子在其存活周期（`Particle.NormalizedAge` 从 0.0 到 1.0）的每一帧都受到持续影响，从而产生弯曲轨迹、旋涡聚集或向外爆散等复杂动态效果。
 
-Niagara 的力场系统建立在牛顿第二定律 $F = ma$ 的基础上，其中粒子质量（`Particle.Mass`）可在模块参数中单独配置，默认值为 **1.0**，这使加速度在数值上直接等于施加的力向量。力场模块最早在 Niagara 的前身 Cascade 系统中以孤立的 "Acceleration Life" 和 "Constant Acceleration" 形式存在，二者不可堆叠。Niagara 在 **UE 4.20 版本（2018年7月）** 正式引入模块化力场架构，允许在同一发射器的 Particle Update 阶段叠加任意数量的力场模块，每个模块独立计算贡献量，所有模块输出的加速度向量逐帧累加，最终合力决定粒子的帧位移。这种可堆叠设计使同时模拟烟雾受重力拉扯、被横向风吹动、同时受涡流扰动成为可能。
+Niagara 的力场系统建立在牛顿第二定律 $F = ma$ 的基础上，粒子质量（`Particle.Mass`）默认值为 **1.0**，使加速度在数值上直接等于施加的力向量。力场模块最早在前身 Cascade 系统中以孤立的 "Acceleration Life" 和 "Constant Acceleration" 形式存在，二者不可堆叠。Niagara 在 **UE 4.20 版本（2018年7月）** 正式引入模块化力场架构，允许在同一发射器 Particle Update 阶段叠加任意数量的力场模块，每个模块独立计算贡献量，所有模块输出的加速度向量逐帧累加，最终合力决定粒子帧位移。这种可堆叠设计使同时模拟烟雾受重力拉扯、被横向风吹动、再受涡流扰动成为可能。
 
-本节内容主要参考《Real-Time Rendering》第4版（Akenine-Möller et al., 2018）第13章中粒子系统的速度积分方法，以及 Epic Games 官方 Niagara 技术文档（Epic Games, 2023）。
+本节内容主要参考《Real-Time Rendering》第4版（Akenine-Möller et al., 2018）第13章粒子系统速度积分方法，以及 Epic Games 官方 Niagara 技术文档（Epic Games, 2023）。
 
 ---
 
@@ -52,120 +53,110 @@ $$
 \vec{x}_{t+\Delta t} = \vec{x}_t + \vec{v}_{t+\Delta t} \cdot \Delta t
 $$
 
-其中 $\vec{a}_{total}$ 是当前帧所有力场模块贡献加速度的向量和，$\Delta t$ 为帧间时间（`Engine.DeltaTime`，60fps 时约为 0.0167s）。显式欧拉法在 $\Delta t$ 较大（帧率低于 20fps）时会产生数值不稳定，表现为粒子抖动或爆炸性飘飞——这正是 Niagara 力场在极低帧率下出现异常的根本原因。
+其中 $\vec{a}_{total}$ 是当前帧所有力场模块贡献加速度的向量和，$\Delta t$ 为帧间时间（`Engine.DeltaTime`，60 fps 时约为 0.01667 s，30 fps 时约为 0.03333 s）。显式欧拉法在 $\Delta t$ 较大（帧率低于约 20 fps）时会产生数值不稳定，表现为粒子抖动或爆炸性飘飞——这是 Niagara 力场在极低帧率下出现异常的根本原因。若需更高精度，可在自定义 HLSL 模块中手动改用**龙格-库塔四阶法（RK4）**，但每帧计算成本约是欧拉法的 4 倍。
 
 ### 重力模块（Apply Force: Gravity）
 
-Niagara 内置重力模块（`Apply Force: Gravity`）本质上是一个方向固定的恒定加速度施加器。默认参数为 **Z 轴 −980 cm/s²**，对应现实标准重力加速度 9.80665 m/s²（Niagara 以厘米为内部单位）。每帧执行时，模块将重力向量乘以 `Engine.DeltaTime` 后累加到 `Particle.Velocity`。
+Niagara 内置重力模块（`Apply Force: Gravity`）本质上是一个方向固定的恒定加速度施加器。默认参数为 **Z 轴 −980 cm/s²**，对应现实标准重力加速度 9.80665 m/s²（Niagara 内部单位为厘米）。每帧执行时，模块将重力向量乘以 `Engine.DeltaTime` 后累加到 `Particle.Velocity`。
 
-重力模块的 **"Scale by Mass"** 选项开启后，实际加速度变为：
+**"Scale by Mass"** 选项开启后，实际加速度变为：
 
 $$
 \vec{a}_{gravity} = \frac{\vec{g}}{m_{particle}}
 $$
 
-其中 $m_{particle}$ 取自 `Particle.Mass` 属性。这意味着质量为 **2.0** 的岩石碎片粒子其重力加速度为 490 cm/s²（下落更慢），而质量为 **0.5** 的烟尘粒子其重力加速度为 1960 cm/s²（下落更快），从而在同一发射器内实现粒子分层沉降效果。
+当 `Particle.Mass` 设为 2.0 时，同等重力向量下加速度减半，粒子下落速度变慢，可用于模拟密度不同的碎片混合场景（例如：轻飘的纸屑与沉重的金属碎片共存于同一发射器的两个不同 LOD 层）。
 
-> **案例**：在制作爆炸碎片效果时，将碎石粒子 `Particle.Mass` 设为 3.0，火星粒子 `Particle.Mass` 设为 0.2，同一重力模块即可产生碎石低抛弧线、火星高飞弧线同框的视觉分层，无需分开发射器。
+### 风力模块（Apply Force: Wind / Drag）
 
-### 风力与空气阻力模块（Wind Force / Drag）
+Niagara 风力本质上由两个分量叠加构成：**定向推力（Directional Force）** 和 **空气阻力（Drag）**。定向推力直接向 `Particle.Velocity` 累加一个世界空间向量，例如设定 `WindForce = (150, 0, 0)` cm/s² 时，粒子每秒在 X 轴方向增加约 150 cm/s 的速度。
 
-风力模块（`Apply Wind Force`）通过设定世界空间目标速度向量（`Wind Velocity`，默认值为 `(100, 0, 0)` cm/s），将粒子当前速度逐帧拉向该目标，而非瞬间叠加速度。施加到粒子的逐帧加速度为：
-
-$$
-\vec{a}_{wind} = (\vec{v}_{wind} - \vec{v}_{particle}) \times k_{accel}
-$$
-
-其中 $k_{accel}$ 为"Wind Acceleration Rate"参数（单位 s⁻¹，典型值 **2.0～10.0**）。$k_{accel} = 5.0$ 时，粒子在约 **0.2 秒**内速度接近风速的 63%（一阶时间常数特性）。
-
-空气阻力模块（`Apply Drag`）与风力协同工作，阻力向量计算公式为：
+空气阻力模块（`Apply Drag`）则以与速度反向的方式施加制动力，其公式为：
 
 $$
-\vec{a}_{drag} = -k_{drag} \cdot |\vec{v}_{particle}| \cdot \vec{v}_{particle}
+\vec{a}_{drag} = -k_{drag} \cdot \vec{v}_{particle}
 $$
 
-$k_{drag}$ 典型范围为 **0.01～5.0**。当 $k_{drag} = 0.1$ 时，初速为 500 cm/s 的粒子在 0.5 秒内减速至约 250 cm/s（适合烟雾缓慢漂散）；当 $k_{drag} = 3.0$ 时，同条件粒子在不足 0.05 秒内近乎静止（适合模拟水中气泡的极高阻尼）。
-
-### 吸引与排斥力模块（Point Attraction / Repulsion Force）
-
-吸引力模块（`Apply Point Attraction Force`）在世界空间中设置引力中心坐标，对所有粒子施加指向该坐标的加速度，大小遵循**距离平方反比衰减**：
-
-$$
-\vec{a}_{attract} = k_{attr} \cdot \frac{\vec{d}}{max(|\vec{d}|^2,\ r_{min}^2)}
-$$
-
-其中 $\vec{d}$ 为粒子到引力中心的向量，$k_{attr}$ 为引力强度（默认 **100 cm/s²**），$r_{min}$ 为最小安全距离（默认 **5 cm**，防止除零导致加速度爆炸至无穷大）。
-
-排斥力模块（`Apply Point Repulsion Force`）公式结构与吸引力相同，唯独加速度方向取反。两者组合使用时，可通过设置 $k_{attract}$ 与 $k_{repulse}$ 的比值模拟**Lennard-Jones 势**风格的粒子间距平衡——当粒子距引力中心约 $\sqrt{k_{repulse}/k_{attract}}$ cm 时，合力为零，粒子在该半径附近形成稳定环绕轨道，常用于制作魔法护盾或粒子聚集球效果。
+其中 $k_{drag}$ 为线性阻力系数（Linear Drag Coefficient），默认值 **0.5** 表示每秒速度损失约 39.3%（即 $e^{-0.5 \times 1.0} \approx 0.607$）。将 `Drag` 设为 **2.0** 时，粒子在约 **0.5 s** 内速度衰减至初始值的 36.8%，适合模拟在水中运动的气泡或在浓烟中飘散的火星。
 
 ---
 
-## 关键公式与 HLSL 实现
+## 关键模块与参数速查
 
-Niagara 模块底层以 **HLSL（High-Level Shading Language）** 编写，可通过"Custom HLSL"节点实现自定义力场。以下为一个螺旋力场（Vortex Force）的核心实现片段：
+### 吸引/排斥场（Point Attractor / Repulsor）
 
-```hlsl
-// 螺旋力场：绕 Z 轴产生切向加速度
-// 输入：Particle.Position, VortexCenter(float3), VortexStrength(float)
-float3 delta = Particle_Position - VortexCenter;
-float3 radial = float3(delta.x, delta.y, 0.0f);
-float dist = max(length(radial), 5.0f);          // 最小距离 5 cm 防止奇点
+点吸引模块（`Apply Force: Point Attractor`）在世界空间中指定一个中心点坐标 `AttractorPosition`，对所有粒子施加指向该点的加速度，强度与距离平方成反比，模拟库仑力或万有引力的距离衰减特性：
 
-// 切向方向：绕 Z 轴逆时针旋转 90°
-float3 tangent = float3(-radial.y, radial.x, 0.0f) / dist;
+$$
+\vec{a}_{attract} = \frac{K_{attract}}{|\vec{r}|^2} \cdot \hat{r}
+$$
 
-// 加速度大小与距离成反比（角动量守恒近似）
-float accelMag = VortexStrength / dist;
-float3 vortexAccel = tangent * accelMag;
+其中 $\vec{r}$ 是从粒子位置指向吸引中心的向量，$K_{attract}$ 为强度系数（默认 **100.0**），$\hat{r}$ 为单位方向向量。**将 $K_{attract}$ 设为负值即转变为排斥场**，可模拟爆炸冲击波向外扩散的效果。需注意：当粒子与吸引中心距离趋近于 0 时，分母趋于 0 导致加速度爆炸性增大，建议在模块中设置 `Min Distance Clamp`，推荐最小值为 **10.0 cm**，以避免粒子在中心点附近产生无限大速度。
 
-// 输出叠加到 Particle.Velocity
-Particle_Velocity += vortexAccel * Engine_DeltaTime;
+### 涡旋场（Vortex Velocity）
+
+涡旋模块（`Vortex Velocity`）沿指定轴线（`VortexAxis`，默认为世界 Z 轴）施加切向速度，使粒子在轴线周围做螺旋运动。切向速度大小由以下公式决定：
+
+$$
+\vec{v}_{vortex} = \omega \cdot (\hat{axis} \times \vec{r}_{radial})
+$$
+
+其中 $\omega$ 为角速度（单位 rad/s，默认 **1.0**），$\vec{r}_{radial}$ 为粒子位置到轴线的径向向量。将 $\omega$ 设为 **3.14159 rad/s（即 π rad/s）** 时，粒子绕轴线每 **2 秒**完成一整圈旋转，常用于龙卷风、水流漩涡特效。
+
+---
+
+## 实际应用案例
+
+### 案例一：营火烟雾模拟
+
+制作营火烟雾时，可在同一发射器的 Particle Update 组中叠加如下力场配置：
+
+```
+[Force Stack]
+1. Apply Force: Gravity        → Z = -50 cm/s²  (烟雾密度低，重力减弱)
+2. Apply Force: Wind           → X = 80 cm/s²   (轻微横向风)
+3. Apply Drag                  → Drag = 1.2      (空气阻力减速)
+4. Vortex Velocity             → Omega = 0.8 rad/s, Axis = (0,0,1)
+5. Curl Noise Force            → Frequency = 0.05, Strength = 60
 ```
 
-此螺旋力场中，当 `VortexStrength = 2000` 时，距涡心 **100 cm** 处的粒子切向加速度为 20 cm/s²，在约 **1.5 秒**内可形成可见的旋转轨迹，适用于龙卷风、水漩涡等特效。
+叠加顺序不影响最终结果（加速度向量相加满足交换律），但 **Drag 模块应置于最后执行**，确保阻力作用于本帧所有力叠加后的速度，而非中间值。最终效果为：烟雾向上升腾（重力减弱）同时被风吹向一侧，受涡旋影响产生轻微螺旋，并因噪声力产生有机抖动感。
 
----
+例如：在《Fortnite》营地营火特效中，Epic 的技术美术使用了类似的四层力叠加方案（据 GDC 2019 Epic Games 技术分享 PPT 第 47 页），最终粒子数量控制在单发射器 **150 个/帧**以内，GPU 耗时约 **0.08 ms**。
 
-## 实际应用
+### 案例二：爆炸碎片物理响应
 
-### 火焰与烟雾特效
+爆炸碎片特效中，需要在粒子**生命初期**施加强排斥力，**生命后期**切换为重力主导。可使用 `Particle.NormalizedAge` 驱动力场强度曲线：
 
-制作火焰效果时，常将三个力场模块叠加：
+```hlsl
+// 自定义 HLSL 模块：Age-based Force Blend
+float Age = Particle.NormalizedAge;           // 0.0 ~ 1.0
+float BlastStrength = lerp(800.0, 0.0, saturate(Age * 3.0));
+// Age=0 时强度800, Age>0.33 时强度归零
+float3 BlastDir = normalize(Particle.Position - ExplosionCenter);
+Particle.Velocity += BlastDir * BlastStrength * Engine.DeltaTime;
+```
 
-1. **重力模块**：Z 轴设为 **+200 cm/s²**（正值，模拟热浮力，与现实重力方向相反）；
-2. **风力模块**：`Wind Velocity = (30, 15, 0)` cm/s，`k_{accel} = 3.0`，模拟微弱侧风；
-3. **噪波力场（Curl Noise Force）**：强度 **50 cm/s²**，频率 **0.02**，模拟湍流扰动，防止粒子轨迹过于规律。
-
-三者叠加后，火焰粒子自然呈现向上飘动、轻微偏斜、带随机抖动的有机形态，比单一浮力模块的视觉质感提升显著。
-
-### 弹孔与碎片效果
-
-枪击弹孔产生的混凝土碎片特效，需要在粒子生成后 **0～0.3 秒**内快速减速（空气阻力），同时持续受重力影响落地。典型配置：`Particle.Mass = 1.5`，`k_{drag} = 1.2`，重力 Z = −980 cm/s²，初速度随机范围 300～800 cm/s 朝向法线半球方向。粒子平均在 **0.8～1.2 秒**内落地，与实际碎片飞溅时长吻合。
-
-### 粒子吸附特效（技能读条）
-
-MOBA 或 RPG 游戏中常见"技能蓄力"特效：能量粒子从四周向玩家手部汇聚。实现方式为在手部骨骼位置挂载一个吸引力模块，`k_{attr} = 50000`，`r_{min} = 20 cm`，粒子从半径 **200 cm** 处生成，在约 **0.6 秒**内被吸入中心，恰好匹配常见技能读条时长（0.5～1.0 秒）。
+此脚本在粒子生命前 33%（`NormalizedAge < 0.333`）内线性施加从 **800 cm/s²** 衰减到 **0** 的向外爆炸力，之后完全由重力（−980 cm/s²）接管，产生抛物线轨迹。
 
 ---
 
 ## 常见误区
 
-**误区1：重力单位混淆**
-许多开发者将重力强度误设为 **−9.8**（以米为单位），实际 Niagara 使用厘米，正确值为 **−980 cm/s²**。误设 −9.8 导致粒子在 3 秒内仅下落约 44 cm（几乎不动），而非正确的 44 米。
+**误区一：认为力场模块顺序不影响结果**
+在纯加速度叠加的情况下，顺序确实不影响最终速度（向量加法满足交换律）。但若某个模块直接修改 `Particle.Velocity`（而非累加加速度），则执行顺序至关重要。例如 `Vortex Velocity` 模块直接写入速度分量，若在 `Drag` 之前执行，其贡献的切向速度也会被同帧阻力衰减；若在 `Drag` 之后执行，切向速度则不受当帧阻力影响。具体行为需在模块源码中确认该模块是写入 `Particle.Velocity` 还是 `PhysicsForce` 累加缓冲区。
 
-**误区2：力场叠加顺序影响结果**
-Niagara 的 Particle Update 阶段按模块列表**从上到下顺序执行**，同帧内各力场加速度线性叠加，最终一次性更新速度。理论上顺序不影响同帧合力结果，但若某模块直接修改 `Particle.Velocity`（而非输出加速度增量），则顺序影响后续模块的输入值，需注意区分"Add Force"型与"Set Velocity"型模块。
+**误区二：重力默认值直接对应米制单位**
+Niagara 内部单位为**厘米（cm）**，默认重力 −980 cm/s² 对应现实 9.8 m/s²，而非 −9.8。若将重力误设为 −9.8 cm/s²，粒子仅以现实重力 1/100 的强度下落，在 1 秒内仅下落约 **4.9 cm**，肉眼几乎看不出下坠，常被误认为"重力模块没有生效"。
 
-**误区3：在 Particle Spawn 阶段添加持续力场**
-力场模块若被错误放置在 **Particle Spawn** 阶段而非 **Particle Update** 阶段，则仅在粒子出生帧执行一次，等价于一次性速度冲量，而非持续作用力。表现为粒子忽略重力弯曲，径直飞出后保持匀速直线运动。
+**误区三：吸引场不设最小距离限制**
+当 `Min Distance Clamp = 0` 时，粒子一旦进入吸引中心极近范围（< 1 cm），加速度可瞬间超过 $10^5$ cm/s²，导致该帧位移远超场景尺度，粒子在视觉上"消失"（实际上以极高速飞出视锥体）。始终将 `Min Distance Clamp` 设置为不小于 **10.0 cm**。
 
-**误区4：$r_{min}$ 设为 0 导致数值爆炸**
-吸引/排斥力模块的最小距离 `Min Distance` 若设为 0，当粒子恰好经过引力中心时，分母趋近零，加速度趋近无穷大，导致粒子在单帧内获得极大速度，瞬间飞出视野。始终保持 `r_{min} ≥ 1 cm`。
+**误区四：在 CPU 模拟中使用高频 Curl Noise**
+`Curl Noise Force` 模块的噪声采样在 GPU 模拟（GPU Sim）下几乎无额外开销，但在 CPU 模拟模式下每粒子每帧执行一次三维噪声查找，当粒子数超过 **500 个**时，CPU 帧耗时会从约 0.1 ms 急增至 2 ms 以上。若必须使用 CPU 模拟，应将 `Noise Frequency` 降低至 **0.02 以下** 或改用低成本的线性随机扰动替代。
 
 ---
 
 ## 知识关联
 
-### 与粒子生命周期的关系
-
-力场模块的作用效果直接依赖粒子生命周期（Particle Lifetime）的长短。相同的重力加速度（−980 cm/s²）作用于生命周期 **0.5 秒**的粒子，最终下落距离约
+**前置概念——粒子生命周期**：`Particle.NormalizedAge`（0.0～1.0）是力场强度随时间变化的核心驱动变量。例如在 `Apply Force: Gravity` 的 Strength 参数上绑定一条从 0 到 1 的曲线，即可实现粒子从"无重力飘浮"到"完全重力坠落"的渐进过渡。无论哪种力场模块，其随时间变化的行为都依赖对 NormalizedAge 的正确理

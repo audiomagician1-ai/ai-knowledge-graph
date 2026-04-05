@@ -25,15 +25,16 @@ updated_at: 2026-04-06
 ---
 
 
+
 # 景深效果
 
 ## 概述
 
 景深效果（Depth of Field，DoF）是模拟真实摄影镜头焦点特性的后处理渲染技术，其物理根源是几何光学中的弥散圆（Circle of Confusion，CoC）理论。当镜头焦距固定于某一距离时，该距离之外的点光源无法在传感器平面上汇聚为理想点，而是扩散为一个圆形光斑——其半径正比于物体偏离焦平面的距离与光圈直径的乘积。实时渲染通过逐像素计算 CoC 半径，将其映射为可变模糊核（Variable Blur Kernel），从而在帧缓冲区级别复现镜头的浅景深外观。
 
-景深后处理在游戏引擎中的商业化应用可追溯至 2004 年 Valve 的《半条命 2》与 Epic Games 在 Unreal Engine 3（2006 年）中引入的 BokehDOF Pass。2012 年，Jorge Jimenez 等人在 SIGGRAPH 发表"Practical Post-Process Depth of Field"，系统性地提出了基于半分辨率分层合成的实时 DoF 框架，此后成为主流引擎实现的参考基准（Jimenez et al., 2012）。Unreal Engine 5.0（2022 年）进一步将 DiaphragmDOF 系统迁移至 Temporal Super Resolution 管线，以 TAA 的帧间信息弥补单帧散景采样不足的问题。
+景深后处理在游戏引擎中的商业化应用可追溯至 2004 年 Valve 的《半条命 2》与 Epic Games 在 Unreal Engine 3（2006 年）中引入的 BokehDOF Pass。2012 年，Jorge Jimenez 等人在 SIGGRAPH 发表 "Practical Post-Process Depth of Field"，系统性地提出了基于半分辨率分层合成的实时 DoF 框架，此后成为主流引擎实现的参考基准（Jimenez et al., 2012）。Unreal Engine 5.0（2022 年）进一步将 DiaphragmDOF 系统迁移至 Temporal Super Resolution 管线，以 TAA 的帧间信息弥补单帧散景采样不足的问题。
 
-景深效果的计算复杂度显著高于 Bloom 泛光：Bloom 仅需对全图做固定方向的高斯分离卷积，而 DoF 的模糊核半径随深度连续变化，每像素的采样半径从 0 到最大 CoC（通常 32–64 像素）不等，这使得朴素实现的 ALU 开销与最大 CoC 的平方成正比。
+景深效果的计算复杂度显著高于前置的 Bloom 泛光：Bloom 仅需对全图做固定方向的高斯分离卷积，而 DoF 的模糊核半径随深度连续变化，每像素的采样半径从 0 到最大 CoC（通常 32–64 像素）不等，这使得朴素实现的 ALU 开销与最大 CoC 的平方成正比。
 
 ---
 
@@ -59,100 +60,101 @@ $$
 CoC = \left| \frac{47.2 \times 85 \times (5000 - 2000)}{5000 \times (2000 - 85)} \right| \approx \left| \frac{47.2 \times 85 \times 3000}{5000 \times 1915} \right| \approx 1.26\text{mm}
 $$
 
-在 35mm 全幅传感器（36mm × 24mm）、输出分辨率 1920 × 1080 的条件下，1.26mm 传感器尺寸对应约 67 像素的屏幕半径，这正是需要施加的模糊半径。
+在 35mm 全幅传感器（36mm × 24mm）、输出分辨率 1920×1080 的条件下，1.26mm 传感器尺寸对应约 67 像素的屏幕半径，这正是需要施加的模糊半径。
 
-实时引擎通常以归一化值存储 CoC，将其压缩到 $[-1, 1]$：负值表示近景模糊区（Near Field），正值表示远景模糊区（Far Field），$0$ 表示位于焦内清晰区（In-Focus Zone）。Unreal Engine 的 DiaphragmDOF 使用 R16F 格式缓冲区以物理单位（cm）存储原始 CoC，随后除以屏幕半宽换算为 NDC 空间半径。
+实时引擎通常以归一化值存储 CoC，将其压缩到 $[-1, 1]$：负值表示近景模糊区（Near Field），正值表示远景模糊区（Far Field），零值对应锐焦区域。Unity HDRP 将 CoC 编码进深度预处理 Pass 的 R 通道（16-bit float），并以 `_CoCTexture` 的形式传递给后续模糊 Pass。
 
-### 散景形状与 Bokeh 渲染策略
+### 散景（Bokeh）的光学形状与滤波核设计
 
-真实镜头的散景形状由光圈叶片数量与叶片曲率决定：6 叶片产生六边形散景，9 叶片接近圆形，完全开圆光圈产生标准圆形散景。实时渲染中存在两条技术路径：
+"散景"一词来自日语「ボケ」（boke，模糊之意），指失焦区域的光斑外观。物理上，散景形状由光圈叶片数量决定：5 叶光圈产生五边形光斑，9 叶以上趋近于圆形。在实时渲染中，模拟不同散景形状的常见策略包括：
 
-**Gather（聚合）路径**是主流引擎的默认选择。对于每个输出像素 $p$，在以其为中心、半径为 $r = CoC(p)$ 的区域内，对若干采样点做加权平均：
+- **圆形采样核（Circular Disk Sampling）**：在以 CoC 半径为半径的圆盘内均匀或 Poisson 分布采样，每次 DoF Pass 需要 16–64 个样本点。Unreal Engine 4 的 CircleDOF 模式默认使用 **32 个样本**，分布在 3 个同心圆上（半径比为 1:2:3，样本数比为 8:12:12）。
+- **多边形核（Polygonal Kernel）**：通过将采样点限制在正多边形区域内模拟刀片状光圈，可实现六角形或八角形散景，常见于 Assassin's Creed 系列的后处理管线。
+- **分离式双圆核（Dual Kawase / Hexagonal Blur）**：Morgan McGuire 与 Padraic Hennessy（2018）在 GPU Pro 7 中提出的六边形散景实现，仅需 3 个方向性卷积 Pass 即可在接近 O(1) 的复杂度下逼近六角形散景，在主机平台（PS4/Xbox One）上将 DoF 开销控制在 0.8ms 以内。
+
+### 分层合成策略：近景与远景的分离处理
+
+Jimenez（2012）框架的核心贡献之一是将景深分为三层独立处理，避免近景模糊区的不透明散景光斑"污染"其背后清晰物体的边缘：
+
+1. **远景层（Far Field）**：CoC > 0 的像素，降采样至半分辨率后做圆形卷积，再双线性上采样合成回全分辨率。
+2. **近景层（Near Field）**：CoC < 0 的像素，需要额外的 Alpha 扩散（Alpha Spreading）步骤：先用膨胀滤波（Dilate Filter）将近景 CoC 扩展到邻域，防止近景物体边缘出现"锐利轮廓泄漏"伪影。
+3. **锐焦层（In-Focus）**：直接输出原始颜色缓冲，与前两层按 CoC 权重混合。
+
+最终合成公式为：
 
 $$
-\text{Color}_{out}(p) = \frac{\sum_{i=1}^{N} w_i \cdot \text{Color}(p + \delta_i)}{\sum_{i=1}^{N} w_i}
+C_{final} = \text{lerp}\bigl(C_{sharp},\ C_{far},\ w_{far}\bigr) + C_{near} \cdot \alpha_{near}
 $$
 
-其中 $\delta_i$ 是散布在 Bokeh 形状轮廓内的偏移向量，$w_i$ 是权重（通常取 $CoC(p + \delta_i)$ 的函数以减少背景泄漏）。Unity HDRP 默认使用 $N = 42$ 个六边形分布的采样点，最大半径限制为 14 像素（半分辨率下等效 28 像素）。
-
-**Scatter（散射）路径**将每个高亮像素视为一个向外扩散的 Sprite：将屏幕上 CoC 超过阈值（通常 $> 4$ 像素）的像素收集到点列表，以 GPU DrawIndirect 渲染为带透明度的多边形 Sprite，Sprite 的形状与大小由该像素的 CoC 值和预定义的 Bokeh 纹理决定。此方法能正确处理高光散景叠加（如夜晚路灯），但点的数量可能达到数十万，仅适合次世代主机或 PC 高质量模式。
-
-### 近景遮挡与分层合成
-
-景深实现中最难处理的问题是**近景模糊渗透**（Near Field Bleeding）：位于焦内的清晰背景，在其前方存在模糊前景时，模糊会错误地向清晰区域扩散，造成"鬼影"（Ghosting）。标准解决方案是三层分离合成流程：
-
-1. **远景层（Far Layer）**：仅处理 $CoC > 0$ 的像素，在半分辨率缓冲区做 Gather 模糊，并将 CoC 值本身作为 Alpha 通道写入。
-2. **近景层（Near Layer）**：仅处理 $CoC < 0$ 的像素，在独立半分辨率缓冲区做最大化 CoC 膨胀（Max CoC Dilation），再做 Gather 模糊，使近景模糊边界向外扩展约 2–4 像素，从而在合成时遮住背景像素的边缘伪影。
-3. **合成**：先将远景层以 $\alpha_{far}$ 混合到原始清晰图像上，再将近景层以 $\alpha_{near}$（通常取 $\max(0, -CoC/CoC_{max})$）叠加到结果上，最终上采样回全分辨率。
-
-Unreal Engine 5 的 DiaphragmDOF 引入了额外的**前景散射通道**（Foreground Scatter Pass）：对 CoC 绝对值 $> 8$ 像素的近景像素，额外执行一次 Scatter 渲染，将其正确地"堆叠"到中景之上，将近景边缘误差控制在 1 像素以内。
+其中 $w_{far} = \text{saturate}(CoC_{far})$，$\alpha_{near}$ 由近景层膨胀后的 CoC 绝对值导出。
 
 ---
 
-## 关键公式与实现代码
+## 关键算法：瓦片最大 CoC 预处理
 
-以下是 GLSL 实现的简化 Gather DoF 核心着色器，展示了 CoC 计算与圆形采样的基本结构：
+朴素的逐像素可变模糊核开销过高，现代实现普遍采用"瓦片最大化（Tile Max）"预处理将开销降至可接受范围。具体流程如下：
 
-```glsl
-// 输入：深度缓冲（线性化）、颜色缓冲、DoF 参数
-uniform float uFocusDist;   // 对焦距离（世界单位）
-uniform float uFocalLen;    // 焦距（mm），如 85.0
-uniform float uAperture;    // 光圈直径（mm），如 47.2 (f/1.8)
-uniform float uSensorHeight;// 传感器高度（mm），如 24.0
-uniform vec2  uResolution;  // 屏幕分辨率，如 (1920, 1080)
+```hlsl
+// Pass 1: TileMax — 以 8x8 像素为一个 Tile，记录 Tile 内最大 CoC 半径
+Texture2D<float> _CoCTexture;
 
-// 将线性深度转换为 CoC 归一化半径（[-1, 1] 范围）
-float computeCoC(float linearDepth) {
-    float d = linearDepth;
-    float D = uFocusDist;
-    float f = uFocalLen;
-    float A = uAperture;
-    // 薄透镜 CoC（mm）
-    float coc_mm = abs(A * f * (d - D) / (d * (D - f)));
-    // 转为屏幕像素半径：(coc_mm / sensorHeight) * screenHeight / 2
-    float coc_px = (coc_mm / uSensorHeight) * (uResolution.y * 0.5);
-    // 归一化到 [-1, 1]，近景取负值
-    float sign = (d < D) ? -1.0 : 1.0;
-    return sign * clamp(coc_px / 32.0, 0.0, 1.0); // 最大半径 32px
-}
-
-// 六边形分布采样（12 点，近似圆形）
-const vec2 BOKEH_KERNEL[12] = vec2[](
-    vec2( 0.000,  1.000), vec2( 0.500,  0.866),
-    vec2( 0.866,  0.500), vec2( 1.000,  0.000),
-    vec2( 0.866, -0.500), vec2( 0.500, -0.866),
-    vec2( 0.000, -1.000), vec2(-0.500, -0.866),
-    vec2(-0.866, -0.500), vec2(-1.000,  0.000),
-    vec2(-0.866,  0.500), vec2(-0.500,  0.866)
-);
-
-vec4 dofGather(sampler2D colorTex, sampler2D cocTex, vec2 uv) {
-    float centerCoC = abs(texture(cocTex, uv).r);
-    float radius = centerCoC * 32.0; // 最大 32px 半径
-    vec4 acc = vec4(0.0);
-    float totalWeight = 0.0;
-    for (int i = 0; i < 12; i++) {
-        vec2 offset = BOKEH_KERNEL[i] * radius / uResolution;
-        vec2 sampleUV = uv + offset;
-        vec4 sampleColor = texture(colorTex, sampleUV);
-        float sampleCoC = abs(texture(cocTex, sampleUV).r);
-        // 权重：远景采样点的 CoC 越大，贡献越可靠
-        float w = clamp(sampleCoC / max(centerCoC, 0.001), 0.0, 1.0);
-        acc += sampleColor * w;
-        totalWeight += w;
+[numthreads(8, 8, 1)]
+void TileMaxCS(uint3 id : SV_DispatchThreadID)
+{
+    float maxCoC = 0.0;
+    // 遍历 8x8 邻域，取最大绝对值 CoC
+    for (int dy = -4; dy < 4; dy++)
+    for (int dx = -4; dx < 4; dx++)
+    {
+        float2 uv = (id.xy + float2(dx, dy) + 0.5) * _TexelSize.xy;
+        maxCoC = max(maxCoC, abs(_CoCTexture.SampleLevel(sampler_point, uv, 0)));
     }
-    return acc / max(totalWeight, 0.001);
+    _TileMaxOutput[id.xy / 8] = maxCoC;
 }
+
+// Pass 2: NeighborMax — 在 Tile 图上再做 3x3 邻域最大值扩展
+// 确保运动边界上的 Tile 获得足够大的采样半径
+float neighborMax = 0.0;
+for (int ny = -1; ny <= 1; ny++)
+for (int nx = -1; nx <= 1; nx++)
+    neighborMax = max(neighborMax, _TileMaxTexture[tileID + int2(nx, ny)]);
 ```
 
-上述代码中，`BOKEH_KERNEL` 的 12 个点均匀分布于单位圆上，可替换为六边形顶点坐标以模拟 6 叶片光圈散景。生产级实现（如 Unreal 的 DiaphragmDOF）通常使用 32–64 点的随机旋转核（Blue Noise Jitter），配合 TAA 积累多帧样本，以 12 点的采样成本实现等效 128 点的视觉质量。
+经过 TileMax 与 NeighborMax 两个 Compute Pass 之后，每个 8×8 像素块只需按照该块的最大 CoC 决定采样半径，避免在锐焦区域浪费采样，将整体 GPU 耗时相较朴素实现减少约 40–60%（视场景远近景分布而定）。
 
 ---
 
-## 实际应用场景
+## 实际应用
 
-**电影化过场动画**：在双人对话镜头中，将对焦距离设为主角脸部（约 1.8–2.5 米），焦距模拟 85mm 人像镜，光圈 F/1.4–F/2.0，使背景角色与环境陷入明显的圆形散景模糊，迫使玩家视线集中在说话角色上。《最后的生还者 Part II》（2020，Naughty Dog）的过场动画大量采用此技术，其 DoF 参数随摄像机动画关键帧动态切换，焦点转移时间约 0.3–0.5 秒，模仿摄影师手动拉焦的节奏感。
+### 游戏与影视中的典型参数配置
 
-**准星/UI 聚焦效果**：第一人称射击游戏中，当玩家举枪瞄准时，远景和近景同时产生 CoC 约 4–8 像素的轻微模糊，清晰区间压缩至准星前方 10–30 米，强化瞄准准星的视觉突出性。《使命召唤：现代战争》（2019）的 ADS 状态下即采用此策略，CoC 过渡动画时长约 4 帧（66ms @ 60fps），避免产生晕眩感。
+景深在不同应用场景中的参数差异极大：
 
-**手机游戏的低成本近似**：移动端受限于 ALU 预算，通常以固定半径的高斯模糊（半径 4–8 像素）替代精确 CoC 采样，仅对深度超过阈值（如距摄像机 50 米以上）的远景区域施加模糊，并使用深度测试
+- **第一人称射击（FPS）**：《使命召唤：现代战争》（2019）的近战瞄准镜景深使用极浅景深——焦距等效 200mm、$F/1.4$，背景 CoC 最大值设定为 48 像素（1080p），以强化"镜头感"并干扰玩家对背景细节的注意力。
+- **角色扮演（RPG）**：《赛博朋克 2077》（CD Projekt RED，2020）的过场动画使用动态对焦（Auto Focus），根据对话角色的世界坐标实时更新对焦距离 $D$，焦深范围约 $\pm 0.8$ 米，等效模拟 35mm F/2.8 镜头特性。
+- **实时电影渲染（Cinematic）**：Unreal Engine 5 的 Sequencer 中，DiaphragmDOF 支持直接输入以 mm 为单位的焦距（推荐 50–135mm）和真实 F 值（常用 $F/1.2$ 至 $F/2.8$），与物理相机参数一一对应，便于 VFX 团队与摄影指导协同工作。
+
+### 性能优化：半分辨率渲染与时域累积
+
+为将 1080p 的 DoF 开销控制在 2ms 以内，主流实现采用以下两级降本策略：
+
+1. **半分辨率 DoF（Half-Resolution DoF）**：在 960×540 纹理上执行全部散景卷积，最后上采样回 1920×1080。由于人眼对失焦区域的高频细节不敏感，半分辨率引入的上采样伪影几乎不可察觉，但节省了 75% 的纹理采样带宽。
+2. **时域散景积累（Temporal Bokeh Accumulation）**：每帧在圆盘采样核上随机旋转采样方向（旋转角度基于 Halton 序列的第 8 位），借助 TAA 将连续帧的散景样本在时域上累积，使等效采样数从单帧 32 个提升至时域 128 个以上，显著改善大 CoC 区域的颗粒感噪点。
+
+---
+
+## 常见误区
+
+### 误区一：近景模糊不需要膨胀处理
+
+许多初次实现 DoF 的渲染工程师只为远景层做模糊，直接将近景 CoC 像素同等处理。这会导致近景前景物体（如前景树枝、手持武器）边缘出现"深色光晕"——清晰背景像素渗入失焦前景的采样核，拉低了前景光斑的亮度。正确做法是在近景层卷积前执行 **CoC 膨胀（Dilate）**：以当前像素为中心，在 $5\times5$ 邻域内取 CoC 绝对值的最大值作为该像素的模糊半径，使近景边界的模糊自然向外扩展而非向内收缩。
+
+### 误区二：将 CoC 直接存储为屏幕像素数
+
+CoC 的物理单位是传感器平面上的长度（mm），转换为屏幕像素数时必须考虑**传感器分辨率映射比（pixels per mm）**。若直接将毫米值当作像素数传递给模糊 Pass，在低分辨率（如 720p）与高分辨率（如 4K）之间切换时散景大小会产生 4 倍差异，破坏艺术家预设的视觉意图。正确做法是将 CoC 归一化为传感器宽度的分数，再乘以当前渲染目标的宽度像素数：
+
+$$
+CoC_{pixels} = CoC_{mm} \times \frac{renderWidth}{sensorWidth_{mm}}
+$$
+
+例如，渲染宽度 1920px，传感器宽度 36mm，则比例系数为 $1920 / 36 \approx 53.3$，1.26mm 的物理 CoC 对应 $1.

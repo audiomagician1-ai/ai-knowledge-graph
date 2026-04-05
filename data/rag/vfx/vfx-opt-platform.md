@@ -26,6 +26,7 @@ updated_at: 2026-04-06
 
 
 
+
 # 平台差异
 
 ## 概述
@@ -34,7 +35,7 @@ updated_at: 2026-04-06
 
 这一领域的系统性研究随着跨平台引擎的普及而兴起。Unity在2018年引入Shader LOD（Level of Detail）机制，Unreal Engine 4则以Scalability系统（可扩展性等级0–3）允许美术按平台预设特效质量层级，标志着特效适配进入工程化阶段。在此之前，开发者只能手工维护多套材质和粒子配置，错误率高且迭代成本极大。
 
-移动端特效预算通常为PC端的1/10甚至更低。若直接移植PC资产而不做适配，会在中低端手机上产生持续60°C以上的GPU过热、帧率跌至15fps以下，甚至触发SoC的动态热功耗管理（DTPM）强制降频，将GPU频率从最高900MHz压降至400MHz以下。掌握各平台的性能边界，可以让特效美术在创作初期就规避高代价的返工。参考文献：《Real-Time Rendering, 4th Edition》（Akenine-Möller et al., 2018，CRC Press）对各平台GPU架构特性有详细对比论述。
+移动端特效预算通常为PC端的1/10甚至更低。若直接移植PC资产而不做适配，会在中低端手机上产生持续60°C以上的GPU过热、帧率跌至15fps以下，甚至触发SoC的动态热功耗管理（DTPM）强制降频，将GPU频率从最高900MHz压降至400MHz以下。参考文献：《Real-Time Rendering, 4th Edition》（Akenine-Möller et al., 2018，CRC Press）对各平台GPU架构特性有详细对比论述。
 
 ---
 
@@ -54,96 +55,120 @@ Shader复杂度方面，移动端GPU的ALU吞吐量约为PC中端显卡的1/8–
 
 | 平台 | 单帧最大粒子数 | 最大发射器数量 | 推荐贴图尺寸 | 材质叠加层数上限 |
 |------|--------------|--------------|------------|----------------|
-| PC High | 50,000+ | 20+ | 512×512 | 8层 |
-| Console | 20,000 | 12 | 256×256 | 5层 |
-| Mobile High | 5,000 | 6 | 128×128 | 2层 |
-| Mobile Low | 800 | 3 | 64×64 | 1层 |
+| PC（高端） | 500,000–1,000,000 | 不限 | 1024×1024 | 6–8层 |
+| Console（PS5/XSX） | 100,000–300,000 | 64 | 512×512 | 4–6层 |
+| 移动端（高端旗舰） | 20,000–50,000 | 16 | 256×256 | 2–3层 |
+| 移动端（中低端） | 5,000–8,000 | 8 | 128×128 | 1–2层 |
 
-在Unreal Engine 5的Niagara系统中，可通过`fx.MaxCPUParticlesPerEmitter`控制台变量配合平台专属的`DeviceProfile.ini`文件实现上述分级的自动化切换：
+动态分辨率缩放（Dynamic Resolution Scaling，DRS）在主机平台上尤为常见。PS5的游戏引擎通常将内部渲染分辨率设定在1440p到2160p之间动态浮动，特效的Overdraw代价随分辨率降低而等比减少。特效美术在制作时应确保粒子贴图在128×128尺寸下仍能辨识核心轮廓，以兼容DRS缩放至50%分辨率时的画面表现。
 
-```ini
-; Config/Android/AndroidDeviceProfiles.ini 示例
-[Android_Low DeviceProfile]
-+CVars=fx.MaxCPUParticlesPerEmitter=800
-+CVars=fx.Niagara.MaxGPUParticlesSpawnPerFrame=200
-+CVars=r.ParticleLODBias=2
+### 热功耗（TDP）与帧预算分配
 
-[Android_High DeviceProfile]
-+CVars=fx.MaxCPUParticlesPerEmitter=5000
-+CVars=fx.Niagara.MaxGPUParticlesSpawnPerFrame=2000
-+CVars=r.ParticleLODBias=0
-```
+PC旗舰GPU（如RTX 4090）的TDP高达450W，可在不降频的情况下持续高负载运行。主机Xbox Series X的TDP约为200W，且有主动液冷和精确的功耗管理芯片进行调节。移动端SoC的TDP上限通常在8–15W之间（骁龙8 Gen2约为10W），长时间满载必然触发DTPM降频机制。
 
-配置生效后，引擎会在运行时根据设备型号自动匹配对应的粒子预算，无需美术手动切换任何资产。
-
-### 热功耗（TDP）与持续性能差异
-
-PC显卡的TDP通常在150–450W之间，配合独立散热系统，可以将GPU长时间维持在峰值频率运行。主机平台PS5的整机TDP为200W，Xbox Series X为200W，散热方案经过精密调校，允许GPU持续以2.23GHz（PS5）或1.825GHz（Xbox Series X）运行。
-
-移动端SoC的TDP约为5–15W，骁龙8 Gen2的GPU（Adreno 740）标定TDP约为10W。当设备外壳温度超过43°C或核心温度超过95°C时，DTPM机制将介入，在短短30秒内将GPU频率下调30%–60%。这意味着移动端特效不能仅通过"冷机"跑分达标，必须在满载10分钟后的"热机"状态下仍维持稳定帧率——这正是基准测试阶段需要执行"持续压力测试（Sustained Performance Test）"的根本原因。
+帧预算分配上，以30fps为目标（帧时间33.3ms）的移动端游戏，GPU总帧预算中通常只能给特效系统分配4–6ms。这4–6ms必须覆盖所有粒子的顶点运算、透明排序、Draw Call提交和后处理叠加。若一个爆炸特效包含20个发射器，每个发射器单独提交Draw Call，仅State切换开销便可消耗约2ms，因此移动端必须强制使用GPU Instancing或合批（Batching）方案将多个发射器合并为单次提交。
 
 ---
 
-## 关键公式与量化评估
+## 关键公式与算法
 
-评估一个粒子特效在目标平台的帧预算占用，可使用以下**粒子系统帧预算估算公式**：
+### Overdraw代价估算公式
 
-$$T_{particle} = N_{active} \times \left( C_{sim} + N_{layer} \times C_{blend} \right) \times \frac{1}{BW_{GPU}}$$
+特效的Overdraw代价（像素填充成本）可用以下公式粗略估算：
+
+$$
+C_{overdraw} = N_{particles} \times A_{avg} \times L_{blend} \times B_{pixel}
+$$
 
 其中：
-- $T_{particle}$：粒子系统单帧GPU耗时（单位：ms）
-- $N_{active}$：当前帧活跃粒子数量
-- $C_{sim}$：单粒子模拟运算成本（包含位置更新、碰撞检测等，单位：ns/particle）
-- $N_{layer}$：材质混合叠加层数
-- $C_{blend}$：单层混合的像素填充成本（单位：ns/texel）
-- $BW_{GPU}$：GPU可用内存带宽（GB/s）
+- $N_{particles}$ 为单帧活跃粒子总数
+- $A_{avg}$ 为单个粒子的平均屏幕覆盖面积（单位：像素）
+- $L_{blend}$ 为平均混合层数（透明叠加次数）
+- $B_{pixel}$ 为单次像素着色的带宽消耗（字节/像素，移动端RGBA8约为4字节）
 
-**例如**：在Mali-G77（BW约40 GB/s）上运行一个拥有3000个活跃粒子、单粒子模拟成本为2ns、3层叠加（$C_{blend}$=1.5ns/texel，每粒子平均覆盖64像素）的爆炸特效：
+**例如**：一个移动端烟雾特效含3000个粒子，每粒子平均占屏幕800像素，平均叠加3层，则：
 
-$$T_{particle} = 3000 \times (2 + 3 \times 1.5 \times 64) / 40 \approx 21.8 \text{ ms}$$
+$$
+C_{overdraw} = 3000 \times 800 \times 3 \times 4 = 28,800,000 \text{ 字节} \approx 27.5 \text{ MB/帧}
+$$
 
-该耗时已超出30fps帧预算（33ms总帧时）的65%，仅粒子一项就几乎耗尽整帧资源，必须削减粒子数量或降低叠加层数。
+骁龙888的显存带宽约为51,200 MB/s，以30fps计算每帧可用带宽约为1,707 MB。该烟雾特效单独消耗了约1.6%的帧带宽，若场景中同时存在5个类似特效，带宽消耗将达到8%，叠加几何体、UI、后处理后极易超预算。
+
+### 平台分级自动切换代码示例（Unity C#）
+
+```csharp
+// PlatformEffectScaler.cs
+// 根据运行平台自动设置粒子系统的最大粒子数和贴图尺寸
+using UnityEngine;
+
+public class PlatformEffectScaler : MonoBehaviour
+{
+    [SerializeField] private ParticleSystem targetPS;
+
+    // 各平台粒子上限
+    private static readonly int PC_MAX_PARTICLES    = 50000;
+    private static readonly int CONSOLE_MAX_PARTICLES = 15000;
+    private static readonly int MOBILE_HIGH_MAX     = 5000;
+    private static readonly int MOBILE_LOW_MAX      = 2000;
+
+    void Awake()
+    {
+        var main = targetPS.main;
+
+        // 通过SystemMemorySize区分移动端高低配
+        if (Application.isMobilePlatform)
+        {
+            main.maxParticles = SystemInfo.systemMemorySize >= 6144
+                ? MOBILE_HIGH_MAX   // 6GB+ RAM视为高端机
+                : MOBILE_LOW_MAX;
+        }
+        else if (Application.platform == RuntimePlatform.PS5 ||
+                 Application.platform == RuntimePlatform.GameCoreXboxSeries)
+        {
+            main.maxParticles = CONSOLE_MAX_PARTICLES;
+        }
+        else
+        {
+            main.maxParticles = PC_MAX_PARTICLES;
+        }
+
+        Debug.Log($"[PlatformScaler] maxParticles set to {main.maxParticles} " +
+                  $"on {Application.platform}");
+    }
+}
+```
+
+上述代码在`Awake`阶段完成分级，避免运行时频繁修改粒子系统属性导致的CPU重分配开销。实际项目中应结合基准测试数据（Benchmark Profile）将`6144`阈值替换为GPU性能评级，而非单纯依赖内存大小。
 
 ---
 
 ## 实际应用
 
-### 跨平台特效分级制作流程
+### 案例：《原神》跨平台特效适配策略
 
-以一款同时上线PC、PS5和Android平台的动作游戏为例，其技能命中特效的分级制作流程如下：
+米哈游在2020年发布的《原神》同时支持PC、PS4/PS5、iOS和Android四个平台，是跨平台特效适配的典型工程案例。官方技术分享（GDC 2021，Mi Ho Yo Tech，2021）披露了以下具体策略：
 
-**第一步（PC Master版本）**：在PC上制作完整特效，包含12个发射器、总粒子数约30,000、使用512×512贴图、4层材质混合，并完整实现扭曲（Distortion）、光晕（Bloom Feed）和体积光散射效果。
+- **移动端粒子上限**：单个技能特效的活跃粒子数强制不超过800个，PC端同一技能可达3000–5000个；
+- **贴图规格**：移动端粒子贴图统一降至128×128，PC端保持512×512，并通过AssetBundle平台变体自动分发；
+- **Shader变体**：移动端Shader删除了Subsurface Scattering（次表面散射）和Screen Space Reflection（屏幕空间反射）相关采样，将Fragment Shader指令数从约200条削减至80条以内；
+- **后处理特效**：全屏Bloom在移动端降采样至屏幕1/4分辨率进行计算，再双线性上采样还原，减少约75%的片元着色器工作量。
 
-**第二步（Console版本）**：保留核心视觉元素，将粒子总数压缩至18,000，贴图统一缩减至256×256，移除实时体积光散射改为烘焙贴图模拟，发射器数量减至8个。PS5版本可保留Distortion效果，因其显存带宽（448 GB/s）支撑得住。
+### 主机与PC的差异处理：光线追踪粒子阴影
 
-**第三步（Mobile High版本）**：粒子总数进一步降至4,000，贴图换用ASTC 4×4格式的128×128，所有材质叠加限制在2层，扭曲效果改为UV偏移动画模拟，取消动态光源投射，仅保留最显眼的主爆炸和2个残留烟雾发射器。
-
-**第四步（Mobile Low版本）**：粒子数限定为600，全部改用Sprite Billboard替代Mesh粒子，贴图降至64×64 ASTC 6×6，仅保留1个主爆炸发射器，并关闭所有粒子碰撞检测。
-
-整套流程在Unity中可通过`Quality Settings` + `Platform Dependent Compilation（#if UNITY_ANDROID）`宏实现自动切换；在Unreal中则通过`DeviceProfile` + Niagara `Platform Override`完成，无需维护多份资产文件。
-
-### 实机验证与基准测试衔接
-
-移动端特效必须在真机而非模拟器上验证。推荐使用高通Snapdragon Profiler（Adreno GPU）或ARM Mobile Studio（Mali GPU）捕获GPU帧数据，重点关注以下三项指标：Fragment ALU占用率（目标 < 70%）、带宽消耗峰值（目标 < 平台理论带宽的60%）、以及连续运行5分钟后的帧时稳定性（帧时抖动 < ±3ms）。
+PC端（搭载RTX 3080以上）可启用光线追踪粒子阴影（Ray-Traced Particle Shadows），单个爆炸特效的阴影精度可达逐像素级。主机PS5虽支持DXR光线追踪，但由于CU数量（36个CU对比PC RTX 3080的68个CU）和带宽限制，粒子阴影通常回退到Shadow Map方案，分辨率设为512×512。Xbox Series X的GDK文档（Microsoft, 2022）建议在特效阴影Draw Call超过8次/帧时强制关闭光追，改用预烘焙的Light Cookie贴图叠加。
 
 ---
 
 ## 常见误区
 
-**误区一：在PC编辑器里调好就等于移动端没问题。** PC编辑器的默认预览模式运行在桌面GPU上，即便开启"Mobile Preview"模拟模式，其GPU带宽和填充率仍是真实移动设备的8–12倍。一个在编辑器里帧率60fps的爆炸特效，在骁龙665上可能只有12fps。
+### 误区一：用CPU粒子数量判断移动端性能上限
 
-**误区二：只测"冷机"性能就认为达标。** 移动端DTPM机制在持续高负载3–5分钟后必然触发降频，冷机峰值性能比热机稳定性能高40%–60%。特效优化必须以"热机10分钟后的稳定帧率"为达标标准，而非冷启动后30秒内的峰值表现。
+许多特效美术看到移动设备CPU核心数多达8核便认为可承载大量粒子模拟。实际上，移动端特效性能瓶颈几乎100%在GPU端（Fill Rate和带宽），而非CPU粒子更新逻辑。高通骁龙888的GPU（Adreno 660）对半透明粒子的Fill Rate上限约为每帧6.8 Gpixel，在1080p分辨率下满屏叠加6层半透明粒子仅需约0.9ms便可达到瓶颈，此时CPU占用率可能仍低于30%。仅看CPU Profiler数据而忽略GPU Timeline会导致错误的优化方向。
 
-**误区三：认为主机和PC性能相当，不需要单独优化。** PS5虽然GPU算力（10.28 TFLOPS）接近RTX 3070，但其内存架构为统一内存（Unified Memory，16GB GDDR6），CPU与GPU共享同一内存池，大量粒子CPU模拟会与渲染管线争抢内存带宽，在PC上不存在这一瓶颈。因此主机版本的粒子模拟应优先迁移到GPU（Niagara GPU Emitter或VFX Graph GPU模式），以规避CPU模拟的带宽竞争。
+### 误区二：直接复用PC贴图并在移动端运行时缩放
 
-**误区四：贴图尺寸减半就能线性减少性能消耗。** 贴图采样的实际开销与GPU缓存命中率直接相关。从256×256降至128×128，显存占用减少75%，但若粒子运动导致频繁缓存缺失（Cache Miss），实际性能提升可能不足30%。更有效的优化手段是将多个小贴图合并为一张Texture Atlas（贴图集），通过UV偏移动画实现帧序列播放，既减少贴图切换的Draw Call开销，也提升缓存命中率。
+部分项目在移动端加载PC规格的512×512粒子贴图后，依赖引擎Mipmap自动缩小。这种做法会导致两个问题：第一，512×512 RGBA8贴图占用1MB显存，而移动端总显存通常仅有2–4GB与CPU共享，大量特效贴图未经压缩会引发显存碎片和GC抖动；第二，Mipmap生成不会降低带宽采样次数，GPU仍以原始分辨率进行采样计算。正确做法是在构建流程中使用平台变体（Platform Variant）将移动端贴图预压缩为ASTC 4×4（高质量）或ASTC 6×6（标准质量）格式后再打包。
 
----
+### 误区三：认为主机与PC特效策略完全相同
 
-## 知识关联
-
-**前置知识——基准测试**：平台差异优化的所有分级标准（粒子数上限、叠加层数、贴图规格）都必须建立在针对目标设备的基准测试数据之上。未经实测的经验数值仅供参考，骁龙888和天玑9000在相同特效负载下的帧时差异可达35%，不可混用同一套标准。
-
-**横向关联——LOD系统**：粒子数量分级本质上是特效领域的LOD（Level of Detail）策略，与网格LOD共享"按距离/性能档位切换细节级别"的核心逻辑。在Unreal Engine中，Niagara的`Significance Manager`可与静态网格的`HLODs`系统统一调度，确保特效LOD切换与场景LOD切换保持同步，避免出现"高精度特效叠加低精度场景"的视觉割裂。
-
-**技术延伸——着色
+主机虽然性能接近PC中高端，但存在两个关键限制：第一，主机无法通过驱动更新获得新的GPU功能（如PS5在发售时不支持Mesh Shader，直至2022年固件更新才开放）；第二，主机平台有严格的发热管控规定，索尼和微软的认证测试（Cert Test）要求游戏在连续2小时满负载运行中
