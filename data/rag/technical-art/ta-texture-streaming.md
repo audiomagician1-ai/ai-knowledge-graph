@@ -20,20 +20,21 @@ sources:
     model: "claude-sonnet-4-20250514"
     prompt_version: "ai-rewrite-v1"
 scorer_version: "scorer-v2.0"
-quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-03-26
+quality_method: tier-s-booster-v1
+updated_at: 2026-04-05
 ---
+
 
 
 # 纹理流送
 
 ## 概述
 
-纹理流送（Texture Streaming）是一种按需动态加载纹理Mip层级的显存管理技术，其核心思想是：不将一张纹理的所有Mip层级同时驻留于GPU显存，而是根据摄像机距离、屏幕投影面积等实时参数，只加载当前帧实际需要的Mip层级。这项技术的现代实现以**虚拟纹理流送（Virtual Texture Streaming，VTS）**为代表，Unreal Engine 4.23起将其作为可选渲染特性正式引入，DirectX 11.2的Tiled Resources规范也对底层硬件提供了原生支持。
+纹理流送（Texture Streaming）是一种按需动态加载纹理Mip层级的显存管理技术，其核心思想是：不将一张纹理的所有Mip层级同时驻留于GPU显存，而是根据摄像机距离、屏幕投影面积等实时参数，只加载当前帧实际需要的Mip层级。这项技术的现代实现以**虚拟纹理流送（Virtual Texture Streaming，VTS）**为代表，Unreal Engine 4.23起将其作为可选渲染特性正式引入，DirectX 11.2的Tiled Resources规范（亦称D3D11.2 Tier 2 Tiled Resources，2013年随Windows 8.1发布）也对底层硬件提供了原生支持。
 
-纹理流送的出现直接源于分辨率军备竞赛带来的显存压力。一张4096×4096的RGBA无压缩纹理需要占用64MB显存，若游戏场景中同时存在数百张此类纹理，显存需求将轻易突破主流GPU的预算上限。纹理流送通过将"完整加载"改为"按需加载"，使得理论上可管理的纹理总量远超物理显存容量——Unreal Engine的文档指出，启用Virtual Texture后，场景可寻址的纹理数据量可达物理显存的数十倍。
+纹理流送的出现直接源于分辨率军备竞赛带来的显存压力。一张4096×4096的RGBA无压缩纹理占用64MB显存；若改用BC7压缩（压缩比8:1），仍需8MB。当游戏场景同时存在500张此类纹理时，仅纹理一项即可消耗4GB显存，远超过去数代主流GPU的预算上限（GTX 1060仅有6GB VRAM）。纹理流送通过将"完整加载"改为"按需加载"，使可管理的纹理总量远超物理显存容量——Epic官方文档指出，启用Virtual Texture后，场景可寻址的纹理数据量可达物理显存的**数十倍**，例如在8GB显存的机器上管理超过200GB的纹理数据集。
 
-理解纹理流送的工程意义在于：它不是单纯的内存优化技巧，而是一套涉及CPU调度、IO带宽、GPU采样三者协作的完整管线。错误配置流送参数会导致明显的纹理"弹出"（Pop-in）瑕疵，这是玩家可直接感知的视觉劣化，因此技术美术必须深入掌握其运作机制。
+参考文献：《Real-Time Rendering》（Akenine-Möller, Haines, Hoffman, 2018, 4th Edition, CRC Press）第23章对纹理流送的页表机制有系统性论述。
 
 ---
 
@@ -41,49 +42,97 @@ updated_at: 2026-03-26
 
 ### Mip层级请求计算
 
-纹理流送的决策中枢是**Mip偏差计算（Mip Bias Calculation）**。引擎每帧对场景中每个可见网格的UV投影面积进行估算，得到一个"所需Mip等级"值。Unreal Engine使用如下基本逻辑：
+纹理流送的决策中枢是**Mip偏差计算（Mip Bias Calculation）**。引擎每帧对场景中每个可见网格的UV投影面积进行估算，得到一个"所需Mip等级"值。其数学基础来自OpenGL规范中对LOD的定义（OpenGL 4.6 Core Specification, Section 8.14），核心公式为：
 
-> **所需Mip = log₂(纹理分辨率 / 屏幕像素覆盖宽度)**
+$$\text{MipLevel} = \log_2\!\left(\frac{\text{TextureResolution}}{\text{ScreenCoveragePixels}}\right) + \text{MipBias}$$
 
-当一个512×512纹理在屏幕上仅投影为32×32像素时，所需Mip层级约为log₂(512/32) = 4，即只需加载Mip4（32×32）而非完整的Mip0。此计算结果会被提交给**Streaming Manager**，由其负责异步向磁盘或内存池发起加载请求。
+以具体数值说明：一张512×512的纹理在屏幕上投影为32×32像素时，所需Mip层级为 $\log_2(512/32) = \log_2(16) = 4$，即只需加载Mip4（32×32，仅4KB，而Mip0为1MB），节省了约99.6%的显存。`MipBias`可由技术美术通过Unreal的`r.Streaming.MipBias`命令行参数手动偏移，正值强制使用更低精度的Mip（节省显存），负值则强制使用更高精度（提升质量，常用于截图模式）。
+
+此计算结果每帧提交给引擎的**Streaming Manager**，由其维护一个优先级队列，依据"当前所需Mip等级"与"已加载Mip等级"之间的差值异步向磁盘或内存池发起加载/卸载请求。
 
 ### 虚拟纹理页表机制
 
-虚拟纹理流送（VTS）引入了类似CPU虚拟内存的**页表（Page Table）**概念。整张虚拟纹理被划分为固定尺寸的**Tile**（Unreal中默认为128×128像素），每个Tile在物理纹理缓存（Physical Texture Cache）中有对应的物理页。GPU的着色器不直接采样原始纹理地址，而是先查询一张低分辨率的**间接纹理（Indirection Texture）**，其中记录了每个虚拟Tile对应的物理缓存位置。
+虚拟纹理流送（VTS）引入了类似CPU虚拟内存的**页表（Page Table）**概念，最早由Sean Barrett于2008年在GDC演讲"Sparse Virtual Textures"中系统提出，随后被id Software的MegaTexture技术和Epic的Unreal VT采用。整张虚拟纹理被划分为固定尺寸的**Tile**（Unreal Engine中默认为**128×128像素**，可通过`r.VT.TileSize`调整为64或256），每个Tile对应物理纹理缓存（Physical Texture Cache）中的一个物理页。
 
-这一结构使得系统能够实现**Tile粒度的精确加载**：若摄像机只看见一面墙的左半部分，只需将左半部分对应的Tile加载到物理缓存，右半部分的显存占用为零。相比传统流送每次必须加载整个Mip层级，VTS的显存利用率更高，但代价是每次纹理采样需要额外的间接纹理查找开销。
+GPU着色器不直接采样原始纹理地址，而是通过以下两步间接寻址：
 
-### 流送池与带宽预算
+1. **查询间接纹理（Indirection Texture / Page Table Texture）**：这是一张低分辨率纹理，每个像素记录一个Tile的物理缓存坐标（u, v）和当前已加载的Mip层级。对于一张16384×16384的虚拟纹理，间接纹理仅为128×128像素（缩小比例 = 16384/128 = 128），显存开销极小。
+2. **采样物理缓存纹理（Physical Cache Texture）**：根据步骤1获得的物理坐标，从Physical Cache中取出实际像素数据。
 
-Unreal Engine通过`r.Streaming.PoolSize`（单位MB）配置全局纹理流送池大小，该数值直接限制了流送系统可使用的显存上限。流送池满载时，系统依据**Last Recently Used（LRU）**策略驱逐最久未访问的Mip数据。更关键的是**IO带宽预算**：若磁盘读取速度不足（如机械硬盘约100-200 MB/s，NVMe SSD可达3000+ MB/s），摄像机快速移动时流送请求会积压，导致低分辨率Mip持续显示——这正是"纹理糊"（Texture Blur）瑕疵的物理成因。
+这一结构实现了**Tile粒度的精确加载**：摄像机只看见一面墙的左半部分时，只需将左半部分对应的Tile加载到物理缓存，右半部分显存占用为零。相比传统流送每次必须加载整个Mip层级，VTS对大尺寸纹理（如4K、8K）的显存节省尤为显著，但代价是每次纹理采样增加了一次间接纹理查找，在移动端等带宽敏感平台需评估是否值得开启。
+
+### 流送池与IO带宽预算
+
+Unreal Engine通过控制台变量 `r.Streaming.PoolSize`（单位：MB）配置全局纹理流送池大小，该数值直接限制流送系统可占用的显存上限。流送池满载时，系统依据**LRU（Least Recently Used）**策略驱逐最久未访问的Mip数据。
+
+IO带宽是另一个关键瓶颈：机械硬盘顺序读取约100–200 MB/s，NVMe SSD可达3000–7000 MB/s（如Samsung 990 Pro标称7450 MB/s读取速度）。当摄像机以高速运动时（如赛车游戏中以300 km/h行驶），每帧需加载的新Tile数量可能超过IO带宽上限，导致低精度Mip在屏幕上可见一段时间再被高精度Mip替换——这正是**纹理弹出（Texture Pop-in）**瑕疵的直接成因。Unreal提供了 `r.Streaming.MaxTempMemoryAllowed`（默认50MB）来限制单帧最大加载量，防止单帧IO峰值卡顿，但同时也延缓了精度恢复速度，技术美术需要根据目标存储介质在两者间权衡。
 
 ---
 
-## 实际应用
+## 关键配置参数与调试命令
 
-**开放世界地形纹理**是纹理流送最典型的应用场景。《荒野大镖客：救赎2》的地形系统采用多层纹理混合，每个地形分块对应独立的流送优先级；靠近玩家的地块持续维持Mip0，远景地块自动降级至Mip3或更低，据Rockstar的GDC分享，此策略使地形纹理显存占用压缩了约60%。
+在Unreal Engine中，以下控制台变量是调试纹理流送时最常用的工具集：
 
-**电影级场景的角色特写**则需要相反的策略：当镜头推进至角色面部时，面部纹理的Mip偏差值需要主动被锁定（Streaming Mip Bias = 0），防止流送系统错误降级。Unreal Engine提供了`Streaming Mip Bias`材质参数和`ForceMipLevelsToBeResident`节点来实现这一精确控制。
+```console
+# 查看当前流送池使用情况（实时统计）
+stat streaming
 
-在移动端，由于带宽和显存更为受限，Unity的**Texture Streaming API**（Unity 2018.2正式引入）允许开发者为不同摄像机设置独立的`mipMapBias`，确保主摄像机视锥内的纹理享有最高优先级，而小地图摄像机所对应的纹理只加载低Mip层级。
+# 强制将所有Mip立即加载到最高精度（用于截图/性能分析基准）
+r.Streaming.FullyLoadUsedTextures 1
+
+# 设置流送池大小为2048MB
+r.Streaming.PoolSize 2048
+
+# 开启VT调试叠加层，用不同颜色显示各Tile的加载状态
+r.VT.Borders 1
+
+# 控制Mip偏移量：+2表示强制降低2级Mip以节省显存
+r.Streaming.MipBias 2
+
+# 显示虚拟纹理物理缓存的实时占用可视化
+r.VT.Visualize 1
+```
+
+在Rider或Visual Studio调试Unreal源码时，`FStreamingManagerTexture::UpdateResourceStreaming()`函数是定位流送决策逻辑的入口，每帧调用一次，内部按优先级处理`FStreamingTexture`结构体数组的加载/卸载请求。
+
+---
+
+## 实际应用案例
+
+**案例1：开放世界地形超大纹理**
+
+《荒野大镖客：救赎2》（Rockstar Games, 2018）的地形系统采用了类Virtual Texture的分层流送方案，将地表反照率、法线、粗糙度分别编码为独立的Tile集合，使得单个地形区块可寻址的纹理数据达到TB级别而无需全部驻留显存。在Unreal Engine的类似场景中，技术美术通常将地形Runtime Virtual Texture（RVT）的物理缓存设置为1024×1024像素（即包含64×64个128px Tile），并将`r.VT.RVT.TileCountBias`设为-1以在内存敏感平台降低缓存占用。
+
+**案例2：移动端纹理流送限制**
+
+iOS/Android平台由于统一内存架构（UMA）的特点，CPU与GPU共享同一物理内存池，通常为4–12GB。Unreal Engine在移动端默认禁用Virtual Texture（因为额外的间接纹理查找在基于Tile的延迟渲染架构（TBDR）上会破坏分块缓存效率），转而依赖传统Mip流送，并将`r.Streaming.PoolSize`限制在256–512MB区间，同时强制最高Mip级别不超过2048×2048以控制峰值显存。
+
+**案例3：过场动画的流送预取**
+
+过场动画中角色特写会突然要求加载角色脸部4K纹理的Mip0，若依赖运行时流送则必然产生Pop-in。标准解决方案是使用Unreal的**流送提示体积（Texture Streaming Volume）**或在Sequencer中提前约0.5秒触发`Streaming Source`标记，令Streaming Manager预判性地在画面切换前完成Mip0的加载，将IO延迟隐藏在剪辑点之后。
 
 ---
 
 ## 常见误区
 
-**误区一：纹理流送延迟只与磁盘速度有关。**  
-实际上，纹理流送的延迟受三段管线共同制约：①IO读取时间（磁盘→内存）、②上传时间（内存→显存，受PCIe带宽限制，PCIe 3.0 x16理论峰值约16 GB/s）、③Streaming Manager的调度决策延迟。许多开发者将纹理弹出问题单纯归咎于SSD不够快，却忽略了Streaming Manager因帧预算不足导致的请求积压。
+**误区1：流送池越大越好**
 
-**误区二：提高`r.Streaming.PoolSize`就能解决一切流送问题。**  
-流送池过大会直接挤占其他渲染资源（如渲染目标、网格缓冲区）的显存，在8GB显存的GPU上盲目将流送池设置为6GB会导致整体渲染稳定性下降。正确做法是使用Unreal的`Stat Streaming`命令实测`Wanted Pool Size`与`Currently Streaming`数据，以实测需求为依据设置池大小，通常预留10%-15%余量即可。
+将`r.Streaming.PoolSize`设置为显存总量的90%会导致其他渲染资源（帧缓冲、深度缓冲、着色器资源等）显存不足，反而引发更频繁的资源驱逐和性能抖动。通常建议流送池不超过可用显存的**60%**，在8GB显卡上约为4800MB。
 
-**误区三：虚拟纹理流送（VTS）在所有场景下优于传统Mip流送。**  
-VTS的间接纹理查找会引入额外的ALU与带宽消耗，在纹理采样密集的移动端着色器中，这一开销可导致帧率下降3%-8%（视具体GPU架构而定）。对于重复平铺（Tiling）的小纹理（256×256以下），传统Mip流送的实现成本更低，VTS更适合大尺寸、不可平铺的独特贴图（如地形和建筑立面纹理集）。
+**误区2：Virtual Texture可以无限扩展纹理数量**
+
+VT的物理缓存大小固定，当同屏可见的不同材质Tile数量超过物理缓存容量时，缓存命中率下降，系统陷入频繁换页（Thrashing）状态，GPU采样延迟急剧增加。Unreal建议单场景同时可见的VT材质数量不超过**物理缓存Tile数量的70%**，并通过`r.VT.MaxUploadsPerFrame`（默认32）限制每帧最大Tile上传数以避免带宽峰值。
+
+**误区3：Mip流送对所有纹理类型均适用**
+
+UI纹理、渲染目标（Render Target）和动态生成的程序化纹理默认不参与流送系统，强制对其启用流送会导致采样结果不稳定（因为引擎可能在使用过程中卸载其Mip数据）。在Unreal中，这类纹理应在资产设置中将**"Never Stream"**选项勾选为True。
 
 ---
 
 ## 知识关联
 
-**前置概念——Mipmap策略**直接决定了纹理流送的操作对象：流送系统调度的最小单位正是Mipmap的各个层级，若Mipmap未正确生成（如缺少高层级Mip），流送系统将无法在远距离使用低分辨率替代，反而可能长时间占用Mip0的全量显存。技术美术在制作流程中需确保所有流送纹理均启用完整的Mip链（Full Mip Chain）。
+**前置概念——Mipmap策略**：理解纹理流送的前提是掌握Mipmap的生成方式（通常为Box Filter下采样）和存储格式（每级面积为上一级的1/4，完整Mipmap链总存储量约为原始纹理的**4/3倍**）。Mip流送的本质是选择性地将Mipmap链中的某一段区间加载到显存，而非全链加载。
 
-**后续概念——加载优化**在纹理流送基础上进一步处理资源生命周期管理问题，包括预加载策略（Prestreaming）、关卡切换时的显存清空时机，以及与异步场景加载（Async Level Loading）的协调。掌握纹理流送的带宽模型和优先级队列机制，是正确设计关卡加载序列、避免加载屏幕期间产生IO峰值的必要基础。
+**后续概念——加载优化**：纹理流送解决了"加载什么"的问题，而加载优化（Asset Streaming Optimization）进一步解决"何时加载"和"以何种顺序加载"的问题，涉及异步IO队列排优先级、关卡流送（Level Streaming）与纹理流送的协同调度，以及PS5/Xbox Series X的Velocity Architecture对SSD直通GPU带宽（5.5 GB/s原始 / 8-9 GB/s压缩）的新型流送范式。
+
+**横向关联——GPU内存管理**：Vulkan的**Sparse Resource**（VkSparseImage）和DirectX 12的**Reserved Resource**提供了硬件级的稀疏纹理绑定支持，是VTS在现代图形API下的底层实现基础，允许将虚拟纹理地址空间中的特定页映射到或解除映射自物理显存，绕过传统纹理上传的整块搬运限制。

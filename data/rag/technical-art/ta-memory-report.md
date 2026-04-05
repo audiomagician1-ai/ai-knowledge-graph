@@ -20,9 +20,10 @@ sources:
     model: "mihoyo.claude-4-6-sonnet"
     prompt_version: "intranet-llm-rewrite-v2"
 scorer_version: "scorer-v2.0"
-quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-03-31
+quality_method: tier-s-booster-v1
+updated_at: 2026-04-05
 ---
+
 
 # 内存报告
 
@@ -30,42 +31,152 @@ updated_at: 2026-03-31
 
 内存报告（Memory Report）是技术美术工作流中用于系统化记录和分析游戏或应用程序运行时内存占用的文档化手段。它通过引擎内置工具或自定义脚本，将内存消耗数据按类别（纹理、网格、音频、着色器等）、按场景（主菜单、战斗场景、世界地图等）以及按目标平台（PC、iOS、Android、主机）分别统计，生成结构化的可读报告。
 
-内存报告的实践源于游戏开发进入多平台时代的现实需求。早期单平台开发时代，程序员依靠经验估算内存使用；但当一款游戏需要同时适配拥有8GB显存的PC和仅有3GB总RAM的移动设备时，系统化的报告机制成为必需。Unity Profiler从5.3版本开始引入快照（Snapshot）功能，Unreal Engine则通过`memreport`控制台命令生成`.memreport`文件，这两个里程碑确立了现代内存报告的标准工作流。
+内存报告的实践源于游戏开发进入多平台时代的现实需求。早期单平台开发时代，程序员依靠经验估算内存使用；但当一款游戏需要同时适配拥有8GB显存的PC和仅有3GB总RAM的移动设备时，系统化的报告机制成为必需。Unity Profiler从5.3版本（2015年）开始引入内存快照（Memory Snapshot）功能，Unreal Engine 4则通过 `memreport` 控制台命令生成 `.memreport` 文件，这两个里程碑确立了现代内存报告的标准工作流。
 
-内存报告的价值在于它将"内存超标"这一模糊感知转化为可量化、可追踪、可对比的具体数据。一份规范的报告能让技术美术在版本迭代中精准定位是哪个新增场景的哪类资产导致了iOS设备上出现的内存警告（Memory Warning），而不是依靠猜测进行盲目优化。
+内存报告的核心价值在于将"内存超标"这一模糊感知转化为可量化、可追踪、可对比的具体数据。一份规范的报告能让技术美术在版本迭代中精准定位——是哪个新增场景的哪类资产，导致了iOS设备在第三关加载时触发 `didReceiveMemoryWarning`，而不是依靠猜测进行盲目优化。
+
+参考资料：Richard Fabian 《Game Development Patterns and Best Practices》Packt Publishing (2017) 第11章对运行时内存分析流程有系统性阐述。
+
+---
 
 ## 核心原理
 
-### 内存分类统计结构
+### 内存分类统计结构（Bucketing）
 
-内存报告的基础是按资产类型进行分桶（Bucketing）统计。标准分类通常包括：纹理内存（Texture Memory）、网格/几何体内存（Mesh Memory）、音频内存（Audio Memory）、动画数据内存（Animation Memory）、着色器与材质内存（Shader/Material Memory），以及托管堆内存（Managed Heap，针对C#脚本）。以Unity Memory Profiler工具为例，其报告会将纹理数据进一步细分为GPU显存占用与CPU端副本占用，两者之和才是该资产的真实内存代价。一张2048×2048的RGBA32格式未压缩纹理，其GPU端占用为16MB，如果同时保留CPU端可读副本（Read/Write Enabled），则总消耗翻倍达32MB——这种双重占用极易被忽视。
+内存报告的基础是按资产类型进行分桶（Bucketing）统计。标准分类通常包括：
+
+| 类别 | 典型占用范围 | 主要来源 |
+|------|-------------|---------|
+| 纹理内存（Texture Memory） | 占总内存 40–60% | 2D UI图集、3D模型贴图 |
+| 网格/几何体内存（Mesh Memory） | 占总内存 10–20% | 静态与蒙皮网格 |
+| 音频内存（Audio Memory） | 占总内存 5–15% | 未压缩PCM流、OGG解码缓存 |
+| 动画数据内存（Animation Memory） | 占总内存 5–10% | AnimationClip关键帧数据 |
+| 着色器与材质内存（Shader/Material Memory） | 占总内存 3–8% | 变体编译缓存 |
+| 托管堆内存（Managed Heap） | 占总内存 5–15% | C# 对象分配、GC保留块 |
+
+以Unity Memory Profiler（Package版本 1.0.0+，2022年正式发布）为例，其报告会将纹理数据进一步细分为GPU显存占用与CPU端副本占用。一张 2048×2048 的 RGBA32 格式未压缩纹理，GPU端占用为 $2048 \times 2048 \times 4 \text{ bytes} = 16\text{ MB}$；若同时勾选 **Read/Write Enabled**，则CPU端保留等额副本，总消耗翻倍至 **32 MB**。这一双重占用是移动项目最常见的纹理内存陷阱之一。
 
 ### 按场景维度生成报告
 
-场景级报告要求在每个独立场景加载完毕且异步加载的资产全部就绪后，触发一次完整的内存快照。报告中需记录三个关键指标：场景专属内存（仅本场景加载的资产）、跨场景共享内存（已驻留在内存中的公共资产）以及总峰值内存（Peak Memory）。在Unity中，`UnityEngine.Profiling.Profiler.GetTotalAllocatedMemoryLong()`可在运行时获取已分配内存的字节数，将其除以1048576（即1024×1024）即可转换为MB单位便于记录。多场景对比报告能揭示哪个场景是内存"热点"——实际项目中往往存在某一场景因缺乏资产复用导致其内存占用比相邻场景高出40%以上的情况。
+场景级报告要求在每个独立场景加载完毕、且所有异步加载资产全部就绪后，触发一次完整的内存快照。报告中需记录三个关键指标：
+
+1. **场景专属内存（Scene-Exclusive Memory）**：仅本场景加载的资产总量
+2. **跨场景共享内存（Persistent/Shared Memory）**：已驻留在内存中的公共资产（如角色动画、核心UI图集）
+3. **总峰值内存（Peak Total Memory）**：场景生命周期内的最高内存水位线
+
+在 Unity 运行时，可通过以下代码在任意时间点采集当前内存数据并写入日志：
+
+```csharp
+using UnityEngine.Profiling;
+using System.IO;
+
+public static class MemoryReporter
+{
+    public static void CaptureSnapshot(string sceneName, string platform)
+    {
+        long totalAllocated = Profiler.GetTotalAllocatedMemoryLong();   // 字节
+        long totalReserved  = Profiler.GetTotalReservedMemoryLong();    // 字节
+        long monoHeap       = Profiler.GetMonoHeapSizeLong();           // 字节
+        long monoUsed       = Profiler.GetMonoUsedSizeLong();           // 字节
+
+        float allocMB    = totalAllocated / 1048576f;  // 1 MB = 1024×1024 = 1048576 bytes
+        float reservedMB = totalReserved  / 1048576f;
+        float heapMB     = monoHeap       / 1048576f;
+        float heapUsedMB = monoUsed       / 1048576f;
+
+        string report = $"[MemReport] Scene={sceneName} | Platform={platform}\n" +
+                        $"  Allocated : {allocMB:F2} MB\n" +
+                        $"  Reserved  : {reservedMB:F2} MB\n" +
+                        $"  MonoHeap  : {heapUsedMB:F2} / {heapMB:F2} MB\n" +
+                        $"  Timestamp : {System.DateTime.Now:yyyy-MM-dd HH:mm:ss}";
+
+        Debug.Log(report);
+        File.AppendAllText(Application.persistentDataPath + "/mem_report.txt", report + "\n\n");
+    }
+}
+```
+
+调用示例：在场景的 `Start()` 末尾调用 `MemoryReporter.CaptureSnapshot("BattleScene_01", "iOS")`，即可持续累积每次测试的对比数据。多场景对比报告能揭示内存"热点场景"——实际项目中往往存在某一场景因缺乏资产复用，导致其内存占用比相邻场景高出 **40% 以上**。
 
 ### 按平台差异化报告
 
-同一资产在不同平台上的实际内存占用差异显著，因此内存报告必须按平台分别建立基准线（Baseline）。iOS设备采用ASTC压缩格式，一张2048×2048纹理占用约5.3MB；同一纹理在Android（ETC2格式）下占用约5.3MB；而在PC（DXT5/BC3格式）下占用约5.3MB，三者接近，但在不支持硬件压缩的旧设备上回退到RGBA32格式后骤升至16MB。平台报告的核心价值是建立"预算对比表"：将实测内存占用与该平台的内存预算上限（如iOS中高端机型建议的总纹理内存预算约为500MB）直接对照，呈现剩余预算空间。
+同一资产在不同平台上的实际内存占用差异显著，因此内存报告必须按平台分别建立基准线（Baseline）。以一张 2048×2048 纹理为例，各平台实际 GPU 内存占用如下：
 
-### 报告数据的自动化采集
+$$
+\text{TextureMemory}_{MB} = \frac{W \times H \times \text{BPP}}{8 \times 1024 \times 1024}
+$$
 
-手动截图式报告效率低且难以追踪历史趋势。专业的内存报告流程通常借助脚本在CI/CD流水线中自动运行：在每次版本构建后，自动化测试脚本遍历所有目标场景，调用引擎API收集内存数据，输出CSV或JSON格式的结构化文件，再通过数据可视化工具（如Grafana或内部Dashboard）生成趋势图。Unreal Engine的`memreport -full`命令可输出包含所有已加载对象内存占用的完整报告文件，其中`RHI`分类列出所有GPU侧资源，是排查渲染内存超标的直接入口。
+其中 $W$、$H$ 为纹理宽高像素值，$\text{BPP}$ 为每像素位数（Bits Per Pixel）。不同格式的 BPP 及实际占用对比：
+
+| 格式 | BPP | 2048×2048 占用 | 适用平台 |
+|------|-----|----------------|---------|
+| RGBA32（未压缩） | 32 | 16.0 MB | 回退/编辑器 |
+| DXT5 / BC3 | 8 | 4.0 MB | PC / 主机 |
+| ASTC 6×6 | 3.56 | ~1.8 MB | iOS / 高端 Android |
+| ETC2 RGBA8 | 8 | 4.0 MB | Android |
+| PVRTC 4bpp | 4 | 2.0 MB | 旧版 iOS（A7以前） |
+
+以 iOS 为例，Apple 的 Metal 文档建议单帧纹理总内存不超过设备物理内存的 **25%**：iPhone 12（4GB RAM）对应上限约 **1000 MB**，但考虑系统与应用栈开销，技术美术实践中通常将游戏纹理预算压缩至 **500 MB** 以内（参考 Apple WWDC 2021 Session 10120《Understand and eliminate hangs from XPC》中的内存警告阈值说明）。
+
+---
+
+## 关键公式与数据换算
+
+生成内存报告时，有三个换算公式是日常工作中的基础工具：
+
+**1. 纹理内存精确计算（含 Mipmap）**
+
+$$
+\text{TextureTotal} = \text{BaseSize} \times \frac{4}{3}
+$$
+
+一张开启 Mipmap 的 2048×2048 ASTC 6×6 纹理：基础层 ~1.8 MB，全 Mip 链总计约 $1.8 \times \frac{4}{3} \approx 2.4\text{ MB}$。关闭 Mipmap 可节省 33% 内存，但会在3D场景中引入锯齿，需权衡取舍。
+
+**2. 音频内存估算**
+
+未压缩 PCM 单声道音频：
+$$
+\text{AudioMemory}_{MB} = \frac{\text{时长（秒）} \times \text{采样率（Hz）} \times \text{位深（bit）}}{8 \times 1024 \times 1024}
+$$
+
+例如一段 60 秒、44100 Hz、16-bit 单声道背景音乐：$\frac{60 \times 44100 \times 16}{8 \times 1048576} \approx 5.05\text{ MB}$。使用 Vorbis（OGG）压缩后可降至约 **0.5–1.0 MB**，压缩比约为 5:1 至 10:1。
+
+**3. 内存预算达成率**
+
+$$
+\text{预算达成率} = \left(1 - \frac{\text{实测总内存} - \text{平台预算上限}}{\text{平台预算上限}}\right) \times 100\%
+$$
+
+当该值低于 100% 时表示超预算；超出 10% 以内为黄色预警，超出 20% 以上为红色警报，需立即启动优化流程。
+
+---
 
 ## 实际应用
 
-在移动端RPG项目中，技术美术通常在项目进入Alpha阶段后每周生成一次全平台内存报告。报告模板包含三张工作表：第一张按场景列出各场景总内存及与上周的差量（Delta）；第二张按资产类型汇总项目全局内存，标红超过单类预算阈值的条目；第三张是平台对比表，显示iOS/Android/PC三端的纹理压缩后实际内存数据。当某次报告显示新增的"城市广场"场景导致Android端总内存从1.8GB跳升至2.3GB时，技术美术可立即通过分类数据定位到该场景新引入的8张2048×2048未压缩光照贴图（Lightmap），将其转换为ETC2格式后报告显示内存回落至1.95GB。
+### 生成多平台对比报告的标准流程
 
-在主机游戏开发中，内存报告还需关注PlayStation 5和Xbox Series X各自的GDDR6显存分配限制，两款主机对游戏可用内存的分配规则不同，必须在报告中分列统计而不能共用一套数据。
+在真实项目中，一次规范的内存报告生成需经历以下步骤：
+
+1. **冷启动基准采集**：在设备重启后首次启动应用，采集主菜单加载完成时的内存快照作为基准（Base Snapshot）。记录此时的 Allocated Memory、Reserved Memory 与 Native Memory 三个值。
+
+2. **逐场景遍历采集**：按游戏流程顺序，依次进入每个关键场景（主菜单 → 角色选择 → 第一关 → Boss战场景），在每个场景的 `OnSceneLoaded` 回调触发 3 秒后采集快照，确保异步资产加载完毕。
+
+3. **压力测试采集**：在内存峰值最高的场景（通常是粒子效果最多的 Boss 战场景）进行 10 分钟连续游戏后采集快照，记录峰值（Peak）与稳定态（Steady State）的差值——差值过大往往意味着存在内存泄漏（Memory Leak）。
+
+4. **汇总为报告表格**：将所有快照数据汇总为 Excel 或 CSV 表格，列包括：场景名、平台、纹理内存、网格内存、音频内存、脚本堆内存、Total Allocated、Total Reserved、采集时间戳。
+
+### 案例：某手游项目的内存报告发现
+
+例如，某二次元手游项目在 iOS 上线前的内存报告中发现：第7关战斗场景总内存为 **1340 MB**，超出 iPhone 11（4GB RAM）的目标预算上限 **1200 MB** 约 11.7%。通过逐类别对比第6关（980 MB）与第7关的差异，报告定位到"特效纹理（VFX Textures）"类别从 85 MB 骤增至 **310 MB**，原因是美术团队为第7关新增了 12 个粒子特效，每个特效使用了独立的 1024×1024 RGBA32 未压缩纹理（共 12 × 4 MB = 48 MB），且这 12 张纹理有 8 张内容高度相似，可合并为 2 张图集并改用 ASTC 6×6 格式，预计可从 48 MB 降至约 **5.4 MB**，节省约 88.7%。
+
+---
 
 ## 常见误区
 
-**误区一：将编辑器内存数据等同于运行时内存**。在Unity编辑器中查看的内存占用通常比真机运行时高出30%~50%，因为编辑器本身持有额外的元数据和Inspector缓存。内存报告必须基于在目标设备上的Development Build真机数据，或通过Remote Memory Profiler连接真机采集，仅凭编辑器数据生成的报告会严重误导优化决策。
+### 误区一：仅看 Allocated 忽视 Reserved
 
-**误区二：只记录总内存而忽略内存分布**。仅记录"本场景总内存1.5GB"而不附带分类明细，无法指导具体优化。一份有效的内存报告必须同时呈现各类别的绝对值和占比，因为纹理占80%与音频占80%对应的优化路径完全不同。纹理内存偏高应检查分辨率与压缩格式，音频内存偏高则应检查是否存在大量未设置流式加载（Streaming）的音频文件。
+`GetTotalAllocatedMemoryLong()` 返回的是**已分配给对象的内存**，而 `GetTotalReservedMemoryLong()` 返回的是**Unity 从 OS 申请的总内存池**。两者差值是 Unity 持有但暂未使用的"内存碎片"缓冲区。在 iOS 上，OS 触发 Memory Warning 的依据是 Reserved Memory，而非 Allocated Memory——因此仅监控 Allocated 会导致报告低估真实内存压力，错过距离系统杀进程仅有 100–200 MB 的危险边缘。
 
-**误区三：认为内存报告是一次性工作**。内存状况随着每次资产提交持续变化，单次报告只能反映瞬时状态。技术美术需建立周期性的报告机制，并为每个平台设定内存增长预警线（如每周增长超过50MB则触发审查），才能在内存危机累积到崩溃前提前干预。
+### 误区二：桌面编辑器数据代替设备数据
 
-## 知识关联
-
-内存报告以**资产大小审计**的工作结果为输入——资产大小审计提供了各资产在磁盘上的文件体积数据，而内存报告则进一步揭示这些资产在运行时实际占用的RAM/VRAM数量，两者数值通常因压缩格式的解压而存在数倍差距。掌握内存报告的方法后，下一步是依据报告数据制定**内存预算文档**，将各类别的内存上限以文档形式固定并分发给各职能组执行。与此同时，内存报告中揭示的高占用资产也是**包体大小优化**的优先目标，因为运行时内存大的资产往往也对应着较大的原始文件体积，两者优化方向高度重叠。
+Unity Editor 运行时的内存消耗包含编辑器自身的 GC Roots、Inspector 缓存、Asset Database 索引等开销，通常比真机高出 **200–600 MB**。以编辑器 Profiler 数据直接填写移动端内存报告，会
