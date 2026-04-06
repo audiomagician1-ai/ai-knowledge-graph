@@ -78,9 +78,9 @@ data/rag/          — RAG知识文档 (6,156篇)
 | **边** | 7,015 | 2026-03-27 |
 | **跨球链接** | 595 (0 断引用) | 2026-03-27 |
 | **RAG 覆盖** | 6,156 (100% 覆盖) | 2026-03-27 |
-| **测试总数** | 1,143 (897 BE + 238 FE + 8 FSRS review) | 2026-04-05 |
+| **测试总数** | 1,162 (916 BE + 238 FE + 8 FSRS review) | 2026-04-07 |
 | **tsc errors** | 0 | 2026-03-21 |
-| **Open Issues** | 0 | 2026-03-27 |
+| **Open Issues** | 7 | 2026-04-07 |
 | **RAG 质量** | 6156/6156, avg 79.5, S:1096 A:5060 B:0 C:0 | 2026-04-06 |
 
 ---
@@ -127,6 +127,7 @@ data/rag/          — RAG知识文档 (6,156篇)
 | ADR-009 | 全站免登录可用 | MVP阶段降低门槛，匿名即可体验全部功能 |
 | ADR-010 | 默认免费 LLM + 可选自带 Key | stepfun/step-3.5-flash:free 作为默认后端 |
 | ADR-011 | 登录用户 Supabase-first 持久化 | 登录用户数据以 Supabase Cloud 为权威源 |
+| ADR-012 | SPA保留 + OG/meta SEO + 未来预渲染 | 迁移成本高,当前用户获取非SEO依赖,OG tags先行 |
 
 ---
 ## 6. CROSS-MODULE INVARIANTS（跨模块不变量清单）
@@ -279,4 +280,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-06 | **Scope**: Sprint 7 Tier-S Booster COMPLETE — 416/425 boosted, S:706→1096 (+55%), avg 78.5→79.5, B:0 C:0 | **Result**: V1.0 feature-complete + RAG quality near-80
+**Date**: 2026-04-07 | **Scope**: Audit Issues sprint — #45 LLM cache (Redis, 19 tests), #50 DEVELOPMENT_PLAN.md v2.0 rewrite, #48 SEO (OG/meta/robots/sitemap + ADR-012) | **Result**: 3 issues closed, 7 remaining open
