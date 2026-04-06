@@ -7,7 +7,8 @@ import { HomePage } from './pages/HomePage';
 import { useAuthStore } from './lib/store/auth';
 import { useAppLifecycle } from './lib/hooks/useAppLifecycle';
 import { useLearningStore } from './lib/store/learning';
-// Side-effect: registers onAuthLogin callback for cloud sync
+import { OfflineIndicator } from './components/common/OfflineIndicator';
+import { KeyboardShortcutsHelp } from './components/common/KeyboardShortcutsHelp';
 import './lib/store/supabase-sync';
 
 // ── Route-level code splitting ──────────────────────────────
@@ -79,6 +80,8 @@ export function App() {
           </Routes>
         </Suspense>
         <ToastContainer />
+        <OfflineIndicator />
+        <KeyboardShortcutsHelp />
       </BrowserRouter>
     </ErrorBoundary>
   );

@@ -2,13 +2,15 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
-vi.stubGlobal('localStorage', {
-  _store: {} as Record<string, string>,
-  getItem(key: string) { return this._store[key] ?? null; },
-  setItem(key: string, value: string) { this._store[key] = value; },
-  removeItem(key: string) { delete this._store[key]; },
-  clear() { this._store = {}; },
-});
+vi.stubGlobal('localStorage', (() => {
+  let store: Record<string, string> = {};
+  return {
+    getItem(key: string) { return store[key] ?? null; },
+    setItem(key: string, value: string) { store[key] = value; },
+    removeItem(key: string) { delete store[key]; },
+    clear() { store = {}; },
+  };
+})());
 
 beforeEach(() => {
   localStorage.clear();

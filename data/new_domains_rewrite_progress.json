@@ -104,12 +104,17 @@
     "synergetics/self-org-synergetics",
     "synergetics/open-system-syn",
     "synergetics/competition-cooperation",
-    "synergetics/order-parameter-def"
+    "synergetics/order-parameter-def",
+    "synergetics/order-param-dynamics",
+    "synergetics/order-param-equation",
+    "synergetics/critical-slowing-down",
+    "synergetics/slaving-principle-def",
+    "synergetics/adiabatic-elimination"
   ],
   "errors": [],
   "stats": {
-    "total": 144,
-    "success": 105,
+    "total": 99,
+    "success": 65,
     "error": 0
   }
 }

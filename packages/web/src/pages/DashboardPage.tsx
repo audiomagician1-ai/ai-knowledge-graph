@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useLearningStore } from '@/lib/store/learning';
 import { useDomainStore } from '@/lib/store/domain';
 import { ArrowLeft, BarChart3, BookOpen, Trophy, TrendingUp, Flame } from 'lucide-react';
+import { useKeyboardShortcuts } from '@/lib/hooks/useKeyboardShortcuts';
 import type { Domain } from '@akg/shared';
 
 /**
@@ -17,6 +18,12 @@ export function DashboardPage() {
   const progress = useLearningStore((s) => s.progress);
   const history = useLearningStore((s) => s.history);
   const streak = useLearningStore((s) => s.streak);
+
+  /* Keyboard shortcuts: Escape → home, H → home */
+  useKeyboardShortcuts([
+    { key: 'Escape', handler: () => navigate('/'), description: 'Back to home' },
+    { key: 'h', handler: () => navigate('/'), description: 'Go to home' },
+  ]);
 
   // Load all domain progress from localStorage
   const [allDomainProgress, setAllDomainProgress] = useState<

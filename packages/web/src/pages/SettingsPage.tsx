@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { SettingsContent } from '@/components/panels/SettingsContent';
+import { useKeyboardShortcuts } from '@/lib/hooks/useKeyboardShortcuts';
 
 /**
  * Standalone settings page — accessible at /settings.
@@ -8,6 +9,12 @@ import { SettingsContent } from '@/components/panels/SettingsContent';
  */
 export function SettingsPage() {
   const navigate = useNavigate();
+
+  /* Keyboard shortcut: Escape → back */
+  useKeyboardShortcuts([
+    { key: 'Escape', handler: () => navigate(-1), description: 'Go back' },
+    { key: 'h', handler: () => navigate('/'), description: 'Go to home' },
+  ]);
 
   return (
     <div className="min-h-dvh w-full" style={{ backgroundColor: 'var(--color-surface-0, #0f172a)' }}>

@@ -6,6 +6,7 @@ import { Loader } from 'lucide-react';
 import { WelcomeGuide } from '@/components/common/WelcomeGuide';
 import { ReviewBanner } from '@/components/common/ReviewBanner';
 import { DailyRecommendation } from '@/components/common/DailyRecommendation';
+import { useKeyboardShortcuts } from '@/lib/hooks/useKeyboardShortcuts';
 
 const log = createLogger('HomePage');
 
@@ -268,6 +269,14 @@ export function HomePage() {
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const alive = useRef(true);
   const navRef = useRef(nav); navRef.current = nav;
+
+  /* ─── Keyboard shortcuts: /, Ctrl+K → dashboard; D → dashboard; G → graph ─── */
+  useKeyboardShortcuts([
+    { key: 'd', handler: () => nav('/dashboard'), description: 'Go to dashboard' },
+    { key: 'g', handler: () => nav('/graph'), description: 'Go to 3D graph' },
+    { key: 's', handler: () => nav('/settings'), description: 'Go to settings' },
+    { key: '?', shift: true, handler: () => nav('/dashboard'), description: 'Help / Dashboard' },
+  ]);
 
   /* ─── Responsive: shrink grid on mobile ─── */
   const isMobile = useMemo(() => typeof window !== 'undefined' && window.innerWidth < 768, []);
