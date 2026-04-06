@@ -99,12 +99,17 @@
     "dissipative-structures/dissipative-in-biology",
     "dissipative-structures/dissipative-in-ecology",
     "dissipative-structures/dissipative-in-society",
-    "dissipative-structures/dissipative-in-climate"
+    "dissipative-structures/dissipative-in-climate",
+    "synergetics/synergetics-overview",
+    "synergetics/self-org-synergetics",
+    "synergetics/open-system-syn",
+    "synergetics/competition-cooperation",
+    "synergetics/order-parameter-def"
   ],
   "errors": [],
   "stats": {
-    "total": 64,
-    "success": 20,
+    "total": 144,
+    "success": 105,
     "error": 0
   }
 }
