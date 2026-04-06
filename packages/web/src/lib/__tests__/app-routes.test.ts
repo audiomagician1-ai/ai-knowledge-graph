@@ -46,16 +46,22 @@ describe('Route module exports', () => {
     expect(mod.SettingsPage).toBeDefined();
     expect(typeof mod.SettingsPage).toBe('function');
   });
+
+  it('NotFoundPage exports named component', async () => {
+    const mod = await import('../../pages/NotFoundPage');
+    expect(mod.NotFoundPage).toBeDefined();
+    expect(typeof mod.NotFoundPage).toBe('function');
+  });
 });
 
 describe('Page count verification', () => {
-  it('should have exactly 7 page modules', () => {
+  it('should have exactly 8 page modules', () => {
     // This documents the current set of page-level routes.
     // Update this count if a new page is added.
     const pages = [
       'HomePage', 'GraphPage', 'LearnPage', 'ReviewPage',
-      'DashboardPage', 'LoginPage', 'SettingsPage',
+      'DashboardPage', 'LoginPage', 'SettingsPage', 'NotFoundPage',
     ];
-    expect(pages.length).toBe(7);
+    expect(pages.length).toBe(8);
   });
 });

@@ -18,6 +18,7 @@ const ReviewPage = lazy(() => import('./pages/ReviewPage').then(m => ({ default:
 const DashboardPage = lazy(() => import('./pages/DashboardPage').then(m => ({ default: m.DashboardPage })));
 const LoginPage = lazy(() => import('./pages/LoginPage').then(m => ({ default: m.LoginPage })));
 const SettingsPage = lazy(() => import('./pages/SettingsPage').then(m => ({ default: m.SettingsPage })));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
 
 /** Minimal loading spinner for lazy routes */
 function RouteLoader() {
@@ -62,8 +63,8 @@ export function App() {
               <Route path="/settings" element={<SettingsPage />} />
               {/* Legacy fallback — redirect old /learn/:conceptId to home */}
               <Route path="/learn/:conceptId" element={<Navigate to="/" replace />} />
-              {/* Catch-all → home */}
-              <Route path="*" element={<Navigate to="/" replace />} />
+              {/* 404 — show a proper not-found page */}
+              <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>
         </Suspense>
