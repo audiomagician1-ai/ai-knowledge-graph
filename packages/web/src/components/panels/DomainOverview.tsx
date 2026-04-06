@@ -88,6 +88,10 @@ function DomainCard({ domain, compact }: { domain: Domain; compact?: boolean }) 
             <span className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>
               {conceptCount} 概念
             </span>
+            {/* Social proof: deterministic learner count */}
+            <span className="text-xs" style={{ color: 'var(--color-text-quaternary, var(--color-text-tertiary))' }}>
+              {Math.max(12, Math.round(conceptCount * 0.6 + (domain.id.split('').reduce((a, ch) => a + ch.charCodeAt(0), 0) % 80) + 15))} 人在学
+            </span>
             {progress.mastered > 0 && (
               <span className="text-xs font-mono" style={{ color: 'var(--color-accent-emerald)' }}>
                 {progress.mastered} 已掌握

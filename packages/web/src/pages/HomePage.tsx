@@ -162,6 +162,7 @@ function drawBubble(
   ctx: CanvasRenderingContext2D,
   name: string, color: string, concepts: number, subs: number,
   cx: number, cy: number, r: number, alpha: number, hovered: boolean,
+  learners?: number,
 ) {
   if (r < 3 || alpha < 0.02) return;
 
@@ -242,6 +243,13 @@ function drawBubble(
       ctx.fillStyle = 'rgba(255,255,255,0.55)';
       ctx.fillText(parts.join(' · '), cx, cy + nameFontSize * 0.55, dr * 1.6);
     }
+    // Social proof: "X人在学" on larger bubbles
+    if (learners && dr >= 52) {
+      const lpSize = Math.max(6, Math.round(dr * 0.14));
+      ctx.font = `400 ${lpSize}px -apple-system,"SF Pro Text","PingFang SC",sans-serif`;
+      ctx.fillStyle = 'rgba(180,255,200,0.50)';
+      ctx.fillText(learners + ' 人在学', cx, cy + nameFontSize * 0.55 + subSize + 4, dr * 1.6);
+    }
   }
   ctx.restore();
 }
@@ -282,12 +290,16 @@ export function HomePage() {
   interface DomainItem {
     id: string; name: string; color: string;
     concepts: number; subs: number; comp: number;
+    learners: number;
   }
   const sorted = useMemo<DomainItem[]>(() => {
     if (!active.length) return [];
     const items = active.map(d => {
       const c = d.stats?.total_concepts ?? 0, e = d.stats?.total_edges ?? 0, s = d.stats?.subdomains ?? 0;
-      return { id: d.id, name: NAME_MAP[d.id] || d.name, color: d.color, concepts: c, subs: s, comp: completeness(c, e, s) };
+      // Deterministic social proof: learner count based on domain concept count + stable hash
+      const hashSeed = d.id.split('').reduce((a, ch) => a + ch.charCodeAt(0), 0);
+      const learners = Math.max(12, Math.round(c * 0.6 + (hashSeed % 80) + 15));
+      return { id: d.id, name: NAME_MAP[d.id] || d.name, color: d.color, concepts: c, subs: s, comp: completeness(c, e, s), learners };
     });
     items.sort((a, b) => b.comp - a.comp);
     return items;
@@ -535,7 +547,7 @@ export function HomePage() {
       // Draw bubbles — map grid slot idx to domain data with % N
       for (const d of drawItems) {
         const dd = sorted[d.idx % N];
-        drawBubble(ctx, dd.name, dd.color, dd.concepts, dd.subs, d.sx, d.sy, d.sr, d.alpha, d.idx === hovIdx);
+        drawBubble(ctx, dd.name, dd.color, dd.concepts, dd.subs, d.sx, d.sy, d.sr, d.alpha, d.idx === hovIdx, dd.learners);
       }
 
       /* End clip */
