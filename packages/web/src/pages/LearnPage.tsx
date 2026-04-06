@@ -8,12 +8,13 @@ import type { AssessmentResult } from '@/lib/store/dialogue';
 import {
   ArrowLeft, Star, Send, BarChart3, Brain, Lightbulb,
   RotateCcw, AlertTriangle, Trophy,
-  CheckCircle2, Target, BookOpen, ChevronRight, Sparkles,
+  CheckCircle2, Target, BookOpen, ChevronRight, Sparkles, Mic, MicOff,
 } from 'lucide-react';
 import { MarkdownRenderer } from '@/components/chat/MarkdownRenderer';
 import { ChoiceButtons } from '@/components/chat/ChoiceButtons';
 import { stripChoicesBlock } from '@/lib/utils/text';
 import { useLearningTimer } from '@/lib/hooks/useLearningTimer';
+import { useSpeechRecognition } from '@/lib/hooks/useSpeechRecognition';
 
 const log = createLogger('LearnPage');
 
@@ -37,6 +38,17 @@ export function LearnPage() {
   const { startLearning, recordAssessment, recommendedIds } = useLearningStore();
   const { checkNewAchievements } = useAchievementStore();
   const recordedRef = useRef(false);
+
+  // Voice input (Web Speech API)
+  const voice = useSpeechRecognition('zh-CN');
+
+  // Sync voice transcript into input field
+  useEffect(() => {
+    if (voice.transcript) {
+      setInput((prev) => prev + voice.transcript);
+      voice.resetTranscript();
+    }
+  }, [voice.transcript]);
 
   useEffect(() => {
     if (conceptId) {
@@ -297,7 +309,7 @@ export function LearnPage() {
                 }}
               >
                 <textarea
-                  value={input}
+                  value={input + (voice.interimTranscript ? voice.interimTranscript : '')}
                   onChange={(e) => {
                     setInput(e.target.value);
                     e.target.style.height = 'auto';
@@ -315,6 +327,26 @@ export function LearnPage() {
                   }}
                   disabled={isBusy || !conversationId}
                 />
+                {/* Voice input button */}
+                {voice.isSupported && (
+                  <button
+                    onClick={voice.toggleListening}
+                    disabled={isBusy || !conversationId}
+                    aria-label={voice.isListening ? '停止语音输入' : '开始语音输入'}
+                    title={voice.isListening ? '点击停止录音' : '点击语音输入'}
+                    className="shrink-0 w-9 h-9 rounded-md flex items-center justify-center transition-all"
+                    style={{
+                      background: voice.isListening
+                        ? '#ef4444'
+                        : 'var(--color-surface-3)',
+                      color: voice.isListening ? '#ffffff' : 'var(--color-text-secondary)',
+                      opacity: isBusy ? 0.4 : 1,
+                      animation: voice.isListening ? 'pulse 1.5s ease-in-out infinite' : 'none',
+                    }}
+                  >
+                    {voice.isListening ? <MicOff size={16} /> : <Mic size={16} />}
+                  </button>
+                )}
                 <button
                   onClick={handleSend}
                   disabled={isBusy || !input.trim() || !conversationId}

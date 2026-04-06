@@ -10,3 +10,5 @@ export { useLearningTimer, readLearningTime } from './useLearningTimer';
 export { useLocalStorage } from './useLocalStorage';
 export { useMediaQuery } from './useMediaQuery';
 export { useOnlineStatus } from './useOnlineStatus';
+export { useSpeechRecognition } from './useSpeechRecognition';
+export { useStudyGoal } from './useStudyGoal';

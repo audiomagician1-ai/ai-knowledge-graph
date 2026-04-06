@@ -16,7 +16,7 @@ import {
   Search, X, Star, ChevronRight, Clock, BookOpen, Zap,
   Trophy, Loader, Compass, BarChart3, Settings, Network,
   Globe, Check, LogIn, User, Home, MessageCircle, AlertTriangle,
-  RotateCcw,
+  RotateCcw, Route as RouteIcon,
 } from 'lucide-react';
 import { useSettingsStore } from '@/lib/store/settings';
 import { useAuthStore } from '@/lib/store/auth';
@@ -342,6 +342,7 @@ export function GraphPage() {
           </div>
 
           {/* Recommend — center, prominent */}
+          <HubButton icon={RouteIcon} label="路径" active={false} onClick={() => navigate(`/path/${activeDomain}`)} />
           <button onClick={() => {
             if (!showRecommend) { setShowRecommend(true); setShowDomainPicker(false); loadRecommendations(); } else setShowRecommend(false);
           }} className="flex items-center gap-2 rounded-2xl transition-all font-semibold whitespace-nowrap" style={{

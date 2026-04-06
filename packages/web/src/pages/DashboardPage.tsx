@@ -5,6 +5,7 @@ import { useDomainStore } from '@/lib/store/domain';
 import { ArrowLeft, BarChart3, BookOpen, Trophy, TrendingUp, Flame, Clock } from 'lucide-react';
 import { useKeyboardShortcuts } from '@/lib/hooks/useKeyboardShortcuts';
 import { readLearningTime } from '@/lib/hooks/useLearningTimer';
+import { StudyGoalWidget } from '@/components/common/StudyGoalWidget';
 import type { Domain } from '@akg/shared';
 
 /**
@@ -158,6 +159,9 @@ export function DashboardPage() {
           );
           return null;
         })()}
+
+        {/* Study Goal Widget */}
+        <StudyGoalWidget />
 
         {/* Streak Calendar (30-day heatmap) */}
         <section className="rounded-xl p-5" style={{ backgroundColor: 'var(--color-surface-1)' }}>

@@ -9,7 +9,17 @@
     "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/anti-aliasing/cg-upscaling.md",
     "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/anti-aliasing/cg-velocity-buffer.md",
     "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/geometry-processing/cg-impostor.md",
-    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/global-illumination/cg-gi-hybrid.md"
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/global-illumination/cg-gi-hybrid.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/gpu-architecture/cg-bindless.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/gpu-architecture/cg-pipeline-barrier.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/pbr-materials/cg-metallic-workflow.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/post-processing/cg-chromatic-aberration.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/post-processing/cg-ssr.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/rasterization/cg-clipping.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/rasterization/cg-forward-rendering.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/rasterization/cg-projection.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/rasterization/cg-raster-intro.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/rasterization/cg-scanline.md"
   ],
   "errors": []
 }

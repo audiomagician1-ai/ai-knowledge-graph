@@ -23,6 +23,7 @@ const DashboardPage = lazy(() => import('./pages/DashboardPage').then(m => ({ de
 const LoginPage = lazy(() => import('./pages/LoginPage').then(m => ({ default: m.LoginPage })));
 const SettingsPage = lazy(() => import('./pages/SettingsPage').then(m => ({ default: m.SettingsPage })));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
+const LearningPathPage = lazy(() => import('./pages/LearningPathPage').then(m => ({ default: m.LearningPathPage })));
 
 /** Minimal loading spinner for lazy routes */
 function RouteLoader() {
@@ -71,6 +72,8 @@ export function App() {
               <Route path="/review/:domainId" element={<ReviewPage />} />
               {/* Dashboard — learning analytics (lazy) */}
               <Route path="/dashboard" element={<DashboardPage />} />
+              {/* Learning Path — guided path through a domain (lazy) */}
+              <Route path="/path/:domainId" element={<LearningPathPage />} />
               {/* Settings — LLM config + data export/import (lazy) */}
               <Route path="/settings" element={<SettingsPage />} />
               {/* Legacy fallback — redirect old /learn/:conceptId to home */}
