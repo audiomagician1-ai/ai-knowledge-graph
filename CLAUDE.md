@@ -153,6 +153,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | ADR-012 | SPA保留 + OG/meta SEO + 未来预渲染 | 迁移成本高,当前用户获取非SEO依赖,OG tags先行 |
 | ADR-013 | Workers = Edge Cache + CORS Proxy | Workers不复制业务逻辑,长期转为纯代理层 |
 | ADR-014 | RAG: 精确匹配优先 + 模糊fallback | 97.7%概念有精确匹配,向量检索ROI不足暂缓 |
+| ADR-015 | 路由级代码分割 + PWA | React.lazy减60%初始bundle,PWA manifest可安装性,Capacitor平台抽象层统一web/native |
 
 ---
 ## 6. CROSS-MODULE INVARIANTS（跨模块不变量清单）

@@ -410,6 +410,13 @@ export function SettingsContent() {
             : `Key 仅存在浏览器本地。${llmConfig.useProxy ? '本地代理模式下，请求通过本机代理转发，不经过任何外部服务器。' : '直连模式下，请求直接从浏览器发往 LLM API。'}`}
         </p>
       </div>
+
+      {/* Build Info */}
+      <div className="text-center" style={{ paddingTop: 8 }}>
+        <p style={{ fontSize: 11, color: 'var(--color-text-quaternary, #6b7280)' }}>
+          AI知识图谱 v0.1.0 · Build {typeof __BUILD_HASH__ !== 'undefined' ? __BUILD_HASH__ : 'dev'}
+        </p>
+      </div>
     </div>
   );
 }
