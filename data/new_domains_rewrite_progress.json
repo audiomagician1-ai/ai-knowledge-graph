@@ -44,12 +44,32 @@
     "cybernetics/optimal-control",
     "cybernetics/adaptive-control",
     "cybernetics/robust-control",
-    "cybernetics/fuzzy-control"
+    "cybernetics/fuzzy-control",
+    "cybernetics/neural-network-control",
+    "cybernetics/genetic-algorithm-control",
+    "cybernetics/reinforcement-learning-ctrl",
+    "cybernetics/biological-cybernetics",
+    "cybernetics/social-cybernetics",
+    "cybernetics/economic-cybernetics",
+    "cybernetics/second-order-cybernetics",
+    "information-theory/information-definition",
+    "information-theory/probability-basics-info",
+    "information-theory/information-source",
+    "information-theory/communication-model",
+    "information-theory/shannon-entropy",
+    "information-theory/conditional-entropy",
+    "information-theory/mutual-information",
+    "information-theory/relative-entropy",
+    "information-theory/joint-entropy",
+    "information-theory/entropy-rate",
+    "information-theory/source-coding-theorem",
+    "information-theory/huffman-coding",
+    "information-theory/arithmetic-coding"
   ],
   "errors": [],
   "stats": {
-    "total": 144,
-    "success": 45,
+    "total": 99,
+    "success": 20,
     "error": 0
   }
 }
