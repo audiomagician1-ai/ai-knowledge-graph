@@ -81,7 +81,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **测试总数** | 1,275 (981 BE + 278 FE + 16 E2E) | 2026-04-07 |
 | **tsc errors** | 0 | 2026-04-07 |
 | **Open Issues** | 0 | 2026-04-07 |
-| **RAG 质量** | 6156 legacy avg 79.5 + 66/144 new-domain upgraded (ST+CB+IT partial) | 2026-04-07 |
+| **RAG 质量** | 6156 legacy avg 79.5 + 80/144 new-domain upgraded (ST+CB done, IT+DS in progress) | 2026-04-07 |
 
 ---
 
