@@ -7,6 +7,7 @@ import { HomePage } from './pages/HomePage';
 import { GraphPage } from './pages/GraphPage';
 import { LearnPage } from './pages/LearnPage';
 import { ReviewPage } from './pages/ReviewPage';
+import { DashboardPage } from './pages/DashboardPage';
 import { LoginPage } from './pages/LoginPage';
 import { useAuthStore } from './lib/store/auth';
 // Side-effect: registers onAuthLogin callback for cloud sync
@@ -36,6 +37,8 @@ export function App() {
             {/* Review — FSRS spaced repetition review */}
             <Route path="/review" element={<ReviewPage />} />
             <Route path="/review/:domainId" element={<ReviewPage />} />
+            {/* Dashboard — learning analytics */}
+            <Route path="/dashboard" element={<DashboardPage />} />
             {/* Legacy fallback — redirect old /learn/:conceptId to home */}
             <Route path="/learn/:conceptId" element={<Navigate to="/" replace />} />
             {/* Catch-all → home */}
