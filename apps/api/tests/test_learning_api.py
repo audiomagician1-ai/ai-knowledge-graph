@@ -259,3 +259,58 @@ class TestLearningEndpoints:
             f"Stats default total_concepts={data['total_concepts']} doesn't match "
             f"seed graph count={expected}. Update Query(default=...) in learning.py."
         )
+
+
+class TestDataExport:
+    """Tests for the /export endpoint (GDPR data portability)"""
+
+    def setup_method(self):
+        with sc.get_db() as conn:
+            conn.execute("DELETE FROM concept_progress")
+            conn.execute("DELETE FROM learning_history")
+            conn.execute("UPDATE streak SET current_streak=0, longest_streak=0, last_date=''")
+
+    def test_export_empty_state(self):
+        """Export with no data should return empty collections"""
+        res = client.get("/api/learning/export")
+        assert res.status_code == 200
+        data = res.json()
+        assert data["version"] == "1.0"
+        assert "exported_at" in data
+        assert isinstance(data["progress"], list)
+        assert isinstance(data["history"], list)
+        assert isinstance(data["streak"], dict)
+        assert isinstance(data["achievements"], list)
+
+    def test_export_with_data(self):
+        """Export should include learning progress after assessment"""
+        # Create some data
+        client.post("/api/learning/start", json={"concept_id": "export-test"})
+        client.post("/api/learning/assess", json={
+            "concept_id": "export-test",
+            "concept_name": "Export Test",
+            "score": 85,
+            "mastered": True,
+        })
+
+        res = client.get("/api/learning/export")
+        assert res.status_code == 200
+        data = res.json()
+        
+        # Progress should contain our concept
+        prog_ids = [p["concept_id"] for p in data["progress"]]
+        assert "export-test" in prog_ids
+        
+        # History should have an entry
+        assert len(data["history"]) >= 1
+        assert data["history"][0]["concept_id"] == "export-test"
+
+    def test_export_timestamp_format(self):
+        """Export timestamp should be ISO 8601 UTC"""
+        res = client.get("/api/learning/export")
+        data = res.json()
+        assert data["exported_at"].endswith("Z")
+        # Should be parseable as ISO datetime
+        from datetime import datetime
+        dt = datetime.fromisoformat(data["exported_at"].replace("Z", "+00:00"))
+        assert dt.year >= 2026

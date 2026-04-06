@@ -193,3 +193,78 @@ class TestCORSHeaders:
             assert r.status_code == 200
             allowed = r.headers.get("access-control-allow-headers", "")
             assert "x-llm-api-key" in allowed.lower()
+
+
+# ── GZip middleware tests ──
+
+class TestGZipMiddleware:
+    """Test GZip compression is enabled for large responses"""
+
+    @pytest.mark.asyncio
+    async def test_gzip_compresses_large_response(self):
+        """Graph data responses should be GZip-compressed when client accepts it"""
+        from main import app
+        transport = ASGITransport(app=app)
+        async with AsyncClient(transport=transport, base_url="http://test") as c:
+            r = await c.get(
+                "/api/graph/data",
+                headers={"Accept-Encoding": "gzip"},
+            )
+            assert r.status_code == 200
+            # Response should be compressed (content-encoding: gzip)
+            assert r.headers.get("content-encoding") == "gzip"
+
+    @pytest.mark.asyncio
+    async def test_small_response_not_compressed(self):
+        """Health check (tiny response) should NOT be compressed"""
+        from main import app
+        transport = ASGITransport(app=app)
+        async with AsyncClient(transport=transport, base_url="http://test") as c:
+            r = await c.get(
+                "/api/health",
+                headers={"Accept-Encoding": "gzip"},
+            )
+            assert r.status_code == 200
+            # Small responses (< 500 bytes) should not be compressed
+            assert r.headers.get("content-encoding") != "gzip"
+
+
+# ── Cache-Control header tests ──
+
+class TestCacheControlHeaders:
+    """Test Cache-Control headers on static data endpoints"""
+
+    @pytest.mark.asyncio
+    async def test_domains_has_cache_control(self):
+        """GET /domains should return Cache-Control header"""
+        from main import app
+        transport = ASGITransport(app=app)
+        async with AsyncClient(transport=transport, base_url="http://test") as c:
+            r = await c.get("/api/graph/domains")
+            assert r.status_code == 200
+            cc = r.headers.get("cache-control", "")
+            assert "max-age=3600" in cc
+            assert "public" in cc
+
+    @pytest.mark.asyncio
+    async def test_graph_data_has_cache_control(self):
+        """GET /data should return Cache-Control header"""
+        from main import app
+        transport = ASGITransport(app=app)
+        async with AsyncClient(transport=transport, base_url="http://test") as c:
+            r = await c.get("/api/graph/data")
+            assert r.status_code == 200
+            cc = r.headers.get("cache-control", "")
+            assert "max-age=3600" in cc
+            assert "stale-while-revalidate" in cc
+
+    @pytest.mark.asyncio
+    async def test_health_no_cache_control(self):
+        """Health check should NOT have cache-control (dynamic data)"""
+        from main import app
+        transport = ASGITransport(app=app)
+        async with AsyncClient(transport=transport, base_url="http://test") as c:
+            r = await c.get("/api/health")
+            assert r.status_code == 200
+            cc = r.headers.get("cache-control", "")
+            assert "max-age=3600" not in cc

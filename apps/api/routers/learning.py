@@ -748,3 +748,37 @@ async def mark_seen(req: MarkSeenRequest):
     count = mark_achievements_seen(req.keys)
     return {"success": True, "marked_count": count}
 
+
+# ── Data Export (GDPR / portability) ────────────────────────
+
+@router.get("/export")
+async def export_all_data():
+    """Export all user learning data as a JSON bundle.
+    
+    Returns progress, history, streak, achievements, and FSRS/BKT state.
+    This data can be imported on another device or used as backup.
+    """
+    from db.sqlite_client import (
+        get_all_progress, get_history, get_streak,
+        get_all_bkt_states, get_all_achievements,
+    )
+    try:
+        progress = get_all_progress()
+        history = get_history(limit=10000)
+        streak = get_streak()
+        bkt_states = get_all_bkt_states()
+        achievements = get_all_achievements()
+    except Exception as e:
+        logger.error("Export failed: %s", e)
+        raise HTTPException(status_code=500, detail="数据导出失败")
+    
+    return {
+        "version": "1.0",
+        "exported_at": __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat().replace("+00:00", "Z"),
+        "progress": progress,
+        "history": history,
+        "streak": streak,
+        "bkt_states": bkt_states,
+        "achievements": achievements,
+    }
+
