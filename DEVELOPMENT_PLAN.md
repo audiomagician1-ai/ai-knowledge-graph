@@ -81,7 +81,7 @@
 | **后端框架** | FastAPI | **FastAPI** (Python 3.11+) | ✅ 对齐 |
 | **图数据库** | Neo4j 5 | **Neo4j 5** | ✅ 对齐 |
 | **关系数据库** | PostgreSQL (Supabase) | **PostgreSQL 15 via Supabase** | ✅ 对齐 |
-| **向量数据库** | Qdrant | **文件系统 RAG** (6,156 Markdown) | 简化架构，文件RAG够用 |
+| **向量数据库** | Qdrant | **文件系统 RAG** (6,300 Markdown) | 简化架构，文件RAG够用 |
 | **缓存** | Redis 7 | **Redis 7** (Docker) + LLM缓存 | ✅ 对齐+缓存已实现 |
 | **LLM** | OpenAI+DeepSeek+Anthropic | **OpenRouter 统一入口** + DeepSeek/OpenAI直连 | 更灵活 |
 | **LLM编排** | LangChain / LangGraph | **自研 LLM Router** (分层调度+重试) | 更轻量可控 |
@@ -126,8 +126,8 @@
            ┌──────────────┐            ┌─────────▼────┐     ┌──────────────┐
            │ Neo4j 5      │            │ Supabase     │     │ Redis 7      │
            │ 知识图谱     │            │ Auth + PG 15 │     │ LLM缓存     │
-           │ 30域 6,156节点│           │ 用户/学习数据│     │ 会话/限流    │
-           │ 7,015边      │            │ + Storage    │     │              │
+           │ 36域 6,300节点│           │ 用户/学习数据│     │ 会话/限流    │
+           │ 7,167边      │            │ + Storage    │     │              │
            └──────────────┘            └──────────────┘     └──────────────┘
 ```
 
@@ -158,7 +158,7 @@ ai-knowledge-graph/
 │       ├── llm/             # LLM路由器 + 缓存
 │       ├── routers/         # API端点 (graph/dialogue/learning/health)
 │       ├── db/              # Neo4j + Redis + SQLite 客户端
-│       └── tests/           # 897+ 后端测试
+│       └── tests/           # 972+ 后端测试
 │
 ├── workers/              # Cloudflare Workers (LLM代理+API)
 │   └── src/
@@ -166,8 +166,8 @@ ai-knowledge-graph/
 ├── supabase/             # Auth + PostgreSQL + Edge Functions
 │
 ├── data/
-│   ├── seed/             # 30域种子图谱 + 跨球链接
-│   └── rag/              # 6,156篇 RAG知识文档
+│   ├── seed/             # 36域种子图谱 + 跨球链接
+│   └── rag/              # 6,300篇 RAG知识文档
 │
 ├── scripts/              # 批量处理脚本
 ├── docs/                 # 项目文档
@@ -187,10 +187,10 @@ ai-knowledge-graph/
 | **边数** | 未指定 | 7,167 | — |
 | **跨域链接** | 未计划 | 633 | — |
 | **RAG文档** | 未计划 | 6,300 (100%) | — |
-| **RAG质量** | 未计划 | 均分79.5 (S:1096 A:5060) + 144 stubs | — |
-| **测试数** | 未指定 | 1,202 (956BE+238FE+8FSRS) | — |
+| **RAG质量** | 未计划 | 均分79.5 (S:1096 A:5060) + 144 new-domain upgrading | — |
+| **测试数** | 未指定 | 1,238 (972BE+250FE+16E2E) | — |
 
-### 30个知识域
+### 36个知识域
 
 详见 docs/EXPANSION_PLAN.md。覆盖: AI工程、算法、Web开发、数据库、
 云计算、网络安全、操作系统、编译器、计算理论、量子计算、机器人学、
@@ -277,7 +277,7 @@ ai-knowledge-graph/
 |:---|:---|:---|
 | **V1.1** | ✅ 完成 | E2E测试 + OAuth + 学习分析Dashboard + LLM缓存 + SEO |
 | **V1.2** | ✅ 完成 | 图谱引擎 + 三端同步 + 行为设计P0/P1 + 6新域 + RAG升级 |
-| **V1.3** | 2-3周 | 移动端Capacitor深度集成 + 行为设计P2 (社交证明) |
+| **V1.3** | 进行中 | 行为设计P2 ✅ + RAG质量升级 + 性能优化 + Capacitor深度集成 |
 | **V2.0** | 6周 | 社区共建图谱 + 社交排行 + 语音输入 |
 
 ---

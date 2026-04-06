@@ -63,8 +63,8 @@ packages/mobile/   — Capacitor 移动端 (@akg/mobile)
 apps/api/          — FastAPI 后端 (图谱+对话+学习引擎)
 workers/           — Cloudflare Workers (代理API)
 supabase/          — Auth + PostgreSQL + Edge Functions
-data/seed/         — 种子图谱数据 (30球)
-data/rag/          — RAG知识文档 (6,156篇)
+data/seed/         — 种子图谱数据 (36球)
+data/rag/          — RAG知识文档 (6,300篇)
 ```
 
 ---
@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,156篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,230 (972 BE + 250 FE + 8 FSRS review) | 2026-04-07 |
+| **测试总数** | 1,238 (972 BE + 250 FE + 16 E2E) | 2026-04-07 |
 | **tsc errors** | 0 | 2026-04-07 |
 | **Open Issues** | 0 | 2026-04-07 |
 | **RAG 质量** | 6156 legacy avg 79.5 + 144 new-domain 升级中 (systems-theory avg 86.0) | 2026-04-07 |
@@ -277,9 +277,9 @@ python scripts/build_exe.py  # 输出到 release/
 ### 数据
 | 文件 | 用途 |
 |------|------|
-| data/seed/domains.json | 30球体定义 (id/name/icon/color/sort_order) |
+| data/seed/domains.json | 36球体定义 (id/name/icon/color/sort_order) |
 | data/seed/{domain}/seed_graph.json | 各域种子图谱 |
-| data/seed/cross_sphere_links.json | 595条跨球链接 |
+| data/seed/cross_sphere_links.json | 633条跨球链接 |
 | data/rag/{domain}/{subdomain}/{concept}.md | RAG知识文档 |
 
 ### 核心代码
