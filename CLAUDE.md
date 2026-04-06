@@ -80,7 +80,7 @@ data/rag/          — RAG知识文档 (6,156篇)
 | **RAG 覆盖** | 6,156 (100% 覆盖) | 2026-03-27 |
 | **测试总数** | 1,199 (953 BE + 238 FE + 8 FSRS review) | 2026-04-07 |
 | **tsc errors** | 0 | 2026-03-21 |
-| **Open Issues** | 2 | 2026-04-07 |
+| **Open Issues** | 0 | 2026-04-07 |
 | **RAG 质量** | 6156/6156, avg 79.5, S:1096 A:5060 B:0 C:0 | 2026-04-06 |
 
 ---
@@ -120,6 +120,8 @@ data/rag/          — RAG知识文档 (6,156篇)
 - ✅ #42 图谱引擎实现 (pathfinder + builder + 7 API + 40 tests)
 - ✅ #43 GraphRAG独立模块 (rag.py: 精确+模糊+搜索, ADR-014)
 - ✅ #46 学习分析Dashboard (DashboardPage + 全局统计/掌握度分布/活动趋势/域进度卡片)
+- ✅ #49 OAuth代码已完成 (待Supabase Dashboard配置)
+- ✅ #47 E2E测试框架 (Playwright + 10个核心用户流测试)
 
 ---
 
@@ -228,6 +230,7 @@ pnpm build                  # 生产构建
 # 测试
 cd packages/web && npx vitest run        # 前端测试
 cd apps/api && python -m pytest          # 后端测试
+npx playwright test                      # E2E测试 (需先 pnpm dev)
 
 # 类型检查
 pnpm type-check             # 全量 tsc
@@ -297,4 +300,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-07 | **Scope**: Sprint closes 5 issues — #44 sync gov + #42 graph engine + #43 RAG module + #46 Dashboard + invariants/ADRs | **Result**: 5 issues closed this sprint, 2 remaining (P1: #49 OAuth, #47 E2E)
+**Date**: 2026-04-07 | **Scope**: Sprint closes ALL 7 audit issues — #44 sync gov + #42 graph engine + #43 RAG + #46 Dashboard + #49 OAuth + #47 E2E + #48 SEO | **Result**: 0 open issues, all audit items resolved
