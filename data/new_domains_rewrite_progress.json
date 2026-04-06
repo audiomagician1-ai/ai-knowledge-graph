@@ -124,12 +124,17 @@
     "catastrophe-theory/catastrophe-overview",
     "catastrophe-theory/structural-stability-ct",
     "catastrophe-theory/critical-point-catastrophe",
-    "catastrophe-theory/smooth-mapping"
+    "catastrophe-theory/smooth-mapping",
+    "catastrophe-theory/potential-function",
+    "catastrophe-theory/fold-catastrophe",
+    "catastrophe-theory/cusp-catastrophe",
+    "catastrophe-theory/swallowtail-catastrophe",
+    "catastrophe-theory/butterfly-catastrophe"
   ],
   "errors": [],
   "stats": {
-    "total": 99,
-    "success": 80,
+    "total": 79,
+    "success": 65,
     "error": 0
   }
 }
