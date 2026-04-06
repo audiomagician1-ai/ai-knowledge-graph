@@ -15,6 +15,7 @@ import { ChoiceButtons } from '@/components/chat/ChoiceButtons';
 import { stripChoicesBlock } from '@/lib/utils/text';
 import { useLearningTimer } from '@/lib/hooks/useLearningTimer';
 import { useSpeechRecognition } from '@/lib/hooks/useSpeechRecognition';
+import { ConceptNoteEditor } from '@/components/common/ConceptNoteEditor';
 
 const log = createLogger('LearnPage');
 
@@ -405,6 +406,15 @@ export function LearnPage() {
                   再来一轮
                 </button>
               </div>
+
+              {/* Concept note editor — post-assessment */}
+              {conceptId && (
+                <ConceptNoteEditor
+                  conceptId={conceptId}
+                  conceptName={conceptName || conceptId}
+                  compact
+                />
+              )}
 
               {/* Recommended next concept — behavior hook for continued learning */}
               {recommendedIds.size > 0 && (

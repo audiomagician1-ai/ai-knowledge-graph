@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createLogger } from '@/lib/utils/logger';
 import { useDomainStore } from '@/lib/store/domain';
-import { Loader, BarChart3, Trophy, Settings as SettingsIcon } from 'lucide-react';
+import { Loader, BarChart3, Trophy, Settings as SettingsIcon, StickyNote } from 'lucide-react';
 import { WelcomeGuide } from '@/components/common/WelcomeGuide';
 import { ReviewBanner } from '@/components/common/ReviewBanner';
 import { DailyRecommendation } from '@/components/common/DailyRecommendation';
@@ -620,6 +620,7 @@ export function HomePage() {
         <div className="flex items-center gap-2 px-3 py-2 rounded-2xl" style={{ backgroundColor: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(16px)', boxShadow: '0 4px 24px rgba(0,0,0,0.08)', border: '1px solid rgba(0,0,0,0.06)' }}>
           <QuickNavBtn icon={<BarChart3 size={18} />} label="分析" onClick={() => nav('/dashboard')} />
           <QuickNavBtn icon={<Trophy size={18} />} label="排行" onClick={() => nav('/leaderboard')} />
+          <QuickNavBtn icon={<StickyNote size={18} />} label="笔记" onClick={() => nav('/notes')} />
           <QuickNavBtn icon={<SettingsIcon size={18} />} label="设置" onClick={() => nav('/settings')} />
         </div>
       </div>
