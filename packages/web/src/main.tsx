@@ -16,3 +16,12 @@ initCapacitor();
 
 // Start collecting performance metrics after initial render
 requestIdleCallback?.(() => initPerfMonitor()) ?? setTimeout(() => initPerfMonitor(), 1000);
+
+// Register Service Worker for offline support (production only)
+if ('serviceWorker' in navigator && import.meta.env.PROD) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {
+      // SW registration failed — ignore gracefully
+    });
+  });
+}

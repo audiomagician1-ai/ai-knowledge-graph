@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
 import { WifiOff } from 'lucide-react';
+import { useOnlineStatus } from '@/lib/hooks/useOnlineStatus';
 
 /**
  * Shows a subtle banner when the user is offline.
@@ -7,22 +7,9 @@ import { WifiOff } from 'lucide-react';
  * Important for mobile users who may lose signal while studying.
  */
 export function OfflineIndicator() {
-  const [isOffline, setIsOffline] = useState(!navigator.onLine);
+  const isOnline = useOnlineStatus();
 
-  useEffect(() => {
-    const handleOnline = () => setIsOffline(false);
-    const handleOffline = () => setIsOffline(true);
-
-    window.addEventListener('online', handleOnline);
-    window.addEventListener('offline', handleOffline);
-
-    return () => {
-      window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);
-    };
-  }, []);
-
-  if (!isOffline) return null;
+  if (isOnline) return null;
 
   return (
     <div
