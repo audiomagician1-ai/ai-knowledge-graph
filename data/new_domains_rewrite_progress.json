@@ -89,12 +89,17 @@
     "dissipative-structures/fluctuation-amplification",
     "dissipative-structures/order-through-fluctuation",
     "dissipative-structures/bifurcation-theory-ds",
-    "dissipative-structures/pitchfork-bifurcation"
+    "dissipative-structures/pitchfork-bifurcation",
+    "dissipative-structures/hopf-bifurcation",
+    "dissipative-structures/instability-mechanism",
+    "dissipative-structures/benard-convection",
+    "dissipative-structures/chemical-oscillation",
+    "dissipative-structures/turing-pattern"
   ],
   "errors": [],
   "stats": {
-    "total": 64,
-    "success": 10,
+    "total": 144,
+    "success": 95,
     "error": 0
   }
 }
