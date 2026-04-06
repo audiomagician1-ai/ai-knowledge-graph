@@ -114,13 +114,29 @@ class LLMRouter:
         temperature: float = 0.7,
         max_tokens: int = 2048,
         user_config: dict | None = None,
+        cache_ttl: int | None = None,
     ) -> str:
-        """非流式对话 — 用于评估等需要完整响应的场景"""
+        """非流式对话 — 用于评估等需要完整响应的场景
+
+        Args:
+            cache_ttl: If set (seconds), enable Redis caching for this call.
+                       Recommended for deterministic prompts (e.g., concept openings).
+        """
         tiers = self.model_tiers
         model = tiers.get(tier, tiers["dialogue"])
         # 用户自定义模型覆盖
         if user_config and user_config.get("model"):
             model = user_config["model"]
+
+        # --- Cache lookup ---
+        cache_key: str | None = None
+        if cache_ttl is not None and cache_ttl > 0:
+            from llm.cache import build_cache_key, get_cached_response, set_cached_response
+            cache_key = build_cache_key(model, messages, temperature, max_tokens)
+            cached = await get_cached_response(cache_key)
+            if cached is not None:
+                return cached
+
         base_url, api_key = self._resolve_endpoint(model, user_config)
 
         # OpenRouter 用 model 原名; 直连时去掉 vendor/ 前缀
@@ -152,6 +168,9 @@ class LLMRouter:
                 content = choices[0].get("message", {}).get("content")
                 if not isinstance(content, str):
                     raise ValueError(f"LLM returned non-string content: {type(content)}")
+                # --- Cache write ---
+                if cache_key is not None:
+                    await set_cached_response(cache_key, content, ttl=cache_ttl)
                 return content
             except httpx.HTTPStatusError as e:
                 last_error = e

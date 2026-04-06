@@ -146,6 +146,50 @@ class TestRedisClientCaching:
         assert rc._client is None
 
 
+class TestRedisClientDeleteCached:
+    """Test delete_cached method"""
+
+    @pytest.mark.asyncio
+    async def test_delete_existing_key(self):
+        from db.redis_client import RedisClient
+        rc = RedisClient()
+        mock_redis = AsyncMock()
+        mock_redis.delete = AsyncMock(return_value=1)
+        rc._client = mock_redis
+        result = await rc.delete_cached("key")
+        assert result is True
+        mock_redis.delete.assert_awaited_once_with("key")
+
+    @pytest.mark.asyncio
+    async def test_delete_missing_key(self):
+        from db.redis_client import RedisClient
+        rc = RedisClient()
+        mock_redis = AsyncMock()
+        mock_redis.delete = AsyncMock(return_value=0)
+        rc._client = mock_redis
+        result = await rc.delete_cached("missing")
+        assert result is False
+
+    @pytest.mark.asyncio
+    async def test_delete_no_client(self):
+        from db.redis_client import RedisClient
+        rc = RedisClient()
+        rc._last_reconnect = time.time()
+        result = await rc.delete_cached("key")
+        assert result is False
+
+    @pytest.mark.asyncio
+    async def test_delete_error_clears_client(self):
+        from db.redis_client import RedisClient
+        rc = RedisClient()
+        mock_redis = AsyncMock()
+        mock_redis.delete = AsyncMock(side_effect=ConnectionError("broken"))
+        rc._client = mock_redis
+        result = await rc.delete_cached("key")
+        assert result is False
+        assert rc._client is None
+
+
 class TestRedisClientReconnect:
     """Test lazy reconnection with cooldown"""
 

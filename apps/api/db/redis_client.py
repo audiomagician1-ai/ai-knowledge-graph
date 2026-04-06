@@ -78,5 +78,17 @@ class RedisClient:
         except Exception:
             self._client = None
 
+    async def delete_cached(self, key: str) -> bool:
+        """Delete a cached key. Returns True if deleted, False otherwise."""
+        if not self._client:
+            if not await self._try_reconnect():
+                return False
+        try:
+            result = await self._client.delete(key)
+            return result > 0
+        except Exception:
+            self._client = None
+            return False
+
 
 redis_client = RedisClient()

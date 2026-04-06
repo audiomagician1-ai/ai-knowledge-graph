@@ -139,6 +139,7 @@ class SocraticEngine:
                 temperature=0.8,
                 max_tokens=2048,
                 user_config=user_config,
+                cache_ttl=86400,  # 24h — same concept opening is reusable
             )
             parsed = parse_ai_response(raw)
             return parsed["content"], parsed["choices"]
