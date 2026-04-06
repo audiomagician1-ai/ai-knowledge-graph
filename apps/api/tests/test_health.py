@@ -79,3 +79,26 @@ async def test_metrics_tracks_per_endpoint():
         data = response.json()
         # Should have at least some endpoint data
         assert len(data["endpoints"]) >= 1
+
+
+@pytest.mark.asyncio
+async def test_project_stats():
+    """Project stats endpoint should return domain/concept/RAG metrics."""
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        response = await client.get("/api/health/project")
+        assert response.status_code == 200
+        data = response.json()
+        assert data["domains"] >= 30
+        assert data["concepts"] >= 5000
+        assert data["edges"] >= 5000
+        assert data["cross_links"] >= 500
+        assert data["rag_files"] >= 5000
+        assert data["rag_coverage_pct"] >= 90
+        assert len(data["domain_details"]) >= 30
+        # Each domain detail should have expected fields
+        sample = data["domain_details"][0]
+        assert "id" in sample
+        assert "name" in sample
+        assert "concepts" in sample
+        assert "rag_files" in sample

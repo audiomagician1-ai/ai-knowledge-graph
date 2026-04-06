@@ -109,12 +109,22 @@
     "synergetics/order-param-equation",
     "synergetics/critical-slowing-down",
     "synergetics/slaving-principle-def",
-    "synergetics/adiabatic-elimination"
+    "synergetics/adiabatic-elimination",
+    "synergetics/center-manifold",
+    "synergetics/circular-causality-syn",
+    "synergetics/phase-transition-concept",
+    "synergetics/symmetry-breaking-syn",
+    "synergetics/pattern-selection",
+    "synergetics/nonequilibrium-phase",
+    "synergetics/laser-synergetics",
+    "synergetics/synergetics-in-brain",
+    "synergetics/synergetics-in-ecology-soc",
+    "synergetics/pattern-recognition-syn"
   ],
   "errors": [],
   "stats": {
-    "total": 99,
-    "success": 65,
+    "total": 129,
+    "success": 105,
     "error": 0
   }
 }

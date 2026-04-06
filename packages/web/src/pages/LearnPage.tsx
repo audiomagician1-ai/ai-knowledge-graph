@@ -13,6 +13,7 @@ import {
 import { MarkdownRenderer } from '@/components/chat/MarkdownRenderer';
 import { ChoiceButtons } from '@/components/chat/ChoiceButtons';
 import { stripChoicesBlock } from '@/lib/utils/text';
+import { useLearningTimer } from '@/lib/hooks/useLearningTimer';
 
 const log = createLogger('LearnPage');
 
@@ -21,6 +22,9 @@ export function LearnPage() {
   const navigate = useNavigate();
   const [input, setInput] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Track learning time while this page is active
+  useLearningTimer();
 
   const {
     conversationId, conceptName, isMilestone,

@@ -2,8 +2,9 @@ import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLearningStore } from '@/lib/store/learning';
 import { useDomainStore } from '@/lib/store/domain';
-import { ArrowLeft, BarChart3, BookOpen, Trophy, TrendingUp, Flame } from 'lucide-react';
+import { ArrowLeft, BarChart3, BookOpen, Trophy, TrendingUp, Flame, Clock } from 'lucide-react';
 import { useKeyboardShortcuts } from '@/lib/hooks/useKeyboardShortcuts';
+import { readLearningTime } from '@/lib/hooks/useLearningTimer';
 import type { Domain } from '@akg/shared';
 
 /**
@@ -142,6 +143,21 @@ export function DashboardPage() {
           <StatCard icon={<Trophy size={20} />} label="已探索领域" value={globalStats.domainsStarted} sub={`/ ${domains.length}`} color="#f59e0b" />
           <StatCard icon={<Flame size={20} />} label="连续学习" value={streak.current} sub="天" color="#ef4444" />
         </div>
+
+        {/* Learning Time Stats */}
+        {(() => {
+          const timeData = readLearningTime();
+          const todayKey = (() => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; })();
+          const todayMin = Math.round((timeData.daily[todayKey] || 0) / 60);
+          const totalMin = Math.round(timeData.totalSeconds / 60);
+          if (totalMin > 0) return (
+            <div className="grid grid-cols-2 gap-4">
+              <StatCard icon={<Clock size={20} />} label="今日学习" value={todayMin} sub="分钟" color="#8b5cf6" />
+              <StatCard icon={<Clock size={20} />} label="累计学习" value={totalMin >= 60 ? Math.round(totalMin / 60) : totalMin} sub={totalMin >= 60 ? '小时' : '分钟'} color="#6366f1" />
+            </div>
+          );
+          return null;
+        })()}
 
         {/* Streak Calendar (30-day heatmap) */}
         <section className="rounded-xl p-5" style={{ backgroundColor: 'var(--color-surface-1)' }}>
