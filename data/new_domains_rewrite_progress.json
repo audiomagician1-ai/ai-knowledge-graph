@@ -94,12 +94,17 @@
     "dissipative-structures/instability-mechanism",
     "dissipative-structures/benard-convection",
     "dissipative-structures/chemical-oscillation",
-    "dissipative-structures/turing-pattern"
+    "dissipative-structures/turing-pattern",
+    "dissipative-structures/spiral-waves",
+    "dissipative-structures/dissipative-in-biology",
+    "dissipative-structures/dissipative-in-ecology",
+    "dissipative-structures/dissipative-in-society",
+    "dissipative-structures/dissipative-in-climate"
   ],
   "errors": [],
   "stats": {
-    "total": 99,
-    "success": 50,
+    "total": 64,
+    "success": 20,
     "error": 0
   }
 }

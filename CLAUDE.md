@@ -78,10 +78,10 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,275 (981 BE + 278 FE + 16 E2E) | 2026-04-07 |
+| **测试总数** | 1,337 (1,002 BE + 311 FE + 24 E2E) | 2026-04-07 |
 | **tsc errors** | 0 | 2026-04-07 |
 | **Open Issues** | 0 | 2026-04-07 |
-| **RAG 质量** | 6156 legacy avg 79.5 + 80/144 new-domain upgraded (ST+CB done, IT+DS in progress) | 2026-04-07 |
+| **RAG 质量** | 6156 legacy avg 79.5 + 98/144 new-domain upgraded (ST+CB+IT done, DS in progress, SY+CT pending) | 2026-04-07 |
 
 ---
 
@@ -304,8 +304,10 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/pages/NotFoundPage.tsx | 404 页面 (渐变标题+导航) |
 | packages/web/src/lib/utils/capacitor.ts | Capacitor平台抽象层 (storage/keyboard/lifecycle) |
 | packages/web/src/lib/utils/perf-monitor.ts | Core Web Vitals 监控 (FCP/LCP/TTFB) |
-| packages/web/src/lib/hooks/ | useAppLifecycle + useBackButton + useKeyboardHeight |
-| packages/web/src/components/common/OfflineIndicator.tsx | 离线状态提示横幅 |
+| packages/web/src/lib/hooks/ | useAppLifecycle + useBackButton + useKeyboardHeight + useOnlineStatus + useKeyboardShortcuts + useLocalStorage |
+| packages/web/src/lib/utils/fetch-retry.ts | fetchWithRetry: 指数退避 + 抖动 + Retry-After + abort signal |
+| packages/web/src/components/common/OfflineIndicator.tsx | 离线状态提示横幅 (useSyncExternalStore) |
+| apps/api/utils/metrics.py | API指标收集器 (请求数/错误率/响应时间/per-endpoint) |
 | workers/src/ | Cloudflare Workers代理后端 |
 
 ---
@@ -314,7 +316,7 @@ python scripts/build_exe.py  # 输出到 release/
 
 - OAuth: Supabase Cloud控制台配置待完成 (代码层面已就绪)
 - RAG: 向量语义检索保留为Phase 2 (ADR-014), 当前精确+模糊覆盖97.7%
-- RAG: 6个systems-theory家族新域RAG升级中 — 66/144已升级(ST完成+CB完成+IT进行中), 批量后台运行
+- RAG: 6个systems-theory家族新域RAG升级中 — 98/144已升级(ST+CB+IT完成, DS进行中, SY+CT待处理), 批量后台运行
 - dialogue-api.ts 导出但无import (dialogue.ts直接fetch), future-ready
 - useMediaQuery.ts 暂时unused (Round 74保留), future-ready
 - NPM audit: 6漏洞(4moderate+2high)均属workers>wrangler dev依赖, 不影响生产
@@ -326,15 +328,23 @@ python scripts/build_exe.py  # 输出到 release/
 - ✅ GZip压缩中间件 + Cache-Control (1h cache + SWR 24h on static endpoints)
 - ✅ Core Web Vitals监控 (FCP/LCP/TTFB via PerformanceObserver)
 - ✅ PWA Web App Manifest (standalone display, iOS meta tags)
+- ✅ Service Worker (离线缓存: cache-first for assets, network-first for API)
 - ✅ Capacitor平台抽象层 (storage/keyboard/statusbar/lifecycle)
 - ✅ useAppLifecycle hook (foreground auto-refresh streak)
-- ✅ useBackButton + useKeyboardHeight hooks
-- ✅ OfflineIndicator全局组件
+- ✅ useBackButton + useKeyboardHeight + useOnlineStatus hooks
+- ✅ useKeyboardShortcuts hook (Ctrl/Cmd/Shift modifier, input-aware)
+- ✅ useLocalStorage hook (type-safe persisted state)
+- ✅ fetchWithRetry utility (exponential backoff + jitter + Retry-After)
+- ✅ OfflineIndicator全局组件 (useSyncExternalStore)
 - ✅ SettingsPage独立路由 (/settings)
 - ✅ 404 NotFoundPage
 - ✅ /health/system全组件健康检查端点
-- ✅ /learning/export数据导出端点 (GDPR)
+- ✅ /health/metrics API指标端点 (请求数/错误率/响应时间)
+- ✅ /learning/export + /learning/import数据导出导入 (GDPR + roundtrip)
+- ✅ RequestIdMiddleware (X-Request-ID + X-Response-Time + 慢请求日志)
+- ✅ 无障碍: skip-to-content链接 + aria labels + main landmark role
+- ✅ 移动端: safe-area-inset-bottom for LearnPage聊天输入
 
 ## Last Review
 
-**Date**: 2026-04-07 | **Scope**: V1.3 Sprint — Performance optimization (code splitting + GZip + cache headers) + Capacitor mobile integration (platform layer + lifecycle hooks + offline indicator + PWA manifest) + data export API + 37 new tests | **Result**: 981 BE + 278 FE all pass, 36 domains, 6300 concepts, 633 cross-links
+**Date**: 2026-04-07 | **Scope**: V1.3 Sprint Part 2 — Resilience (fetchWithRetry + RequestIdMiddleware + metrics) + PWA (service worker + offline caching) + Accessibility (skip-to-content + aria + safe-area) + Data portability (/import endpoint) + Hooks library (keyboard shortcuts + localStorage + onlineStatus) + 62 new tests | **Result**: 1,002 BE + 311 FE all pass, tsc: 0 errors, RAG batch 98/144 upgraded
