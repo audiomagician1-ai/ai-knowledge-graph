@@ -129,12 +129,22 @@
     "catastrophe-theory/fold-catastrophe",
     "catastrophe-theory/cusp-catastrophe",
     "catastrophe-theory/swallowtail-catastrophe",
-    "catastrophe-theory/butterfly-catastrophe"
+    "catastrophe-theory/butterfly-catastrophe",
+    "catastrophe-theory/umbilic-catastrophes",
+    "catastrophe-theory/classification-theorem",
+    "catastrophe-theory/singularity-theory",
+    "catastrophe-theory/unfolding-theory",
+    "catastrophe-theory/transversality",
+    "catastrophe-theory/morse-theory-intro",
+    "catastrophe-theory/hysteresis-ct",
+    "catastrophe-theory/bimodality",
+    "catastrophe-theory/catastrophe-flags",
+    "catastrophe-theory/delay-convention"
   ],
   "errors": [],
   "stats": {
-    "total": 99,
-    "success": 85,
+    "total": 129,
+    "success": 125,
     "error": 0
   }
 }

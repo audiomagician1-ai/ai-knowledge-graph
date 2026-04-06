@@ -51,7 +51,7 @@ export function App() {
   });
 
   return (
-    <ErrorBoundary>
+    <ErrorBoundary showHomeButton>
       <BrowserRouter>
         <Suspense fallback={<RouteLoader />}>
           <Routes>

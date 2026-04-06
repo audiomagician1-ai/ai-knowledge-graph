@@ -2,114 +2,107 @@
 
 ## 概述
 
-奇点理论（Singularity Theory）是研究光滑映射在退化点处局部几何与拓扑行为的数学理论。其核心对象是光滑映射 $f: (\mathbb{R}^n, 0) \to (\mathbb{R}^p, 0)$ 在原点处的**奇点**——即映射的雅可比矩阵（Jacobian matrix）秩下降的点。奇点理论由美国数学家约翰·米尔诺（John Milnor）在其1968年出版的经典著作《Morse Theory》与《Singular Points of Complex Hypersurfaces》中奠定了代数与拓扑基础，随后由英国数学家克里斯托弗·泽曼（Christopher Zeeman）与法国数学家勒内·托姆（René Thom）在20世纪70年代将其发展为突变论的数学核心。
+奇点理论（Singularity Theory）是研究光滑映射在临界点附近局部行为的数学分支，由苏联数学家弗拉基米尔·阿诺德（Vladimir I. Arnold）在20世纪60至70年代系统建立，并在英国数学家克里斯托弗·泽曼（E. Christopher Zeeman）推动突变论应用的背景下迅速发展。其核心问题是：一个光滑映射 $f: (\mathbb{R}^n, 0) \to (\mathbb{R}^p, 0)$ 在原点处的奇异性如何被分类、如何在扰动下变形，以及这种变形携带多少本质自由度？
 
-奇点理论不仅是突变论的数学语言，更是现代微分几何、代数几何与数学物理的交叉前沿。它回答了如下核心问题：一个光滑函数在奇点附近究竟有多少种本质不同的局部形态？这些形态如何被参数扰动所展开？理解奇点理论，是理解突变现象为何具有**普遍性**与**有限分类**的关键。
+奇点理论与René Thom于1972年出版的《结构稳定性与形态发生》（*Structural Stability and Morphogenesis*）密切关联。Thom将奇点理论的数学结果——尤其是余维数不超过4的奇点的完整分类——直接转译为突变论的七种初等突变。奇点理论因此既是突变论的数学基础，也是更广泛的微分拓扑与代数几何的交汇点。
 
 ---
 
 ## 核心原理
 
-### 奇点与临界点的精确定义
+### 奇点的定义与余维数
 
-设 $f: U \subseteq \mathbb{R}^n \to \mathbb{R}$ 为光滑函数，点 $p \in U$ 称为 $f$ 的**临界点**（critical point），若在该点处所有偏导数同时消失：
+设 $f: \mathbb{R}^n \to \mathbb{R}$ 为光滑函数，点 $x_0$ 称为 $f$ 的**临界点**（critical point），若 $df(x_0) = 0$，即所有偏导数同时为零：
 
-$$\frac{\partial f}{\partial x_1}(p) = \frac{\partial f}{\partial x_2}(p) = \cdots = \frac{\partial f}{\partial x_n}(p) = 0$$
+$$\frac{\partial f}{\partial x_1}(x_0) = \frac{\partial f}{\partial x_2}(x_0) = \cdots = \frac{\partial f}{\partial x_n}(x_0) = 0$$
 
-若此时 $f$ 的 Hessian 矩阵 $H_f(p) = \left(\frac{\partial^2 f}{\partial x_i \partial x_j}(p)\right)$ 也是退化矩阵（行列式为零），则称 $p$ 为**退化临界点**，即奇点理论所研究的核心对象。非退化临界点（Morse临界点）的局部行为由莫尔斯引理完全刻画，而退化临界点的分类则需要奇点理论的精细工具。
+若进一步 Hessian 矩阵 $H_f(x_0) = \left(\frac{\partial^2 f}{\partial x_i \partial x_j}(x_0)\right)$ 退化（行列式为零），则 $x_0$ 称为**奇点**（singularity）或**退化临界点**。非退化临界点由 Morse 引理完整描述，可局部等价于标准二次型 $\pm x_1^2 \pm x_2^2 \pm \cdots \pm x_n^2$；奇点理论的真正任务是处理退化情形。
 
-### Milnor 数：奇点复杂度的代数量度
+**余维数**（codimension）量化了奇点在函数空间中的"稀有程度"。设局部代数 $\mathcal{Q}(f) = \mathcal{E}_n / \langle \partial f/\partial x_1, \ldots, \partial f/\partial x_n \rangle$，其中 $\mathcal{E}_n$ 是 $(\mathbb{R}^n,0)$ 上光滑函数芽的环，则奇点 $f$ 的**Milnor数**定义为：
 
-米尔诺数（Milnor number）是奇点理论最重要的拓扑不变量，由约翰·米尔诺在1968年引入。对于孤立奇点 $f: (\mathbb{C}^n, 0) \to (\mathbb{C}, 0)$，其 Milnor 数定义为：
+$$\mu(f) = \dim_{\mathbb{R}} \mathcal{Q}(f) = \dim_{\mathbb{R}} \frac{\mathcal{E}_n}{\left\langle \frac{\partial f}{\partial x_1}, \ldots, \frac{\partial f}{\partial x_n} \right\rangle}$$
 
-$$\mu(f) = \dim_{\mathbb{C}} \frac{\mathcal{O}_n}{\left(\frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}, \ldots, \frac{\partial f}{\partial x_n}\right)}$$
+Milnor数由约翰·米尔诺（John Milnor）在1968年的专著《Morse Theory》及其1969年著作《Singular Points of Complex Hypersurfaces》中引入。对于隔离奇点，$\mu(f)$ 等于 Milnor 纤维的中间维同调群的秩，也等于在通有形变（generic deformation）下奇点分裂成非退化临界点的数目。
 
-其中 $\mathcal{O}_n$ 是 $n$ 变量光滑函数芽的环，分母是由 $f$ 的所有一阶偏导数生成的理想（雅可比理想）。Milnor 数的几何意义是：当 $f$ 受到足够一般的小扰动后，奇点分裂成的**非退化临界点的个数**。
+例如，对于 $f(x) = x^{n+1}$（$A_n$ 型奇点），雅可比理想为 $\langle (n+1)x^n \rangle = \langle x^n \rangle$，商空间由 $\{1, x, x^2, \ldots, x^{n-1}\}$ 张成，故 $\mu = n$。
 
-例如，对于 $A_k$ 型奇点 $f = x^{k+1}$（单变量情形），雅可比理想由 $(k+1)x^k$ 生成，商环 $\mathcal{O}_1/(x^k)$ 的维数恰好为 $k$，故 $\mu(A_k) = k$。这意味着 $A_k$ 奇点在微小扰动下可分裂为 $k$ 个非退化临界点，揭示了奇点的内在"复杂度"。
+### 有限决定性定理
 
-### 有限决定性：局部行为的截断原理
+**有限决定性**（finite determinacy）回答了一个关键实用问题：奇点的本质信息是否完全由其 Taylor 展开的有限阶截断所决定？
 
-一个函数芽 $f$ 称为 **$k$ 次确定的**（$k$-determined），若对所有满足 $g - f \in \mathfrak{m}^{k+1}$（即 $g$ 与 $f$ 在原点处直到 $k$ 阶 Taylor 展开完全相同）的函数芽 $g$，$f$ 与 $g$ 关于接触等价（contact equivalence）是等价的。这里 $\mathfrak{m}$ 是极大理想，即在原点消失的函数芽构成的理想。
+形式陈述：若存在整数 $k$ 使得对任意满足 $g - f \in \mathfrak{m}^{k+1}$（即 $g$ 与 $f$ 的前 $k$ 阶 Taylor 系数完全相同）的光滑函数芽 $g$，都有 $g$ 与 $f$ 右等价（right-equivalent，即存在坐标变换 $\phi$ 使得 $g = f \circ \phi$），则称 $f$ 是 **$k$-有限决定**的。
 
-有限决定性定理（Mather, 1968）给出了充分条件：若
+阿诺德学派建立的核心定理（Arnold, 1972；Mather, 1968）给出充分条件：若
 
-$$\mathfrak{m}^{k+1} \subseteq \mathfrak{m}^2 \cdot J(f)$$
+$$\mathfrak{m}^{k+1} \subset \mathfrak{m}^2 \cdot J(f)$$
 
-其中 $J(f) = \left(\frac{\partial f}{\partial x_1}, \ldots, \frac{\partial f}{\partial x_n}\right)$ 为雅可比理想，则 $f$ 是 $k$ 次确定的。有限决定性的实践意义在于：分类奇点时只需考虑其 Taylor 展开的有限阶截断，从而将无穷维问题化归为有限维代数计算。
+其中 $J(f) = \langle \partial f/\partial x_1, \ldots, \partial f/\partial x_n \rangle$ 为雅可比理想，$\mathfrak{m}$ 为极大理想，则 $f$ 是 $k$-有限决定的。实践中常用的估计为：$f$ 是 $(\mu + n)$-有限决定的（其中 $\mu$ 为 Milnor 数，$n$ 为变量个数），但更精细的界为 $(2\mu - 1)$-有限决定，由Mather和Yau（1982）的定理进一步精炼。
 
-**案例**：对于 $f = x^3 + y^3$（$D_4$ 型奇点），其 Milnor 数 $\mu = 4$，而有限决定性次数为 3，即仅凭三阶 Taylor 展开便能完全确定该奇点的等价类型，高阶项不改变奇点的本质分类。
+有限决定性的意义在于：计算机代数系统可以截断到有限阶处理奇点分类，从而使分类算法在实践中可行。
 
----
+### ADE 分类与普适开折
 
-## ADE 分类：奇点的完整图谱
+奇点理论最深刻的成就之一是**ADE 分类**，即对余维数较低的奇点进行完整的等价类枚举。在右等价（right-equivalence）或接触等价（contact-equivalence）意义下，余维数 $\leq 4$ 的所有简单奇点（simple singularity，即在任意形变下只涉及有限多等价类型的奇点）恰好对应李代数的 ADE Dynkin 图分类（Arnold, 1972）：
 
-奇点理论最深刻的成果之一是对简单奇点（simple singularities）的 **ADE 分类**，由阿诺德（Vladimir Arnold）在1972至1976年间系统完成，并发表于《Functions of Several Variables》系列论文中。所谓"简单"奇点，是指在其足够小的邻域内只有有限种接触等价类型出现的奇点。
+| 名称 | 标准形式 $f(x,y,\ldots)$ | Milnor数 $\mu$ | 余维数 |
+|------|--------------------------|----------------|--------|
+| $A_k$ | $x^{k+1} \pm y^2$ | $k$ | $k$ |
+| $D_k$ | $x^2 y \pm y^{k-1}$ | $k$ | $k$ |
+| $E_6$ | $x^3 + y^4$ | $8$ | $8$ |（余维数为6，仅考虑右等价） |
+| $E_7$ | $x^3 + xy^3$ | $9$ | $9$ |
+| $E_8$ | $x^3 + y^5$ | $14$ | $14$ |
 
-ADE 分类如下：
+（注：此处余维数指接触等价意义下的余维数，等于展开所需的参数数目。）
 
-| 类型 | 标准形式 | Milnor 数 $\mu$ | 协余维数 $\tau$ |
-|------|----------|-----------------|-----------------|
-| $A_k$ ($k \geq 1$) | $x^{k+1} \pm y^2$ | $k$ | $k$ |
-| $D_k$ ($k \geq 4$) | $x^2 y \pm y^{k-1}$ | $k$ | $k$ |
-| $E_6$ | $x^3 + y^4$ | $6$ | $6$ |
-| $E_7$ | $x^3 + xy^3$ | $7$ | $7$ |
-| $E_8$ | $x^3 + y^5$ | $8$ | $8$ |
+Thom七种初等突变正是 $A_1$（折叠/fold）、$A_2$（尖点/cusp）、$A_3$（燕尾/swallowtail）、$A_4$（蝴蝶/butterfly）、$D_4^+$（椭圆脐点/elliptic umbilic）、$D_4^-$（双曲脐点/hyperbolic umbilic）、$D_5$（抛物脐点/parabolic umbilic）这七类奇点在余维数 $\leq 4$ 范围内的体现。
 
-这一分类与李代数的 Dynkin 图完全对应，揭示了奇点理论与代数学之间令人惊叹的深层联系。$A_k$ 系列对应 $A_k$ 型李代数，$D_k$ 系列对应 $D_k$ 型李代数，$E_6, E_7, E_8$ 分别对应三个例外李代数——这一对应由斯洛多维（Peter Slodowy）在1980年的著作《Simple Singularities and Simple Algebraic Groups》中给出了完整的代数几何解释。
+**普适开折**（universal unfolding）是奇点理论的另一核心构造。给定奇点 $f$，其余维数为 $c$，则存在 $c$ 参数族：
 
-值得注意的是，$A_1$ 型奇点（即 $x^2 + y^2$ 或 $x^2 - y^2$）正是莫尔斯理论中的非退化临界点极限情形的对立面，而 $A_2$ 型（$x^3 \pm y^2$，燕尾型）则是最简单的真正奇点，对应突变论中最基本的折叠突变（fold catastrophe）。
+$$F(x, u_1, u_2, \ldots, u_c) = f(x) + \sum_{i=1}^{c} u_i \phi_i(x)$$
+
+其中 $\phi_1, \ldots, \phi_c$ 为雅可比商代数的基（即 $\mathcal{Q}(f)$ 的一组基），使得 $F$ 在右-左等价意义下包含 $f$ 所有可能的形变类型。任何其他含 $f$ 为奇点的形变都是 $F$ 的诱导（Mather, 1968；Arnold et al., 1985）。
 
 ---
 
 ## 关键公式与模型
 
-### 通用展开（Versal Unfolding）
+**Milnor 数的拓扑意义**：设 $f: (\mathbb{C}^n, 0) \to (\mathbb{C}, 0)$ 为带孤立奇点的全纯函数芽，$f_t$ 为通有形变（使所有临界点非退化），则
 
-奇点理论的核心工具之一是**通用展开**（versal unfolding）。给定函数芽 $f_0$ 的奇点，其 $r$ 参数通用展开为：
+$$\mu(f) = \#\{\text{通有形变中非退化临界点的数目}\} = \operatorname{rank} H_{n-1}(F_t; \mathbb{Z})$$
 
-$$F(x, u) = f_0(x) + \sum_{i=1}^{\tau} u_i \phi_i(x)$$
+其中 $F_t = f_t^{-1}(\epsilon)$ 为 Milnor 纤维，$H_{n-1}$ 为其中间维整系数同调群。
 
-其中 $\tau$ 是奇点的**余维数**（codimension），$\phi_1, \phi_2, \ldots, \phi_\tau$ 是局部代数 $Q(f_0) = \mathcal{O}_n / J(f_0)$ 的一组基（不含常数项），$u = (u_1, \ldots, u_\tau) \in \mathbb{R}^\tau$ 为展开参数。
+**消没环组（Vanishing Cycles）**：每个消失的非退化临界点对应 Milnor 纤维中一个消没环（vanishing cycle），这些环在 Picard-Lefschetz 变换下生成 $H_{n-1}(F_t)$，其几何关联结构恰好编码了 ADE Dynkin 图的交叉形式（intersection form）：
 
-通用展开的存在性定理（Mather-Yau, 1982）保证：任何有孤立奇点的函数芽都存在最小通用展开，其参数数目恰好等于 Milnor 数 $\mu$（对于右等价情形）或余维数 $\tau$（对于接触等价情形），且对 $A_k$ 系列有 $\mu = \tau = k$。
+$$\langle \delta_i, \delta_j \rangle = \begin{cases} (-1)^{n(n-1)/2} \cdot 2 & i = j \\ \pm 1 \text{ 或 } 0 & i \neq j \end{cases}$$
 
-**例如**：$A_3$ 型奇点 $f_0 = x^4$（单变量），其通用展开为：
-
-$$F(x; u_1, u_2, u_3) = x^4 + u_3 x^2 + u_2 x + u_1$$
-
-这正是托姆七种基本突变中的"燕尾突变"（swallowtail catastrophe）的势函数，参数空间 $(u_1, u_2, u_3) \in \mathbb{R}^3$ 中的奇异集构成著名的燕尾曲面。
-
-### Milnor 纤维与拓扑不变量
-
-对于孤立奇点 $f: (\mathbb{C}^n, 0) \to (\mathbb{C}, 0)$，取足够小的球 $B_\epsilon$ 与正则值 $\delta$，则 Milnor 纤维定义为：
-
-$$F_{f,\delta} = f^{-1}(\delta) \cap B_\epsilon$$
-
-米尔诺证明（1968）：Milnor 纤维具有 $\mu$ 个 $n$ 维球面 $S^n$ 的同伦型，即：
-
-$$F_{f,\delta} \simeq S^n \vee S^n \vee \cdots \vee S^n \quad (\mu \text{ 个})$$
-
-这一结论将代数量 $\mu$（雅可比商环的维数）与几何量（Milnor 纤维的拓扑）完美统一，是奇点理论中代数-几何-拓扑三位一体的典范。
+这一联系由阿诺德（Arnold, 1973）、布里斯克-布里斯克（Brieskorn, 1966）等人发现，揭示了奇点理论与李代数根系之间深刻的对应。
 
 ---
 
 ## 实际应用
 
-奇点理论在物理、工程与生物领域均有直接应用。
+**案例1：材料科学中的屈曲分析**
 
-**光学中的焦散线**：当光线经曲面反射或折射，奇点理论预言焦散线的几何类型必属于 ADE 分类之列。实验光学观察到的焦散结构（如悬链面焦散、彩虹焦散）与 $A_2$、$A_3$ 型奇点的理论预言高度吻合（Berry & Upstill, 1980，发表于《Progress in Optics》）。
+弹性细杆的屈曲（Euler buckling）在数学上对应势能函数的 $A_2$ 型（尖点）奇点。杆在压力 $P$ 和初始偏心距 $e$ 两参数下的平衡位移 $x$ 满足折叠方程 $x^3 - Px - e = 0$，这正是 $A_2$ 奇点普适开折的平衡集。当 $P > 0$ 且 $e = 0$ 时出现双稳态，临界点集（分歧集）在参数平面上呈尖点形。奇点理论预言了该系统中灾难性屈曲（catastrophic buckling）发生的精确参数条件。
 
-**弹性力学中的屈曲问题**：薄板与薄壳在压缩载荷下的突然屈曲（buckling），其载荷-位移关系在临界点附近正是 $A_2$（折叠）或 $D_4$（脐点）型奇点。工程师通过计算奇点的余维数，可以预测结构在缺陷扰动下是否会发生灾难性破坏（Thompson & Hunt, 《A General Theory of Elastic Stability》, 1973）。
+**案例2：视觉感知的轮廓奇点**
 
-**波前（wavefront）演化**：在哈密顿光学与经典力学中，波前的演化奇点描述了焦点、焦散与折叠等现象。阿诺德证明（1976），波前演化的稳定奇点类型在三维空间中恰好对应 $A_1, A_2, A_3, D_4^{\pm}$ 四种类型，这一结论被称为**波前奇点分类定理**，成为现代几何光学的基础。
+计算机视觉中，光滑曲面在正交投影下的轮廓（apparent contour）在特殊视角处出现奇点，类型恰好为 $A_2$（尖点）和 $A_3$（燕尾）奇点。Koenderink（1984）利用奇点理论证明，通有视角下轮廓只能具有这两种局部奇点类型，这为三维物体的形状重建提供了严格的拓扑约束。
+
+**案例3：混沌边界的折叠结构**
+
+非线性动力系统中，吸引子边界（basin boundary）在参数变化下的拓扑变化可用 $D_4$ 型奇点（脐点突变）描述。例如，Lorenz系统的参数空间中，两个吸引子消亡的临界面局部同胚于双曲脐点的分歧集，该结论由Thompson和Hunt（1973）在弹性稳定性理论框架下首先系统应用。
 
 ---
 
 ## 常见误区
 
-**误区一：混淆奇点与不连续点**。奇点理论中的"奇点"指光滑映射的雅可比秩下降点，函数本身依然是光滑甚至解析的，绝非函数值的跳跃间断点。突变现象（系统状态的突然跳变）是奇点理论的*应用结果*，而非奇点本身的定义。
+**误区一："奇点"等同于"不光滑点"**
+奇点理论研究的奇点是光滑映射的临界点退化问题，函数本身始终是光滑（乃至实解析）的。"奇点"指的是 Jacobi 矩阵秩不满的点，而非函数不连续或不可微之处。混淆这两种含义会导致对突变论适用范围的根本性误解。
 
-**误区二：认为 Milnor 数越大奇点越"大"**。Milnor 数衡量奇点在扰动下分裂的临界点数目，体现奇点的"复杂度"，但并不等同于几何直觉上的"强度"。例如，$A_{100}$ 型奇点（$f = x^{101}$）的 $\mu = 100$，但其几何形状在直觉上并不比 $E_8$（$\mu = 8$）更"尖锐"或"严重"。
+**误区二：Milnor数越大，奇点"越复杂"一定意味着越难分类**
+事实上，奇点的分类难度不仅取决于 $\mu$，还取决于其是否为"简单奇点"（simple singularity）。例如，$E_8$ 奇点 $x^3 + y^5$ 的 $\mu = 14$，但它是简单奇点，被完整归入 ADE 列表，分类相对清晰；而某些 $\mu = 8$ 的奇点（如模量族中的奇点）含有连续参数（模量），无法纳入有限分类，Arnold称之为"单模奇点"（unimodal singularity）。
 
-**误区三：将有限决定性误解为截断后两者完全等同**。$k$ 次确定意味着 $f$ 与其 $k$ 阶
+**误区三：普适开折的参数个数等于 Milnor数**
+更严格地说，普适开折所需参数个数等于奇点在**接触等价**（contact equivalence，$\mathcal{K}$-等价）下的余维数，即 $
