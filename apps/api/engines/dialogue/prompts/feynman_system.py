@@ -979,6 +979,125 @@ GAME_PRODUCTION_ASSESSMENT_SUPPLEMENT = """
 - **财务意识**: 用户是否理解项目预算管理？能否进行ROI分析和成本-范围权衡？
 """
 
+# ── Systems Theory Family Domain Supplements ──
+
+SYSTEMS_THEORY_DOMAIN_SUPPLEMENT = """
+## 系统论领域教学要点
+
+教授系统论概念时，请特别注意以下方面：
+- **整体观**: 系统不是部件的简单加总——涌现性质来自部件间的相互作用，引导学生从"拆解"思维转向"关系"思维。
+- **反馈思维**: 负反馈维持稳定，正反馈放大变化——理解反馈环路是理解系统行为的钥匙。
+- **层次性**: 系统嵌套在更大的系统中——引导理解层次间的约束和自由度关系。
+- **跨学科**: 系统论的力量在于跨领域的统一视角——用同一框架分析生态系统、经济系统、技术系统。
+- **模型意识**: 所有模型都是错的，有些是有用的——帮助理解模型的简化假设和适用边界。
+"""
+
+SYSTEMS_THEORY_ASSESSMENT_SUPPLEMENT = """
+## 系统论领域评估特殊指标
+
+评估系统论概念理解时，请额外关注：
+- 用户是否能区分系统属性和组件属性（涌现vs聚合）？
+- 用户是否能识别和描述反馈环路（正反馈/负反馈）？
+- 用户是否能用系统视角分析具体案例（而非线性因果）？
+"""
+
+CYBERNETICS_DOMAIN_SUPPLEMENT = """
+## 控制论领域教学要点
+
+教授控制论概念时，请特别注意以下方面：
+- **控制即通信**: 控制论的核心洞见是控制和通信是同一问题的两面——信息流决定系统行为。
+- **反馈工程**: 从恒温器到PID控制器，反馈控制无处不在——引导理解控制参数如何影响系统响应。
+- **稳定性优先**: 控制系统设计首先要保证稳定——不稳定的控制器比没有控制器更危险。
+- **数学工具**: 传递函数、频率响应、状态空间——帮助理解这些工具的物理直觉，而非仅停留在公式。
+"""
+
+CYBERNETICS_ASSESSMENT_SUPPLEMENT = """
+## 控制论领域评估特殊指标
+
+评估控制论概念理解时，请额外关注：
+- 用户是否理解开环和闭环控制的本质区别？
+- 用户是否能解释PID各参数对系统响应的影响？
+- 用户是否理解稳定性判据的物理含义？
+"""
+
+INFORMATION_THEORY_DOMAIN_SUPPLEMENT = """
+## 信息论领域教学要点
+
+教授信息论概念时，请特别注意以下方面：
+- **信息即不确定性的消除**: 香农的核心洞见——信息量等于消除的不确定性，概率越低的事件信息量越大。
+- **熵的直觉**: 熵不只是一个公式——它度量的是"惊讶程度的平均值"，帮助建立直觉。
+- **编码的极限**: 信源编码定理给出了压缩的理论极限——没有无损压缩能超过熵率。
+- **信道容量**: 噪声信道编码定理是信息论最深刻的结论——在容量以下可以实现任意低的错误率。
+- **应用桥梁**: 从数据压缩到机器学习中的交叉熵损失，帮助连接理论与实践。
+"""
+
+INFORMATION_THEORY_ASSESSMENT_SUPPLEMENT = """
+## 信息论领域评估特殊指标
+
+评估信息论概念理解时，请额外关注：
+- 用户是否能用自己的话解释熵的含义（而非背公式）？
+- 用户是否理解互信息与相关性的区别？
+- 用户是否能将信源编码定理与实际压缩算法关联？
+"""
+
+DISSIPATIVE_STRUCTURES_DOMAIN_SUPPLEMENT = """
+## 耗散结构领域教学要点
+
+教授耗散结构概念时，请特别注意以下方面：
+- **远离平衡态**: 耗散结构只在远离平衡态时出现——引导理解这与热力学第二定律的表面矛盾如何调和。
+- **涨落与序**: 在临界点附近，微小涨落可以被放大为宏观有序结构——这是"混沌中的秩序"。
+- **开放性**: 耗散结构必须与环境持续交换物质和能量——封闭系统只会走向热寂。
+- **跨学科案例**: 贝纳德对流、化学振荡、城市形成——用多样的案例展示共同原理。
+"""
+
+DISSIPATIVE_STRUCTURES_ASSESSMENT_SUPPLEMENT = """
+## 耗散结构领域评估特殊指标
+
+评估耗散结构概念理解时，请额外关注：
+- 用户是否能解释为什么远离平衡态是耗散结构形成的必要条件？
+- 用户是否理解分岔点处"涨落决定命运"的含义？
+- 用户是否能举出耗散结构在不同领域的具体实例？
+"""
+
+SYNERGETICS_DOMAIN_SUPPLEMENT = """
+## 协同学领域教学要点
+
+教授协同学概念时，请特别注意以下方面：
+- **序参量**: 协同学的核心概念——少数几个慢变量（序参量）支配大量快变量，极大简化系统描述。
+- **役使原理**: 快变量被慢变量"役使"——这不是因果关系，而是时间尺度分离导致的动力学约束。
+- **自组织**: 有序结构不需要外部设计者——序参量从系统内部涌现，通过环形因果实现自组织。
+- **激光类比**: 激光是协同学的范例系统——引导用理解激光来理解一般的相变和自组织。
+"""
+
+SYNERGETICS_ASSESSMENT_SUPPLEMENT = """
+## 协同学领域评估特殊指标
+
+评估协同学概念理解时，请额外关注：
+- 用户是否能用自己的话解释序参量和役使原理？
+- 用户是否理解环形因果（序参量支配微观，微观产生序参量）？
+- 用户是否能将协同学思想应用于具体系统分析？
+"""
+
+CATASTROPHE_THEORY_DOMAIN_SUPPLEMENT = """
+## 突变论领域教学要点
+
+教授突变论概念时，请特别注意以下方面：
+- **不连续变化**: 突变论研究的是连续原因如何导致不连续结果——与微积分的"连续性假设"形成有趣对比。
+- **势函数**: 用势函数的几何形态理解系统状态——极小值=稳态，鞍点=不稳定。
+- **七种初等突变**: Thom的分类定理是数学之美的体现——在共维不超过4的条件下只有七种基本类型。
+- **滞后与双稳**: 尖点突变中的滞后现象在日常生活中无处不在——情绪切换、市场恐慌、物理相变。
+- **应用谨慎**: 突变论曾被过度应用——帮助理解其适用范围和局限性。
+"""
+
+CATASTROPHE_THEORY_ASSESSMENT_SUPPLEMENT = """
+## 突变论领域评估特殊指标
+
+评估突变论概念理解时，请额外关注：
+- 用户是否能用势函数解释折叠突变和尖点突变？
+- 用户是否理解滞后效应的几何含义？
+- 用户是否能区分突变论的有效应用场景和过度应用？
+"""
+
 # ---------------------------------------------------------------------------
 # Domain supplement registries — add new domains here (O(1) per domain)
 # ---------------------------------------------------------------------------
@@ -1013,6 +1132,12 @@ DOMAIN_SUPPLEMENTS: dict[str, str] = {
     "game-live-ops": GAME_LIVE_OPS_DOMAIN_SUPPLEMENT,
     "game-qa": GAME_QA_DOMAIN_SUPPLEMENT,
     "game-production": GAME_PRODUCTION_DOMAIN_SUPPLEMENT,
+    "systems-theory": SYSTEMS_THEORY_DOMAIN_SUPPLEMENT,
+    "cybernetics": CYBERNETICS_DOMAIN_SUPPLEMENT,
+    "information-theory": INFORMATION_THEORY_DOMAIN_SUPPLEMENT,
+    "dissipative-structures": DISSIPATIVE_STRUCTURES_DOMAIN_SUPPLEMENT,
+    "synergetics": SYNERGETICS_DOMAIN_SUPPLEMENT,
+    "catastrophe-theory": CATASTROPHE_THEORY_DOMAIN_SUPPLEMENT,
 }
 
 ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
@@ -1045,6 +1170,12 @@ ASSESSMENT_SUPPLEMENTS: dict[str, str] = {
     "game-live-ops": GAME_LIVE_OPS_ASSESSMENT_SUPPLEMENT,
     "game-qa": GAME_QA_ASSESSMENT_SUPPLEMENT,
     "game-production": GAME_PRODUCTION_ASSESSMENT_SUPPLEMENT,
+    "systems-theory": SYSTEMS_THEORY_ASSESSMENT_SUPPLEMENT,
+    "cybernetics": CYBERNETICS_ASSESSMENT_SUPPLEMENT,
+    "information-theory": INFORMATION_THEORY_ASSESSMENT_SUPPLEMENT,
+    "dissipative-structures": DISSIPATIVE_STRUCTURES_ASSESSMENT_SUPPLEMENT,
+    "synergetics": SYNERGETICS_ASSESSMENT_SUPPLEMENT,
+    "catastrophe-theory": CATASTROPHE_THEORY_ASSESSMENT_SUPPLEMENT,
 }
 
 

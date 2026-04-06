@@ -893,6 +893,67 @@ export const GAME_PRODUCTION_ASSESSMENT_SUPPLEMENT = `
 - **财务意识**: 用户是否理解项目预算管理？能否进行ROI分析和成本-范围权衡？
 `;
 
+export const SYSTEMS_THEORY_DOMAIN_SUPPLEMENT = `
+## 系统论领域教学要点
+- **整体观**: 系统不是部件的简单加总——涌现性质来自部件间的相互作用
+- **反馈思维**: 负反馈维持稳定，正反馈放大变化
+- **层次性**: 系统嵌套在更大的系统中
+- **跨学科**: 用同一框架分析生态系统、经济系统、技术系统
+`;
+export const SYSTEMS_THEORY_ASSESSMENT_SUPPLEMENT = `
+## 系统论评估特殊指标
+- 用户是否能区分涌现与聚合？
+- 用户是否能识别反馈环路？
+`;
+export const CYBERNETICS_DOMAIN_SUPPLEMENT = `
+## 控制论领域教学要点
+- **控制即通信**: 控制和通信是同一问题的两面
+- **反馈工程**: 反馈控制无处不在
+- **稳定性优先**: 不稳定的控制器比没有更危险
+`;
+export const CYBERNETICS_ASSESSMENT_SUPPLEMENT = `
+## 控制论评估特殊指标
+- 用户是否理解开环和闭环控制的区别？
+`;
+export const INFORMATION_THEORY_DOMAIN_SUPPLEMENT = `
+## 信息论领域教学要点
+- **信息即不确定性的消除**: 信息量等于消除的不确定性
+- **熵的直觉**: 熵度量的是惊讶程度的平均值
+- **编码的极限**: 信源编码定理给出压缩的理论极限
+`;
+export const INFORMATION_THEORY_ASSESSMENT_SUPPLEMENT = `
+## 信息论评估特殊指标
+- 用户是否能用自己的话解释熵？
+`;
+export const DISSIPATIVE_STRUCTURES_DOMAIN_SUPPLEMENT = `
+## 耗散结构领域教学要点
+- **远离平衡态**: 耗散结构只在远离平衡态时出现
+- **涨落与序**: 微小涨落可以被放大为宏观有序结构
+`;
+export const DISSIPATIVE_STRUCTURES_ASSESSMENT_SUPPLEMENT = `
+## 耗散结构评估特殊指标
+- 用户是否能解释远离平衡态是必要条件？
+`;
+export const SYNERGETICS_DOMAIN_SUPPLEMENT = `
+## 协同学领域教学要点
+- **序参量**: 少数慢变量支配大量快变量
+- **役使原理**: 时间尺度分离导致的动力学约束
+`;
+export const SYNERGETICS_ASSESSMENT_SUPPLEMENT = `
+## 协同学评估特殊指标
+- 用户是否能解释序参量和役使原理？
+`;
+export const CATASTROPHE_THEORY_DOMAIN_SUPPLEMENT = `
+## 突变论领域教学要点
+- **不连续变化**: 连续原因如何导致不连续结果
+- **势函数**: 用势函数的几何形态理解系统状态
+- **七种初等突变**: 共维不超过4只有七种基本类型
+`;
+export const CATASTROPHE_THEORY_ASSESSMENT_SUPPLEMENT = `
+## 突变论评估特殊指标
+- 用户是否能用势函数解释折叠突变和尖点突变？
+`;
+
 // Domain-specific teaching supplement registry — add new domains here
 const DOMAIN_SUPPLEMENTS: Record<string, string> = {
   'mathematics': MATH_DOMAIN_SUPPLEMENT,
@@ -924,6 +985,12 @@ const DOMAIN_SUPPLEMENTS: Record<string, string> = {
   'game-live-ops': GAME_LIVE_OPS_DOMAIN_SUPPLEMENT,
   'game-qa': GAME_QA_DOMAIN_SUPPLEMENT,
   'game-production': GAME_PRODUCTION_DOMAIN_SUPPLEMENT,
+  'systems-theory': SYSTEMS_THEORY_DOMAIN_SUPPLEMENT,
+  'cybernetics': CYBERNETICS_DOMAIN_SUPPLEMENT,
+  'information-theory': INFORMATION_THEORY_DOMAIN_SUPPLEMENT,
+  'dissipative-structures': DISSIPATIVE_STRUCTURES_DOMAIN_SUPPLEMENT,
+  'synergetics': SYNERGETICS_DOMAIN_SUPPLEMENT,
+  'catastrophe-theory': CATASTROPHE_THEORY_DOMAIN_SUPPLEMENT,
 };
 
 export function getDomainSupplement(domainId: string | undefined): string {
@@ -960,6 +1027,12 @@ const ASSESSMENT_SUPPLEMENTS: Record<string, string> = {
   'game-live-ops': GAME_LIVE_OPS_ASSESSMENT_SUPPLEMENT,
   'game-qa': GAME_QA_ASSESSMENT_SUPPLEMENT,
   'game-production': GAME_PRODUCTION_ASSESSMENT_SUPPLEMENT,
+  'systems-theory': SYSTEMS_THEORY_ASSESSMENT_SUPPLEMENT,
+  'cybernetics': CYBERNETICS_ASSESSMENT_SUPPLEMENT,
+  'information-theory': INFORMATION_THEORY_ASSESSMENT_SUPPLEMENT,
+  'dissipative-structures': DISSIPATIVE_STRUCTURES_ASSESSMENT_SUPPLEMENT,
+  'synergetics': SYNERGETICS_ASSESSMENT_SUPPLEMENT,
+  'catastrophe-theory': CATASTROPHE_THEORY_ASSESSMENT_SUPPLEMENT,
 };
 
 export function getAssessmentSupplement(domainId: string | undefined): string {
