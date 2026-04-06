@@ -244,6 +244,7 @@ python scripts/build_exe.py  # 输出到 release/
 | docs/EXPANSION_PLAN.md | 多球体扩展路线 + 30球体详情 |
 | docs/RAG_EVOLUTION_PLAN.md | RAG知识库质量迭代进化方案 |
 | docs/history/CHANGELOG-2026.md | 所有Phase/Sprint/CR详细记录 |
+| docs/BEHAVIOR_DESIGN_AUDIT.md | 行为设计审计报告(B=MAP+SDT+双系统+行为经济学+JTBD多透镜诊断) — P0:首页引导+回访提示+推荐锚点, P1:Aha Moment缩短+进度可见+评估终点重设计 |
 
 ### 数据
 | 文件 | 用途 |
