@@ -422,3 +422,194 @@ async def get_cross_links(
         "total": len(links),
     }
 
+
+# ── 图谱引擎 API (Pathfinder + Builder) ────────────────
+
+from engines.graph.pathfinder import Pathfinder, UserProgress
+from engines.graph.builder import GraphBuilder
+
+# Engine instance cache (lazy per-domain)
+_engine_cache: dict[str, dict] = {}
+_engine_lock = threading.Lock()
+
+
+def _get_engines(domain_id: str) -> dict:
+    """Get or create Pathfinder + GraphBuilder for a domain (thread-safe)."""
+    if domain_id in _engine_cache:
+        return _engine_cache[domain_id]
+    with _engine_lock:
+        if domain_id not in _engine_cache:
+            seed = _load_seed(domain_id)
+            cross_links = _load_cross_links()
+            pf = Pathfinder(seed["concepts"], seed["edges"], cross_links)
+            gb = GraphBuilder(seed["concepts"], seed["edges"], cross_links)
+            _engine_cache[domain_id] = {"pathfinder": pf, "builder": gb}
+    return _engine_cache[domain_id]
+
+
+def _parse_progress(progress_json: Optional[str]) -> dict[str, UserProgress]:
+    """Parse progress query param (JSON string) into UserProgress dict."""
+    if not progress_json:
+        return {}
+    try:
+        raw = json.loads(progress_json)
+        result = {}
+        for cid, data in raw.items():
+            if isinstance(data, dict):
+                result[cid] = UserProgress(
+                    concept_id=cid,
+                    status=data.get("status", "not_started"),
+                    mastery=float(data.get("mastery", 0.0)),
+                )
+            elif isinstance(data, str):
+                result[cid] = UserProgress(concept_id=cid, status=data)
+        return result
+    except (json.JSONDecodeError, TypeError, ValueError):
+        return {}
+
+
+@router.get("/path/{target_id}")
+async def get_learning_path(
+    target_id: str,
+    domain: str = Query(DEFAULT_DOMAIN),
+    progress: Optional[str] = Query(None, description="JSON: {concept_id: {status, mastery}}"),
+):
+    """计算到达目标概念的最短学习路径"""
+    engines = _get_engines(domain)
+    pf: Pathfinder = engines["pathfinder"]
+    user_progress = _parse_progress(progress)
+    result = pf.shortest_path(target_id, user_progress)
+    # Enrich path with concept details
+    seed = _load_seed(domain)
+    concept_map = {c["id"]: c for c in seed["concepts"]}
+    path_details = []
+    for cid in result.path:
+        c = concept_map.get(cid, {})
+        path_details.append({
+            "id": cid,
+            "name": c.get("name", cid),
+            "difficulty": c.get("difficulty", 1),
+            "estimated_minutes": c.get("estimated_minutes", 20),
+            "status": user_progress.get(cid, UserProgress(cid)).status,
+        })
+    return {
+        "target": target_id,
+        "path": path_details,
+        "total_estimated_minutes": result.total_estimated_minutes,
+        "steps": result.steps,
+    }
+
+
+@router.get("/recommend")
+async def get_recommendations(
+    domain: str = Query(DEFAULT_DOMAIN),
+    limit: int = Query(5, ge=1, le=20),
+    progress: Optional[str] = Query(None, description="JSON: {concept_id: {status, mastery}}"),
+):
+    """基于用户进度推荐下一步学习概念"""
+    engines = _get_engines(domain)
+    pf: Pathfinder = engines["pathfinder"]
+    user_progress = _parse_progress(progress)
+    results = pf.recommend(user_progress, domain_id=domain, limit=limit)
+    seed = _load_seed(domain)
+    concept_map = {c["id"]: c for c in seed["concepts"]}
+    return {
+        "recommendations": [
+            {
+                "concept_id": r.concept_id,
+                "name": concept_map.get(r.concept_id, {}).get("name", r.concept_id),
+                "difficulty": concept_map.get(r.concept_id, {}).get("difficulty", 1),
+                "estimated_minutes": concept_map.get(r.concept_id, {}).get("estimated_minutes", 20),
+                "score": r.score,
+                "reasons": r.reasons,
+            }
+            for r in results
+        ],
+        "total_candidates": len(results),
+    }
+
+
+@router.get("/topo-sort")
+async def get_topological_order(
+    domain: str = Query(DEFAULT_DOMAIN),
+    subdomain: Optional[str] = Query(None),
+    limit: int = Query(50, ge=1, le=500),
+):
+    """获取拓扑排序的学习顺序"""
+    engines = _get_engines(domain)
+    pf: Pathfinder = engines["pathfinder"]
+    ordered = pf.topological_sort(domain_id=domain, subdomain_id=subdomain)
+    seed = _load_seed(domain)
+    concept_map = {c["id"]: c for c in seed["concepts"]}
+    return {
+        "order": [
+            {
+                "id": cid,
+                "name": concept_map.get(cid, {}).get("name", cid),
+                "difficulty": concept_map.get(cid, {}).get("difficulty", 1),
+                "position": i + 1,
+            }
+            for i, cid in enumerate(ordered[:limit])
+        ],
+        "total": len(ordered),
+    }
+
+
+@router.get("/zpd")
+async def get_zpd_subgraph(
+    domain: str = Query(DEFAULT_DOMAIN),
+    progress: Optional[str] = Query(None, description="JSON: {concept_id: {status, mastery}}"),
+    include_mastered: bool = Query(True),
+    zpd_depth: int = Query(2, ge=1, le=5),
+):
+    """获取个性化学习区域 (Zone of Proximal Development) 子图"""
+    engines = _get_engines(domain)
+    gb: GraphBuilder = engines["builder"]
+    user_progress = _parse_progress(progress)
+    result = gb.build_personalized_subgraph(
+        user_progress,
+        domain_id=domain,
+        include_mastered=include_mastered,
+        zpd_depth=zpd_depth,
+    )
+    return {
+        "nodes": result.nodes,
+        "edges": result.edges,
+        "stats": result.stats,
+    }
+
+
+@router.get("/aligned-entities")
+async def get_aligned_entities(
+    domain: str = Query(DEFAULT_DOMAIN),
+    concept_id: Optional[str] = Query(None),
+):
+    """获取跨域对齐实体（同一概念在不同域的映射）"""
+    engines = _get_engines(domain)
+    gb: GraphBuilder = engines["builder"]
+    entities = gb.find_aligned_entities(concept_id=concept_id, domain_id=domain)
+    return {
+        "entities": [
+            {
+                "canonical_id": e.canonical_id,
+                "canonical_name": e.canonical_name,
+                "occurrences": e.occurrences,
+                "description": e.description,
+            }
+            for e in entities
+        ],
+        "total": len(entities),
+    }
+
+
+@router.get("/zone-summary")
+async def get_zone_summary(
+    domain: str = Query(DEFAULT_DOMAIN),
+    progress: Optional[str] = Query(None, description="JSON: {concept_id: {status, mastery}}"),
+):
+    """获取域级学习区域摘要（含进度统计 + 瓶颈分析）"""
+    engines = _get_engines(domain)
+    gb: GraphBuilder = engines["builder"]
+    user_progress = _parse_progress(progress)
+    return gb.learning_zone_summary(user_progress, domain)
+
