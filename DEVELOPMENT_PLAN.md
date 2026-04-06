@@ -247,7 +247,7 @@ ai-knowledge-graph/
 - 三端同步治理 + CROSS_MODULE_INVARIANTS.md — #44
 - 行为设计优化 P0/P1 (WelcomeGuide + ReviewBanner + 评估终点重设计)
 - 6新域集成 (systems-theory家族: 36域6,300概念633跨球链接)
-- RAG质量全量升级 (144 stub→高质量教学文档)
+- RAG质量全量升级 ✅ (144/144 stub→高质量教学文档, 6域avg 84.0/100)
 
 
 ---
@@ -277,7 +277,7 @@ ai-knowledge-graph/
 |:---|:---|:---|
 | **V1.1** | ✅ 完成 | E2E测试 + OAuth + 学习分析Dashboard + LLM缓存 + SEO |
 | **V1.2** | ✅ 完成 | 图谱引擎 + 三端同步 + 行为设计P0/P1 + 6新域 + RAG升级 |
-| **V1.3** | 进行中 | 行为设计P2 ✅ + RAG质量升级 + 性能优化 ✅ + Capacitor深度集成 ✅ + PWA离线缓存 ✅ + 数据导入导出 ✅ + 无障碍 ✅ + API监控 ✅ |
+| **V1.3** | ✅ 完成 | 行为设计P2 + RAG 144/144升级(avg 84.0) + 性能优化 + Capacitor深度集成 + PWA离线缓存 + 数据导入导出 + 无障碍 + API监控 + 键盘快捷键 + 学习时间追踪 |
 | **V2.0** | 6周 | 社区共建图谱 + 社交排行 + 语音输入 |
 
 ---

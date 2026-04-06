@@ -78,10 +78,10 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,337 (1,002 BE + 311 FE + 24 E2E) | 2026-04-07 |
+| **测试总数** | 1,353 (1,006 BE + 323 FE + 24 E2E) | 2026-04-07 |
 | **tsc errors** | 0 | 2026-04-07 |
 | **Open Issues** | 0 | 2026-04-07 |
-| **RAG 质量** | 6156 legacy avg 79.5 + 98/144 new-domain upgraded (ST+CB+IT done, DS in progress, SY+CT pending) | 2026-04-07 |
+| **RAG 质量** | 6,300 docs — legacy 6,156 avg 79.5 + new 144 avg 84.0 → global avg 79.6 | 2026-04-07 |
 
 ---
 
@@ -304,9 +304,10 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/pages/NotFoundPage.tsx | 404 页面 (渐变标题+导航) |
 | packages/web/src/lib/utils/capacitor.ts | Capacitor平台抽象层 (storage/keyboard/lifecycle) |
 | packages/web/src/lib/utils/perf-monitor.ts | Core Web Vitals 监控 (FCP/LCP/TTFB) |
-| packages/web/src/lib/hooks/ | useAppLifecycle + useBackButton + useKeyboardHeight + useOnlineStatus + useKeyboardShortcuts + useLocalStorage |
+| packages/web/src/lib/hooks/ | useAppLifecycle + useBackButton + useKeyboardHeight + useOnlineStatus + useKeyboardShortcuts + useLocalStorage + useLearningTimer (barrel: hooks/index.ts) |
 | packages/web/src/lib/utils/fetch-retry.ts | fetchWithRetry: 指数退避 + 抖动 + Retry-After + abort signal |
 | packages/web/src/components/common/OfflineIndicator.tsx | 离线状态提示横幅 (useSyncExternalStore) |
+| packages/web/src/components/common/KeyboardShortcutsHelp.tsx | 全局键盘快捷键帮助弹窗 (Shift+?) |
 | apps/api/utils/metrics.py | API指标收集器 (请求数/错误率/响应时间/per-endpoint) |
 | workers/src/ | Cloudflare Workers代理后端 |
 
@@ -316,14 +317,14 @@ python scripts/build_exe.py  # 输出到 release/
 
 - OAuth: Supabase Cloud控制台配置待完成 (代码层面已就绪)
 - RAG: 向量语义检索保留为Phase 2 (ADR-014), 当前精确+模糊覆盖97.7%
-- RAG: 6个systems-theory家族新域RAG升级中 — 98/144已升级(ST+CB+IT完成, DS进行中, SY+CT待处理), 批量后台运行
+- RAG: 6个systems-theory家族新域RAG升级 ✅ 144/144 完成 (ST 86.0, CB 84.1, IT 84.8, DS 83.9, SY 83.8, CT 81.5), 新域均分 84.0
 - dialogue-api.ts 导出但无import (dialogue.ts直接fetch), future-ready
 - useMediaQuery.ts 暂时unused (Round 74保留), future-ready
 - NPM audit: 6漏洞(4moderate+2high)均属workers>wrangler dev依赖, 不影响生产
 - data/scripts/ 目录含已完成脚本 data/seed/programming/, 保留供参考
 - Vite warning: learning.ts 循环依赖+未用import (不影响运行), cosmetic
 
-### V1.3 Performance & Mobile Sprint (2026-04-07)
+### V1.3 Performance & Mobile Sprint ✅ (2026-04-07)
 - ✅ 路由级代码分割 (React.lazy 7个lazy页面, 初始bundle减60%)
 - ✅ GZip压缩中间件 + Cache-Control (1h cache + SWR 24h on static endpoints)
 - ✅ Core Web Vitals监控 (FCP/LCP/TTFB via PerformanceObserver)
@@ -334,17 +335,23 @@ python scripts/build_exe.py  # 输出到 release/
 - ✅ useBackButton + useKeyboardHeight + useOnlineStatus hooks
 - ✅ useKeyboardShortcuts hook (Ctrl/Cmd/Shift modifier, input-aware)
 - ✅ useLocalStorage hook (type-safe persisted state)
+- ✅ useLearningTimer hook (5s粒度学习时间追踪, 90天留存)
 - ✅ fetchWithRetry utility (exponential backoff + jitter + Retry-After)
 - ✅ OfflineIndicator全局组件 (useSyncExternalStore)
+- ✅ KeyboardShortcutsHelp全局帮助弹窗 (Shift+?, D/G/S/H/Esc快捷键)
 - ✅ SettingsPage独立路由 (/settings)
 - ✅ 404 NotFoundPage
 - ✅ /health/system全组件健康检查端点
 - ✅ /health/metrics API指标端点 (请求数/错误率/响应时间)
+- ✅ /health/project 项目统计端点 (域/概念/边/RAG覆盖率)
 - ✅ /learning/export + /learning/import数据导出导入 (GDPR + roundtrip)
 - ✅ RequestIdMiddleware (X-Request-ID + X-Response-Time + 慢请求日志)
 - ✅ 无障碍: skip-to-content链接 + aria labels + main landmark role
 - ✅ 移动端: safe-area-inset-bottom for LearnPage聊天输入
+- ✅ Hooks桶导出 (hooks/index.ts: 9个自定义hook统一导出)
+- ✅ Dashboard学习时间展示 (今日/累计分钟/小时)
+- ✅ 144/144新域RAG全量升级 (ST 86.0, CB 84.1, IT 84.8, DS 83.9, SY 83.8, CT 81.5)
 
 ## Last Review
 
-**Date**: 2026-04-07 | **Scope**: V1.3 Sprint Part 2 — Resilience (fetchWithRetry + RequestIdMiddleware + metrics) + PWA (service worker + offline caching) + Accessibility (skip-to-content + aria + safe-area) + Data portability (/import endpoint) + Hooks library (keyboard shortcuts + localStorage + onlineStatus) + 62 new tests | **Result**: 1,002 BE + 311 FE all pass, tsc: 0 errors, RAG batch 98/144 upgraded
+**Date**: 2026-04-07 | **Scope**: V1.3 Sprint COMPLETE — RAG 144/144 new-domain升级完成 (avg 84.0) + 键盘快捷键帮助 + 学习时间追踪 + /health/project端点 + hooks桶导出 + 16 new tests | **Result**: 1,006 BE + 323 FE all pass, tsc: 0 errors, 0 open issues, global RAG avg 79.6
