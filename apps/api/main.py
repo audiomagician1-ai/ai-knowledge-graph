@@ -124,12 +124,20 @@ class RequestIdMiddleware(BaseHTTPMiddleware):
     """Add X-Request-ID header and log request timing for observability."""
 
     async def dispatch(self, request: Request, call_next):
+        from utils.metrics import metrics as api_metrics
+
         request_id = request.headers.get("X-Request-ID", str(uuid.uuid4())[:8])
         start = time.monotonic()
         response = await call_next(request)
         elapsed_ms = round((time.monotonic() - start) * 1000, 1)
         response.headers["X-Request-ID"] = request_id
         response.headers["X-Response-Time"] = f"{elapsed_ms}ms"
+
+        # Record metrics for API endpoints
+        path = request.url.path
+        if path.startswith("/api/"):
+            api_metrics.record(path, response.status_code, elapsed_ms)
+
         # Log slow requests (>500ms)
         if elapsed_ms > 500:
             logger.warning("Slow request: %s %s %sms [%s]",

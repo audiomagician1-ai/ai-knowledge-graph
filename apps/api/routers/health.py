@@ -93,3 +93,10 @@ async def system_health():
             break
 
     return result
+
+
+@router.get("/health/metrics")
+async def api_metrics():
+    """Return API request metrics — counts, error rates, response times per endpoint."""
+    from utils.metrics import metrics
+    return metrics.get_summary()
