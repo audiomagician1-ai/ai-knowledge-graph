@@ -124,10 +124,12 @@ data/rag/          — RAG知识文档 (6,156篇)
 - ✅ #47 E2E测试框架 (Playwright + 10个核心用户流测试)
 
 ### 行为设计优化 Sprint (基于 BEHAVIOR_DESIGN_AUDIT.md)
-- ✅ 6新域同步 Workers (systems-theory家族6域 seed+RAG+Workers三端同步, 0 test failures)
+- ✅ 6新域完整集成 (systems-theory家族: seed+RAG+Workers+cross-links+supplements 三端同步)
 - ✅ P0 首页引导层 (WelcomeGuide: 价值主张+推荐域快速开始, 首访弹窗)
 - ✅ P0 回访提示体系 (ReviewBanner: FSRS复习提醒+学习进度+连续天数)
 - ✅ P1 评估后终点重设计 (庆祝动效+推荐下一个概念+三按钮布局)
+- ✅ 38条跨球链接 (595→633, 6新域互联+与现有域关联)
+- ✅ 12个领域教学/评估Prompt补充 (三端同步: BE+FE+Workers)
 
 ---
 
@@ -296,8 +298,9 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## 10. KNOWN ISSUES / NOTES
 
-- Phase 5 剩余: Supabase Cloud OAuth配置 + E2E测试 (代码层面已就绪)
+- OAuth: Supabase Cloud控制台配置待完成 (代码层面已就绪)
 - RAG: 向量语义检索保留为Phase 2 (ADR-014), 当前精确+模糊覆盖97.7%
+- RAG: 6个systems-theory家族新域RAG为stub占位内容 (score~65), 待质量提升
 - dialogue-api.ts 导出但无import (dialogue.ts直接fetch), future-ready
 - useMediaQuery.ts 暂时unused (Round 74保留), future-ready
 - NPM audit: 6漏洞(4moderate+2high)均属workers>wrangler dev依赖, 不影响生产
@@ -306,4 +309,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-07 | **Scope**: Workers sync (6 new domains) + Behavior Design P0/P1 (WelcomeGuide + ReviewBanner + post-assessment redesign) | **Result**: 956 BE + 238 FE tests all pass, 36 domains, 6300 concepts, 0 test failures
+**Date**: 2026-04-07 | **Scope**: Behavior Design Sprint — 6 new domains full integration + WelcomeGuide + ReviewBanner + post-assessment UX + 38 cross-links + 12 domain supplements (3-endpoint sync) | **Result**: 956 BE + 238 FE all pass, 36 domains, 6300 concepts, 633 cross-links
