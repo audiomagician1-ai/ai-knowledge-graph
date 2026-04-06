@@ -1,4 +1,4 @@
-"""Tests for socratic.py — _load_rag_content, build_system_prompt, _get_rag_dir, get_opening fallback"""
+"""Tests for socratic.py — _load_rag_content, build_system_prompt, RAG retriever, get_opening fallback"""
 
 import os
 import pytest
@@ -8,9 +8,9 @@ from unittest.mock import patch, AsyncMock
 from engines.dialogue.socratic import (
     SocraticEngine,
     _load_rag_content,
-    _get_rag_dir,
     OPENING_USER_PROMPT,
 )
+from engines.graph.rag import rag_retriever, _get_rag_dir
 
 
 # ─── _get_rag_dir ───
@@ -45,7 +45,8 @@ class TestLoadRagContent:
         assert content == ""
 
     def test_nonexistent_subdomain_returns_empty(self):
-        content = _load_rag_content("ai-overview", "fake-subdomain")
+        """Nonexistent concept should return empty (subdomain is not used for index lookup)"""
+        content = _load_rag_content("nonexistent-concept-xyz", "fake-subdomain")
         assert content == ""
 
     def test_content_truncated_at_3000(self):

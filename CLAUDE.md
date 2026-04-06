@@ -80,7 +80,7 @@ data/rag/          — RAG知识文档 (6,156篇)
 | **RAG 覆盖** | 6,156 (100% 覆盖) | 2026-03-27 |
 | **测试总数** | 1,199 (953 BE + 238 FE + 8 FSRS review) | 2026-04-07 |
 | **tsc errors** | 0 | 2026-03-21 |
-| **Open Issues** | 5 | 2026-04-07 |
+| **Open Issues** | 3 | 2026-04-07 |
 | **RAG 质量** | 6156/6156, avg 79.5, S:1096 A:5060 B:0 C:0 | 2026-04-06 |
 
 ---
@@ -118,6 +118,7 @@ data/rag/          — RAG知识文档 (6,156篇)
 - ✅ #51 审计报告总结 (整合进开发计划)
 - ✅ #44 三端同步治理 (CROSS_MODULE_INVARIANTS.md + ADR-013)
 - ✅ #42 图谱引擎实现 (pathfinder + builder + 7 API + 40 tests)
+- ✅ #43 GraphRAG独立模块 (rag.py: 精确+模糊+搜索, ADR-014)
 
 ---
 
@@ -137,6 +138,7 @@ data/rag/          — RAG知识文档 (6,156篇)
 | ADR-011 | 登录用户 Supabase-first 持久化 | 登录用户数据以 Supabase Cloud 为权威源 |
 | ADR-012 | SPA保留 + OG/meta SEO + 未来预渲染 | 迁移成本高,当前用户获取非SEO依赖,OG tags先行 |
 | ADR-013 | Workers = Edge Cache + CORS Proxy | Workers不复制业务逻辑,长期转为纯代理层 |
+| ADR-014 | RAG: 精确匹配优先 + 模糊fallback | 97.7%概念有精确匹配,向量检索ROI不足暂缓 |
 
 ---
 ## 6. CROSS-MODULE INVARIANTS（跨模块不变量清单）
@@ -272,6 +274,7 @@ python scripts/build_exe.py  # 输出到 release/
 | pps/api/engines/learning/ | 学习引擎 + BKT + FSRS |
 | pps/api/engines/graph/pathfinder.py | 路径计算器: 拓扑排序+最短路径+推荐+前置验证 |
 | pps/api/engines/graph/builder.py | 图谱构建器: ZPD子图+实体对齐+学习区域摘要 |
+| pps/api/engines/graph/rag.py | RAG检索模块: 精确匹配+模糊fallback+搜索 |
 | pps/api/routers/ | graph/dialogue/learning API |
 | pps/api/llm/router.py | LLM路由器 (SSRF/retry/tier) |
 | pps/api/rate_limiter.py | 请求频率限制器 |
@@ -284,7 +287,7 @@ python scripts/build_exe.py  # 输出到 release/
 ## 10. KNOWN ISSUES / NOTES
 
 - Phase 5 剩余: Supabase Cloud OAuth配置 + E2E测试 (代码层面已就绪)
-- #43 GraphRAG仍为文件硬匹配 — ADR待定(向量检索 vs 增强文件匹配)
+- RAG: 向量语义检索保留为Phase 2 (ADR-014), 当前精确+模糊覆盖97.7%
 - dialogue-api.ts 导出但无import (dialogue.ts直接fetch), future-ready
 - useMediaQuery.ts 暂时unused (Round 74保留), future-ready
 - NPM audit: 6漏洞(4moderate+2high)均属workers>wrangler dev依赖, 不影响生产
@@ -293,4 +296,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-07 | **Scope**: #44 tri-platform sync governance (CROSS_MODULE_INVARIANTS.md + ADR-013) + #42 graph engine (pathfinder.py + builder.py + 7 API endpoints + 40 tests) | **Result**: 2 P0 issues closed, 5 remaining
+**Date**: 2026-04-07 | **Scope**: #44 tri-platform sync + #42 graph engine (pathfinder+builder+7 API+40 tests) + #43 RAG module (rag.py+ADR-014+search API) | **Result**: 3 P0 issues closed, 3 remaining (P1)

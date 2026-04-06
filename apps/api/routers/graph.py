@@ -613,3 +613,33 @@ async def get_zone_summary(
     user_progress = _parse_progress(progress)
     return gb.learning_zone_summary(user_progress, domain)
 
+
+# ── RAG Search API (fuzzy matching) ────────────────────
+
+from engines.graph.rag import rag_retriever
+
+
+@router.get("/rag/search")
+async def search_rag_documents(
+    q: str = Query(..., min_length=1, description="Search query"),
+    domain: str = Query(DEFAULT_DOMAIN),
+    limit: int = Query(5, ge=1, le=20),
+):
+    """搜索RAG知识文档（模糊名称/ID匹配）"""
+    results = rag_retriever.search(q, domain_id=domain, limit=limit)
+    return {
+        "query": q,
+        "domain": domain,
+        "results": [
+            {
+                "concept_id": r.concept_id,
+                "name": r.name,
+                "subdomain_id": r.subdomain_id,
+                "match_score": r.match_score,
+                "preview": r.content[:200] + "..." if len(r.content) > 200 else r.content,
+            }
+            for r in results
+        ],
+        "total": len(results),
+    }
+
