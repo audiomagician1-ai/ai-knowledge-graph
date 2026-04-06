@@ -78,10 +78,10 @@ data/rag/          — RAG知识文档 (6,156篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,202 (956 BE + 238 FE + 8 FSRS review) | 2026-04-07 |
-| **tsc errors** | 0 | 2026-03-21 |
+| **测试总数** | 1,230 (972 BE + 250 FE + 8 FSRS review) | 2026-04-07 |
+| **tsc errors** | 0 | 2026-04-07 |
 | **Open Issues** | 0 | 2026-04-07 |
-| **RAG 质量** | 6156/6156 legacy avg 79.5 + 144 new stubs | 2026-04-07 |
+| **RAG 质量** | 6156 legacy avg 79.5 + 144 new-domain 升级中 (systems-theory avg 86.0) | 2026-04-07 |
 
 ---
 
@@ -130,6 +130,9 @@ data/rag/          — RAG知识文档 (6,156篇)
 - ✅ P1 评估后终点重设计 (庆祝动效+推荐下一个概念+三按钮布局)
 - ✅ 38条跨球链接 (595→633, 6新域互联+与现有域关联)
 - ✅ 12个领域教学/评估Prompt补充 (三端同步: BE+FE+Workers)
+- ✅ P2 社交证明层 ("X人在学" 气泡标注 + DomainOverview + Dashboard)
+- ✅ P2 学习日历热力图 (30天StreakCalendar + 连续学习徽章)
+- ✅ P2 每日推荐概念 (DailyRecommendation: 30精选概念日轮推荐)
 
 ---
 
@@ -292,6 +295,10 @@ python scripts/build_exe.py  # 输出到 release/
 | pps/api/rate_limiter.py | 请求频率限制器 |
 | packages/web/src/lib/store/ | Zustand stores (dialogue/learning/domain/graph) |
 | packages/web/src/lib/direct-llm.ts | 前端直连LLM (888行, 含validateAssessment) |
+| packages/web/src/components/common/WelcomeGuide.tsx | 首访引导层 (价值主张+推荐域) |
+| packages/web/src/components/common/ReviewBanner.tsx | FSRS复习提示+学习进度 |
+| packages/web/src/components/common/DailyRecommendation.tsx | 每日推荐概念 (30概念日轮) |
+| packages/web/src/pages/DashboardPage.tsx | 学习分析面板 (含StreakCalendar) |
 | workers/src/ | Cloudflare Workers代理后端 |
 
 ---
@@ -300,7 +307,7 @@ python scripts/build_exe.py  # 输出到 release/
 
 - OAuth: Supabase Cloud控制台配置待完成 (代码层面已就绪)
 - RAG: 向量语义检索保留为Phase 2 (ADR-014), 当前精确+模糊覆盖97.7%
-- RAG: 6个systems-theory家族新域RAG为stub占位内容 (score~65), 待质量提升
+- RAG: 6个systems-theory家族新域RAG升级中 — systems-theory已完成(avg 86.0), 其余5域批量改写进行中
 - dialogue-api.ts 导出但无import (dialogue.ts直接fetch), future-ready
 - useMediaQuery.ts 暂时unused (Round 74保留), future-ready
 - NPM audit: 6漏洞(4moderate+2high)均属workers>wrangler dev依赖, 不影响生产
@@ -309,4 +316,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-07 | **Scope**: Behavior Design Sprint — 6 new domains full integration + WelcomeGuide + ReviewBanner + post-assessment UX + 38 cross-links + 12 domain supplements (3-endpoint sync) | **Result**: 956 BE + 238 FE all pass, 36 domains, 6300 concepts, 633 cross-links
+**Date**: 2026-04-07 | **Scope**: V1.3 Sprint — Behavior Design P2 (social proof + streak calendar + daily recommendation) + RAG quality upgrade (systems-theory avg 86.0) + 28 new tests (16 BE + 12 FE) | **Result**: 972 BE + 250 FE all pass, 36 domains, 6300 concepts, 633 cross-links
