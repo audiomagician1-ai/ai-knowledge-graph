@@ -5,7 +5,9 @@ export function AppLayout() {
   return (
     <div className="h-dvh w-full overflow-hidden" style={{ backgroundColor: 'var(--color-surface-0)' }}>
       <OfflineIndicator />
-      <Outlet />
+      <main id="main-content" className="h-full" role="main">
+        <Outlet />
+      </main>
     </div>
   );
 }

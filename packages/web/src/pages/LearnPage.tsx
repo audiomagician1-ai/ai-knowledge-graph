@@ -271,6 +271,7 @@ export function LearnPage() {
             style={{
               backgroundColor: 'var(--color-surface-1)',
               borderColor: 'var(--color-border)',
+              paddingBottom: 'env(safe-area-inset-bottom, 0px)',
             }}
           >
             <div className="max-w-3xl mx-auto px-8 py-5 space-y-4">
@@ -301,6 +302,7 @@ export function LearnPage() {
                   onKeyDown={handleKeyDown}
                   placeholder={currentChoices ? "也可以用自己的话回答..." : "用你自己的话解释这个概念..."}
                   rows={3}
+                  aria-label="输入你的回答"
                   className="flex-1 bg-transparent text-[14px] outline-none resize-none leading-relaxed"
                   style={{
                     color: 'var(--color-text-primary)',
@@ -312,6 +314,7 @@ export function LearnPage() {
                 <button
                   onClick={handleSend}
                   disabled={isBusy || !input.trim() || !conversationId}
+                  aria-label="发送消息"
                   className="shrink-0 w-9 h-9 rounded-md flex items-center justify-center transition-all"
                   style={{
                     background: !input.trim() || isBusy
@@ -335,6 +338,7 @@ export function LearnPage() {
             style={{
               backgroundColor: 'var(--color-surface-1)',
               borderColor: 'var(--color-border)',
+              paddingBottom: 'env(safe-area-inset-bottom, 0px)',
             }}
           >
             <div className="max-w-3xl mx-auto px-6 py-4 space-y-3">

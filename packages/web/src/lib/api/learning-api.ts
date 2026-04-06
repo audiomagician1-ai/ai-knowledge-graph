@@ -4,6 +4,7 @@
  */
 
 import { createLogger } from '@/lib/utils/logger';
+import { fetchWithRetry } from '@/lib/utils/fetch-retry';
 
 const log = createLogger('LearningAPI');
 const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
@@ -11,10 +12,11 @@ const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
 /** POST /api/learning/start */
 export async function apiStartLearning(conceptId: string): Promise<void> {
   try {
-    await fetch(`${API_BASE}/learning/start`, {
+    await fetchWithRetry(`${API_BASE}/learning/start`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ concept_id: conceptId }),
+      retries: 1,
     });
   } catch { /* fire-and-forget */ }
 }
@@ -24,10 +26,11 @@ export async function apiRecordAssessment(
   conceptId: string, conceptName: string, score: number, mastered: boolean
 ): Promise<void> {
   try {
-    await fetch(`${API_BASE}/learning/assess`, {
+    await fetchWithRetry(`${API_BASE}/learning/assess`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ concept_id: conceptId, concept_name: conceptName, score, mastered }),
+      retries: 2,
     });
   } catch { /* fire-and-forget */ }
 }
@@ -35,7 +38,7 @@ export async function apiRecordAssessment(
 /** GET /api/learning/progress — all concept progress from backend */
 export async function apiFetchAllProgress(): Promise<Record<string, any>> {
   try {
-    const res = await fetch(`${API_BASE}/learning/progress`);
+    const res = await fetchWithRetry(`${API_BASE}/learning/progress`);
     if (!res.ok) return {};
     const list: any[] = await res.json();
     const map: Record<string, any> = {};
@@ -49,7 +52,7 @@ export async function apiFetchAllProgress(): Promise<Record<string, any>> {
 /** GET /api/learning/stats */
 export async function apiFetchStats(totalConcepts: number): Promise<any | null> {
   try {
-    const res = await fetch(`${API_BASE}/learning/stats?total_concepts=${totalConcepts}`);
+    const res = await fetchWithRetry(`${API_BASE}/learning/stats?total_concepts=${totalConcepts}`);
     if (!res.ok) return null;
     return await res.json();
   } catch { return null; }
@@ -58,7 +61,7 @@ export async function apiFetchStats(totalConcepts: number): Promise<any | null> 
 /** GET /api/learning/history */
 export async function apiFetchHistory(limit = 100): Promise<any[]> {
   try {
-    const res = await fetch(`${API_BASE}/learning/history?limit=${limit}`);
+    const res = await fetchWithRetry(`${API_BASE}/learning/history?limit=${limit}`);
     if (!res.ok) return [];
     return await res.json();
   } catch { return []; }
@@ -67,7 +70,7 @@ export async function apiFetchHistory(limit = 100): Promise<any[]> {
 /** GET /api/learning/streak */
 export async function apiFetchStreak(): Promise<any | null> {
   try {
-    const res = await fetch(`${API_BASE}/learning/streak`);
+    const res = await fetchWithRetry(`${API_BASE}/learning/streak`);
     if (!res.ok) return null;
     return await res.json();
   } catch { return null; }
@@ -93,7 +96,7 @@ export async function apiFetchRecommendations(topK = 5, domain?: string): Promis
   try {
     const params = new URLSearchParams({ top_k: String(topK) });
     if (domain) params.set('domain', domain);
-    const res = await fetch(`${API_BASE}/learning/recommend?${params}`);
+    const res = await fetchWithRetry(`${API_BASE}/learning/recommend?${params}`);
     if (!res.ok) return null;
     return await res.json();
   } catch { return null; }
@@ -142,7 +145,7 @@ export async function apiFetchDueReviews(limit = 20, domain?: string): Promise<D
   try {
     const params = new URLSearchParams({ limit: String(limit) });
     if (domain) params.set('domain', domain);
-    const res = await fetch(`${API_BASE}/learning/due?${params}`);
+    const res = await fetchWithRetry(`${API_BASE}/learning/due?${params}`);
     if (!res.ok) return null;
     return await res.json();
   } catch { return null; }
@@ -151,10 +154,11 @@ export async function apiFetchDueReviews(limit = 20, domain?: string): Promise<D
 /** POST /api/learning/review — submit a review rating (1=Again, 2=Hard, 3=Good, 4=Easy) */
 export async function apiSubmitReview(conceptId: string, rating: number): Promise<ReviewResult | null> {
   try {
-    const res = await fetch(`${API_BASE}/learning/review`, {
+    const res = await fetchWithRetry(`${API_BASE}/learning/review`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ concept_id: conceptId, rating }),
+      retries: 2,
     });
     if (!res.ok) return null;
     return await res.json();
@@ -201,7 +205,7 @@ export interface RecentAchievementsResponse {
 /** GET /api/learning/achievements — full achievement catalog with status */
 export async function apiFetchAchievements(): Promise<AchievementsResponse | null> {
   try {
-    const res = await fetch(`${API_BASE}/learning/achievements`);
+    const res = await fetchWithRetry(`${API_BASE}/learning/achievements`);
     if (!res.ok) return null;
     return await res.json();
   } catch { return null; }
@@ -210,7 +214,7 @@ export async function apiFetchAchievements(): Promise<AchievementsResponse | nul
 /** GET /api/learning/achievements/recent — unseen newly unlocked achievements */
 export async function apiFetchRecentAchievements(): Promise<RecentAchievementsResponse | null> {
   try {
-    const res = await fetch(`${API_BASE}/learning/achievements/recent`);
+    const res = await fetchWithRetry(`${API_BASE}/learning/achievements/recent`);
     if (!res.ok) return null;
     return await res.json();
   } catch { return null; }
@@ -219,7 +223,7 @@ export async function apiFetchRecentAchievements(): Promise<RecentAchievementsRe
 /** POST /api/learning/achievements/seen — mark achievements as seen */
 export async function apiMarkAchievementsSeen(keys: string[]): Promise<void> {
   try {
-    await fetch(`${API_BASE}/learning/achievements/seen`, {
+    await fetchWithRetry(`${API_BASE}/learning/achievements/seen`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ keys }),
@@ -233,10 +237,11 @@ export async function apiSyncToBackend(data: {
   streak: any;
 }): Promise<{ success: boolean; synced_progress: number; synced_history: number } | null> {
   try {
-    const res = await fetch(`${API_BASE}/learning/sync`, {
+    const res = await fetchWithRetry(`${API_BASE}/learning/sync`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
+      retries: 2,
     });
     if (!res.ok) {
       log.warn('apiSyncToBackend failed', { status: res.status });

@@ -79,12 +79,22 @@
     "information-theory/info-in-crypto",
     "information-theory/info-in-biology",
     "dissipative-structures/equilibrium-thermo-review",
-    "dissipative-structures/nonequilibrium-states"
+    "dissipative-structures/nonequilibrium-states",
+    "dissipative-structures/entropy-production",
+    "dissipative-structures/onsager-reciprocal",
+    "dissipative-structures/irreversible-processes-ds",
+    "dissipative-structures/far-from-equilibrium",
+    "dissipative-structures/dissipative-structure-def",
+    "dissipative-structures/dissipative-conditions",
+    "dissipative-structures/fluctuation-amplification",
+    "dissipative-structures/order-through-fluctuation",
+    "dissipative-structures/bifurcation-theory-ds",
+    "dissipative-structures/pitchfork-bifurcation"
   ],
   "errors": [],
   "stats": {
-    "total": 79,
-    "success": 15,
+    "total": 144,
+    "success": 90,
     "error": 0
   }
 }

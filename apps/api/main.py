@@ -8,13 +8,16 @@ AI Knowledge Graph — Backend API
 
 import os
 import sys
+import uuid
+import time
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import FileResponse
+from starlette.middleware.base import BaseHTTPMiddleware
 
 from routers import graph, dialogue, learning, health
 from utils.logger import configure_logging, get_logger
@@ -114,6 +117,27 @@ app.add_middleware(
 # GZip compression — reduce response sizes for graph data / RAG documents
 # minimum_size=500 avoids compressing tiny health-check responses
 app.add_middleware(GZipMiddleware, minimum_size=500)
+
+
+# ── Request ID + Timing Middleware ──
+class RequestIdMiddleware(BaseHTTPMiddleware):
+    """Add X-Request-ID header and log request timing for observability."""
+
+    async def dispatch(self, request: Request, call_next):
+        request_id = request.headers.get("X-Request-ID", str(uuid.uuid4())[:8])
+        start = time.monotonic()
+        response = await call_next(request)
+        elapsed_ms = round((time.monotonic() - start) * 1000, 1)
+        response.headers["X-Request-ID"] = request_id
+        response.headers["X-Response-Time"] = f"{elapsed_ms}ms"
+        # Log slow requests (>500ms)
+        if elapsed_ms > 500:
+            logger.warning("Slow request: %s %s %sms [%s]",
+                           request.method, request.url.path, elapsed_ms, request_id)
+        return response
+
+
+app.add_middleware(RequestIdMiddleware)
 
 # 路由注册
 app.include_router(health.router, prefix="/api", tags=["health"])
