@@ -102,3 +102,26 @@ async def test_project_stats():
         assert "name" in sample
         assert "concepts" in sample
         assert "rag_files" in sample
+
+
+@pytest.mark.asyncio
+async def test_global_rag_search():
+    """Global RAG search endpoint should return cross-domain results."""
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        response = await client.get("/api/graph/rag/search/global?q=system")
+        assert response.status_code == 200
+        data = response.json()
+        assert "query" in data
+        assert data["query"] == "system"
+        assert "results" in data
+        assert isinstance(data["results"], list)
+        assert "total" in data
+        # Should find at least some results for "system" across domains
+        if data["total"] > 0:
+            result = data["results"][0]
+            assert "concept_id" in result
+            assert "name" in result
+            assert "domain_id" in result
+            assert "domain_name" in result
+            assert "match_score" in result

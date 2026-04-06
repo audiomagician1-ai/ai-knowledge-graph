@@ -649,3 +649,47 @@ async def search_rag_documents(
         "total": len(results),
     }
 
+
+@router.get("/rag/search/global")
+async def search_rag_global(
+    q: str = Query(..., min_length=2, description="Search query (min 2 chars)"),
+    limit: int = Query(10, ge=1, le=30),
+):
+    """跨域全局搜索RAG知识文档 — 在所有域中搜索匹配概念"""
+    import json as _json
+
+    all_results = []
+    # Load domains list
+    data_root = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))), "data")
+    domains_file = os.path.join(data_root, "seed", "domains.json")
+    if os.path.isfile(domains_file):
+        with open(domains_file, "r", encoding="utf-8") as f:
+            raw = _json.load(f)
+        domain_list = raw.get("domains", raw) if isinstance(raw, dict) else raw
+        for d in domain_list:
+            domain_id = d.get("id", "")
+            try:
+                results = rag_retriever.search(q, domain_id=domain_id, limit=3)
+                for r in results:
+                    all_results.append({
+                        "concept_id": r.concept_id,
+                        "name": r.name,
+                        "domain_id": domain_id,
+                        "domain_name": d.get("name", ""),
+                        "subdomain_id": r.subdomain_id,
+                        "match_score": r.match_score,
+                        "preview": r.content[:150] + "..." if len(r.content) > 150 else r.content,
+                    })
+            except Exception:
+                continue
+
+    # Sort by score and limit
+    all_results.sort(key=lambda x: x["match_score"], reverse=True)
+    all_results = all_results[:limit]
+
+    return {
+        "query": q,
+        "results": all_results,
+        "total": len(all_results),
+    }
+

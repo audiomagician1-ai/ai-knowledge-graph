@@ -147,10 +147,10 @@
   ],
   "errors": [],
   "stats": {
-    "total": 144,
-    "success": 144,
+    "total": 79,
+    "success": 79,
     "error": 0,
-    "elapsed_seconds": 11460,
-    "last_run": "2026-04-07T06:57:19.108465"
+    "elapsed_seconds": 6223,
+    "last_run": "2026-04-07T06:58:03.255713"
   }
 }
