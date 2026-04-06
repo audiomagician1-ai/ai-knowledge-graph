@@ -7,6 +7,7 @@ interface ShortcutItem {
 }
 
 const GLOBAL_SHORTCUTS: ShortcutItem[] = [
+  { keys: ['Ctrl', 'K'], description: '搜索知识概念' },
   { keys: ['D'], description: '打开学习仪表盘' },
   { keys: ['G'], description: '打开 3D 知识图谱' },
   { keys: ['S'], description: '打开设置' },

@@ -9,6 +9,7 @@ import { useAppLifecycle } from './lib/hooks/useAppLifecycle';
 import { useLearningStore } from './lib/store/learning';
 import { OfflineIndicator } from './components/common/OfflineIndicator';
 import { KeyboardShortcutsHelp } from './components/common/KeyboardShortcutsHelp';
+import { ConceptSearch } from './components/common/ConceptSearch';
 import './lib/store/supabase-sync';
 
 // ── Route-level code splitting ──────────────────────────────
@@ -82,6 +83,7 @@ export function App() {
         <ToastContainer />
         <OfflineIndicator />
         <KeyboardShortcutsHelp />
+        <ConceptSearch />
       </BrowserRouter>
     </ErrorBoundary>
   );
