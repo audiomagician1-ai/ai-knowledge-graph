@@ -119,12 +119,17 @@
     "synergetics/laser-synergetics",
     "synergetics/synergetics-in-brain",
     "synergetics/synergetics-in-ecology-soc",
-    "synergetics/pattern-recognition-syn"
+    "synergetics/pattern-recognition-syn",
+    "synergetics/synergetics-in-economy",
+    "catastrophe-theory/catastrophe-overview",
+    "catastrophe-theory/structural-stability-ct",
+    "catastrophe-theory/critical-point-catastrophe",
+    "catastrophe-theory/smooth-mapping"
   ],
   "errors": [],
   "stats": {
-    "total": 129,
-    "success": 105,
+    "total": 99,
+    "success": 80,
     "error": 0
   }
 }
