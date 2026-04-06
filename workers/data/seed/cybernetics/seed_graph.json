@@ -1,0 +1,603 @@
+{
+  "domain": {
+    "id": "cybernetics",
+    "name": "控制论",
+    "description": "从反馈控制到智能控制的完整控制科学知识体系",
+    "icon": "🎛️",
+    "color": "#6366f1"
+  },
+  "subdomains": [
+    {
+      "id": "control-fundamentals",
+      "name": "控制基础",
+      "order": 1
+    },
+    {
+      "id": "feedback-control",
+      "name": "反馈控制",
+      "order": 2
+    },
+    {
+      "id": "classical-control",
+      "name": "经典控制",
+      "order": 3
+    },
+    {
+      "id": "modern-control",
+      "name": "现代控制",
+      "order": 4
+    },
+    {
+      "id": "intelligent-control",
+      "name": "智能控制",
+      "order": 5
+    },
+    {
+      "id": "cybernetics-applications",
+      "name": "控制论应用",
+      "order": 6
+    }
+  ],
+  "concepts": [
+    {
+      "id": "cybernetics-overview",
+      "name": "控制论概述",
+      "description": "维纳的控制论思想、通信与控制、动物与机器的类比",
+      "domain_id": "cybernetics",
+      "subdomain_id": "control-fundamentals",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "control-system-def",
+      "name": "控制系统定义",
+      "description": "受控对象、控制器、执行机构、传感器",
+      "domain_id": "cybernetics",
+      "subdomain_id": "control-fundamentals",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "open-closed-loop",
+      "name": "开环与闭环控制",
+      "description": "开环控制、闭环控制、反馈的作用",
+      "domain_id": "cybernetics",
+      "subdomain_id": "control-fundamentals",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "signal-types",
+      "name": "信号类型",
+      "description": "连续信号、离散信号、随机信号、确定性信号",
+      "domain_id": "cybernetics",
+      "subdomain_id": "control-fundamentals",
+      "difficulty": 2,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "transfer-function",
+      "name": "传递函数",
+      "description": "拉普拉斯变换、传递函数定义、系统极点与零点",
+      "domain_id": "cybernetics",
+      "subdomain_id": "control-fundamentals",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "negative-feedback",
+      "name": "负反馈原理",
+      "description": "误差检测、偏差消除、负反馈稳定性",
+      "domain_id": "cybernetics",
+      "subdomain_id": "feedback-control",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "positive-feedback",
+      "name": "正反馈原理",
+      "description": "自激振荡、指数增长、正反馈失稳",
+      "domain_id": "cybernetics",
+      "subdomain_id": "feedback-control",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "feedback-delay",
+      "name": "反馈延迟",
+      "description": "传输延迟、处理延迟、延迟对稳定性的影响",
+      "domain_id": "cybernetics",
+      "subdomain_id": "feedback-control",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "homeostasis",
+      "name": "稳态维持",
+      "description": "坎农稳态概念、动态平衡、生物恒温调节",
+      "domain_id": "cybernetics",
+      "subdomain_id": "feedback-control",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "pid-control",
+      "name": "PID控制",
+      "description": "比例-积分-微分控制、参数整定、性能指标",
+      "domain_id": "cybernetics",
+      "subdomain_id": "classical-control",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "frequency-response",
+      "name": "频率响应",
+      "description": "Bode图、Nyquist图、频域分析",
+      "domain_id": "cybernetics",
+      "subdomain_id": "classical-control",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "stability-analysis",
+      "name": "稳定性分析",
+      "description": "劳斯判据、奈奎斯特判据、根轨迹法",
+      "domain_id": "cybernetics",
+      "subdomain_id": "classical-control",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "root-locus",
+      "name": "根轨迹法",
+      "description": "闭环极点轨迹、增益调节、系统设计",
+      "domain_id": "cybernetics",
+      "subdomain_id": "classical-control",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "compensator-design",
+      "name": "补偿器设计",
+      "description": "超前补偿、滞后补偿、PID补偿器",
+      "domain_id": "cybernetics",
+      "subdomain_id": "classical-control",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "state-space-control",
+      "name": "状态空间法",
+      "description": "状态方程、可控性与可观性、状态反馈",
+      "domain_id": "cybernetics",
+      "subdomain_id": "modern-control",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "optimal-control",
+      "name": "最优控制",
+      "description": "性能指标、LQR控制、Pontryagin极大值原理",
+      "domain_id": "cybernetics",
+      "subdomain_id": "modern-control",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "adaptive-control",
+      "name": "自适应控制",
+      "description": "模型参考自适应、自校正控制、参数估计",
+      "domain_id": "cybernetics",
+      "subdomain_id": "modern-control",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "robust-control",
+      "name": "鲁棒控制",
+      "description": "不确定性描述、H-infinity控制、结构奇异值",
+      "domain_id": "cybernetics",
+      "subdomain_id": "modern-control",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "fuzzy-control",
+      "name": "模糊控制",
+      "description": "模糊集合、模糊推理、模糊控制器设计",
+      "domain_id": "cybernetics",
+      "subdomain_id": "intelligent-control",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "neural-network-control",
+      "name": "神经网络控制",
+      "description": "BP神经网络控制、自学习控制、逼近能力",
+      "domain_id": "cybernetics",
+      "subdomain_id": "intelligent-control",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "genetic-algorithm-control",
+      "name": "遗传算法优化",
+      "description": "进化计算、参数优化、多目标控制",
+      "domain_id": "cybernetics",
+      "subdomain_id": "intelligent-control",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "reinforcement-learning-ctrl",
+      "name": "强化学习控制",
+      "description": "策略梯度、Q-learning、在线学习控制",
+      "domain_id": "cybernetics",
+      "subdomain_id": "intelligent-control",
+      "difficulty": 7,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "biological-cybernetics",
+      "name": "生物控制论",
+      "description": "神经控制、激素调节、生态系统反馈",
+      "domain_id": "cybernetics",
+      "subdomain_id": "cybernetics-applications",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "social-cybernetics",
+      "name": "社会控制论",
+      "description": "社会系统调控、组织管理、政策反馈",
+      "domain_id": "cybernetics",
+      "subdomain_id": "cybernetics-applications",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "economic-cybernetics",
+      "name": "经济控制论",
+      "description": "经济系统调控、市场反馈、宏观调控模型",
+      "domain_id": "cybernetics",
+      "subdomain_id": "cybernetics-applications",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "second-order-cybernetics",
+      "name": "二阶控制论",
+      "description": "观察者的参与、自指涉系统、建构主义",
+      "domain_id": "cybernetics",
+      "subdomain_id": "cybernetics-applications",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "cybernetics-overview",
+      "target_id": "control-system-def",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "control-system-def",
+      "target_id": "open-closed-loop",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cybernetics-overview",
+      "target_id": "signal-types",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "signal-types",
+      "target_id": "transfer-function",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "open-closed-loop",
+      "target_id": "negative-feedback",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "open-closed-loop",
+      "target_id": "positive-feedback",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "negative-feedback",
+      "target_id": "feedback-delay",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "negative-feedback",
+      "target_id": "homeostasis",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "transfer-function",
+      "target_id": "pid-control",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "negative-feedback",
+      "target_id": "pid-control",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "transfer-function",
+      "target_id": "frequency-response",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "frequency-response",
+      "target_id": "stability-analysis",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "transfer-function",
+      "target_id": "root-locus",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "stability-analysis",
+      "target_id": "compensator-design",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "root-locus",
+      "target_id": "compensator-design",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "pid-control",
+      "target_id": "state-space-control",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "stability-analysis",
+      "target_id": "state-space-control",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "state-space-control",
+      "target_id": "optimal-control",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "state-space-control",
+      "target_id": "adaptive-control",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "state-space-control",
+      "target_id": "robust-control",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "pid-control",
+      "target_id": "fuzzy-control",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "adaptive-control",
+      "target_id": "neural-network-control",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "neural-network-control",
+      "target_id": "reinforcement-learning-ctrl",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "fuzzy-control",
+      "target_id": "genetic-algorithm-control",
+      "relation_type": "related",
+      "strength": 0.6
+    },
+    {
+      "source_id": "homeostasis",
+      "target_id": "biological-cybernetics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "negative-feedback",
+      "target_id": "social-cybernetics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-cybernetics",
+      "target_id": "economic-cybernetics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "social-cybernetics",
+      "target_id": "second-order-cybernetics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    }
+  ]
+}

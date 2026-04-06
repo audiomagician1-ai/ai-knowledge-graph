@@ -1,0 +1,529 @@
+{
+  "domain": {
+    "id": "catastrophe-theory",
+    "name": "突变论",
+    "description": "从拓扑学基础到初等突变的完整突变科学知识体系",
+    "icon": "💥",
+    "color": "#ef4444"
+  },
+  "subdomains": [
+    {
+      "id": "catastrophe-fundamentals",
+      "name": "突变论基础",
+      "order": 1
+    },
+    {
+      "id": "elementary-catastrophes",
+      "name": "初等突变",
+      "order": 2
+    },
+    {
+      "id": "catastrophe-math",
+      "name": "突变的数学工具",
+      "order": 3
+    },
+    {
+      "id": "catastrophe-dynamics",
+      "name": "突变动力学",
+      "order": 4
+    },
+    {
+      "id": "catastrophe-applications",
+      "name": "突变论应用",
+      "order": 5
+    }
+  ],
+  "concepts": [
+    {
+      "id": "catastrophe-overview",
+      "name": "突变论概述",
+      "description": "Thom的突变论思想、连续变化导致突然跳跃",
+      "domain_id": "catastrophe-theory",
+      "subdomain_id": "catastrophe-fundamentals",
+      "difficulty": 1,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "基础"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "structural-stability-ct",
+      "name": "结构稳定性",
+      "description": "动力系统的结构稳定、微扰不变性",
+      "domain_id": "catastrophe-theory",
+      "subdomain_id": "catastrophe-fundamentals",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "critical-point-catastrophe",
+      "name": "临界点理论",
+      "description": "函数的临界点、退化临界点、分类问题",
+      "domain_id": "catastrophe-theory",
+      "subdomain_id": "catastrophe-fundamentals",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "smooth-mapping",
+      "name": "光滑映射与奇点",
+      "description": "光滑函数、奇点分类、泛开折",
+      "domain_id": "catastrophe-theory",
+      "subdomain_id": "catastrophe-fundamentals",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "potential-function",
+      "name": "势函数",
+      "description": "势能面、极值、鞍点、势能景观",
+      "domain_id": "catastrophe-theory",
+      "subdomain_id": "catastrophe-fundamentals",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "fold-catastrophe",
+      "name": "折叠突变(A2)",
+      "description": "最简单的突变类型、一个控制参数、跳跃行为",
+      "domain_id": "catastrophe-theory",
+      "subdomain_id": "elementary-catastrophes",
+      "difficulty": 3,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "cusp-catastrophe",
+      "name": "尖点突变(A3)",
+      "description": "两个控制参数、双稳态、滞后现象",
+      "domain_id": "catastrophe-theory",
+      "subdomain_id": "elementary-catastrophes",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "swallowtail-catastrophe",
+      "name": "燕尾突变(A4)",
+      "description": "三个控制参数、三稳态、更复杂的分岔",
+      "domain_id": "catastrophe-theory",
+      "subdomain_id": "elementary-catastrophes",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "butterfly-catastrophe",
+      "name": "蝴蝶突变(A5)",
+      "description": "四个控制参数、口袋形态、妥协行为",
+      "domain_id": "catastrophe-theory",
+      "subdomain_id": "elementary-catastrophes",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "umbilic-catastrophes",
+      "name": "脐点突变(D类)",
+      "description": "椭圆脐点D4-、双曲脐点D4+、抛物脐点D5",
+      "domain_id": "catastrophe-theory",
+      "subdomain_id": "elementary-catastrophes",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "classification-theorem",
+      "name": "Thom分类定理",
+      "description": "7种初等突变的分类、余维数小于等于4、普适性",
+      "domain_id": "catastrophe-theory",
+      "subdomain_id": "elementary-catastrophes",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "里程碑"
+      ],
+      "is_milestone": true,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "singularity-theory",
+      "name": "奇点理论",
+      "description": "Milnor数、有限决定性、ADE分类",
+      "domain_id": "catastrophe-theory",
+      "subdomain_id": "catastrophe-math",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "unfolding-theory",
+      "name": "开折理论",
+      "description": "泛开折、余维数、开折参数",
+      "domain_id": "catastrophe-theory",
+      "subdomain_id": "catastrophe-math",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "transversality",
+      "name": "横截性",
+      "description": "横截性定理、一般位置、通有性",
+      "domain_id": "catastrophe-theory",
+      "subdomain_id": "catastrophe-math",
+      "difficulty": 6,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "morse-theory-intro",
+      "name": "Morse理论简介",
+      "description": "Morse函数、Morse引理、非退化临界点",
+      "domain_id": "catastrophe-theory",
+      "subdomain_id": "catastrophe-math",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "hysteresis-ct",
+      "name": "滞后现象",
+      "description": "磁滞、相变滞后、非平衡路径依赖",
+      "domain_id": "catastrophe-theory",
+      "subdomain_id": "catastrophe-dynamics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "bimodality",
+      "name": "双模态",
+      "description": "双峰分布、两种稳定状态的共存与转换",
+      "domain_id": "catastrophe-theory",
+      "subdomain_id": "catastrophe-dynamics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "catastrophe-flags",
+      "name": "突变标志",
+      "description": "模态性、不可达区、发散、滞后、突跳五标志",
+      "domain_id": "catastrophe-theory",
+      "subdomain_id": "catastrophe-dynamics",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "delay-convention",
+      "name": "延迟惯例与Maxwell惯例",
+      "description": "系统跟随极小值策略、Maxwell等概率选择",
+      "domain_id": "catastrophe-theory",
+      "subdomain_id": "catastrophe-dynamics",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "catastrophe-in-physics",
+      "name": "物理学中的突变",
+      "description": "相变、光学焦散线、弹性屈曲",
+      "domain_id": "catastrophe-theory",
+      "subdomain_id": "catastrophe-applications",
+      "difficulty": 4,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "catastrophe-in-biology",
+      "name": "生物学中的突变",
+      "description": "形态发生、细胞分化、生态系统崩溃",
+      "domain_id": "catastrophe-theory",
+      "subdomain_id": "catastrophe-applications",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "catastrophe-in-psychology",
+      "name": "心理学中的突变",
+      "description": "态度突变、攻击行为、知觉突变",
+      "domain_id": "catastrophe-theory",
+      "subdomain_id": "catastrophe-applications",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "核心"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    },
+    {
+      "id": "catastrophe-in-economics",
+      "name": "经济学中的突变",
+      "description": "市场崩盘、汇率突变、经济周期",
+      "domain_id": "catastrophe-theory",
+      "subdomain_id": "catastrophe-applications",
+      "difficulty": 5,
+      "estimated_minutes": 25,
+      "content_type": "theory",
+      "tags": [
+        "进阶"
+      ],
+      "is_milestone": false,
+      "created_at": "2026-03-28T10:00:56.433877+00:00"
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "catastrophe-overview",
+      "target_id": "structural-stability-ct",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "catastrophe-overview",
+      "target_id": "critical-point-catastrophe",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "catastrophe-overview",
+      "target_id": "potential-function",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "critical-point-catastrophe",
+      "target_id": "smooth-mapping",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "potential-function",
+      "target_id": "fold-catastrophe",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "fold-catastrophe",
+      "target_id": "cusp-catastrophe",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "cusp-catastrophe",
+      "target_id": "swallowtail-catastrophe",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "swallowtail-catastrophe",
+      "target_id": "butterfly-catastrophe",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cusp-catastrophe",
+      "target_id": "umbilic-catastrophes",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "fold-catastrophe",
+      "target_id": "classification-theorem",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cusp-catastrophe",
+      "target_id": "classification-theorem",
+      "relation_type": "related",
+      "strength": 0.7
+    },
+    {
+      "source_id": "smooth-mapping",
+      "target_id": "singularity-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "critical-point-catastrophe",
+      "target_id": "unfolding-theory",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "singularity-theory",
+      "target_id": "transversality",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "critical-point-catastrophe",
+      "target_id": "morse-theory-intro",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cusp-catastrophe",
+      "target_id": "hysteresis-ct",
+      "relation_type": "prerequisite",
+      "strength": 0.9
+    },
+    {
+      "source_id": "cusp-catastrophe",
+      "target_id": "bimodality",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "hysteresis-ct",
+      "target_id": "catastrophe-flags",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "bimodality",
+      "target_id": "catastrophe-flags",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "catastrophe-flags",
+      "target_id": "delay-convention",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "fold-catastrophe",
+      "target_id": "catastrophe-in-physics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cusp-catastrophe",
+      "target_id": "catastrophe-in-biology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cusp-catastrophe",
+      "target_id": "catastrophe-in-psychology",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    },
+    {
+      "source_id": "cusp-catastrophe",
+      "target_id": "catastrophe-in-economics",
+      "relation_type": "prerequisite",
+      "strength": 0.8
+    }
+  ]
+}

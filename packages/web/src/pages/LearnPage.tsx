@@ -8,7 +8,7 @@ import type { AssessmentResult } from '@/lib/store/dialogue';
 import {
   ArrowLeft, Star, Send, BarChart3, Brain, Lightbulb,
   RotateCcw, AlertTriangle, Trophy,
-  CheckCircle2, Target, BookOpen,
+  CheckCircle2, Target, BookOpen, ChevronRight, Sparkles,
 } from 'lucide-react';
 import { MarkdownRenderer } from '@/components/chat/MarkdownRenderer';
 import { ChoiceButtons } from '@/components/chat/ChoiceButtons';
@@ -30,7 +30,7 @@ export function LearnPage() {
   } = useDialogueStore();
 
   const isBusy = isStreaming || isAssessing;
-  const { startLearning, recordAssessment } = useLearningStore();
+  const { startLearning, recordAssessment, recommendedIds } = useLearningStore();
   const { checkNewAchievements } = useAchievementStore();
   const recordedRef = useRef(false);
 
@@ -337,21 +337,53 @@ export function LearnPage() {
               borderColor: 'var(--color-border)',
             }}
           >
-            <div className="max-w-3xl mx-auto px-6 py-4 flex gap-3">
-              <button
-                onClick={() => navigate(domainId ? `/domain/${domainId}/${conceptId}` : '/')}
-                className="btn-ghost flex-1 flex items-center justify-center gap-2 py-3"
-              >
-                <ArrowLeft size={16} />
-                返回图谱
-              </button>
-              <button
-                onClick={() => { recordedRef.current = false; reset(); if (conceptId) { startConversation(conceptId, domainId); startLearning(conceptId); } }}
-                className="btn-primary flex-1 flex items-center justify-center gap-2 py-3"
-              >
-                <RotateCcw size={16} />
-                再来一轮
-              </button>
+            <div className="max-w-3xl mx-auto px-6 py-4 space-y-3">
+              {/* Mastered celebration message */}
+              {assessment?.mastered && (
+                <div className="flex items-center justify-center gap-2 py-2">
+                  <Sparkles size={14} style={{ color: 'var(--color-accent-emerald)' }} />
+                  <span className="text-[13px] font-medium" style={{ color: 'var(--color-accent-emerald)' }}>
+                    知识图谱又亮了一个节点！
+                  </span>
+                </div>
+              )}
+
+              {/* Action buttons row */}
+              <div className="flex gap-3">
+                <button
+                  onClick={() => navigate(domainId ? `/domain/${domainId}/${conceptId}` : '/')}
+                  className="btn-ghost flex-1 flex items-center justify-center gap-2 py-3"
+                >
+                  <ArrowLeft size={16} />
+                  返回图谱
+                </button>
+                <button
+                  onClick={() => { recordedRef.current = false; reset(); if (conceptId) { startConversation(conceptId, domainId); startLearning(conceptId); } }}
+                  className="btn-ghost flex-1 flex items-center justify-center gap-2 py-3"
+                >
+                  <RotateCcw size={16} />
+                  再来一轮
+                </button>
+              </div>
+
+              {/* Recommended next concept — behavior hook for continued learning */}
+              {recommendedIds.size > 0 && (
+                <button
+                  onClick={() => {
+                    const nextId = Array.from(recommendedIds)[0];
+                    if (domainId) navigate(`/domain/${domainId}/${nextId}/learn`);
+                    else navigate(`/learn/${nextId}`);
+                  }}
+                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-[14px] font-semibold transition-all"
+                  style={{
+                    background: 'var(--color-accent-primary)',
+                    color: '#ffffff',
+                  }}
+                >
+                  <ChevronRight size={16} />
+                  继续学习下一个知识点
+                </button>
+              )}
             </div>
           </div>
         )}

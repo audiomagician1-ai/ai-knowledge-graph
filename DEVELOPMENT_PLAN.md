@@ -182,13 +182,13 @@ ai-knowledge-graph/
 
 | 指标 | v1计划 | 实际实现 | 倍率 |
 |------|--------|----------|------|
-| **知识域** | 1 (编程) | 30 | 30x |
-| **概念数** | ~300 | 6,156 | 20x |
-| **边数** | 未指定 | 7,015 | — |
+| **知识域** | 1 (编程) | 36 | 36x |
+| **概念数** | ~300 | 6,300 | 21x |
+| **边数** | 未指定 | 7,167 | — |
 | **跨域链接** | 未计划 | 595 | — |
-| **RAG文档** | 未计划 | 6,156 (100%) | — |
-| **RAG质量** | 未计划 | 均分79.5 (S:1096 A:5060) | — |
-| **测试数** | 未指定 | 1,143 (897BE+238FE+8FSRS) | — |
+| **RAG文档** | 未计划 | 6,300 (100%) | — |
+| **RAG质量** | 未计划 | 均分79.5 (S:1096 A:5060) + 144 stubs | — |
+| **测试数** | 未指定 | 1,202 (956BE+238FE+8FSRS) | — |
 
 ### 30个知识域
 
@@ -240,22 +240,22 @@ ai-knowledge-graph/
 
 ## 五、当前剩余任务 + 路线图
 
-### 5.1 审计发现 (2026-04-06)
+### 5.1 审计发现 (2026-04-06) — 全部关闭
 
-详见 GitHub Issue #42-#51。
+详见 GitHub Issue #42-#51。所有审计发现已在 2026-04-07 修复并关闭。
 
 | 优先级 | Issue | 状态 | 说明 |
 |--------|-------|------|------|
-| P0 | #42 图谱引擎空壳化 | Open | builder.py/pathfinder.py 需实现核心算法 |
-| P0 | #43 GraphRAG退化为文件硬匹配 | Open | 评估是否需重建向量检索层 |
-| P0 | #44 三端同步复杂度 | Open | FE/Workers/BE跨模块不变量治理 |
+| P0 | #42 图谱引擎空壳化 | ✅ Closed | pathfinder + builder + 7 API + 40 tests |
+| P0 | #43 GraphRAG退化为文件硬匹配 | ✅ Closed | 独立 rag.py 模块 + ADR-014 |
+| P0 | #44 三端同步复杂度 | ✅ Closed | CROSS_MODULE_INVARIANTS.md + ADR-013 |
 | P1 | #45 LLM响应缓存 | ✅ Closed | Redis缓存已实现 |
-| P1 | #46 学习分析Dashboard | Open | V1.0承诺功能未实现 |
-| P1 | #47 E2E测试缺失 | Open | Playwright集成 |
-| P1 | #49 OAuth配置 | Open | Google/GitHub OAuth |
-| P2 | #48 SSR/SEO缺失 | Open | Vite迁移后的SEO方案 |
-| P2 | #50 DEVELOPMENT_PLAN.md | ✅ Closed | 本次重写 |
-| P2 | #51 审计总结 | Open | 偏离度审计报告 |
+| P1 | #46 学习分析Dashboard | ✅ Closed | DashboardPage 全局统计/掌握度/活动趋势 |
+| P1 | #47 E2E测试缺失 | ✅ Closed | Playwright 10 核心流测试 |
+| P1 | #49 OAuth配置 | ✅ Closed | 代码就绪，待 Supabase 控制台配置 |
+| P2 | #48 SSR/SEO缺失 | ✅ Closed | OG/meta/robots/sitemap + ADR-012 |
+| P2 | #50 DEVELOPMENT_PLAN.md | ✅ Closed | v2.0 全量重写 |
+| P2 | #51 审计总结 | ✅ Closed | 整合进开发计划 |
 
 ### 5.2 下阶段路线图
 
@@ -307,11 +307,11 @@ ai-knowledge-graph/
 - FSRS-5自研实现 + BKT知识追踪 (计划外)
 - 成就系统 + Capacitor移动端骨架 (提前于计划)
 
-### 遗漏性偏离 (需后续补齐)
-- builder.py/pathfinder.py 图谱引擎核心算法 (#42)
-- 学习分析Dashboard (#46)
-- E2E测试 (#47)
-- OAuth社交登录 (#49)
+### 遗漏性偏离 (已全部补齐 2026-04-07)
+- ✅ builder.py/pathfinder.py 图谱引擎核心算法 (#42)
+- ✅ 学习分析Dashboard (#46)
+- ✅ E2E测试 (#47)
+- ✅ OAuth社交登录代码就绪 (#49, 待控制台配置)
 
 ---
 

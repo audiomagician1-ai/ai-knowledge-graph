@@ -1,0 +1,160 @@
+{
+  "domain": "dissipative-structures",
+  "total_docs": 22,
+  "documents": [
+    {
+      "concept_id": "equilibrium-thermo-review",
+      "concept_name": "平衡态热力学回顾",
+      "subdomain_id": "nonequilibrium-thermo",
+      "file": "nonequilibrium-thermo/equilibrium-thermo-review.md",
+      "score": 65
+    },
+    {
+      "concept_id": "nonequilibrium-states",
+      "concept_name": "非平衡态",
+      "subdomain_id": "nonequilibrium-thermo",
+      "file": "nonequilibrium-thermo/nonequilibrium-states.md",
+      "score": 65
+    },
+    {
+      "concept_id": "entropy-production",
+      "concept_name": "熵产生",
+      "subdomain_id": "nonequilibrium-thermo",
+      "file": "nonequilibrium-thermo/entropy-production.md",
+      "score": 65
+    },
+    {
+      "concept_id": "onsager-reciprocal",
+      "concept_name": "Onsager倒易关系",
+      "subdomain_id": "nonequilibrium-thermo",
+      "file": "nonequilibrium-thermo/onsager-reciprocal.md",
+      "score": 65
+    },
+    {
+      "concept_id": "irreversible-processes-ds",
+      "concept_name": "不可逆过程",
+      "subdomain_id": "nonequilibrium-thermo",
+      "file": "nonequilibrium-thermo/irreversible-processes-ds.md",
+      "score": 65
+    },
+    {
+      "concept_id": "far-from-equilibrium",
+      "concept_name": "远离平衡态",
+      "subdomain_id": "dissipative-formation",
+      "file": "dissipative-formation/far-from-equilibrium.md",
+      "score": 65
+    },
+    {
+      "concept_id": "dissipative-structure-def",
+      "concept_name": "耗散结构定义",
+      "subdomain_id": "dissipative-formation",
+      "file": "dissipative-formation/dissipative-structure-def.md",
+      "score": 65
+    },
+    {
+      "concept_id": "dissipative-conditions",
+      "concept_name": "耗散结构形成条件",
+      "subdomain_id": "dissipative-formation",
+      "file": "dissipative-formation/dissipative-conditions.md",
+      "score": 65
+    },
+    {
+      "concept_id": "fluctuation-amplification",
+      "concept_name": "涨落放大",
+      "subdomain_id": "dissipative-formation",
+      "file": "dissipative-formation/fluctuation-amplification.md",
+      "score": 65
+    },
+    {
+      "concept_id": "order-through-fluctuation",
+      "concept_name": "通过涨落达到有序",
+      "subdomain_id": "dissipative-formation",
+      "file": "dissipative-formation/order-through-fluctuation.md",
+      "score": 65
+    },
+    {
+      "concept_id": "bifurcation-theory-ds",
+      "concept_name": "分岔理论",
+      "subdomain_id": "bifurcation-instability",
+      "file": "bifurcation-instability/bifurcation-theory-ds.md",
+      "score": 65
+    },
+    {
+      "concept_id": "pitchfork-bifurcation",
+      "concept_name": "叉形分岔",
+      "subdomain_id": "bifurcation-instability",
+      "file": "bifurcation-instability/pitchfork-bifurcation.md",
+      "score": 65
+    },
+    {
+      "concept_id": "hopf-bifurcation",
+      "concept_name": "Hopf分岔",
+      "subdomain_id": "bifurcation-instability",
+      "file": "bifurcation-instability/hopf-bifurcation.md",
+      "score": 65
+    },
+    {
+      "concept_id": "instability-mechanism",
+      "concept_name": "失稳机制",
+      "subdomain_id": "bifurcation-instability",
+      "file": "bifurcation-instability/instability-mechanism.md",
+      "score": 65
+    },
+    {
+      "concept_id": "benard-convection",
+      "concept_name": "Benard对流",
+      "subdomain_id": "pattern-formation",
+      "file": "pattern-formation/benard-convection.md",
+      "score": 65
+    },
+    {
+      "concept_id": "chemical-oscillation",
+      "concept_name": "化学振荡",
+      "subdomain_id": "pattern-formation",
+      "file": "pattern-formation/chemical-oscillation.md",
+      "score": 65
+    },
+    {
+      "concept_id": "turing-pattern",
+      "concept_name": "Turing斑图",
+      "subdomain_id": "pattern-formation",
+      "file": "pattern-formation/turing-pattern.md",
+      "score": 65
+    },
+    {
+      "concept_id": "spiral-waves",
+      "concept_name": "螺旋波",
+      "subdomain_id": "pattern-formation",
+      "file": "pattern-formation/spiral-waves.md",
+      "score": 65
+    },
+    {
+      "concept_id": "dissipative-in-biology",
+      "concept_name": "生命系统中的耗散结构",
+      "subdomain_id": "dissipative-applications",
+      "file": "dissipative-applications/dissipative-in-biology.md",
+      "score": 65
+    },
+    {
+      "concept_id": "dissipative-in-ecology",
+      "concept_name": "生态系统中的耗散结构",
+      "subdomain_id": "dissipative-applications",
+      "file": "dissipative-applications/dissipative-in-ecology.md",
+      "score": 65
+    },
+    {
+      "concept_id": "dissipative-in-society",
+      "concept_name": "社会系统中的耗散结构",
+      "subdomain_id": "dissipative-applications",
+      "file": "dissipative-applications/dissipative-in-society.md",
+      "score": 65
+    },
+    {
+      "concept_id": "dissipative-in-climate",
+      "concept_name": "气候系统中的耗散结构",
+      "subdomain_id": "dissipative-applications",
+      "file": "dissipative-applications/dissipative-in-climate.md",
+      "score": 65
+    }
+  ]
+}

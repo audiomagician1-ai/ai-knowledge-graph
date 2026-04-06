@@ -73,15 +73,15 @@ data/rag/          — RAG知识文档 (6,156篇)
 
 | 指标 | 值 | 更新日期 |
 |------|------|----------|
-| **知识球** | 30 个知识球 | 2026-03-27 |
-| **知识概念** | 6,156 | 2026-03-27 |
-| **边** | 7,015 | 2026-03-27 |
+| **知识球** | 36 个知识球 | 2026-04-07 |
+| **知识概念** | 6,300 | 2026-04-07 |
+| **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 595 (0 断引用) | 2026-03-27 |
-| **RAG 覆盖** | 6,156 (100% 覆盖) | 2026-03-27 |
-| **测试总数** | 1,199 (953 BE + 238 FE + 8 FSRS review) | 2026-04-07 |
+| **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
+| **测试总数** | 1,202 (956 BE + 238 FE + 8 FSRS review) | 2026-04-07 |
 | **tsc errors** | 0 | 2026-03-21 |
 | **Open Issues** | 0 | 2026-04-07 |
-| **RAG 质量** | 6156/6156, avg 79.5, S:1096 A:5060 B:0 C:0 | 2026-04-06 |
+| **RAG 质量** | 6156/6156 legacy avg 79.5 + 144 new stubs | 2026-04-07 |
 
 ---
 
@@ -122,6 +122,12 @@ data/rag/          — RAG知识文档 (6,156篇)
 - ✅ #46 学习分析Dashboard (DashboardPage + 全局统计/掌握度分布/活动趋势/域进度卡片)
 - ✅ #49 OAuth代码已完成 (待Supabase Dashboard配置)
 - ✅ #47 E2E测试框架 (Playwright + 10个核心用户流测试)
+
+### 行为设计优化 Sprint (基于 BEHAVIOR_DESIGN_AUDIT.md)
+- ✅ 6新域同步 Workers (systems-theory家族6域 seed+RAG+Workers三端同步, 0 test failures)
+- ✅ P0 首页引导层 (WelcomeGuide: 价值主张+推荐域快速开始, 首访弹窗)
+- ✅ P0 回访提示体系 (ReviewBanner: FSRS复习提醒+学习进度+连续天数)
+- ✅ P1 评估后终点重设计 (庆祝动效+推荐下一个概念+三按钮布局)
 
 ---
 
@@ -300,4 +306,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-07 | **Scope**: Sprint closes ALL 7 audit issues — #44 sync gov + #42 graph engine + #43 RAG + #46 Dashboard + #49 OAuth + #47 E2E + #48 SEO | **Result**: 0 open issues, all audit items resolved
+**Date**: 2026-04-07 | **Scope**: Workers sync (6 new domains) + Behavior Design P0/P1 (WelcomeGuide + ReviewBanner + post-assessment redesign) | **Result**: 956 BE + 238 FE tests all pass, 36 domains, 6300 concepts, 0 test failures

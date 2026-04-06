@@ -1,0 +1,188 @@
+{
+  "domain": "information-theory",
+  "total_docs": 26,
+  "documents": [
+    {
+      "concept_id": "information-definition",
+      "concept_name": "信息的定义",
+      "subdomain_id": "info-fundamentals",
+      "file": "info-fundamentals/information-definition.md",
+      "score": 65
+    },
+    {
+      "concept_id": "probability-basics-info",
+      "concept_name": "概率论基础",
+      "subdomain_id": "info-fundamentals",
+      "file": "info-fundamentals/probability-basics-info.md",
+      "score": 65
+    },
+    {
+      "concept_id": "information-source",
+      "concept_name": "信息源",
+      "subdomain_id": "info-fundamentals",
+      "file": "info-fundamentals/information-source.md",
+      "score": 65
+    },
+    {
+      "concept_id": "communication-model",
+      "concept_name": "通信系统模型",
+      "subdomain_id": "info-fundamentals",
+      "file": "info-fundamentals/communication-model.md",
+      "score": 65
+    },
+    {
+      "concept_id": "shannon-entropy",
+      "concept_name": "Shannon熵",
+      "subdomain_id": "entropy-theory",
+      "file": "entropy-theory/shannon-entropy.md",
+      "score": 65
+    },
+    {
+      "concept_id": "conditional-entropy",
+      "concept_name": "条件熵",
+      "subdomain_id": "entropy-theory",
+      "file": "entropy-theory/conditional-entropy.md",
+      "score": 65
+    },
+    {
+      "concept_id": "mutual-information",
+      "concept_name": "互信息",
+      "subdomain_id": "entropy-theory",
+      "file": "entropy-theory/mutual-information.md",
+      "score": 65
+    },
+    {
+      "concept_id": "relative-entropy",
+      "concept_name": "相对熵(KL散度)",
+      "subdomain_id": "entropy-theory",
+      "file": "entropy-theory/relative-entropy.md",
+      "score": 65
+    },
+    {
+      "concept_id": "joint-entropy",
+      "concept_name": "联合熵",
+      "subdomain_id": "entropy-theory",
+      "file": "entropy-theory/joint-entropy.md",
+      "score": 65
+    },
+    {
+      "concept_id": "entropy-rate",
+      "concept_name": "熵率",
+      "subdomain_id": "entropy-theory",
+      "file": "entropy-theory/entropy-rate.md",
+      "score": 65
+    },
+    {
+      "concept_id": "source-coding-theorem",
+      "concept_name": "信源编码定理",
+      "subdomain_id": "source-coding",
+      "file": "source-coding/source-coding-theorem.md",
+      "score": 65
+    },
+    {
+      "concept_id": "huffman-coding",
+      "concept_name": "Huffman编码",
+      "subdomain_id": "source-coding",
+      "file": "source-coding/huffman-coding.md",
+      "score": 65
+    },
+    {
+      "concept_id": "arithmetic-coding",
+      "concept_name": "算术编码",
+      "subdomain_id": "source-coding",
+      "file": "source-coding/arithmetic-coding.md",
+      "score": 65
+    },
+    {
+      "concept_id": "lempel-ziv",
+      "concept_name": "LZ编码",
+      "subdomain_id": "source-coding",
+      "file": "source-coding/lempel-ziv.md",
+      "score": 65
+    },
+    {
+      "concept_id": "rate-distortion",
+      "concept_name": "率失真理论",
+      "subdomain_id": "source-coding",
+      "file": "source-coding/rate-distortion.md",
+      "score": 65
+    },
+    {
+      "concept_id": "channel-capacity",
+      "concept_name": "信道容量",
+      "subdomain_id": "channel-coding",
+      "file": "channel-coding/channel-capacity.md",
+      "score": 65
+    },
+    {
+      "concept_id": "noisy-channel-coding",
+      "concept_name": "有噪信道编码定理",
+      "subdomain_id": "channel-coding",
+      "file": "channel-coding/noisy-channel-coding.md",
+      "score": 65
+    },
+    {
+      "concept_id": "error-detecting-codes",
+      "concept_name": "检错码",
+      "subdomain_id": "channel-coding",
+      "file": "channel-coding/error-detecting-codes.md",
+      "score": 65
+    },
+    {
+      "concept_id": "linear-codes",
+      "concept_name": "线性码",
+      "subdomain_id": "channel-coding",
+      "file": "channel-coding/linear-codes.md",
+      "score": 65
+    },
+    {
+      "concept_id": "convolutional-codes",
+      "concept_name": "卷积码",
+      "subdomain_id": "channel-coding",
+      "file": "channel-coding/convolutional-codes.md",
+      "score": 65
+    },
+    {
+      "concept_id": "turbo-ldpc-codes",
+      "concept_name": "Turbo码与LDPC码",
+      "subdomain_id": "channel-coding",
+      "file": "channel-coding/turbo-ldpc-codes.md",
+      "score": 65
+    },
+    {
+      "concept_id": "network-info-theory",
+      "concept_name": "网络信息论基础",
+      "subdomain_id": "info-network",
+      "file": "info-network/network-info-theory.md",
+      "score": 65
+    },
+    {
+      "concept_id": "distributed-source-coding",
+      "concept_name": "分布式信源编码",
+      "subdomain_id": "info-network",
+      "file": "info-network/distributed-source-coding.md",
+      "score": 65
+    },
+    {
+      "concept_id": "info-in-ml",
+      "concept_name": "信息论与机器学习",
+      "subdomain_id": "info-applications",
+      "file": "info-applications/info-in-ml.md",
+      "score": 65
+    },
+    {
+      "concept_id": "info-in-crypto",
+      "concept_name": "信息论与密码学",
+      "subdomain_id": "info-applications",
+      "file": "info-applications/info-in-crypto.md",
+      "score": 65
+    },
+    {
+      "concept_id": "info-in-biology",
+      "concept_name": "信息论与生物学",
+      "subdomain_id": "info-applications",
+      "file": "info-applications/info-in-biology.md",
+      "score": 65
+    }
+  ]
+}

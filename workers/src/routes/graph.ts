@@ -35,6 +35,12 @@ import seedGamePublishing from '../../data/seed/game-publishing/seed_graph.json'
 import seedGameLiveOps from '../../data/seed/game-live-ops/seed_graph.json';
 import seedGameQa from '../../data/seed/game-qa/seed_graph.json';
 import seedGameProduction from '../../data/seed/game-production/seed_graph.json';
+import seedSystemsTheory from '../../data/seed/systems-theory/seed_graph.json';
+import seedCybernetics from '../../data/seed/cybernetics/seed_graph.json';
+import seedInformationTheory from '../../data/seed/information-theory/seed_graph.json';
+import seedDissipativeStructures from '../../data/seed/dissipative-structures/seed_graph.json';
+import seedSynergetics from '../../data/seed/synergetics/seed_graph.json';
+import seedCatastropheTheory from '../../data/seed/catastrophe-theory/seed_graph.json';
 // Multi-domain RAG index imports
 import ragAI from '../../data/rag/ai-engineering/_index.json';
 import ragMath from '../../data/rag/mathematics/_index.json';
@@ -66,6 +72,12 @@ import ragGamePublishing from '../../data/rag/game-publishing/_index.json';
 import ragGameLiveOps from '../../data/rag/game-live-ops/_index.json';
 import ragGameQa from '../../data/rag/game-qa/_index.json';
 import ragGameProduction from '../../data/rag/game-production/_index.json';
+import ragSystemsTheory from '../../data/rag/systems-theory/_index.json';
+import ragCybernetics from '../../data/rag/cybernetics/_index.json';
+import ragInformationTheory from '../../data/rag/information-theory/_index.json';
+import ragDissipativeStructures from '../../data/rag/dissipative-structures/_index.json';
+import ragSynergetics from '../../data/rag/synergetics/_index.json';
+import ragCatastropheTheory from '../../data/rag/catastrophe-theory/_index.json';
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -95,6 +107,12 @@ const seedMap: Record<string, any> = {
   'game-live-ops': seedGameLiveOps,
   'game-qa': seedGameQa,
   'game-production': seedGameProduction,
+  'systems-theory': seedSystemsTheory,
+  'cybernetics': seedCybernetics,
+  'information-theory': seedInformationTheory,
+  'dissipative-structures': seedDissipativeStructures,
+  'synergetics': seedSynergetics,
+  'catastrophe-theory': seedCatastropheTheory,
 };
 const ragMap: Record<string, any> = {
   'ai-engineering': ragAI, 'mathematics': ragMath, 'english': ragEnglish,
@@ -120,6 +138,12 @@ const ragMap: Record<string, any> = {
   'game-live-ops': ragGameLiveOps,
   'game-qa': ragGameQa,
   'game-production': ragGameProduction,
+  'systems-theory': ragSystemsTheory,
+  'cybernetics': ragCybernetics,
+  'information-theory': ragInformationTheory,
+  'dissipative-structures': ragDissipativeStructures,
+  'synergetics': ragSynergetics,
+  'catastrophe-theory': ragCatastropheTheory,
 };
 function getSeed(domain: string): any { return seedMap[domain] || null; }
 function getRagIndex(domain: string): any { return ragMap[domain] || { documents: [], stats: {} }; }

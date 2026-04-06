@@ -1,0 +1,188 @@
+{
+  "domain": "cybernetics",
+  "total_docs": 26,
+  "documents": [
+    {
+      "concept_id": "cybernetics-overview",
+      "concept_name": "控制论概述",
+      "subdomain_id": "control-fundamentals",
+      "file": "control-fundamentals/cybernetics-overview.md",
+      "score": 65
+    },
+    {
+      "concept_id": "control-system-def",
+      "concept_name": "控制系统定义",
+      "subdomain_id": "control-fundamentals",
+      "file": "control-fundamentals/control-system-def.md",
+      "score": 65
+    },
+    {
+      "concept_id": "open-closed-loop",
+      "concept_name": "开环与闭环控制",
+      "subdomain_id": "control-fundamentals",
+      "file": "control-fundamentals/open-closed-loop.md",
+      "score": 65
+    },
+    {
+      "concept_id": "signal-types",
+      "concept_name": "信号类型",
+      "subdomain_id": "control-fundamentals",
+      "file": "control-fundamentals/signal-types.md",
+      "score": 65
+    },
+    {
+      "concept_id": "transfer-function",
+      "concept_name": "传递函数",
+      "subdomain_id": "control-fundamentals",
+      "file": "control-fundamentals/transfer-function.md",
+      "score": 65
+    },
+    {
+      "concept_id": "negative-feedback",
+      "concept_name": "负反馈原理",
+      "subdomain_id": "feedback-control",
+      "file": "feedback-control/negative-feedback.md",
+      "score": 65
+    },
+    {
+      "concept_id": "positive-feedback",
+      "concept_name": "正反馈原理",
+      "subdomain_id": "feedback-control",
+      "file": "feedback-control/positive-feedback.md",
+      "score": 65
+    },
+    {
+      "concept_id": "feedback-delay",
+      "concept_name": "反馈延迟",
+      "subdomain_id": "feedback-control",
+      "file": "feedback-control/feedback-delay.md",
+      "score": 65
+    },
+    {
+      "concept_id": "homeostasis",
+      "concept_name": "稳态维持",
+      "subdomain_id": "feedback-control",
+      "file": "feedback-control/homeostasis.md",
+      "score": 65
+    },
+    {
+      "concept_id": "pid-control",
+      "concept_name": "PID控制",
+      "subdomain_id": "classical-control",
+      "file": "classical-control/pid-control.md",
+      "score": 65
+    },
+    {
+      "concept_id": "frequency-response",
+      "concept_name": "频率响应",
+      "subdomain_id": "classical-control",
+      "file": "classical-control/frequency-response.md",
+      "score": 65
+    },
+    {
+      "concept_id": "stability-analysis",
+      "concept_name": "稳定性分析",
+      "subdomain_id": "classical-control",
+      "file": "classical-control/stability-analysis.md",
+      "score": 65
+    },
+    {
+      "concept_id": "root-locus",
+      "concept_name": "根轨迹法",
+      "subdomain_id": "classical-control",
+      "file": "classical-control/root-locus.md",
+      "score": 65
+    },
+    {
+      "concept_id": "compensator-design",
+      "concept_name": "补偿器设计",
+      "subdomain_id": "classical-control",
+      "file": "classical-control/compensator-design.md",
+      "score": 65
+    },
+    {
+      "concept_id": "state-space-control",
+      "concept_name": "状态空间法",
+      "subdomain_id": "modern-control",
+      "file": "modern-control/state-space-control.md",
+      "score": 65
+    },
+    {
+      "concept_id": "optimal-control",
+      "concept_name": "最优控制",
+      "subdomain_id": "modern-control",
+      "file": "modern-control/optimal-control.md",
+      "score": 65
+    },
+    {
+      "concept_id": "adaptive-control",
+      "concept_name": "自适应控制",
+      "subdomain_id": "modern-control",
+      "file": "modern-control/adaptive-control.md",
+      "score": 65
+    },
+    {
+      "concept_id": "robust-control",
+      "concept_name": "鲁棒控制",
+      "subdomain_id": "modern-control",
+      "file": "modern-control/robust-control.md",
+      "score": 65
+    },
+    {
+      "concept_id": "fuzzy-control",
+      "concept_name": "模糊控制",
+      "subdomain_id": "intelligent-control",
+      "file": "intelligent-control/fuzzy-control.md",
+      "score": 65
+    },
+    {
+      "concept_id": "neural-network-control",
+      "concept_name": "神经网络控制",
+      "subdomain_id": "intelligent-control",
+      "file": "intelligent-control/neural-network-control.md",
+      "score": 65
+    },
+    {
+      "concept_id": "genetic-algorithm-control",
+      "concept_name": "遗传算法优化",
+      "subdomain_id": "intelligent-control",
+      "file": "intelligent-control/genetic-algorithm-control.md",
+      "score": 65
+    },
+    {
+      "concept_id": "reinforcement-learning-ctrl",
+      "concept_name": "强化学习控制",
+      "subdomain_id": "intelligent-control",
+      "file": "intelligent-control/reinforcement-learning-ctrl.md",
+      "score": 65
+    },
+    {
+      "concept_id": "biological-cybernetics",
+      "concept_name": "生物控制论",
+      "subdomain_id": "cybernetics-applications",
+      "file": "cybernetics-applications/biological-cybernetics.md",
+      "score": 65
+    },
+    {
+      "concept_id": "social-cybernetics",
+      "concept_name": "社会控制论",
+      "subdomain_id": "cybernetics-applications",
+      "file": "cybernetics-applications/social-cybernetics.md",
+      "score": 65
+    },
+    {
+      "concept_id": "economic-cybernetics",
+      "concept_name": "经济控制论",
+      "subdomain_id": "cybernetics-applications",
+      "file": "cybernetics-applications/economic-cybernetics.md",
+      "score": 65
+    },
+    {
+      "concept_id": "second-order-cybernetics",
+      "concept_name": "二阶控制论",
+      "subdomain_id": "cybernetics-applications",
+      "file": "cybernetics-applications/second-order-cybernetics.md",
+      "score": 65
+    }
+  ]
+}

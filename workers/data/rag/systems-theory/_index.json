@@ -1,0 +1,188 @@
+{
+  "domain": "systems-theory",
+  "total_docs": 26,
+  "documents": [
+    {
+      "concept_id": "system-definition",
+      "concept_name": "系统的定义",
+      "subdomain_id": "system-fundamentals",
+      "file": "system-fundamentals/system-definition.md",
+      "score": 65
+    },
+    {
+      "concept_id": "system-elements",
+      "concept_name": "系统要素",
+      "subdomain_id": "system-fundamentals",
+      "file": "system-fundamentals/system-elements.md",
+      "score": 65
+    },
+    {
+      "concept_id": "system-environment",
+      "concept_name": "系统与环境",
+      "subdomain_id": "system-fundamentals",
+      "file": "system-fundamentals/system-environment.md",
+      "score": 65
+    },
+    {
+      "concept_id": "system-classification",
+      "concept_name": "系统分类",
+      "subdomain_id": "system-fundamentals",
+      "file": "system-fundamentals/system-classification.md",
+      "score": 65
+    },
+    {
+      "concept_id": "emergence",
+      "concept_name": "涌现性",
+      "subdomain_id": "system-fundamentals",
+      "file": "system-fundamentals/emergence.md",
+      "score": 65
+    },
+    {
+      "concept_id": "system-hierarchy",
+      "concept_name": "系统层次",
+      "subdomain_id": "system-structure",
+      "file": "system-structure/system-hierarchy.md",
+      "score": 65
+    },
+    {
+      "concept_id": "system-coupling",
+      "concept_name": "系统耦合",
+      "subdomain_id": "system-structure",
+      "file": "system-structure/system-coupling.md",
+      "score": 65
+    },
+    {
+      "concept_id": "system-boundary",
+      "concept_name": "系统边界",
+      "subdomain_id": "system-structure",
+      "file": "system-structure/system-boundary.md",
+      "score": 65
+    },
+    {
+      "concept_id": "system-network",
+      "concept_name": "系统网络",
+      "subdomain_id": "system-structure",
+      "file": "system-structure/system-network.md",
+      "score": 65
+    },
+    {
+      "concept_id": "feedback-loop",
+      "concept_name": "反馈回路",
+      "subdomain_id": "system-behavior",
+      "file": "system-behavior/feedback-loop.md",
+      "score": 65
+    },
+    {
+      "concept_id": "system-stability",
+      "concept_name": "系统稳定性",
+      "subdomain_id": "system-behavior",
+      "file": "system-behavior/system-stability.md",
+      "score": 65
+    },
+    {
+      "concept_id": "system-evolution",
+      "concept_name": "系统演化",
+      "subdomain_id": "system-behavior",
+      "file": "system-behavior/system-evolution.md",
+      "score": 65
+    },
+    {
+      "concept_id": "self-organization",
+      "concept_name": "自组织",
+      "subdomain_id": "system-behavior",
+      "file": "system-behavior/self-organization.md",
+      "score": 65
+    },
+    {
+      "concept_id": "system-adaptation",
+      "concept_name": "系统适应",
+      "subdomain_id": "system-behavior",
+      "file": "system-behavior/system-adaptation.md",
+      "score": 65
+    },
+    {
+      "concept_id": "system-dynamics-model",
+      "concept_name": "系统动力学建模",
+      "subdomain_id": "system-modeling",
+      "file": "system-modeling/system-dynamics-model.md",
+      "score": 65
+    },
+    {
+      "concept_id": "state-space-model",
+      "concept_name": "状态空间模型",
+      "subdomain_id": "system-modeling",
+      "file": "system-modeling/state-space-model.md",
+      "score": 65
+    },
+    {
+      "concept_id": "agent-based-model",
+      "concept_name": "基于Agent的建模",
+      "subdomain_id": "system-modeling",
+      "file": "system-modeling/agent-based-model.md",
+      "score": 65
+    },
+    {
+      "concept_id": "system-optimization",
+      "concept_name": "系统优化",
+      "subdomain_id": "system-modeling",
+      "file": "system-modeling/system-optimization.md",
+      "score": 65
+    },
+    {
+      "concept_id": "holistic-thinking",
+      "concept_name": "整体性思维",
+      "subdomain_id": "system-thinking",
+      "file": "system-thinking/holistic-thinking.md",
+      "score": 65
+    },
+    {
+      "concept_id": "causal-loop-thinking",
+      "concept_name": "因果环路思维",
+      "subdomain_id": "system-thinking",
+      "file": "system-thinking/causal-loop-thinking.md",
+      "score": 65
+    },
+    {
+      "concept_id": "leverage-points",
+      "concept_name": "杠杆点",
+      "subdomain_id": "system-thinking",
+      "file": "system-thinking/leverage-points.md",
+      "score": 65
+    },
+    {
+      "concept_id": "mental-models",
+      "concept_name": "心智模型",
+      "subdomain_id": "system-thinking",
+      "file": "system-thinking/mental-models.md",
+      "score": 65
+    },
+    {
+      "concept_id": "complex-adaptive-system",
+      "concept_name": "复杂适应系统",
+      "subdomain_id": "complex-systems",
+      "file": "complex-systems/complex-adaptive-system.md",
+      "score": 65
+    },
+    {
+      "concept_id": "edge-of-chaos",
+      "concept_name": "混沌边缘",
+      "subdomain_id": "complex-systems",
+      "file": "complex-systems/edge-of-chaos.md",
+      "score": 65
+    },
+    {
+      "concept_id": "scale-free-network",
+      "concept_name": "无标度网络",
+      "subdomain_id": "complex-systems",
+      "file": "complex-systems/scale-free-network.md",
+      "score": 65
+    },
+    {
+      "concept_id": "resilience",
+      "concept_name": "系统韧性",
+      "subdomain_id": "complex-systems",
+      "file": "complex-systems/resilience.md",
+      "score": 65
+    }
+  ]
+}

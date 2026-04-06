@@ -31,6 +31,12 @@ import seedGamePublishing from '../../data/seed/game-publishing/seed_graph.json'
 import seedGameLiveOps from '../../data/seed/game-live-ops/seed_graph.json';
 import seedGameQa from '../../data/seed/game-qa/seed_graph.json';
 import seedGameProduction from '../../data/seed/game-production/seed_graph.json';
+import seedSystemsTheory from '../../data/seed/systems-theory/seed_graph.json';
+import seedCybernetics from '../../data/seed/cybernetics/seed_graph.json';
+import seedInformationTheory from '../../data/seed/information-theory/seed_graph.json';
+import seedDissipativeStructures from '../../data/seed/dissipative-structures/seed_graph.json';
+import seedSynergetics from '../../data/seed/synergetics/seed_graph.json';
+import seedCatastropheTheory from '../../data/seed/catastrophe-theory/seed_graph.json';
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -59,6 +65,12 @@ const seedMap: Record<string, any> = {
   'game-live-ops': seedGameLiveOps,
   'game-qa': seedGameQa,
   'game-production': seedGameProduction,
+  'systems-theory': seedSystemsTheory,
+  'cybernetics': seedCybernetics,
+  'information-theory': seedInformationTheory,
+  'dissipative-structures': seedDissipativeStructures,
+  'synergetics': seedSynergetics,
+  'catastrophe-theory': seedCatastropheTheory,
 };
 function getSeed(domain: string): any { return seedMap[domain] || seedMap[DEFAULT_DOMAIN]; }
 

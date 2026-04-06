@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { createLogger } from '@/lib/utils/logger';
 import { useDomainStore } from '@/lib/store/domain';
 import { Loader } from 'lucide-react';
+import { WelcomeGuide } from '@/components/common/WelcomeGuide';
+import { ReviewBanner } from '@/components/common/ReviewBanner';
 
 const log = createLogger('HomePage');
 
@@ -585,6 +587,10 @@ export function HomePage() {
           <Loader size={28} className="animate-spin" style={{ color: '#888' }} />
         </div>
       )}
+      {/* Behavior Design: Review banner for returning users */}
+      <ReviewBanner />
+      {/* Behavior Design: Welcome guide for first-time visitors */}
+      <WelcomeGuide />
       {trans && (
         <div className="fixed inset-0" style={{ zIndex: 50, pointerEvents: 'none' }}>
           <div style={{ position: 'absolute', left: trans.cx, top: trans.cy, width: 0, height: 0, borderRadius: '50%', backgroundColor: trans.color, transform: 'translate(-50%,-50%)', animation: 'orb-expand ' + TRANSITION_MS + 'ms cubic-bezier(0.4,0,0.2,1) forwards', opacity: 0.85 }} />

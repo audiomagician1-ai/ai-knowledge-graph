@@ -1,0 +1,153 @@
+{
+  "domain": "synergetics",
+  "total_docs": 21,
+  "documents": [
+    {
+      "concept_id": "synergetics-overview",
+      "concept_name": "协同学概述",
+      "subdomain_id": "synergetics-fundamentals",
+      "file": "synergetics-fundamentals/synergetics-overview.md",
+      "score": 65
+    },
+    {
+      "concept_id": "self-org-synergetics",
+      "concept_name": "自组织现象",
+      "subdomain_id": "synergetics-fundamentals",
+      "file": "synergetics-fundamentals/self-org-synergetics.md",
+      "score": 65
+    },
+    {
+      "concept_id": "open-system-syn",
+      "concept_name": "开放系统条件",
+      "subdomain_id": "synergetics-fundamentals",
+      "file": "synergetics-fundamentals/open-system-syn.md",
+      "score": 65
+    },
+    {
+      "concept_id": "competition-cooperation",
+      "concept_name": "竞争与合作",
+      "subdomain_id": "synergetics-fundamentals",
+      "file": "synergetics-fundamentals/competition-cooperation.md",
+      "score": 65
+    },
+    {
+      "concept_id": "order-parameter-def",
+      "concept_name": "序参量定义",
+      "subdomain_id": "order-parameter",
+      "file": "order-parameter/order-parameter-def.md",
+      "score": 65
+    },
+    {
+      "concept_id": "order-param-dynamics",
+      "concept_name": "序参量动力学",
+      "subdomain_id": "order-parameter",
+      "file": "order-parameter/order-param-dynamics.md",
+      "score": 65
+    },
+    {
+      "concept_id": "order-param-equation",
+      "concept_name": "序参量方程",
+      "subdomain_id": "order-parameter",
+      "file": "order-parameter/order-param-equation.md",
+      "score": 65
+    },
+    {
+      "concept_id": "critical-slowing-down",
+      "concept_name": "临界慢化",
+      "subdomain_id": "order-parameter",
+      "file": "order-parameter/critical-slowing-down.md",
+      "score": 65
+    },
+    {
+      "concept_id": "slaving-principle-def",
+      "concept_name": "役使原理",
+      "subdomain_id": "slaving-principle",
+      "file": "slaving-principle/slaving-principle-def.md",
+      "score": 65
+    },
+    {
+      "concept_id": "adiabatic-elimination",
+      "concept_name": "绝热消除",
+      "subdomain_id": "slaving-principle",
+      "file": "slaving-principle/adiabatic-elimination.md",
+      "score": 65
+    },
+    {
+      "concept_id": "center-manifold",
+      "concept_name": "中心流形",
+      "subdomain_id": "slaving-principle",
+      "file": "slaving-principle/center-manifold.md",
+      "score": 65
+    },
+    {
+      "concept_id": "circular-causality-syn",
+      "concept_name": "协同学中的循环因果",
+      "subdomain_id": "slaving-principle",
+      "file": "slaving-principle/circular-causality-syn.md",
+      "score": 65
+    },
+    {
+      "concept_id": "phase-transition-concept",
+      "concept_name": "相变概念",
+      "subdomain_id": "phase-transition-syn",
+      "file": "phase-transition-syn/phase-transition-concept.md",
+      "score": 65
+    },
+    {
+      "concept_id": "symmetry-breaking-syn",
+      "concept_name": "对称性破缺",
+      "subdomain_id": "phase-transition-syn",
+      "file": "phase-transition-syn/symmetry-breaking-syn.md",
+      "score": 65
+    },
+    {
+      "concept_id": "pattern-selection",
+      "concept_name": "模式选择",
+      "subdomain_id": "phase-transition-syn",
+      "file": "phase-transition-syn/pattern-selection.md",
+      "score": 65
+    },
+    {
+      "concept_id": "nonequilibrium-phase",
+      "concept_name": "非平衡相变",
+      "subdomain_id": "phase-transition-syn",
+      "file": "phase-transition-syn/nonequilibrium-phase.md",
+      "score": 65
+    },
+    {
+      "concept_id": "laser-synergetics",
+      "concept_name": "激光理论(协同学视角)",
+      "subdomain_id": "synergetics-applications",
+      "file": "synergetics-applications/laser-synergetics.md",
+      "score": 65
+    },
+    {
+      "concept_id": "synergetics-in-brain",
+      "concept_name": "大脑中的协同现象",
+      "subdomain_id": "synergetics-applications",
+      "file": "synergetics-applications/synergetics-in-brain.md",
+      "score": 65
+    },
+    {
+      "concept_id": "synergetics-in-ecology-soc",
+      "concept_name": "生态与社会中的协同",
+      "subdomain_id": "synergetics-applications",
+      "file": "synergetics-applications/synergetics-in-ecology-soc.md",
+      "score": 65
+    },
+    {
+      "concept_id": "pattern-recognition-syn",
+      "concept_name": "协同学模式识别",
+      "subdomain_id": "synergetics-applications",
+      "file": "synergetics-applications/pattern-recognition-syn.md",
+      "score": 65
+    },
+    {
+      "concept_id": "synergetics-in-economy",
+      "concept_name": "经济中的协同效应",
+      "subdomain_id": "synergetics-applications",
+      "file": "synergetics-applications/synergetics-in-economy.md",
+      "score": 65
+    }
+  ]
+}

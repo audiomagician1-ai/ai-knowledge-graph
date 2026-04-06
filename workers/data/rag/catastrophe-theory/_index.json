@@ -1,0 +1,167 @@
+{
+  "domain": "catastrophe-theory",
+  "total_docs": 23,
+  "documents": [
+    {
+      "concept_id": "catastrophe-overview",
+      "concept_name": "突变论概述",
+      "subdomain_id": "catastrophe-fundamentals",
+      "file": "catastrophe-fundamentals/catastrophe-overview.md",
+      "score": 65
+    },
+    {
+      "concept_id": "structural-stability-ct",
+      "concept_name": "结构稳定性",
+      "subdomain_id": "catastrophe-fundamentals",
+      "file": "catastrophe-fundamentals/structural-stability-ct.md",
+      "score": 65
+    },
+    {
+      "concept_id": "critical-point-catastrophe",
+      "concept_name": "临界点理论",
+      "subdomain_id": "catastrophe-fundamentals",
+      "file": "catastrophe-fundamentals/critical-point-catastrophe.md",
+      "score": 65
+    },
+    {
+      "concept_id": "smooth-mapping",
+      "concept_name": "光滑映射与奇点",
+      "subdomain_id": "catastrophe-fundamentals",
+      "file": "catastrophe-fundamentals/smooth-mapping.md",
+      "score": 65
+    },
+    {
+      "concept_id": "potential-function",
+      "concept_name": "势函数",
+      "subdomain_id": "catastrophe-fundamentals",
+      "file": "catastrophe-fundamentals/potential-function.md",
+      "score": 65
+    },
+    {
+      "concept_id": "fold-catastrophe",
+      "concept_name": "折叠突变(A2)",
+      "subdomain_id": "elementary-catastrophes",
+      "file": "elementary-catastrophes/fold-catastrophe.md",
+      "score": 65
+    },
+    {
+      "concept_id": "cusp-catastrophe",
+      "concept_name": "尖点突变(A3)",
+      "subdomain_id": "elementary-catastrophes",
+      "file": "elementary-catastrophes/cusp-catastrophe.md",
+      "score": 65
+    },
+    {
+      "concept_id": "swallowtail-catastrophe",
+      "concept_name": "燕尾突变(A4)",
+      "subdomain_id": "elementary-catastrophes",
+      "file": "elementary-catastrophes/swallowtail-catastrophe.md",
+      "score": 65
+    },
+    {
+      "concept_id": "butterfly-catastrophe",
+      "concept_name": "蝴蝶突变(A5)",
+      "subdomain_id": "elementary-catastrophes",
+      "file": "elementary-catastrophes/butterfly-catastrophe.md",
+      "score": 65
+    },
+    {
+      "concept_id": "umbilic-catastrophes",
+      "concept_name": "脐点突变(D类)",
+      "subdomain_id": "elementary-catastrophes",
+      "file": "elementary-catastrophes/umbilic-catastrophes.md",
+      "score": 65
+    },
+    {
+      "concept_id": "classification-theorem",
+      "concept_name": "Thom分类定理",
+      "subdomain_id": "elementary-catastrophes",
+      "file": "elementary-catastrophes/classification-theorem.md",
+      "score": 65
+    },
+    {
+      "concept_id": "singularity-theory",
+      "concept_name": "奇点理论",
+      "subdomain_id": "catastrophe-math",
+      "file": "catastrophe-math/singularity-theory.md",
+      "score": 65
+    },
+    {
+      "concept_id": "unfolding-theory",
+      "concept_name": "开折理论",
+      "subdomain_id": "catastrophe-math",
+      "file": "catastrophe-math/unfolding-theory.md",
+      "score": 65
+    },
+    {
+      "concept_id": "transversality",
+      "concept_name": "横截性",
+      "subdomain_id": "catastrophe-math",
+      "file": "catastrophe-math/transversality.md",
+      "score": 65
+    },
+    {
+      "concept_id": "morse-theory-intro",
+      "concept_name": "Morse理论简介",
+      "subdomain_id": "catastrophe-math",
+      "file": "catastrophe-math/morse-theory-intro.md",
+      "score": 65
+    },
+    {
+      "concept_id": "hysteresis-ct",
+      "concept_name": "滞后现象",
+      "subdomain_id": "catastrophe-dynamics",
+      "file": "catastrophe-dynamics/hysteresis-ct.md",
+      "score": 65
+    },
+    {
+      "concept_id": "bimodality",
+      "concept_name": "双模态",
+      "subdomain_id": "catastrophe-dynamics",
+      "file": "catastrophe-dynamics/bimodality.md",
+      "score": 65
+    },
+    {
+      "concept_id": "catastrophe-flags",
+      "concept_name": "突变标志",
+      "subdomain_id": "catastrophe-dynamics",
+      "file": "catastrophe-dynamics/catastrophe-flags.md",
+      "score": 65
+    },
+    {
+      "concept_id": "delay-convention",
+      "concept_name": "延迟惯例与Maxwell惯例",
+      "subdomain_id": "catastrophe-dynamics",
+      "file": "catastrophe-dynamics/delay-convention.md",
+      "score": 65
+    },
+    {
+      "concept_id": "catastrophe-in-physics",
+      "concept_name": "物理学中的突变",
+      "subdomain_id": "catastrophe-applications",
+      "file": "catastrophe-applications/catastrophe-in-physics.md",
+      "score": 65
+    },
+    {
+      "concept_id": "catastrophe-in-biology",
+      "concept_name": "生物学中的突变",
+      "subdomain_id": "catastrophe-applications",
+      "file": "catastrophe-applications/catastrophe-in-biology.md",
+      "score": 65
+    },
+    {
+      "concept_id": "catastrophe-in-psychology",
+      "concept_name": "心理学中的突变",
+      "subdomain_id": "catastrophe-applications",
+      "file": "catastrophe-applications/catastrophe-in-psychology.md",
+      "score": 65
+    },
+    {
+      "concept_id": "catastrophe-in-economics",
+      "concept_name": "经济学中的突变",
+      "subdomain_id": "catastrophe-applications",
+      "file": "catastrophe-applications/catastrophe-in-economics.md",
+      "score": 65
+    }
+  ]
+}
