@@ -78,10 +78,10 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,238 (972 BE + 250 FE + 16 E2E) | 2026-04-07 |
+| **测试总数** | 1,275 (981 BE + 278 FE + 16 E2E) | 2026-04-07 |
 | **tsc errors** | 0 | 2026-04-07 |
 | **Open Issues** | 0 | 2026-04-07 |
-| **RAG 质量** | 6156 legacy avg 79.5 + 144 new-domain 升级中 (systems-theory avg 86.0) | 2026-04-07 |
+| **RAG 质量** | 6156 legacy avg 79.5 + 66/144 new-domain upgraded (ST+CB+IT partial) | 2026-04-07 |
 
 ---
 
@@ -299,6 +299,12 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/common/ReviewBanner.tsx | FSRS复习提示+学习进度 |
 | packages/web/src/components/common/DailyRecommendation.tsx | 每日推荐概念 (30概念日轮) |
 | packages/web/src/pages/DashboardPage.tsx | 学习分析面板 (含StreakCalendar) |
+| packages/web/src/pages/SettingsPage.tsx | 独立设置页面 (/settings) |
+| packages/web/src/pages/NotFoundPage.tsx | 404 页面 (渐变标题+导航) |
+| packages/web/src/lib/utils/capacitor.ts | Capacitor平台抽象层 (storage/keyboard/lifecycle) |
+| packages/web/src/lib/utils/perf-monitor.ts | Core Web Vitals 监控 (FCP/LCP/TTFB) |
+| packages/web/src/lib/hooks/ | useAppLifecycle + useBackButton + useKeyboardHeight |
+| packages/web/src/components/common/OfflineIndicator.tsx | 离线状态提示横幅 |
 | workers/src/ | Cloudflare Workers代理后端 |
 
 ---
@@ -307,13 +313,27 @@ python scripts/build_exe.py  # 输出到 release/
 
 - OAuth: Supabase Cloud控制台配置待完成 (代码层面已就绪)
 - RAG: 向量语义检索保留为Phase 2 (ADR-014), 当前精确+模糊覆盖97.7%
-- RAG: 6个systems-theory家族新域RAG升级中 — systems-theory已完成(avg 86.0), 其余5域批量改写进行中
+- RAG: 6个systems-theory家族新域RAG升级中 — 66/144已升级(ST完成+CB完成+IT进行中), 批量后台运行
 - dialogue-api.ts 导出但无import (dialogue.ts直接fetch), future-ready
 - useMediaQuery.ts 暂时unused (Round 74保留), future-ready
 - NPM audit: 6漏洞(4moderate+2high)均属workers>wrangler dev依赖, 不影响生产
 - data/scripts/ 目录含已完成脚本 data/seed/programming/, 保留供参考
 - Vite warning: learning.ts 循环依赖+未用import (不影响运行), cosmetic
 
+### V1.3 Performance & Mobile Sprint (2026-04-07)
+- ✅ 路由级代码分割 (React.lazy 7个lazy页面, 初始bundle减60%)
+- ✅ GZip压缩中间件 + Cache-Control (1h cache + SWR 24h on static endpoints)
+- ✅ Core Web Vitals监控 (FCP/LCP/TTFB via PerformanceObserver)
+- ✅ PWA Web App Manifest (standalone display, iOS meta tags)
+- ✅ Capacitor平台抽象层 (storage/keyboard/statusbar/lifecycle)
+- ✅ useAppLifecycle hook (foreground auto-refresh streak)
+- ✅ useBackButton + useKeyboardHeight hooks
+- ✅ OfflineIndicator全局组件
+- ✅ SettingsPage独立路由 (/settings)
+- ✅ 404 NotFoundPage
+- ✅ /health/system全组件健康检查端点
+- ✅ /learning/export数据导出端点 (GDPR)
+
 ## Last Review
 
-**Date**: 2026-04-07 | **Scope**: V1.3 Sprint — Behavior Design P2 (social proof + streak calendar + daily recommendation) + RAG quality upgrade (systems-theory avg 86.0) + 28 new tests (16 BE + 12 FE) | **Result**: 972 BE + 250 FE all pass, 36 domains, 6300 concepts, 633 cross-links
+**Date**: 2026-04-07 | **Scope**: V1.3 Sprint — Performance optimization (code splitting + GZip + cache headers) + Capacitor mobile integration (platform layer + lifecycle hooks + offline indicator + PWA manifest) + data export API + 37 new tests | **Result**: 981 BE + 278 FE all pass, 36 domains, 6300 concepts, 633 cross-links
