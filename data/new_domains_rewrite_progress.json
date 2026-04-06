@@ -74,12 +74,17 @@
     "information-theory/convolutional-codes",
     "information-theory/turbo-ldpc-codes",
     "information-theory/network-info-theory",
-    "information-theory/distributed-source-coding"
+    "information-theory/distributed-source-coding",
+    "information-theory/info-in-ml",
+    "information-theory/info-in-crypto",
+    "information-theory/info-in-biology",
+    "dissipative-structures/equilibrium-thermo-review",
+    "dissipative-structures/nonequilibrium-states"
   ],
   "errors": [],
   "stats": {
     "total": 79,
-    "success": 10,
+    "success": 15,
     "error": 0
   }
 }
