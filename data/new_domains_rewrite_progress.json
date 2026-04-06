@@ -64,12 +64,22 @@
     "information-theory/entropy-rate",
     "information-theory/source-coding-theorem",
     "information-theory/huffman-coding",
-    "information-theory/arithmetic-coding"
+    "information-theory/arithmetic-coding",
+    "information-theory/lempel-ziv",
+    "information-theory/rate-distortion",
+    "information-theory/channel-capacity",
+    "information-theory/noisy-channel-coding",
+    "information-theory/error-detecting-codes",
+    "information-theory/linear-codes",
+    "information-theory/convolutional-codes",
+    "information-theory/turbo-ldpc-codes",
+    "information-theory/network-info-theory",
+    "information-theory/distributed-source-coding"
   ],
   "errors": [],
   "stats": {
-    "total": 99,
-    "success": 20,
+    "total": 79,
+    "success": 10,
     "error": 0
   }
 }
