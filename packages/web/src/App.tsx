@@ -5,6 +5,8 @@ import { ErrorBoundary } from './components/common/ErrorBoundary';
 import { ToastContainer } from './components/common/ToastContainer';
 import { HomePage } from './pages/HomePage';
 import { useAuthStore } from './lib/store/auth';
+import { useAppLifecycle } from './lib/hooks/useAppLifecycle';
+import { useLearningStore } from './lib/store/learning';
 // Side-effect: registers onAuthLogin callback for cloud sync
 import './lib/store/supabase-sync';
 
@@ -34,10 +36,18 @@ function RouteLoader() {
 
 export function App() {
   const initialize = useAuthStore((s) => s.initialize);
+  const refreshStreak = useLearningStore((s) => s.refreshStreak);
 
   useEffect(() => {
     initialize();
   }, [initialize]);
+
+  // Refresh streak data when app returns to foreground (mobile resume / tab focus)
+  useAppLifecycle({
+    onForeground: () => {
+      refreshStreak();
+    },
+  });
 
   return (
     <ErrorBoundary>
