@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,382 (1,006 BE + 329 FE + 47 E2E) | 2026-04-07 |
+| **测试总数** | 1,347 (1,007 BE + 340 FE + 47 E2E) | 2026-04-07 |
 | **tsc errors** | 0 | 2026-04-07 |
 | **Open Issues** | 0 | 2026-04-07 |
 | **RAG 质量** | 6,300 docs — legacy 6,156 avg 79.5 + new 144 avg 84.0 → global avg 79.6 | 2026-04-07 |
@@ -306,11 +306,14 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/pages/NotFoundPage.tsx | 404 页面 (渐变标题+导航) |
 | packages/web/src/lib/utils/capacitor.ts | Capacitor平台抽象层 (storage/keyboard/lifecycle) |
 | packages/web/src/lib/utils/perf-monitor.ts | Core Web Vitals 监控 (FCP/LCP/TTFB) |
-| packages/web/src/lib/hooks/ | useAppLifecycle + useBackButton + useKeyboardHeight + useOnlineStatus + useKeyboardShortcuts + useLocalStorage + useLearningTimer (barrel: hooks/index.ts) |
+| packages/web/src/lib/hooks/ | useAppLifecycle + useBackButton + useKeyboardHeight + useOnlineStatus + useKeyboardShortcuts + useLocalStorage + useLearningTimer + useSpeechRecognition + useStudyGoal (barrel: hooks/index.ts) |
 | packages/web/src/lib/utils/fetch-retry.ts | fetchWithRetry: 指数退避 + 抖动 + Retry-After + abort signal |
 | packages/web/src/components/common/OfflineIndicator.tsx | 离线状态提示横幅 (useSyncExternalStore) |
 | packages/web/src/components/common/KeyboardShortcutsHelp.tsx | 全局键盘快捷键帮助弹窗 (Shift+?) |
 | packages/web/src/components/common/ConceptSearch.tsx | 全局概念搜索 (Ctrl+K, 支持↑↓Enter导航) |
+| packages/web/src/components/common/StudyGoalWidget.tsx | 学习目标组件 (SVG进度环 + 目标设置 + 周趋势) |
+| packages/web/src/pages/LearningPathPage.tsx | 学习路径页面 (/path/:domainId, 拓扑排序导学) |
+| packages/web/src/pages/LeaderboardPage.tsx | 排行榜页面 (/leaderboard, 模拟排名 + Supabase-ready) |
 | apps/api/utils/metrics.py | API指标收集器 (请求数/错误率/响应时间/per-endpoint) |
 | workers/src/ | Cloudflare Workers代理后端 |
 
@@ -355,6 +358,17 @@ python scripts/build_exe.py  # 输出到 release/
 - ✅ Dashboard学习时间展示 (今日/累计分钟/小时)
 - ✅ 144/144新域RAG全量升级 (ST 86.0, CB 84.1, IT 84.8, DS 83.9, SY 83.8, CT 81.5)
 
+### V2.0 社区与交互增强 Sprint (2026-04-07, 进行中)
+- ✅ 语音输入 (Web Speech API): useSpeechRecognition hook + LearnPage麦克风按钮 (zh-CN)
+- ✅ 学习目标系统: useStudyGoal hook + StudyGoalWidget (SVG进度环 + 7天趋势 + 达标连续)
+- ✅ 学习路径页面 (/path/:domainId): 拓扑排序导学 + 分组展开 + 推荐标记 + 掌握度进度条
+- ✅ 排行榜页面 (/leaderboard): 模拟全站排名 + 个人成绩卡 + Supabase-ready
+- ✅ 首页浮动导航栏: 分析/排行/设置快捷入口
+- ✅ 图谱页Hub栏: 新增"路径"按钮
+- ⬜ 社区共建图谱 (Supabase Edge Functions)
+- ⬜ 语音输入完善 (多语言切换 + 连续模式)
+- ⬜ 学习目标通知 (Notification API)
+
 ## Last Review
 
-**Date**: 2026-04-07 | **Scope**: V1.3 COMPLETE + V2.0 prep — ConceptSearch (Ctrl+K) + ErrorBoundary retry + KeyboardShortcutsHelp + useLearningTimer + 10 navigation E2E specs + legacy RAG booster launched (target: global avg 80+) | **Result**: 1,006 BE + 329 FE + 47 E2E all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-07 | **Scope**: V2.0 Sprint — voice input + study goals + learning path + leaderboard + home quick-nav + hub '路径' button + legacy RAG booster (running) | **Result**: 1,007 BE + 340 FE + 47 E2E all pass, tsc: 0 errors, 0 open issues, build OK

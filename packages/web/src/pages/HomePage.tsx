@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createLogger } from '@/lib/utils/logger';
 import { useDomainStore } from '@/lib/store/domain';
-import { Loader } from 'lucide-react';
+import { Loader, BarChart3, Trophy, Settings as SettingsIcon } from 'lucide-react';
 import { WelcomeGuide } from '@/components/common/WelcomeGuide';
 import { ReviewBanner } from '@/components/common/ReviewBanner';
 import { DailyRecommendation } from '@/components/common/DailyRecommendation';
@@ -615,6 +615,14 @@ export function HomePage() {
       <DailyRecommendation />
       {/* Behavior Design: Welcome guide for first-time visitors */}
       <WelcomeGuide />
+      {/* Quick-nav floating bottom bar */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 pointer-events-auto" style={{ zIndex: 15 }}>
+        <div className="flex items-center gap-2 px-3 py-2 rounded-2xl" style={{ backgroundColor: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(16px)', boxShadow: '0 4px 24px rgba(0,0,0,0.08)', border: '1px solid rgba(0,0,0,0.06)' }}>
+          <QuickNavBtn icon={<BarChart3 size={18} />} label="分析" onClick={() => nav('/dashboard')} />
+          <QuickNavBtn icon={<Trophy size={18} />} label="排行" onClick={() => nav('/leaderboard')} />
+          <QuickNavBtn icon={<SettingsIcon size={18} />} label="设置" onClick={() => nav('/settings')} />
+        </div>
+      </div>
       {trans && (
         <div className="fixed inset-0" style={{ zIndex: 50, pointerEvents: 'none' }}>
           <div style={{ position: 'absolute', left: trans.cx, top: trans.cy, width: 0, height: 0, borderRadius: '50%', backgroundColor: trans.color, transform: 'translate(-50%,-50%)', animation: 'orb-expand ' + TRANSITION_MS + 'ms cubic-bezier(0.4,0,0.2,1) forwards', opacity: 0.85 }} />
@@ -622,5 +630,19 @@ export function HomePage() {
       )}
       <style>{`@keyframes orb-expand { 0% { width:0;height:0;opacity:0.9 } 100% { width:300vmax;height:300vmax;opacity:0.4 } }`}</style>
     </div>
+  );
+}
+
+/** Floating bottom-bar quick navigation button */
+function QuickNavBtn({ icon, label, onClick }: { icon: React.ReactNode; label: string; onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      className="flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-xl transition-colors hover:bg-black/5"
+      style={{ minWidth: 48 }}
+    >
+      <span style={{ color: '#555' }}>{icon}</span>
+      <span style={{ fontSize: 10, color: '#888', fontWeight: 500 }}>{label}</span>
+    </button>
   );
 }

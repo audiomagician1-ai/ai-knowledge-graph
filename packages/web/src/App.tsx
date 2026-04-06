@@ -24,6 +24,7 @@ const LoginPage = lazy(() => import('./pages/LoginPage').then(m => ({ default: m
 const SettingsPage = lazy(() => import('./pages/SettingsPage').then(m => ({ default: m.SettingsPage })));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
 const LearningPathPage = lazy(() => import('./pages/LearningPathPage').then(m => ({ default: m.LearningPathPage })));
+const LeaderboardPage = lazy(() => import('./pages/LeaderboardPage').then(m => ({ default: m.LeaderboardPage })));
 
 /** Minimal loading spinner for lazy routes */
 function RouteLoader() {
@@ -74,6 +75,8 @@ export function App() {
               <Route path="/dashboard" element={<DashboardPage />} />
               {/* Learning Path — guided path through a domain (lazy) */}
               <Route path="/path/:domainId" element={<LearningPathPage />} />
+              {/* Leaderboard — social ranking (lazy) */}
+              <Route path="/leaderboard" element={<LeaderboardPage />} />
               {/* Settings — LLM config + data export/import (lazy) */}
               <Route path="/settings" element={<SettingsPage />} />
               {/* Legacy fallback — redirect old /learn/:conceptId to home */}
