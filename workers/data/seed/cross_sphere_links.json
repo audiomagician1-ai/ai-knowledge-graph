@@ -1,6 +1,6 @@
 {
   "_doc": "Cross-sphere relation links — connects concepts across different knowledge domains",
-  "_version": "1.3",
+  "_version": "1.4",
   "_created": "2026-03-19",
   "links": [
     {
@@ -4162,6 +4162,1092 @@
       "relation": "related",
       "strength": 0.6,
       "description": "测试计划与关卡测试"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-da-kpi-framework",
+      "target_domain": "game-design",
+      "target_id": "game-economy-intro",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "运营KPI体系与游戏经济系统设计"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-ur-daily-loop",
+      "target_domain": "game-design",
+      "target_id": "daily-loop",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "日常循环与核心玩法日常循环"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-mo-gacha-system",
+      "target_domain": "game-design",
+      "target_id": "randomness-intro",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "抽卡系统与随机性设计"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-so-ranked-system",
+      "target_domain": "game-design",
+      "target_id": "matchmaking",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "排位系统与匹配系统"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-da-attribution",
+      "target_domain": "game-publishing",
+      "target_id": "pub-ua-attribution",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "归因分析与用户获取归因"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-mo-monetization-models",
+      "target_domain": "game-publishing",
+      "target_id": "pub-ms-monetization-model",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "变现模式与发行策略"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-ur-lifecycle-management",
+      "target_domain": "game-publishing",
+      "target_id": "pub-ms-lifecycle-strategy",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "生命周期管理与产品生命周期策略"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-mo-store-design",
+      "target_domain": "game-ui-ux",
+      "target_id": "guiux-menu-shop",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "商城设计与商店界面设计"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-ep-event-design",
+      "target_domain": "game-ui-ux",
+      "target_id": "guiux-feedback-overview",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "活动玩法与交互反馈设计"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-uc-server-update",
+      "target_domain": "multiplayer-network",
+      "target_id": "mn-sa-microservices",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "服务端更新与微服务架构"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-em-anti-fraud",
+      "target_domain": "multiplayer-network",
+      "target_id": "mn-ac-server-authority",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "反欺诈与服务器权威验证"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-uc-feature-flag",
+      "target_domain": "software-engineering",
+      "target_id": "se-feature-flags",
+      "relation": "related",
+      "strength": 0.9,
+      "description": "功能开关与Feature Flags"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-uc-hotfix-process",
+      "target_domain": "software-engineering",
+      "target_id": "se-deploy-strategies",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "热修复流程与部署策略"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-em-inflation-monitoring",
+      "target_domain": "economics",
+      "target_id": "inflation",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "虚拟通货膊涨与经济学通胀理论"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-em-supply-demand",
+      "target_domain": "economics",
+      "target_id": "supply-demand",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "虚拟物品供需与经济学供需理论"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-ur-habit-formation",
+      "target_domain": "psychology",
+      "target_id": "operant-conditioning",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "习惯养成与操作性条件反射"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-mo-price-psychology",
+      "target_domain": "psychology",
+      "target_id": "heuristics",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "定价心理学与启发式"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-so-season-theme",
+      "target_domain": "narrative-design",
+      "target_id": "nd-wb-timeline-management",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "赛季主题与时间线管理"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-mo-revenue-forecasting",
+      "target_domain": "finance",
+      "target_id": "dcf-valuation",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "收入预测与现金流折现模型"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-uc-patch-size",
+      "target_domain": "game-engine",
+      "target_id": "ue5-pak-system",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "包体管理与Pak文件系统"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-ur-content-pacing",
+      "target_domain": "level-design",
+      "target_id": "pacing-intro",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "内容节奏与关卡节奏设计"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-ab-experiment-basics",
+      "target_domain": "product-design",
+      "target_id": "ab-testing-design",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "A/B测试与产品A/B测试设计"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-uc-release-notes",
+      "target_domain": "writing",
+      "target_id": "report-writing",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "版本公告与报告写作"
+    },
+    {
+      "source_domain": "game-live-ops",
+      "source_id": "ops-ep-festival-ops",
+      "target_domain": "game-audio-sfx",
+      "target_id": "sfx-as-interactive-ambient",
+      "relation": "related",
+      "strength": 0.5,
+      "description": "节日运营与交互式环境音"
+    },
+    {
+      "source_domain": "game-qa",
+      "source_id": "qa-ft-gameplay-testing",
+      "target_domain": "game-design",
+      "target_id": "core-loop-intro",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "玩法测试直接验证核心循环设计是否符合预期"
+    },
+    {
+      "source_domain": "game-qa",
+      "source_id": "qa-ft-economy-testing",
+      "target_domain": "game-design",
+      "target_id": "game-economy-intro",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "经济系统测试验证游戏经济设计的数值平衡"
+    },
+    {
+      "source_domain": "game-qa",
+      "source_id": "qa-pt-cpu-profiling",
+      "target_domain": "game-engine",
+      "target_id": "unity-profiler",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "CPU Profiling使用引擎内置Profiler进行性能分析"
+    },
+    {
+      "source_domain": "game-qa",
+      "source_id": "qa-pt-gpu-profiling",
+      "target_domain": "game-engine",
+      "target_id": "asset-profiling",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "GPU Profiling依赖引擎资源性能分析工具"
+    },
+    {
+      "source_domain": "game-qa",
+      "source_id": "qa-at-unit-testing",
+      "target_domain": "software-engineering",
+      "target_id": "se-tdd-intro",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "游戏单元测试基于TDD理论和测试框架"
+    },
+    {
+      "source_domain": "game-qa",
+      "source_id": "qa-at-ci-integration",
+      "target_domain": "software-engineering",
+      "target_id": "se-game-ci",
+      "relation": "related",
+      "strength": 0.9,
+      "description": "QA自动化的CI集成直接依赖游戏CI/CD管线"
+    },
+    {
+      "source_domain": "game-qa",
+      "source_id": "qa-at-tdd-bdd",
+      "target_domain": "software-engineering",
+      "target_id": "se-tdd-intro",
+      "relation": "related",
+      "strength": 0.9,
+      "description": "TDD/BDD实践源自软件工程方法论"
+    },
+    {
+      "source_domain": "game-qa",
+      "source_id": "qa-ft-ui-testing",
+      "target_domain": "game-ui-ux",
+      "target_id": "guiux-usability-overview",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "UI功能测试与可用性测试相辅相成"
+    },
+    {
+      "source_domain": "game-qa",
+      "source_id": "qa-ct-resolution-aspect",
+      "target_domain": "game-ui-ux",
+      "target_id": "guiux-platform-adaptive-layout",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "分辨率测试验证多平台UI自适应布局的效果"
+    },
+    {
+      "source_domain": "game-qa",
+      "source_id": "qa-ft-multiplayer-testing",
+      "target_domain": "multiplayer-network",
+      "target_id": "mn-na-client-server",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "多人游戏测试需要理解客户端-服务器架构"
+    },
+    {
+      "source_domain": "game-qa",
+      "source_id": "qa-pt-network-perf",
+      "target_domain": "multiplayer-network",
+      "target_id": "mn-ss-lag-compensation",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "网络性能测试需评估延迟补偿机制的有效性"
+    },
+    {
+      "source_domain": "game-qa",
+      "source_id": "qa-rt-dlc-regression",
+      "target_domain": "game-live-ops",
+      "target_id": "ops-uc-major-update",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "DLC回归测试配合运营大版本更新节奏"
+    },
+    {
+      "source_domain": "game-qa",
+      "source_id": "qa-bl-post-release-bugs",
+      "target_domain": "game-live-ops",
+      "target_id": "ops-uc-hotfix-process",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "上线后Bug处理流程直接关联运营热修复机制"
+    },
+    {
+      "source_domain": "game-qa",
+      "source_id": "qa-ft-compliance-testing",
+      "target_domain": "game-publishing",
+      "target_id": "pub-rc-esrb-basics",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "合规性测试验证游戏是否符合ESRB分级标准"
+    },
+    {
+      "source_domain": "game-qa",
+      "source_id": "qa-ct-console-cert",
+      "target_domain": "game-publishing",
+      "target_id": "pub-ro-legal-compliance",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "主机认证兼容测试关联法律合规要求"
+    },
+    {
+      "source_domain": "game-qa",
+      "source_id": "qa-ft-audio-testing",
+      "target_domain": "game-audio-sfx",
+      "target_id": "sfx-am-game-integration",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "音频功能测试验证音效中间件在游戏中的集成效果"
+    },
+    {
+      "source_domain": "game-qa",
+      "source_id": "qa-pt-render-pipeline",
+      "target_domain": "technical-art",
+      "target_id": "ta-shader-optimization",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "渲染管线性能分析与Shader优化直接相关"
+    },
+    {
+      "source_domain": "game-qa",
+      "source_id": "qa-pt-gpu-profiling",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-deferred-rendering",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "GPU Profiling需要理解延迟渲染管线的性能特征"
+    },
+    {
+      "source_domain": "game-qa",
+      "source_id": "qa-lt-audio-loc",
+      "target_domain": "game-audio-music",
+      "target_id": "game-audio-music-theory-overview",
+      "relation": "related",
+      "strength": 0.5,
+      "description": "音频本地化测试涉及配音替换与音乐适配验证"
+    },
+    {
+      "source_domain": "game-qa",
+      "source_id": "qa-lt-linguistic-qa",
+      "target_domain": "narrative-design",
+      "target_id": "nd-lo-pseudolocalization",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "语言质量测试与伪本地化技术紧密关联"
+    },
+    {
+      "source_domain": "game-qa",
+      "source_id": "qa-ft-tutorial-testing",
+      "target_domain": "level-design",
+      "target_id": "mechanic-introduction",
+      "relation": "related",
+      "strength": 0.7,
+      "description": "新手引导测试验证关卡中的机制介绍流程"
+    },
+    {
+      "source_domain": "game-qa",
+      "source_id": "qa-at-visual-testing",
+      "target_domain": "animation",
+      "target_id": "anim-principles-overview",
+      "relation": "related",
+      "strength": 0.5,
+      "description": "视觉回归测试可检测动画异常导致的视觉缺陷"
+    },
+    {
+      "source_domain": "game-qa",
+      "source_id": "qa-pt-scalability",
+      "target_domain": "vfx",
+      "target_id": "vfx-fb-optimization",
+      "relation": "related",
+      "strength": 0.6,
+      "description": "可扩展性测试验证不同画质下特效的性能缩放表现"
+    },
+    {
+      "source_domain": "game-qa",
+      "source_id": "qa-lt-cultural-adapt",
+      "target_domain": "concept-design",
+      "target_id": "cd-style-intro",
+      "relation": "related",
+      "strength": 0.5,
+      "description": "文化适配测试参考视觉风格指南确保文化一致性"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-pp-overview",
+      "target_domain": "game-design",
+      "target_id": "core-loop-intro",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "制作管线需要围绕核心游戏玩法循环来组织"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-pp-preproduction",
+      "target_domain": "game-design",
+      "target_id": "design-doc-intro",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "预生产阶段的核心产出是游戏设计文档(GDD)"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-mp-scope",
+      "target_domain": "game-design",
+      "target_id": "gd-overview",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "范围管理直接关系到游戏功能的取舍决策"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-pp-build-pipeline",
+      "target_domain": "software-engineering",
+      "target_id": "se-cicd-intro",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "构建管线是CI/CD在游戏开发中的具体应用"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-as-scrum-framework",
+      "target_domain": "software-engineering",
+      "target_id": "se-cr-game-specific",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "Scrum框架在游戏软件工程项目中的审查与适配"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-as-technical-debt",
+      "target_domain": "software-engineering",
+      "target_id": "se-tech-debt",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "技术债务管理是软件工程和项目管理的交叉领域"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-pp-asset-pipeline",
+      "target_domain": "game-engine",
+      "target_id": "asset-registry",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "资产管线的后端由引擎资产管理系统支撑"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-pp-version-control",
+      "target_domain": "game-engine",
+      "target_id": "source-control-editor",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "版本管理策略需要与引擎协作工具配合"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-os-art-outsource",
+      "target_domain": "3d-art",
+      "target_id": "3da-pipe-naming",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "美术外包需要严格的资产命名和质量规范"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-pp-asset-pipeline",
+      "target_domain": "3d-art",
+      "target_id": "3da-pipe-intro",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "资产管线设计需要理解3D美术工作流"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-cd-qa-integration",
+      "target_domain": "game-qa",
+      "target_id": "qa-ft-basics",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "QA团队集成需要理解功能测试的基本流程"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-rk-technical",
+      "target_domain": "game-qa",
+      "target_id": "qa-pt-perf-overview",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "技术风险管理需要性能测试的支撑"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-bc-marketing-budget",
+      "target_domain": "game-publishing",
+      "target_id": "pub-ua-ua-budget",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "营销预算规划与市场发行策略紧密关联"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-rk-platform",
+      "target_domain": "game-publishing",
+      "target_id": "pub-ms-platform-selection",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "平台审核风险需要熟悉各平台发行规则"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-pp-live-service",
+      "target_domain": "game-live-ops",
+      "target_id": "ops-ep-event-analytics",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "持续运营管线为运营数据分析提供基础设施"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-bc-f2p-economics",
+      "target_domain": "game-live-ops",
+      "target_id": "ops-so-season-analytics",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "F2P经济模型与运营付费系统设计深度关联"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-cd-audio-integration",
+      "target_domain": "game-audio-music",
+      "target_id": "game-audio-music-wwise-overview",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "音频集成协作需要了解Wwise等中间件工作流"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-pp-content-pipeline",
+      "target_domain": "narrative-design",
+      "target_id": "nd-wb-world-history",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "内容管线需要覆盖叙事设计的世界观构建流程"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-cd-design-dev",
+      "target_domain": "game-ui-ux",
+      "target_id": "guiux-usability-playtest",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "策划-开发协作中的快速可用性验证方法"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-cd-art-tech",
+      "target_domain": "technical-art",
+      "target_id": "ta-pipeline-overview",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "美术-技术协作的核心是技术美术搭建的管线"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-os-art-outsource",
+      "target_domain": "animation",
+      "target_id": "anim-game-vs-film",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "动画外包需要了解游戏动画管线的标准流程"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-rk-technical",
+      "target_domain": "multiplayer-network",
+      "target_id": "mn-na-client-server",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "网络架构选型是重大技术风险决策点"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-pp-content-pipeline",
+      "target_domain": "level-design",
+      "target_id": "blockout-intro",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "内容管线包含关卡从Blockout到最终的全流程"
+    },
+    {
+      "source_domain": "game-production",
+      "source_id": "gp-cd-audio-integration",
+      "target_domain": "game-audio-sfx",
+      "target_id": "sfx-am-wwise-overview",
+      "relation": "related",
+      "strength": 0.8,
+      "description": "音频集成需要理解音效中间件的集成方式"
+    },
+    {
+      "source_domain": "physics",
+      "source_id": "geometric-optics",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-rt-intro",
+      "description": "几何光学是光线追踪的物理理论基础，光线直线传播/反射/折射定律直接映射为CG中的ray generation和intersection算法",
+      "relation": "foundational"
+    },
+    {
+      "source_domain": "physics",
+      "source_id": "reflection-refraction",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-rt-reflection",
+      "description": "反射定律(入射角=反射角)和折射定律(Snell定律)是光追反射/折射着色器的直接物理依据",
+      "relation": "foundational"
+    },
+    {
+      "source_domain": "physics",
+      "source_id": "reflection-refraction",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-rt-refraction",
+      "description": "Snell定律(n1·sinθ1=n2·sinθ2)是光追折射计算的核心公式，全内反射判定也来自物理光学",
+      "relation": "foundational"
+    },
+    {
+      "source_domain": "physics",
+      "source_id": "collisions",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-ray-intersection",
+      "description": "碰撞检测的几何判定方法(射线-球、射线-平面)直接用于光线求交算法",
+      "relation": "applies"
+    },
+    {
+      "source_domain": "physics",
+      "source_id": "wave-basics",
+      "target_domain": "computer-graphics",
+      "target_id": "cg-subsurface",
+      "description": "波动光学中的散射理论是次表面散射(SSS)模型的物理基础，描述光在半透明介质中的传播行为",
+      "relation": "foundational"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "decision-tree",
+      "target_domain": "game-design",
+      "target_id": "ai-behavior",
+      "description": "决策树是游戏AI行为树的理论前身，行为树(Behavior Tree)直接扩展了决策树的条件分支模式用于NPC行为决策",
+      "relation": "applies"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "agent-overview",
+      "target_domain": "game-design",
+      "target_id": "enemy-design",
+      "description": "AI Agent的感知-推理-行动循环直接映射到游戏敌人AI设计: 感知(视野/仇恨)→推理(策略选择)→行动(攻击/撤退)",
+      "relation": "applies"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "neural-network-basics",
+      "target_domain": "game-design",
+      "target_id": "procedural-gen",
+      "description": "神经网络(特别是GAN/Diffusion)越来越多用于程序化内容生成(PCG): 地图生成、纹理合成、关卡布局",
+      "relation": "applies"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "agent-planning",
+      "target_domain": "game-design",
+      "target_id": "ai-behavior",
+      "description": "Agent规划与任务分解技术(GOAP/HTN)广泛应用于游戏NPC的战术AI和策略决策系统",
+      "relation": "applies"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "neural-network-basics",
+      "target_domain": "technical-art",
+      "target_id": "ta-pcg-terrain",
+      "description": "神经网络驱动的地形生成(如terrain diffusion models)正在革新程序化地形工作流，补充传统噪声方法",
+      "relation": "applies"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "deep-learning-intro",
+      "target_domain": "technical-art",
+      "target_id": "ta-procedural-material",
+      "description": "深度学习用于材质生成(如text-to-material)和材质参数推断(从照片反推PBR参数)正在改变程序化材质工作流",
+      "relation": "applies"
+    },
+    {
+      "source_domain": "ai-engineering",
+      "source_id": "code-generation",
+      "target_domain": "technical-art",
+      "target_id": "ta-batch-tool",
+      "description": "AI代码生成Agent可辅助TA编写批处理工具脚本(Maya Python, Houdini VEX, UE Blueprint)，加速工具开发和资产处理自动化",
+      "relation": "applies"
+    },
+    {
+      "source_domain": "systems-theory",
+      "source_id": "feedback-loop",
+      "target_domain": "cybernetics",
+      "target_id": "negative-feedback",
+      "relation": "shared_concept",
+      "strength": 0.9,
+      "description": "反馈回路 (systems-theory) 与 负反馈原理 (cybernetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "systems-theory",
+      "source_id": "feedback-loop",
+      "target_domain": "cybernetics",
+      "target_id": "positive-feedback",
+      "relation": "shared_concept",
+      "strength": 0.9,
+      "description": "反馈回路 (systems-theory) 与 正反馈原理 (cybernetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "systems-theory",
+      "source_id": "self-organization",
+      "target_domain": "synergetics",
+      "target_id": "self-org-synergetics",
+      "relation": "shared_concept",
+      "strength": 0.95,
+      "description": "自组织 (systems-theory) 与 自组织现象 (synergetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "systems-theory",
+      "source_id": "emergence",
+      "target_domain": "synergetics",
+      "target_id": "order-parameter-def",
+      "relation": "enables",
+      "strength": 0.8,
+      "description": "涌现性 (systems-theory) 与 序参量定义 (synergetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "systems-theory",
+      "source_id": "system-stability",
+      "target_domain": "cybernetics",
+      "target_id": "stability-analysis",
+      "relation": "shared_concept",
+      "strength": 0.85,
+      "description": "系统稳定性 (systems-theory) 与 稳定性分析 (cybernetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "systems-theory",
+      "source_id": "complex-adaptive-system",
+      "target_domain": "cybernetics",
+      "target_id": "adaptive-control",
+      "relation": "shared_concept",
+      "strength": 0.7,
+      "description": "复杂适应系统 (systems-theory) 与 自适应控制 (cybernetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "systems-theory",
+      "source_id": "system-evolution",
+      "target_domain": "dissipative-structures",
+      "target_id": "far-from-equilibrium",
+      "relation": "enables",
+      "strength": 0.7,
+      "description": "系统演化 (systems-theory) 与 远离平衡态 (dissipative-structures) 之间的跨域关联"
+    },
+    {
+      "source_domain": "systems-theory",
+      "source_id": "edge-of-chaos",
+      "target_domain": "catastrophe-theory",
+      "target_id": "catastrophe-overview",
+      "relation": "shared_concept",
+      "strength": 0.75,
+      "description": "混沌边缘 (systems-theory) 与 突变论概述 (catastrophe-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "systems-theory",
+      "source_id": "scale-free-network",
+      "target_domain": "information-theory",
+      "target_id": "network-info-theory",
+      "relation": "shared_concept",
+      "strength": 0.7,
+      "description": "无标度网络 (systems-theory) 与 网络信息论基础 (information-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "systems-theory",
+      "source_id": "resilience",
+      "target_domain": "cybernetics",
+      "target_id": "robust-control",
+      "relation": "shared_concept",
+      "strength": 0.7,
+      "description": "系统韧性 (systems-theory) 与 鲁棒控制 (cybernetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "cybernetics",
+      "source_id": "cybernetics-overview",
+      "target_domain": "systems-theory",
+      "target_id": "system-definition",
+      "relation": "shared_concept",
+      "strength": 0.85,
+      "description": "控制论概述 (cybernetics) 与 系统的定义 (systems-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "cybernetics",
+      "source_id": "homeostasis",
+      "target_domain": "systems-theory",
+      "target_id": "system-stability",
+      "relation": "shared_concept",
+      "strength": 0.8,
+      "description": "稳态维持 (cybernetics) 与 系统稳定性 (systems-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "cybernetics",
+      "source_id": "reinforcement-learning-ctrl",
+      "target_domain": "ai-engineering",
+      "target_id": "reinforcement-learning",
+      "relation": "shared_concept",
+      "strength": 0.9,
+      "description": "强化学习控制 (cybernetics) 与 强化学习基础 (ai-engineering) 之间的跨域关联"
+    },
+    {
+      "source_domain": "cybernetics",
+      "source_id": "feedback-delay",
+      "target_domain": "systems-theory",
+      "target_id": "system-adaptation",
+      "relation": "enables",
+      "strength": 0.65,
+      "description": "反馈延迟 (cybernetics) 与 系统适应 (systems-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "information-theory",
+      "source_id": "relative-entropy",
+      "target_domain": "ai-engineering",
+      "target_id": "loss-functions",
+      "relation": "enables",
+      "strength": 0.75,
+      "description": "相对熵(KL散度) (information-theory) 与 损失函数 (ai-engineering) 之间的跨域关联"
+    },
+    {
+      "source_domain": "information-theory",
+      "source_id": "information-definition",
+      "target_domain": "cybernetics",
+      "target_id": "signal-types",
+      "relation": "shared_concept",
+      "strength": 0.7,
+      "description": "信息的定义 (information-theory) 与 信号类型 (cybernetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "information-theory",
+      "source_id": "channel-capacity",
+      "target_domain": "cybernetics",
+      "target_id": "open-closed-loop",
+      "relation": "enables",
+      "strength": 0.6,
+      "description": "信道容量 (information-theory) 与 开环与闭环控制 (cybernetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "information-theory",
+      "source_id": "entropy-rate",
+      "target_domain": "systems-theory",
+      "target_id": "system-evolution",
+      "relation": "shared_concept",
+      "strength": 0.65,
+      "description": "熵率 (information-theory) 与 系统演化 (systems-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "dissipative-structures",
+      "source_id": "dissipative-structure-def",
+      "target_domain": "systems-theory",
+      "target_id": "self-organization",
+      "relation": "shared_concept",
+      "strength": 0.85,
+      "description": "耗散结构定义 (dissipative-structures) 与 自组织 (systems-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "dissipative-structures",
+      "source_id": "entropy-production",
+      "target_domain": "information-theory",
+      "target_id": "shannon-entropy",
+      "relation": "shared_concept",
+      "strength": 0.7,
+      "description": "熵产生 (dissipative-structures) 与 Shannon熵 (information-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "dissipative-structures",
+      "source_id": "bifurcation-theory-ds",
+      "target_domain": "catastrophe-theory",
+      "target_id": "critical-point-catastrophe",
+      "relation": "shared_concept",
+      "strength": 0.85,
+      "description": "分岔理论 (dissipative-structures) 与 临界点理论 (catastrophe-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "dissipative-structures",
+      "source_id": "far-from-equilibrium",
+      "target_domain": "systems-theory",
+      "target_id": "edge-of-chaos",
+      "relation": "shared_concept",
+      "strength": 0.8,
+      "description": "远离平衡态 (dissipative-structures) 与 混沌边缘 (systems-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "dissipative-structures",
+      "source_id": "order-through-fluctuation",
+      "target_domain": "synergetics",
+      "target_id": "order-parameter-def",
+      "relation": "shared_concept",
+      "strength": 0.85,
+      "description": "通过涨落达到有序 (dissipative-structures) 与 序参量定义 (synergetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "synergetics",
+      "source_id": "synergetics-overview",
+      "target_domain": "systems-theory",
+      "target_id": "emergence",
+      "relation": "shared_concept",
+      "strength": 0.85,
+      "description": "协同学概述 (synergetics) 与 涌现性 (systems-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "synergetics",
+      "source_id": "slaving-principle-def",
+      "target_domain": "systems-theory",
+      "target_id": "system-hierarchy",
+      "relation": "shared_concept",
+      "strength": 0.75,
+      "description": "役使原理 (synergetics) 与 系统层次 (systems-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "synergetics",
+      "source_id": "phase-transition-concept",
+      "target_domain": "dissipative-structures",
+      "target_id": "instability-mechanism",
+      "relation": "shared_concept",
+      "strength": 0.8,
+      "description": "相变概念 (synergetics) 与 失稳机制 (dissipative-structures) 之间的跨域关联"
+    },
+    {
+      "source_domain": "synergetics",
+      "source_id": "symmetry-breaking-syn",
+      "target_domain": "catastrophe-theory",
+      "target_id": "fold-catastrophe",
+      "relation": "shared_concept",
+      "strength": 0.75,
+      "description": "对称性破缺 (synergetics) 与 折叠突变(A2) (catastrophe-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "synergetics",
+      "source_id": "critical-slowing-down",
+      "target_domain": "catastrophe-theory",
+      "target_id": "catastrophe-flags",
+      "relation": "shared_concept",
+      "strength": 0.8,
+      "description": "临界慢化 (synergetics) 与 突变标志 (catastrophe-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "catastrophe-theory",
+      "source_id": "catastrophe-overview",
+      "target_domain": "systems-theory",
+      "target_id": "system-stability",
+      "relation": "shared_concept",
+      "strength": 0.8,
+      "description": "突变论概述 (catastrophe-theory) 与 系统稳定性 (systems-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "catastrophe-theory",
+      "source_id": "cusp-catastrophe",
+      "target_domain": "dissipative-structures",
+      "target_id": "bifurcation-theory-ds",
+      "relation": "shared_concept",
+      "strength": 0.85,
+      "description": "尖点突变(A3) (catastrophe-theory) 与 分岔理论 (dissipative-structures) 之间的跨域关联"
+    },
+    {
+      "source_domain": "catastrophe-theory",
+      "source_id": "hysteresis-ct",
+      "target_domain": "cybernetics",
+      "target_id": "feedback-delay",
+      "relation": "shared_concept",
+      "strength": 0.65,
+      "description": "滞后现象 (catastrophe-theory) 与 反馈延迟 (cybernetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "catastrophe-theory",
+      "source_id": "structural-stability-ct",
+      "target_domain": "systems-theory",
+      "target_id": "resilience",
+      "relation": "shared_concept",
+      "strength": 0.75,
+      "description": "结构稳定性 (catastrophe-theory) 与 系统韧性 (systems-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "catastrophe-theory",
+      "source_id": "catastrophe-in-psychology",
+      "target_domain": "psychology",
+      "target_id": "cognitive-dissonance",
+      "relation": "shared_concept",
+      "strength": 0.6,
+      "description": "心理学中的突变 (catastrophe-theory) 与 认知失调 (psychology) 之间的跨域关联"
+    },
+    {
+      "source_domain": "cybernetics",
+      "source_id": "second-order-cybernetics",
+      "target_domain": "systems-theory",
+      "target_id": "mental-models",
+      "relation": "shared_concept",
+      "strength": 0.7,
+      "description": "二阶控制论 (cybernetics) 与 心智模型 (systems-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "information-theory",
+      "source_id": "communication-model",
+      "target_domain": "cybernetics",
+      "target_id": "signal-types",
+      "relation": "shared_concept",
+      "strength": 0.8,
+      "description": "通信系统模型 (information-theory) 与 信号类型 (cybernetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "dissipative-structures",
+      "source_id": "fluctuation-amplification",
+      "target_domain": "synergetics",
+      "target_id": "order-param-dynamics",
+      "relation": "shared_concept",
+      "strength": 0.8,
+      "description": "涨落放大 (dissipative-structures) 与 序参量动力学 (synergetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "synergetics",
+      "source_id": "adiabatic-elimination",
+      "target_domain": "dissipative-structures",
+      "target_id": "dissipative-conditions",
+      "relation": "shared_concept",
+      "strength": 0.7,
+      "description": "绝热消除 (synergetics) 与 耗散结构形成条件 (dissipative-structures) 之间的跨域关联"
+    },
+    {
+      "source_domain": "catastrophe-theory",
+      "source_id": "bimodality",
+      "target_domain": "synergetics",
+      "target_id": "phase-transition-concept",
+      "relation": "shared_concept",
+      "strength": 0.75,
+      "description": "双模态 (catastrophe-theory) 与 相变概念 (synergetics) 之间的跨域关联"
     }
   ],
   "meta": {
@@ -4199,12 +5285,77 @@
     },
     "total": 487
   },
-  "total": 298,
+  "total": 583,
   "_stats": {
-    "by_domain_pair": {
-      "concept-design_3d-art": 10,
-      "concept-design_game-design": 8,
-      "concept-design_level-design": 6
+    "total_links": 535,
+    "domains_involved": 28,
+    "links_per_domain": {
+      "ai-engineering": 50,
+      "mathematics": 57,
+      "english": 24,
+      "physics": 26,
+      "product-design": 31,
+      "finance": 25,
+      "psychology": 45,
+      "philosophy": 24,
+      "biology": 17,
+      "economics": 25,
+      "writing": 20,
+      "game-design": 95,
+      "level-design": 54,
+      "game-engine": 93,
+      "software-engineering": 49,
+      "computer-graphics": 52,
+      "3d-art": 44,
+      "concept-design": 37,
+      "animation": 33,
+      "technical-art": 34,
+      "vfx": 32,
+      "game-audio-music": 31,
+      "game-ui-ux": 34,
+      "narrative-design": 32,
+      "multiplayer-network": 30,
+      "game-audio-sfx": 25,
+      "game-publishing": 27,
+      "game-live-ops": 24
+    },
+    "total": 583,
+    "by_source_domain": {
+      "ai-engineering": 20,
+      "mathematics": 17,
+      "english": 4,
+      "physics": 5,
+      "product-design": 12,
+      "finance": 15,
+      "psychology": 15,
+      "philosophy": 15,
+      "biology": 14,
+      "economics": 15,
+      "writing": 15,
+      "game-design": 31,
+      "level-design": 10,
+      "game-engine": 27,
+      "software-engineering": 20,
+      "computer-graphics": 22,
+      "3d-art": 17,
+      "concept-design": 24,
+      "animation": 19,
+      "technical-art": 25,
+      "vfx": 24,
+      "game-audio-music": 23,
+      "game-ui-ux": 24,
+      "narrative-design": 25,
+      "multiplayer-network": 25,
+      "game-audio-sfx": 24,
+      "game-publishing": 24,
+      "game-live-ops": 24,
+      "game-qa": 24,
+      "game-production": 24
     }
+  },
+  "metadata": {
+    "total_links": 595,
+    "last_updated": "2026-03-21",
+    "phase": "37"
   }
 }

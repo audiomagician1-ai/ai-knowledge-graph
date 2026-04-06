@@ -736,7 +736,7 @@ async def test_cross_links_no_results():
 @pytest.mark.asyncio
 async def test_cross_links_relation_types():
     """Cross-links should have valid relation types."""
-    valid_relations = {"same_concept", "requires", "enables", "applies_to", "applied_in", "foundational", "supports", "related", "related_to", "applies", "impacts", "prerequisite", "teaches"}
+    valid_relations = {"same_concept", "shared_concept", "requires", "enables", "applies_to", "applied_in", "foundational", "supports", "related", "related_to", "applies", "impacts", "prerequisite", "teaches"}
     async with AsyncClient(transport=transport, base_url="http://test") as client:
         resp = await client.get("/api/graph/cross-links")
         data = resp.json()
@@ -766,7 +766,7 @@ async def test_cross_links_concepts_exist_in_domains():
 
         # Cache domain concept IDs
         domain_concepts = {}
-        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network", "game-audio-sfx", "game-publishing", "game-live-ops", "game-qa", "game-production"]:
+        for domain_id in ["ai-engineering", "mathematics", "english", "physics", "product-design", "finance", "psychology", "philosophy", "biology", "economics", "writing", "game-design", "level-design", "game-engine", "software-engineering", "computer-graphics", "3d-art", "concept-design", "animation", "technical-art", "vfx", "game-audio-music", "game-ui-ux", "narrative-design", "multiplayer-network", "game-audio-sfx", "game-publishing", "game-live-ops", "game-qa", "game-production", "systems-theory", "cybernetics", "information-theory", "dissipative-structures", "synergetics", "catastrophe-theory"]:
             resp = await client.get(f"/api/graph/data?domain={domain_id}")
             data = resp.json()
             domain_concepts[domain_id] = {n["id"] for n in data["nodes"]}

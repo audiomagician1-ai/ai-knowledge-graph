@@ -1,6 +1,6 @@
 {
   "_doc": "Cross-sphere relation links — connects concepts across different knowledge domains",
-  "_version": "1.3",
+  "_version": "1.4",
   "_created": "2026-03-19",
   "links": [
     {
@@ -4906,6 +4906,348 @@
       "target_id": "ta-batch-tool",
       "description": "AI代码生成Agent可辅助TA编写批处理工具脚本(Maya Python, Houdini VEX, UE Blueprint)，加速工具开发和资产处理自动化",
       "relation": "applies"
+    },
+    {
+      "source_domain": "systems-theory",
+      "source_id": "feedback-loop",
+      "target_domain": "cybernetics",
+      "target_id": "negative-feedback",
+      "relation": "shared_concept",
+      "strength": 0.9,
+      "description": "反馈回路 (systems-theory) 与 负反馈原理 (cybernetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "systems-theory",
+      "source_id": "feedback-loop",
+      "target_domain": "cybernetics",
+      "target_id": "positive-feedback",
+      "relation": "shared_concept",
+      "strength": 0.9,
+      "description": "反馈回路 (systems-theory) 与 正反馈原理 (cybernetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "systems-theory",
+      "source_id": "self-organization",
+      "target_domain": "synergetics",
+      "target_id": "self-org-synergetics",
+      "relation": "shared_concept",
+      "strength": 0.95,
+      "description": "自组织 (systems-theory) 与 自组织现象 (synergetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "systems-theory",
+      "source_id": "emergence",
+      "target_domain": "synergetics",
+      "target_id": "order-parameter-def",
+      "relation": "enables",
+      "strength": 0.8,
+      "description": "涌现性 (systems-theory) 与 序参量定义 (synergetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "systems-theory",
+      "source_id": "system-stability",
+      "target_domain": "cybernetics",
+      "target_id": "stability-analysis",
+      "relation": "shared_concept",
+      "strength": 0.85,
+      "description": "系统稳定性 (systems-theory) 与 稳定性分析 (cybernetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "systems-theory",
+      "source_id": "complex-adaptive-system",
+      "target_domain": "cybernetics",
+      "target_id": "adaptive-control",
+      "relation": "shared_concept",
+      "strength": 0.7,
+      "description": "复杂适应系统 (systems-theory) 与 自适应控制 (cybernetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "systems-theory",
+      "source_id": "system-evolution",
+      "target_domain": "dissipative-structures",
+      "target_id": "far-from-equilibrium",
+      "relation": "enables",
+      "strength": 0.7,
+      "description": "系统演化 (systems-theory) 与 远离平衡态 (dissipative-structures) 之间的跨域关联"
+    },
+    {
+      "source_domain": "systems-theory",
+      "source_id": "edge-of-chaos",
+      "target_domain": "catastrophe-theory",
+      "target_id": "catastrophe-overview",
+      "relation": "shared_concept",
+      "strength": 0.75,
+      "description": "混沌边缘 (systems-theory) 与 突变论概述 (catastrophe-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "systems-theory",
+      "source_id": "scale-free-network",
+      "target_domain": "information-theory",
+      "target_id": "network-info-theory",
+      "relation": "shared_concept",
+      "strength": 0.7,
+      "description": "无标度网络 (systems-theory) 与 网络信息论基础 (information-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "systems-theory",
+      "source_id": "resilience",
+      "target_domain": "cybernetics",
+      "target_id": "robust-control",
+      "relation": "shared_concept",
+      "strength": 0.7,
+      "description": "系统韧性 (systems-theory) 与 鲁棒控制 (cybernetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "cybernetics",
+      "source_id": "cybernetics-overview",
+      "target_domain": "systems-theory",
+      "target_id": "system-definition",
+      "relation": "shared_concept",
+      "strength": 0.85,
+      "description": "控制论概述 (cybernetics) 与 系统的定义 (systems-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "cybernetics",
+      "source_id": "homeostasis",
+      "target_domain": "systems-theory",
+      "target_id": "system-stability",
+      "relation": "shared_concept",
+      "strength": 0.8,
+      "description": "稳态维持 (cybernetics) 与 系统稳定性 (systems-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "cybernetics",
+      "source_id": "reinforcement-learning-ctrl",
+      "target_domain": "ai-engineering",
+      "target_id": "reinforcement-learning",
+      "relation": "shared_concept",
+      "strength": 0.9,
+      "description": "强化学习控制 (cybernetics) 与 强化学习基础 (ai-engineering) 之间的跨域关联"
+    },
+    {
+      "source_domain": "cybernetics",
+      "source_id": "feedback-delay",
+      "target_domain": "systems-theory",
+      "target_id": "system-adaptation",
+      "relation": "enables",
+      "strength": 0.65,
+      "description": "反馈延迟 (cybernetics) 与 系统适应 (systems-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "information-theory",
+      "source_id": "relative-entropy",
+      "target_domain": "ai-engineering",
+      "target_id": "loss-functions",
+      "relation": "enables",
+      "strength": 0.75,
+      "description": "相对熵(KL散度) (information-theory) 与 损失函数 (ai-engineering) 之间的跨域关联"
+    },
+    {
+      "source_domain": "information-theory",
+      "source_id": "information-definition",
+      "target_domain": "cybernetics",
+      "target_id": "signal-types",
+      "relation": "shared_concept",
+      "strength": 0.7,
+      "description": "信息的定义 (information-theory) 与 信号类型 (cybernetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "information-theory",
+      "source_id": "channel-capacity",
+      "target_domain": "cybernetics",
+      "target_id": "open-closed-loop",
+      "relation": "enables",
+      "strength": 0.6,
+      "description": "信道容量 (information-theory) 与 开环与闭环控制 (cybernetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "information-theory",
+      "source_id": "entropy-rate",
+      "target_domain": "systems-theory",
+      "target_id": "system-evolution",
+      "relation": "shared_concept",
+      "strength": 0.65,
+      "description": "熵率 (information-theory) 与 系统演化 (systems-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "dissipative-structures",
+      "source_id": "dissipative-structure-def",
+      "target_domain": "systems-theory",
+      "target_id": "self-organization",
+      "relation": "shared_concept",
+      "strength": 0.85,
+      "description": "耗散结构定义 (dissipative-structures) 与 自组织 (systems-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "dissipative-structures",
+      "source_id": "entropy-production",
+      "target_domain": "information-theory",
+      "target_id": "shannon-entropy",
+      "relation": "shared_concept",
+      "strength": 0.7,
+      "description": "熵产生 (dissipative-structures) 与 Shannon熵 (information-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "dissipative-structures",
+      "source_id": "bifurcation-theory-ds",
+      "target_domain": "catastrophe-theory",
+      "target_id": "critical-point-catastrophe",
+      "relation": "shared_concept",
+      "strength": 0.85,
+      "description": "分岔理论 (dissipative-structures) 与 临界点理论 (catastrophe-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "dissipative-structures",
+      "source_id": "far-from-equilibrium",
+      "target_domain": "systems-theory",
+      "target_id": "edge-of-chaos",
+      "relation": "shared_concept",
+      "strength": 0.8,
+      "description": "远离平衡态 (dissipative-structures) 与 混沌边缘 (systems-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "dissipative-structures",
+      "source_id": "order-through-fluctuation",
+      "target_domain": "synergetics",
+      "target_id": "order-parameter-def",
+      "relation": "shared_concept",
+      "strength": 0.85,
+      "description": "通过涨落达到有序 (dissipative-structures) 与 序参量定义 (synergetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "synergetics",
+      "source_id": "synergetics-overview",
+      "target_domain": "systems-theory",
+      "target_id": "emergence",
+      "relation": "shared_concept",
+      "strength": 0.85,
+      "description": "协同学概述 (synergetics) 与 涌现性 (systems-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "synergetics",
+      "source_id": "slaving-principle-def",
+      "target_domain": "systems-theory",
+      "target_id": "system-hierarchy",
+      "relation": "shared_concept",
+      "strength": 0.75,
+      "description": "役使原理 (synergetics) 与 系统层次 (systems-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "synergetics",
+      "source_id": "phase-transition-concept",
+      "target_domain": "dissipative-structures",
+      "target_id": "instability-mechanism",
+      "relation": "shared_concept",
+      "strength": 0.8,
+      "description": "相变概念 (synergetics) 与 失稳机制 (dissipative-structures) 之间的跨域关联"
+    },
+    {
+      "source_domain": "synergetics",
+      "source_id": "symmetry-breaking-syn",
+      "target_domain": "catastrophe-theory",
+      "target_id": "fold-catastrophe",
+      "relation": "shared_concept",
+      "strength": 0.75,
+      "description": "对称性破缺 (synergetics) 与 折叠突变(A2) (catastrophe-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "synergetics",
+      "source_id": "critical-slowing-down",
+      "target_domain": "catastrophe-theory",
+      "target_id": "catastrophe-flags",
+      "relation": "shared_concept",
+      "strength": 0.8,
+      "description": "临界慢化 (synergetics) 与 突变标志 (catastrophe-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "catastrophe-theory",
+      "source_id": "catastrophe-overview",
+      "target_domain": "systems-theory",
+      "target_id": "system-stability",
+      "relation": "shared_concept",
+      "strength": 0.8,
+      "description": "突变论概述 (catastrophe-theory) 与 系统稳定性 (systems-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "catastrophe-theory",
+      "source_id": "cusp-catastrophe",
+      "target_domain": "dissipative-structures",
+      "target_id": "bifurcation-theory-ds",
+      "relation": "shared_concept",
+      "strength": 0.85,
+      "description": "尖点突变(A3) (catastrophe-theory) 与 分岔理论 (dissipative-structures) 之间的跨域关联"
+    },
+    {
+      "source_domain": "catastrophe-theory",
+      "source_id": "hysteresis-ct",
+      "target_domain": "cybernetics",
+      "target_id": "feedback-delay",
+      "relation": "shared_concept",
+      "strength": 0.65,
+      "description": "滞后现象 (catastrophe-theory) 与 反馈延迟 (cybernetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "catastrophe-theory",
+      "source_id": "structural-stability-ct",
+      "target_domain": "systems-theory",
+      "target_id": "resilience",
+      "relation": "shared_concept",
+      "strength": 0.75,
+      "description": "结构稳定性 (catastrophe-theory) 与 系统韧性 (systems-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "catastrophe-theory",
+      "source_id": "catastrophe-in-psychology",
+      "target_domain": "psychology",
+      "target_id": "cognitive-dissonance",
+      "relation": "shared_concept",
+      "strength": 0.6,
+      "description": "心理学中的突变 (catastrophe-theory) 与 认知失调 (psychology) 之间的跨域关联"
+    },
+    {
+      "source_domain": "cybernetics",
+      "source_id": "second-order-cybernetics",
+      "target_domain": "systems-theory",
+      "target_id": "mental-models",
+      "relation": "shared_concept",
+      "strength": 0.7,
+      "description": "二阶控制论 (cybernetics) 与 心智模型 (systems-theory) 之间的跨域关联"
+    },
+    {
+      "source_domain": "information-theory",
+      "source_id": "communication-model",
+      "target_domain": "cybernetics",
+      "target_id": "signal-types",
+      "relation": "shared_concept",
+      "strength": 0.8,
+      "description": "通信系统模型 (information-theory) 与 信号类型 (cybernetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "dissipative-structures",
+      "source_id": "fluctuation-amplification",
+      "target_domain": "synergetics",
+      "target_id": "order-param-dynamics",
+      "relation": "shared_concept",
+      "strength": 0.8,
+      "description": "涨落放大 (dissipative-structures) 与 序参量动力学 (synergetics) 之间的跨域关联"
+    },
+    {
+      "source_domain": "synergetics",
+      "source_id": "adiabatic-elimination",
+      "target_domain": "dissipative-structures",
+      "target_id": "dissipative-conditions",
+      "relation": "shared_concept",
+      "strength": 0.7,
+      "description": "绝热消除 (synergetics) 与 耗散结构形成条件 (dissipative-structures) 之间的跨域关联"
+    },
+    {
+      "source_domain": "catastrophe-theory",
+      "source_id": "bimodality",
+      "target_domain": "synergetics",
+      "target_id": "phase-transition-concept",
+      "relation": "shared_concept",
+      "strength": 0.75,
+      "description": "双模态 (catastrophe-theory) 与 相变概念 (synergetics) 之间的跨域关联"
     }
   ],
   "meta": {
