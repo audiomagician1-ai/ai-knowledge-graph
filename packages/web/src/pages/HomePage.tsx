@@ -5,6 +5,7 @@ import { useDomainStore } from '@/lib/store/domain';
 import { Loader } from 'lucide-react';
 import { WelcomeGuide } from '@/components/common/WelcomeGuide';
 import { ReviewBanner } from '@/components/common/ReviewBanner';
+import { DailyRecommendation } from '@/components/common/DailyRecommendation';
 
 const log = createLogger('HomePage');
 
@@ -601,6 +602,8 @@ export function HomePage() {
       )}
       {/* Behavior Design: Review banner for returning users */}
       <ReviewBanner />
+      {/* Behavior Design: Daily concept recommendation */}
+      <DailyRecommendation />
       {/* Behavior Design: Welcome guide for first-time visitors */}
       <WelcomeGuide />
       {trans && (
