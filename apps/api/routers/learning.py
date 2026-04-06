@@ -782,3 +782,125 @@ async def export_all_data():
         "achievements": achievements,
     }
 
+
+class ImportDataRequest(BaseModel):
+    """Import request — accepts the same format as /export output."""
+    version: str = Field(default="1.0")
+    progress: list[dict] = Field(default_factory=list)
+    history: list[dict] = Field(default_factory=list)
+    streak: Optional[dict] = None
+    achievements: list[dict] = Field(default_factory=list)
+
+
+@router.post("/import")
+async def import_data(req: ImportDataRequest):
+    """Import learning data from a JSON backup (exported via /export).
+
+    Merge strategy:
+    - Progress: upsert — existing data with higher mastery is preserved
+    - History: append — deduplicated by (concept_id, timestamp)
+    - Streak: max — keeps the longer streak
+    - Achievements: merge — keeps all unlocked achievements
+    
+    Returns counts of imported items.
+    """
+    from db.sqlite_client import upsert_progress, add_history, get_db, get_progress
+
+    imported_progress = 0
+    imported_history = 0
+    imported_achievements = 0
+
+    _valid_statuses = {'not_started', 'learning', 'mastered'}
+
+    # Import progress
+    for item in req.progress:
+        concept_id = item.get("concept_id", "")
+        if not concept_id or len(concept_id) > 200:
+            continue
+        status = item.get("status", "learning")
+        if status not in _valid_statuses:
+            status = "learning"
+
+        existing = get_progress(concept_id)
+        if existing and existing.get("status") == "mastered":
+            continue  # Never downgrade mastered concepts
+
+        mastery = min(100, max(0, float(item.get("mastery_score", 0))))
+        mastered = status == "mastered"
+
+        upsert_progress(
+            concept_id=concept_id,
+            concept_name=item.get("concept_name", concept_id),
+            status=status,
+            mastery_score=mastery,
+            sessions=int(item.get("sessions", 1)),
+            total_time_sec=int(item.get("total_time_sec", 0)),
+        )
+        imported_progress += 1
+
+    # Import history (deduplicate by concept_id + timestamp)
+    existing_history = set()
+    try:
+        with get_db() as conn:
+            rows = conn.execute("SELECT concept_id, timestamp FROM learning_history").fetchall()
+            existing_history = {(r["concept_id"], r["timestamp"]) for r in rows}
+    except Exception:
+        pass
+
+    for entry in req.history:
+        cid = entry.get("concept_id", "")
+        ts = entry.get("timestamp", 0)
+        if not cid or (cid, ts) in existing_history:
+            continue
+        try:
+            add_history(
+                concept_id=cid,
+                concept_name=entry.get("concept_name", cid),
+                score=float(entry.get("score", 0)),
+                mastered=bool(entry.get("mastered", False)),
+            )
+            imported_history += 1
+        except Exception:
+            continue
+
+    # Import streak (max merge)
+    if req.streak:
+        try:
+            with get_db() as conn:
+                imported_streak = req.streak
+                conn.execute(
+                    """UPDATE streak SET 
+                       current_streak = MAX(current_streak, ?),
+                       longest_streak = MAX(longest_streak, ?),
+                       last_date = MAX(last_date, COALESCE(?, last_date))
+                       WHERE id = 1""",
+                    (
+                        imported_streak.get("current_streak", 0),
+                        imported_streak.get("longest_streak", 0),
+                        imported_streak.get("last_date"),
+                    ),
+                )
+        except Exception as e:
+            logger.warning("Streak import failed: %s", e)
+
+    # Import achievements
+    for ach in req.achievements:
+        key = ach.get("key", "")
+        if not key or not ach.get("unlocked"):
+            continue
+        try:
+            unlock_achievement(key)
+            imported_achievements += 1
+        except Exception:
+            continue
+
+    logger.info("Import completed: %d progress, %d history, %d achievements",
+                imported_progress, imported_history, imported_achievements)
+
+    return {
+        "success": True,
+        "imported_progress": imported_progress,
+        "imported_history": imported_history,
+        "imported_achievements": imported_achievements,
+    }
+

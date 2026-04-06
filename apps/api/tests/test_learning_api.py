@@ -314,3 +314,135 @@ class TestDataExport:
         from datetime import datetime
         dt = datetime.fromisoformat(data["exported_at"].replace("Z", "+00:00"))
         assert dt.year >= 2026
+
+
+class TestImportEndpoint:
+    """Tests for POST /api/learning/import"""
+
+    def setup_method(self):
+        """Reset DB state before each import test"""
+        with sc.get_db() as conn:
+            conn.execute("DELETE FROM concept_progress")
+            conn.execute("DELETE FROM learning_history")
+            conn.execute("UPDATE streak SET current_streak=0, longest_streak=0, last_date=''")
+
+    def test_import_empty_data(self):
+        """Import with empty data should succeed with zero counts"""
+        res = client.post("/api/learning/import", json={
+            "version": "1.0",
+            "progress": [],
+            "history": [],
+        })
+        assert res.status_code == 200
+        data = res.json()
+        assert data["success"] is True
+        assert data["imported_progress"] == 0
+        assert data["imported_history"] == 0
+
+    def test_import_progress(self):
+        """Import should create progress records"""
+        res = client.post("/api/learning/import", json={
+            "progress": [
+                {"concept_id": "import-test-1", "concept_name": "Test 1", "status": "learning", "mastery_score": 50, "sessions": 2},
+                {"concept_id": "import-test-2", "concept_name": "Test 2", "status": "mastered", "mastery_score": 95, "sessions": 5},
+            ],
+        })
+        assert res.status_code == 200
+        data = res.json()
+        assert data["imported_progress"] == 2
+
+        # Verify data was written
+        p1 = client.get("/api/learning/progress/import-test-1").json()
+        assert p1["status"] == "learning"
+
+    def test_import_never_downgrades_mastered(self):
+        """Import should not downgrade mastered concepts"""
+        # First, master a concept
+        client.post("/api/learning/start", json={"concept_id": "protected-concept"})
+        client.post("/api/learning/assess", json={
+            "concept_id": "protected-concept",
+            "concept_name": "Protected",
+            "score": 90,
+            "mastered": True,
+        })
+
+        # Try to import with lower status
+        res = client.post("/api/learning/import", json={
+            "progress": [
+                {"concept_id": "protected-concept", "status": "learning", "mastery_score": 30},
+            ],
+        })
+        assert res.status_code == 200
+        # Should NOT have imported (mastered protection)
+        assert res.json()["imported_progress"] == 0
+
+    def test_import_history(self):
+        """Import should create history records"""
+        res = client.post("/api/learning/import", json={
+            "history": [
+                {"concept_id": "hist-1", "concept_name": "History 1", "score": 75, "mastered": False},
+                {"concept_id": "hist-2", "concept_name": "History 2", "score": 90, "mastered": True},
+            ],
+        })
+        assert res.status_code == 200
+        assert res.json()["imported_history"] == 2
+
+    def test_import_invalid_status_sanitized(self):
+        """Import with invalid status should sanitize to 'learning'"""
+        res = client.post("/api/learning/import", json={
+            "progress": [
+                {"concept_id": "bad-status", "concept_name": "Bad", "status": "hacked", "mastery_score": 50},
+            ],
+        })
+        assert res.status_code == 200
+        assert res.json()["imported_progress"] == 1
+        p = client.get("/api/learning/progress/bad-status").json()
+        assert p["status"] == "learning"
+
+    def test_import_skips_invalid_concept_ids(self):
+        """Import should skip empty or overly long concept IDs"""
+        res = client.post("/api/learning/import", json={
+            "progress": [
+                {"concept_id": "", "status": "learning"},
+                {"concept_id": "x" * 300, "status": "learning"},
+                {"concept_id": "valid-id", "concept_name": "Valid", "status": "learning", "mastery_score": 50},
+            ],
+        })
+        assert res.status_code == 200
+        assert res.json()["imported_progress"] == 1
+
+    def test_import_clamps_mastery_score(self):
+        """Import should clamp mastery_score to [0, 100]"""
+        res = client.post("/api/learning/import", json={
+            "progress": [
+                {"concept_id": "clamped", "concept_name": "Clamped", "status": "learning", "mastery_score": 150},
+            ],
+        })
+        assert res.status_code == 200
+        p = client.get("/api/learning/progress/clamped").json()
+        assert p["mastery_score"] <= 100
+
+    def test_roundtrip_export_import(self):
+        """Export and re-import should be idempotent"""
+        # Create data
+        client.post("/api/learning/start", json={"concept_id": "roundtrip-1"})
+        client.post("/api/learning/assess", json={
+            "concept_id": "roundtrip-1",
+            "concept_name": "Roundtrip",
+            "score": 80,
+            "mastered": True,
+        })
+
+        # Export
+        export_res = client.get("/api/learning/export")
+        export_data = export_res.json()
+
+        # Clear DB
+        with sc.get_db() as conn:
+            conn.execute("DELETE FROM concept_progress")
+            conn.execute("DELETE FROM learning_history")
+
+        # Import
+        import_res = client.post("/api/learning/import", json=export_data)
+        assert import_res.status_code == 200
+        assert import_res.json()["imported_progress"] >= 1
