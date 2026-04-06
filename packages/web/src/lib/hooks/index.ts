@@ -13,3 +13,4 @@ export { useOnlineStatus } from './useOnlineStatus';
 export { useSpeechRecognition } from './useSpeechRecognition';
 export { useStudyGoal } from './useStudyGoal';
 export { useConceptNotes } from './useConceptNotes';
+export { useNotifications } from './useNotifications';

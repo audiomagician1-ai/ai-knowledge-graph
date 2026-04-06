@@ -4,7 +4,7 @@ import { useConceptNotes } from '@/lib/hooks/useConceptNotes';
 import { useKeyboardShortcuts } from '@/lib/hooks/useKeyboardShortcuts';
 import {
   ArrowLeft, StickyNote, Trash2, Download, Upload,
-  Search, BookOpen,
+  Search, BookOpen, RefreshCw,
 } from 'lucide-react';
 
 /**
@@ -13,7 +13,8 @@ import {
  */
 export function NotesPage() {
   const navigate = useNavigate();
-  const { allNotesArray, deleteNote, exportNotes, importNotes, noteCount } = useConceptNotes();
+  const { allNotesArray, deleteNote, exportNotes, importNotes, noteCount, syncToBackend, syncFromBackend } = useConceptNotes();
+  const [syncing, setSyncing] = useState(false);
   const [search, setSearch] = useState('');
   const [importText, setImportText] = useState('');
   const [showImport, setShowImport] = useState(false);
@@ -89,6 +90,22 @@ export function NotesPage() {
             title="导入笔记"
           >
             <Upload size={18} />
+          </button>
+          <button
+            onClick={async () => {
+              setSyncing(true);
+              try {
+                await syncToBackend();
+                await syncFromBackend();
+              } finally {
+                setSyncing(false);
+              }
+            }}
+            disabled={syncing}
+            className="p-2.5 rounded-xl hover:bg-white/10 transition-colors"
+            title="同步到云端"
+          >
+            <RefreshCw size={18} className={syncing ? 'animate-spin' : ''} />
           </button>
         </div>
 

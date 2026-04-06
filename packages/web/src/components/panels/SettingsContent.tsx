@@ -2,10 +2,11 @@
 import { createLogger } from '@/lib/utils/logger';
 import { useSettingsStore, PROVIDER_INFO, resolveBaseUrl, probeCORS, probeProxy, PROXY_SCRIPT_SRC, generateSelfContainedBat, downloadBlob, validateModelId, getDefaultModel } from '@/lib/store/settings';
 import type { LLMProvider, LLMConfig } from '@/lib/store/settings';
-import { Eye, EyeOff, Check, Trash2, Shield, Key, Server, Wifi, WifiOff, Loader2, Globe, Box, Info, Download, Upload, MonitorDown, AlertTriangle, Zap } from 'lucide-react';
+import { Eye, EyeOff, Check, Trash2, Shield, Key, Server, Wifi, WifiOff, Loader2, Globe, Box, Info, Download, Upload, MonitorDown, AlertTriangle, Zap, Bell } from 'lucide-react';
 import { useGraphStore } from '@/lib/store/graph';
 import { useLearningStore } from '@/lib/store/learning';
 import { useDialogueStore } from '@/lib/store/dialogue';
+import { useNotifications } from '@/lib/hooks/useNotifications';
 
 const PROVIDERS: LLMProvider[] = ['openrouter', 'openai', 'deepseek', 'custom'];
 
@@ -28,6 +29,7 @@ export function SettingsContent() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const isUsingDefault = useSettingsStore((s) => s.isUsingDefaultLLM());
   const [showAdvancedLLM, setShowAdvancedLLM] = useState(!isUsingDefault);
+  const { isSupported: notifSupported, permission: notifPermission, prefs: notifPrefs, toggleEnabled: toggleNotif, setReminderHour } = useNotifications();
 
   const handleSave = () => { setSaved(true); setTimeout(() => setSaved(false), 2000); };
 
@@ -293,6 +295,60 @@ export function SettingsContent() {
           color: testStatus === 'success' ? 'var(--color-accent-emerald)' : 'var(--color-accent-rose)',
           backgroundColor: testStatus === 'success' ? 'rgba(138,173,122,0.06)' : 'rgba(201,123,123,0.06)',
         }}>{testMessage}</p>
+      )}
+
+      {/* Notification Settings */}
+      {notifSupported && (
+        <div style={{ borderRadius: 10, padding: '16px 20px', backgroundColor: 'var(--color-surface-2)' }}>
+          <div className="flex items-center gap-2" style={{ marginBottom: 12 }}>
+            <Bell size={13} style={{ color: '#f59e0b' }} />
+            <span style={{ fontSize: 13, fontWeight: 600 }}>通知提醒</span>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            {/* Enable/Disable toggle */}
+            <div className="flex items-center justify-between">
+              <div>
+                <div style={{ fontSize: 13 }}>学习目标提醒</div>
+                <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)' }}>
+                  {notifPermission === 'denied' ? '浏览器已阻止通知权限' : '每日提醒你完成学习目标'}
+                </div>
+              </div>
+              <button
+                onClick={() => toggleNotif(!notifPrefs.enabled)}
+                disabled={notifPermission === 'denied'}
+                style={{
+                  width: 44, height: 24, borderRadius: 12, position: 'relative', cursor: notifPermission === 'denied' ? 'not-allowed' : 'pointer',
+                  backgroundColor: notifPrefs.enabled ? 'var(--color-accent-emerald)' : 'var(--color-surface-3)',
+                  transition: 'background-color 0.2s', border: 'none', opacity: notifPermission === 'denied' ? 0.4 : 1,
+                }}
+              >
+                <div style={{
+                  width: 18, height: 18, borderRadius: '50%', backgroundColor: '#fff',
+                  position: 'absolute', top: 3, left: notifPrefs.enabled ? 23 : 3, transition: 'left 0.2s',
+                }} />
+              </button>
+            </div>
+            {/* Reminder hour selector */}
+            {notifPrefs.enabled && (
+              <div className="flex items-center justify-between">
+                <span style={{ fontSize: 13 }}>提醒时间</span>
+                <select
+                  value={notifPrefs.reminderHour}
+                  onChange={(e) => setReminderHour(Number(e.target.value))}
+                  style={{
+                    fontSize: 13, padding: '4px 8px', borderRadius: 6,
+                    backgroundColor: 'var(--color-surface-3)', color: 'var(--color-text-primary)',
+                    border: '1px solid var(--color-border)',
+                  }}
+                >
+                  {Array.from({ length: 24 }, (_, h) => (
+                    <option key={h} value={h}>{String(h).padStart(2, '0')}:00</option>
+                  ))}
+                </select>
+              </div>
+            )}
+          </div>
+        </div>
       )}
 
       {/* About */}
