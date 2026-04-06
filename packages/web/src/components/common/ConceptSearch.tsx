@@ -49,7 +49,9 @@ export function ConceptSearch() {
     }
   }, [open]);
 
-  // Search through domain concepts (local data)
+  // Search with debounce — tries API first, falls back to localStorage
+  const searchTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const handleSearch = useCallback((q: string) => {
     setQuery(q);
     setSelectedIdx(0);
@@ -58,36 +60,59 @@ export function ConceptSearch() {
       return;
     }
 
-    const lower = q.toLowerCase();
-    const matched: SearchResult[] = [];
-
-    // Search through available domain data
-    for (const d of domains) {
-      if (!d.id) continue;
+    // Debounce API calls
+    if (searchTimeoutRef.current) clearTimeout(searchTimeoutRef.current);
+    searchTimeoutRef.current = setTimeout(async () => {
+      // Try backend global search first
       try {
-        const key = `akg-graph:${d.id}`;
-        const raw = localStorage.getItem(key);
-        if (!raw) continue;
-        const graph = JSON.parse(raw);
-        const concepts = graph?.concepts || graph?.nodes || [];
-        for (const c of concepts) {
-          const name = c.name || c.label || '';
-          const id = c.id || '';
-          if (name.toLowerCase().includes(lower) || id.toLowerCase().includes(lower)) {
-            matched.push({
-              conceptId: id,
-              conceptName: name,
-              domainId: d.id,
-              domainName: d.name,
-            });
+        const settings = localStorage.getItem('akg-settings');
+        const baseUrl = settings ? JSON.parse(settings)?.apiBaseUrl : '';
+        if (baseUrl) {
+          const resp = await fetch(`${baseUrl}/api/graph/rag/search/global?q=${encodeURIComponent(q)}&limit=15`);
+          if (resp.ok) {
+            const data = await resp.json();
+            if (data.results?.length > 0) {
+              setResults(data.results.map((r: Record<string, string>) => ({
+                conceptId: r.concept_id,
+                conceptName: r.name,
+                domainId: r.domain_id,
+                domainName: r.domain_name || r.domain_id,
+              })));
+              return;
+            }
           }
-          if (matched.length >= 20) break;
         }
-      } catch { /* skip domains without cached data */ }
-      if (matched.length >= 20) break;
-    }
+      } catch { /* API unavailable, fallback to local */ }
 
-    setResults(matched);
+      // Fallback: search through localStorage cached graph data
+      const lower = q.toLowerCase();
+      const matched: SearchResult[] = [];
+      for (const d of domains) {
+        if (!d.id) continue;
+        try {
+          const key = `akg-graph:${d.id}`;
+          const raw = localStorage.getItem(key);
+          if (!raw) continue;
+          const graph = JSON.parse(raw);
+          const concepts = graph?.concepts || graph?.nodes || [];
+          for (const c of concepts) {
+            const name = c.name || c.label || '';
+            const id = c.id || '';
+            if (name.toLowerCase().includes(lower) || id.toLowerCase().includes(lower)) {
+              matched.push({
+                conceptId: id,
+                conceptName: name,
+                domainId: d.id,
+                domainName: d.name,
+              });
+            }
+            if (matched.length >= 20) break;
+          }
+        } catch { /* skip */ }
+        if (matched.length >= 20) break;
+      }
+      setResults(matched);
+    }, 250);
   }, [domains]);
 
   const handleSelect = useCallback((result: SearchResult) => {
