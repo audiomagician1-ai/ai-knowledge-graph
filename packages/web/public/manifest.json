@@ -1,0 +1,20 @@
+{
+  "name": "AI知识图谱",
+  "short_name": "AKG",
+  "description": "通过苏格拉底式对话学习，点亮36个知识领域、6300+概念的知识宇宙",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "orientation": "any",
+  "categories": ["education", "productivity"],
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
