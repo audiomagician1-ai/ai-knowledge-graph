@@ -4,7 +4,12 @@
     "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/biology/human-physiology/reproductive-system.md",
     "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/biology/molecular-biology/dna-structure.md",
     "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/biology/molecular-biology/recombinant-dna.md",
-    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/anti-aliasing/cg-alpha-testing-aa.md"
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/anti-aliasing/cg-alpha-testing-aa.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/anti-aliasing/cg-specular-aa.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/anti-aliasing/cg-upscaling.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/anti-aliasing/cg-velocity-buffer.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/geometry-processing/cg-impostor.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/global-illumination/cg-gi-hybrid.md"
   ],
   "errors": []
 }
