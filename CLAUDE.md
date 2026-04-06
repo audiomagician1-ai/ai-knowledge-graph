@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,353 (1,006 BE + 323 FE + 24 E2E) | 2026-04-07 |
+| **测试总数** | 1,382 (1,006 BE + 329 FE + 47 E2E) | 2026-04-07 |
 | **tsc errors** | 0 | 2026-04-07 |
 | **Open Issues** | 0 | 2026-04-07 |
 | **RAG 质量** | 6,300 docs — legacy 6,156 avg 79.5 + new 144 avg 84.0 → global avg 79.6 | 2026-04-07 |
@@ -100,8 +100,10 @@ data/rag/          — RAG知识文档 (6,300篇)
 > | Sprint 6 | ✅ | 全量Tier-B升级 — 3353/3353完成 (100%), 0 errors |
 > | Sprint 6.5 | ✅ | 全量rescore完成 — 6156/6156 (100%), avg 78.4, 0 pending |
 > | Sprint 7 | ✅ | Tier-S Booster — 416/425 完成 (98%), 9 skipped (name mismatch), S:706→1096, avg 78.5→79.5 |
+> | Sprint 8 | ✅ | 6新域144篇全量升级 (ST 86.0, CB 84.1, IT 84.8, DS 83.9, SY 83.8, CT 81.5), 新域avg 84.0 |
+> | Sprint 9 | 进行中 | Legacy底部200篇targeted boost (目标: global avg 79.6→80+) |
 >
-> **目标**: 全量v2覆盖 + 均分80+ ← 当前 79.5 (接近达成)
+> **目标**: 全量v2覆盖 + 均分80+ ← 当前 79.6 (Sprint 9进行中)
 > **脚本**: scripts/_batch_sprint6.py, scripts/_batch_sprint6_5.py, scripts/_batch_tier_b_parallel.py, scripts/_batch_tier_s_booster.py
 
 ### V1.0 剩余任务
@@ -308,6 +310,7 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/lib/utils/fetch-retry.ts | fetchWithRetry: 指数退避 + 抖动 + Retry-After + abort signal |
 | packages/web/src/components/common/OfflineIndicator.tsx | 离线状态提示横幅 (useSyncExternalStore) |
 | packages/web/src/components/common/KeyboardShortcutsHelp.tsx | 全局键盘快捷键帮助弹窗 (Shift+?) |
+| packages/web/src/components/common/ConceptSearch.tsx | 全局概念搜索 (Ctrl+K, 支持↑↓Enter导航) |
 | apps/api/utils/metrics.py | API指标收集器 (请求数/错误率/响应时间/per-endpoint) |
 | workers/src/ | Cloudflare Workers代理后端 |
 
@@ -354,4 +357,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-07 | **Scope**: V1.3 Sprint COMPLETE — RAG 144/144 new-domain升级完成 (avg 84.0) + 键盘快捷键帮助 + 学习时间追踪 + /health/project端点 + hooks桶导出 + 16 new tests | **Result**: 1,006 BE + 323 FE all pass, tsc: 0 errors, 0 open issues, global RAG avg 79.6
+**Date**: 2026-04-07 | **Scope**: V1.3 COMPLETE + V2.0 prep — ConceptSearch (Ctrl+K) + ErrorBoundary retry + KeyboardShortcutsHelp + useLearningTimer + 10 navigation E2E specs + legacy RAG booster launched (target: global avg 80+) | **Result**: 1,006 BE + 329 FE + 47 E2E all pass, tsc: 0 errors, 0 open issues, build OK

@@ -139,12 +139,18 @@
     "catastrophe-theory/hysteresis-ct",
     "catastrophe-theory/bimodality",
     "catastrophe-theory/catastrophe-flags",
-    "catastrophe-theory/delay-convention"
+    "catastrophe-theory/delay-convention",
+    "catastrophe-theory/catastrophe-in-physics",
+    "catastrophe-theory/catastrophe-in-biology",
+    "catastrophe-theory/catastrophe-in-psychology",
+    "catastrophe-theory/catastrophe-in-economics"
   ],
   "errors": [],
   "stats": {
-    "total": 64,
-    "success": 60,
-    "error": 0
+    "total": 144,
+    "success": 144,
+    "error": 0,
+    "elapsed_seconds": 11460,
+    "last_run": "2026-04-07T06:57:19.108465"
   }
 }
