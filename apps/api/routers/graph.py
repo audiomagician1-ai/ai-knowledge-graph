@@ -1,10 +1,11 @@
 """图谱引擎 API — 多域知识图谱查询（JSON fallback + Neo4j）"""
 
+import hashlib
 import json
 import os
 import sys
 import threading
-from fastapi import APIRouter, Query, HTTPException
+from fastapi import APIRouter, Query, HTTPException, Request, Response
 from typing import Optional
 from utils.logger import get_logger
 
@@ -90,7 +91,7 @@ def _load_domains() -> list[dict]:
 # ── 域列表 API ────────────────────────────────────────────
 
 @router.get("/domains")
-async def get_domains():
+async def get_domains(response: Response):
     """获取所有可用知识域列表，包含每个域的统计信息"""
     domains = _load_domains()
     result = []
@@ -107,6 +108,8 @@ async def get_domains():
         except HTTPException:
             stats = {"total_concepts": 0, "total_edges": 0, "subdomains": 0}
         result.append({**d, "stats": stats})
+    # Domain list is static — cache for 1 hour, revalidate in background
+    response.headers["Cache-Control"] = "public, max-age=3600, stale-while-revalidate=86400"
     return result
 
 
@@ -114,6 +117,7 @@ async def get_domains():
 
 @router.get("/data")
 async def get_graph_data(
+    response: Response,
     domain: str = Query(DEFAULT_DOMAIN, description="知识域ID"),
     subdomain_id: Optional[str] = Query(None),
 ):
@@ -156,6 +160,8 @@ async def get_graph_data(
         for e in edges
     ]
 
+    # Graph data is static seed data — cache for 1 hour
+    response.headers["Cache-Control"] = "public, max-age=3600, stale-while-revalidate=86400"
     return {"nodes": nodes, "edges": graph_edges}
 
 

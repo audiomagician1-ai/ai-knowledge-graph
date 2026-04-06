@@ -13,6 +13,7 @@ from pathlib import Path
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import FileResponse
 
 from routers import graph, dialogue, learning, health
@@ -109,6 +110,10 @@ app.add_middleware(
         "X-LLM-Base-URL",
     ],
 )
+
+# GZip compression — reduce response sizes for graph data / RAG documents
+# minimum_size=500 avoids compressing tiny health-check responses
+app.add_middleware(GZipMiddleware, minimum_size=500)
 
 # 路由注册
 app.include_router(health.router, prefix="/api", tags=["health"])
