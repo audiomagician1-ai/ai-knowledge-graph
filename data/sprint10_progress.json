@@ -24,12 +24,22 @@
     "game-engine/resource-management/memory-budget.md",
     "game-engine/resource-management/patching-system.md",
     "game-engine/serialization/property-serialization.md",
-    "game-engine/unity-architecture/unity-audio.md"
+    "game-engine/unity-architecture/unity-audio.md",
+    "game-engine/unity-architecture/unity-profiler.md",
+    "game-live-ops/ops-uc-rollback-strategy.md",
+    "game-publishing/pub-pr-steam-sales.md",
+    "game-qa/qa-at-ci-integration.md",
+    "game-qa/qa-at-framework-design.md",
+    "game-qa/qa-rt-build-verification.md",
+    "game-qa/qa-tc-ci-tools.md",
+    "game-ui-ux/guiux-motion-spring-physics.md",
+    "game-ui-ux/guiux-tech-layout-engine.md",
+    "game-ui-ux/guiux-tech-rich-text-impl.md"
   ],
   "errors": [],
   "stats": {
-    "total": 25,
-    "success": 25,
+    "total": 35,
+    "success": 35,
     "error": 0,
     "skipped": 0
   }

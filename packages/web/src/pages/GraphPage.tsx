@@ -23,6 +23,7 @@ import { useAuthStore } from '@/lib/store/auth';
 import { GraphMiniStats } from '@/components/graph/GraphMiniStats';
 import { GraphLegend } from '@/components/graph/GraphLegend';
 import { SubdomainFilter } from '@/components/graph/SubdomainFilter';
+import { GraphBreadcrumb } from '@/components/graph/GraphBreadcrumb';
 
 const log = createLogger('GraphPage');
 
@@ -231,6 +232,10 @@ export function GraphPage() {
               <GraphLegend />
             </>
           )}
+          {/* Breadcrumb navigation when chat is open */}
+          {chatOpen && urlDomainId && (
+            <GraphBreadcrumb domainId={urlDomainId} />
+          )}
           </>
         )}
       </div>
@@ -387,10 +392,8 @@ export function GraphPage() {
             <HubButton icon={LogIn} label="登录" active={false} onClick={() => navigate('/login')} />
           )}
 
-          {/* Social / Community — placeholder for future social module */}
-          <HubButton icon={MessageCircle} label="交流" active={false} onClick={() => {
-            // TODO: Open social/community panel when implemented
-          }} />
+          {/* Social / Community — navigate to community page */}
+          <HubButton icon={MessageCircle} label="交流" active={false} onClick={() => navigate('/community')} />
         </div>
 
         {/* Free API warning banner */}

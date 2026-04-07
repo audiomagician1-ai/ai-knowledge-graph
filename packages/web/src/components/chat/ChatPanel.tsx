@@ -9,6 +9,8 @@ import { MarkdownRenderer } from './MarkdownRenderer';
 import { ChoiceButtons } from './ChoiceButtons';
 import { stripChoicesBlock } from '@/lib/utils/text';
 import { useCountUp } from '@/lib/hooks/useCountUp';
+import { ConceptPrerequisites } from '@/components/graph/ConceptPrerequisites';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
   Send, BarChart3, Brain, RotateCcw, Zap, Play,
   Trophy, History, Trash2, MessageSquare, X,
@@ -29,6 +31,8 @@ export function ChatPanel({ conceptId, conceptName, domainId }: ChatPanelProps) 
   const [view, setView] = useState<PanelView>('idle');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const prevConceptRef = useRef<string | null>(null);
+  const navigate = useNavigate();
+  const { domainId: urlDomainId } = useParams<{ domainId: string }>();
 
   const {
     conversationId, messages, isStreaming, isAssessing, isInitializing, suggestAssess, assessment, error,
@@ -263,6 +267,12 @@ export function ChatPanel({ conceptId, conceptName, domainId }: ChatPanelProps) 
               </div>
             </div>
           </div>
+
+          {/* Prerequisites / Dependents */}
+          <ConceptPrerequisites
+            conceptId={conceptId}
+            onConceptClick={(id) => navigate(`/domain/${urlDomainId || domainId}/${id}`)}
+          />
 
           {/* Recent history preview (last 3) */}
           {conceptConvHistory.length > 0 && (

@@ -6,6 +6,7 @@ import { ArrowLeft, BarChart3, BookOpen, Trophy, TrendingUp, Flame, Clock, Alert
 import { useKeyboardShortcuts } from '@/lib/hooks/useKeyboardShortcuts';
 import { readLearningTime } from '@/lib/hooks/useLearningTimer';
 import { StudyGoalWidget } from '@/components/common/StudyGoalWidget';
+import { ShareProgress } from '@/components/common/ShareProgress';
 import { fetchWithRetry } from '@/lib/utils/fetch-retry';
 import { DomainComparison } from '@/components/dashboard/DomainComparison';
 import { RecentActivity } from '@/components/dashboard/RecentActivity';
@@ -165,6 +166,9 @@ export function DashboardPage() {
 
         {/* Study Goal Widget */}
         <StudyGoalWidget />
+
+        {/* Share Progress */}
+        <ShareProgress />
 
         {/* Streak Calendar (30-day heatmap) */}
         <section className="rounded-xl p-5" style={{ backgroundColor: 'var(--color-surface-1)' }}>
