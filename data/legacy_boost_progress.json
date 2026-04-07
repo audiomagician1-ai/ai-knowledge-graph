@@ -99,7 +99,12 @@
     "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/biology/evolution/evidence-evolution.md",
     "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/biology/genetics/gene-concept.md",
     "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/biology/human-physiology/autonomic-nervous-system.md",
-    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/biology/human-physiology/exercise-physiology.md"
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/biology/human-physiology/exercise-physiology.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/biology/human-physiology/metabolism-overview.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/biology/human-physiology/reproductive-system.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/biology/molecular-biology/dna-structure.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/biology/molecular-biology/recombinant-dna.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/anti-aliasing/cg-alpha-testing-aa.md"
   ],
   "errors": []
 }

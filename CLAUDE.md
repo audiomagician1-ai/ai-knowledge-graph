@@ -78,10 +78,10 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,499 (1,052 BE + 386 FE + 61 E2E) | 2026-04-07 |
+| **测试总数** | 1,505 (1,052 BE + 392 FE + 61 E2E) | 2026-04-07 |
 | **tsc errors** | 0 | 2026-04-07 |
 | **Open Issues** | 0 | 2026-04-07 |
-| **RAG 质量** | 6,300 docs — legacy 6,156 avg 79.5 + new 144 avg 84.0 → global avg 79.6 | 2026-04-07 |
+| **RAG 质量** | 6,300 docs — S:1289(20.5%) + A:5011(79.5%) + B/C:0 → global avg **79.9** | 2026-04-07 |
 
 ---
 
@@ -101,9 +101,9 @@ data/rag/          — RAG知识文档 (6,300篇)
 > | Sprint 6.5 | ✅ | 全量rescore完成 — 6156/6156 (100%), avg 78.4, 0 pending |
 > | Sprint 7 | ✅ | Tier-S Booster — 416/425 完成 (98%), 9 skipped (name mismatch), S:706→1096, avg 78.5→79.5 |
 > | Sprint 8 | ✅ | 6新域144篇全量升级 (ST 86.0, CB 84.1, IT 84.8, DS 83.9, SY 83.8, CT 81.5), 新域avg 84.0 |
-> | Sprint 9 | 进行中 | Legacy底部200篇targeted boost (完成~60/200, 后台运行中) |
+> | Sprint 9 | ✅ | Legacy底部200篇targeted boost (200/200完成, 0 errors, global avg 79.6→79.9) |
 >
-> **目标**: 全量v2覆盖 + 均分80+ ← 当前 79.6 (Sprint 9进行中)
+> **目标**: 全量v2覆盖 + 均分80+ ← 当前 **79.9** (Sprint 9完成, S:1289 A:5011 B/C:0)
 > **脚本**: scripts/_batch_sprint6.py, scripts/_batch_sprint6_5.py, scripts/_batch_tier_b_parallel.py, scripts/_batch_tier_s_booster.py
 
 ### V1.0 剩余任务
@@ -384,4 +384,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-07 | **Scope**: V2.0 complete + analytics API (4 endpoints) + inline feedback + community moderation (22 BE tests) + E2E community/notes tests | **Result**: 1,052 BE + 386 FE + 61 E2E all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-07 | **Scope**: V2.0 complete + analytics API (4 endpoints) + dashboard velocity viz + community moderation + RAG Sprint 9 DONE (200/200, avg 79.9) | **Result**: 1,052 BE + 392 FE + 61 E2E all pass, tsc: 0 errors, 0 open issues, build OK
