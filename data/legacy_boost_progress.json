@@ -144,7 +144,12 @@
     "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/concept-design/cd-value-scale.md",
     "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/cs-fundamentals/file-system.md",
     "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/cs-fundamentals/memory-management.md",
-    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/data-structures/adjacency-matrix.md"
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/data-structures/adjacency-matrix.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/data-structures/lru-cache.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/data-structures/queue.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/database/sql-cte.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/database/sql-joins.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/devops/blue-green-deployment.md"
   ],
   "errors": []
 }

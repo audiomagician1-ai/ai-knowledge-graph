@@ -34,12 +34,17 @@
     "game-qa/qa-tc-ci-tools.md",
     "game-ui-ux/guiux-motion-spring-physics.md",
     "game-ui-ux/guiux-tech-layout-engine.md",
-    "game-ui-ux/guiux-tech-rich-text-impl.md"
+    "game-ui-ux/guiux-tech-rich-text-impl.md",
+    "game-ui-ux/guiux-tech-ugui.md",
+    "game-ui-ux/guiux-tech-ui-toolkit.md",
+    "level-design/blockout/collision-volume.md",
+    "level-design/lighting-narrative/light-performance.md",
+    "level-design/terrain-design/heightmap.md"
   ],
   "errors": [],
   "stats": {
-    "total": 35,
-    "success": 35,
+    "total": 40,
+    "success": 40,
     "error": 0,
     "skipped": 0
   }

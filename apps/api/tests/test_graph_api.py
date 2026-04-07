@@ -3285,3 +3285,90 @@ async def test_topology_not_found():
     async with AsyncClient(transport=transport, base_url="http://test") as client:
         resp = await client.get("/api/graph/topology/nonexistent")
         assert resp.status_code == 404
+
+
+# ── Concept Context API ────────────────────────────────────
+
+
+@pytest.mark.asyncio
+async def test_concept_context_basic():
+    """GET /api/graph/concepts/{id}/context should return prerequisites, dependents, siblings."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/binary-system/context")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["concept_id"] == "binary-system"
+        assert "name" in data
+        assert "prerequisites" in data
+        assert "dependents" in data
+        assert "siblings" in data
+        assert "related" in data
+        assert isinstance(data["prerequisites"], list)
+        assert isinstance(data["dependents"], list)
+        assert isinstance(data["siblings"], list)
+        assert data["total_siblings"] >= 1
+
+
+@pytest.mark.asyncio
+async def test_concept_context_prereq_structure():
+    """Prerequisites in context should have id, name, difficulty, subdomain_id."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        # Find a concept that has known prerequisites
+        resp = await client.get("/api/graph/concepts/binary-system/context")
+        data = resp.json()
+        # Check dependents structure (binary-system is prerequisite for others)
+        if data["dependents"]:
+            dep = data["dependents"][0]
+            assert "id" in dep
+            assert "name" in dep
+            assert "difficulty" in dep
+            assert "subdomain_id" in dep
+
+
+@pytest.mark.asyncio
+async def test_concept_context_siblings():
+    """Siblings should be concepts in the same subdomain, excluding the concept itself."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/binary-system/context")
+        data = resp.json()
+        concept_subdomain = data["subdomain_id"]
+        for sibling in data["siblings"]:
+            assert sibling["id"] != "binary-system"
+            # All siblings should be sorted by difficulty
+        if len(data["siblings"]) >= 2:
+            diffs = [s["difficulty"] for s in data["siblings"]]
+            assert diffs == sorted(diffs), "Siblings should be sorted by difficulty"
+
+
+@pytest.mark.asyncio
+async def test_concept_context_with_domain():
+    """Context should work with explicit domain parameter."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/derivative-concept/context?domain=mathematics")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["concept_id"] == "derivative-concept"
+        assert data["subdomain_id"] == "calculus"
+        assert data["is_milestone"] is True
+
+
+@pytest.mark.asyncio
+async def test_concept_context_not_found():
+    """Context for nonexistent concept should return 404."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/nonexistent-xyz/context")
+        assert resp.status_code == 404
+
+
+@pytest.mark.asyncio
+async def test_concept_context_math_domain():
+    """Context for a math concept should return correct subdomain and related data."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/concepts/quadratic-equations/context?domain=mathematics")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["concept_id"] == "quadratic-equations"
+        assert data["subdomain_id"] == "algebra"
+        # Should have prerequisites (linear equations, etc.)
+        assert len(data["prerequisites"]) >= 1 or len(data["dependents"]) >= 1
+

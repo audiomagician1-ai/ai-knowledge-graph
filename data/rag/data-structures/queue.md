@@ -1,62 +1,14 @@
----
-id: "queue"
-concept: "队列"
-domain: "ai-engineering"
-subdomain: "data-structures"
-subdomain_name: "数据结构"
-difficulty: 3
-is_milestone: false
-tags: ["线性", "FIFO"]
-
-# Quality Metadata (Schema v2)
-content_version: 4
-quality_tier: "A"
-quality_score: 88.5
-generation_method: "intranet-llm-rewrite-v2"
-unique_content_ratio: 1.0
-last_scored: "2026-04-06"
-sources:
-  - type: "ai-generated"
-    model: "mihoyo.claude-4-6-sonnet"
-    prompt_version: "intranet-llm-rewrite-v2"
-  - type: "academic"
-    author: "Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C."
-    year: 2009
-    title: "Introduction to Algorithms (3rd ed.)"
-    publisher: "MIT Press"
-    note: "第10章系统介绍了队列、栈等基础线性数据结构及其数组与链表实现"
-  - type: "academic"
-    author: "Knuth, D. E."
-    year: 1997
-    title: "The Art of Computer Programming, Volume 1: Fundamental Algorithms (3rd ed.)"
-    publisher: "Addison-Wesley"
-    note: "第2.2节详细分析了顺序分配与链式分配队列的时间与空间性能，提出循环队列的经典取模实现"
-  - type: "academic"
-    author: "Sedgewick, R., & Wayne, K."
-    year: 2011
-    title: "Algorithms (4th ed.)"
-    publisher: "Addison-Wesley Professional"
-    note: "第1.3节通过Java实现详细讲解了基于链表和可变大小数组的队列，并对两者的内存使用和缓存性能进行了实测对比"
-  - type: "academic"
-    author: "Goodrich, M. T., Tamassia, R., & Goldwasser, M. H."
-    year: 2013
-    title: "Data Structures and Algorithms in Python"
-    publisher: "Wiley"
-    note: "第6章专门讨论了Python环境下队列的循环数组实现与双端队列（deque）的性能特性，并给出了与collections.deque的基准测试对比"
-scorer_version: "scorer-v2.1"
-quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-04-06
----
-
 # 队列
 
 ## 概述
 
 队列（Queue）是一种遵循**先进先出**（First In, First Out，简称 FIFO）原则的线性数据结构。最早进入队列的元素，必须最早被取出——就像现实中排队买票，先排队的人先买到票。这与栈的后进先出（LIFO）原则形成鲜明对比：栈只在一端操作，而队列在两端分别操作，一端负责入队（enqueue），另一端负责出队（dequeue）。
 
-队列的概念在计算机科学中由来已久。早在1960年代，IBM的OS/360操作系统设计中便已将队列广泛用于作业调度（Job Scheduling）和打印任务管理（Print Spooling）。Donald Knuth在1968年出版的《The Art of Computer Programming》第一卷中，首次对队列的数学性质和实现方案进行了系统化整理（Knuth, 1997）。Cormen等人在2009年出版的《Introduction to Algorithms》第10章中，将队列与栈并列为最基础的线性数据结构，并给出了基于数组和链表两种实现的伪代码及正确性证明（Cormen et al., 2009）。现代AI工程中，队列是消息传递、任务调度和图算法（尤其是BFS）的基础构件。
+队列的概念在计算机科学中由来已久。早在1960年代，IBM的OS/360操作系统设计中便已将队列广泛用于作业调度（Job Scheduling）和打印任务管理（Print Spooling）。Donald Knuth在1968年出版的《The Art of Computer Programming》第一卷中，首次对队列的数学性质和实现方案进行了系统化整理（Knuth, 1997）。Cormen等人在2009年出版的《Introduction to Algorithms》第10章中，将队列与栈并列为最基础的线性数据结构，并给出了基于数组和链表两种实现的伪代码及正确性证明（Cormen et al., 2009）。现代AI工程中，队列是消息传递、任务调度和图算法（尤其是BFS广度优先搜索）的基础构件。
 
 队列之所以重要，在于它天然地保证了处理顺序的公平性。在AI推理服务中，多个用户请求需要按照到达顺序被GPU处理，用队列管理请求可以防止后来的请求"插队"抢占资源，保障服务的公平性和可预测性。以2023年OpenAI发布ChatGPT API为例，其并发请求峰值曾超过每秒10万次，后端使用多级队列结构对请求进行缓冲与调度，才得以保持服务稳定。
+
+值得思考的是：**既然队列保证了FIFO公平性，那么在实际AI推理系统中，是否始终应该使用普通队列而非优先队列来调度请求？什么情况下打破FIFO顺序反而是更优选择？**
 
 ---
 
@@ -127,7 +79,7 @@ Python 标准库提供了三种队列实现，各有适用场景：
 
 ### 队列等待时间的Little定律
 
-在分析队列系统（如AI推理服务器的请求队列）的性能时，**Little定律**（Little's Law）是最重要的定量工具。由John D. C. Little于1961年在MIT发表的论文中严格证明，其表达式为：
+在分析队列系统（如AI推理服务器的请求队列）的性能时，**Little定律**（Little's Law）是最重要的定量工具。由John D. C. Little于1961年在MIT发表的论文中严格证明（Little, 1961），其表达式为：
 
 $$L = \lambda W$$
 
@@ -136,7 +88,7 @@ $$L = \lambda W$$
 - $\lambda$：请求到达速率（单位：个/秒）
 - $W$：每个请求在系统中的平均逗留时间（包括等待时间和处理时间，单位：秒）
 
-例如，某AI推理服务每秒平均接收 $\lambda = 200$ 个请求，每个请求平均在系统中停留 $W = 0.5$ 秒，则系统中同时存在的平均请求数为 $L = 200 \times 0.5 = 100$ 个。若服务器内存只能容纳50个并发请求，则需通过限流（Rate Limiting）将 $\lambda$ 降至 $\lambda \leq \frac{50}{0.5} = 100$ 个/秒。
+**例如**，某AI推理服务每秒平均接收 $\lambda = 200$ 个请求，每个请求平均在系统中停留 $W = 0.5$ 秒，则系统中同时存在的平均请求数为 $L = 200 \times 0.5 = 100$ 个。若服务器内存只能容纳50个并发请求，则需通过限流（Rate Limiting）将 $\lambda$ 降至 $\lambda \leq \frac{50}{0.5} = 100$ 个/秒。Little定律的强大之处在于它对到达分布和服务时间分布均无假设，适用于任意稳态队列系统。
 
 ### M/M/1排队模型中的队列长度期望
 
@@ -150,6 +102,18 @@ $$L_q = \frac{\rho^2}{1 - \rho}$$
 
 该公式揭示了一个反直觉的结论：当 $\rho \to 1$（即服务器接近满负荷）时，$L_q$ 趋向无穷大。这解释了为什么AI推理集群在GPU利用率接近100%时，请求等待时间会急剧恶化——仅仅将利用率从90%提升至95%，等待队列长度就会从 $L_q = \frac{0.81}{0.1} = 8.1$ 跳升至 $L_q = \frac{0.9025}{0.05} = 18.05$，增加约2.2倍。因此，生产级AI服务通常将GPU利用率上限设置在75%～85%，为突发流量保留缓冲空间。
 
+**这里有一个值得深思的问题**：如果将单台服务器（M/M/1）换成两台服务器共享同一队列（M/M/2），在总服务能力不变（每台服务速率为 $\mu/2$）的情况下，平均等待时间是缩短还是延长？答案是：M/M/2系统的平均等待时间显著短于两个独立M/M/1系统——这正是为什么超市收银台应当使用"一列多台"而非"多列多台"的排队策略（Kleinrock, 1975）。
+
+### 双端队列与滑动窗口的时间复杂度优势
+
+**双端队列**（Deque，Double-Ended Queue）是队列的推广形式，允许在两端进行入队和出队操作。利用双端队列可以将滑动窗口最大值问题的时间复杂度从朴素算法的 $O(nk)$（其中 $k$ 为窗口大小）降低至 $O(n)$：
+
+$$T_{\text{朴素}} = O(nk), \quad T_{\text{单调双端队列}} = O(n)$$
+
+**案例**：给定长度为 $n = 10^6$ 的时间序列传感器数据，窗口大小 $k = 1000$，需要计算每个窗口内的最大值。朴素算法需执行约 $10^9$ 次比较，在现代CPU上约耗时1秒；而基于单调双端队列（Monotonic Deque）的算法只需约 $2 \times 10^6$ 次操作，耗时约2ms，性能提升约500倍。Python实现中，`collections.deque` 的 `appendleft()`、`append()`、`popleft()`、`pop()` 四个操作均为严格 $O(1)$，是实现此类算法的首选数据结构。
+
 ---
 
-## 实际应
+## 实际应用
+
+### BFS广度优先

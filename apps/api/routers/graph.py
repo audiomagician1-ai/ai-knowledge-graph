@@ -768,3 +768,85 @@ async def get_domain_topology(domain_id: str = DEFAULT_DOMAIN):
         "top_connected": [{"id": cid, "degree": deg} for cid, deg in top_connected],
     }
 
+
+@router.get("/concepts/{concept_id}/context")
+async def get_concept_context(
+    concept_id: str,
+    domain: str = Query(DEFAULT_DOMAIN),
+):
+    """
+    返回概念的完整上下文：前置知识、后续解锁、同子域概念列表。
+    用于 ChatPanel idle 视图的导航增强。
+    """
+    seed = _load_seed(domain)
+    concept_map = {c["id"]: c for c in seed["concepts"]}
+
+    if concept_id not in concept_map:
+        raise HTTPException(status_code=404, detail=f"概念不存在: {concept_id}")
+
+    current = concept_map[concept_id]
+    edges = seed.get("edges", [])
+
+    # Prerequisites: edges where target = concept_id, type = prerequisite → source is prereq
+    prerequisites = []
+    for e in edges:
+        src = e.get("source_id", e.get("source", ""))
+        tgt = e.get("target_id", e.get("target", ""))
+        if tgt == concept_id and e.get("relation_type") == "prerequisite" and src in concept_map:
+            c = concept_map[src]
+            prerequisites.append({
+                "id": c["id"],
+                "name": c.get("name", c["id"]),
+                "difficulty": c.get("difficulty", 5),
+                "subdomain_id": c.get("subdomain_id", ""),
+            })
+
+    # Dependents: edges where source = concept_id, type = prerequisite → target depends on this
+    dependents = []
+    for e in edges:
+        src = e.get("source_id", e.get("source", ""))
+        tgt = e.get("target_id", e.get("target", ""))
+        if src == concept_id and e.get("relation_type") == "prerequisite" and tgt in concept_map:
+            c = concept_map[tgt]
+            dependents.append({
+                "id": c["id"],
+                "name": c.get("name", c["id"]),
+                "difficulty": c.get("difficulty", 5),
+                "subdomain_id": c.get("subdomain_id", ""),
+            })
+
+    # Related (non-prerequisite edges)
+    related = []
+    for e in edges:
+        src = e.get("source_id", e.get("source", ""))
+        tgt = e.get("target_id", e.get("target", ""))
+        if e.get("relation_type") != "prerequisite":
+            if src == concept_id and tgt in concept_map:
+                c = concept_map[tgt]
+                related.append({"id": c["id"], "name": c.get("name", c["id"]), "sub_type": e.get("sub_type", "")})
+            elif tgt == concept_id and src in concept_map:
+                c = concept_map[src]
+                related.append({"id": c["id"], "name": c.get("name", c["id"]), "sub_type": e.get("sub_type", "")})
+
+    # Siblings: same subdomain, sorted by difficulty
+    subdomain = current.get("subdomain_id", "")
+    siblings = [
+        {"id": c["id"], "name": c.get("name", c["id"]), "difficulty": c.get("difficulty", 5)}
+        for c in seed["concepts"]
+        if c.get("subdomain_id") == subdomain and c["id"] != concept_id
+    ]
+    siblings.sort(key=lambda x: x["difficulty"])
+
+    return {
+        "concept_id": concept_id,
+        "name": current.get("name", concept_id),
+        "subdomain_id": subdomain,
+        "difficulty": current.get("difficulty", 5),
+        "is_milestone": current.get("is_milestone", False),
+        "prerequisites": prerequisites,
+        "dependents": dependents,
+        "related": related[:10],
+        "siblings": siblings[:20],
+        "total_siblings": len(siblings) + 1,
+    }
+
