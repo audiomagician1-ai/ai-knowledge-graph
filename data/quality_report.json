@@ -1,119 +1,239 @@
 {
-  "_generated": "2026-04-06T00:43:52.717268",
+  "_generated": "2026-04-07T10:53:51.530228",
   "_version": "scorer-v2.0",
-  "total_docs": 6156,
-  "avg_score": 79.5,
+  "total_docs": 6300,
+  "avg_score": 80.0,
   "tier_distribution": {
-    "S": 1096,
-    "A": 5060,
+    "S": 1298,
+    "A": 5002,
     "B": 0,
     "C": 0
   },
   "domain_summary": {
     "3d-art": {
       "count": 226,
-      "avg_score": 78.9,
-      "min_score": 76.3,
+      "avg_score": 79.6,
+      "min_score": 75.1,
       "max_score": 99.9,
       "tiers": {
-        "S": 40,
-        "A": 186,
+        "S": 47,
+        "A": 179,
+        "B": 0,
+        "C": 0
+      }
+    },
+    "agent-systems": {
+      "count": 3,
+      "avg_score": 96.4,
+      "min_score": 89.3,
+      "max_score": 100.0,
+      "tiers": {
+        "S": 3,
+        "A": 0,
         "B": 0,
         "C": 0
       }
     },
     "ai-engineering": {
-      "count": 400,
-      "avg_score": 81.1,
-      "min_score": 73.0,
+      "count": 372,
+      "avg_score": 81.3,
+      "min_score": 74.2,
       "max_score": 100.0,
       "tiers": {
-        "S": 141,
-        "A": 259,
+        "S": 138,
+        "A": 234,
+        "B": 0,
+        "C": 0
+      }
+    },
+    "ai-foundations": {
+      "count": 1,
+      "avg_score": 91.4,
+      "min_score": 91.4,
+      "max_score": 91.4,
+      "tiers": {
+        "S": 1,
+        "A": 0,
+        "B": 0,
+        "C": 0
+      }
+    },
+    "algorithms": {
+      "count": 3,
+      "avg_score": 90.8,
+      "min_score": 79.9,
+      "max_score": 96.6,
+      "tiers": {
+        "S": 2,
+        "A": 1,
         "B": 0,
         "C": 0
       }
     },
     "animation": {
       "count": 180,
-      "avg_score": 79.5,
+      "avg_score": 80.0,
       "min_score": 76.3,
       "max_score": 96.0,
       "tiers": {
-        "S": 37,
-        "A": 143,
+        "S": 43,
+        "A": 137,
         "B": 0,
         "C": 0
       }
     },
     "biology": {
       "count": 172,
-      "avg_score": 80.0,
+      "avg_score": 81.2,
       "min_score": 73.9,
       "max_score": 96.0,
       "tiers": {
-        "S": 29,
-        "A": 143,
+        "S": 40,
+        "A": 132,
+        "B": 0,
+        "C": 0
+      }
+    },
+    "catastrophe-theory": {
+      "count": 23,
+      "avg_score": 84.8,
+      "min_score": 76.6,
+      "max_score": 95.9,
+      "tiers": {
+        "S": 9,
+        "A": 14,
         "B": 0,
         "C": 0
       }
     },
     "computer-graphics": {
       "count": 250,
-      "avg_score": 79.7,
+      "avg_score": 80.9,
       "min_score": 76.3,
       "max_score": 99.9,
       "tiers": {
-        "S": 53,
-        "A": 197,
+        "S": 71,
+        "A": 179,
         "B": 0,
         "C": 0
       }
     },
     "concept-design": {
       "count": 220,
-      "avg_score": 79.1,
-      "min_score": 76.3,
+      "avg_score": 79.9,
+      "min_score": 75.1,
       "max_score": 96.0,
       "tiers": {
-        "S": 28,
-        "A": 192,
+        "S": 40,
+        "A": 180,
+        "B": 0,
+        "C": 0
+      }
+    },
+    "cs-fundamentals": {
+      "count": 2,
+      "avg_score": 98.2,
+      "min_score": 96.6,
+      "max_score": 99.9,
+      "tiers": {
+        "S": 2,
+        "A": 0,
+        "B": 0,
+        "C": 0
+      }
+    },
+    "cybernetics": {
+      "count": 26,
+      "avg_score": 84.1,
+      "min_score": 76.6,
+      "max_score": 99.9,
+      "tiers": {
+        "S": 9,
+        "A": 17,
+        "B": 0,
+        "C": 0
+      }
+    },
+    "data-structures": {
+      "count": 4,
+      "avg_score": 91.9,
+      "min_score": 80.0,
+      "max_score": 95.9,
+      "tiers": {
+        "S": 4,
+        "A": 0,
+        "B": 0,
+        "C": 0
+      }
+    },
+    "database": {
+      "count": 2,
+      "avg_score": 90.0,
+      "min_score": 80.0,
+      "max_score": 99.9,
+      "tiers": {
+        "S": 2,
+        "A": 0,
+        "B": 0,
+        "C": 0
+      }
+    },
+    "devops": {
+      "count": 4,
+      "avg_score": 84.0,
+      "min_score": 80.0,
+      "max_score": 96.0,
+      "tiers": {
+        "S": 4,
+        "A": 0,
+        "B": 0,
+        "C": 0
+      }
+    },
+    "dissipative-structures": {
+      "count": 22,
+      "avg_score": 83.9,
+      "min_score": 75.7,
+      "max_score": 95.9,
+      "tiers": {
+        "S": 8,
+        "A": 14,
         "B": 0,
         "C": 0
       }
     },
     "economics": {
       "count": 170,
-      "avg_score": 80.6,
-      "min_score": 76.3,
+      "avg_score": 80.9,
+      "min_score": 75.4,
       "max_score": 95.9,
       "tiers": {
-        "S": 56,
-        "A": 114,
+        "S": 58,
+        "A": 112,
         "B": 0,
         "C": 0
       }
     },
     "english": {
       "count": 200,
-      "avg_score": 79.0,
+      "avg_score": 79.2,
       "min_score": 74.5,
       "max_score": 96.0,
       "tiers": {
-        "S": 9,
-        "A": 191,
+        "S": 12,
+        "A": 188,
         "B": 0,
         "C": 0
       }
     },
     "finance": {
       "count": 160,
-      "avg_score": 78.9,
+      "avg_score": 79.2,
       "min_score": 73.9,
       "max_score": 96.0,
       "tiers": {
-        "S": 32,
-        "A": 128,
+        "S": 36,
+        "A": 124,
         "B": 0,
         "C": 0
       }
@@ -132,48 +252,48 @@
     },
     "game-audio-sfx": {
       "count": 180,
-      "avg_score": 78.6,
-      "min_score": 73.0,
+      "avg_score": 79.1,
+      "min_score": 73.9,
       "max_score": 95.9,
       "tiers": {
-        "S": 26,
-        "A": 154,
+        "S": 32,
+        "A": 148,
         "B": 0,
         "C": 0
       }
     },
     "game-design": {
       "count": 250,
-      "avg_score": 78.5,
+      "avg_score": 78.8,
       "min_score": 76.3,
       "max_score": 96.0,
       "tiers": {
-        "S": 18,
-        "A": 232,
+        "S": 24,
+        "A": 226,
         "B": 0,
         "C": 0
       }
     },
     "game-engine": {
       "count": 300,
-      "avg_score": 79.7,
+      "avg_score": 80.0,
       "min_score": 73.0,
       "max_score": 99.9,
       "tiers": {
-        "S": 74,
-        "A": 226,
+        "S": 78,
+        "A": 222,
         "B": 0,
         "C": 0
       }
     },
     "game-live-ops": {
       "count": 180,
-      "avg_score": 78.2,
+      "avg_score": 78.5,
       "min_score": 76.3,
       "max_score": 96.0,
       "tiers": {
-        "S": 13,
-        "A": 167,
+        "S": 17,
+        "A": 163,
         "B": 0,
         "C": 0
       }
@@ -204,36 +324,60 @@
     },
     "game-qa": {
       "count": 160,
-      "avg_score": 78.6,
+      "avg_score": 79.0,
       "min_score": 76.3,
       "max_score": 96.6,
       "tiers": {
-        "S": 19,
-        "A": 141,
+        "S": 21,
+        "A": 139,
         "B": 0,
         "C": 0
       }
     },
     "game-ui-ux": {
       "count": 200,
-      "avg_score": 79.2,
+      "avg_score": 79.3,
       "min_score": 73.0,
       "max_score": 96.0,
       "tiers": {
-        "S": 32,
-        "A": 168,
+        "S": 35,
+        "A": 165,
+        "B": 0,
+        "C": 0
+      }
+    },
+    "information-theory": {
+      "count": 26,
+      "avg_score": 84.8,
+      "min_score": 73.3,
+      "max_score": 99.9,
+      "tiers": {
+        "S": 10,
+        "A": 16,
         "B": 0,
         "C": 0
       }
     },
     "level-design": {
       "count": 200,
-      "avg_score": 78.3,
+      "avg_score": 78.5,
       "min_score": 76.3,
       "max_score": 95.9,
       "tiers": {
-        "S": 16,
-        "A": 184,
+        "S": 20,
+        "A": 180,
+        "B": 0,
+        "C": 0
+      }
+    },
+    "llm-core": {
+      "count": 1,
+      "avg_score": 95.9,
+      "min_score": 95.9,
+      "max_score": 95.9,
+      "tiers": {
+        "S": 1,
+        "A": 0,
         "B": 0,
         "C": 0
       }
@@ -241,7 +385,7 @@
     "mathematics": {
       "count": 269,
       "avg_score": 80.0,
-      "min_score": 74.8,
+      "min_score": 76.3,
       "max_score": 96.6,
       "tiers": {
         "S": 37,
@@ -264,24 +408,36 @@
     },
     "narrative-design": {
       "count": 180,
-      "avg_score": 79.0,
+      "avg_score": 79.1,
       "min_score": 73.0,
       "max_score": 96.6,
       "tiers": {
-        "S": 23,
-        "A": 157,
+        "S": 24,
+        "A": 156,
+        "B": 0,
+        "C": 0
+      }
+    },
+    "oop": {
+      "count": 1,
+      "avg_score": 100.0,
+      "min_score": 100,
+      "max_score": 100.0,
+      "tiers": {
+        "S": 1,
+        "A": 0,
         "B": 0,
         "C": 0
       }
     },
     "philosophy": {
       "count": 170,
-      "avg_score": 81.0,
+      "avg_score": 81.1,
       "min_score": 76.3,
       "max_score": 96.0,
       "tiers": {
-        "S": 36,
-        "A": 134,
+        "S": 37,
+        "A": 133,
         "B": 0,
         "C": 0
       }
@@ -300,43 +456,103 @@
     },
     "product-design": {
       "count": 182,
-      "avg_score": 78.9,
+      "avg_score": 79.2,
       "min_score": 76.3,
-      "max_score": 96.0,
+      "max_score": 99.9,
       "tiers": {
-        "S": 18,
-        "A": 164,
+        "S": 21,
+        "A": 161,
+        "B": 0,
+        "C": 0
+      }
+    },
+    "programming-basics": {
+      "count": 3,
+      "avg_score": 90.6,
+      "min_score": 79.9,
+      "max_score": 95.9,
+      "tiers": {
+        "S": 2,
+        "A": 1,
+        "B": 0,
+        "C": 0
+      }
+    },
+    "prompt-engineering": {
+      "count": 2,
+      "avg_score": 98.0,
+      "min_score": 95.9,
+      "max_score": 100.0,
+      "tiers": {
+        "S": 2,
+        "A": 0,
         "B": 0,
         "C": 0
       }
     },
     "psychology": {
       "count": 183,
-      "avg_score": 80.9,
-      "min_score": 73.0,
+      "avg_score": 81.7,
+      "min_score": 74.2,
       "max_score": 100.0,
       "tiers": {
-        "S": 34,
-        "A": 149,
+        "S": 41,
+        "A": 142,
+        "B": 0,
+        "C": 0
+      }
+    },
+    "rag-knowledge": {
+      "count": 1,
+      "avg_score": 80.0,
+      "min_score": 80.0,
+      "max_score": 80.0,
+      "tiers": {
+        "S": 1,
+        "A": 0,
         "B": 0,
         "C": 0
       }
     },
     "software-engineering": {
       "count": 280,
-      "avg_score": 80.3,
+      "avg_score": 81.5,
       "min_score": 73.0,
-      "max_score": 99.9,
+      "max_score": 100.0,
       "tiers": {
-        "S": 85,
-        "A": 195,
+        "S": 104,
+        "A": 176,
+        "B": 0,
+        "C": 0
+      }
+    },
+    "synergetics": {
+      "count": 21,
+      "avg_score": 83.8,
+      "min_score": 76.6,
+      "max_score": 95.9,
+      "tiers": {
+        "S": 7,
+        "A": 14,
+        "B": 0,
+        "C": 0
+      }
+    },
+    "systems-theory": {
+      "count": 26,
+      "avg_score": 86.0,
+      "min_score": 76.6,
+      "max_score": 95.9,
+      "tiers": {
+        "S": 11,
+        "A": 15,
         "B": 0,
         "C": 0
       }
     },
     "technical-art": {
       "count": 180,
-      "avg_score": 79.6,
+      "avg_score": 79.7,
       "min_score": 73.0,
       "max_score": 99.9,
       "tiers": {
@@ -358,20 +574,39 @@
         "C": 0
       }
     },
+    "web-frontend": {
+      "count": 1,
+      "avg_score": 80.0,
+      "min_score": 80.0,
+      "max_score": 80.0,
+      "tiers": {
+        "S": 1,
+        "A": 0,
+        "B": 0,
+        "C": 0
+      }
+    },
     "writing": {
       "count": 170,
-      "avg_score": 80.5,
+      "avg_score": 80.6,
       "min_score": 76.3,
       "max_score": 96.0,
       "tiers": {
-        "S": 30,
-        "A": 140,
+        "S": 32,
+        "A": 138,
         "B": 0,
         "C": 0
       }
     }
   },
   "top10_best": [
+    {
+      "file": "agent-systems\\agent-loop.md",
+      "concept": "agent-loop",
+      "score": 100.0,
+      "tier": "S",
+      "domain": "agent-systems"
+    },
     {
       "file": "agent-systems\\agent-planning.md",
       "concept": "Agent规划与分解",
@@ -394,6 +629,20 @@
       "domain": "multiplayer-network"
     },
     {
+      "file": "oop\\generics.md",
+      "concept": "generics",
+      "score": 100.0,
+      "tier": "S",
+      "domain": "oop"
+    },
+    {
+      "file": "prompt-engineering\\system-prompt-design.md",
+      "concept": "system-prompt-design",
+      "score": 100.0,
+      "tier": "S",
+      "domain": "prompt-engineering"
+    },
+    {
       "file": "prompt-engineering\\tree-of-thought.md",
       "concept": "思维树(ToT)",
       "score": 100.0,
@@ -408,56 +657,21 @@
       "domain": "psychology"
     },
     {
-      "file": "3d-art\\3da-uv-auto-uv.md",
-      "concept": "自动UV展开",
-      "score": 99.9,
+      "file": "software-engineering\\performance-analysis\\se-cache-perf.md",
+      "concept": "se-cache-perf",
+      "score": 100.0,
       "tier": "S",
-      "domain": "3d-art"
+      "domain": "software-engineering"
     },
     {
-      "file": "agent-systems\\agent-memory.md",
-      "concept": "Agent记忆系统",
-      "score": 99.9,
+      "file": "software-engineering\\version-control\\se-pr-workflow.md",
+      "concept": "se-pr-workflow",
+      "score": 100.0,
       "tier": "S",
-      "domain": "ai-engineering"
-    },
-    {
-      "file": "computer-graphics\\geometry-processing\\cg-procedural-mesh.md",
-      "concept": "程序化网格",
-      "score": 99.9,
-      "tier": "S",
-      "domain": "computer-graphics"
-    },
-    {
-      "file": "computer-graphics\\render-optimization\\cg-vr-opt.md",
-      "concept": "VR渲染优化",
-      "score": 99.9,
-      "tier": "S",
-      "domain": "computer-graphics"
-    },
-    {
-      "file": "computer-graphics\\volume-rendering\\cg-smoke-sim.md",
-      "concept": "烟雾模拟",
-      "score": 99.9,
-      "tier": "S",
-      "domain": "computer-graphics"
+      "domain": "software-engineering"
     }
   ],
   "top20_worst": [
-    {
-      "file": "agent-systems\\agent-memory-systems.md",
-      "concept": "Agent记忆系统",
-      "score": 73.0,
-      "tier": "A",
-      "domain": "ai-engineering"
-    },
-    {
-      "file": "game-audio-sfx\\sfx-ao-mobile-optimization.md",
-      "concept": "移动端优化",
-      "score": 73.0,
-      "tier": "A",
-      "domain": "game-audio-sfx"
-    },
     {
       "file": "game-engine\\rendering-pipeline\\draw-call-optimization.md",
       "concept": "Draw Call优化",
@@ -487,22 +701,8 @@
       "domain": "narrative-design"
     },
     {
-      "file": "psychology\\developmental-psychology\\resilience.md",
-      "concept": "心理韧性",
-      "score": 73.0,
-      "tier": "A",
-      "domain": "psychology"
-    },
-    {
       "file": "software-engineering\\game-programming-patterns\\se-spatial-partition.md",
       "concept": "空间分区",
-      "score": 73.0,
-      "tier": "A",
-      "domain": "software-engineering"
-    },
-    {
-      "file": "software-engineering\\performance-analysis\\se-cpu-profiling.md",
-      "concept": "CPU性能分析",
       "score": 73.0,
       "tier": "A",
       "domain": "software-engineering"
@@ -557,6 +757,13 @@
       "domain": "vfx"
     },
     {
+      "file": "information-theory\\channel-coding\\turbo-ldpc-codes.md",
+      "concept": "turbo-ldpc-codes",
+      "score": 73.3,
+      "tier": "A",
+      "domain": "information-theory"
+    },
+    {
       "file": "biology\\cell-biology\\eukaryotic-cells.md",
       "concept": "真核细胞",
       "score": 73.9,
@@ -578,11 +785,32 @@
       "domain": "game-audio-sfx"
     },
     {
+      "file": "finance\\risk-management\\options-strategies.md",
+      "concept": "期权策略",
+      "score": 74.2,
+      "tier": "A",
+      "domain": "finance"
+    },
+    {
       "file": "llm-core\\transformer-architecture.md",
       "concept": "Transformer架构",
       "score": 74.2,
       "tier": "A",
       "domain": "ai-engineering"
+    },
+    {
+      "file": "psychology\\cognitive-psychology\\heuristics.md",
+      "concept": "启发式",
+      "score": 74.2,
+      "tier": "A",
+      "domain": "psychology"
+    },
+    {
+      "file": "english\\speaking\\presentation-skills.md",
+      "concept": "演示技巧",
+      "score": 74.5,
+      "tier": "A",
+      "domain": "english"
     }
   ]
 }

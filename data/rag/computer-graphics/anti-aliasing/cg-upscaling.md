@@ -10,11 +10,11 @@ tags: ["核心"]
 
 # Quality Metadata (Schema v2)
 content_version: 5
-quality_tier: "A"
-quality_score: 88.0
+quality_tier: "S"
+quality_score: 92.6
 generation_method: "intranet-llm-rewrite-v3"
 unique_content_ratio: 1.0
-last_scored: "2026-04-06"
+last_scored: "2026-04-07"
 sources:
   - type: "ai-generated"
     model: "mihoyo.claude-4-6-sonnet"
@@ -27,7 +27,7 @@ sources:
     citation: "Dong, C., Loy, C. C., He, K., & Tang, X. (2014). Learning a deep convolutional network for image super-resolution. Proceedings of the European Conference on Computer Vision (ECCV), 184–199."
   - type: "academic"
     citation: "Sajjadi, M. S. M., Schölkopf, B., & Hirsch, M. (2017). EnhanceNet: Single image super-resolution through automated texture synthesis. Proceedings of the IEEE International Conference on Computer Vision (ICCV), 4491–4500."
-scorer_version: "scorer-v2.1"
+scorer_version: "scorer-v2.0"
 quality_method: intranet-llm-rewrite-v3
 updated_at: 2026-04-06
 ---

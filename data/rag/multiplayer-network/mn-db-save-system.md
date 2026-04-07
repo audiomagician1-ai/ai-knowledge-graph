@@ -12,7 +12,7 @@ quality_tier: "S"
 quality_score: 82.9
 generation_method: "research-rewrite-v2"
 unique_content_ratio: 1.0
-last_scored: "2026-04-06"
+last_scored: "2026-04-07"
 sources:
   - type: "industry"
     ref: "Gregory, Jason. Game Engine Architecture, 3rd Ed., Ch.16"

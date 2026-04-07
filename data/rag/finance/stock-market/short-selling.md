@@ -11,10 +11,10 @@ tags: ["机制"]
 # Quality Metadata (Schema v2)
 content_version: 3
 quality_tier: "A"
-quality_score: 76.3
+quality_score: 79.6
 generation_method: "intranet-llm-rewrite-v1"
 unique_content_ratio: 1.0
-last_scored: "2026-04-06"
+last_scored: "2026-04-07"
 sources:
   - type: "ai-generated"
     model: "mihoyo.claude-4-6-sonnet"

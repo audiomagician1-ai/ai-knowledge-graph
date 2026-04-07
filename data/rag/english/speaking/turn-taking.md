@@ -11,10 +11,10 @@ tags: ["口语"]
 # Quality Metadata (Schema v2)
 content_version: 4
 quality_tier: "A"
-quality_score: 88.5
+quality_score: 78.4
 generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 1.0
-last_scored: "2026-04-06"
+last_scored: "2026-04-07"
 sources:
   - type: "academic"
     reference: "Sacks, H., Schegloff, E. A., & Jefferson, G. (1974). A simplest systematics for the organization of turn-taking for conversation. Language, 50(4), 696–735."

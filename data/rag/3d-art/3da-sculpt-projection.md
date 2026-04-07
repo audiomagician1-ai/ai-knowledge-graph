@@ -11,10 +11,10 @@ tags: ["技术"]
 # Quality Metadata (Schema v2)
 content_version: 5
 quality_tier: "A"
-quality_score: 88.0
+quality_score: 79.6
 generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 1.0
-last_scored: "2026-04-06"
+last_scored: "2026-04-07"
 sources:
   - type: "ai-generated"
     model: "mihoyo.claude-4-6-sonnet"

@@ -14,7 +14,7 @@ quality_tier: "A"
 quality_score: 73.0
 generation_method: "ai-rewrite-v1"
 unique_content_ratio: 1.0
-last_scored: "2026-04-06"
+last_scored: "2026-04-07"
 sources:
   - type: "ai-generated"
     model: "claude-sonnet-4-20250514"

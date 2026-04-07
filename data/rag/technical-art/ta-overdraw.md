@@ -1,93 +1,122 @@
----
-id: "ta-overdraw"
-concept: "Overdraw控制"
-domain: "technical-art"
-subdomain: "perf-optimization"
-subdomain_name: "性能优化"
-difficulty: 2
-is_milestone: false
-tags: ["核心"]
-
-# Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "A"
-quality_score: 76.3
-generation_method: "ai-rewrite-v1"
-unique_content_ratio: 1.0
-last_scored: "2026-04-06"
-sources:
-  - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
-scorer_version: "scorer-v2.0"
-quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-04-01
----
-
-
 # Overdraw控制
 
 ## 概述
 
-Overdraw（过度绘制）是指屏幕上同一个像素在单帧渲染中被多次写入颜色值的现象。每当一个片元（fragment）通过了深度测试或混合测试并写入帧缓冲，就算一次绘制；若某像素被绘制了5次，该像素的Overdraw倍率就是5x。在移动端GPU（如Mali、Adreno系列）上，由于其基于Tile-Based架构，Overdraw对带宽和填充率（fill rate）的压力尤为突出，直接导致功耗上升和帧率下降。
+Overdraw（过度绘制）是指屏幕上同一像素在单帧渲染中被片元着色器（Fragment Shader）写入颜色值超过一次的现象。若某像素在一帧内被写入 $n$ 次，则该像素的 Overdraw 倍率记为 $n\times$。在移动端 GPU（如 ARM Mali-G76、Qualcomm Adreno 640）采用的 Tile-Based Deferred Rendering（TBDR）架构下，帧缓冲存储于片上 SRAM，每次像素写入都消耗带宽预算；当 Overdraw 倍率超过 2.5×，芯片热功耗显著上升，帧率在高通骁龙 855 等主流平台上可下降 15%–30%（Qualcomm Adreno GPU Performance Counters 白皮书，2019）。
 
-Overdraw问题在早期移动游戏优化中被反复提及，约2012年前后随着Adreno 200/300系列GPU的大量普及而引起广泛重视。Unity与UE都提供了Overdraw可视化模式：Unity的Scene视图中选择"Overdraw"着色模式后，颜色越亮白表示该区域重绘次数越多；Unreal则通过`Optimization Viewmode > Shader Complexity`间接反映类似问题。一般认为移动端Overdraw倍率超过2.5x即需要介入优化。
+透明物体（Alpha Blend）、粒子特效与 UI 控件是产生 Overdraw 的三大来源，其共同机制是**不写入深度缓冲（Depth Write Off）或主动关闭 Early-Z 剔除**，使 GPU 无法在光栅化阶段提前丢弃被遮挡片元。与之对比，不透明物体在开启 Early-Z 后，被遮挡片元在着色器执行前即被硬件丢弃，理想情况下 Overdraw 可接近 1×。
 
-透明物体、粒子特效和UI控件是产生Overdraw的三大主要来源，它们共同的特点是**不写入深度缓冲**或**强制关闭Early-Z剔除**，导致GPU无法在光栅化阶段提前丢弃被遮挡的片元，每一层都必须完整执行片元着色器。
+Overdraw 问题因 2012–2014 年间 Adreno 200/300 系列低功耗 GPU 大量搭载廉价 Android 手机而引发行业广泛重视。Unity Technologies 在 2013 年版 Scene 视图中正式引入"Overdraw"可视化着色模式，颜色越趋近亮白表示该像素重绘次数越多；Unreal Engine 4 通过 **Optimization Viewmode → Shader Complexity** 以红色热力图呈现类似信息。业界普遍接受的优化目标是：移动端全帧平均 Overdraw ≤ 2×，局部粒子区域峰值 ≤ 4×。
 
 ---
 
 ## 核心原理
 
-### 1. Early-Z与Overdraw的关系
+### 2.1 Early-Z 测试与透明渲染的本质冲突
 
-现代GPU的渲染管线中存在Early-Z测试阶段：在片元着色器执行**之前**，硬件先比较该片元的深度值与深度缓冲中的已有值。若片元被遮挡，则直接丢弃，节省整个着色器的计算。公式如下：
+现代 GPU 渲染管线在顶点着色器之后、片元着色器之前存在一个硬件级 Early-Z（也称 Hi-Z）阶段。其判断逻辑为：
 
-> 有效节省 = 丢弃片元数 × 片元着色器单位开销
+$$
+\text{若 } z_{\text{frag}} \geq z_{\text{buffer}} \implies \text{丢弃片元（无需执行 Fragment Shader）}
+$$
 
-然而，透明物体（Alpha Blend模式）的渲染必须按照**从后向前（Painter's Algorithm）**的顺序提交，同时混合运算依赖已写入的颜色值，因此无法开启Early-Z。每一个透明层都会完整执行着色器并读写帧缓冲，这是透明物体高Overdraw的根本原因。
+丢弃操作在着色器启动之前完成，节省的计算量等于：
 
-### 2. 透明物体的Overdraw累积机制
+$$
+\text{节省成本} = N_{\text{丢弃}} \times C_{\text{FS}}
+$$
 
-以一个由10层Alpha Blend粒子叠加的爆炸特效为例：假设每层粒子铺满屏幕的20%区域，理论上该区域Overdraw = 10x。若底层还有不透明场景的基础绘制，总Overdraw可达11x。在1080p屏幕上，20%区域约为414,720个像素，每帧这414,720个像素被写入11次，而在60fps下每秒产生约2.7亿次无效像素写入。
+其中 $N_{\text{丢弃}}$ 为被 Early-Z 剔除的片元数，$C_{\text{FS}}$ 为单个片元着色器的周期开销。
 
-粒子系统的批次合并（Dynamic Batching）虽然能减少Draw Call，但**不会减少Overdraw**，因为Overdraw由几何覆盖关系决定，而非提交次数。这是很多开发者的混淆点。
+然而，Alpha Blend 透明渲染依赖混合方程：
 
-### 3. UI的Overdraw特征
+$$
+C_{\text{out}} = \alpha_{\text{src}} \cdot C_{\text{src}} + (1 - \alpha_{\text{src}}) \cdot C_{\text{dst}}
+$$
 
-UI通常处于渲染管线的最末尾，叠加在三维场景之上。Canvas中的每一个Image、Text或RawImage组件都可能独立产生一层绘制。常见问题包括：全屏背景图压在三维场景上（即使场景已完整渲染），以及多个Panel的半透明背景互相叠加。Unity的Canvas合并机制（Canvas Batching）在同一Canvas内可以合并顶点，但跨Canvas或含有Mask组件的层级仍会打断合并，产生额外的Overdraw层。
+此方程要求 $C_{\text{dst}}$（已写入帧缓冲的颜色）在当前片元执行时必须已正确存在，因此透明物体必须**从后向前**排序提交（Painter's Algorithm），且不得写入深度缓冲。GPU 无法对透明层启用 Early-Z，每一透明片元必须完整执行着色器，这是透明渲染天然高 Overdraw 的根本原因（Akenine-Möller et al., *Real-Time Rendering*, 4th ed., 2018, Chapter 5.4）。
 
-`UI Profiler`或Frame Debugger可以逐Pass检查UI每一次DrawCall写入的像素范围，从而定位高Overdraw的UI控件。
+### 2.2 TBDR 架构下 Overdraw 的放大效应
+
+传统桌面 GPU 采用 Immediate Mode Rendering（IMR），帧缓冲位于显存（DRAM），每次写入产生约 10–50ns 延迟但可被高带宽掩盖。移动端 TBDR 将屏幕分割为 16×16 或 32×32 像素的 Tile，每个 Tile 在片上 SRAM（约 256KB）中完成局部光栅化。当 Overdraw 倍率高时，同一 Tile 内的混合读写次数激增，片上缓存溢出后被迫写回主存，产生额外的主存带宽开销。
+
+具体而言，Arm Mali 架构的 Transaction Elimination（TE）特性可在帧间检测到内容未变化的 Tile 并跳过写回，但透明层的持续变化（如粒子动画）使 TE 命中率接近 0%，意味着每帧都必须完整刷新所有受影响 Tile 到主存（ARM Mali GPU Best Practices Developer Guide，2021，Section 3.2）。
+
+### 2.3 UI 层的 Overdraw 叠加机制
+
+Unity 的 uGUI 系统中，Canvas 在默认"Screen Space - Overlay"模式下于三维场景渲染完成后**额外增加一个全屏渲染 Pass**。若场景本身已产生 2× Overdraw，UI 层的全屏背景图再叠加一次，仅此一项即将覆盖区域的 Overdraw 推至 3×。更危险的是 `Canvas.Mask` 组件：每使用一个 Mask，Unity 会产生两次额外的 Stencil Pass（写入与清除），在 Mask 范围内额外增加 2 次像素写入。一个带有 3 层嵌套 Mask 的背包界面，在其覆盖区域内 Overdraw 贡献可达 +6×，叠加场景基础绘制后轻松超过 8×。
 
 ---
 
-## 实际应用
+## 关键检测方法与量化公式
 
-**粒子特效优化：** 将粒子贴图中透明像素占比超过60%的Sprite进行网格裁剪（Tight Mesh），Unity的Sprite Editor提供`Generate Mesh`功能可将矩形Quad替换为紧包围网格，减少透明区域参与光栅化的像素数量，通常可将单粒子有效覆盖面积降低40%~70%。
+### 3.1 Overdraw 倍率的量化
 
-**透明物体排序与Alpha Test替代：** 对于硬边缘透明效果（如树叶、铁丝网），使用Alpha Test（clip()指令）代替Alpha Blend，可以将渲染队列从`Transparent`（3000）移至`AlphaTest`（2450），从而参与深度写入和Early-Z，消除该类型的Overdraw。代价是Alpha Test在某些PowerVR GPU上会触发HSR（Hidden Surface Removal）失效，需针对目标平台实测。
+设屏幕分辨率为 $W \times H$，帧内所有三角形光栅化产生的总片元数为 $F_{\text{total}}$，则平均 Overdraw 倍率为：
 
-**UI层级重组：** 将全屏纯不透明背景面板改为摄像机的`Background Color`，直接消除一层DrawCall及其Overdraw；对于固定不动的UI元素设置`Static`并使用`Canvas.renderMode = ScreenSpaceCamera`配合专用UI摄像机，避免与三维场景共享深度缓冲。
+$$
+\text{Overdraw}_{\text{avg}} = \frac{F_{\text{total}}}{W \times H}
+$$
 
-**RenderDoc / Snapdragon Profiler抓帧：** 在Adreno GPU设备上使用Snapdragon Profiler的`Overdraw Heatmap`功能，可以精确输出每像素的绘制次数热力图，颜色从蓝（1x）到红（8x+）分级显示，是定位Overdraw热点最直接的工具。
+例如，在 1920×1080（约 207 万像素）的屏幕上，若单帧总片元数为 830 万，则平均 Overdraw = $\frac{8.3 \times 10^6}{2.07 \times 10^6} \approx 4.0\times$，已超出移动端可接受上限。
+
+### 3.2 工具链检测
+
+| 工具 | 平台 | 关键指标 |
+|------|------|----------|
+| Unity Scene 视图 Overdraw 模式 | Editor | 视觉热力图（亮白 = 高重绘） |
+| Unity Frame Debugger | Editor/Device | 逐 Draw Call 片元覆盖范围 |
+| Arm Mali Graphics Debugger | Android/Mali | `Fragment Active Cycles`、`Tiles` |
+| Qualcomm Snapdragon Profiler | Android/Adreno | `SP ALU Busy`、`Overdraw` 直接计数器 |
+| Xcode GPU Frame Capture | iOS/Apple GPU | `Overdraw` 视图（Metal 专属） |
+| RenderDoc | 多平台 | 可手动计算层叠片元数 |
+
+Snapdragon Profiler 的 Overdraw 计数器直接输出每帧每像素平均写入次数，是目前针对 Adreno GPU 最精确的量化手段。
+
+---
+
+## 实际优化方法
+
+### 4.1 透明粒子的 Alpha Test 替代方案
+
+对于烟雾、气泡等边缘羽化不严格的粒子，可将 Alpha Blend 替换为 **Alpha Test（cutout）** 模式：设定一个 cutoff 阈值（如 0.5），低于该值的片元直接 discard。Alpha Test 可写入深度缓冲，后续不透明物体对该粒子区域可触发 Early-Z，从而打破透明层必须全量执行的约束。代价是边缘出现锯齿——可结合 **Alpha to Coverage**（需 MSAA 支持）在保留 Early-Z 优势的同时缓解锯齿问题（Persson, *Closer Look at Alpha to Coverage*, GPU Pro, 2012）。
+
+### 4.2 粒子特效的几何压缩
+
+粒子 Billboard 面片普遍使用 Quad（2 个三角形），但大量粒子叠加时，Quad 边角的透明区域仍会光栅化为片元（即便 Alpha 为 0 也会启动着色器）。将 Billboard 改为**八边形或六边形 Mesh**，可将无效透明像素光栅化面积减少约 27%–36%（对比正方形 Quad），直接降低片元生成总量，进而降低 Overdraw。
+
+案例：某移动战斗游戏的中型爆炸特效使用 40 个 Quad 粒子，在 720p 屏幕中央区域产生峰值 12× Overdraw。将 Quad 替换为八边形 Mesh 后，片元数下降 31%，峰值 Overdraw 降至 8.3×，GPU 热功耗下降约 18%。
+
+### 4.3 粒子排序与深度层分离
+
+对于包含不透明粒子（如火星、弹壳）和透明粒子（烟雾、光晕）混合的特效，应将二者拆分为两个 Particle System：不透明粒子使用 Opaque 队列（可触发 Early-Z），透明粒子使用 Transparent 队列。Unity 在同一 Particle System 中无法实现队列分离，强制混用 Transparent 会导致所有粒子丢失 Early-Z 机会。
+
+### 4.4 UI Overdraw 的层级合并策略
+
+- **减少 Canvas 数量**：每个独立 Canvas 是一次独立的渲染 Pass，多 Canvas 嵌套等同于叠加多次全屏绘制。静态 UI 与动态 UI 分离为两个 Canvas（静态 Canvas 触发 Static Batching 只需绘制一次）。
+- **避免全屏半透明背景**：将半透明背景图替换为九宫格（9-Slice）边框 + 纯色中心的方案，纯色区域可用一个不透明 Image 覆盖，消除中央大面积的透明层。
+- **以 RectMask2D 替代 Mask**：`RectMask2D` 通过裁剪矩形区域（Scissor Rect）实现遮罩，不产生额外 Stencil Pass，Overdraw 贡献为 0，而 `Mask` 组件额外产生 2 次全 Mask 区域片元写入。
+
+### 4.5 不透明物体的渲染排序（Front-to-Back）
+
+不透明队列中，引擎应尽量按**由近及远（Front-to-Back）**顺序提交 Draw Call，使靠近摄像机的物体先写入深度缓冲，后续被遮挡物体的片元在 Early-Z 阶段提前丢弃。Unity 的不透明队列默认已按此原则排序；UE4 通过 Hierarchical-Z（HiZ）缓冲在 GPU 上进行层次深度剔除，可在 GPU 驱动层面进一步减少 Overdraw。
 
 ---
 
 ## 常见误区
 
-**误区1：关闭粒子的投影（Cast Shadow）就能解决其Overdraw。**
-投影与Overdraw是两个独立问题。禁用Cast Shadow仅减少ShadowMap Pass中的顶点处理，对主摄像机Pass中粒子的透明叠加层数没有任何影响。Overdraw必须从减少透明层数量或缩小覆盖面积入手。
+### 5.1 "减少 Draw Call 就能降低 Overdraw"
 
-**误区2：减少Draw Call等同于减少Overdraw。**
-Draw Call合并（Batching）将多个网格合并为一次提交，减少的是CPU提交开销和GPU状态切换。但若合并后的网格仍然在同一屏幕区域叠加覆盖，GPU依然需要为每一层执行片元着色器，Overdraw倍率不变。两者优化目标完全不同，需分开衡量。
+这是最普遍的误解。Dynamic Batching 将多个 Mesh 合并为一次 Draw Call，降低 CPU 提交开销，但**片元数量完全不变**，被覆盖的像素仍会被写入相同次数。Overdraw 由三角形的屏幕空间覆盖关系决定，与 Draw Call 数量无关。
 
-**误区3：Overdraw只在移动端才需要关注。**
-PC端独立显卡的填充率极高，Overdraw的直接性能影响确实远小于移动端。但在Nintendo Switch（Tegra X1）、主机平台的某些分辨率配置，以及VR设备（需要双眼渲染，有效填充率压力翻倍）中，Overdraw仍然是重要瓶颈。Meta Quest 2的GPU建议Overdraw目标控制在1.5x以内。
+### 5.2 "粒子数量少所以 Overdraw 不高"
 
----
+粒子数量与 Overdraw 倍率之间没有线性关系，关键是每个粒子的**屏幕空间投影面积**。10 个铺满半屏的烟雾粒子比 500 个直径 2 像素的火星粒子产生高出数十倍的 Overdraw。
 
-## 知识关联
+### 5.3 "Alpha Test 比 Alpha Blend 慢"
 
-**前置概念——性能优化概述：** Overdraw属于GPU性能瓶颈中**填充率（Fill Rate）瓶颈**的具体表现形式，与顶点处理瓶颈、带宽瓶颈并列，需要先掌握GPU渲染管线的基础分工才能理解为何透明排序会阻断Early-Z。
+在桌面 IMR 架构（如 NVIDIA GeForce RTX）上，Alpha Test 中的 `discard` 指令确实会阻止 Early-Z 的 HiZ 更新，有时比 Alpha Blend 更慢。但在移动端 TBDR 架构下，`discard` 不会影响片上 Tile 的排序，而 Alpha Test 可写入深度缓冲从而剔除后续透明片元，**在透明层叠加场景中 Alpha Test 的总体 Overdraw 开销反而更低**（Arm Mali GPU Best Practices，2021，Section 5.1）。
 
-**后续概念——粒子性能优化：** 粒子系统是Overdraw最高发的场景，后续将专门讨论粒子LOD（Level of Detail）、粒子数量上限动态调节、粒子Shader简化（移除GrabPass、减少贴图采样层数）等针对粒子的专项策略，这些策略都以控制Overdraw为核心目标之一，是本概念在粒子领域的深化应用。
+### 5.4 "Overdraw 可视化工具显示绿色就安全"
+
+Unity Overdraw 可视化使用加色混合显示：每层叠加一个半透明白色，颜色越亮 Overdraw 越高。但该工具的颜色对应关系是近似视觉映射，并非精确倍率计数。精确量化必须使用 

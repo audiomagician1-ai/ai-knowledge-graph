@@ -1,49 +1,3 @@
----
-id: "diminishing-returns"
-concept: "收益递减"
-domain: "game-design"
-subdomain: "balance-design"
-subdomain_name: "平衡性设计"
-difficulty: 2
-is_milestone: false
-tags: ["机制"]
-
-# Quality Metadata (Schema v2)
-content_version: 5
-quality_tier: "A"
-quality_score: 87.3
-generation_method: "intranet-llm-rewrite-v2"
-unique_content_ratio: 1.0
-last_scored: "2026-04-06"
-sources:
-  - type: "academic"
-    author: "Salen, K. & Zimmerman, E."
-    year: 2004
-    title: "Rules of Play: Game Design Fundamentals"
-    publisher: "MIT Press"
-  - type: "academic"
-    author: "Adams, E. & Dormans, J."
-    year: 2012
-    title: "Game Mechanics: Advanced Game Design"
-    publisher: "New Riders"
-  - type: "academic"
-    author: "Schell, J."
-    year: 2008
-    title: "The Art of Game Design: A Book of Lenses"
-    publisher: "Morgan Kaufmann"
-  - type: "academic"
-    author: "Rouse, R."
-    year: 2005
-    title: "Game Design: Theory and Practice (2nd ed.)"
-    publisher: "Wordware Publishing"
-  - type: "ai-generated"
-    model: "mihoyo.claude-4-6-sonnet"
-    prompt_version: "intranet-llm-rewrite-v2"
-scorer_version: "scorer-v2.0"
-quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-04-06
----
-
 # 收益递减
 
 ## 概述
@@ -52,7 +6,7 @@ updated_at: 2026-04-06
 
 该机制的系统性应用可以追溯到《魔兽世界》（World of Warcraft）2004年11月正式上线时所引入的战斗评级系统（Combat Rating System）。暴击评级、命中评级、格挡评级等属性均采用收益递减曲线，使得高等级装备的属性转换效率低于低等级装备，从而防止顶级玩家通过纯堆叠单一属性实现无限强化。2007年《燃烧的远征》资料片进一步细化了该系统，将等级系数引入评级转换公式，使收益递减的程度随角色等级动态变化：在60级时，14点暴击评级转换为1%暴击率；到70级时，同样14点评级仅转换为约0.65%暴击率，实现了跨资料片的动态再平衡。此后，几乎所有MMORPG和动作RPG均采纳了类似设计，包括2012年发行的《暗黑破坏神3》、2014年发行的《命运》系列，以及2017年后持续更新的《英雄联盟》数值系统。
 
-收益递减的存在意义在于强迫玩家进行有意义的属性分配决策。Salen与Zimmerman（2004）在《Rules of Play》中指出，有意义的游戏决策来源于选项之间存在可感知的权衡关系——如果属性叠加是纯线性的，最优解往往只有一种（即堆满最高收益属性），游戏策略深度接近于零。引入收益递减后，玩家必须权衡多种属性的边际收益，这正是《暗黑破坏神》系列、《英雄联盟》等游戏能够产生丰富Build多样性的数学基础。Schell（2008）在《The Art of Game Design》中进一步将收益递减归类为"系统自我调节（Self-Balancing）"机制的典型实现，认为它能在无需设计师手动干预的情况下，自动将玩家行为引向平衡状态。Adams与Dormans（2012）则在《Game Mechanics: Advanced Game Design》中特别强调，收益递减本质上是对经济学中边际效用递减定律（Law of Diminishing Marginal Utility）在游戏系统设计中的工程化移植，将一条抽象的经济学原理转化为可配置的参数化公式。
+收益递减的存在意义在于强迫玩家进行有意义的属性分配决策。Salen与Zimmerman（2004）在《Rules of Play》中指出，有意义的游戏决策来源于选项之间存在可感知的权衡关系——如果属性叠加是纯线性的，最优解往往只有一种（即堆满最高收益属性），游戏策略深度接近于零。引入收益递减后，玩家必须权衡多种属性的边际收益，这正是《暗黑破坏神》系列、《英雄联盟》等游戏能够产生丰富Build多样性的数学基础。Schell（2008）在《The Art of Game Design》中进一步将收益递减归类为"系统自我调节（Self-Balancing）"机制的典型实现，认为它能在无需设计师手动干预的情况下，自动将玩家行为引向平衡状态。Adams与Dormans（2012）则在《Game Mechanics: Advanced Game Design》中特别强调，收益递减本质上是对经济学中边际效用递减定律（Law of Diminishing Marginal Utility）在游戏系统设计中的工程化移植，将一条抽象的经济学原理转化为可配置的参数化公式。此外，Rouse（2005）在《Game Design: Theory and Practice》中从玩家心理的角度补充指出，收益递减不仅是数值工具，更是塑造玩家"继续追求但不执着于极端"心态的情绪设计手段。
 
 ---
 
@@ -64,7 +18,11 @@ updated_at: 2026-04-06
 
 $$\text{实际减伤率} = \frac{A}{A + K}$$
 
-其中 $A$ 为当前护甲值（Armor），$K$ 为设计师设定的拐点参数（《英雄联盟》中基准值 $K = 100$）。该公式源于双曲线函数族，其导数 $\frac{dR}{dA} = \frac{K}{(A+K)^2}$ 单调递减，代表每一点护甲的边际贡献随总护甲量上升而持续缩小。
+其中 $A$ 为当前护甲值（Armor），$K$ 为设计师设定的拐点参数（《英雄联盟》中基准值 $K = 100$）。该公式源于双曲线函数族，其导数为：
+
+$$\frac{dR}{dA} = \frac{K}{(A+K)^2}$$
+
+该导数单调递减，代表每一点护甲的边际贡献随总护甲量上升而持续缩小。
 
 具体计算示例如下：
 
@@ -77,7 +35,7 @@ $$\text{实际减伤率} = \frac{A}{A + K}$$
 
 **例如**，若设计师希望玩家在护甲值200左右开始明显感受到收益递减，则可将 $K$ 调整为200，使 $A=200$ 时恰好处于边际收益快速下降的拐点附近，而无需修改整条曲线的形状。这一调整仅需改动单一参数，极大降低了迭代调试的成本。
 
-值得思考的问题是：**如果将护甲拐点参数 $K$ 从100调整至50，对中低装备阶段的玩家感知体验会产生什么具体影响？设计师应在哪个开发阶段做出这一决定，又应如何通过数据埋点验证调整效果？**
+值得深思的问题是：**如果将护甲拐点参数 $K$ 从100调整至50，对中低装备阶段的玩家感知体验会产生什么具体影响？设计师应在哪个开发阶段做出这一决定，又应如何通过数据埋点验证调整效果？**
 
 ### 硬上限与软上限的区别
 
@@ -95,7 +53,7 @@ $$\text{实际减伤率} = \frac{A}{A + K}$$
 
 $$\text{总减伤} = 1 - (1-r_1)(1-r_2)(1-r_3)$$
 
-这种乘法叠加结构本身就内嵌了递减效应：每新增一层减伤，其作用于的"剩余伤害"基数越来越小，有效收益自然递减。假设 $r_1 = 0.5$（50%减伤），$r_2 = 0.3$，$r_3 = 0.2$，则总减伤 $= 1 - 0.5 \times 0.7 \times 0.8 = 72\%$，远低于三者相加的100%。该设计在数学层面自动推动玩家构建均衡的防御体系，而非将所有资源集中在单一防御属性上。
+这种乘法叠加结构本身就内嵌了递减效应：每新增一层减伤，其作用于的"剩余伤害"基数越来越小，有效收益自然递减。**案例**：假设 $r_1 = 0.5$（50%减伤），$r_2 = 0.3$，$r_3 = 0.2$，则总减伤 $= 1 - 0.5 \times 0.7 \times 0.8 = 72\%$，远低于三者相加的100%。该设计在数学层面自动推动玩家构建均衡的防御体系，而非将所有资源集中在单一防御属性上，从而在不需要额外规则约束的情况下生成策略多样性。
 
 ### 动态收益递减：随等级变化的递减系数
 
@@ -117,4 +75,20 @@ $$\text{属性百分比} = \frac{\text{评级值}}{\text{评级值} + C_L \cdot 
 
 $$R = \frac{A}{A + K}$$
 
-适用场景：防御类属性（护甲、魔抗、韧性），理论上限100%但永不可达。参数 $K$ 越小，曲线在低数值段越陡峭，越早触发明显递减感。边际贡献公式为 $\frac{dR}{d
+适用场景：防御类属性（护甲、魔抗、韧性），理论上限100%但永不可达。参数 $K$ 越小，曲线在低数值段越陡峭，越早触发明显递减感。边际贡献公式为：
+
+$$\frac{dR}{dA} = \frac{K}{(A+K)^2}$$
+
+**模型二：乘法叠加递减（Multiplicative Stacking）**
+
+$$R_{\text{total}} = 1 - \prod_{i=1}^{n}(1 - r_i)$$
+
+适用场景：多层增益或减伤叠加（暴击伤害倍率、减伤层数等）。每额外一层的有效增益受到已有层数的抑制，天然形成递减而无需额外公式约束。
+
+**模型三：对数型增长上限（Logarithmic Growth Cap）**
+
+$$R = C \cdot \ln(1 + \alpha A)$$
+
+其中 $C$ 为缩放系数，$\alpha$ 为增长速率参数。该模型在低数值段增速较快，适用于技能熟练度、经验加成等"学习收益"类属性。与双曲线模型相比，对数模型在极高数值段的收益衰减更为缓慢，玩家在极端投入下仍能感受到微弱但可察觉的进步，有助于维持长线玩家的投入动力。
+
+**例如**，《精灵宝

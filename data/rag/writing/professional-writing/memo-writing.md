@@ -11,10 +11,10 @@ tags: ["应用"]
 # Quality Metadata (Schema v2)
 content_version: 5
 quality_tier: "S"
-quality_score: 92.0
+quality_score: 96.0
 generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 1.0
-last_scored: "2026-04-06"
+last_scored: "2026-04-07"
 sources:
   - type: "ai-generated"
     model: "mihoyo.claude-4-6-sonnet"

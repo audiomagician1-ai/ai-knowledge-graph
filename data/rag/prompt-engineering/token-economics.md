@@ -11,10 +11,10 @@ tags: ["实践"]
 # Quality Metadata (Schema v2)
 content_version: 2
 quality_tier: "S"
-quality_score: 82.9
+quality_score: 81.4
 generation_method: "ai-rewrite-v1"
-unique_content_ratio: 1.0
-last_scored: "2026-04-06"
+unique_content_ratio: 0.963
+last_scored: "2026-04-07"
 sources:
   - type: "ai-generated"
     model: "claude-sonnet-4-20250514"

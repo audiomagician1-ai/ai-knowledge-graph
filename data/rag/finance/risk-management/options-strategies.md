@@ -11,10 +11,10 @@ tags: ["衍生品"]
 # Quality Metadata (Schema v2)
 content_version: 4
 quality_tier: "A"
-quality_score: 88.5
+quality_score: 74.2
 generation_method: "intranet-llm-rewrite-v2"
-unique_content_ratio: 1.0
-last_scored: "2026-04-06"
+unique_content_ratio: 0.977
+last_scored: "2026-04-07"
 sources:
   - type: "ai-generated"
     model: "mihoyo.claude-4-6-sonnet"
@@ -27,7 +27,7 @@ sources:
     citation: "McMillan, L. G. (2012). Options as a Strategic Investment (5th ed.). Prentice Hall Press."
   - type: "academic"
     citation: "Natenberg, S. (1994). Option Volatility and Pricing: Advanced Trading Strategies and Techniques. McGraw-Hill."
-scorer_version: "scorer-v2.1"
+scorer_version: "scorer-v2.0"
 quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-04-06
 ---
