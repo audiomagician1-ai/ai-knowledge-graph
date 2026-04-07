@@ -2,10 +2,13 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useConceptNotes } from '@/lib/hooks/useConceptNotes';
 import { useKeyboardShortcuts } from '@/lib/hooks/useKeyboardShortcuts';
+import { fetchWithRetry } from '@/lib/utils/fetch-retry';
 import {
   ArrowLeft, StickyNote, Trash2, Download, Upload,
-  Search, BookOpen, RefreshCw,
+  Search, BookOpen, RefreshCw, FileText,
 } from 'lucide-react';
+
+const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
 
 /**
  * Notes Management Page — view, search, and manage all concept notes.
@@ -49,6 +52,27 @@ export function NotesPage() {
     }
   };
 
+  const handleExportMarkdown = async () => {
+    try {
+      // First sync to backend, then export from backend
+      await syncToBackend();
+      const res = await fetchWithRetry(`${API_BASE}/notes/export/markdown`);
+      if (res.ok) {
+        const data = await res.json();
+        const blob = new Blob([data.content], { type: 'text/markdown' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = data.filename || `akg-notes-${new Date().toISOString().slice(0, 10)}.md`;
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+    } catch {
+      // Fallback: export from localStorage
+      handleExport();
+    }
+  };
+
   return (
     <div className="min-h-dvh" style={{ backgroundColor: 'var(--color-surface-0)', color: 'var(--color-text-primary)' }}>
       {/* Header */}
@@ -79,10 +103,19 @@ export function NotesPage() {
             onClick={handleExport}
             disabled={noteCount === 0}
             className="p-2.5 rounded-xl hover:bg-white/10 transition-colors"
-            title="导出笔记"
+            title="导出 JSON"
             style={{ opacity: noteCount === 0 ? 0.3 : 1 }}
           >
             <Download size={18} />
+          </button>
+          <button
+            onClick={handleExportMarkdown}
+            disabled={noteCount === 0}
+            className="p-2.5 rounded-xl hover:bg-white/10 transition-colors"
+            title="导出 Markdown"
+            style={{ opacity: noteCount === 0 ? 0.3 : 1 }}
+          >
+            <FileText size={18} />
           </button>
           <button
             onClick={() => setShowImport(!showImport)}

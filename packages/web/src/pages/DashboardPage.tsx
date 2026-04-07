@@ -7,6 +7,7 @@ import { useKeyboardShortcuts } from '@/lib/hooks/useKeyboardShortcuts';
 import { readLearningTime } from '@/lib/hooks/useLearningTimer';
 import { StudyGoalWidget } from '@/components/common/StudyGoalWidget';
 import { ShareProgress } from '@/components/common/ShareProgress';
+import { StreakRewards } from '@/components/common/StreakRewards';
 import { fetchWithRetry } from '@/lib/utils/fetch-retry';
 import { DomainComparison } from '@/components/dashboard/DomainComparison';
 import { RecentActivity } from '@/components/dashboard/RecentActivity';
@@ -184,6 +185,9 @@ export function DashboardPage() {
             )}
           </h2>
           <StreakCalendar history={history} />
+          <div className="mt-4">
+            <StreakRewards currentStreak={streak.current} longestStreak={streak.longest || streak.current} compact />
+          </div>
         </section>
 
         {/* Mastery Distribution */}
