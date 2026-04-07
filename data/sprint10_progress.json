@@ -25,6 +25,7 @@
     "game-engine/resource-management/patching-system.md",
     "game-engine/serialization/property-serialization.md",
     "game-engine/unity-architecture/unity-audio.md",
+    "game-engine/unity-architecture/unity-profiler.md",
     "game-live-ops/ops-uc-rollback-strategy.md",
     "game-publishing/pub-pr-steam-sales.md",
     "game-qa/qa-at-ci-integration.md",
@@ -39,12 +40,16 @@
     "level-design/blockout/collision-volume.md",
     "level-design/lighting-narrative/light-performance.md",
     "level-design/terrain-design/heightmap.md",
-    "llm-core/multimodal-models.md"
+    "llm-core/multimodal-models.md",
+    "mathematics/algebra/absolute-value-func.md",
+    "mathematics/arithmetic/order-of-operations.md",
+    "multiplayer-network/mn-ac-trusted-computing.md",
+    "oop/generics.md"
   ],
   "errors": [],
   "stats": {
-    "total": 40,
-    "success": 40,
+    "total": 45,
+    "success": 45,
     "error": 0,
     "skipped": 0
   }

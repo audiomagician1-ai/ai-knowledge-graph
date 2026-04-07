@@ -11,6 +11,7 @@ import { stripChoicesBlock } from '@/lib/utils/text';
 import { useCountUp } from '@/lib/hooks/useCountUp';
 import { ConceptPrerequisites } from '@/components/graph/ConceptPrerequisites';
 import { ConceptMinimap } from '@/components/graph/ConceptMinimap';
+import { SmartNextSteps } from '@/components/common/SmartNextSteps';
 import { useNavigate, useParams } from 'react-router-dom';
 import {
   Send, BarChart3, Brain, RotateCcw, Zap, Play,
@@ -280,6 +281,9 @@ export function ChatPanel({ conceptId, conceptName, domainId }: ChatPanelProps) 
             conceptId={conceptId}
             onConceptClick={(id) => navigate(`/domain/${urlDomainId || domainId}/${id}`)}
           />
+
+          {/* Smart Next Steps */}
+          <SmartNextSteps />
 
           {/* Recent history preview (last 3) */}
           {conceptConvHistory.length > 0 && (
