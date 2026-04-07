@@ -25,6 +25,7 @@
     "game-engine/resource-management/patching-system.md",
     "game-engine/serialization/property-serialization.md",
     "game-engine/unity-architecture/unity-audio.md",
+    "game-engine/unity-architecture/unity-profiler.md",
     "game-live-ops/ops-uc-rollback-strategy.md",
     "game-publishing/pub-pr-steam-sales.md",
     "game-qa/qa-at-ci-integration.md",
@@ -59,12 +60,21 @@
     "psychology/biological-psychology/hunger-eating.md",
     "psychology/biological-psychology/psychopharmacology.md",
     "psychology/biological-psychology/sexual-behavior-biology.md",
-    "psychology/developmental-psychology/adolescent-development.md"
+    "psychology/developmental-psychology/adolescent-development.md",
+    "psychology/developmental-psychology/resilience.md",
+    "psychology/developmental-psychology/socioemotional-development.md",
+    "psychology/social-psychology/social-media-psychology.md",
+    "rag-knowledge/rag-evaluation.md",
+    "software-engineering/architecture-patterns/se-api-design.md",
+    "software-engineering/architecture-patterns/se-plugin-arch.md",
+    "software-engineering/build-systems/se-gradle.md",
+    "software-engineering/build-systems/se-incremental-build.md",
+    "software-engineering/build-systems/se-ubt.md"
   ],
   "errors": [],
   "stats": {
-    "total": 60,
-    "success": 60,
+    "total": 70,
+    "success": 70,
     "error": 0,
     "skipped": 0
   }

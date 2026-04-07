@@ -122,3 +122,64 @@ async def bulk_sync_notes(notes: dict[str, str]):
         synced += 1
     logger.info("Bulk notes sync", extra={"synced": synced})
     return {"status": "ok", "synced": synced, "total": len(_notes_store)}
+
+
+@router.get("/notes/export/markdown")
+async def export_notes_markdown():
+    """Export all notes as a single Markdown document.
+
+    Returns a structured markdown file with all notes organized by concept ID.
+    Useful for downloading/archiving user notes outside the platform.
+    """
+    if not _notes_store:
+        return {"format": "markdown", "content": "# 学习笔记\n\n还没有任何笔记。开始学习并记录你的想法吧！\n", "count": 0}
+
+    # Sort notes by concept ID for consistent output
+    sorted_notes = sorted(_notes_store.values(), key=lambda n: n["concept_id"])
+
+    lines = [
+        "# 📚 AI知识图谱 — 学习笔记",
+        "",
+        f"> 导出时间: {time.strftime('%Y-%m-%d %H:%M:%S')}",
+        f"> 笔记总数: {len(sorted_notes)}",
+        "",
+        "---",
+        "",
+    ]
+
+    for note in sorted_notes:
+        concept_id = note["concept_id"]
+        content = note["content"]
+        updated = time.strftime("%Y-%m-%d %H:%M", time.localtime(note["updated_at"]))
+
+        # Format concept ID as readable title
+        title = concept_id.replace("-", " ").replace("_", " ").title()
+
+        lines.append(f"## {title}")
+        lines.append(f"*概念ID: `{concept_id}` | 最后更新: {updated}*")
+        lines.append("")
+        lines.append(content)
+        lines.append("")
+        lines.append("---")
+        lines.append("")
+
+    return {
+        "format": "markdown",
+        "content": "\n".join(lines),
+        "count": len(sorted_notes),
+        "filename": f"akg-notes-{time.strftime('%Y%m%d')}.md",
+    }
+
+
+@router.get("/notes/export/json")
+async def export_notes_json():
+    """Export all notes as a JSON document for backup/migration."""
+    sorted_notes = sorted(_notes_store.values(), key=lambda n: n["concept_id"])
+
+    return {
+        "format": "json",
+        "version": "1.0",
+        "exported_at": time.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "count": len(sorted_notes),
+        "notes": sorted_notes,
+    }
