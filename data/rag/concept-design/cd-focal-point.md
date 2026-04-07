@@ -1,49 +1,3 @@
----
-id: "cd-focal-point"
-concept: "焦点与层次"
-domain: "concept-design"
-subdomain: "composition"
-subdomain_name: "构图"
-difficulty: 2
-is_milestone: false
-tags: ["核心"]
-
-# Quality Metadata (Schema v2)
-content_version: 4
-quality_tier: "A"
-quality_score: 82.7
-generation_method: "intranet-llm-rewrite-v2"
-unique_content_ratio: 1.0
-last_scored: "2026-04-06"
-sources:
-  - type: "ai-generated"
-    model: "mihoyo.claude-4-6-sonnet"
-    prompt_version: "intranet-llm-rewrite-v2"
-  - type: "academic"
-    author: "Arnheim, R."
-    year: 1954
-    title: "Art and Visual Perception: A Psychology of the Creative Eye"
-    publisher: "University of California Press"
-  - type: "academic"
-    author: "Ware, C."
-    year: 2008
-    title: "Visual Thinking for Design"
-    publisher: "Morgan Kaufmann"
-  - type: "academic"
-    author: "Nodine, C. F., & Locher, P. J."
-    year: 1993
-    title: "The role of formal art training on perception and aesthetic judgment of art compositions"
-    publisher: "Leonardo, 26(3), 219–227"
-  - type: "academic"
-    author: "Zeki, S."
-    year: 1999
-    title: "Inner Vision: An Exploration of Art and the Brain"
-    publisher: "Oxford University Press"
-scorer_version: "scorer-v2.1"
-quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-04-06
----
-
 # 焦点与层次
 
 ## 概述
@@ -53,6 +7,8 @@ updated_at: 2026-04-06
 视觉层次的理论根源可追溯至格式塔心理学（Gestalt Psychology）。1912年，德国心理学家马克斯·韦特海默（Max Wertheimer）在论文《运动知觉的实验研究》（*Experimentelle Studien über das Sehen von Bewegung*）中首次系统阐述了知觉组织原则，提出大脑会主动将视觉信息组织为"图"与"底"（Figure and Ground），这正是焦点从背景中被识别出来的认知机制。鲁道夫·阿恩海姆（Rudolf Arnheim）于1954年在其经典著作《艺术与视知觉》（*Art and Visual Perception*）中进一步将格式塔原理与绘画构图结合，指出画面张力（Visual Tension）来自元素之间的对比关系，奠定了现代构图教学的理论基础（Arnheim, 1954）。科林·韦尔（Colin Ware）在2008年出版的《设计中的视觉思维》（*Visual Thinking for Design*）中则用神经科学数据支持了三级视觉层次的有效性，指出人类前注意加工（Pre-attentive Processing）在约200毫秒内即可完成对亮度差异的识别，这一发现直接解释了明暗对比在建立主焦点方面的生理优先性（Ware, 2008）。神经美学家塞米尔·泽基（Semir Zeki）在1999年的研究中进一步指出，视觉皮层V1区对边缘与对比的响应早于颜色识别，约在视觉刺激出现后80至120毫秒即被激活，这为"明暗对比先于色相对比"的构图优先级提供了神经生物学依据（Zeki, 1999）。
 
 在概念设计与插画中，焦点与层次决定了观者"先看什么、再看什么、最后看什么"的阅读路径。在设计师群体中，这三个步骤也被称为"3秒规则"——专业概念设计稿应在观者进入画面的前3秒内完成主焦点的识别传达。一张角色设计稿如果主焦点放在角色脸部，次焦点放在武器或标志性道具，背景层则退为虚化的环境信息，观者便能在这3秒内完成信息摄取。Nodine与Locher（1993）通过眼动追踪实验测量了受过正式艺术训练与未受训练的观者对同一画面的注视点分布，发现受过训练的观者注视点更集中、扫描路径更高效，印证了有意识构建的焦点层次在引导视线方面具有可量化的心理效果。
+
+值得特别强调的是：焦点与层次并非天然存在于画面中，而是设计师通过主动的对比操控"制造"出来的。同样的元素，经过不同的明暗安排，可以产生完全相反的焦点位置。理解这一点，是从"被动描摹"走向"主动构图"的核心认知转变。
 
 ---
 
@@ -112,13 +68,19 @@ $$\Delta C_{12} \geq 1.5 \times \Delta C_{23}$$
 $$C = w_1 \cdot \Delta L + w_2 \cdot \Delta S + w_3 \cdot \Delta H$$
 
 其中：
-- $\Delta L$ 为两区域间的亮度差（Lightness差，HSL模式下的L值之差）
-- $\Delta S$ 为饱和度差（Saturation差，HSL模式下的S值之差）
+- $\Delta L$ 为两区域间的亮度差（Lightness差，HSL模式下的L值之差，取值范围0—100）
+- $\Delta S$ 为饱和度差（Saturation差，HSL模式下的S值之差，取值范围0—100）
 - $\Delta H$ 为色相对比权重（互补色取1.0，邻近色取0.3，同色取0.0）
 - $w_1 = 0.6$，$w_2 = 0.3$，$w_3 = 0.1$ 为各维度权重系数，反映明度优先于饱和度、饱和度优先于色相的前注意加工顺序
 
 这一加权模型为多维度综合评估两个画面区域之间的对比强度提供了操作性框架，可辅助设计师在色彩决策阶段进行量化校验。
 
+**例如**，某角色概念设计稿中，主角面部区域的 $L = 82$，$S = 45$，色相为暖橙色；背景区域的 $L = 38$，$S = 12$，色相为冷蓝色（与主角互补）。代入公式：
+
+$$C = 0.6 \times (82 - 38) + 0.3 \times (45 - 12) + 0.1 \times 1.0 = 26.4 + 9.9 + 0.1 = 36.4$$
+
+若次焦点（武器区域）与背景的综合对比度 $C' = 18.2$，则 $C / C' \approx 2.0 > 1.5$，满足层次阶梯条件，三级结构有效。这一计算流程可作为标准化审图工具嵌入团队创作流程，尤其适合多人协作的游戏美术或影视概念设计管线。
+
 ### 视觉重量平衡模型
 
-阿恩海姆（Arnheim, 1954）提出，画面中每个元素都具有"视觉重量"
+阿恩海姆（Arnheim, 1954）提出，画面中每个元素都具有"视觉重量"（Visual Weight），其大小由元素的尺寸、明度、饱和度、复杂度及在画面中的位置共同决定。画面中心（几何中心）被称

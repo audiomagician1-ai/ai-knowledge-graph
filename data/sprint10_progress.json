@@ -19,12 +19,17 @@
     "game-engine/audio-system/spatial-audio.md",
     "game-engine/editor-extension/data-validation.md",
     "game-engine/editor-extension/editor-performance.md",
-    "game-engine/physics-engine/physics-multithreading.md"
+    "game-engine/physics-engine/physics-multithreading.md",
+    "game-engine/physics-engine/vehicle-physics.md",
+    "game-engine/resource-management/memory-budget.md",
+    "game-engine/resource-management/patching-system.md",
+    "game-engine/serialization/property-serialization.md",
+    "game-engine/unity-architecture/unity-audio.md"
   ],
   "errors": [],
   "stats": {
-    "total": 20,
-    "success": 20,
+    "total": 25,
+    "success": 25,
     "error": 0,
     "skipped": 0
   }

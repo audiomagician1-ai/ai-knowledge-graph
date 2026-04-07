@@ -1,97 +1,155 @@
----
-id: "property-serialization"
-concept: "属性序列化"
-domain: "game-engine"
-subdomain: "serialization"
-subdomain_name: "序列化"
-difficulty: 3
-is_milestone: false
-tags: ["反射"]
-
-# Quality Metadata (Schema v2)
-content_version: 4
-quality_tier: "A"
-quality_score: 76.3
-generation_method: "intranet-llm-rewrite-v2"
-unique_content_ratio: 1.0
-last_scored: "2026-04-06"
-sources:
-  - type: "ai-generated"
-    model: "mihoyo.claude-4-6-sonnet"
-    prompt_version: "intranet-llm-rewrite-v2"
-scorer_version: "scorer-v2.0"
-quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-03-31
----
-
 # 属性序列化
 
 ## 概述
 
-属性序列化是游戏引擎中利用反射系统自动读写对象属性的机制，无需开发者手动编写每个字段的存取代码。在 Unreal Engine 中，凡是用 `UPROPERTY()` 宏标记的成员变量，引擎的 `FArchive` 序列化系统便可在存档、网络同步或编辑器持久化时自动处理这些变量的读写流程。这与传统手动序列化的区别在于：开发者声明字段的"意图"，而非描述"过程"。
+属性序列化（Property Serialization）是游戏引擎利用反射系统元数据，自动将对象成员变量转换为持久化字节流、并在反序列化时从字节流重建对象状态的机制。其核心价值在于将"字段声明"与"读写逻辑"解耦：开发者只需通过宏或特性标注哪些字段需要持久化，序列化框架便根据编译期或运行期生成的元数据自动完成后续的二进制布局映射、版本兼容处理和跨平台字节序转换。
 
-该机制起源于 90 年代末商业引擎对大规模关卡数据管理的迫切需求。Unreal Engine 1（1998 年发布）已初步引入基于宏标记的属性系统，到 Unreal Engine 4 时形成了以 UObject 反射系统为核心的完整属性序列化框架。Unity 则在 2012 年前后通过 `[SerializeField]` 特性将 C# 反射与 YAML 格式的场景文件结合，形成了另一条技术路线。这两种方案都表明，反射驱动的自动序列化已成为现代引擎的标准配置。
+该机制的工业级实现最早可追溯至 Unreal Engine 1（Epic Games，1998 年发布），其属性系统已通过 `UPROPERTY` 宏将字段元数据嵌入类描述符。到 Unreal Engine 4（2015 年开源代码库）时，以 `FProperty`、`FArchive` 与 `UObject` 三者为核心的完整反射序列化框架趋于成熟（Zherdin & Löffler，*Unreal Engine 4 Game Development Essentials*，2016）。Unity 则在 2012 年随 Unity 4.0 引入 `[SerializeField]` 特性与 YAML 格式场景文件，将 C# 运行时反射与编辑器 Inspector 管线打通（Unity Technologies，官方文档 *Script Serialization*，2023）。两条技术路线的共同本质是：**序列化的信息源不是手写的读写函数，而是描述字段布局的反射元数据**。
 
-属性序列化的重要性在于它直接决定了哪些数据能够跨越运行时边界——即从内存中的活跃对象转换为可存储或可传输的字节流。一个角色的生命值、背包内容或关卡触发器状态，都依赖属性序列化在存档与加载之间保持一致性。错误地配置属性标记会导致数据静默丢失，且往往在运行时才能发现。
+属性序列化直接决定哪些数据能跨越运行时边界。一个 RPG 角色的当前生命值、背包物品列表、已触发的剧情标记，若序列化配置错误，在存档保存后重新加载时会静默回落为默认值，而非抛出异常，使问题难以定位。
 
 ---
 
 ## 核心原理
 
-### 反射元数据的生成
+### 反射元数据的编译期生成（Unreal Engine 路线）
 
-属性序列化的基础是编译期生成的反射元数据。在 Unreal Engine 中，Unreal Header Tool（UHT）在编译前扫描所有 `.h` 文件，为每个 `UPROPERTY()` 标记的字段生成对应的 `FProperty` 对象，记录字段名称、数据类型、内存偏移量（offset）及序列化标志位。序列化时，`FArchive` 遍历类的 `FProperty` 链表，通过偏移量直接读写内存地址，不依赖开发者编写任何 `if/else` 分支。
+Unreal Engine 的属性序列化依赖编译前由 **Unreal Header Tool（UHT）** 执行的代码生成步骤。UHT 扫描所有标注 `UCLASS()`、`USTRUCT()` 的头文件，为每个 `UPROPERTY()` 字段生成对应的 `FProperty` 子类实例（如 `FIntProperty`、`FObjectProperty`、`FArrayProperty`），每个实例存储以下关键信息：
 
-在 Unity 中，C# 反射在运行时通过 `System.Reflection.FieldInfo` 获取字段信息，`SerializedObject` 和 `SerializedProperty` API 将这些信息桥接到编辑器的 Inspector 面板和 YAML 场景文件写入流程。与 UHT 不同，Unity 的反射元数据在运行时动态获取，有轻微性能开销。
+- **字段名称**（`FName`）：用于序列化时的键值匹配和版本兼容查找；
+- **内存偏移量**（`Offset_Internal`）：从对象基地址到该字段的字节偏移，序列化时通过指针算术 `(uint8*)Object + Offset` 直接定位内存；
+- **类型描述符**：决定序列化时调用的具体 `Serialize()` 重载，例如 `FArrayProperty` 会先写入元素数量（`int32`），再逐元素递归序列化；
+- **属性标志位**（`EPropertyFlags`）：控制该字段是否参与存档、网络复制或编辑器显示。
 
-### 属性标记与过滤规则
+序列化执行时，`FArchive` 遍历目标类的 `FProperty` 链表，对每个未标记 `CPF_Transient` 的字段调用其 `SerializeItem()` 方法，整个过程无需开发者编写任何 `if/else` 分支。这一设计使得新增字段只需声明一次宏标记，序列化、编辑器显示、蓝图绑定三条管线同时更新。
 
-并非所有属性都会被序列化，引擎通过标记（specifier）精确控制序列化范围。Unreal Engine 的 `UPROPERTY()` 支持以下关键标记：
+### 运行时反射路线（Unity / C# 路线）
 
-- `SaveGame`：仅在调用 `USaveGame` 存档时序列化该字段；
-- `Transient`：明确排除序列化，字段值在加载后始终为默认值；
-- `Replicated`：将字段纳入网络复制系统，但不影响磁盘序列化；
-- `EditAnywhere` / `VisibleAnywhere`：控制编辑器可见性，间接影响序列化优先级。
+Unity 的序列化依赖 C# 运行时的 `System.Reflection` API，在编辑器进程中通过 `FieldInfo.GetValue()` / `FieldInfo.SetValue()` 读写字段。`SerializedObject` 和 `SerializedProperty` 将反射信息桥接到 YAML 格式的 `.unity` 场景文件写入流程。与 UHT 的编译期生成不同，Unity 的元数据在运行时动态获取，引入轻微性能开销，因此 Unity 官方推荐在热路径中避免频繁调用反射 API，改用预缓存的 `SerializedProperty` 引用。
 
-缺少 `UPROPERTY()` 宏的 C++ 成员变量对引擎完全透明，序列化系统无法感知其存在，即使它在内存中有值，保存存档后重新加载也会得到零值或垃圾数据。
+Unity 序列化系统的默认规则如下（Unity Technologies，2023）：
 
-Unity 的规则与此相反：默认情况下，`public` 字段自动参与序列化，`private` 字段则需要显式添加 `[SerializeField]` 特性。`[NonSerialized]`（C# 标准特性）或 Unity 专属的 `[HideInInspector]` 可将字段排除在外。两种引擎的默认策略相反，是跨引擎开发者的常见混淆来源。
+| 字段访问修饰符 | 默认序列化行为 | 覆盖方式 |
+|---|---|---|
+| `public` | 自动序列化 | `[NonSerialized]` 排除 |
+| `private` / `protected` | 不序列化 | `[SerializeField]` 加入 |
+| `static` | 永远不序列化 | 无法覆盖 |
+| `readonly` | 不序列化 | 无法覆盖 |
 
-### FArchive 的双向读写模型
+### 属性标记与过滤语义
 
-Unreal Engine 的 `FArchive` 采用"单一操作符双向语义"设计：重载 `<<` 操作符同时承担读（加载）和写（保存）两种方向。序列化函数只需写一次：
+Unreal Engine 的 `UPROPERTY()` 宏支持多组正交的 specifier，每组控制不同管线的行为，互不干扰：
+
+- **`SaveGame`**：仅当调用 `UGameplayStatics::SaveGameToSlot()` 触发的 `SaveGame` 过滤路径时序列化；常规关卡流送序列化不包含此字段；
+- **`Transient`**：对所有序列化路径不可见，字段在对象加载后总是获得类型默认值，适用于缓存计算结果或帧级临时状态；
+- **`Replicated`**：将字段注册进网络复制系统（`GetLifetimeReplicatedProps()`），但与磁盘序列化正交，可同时标记 `SaveGame` 和 `Replicated`；
+- **`SkipSerialization`**：字段元数据保留（编辑器可见），但序列化调用时跳过，适用于需要在编辑器中展示但由代码重建的衍生数据。
+
+---
+
+## 关键公式与数据结构
+
+### 序列化偏移量寻址
+
+属性序列化的内存寻址依赖以下计算：
+
+$$
+\text{FieldPtr} = \text{ObjectBasePtr} + \Delta_{\text{offset}}
+$$
+
+其中 $\text{ObjectBasePtr}$ 是对象实例的起始地址，$\Delta_{\text{offset}}$ 是 UHT 在代码生成阶段写入 `FProperty::Offset_Internal` 的编译期常量。对于继承体系，子类字段的偏移量紧接父类布局末尾排列，`FProperty` 链表按继承层级链式存储，确保父类字段在子类对象上的偏移计算仍然正确。
+
+### 二进制存档的字段块结构
+
+Unreal Engine 的 `.uasset` 和存档文件中，每个属性字段的序列化块遵循以下格式：
+
+$$
+[\underbrace{\text{FName(FieldName)}}_{变长}]\ [\underbrace{\text{FName(TypeName)}}_{变长}]\ [\underbrace{\text{int32(Size)}}_{4\text{字节}}]\ [\underbrace{\text{int32(ArrayIndex)}}_{4\text{字节}}]\ [\underbrace{\text{Value...}}_{Size\text{字节}}]
+$$
+
+这一布局使版本兼容成为可能：加载时若遇到当前类中不存在的 `FieldName`，序列化器可通过 `Size` 字段直接跳过该块，而不会破坏后续字段的解析，从而实现字段的向前兼容删除（Unreal Engine 源码 `UnrealEngine/Engine/Source/Runtime/CoreUObject/Private/Serialization/`）。
+
+### 版本号与兼容性管理
+
+Unreal Engine 提供两层版本控制：
+
+1. **引擎版本号**（`EUnrealEngineObjectUE5Version`）：硬编码于引擎源码，随引擎版本递增，控制引擎内置类型的序列化格式；
+2. **自定义版本号**（`FCustomVersionRegistration`）：项目级版本号，开发者在升级序列化格式时递增，通过 `FArchive::CustomVer()` 查询当前文件版本，在字段的 `Serialize()` 重载中编写版本分支：
 
 ```cpp
-Archive << Health;
-Archive << Inventory;
+void UMyComponent::Serialize(FArchive& Ar)
+{
+    Super::Serialize(Ar);
+    if (Ar.CustomVer(FMyGameVersion::GUID) >= FMyGameVersion::AddedHealthRegen)
+    {
+        Ar << HealthRegenRate; // 仅在新版本存档中读写
+    }
+}
 ```
-
-`FArchive::IsLoading()` 在内部决定数据流方向。这消除了读写代码不一致导致的版本错位问题。每个支持序列化的类型需实现 `Serialize(FArchive& Ar)` 虚函数，基础类型（`int32`、`float`、`FString`）已由引擎内置实现，`TArray`、`TMap` 等容器模板也内置了元素递归序列化逻辑。
 
 ---
 
 ## 实际应用
 
-**RPG 游戏存档**：角色类 `APlayerCharacter` 中，`Health`（`float`）、`Level`（`int32`）和 `InventoryItems`（`TArray<FItemData>`）均标记为 `UPROPERTY(SaveGame)`。调用 `UGameplayStatics::SaveGameToSlot()` 时，引擎自动遍历所有 `SaveGame` 属性并写入存档文件，读档时反向填充内存，无需开发者编写任何循环或文件操作代码。
+### 案例：SaveGame 系统的属性过滤
 
-**编辑器关卡配置**：关卡触发器 `ATriggerVolume` 中的 `TriggerRadius`（`float`）标记 `EditAnywhere`，设计师在编辑器中拖拽调整后，该值通过属性序列化写入 `.umap` 文件。即使游戏发布后，关卡包内的触发器尺寸依然与设计师设定的值完全一致。
+在一个开放世界 RPG 中，`APlayerCharacter` 持有以下几类字段：
 
-**Unity 预制体（Prefab）持久化**：Unity 中 `MonoBehaviour` 子类的 `[SerializeField] private float MoveSpeed` 字段，在保存预制体时被序列化为 YAML 格式：`m_MoveSpeed: 5.5`。这意味着修改脚本中的字段默认值不会自动覆盖已保存预制体中的值——引擎优先读取 YAML 文件中的序列化数据。
+```cpp
+UPROPERTY(SaveGame)
+int32 CurrentHealth;          // 需要存档
+
+UPROPERTY(Transient)
+UParticleSystemComponent* DustEffect; // 运行时生成，不存档
+
+UPROPERTY(Replicated, SaveGame)
+TArray<FItemData> Inventory;  // 既需要网络同步，也需要存档
+
+UPROPERTY()
+FVector LastKnownPosition;    // 没有 SaveGame 标记：存档时跳过
+```
+
+调用 `UGameplayStatics::SaveGameToSlot()` 时，引擎内部实例化一个带 `PPF_SaveGame` 过滤标志的 `FObjectAndNameAsStringProxyArchive`，遍历 `FProperty` 链表时仅处理 `CPF_SaveGame` 标志位为真的字段。`LastKnownPosition` 虽有 `UPROPERTY()` 宏，但因缺少 `SaveGame` specifier 而被跳过，重新加载后其值为 `FVector::ZeroVector`。
+
+### 案例：Unity 中嵌套自定义类型的序列化陷阱
+
+Unity 序列化系统要求自定义值类型（`struct`）必须标注 `[System.Serializable]` 才能被 `SerializedObject` 递归处理。例如：
+
+```csharp
+[System.Serializable]
+public struct InventorySlot
+{
+    public string ItemId;
+    public int    Quantity;
+}
+
+public class PlayerInventory : MonoBehaviour
+{
+    [SerializeField]
+    private List<InventorySlot> slots; // 正确序列化
+}
+```
+
+若省略 `[System.Serializable]`，`slots` 列表在 Inspector 中显示为空，YAML 场景文件中也不会写入任何内容，但运行时 `slots.Count` 会返回 0 而非抛出异常，导致难以察觉的数据丢失。
+
+Unity 序列化系统对自引用类型（如链表节点）存在已知限制：递归序列化深度硬上限为 **7 层**，超出后字段被截断为 null（Unity Technologies，*Script Serialization*，2023）。
 
 ---
 
 ## 常见误区
 
-**误区一：认为添加 `UPROPERTY()` 就等于一定会被存档**。`UPROPERTY()` 只让引擎能"看见"该属性，具体是否存入存档取决于是否携带 `SaveGame` 标记，以及序列化的调用路径是否经过 `USaveGame` 子系统。仅标记 `EditAnywhere` 的属性只会序列化到关卡或蓝图资产文件，运行时调用存档接口时并不处理它。
+### 误区一：`UPROPERTY()` 等同于"总是序列化"
 
-**误区二：认为 `Transient` 属性在任何情况下都不会被序列化**。`Transient` 的确排除了磁盘序列化和默认网络复制，但 `FArchive` 在做内存复制（如蓝图构造脚本中的对象克隆）时可能仍会读取该字段，因为克隆操作使用独立的序列化标志位。依赖 `Transient` 阻止数据扩散时需检查具体序列化路径。
+仅标记 `UPROPERTY()` 不附加任何 specifier 的字段，在 **关卡流送和蓝图默认值序列化** 路径下会被处理，但在 **SaveGame 路径** 下会被跳过。开发者常因此以为存档功能已覆盖所有 `UPROPERTY()` 字段，导致角色属性在存档读取后被重置。正确做法是为需要存档的字段显式添加 `SaveGame` specifier，并在代码审查清单中将此项列为必检项。
 
-**误区三：修改字段类型不会影响已有存档的读取**。属性序列化通过字段名称匹配存档数据，若将 `Health` 从 `int32` 改为 `float`，旧存档中对应条目的字节布局不变，加载时类型不匹配会导致数据静默截断或读取失败。这要求引擎项目在修改已序列化属性类型时必须同步编写版本迁移逻辑（Unreal 通过 `CustomVersions` 机制处理）。
+### 误区二：Transient 字段不占用内存
 
----
+`Transient` 仅影响序列化管线的处理逻辑，字段在运行时内存中正常存在、正常读写，`CPF_Transient` 标志只通知序列化遍历器跳过该字段。将 `UTexture2D*` 缓存标记为 `Transient` 并不减少其运行时内存占用，需要配合 `UPROPERTY(Transient)` 确保 GC 仍能追踪该指针以防止悬空引用。
 
-## 知识关联
+### 误区三：Unity `public` 字段的序列化优先于逻辑封装
 
-**前置概念——序列化概述**：属性序列化建立在序列化的基础概念之上，即对象状态与字节流之间转换的通用框架。理解 `FArchive` 的流模型和 Unity Asset 文件的结构，是正确配置属性标记的前提。
+部分开发者为了让字段在 Inspector 中可见，将其设为 `public`，但这同时将字段暴露给所有外部代码，破坏封装性。正确做法是保持 `private` 访问修饰符，配合 `[SerializeField]` 特性实现"仅 Inspector 可见、不对外暴露"的效果。Unity 编辑器序列化系统完全支持对 `private [SerializeField]` 字段的读写，与 `public` 字段行为一致。
 
-**后续概念——自定义结构体序列化**：当需要序列化的字段类型是自定义的 `USTRUCT`（Unreal）或普通 C# 结构体（Unity）时，引擎的自动机制需要开发者为结构体额外声明每个子字段的标记，或手动实现 `Serialize` 函数。自定义结构体序列化正是在属性序列化能力无法完全覆盖时的下一步精细控制手段，处理嵌套数据、条件序列化及二进制版本兼容问题。
+### 误区四：字段重命名不需要迁移处理
+
+序列化字段的名称是持久化文件中的键（Unreal 使用 `FName`，Unity 使用 YAML 键名）。将 `CurrentHealth` 重命名为 `Health` 后，旧存档文件中的 `CurrentHealth` 块在加载时找不到对应字段而被跳过，新字段 `Health` 以默认值初始化——旧数据静默丢失。Unreal Engine 提供 `UPROPERTY(meta=(DeprecatedProperty, DeprecationMessage="Use Health instead"))` 与 `CoreRedirects` 机制处理字段重命名迁移；Unity 则需要通过 `ISerializationCallbackReceiver` 接口在 `OnAf

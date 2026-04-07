@@ -1,59 +1,3 @@
----
-id: "cd-env-scale-storytelling"
-concept: "尺度叙事"
-domain: "concept-design"
-subdomain: "environment-design"
-subdomain_name: "环境设计"
-difficulty: 2
-is_milestone: false
-tags: ["技巧"]
-
-# Quality Metadata (Schema v2)
-content_version: 6
-quality_tier: "A"
-quality_score: 92.0
-generation_method: "intranet-llm-rewrite-v2"
-unique_content_ratio: 1.0
-last_scored: "2026-04-06"
-sources:
-  - type: "ai-generated"
-    model: "mihoyo.claude-4-6-sonnet"
-    prompt_version: "intranet-llm-rewrite-v2"
-  - type: "academic"
-    author: "Ching, Francis D.K."
-    year: 2007
-    title: "Architecture: Form, Space, and Order (3rd ed.)"
-    publisher: "John Wiley & Sons"
-  - type: "industry"
-    author: "Robertson, Scott"
-    year: 2013
-    title: "How to Draw: Drawing and Sketching Objects and Environments from Your Imagination"
-    publisher: "Design Studio Press"
-  - type: "academic"
-    author: "Arnheim, Rudolf"
-    year: 1977
-    title: "The Dynamics of Architectural Form"
-    publisher: "University of California Press"
-  - type: "industry"
-    author: "Mateu-Mestre, Marcos"
-    year: 2010
-    title: "Framed Ink: Drawing and Composition for Visual Storytellers"
-    publisher: "Design Studio Press"
-  - type: "academic"
-    author: "Gibson, James J."
-    year: 1979
-    title: "The Ecological Approach to Visual Perception"
-    publisher: "Houghton Mifflin"
-  - type: "industry"
-    author: "Broadwell, Ben"
-    year: 2019
-    title: "The Skillful Huntsman: Visual Development of a Grimm Tale"
-    publisher: "Design Studio Press"
-scorer_version: "scorer-v2.0"
-quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-04-06
----
-
 # 尺度叙事
 
 ## 概述
@@ -102,4 +46,22 @@ $$H_{\text{real}} = R \times 170 \text{ cm}$$
 
 不同透视系统对尺度叙事的传达效率存在显著差异。一点透视（One-Point Perspective）中，空间的纵深感最强，但横向宽度易被压缩，适合走廊、隧道等强调"深度与延伸"的场景；两点透视（Two-Point Perspective）是建筑概念图的主流选择，能同时呈现建筑的两个立面，参照人物在其中的比例关系最为直观；三点透视（Three-Point Perspective）的仰角或俯角构图会对参照人物的视觉尺寸产生透视畸变，若处理不当，反而会使观者对空间高度产生误判。在极端仰角三点透视中，建议将参照人物放置在画面最低处的消失点附近，以最小化透视畸变对尺度信息的干扰。
 
-大气透视（Atmospheric Perspective）是另一个常被忽视的尺度叙事变量。当场景中存在远景雾气、体积光或颗粒感时，远处的参照人物会因色彩饱和度降低和轮廓虚化而在视觉上显得更小，从而进一步放大前景建筑的感知尺度。这种"双重缩小效应"（
+大气透视（Atmospheric Perspective）是另一个常被忽视的尺度叙事变量。当场景中存在远景雾气、体积光或颗粒感时，远处的参照人物会因色彩饱和度降低和轮廓虚化而在视觉上显得更小，从而进一步放大前景建筑的感知尺度。这种"双重缩小效应"——几何透视缩小叠加大气透视虚化——是史诗级场景概念图中强化宏大感的标准组合手法。Broadwell（2019）在《The Skillful Huntsman》中记录了多个影视美术案例，说明当大气透视与几何透视同步施加于参照人物时，观者对场景深度的感知可扩大至实际绘制深度的1.5至2倍。
+
+---
+
+## 关键公式与感知模型
+
+### 尺度情绪映射模型
+
+除基础比例公式外，设计师还可以使用**情绪-尺度映射表**来快速判断特定比值所产生的心理效应。将 $R$ 值、$H_{\text{real}}$ 范围与典型建筑类型对应如下：
+
+| $R$ 值范围 | $H_{\text{real}}$（厘米） | 情绪区间 | 典型建筑类型 |
+|---|---|---|---|
+| 1.2–2.0 | 204–340 | 亲密/压迫 | 地下室、密道 |
+| 2.0–3.0 | 340–510 | 日常/舒适 | 住宅客厅、小咖啡馆 |
+| 3.0–7.0 | 510–1190 | 宏伟/开阔 | 大厅、宫殿前室 |
+| 7.0–20.0 | 1190–3400 | 神圣/权威 | 哥特教堂中殿、神庙 |
+| >20.0 | >3400 | 神话/外星 | 泰坦神殿、巨构飞船内部 |
+
+需要强调的是，上述 $R$ 值并非绝对规律，而是基于欧美主流叙事惯例的统计区间。在特定文化语境中（如日本枯山水庭院设计），极低的 $R$ 值（$R \approx 0.5$，即
