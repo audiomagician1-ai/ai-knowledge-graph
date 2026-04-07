@@ -78,10 +78,10 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,575 (1,064 BE + 449 FE + 61 E2E) | 2026-04-07 |
+| **测试总数** | 1,587 (1,064 BE + 462 FE + 61 E2E) | 2026-04-07 |
 | **tsc errors** | 0 | 2026-04-07 |
 | **Open Issues** | 0 | 2026-04-07 |
-| **RAG 质量** | 6,300 docs — Sprint 10 进行中 (38/80), global avg **79.9→80+** (target) | 2026-04-07 |
+| **RAG 质量** | 6,300 docs — Sprint 10 进行中 (47/80), global avg **79.9→80+** (target) | 2026-04-07 |
 
 ---
 
@@ -149,7 +149,9 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ ShareProgress (学习进度分享: 复制+推特+下载, Dashboard集成)
 - ✅ Concept Context API (GET /api/graph/concepts/{id}/context: 前置/后续/相关/子域兄弟)
 - ✅ Hub栏交流按钮 → 导航到 /community (修复TODO)
-- 🔄 RAG Sprint 10: 底部80篇定向改写 → 目标全局avg 80.0+ (当前进度: 38/80)
+- ✅ SmartNextSteps智能推荐 (分析图谱+进度推荐下一步: 继续学习/解锁新概念/里程碑接近/复习)
+- ✅ useGraphKeyNav键盘导航 (ArrowKeys箭头键在连接节点间导航, Enter学习, Esc取消)
+- 🔄 RAG Sprint 10: 底部80篇定向改写 → 目标全局avg 80.0+ (当前进度: 47/80)
 
 ---
 
@@ -321,7 +323,7 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/pages/NotFoundPage.tsx | 404 页面 (渐变标题+导航) |
 | packages/web/src/lib/utils/capacitor.ts | Capacitor平台抽象层 (storage/keyboard/lifecycle) |
 | packages/web/src/lib/utils/perf-monitor.ts | Core Web Vitals 监控 (FCP/LCP/TTFB) |
-| packages/web/src/lib/hooks/ | useAppLifecycle + useBackButton + useKeyboardHeight + useOnlineStatus + useKeyboardShortcuts + useLocalStorage + useLearningTimer + useSpeechRecognition + useStudyGoal (barrel: hooks/index.ts) |
+| packages/web/src/lib/hooks/ | useAppLifecycle + useBackButton + useKeyboardHeight + useOnlineStatus + useKeyboardShortcuts + useLocalStorage + useLearningTimer + useSpeechRecognition + useStudyGoal + useGraphKeyNav (barrel: hooks/index.ts) |
 | packages/web/src/lib/utils/fetch-retry.ts | fetchWithRetry: 指数退避 + 抖动 + Retry-After + abort signal |
 | packages/web/src/components/common/OfflineIndicator.tsx | 离线状态提示横幅 (useSyncExternalStore) |
 | packages/web/src/components/common/KeyboardShortcutsHelp.tsx | 全局键盘快捷键帮助弹窗 (Shift+?) |
@@ -340,6 +342,7 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/graph/ConceptMinimap.tsx | 子域概念导航地图 (状态颜色dot grid) |
 | packages/web/src/components/graph/GraphBreadcrumb.tsx | 面包屑导航 (首页>域>子域>概念) |
 | packages/web/src/components/common/ShareProgress.tsx | 学习进度分享 (复制/推特/下载) |
+| packages/web/src/components/common/SmartNextSteps.tsx | 智能下一步推荐 (graph分析+优先级建议) |
 | packages/web/src/lib/api/notes-api.ts | 笔记API客户端 (CRUD + bulk sync + stats) |
 | packages/web/src/lib/hooks/useNotifications.ts | 通知提醒hook (Notification API + daily reminder) |
 | apps/api/utils/metrics.py | API指标收集器 (请求数/错误率/响应时间/per-endpoint) |
@@ -408,4 +411,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-07 | **Scope**: V2.1 graph navigation (Prerequisites+Minimap+Breadcrumb+ShareProgress+ContextAPI) + Sprint 10 RAG (38/80) | **Result**: 1,064 BE + 449 FE + 61 E2E all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-07 | **Scope**: V2.1 graph navigation sprint (Prerequisites+Minimap+Breadcrumb+ShareProgress+ContextAPI+SmartNextSteps+KeyNav) + Sprint 10 RAG (47/80) | **Result**: 1,064 BE + 462 FE + 61 E2E all pass, tsc: 0 errors, 0 open issues, build OK
