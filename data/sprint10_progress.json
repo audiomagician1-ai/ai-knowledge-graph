@@ -74,12 +74,27 @@
     "software-engineering/code-review/se-cr-automation.md",
     "software-engineering/ecs-architecture/se-entt.md",
     "software-engineering/memory-management/se-mem-intro.md",
-    "software-engineering/memory-management/se-move-semantics.md"
+    "software-engineering/memory-management/se-move-semantics.md",
+    "software-engineering/memory-management/se-raii.md",
+    "software-engineering/memory-management/se-virtual-memory.md",
+    "software-engineering/multithreading/se-concurrent-ds.md",
+    "software-engineering/multithreading/se-future-promise.md",
+    "software-engineering/multithreading/se-gpu-compute.md",
+    "software-engineering/multithreading/se-rwlock.md",
+    "software-engineering/multithreading/se-thread-basics.md",
+    "software-engineering/multithreading/se-thread-pool.md",
+    "software-engineering/package-management/se-dep-security.md",
+    "software-engineering/performance-analysis/se-cache-perf.md",
+    "software-engineering/performance-analysis/se-cpu-profiling.md",
+    "software-engineering/performance-analysis/se-load-testing.md",
+    "software-engineering/version-control/se-git-lfs.md",
+    "software-engineering/version-control/se-git-merge-rebase.md",
+    "software-engineering/version-control/se-pr-workflow.md"
   ],
   "errors": [],
   "stats": {
-    "total": 75,
-    "success": 75,
+    "total": 90,
+    "success": 90,
     "error": 0,
     "skipped": 0
   }

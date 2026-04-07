@@ -1,99 +1,109 @@
----
-id: "se-concurrent-ds"
-concept: "并发数据结构"
-domain: "software-engineering"
-subdomain: "multithreading"
-subdomain_name: "多线程"
-difficulty: 3
-is_milestone: false
-tags: ["数据结构"]
-
-# Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "A"
-quality_score: 76.3
-generation_method: "ai-rewrite-v1"
-unique_content_ratio: 1.0
-last_scored: "2026-04-06"
-sources:
-  - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
-scorer_version: "scorer-v2.0"
-quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-03-26
----
-
-
 # 并发数据结构
 
 ## 概述
 
-并发数据结构是专门设计用于多线程环境下安全访问与修改的数据结构，其核心挑战是在保证线程安全的同时最大化并发吞吐量。与单线程数据结构不同，并发数据结构必须处理写-写冲突、读-写冲突，以及多核CPU缓存一致性问题（如伪共享）。Java标准库中的`java.util.concurrent`包自JDK 1.5（2004年）起提供了一整套生产就绪的并发数据结构实现。
+并发数据结构（Concurrent Data Structures）是专为多线程环境设计的数据容器，其根本挑战在于：在多个线程同时读写的情况下，既保证数据的正确性（线程安全），又最大化并发吞吐量，避免因过度加锁导致的串行化瓶颈。Java 标准库 `java.util.concurrent`（JUC）包由 Doug Lea 主导设计，自 JDK 1.5（2004年，JSR-166）起正式引入，包含 `ConcurrentHashMap`、`ConcurrentLinkedQueue`、`ConcurrentSkipListMap` 等核心实现，是目前工业界使用最广泛的并发数据结构库。
 
-并发数据结构的演化路线清晰：最早的实现依赖全局锁（如`Hashtable`对每个方法加`synchronized`），这种方式简单但并发度极低；第二代引入分段锁（Segment Locking），典型代表是JDK 7中的`ConcurrentHashMap`默认16个分段；第三代（JDK 8+）彻底转向CAS（Compare-And-Swap）无锁操作与细粒度桶锁，并发度从16个分段提升至桶数量级。
+并发数据结构的演化路径清晰可追溯：**第一代**依赖全局 `synchronized`（如 `Hashtable`、`Collections.synchronizedMap`），所有方法互斥，并发度为 1；**第二代**引入分段锁（Segment Lock），JDK 7 中 `ConcurrentHashMap` 默认 16 个 `Segment`，并发度提升至 16；**第三代**（JDK 8+）彻底转向 CAS 无锁操作与细粒度桶级锁，并发度上限等于数组桶数量（默认初始 16，最高可达 $2^{30}$）。这一演化背后是硬件的推动——现代多核 CPU 上，`synchronized` 的内核态切换开销在高竞争场景下比 CAS 自旋高出数十倍。
 
-并发数据结构的重要性在于，正确使用它们可以避免程序员手动加锁时常见的死锁、优先级反转和锁竞争问题。以`ConcurrentHashMap`替代`HashMap+synchronized`，在16核机器上的读操作吞吐量可提升8-12倍，因为`ConcurrentHashMap`的读操作在JDK 8中完全无锁。
+正确使用并发数据结构与手动 `HashMap + synchronized` 的性能差距十分显著：在 16 核机器、读多写少（读:写 = 9:1）场景下，`ConcurrentHashMap` 的吞吐量可达同步 `HashMap` 的 **8–12 倍**，因为 JDK 8 的读操作完全无锁（基于 `volatile` 读语义）（Lea, 2004）。
 
 ---
 
 ## 核心原理
 
-### ConcurrentHashMap：分桶锁与无锁读
+### ConcurrentHashMap：桶级锁 + 无锁读 + 协同扩容
 
-JDK 8的`ConcurrentHashMap`底层使用`Node<K,V>[]`数组，每个数组槽位（桶）独立加锁，锁粒度从JDK 7的16个`Segment`细化到`n`个桶。写入时通过`synchronized(桶头节点)`加锁，读取时利用`volatile`修饰的`val`字段实现无锁读。当链表长度超过8且数组长度超过64时，链表自动转为红黑树，使最坏查找时间从O(n)降至O(log n)。
+JDK 8 的 `ConcurrentHashMap` 底层使用 `Node<K,V>[]` 数组，每个数组槽（桶）独立加锁，锁粒度从 JDK 7 的 16 个 `Segment` 细化为 $n$ 个桶（$n$ 为数组长度）。核心设计要点如下：
 
-`size()`方法不使用全局锁，而是通过分布在多个`CounterCell`中的计数器求和得出，这与`LongAdder`的实现原理相同——通过减少多核争用同一内存地址来降低CAS失败率。
+**写操作**：通过 `synchronized(f)`（$f$ 为桶的头节点）对单个桶加锁，不同桶的写操作完全并行。首次插入空桶时，使用 CAS 直接写入，无需加锁，避免了不必要的锁竞争。
 
-扩容时采用多线程协同迁移（`transfer()`方法），每个线程认领一段桶区间（最小步长16），迁移完成的桶位置填入`ForwardingNode`作为标记，其他线程读写时检测到`ForwardingNode`即知道需要跳转至新数组。
+**读操作**：`Node.val` 与 `Node.next` 均用 `volatile` 修饰，读取时无需任何锁，直接利用 Java 内存模型的 `volatile` 可见性保证。这使读密集场景（如缓存查询）的吞吐量接近非线程安全的 `HashMap`。
 
-### ConcurrentLinkedQueue：Michael-Scott无锁队列
+**树化阈值**：当单个桶的链表长度超过 8 且数组总长度 $\geq 64$ 时，链表转为红黑树（`TreeBin`），最坏查找时间复杂度从 $O(n)$ 降至 $O(\log n)$。红黑树节点采用 `TreeBin` 而非直接 `TreeNode`，因为 `TreeBin` 内部维护了读写锁（通过状态位），允许多个并发读与单个写并存，进一步提升树节点上的读并发度。当链表长度缩减至 6 以下时，`TreeBin` 退化回链表，阈值差值（8 与 6 之差）是为了防止频繁树化/链表化的抖动。
 
-`ConcurrentLinkedQueue`实现了Michael & Scott于1996年发表的无锁队列算法（MS Queue），其核心是维护`head`和`tail`两个`AtomicReference`节点指针。入队操作使用两步CAS：先CAS将新节点链接到`tail.next`，再CAS推进`tail`指针。这两步不是原子的——`tail`可能落后实际队尾一个节点，其他线程检测到`tail.next != null`时会先帮助推进`tail`，再执行自己的入队，这一"帮助机制"（Helping）是无锁数据结构的典型模式。
+**计数器设计**：`size()` 不使用全局锁，而是借鉴 `LongAdder`（Lea & 团队，JDK 8）的思想，将计数分散到 `CounterCell[]` 数组中。写入时，线程优先 CAS 更新 `baseCount`，失败则随机选一个 `CounterCell` 更新：
 
-出队操作同样使用CAS将`head`推进到`head.next`，被移除的头节点其`next`指向自身（`p.next = p`），这是一个哨兵标记，防止迭代器在并发修改下进入死循环。`ConcurrentLinkedQueue`不支持`size()`的O(1)操作，调用`size()`需遍历整个链表，时间复杂度O(n)，这是其设计上的已知取舍。
+$$\text{size()} = \text{baseCount} + \sum_{i=0}^{m-1} \text{CounterCell}[i].\text{value}$$
 
-### ConcurrentSkipList：概率平衡的有序并发结构
+其中 $m$ 为 `CounterCell` 数组的长度（2 的幂，最大为 CPU 核数）。这将多核 CAS 竞争从单点分散到多点，在 64 核机器上可将计数更新吞吐量提升约 40 倍（相比单个 `AtomicLong`）。
 
-`ConcurrentSkipListMap`与`ConcurrentSkipListSet`基于跳表（Skip List）实现，由William Pugh于1990年提出。跳表用多层索引链表在O(log n)期望时间内完成查找、插入和删除，其平衡性来自概率而非旋转（不同于红黑树需要复杂的旋转平衡，跳表节点晋升层级的概率通常为0.25或0.5）。
+**协同扩容（Cooperative Transfer）**：触发扩容时，`transfer()` 方法将数组桶区间切分，每个参与线程认领一段（最小步长 `stride = Math.max((n >>> 3) / NCPU, 16)` 个桶），完成迁移的桶填入 `ForwardingNode`（hash 值为特殊标记 `MOVED = -1`）。其他线程在写入时检测到 `ForwardingNode`，自动调用 `helpTransfer()` 加入扩容协助，使扩容过程并行化，避免单线程扩容成为整体吞吐瓶颈。
 
-并发跳表的删除分为两阶段：首先对目标节点的`value`字段CAS设为`null`（逻辑删除标记），之后在后续的遍历操作中顺带完成物理节点摘链（延迟物理删除）。这避免了在删除时需要同时修改多个层级指针所带来的原子性难题。`ConcurrentSkipListMap`的`firstKey()`、`lastKey()`、`headMap()`、`tailMap()`、`subMap()`等范围操作都是O(log n)，这是`ConcurrentHashMap`无法提供的能力。
+### ConcurrentLinkedQueue：Michael-Scott 无锁队列
 
-### BlockingQueue：生产者-消费者协调
+`ConcurrentLinkedQueue` 实现了 Michael & Scott 于 1996 年发表的无锁队列算法（MS Queue，发表于 *PODC 1996*，ACM）。其核心维护两个 `AtomicReference` 指针：`head`（指向哨兵节点）和 `tail`（指向或接近队尾节点）。
 
-`ArrayBlockingQueue`用单锁+双条件变量（`notEmpty`与`notFull`）实现有界阻塞队列，容量在构造时指定且不可更改。`LinkedBlockingQueue`则用两把独立锁（`takeLock`和`putLock`）分别控制出队和入队，使得生产者与消费者操作不互斥，并发吞吐量高于`ArrayBlockingQueue`。`SynchronousQueue`的容量为0，每次`put()`必须等待一个对应的`take()`，常用于线程池的任务传递（`Executors.newCachedThreadPool()`默认使用它）。
+**入队（offer）**：
+
+```
+1. 读取当前 tail 节点 t
+2. 读取 t.next（称为 q）
+3. 若 q == null，CAS(t.next, null, newNode)：成功则再 CAS(tail, t, newNode)
+4. 若 q != null，说明 tail 落后，先 CAS(tail, t, q) 再重试
+```
+
+这种"懒更新 tail"设计意味着 `tail` 可能落后真实队尾最多 1 个节点，减少了对 `tail` 本身的 CAS 竞争次数。整个入队操作是**无锁（lock-free）**而非**无等待（wait-free）**——某一线程的进展依赖于其他线程的 CAS 成功，但整体系统始终向前推进。
+
+**ABA 问题**：`ConcurrentLinkedQueue` 通过 GC 回收机制天然规避了 ABA 问题（节点被 GC 前不会被复用），无需 `AtomicStampedReference`。但在非 GC 语言（如 C++）中，MS Queue 实现必须引入危险指针（Hazard Pointer）或版本计数来解决 ABA。
+
+**性能特征**：在低竞争场景下，`ConcurrentLinkedQueue` 的吞吐量优于基于锁的 `LinkedBlockingQueue`；但在极高竞争下（数百线程同时入队），CAS 重试导致的 CPU 自旋可能使吞吐量低于带有背压机制的阻塞队列。
+
+### ConcurrentSkipListMap：跳表的无锁实现
+
+跳表（Skip List）由 William Pugh 于 1990 年在论文 *"Skip Lists: A Probabilistic Alternative to Balanced Trees"*（*Communications of the ACM*, 33(6)）中提出。跳表通过多层链表索引实现 $O(\log n)$ 的查找，期望层数为 $\log_{1/p} n$，其中概率参数 $p$ 通常取 $\frac{1}{4}$ 或 $\frac{1}{2}$。
+
+`ConcurrentSkipListMap` 是 JDK 中唯一的排序并发 Map，适合需要有序遍历的场景（如范围查询）。其无锁实现的核心挑战是：如何在多线程下安全地插入和删除层级节点？
+
+**逻辑删除（Logical Deletion）**：删除一个节点时，不直接修改链表，而是先将该节点的 `value` 字段 CAS 置为 `null`（标记为逻辑删除），再在后续操作中物理移除。这避免了并发删除与插入之间的竞争条件。
+
+**节点层级概率**：每个新节点的层级由随机数决定，JDK 实现中：
+
+$$P(\text{level} \geq k) = p^{k-1}, \quad p = 0.5$$
+
+即第 $k$ 层的概率为 $2^{-(k-1)}$，最大层数硬编码为 62（对应最大容量约 $2^{62}$ 个元素）。
+
+**范围查询优势**：`ConcurrentSkipListMap` 实现了 `NavigableMap` 接口，支持 `subMap()`、`headMap()`、`tailMap()` 等范围操作，其并发度在范围扫描场景下远优于 `ConcurrentHashMap`（后者不保证有序性）。
+
+---
+
+## 关键方法与公式
+
+### CAS 原语与线性化
+
+并发数据结构的正确性依赖**线性化（Linearizability）**：每个操作在其调用与返回之间的某个时间点表现得像原子操作（Herlihy & Wing, 1990，*Journal of the ACM*, 37(3)）。CAS 是实现线性化的基础原语：
+
+$$\text{CAS}(\&\text{addr}, \text{expected}, \text{new}) = \begin{cases} \text{true, addr} \leftarrow \text{new} & \text{if addr} = \text{expected} \\ \text{false} & \text{otherwise} \end{cases}$$
+
+CAS 的硬件实现（x86 的 `LOCK CMPXCHG` 指令）在缓存行层面保证原子性，开销约为 10–20 个 CPU 周期（无竞争情况下）。
+
+### 负载因子与扩容触发
+
+`ConcurrentHashMap` 在 `putVal` 中检查是否需要扩容：
+
+$$\text{当 size} \geq \text{sizeCtl 时触发扩容}, \quad \text{sizeCtl} = \lfloor \text{capacity} \times 0.75 \rfloor$$
+
+负载因子 0.75 是空间与时间的经典权衡——若改为 0.5 则内存浪费加倍，若改为 1.0 则哈希碰撞率大幅上升（在随机哈希下，负载因子为 1 时期望碰撞链长约为 $e^{-1} \cdot n \approx 0.37n$）。
+
+### 阻塞队列的公平性与吞吐量权衡
+
+`LinkedBlockingQueue` 使用两把锁（`putLock` 和 `takeLock`）分别控制入队与出队，允许生产者与消费者真正并行。其容量限制（默认 `Integer.MAX_VALUE`）通过 `AtomicInteger count` 追踪，入队后若 count 之前为 0 则唤醒消费者，出队后若 count 之前等于 capacity 则唤醒生产者。
 
 ---
 
 ## 实际应用
 
-**本地缓存场景**：使用`ConcurrentHashMap`实现简单的本地缓存时，`computeIfAbsent(key, loader)`方法原子性地完成"检查-计算-插入"三步，避免重复计算。JDK 8中该方法对同一桶加锁，但要注意：在`loader`函数内部不能再对同一`ConcurrentHashMap`调用`computeIfAbsent`，否则会死锁（同一线程对同一桶的`synchronized`重入问题，JDK 9已修复）。
+### 案例一：高并发缓存系统中的 ConcurrentHashMap
 
-**日志聚合统计**：高并发计数场景中，`ConcurrentHashMap<String, LongAdder>`比`ConcurrentHashMap<String, AtomicLong>`吞吐量更高，因为`LongAdder`内部分散多个`Cell`减少CAS竞争，在64核机器压测中吞吐量差距可达3倍以上。
+例如，在一个 QPS 达到 50 万的电商商品详情缓存服务中，使用 `ConcurrentHashMap` 作为本地一级缓存，初始容量设置为 `expectedSize / loadFactor + 1`（避免早期扩容），并发度无需手动设置（JDK 8 自动管理）。写入时使用 `putIfAbsent` 或 `computeIfAbsent`（后者对 key 的计算过程持有桶锁，避免重复计算），读取时的 `get()` 完全无锁，适合读写比 100:1 的缓存场景。
 
-**有序事件流**：需要按时间戳或优先级有序处理事件时，`ConcurrentSkipListMap<Long, Event>`是标准选择，其`pollFirstEntry()`操作是O(log n)无锁操作，适用于定时任务调度器（Netty的`HashedWheelTimer`即借鉴了类似思路）。
+需要注意：`ConcurrentHashMap` 不允许 null 键或 null 值（`Hashtable` 同样禁止），这与 `HashMap` 不同。其原因在于：在并发环境下，`get(key) == null` 无法区分"键不存在"与"键对应值为 null"这两种语义，而 `HashMap` 可以通过 `containsKey` 二次检查（但 ConcurrentHashMap 做不到原子性的二次检查）。
 
-**线程池任务队列**：`LinkedBlockingQueue`是`ThreadPoolExecutor`默认使用的工作队列类型，`Executors.newFixedThreadPool(n)`传入的即是无界`LinkedBlockingQueue`——这也是为什么该工厂方法在生产环境中不建议使用，无界队列会导致OOM。
+### 案例二：生产者-消费者任务调度中的阻塞队列选型
 
----
+在 Java 线程池（`ThreadPoolExecutor`）中，工作队列的选择直接影响任务调度行为：
 
-## 常见误区
-
-**误区一：认为ConcurrentHashMap的复合操作是原子的**
-`map.containsKey(k)`为`true`后调用`map.get(k)`，两次操作之间其他线程可能已删除该键，导致`get()`返回`null`。正确做法是使用`map.get(k)`的返回值判断null，或使用`computeIfAbsent`/`putIfAbsent`等原子复合方法。`size()`返回值也是近似值，不应用于精确控制逻辑。
-
-**误区二：认为ConcurrentLinkedQueue适合所有队列场景**
-`ConcurrentLinkedQueue`是无界无锁队列，没有背压机制，生产速度远超消费速度时会无限增长直至OOM。需要流量控制时必须选用`ArrayBlockingQueue`或`LinkedBlockingQueue`等有界阻塞队列。此外，`ConcurrentLinkedQueue`的`isEmpty()`比`size()==0`性能好，因为前者只检查头节点，后者需要遍历。
-
-**误区三：认为跳表比红黑树慢因此不应在并发场景使用**
-单线程下红黑树（`TreeMap`）确实比跳表快，但在多线程下红黑树的旋转操作需要锁住多个节点，实现无锁红黑树极为复杂且实际性能不理想。跳表的分层指针结构使局部修改成为可能，JDK选择跳表实现`ConcurrentSkipListMap`而非并发红黑树正是基于这一工程权衡。
-
----
-
-## 知识关联
-
-**依赖无锁编程基础**：理解`ConcurrentHashMap`的桶级CAS初始化（`casTabAt`）、`ConcurrentLinkedQueue`的MS算法、跳表的逻辑删除，都需要掌握CAS语义、ABA问题（`AtomicStampedReference`解决）以及`volatile`的可见性保证。没有这些基础，只能作为黑盒使用并发数据结构，无法正确处理边界情况。
-
-**与内存模型的关联**：Java内存模型（JMM）规定对`volatile`写操作happens-before后续对同一字段的读操作，`ConcurrentHashMap`节点的`val`和`next`字段均为`volatile`，这正是读操作无需加锁但仍能保证可见性的理论依据。
-
-**与线程池的协作**：`BlockingQueue`的实现直接决定了`ThreadPoolExecutor`的排队策略——有界队列触发线程数增长至`maximumPoolSize`，无界队列使`maximumPoolSize`形同虚设，`SynchronousQueue`则使每个任务都直接转交给线程，三种行为截然不同，是线
+- **`LinkedBlockingQueue`（无界）**：`newFixedThreadPool` 默认使用，任务无限堆积可能导致 OOM；
+- **`ArrayBlockingQueue`（有界）**：使用单把锁保护读写，公平模式下按 FIFO 唤醒等待线程，但吞吐量低于双锁的 `LinkedBlockingQueue`；
+- **`SynchronousQueue`**：`newCachedThreadPool` 使用，不存储任务，生产者与消费者必须同步握手，内部通过 `Transferer`（公平模式用队列，非公平模式用栈）实现；
+- **`LinkedTransferQueue`（JDK 7）**：

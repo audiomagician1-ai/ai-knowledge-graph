@@ -1,50 +1,3 @@
----
-id: "sfx-fr-microphone-selection"
-concept: "麦克风选择"
-domain: "game-audio-sfx"
-subdomain: "foley-recording"
-subdomain_name: "Foley录制"
-difficulty: 2
-is_milestone: false
-tags: []
-
-# Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "A"
-quality_score: 76.3
-generation_method: "ai-rewrite-v1"
-unique_content_ratio: 1.0
-last_scored: "2026-04-06"
-sources:
-  - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
-  - type: "academic"
-    author: "Viers, R."
-    year: 2008
-    title: "The Sound Effects Bible: How to Create and Record Hollywood Style Sound Effects"
-    publisher: "Michael Wiese Productions"
-  - type: "academic"
-    author: "Huber, D. M., & Runstein, R. E."
-    year: 2013
-    title: "Modern Recording Techniques (8th ed.)"
-    publisher: "Focal Press"
-  - type: "academic"
-    author: "Sonnenschein, D."
-    year: 2001
-    title: "Sound Design: The Expressive Power of Music, Voice and Sound Effects in Cinema"
-    publisher: "Michael Wiese Productions"
-  - type: "academic"
-    author: "Collins, K."
-    year: 2008
-    title: "Game Sound: An Introduction to the History, Theory, and Practice of Video Game Music and Sound Design"
-    publisher: "MIT Press"
-scorer_version: "scorer-v2.0"
-quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-03-27
----
-
-
 # 麦克风选择
 
 ## 概述
@@ -91,7 +44,7 @@ $$\text{SNR} = 20\log_{10}\left(\frac{V_{\text{signal}}}{V_{\text{noise}}}\right
 
 **布料类**声音的主要信息集中在 $2\ \text{kHz}$–$12\ \text{kHz}$ 的摩擦噪声频段，适合使用高频延伸平坦至 $20\ \text{kHz}$ 的小振膜电容麦克风，如Schoeps MK4（频率响应 $40\ \text{Hz}$–$20\ \text{kHz}$，$\pm1\ \text{dB}$）或DPA 4011（频率响应 $20\ \text{Hz}$–$20\ \text{kHz}$，EIN为 $13\ \text{dB(A)}$）。**木质道具**（木门、木地板、木质家具）的打击基频通常在 $100$–$500\ \text{Hz}$，使用大振膜电容麦克风（如Neumann U87，自1967年首发至今累计生产逾100,000支）可以更好地重现低频体鸣。**金属道具**由于含有丰富的高频泛音（可延伸至 $15\ \text{kHz}$ 以上），需要麦克风的高频响应平坦而无明显峰值，避免人为强化刺耳的金属共振。
 
-例如，录制一把钢制中世纪剑碰撞铁盾的Foley时，若使用AT2020这类在 $2$–$3\ \text{kHz}$ 有 $+3\ \text{dB}$ 临场感峰值的麦克风，最终录音中金属高频部分会被人为夸大约3 dB，导致在游戏引擎中混音时需要额外的均衡补偿处理。这种看似微小的选型失误，在一个包含500条以上金属音效资产的项目中会显著增加后期工作量，按每条音效额外处理2分钟估算，将增加约17小时的后期时间。
+案例：录制一把钢制中世纪剑碰撞铁盾的Foley时，若使用AT2020这类在 $2$–$3\ \text{kHz}$ 有 $+3\ \text{dB}$ 临场感峰值的麦克风，最终录音中金属高频部分会被人为夸大约3 dB，导致在游戏引擎中混音时需要额外的均衡补偿处理。这种看似微小的选型失误，在一个包含500条以上金属音效资产的项目中会显著增加后期工作量，按每条音效额外处理2分钟估算，将增加约17小时的后期时间。
 
 ---
 
@@ -105,8 +58,18 @@ $$L_p(r) = L_p(r_0) - 20\log_{10}\left(\frac{r}{r_0}\right)$$
 
 其中 $r_0$ 为参考距离（通常取1 m），$L_p(r_0)$ 为参考距离处的声压级（dB SPL）。该公式说明距离每增加一倍，声压级衰减约6 dB。在Foley棚实际录音中，由于存在地面反射和墙面吸声处理，实际衰减介于3–6 dB/倍距之间，录音师在摆位时需依据实际听感微调，而非完全依赖理论值（Huber & Runstein, 2013）。
 
+例如，在距离道具1 m处测量声压级为70 dB SPL的木块碰撞声，将麦克风推近至25 cm处，理论上声压级将提升至约82 dB SPL（增加 $20\log_{10}(1/0.25) = 12\ \text{dB}$），这不仅提升了信噪比，还带来了更强烈的冲击感与临场感，常被用于录制格斗游戏中的近身打击音效。
+
 ### 近讲效应的频率依赖性
 
 近讲效应的增益量 $\Delta G_{\text{prox}}$ 与距离 $d$ 及频率 $f$ 的近似关系为：
 
-$$\Delta G_{\text{prox}}(f,\ d) \approx 20\log_{10}\left(\frac{d_{\text{ref}}}{
+$$\Delta G_{\text{prox}}(f,\ d) \approx 20\log_{10}\left(\frac{d_{\text{ref}}}{d}\right) \cdot \frac{f_0}{f}$$
+
+其中 $d_{\text{ref}}$ 为参考距离（通常取30 cm），$d$ 为实际录音距离，$f_0$ 为麦克风低频特性拐点频率（通常约100–200 Hz），$f$ 为目标频率。该公式表明：频率越低、距离越近，近讲效应的增益量越大。录音师可利用这一规律，在录制偏薄的木质道具时刻意靠近至10–15 cm，以自然方式增强低频体感，无需后期频率均衡（Huber & Runstein, 2013）。
+
+### 麦克风灵敏度与前置放大器增益的配合计算
+
+在实际录音链路中，麦克风输出电压 $V_{\text{out}}$ 与前置放大器增益 $G_{\text{pre}}$ 共同决定进入模数转换器（ADC）的信号电平：
+
+$$V_{\text{ADC}} = V_{\text{out}} \cdot 10^{\frac{G_{\text{pre}}}{20

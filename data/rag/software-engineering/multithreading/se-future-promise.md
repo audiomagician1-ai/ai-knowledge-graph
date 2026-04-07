@@ -1,114 +1,163 @@
----
-id: "se-future-promise"
-concept: "Future/Promise"
-domain: "software-engineering"
-subdomain: "multithreading"
-subdomain_name: "多线程"
-difficulty: 2
-is_milestone: false
-tags: ["异步"]
-
-# Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "A"
-quality_score: 76.3
-generation_method: "ai-rewrite-v1"
-unique_content_ratio: 1.0
-last_scored: "2026-04-06"
-sources:
-  - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
-scorer_version: "scorer-v2.0"
-quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-03-27
----
-
-
 # Future/Promise：异步结果与链式操作
 
 ## 概述
 
-Future/Promise 是一种用于表示**尚未完成的异步计算结果**的编程抽象。它将"发起计算"和"获取结果"两个动作在时间上解耦：调用方提交任务后立刻得到一个 Future 对象作为占位符，真正的计算结果会在未来某个时刻填入这个占位符，调用方无需阻塞等待。
+Future/Promise 是一种将**异步计算结果**封装为第一类对象（First-Class Object）的编程抽象，其根本设计目标是把"发起计算"与"消费结果"两个操作在时间轴上彻底解耦。调用方提交异步任务后，立即获得一个代表"未来某时刻结果"的占位符对象（Future），真正的值由生产者线程或事件循环在计算完成后写入；消费者线程可在任意时刻通过轮询、阻塞等待或注册回调三种方式获取结果，而无需关心计算何时发生。
 
-Future 概念最早在 1977 年由 Henry Baker 和 Carl Hewitt 在论文 *The Incremental Garbage Collection of Processes* 中正式提出，并在 Lisp 的 Actor 模型中得到初步实现。Promise 这一术语则由 Daniel Friedman 和 David Wise 在同年独立提出。两者在语义上略有区别：Future 通常指**只读的结果容器**，而 Promise 是可由生产者主动写入结果的**可写端**——Java 的 `CompletableFuture`、JavaScript 的 `Promise`、C++ 的 `std::future/std::promise` 都体现了这种读写分离设计。
+Future 概念最早可追溯至 1977 年：Henry Baker 与 Carl Hewitt 在论文 *The Incremental Garbage Collection of Processes*（Baker & Hewitt, 1977）中，将 Future 作为 Actor 模型传递延迟消息的机制正式引入计算机科学文献。同年，Daniel Friedman 与 David Wise 在 *CONS Should Not Evaluate Its Arguments*（Friedman & Wise, 1976）中独立提出了惰性求值意义下的 Promise 概念。Promise/A+ 规范（Domenic Denicola et al., 2012）则是 JavaScript 生态中将链式 `.then()` 语义标准化的关键文献，直接影响了 ECMAScript 2015（ES6）中 `Promise` 的语言级内建支持，以及 ES2017 引入的 `async/await` 语法糖。
 
-Future/Promise 的价值在于解决了传统回调地狱（Callback Hell）问题：在 Node.js 早期代码中，三层以上的嵌套回调极难维护，而 Promise 的链式 `.then()` 将异步流程展平为线性结构，显著提升了可读性与错误处理能力。
+两端语义在现代语言中的分工极为清晰：**Promise 是可写端**（生产者持有，负责填入成功值或错误原因），**Future 是只读端**（消费者持有，负责查询或等待结果）。C++ 标准库 `<future>` 头文件中 `std::promise<T>` 与 `std::future<T>` 是这一生产者/消费者分离设计最直接的体现，二者通过共享状态（Shared State）对象相连。
 
 ---
 
 ## 核心原理
 
-### 状态机模型
+### 三态状态机与不可逆转换
 
-每个 Promise/Future 对象内部维护一个**三态状态机**：
+每个 Promise/Future 实例内部维护一个**严格三态有限状态机**：
 
-| 状态 | 含义 |
-|------|------|
-| `Pending`（待定） | 计算尚未完成，结果未知 |
-| `Fulfilled`（已兑现） | 计算成功，结果已写入 |
-| `Rejected`（已拒绝） | 计算失败，错误原因已写入 |
+| 状态 | 语义 | 可转换目标 |
+|------|------|-----------|
+| `Pending`（待定） | 计算尚未完成，结果未知 | `Fulfilled` 或 `Rejected` |
+| `Fulfilled`（已兑现） | 携带成功结果值 $v$ | 终态，不可再变 |
+| `Rejected`（已拒绝） | 携带失败原因 $e$ | 终态，不可再变 |
 
-状态转换是**单向且不可逆**的：`Pending → Fulfilled` 或 `Pending → Rejected`，一旦进入终态便永久锁定。这一特性使 Future 天然具备**幂等性**——对同一个已完成的 Future 多次调用 `get()` 或 `.then()` 始终返回相同结果，不会重新执行计算。
+状态机的**单向性与不可逆性**是 Future 幂等行为的理论基础。形式化地，设 $S(t)$ 为 Future 在时刻 $t$ 的状态，则：
 
-### 链式操作（Chaining）
+$$S(t_1) \in \{\text{Fulfilled}, \text{Rejected}\} \Rightarrow S(t_2) = S(t_1), \quad \forall t_2 > t_1$$
 
-Promise 的 `.then(onFulfilled, onRejected)` 方法返回一个**新的 Promise**，从而形成链式调用。规范（Promises/A+ 规范，2012 年制定）明确规定：若 `onFulfilled` 返回一个 Promise，则下一个 `.then` 必须等待该 Promise 解析完成后才触发。这使得串行异步操作可以写成：
+这意味着对同一个已兑现的 Future 多次调用 `get()` 或注册多个 `.then()` 回调，均返回相同的值 $v$，不会重新触发计算。这与 Java 中的 `volatile` 变量或 Haskell 中的 `MVar` 有本质区别——后两者允许重复写入，而 Future 的写入是**一次性的 CAS（Compare-And-Swap）操作**。
+
+在 Java `CompletableFuture` 的 OpenJDK 实现（JDK 8+）中，内部结果字段 `Object result` 初始为 `null`（对应 Pending），通过 `Unsafe.compareAndSwapObject(this, RESULT, null, r)` 原子地将其从 `null` 修改为实际值或封装异常的 `AltResult` 对象。并发场景下，只有第一次 CAS 成功的线程完成写入，后续尝试均被静默丢弃，从而在无锁（Lock-Free）前提下保证写入唯一性。
+
+### 链式操作的传播语义
+
+Promises/A+ 规范定义了 `.then(onFulfilled, onRejected)` 的精确语义，其核心规则如下：
+
+1. `.then()` 必须返回一个**新的 Promise**，记为 $p_2$；
+2. 若 `onFulfilled` 正常返回值 $x$，则执行"Promise Resolution Procedure" $\text{Resolve}(p_2, x)$：
+   - 若 $x$ 是普通值，则以 $x$ 兑现 $p_2$；
+   - 若 $x$ 本身是 thenable（具有 `.then` 方法的对象），则 $p_2$ 的状态**跟随** $x$ 的最终状态（adopt semantics）；
+3. 若 `onFulfilled` 或 `onRejected` 抛出异常 $e$，则以 $e$ 拒绝 $p_2$，错误沿链向下游自动传播，直至遇到 `.catch()` 处理器；
+4. **回调必须异步执行**（在当前执行上下文的 Microtask 队列中调度），即使 Promise 已处于已兑现状态，也不得在 `.then()` 调用栈内同步触发回调，以保证行为的一致性。
+
+规则 4 是 JavaScript Promise 与 Java `CompletableFuture` 的重要差异之一：后者的回调默认在完成 Future 的线程中同步执行，需要显式指定 `Executor` 才能切换执行上下文。
+
+### 并发组合子（Combinator）
+
+单个 Promise 的价值有限，真正的威力来自多 Promise 的并发组合：
+
+- **`Promise.all(iterable)`**：当且仅当所有输入 Promise 均兑现时，以结果数组兑现；若任意一个被拒绝，立即以该错误拒绝，其余 Promise 的结果被丢弃（Fail-Fast 语义）。时间复杂度为 $O(\max(t_i))$，其中 $t_i$ 为第 $i$ 个 Promise 的完成时间，相比串行 $O(\sum t_i)$ 在 I/O 密集场景下收益显著。
+- **`Promise.allSettled(iterable)`**（ES2020 引入）：等待所有 Promise 落定（无论成功或失败），以包含 `{status, value/reason}` 对象的数组兑现，适合需要知晓所有子任务状态的批量操作。
+- **`Promise.race(iterable)`**：以**最先落定**（无论成功或失败）的 Promise 的结果落定，常用于实现请求超时：将目标请求与一个在 $n$ 毫秒后 `reject` 的 Promise 竞速。
+- **`Promise.any(iterable)`**（ES2021 引入）：以第一个**成功兑现**的 Promise 的值兑现；若全部被拒绝，则以 `AggregateError` 拒绝，包含所有错误原因。
+
+---
+
+## 关键方法与公式
+
+### async/await 的脱糖（Desugaring）变换
+
+ES2017 的 `async/await` 是 Promise 链的语法糖，编译器（如 Babel、TypeScript）将其变换为状态机。以下面的函数为例：
 
 ```javascript
-fetch('/api/user')
-  .then(res => res.json())          // 返回新 Promise
-  .then(user => fetch(`/api/orders/${user.id}`))  // 链式等待
-  .then(res => res.json())
-  .catch(err => console.error(err)); // 统一捕获链中任意错误
+async function fetchUser(id) {
+  const res = await fetch(`/api/user/${id}`);
+  const data = await res.json();
+  return data.name;
+}
 ```
 
-`.catch()` 本质是 `.then(undefined, onRejected)` 的语法糖，错误会沿链**向下冒泡**直到遇到第一个 `onRejected` 处理器。
+其语义等价于：
 
-### Java 中的 CompletableFuture
+```javascript
+function fetchUser(id) {
+  return fetch(`/api/user/${id}`)
+    .then(res => res.json())
+    .then(data => data.name);
+}
+```
 
-Java 5 引入的 `Future<V>` 接口只支持阻塞式 `get()`，无法注册回调。Java 8 引入 `CompletableFuture<V>` 补足了这一缺陷，提供了 `thenApply`（同步变换）、`thenCompose`（异步扁平化，等价于 Promise 的 flatMap）、`thenCombine`（合并两个独立 Future 的结果）等操作。其中：
+更深层地，TypeScript 编译器将 `async` 函数展开为基于 `__generator` 的协程状态机，每个 `await` 对应状态机中的一个暂停点（Suspension Point）。C# 5.0（Anders Hejlsberg et al., 2012）是将 `async/await` 引入主流语言的先驱，其 `Task<T>` 类型对应 JavaScript 的 `Promise<T>`，且 C# 编译器生成的状态机代码早于 JavaScript 规范，是后者设计的重要参考。
 
-- `thenApply(f)` ≈ 对结果做 `f` 变换，返回 `CompletableFuture<U>`
-- `thenCompose(f)` 中 `f` 本身返回 `CompletableFuture`，会自动解包，避免 `CompletableFuture<CompletableFuture<U>>` 嵌套
+### 错误传播的短路模型
 
-C++ 标准库（C++11）中，`std::promise<T>` 的 `set_value()` 写入结果，`std::future<T>` 的 `get()` 读取结果并阻塞至就绪，两者通过共享状态（Shared State）耦合，但 C++11 的 `std::future` 不支持链式操作，需要 C++20 的 `std::experimental::future` 才有 `.then()`。
+在 Promise 链 $p_1 \to p_2 \to \cdots \to p_n$ 中，设第 $k$ 个环节抛出异常 $e$，则 $p_{k}, p_{k+1}, \ldots$ 均以 $e$ 被拒绝，直到某个环节的 `onRejected` 处理器返回正常值 $r$，此后链从 $r$ 重新进入 Fulfilled 路径。这与同步代码中 `try/catch` 的控制流在语义上完全对应，差别仅在于沿 Promise 链传播而非沿调用栈展开。
 
-### 并发组合操作
+$$\text{若 } f_k \text{ 抛出异常 } e, \quad p_{k} = \text{Rejected}(e), \quad p_{k+1} = \text{Rejected}(e), \quad \ldots$$
 
-多个 Future 可以通过组合原语并发执行：
+直到遇到第一个定义了 `onRejected` 的 `.then()` 或 `.catch()` 节点。
 
-- **Promise.all()**（JavaScript）：接收 Promise 数组，**全部成功**才 Fulfilled，任意一个 Rejected 则整体 Rejected，适合并行独立请求。
-- **Promise.race()**：第一个完成的 Promise（无论成功或失败）决定最终状态，常用于超时控制。
-- **Promise.allSettled()**（ES2020 新增）：等待所有 Promise 进入终态，无论成功还是失败，结果数组完整保留每个状态，适合批量操作后汇总报告。
+### Java CompletableFuture 的函数式 API
+
+Java 8 引入的 `CompletableFuture<T>`（Doug Lea 主导设计，JSR-166）提供了完整的函数式组合 API：
+
+- `thenApply(Function<T,U>)`：对结果进行同步映射，返回 `CompletableFuture<U>`；
+- `thenCompose(Function<T, CompletableFuture<U>>)`：对结果执行返回 Future 的函数，并展平（flatMap 语义），避免产生 `CompletableFuture<CompletableFuture<U>>` 的嵌套；
+- `thenCombine(CompletableFuture<U>, BiFunction<T,U,V>)`：并发等待两个 Future 完成后合并结果；
+- `exceptionally(Function<Throwable,T>)`：对异常进行恢复，对应 `.catch()` 的错误恢复语义。
+
+`thenCompose` 与 `thenApply` 的区分是 Java 异步编程的常见难点：前者是 Monad 的 `bind`（`>>=`）操作，后者是 Functor 的 `fmap` 操作，二者的选择直接决定链式调用是否会产生不必要的嵌套层。
 
 ---
 
 ## 实际应用
 
-**前端并行数据加载**：页面初始化时需要同时请求用户信息、权限列表、系统配置三个接口，使用 `Promise.all([fetchUser(), fetchRoles(), fetchConfig()])` 让三个请求并发执行，总耗时等于最慢那个请求的耗时，而非三者之和。
+### 案例一：并发 API 聚合
 
-**Java 线程池异步任务**：`ExecutorService` 的 `submit(Callable<T>)` 方法返回 `Future<T>`，线程池中的工作线程执行实际计算，主线程继续处理其他逻辑，在需要结果时调用 `future.get(5, TimeUnit.SECONDS)` 并设置超时，防止无限阻塞。
+假设前端页面需要同时请求用户信息、权限列表和消息数量三个独立接口，串行请求需要 $t_1 + t_2 + t_3$ 时间，而使用 `Promise.all` 并发请求仅需 $\max(t_1, t_2, t_3)$：
 
-**超时熔断**：利用 `Promise.race([dataFetch, timeout(3000)])` 实现请求超时：若 3000 毫秒内 `dataFetch` 未完成，`timeout` 的 Rejected 状态率先触发，整体 Promise 进入 Rejected，触发降级逻辑。
+```javascript
+const [user, permissions, messageCount] = await Promise.all([
+  fetchUser(userId),          // ~120ms
+  fetchPermissions(userId),   // ~80ms
+  fetchMessageCount(userId),  // ~50ms
+]);
+// 总耗时约 120ms，而非 250ms
+```
+
+若三个接口均返回 P95 延迟约 100ms，串行模式的 P95 总延迟为 300ms，并发模式下降至 100ms，在高频页面中对用户感知延迟有决定性影响。
+
+### 案例二：带超时的请求竞速
+
+```javascript
+function fetchWithTimeout(url, ms) {
+  const timeout = new Promise((_, reject) =>
+    setTimeout(() => reject(new Error(`Timeout after ${ms}ms`)), ms)
+  );
+  return Promise.race([fetch(url), timeout]);
+}
+```
+
+此模式利用 `Promise.race` 的 Fail-Fast 特性实现超时控制，无需修改 `fetch` 本身，是 Promise 组合子"正交组合"特性的典型体现。需要注意的是，超时后被丢弃的 `fetch` 请求在浏览器底层仍会继续执行并占用连接资源，必要时需通过 `AbortController` 配合取消。
+
+### 案例三：Scala Future 与 ExecutionContext
+
+Scala 标准库中的 `Future[T]`（引入自 Scala 2.10，2012 年）要求所有 Future 操作显式传入 `ExecutionContext`，决定计算在哪个线程池上调度：
+
+```scala
+import scala.concurrent.{Future, ExecutionContext}
+import ExecutionContext.Implicits.global
+
+val result: Future[Int] = Future(heavyComputation()).map(_ * 2)
+```
+
+这与 JavaScript Promise 的单线程事件循环模型截然不同：Scala Future 的回调真实地在 `ExecutionContext` 管理的线程池上并行执行，因此共享可变状态需要额外的同步保护。
 
 ---
 
 ## 常见误区
 
-**误区一：认为 Promise 本身创建了新线程**
-Promise 构造函数中的执行器（executor）是**同步执行**的，并不会开辟新线程。JavaScript 是单线程环境，Promise 的异步性来自事件循环（Event Loop）将微任务队列中的回调推迟到当前调用栈清空后执行，而非并发执行。真正的多线程并发（如 Java `CompletableFuture.supplyAsync()`）则由底层线程池负责，Future 对象本身仅是结果占位符。
+### 误区一：混淆 Promise 链与嵌套 Promise
 
-**误区二：链式 .then() 等于顺序同步执行**
-`.then()` 注册的回调在当前 Promise Fulfilled 后**异步调度**，不会阻塞主线程。若在 `.then()` 中返回一个非 Promise 的普通值，该值会被自动包装为 `Promise.resolve(value)`，下一个 `.then` 仍在微任务队列中调度，而非立即同步执行。
+在 JavaScript 中，`.then()` 内部**返回**一个 Promise 与**嵌套调用** `.then()` 有本质区别。错误写法：
 
-**误区三：忽略 Promise 的错误吞噬问题**
-未附加 `.catch()` 的 Promise 链中，Rejected 状态会被静默吞噬（在较旧的 Node.js 版本中不会抛出任何错误）。Node.js 15 起，未处理的 Promise Rejection 默认**终止进程**（exit code 1），因此所有 Promise 链末尾必须显式添加错误处理。
+```javascript
+fetchUser(id).then(user => {
+  fetchOrders(user.id).then(orders => {  // 嵌套，回调地狱重现
+    console.log(orders);
+  });
+});
+```
 
----
-
-## 知识关联
-
-**与线程基础的关系**：理解线程的阻塞与唤醒机制有助于理解 `Future.get()` 的底层实现——Java 的 `FutureTask` 使用 `LockSupport.park()` 阻塞调用线程，计算完成后调用 `LockSupport.unpark()` 唤醒，Future 是对这一底层机制的高层封装。
-
-**通向协程**：Future/Promise 的链式操作虽然解决了回调地狱，但大量 `.then()` 嵌套仍有可读性负担，且错误栈追踪困难。协程（Coroutine）以及基于协程的 `async/await` 语法是 Promise 的进一步抽象：`await` 表达式本质上是在 Promise 的 `.then()` 回调处**挂起当前协程**，待 Promise Fulfilled 后恢复执行，使异步代码在写法上与同步代码完全一致，是 Future/Promise 模型的自然演进方向。
+正确写法是从 `onFulfilled` 中**返回**内
