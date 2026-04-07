@@ -1,120 +1,122 @@
----
-id: "agent-loop"
-concept: "Agent循环(感知-推理-行动)"
-domain: "ai-engineering"
-subdomain: "agent-systems"
-subdomain_name: "Agent系统"
-difficulty: 6
-is_milestone: false
-tags: ["Agent"]
-
-# Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "A"
-quality_score: 79.6
-generation_method: "ai-rewrite-v1"
-unique_content_ratio: 1.0
-last_scored: "2026-04-06"
-sources:
-  - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
-scorer_version: "scorer-v2.0"
-quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-04-01
----
-
-
 # Agent循环（感知-推理-行动）
 
 ## 概述
 
-Agent循环（Perception-Reasoning-Action Loop，简称PRA循环）是自主AI Agent持续运行的基本执行单元，描述Agent如何从外部环境获取信息、内部处理后生成决策、再将决策转化为可执行动作的完整一次迭代过程。与单次调用LLM不同，这一循环可以无限次重复，每一轮的输出会改变环境状态，从而影响下一轮的输入，形成真正意义上的闭环控制系统。
+Agent循环（Perception-Reasoning-Action Loop，简称PRA循环）是自主AI Agent持续运行的基本执行单元，定义了Agent如何从外部环境获取信息、经内部LLM推理后生成决策、再将决策转化为可执行动作的完整一次迭代过程。与单次LLM调用的本质区别在于：PRA循环的每一轮输出会改变环境状态，环境状态的变化又成为下一轮循环的输入，形成真正意义上的闭环控制系统（Closed-Loop Control System）。
 
-PRA循环的思想来源于控制论（Cybernetics）中Norbert Wiener在1948年提出的反馈回路理论，后经认知科学中的"感知-行动循环"（Perception-Action Cycle）演化而来。现代AI Agent框架（如LangChain的AgentExecutor、AutoGPT、OpenAI的Assistants API）均将这一循环作为运行时的核心调度机制。
+PRA循环的理论根源可追溯至Norbert Wiener在1948年出版的《控制论》（*Cybernetics: Or Control and Communication in the Animal and the Machine*）中提出的负反馈回路（Negative Feedback Loop）理论。在认知科学领域，Neisser（1976）在《认知心理学》中进一步将这一思想演化为"感知-行动循环"（Perception-Action Cycle），描述生物智能体如何通过持续的感知与行动交互适应环境。现代AI Agent框架——包括LangChain的`AgentExecutor`、AutoGPT、OpenAI Assistants API的Run循环——均将PRA循环作为运行时调度的核心机制。
 
-该循环之所以关键，在于它解决了LLM"无状态、单轮输出"的根本局限——通过循环迭代，Agent能够处理跨步骤依赖的复杂任务，动态响应工具调用结果，并在中途根据新信息修正执行路径。一个需要调用搜索API、再汇总结果、再生成报告的任务，最少需要3次完整的PRA循环才能完成。
+该循环解决了LLM"无状态、单轮输出"的根本局限：通过循环迭代，Agent可处理跨步骤依赖的复杂任务，动态响应工具调用结果，并根据中途获取的新信息修正执行路径。以一个调研报告生成任务为例：第1轮循环解析用户需求并调用搜索工具，第2轮循环汇总搜索结果并判断信息充分性，第3轮循环生成最终报告——任何步骤的中间结果均可触发额外的循环次数，这种**动态扩展的执行深度**是静态工作流无法实现的。
 
 ---
 
 ## 核心原理
 
-### 感知阶段（Perception）：构建上下文窗口
+### 感知阶段（Perception）：将世界状态序列化为Token序列
 
-感知阶段的本质是将Agent所处的"世界状态"序列化为LLM可消费的Token序列。这一阶段的输入来源通常包括四类：**用户消息**（原始指令）、**工具返回结果**（ToolMessage）、**历史对话记录**（Memory）、以及**系统提示词**（System Prompt）。
+感知阶段的本质是将Agent所处的"世界状态"序列化为LLM可消费的Token序列，构建当前循环的完整上下文窗口（Context Window）。输入来源通常包含四类结构化数据：
 
-以OpenAI的消息格式为例，感知阶段的输出是一个结构化的消息列表：
+1. **系统提示词（System Prompt）**：定义Agent的角色、可用工具列表（Tool Schema）及行为约束，在每轮循环中保持不变。
+2. **用户消息（User Message）**：原始指令或用户的最新追加输入。
+3. **历史对话记录（Conversation History）**：包含之前所有轮次的`assistant`消息和`tool`消息，承载跨轮次的状态信息。
+4. **工具返回结果（Tool Message）**：上一轮循环中工具调用（Tool Call）所返回的结构化数据，格式与OpenAI的`tool_call_id`绑定机制对应。
 
-```
+以OpenAI Chat Completions API的消息格式为例，感知阶段输出的消息列表在第2轮循环时形如：
+
+```json
 [
-  {role: "system", content: "You are a helpful assistant..."},
-  {role: "user", content: "查询北京今天的天气"},
-  {role: "assistant", content: null, tool_calls: [{id: "call_abc", function: "get_weather"}]},
-  {role: "tool", tool_call_id: "call_abc", content: "晴，25°C"}
+  {"role": "system", "content": "你是一个数据分析助手，可以使用以下工具：[get_weather, search_web]"},
+  {"role": "user", "content": "查询北京今天的天气并判断是否适合户外活动"},
+  {"role": "assistant", "content": null, "tool_calls": [{"id": "call_abc123", "function": {"name": "get_weather", "arguments": "{\"city\": \"北京\"}"}}]},
+  {"role": "tool", "tool_call_id": "call_abc123", "content": "晴，气温28°C，湿度40%，风速3级"}
 ]
 ```
 
-感知阶段的关键挑战是**上下文窗口溢出**：当循环轮次增加，历史消息累积，总Token数可能超过模型的上下文限制（如GPT-4o的128K Token上限）。因此感知阶段需要实施消息压缩或滑动窗口策略，这直接关联到Agent记忆系统的设计。
+**感知阶段最关键的工程挑战是上下文窗口溢出**：随着循环轮次增加，历史消息Token数累积，可能超过模型上下文上限（GPT-4o为128K Token，Claude 3.5 Sonnet为200K Token）。常见的缓解策略包括：滑动窗口截断（Sliding Window Truncation）、LLM摘要压缩（Summary Compression）、以及向量化的外部记忆检索（Retrieval-Augmented Memory）。对长期运行的Agent，感知阶段的内存管理策略直接决定了Agent能否在数百轮循环后仍保持对早期关键信息的访问能力。
 
-### 推理阶段（Reasoning）：LLM的决策生成
+### 推理阶段（Reasoning）：LLM的决策生成机制
 
-推理阶段是将感知阶段构建的上下文输入LLM，由模型输出下一步行动计划的过程。LLM的输出有且只有两种形式：**生成文本响应**（任务已完成，直接回答用户）或**生成工具调用指令**（task未完成，需要调用外部工具）。
+推理阶段将感知阶段构建的上下文输入LLM，模型输出下一步行动计划。LLM的输出在结构上只有两种终态：**终止输出（Final Answer）**——直接生成文本响应，标志任务完成；**工具调用指令（Tool Call）**——生成结构化的函数调用请求，标志任务仍在进行中。
 
-ReAct框架（Reasoning + Acting）在这一阶段引入了显式的"思考链"（Thought），强制LLM在生成动作前输出推理过程，格式为：
+Yao等人（2023）提出的**ReAct框架**（*ReAct: Synergizing Reasoning and Acting in Language Models*，发表于ICLR 2023）在推理阶段引入了显式的"思考链"（Chain-of-Thought, CoT），强制LLM在生成动作前输出推理过程。ReAct的标准输出格式为：
 
 ```
-Thought: 用户需要北京的天气，我需要调用天气API
-Action: get_weather(city="Beijing")
+Thought: 用户需要判断户外活动的适宜性，我已获取天气数据（28°C，晴，风速3级），
+         需要综合分析温度、紫外线和风力因素。
+Action: search_web
+Action Input: {"query": "北京紫外线指数 2024年今日"}
 ```
 
-这种显式推理将LLM的中间推断过程暴露出来，使得调试和可观测性成为可能。推理阶段的核心参数是**temperature**：生产环境中Agent的temperature通常设为0或0.1，以保证决策的确定性，避免因采样随机性导致循环行为不稳定。
+ReAct框架在6个不同基准任务（HotpotQA、Fever、ALFWorld、WebShop等）上的实验表明，相比纯粹的Chain-of-Thought提示，ReAct将任务成功率提升了约34%（Yao et al., 2023）。
 
-### 行动阶段（Action）：执行与环境反馈
+推理阶段的另一关键机制是**停止条件判断（Termination Condition）**：LLM必须基于当前上下文判断任务是否已充分完成。若停止条件过于宽松，Agent会在信息不足时提前返回；若停止条件过于严格，Agent会陷入无意义的循环（Loop）。OpenAI Assistants API通过`max_steps`参数（默认值为10）强制终止无限循环。
 
-行动阶段由**Agent Runtime**（非LLM本身）执行推理阶段生成的指令。Runtime负责解析LLM输出中的工具调用请求、路由到对应的工具函数、执行并捕获返回值或异常，最后将执行结果封装为新的感知输入，**触发下一轮循环**。
+### 行动阶段（Action）：工具调用与环境交互
 
-行动阶段存在一个关键的**循环终止判断**：Runtime需要检测LLM的输出是否包含工具调用。若无工具调用，则判定本次任务完成，将最终文本响应返回用户，循环终止。若有工具调用，则执行工具后将结果注入消息列表，进入下一次PRA迭代。为防止无限循环，生产系统通常设置`max_iterations`参数（LangChain默认值为15次），超过阈值则强制终止并返回错误。
+行动阶段将推理阶段生成的工具调用指令转化为对实际工具的执行，并将执行结果注入下一轮循环的感知上下文中，这是PRA循环中**唯一与外部世界发生真实交互**的阶段。
 
-### 循环的时序与状态传递
+行动阶段的工具类型可分为四大类：
+- **信息检索类**（Read-only）：搜索引擎、数据库查询、API读取，不改变外部世界状态。
+- **写入执行类**（Write）：发送邮件、创建文件、调用外部服务写接口，会不可逆地改变外部世界状态。
+- **子Agent调用类**（Sub-Agent Delegation）：在多Agent系统中，将子任务委托给专门化的子Agent执行。
+- **环境控制类**（Environment Control）：如网页浏览器操控（Playwright/Selenium）、代码执行沙箱（Code Interpreter）。
 
-一次完整的PRA循环可以用如下伪代码表达：
-
-```python
-messages = [system_prompt, user_message]
-for step in range(max_iterations):
-    response = llm.invoke(messages)          # 推理
-    if not response.tool_calls:
-        return response.content              # 循环终止
-    messages.append(response)               # 保存Assistant消息
-    for tool_call in response.tool_calls:
-        result = execute_tool(tool_call)     # 行动
-        messages.append(tool_result(result)) # 感知：注入结果
-```
-
-状态在循环轮次之间完全通过`messages`列表传递，这意味着Agent的"记忆"在默认情况下完全存储在上下文窗口中，这是In-Context Memory的典型实现。
+行动阶段的关键工程问题是**工具调用的幂等性（Idempotency）与错误处理**：若工具调用失败（超时、参数错误、权限不足），Agent必须将错误信息作为新的感知输入，在下一轮推理中决定是重试、换用备选工具，还是直接向用户报告失败原因。
 
 ---
 
-## 实际应用
+## 关键公式与形式化描述
 
-**数据分析Agent场景**：用户请求"分析上个季度销售数据并生成报告"。第1轮循环：感知到用户指令，推理决定调用`query_database(sql="SELECT...")`, 行动执行SQL返回5000行数据。第2轮：感知到数据库结果，推理决定调用`calculate_statistics(data=...)`，行动返回统计摘要。第3轮：感知到统计结果，推理判断信息足够，直接生成自然语言报告，循环终止。整个任务经历3次完整的PRA循环。
+PRA循环可以用马尔可夫决策过程（Markov Decision Process, MDP）进行形式化。设：
+- $s_t$ 为第 $t$ 轮循环时的环境状态（包含上下文窗口内容）
+- $a_t$ 为LLM在状态 $s_t$ 下生成的行动（工具调用指令或终止输出）
+- $\mathcal{T}(s_{t+1} | s_t, a_t)$ 为状态转移函数（由工具执行结果决定）
+- $r_t$ 为第 $t$ 步的奖励信号（在ReAct等框架中通常为稀疏的任务完成奖励）
 
-**错误恢复场景**：当行动阶段的工具调用返回异常（如API超时返回`{"error": "timeout"}`），这个错误信息会作为ToolMessage注入感知阶段。LLM在下一轮推理时可以"看到"这个错误，从而决定重试、切换备用工具或向用户报告失败。这种**错误信息的显式可见性**是PRA循环相比传统编排系统的核心优势，LLM不需要特殊的错误处理代码，仅凭感知到的错误文本即可生成恢复策略。
+则Agent循环的目标可形式化为：
+
+$$\pi^* = \arg\max_{\pi} \mathbb{E}\left[\sum_{t=0}^{T} \gamma^t r_t \,\Big|\, \pi\right]$$
+
+其中 $\pi$ 表示LLM的决策策略（即给定上下文 $s_t$ 输出行动 $a_t$ 的条件分布），$\gamma \in (0,1]$ 为折扣因子，$T$ 为最大循环轮次。
+
+在实际工程中，绝大多数基于LLM的Agent并不显式优化上述目标函数（因为LLM权重通常在推理时固定），而是通过**提示词工程**和**工具设计**来隐式引导策略 $\pi$ 趋近最优。这也是LLM-based Agent与强化学习Agent的根本区别之一。
+
+**循环终止条件**的形式化表达为：
+
+$$\text{Terminate} = \begin{cases} \text{True} & \text{if } a_t = \text{FinalAnswer} \text{ or } t \geq T_{\max} \\ \text{False} & \text{otherwise} \end{cases}$$
+
+其中 $T_{\max}$ 是系统设置的最大步数限制，用于防止无限循环。
 
 ---
 
-## 常见误区
+## 实际应用与典型案例
 
-**误区1：认为每轮循环都必须调用外部工具**。实际上，推理阶段的LLM完全可以在不调用任何工具的情况下完成任务——当模型判断已有信息足够回答问题时，会直接生成文本响应并终止循环。将"必须有工具调用"误认为循环继续的条件，会导致错误的循环逻辑设计。
+### 案例一：LangChain AgentExecutor的循环实现
 
-**误区2：认为感知阶段只包含最新的用户消息**。许多初学者在手动实现Agent时只将最新用户消息传给LLM，而忽略了历史ToolMessage。这会导致LLM在推理时无法获知前几轮工具调用的结果，产生重复调用同一工具或逻辑矛盾的行为。完整的感知输入必须包含从系统提示到最新ToolMessage的**完整消息历史**。
+LangChain的`AgentExecutor`是PRA循环最广泛使用的工业实现之一。其`_iter_next_step()`方法精确对应三个阶段：调用`agent.plan()`方法（推理阶段）→ 执行工具（行动阶段）→ 将`ToolMessage`追加至`intermediate_steps`（感知阶段的输入构建）。
 
-**误区3：将PRA循环中的"推理"等同于Chain-of-Thought**。推理阶段的核心输出是"下一个动作决策"，CoT是提升推理质量的技术手段之一，但不是必须的。没有显式CoT的LLM调用（如直接输出Function Call JSON而不附带Thought文本）同样是合法的推理阶段，这在追求低延迟的生产环境中更为常见。
+`AgentExecutor`通过`max_iterations`参数（默认值15）控制最大循环次数，通过`early_stopping_method`参数（可选`"force"`或`"generate"`）决定达到最大次数时的处理方式：`"force"`直接返回错误信息，`"generate"`则让LLM基于当前上下文强制生成一个最终答案。
+
+### 案例二：OpenAI Assistants API的Run对象
+
+OpenAI Assistants API将PRA循环封装为一个`Run`对象，其状态机（State Machine）精确映射了三个阶段的流转：`queued` → `in_progress`（推理阶段） → `requires_action`（行动阶段等待工具结果提交） → `in_progress`（下一轮感知+推理） → `completed`（循环终止）。
+
+当`Run`进入`requires_action`状态时，开发者需要在规定时间内（默认10分钟超时）通过`submit_tool_outputs`接口提交工具执行结果，否则`Run`将进入`expired`状态并终止循环。这一设计将行动阶段的工具执行控制权完全交还给开发者，体现了OpenAI对工具安全性的考量。
+
+### 案例三：多轮循环的Token成本累积问题
+
+在实际生产部署中，PRA循环的每一轮都会消耗LLM API调用的Token费用，且由于历史消息会随循环积累，**总Token消耗量呈二次方增长**：若每轮新增消息平均为 $k$ Token，第 $t$ 轮循环的总输入Token数为 $\approx t \cdot k$，则 $T$ 轮循环的总Token成本为 $\sum_{t=1}^{T} t \cdot k = \frac{T(T+1)}{2} \cdot k$，复杂度为 $O(T^2 \cdot k)$。
+
+例如：一个执行20轮循环、每轮新增500 Token的任务，总输入Token消耗约为 $\frac{20 \times 21}{2} \times 500 = 105{,}000$ Token，若使用GPT-4o（输入价格$5/1M Token），该单次任务的LLM调用成本约为$0.525，这在高频调用场景下需要重点关注。
 
 ---
 
-## 知识关联
+## 常见误区与反模式
 
-**前置概念的延伸**：AI Agent概述中介绍的"自主性"在PRA循环中得到了具体化——自主性的实现机制正是循环内的迭代决策。ReAct框架直接对应推理阶段的显式Thought设计，理解ReAct的Thought-Action-Observation三元组后，能直接映射到PRA循环的三个阶段。
+**误区一：将循环次数等同于任务复杂度**
 
-**后续概念的基础**：工具调用（Function Calling）是行动阶段的具体实现协议，规定了LLM如何以结构化JSON格式输出工具调用请求。Agent记忆系统解决感知阶段上下文窗口溢出问题，引入外部存储（向量数据库、摘要记忆）扩展PRA循环中消息列表的容量上限。Agent规划与分解在推理阶段引入多步任务分解，使单次推理能生成多轮循环的执行计划。多Agent协作系统将单个Agent的行动阶段扩展为"调用另一个Agent"，形成Agent嵌套的PRA循环结构。Agent可观测性（Debugging and Observability）直接作用于PRA循环的每个阶段边界，通过记录每轮的输入输出实现全链路追踪（如LangSmith对每次LLM调用和工具调用的span记录）。
+循环次数的增加并不总意味着任务更复杂——更多情况下，它反映的是工具设计不合理或提示词引导不充分。一个设计良好的工具应在单次调用中返回完整信息，而不是强迫Agent通过多轮循环拼凑答案。例如，将"搜索"和"内容提取"拆分为两个独立工具会导致每次信息获取需要2轮循环；将其合并为一个`search_and_extract`工具则可减少一半的循环次数。
+
+**误区二：忽略行动阶段的副作用（Side Effects）**
+
+许多开发者在设计Agent时假设工具调用是纯粹的"查询"操作，但写入类工具（发送邮件、提

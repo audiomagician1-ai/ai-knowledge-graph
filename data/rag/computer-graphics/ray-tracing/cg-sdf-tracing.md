@@ -8,16 +8,7 @@ SDF光线步进（Sphere Tracing）是一种利用有符号距离场（Signed Di
 
 Sphere Tracing在实时图形学领域尤为重要，Shadertoy平台（2013年由Inigo Quilez与Pol Jerez共同创建）上超过50万个公开Demo中，相当大比例正是基于该算法实现实时渲染的。它也是现代程序化生成渲染、体积云和环境光遮蔽（SSAO替代方案：基于SDF的AO）的底层技术之一。算法本身的计算复杂度与场景几何的多边形数量完全无关，使其特别适合表达分形、流体、生物形态等传统网格难以描述的隐式几何。
 
-从产业应用的角度来看，Epic Games在虚幻引擎4.9（2015年）引入的距离场环境光遮蔽（Distance Field Ambient Occlusion，DFAO）和距离场阴影系统，正是将预计算的Mesh SDF体素化后在GPU上执行Sphere Tracing，实现了O(1)三角形复杂度无关的全局阴影查询。Valve的Source 2引擎以及Unity的HDRP管线中也均有类似的SDF加速阴影与AO方案落地。
-
 **关键问题**：当场景中有数百个基本SDF图元叠加时，每步迭代都需要对所有图元求值并取最小值，时间复杂度为 $O(N)$（$N$ 为图元数量）。这一性质使得Sphere Tracing在复杂场景中面临严峻的性能挑战——应如何设计数据结构或空间划分策略，在保证SDF数学性质的前提下加速查询？
-
-> **参考文献**
-> - Hart, J. C. (1996). *Sphere Tracing: A Geometric Method for the Antialiased Ray Tracing of Implicit Surfaces*. The Visual Computer, 12(10), 527–545.
-> - Quilez, I. (2008–2024). *Modeling with Signed Distance Functions*. iquilezles.org. 收录60余种SDF图元解析公式。
-> - Green, C. (2007). *Improved Alpha-Tested Magnification for Vector Textures and Special Effects*. SIGGRAPH 2007 Sketch. Valve Software.
-> - Wang, P., Liu, L., Liu, Y., Theobalt, C., Komura, T., & Wang, W. (2021). *NeuS: Learning Neural Implicit Surfaces by Volume Rendering for Multi-view Reconstruction*. NeurIPS 2021.
-> - Perlin, K., & Hoffert, E. M. (1989). *Hypertexture*. ACM SIGGRAPH Computer Graphics, 23(3), 253–262. （早于Hart的隐式曲面光线步进先驱工作）
 
 ---
 
@@ -44,7 +35,7 @@ $$|f(\mathbf{p}) - f(\mathbf{q})| \leq L \cdot |\mathbf{p} - \mathbf{q}|$$
 
 其中Lipschitz常数 $L \leq 1$。这一条件保证了以 $f(\mathbf{p})$ 为半径的球体内不存在零交叉（即表面）。当 $L = 1$ 时称为精确SDF（Exact SDF），收敛最快；当 $L < 1$ 时为保守SDF（Conservative SDF），步进偏慢但依然安全；当 $L > 1$ 时，步长可能超过实际最近表面距离，导致光线穿越表面产生漏洞（artifacts）。
 
-**深入问题**：若某SDF函数的Lipschitz常数 $L > 1$（例如某些不当的域变形操作导致的梯度拉伸），Sphere Tracing的安全性保证将如何失效？在实际工程中，可以通过计算SDF函数的数值梯度模长来检测 $L$，当 $|\nabla f(\mathbf{p})| > 1$ 时即为警示信号。修正方法包括对SDF值乘以惩罚因子 $1/L$ 以恢复保守性，或借助Eikonal方程正则化约束网络输出（在神经隐式场景中尤为常见，如NeuS论文中引入的SDF体渲染公式）。
+若某SDF函数的Lipschitz常数 $L > 1$（例如某些不当的域变形操作导致的梯度拉伸），Sphere Tracing的安全性保证将失效。在实际工程中，可以通过计算SDF函数的数值梯度模长来检测 $L$，当 $|\nabla f(\mathbf{p})| > 1$ 时即为警示信号。修正方法包括对SDF值乘以惩罚因子 $1/L$ 以恢复保守性，或借助Eikonal方程正则化约束网络输出（在神经隐式场景中尤为常见）。Eikonal方程表达为 $|\nabla f(\mathbf{p})| = 1$，在NeuS（Wang et al., 2021）等神经隐式表面重建工作中，该方程被作为训练损失项强制施加，以确保网络输出的隐函数具备真正的SDF语义。
 
 ### 基本SDF图元的解析公式
 
@@ -52,25 +43,27 @@ Sphere Tracing的威力来源于SDF函数可以用解析公式构造基本图元
 
 **球体**（圆心在原点，半径 $r$）：
 
-$$f_{\text{sphere}}(\mathbf{p}) = |\mathbf{p}| - r$$
+$$f(\mathbf{p}) = |\mathbf{p}| - r$$
 
 **轴对齐盒子**（半尺寸向量为 $\mathbf{b} = (b_x, b_y, b_z)$）：
 
-$$f_{\text{box}}(\mathbf{p}) = \left|\max(|\mathbf{p}| - \mathbf{b},\ \mathbf{0})\right| + \min\!\left(\max(p_x - b_x,\ p_y - b_y,\ p_z - b_z),\ 0\right)$$
+$$f(\mathbf{p}) = \left|\max(|\mathbf{p}| - \mathbf{b},\ \mathbf{0})\right| + \min\!\left(\max(p_x - b_x,\ p_y - b_y,\ p_z - b_z),\ 0\right)$$
 
 其中第一项为外部距离，第二项为内部有符号深度，两项合并恰好给出全空间的精确有符号距离。
 
 **圆环**（大半径 $R$，管半径 $r$，圆环位于 $xz$ 平面）：
 
-$$f_{\text{torus}}(\mathbf{p}) = \left|\left(\sqrt{p_x^2 + p_z^2} - R,\ p_y\right)\right| - r$$
+$$f(\mathbf{p}) = \left|\left(\sqrt{p_x^2 + p_z^2} - R,\ p_y\right)\right| - r$$
 
 **胶囊体**（端点 $\mathbf{a}$、$\mathbf{b}$，半径 $r$）：
 
-$$f_{\text{capsule}}(\mathbf{p}) = \left|\mathbf{p} - \mathbf{a} - \text{clamp}\!\left(\frac{(\mathbf{p}-\mathbf{a})\cdot(\mathbf{b}-\mathbf{a})}{|\mathbf{b}-\mathbf{a}|^2},\ 0,\ 1\right)\cdot(\mathbf{b}-\mathbf{a})\right| - r$$
+$$f(\mathbf{p}) = \left|\mathbf{p} - \mathbf{a} - \text{clamp}\!\left(\frac{(\mathbf{p}-\mathbf{a})\cdot(\mathbf{b}-\mathbf{a})}{|\mathbf{b}-\mathbf{a}|^2},\ 0,\ 1\right)\cdot(\mathbf{b}-\mathbf{a})\right| - r$$
 
-这些公式均保证Lipschitz常数恰好为1，是Sphere Tracing正确收敛的数学前提。
+这些公式均保证Lipschitz常数恰好为1，是Sphere Tracing正确收敛的数学前提。Inigo Quilez在其个人网站（iquilezles.org）上系统整理了超过60种SDF图元的解析公式，涵盖棱柱、六边形、贝塞尔曲线管道、分形等复杂形体，是实践SDF建模的权威参考。
 
 **例如**，对于半径 $r = 1.0$ 的单位球体，查询点 $\mathbf{p} = (2, 0, 0)$ 的SDF值为 $f(\mathbf{p}) = |(2,0,0)| - 1.0 = 2.0 - 1.0 = 1.0$。这意味着从该点出发，光线可以安全步进 $1.0$ 个单位而不穿越任何表面。若光线方向为 $\mathbf{d} = (-1, 0, 0)$，则下一个步进位置为 $\mathbf{p}_1 = (2,0,0) + 1.0 \cdot (-1,0,0) = (1,0,0)$，恰好到达球体表面（$f(\mathbf{p}_1) = 0$），单步即命中。这一理想情况在实践中仅发生于光线方向恰好指向最近表面点时；一般情况下需要多次迭代逐步逼近。
+
+**深入问题**：若光线以接近切线的方向掠过一个球体，步进过程会发生什么？切线光线在极端情况下可能需要数十次迭代才能收敛，原因是光线始终与表面保持极小间距，SDF值趋近于零但始终不触发命中条件。这被称为"掠射问题"（Grazing Problem），是Sphere Tracing性能调优中必须重视的边界情形。
 
 ### SDF布尔运算与软融合
 
@@ -92,8 +85,12 @@ $$f_{\text{smin}}(a, b, k) = \min(a, b) - \frac{h^2 \cdot k}{4}, \quad h = \max\
 
 ### 法线估算
 
-Sphere Tracing渲染中，表面法线不直接存储，而是通过SDF的梯度数值近似计算。根据微积分基本定理，精确SDF的梯度模长在表面处恒为1（即 $|\nabla f| = 1$，即Eikonal方程 $|\nabla f| = 1$ 在表面成立），梯度方向即为外法线方向。标准做法是使用**中心差分**（Central Differences）：
+Sphere Tracing渲染中，表面法线不直接存储，而是通过SDF的梯度数值近似计算。根据微积分基本定理，精确SDF的梯度模长在表面处恒为1（即 $|\nabla f| = 1$），梯度方向即为外法线方向。标准做法是使用**中心差分**（Central Differences）：
 
 $$\mathbf{n} = \text{normalize}\!\begin{pmatrix} f(\mathbf{p} + \varepsilon\hat{x}) - f(\mathbf{p} - \varepsilon\hat{x}) \\ f(\mathbf{p} + \varepsilon\hat{y}) - f(\mathbf{p} - \varepsilon\hat{y}) \\ f(\mathbf{p} + \varepsilon\hat{z}) - f(\mathbf{p} - \varepsilon\hat{z}) \end{pmatrix}$$
 
-这需要对SDF函数额外调用6次，$\varepsilon$ 通常取 $0.0001$。Quilez在2022年提出了一种**四面体采样优化
+这需要对SDF函数额外调用6次，$\varepsilon$ 通常取 $0.0001$。Quilez在2022年提出了一种**四面体采样优化**方案，仅需4次SDF查询即可完成法线估算，在GPU着色器中可减少约33%的法线计算开销，适合SDF计算开销较大的复杂场景。其核心思路是利用正四面体的4个顶点方向代替轴对齐的6个方向：
+
+$$\mathbf{n} = \text{normalize}\!\left( k_0\, f(\mathbf{p}+k_0\varepsilon) + k_1\, f(\mathbf{p}+k_1\varepsilon) + k_2\, f(\mathbf{p}+k_2\varepsilon) + k_3\, f(\mathbf{p}+k_3\varepsilon) \right)$$
+
+其中 $k_0=(+1,-

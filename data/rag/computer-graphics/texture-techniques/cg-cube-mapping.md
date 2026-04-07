@@ -39,6 +39,11 @@ sources:
     year: 2018
     title: "Real-Time Rendering, 4th Edition"
     venue: "CRC Press, ISBN 978-1138627000, Chapter 10: Local Illumination and Texture"
+  - type: "book"
+    author: "Pharr, Matt; Jakob, Wenzel; Humphreys, Greg"
+    year: 2023
+    title: "Physically Based Rendering: From Theory to Implementation, 4th Edition"
+    venue: "MIT Press, ISBN 978-0262048026, Chapter 13: Light Transport II: Volume Rendering"
 scorer_version: "scorer-v2.0"
 quality_method: intranet-llm-rewrite-v3
 updated_at: 2026-04-06
@@ -86,7 +91,9 @@ $$P_{\text{equirect}} = 2N^2$$
 
 两者之比 $P_{\text{cube}} / P_{\text{equirect}} = 3$，说明立方体贴图总像素数是等距柱状图的3倍。然而等距柱状图在极点处存在严重冗余（角分辨率极不均匀），有效信息量与立方体贴图相当，这是两种格式各有适用场景的根本原因。在实际工程中，一张每面 $512 \times 512$、RGBA8格式的立方体贴图占用显存为 $6 \times 512^2 \times 4 = 6{,}291{,}456$ 字节（约6 MB）；若启用完整Mipmap链，总显存增量为原始大小的 $1/3$，即额外约2 MB，总共约8 MB。对于HDR格式（RGBA16F），显存占用翻倍，每面 $1024 \times 1024$ 的HDR立方体贴图约占48 MB。
 
-**思考题**：如果将立方体贴图每面分辨率从 $512 \times 512$ 提升到 $1024 \times 1024$，角分辨率（每像素覆盖的立体角 $\Delta\Omega$）会如何变化？提升分辨率对天空盒渲染与对IBL预过滤贴图的收益是否相同，为什么？
+值得注意的是，立方体贴图各面交界处存在接缝（Seam）采样问题：当方向向量非常接近两个面的分界线时，双线性过滤的采样核可能同时跨越两个面，而标准双线性过滤只在单一面内进行，会导致接缝处出现颜色跳变。OpenGL 4.0引入了 `ARB_seamless_cube_map` 扩展（后纳入核心），启用 `GL_TEXTURE_CUBE_MAP_SEAMLESS` 后，GPU会在接缝处自动跨面进行三线性过滤，消除接缝瑕疵，代价是轻微增加带宽压力（需同时访问相邻面的边界像素）。
+
+**思考题**：如果将立方体贴图每面分辨率从 $512 \times 512$ 提升到 $1024 \times 1024$，角分辨率（每像素覆盖的立体角 $\Delta\Omega$）会如何变化？提升分辨率对天空盒渲染与对IBL预过滤贴图的收益是否相同，为什么？在移动端受显存限制时，你会优先压缩哪一类立方体贴图，理由是什么？
 
 ### 天空盒渲染原理
 
@@ -100,16 +107,22 @@ gl_Position = clipPos.xyww; // 使NDC深度值强制为1.0（w/w = 1）
 
 片元着色器将顶点的本地坐标直接作为方向向量采样立方体贴图，即 `texture(u_skybox, vLocalPos)`。深度值强制设为 `gl_FragDepth = 1.0`（或利用 `clipPos.xyww` 使透视除法后深度恒为1.0），确保实体几何体像素始终覆盖天空盒区域，避免过度绘制（Overdraw）带来的额外带宽消耗。
 
+在Unreal Engine 5中，天空盒进一步与大气散射模型（SkyAtmosphere组件，基于Sebastien Hillaire 2020年在EGSR发表的大气渲染论文）结合，将物理精确的大气散射结果实时烘焙入立方体贴图，每帧按需更新受太阳方向影响的面，而非全量更新全部6个面，将动态天空盒的GPU耗时控制在0.3 ms以内（在RTX 3080上测量）。
+
 ### 镜面环境反射
 
 对一个反射型表面，片元着色器用入射视线向量 $\mathbf{v}$（指向表面）和表面法线 $\mathbf{n}$ 计算反射向量：
 
 $$\mathbf{r} = \mathbf{v} - 2(\mathbf{v} \cdot \mathbf{n})\,\mathbf{n}$$
 
-即GLSL内置函数 `reflect(v, n)` 的展开形式。其中 $\mathbf{v} \cdot \mathbf{n}$ 为视线与法线的点积，当视线与法线夹角为45°时，$\mathbf{v} \cdot \mathbf{n} = \cos 45° \approx 0.707$。用 $\mathbf{r}$ 采样立方体贴图即得该像素"看到"的环境颜色。该技术称为**环境映射（Environment Mapping）**，单次纹理采样即可近似镜面反射，计算代价远低于光线追踪或屏幕空间反射（SSR）。代价在于立方体贴图是预烘焙的静态快照，无法反映动态物体，且隐含假设光源无限远（反射向量不随表面位置发生视差偏移）。对于平面反射或近场反射，这一假设会引入明显的视差错误，此时需要局部校正立方体贴图（Localized Cubemap / Box Projection Correction）技术来修正（Akenine-Möller et al., 2018，第10.2章）。
+即GLSL内置函数 `reflect(v, n)` 的展开形式。其中 $\mathbf{v} \cdot \mathbf{n}$ 为视线与法线的点积，当视线与法线夹角为45°时，$\mathbf{v} \cdot \mathbf{n} = \cos 45° \approx 0.707$。用 $\mathbf{r}$ 采样立方体贴图即得该像素"看到"的环境颜色。该技术称为**环境映射（Environment Mapping）**，单次纹理采样即可近似镜面反射，计算代价远低于光线追踪或屏幕空间反射（SSR）。
 
-### 动态立方体贴图与漫反射辐照度
+代价在于立方体贴图是预烘焙的静态快照，无法反映动态物体，且隐含假设光源无限远（反射向量不随表面位置发生视差偏移）。对于平面反射或近场反射，这一假设会引入明显的视差错误，此时需要局部校正立方体贴图（Localized Cubemap / Box Projection Correction）技术来修正（Akenine-Möller et al., 2018，第10.2章）。Box Projection的核心思路是：将反射向量从表面位置出发，与包围盒的6个平面求交，取最近交点，用交点坐标相对于立方体贴图中心的偏移向量重新构造采样方向，从而引入位置相关的视差修正。
 
-动态场景中可将摄像机放置于物体中心，朝6个坐标轴方向各用90°视场角（FOV = 90°，宽高比 = 1:1）渲染一帧，结果写入实时立方体贴图，逐帧或按需更新。此操作每帧需额外6次完整绘制调用（Draw Call），代价高昂，在2023年典型移动端GPU（如Apple A16 Bionic，6核GPU，峰值算力约1.4 TFLOPS）上约消耗0.5–2 ms，通常仅对场景中最重要的一两个反射对象执行，或降低动态更新频率（如每隔4帧更新一次，以25 ms/帧预算计每次更新代价约1帧）。
+---
 
-另一个进阶用途是将高频镜面立方体贴图通过球谐函数（Spherical Harmonics，SH）压缩为低频漫反射辐照度表示。Ramamoorthi & Hanrahan（2001）在SIGGRAPH论文中证明，漫反射辐照度在球面上变化极为平滑，仅需**L2阶共9个SH系数**（每个颜色通道）即可以99%以上的精度重建。具体而言，9个SH基函数分别为 $Y_0^0, Y_1^{-1}, Y_1^0, Y_1^1, Y_2^{-2}, Y_2^{-1}, Y_2^0, Y_2^1, Y_2^2$，每个系数是一个RGB三元组，整体存储量仅为27个浮点数（108字节），远小于一张 $64 \times 64$ 分辨率的辐照度立方体贴图（$6 \times 64^2 \times 12 = 294{,}912$ 字节，RGBA16F格式）。这9个系数经由对原始HDR立方体贴图的球面积分卷积运算预计算得到，运行时仅需一次简单的多项式求值，用于PBR材质
+## 关键公式与模型
+
+### IBL漫反射辐照度预积分
+
+基于图像的光照（Image-

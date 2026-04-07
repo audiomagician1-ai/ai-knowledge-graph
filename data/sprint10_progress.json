@@ -9,12 +9,17 @@
     "product-design/product-management/technical-debt.md",
     "programming-basics/loops.md",
     "software-engineering/architecture-patterns/se-clean-arch.md",
-    "software-engineering/code-review/se-cr-game-specific.md"
+    "software-engineering/code-review/se-cr-game-specific.md",
+    "web-frontend/react-state.md",
+    "mathematics/arithmetic/negative-numbers.md",
+    "agent-systems/agent-loop.md",
+    "game-engine/animation-system/animation-clip.md",
+    "game-engine/animation-system/animation-system-intro.md"
   ],
   "errors": [],
   "stats": {
-    "total": 10,
-    "success": 10,
+    "total": 15,
+    "success": 15,
     "error": 0,
     "skipped": 0
   }

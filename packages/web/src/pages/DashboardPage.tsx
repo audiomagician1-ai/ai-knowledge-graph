@@ -7,6 +7,7 @@ import { useKeyboardShortcuts } from '@/lib/hooks/useKeyboardShortcuts';
 import { readLearningTime } from '@/lib/hooks/useLearningTimer';
 import { StudyGoalWidget } from '@/components/common/StudyGoalWidget';
 import { fetchWithRetry } from '@/lib/utils/fetch-retry';
+import { DomainComparison } from '@/components/dashboard/DomainComparison';
 import type { Domain } from '@akg/shared';
 
 /**
@@ -229,6 +230,11 @@ export function DashboardPage() {
 
         {/* Learning Velocity (from Analytics API) */}
         <VelocitySection />
+
+        {/* Domain Comparison (V2.1) */}
+        <section className="rounded-xl p-5" style={{ backgroundColor: 'var(--color-surface-1)' }}>
+          <DomainComparison maxDomains={12} />
+        </section>
       </div>
     </div>
   );
