@@ -1,35 +1,8 @@
----
-id: "a-star-search"
-concept: "A*搜索算法"
-domain: "ai-engineering"
-subdomain: "algorithms"
-subdomain_name: "算法"
-difficulty: 7
-is_milestone: false
-tags: ["图算法", "搜索"]
-
-# Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "A"
-quality_score: 76.3
-generation_method: "ai-rewrite-v1"
-unique_content_ratio: 1.0
-last_scored: "2026-04-06"
-sources:
-  - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
-scorer_version: "scorer-v2.0"
-quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-03-27
----
-
-
 # A*搜索算法
 
 ## 概述
 
-A*（读作"A-star"）是一种在加权图上寻找最短路径的启发式搜索算法，由Peter Hart、Nils Nilsson和Bertram Raphael于1968年在斯坦福研究院发表的论文《A Formal Basis for the Heuristic Determination of Minimum Cost Paths》（发表于《IEEE Transactions on Systems Science and Cybernetics》第4卷第2期）中首次提出。与Dijkstra算法（1959年由荷兰计算机科学家Edsger Dijkstra提出）不同，A*通过引入启发式函数来估算当前节点到目标的剩余代价，从而优先展开更有希望的路径，大幅减少不必要的节点扩展。
+A*（读作"A-star"）是一种在加权图上寻找最短路径的启发式搜索算法，由Peter Hart、Nils Nilsson和Bertram Raphael于1968年在斯坦福研究院发表的论文《A Formal Basis for the Heuristic Determination of Minimum Cost Paths》（发表于《IEEE Transactions on Systems Science and Cybernetics》第4卷第2期，pp. 100–107）中首次提出。与Dijkstra算法（1959年由荷兰计算机科学家Edsger Dijkstra提出，最初应用于ARMAC计算机上的演示问题）不同，A*通过引入启发式函数来估算当前节点到目标的剩余代价，从而优先展开更有希望的路径，大幅减少不必要的节点扩展。
 
 A*的核心评估公式为：
 
@@ -57,6 +30,8 @@ $$h(n) \leq h^*(n), \quad \forall n$$
 - **切比雪夫距离**（允许8方向等代价移动时）：$h(n) = \max(|\Delta x|, |\Delta y|)$
 
 若 $h(n)$ 恒等于0，A* 退化为 Dijkstra 算法，扩展所有可达节点；若 $h(n)$ 完全等于真实代价 $h^*(n)$，A* 将沿最优路径零浪费地直达目标，扩展节点数降至最低理论值。这两个极端界定了A*启发式设计的性能空间。
+
+启发式函数的**信息量（Informativeness）**也可量化比较：若对所有节点 $n$ 均有 $h_1(n) \leq h_2(n) \leq h^*(n)$，则称 $h_2$ **支配（dominates）** $h_1$。支配关系意味着 $h_2$ 在保持可采纳性的前提下估计更精确，使用 $h_2$ 的A*所扩展的节点集合是使用 $h_1$ 时扩展节点集合的子集，搜索效率严格不低于后者。
 
 ### 一致性（Consistency）条件
 
@@ -100,11 +75,19 @@ $$f(n) = g(n) + h(n) : \text{经过 } n \text{ 的路径总代价估计（优先
 
 $$f(n) = g(n) + \varepsilon \cdot h(n)$$
 
-当 $\varepsilon = 1$ 时为标准A*（保证最优）；当 $\varepsilon > 1$ 时为**加权A*（Weighted A*）**，返回路径代价不超过最优代价的 $\varepsilon$ 倍，但搜索速度显著提升。例如 $\varepsilon = 1.5$ 时，路径代价至多比最优多50%，但搜索节点数在实践中可减少60%至80%。
+当 $\varepsilon = 1$ 时为标准A*（保证最优）；当 $\varepsilon > 1$ 时为**加权A*（Weighted A*）**，返回路径代价不超过最优代价的 $\varepsilon$ 倍，但搜索速度显著提升。例如 $\varepsilon = 1.5$ 时，路径代价至多比最优多50%，但搜索节点数在实践中可减少60%至80%。此变体由Pohl（1970）在《First solutions to the Heuristic Path Finding Problem》中正式提出并证明其次优界。
+
+### 15数码问题的曼哈顿启发式
+
+在15数码（15-Puzzle）滑块问题中，启发式函数选用所有方块当前位置到目标位置的曼哈顿距离之和：
+
+$$h(n) = \sum_{i=1}^{15} \left( |x_i - x_i^*| + |y_i - y_i^*| \right)$$
+
+其中 $(x_i, y_i)$ 为第 $i$ 块方块的当前坐标，$(x_i^*, y_i^*)$ 为其目标坐标。此启发式可采纳且一致，因为每次滑动仅将一块方块向目标靠近至多一步，不可能"一步消除两块方块的曼哈顿距离"。
 
 ### 时间与空间复杂度
 
-A*的最坏时间复杂度为 $O(b^d)$，其中 $b$ 为分支因子，$d$ 为最优路径深度。这与BFS相同，但启发式函数可将实际扩展节点数压缩至远低于最坏情况。空间复杂度同样为 $O(b^d)$，这是A*的主要瓶颈，IDA*正是为解决此问题而设计的。
+A*的最坏时间复杂度为 $O(b^d)$，其中 $b$ 为分支因子，$d$ 为最优路径深度。这与BFS相同，但启发式函数可将实际扩展节点数压缩至远低于最坏情况。空间复杂度同样为 $O(b^d)$，因为所有已发现节点都需保存在内存中——这是A*的主要瓶颈。**IDA*（Iterative Deepening A*）** 正是为解决此问题而由Korf（1985）设计，将空间复杂度降至 $O(d)$，代价是部分节点会被重复扩展。
 
 ---
 
@@ -114,30 +97,16 @@ A*的最坏时间复杂度为 $O(b^d)$，其中 $b$ 为分支因子，$d$ 为最
 
 在《星际争霸II》等即时战略游戏中，地图被离散化为多边形网格（Navigation Mesh），A* 在该网格上实时计算单位的行进路径。为降低计算量，游戏引擎常采用**分层A*（Hierarchical A*，HPA*）**：先在粗粒度的区域层找到宏观路径，再在细粒度的局部层精化路线。单次寻路时间通常需控制在1毫秒以内以维持60帧流畅度。Blizzard Entertainment的工程师报告显示，HPA*相比平面A*可将寻路时间降低至原来的1/10以下。
 
-**例如**：在一张512×512格的地图上，平面A*在最坏情况下需扩展约26万个节点，而HPA*（分为16×16的簇）仅需扩展约3000个节点，速度提升约86倍，同时路径质量损失不超过5%。
+**例如**：在一张512×512格的地图上，平面A*在最坏情况下需扩展约26万个节点，而HPA*（分为16×16的簇）仅需扩展约3000个节点，速度提升约86倍，同时路径质量损失不超过5%。Botea等人（2004）在论文《Near Optimal Hierarchical Path-Finding》中对HPA*的性能提升进行了系统性的实验验证，给出了在多种标准游戏地图上的完整基准测试数据。
 
 ### 机器人运动规划
 
 在 ROS（Robot Operating System）的导航栈（Navigation Stack）中，全局规划器（global_planner包）默认使用 A* 算法在占用栅格地图（Occupancy Grid）上计算路径，栅格分辨率通常为0.05米/格（即每格代表5厘米×5厘米的真实空间）。障碍物单元格代价被设为253（lethal cost），自由空间代价为0，靠近障碍物的缓冲区通过**代价膨胀（Cost Inflation）**被赋予1至252的中间代价值，确保机器人路径与障碍物保持安全距离（通常为机器人半径加0.1米的膨胀半径）。
 
+实际部署中，ROS的A*实现还需处理动态障碍物（如移动的人）：全局规划器以约1Hz的频率重新规划，局部规划器（DWA或TEB）以约20Hz的频率微调速度指令，两层架构使机器人既能找到全局最优路线，又能实时规避突发障碍。
+
 ### 15数码问题（经典案例分析）
 
-A* 是求解15数码（15-Puzzle）滑块问题的标准方法。15数码问题有约$10^{13}$种状态，暴力搜索完全不可行。
+A* 是求解15数码（15-Puzzle）滑块问题的标准方法。15数码问题有约 $1.3 \times 10^{13}$ 种可达状态，暴力搜索完全不可行。
 
-**案例**：给定一个随机打乱的15数码初始状态，目标是将所有数字恢复到顺序排列。启发式函数选用**曼哈顿距离之和**——即所有15块方块当前位置到其目标位置的曼哈顿距离之和：
-
-$$h(n) = \sum_{i=1}^{15} \left( |x_i - x_i^*| + |y_i - y_i^*| \right)$$
-
-此启发式可采纳，因为每次滑动仅移动一块方块，且只能让该方块向目标靠近最多一步。实验数据表明（Korf, 1985），使用曼哈顿距离启发式的A*相比BFS可将平均搜索节点数从数十亿（BFS需约$10^9$节点）减少至数万量级（约$10^4$至$10^5$节点），内存使用也从不可行降至可实际运行。
-
-### 地图导航与交通系统
-
-在实际道路导航中，A*的变体被广泛使用。**双向A*（Bidirectional A*）**同时从起点和终点向中间搜索，理论上将搜索空间从半径 $r$ 的球体压缩为两个半径 $r/2$ 的球体，节点扩展数降至约 $1/2^{d-1}$（$d$ 为图维度）。Google Maps和百度地图在处理城市级别（百万节点）的路网时，通常采用A*与**收缩层次结构（Contraction Hierarchies，CH）**结合的方案，查询时间可压缩至微秒级别。
-
----
-
-## 常见误区
-
-### 误区一：h(n) 越大越好，搜索越快
-
-部分初学者认为启发式估值越激进（越接近甚至超过真实距离）搜索越快。实际上，若 $h(n) > h^*(n)$（称为**不可采纳启发式**），A* 会失去最优性保证，可能返回一条比最短路径代价更高的路径。这种以最优性换速度的变体有专属名称——**加权A*（Weighted A*）**，写作 $f(n) = g(n) + \varepsilon \cdot h(n)$（$\varepsilon > 1$），是一个
+**案例**：给定一个随机打乱的15数码初始状态（例如：空格在右下角，数字1在第3行第4列，其余数字随机散布），目标是将所有数字恢复到顺序排列。使用曼哈顿距离启发式的A*，实验数据表明（Korf, 1985），平均搜索节点数约为 $10^4$ 至 $10^5$ 量级，而BFS需约 $10^9$ 节点——减少了4至5个数量级。若进一步采用**线性冲突（Linear Conflict）**启发式（在曼哈顿距离基础上，当同行或同列的两块方

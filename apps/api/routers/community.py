@@ -224,3 +224,26 @@ async def community_stats():
         "total_votes": total_votes,
         "pending_count": by_status.get(SuggestionStatus.pending, 0),
     }
+
+
+@router.get("/community/feedback/{concept_id}")
+async def concept_feedback(concept_id: str):
+    """Get aggregated feedback for a specific concept."""
+    related = [
+        s for s in _suggestions.values()
+        if s.get("concept_id") == concept_id
+    ]
+
+    positive = sum(1 for s in related if "👍" in s.get("title", ""))
+    negative = sum(1 for s in related if s["type"] in ("correction", "feedback") and "👍" not in s.get("title", ""))
+
+    return {
+        "concept_id": concept_id,
+        "total_feedback": len(related),
+        "positive": positive,
+        "negative": negative,
+        "suggestions": [
+            {"id": s["id"], "type": s["type"], "title": s["title"], "votes": s["votes"], "status": s["status"]}
+            for s in sorted(related, key=lambda x: -x["votes"])[:10]
+        ],
+    }

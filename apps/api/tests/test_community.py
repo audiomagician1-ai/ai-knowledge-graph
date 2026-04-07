@@ -433,3 +433,59 @@ async def test_list_filter_by_status():
         data2 = resp2.json()
         assert len(data2) == 1
         assert data2[0]["status"] == "pending"
+
+
+# ── Concept Feedback ──
+
+@pytest.mark.asyncio
+async def test_concept_feedback_empty():
+    """GET concept feedback should return zeros for unknown concept."""
+    _clear_store()
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/community/feedback/recursion")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["concept_id"] == "recursion"
+        assert data["total_feedback"] == 0
+        assert data["positive"] == 0
+        assert data["negative"] == 0
+
+
+@pytest.mark.asyncio
+async def test_concept_feedback_aggregation():
+    """GET concept feedback should aggregate positive/negative correctly."""
+    _clear_store()
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        # Positive feedback
+        await client.post("/api/community/suggestions", json={
+            "type": "feedback", "concept_id": "recursion",
+            "title": "👍 Helpful explanation for recursion",
+            "description": "User found the AI explanation helpful and clear.",
+        })
+        # Negative feedback (correction)
+        await client.post("/api/community/suggestions", json={
+            "type": "correction", "concept_id": "recursion",
+            "title": "⚠️ Feedback on recursion",
+            "description": "The base case example should use n <= 1 not n == 0.",
+        })
+        # Another positive
+        await client.post("/api/community/suggestions", json={
+            "type": "feedback", "concept_id": "recursion",
+            "title": "👍 Great recursion walkthrough",
+            "description": "The step-by-step explanation was very helpful.",
+        })
+        # Unrelated concept
+        await client.post("/api/community/suggestions", json={
+            "type": "feedback", "concept_id": "sorting",
+            "title": "👍 Sorting explanation",
+            "description": "Good explanation of different sorting algorithms.",
+        })
+
+        resp = await client.get("/api/community/feedback/recursion")
+        data = resp.json()
+        assert data["total_feedback"] == 3
+        assert data["positive"] == 2
+        assert data["negative"] == 1
+        assert len(data["suggestions"]) == 3

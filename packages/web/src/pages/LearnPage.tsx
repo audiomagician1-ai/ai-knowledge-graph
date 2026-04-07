@@ -16,6 +16,7 @@ import { stripChoicesBlock } from '@/lib/utils/text';
 import { useLearningTimer } from '@/lib/hooks/useLearningTimer';
 import { useSpeechRecognition, SPEECH_LANGUAGES, detectLanguage } from '@/lib/hooks/useSpeechRecognition';
 import { ConceptNoteEditor } from '@/components/common/ConceptNoteEditor';
+import { InlineFeedback } from '@/components/common/InlineFeedback';
 
 const log = createLogger('LearnPage');
 
@@ -279,6 +280,15 @@ export function LearnPage() {
                         <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-text-tertiary)', animationDelay: '300ms' }} />
                       </div>
                     ) : null}
+                    {/* Inline feedback for completed assistant messages */}
+                    {msg.content && !isStreaming && idx > 0 && (
+                      <InlineFeedback
+                        conceptId={conceptId}
+                        domainId={domainId}
+                        messageContent={msg.content.slice(0, 300)}
+                        compact
+                      />
+                    )}
                     </>
                   ) : (
                     <div className="whitespace-pre-wrap break-words">{msg.content}</div>

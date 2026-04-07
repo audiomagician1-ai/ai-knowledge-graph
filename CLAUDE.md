@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,475 (1,042 BE + 380 FE + 53 E2E) | 2026-04-07 |
+| **测试总数** | 1,483 (1,044 BE + 386 FE + 53 E2E) | 2026-04-07 |
 | **tsc errors** | 0 | 2026-04-07 |
 | **Open Issues** | 0 | 2026-04-07 |
 | **RAG 质量** | 6,300 docs — legacy 6,156 avg 79.5 + new 144 avg 84.0 → global avg 79.6 | 2026-04-07 |
@@ -314,7 +314,8 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/common/StudyGoalWidget.tsx | 学习目标组件 (SVG进度环 + 目标设置 + 周趋势) |
 | packages/web/src/pages/LearningPathPage.tsx | 学习路径页面 (/path/:domainId, 拓扑排序导学) |
 | packages/web/src/pages/LeaderboardPage.tsx | 排行榜页面 (/leaderboard, 模拟排名 + Supabase-ready) |
-| packages/web/src/pages/CommunityPage.tsx | 社区共建页面 (/community, 建议提交/投票/浏览) |
+| packages/web/src/components/common/InlineFeedback.tsx | 内联反馈组件 (拇指快捷评价 + 详细反馈表单 + 自动提交到社区) |
+| packages/web/src/pages/CommunityPage.tsx | 社区共建页面 (/community, 建议提交/投票/管理员审核工作流) |
 | packages/web/src/lib/api/notes-api.ts | 笔记API客户端 (CRUD + bulk sync + stats) |
 | packages/web/src/lib/hooks/useNotifications.ts | 通知提醒hook (Notification API + daily reminder) |
 | apps/api/utils/metrics.py | API指标收集器 (请求数/错误率/响应时间/per-endpoint) |
@@ -380,4 +381,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-07 | **Scope**: V2.0 Sprint — community moderation workflow (approve/reject/queue/delete + 9 BE tests) + voice auto-language detection (detectLanguage + 10 FE tests) | **Result**: 1,042 BE + 380 FE + 53 E2E all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-07 | **Scope**: V2.0 complete — community moderation (approve/reject/queue/delete/feedback-aggregation) + voice auto-lang-detect + inline feedback in LearnPage + 36 new tests | **Result**: 1,044 BE + 386 FE + 53 E2E all pass, tsc: 0 errors, 0 open issues, build OK
