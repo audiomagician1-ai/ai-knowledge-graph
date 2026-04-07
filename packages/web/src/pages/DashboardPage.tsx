@@ -15,6 +15,7 @@ import { WeeklyReport } from '@/components/dashboard/WeeklyReport';
 import { StudyPatterns } from '@/components/dashboard/StudyPatterns';
 import { DomainRadar } from '@/components/dashboard/DomainRadar';
 import { DifficultyHeatmap } from '@/components/dashboard/DifficultyHeatmap';
+import { MilestoneTracker } from '@/components/dashboard/MilestoneTracker';
 import type { Domain } from '@akg/shared';
 
 /**
@@ -240,6 +241,9 @@ export function DashboardPage() {
 
         {/* Difficulty Heatmap (V2.2) */}
         <DifficultyHeatmap />
+
+        {/* Milestone Tracker (V2.2) */}
+        <MilestoneTracker />
 
         {/* Domain Progress Cards */}
         <section>
