@@ -226,6 +226,190 @@ async def community_stats():
     }
 
 
+@router.post("/community/suggestions/{suggestion_id}/auto-moderate")
+async def auto_moderate_suggestion(
+    suggestion_id: str,
+    authorization: Optional[str] = Header(None),
+):
+    """AI-assisted auto-moderation: score a suggestion for quality and relevance.
+
+    Returns a quality_score (0-100) and recommendation (approve/reject/review).
+    Uses heuristic rules (no LLM call needed for MVP):
+    - Title length and clarity
+    - Description depth
+    - Spam/duplicate detection
+    - Vote count as community signal
+    """
+    _check_admin(authorization)
+
+    if suggestion_id not in _suggestions:
+        raise HTTPException(status_code=404, detail="Suggestion not found")
+
+    s = _suggestions[suggestion_id]
+    score = 50  # Base score
+    reasons = []
+
+    # Title quality (3-300 chars, longer is better up to a point)
+    title_len = len(s.get("title", ""))
+    if title_len >= 10:
+        score += 10
+        reasons.append("descriptive_title")
+    elif title_len < 5:
+        score -= 15
+        reasons.append("title_too_short")
+
+    # Description quality
+    desc_len = len(s.get("description", ""))
+    if desc_len >= 100:
+        score += 15
+        reasons.append("detailed_description")
+    elif desc_len >= 50:
+        score += 8
+        reasons.append("adequate_description")
+    elif desc_len < 20:
+        score -= 10
+        reasons.append("description_too_short")
+
+    # Has domain/concept context
+    if s.get("domain_id"):
+        score += 5
+        reasons.append("has_domain_context")
+    if s.get("concept_id"):
+        score += 5
+        reasons.append("has_concept_context")
+
+    # Community signal (votes)
+    votes = s.get("votes", 0)
+    if votes >= 5:
+        score += 15
+        reasons.append("strong_community_support")
+    elif votes >= 2:
+        score += 8
+        reasons.append("some_community_support")
+
+    # Spam detection (very basic)
+    title_lower = s.get("title", "").lower()
+    spam_keywords = ["buy", "sell", "click here", "free money", "http://", "www.", "casino"]
+    if any(kw in title_lower for kw in spam_keywords):
+        score -= 40
+        reasons.append("potential_spam")
+
+    # Type-specific bonuses
+    if s.get("type") == "link" and s.get("source_concept") and s.get("target_concept"):
+        score += 10
+        reasons.append("complete_link_suggestion")
+    elif s.get("type") == "correction":
+        score += 5  # Corrections are high value
+        reasons.append("correction_type_bonus")
+
+    # Clamp score
+    score = max(0, min(100, score))
+
+    # Recommendation
+    if score >= 70:
+        recommendation = "approve"
+    elif score >= 40:
+        recommendation = "review"  # Needs human review
+    else:
+        recommendation = "reject"
+
+    result = {
+        "suggestion_id": suggestion_id,
+        "quality_score": score,
+        "recommendation": recommendation,
+        "signals": reasons,
+        "auto_moderated_at": time.time(),
+    }
+
+    logger.info(
+        "Auto-moderation complete",
+        extra={"id": suggestion_id, "score": score, "recommendation": recommendation},
+    )
+    return result
+
+
+@router.post("/community/suggestions/batch-auto-moderate")
+async def batch_auto_moderate(
+    authorization: Optional[str] = Header(None),
+    limit: int = 20,
+):
+    """Auto-moderate all pending suggestions in batch.
+
+    Returns scored results sorted by quality (best first).
+    """
+    _check_admin(authorization)
+
+    pending = [
+        s for s in _suggestions.values()
+        if s["status"] == SuggestionStatus.pending
+    ][:limit]
+
+    results = []
+    for s in pending:
+        # Inline scoring (same logic as single auto-moderate)
+        score = 50
+        reasons = []
+
+        title_len = len(s.get("title", ""))
+        if title_len >= 10:
+            score += 10
+            reasons.append("descriptive_title")
+        elif title_len < 5:
+            score -= 15
+
+        desc_len = len(s.get("description", ""))
+        if desc_len >= 100:
+            score += 15
+        elif desc_len >= 50:
+            score += 8
+        elif desc_len < 20:
+            score -= 10
+
+        if s.get("domain_id"):
+            score += 5
+        if s.get("concept_id"):
+            score += 5
+
+        votes = s.get("votes", 0)
+        if votes >= 5:
+            score += 15
+        elif votes >= 2:
+            score += 8
+
+        title_lower = s.get("title", "").lower()
+        spam_keywords = ["buy", "sell", "click here", "free money", "http://", "www.", "casino"]
+        if any(kw in title_lower for kw in spam_keywords):
+            score -= 40
+
+        if s.get("type") == "link" and s.get("source_concept") and s.get("target_concept"):
+            score += 10
+        elif s.get("type") == "correction":
+            score += 5
+
+        score = max(0, min(100, score))
+        recommendation = "approve" if score >= 70 else ("review" if score >= 40 else "reject")
+
+        results.append({
+            "suggestion_id": s["id"],
+            "title": s["title"],
+            "type": s["type"],
+            "quality_score": score,
+            "recommendation": recommendation,
+            "votes": votes,
+        })
+
+    # Sort by quality score descending
+    results.sort(key=lambda r: -r["quality_score"])
+
+    return {
+        "total_pending": len(pending),
+        "results": results,
+        "auto_approve_count": sum(1 for r in results if r["recommendation"] == "approve"),
+        "review_count": sum(1 for r in results if r["recommendation"] == "review"),
+        "reject_count": sum(1 for r in results if r["recommendation"] == "reject"),
+    }
+
+
 @router.get("/community/feedback/{concept_id}")
 async def concept_feedback(concept_id: str):
     """Get aggregated feedback for a specific concept."""

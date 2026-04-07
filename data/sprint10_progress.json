@@ -25,7 +25,6 @@
     "game-engine/resource-management/patching-system.md",
     "game-engine/serialization/property-serialization.md",
     "game-engine/unity-architecture/unity-audio.md",
-    "game-engine/unity-architecture/unity-profiler.md",
     "game-live-ops/ops-uc-rollback-strategy.md",
     "game-publishing/pub-pr-steam-sales.md",
     "game-qa/qa-at-ci-integration.md",
@@ -54,12 +53,18 @@
     "programming-basics/iteration-vs-recursion.md",
     "programming-basics/strings.md",
     "prompt-engineering/llm-api-usage.md",
-    "prompt-engineering/system-prompt-design.md"
+    "prompt-engineering/system-prompt-design.md",
+    "psychology/biological-psychology/autonomic-nervous-system.md",
+    "psychology/biological-psychology/brain-imaging.md",
+    "psychology/biological-psychology/hunger-eating.md",
+    "psychology/biological-psychology/psychopharmacology.md",
+    "psychology/biological-psychology/sexual-behavior-biology.md",
+    "psychology/developmental-psychology/adolescent-development.md"
   ],
   "errors": [],
   "stats": {
-    "total": 55,
-    "success": 55,
+    "total": 60,
+    "success": 60,
     "error": 0,
     "skipped": 0
   }

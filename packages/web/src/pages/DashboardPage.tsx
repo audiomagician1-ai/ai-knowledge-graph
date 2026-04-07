@@ -10,6 +10,8 @@ import { ShareProgress } from '@/components/common/ShareProgress';
 import { fetchWithRetry } from '@/lib/utils/fetch-retry';
 import { DomainComparison } from '@/components/dashboard/DomainComparison';
 import { RecentActivity } from '@/components/dashboard/RecentActivity';
+import { WeeklyReport } from '@/components/dashboard/WeeklyReport';
+import { StudyPatterns } from '@/components/dashboard/StudyPatterns';
 import type { Domain } from '@akg/shared';
 
 /**
@@ -220,6 +222,12 @@ export function DashboardPage() {
             })}
           </div>
         </section>
+
+        {/* Weekly Progress Report (V2.1) */}
+        <WeeklyReport />
+
+        {/* Study Patterns (V2.1) */}
+        <StudyPatterns />
 
         {/* Domain Progress Cards */}
         <section>

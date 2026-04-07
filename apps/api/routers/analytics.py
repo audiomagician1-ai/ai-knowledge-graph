@@ -217,3 +217,145 @@ async def content_quality_signals():
         "medium_severity": sum(1 for s in signals if s["severity"] == "medium"),
         "signals": signals[:50],
     }
+
+
+@router.get("/analytics/weekly-report")
+async def weekly_report():
+    """Generate a weekly progress summary comparing this week vs last week.
+
+    Includes:
+    - Concepts mastered (this week vs last week)
+    - Concepts started
+    - Total study sessions
+    - Active days
+    - Streak data
+    - Top domains by activity
+    """
+    history = get_history(limit=10000)
+    progress_list = get_all_progress()
+    streak_data = get_streak()
+    now = time.time()
+
+    # This week: last 7 days, Last week: 8-14 days ago
+    this_week_start = now - (7 * 86400)
+    last_week_start = now - (14 * 86400)
+
+    this_week = {"mastered": 0, "started": 0, "assessments": 0, "active_days": set()}
+    last_week = {"mastered": 0, "started": 0, "assessments": 0, "active_days": set()}
+
+    for entry in history:
+        ts = entry.get("timestamp", 0)
+        action = entry.get("action", "")
+        day = time.strftime("%Y-%m-%d", time.localtime(ts))
+
+        if ts >= this_week_start:
+            bucket = this_week
+        elif ts >= last_week_start:
+            bucket = last_week
+        else:
+            continue
+
+        if action == "assessment":
+            bucket["assessments"] += 1
+        elif action == "start":
+            bucket["started"] += 1
+        elif action == "mastered":
+            bucket["mastered"] += 1
+        bucket["active_days"].add(day)
+
+    # Convert sets to counts
+    this_week["active_days"] = len(this_week["active_days"])
+    last_week["active_days"] = len(last_week["active_days"])
+
+    # Compute deltas (positive = improvement)
+    def delta(current, previous):
+        if previous == 0:
+            return 100 if current > 0 else 0
+        return round(((current - previous) / previous) * 100, 1)
+
+    # Overall mastery summary
+    total_mastered = sum(1 for p in progress_list if p.get("status") == "mastered")
+    total_learning = sum(1 for p in progress_list if p.get("status") == "learning")
+
+    return {
+        "period": {
+            "this_week": time.strftime("%m/%d", time.localtime(this_week_start)) + " - " + time.strftime("%m/%d", time.localtime(now)),
+            "last_week": time.strftime("%m/%d", time.localtime(last_week_start)) + " - " + time.strftime("%m/%d", time.localtime(this_week_start)),
+        },
+        "this_week": {
+            "mastered": this_week["mastered"],
+            "started": this_week["started"],
+            "assessments": this_week["assessments"],
+            "active_days": this_week["active_days"],
+        },
+        "last_week": {
+            "mastered": last_week["mastered"],
+            "started": last_week["started"],
+            "assessments": last_week["assessments"],
+            "active_days": last_week["active_days"],
+        },
+        "deltas": {
+            "mastered_pct": delta(this_week["mastered"], last_week["mastered"]),
+            "started_pct": delta(this_week["started"], last_week["started"]),
+            "assessments_pct": delta(this_week["assessments"], last_week["assessments"]),
+            "active_days_pct": delta(this_week["active_days"], last_week["active_days"]),
+        },
+        "overall": {
+            "total_mastered": total_mastered,
+            "total_learning": total_learning,
+            "streak_current": streak_data.get("current", 0) if isinstance(streak_data, dict) else 0,
+            "streak_longest": streak_data.get("longest", 0) if isinstance(streak_data, dict) else 0,
+        },
+    }
+
+
+@router.get("/analytics/study-patterns")
+async def study_patterns(days: int = 30):
+    """Analyze study patterns — preferred times, session lengths, and consistency.
+
+    Helps users understand their learning habits.
+    """
+    history = get_history(limit=10000)
+    now = time.time()
+    cutoff = now - (days * 86400)
+
+    # Hour-of-day distribution
+    hour_dist = [0] * 24
+    weekday_dist = [0] * 7  # 0=Mon, 6=Sun
+    session_gaps = []
+    prev_ts = None
+
+    for entry in history:
+        ts = entry.get("timestamp", 0)
+        if ts < cutoff:
+            continue
+
+        lt = time.localtime(ts)
+        hour_dist[lt.tm_hour] += 1
+        weekday_dist[lt.tm_wday] += 1
+
+        if prev_ts and (ts - prev_ts) < 3600:  # Within 1 hour = same session
+            session_gaps.append(ts - prev_ts)
+        prev_ts = ts
+
+    # Find peak hours
+    peak_hour = hour_dist.index(max(hour_dist)) if any(hour_dist) else 12
+    weekday_names = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+    peak_day = weekday_dist.index(max(weekday_dist)) if any(weekday_dist) else 0
+
+    # Avg session gap (proxy for session length)
+    avg_gap = round(sum(session_gaps) / len(session_gaps), 1) if session_gaps else 0
+
+    return {
+        "period_days": days,
+        "hour_distribution": hour_dist,
+        "weekday_distribution": dict(zip(weekday_names, weekday_dist)),
+        "peak_hour": peak_hour,
+        "peak_hour_label": f"{peak_hour}:00-{peak_hour+1}:00",
+        "peak_day": weekday_names[peak_day],
+        "total_events": sum(hour_dist),
+        "avg_inter_action_gap_seconds": avg_gap,
+        "consistency_score": round(
+            sum(1 for d in weekday_dist if d > 0) / 7 * 100, 1
+        ),
+    }
