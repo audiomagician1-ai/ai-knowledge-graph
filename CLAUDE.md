@@ -78,10 +78,10 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,505 (1,052 BE + 392 FE + 61 E2E) | 2026-04-07 |
+| **测试总数** | 1,530 (1,058 BE + 409 FE + 61 E2E) | 2026-04-07 |
 | **tsc errors** | 0 | 2026-04-07 |
 | **Open Issues** | 0 | 2026-04-07 |
-| **RAG 质量** | 6,300 docs — S:1289(20.5%) + A:5011(79.5%) + B/C:0 → global avg **79.9** | 2026-04-07 |
+| **RAG 质量** | 6,300 docs — Sprint 10 进行中 (17/80), global avg **79.9→80+** (target) | 2026-04-07 |
 
 ---
 
@@ -135,6 +135,15 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ P2 社交证明层 ("X人在学" 气泡标注 + DomainOverview + Dashboard)
 - ✅ P2 学习日历热力图 (30天StreakCalendar + 连续学习徽章)
 - ✅ P2 每日推荐概念 (DailyRecommendation: 30精选概念日轮推荐)
+
+### V2.1 Graph可视化增强 Sprint (2026-04-07, 进行中)
+- ✅ GraphMiniStats HUD (域名+进度环+掌握/学习/未开始统计+连续天数)
+- ✅ GraphLegend 图例 (可折叠，展示状态颜色+难度颜色+交互提示)
+- ✅ SubdomainFilter 子域筛选 (下拉列表+掌握度统计+高亮切换)
+- ✅ ConceptTooltip 悬浮提示 (概念名称+状态+难度+时间+推荐标记)
+- ✅ Topology API (GET /api/graph/topology/{domain_id}: 子域统计/入口节点/终端节点/孤立节点/里程碑/连接度TOP10)
+- ✅ DomainComparison Dashboard组件 (12域规模对比柱状图+进度条)
+- 🔄 RAG Sprint 10: 底部80篇定向改写 → 目标全局avg 80.0+ (当前进度: 17/80)
 
 ---
 
@@ -316,6 +325,11 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/pages/LeaderboardPage.tsx | 排行榜页面 (/leaderboard, 模拟排名 + Supabase-ready) |
 | packages/web/src/components/common/InlineFeedback.tsx | 内联反馈组件 (拇指快捷评价 + 详细反馈表单 + 自动提交到社区) |
 | packages/web/src/pages/CommunityPage.tsx | 社区共建页面 (/community, 建议提交/投票/管理员审核工作流) |
+| packages/web/src/components/graph/GraphMiniStats.tsx | 图谱HUD: 域进度环+掌握度统计+连续天数 |
+| packages/web/src/components/graph/GraphLegend.tsx | 图谱图例: 可折叠状态/难度颜色说明 |
+| packages/web/src/components/graph/SubdomainFilter.tsx | 子域筛选下拉: 掌握度统计+高亮切换 |
+| packages/web/src/components/graph/ConceptTooltip.tsx | 节点悬浮提示: 名称/状态/难度/时间 |
+| packages/web/src/components/dashboard/DomainComparison.tsx | 域掌握度对比: 12域规模柱状图+进度条 |
 | packages/web/src/lib/api/notes-api.ts | 笔记API客户端 (CRUD + bulk sync + stats) |
 | packages/web/src/lib/hooks/useNotifications.ts | 通知提醒hook (Notification API + daily reminder) |
 | apps/api/utils/metrics.py | API指标收集器 (请求数/错误率/响应时间/per-endpoint) |
@@ -384,4 +398,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-07 | **Scope**: V2.0 complete + analytics API (4 endpoints) + dashboard velocity viz + community moderation + RAG Sprint 9 DONE (200/200, avg 79.9) | **Result**: 1,052 BE + 392 FE + 61 E2E all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-07 | **Scope**: V2.1 graph HUD (MiniStats+Legend+SubdomainFilter+ConceptTooltip) + topology API + DomainComparison + RAG Sprint 10 in progress (17/80) | **Result**: 1,058 BE + 409 FE + 61 E2E all pass, tsc: 0 errors, 0 open issues, build OK
