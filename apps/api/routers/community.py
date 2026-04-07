@@ -1,15 +1,16 @@
 """Community API — User-contributed concept suggestions, feedback, and graph modifications.
 
 MVP: All suggestions are stored in-memory (later → Supabase table with moderation workflow).
-Supports: concept suggestion, link suggestion, content feedback.
+Supports: concept suggestion, link suggestion, content feedback, admin moderation.
 """
 
+import os
 import time
 import uuid
 from enum import Enum
 from typing import Optional
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Header
 from pydantic import BaseModel, Field
 from utils.logger import get_logger
 
@@ -41,6 +42,11 @@ class SuggestionCreate(BaseModel):
     target_concept: Optional[str] = Field(None, max_length=200, description="For link suggestions: target concept")
 
 
+class ModerationAction(BaseModel):
+    action: SuggestionStatus = Field(..., description="approve or reject")
+    reason: Optional[str] = Field(None, max_length=1000, description="Moderation reason")
+
+
 class SuggestionResponse(BaseModel):
     id: str
     type: SuggestionType
@@ -53,10 +59,24 @@ class SuggestionResponse(BaseModel):
     target_concept: Optional[str]
     created_at: float
     votes: int
+    moderated_at: Optional[float] = None
+    moderation_reason: Optional[str] = None
 
 
 # In-memory store (Supabase-ready: will map to `community_suggestions` table)
 _suggestions: dict[str, dict] = {}
+
+# Admin token for moderation (env var or fallback for testing)
+_ADMIN_TOKEN = os.environ.get("COMMUNITY_ADMIN_TOKEN", "akg-admin-2026")
+
+
+def _check_admin(token: Optional[str]):
+    """Validate admin bearer token. Raises 403 if invalid."""
+    if not token or not token.startswith("Bearer "):
+        raise HTTPException(status_code=401, detail="Missing authorization header")
+    actual = token.replace("Bearer ", "").strip()
+    if actual != _ADMIN_TOKEN:
+        raise HTTPException(status_code=403, detail="Insufficient permissions")
 
 
 @router.get("/community/suggestions")
@@ -124,6 +144,66 @@ async def vote_suggestion(suggestion_id: str):
     return {"id": suggestion_id, "votes": _suggestions[suggestion_id]["votes"]}
 
 
+@router.patch("/community/suggestions/{suggestion_id}/moderate")
+async def moderate_suggestion(
+    suggestion_id: str,
+    req: ModerationAction,
+    authorization: Optional[str] = Header(None),
+):
+    """Admin: approve or reject a suggestion."""
+    _check_admin(authorization)
+
+    if suggestion_id not in _suggestions:
+        raise HTTPException(status_code=404, detail="Suggestion not found")
+
+    if req.action not in (SuggestionStatus.approved, SuggestionStatus.rejected):
+        raise HTTPException(status_code=400, detail="Action must be 'approved' or 'rejected'")
+
+    s = _suggestions[suggestion_id]
+    s["status"] = req.action
+    s["moderated_at"] = time.time()
+    s["moderation_reason"] = req.reason
+
+    logger.info(
+        "Suggestion moderated",
+        extra={"id": suggestion_id, "action": req.action, "reason": req.reason},
+    )
+    return s
+
+
+@router.get("/community/moderation/queue")
+async def moderation_queue(
+    authorization: Optional[str] = Header(None),
+    limit: int = 50,
+):
+    """Admin: list pending suggestions for review."""
+    _check_admin(authorization)
+
+    pending = [
+        s for s in _suggestions.values()
+        if s["status"] == SuggestionStatus.pending
+    ]
+    # Highest votes first (community pre-filter)
+    pending.sort(key=lambda s: (-s["votes"], s["created_at"]))
+    return pending[:limit]
+
+
+@router.delete("/community/suggestions/{suggestion_id}")
+async def delete_suggestion(
+    suggestion_id: str,
+    authorization: Optional[str] = Header(None),
+):
+    """Admin: permanently delete a suggestion."""
+    _check_admin(authorization)
+
+    if suggestion_id not in _suggestions:
+        raise HTTPException(status_code=404, detail="Suggestion not found")
+
+    del _suggestions[suggestion_id]
+    logger.info("Suggestion deleted", extra={"id": suggestion_id})
+    return {"deleted": suggestion_id}
+
+
 @router.get("/community/stats")
 async def community_stats():
     """Get community activity statistics."""
@@ -142,4 +222,5 @@ async def community_stats():
         "by_type": by_type,
         "by_status": by_status,
         "total_votes": total_votes,
+        "pending_count": by_status.get(SuggestionStatus.pending, 0),
     }

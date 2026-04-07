@@ -14,7 +14,7 @@ import { MarkdownRenderer } from '@/components/chat/MarkdownRenderer';
 import { ChoiceButtons } from '@/components/chat/ChoiceButtons';
 import { stripChoicesBlock } from '@/lib/utils/text';
 import { useLearningTimer } from '@/lib/hooks/useLearningTimer';
-import { useSpeechRecognition, SPEECH_LANGUAGES } from '@/lib/hooks/useSpeechRecognition';
+import { useSpeechRecognition, SPEECH_LANGUAGES, detectLanguage } from '@/lib/hooks/useSpeechRecognition';
 import { ConceptNoteEditor } from '@/components/common/ConceptNoteEditor';
 
 const log = createLogger('LearnPage');
@@ -50,6 +50,19 @@ export function LearnPage() {
       voice.resetTranscript();
     }
   }, [voice.transcript]);
+
+  // Auto-detect language from user's recent messages
+  useEffect(() => {
+    if (messages.length < 2) return;
+    const userMessages = messages.filter((m) => m.role === 'user').slice(-3);
+    if (userMessages.length === 0) return;
+    const recentText = userMessages.map((m) => m.content).join(' ');
+    const detected = detectLanguage(recentText);
+    if (detected !== voice.currentLang) {
+      voice.switchLanguage(detected);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [messages.length]);
 
   useEffect(() => {
     if (conceptId) {

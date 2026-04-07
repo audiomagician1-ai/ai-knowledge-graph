@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,447 (1,033 BE + 361 FE + 53 E2E) | 2026-04-07 |
+| **测试总数** | 1,475 (1,042 BE + 380 FE + 53 E2E) | 2026-04-07 |
 | **tsc errors** | 0 | 2026-04-07 |
 | **Open Issues** | 0 | 2026-04-07 |
 | **RAG 质量** | 6,300 docs — legacy 6,156 avg 79.5 + new 144 avg 84.0 → global avg 79.6 | 2026-04-07 |
@@ -375,9 +375,9 @@ python scripts/build_exe.py  # 输出到 release/
 - ✅ 社区共建图谱: community.py API (suggestions/voting/stats) + CommunityPage + 11 BE测试
 - ✅ 首页浮动导航栏: 分析/排行/笔记/社区/设置快捷入口
 - ✅ 图谱页Hub栏: 新增"路径"按钮
-- ⬜ 社区审核工作流 (管理员审批/拒绝建议)
-- ⬜ 语音输入连续对话模式 (基于对话上下文的自动语言检测)
+- ✅ 社区审核工作流 (管理员审批/拒绝建议 + 审核队列 + 删除 + Bearer token鉴权 + 状态筛选)
+- ✅ 语音自动语言检测 (Unicode script分析 + 拉丁语系词频检测 + 对话上下文自适应切换)
 
 ## Last Review
 
-**Date**: 2026-04-07 | **Scope**: V2.0 Sprint — notes backend sync + notifications + multi-lang voice (7 langs) + community suggestions (API+UI) + legacy RAG boost (running) | **Result**: 1,033 BE + 361 FE + 53 E2E all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-07 | **Scope**: V2.0 Sprint — community moderation workflow (approve/reject/queue/delete + 9 BE tests) + voice auto-language detection (detectLanguage + 10 FE tests) | **Result**: 1,042 BE + 380 FE + 53 E2E all pass, tsc: 0 errors, 0 open issues, build OK

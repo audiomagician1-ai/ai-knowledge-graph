@@ -17,6 +17,54 @@ export const SPEECH_LANGUAGES = [
 export type SpeechLangCode = (typeof SPEECH_LANGUAGES)[number]['code'];
 
 /**
+ * Detect language from text using Unicode script analysis.
+ * Returns the best-guess BCP-47 code. Falls back to 'en-US' if ambiguous.
+ */
+export function detectLanguage(text: string): SpeechLangCode {
+  if (!text || text.trim().length < 2) return 'zh-CN';
+
+  const clean = text.replace(/[\s\d\p{P}\p{S}]/gu, '');
+  if (!clean) return 'en-US';
+
+  let cjkCount = 0;
+  let hiraganaKatakana = 0;
+  let hangul = 0;
+  let latin = 0;
+  let accented = 0;
+
+  for (const char of clean) {
+    const cp = char.codePointAt(0) ?? 0;
+    if (cp >= 0x4E00 && cp <= 0x9FFF) cjkCount++;
+    else if ((cp >= 0x3040 && cp <= 0x309F) || (cp >= 0x30A0 && cp <= 0x30FF)) hiraganaKatakana++;
+    else if (cp >= 0xAC00 && cp <= 0xD7AF) hangul++;
+    else if ((cp >= 0x0041 && cp <= 0x007A)) latin++;
+    else if (cp >= 0x00C0 && cp <= 0x024F) { accented++; latin++; }
+  }
+
+  const total = clean.length;
+  if (total === 0) return 'en-US';
+
+  // Japanese has hiragana/katakana mixed with CJK
+  if (hiraganaKatakana / total > 0.15) return 'ja-JP';
+  if (hangul / total > 0.3) return 'ko-KR';
+  if (cjkCount / total > 0.3) return 'zh-CN';
+
+  // Latin-script languages: use heuristic word patterns
+  if (latin / total > 0.5) {
+    const lower = text.toLowerCase();
+    // Spanish markers (check before French — shared "que" word)
+    if (/\b(los|las|por|una|para|del|más|como|pero|muy|también|esta|tiene|puede)\b/.test(lower)) return 'es-ES';
+    // French markers
+    if (/\b(est|les|des|une|que|pour|dans|avec|pas|sur|cette|sont|nous|vous)\b/.test(lower)) return 'fr-FR';
+    // German markers
+    if (/\b(und|ist|das|die|der|nicht|ein|für|mit|auf|auch|sich)\b/.test(lower)) return 'de-DE';
+    return 'en-US';
+  }
+
+  return 'en-US';
+}
+
+/**
  * Web Speech API hook for voice-to-text input.
  * Falls back gracefully when unsupported (returns isSupported=false).
  *
@@ -151,6 +199,21 @@ export function useSpeechRecognition(lang: SpeechLangCode = 'zh-CN', continuous 
     [currentLang, isListening]
   );
 
+  /**
+   * Auto-detect language from existing conversation text and switch.
+   * Useful for adapting to user's primary language mid-session.
+   */
+  const autoDetectAndSwitch = useCallback(
+    (contextText: string) => {
+      const detected = detectLanguage(contextText);
+      if (detected !== currentLang) {
+        switchLanguage(detected);
+        log.info('Auto-detected language switch', { from: currentLang, to: detected });
+      }
+    },
+    [currentLang, switchLanguage]
+  );
+
   return {
     isSupported,
     isListening,
@@ -163,6 +226,8 @@ export function useSpeechRecognition(lang: SpeechLangCode = 'zh-CN', continuous 
     toggleListening,
     resetTranscript,
     switchLanguage,
+    autoDetectAndSwitch,
+    detectLanguage,
     languages: SPEECH_LANGUAGES,
   };
 }
