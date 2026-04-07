@@ -89,12 +89,27 @@
     "software-engineering/performance-analysis/se-load-testing.md",
     "software-engineering/version-control/se-git-lfs.md",
     "software-engineering/version-control/se-git-merge-rebase.md",
-    "software-engineering/version-control/se-pr-workflow.md"
+    "software-engineering/version-control/se-pr-workflow.md",
+    "software-engineering/version-control/se-worktree.md",
+    "technical-art/ta-asset-database.md",
+    "technical-art/ta-gpu-profiling.md",
+    "technical-art/ta-overdraw.md",
+    "technical-art/ta-tessellation-shader.md",
+    "technical-art/ta-texture-compression.md",
+    "technical-art/ta-tiling-textures.md",
+    "technical-art/ta-webhook.md",
+    "vfx/vfx-destruct-constraint.md",
+    "vfx/vfx-destruct-damage.md",
+    "vfx/vfx-fb-emissive.md",
+    "vfx/vfx-fb-motion-vector.md",
+    "vfx/vfx-fb-overview.md",
+    "vfx/vfx-particle-attract.md",
+    "vfx/vfx-particle-rotation.md"
   ],
   "errors": [],
   "stats": {
-    "total": 90,
-    "success": 90,
+    "total": 105,
+    "success": 105,
     "error": 0,
     "skipped": 0
   }

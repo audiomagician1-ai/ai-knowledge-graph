@@ -1,49 +1,3 @@
----
-id: "hybrid-combat"
-concept: "混合战斗"
-domain: "game-design"
-subdomain: "combat-design"
-subdomain_name: "战斗设计"
-difficulty: 3
-is_milestone: false
-tags: ["类型"]
-
-# Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "S"
-quality_score: 95.9
-generation_method: "ai-rewrite-v1"
-unique_content_ratio: 1.0
-last_scored: "2026-04-07"
-sources:
-  - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
-  - type: "academic"
-    author: "Rollings, A. & Adams, E."
-    year: 2003
-    title: "Andrew Rollings and Ernest Adams on Game Design"
-    publisher: "New Riders Publishing"
-  - type: "academic"
-    author: "Schell, J."
-    year: 2008
-    title: "The Art of Game Design: A Book of Lenses"
-    publisher: "CRC Press"
-  - type: "academic"
-    author: "Hunicke, R., LeBlanc, M. & Zubek, R."
-    year: 2004
-    title: "MDA: A Formal Approach to Game Design and Game Research"
-    publisher: "AAAI Workshop on Challenges in Game AI"
-  - type: "academic"
-    author: "Sweetser, P. & Wyeth, P."
-    year: 2005
-    title: "GameFlow: A Model for Evaluating Player Enjoyment in Games"
-    publisher: "ACM Computers in Entertainment, Vol. 3, No. 3"
-scorer_version: "scorer-v2.0"
-quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-03-25
----
-
 # 混合战斗
 
 ## 概述
@@ -53,6 +7,8 @@ updated_at: 2026-03-25
 混合战斗的现代形态起源于1991年Square（现Square Enix）在《最终幻想IV》（Super Famicom平台，1991年7月19日发售）中首次实装的ATB系统（Active Time Battle，主动时间战斗）。设计者伊藤裕之（Hiroyuki Ito）有意打破"双方轮流等待"的静态感，引入了各角色独立计时的行动条，使敌我双方可以交叉行动，而玩家仍可在自身角色的行动槽充满后暂停思考。这一设计在当时被视为将国际象棋的决策压力与拳击的紧张节奏融合进电子RPG的里程碑式尝试。正如Schell（2008）在《游戏设计艺术》中所强调的，优秀的战斗系统必须同时满足"掌控感"与"挑战感"两个相互对立的玩家需求，混合战斗正是在这一张力之间寻找平衡点的系统性解答。
 
 混合战斗方案之所以在角色扮演游戏、策略游戏乃至动作冒险游戏中持续演化，核心在于它解决了一个长期的设计矛盾：纯回合制让核心玩家以外的受众感到拖沓，而纯实时战斗往往排斥偏好深度思考的玩家。混合战斗通过可调节的"思考时间"为两类玩家提供了共同入口。Rollings & Adams（2003）亦指出，战斗机制的可及性（accessibility）与深度（depth）并非零和博弈，混合战斗是同时提升两者的有效设计路径之一。Hunicke et al.（2004）的MDA框架（机制-动态-美学）进一步提供了分析混合战斗的理论工具：在机制层面引入时间槽或暂停规则，会在动态层面产生"焦虑与从容交替"的节奏体验，最终在美学层面形成独特的"可控紧张感"——这正是混合战斗区别于其他战斗类型的核心体验价值。
+
+值得注意的是，混合战斗并非简单的"回合制＋实时制"线性叠加，而是一套对时间控制权进行重新分配的设计哲学。在纯回合制中，时间控制权完全归属玩家；在纯实时制中，时间由游戏世界自主推进；混合战斗则在两者之间引入了一个可协商的时间分配机制，玩家须在系统设定的时间窗口内完成决策，超出窗口后时间主权暂时归还给游戏世界。这种"时间所有权的动态切换"构成了混合战斗最本质的设计特征，也是理解其全部子类型的核心线索。
 
 ---
 
@@ -72,11 +28,15 @@ $$\text{填充速率} = \frac{\text{基础速度} \times \text{速度系数}}{\t
 
 ATB系统的另一个深层设计意图是改变玩家对"速度"属性的感知权重。在传统回合制中，速度属性通常仅决定回合顺序（先攻权），而ATB将速度属性转化为**行动频率**的直接决定因素，使速度成为与攻击力、魔力同等重要的核心属性。这一设计选择深刻影响了后续20余年间日式RPG的数值设计范式。
 
+ATB机制在21世纪经历了数次再诠释。2020年发售的《最终幻想VII重制版》（Final Fantasy VII Remake，Square Enix，PS4平台）将ATB演化为"动作积累型"变体：玩家在实时操控角色进行基础攻击与闪避的过程中积累ATB槽，积满后方可消耗槽值释放技能或魔法。这一设计将ATB的"等待"维度替换为"主动积累"维度，使玩家的每次实时操作都具有双重意义——既是即时伤害来源，也是策略资源的积累手段。此举进一步消弭了"实时动作感"与"回合策略感"之间的感知断层，被业界认为是ATB范式在动作游戏化浪潮中的成功自我更新。
+
 ### 即时暂停（Active Pause / Tactical Pause）
 
 即时暂停系统将实时战斗流程完全暂停，玩家在暂停状态下逐一为队伍中的所有单位排列行动指令，确认后再统一执行。《博德之门》（1998年，Bioware开发，基于Infinity Engine引擎，PC平台）和《龙腾世纪：起源》（2009年，同为Bioware出品，PC/PS3/Xbox 360平台）是该方案的标志性实现。前者基于AD&D 2nd Edition规则，需要玩家管理最多6名角色，行动指令在暂停时可随意编排，战斗重启后按照游戏内时序展开。
 
 即时暂停方案与ATB的根本区别在于：玩家拥有**无限长**的决策时间，所有策略压力来自指令执行后的结果判读，而非指令输入阶段的时间焦虑。这意味着即时暂停系统对玩家的核心考验是**规划能力**（anticipating outcomes across multiple agents），ATB系统的核心考验则更偏向**优先级判断能力**（triaging actions under time pressure）——两者在认知负荷的来源上存在本质差异。
+
+案例：《龙腾世纪：起源》在PC版默认开启自动暂停触发器（Auto-Pause Triggers），玩家可预设"某队员生命值低于25%时自动暂停""敌方施法开始时自动暂停"等条件。这一功能将即时暂停从被动工具升级为主动风险管理系统，使玩家的战术注意力可以聚焦于预判和干预关键节点，而非持续盯守整个战场。这种"条件触发式暂停"设计后来被Larian Studios在《神界：原罪2》（Divinity: Original Sin 2，2017年，PC/PS4/Xbox One平台）和《博德之门3》（Baldur's Gate 3，2023年，PC/PS5平台）中进一步发扬，通过混合回合制与即时制的混合方案再次拓展了该范式的边界。
 
 从实现角度来看，即时暂停系统要求游戏引擎能够在任意时间点精确冻结所有实体的物理状态（位置、速度、动画帧）并无损恢复，这对1990年代末的引擎架构而言是非平凡的工程挑战。Infinity Engine通过将所有战斗实体的状态存储为快照（snapshot），实现了毫秒级的暂停与恢复，这一架构后来也被BioWare在Aurora Engine（用于《无冬之夜》，2002年）中继承和优化。
 
@@ -90,6 +50,8 @@ $$P(\text{命中}) = \text{基础命中率} + \text{感知加成} - \text{距离
 
 其中，**基础命中率**由角色的枪械技能值（0～100）和目标部位暴露面积共同决定；**感知加成**= (感知属性值 − 5) × 2%；**距离惩罚**随玩家与目标的实际距离线性增长，每超过基准射程10%扣减3%命中率；**目标移动修正**在目标静止时为+5%，目标冲刺时为−15%。这一公式将离散的概率判定嵌入实时战斗流程，是回合制数值逻辑向实时框架迁移的典型案例，也说明混合战斗系统并不要求在"时间轴"上做混合，同样可以在"资源消耗逻辑"层面实现回合制与实时制的融合。
 
+时间减缓方案与完全暂停方案的关键区别在于**玩家感知的连续性**。即时暂停使玩家进入一个"脱离战场"的菜单状态，而时间减缓维持了战场画面的动态流动感——即使速度仅为4%，角色的布料、发丝和粒子特效仍在缓慢运动，敌人的表情与姿态变化仍可读取。这种视觉连续性强化了"我正在操控一个高度专注的战场指挥官"的代入感，是时间减缓方案在叙事沉浸层面优于完全暂停的重要原因。
+
 ---
 
 ## 关键公式与量化模型
@@ -102,12 +64,4 @@ $$P(\text{命中}) = \text{基础命中率} + \text{感知加成} - \text{距离
 
 $$D = \frac{N_{\text{有效决策数}}}{T_{\text{战斗时长（秒）}}}$$
 
-其中，**有效决策**指玩家在该时间点存在至少两种合理备选方案的决策节点（排除"无脑循环攻击"等无选择操作）；**战斗时长**以秒为单位计算。理想的混合战斗系统应将决策密度维持在每分钟8～15次的区间内——低于8次/分钟玩家开始感到单调，高于20次/分钟则出现认知过载。据Schell（2008）的"心流理论"应用框架（借鉴Csikszentmihalyi的Flow模型），最优决策密度因玩家技能水平不同而动态变化，这也是为何许多混合战斗系统提供难度分级或可调节时间压力选项。
-
-### 时间压力弹性指标
-
-**时间压力弹性（Temporal Pressure Elasticity，TPE）**衡量系统在不同时间压力设置下，玩家策略多样性的保留程度：
-
-$$\text{TPE} = 1 - \frac{|S_{\text{主动模式}} - S_{\text{等待模式}}|}{S_{\text{等待模式}}}$$
-
-其中 $S$ 代表特定模式下玩家可行的最优策略数量。TPE值接近1.0表明时间压力设置不影响策略多样性（系统设计优秀）；TPE值低于0.6则意味着时间压力实质上剥夺了部分策略选项，系统设计存在失衡。
+其中，**
