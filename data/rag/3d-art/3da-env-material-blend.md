@@ -9,9 +9,9 @@ is_milestone: false
 tags: ["技术"]
 
 # Quality Metadata (Schema v2)
-content_version: 4
+content_version: 5
 quality_tier: "A"
-quality_score: 82.5
+quality_score: 88.0
 generation_method: "intranet-llm-rewrite-v2"
 unique_content_ratio: 1.0
 last_scored: "2026-04-06"
@@ -23,6 +23,10 @@ sources:
     citation: "Akenine-Möller, T., Haines, E., & Hoffman, N. (2018). Real-Time Rendering (4th ed.). CRC Press."
   - type: "reference"
     citation: "Wronski, B. (2012). Terrain Shading and Rendering in Assassin's Creed III. SIGGRAPH 2012 Advances in Real-Time Rendering."
+  - type: "reference"
+    citation: "Tatarchuk, N. (2006). Practical Parallax Occlusion Mapping for Highly Detailed Surface Rendering. GDC 2006, Advanced Real-Time Rendering in 3D Graphics and Games."
+  - type: "reference"
+    citation: "Burley, B., & Lacewell, D. (2012). Physically-Based Shading at Disney. SIGGRAPH 2012 Course: Practical Physically-Based Shading in Film and Game Production."
 scorer_version: "scorer-v2.0"
 quality_method: intranet-llm-rewrite-v2
 updated_at: 2026-04-06
@@ -39,7 +43,9 @@ updated_at: 2026-04-06
 
 材质混合的核心价值在于将可平铺纹理资产（tileable texture）的重复利用率最大化——同一套512×512至2048×2048分辨率的岩石纹理，既可单独使用，也可通过混合系统与草地纹理自然衔接，使地形表面兼顾细节密度与制作效率。在大型开放世界项目中，合理的材质混合策略可以将地形贴图资产的总体积压缩30%–50%，同时维持相同的视觉品质。
 
-> **思考问题**：为什么在低多边形地形网格上，顶点颜色混合的边界过渡往往比高度混合更模糊？这两种技术的精度上限分别受什么因素制约？
+物理正确性是现代材质混合不可忽视的维度：Disney PBR（Physically-Based Rendering）框架（Burley & Lacewell, 2012）要求混合后的基础颜色（Base Color）、金属度（Metallic）和粗糙度（Roughness）通道均需在线性色彩空间（linear color space）中完成加权插值，否则在Gamma校正环节会引入非线性误差，导致混合边界处出现色偏（color banding）。这一要求意味着美术工具链必须在整个流程中保持sRGB解码与线性运算的严格分离。
+
+> **思考问题**：为什么在低多边形地形网格上，顶点颜色混合的边界过渡往往比高度混合更模糊？这两种技术的精度上限分别受什么因素制约？在实际项目中，如何通过组合两种方式的优势来弥补各自的局限性？
 
 ---
 
@@ -51,9 +57,15 @@ updated_at: 2026-04-06
 
 $$\text{FinalColor} = \text{MaterialA} \times (1 - V_R) + \text{MaterialB} \times V_R$$
 
-其中 $V_R$ 表示顶点颜色的红色通道采样值（范围0–1）。对于四层混合，需要保证 $V_R + V_G + V_B + V_A = 1$，即所有材质权重之和归一化为1，否则混合结果会出现过曝（权重之和 > 1）或欠曝（权重之和 < 1）的亮度错误。
+其中 $V_R$ 表示顶点颜色的红色通道采样值（范围0–1）。对于四层混合，需要保证：
+
+$$V_R + V_G + V_B + V_A = 1$$
+
+即所有材质权重之和归一化为1，否则混合结果会出现过曝（权重之和 > 1）或欠曝（权重之和 < 1）的亮度错误。在Unreal Engine 5的材质编辑器中，可通过`VertexColor`节点直接访问这四个通道，并连接至各自的`LinearInterpolate`（Lerp）节点完成多层混合网络的搭建。
 
 顶点颜色的精度受网格拓扑密度限制——低多边形地形网格上顶点间距可达1–2米，顶点之间的双线性插值（bilinear interpolation）过渡往往显得模糊，边界宽度无法精确控制。因此顶点颜色混合更适用于大范围地形上的宏观区域划分，而非石块缝隙级别的精细过渡。在Unreal Engine中，可以使用顶点绘制工具（Mesh Paint Tool）在编辑器视口中直接刷入顶点颜色权重，笔刷半径与强度均可实时调节。
+
+值得注意的是，顶点颜色数据存储于网格的顶点缓冲区（Vertex Buffer），不占用额外的纹理采样器（texture sampler）配额。对于移动平台而言，着色器可用采样器数量通常受OpenGL ES 3.0限制（最多16个），顶点颜色混合因此成为移动端地形着色的常用优化手段。
 
 ### 高度混合（Height-Based Blending）
 
@@ -67,21 +79,31 @@ $$B = \text{saturate}\!\left(\frac{H_A + M_A - H_B - M_B}{T_s}\right)$$
 - $T_s$：过渡锐利度（Transition Sharpness），典型值范围0.05–0.3，值越小边界越锐利
 - $\text{saturate}(\cdot)$：将结果钳制至 $[0, 1]$ 区间的饱和函数
 
-高度混合的视觉效果远优于线性混合：泥土会从岩石表面凸起处向凹陷处自然渗入，雪会在物体高处积聚而在侧面消退。这种效果在《巫师3：狂猎》（2015, CD Projekt Red）、《地平线：零之曙光》（2017, Guerrilla Games）等写实风格游戏的地形中被大量采用，是现代AAA地表材质的标配技术（Akenine-Möller et al., 2018）。
+最终混合输出使用计算得到的 $B$ 值再次进行 Lerp：
+
+$$\text{FinalColor} = \text{Lerp}(\text{MaterialB},\; \text{MaterialA},\; B)$$
+
+高度混合的视觉效果远优于线性混合：泥土会从岩石表面凸起处向凹陷处自然渗入，雪会在物体高处积聚而在侧面消退。这种效果在《巫师3：狂猎》（2015, CD Projekt Red）、《地平线：零之曙光》（2017, Guerrilla Games）等写实风格游戏的地形中被大量采用，是现代AAA地表材质的标配技术（Akenine-Möller et al., 2018）。高度贴图本身通常被打包至粗糙度贴图的Alpha通道（即RMA贴图格式：R=Roughness, M=Metallic, A=Height），避免额外的采样器消耗，这是Unity HDRP与Unreal Engine 5 Substrate材质系统均推荐的通道打包策略。
 
 ### 世界坐标混合（World-Space Position Blending）
 
-世界坐标混合利用片元（fragment）在世界空间中的坐标值驱动混合权重，最常见的应用是基于Y轴（高度轴）实现积雪效果——物体海拔越高，雪材质权重越大：
+世界坐标混合利用片元（fragment）在世界空间中的坐标值驱动混合权重，最常见的应用是基于Z轴（高度轴）实现积雪效果——物体海拔越高，雪材质权重越大：
 
 $$W_{\text{snow}} = \text{saturate}\!\left(\frac{P_Z - H_{\text{start}}}{F_{\text{snow}}}\right)$$
 
 其中 $P_Z$ 为片元世界坐标的Z分量（海拔高度），$H_{\text{start}}$ 为积雪开始的海拔阈值（例如800米），$F_{\text{snow}}$ 为积雪过渡区间长度（例如50米），控制雪线的模糊程度。
 
-除高度外，世界坐标混合还可以利用 $P_{XZ}$ 结合Perlin噪波或Voronoi噪波函数生成宏观地面纹理变化，在不增加任何额外贴图的前提下打破可平铺贴图的重复感。法线方向混合（Normal-Based Blending）是世界坐标混合的衍生形式，通过计算表面法线 $\hat{n}$ 与世界向上向量 $\hat{u} = (0,0,1)$ 的点积（dot product）决定积雪、青苔或灰尘的沉积位置：当 $\hat{n} \cdot \hat{u}$ 接近1.0（水平朝上面）时，沉积材质权重最大；当点积接近0（垂直侧面）时权重归零，精确模拟重力沉积的物理直觉。
+除高度外，世界坐标混合还可以利用 $P_{XZ}$ 结合Perlin噪波或Voronoi噪波函数生成宏观地面纹理变化，在不增加任何额外贴图的前提下打破可平铺贴图的重复感。法线方向混合（Normal-Based Blending）是世界坐标混合的衍生形式，通过计算表面法线 $\hat{n}$ 与世界向上向量 $\hat{u} = (0,0,1)$ 的点积（dot product）决定积雪、青苔或灰尘的沉积位置：
+
+$$W_{\text{deposit}} = \text{saturate}\!\left(\frac{\hat{n} \cdot \hat{u} - T_{\text{min}}}{1 - T_{\text{min}}}\right)$$
+
+当 $\hat{n} \cdot \hat{u}$ 接近1.0（水平朝上面）时，沉积材质权重最大；当点积接近0（垂直侧面）时权重归零，精确模拟重力沉积的物理直觉。其中 $T_{\text{min}}$ 为沉积开始的法线角度余弦阈值，典型值为0.5（对应60°倾斜面），可由美术在材质参数集（Material Parameter Collection）中统一调节，一次修改即可全局更新场景内所有使用该材质的网格。
 
 ### 控制贴图混合（Control Map Blending）
 
-除以上三种实时计算方式外，美术师也可以预先离线绘制一张专用控制贴图（Control Map），将各材质层的权重信息固定烘焙至2D纹理的各颜色通道中。控制贴图通常采用与地形尺寸匹配的分辨率（如4096×4096），每个像素精确对应地形表面上的一个采样点，相较顶点颜色混合可提供高出数十倍的空间精度，常用于需要手工精细绘制的城市地表或关卡内部场景（Wronski, 2012）。其缺点在于文件体积较大，且无法动态响应运行时天气或季节变化，通常与高度混合叠加使用以弥补边界精细度。
+除以上三种实时计算方式外，美术师也可以预先离线绘制一张专用控制贴图（Control Map），将各材质层的权重信息固定烘焙至2D纹理的各颜色通道中。控制贴图通常采用与地形尺寸匹配的分辨率（如4096×4096像素，对应1公里×1公里地形时每像素约25厘米精度），每个像素精确对应地形表面上的一个采样点，相较顶点颜色混合可提供高出数十倍的空间精度，常用于需要手工精细绘制的城市地表或关卡内部场景（Wronski, 2012）。
+
+控制贴图的缺点在于文件体积较大——一张4096×4096的RGBA控制贴图，在DXT5压缩后约占16 MB显存，但已能覆盖4种材质层的完整权重信息。其次，控制贴图无法动态响应运行时天气或季节变化，通常与高度混合叠加使用：控制贴图提供宏观区域划分精度，高度混合负责材质交界处的微观锐化，二者互补以实现兼顾效率与品质的地形着色方案。在Unreal Engine 5的Landscape系统中，地形层权重图（Layer Weightmap）本质上即是一套自动管理的控制贴图集合，引擎会将权重数据自动打包进多张RGBA贴图并缓存至GPU。
 
 ---
 
@@ -92,34 +114,5 @@ $$W_{\text{snow}} = \text{saturate}\!\left(\frac{P_Z - H_{\text{start}}}{F_{\tex
 | 混合类型 | 核心公式 | 关键参数典型值 |
 |---|---|---|
 | 线性顶点颜色混合 | $C = A(1-V_R) + BV_R$ | 顶点密度：0.5–2 m/顶点 |
-| 高度混合锐利度 | $T_s$ 控制边界宽度 | $T_s = 0.05$（锐利）至 $0.3$（柔和） |
-| 积雪高度阈值 | $H_{\text{start}}$ 与 $F_{\text{snow}}$ | 过渡区间50–150 m |
-| 法线点积阈值 | $\hat{n} \cdot \hat{u} > 0.7$ 时积雪最强 | 余弦值范围0.5–0.9 |
-
----
-
-## 实际应用
-
-**案例一：地形地表过渡**
-
-在开放世界游戏地形制作中，设计师通常将基础草地设为默认材质（权重100%），然后在道路两侧、悬崖脚下等位置叠加泥土/碎石材质。使用高度混合时，草地高度图中代表凸起草叶的高值区域（$H_A > 0.7$）会从泥土平面中"穿出"，形成草边蔓延至泥路边缘的自然视觉，过渡宽度通常被控制在0.1–0.5米的视觉范围内。
-
-例如，在《刺客信条III》的地形着色系统中（Wronski, 2012），开发团队将高度混合与手绘控制贴图结合，在同一套地形材质中支持雪地、泥地、岩石、落叶四层并存，并通过实时修改 $M_A$–$M_D$ 权重蒙版模拟季节更替，整个地形材质资产（不含控制贴图）的总体积仅为38 MB。
-
-**案例二：建筑与地面衔接**
-
-建筑物底部墙角处的地面脏污效果可以用世界坐标高度混合实现——在墙基以下约15–30 cm范围内（即 $P_Z < H_{\text{wall base}} + 0.3$），将灰尘/青苔材质权重从0渐变至1，无需美术手工绘制每栋建筑的独立贴图。这一方法在拥有数百栋独立建筑的城镇场景中可节省大量贴图内存，是程序化污损（Procedural Weathering）工作流的基础。
-
-**案例三：程序化岩石覆盖**
-
-在Unreal Engine 5的材质编辑器中，将顶点颜色R通道与高度混合结合，可以在同一岩石静态网格（Static Mesh）上实现干燥面（$V_R = 0$）、湿润面（$V_R = 0.5$）、苔藓覆盖面（$V_R = 1.0$）三种状态。通过蓝图（Blueprint）在运行时动态修改顶点颜色，即可实现降雨时岩石逐渐变湿、冬季时积雪覆盖的实时响应，而无需切换任何材质实例，GPU Draw Call数量保持不变。
-
----
-
-## 常见误区
-
-**误区1：认为高度混合中的高度贴图与视差遮蔽映射中的高度贴图作用相同**
-
-高度贴图（heightmap）在材质中通常用于视差遮蔽映射（Parallax Occlusion Mapping，POM）来模拟表面凹凸的自遮蔽效果，该路径的采样结果会被送入UV偏移计算管线。而高度混合中读取的高度贴图仅作为混合权重的调制信号（即公式中的 $H_A$、$H_B$），不进入任何法线或位移计算路径。两者可以读取同一张贴图，但采样结果流向了完全不同的着色器节点，初学者常将两个功能节点混接，导致混合边界异常或POM效果失效。
-
-**误区2
+| 高度混合锐利度 | $B = \text{saturate}((H_A+M_A-H_B-M_B)/T_s)$ | $T_s = 0.05$（锐利）至 $0.3$（柔和） |
+| 积雪高度阈值 | $W = \text{saturate}((
