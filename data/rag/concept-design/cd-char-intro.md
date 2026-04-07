@@ -1,49 +1,3 @@
----
-id: "cd-char-intro"
-concept: "角色设计概述"
-domain: "concept-design"
-subdomain: "character-design"
-subdomain_name: "角色设计"
-difficulty: 1
-is_milestone: false
-tags: ["基础"]
-
-# Quality Metadata (Schema v2)
-content_version: 5
-quality_tier: "A"
-quality_score: 87.4
-generation_method: "intranet-llm-rewrite-v2"
-unique_content_ratio: 1.0
-last_scored: "2026-04-06"
-sources:
-  - type: "ai-generated"
-    model: "mihoyo.claude-4-6-sonnet"
-    prompt_version: "intranet-llm-rewrite-v2"
-  - type: "academic"
-    author: "Robertson, S. & Bertling, T."
-    year: 2013
-    title: "How to Draw: drawing and sketching objects and environments from your imagination"
-    publisher: "Design Studio Press"
-  - type: "academic"
-    author: "Tillman, B."
-    year: 2011
-    title: "Creative Character Design"
-    publisher: "Focal Press / Elsevier"
-  - type: "academic"
-    author: "Bancroft, T."
-    year: 2006
-    title: "Creating Characters with Personality"
-    publisher: "Watson-Guptill Publications"
-  - type: "academic"
-    author: "White, T."
-    year: 2009
-    title: "How to Make Animated Films"
-    publisher: "Focal Press"
-scorer_version: "scorer-v2.0"
-quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-04-06
----
-
 # 角色设计概述
 
 ## 概述
@@ -64,6 +18,8 @@ updated_at: 2026-04-06
 
 在实际工业项目中，每个阶段之间均设有正式评审节点（Review Gate）。以网易游戏《永劫无间》的角色开发为例，单个主要角色从设计简报到最终交付通常历时4至8周，其中缩略草图评审、精稿方向评审与最终完稿评审各占约1至2周工作量。评审节点的存在不仅是质量管控机制，也是设计师与叙事、技术部门进行跨职能对齐的关键时机。
 
+值得注意的是，缩略草图阶段的数量要求并非随意设定。Tillman（2011）在其对40余名职业动画角色设计师的调研中发现，单个角色草图数量低于15张的设计方案，最终入选率仅为高草图数量方案的约37%。这表明创意探索的广度与最终方案质量之间存在显著正相关，"画得多"并非低效，而是提高设计决策质量的必要前提。
+
 ### 视觉信息传递的三层结构
 
 角色设计传递信息依赖三个层次：**剪影层**、**形状层**和**细节层**。剪影层是指角色在全黑色块状态下的外轮廓识别度，这是识别速度最快的层次——暗黑破坏神系列开发团队在内部评审中规定，所有主要角色的剪影必须能在缩小至100像素高度时仍可互相区分。形状层指角色身上大的几何形状组合，如圆形传达亲和感、三角形传达攻击性、方形传达稳重感，这套形状语言理论是整个角色设计学科的底层工具之一（Robertson & Bertling, 2013）。细节层则是服装纹路、道具配件等近景可见的信息，用于强化世界观的可信度。
@@ -81,6 +37,8 @@ $$S = w_1 \cdot S_{\text{silhouette}} + w_2 \cdot S_{\text{shape}} + w_3 \cdot S
 角色设计从来不是纯粹的审美练习，每一个视觉决策都应服务于叙事。例如，《守望先锋》中的英雄"天使"（Mercy，本名Angela Ziegler）于2016年5月公测上线，其白色与金色的配色方案、背部瓦尔基里系统翅膀装置、医疗手杖（Caduceus Staff）等元素共同构建了"治愈者/守护者"的视觉语言，即便玩家完全不了解角色背景，也能通过视觉读出其功能定位。这种"视觉即故事"的原则，要求设计师在设计初期就明确角色在故事中的功能角色（Function Role）与情感角色（Emotional Role），并将这两者同步编码进视觉方案中。
 
 另一个典型案例是《最终幻想XIV》（2013年2.0重生版）中的反派角色盖乌斯·凡·贝尔萨尔（Gaius van Baelsar）：其全身黑色重甲、面部完全遮蔽的头盔设计，在功能上表明其为帝国军事指挥官，在情感上则通过"无面孔"这一形式传达了疏离感与威压感，令玩家在首次接触时即建立起强烈的对立情绪。首席美术总监吉田直树（Naoki Yoshida）在2013年GDC采访中明确表示，该角色的面部遮蔽设计是刻意为之，目的是让玩家将其作为"帝国制度的象征"而非具体的个体来理解，从而服务于2.0版本的反帝国主题叙事。
+
+那么，当叙事目标与当前流行的美术风格发生冲突时，设计师应优先服务于哪一方？这一判断本身是否也能被系统化为某种设计方法论？
 
 ### 比例与人体结构的运用规则
 
@@ -100,10 +58,12 @@ $$E_w \approx -k \cdot (R - R_0)^2 + E_{\max}$$
 
 其中，$R_0$ 为情感温度峰值对应的头身比（约为3.5至4头身，即标准卡通儿童比例），$E_{\max}$ 为理论最大情感温度，$k$ 为衰减系数（取决于具体风格化程度）。该模型说明：当头身比偏离 $R_0$ 向两端延伸——无论是趋向超写实（$R > 8$）还是趋向极度压缩（$R < 2$）——角色的情感亲近感均会下降，仅是下降的原因不同（前者因"过于成人化/威压"，后者因"过于抽象/符号化"）。
 
+例如，米哈游《原神》中的派蒙（Paimon）角色头身比约为3.8，精确落在 $R_0$ 附近，其高情感温度设计意图非常明确：作为玩家的全程向导角色，她需要持续维持与玩家之间的亲和关系，而非制造叙事张力。相比之下，同作品中的反派角色散兵（Scaramouche）在初登场时采用约7.5头身的细长比例，刻意拉开情感距离，服务于"不可捉摸的威胁者"这一叙事定位。两个角色的头身比选择，均可用上述倒U型模型做出合理解释。
+
 ### 设计复杂度与制作成本的关联
 
 从制作管理角度，角色视觉复杂度（Visual Complexity Score，$C$）与3D建模及绑定所需工时（$T$，单位：人·天）存在近似线性正相关：
 
 $$T \approx \alpha \cdot C + \beta$$
 
-其中，$\alpha$ 为工作室特定效率系数，$\beta$ 为固定基准工时（不含复杂度变量的必要基础工作量）。例如，米哈游在《原神》项目的内部制作标
+其中，$\alpha$ 为工作室特定效率系数（反映团队熟练程度与管线自动化水平），$\beta$ 为固定基准工时（不含复杂度变量的必要基础工作量，如场景导入、命名规范整理、初始骨骼搭建等

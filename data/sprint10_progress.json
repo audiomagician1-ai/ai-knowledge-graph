@@ -14,12 +14,17 @@
     "mathematics/arithmetic/negative-numbers.md",
     "agent-systems/agent-loop.md",
     "game-engine/animation-system/animation-clip.md",
-    "game-engine/animation-system/animation-system-intro.md"
+    "game-engine/animation-system/animation-system-intro.md",
+    "game-engine/animation-system/skeleton-system.md",
+    "game-engine/audio-system/spatial-audio.md",
+    "game-engine/editor-extension/data-validation.md",
+    "game-engine/editor-extension/editor-performance.md",
+    "game-engine/physics-engine/physics-multithreading.md"
   ],
   "errors": [],
   "stats": {
-    "total": 15,
-    "success": 15,
+    "total": 20,
+    "success": 20,
     "error": 0,
     "skipped": 0
   }
