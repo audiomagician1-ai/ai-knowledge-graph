@@ -1,36 +1,3 @@
----
-id: "anim-aim-offset"
-concept: "Aim Offset"
-domain: "animation"
-subdomain: "blend-space"
-subdomain_name: "BlendSpace"
-difficulty: 3
-is_milestone: false
-tags: ["实战"]
-
-# Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "A"
-quality_score: 76.3
-generation_method: "ai-rewrite-v1"
-unique_content_ratio: 1.0
-last_scored: "2026-04-06"
-sources:
-  - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
-  - type: "book"
-    citation: "Doran, J. (2014). Unreal Engine Game Development Blueprints. Packt Publishing."
-  - type: "documentation"
-    citation: "Epic Games. (2023). Aim Offset Reference Documentation. Unreal Engine Online Docs, UE5.3."
-  - type: "paper"
-    citation: "Kovar, L., Gleicher, M., & Pighin, F. (2002). Motion Graphs. ACM SIGGRAPH 2002 Proceedings, 21(3), 473–482."
-scorer_version: "scorer-v2.0"
-quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-03-26
----
-
-
 # 瞄准偏移（Aim Offset）
 
 ## 概述
@@ -89,7 +56,7 @@ $$P_{\text{blend}} = (1-\alpha)(1-\beta)\,\Delta P_A + \alpha(1-\beta)\,\Delta P
 
 ### Mesh Space 叠加与 Local Space 叠加的本质差异
 
-叠加姿势分为两种空间类型：**Mesh Space**（网格空间）和 **Local Space**（局部空间）。Mesh Space 下，每块骨骼的叠加旋转量相对于角色根骨骼（`root`）的世界坐标系计算，因此无论父骨骼如何旋转，叠加效果在世界视角下保持一致；Local Space 下，叠加旋转量相对于每块骨骼的父骨骼坐标系累积，链式传播会在骨骼链较长时（如脊柱含 4 块骨骼）累积可观的误差。Aim Offset 强制要求使用 Mesh Space 叠加，正是为了保证在角色做翻滚、侧倾等剧烈动作时，上半身的瞄准方向仍能相对摄像机保持稳定，不随骨骼链翻转而产生意外偏移（Kovar et al., 2002）。
+叠加姿势分为两种空间类型：**Mesh Space**（网格空间）和 **Local Space**（局部空间）。Mesh Space 下，每块骨骼的叠加旋转量相对于角色根骨骼（`root`）的世界坐标系计算，因此无论父骨骼如何旋转，叠加效果在世界视角下保持一致；Local Space 下，叠加旋转量相对于每块骨骼的父骨骼坐标系累积，链式传播会在骨骼链较长时（如脊柱含 4 块骨骼）累积可观的误差。Aim Offset 强制要求使用 Mesh Space 叠加，正是为了保证在角色做翻滚、侧倾等剧烈动作时，上半身的瞄准方向仍能相对摄像机保持稳定，不随骨骼链翻转而产生意外偏移（Kovar, Gleicher, & Pighin, 2002）。
 
 ---
 
@@ -105,7 +72,11 @@ $$\Delta R = R_{\text{ctrl}} - R_{\text{actor}}$$
 
 $$\hat{\Delta R}_t = \lambda \cdot \hat{\Delta R}_{t-1} + (1 - \lambda) \cdot \Delta R_t$$
 
-其中 $\lambda \in [0, 1)$ 为平滑系数（典型值为 0.1～0.3），$\hat{\Delta R}_t$ 为当前帧的平滑输出值，$\Delta R_t$ 为当前帧的原始输入值。$\lambda$ 越大，过渡越平滑但响应越迟钝；$\lambda$ 越小，响应越灵敏但可能出现抖动。
+其中 $\lambda \in [0, 1)$ 为平滑系数（典型值为 0.1～0.3），$\hat{\Delta R}_t$ 为当前帧的平滑输出值，$\Delta R_t$ 为当前帧的原始输入值。$\lambda$ 越大，过渡越平滑但响应越迟钝；$\lambda$ 越小，响应越灵敏但可能出现抖动。在帧率敏感的竞技类射击游戏中，建议将 $\lambda$ 设置为与帧率无关的时间步长加权形式：
+
+$$\lambda = e^{-k \cdot \Delta t}$$
+
+其中 $k$ 为衰减系数（典型值 5.0～15.0），$\Delta t$ 为当前帧时间（单位：秒），例如在 60fps 下 $\Delta t \approx 0.0167\text{s}$，当 $k = 10$ 时 $\lambda \approx 0.846$，保证帧率变化时平滑行为一致。
 
 ---
 
@@ -119,8 +90,13 @@ $$\hat{\Delta R}_t = \lambda \cdot \hat{\Delta R}_{t-1} + (1 - \lambda) \cdot \D
    - 获取 `PlayerController->GetControlRotation()` 作为 $R_{\text{ctrl}}$；
    - 获取 `Character->GetActorRotation()` 作为 $R_{\text{actor}}$；
    - 计算 `DeltaRotation = NormalizeAxis(ControlRotation.Yaw - ActorRotation.Yaw)` 和 `DeltaRotation.Pitch`；
-   - 对 Pitch 值进行钳制：`Clamp(Pitch, -90.0, 90.0)`。
+   - 对 Pitch 值进行钳制：`Clamp(Pitch, -90.0, 90.0)`；
+   - 将上述值写入动画蓝图变量 `AimYaw` 和 `AimPitch`。
 
 2. **动画蓝图驱动**：将计算得到的 `AimYaw` 和 `AimPitch` 浮点变量传入 Aim Offset 节点的对应输入引脚。
 
-3. **输出混合**：Aim Offset 节点输出的叠加姿势经由 `Layered Blend Per Bone`（起始骨骼设置为 `spine_01`，`Blend Depth` 设置为 -1 以
+3. **输出混合**：Aim Offset 节点输出的叠加姿势经由 `Layered Blend Per Bone`（起始骨骼设置为 `spine_01`，`Blend Depth` 设置为 -1 以对整条脊柱链生效），与下半身基础动画状态机输出的姿势进行分层合并，最终通过 `Output Pose` 节点输出至角色骨骼网格体。
+
+### AI 敌人角色的自动瞄准
+
+**案例**：在 AI 控制的敌人角色中，Aim Offset 同样适用，但驱动参数来源不同。AI 角色通常无 `PlayerController`，其瞄准方向由行为树（Behavior Tree）中

@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,483 (1,044 BE + 386 FE + 53 E2E) | 2026-04-07 |
+| **测试总数** | 1,499 (1,052 BE + 386 FE + 61 E2E) | 2026-04-07 |
 | **tsc errors** | 0 | 2026-04-07 |
 | **Open Issues** | 0 | 2026-04-07 |
 | **RAG 质量** | 6,300 docs — legacy 6,156 avg 79.5 + new 144 avg 84.0 → global avg 79.6 | 2026-04-07 |
@@ -320,7 +320,8 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/lib/hooks/useNotifications.ts | 通知提醒hook (Notification API + daily reminder) |
 | apps/api/utils/metrics.py | API指标收集器 (请求数/错误率/响应时间/per-endpoint) |
 | apps/api/routers/notes.py | 概念笔记CRUD + bulk sync + stats API |
-| apps/api/routers/community.py | 社区建议API (suggestions/voting/stats) |
+| apps/api/routers/analytics.py | 学习分析API (difficulty-map/domain-heatmap/learning-velocity/content-quality-signals) |
+| apps/api/routers/community.py | 社区建议API (suggestions/voting/moderation/feedback-aggregation) |
 | workers/src/ | Cloudflare Workers代理后端 |
 
 ---
@@ -373,7 +374,9 @@ python scripts/build_exe.py  # 输出到 release/
 - ✅ 排行榜页面 (/leaderboard): 模拟全站排名 + 个人成绩卡 + Supabase-ready
 - ✅ 概念笔记系统: useConceptNotes (localStorage+后端双写) + notes-api.ts + 15 BE测试
 - ✅ 笔记后端同步: debounced双向同步 (localStorage↔/api/notes) + bulk sync + pull-on-mount
-- ✅ 社区共建图谱: community.py API (suggestions/voting/stats) + CommunityPage + 11 BE测试
+- ✅ 社区共建图谱: community.py API (suggestions/voting/moderation/feedback) + CommunityPage + 22 BE测试
+- ✅ 学习分析API: analytics.py (4个分析端点: difficulty-map/domain-heatmap/velocity/quality-signals) + 8 BE测试
+- ✅ 内联反馈: InlineFeedback组件 (学习页👍👎快捷评价 + 详细反馈表单 → 自动提交到社区)
 - ✅ 首页浮动导航栏: 分析/排行/笔记/社区/设置快捷入口
 - ✅ 图谱页Hub栏: 新增"路径"按钮
 - ✅ 社区审核工作流 (管理员审批/拒绝建议 + 审核队列 + 删除 + Bearer token鉴权 + 状态筛选)
@@ -381,4 +384,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-07 | **Scope**: V2.0 complete — community moderation (approve/reject/queue/delete/feedback-aggregation) + voice auto-lang-detect + inline feedback in LearnPage + 36 new tests | **Result**: 1,044 BE + 386 FE + 53 E2E all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-07 | **Scope**: V2.0 complete + analytics API (4 endpoints) + inline feedback + community moderation (22 BE tests) + E2E community/notes tests | **Result**: 1,052 BE + 386 FE + 61 E2E all pass, tsc: 0 errors, 0 open issues, build OK
