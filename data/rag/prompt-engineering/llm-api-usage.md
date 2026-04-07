@@ -1,98 +1,191 @@
----
-id: "llm-api-usage"
-concept: "LLM API调用(OpenAI/Claude)"
-domain: "ai-engineering"
-subdomain: "prompt-engineering"
-subdomain_name: "Prompt工程"
-difficulty: 4
-is_milestone: false
-tags: ["API"]
-
-# Quality Metadata (Schema v2)
-content_version: 2
-quality_tier: "S"
-quality_score: 82.9
-generation_method: "ai-rewrite-v1"
-unique_content_ratio: 1.0
-last_scored: "2026-04-06"
-sources:
-  - type: "ai-generated"
-    model: "claude-sonnet-4-20250514"
-    prompt_version: "ai-rewrite-v1"
-scorer_version: "scorer-v2.0"
-quality_method: intranet-llm-rewrite-v2
-updated_at: 2026-04-01
----
-
-
 # LLM API调用（OpenAI/Claude）
 
 ## 概述
 
-LLM API调用是通过HTTP请求与大语言模型服务交互的标准化接口方式，开发者无需自行部署模型即可获得GPT-4、Claude 3等模型的推理能力。OpenAI于2020年6月随GPT-3发布了首个商业化LLM API，随后Anthropic在2023年推出Claude API，两者共同确立了当前LLM API的基本范式——以JSON格式传递对话历史，接收流式或完整的文本响应。
+LLM API调用是通过标准化HTTP接口与远端大语言模型服务交互的工程实践，开发者无需部署千亿参数模型即可获得GPT-4o、Claude 3.5 Sonnet等前沿模型的推理能力。OpenAI于2020年6月随GPT-3发布首个商业LLM API（Brown et al., 2020），该论文同期证明了少样本提示（few-shot prompting）在API层面的有效性，彻底改变了NLP应用的开发范式。Anthropic于2023年3月推出Claude API，在接口设计上做出了与OpenAI显著不同的工程决策——将系统提示词从消息数组中独立为顶层`system`参数，这一差异源于Anthropic对"宪法AI"（Constitutional AI）训练方法中系统指令地位的特殊强调（Bai et al., 2022）。
 
-OpenAI API与Claude API在接口设计上存在明显差异，但都遵循RESTful原则。OpenAI采用`/v1/chat/completions`端点，消息结构使用`role`（system/user/assistant）和`content`字段；Claude API使用`/v1/messages`端点，且将系统提示词从消息列表中独立为顶层`system`参数，这一设计差异直接影响提示词工程的实现方式。掌握两者的API调用不仅是构建AI应用的基础操作，更是理解模型行为、控制生成质量、管理成本的关键技能。
+正确调用LLM API涉及认证安全、消息结构设计、采样参数调优、流式处理、错误重试、Token成本管理等六个维度，任何一个维度的失误都会导致功能异常或成本失控。本文系统梳理两大主流API的技术细节与工程陷阱。
 
 ## 核心原理
 
 ### 请求结构与认证机制
 
-两个API均通过HTTP Header传递API密钥进行身份验证。OpenAI使用`Authorization: Bearer sk-...`格式，Claude使用`x-api-key: sk-ant-...`加上`anthropic-version: 2023-06-01`版本头（此版本头为必填项，缺失会导致400错误）。请求体的核心参数包括：`model`（指定模型版本如`gpt-4o`或`claude-3-5-sonnet-20241022`）、`messages`（对话历史数组）、`max_tokens`（最大输出token数）。
+两个API均通过HTTP请求头传递密钥。OpenAI使用`Authorization: Bearer sk-proj-...`格式；Claude则需要同时提供`x-api-key: sk-ant-...`和`anthropic-version: 2023-06-01`两个请求头，后者为**必填项**，缺失时服务器返回400错误而非降级处理，这是初次接入时最常见的失败原因。
 
-OpenAI的最小可运行请求示例：
+消息结构是两者最核心的差异所在。OpenAI的Chat Completions API（`POST /v1/chat/completions`）将系统提示词嵌入消息数组：
+
 ```json
 {
   "model": "gpt-4o",
   "messages": [
-    {"role": "system", "content": "你是助手"},
-    {"role": "user", "content": "你好"}
+    {"role": "system", "content": "你是专业的代码审查工程师"},
+    {"role": "user", "content": "审查以下Python函数"},
+    {"role": "assistant", "content": "好的，请提供代码"},
+    {"role": "user", "content": "def add(a,b): return a+b"}
   ],
-  "max_tokens": 100
+  "max_tokens": 512,
+  "temperature": 0.2
 }
 ```
 
-Claude的等效请求需将系统提示词提取到顶层：
+Claude的Messages API（`POST /v1/messages`）将系统提示词提升为顶层参数，消息数组中不允许出现`system`角色：
+
 ```json
 {
   "model": "claude-3-5-sonnet-20241022",
-  "system": "你是助手",
-  "messages": [{"role": "user", "content": "你好"}],
-  "max_tokens": 100
+  "system": "你是专业的代码审查工程师",
+  "messages": [
+    {"role": "user", "content": "审查以下Python函数：def add(a,b): return a+b"}
+  ],
+  "max_tokens": 512,
+  "temperature": 0.2
 }
 ```
 
-### 响应格式与流式输出
+Claude API还要求消息数组必须以`user`角色开头，且`user`/`assistant`必须交替出现，连续出现同一角色会触发422验证错误——这一强制性的对话结构约束是OpenAI所没有的。
 
-两个API的响应结构不同，处理时需分别解析。OpenAI返回的文本位于`response.choices[0].message.content`，token用量在`response.usage`中包含`prompt_tokens`、`completion_tokens`、`total_tokens`三个字段。Claude的响应文本位于`response.content[0].text`，token统计字段名为`input_tokens`和`output_tokens`（注意字段命名与OpenAI不同）。
+### 采样参数的数学含义
 
-流式输出（Streaming）通过设置`"stream": true`启用，服务端返回`text/event-stream`格式的Server-Sent Events。OpenAI每个事件的增量文本在`delta.content`中，Claude在`delta.text`中，且Claude的流式事件类型更丰富，包括`content_block_start`、`content_block_delta`、`message_delta`等五种事件类型，需逐一处理以正确拼接完整响应。
+LLM生成文本的过程本质是在词汇表上进行概率采样。设模型对下一个token的logit向量为 $z \in \mathbb{R}^{|V|}$，经过temperature缩放后的概率分布为：
 
-### 多轮对话的状态管理
+$$p_i = \frac{\exp(z_i / T)}{\sum_{j} \exp(z_j / T)}$$
 
-LLM API本身是**无状态的**——每次调用必须将完整的对话历史包含在`messages`数组中，服务端不保存任何会话状态。这意味着实现10轮对话时，第10次请求需携带前9轮的全部消息。对话历史累积会导致`prompt_tokens`线性增长，当总token数超过模型上下文窗口（GPT-4o为128K tokens，Claude 3.5 Sonnet为200K tokens）时，API会返回`context_length_exceeded`错误。
+其中 $T$ 即`temperature`参数。当 $T \to 0$ 时，分布趋向于one-hot（贪心解码，输出极为确定）；当 $T = 1$ 时，使用模型原始概率；当 $T > 1$ 时，分布趋于均匀，随机性增大。
 
-管理多轮对话的常见策略是维护一个消息列表，每次用户输入后追加`{"role": "user", "content": ...}`，收到响应后追加`{"role": "assistant", "content": ...}`。Python的`openai`官方库（1.0.0+版本，2023年11月重构了客户端API）和`anthropic`库都封装了这一逻辑，但底层仍是每次发送完整历史。
+`top_p`（nucleus sampling，Holtzman et al., 2020）则是动态截断：将token按概率降序排列，选取累积概率恰好超过 $p$ 的最小token集合 $V_p$，仅在此集合内采样：
+
+$$V_p = \arg\min_{S \subseteq V} |S| \quad \text{s.t.} \quad \sum_{i \in S} p_i \geq p$$
+
+实践中，OpenAI官方建议**不要同时修改`temperature`和`top_p`**，因为两者叠加会使生成行为难以预测。对于代码生成、数据抽取等需要确定性的任务，建议设置`temperature=0`；对于创意写作，建议`temperature=0.7~1.0`，`top_p=0.9`。
+
+`max_tokens`参数控制最大输出长度，但注意两个API计费均基于**输入+输出**的总token数，而非仅输出。GPT-4o的上下文窗口为128K tokens，`claude-3-5-sonnet-20241022`的上下文窗口为200K tokens，超出上限会触发400错误。
+
+### 响应格式解析
+
+OpenAI的响应体中，生成文本位于`response.choices[0].message.content`，停止原因（`stop`/`length`/`content_filter`）位于`response.choices[0].finish_reason`，Token用量在`response.usage`下包含`prompt_tokens`、`completion_tokens`、`total_tokens`三个字段。
+
+Claude的响应文本位于`response.content[0].text`（注意是数组，因为Claude支持`tool_use`等多类型content block），停止原因在`response.stop_reason`（值为`end_turn`/`max_tokens`/`stop_sequence`），Token统计字段为`input_tokens`和`output_tokens`（命名与OpenAI不同，混用代码时易产生KeyError）。
+
+## 关键方法与工程实践
+
+### 流式输出（Streaming）
+
+对于长文本生成场景，流式输出可将首字节延迟从数十秒降低到毫秒级，显著改善用户体验。两个API均通过Server-Sent Events（SSE）协议实现流式传输，请求时设置`stream=True`即可。
+
+OpenAI Python SDK流式处理示例：
+```python
+from openai import OpenAI
+client = OpenAI()
+with client.chat.completions.create(
+    model="gpt-4o",
+    messages=[{"role": "user", "content": "写一篇500字的文章"}],
+    stream=True
+) as stream:
+    for chunk in stream:
+        delta = chunk.choices[0].delta.content
+        if delta:
+            print(delta, end="", flush=True)
+```
+
+Anthropic SDK的流式处理语法略有不同，使用`stream()`上下文管理器，且事件类型更为细粒度（`text_delta`、`input_json_delta`等），支持在流中监听tool use的JSON构建过程。
 
 ### 错误处理与重试策略
 
-两个API都存在速率限制（Rate Limit），OpenAI按`TPM`（每分钟token数）和`RPM`（每分钟请求数）双维度限制，超限返回HTTP 429状态码。推荐的重试策略是指数退避（Exponential Backoff）：首次重试等待1秒，第二次2秒，第三次4秒，最多重试3次。网络超时建议将`timeout`设置为30-60秒，因为大型模型的首个token延迟（TTFT，Time To First Token）可达数秒。
+LLM API的常见错误码及处理策略：
+- **429 RateLimitError**：触发速率限制，应实施指数退避（exponential backoff）重试，建议初始等待1秒，最大等待60秒，最多重试5次。
+- **400 BadRequestError**：请求参数错误（如Claude缺少`anthropic-version`头、消息角色顺序错误），此类错误不应重试。
+- **500/529 InternalServerError**：服务端临时故障，可重试。
+- **context_length_exceeded**：输入超过模型上下文窗口，需压缩消息历史（如仅保留最近N轮对话或使用摘要压缩）。
+
+例如，使用`tenacity`库实现OpenAI API的健壮重试：
+```python
+from tenacity import retry, stop_after_attempt, wait_exponential
+from openai import RateLimitError
+
+@retry(
+    retry=retry_if_exception_type(RateLimitError),
+    wait=wait_exponential(multiplier=1, min=1, max=60),
+    stop=stop_after_attempt(5)
+)
+def call_openai(messages):
+    return client.chat.completions.create(
+        model="gpt-4o", messages=messages
+    )
+```
+
+### Token计算与成本管理
+
+精确的Token计算对于控制API成本至关重要。OpenAI官方提供`tiktoken`库用于离线计算token数：
+
+```python
+import tiktoken
+enc = tiktoken.encoding_for_model("gpt-4o")
+tokens = enc.encode("你好，世界！Hello World!")
+print(len(tokens))  # 输出：9（中文按UTF-8子词分割，效率低于英文）
+```
+
+以GPT-4o的定价为例（截至2024年底），输入为$2.50/百万tokens，输出为$10.00/百万tokens。若每次调用消耗500输入tokens + 200输出tokens，则每1000次调用成本为：$0.00125 × 1000 + 0.002 × 1000 = $3.25。Claude 3.5 Sonnet的输入定价为$3.00/百万tokens，输出为$15.00/百万tokens，成本结构与OpenAI相近但输出更贵。
+
+**提示缓存（Prompt Caching）**是两者均支持的重要成本优化手段：Claude API通过在`system`或消息内容中添加`{"type": "text", "text": "...", "cache_control": {"type": "ephemeral"}}`标记，可将缓存命中的输入token成本降低至90%；OpenAI则对超过1024 tokens的重复前缀自动触发缓存，缓存命中价格为标准价格的50%。
 
 ## 实际应用
 
-**构建客服问答系统**：将产品文档作为`system`提示词注入，用户问题作为`user`消息，通过维护`messages`列表实现多轮追问。使用Claude API时，可将长篇产品手册（最多约150,000词）放入`system`字段，利用其200K上下文窗口优势，避免RAG（检索增强生成）的额外复杂性。
+### 案例：多轮对话状态管理
 
-**批量文本处理**：对于需要处理1000条文本分类任务的场景，可利用OpenAI的Batch API（2024年4月上线），以`/v1/batches`端点提交JSONL文件，成本降低50%，但需接受最长24小时的异步处理延迟。同步API适合实时场景，Batch API适合离线处理。
+LLM API本身是**无状态**的——每次请求必须携带完整的对话历史，服务端不保存上下文。这意味着随着对话轮次增加，输入token线性增长。
 
-**函数调用（Function Calling）**：OpenAI的`tools`参数和Claude的`tools`参数支持结构化输出，通过JSON Schema定义函数签名，模型可输出结构化的函数调用请求而非自由文本，这是构建Agent工具调用链的核心机制。
+一个实用的滑动窗口对话管理器：
+```python
+class ConversationManager:
+    def __init__(self, system_prompt: str, max_history_tokens: int = 8000):
+        self.system_prompt = system_prompt
+        self.history = []
+        self.max_tokens = max_history_tokens
+
+    def add_turn(self, user_msg: str, assistant_msg: str):
+        self.history.append({"role": "user", "content": user_msg})
+        self.history.append({"role": "assistant", "content": assistant_msg})
+        # 当历史超限时，删除最早的一轮（保留system prompt不计入）
+        while self._estimate_tokens() > self.max_tokens and len(self.history) > 2:
+            self.history.pop(0)
+            self.history.pop(0)
+
+    def get_openai_messages(self):
+        return [{"role": "system", "content": self.system_prompt}] + self.history
+```
+
+### 案例：Function Calling / Tool Use
+
+OpenAI的Function Calling（2023年6月引入）和Claude的Tool Use（2024年4月引入）是LLM API最重要的能力扩展，允许模型在生成文本时触发外部函数调用，实现真正的AI Agent。
+
+OpenAI定义工具的结构：
+```json
+{
+  "type": "function",
+  "function": {
+    "name": "get_weather",
+    "description": "获取指定城市的当前天气",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "city": {"type": "string", "description": "城市名称"}
+      },
+      "required": ["city"]
+    }
+  }
+}
+```
+
+当模型决定调用工具时，响应中`finish_reason`为`tool_calls`（OpenAI）或`tool_use`（Claude），开发者解析出函数名和参数后执行本地函数，将结果以`tool`角色（OpenAI）或`tool_result`（Claude）添加回消息列表，再次发起请求，模型据此生成最终回答。
 
 ## 常见误区
 
-**误区一：认为设置相同参数两个API行为完全一致**。`temperature=1.0`在OpenAI和Claude中的实际采样行为不同，因为两者底层的温度缩放公式应用于不同阶段。Claude的`temperature`默认值为1.0，而GPT-4系列默认为1.0，但两者在`temperature=0`时的确定性程度也存在微小差异，不能假设跨平台结果可互换。
+**误区一：认为`temperature=0`保证完全确定性输出。** 实际上，由于GPU浮点运算的非确定性（不同批次大小、并行度下浮点加法顺序不同），相同参数的多次调用仍可能产生细微差异。OpenAI官方文档明确指出`temperature=0`仅"大体确定"（mostly deterministic），需要`seed`参数配合才能提高复现性（但仍不保证100%确定）。
 
-**误区二：将API密钥硬编码在代码中**。API密钥一旦提交至公开代码仓库，通常在30秒内就会被自动扫描工具（如GitHub Secret Scanning）检测，OpenAI和Anthropic均会自动撤销泄露的密钥。正确做法是通过环境变量（`os.environ.get("OPENAI_API_KEY")`）或`.env`文件（配合`python-dotenv`库）传递密钥。
+**误区二：Claude的`system`参数等同于OpenAI消息数组中的system消息。** 两者在模型内部的处理权重不同——Claude在RLHF训练阶段对`system`参数赋予了更高的指令遵循优先级，而OpenAI的system消息与其他消息在技术上处于同等地位，优先级完全依赖提示词措辞。
 
-**误区三：忽略`max_tokens`参数会导致响应被截断**。OpenAI的`max_tokens`限制仅针对**输出**tokens，而Claude的`max_tokens`是**必填参数**（不设置直接报错），且Claude 3系列的默认最大输出为4096 tokens，若任务需要更长输出（最高支持8192 tokens for Claude 3.5）必须显式设置。
+**误区三：直接将两个API的客户端代码混用。** `openai` Python SDK与`anthropic` Python SDK在异步支持、流式接口、错误类型上均有差异，混用会导致难以调试的运行时错误。建议通过适配器模式（Adapter Pattern）封装统一接口。
 
-## 知识关联
+**误区四：忽视`max_tokens`对输出截断的影响。** 设置过小的`max_tokens`会导致输出在句子中间被截断，`finish_reason`变为`length`而非`stop`。在解析结构化输出（如JSON）时，截断后的JSON无法被正确解析，应始终检查`finish_reason`。
 
-本文涉及的`temperature`参数仅作了基本介绍，**Temperature与采样策略**这一后续主题将深入分析`top_p`、`top_k`（Claude独有）以及`frequency_penalty`等参数对输出分布的精确影响。`prompt_tokens`计费逻辑引出**Token经济与成本优化**，需要理解如何用tiktoken库（OpenAI）或Claude的token计数API精确预估成本。Function Calling机制是**AI Agent概述**的直接前置技术，Agent的工具调用循环本质上是多次API调用的编排。而掌握两个主流API的标准化调用方式，也是进行**LLM评估基准**测试的技术基础——评估框架（如EleutherAI的lm-evaluation-harness）正是通过标准化API接口对模型进行批量推理测评的。
+**误区五：在生产环境中明文存储API密钥。** API密钥一旦泄露将立即被扫描工具发现并滥用，正确做法是通过环境变量（`os.environ["

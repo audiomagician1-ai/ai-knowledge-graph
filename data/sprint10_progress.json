@@ -25,6 +25,7 @@
     "game-engine/resource-management/patching-system.md",
     "game-engine/serialization/property-serialization.md",
     "game-engine/unity-architecture/unity-audio.md",
+    "game-engine/unity-architecture/unity-profiler.md",
     "game-live-ops/ops-uc-rollback-strategy.md",
     "game-publishing/pub-pr-steam-sales.md",
     "game-qa/qa-at-ci-integration.md",
@@ -49,12 +50,16 @@
     "product-design/interaction-design/dark-mode-design.md",
     "product-design/interaction-design/design-system.md",
     "product-design/visual-design/typography.md",
-    "product-design/visual-design/visual-design-overview.md"
+    "product-design/visual-design/visual-design-overview.md",
+    "programming-basics/iteration-vs-recursion.md",
+    "programming-basics/strings.md",
+    "prompt-engineering/llm-api-usage.md",
+    "prompt-engineering/system-prompt-design.md"
   ],
   "errors": [],
   "stats": {
-    "total": 50,
-    "success": 50,
+    "total": 55,
+    "success": 55,
     "error": 0,
     "skipped": 0
   }
