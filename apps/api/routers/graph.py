@@ -934,3 +934,68 @@ async def compare_concepts(
         },
     }
 
+
+@router.get("/stats/global")
+async def get_global_stats():
+    """Aggregated cross-domain statistics for Dashboard radar/overview."""
+    domains_path = _get_domains_path()
+    if not os.path.isfile(domains_path):
+        return {"domains": [], "totals": {}}
+
+    with open(domains_path, "r", encoding="utf-8") as f:
+        raw = json.load(f)
+    domain_list = raw.get("domains", raw) if isinstance(raw, dict) else raw
+
+    domain_stats = []
+    total_concepts = 0
+    total_edges = 0
+    total_milestones = 0
+    difficulty_sum = 0
+    difficulty_count = 0
+
+    for d in domain_list:
+        did = d.get("id", "")
+        try:
+            seed = _load_seed(did)
+        except Exception:
+            continue
+        concepts = seed.get("concepts", [])
+        edges = seed.get("edges", [])
+        nc = len(concepts)
+        ne = len(edges)
+        milestones = sum(1 for c in concepts if c.get("is_milestone"))
+        diffs = [c.get("difficulty", 5) for c in concepts]
+        avg_diff = round(sum(diffs) / max(1, len(diffs)), 1)
+        subdomains = set(c.get("subdomain_id", "") for c in concepts)
+
+        domain_stats.append({
+            "id": did,
+            "name": d.get("name", did),
+            "icon": d.get("icon", ""),
+            "color": d.get("color", "#888"),
+            "concepts": nc,
+            "edges": ne,
+            "milestones": milestones,
+            "subdomains": len(subdomains),
+            "avg_difficulty": avg_diff,
+        })
+        total_concepts += nc
+        total_edges += ne
+        total_milestones += milestones
+        difficulty_sum += sum(diffs)
+        difficulty_count += len(diffs)
+
+    cross_links = _load_cross_links()
+
+    return {
+        "domains": domain_stats,
+        "totals": {
+            "domains": len(domain_stats),
+            "concepts": total_concepts,
+            "edges": total_edges,
+            "milestones": total_milestones,
+            "cross_links": len(cross_links),
+            "avg_difficulty": round(difficulty_sum / max(1, difficulty_count), 1),
+        },
+    }
+

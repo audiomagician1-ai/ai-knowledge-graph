@@ -13,6 +13,7 @@ import { DomainComparison } from '@/components/dashboard/DomainComparison';
 import { RecentActivity } from '@/components/dashboard/RecentActivity';
 import { WeeklyReport } from '@/components/dashboard/WeeklyReport';
 import { StudyPatterns } from '@/components/dashboard/StudyPatterns';
+import { DomainRadar } from '@/components/dashboard/DomainRadar';
 import type { Domain } from '@akg/shared';
 
 /**
@@ -232,6 +233,9 @@ export function DashboardPage() {
 
         {/* Study Patterns (V2.1) */}
         <StudyPatterns />
+
+        {/* Domain Mastery Radar (V2.2) */}
+        <DomainRadar />
 
         {/* Domain Progress Cards */}
         <section>
