@@ -78,10 +78,10 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,643 (1,084 BE + 498 FE + 61 E2E) | 2026-04-07 |
+| **测试总数** | 1,658 (1,089 BE + 503 FE + 61 E2E + 5 Compare) | 2026-04-07 |
 | **tsc errors** | 0 | 2026-04-07 |
 | **Open Issues** | 0 | 2026-04-07 |
-| **RAG 质量** | 6,300 docs — Sprint 10 进行中 (70/80), global avg **79.9→80+** (target) | 2026-04-07 |
+| **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
 
 ---
 
@@ -102,8 +102,9 @@ data/rag/          — RAG知识文档 (6,300篇)
 > | Sprint 7 | ✅ | Tier-S Booster — 416/425 完成 (98%), 9 skipped (name mismatch), S:706→1096, avg 78.5→79.5 |
 > | Sprint 8 | ✅ | 6新域144篇全量升级 (ST 86.0, CB 84.1, IT 84.8, DS 83.9, SY 83.8, CT 81.5), 新域avg 84.0 |
 > | Sprint 9 | ✅ | Legacy底部200篇targeted boost (200/200完成, 0 errors, global avg 79.6→79.9) |
+> | Sprint 10 | ✅ | 底部90篇定向改写 (90/80 超额, sfx+game-design+SE+technical-art+version-control), global avg **80.0** |
 >
-> **目标**: 全量v2覆盖 + 均分80+ ← 当前 **79.9** (Sprint 9完成, S:1289 A:5011 B/C:0)
+> **目标**: 全量v2覆盖 + 均分80+ ← ✅ **达成 80.0** (Sprint 10完成, S:1298 A:5002 B/C:0)
 > **脚本**: scripts/_batch_sprint6.py, scripts/_batch_sprint6_5.py, scripts/_batch_tier_b_parallel.py, scripts/_batch_tier_s_booster.py
 
 ### V1.0 剩余任务
@@ -151,7 +152,8 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ Hub栏交流按钮 → 导航到 /community (修复TODO)
 - ✅ SmartNextSteps智能推荐 (分析图谱+进度推荐下一步: 继续学习/解锁新概念/里程碑接近/复习)
 - ✅ useGraphKeyNav键盘导航 (ArrowKeys箭头键在连接节点间导航, Enter学习, Esc取消)
-- 🔄 RAG Sprint 10: 底部80篇定向改写 → 目标全局avg 80.0+ (当前进度: 70/80)
+- ✅ RAG Sprint 10 完成: 90/80 超额 → 全局avg **80.0** 达成
+- ✅ ConceptCompare API + 组件 (概念对比: 连接/前置/相似度 + route fix)
 
 ### V2.1 分析与智能增强 Sprint (2026-04-07, 进行中)
 - ✅ AI自动审核 (POST /community/suggestions/{id}/auto-moderate: 启发式质量评分+垃圾检测+批量审核)
@@ -428,4 +430,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-07 | **Scope**: V2.1 analytics+moderation sprint (AI auto-moderate + weekly-report + study-patterns + notes-export + graph-LOD + bookmarks + streak-rewards) + Sprint 10 RAG (70/80) | **Result**: 1,084 BE + 498 FE + 61 E2E all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-07 | **Scope**: Sprint 10 RAG complete (90/80, avg 80.0 ✅) + ConceptCompare API/component + rescore verification | **Result**: 1,089 BE + 503 FE + 61 E2E all pass, tsc: 0 errors, 0 open issues, build OK
