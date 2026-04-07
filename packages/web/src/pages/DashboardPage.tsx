@@ -8,6 +8,7 @@ import { readLearningTime } from '@/lib/hooks/useLearningTimer';
 import { StudyGoalWidget } from '@/components/common/StudyGoalWidget';
 import { fetchWithRetry } from '@/lib/utils/fetch-retry';
 import { DomainComparison } from '@/components/dashboard/DomainComparison';
+import { RecentActivity } from '@/components/dashboard/RecentActivity';
 import type { Domain } from '@akg/shared';
 
 /**
@@ -234,6 +235,15 @@ export function DashboardPage() {
         {/* Domain Comparison (V2.1) */}
         <section className="rounded-xl p-5" style={{ backgroundColor: 'var(--color-surface-1)' }}>
           <DomainComparison maxDomains={12} />
+        </section>
+
+        {/* Recent Activity (V2.1) */}
+        <section className="rounded-xl p-5" style={{ backgroundColor: 'var(--color-surface-1)' }}>
+          <h2 className="text-base font-semibold mb-3 flex items-center gap-2">
+            <Clock size={16} className="text-blue-500" />
+            最近学习
+          </h2>
+          <RecentActivity maxItems={8} />
         </section>
       </div>
     </div>
