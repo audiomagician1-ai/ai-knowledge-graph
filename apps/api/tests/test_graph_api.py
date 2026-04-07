@@ -3207,3 +3207,81 @@ async def test_phase37_30_domains_registered():
         resp = await client.get("/api/graph/domains")
         data = resp.json()
         assert len(data) >= 30, f"Expected >= 30 domains, got {len(data)}"
+
+
+# ── Topology Endpoint Tests (V2.1) ──────────────────────
+
+
+@pytest.mark.asyncio
+async def test_topology_default_domain():
+    """GET /api/graph/topology/ai-engineering should return topology analysis."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/topology/ai-engineering")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["domain_id"] == "ai-engineering"
+        assert data["total_concepts"] == 400
+        assert data["total_edges"] == 615
+        assert "subdomains" in data
+        assert len(data["subdomains"]) == 15
+        assert "entry_points" in data
+        assert "terminal_nodes" in data
+        assert "milestones" in data
+        assert "top_connected" in data
+        assert len(data["top_connected"]) <= 10
+
+
+@pytest.mark.asyncio
+async def test_topology_subdomains_have_stats():
+    """Topology subdomains should include total, milestones, avg_difficulty."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/topology/ai-engineering")
+        data = resp.json()
+        for sub_id, sub_stats in data["subdomains"].items():
+            assert "total" in sub_stats
+            assert "milestones" in sub_stats
+            assert "avg_difficulty" in sub_stats
+            assert sub_stats["total"] > 0
+
+
+@pytest.mark.asyncio
+async def test_topology_milestones():
+    """Topology milestones should list milestone nodes with id, name, difficulty."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/topology/ai-engineering")
+        data = resp.json()
+        assert len(data["milestones"]) > 0
+        for m in data["milestones"]:
+            assert "id" in m
+            assert "name" in m
+            assert "difficulty" in m
+
+
+@pytest.mark.asyncio
+async def test_topology_top_connected():
+    """Top connected nodes should be sorted by degree descending."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/topology/ai-engineering")
+        data = resp.json()
+        degrees = [n["degree"] for n in data["top_connected"]]
+        assert degrees == sorted(degrees, reverse=True)
+
+
+@pytest.mark.asyncio
+async def test_topology_math_domain():
+    """Mathematics topology should work correctly."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/topology/mathematics")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["domain_id"] == "mathematics"
+        assert data["total_concepts"] == 269
+        assert len(data["subdomains"]) == 12
+
+
+@pytest.mark.asyncio
+async def test_topology_not_found():
+    """Nonexistent domain should return 404."""
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        resp = await client.get("/api/graph/topology/nonexistent")
+        assert resp.status_code == 404

@@ -20,6 +20,9 @@ import {
 } from 'lucide-react';
 import { useSettingsStore } from '@/lib/store/settings';
 import { useAuthStore } from '@/lib/store/auth';
+import { GraphMiniStats } from '@/components/graph/GraphMiniStats';
+import { GraphLegend } from '@/components/graph/GraphLegend';
+import { SubdomainFilter } from '@/components/graph/SubdomainFilter';
 
 const log = createLogger('GraphPage');
 
@@ -33,7 +36,7 @@ export function GraphPage() {
 
   const {
     graphData, loading, selectedNode, activeSubdomain,
-    loadGraphData, selectNode,
+    loadGraphData, selectNode, setActiveSubdomain,
   } = useGraphStore();
   const { activeDomain, fetchDomains, getActiveDomainInfo, switchDomain } = useDomainStore();
   const { progress, computeStats, refreshStreak, initEdges, recommendedIds, syncWithBackend, backendSynced } = useLearningStore();
@@ -206,9 +209,29 @@ export function GraphPage() {
             </div>
           </div>
         ) : (
+          <>
           <Suspense fallback={<div className="flex items-center justify-center h-full"><Loader size={28} className="animate-spin" style={{ color: 'var(--color-text-tertiary)' }} /></div>}>
             <KnowledgeGraph key={activeDomain} data={enrichedGraphData!} onNodeClick={handleNodeClick} selectedNodeId={selectedNode?.id} activeSubdomain={activeSubdomain} domainColor={getActiveDomainInfo()?.color} domainId={activeDomain} />
           </Suspense>
+          {/* Graph HUD overlays */}
+          {!chatOpen && enrichedGraphData && (
+            <>
+              <GraphMiniStats
+                nodes={enrichedGraphData.nodes}
+                domainName={getActiveDomainInfo()?.name || ''}
+                domainColor={getActiveDomainInfo()?.color || '#8b5cf6'}
+                streak={useLearningStore.getState().streak.current}
+              />
+              <SubdomainFilter
+                nodes={enrichedGraphData.nodes}
+                activeSubdomain={activeSubdomain}
+                onSubdomainChange={setActiveSubdomain}
+                domainColor={getActiveDomainInfo()?.color || '#8b5cf6'}
+              />
+              <GraphLegend />
+            </>
+          )}
+          </>
         )}
       </div>
 

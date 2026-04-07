@@ -29,6 +29,16 @@ sources:
     year: 2001
     title: "An Efficient Representation for Irradiance Environment Maps"
     venue: "ACM SIGGRAPH 2001 Proceedings, pp. 497–500"
+  - type: "academic"
+    author: "Karis, Brian"
+    year: 2013
+    title: "Real Shading in Unreal Engine 4"
+    venue: "ACM SIGGRAPH 2013 Course: Physically Based Shading in Theory and Practice"
+  - type: "book"
+    author: "Akenine-Möller, Tomas; Haines, Eric; Hoffman, Naty"
+    year: 2018
+    title: "Real-Time Rendering, 4th Edition"
+    venue: "CRC Press, ISBN 978-1138627000, Chapter 10: Local Illumination and Texture"
 scorer_version: "scorer-v2.0"
 quality_method: intranet-llm-rewrite-v3
 updated_at: 2026-04-06
@@ -40,9 +50,9 @@ updated_at: 2026-04-06
 
 立方体贴图（Cubemap）是一种由6张正方形纹理图像组成的特殊纹理类型，这6张图像分别对应一个虚拟立方体的六个面：正X（+X）、负X（−X）、正Y（+Y）、负Y（−Y）、正Z（+Z）、负Z（−Z）。采样时不使用传统的二维UV坐标，而是使用一个从立方体中心出发的三维方向向量，GPU根据该向量的最大分量确定采样哪个面，再将剩余两个分量换算为该面上的二维坐标。这种采样机制使立方体贴图天然适合表达"从某一点向四面八方观察"的全向信息。
 
-立方体贴图最早在1986年由Ned Greene在论文《Environment Mapping and Other Applications of World Projections》（IEEE Computer Graphics and Applications, Vol. 6, No. 11）中系统提出，作为球面映射的替代方案。与球面贴图相比，立方体贴图在极点处不存在严重的像素拉伸问题，且可以用标准双线性过滤进行平滑采样。OpenGL在1.3版本（2001年）将立方体贴图纳入核心规范（`GL_TEXTURE_CUBE_MAP`），此后它成为实时渲染中最基础的全向纹理形式。DirectX 8.0同年也将其列为`D3DRTYPE_CUBETEXTURE`类型，进一步确立了其跨API的标准地位。
+立方体贴图最早在1986年由Ned Greene在论文《Environment Mapping and Other Applications of World Projections》（IEEE Computer Graphics and Applications, Vol. 6, No. 11, pp. 21–29）中系统提出，作为球面映射的替代方案。与球面贴图相比，立方体贴图在极点处不存在严重的像素拉伸问题，且可以用标准双线性过滤进行平滑采样。OpenGL在1.3版本（2001年）将立方体贴图纳入核心规范（`GL_TEXTURE_CUBE_MAP`），此后它成为实时渲染中最基础的全向纹理形式。DirectX 8.0同年也将其列为`D3DRTYPE_CUBETEXTURE`类型，进一步确立了其跨API的标准地位。
 
-立方体贴图之所以重要，在于它用6张共计 $6N^2$ 个像素的图像，以较低的存储代价近似编码了场景中某点的完整球面视野，直接支撑了天空盒渲染、实时环境反射和动态漫反射辐照度等多项核心技术。
+立方体贴图之所以重要，在于它用6张共计 $6N^2$ 个像素的图像，以较低的存储代价近似编码了场景中某点的完整球面视野，直接支撑了天空盒渲染、实时环境反射和动态漫反射辐照度等多项核心技术。目前主流游戏引擎（Unity 2022 LTS、Unreal Engine 5.3、Godot 4.2）均将立方体贴图作为一等纹理类型原生支持，GPU驱动层（NVIDIA Turing架构及之后）也针对立方体贴图采样路径做了专门的硬件优化。
 
 ---
 
@@ -54,9 +64,15 @@ updated_at: 2026-04-06
 
 $$u = \frac{1}{2}\left(\frac{s_c}{m} + 1\right), \quad v = \frac{1}{2}\left(\frac{t_c}{m} + 1\right)$$
 
-其中 $s_c$、$t_c$ 是与该面对应的另两个分量（各面的 $s_c/t_c$ 映射方向在OpenGL规范附录F中有精确定义）。这一步骤完全在硬件纹理单元（TMU）中完成，开发者只需向片元着色器传入方向向量即可，无需手动做坐标变换。
+其中 $s_c$、$t_c$ 是与该面对应的另两个分量（各面的 $s_c/t_c$ 映射方向在OpenGL规范附录F中有精确定义），$m$ 是最大分量的绝对值，起到归一化分母的作用，确保 $u, v \in [0,1]$。这一步骤完全在硬件纹理单元（TMU，Texture Mapping Unit）中完成，开发者只需向片元着色器传入方向向量即可，无需手动做坐标变换。
 
-**例如**：若方向向量为 $\mathbf{r} = (0.8, 0.3, -0.5)$，则 $|r_x| = 0.8$ 最大，采样+X面，$m = 0.8$，此时 $s_c = -r_z = 0.5$，$t_c = r_y = 0.3$，代入公式得 $u = 0.5 \times (0.5/0.8 + 1) = 0.8125$，$v = 0.5 \times (0.3/0.8 + 1) = 0.6875$，即在+X面纹理上的采样坐标。
+**例如**：若方向向量为 $\mathbf{r} = (0.8, 0.3, -0.5)$，则 $|r_x| = 0.8$ 最大，采样+X面，$m = 0.8$。按OpenGL规范，+X面的 $s_c = -r_z = 0.5$，$t_c = -r_y = -0.3$（注意Y轴方向取反，以匹配纹理坐标系原点在左上角的惯例）。代入公式得：
+
+$$u = \frac{1}{2}\left(\frac{0.5}{0.8} + 1\right) = \frac{1}{2}(0.625 + 1) = 0.8125$$
+
+$$v = \frac{1}{2}\left(\frac{-0.3}{0.8} + 1\right) = \frac{1}{2}(-0.375 + 1) = 0.3125$$
+
+即在+X面纹理上的采样坐标为 $(0.8125, 0.3125)$。若该面分辨率为 $512 \times 512$，则实际采样像素位置约为 $(416, 160)$。
 
 ### 存储规模与分辨率权衡
 
@@ -68,11 +84,21 @@ $$P_{\text{cube}} = 6N^2$$
 
 $$P_{\text{equirect}} = 2N^2$$
 
-两者之比 $P_{\text{cube}} / P_{\text{equirect}} = 3$，说明立方体贴图总像素数是等距柱状图的3倍。然而等距柱状图在极点处存在严重冗余（角分辨率极不均匀），有效信息量与立方体贴图相当，这是两种格式各有适用场景的根本原因。
+两者之比 $P_{\text{cube}} / P_{\text{equirect}} = 3$，说明立方体贴图总像素数是等距柱状图的3倍。然而等距柱状图在极点处存在严重冗余（角分辨率极不均匀），有效信息量与立方体贴图相当，这是两种格式各有适用场景的根本原因。在实际工程中，一张每面 $512 \times 512$、RGBA8格式的立方体贴图占用显存为 $6 \times 512^2 \times 4 = 6{,}291{,}456$ 字节（约6 MB）；若启用完整Mipmap链，总显存增量为原始大小的 $1/3$，即额外约2 MB，总共约8 MB。对于HDR格式（RGBA16F），显存占用翻倍，每面 $1024 \times 1024$ 的HDR立方体贴图约占48 MB。
+
+**思考题**：如果将立方体贴图每面分辨率从 $512 \times 512$ 提升到 $1024 \times 1024$，角分辨率（每像素覆盖的立体角 $\Delta\Omega$）会如何变化？提升分辨率对天空盒渲染与对IBL预过滤贴图的收益是否相同，为什么？
 
 ### 天空盒渲染原理
 
-天空盒利用立方体贴图模拟无限远的天空背景。实现时，以摄像机位置为中心绘制一个单位立方体，顶点着色器中**去除观察矩阵的平移分量**（只保留旋转部分，即取 `mat4` 的左上 `mat3` 子矩阵），使天空盒始终跟随摄像机旋转而不随平移产生视差。片元着色器将顶点的本地坐标直接作为方向向量采样立方体贴图。深度缓冲写入需设为 `gl_FragDepth = 1.0`，或将天空盒安排在所有不透明几何体之后渲染（Early-Z剔除），确保实体几何体像素覆盖天空盒区域，避免过度绘制（Overdraw）带来的额外带宽消耗。
+天空盒利用立方体贴图模拟无限远的天空背景。实现时，以摄像机位置为中心绘制一个单位立方体，顶点着色器中**去除观察矩阵的平移分量**（只保留旋转部分，即取 `mat4` 的左上 `mat3` 子矩阵），使天空盒始终跟随摄像机旋转而不随平移产生视差。GLSL顶点着色器中的典型写法为：
+
+```glsl
+mat4 viewNoTranslation = mat4(mat3(u_view)); // 去除平移
+vec4 clipPos = u_proj * viewNoTranslation * vec4(aPos, 1.0);
+gl_Position = clipPos.xyww; // 使NDC深度值强制为1.0（w/w = 1）
+```
+
+片元着色器将顶点的本地坐标直接作为方向向量采样立方体贴图，即 `texture(u_skybox, vLocalPos)`。深度值强制设为 `gl_FragDepth = 1.0`（或利用 `clipPos.xyww` 使透视除法后深度恒为1.0），确保实体几何体像素始终覆盖天空盒区域，避免过度绘制（Overdraw）带来的额外带宽消耗。
 
 ### 镜面环境反射
 
@@ -80,32 +106,10 @@ $$P_{\text{equirect}} = 2N^2$$
 
 $$\mathbf{r} = \mathbf{v} - 2(\mathbf{v} \cdot \mathbf{n})\,\mathbf{n}$$
 
-即GLSL内置函数 `reflect(v, n)` 的展开形式。用 $\mathbf{r}$ 采样立方体贴图即得该像素"看到"的环境颜色。该技术称为**环境映射（Environment Mapping）**，单次纹理采样即可近似镜面反射，计算代价远低于光线追踪或屏幕空间反射（SSR）。代价在于立方体贴图是预烘焙的静态快照，无法反映动态物体，且隐含假设光源无限远（反射向量不随表面位置发生视差偏移）。
+即GLSL内置函数 `reflect(v, n)` 的展开形式。其中 $\mathbf{v} \cdot \mathbf{n}$ 为视线与法线的点积，当视线与法线夹角为45°时，$\mathbf{v} \cdot \mathbf{n} = \cos 45° \approx 0.707$。用 $\mathbf{r}$ 采样立方体贴图即得该像素"看到"的环境颜色。该技术称为**环境映射（Environment Mapping）**，单次纹理采样即可近似镜面反射，计算代价远低于光线追踪或屏幕空间反射（SSR）。代价在于立方体贴图是预烘焙的静态快照，无法反映动态物体，且隐含假设光源无限远（反射向量不随表面位置发生视差偏移）。对于平面反射或近场反射，这一假设会引入明显的视差错误，此时需要局部校正立方体贴图（Localized Cubemap / Box Projection Correction）技术来修正（Akenine-Möller et al., 2018，第10.2章）。
 
 ### 动态立方体贴图与漫反射辐照度
 
-动态场景中可将摄像机放置于物体中心，朝6个坐标轴方向各用90°视场角（FOV = 90°，宽高比 = 1:1）渲染一帧，结果写入实时立方体贴图，逐帧或按需更新。此操作每帧需额外6次完整绘制调用（Draw Call），代价高昂，在2023年典型移动端GPU（如Apple A16）上约消耗0.5–2 ms，通常仅对场景中最重要的一两个反射对象执行，或降低动态更新频率（如每隔4帧更新一次）。
+动态场景中可将摄像机放置于物体中心，朝6个坐标轴方向各用90°视场角（FOV = 90°，宽高比 = 1:1）渲染一帧，结果写入实时立方体贴图，逐帧或按需更新。此操作每帧需额外6次完整绘制调用（Draw Call），代价高昂，在2023年典型移动端GPU（如Apple A16 Bionic，6核GPU，峰值算力约1.4 TFLOPS）上约消耗0.5–2 ms，通常仅对场景中最重要的一两个反射对象执行，或降低动态更新频率（如每隔4帧更新一次，以25 ms/帧预算计每次更新代价约1帧）。
 
-另一个进阶用途是将高频镜面立方体贴图通过球谐函数（Spherical Harmonics，SH）压缩为低频漫反射辐照度表示。Ramamoorthi & Hanrahan（2001）在SIGGRAPH论文中证明，漫反射辐照度在球面上变化极为平滑，仅需**L2阶共9个SH系数**（每个颜色通道）即可以99%以上的精度重建，每个系数是一个RGB三元组，整体存储量仅为27个浮点数，远小于一张完整的辐照度立方体贴图。这9个系数经由对原始HDR立方体贴图的球面积分卷积运算预计算得到，用于PBR材质的环境漫反射项（Irradiance）计算。
-
----
-
-## 实际应用
-
-**天空盒**是立方体贴图最直接的应用，几乎所有3D游戏和实时渲染引擎均采用此方案。Unity中将6张图片设置为 `Cubemap` 资源类型后，直接赋予天空盒材质（`Skybox/Cubemap` shader）即可；Unreal Engine 5的 `SkyAtmosphere` 系统也可与立方体贴图天空盒结合使用，前者负责大气散射物理计算，后者负责远景云层与星空细节叠加。
-
-**汽车漆面与镜面材质**通过环境映射立方体贴图实现高质量反射效果。游戏《极品飞车：最高通缉》（Need for Speed: Most Wanted，2005）率先在主机平台上大规模使用预烘焙立方体贴图为车漆提供廉价但高质量的反射，此后成为赛车游戏的行业标准做法。在WebGL应用中，Three.js（r150版本及之后）的 `CubeCamera` 类封装了动态立方体贴图的6面渲染流程，开发者可直接调用 `CubeCamera.update(renderer, scene)` 触发更新。
-
-**IBL（基于图像的照明，Image-Based Lighting）**中，HDR格式的立方体贴图（通常由 `.hdr` 或 `.exr` 格式的等距柱状全景图转换而来，分辨率典型值为 $2048 \times 1024$）作为环境光源。经过对不同粗糙度 $\alpha$ 的预过滤（Split-Sum Approximation，由Epic Games的Brian Karis在2013年SIGGRAPH课程中提出），结果存储在立方体贴图的不同Mipmap层级，称为Pre-filtered Environment Map（预过滤环境贴图）。UE4的Lumen全局光照系统出现之前（UE5, 2022年），IBL是实时PBR渲染管线中环境光照的主流解决方案，广泛应用于影视级离线渲染（如Pixar的RenderMan）和游戏引擎的实时渲染路径。
-
-**点光源阴影**也是立方体贴图的重要应用场景。Shadow Cubemap（阴影立方体贴图）将同样的6面渲染思路应用于阴影深度图生成：以点光源为中心向6个方向各渲染一张深度图，合成完整的全向阴影信息。OpenGL 4.6的几何着色器（Geometry Shader）支持在单个Draw Call内通过 `gl_Layer` 内置变量同时输出到立方体贴图的6个面，将原本6次绘制调用缩减为1次，显著降低CPU端驱动开销。
-
----
-
-## 常见误区
-
-**误区一：立方体贴图6张图的接缝会导致可见裂缝**
-早期实现中，相邻面边缘像素采样确实存在接缝问题，但OpenGL 3.2（2009年）引入了 `GL_TEXTURE_CUBE_MAP_SEAMLESS` 标志，启用后GPU会在面边界处执行跨面双线性过滤，彻底消除接缝。开发者需要主动调用 `glEnable(GL_TEXTURE_CUBE_MAP_SEAMLESS)`，忘记启用是出现接缝的最常见原因。Vulkan中等效功能由 `VkSamplerCreateInfo` 结构体的 `flags` 字段中 `VK_SAMPLER_CREATE_NON_SEAMLESS_CUBE_MAP_BIT_EXT` 的**缺省状态**（即默认开启无缝采样）实现。
-
-**误区二：采样立方体贴图的向量必须先手动归一化**
-许多教程要求手动 `normalize(r)` 后再采样，但这并非必要——GPU在执行立方体贴图采样时使用向量方向（最大分量符号决定面选择，除以 $|m|$ 做归一化），未归一化的向量只要方向正
+另一个进阶用途是将高频镜面立方体贴图通过球谐函数（Spherical Harmonics，SH）压缩为低频漫反射辐照度表示。Ramamoorthi & Hanrahan（2001）在SIGGRAPH论文中证明，漫反射辐照度在球面上变化极为平滑，仅需**L2阶共9个SH系数**（每个颜色通道）即可以99%以上的精度重建。具体而言，9个SH基函数分别为 $Y_0^0, Y_1^{-1}, Y_1^0, Y_1^1, Y_2^{-2}, Y_2^{-1}, Y_2^0, Y_2^1, Y_2^2$，每个系数是一个RGB三元组，整体存储量仅为27个浮点数（108字节），远小于一张 $64 \times 64$ 分辨率的辐照度立方体贴图（$6 \times 64^2 \times 12 = 294{,}912$ 字节，RGBA16F格式）。这9个系数经由对原始HDR立方体贴图的球面积分卷积运算预计算得到，运行时仅需一次简单的多项式求值，用于PBR材质

@@ -1,0 +1,21 @@
+{
+  "completed": [
+    "data-structures/linked-list.md",
+    "game-design/design-docs/user-story.md",
+    "game-qa/qa-rt-data-regression.md",
+    "level-design/level-editor/unity-scene-editor.md",
+    "product-design/growth/growth-overview.md",
+    "product-design/interaction-design/empty-state-design.md",
+    "product-design/product-management/technical-debt.md",
+    "programming-basics/loops.md",
+    "software-engineering/architecture-patterns/se-clean-arch.md",
+    "software-engineering/code-review/se-cr-game-specific.md"
+  ],
+  "errors": [],
+  "stats": {
+    "total": 10,
+    "success": 10,
+    "error": 0,
+    "skipped": 0
+  }
+}

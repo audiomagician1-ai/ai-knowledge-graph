@@ -1,0 +1,322 @@
+[
+  {
+    "score": 50,
+    "path": "philosophy/epistemology/knowledge-definition.md"
+  },
+  {
+    "score": 52,
+    "path": "3d-art/3da-retopo-edge-density.md"
+  },
+  {
+    "score": 52,
+    "path": "biology/genetics/pedigree-analysis.md"
+  },
+  {
+    "score": 52,
+    "path": "concept-design/cd-char-fantasy.md"
+  },
+  {
+    "score": 52,
+    "path": "economics/behavioral-econ/heuristics-econ.md"
+  },
+  {
+    "score": 52,
+    "path": "game-audio-music/game-audio-music-arrangement-technique.md"
+  },
+  {
+    "score": 52,
+    "path": "game-design/feedback-systems/failure-feedback.md"
+  },
+  {
+    "score": 52,
+    "path": "game-engine/scene-management/level-transition.md"
+  },
+  {
+    "score": 52,
+    "path": "game-live-ops/ops-cs-feedback-loop.md"
+  },
+  {
+    "score": 52,
+    "path": "game-live-ops/ops-so-progression-speed.md"
+  },
+  {
+    "score": 52,
+    "path": "game-live-ops/ops-so-season-structure.md"
+  },
+  {
+    "score": 52,
+    "path": "game-publishing/pub-pc-milestone-payment.md"
+  },
+  {
+    "score": 52,
+    "path": "level-design/guidance-design/show-dont-tell.md"
+  },
+  {
+    "score": 52,
+    "path": "philosophy/ancient-philosophy/xunzi.md"
+  },
+  {
+    "score": 52,
+    "path": "product-design/data-driven/ltv-calculation.md"
+  },
+  {
+    "score": 52,
+    "path": "product-design/product-thinking/mvp-design.md"
+  },
+  {
+    "score": 52,
+    "path": "psychology/social-psychology/bystander-effect.md"
+  },
+  {
+    "score": 53,
+    "path": "philosophy/epistemology/foundationalism.md"
+  },
+  {
+    "score": 53,
+    "path": "philosophy/ethics/justice-concept.md"
+  },
+  {
+    "score": 54,
+    "path": "game-design/balance-design/rubber-banding.md"
+  },
+  {
+    "score": 54,
+    "path": "game-design/feedback-systems/negative-feedback-loop.md"
+  },
+  {
+    "score": 54,
+    "path": "philosophy/ancient-philosophy/confucius.md"
+  },
+  {
+    "score": 54,
+    "path": "psychology/social-psychology/cognitive-dissonance.md"
+  },
+  {
+    "score": 55,
+    "path": "3d-art/3da-rig-intro.md"
+  },
+  {
+    "score": 55,
+    "path": "economics/international-econ/balance-of-payments.md"
+  },
+  {
+    "score": 55,
+    "path": "economics/public-econ/rent-seeking.md"
+  },
+  {
+    "score": 55,
+    "path": "game-design/player-psychology/endowment-effect.md"
+  },
+  {
+    "score": 55,
+    "path": "game-publishing/pub-rc-china-isbn.md"
+  },
+  {
+    "score": 55,
+    "path": "game-publishing/pub-rc-coppa-compliance.md"
+  },
+  {
+    "score": 55,
+    "path": "game-publishing/pub-ua-retargeting.md"
+  },
+  {
+    "score": 55,
+    "path": "philosophy/aesthetics/aesthetics-overview.md"
+  },
+  {
+    "score": 55,
+    "path": "philosophy/ancient-philosophy/plato-republic.md"
+  },
+  {
+    "score": 55,
+    "path": "product-design/product-thinking/innovation-types.md"
+  },
+  {
+    "score": 55,
+    "path": "psychology/developmental-psychology/theory-of-mind.md"
+  },
+  {
+    "score": 56,
+    "path": "philosophy/epistemology/gettier-problem.md"
+  },
+  {
+    "score": 57,
+    "path": "3d-art/3da-hs-floating-geo.md"
+  },
+  {
+    "score": 57,
+    "path": "3d-art/3da-modeling-workflow.md"
+  },
+  {
+    "score": 57,
+    "path": "3d-art/3da-prop-hero-asset.md"
+  },
+  {
+    "score": 57,
+    "path": "animation/anim-anticipation.md"
+  },
+  {
+    "score": 57,
+    "path": "biology/ecology/ecosystem-services.md"
+  },
+  {
+    "score": 57,
+    "path": "biology/evolution/convergent-evolution.md"
+  },
+  {
+    "score": 57,
+    "path": "concept-design/cd-char-npc-lineup.md"
+  },
+  {
+    "score": 57,
+    "path": "concept-design/cd-color-temperature-shift.md"
+  },
+  {
+    "score": 57,
+    "path": "concept-design/cd-leading-lines.md"
+  },
+  {
+    "score": 57,
+    "path": "concept-design/cd-mood-intro.md"
+  },
+  {
+    "score": 57,
+    "path": "concept-design/cd-muscle-groups.md"
+  },
+  {
+    "score": 57,
+    "path": "concept-design/cd-one-point.md"
+  },
+  {
+    "score": 57,
+    "path": "concept-design/cd-outdoor-lighting.md"
+  },
+  {
+    "score": 57,
+    "path": "concept-design/cd-prop-exploded-view.md"
+  },
+  {
+    "score": 57,
+    "path": "concept-design/cd-prop-kit-of-parts.md"
+  },
+  {
+    "score": 57,
+    "path": "concept-design/cd-prop-readability-test.md"
+  },
+  {
+    "score": 57,
+    "path": "concept-design/cd-reflected-light.md"
+  },
+  {
+    "score": 57,
+    "path": "concept-design/cd-rhythm-pattern.md"
+  },
+  {
+    "score": 57,
+    "path": "concept-design/cd-shadow-shapes.md"
+  },
+  {
+    "score": 57,
+    "path": "concept-design/cd-style-anime.md"
+  },
+  {
+    "score": 57,
+    "path": "concept-design/cd-style-consistency-check.md"
+  },
+  {
+    "score": 57,
+    "path": "concept-design/cd-style-mixing.md"
+  },
+  {
+    "score": 57,
+    "path": "concept-design/cd-style-semi-realistic.md"
+  },
+  {
+    "score": 57,
+    "path": "concept-design/cd-two-point.md"
+  },
+  {
+    "score": 57,
+    "path": "concept-design/cd-visdev-design-brief.md"
+  },
+  {
+    "score": 57,
+    "path": "concept-design/cd-visdev-refinement.md"
+  },
+  {
+    "score": 57,
+    "path": "economics/development-econ/microfinance.md"
+  },
+  {
+    "score": 57,
+    "path": "economics/microeconomics/externalities.md"
+  },
+  {
+    "score": 57,
+    "path": "finance/fintech/mobile-payment.md"
+  },
+  {
+    "score": 57,
+    "path": "finance/fixed-income/convertible-bonds.md"
+  },
+  {
+    "score": 57,
+    "path": "finance/investment-basics/benchmark-index.md"
+  },
+  {
+    "score": 57,
+    "path": "finance/investment-basics/investment-horizon.md"
+  },
+  {
+    "score": 57,
+    "path": "finance/personal-finance/inflation-hedging.md"
+  },
+  {
+    "score": 57,
+    "path": "finance/risk-management/risk-management-overview.md"
+  },
+  {
+    "score": 57,
+    "path": "finance/stock-market/macd-indicator.md"
+  },
+  {
+    "score": 57,
+    "path": "finance/stock-market/ratio-analysis.md"
+  },
+  {
+    "score": 57,
+    "path": "finance/stock-market/stock-valuation.md"
+  },
+  {
+    "score": 57,
+    "path": "game-audio-music/game-audio-music-cutscene-scoring.md"
+  },
+  {
+    "score": 57,
+    "path": "game-audio-music/game-audio-music-music-silence.md"
+  },
+  {
+    "score": 57,
+    "path": "game-design/accessibility/audio-accessibility.md"
+  },
+  {
+    "score": 57,
+    "path": "game-design/balance-design/balance-philosophy.md"
+  },
+  {
+    "score": 57,
+    "path": "game-design/core-loop/meta-loop.md"
+  },
+  {
+    "score": 57,
+    "path": "game-design/core-loop/weekly-loop.md"
+  },
+  {
+    "score": 57,
+    "path": "game-design/design-docs/one-pager.md"
+  },
+  {
+    "score": 57,
+    "path": "game-design/difficulty-curve/difficulty-spike.md"
+  }
+]

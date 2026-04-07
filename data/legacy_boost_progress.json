@@ -104,7 +104,27 @@
     "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/biology/human-physiology/reproductive-system.md",
     "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/biology/molecular-biology/dna-structure.md",
     "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/biology/molecular-biology/recombinant-dna.md",
-    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/anti-aliasing/cg-alpha-testing-aa.md"
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/anti-aliasing/cg-alpha-testing-aa.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/anti-aliasing/cg-specular-aa.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/anti-aliasing/cg-upscaling.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/anti-aliasing/cg-velocity-buffer.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/geometry-processing/cg-impostor.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/global-illumination/cg-gi-hybrid.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/gpu-architecture/cg-bindless.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/gpu-architecture/cg-pipeline-barrier.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/pbr-materials/cg-metallic-workflow.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/post-processing/cg-chromatic-aberration.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/post-processing/cg-ssr.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/rasterization/cg-clipping.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/rasterization/cg-forward-rendering.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/rasterization/cg-projection.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/rasterization/cg-raster-intro.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/rasterization/cg-scanline.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/ray-tracing/cg-sdf-tracing.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/shader-programming/cg-shader-interop.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/shader-programming/cg-tessellation.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/texture-techniques/cg-cube-mapping.md",
+    "D:/EchoAgent/projects/ai-knowledge-graph/data/rag/computer-graphics/texture-techniques/cg-decal-system.md"
   ],
   "errors": []
 }

@@ -693,3 +693,78 @@ async def search_rag_global(
         "total": len(all_results),
     }
 
+
+@router.get("/topology/{domain_id}")
+async def get_domain_topology(domain_id: str = DEFAULT_DOMAIN):
+    """
+    返回域的拓扑分析: 子域统计、里程碑节点、入度/出度排行、孤立节点检测。
+    用于 Graph HUD 展示和学习路径优化。
+    """
+    seed_path = _get_seed_path(domain_id)
+    if not os.path.isfile(seed_path):
+        raise HTTPException(status_code=404, detail=f"Domain '{domain_id}' not found")
+
+    seed = _load_seed(domain_id)
+    concepts = seed.get("concepts", [])
+    edges = seed.get("edges", [])
+
+    # Build adjacency data
+    in_degree: dict[str, int] = {}
+    out_degree: dict[str, int] = {}
+    for c in concepts:
+        in_degree[c["id"]] = 0
+        out_degree[c["id"]] = 0
+    for e in edges:
+        src = e.get("source_id", e.get("source", ""))
+        tgt = e.get("target_id", e.get("target", ""))
+        if src in out_degree:
+            out_degree[src] += 1
+        if tgt in in_degree:
+            in_degree[tgt] += 1
+
+    # Subdomain stats
+    subdomain_stats: dict[str, dict] = {}
+    for c in concepts:
+        sub = c.get("subdomain_id", "other")
+        if sub not in subdomain_stats:
+            subdomain_stats[sub] = {"total": 0, "milestones": 0, "avg_difficulty": 0.0, "difficulties": []}
+        subdomain_stats[sub]["total"] += 1
+        subdomain_stats[sub]["difficulties"].append(c.get("difficulty", 5))
+        if c.get("is_milestone"):
+            subdomain_stats[sub]["milestones"] += 1
+
+    for sub, stats in subdomain_stats.items():
+        diffs = stats.pop("difficulties")
+        stats["avg_difficulty"] = round(sum(diffs) / len(diffs), 1) if diffs else 0
+
+    # Entry points (in_degree == 0) and terminal nodes (out_degree == 0)
+    entry_points = [cid for cid, deg in in_degree.items() if deg == 0]
+    terminal_nodes = [cid for cid, deg in out_degree.items() if deg == 0]
+
+    # Orphan nodes (no edges at all)
+    connected_ids = set()
+    for e in edges:
+        connected_ids.add(e.get("source_id", e.get("source", "")))
+        connected_ids.add(e.get("target_id", e.get("target", "")))
+    orphans = [c["id"] for c in concepts if c["id"] not in connected_ids]
+
+    # Top connected (highest in+out degree)
+    combined = {cid: in_degree.get(cid, 0) + out_degree.get(cid, 0) for cid in in_degree}
+    top_connected = sorted(combined.items(), key=lambda x: x[1], reverse=True)[:10]
+
+    # Milestones
+    milestones = [{"id": c["id"], "name": c.get("name", c["id"]), "difficulty": c.get("difficulty", 5)}
+                  for c in concepts if c.get("is_milestone")]
+
+    return {
+        "domain_id": domain_id,
+        "total_concepts": len(concepts),
+        "total_edges": len(edges),
+        "subdomains": subdomain_stats,
+        "entry_points": entry_points[:20],
+        "terminal_nodes": terminal_nodes[:20],
+        "orphan_nodes": orphans,
+        "milestones": milestones,
+        "top_connected": [{"id": cid, "degree": deg} for cid, deg in top_connected],
+    }
+
