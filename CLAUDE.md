@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,658 (1,089 BE + 503 FE + 61 E2E + 5 Compare) | 2026-04-07 |
+| **测试总数** | 1,670 (1,092 BE + 509 FE + 61 E2E + 8 Compare/GlobalStats) | 2026-04-07 |
 | **tsc errors** | 0 | 2026-04-07 |
 | **Open Issues** | 0 | 2026-04-07 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -167,9 +167,11 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ Streak里程碑奖励 (StreakRewards: 7个里程碑badge+进度条+compact/full模式)
 - ✅ 笔记页Markdown导出按钮 (NotesPage: 同步后端→导出.md文件)
 
----
+### V2.2 Dashboard增强 Sprint (2026-04-07, 进行中)
+- ✅ Global Stats API (GET /api/graph/stats/global: 跨域聚合统计)
+- ✅ DomainRadar SVG雷达图 (掌握度分布: 纯SVG无依赖+8轴上限+百分比标注)
 
-## 5. ACTIVE DECISIONS（生效中的架构决策）
+---（生效中的架构决策）
 
 | ID | 决策 | 理由 |
 |----|------|------|
@@ -360,6 +362,8 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/dashboard/WeeklyReport.tsx | 周报组件 (WoW对比卡+增量badge+总览) |
 | packages/web/src/components/dashboard/StudyPatterns.tsx | 学习习惯 (24h/周分布+峰值+一致性) |
 | packages/web/src/components/common/StreakRewards.tsx | Streak里程碑奖励 (7级badge+进度条) |
+| packages/web/src/components/dashboard/DomainRadar.tsx | 掌握度雷达图 (SVG radar chart, 8轴上限) |
+| packages/web/src/components/graph/ConceptCompare.tsx | 概念对比面板 (侧边对比+相似度+共同连接) |
 | packages/web/src/lib/utils/graph-lod.ts | Graph LOD (子域聚类+节点优先级+大域性能优化) |
 | packages/web/src/lib/hooks/useBookmarks.ts | 概念书签hook (localStorage+toggle+上限100) |
 | packages/web/src/lib/api/notes-api.ts | 笔记API客户端 (CRUD + bulk sync + stats) |
@@ -430,4 +434,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-07 | **Scope**: Sprint 10 RAG complete (90/80, avg 80.0 ✅) + ConceptCompare API/component + rescore verification | **Result**: 1,089 BE + 503 FE + 61 E2E all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-07 | **Scope**: V2.2 Dashboard sprint (DomainRadar+GlobalStats+ConceptCompare) + RAG 80.0 milestone | **Result**: 1,092 BE + 509 FE + 61 E2E all pass, tsc: 0 errors, 0 open issues, build OK
