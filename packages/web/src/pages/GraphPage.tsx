@@ -24,6 +24,7 @@ import { GraphMiniStats } from '@/components/graph/GraphMiniStats';
 import { GraphLegend } from '@/components/graph/GraphLegend';
 import { SubdomainFilter } from '@/components/graph/SubdomainFilter';
 import { GraphBreadcrumb } from '@/components/graph/GraphBreadcrumb';
+import { useGraphKeyNav } from '@/lib/hooks/useGraphKeyNav';
 
 const log = createLogger('GraphPage');
 
@@ -172,6 +173,12 @@ export function GraphPage() {
   // Reload graph when activeDomain changes
   // eslint-disable-next-line react-hooks/exhaustive-deps -- activeDomain drives reload
   useEffect(() => { loadGraphData(activeDomain); }, [activeDomain]);
+
+  // Keyboard navigation for graph (arrow keys to navigate between connected nodes)
+  useGraphKeyNav(
+    (node) => navigate(`/domain/${urlDomainId}/${node.id}`, { replace: true }),
+    (node) => navigate(`/domain/${urlDomainId}/${node.id}`),
+  );
 
 
 

@@ -14,3 +14,4 @@ export { useSpeechRecognition } from './useSpeechRecognition';
 export { useStudyGoal } from './useStudyGoal';
 export { useConceptNotes } from './useConceptNotes';
 export { useNotifications } from './useNotifications';
+export { useGraphKeyNav } from './useGraphKeyNav';

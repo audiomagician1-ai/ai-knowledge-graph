@@ -25,7 +25,6 @@
     "game-engine/resource-management/patching-system.md",
     "game-engine/serialization/property-serialization.md",
     "game-engine/unity-architecture/unity-audio.md",
-    "game-engine/unity-architecture/unity-profiler.md",
     "game-live-ops/ops-uc-rollback-strategy.md",
     "game-publishing/pub-pr-steam-sales.md",
     "game-qa/qa-at-ci-integration.md",
@@ -44,7 +43,8 @@
     "mathematics/algebra/absolute-value-func.md",
     "mathematics/arithmetic/order-of-operations.md",
     "multiplayer-network/mn-ac-trusted-computing.md",
-    "oop/generics.md"
+    "oop/generics.md",
+    "physics/thermodynamics/first-law-thermo.md"
   ],
   "errors": [],
   "stats": {
