@@ -850,3 +850,87 @@ async def get_concept_context(
         "total_siblings": len(siblings) + 1,
     }
 
+
+@router.get("/compare-concepts")
+async def compare_concepts(
+    concept_a: str = "variables",
+    concept_b: str = "loops",
+    domain_id: str = DEFAULT_DOMAIN,
+):
+    """Compare two concepts side-by-side.
+
+    Returns: names, difficulty, prerequisites, overlap metrics, and shared connections.
+    Useful for understanding relationships between two concepts.
+    """
+    graph_data = _load_seed(domain_id)
+    if not graph_data:
+        raise HTTPException(status_code=404, detail=f"Domain not found: {domain_id}")
+
+    nodes_by_id = {n["id"]: n for n in graph_data.get("concepts", graph_data.get("nodes", []))}
+
+    node_a = nodes_by_id.get(concept_a)
+    node_b = nodes_by_id.get(concept_b)
+
+    if not node_a:
+        raise HTTPException(status_code=404, detail=f"Concept not found: {concept_a}")
+    if not node_b:
+        raise HTTPException(status_code=404, detail=f"Concept not found: {concept_b}")
+
+    # Gather connections for each concept
+    edges = graph_data.get("edges", [])
+
+    def get_connections(concept_id: str) -> set:
+        connected = set()
+        for e in edges:
+            src = e.get("source_id", e.get("source", ""))
+            tgt = e.get("target_id", e.get("target", ""))
+            if src == concept_id:
+                connected.add(tgt)
+            elif tgt == concept_id:
+                connected.add(src)
+        return connected
+
+    conn_a = get_connections(concept_a)
+    conn_b = get_connections(concept_b)
+    shared = conn_a & conn_b
+
+    # Check if directly connected
+    directly_connected = concept_b in conn_a or concept_a in conn_b
+
+    # Get prereqs
+    prereqs_a = [e.get("source_id", e.get("source", "")) for e in edges if e.get("target_id", e.get("target", "")) == concept_a and e.get("relation_type") == "prerequisite"]
+    prereqs_b = [e.get("source_id", e.get("source", "")) for e in edges if e.get("target_id", e.get("target", "")) == concept_b and e.get("relation_type") == "prerequisite"]
+    shared_prereqs = set(prereqs_a) & set(prereqs_b)
+
+    return {
+        "concept_a": {
+            "id": concept_a,
+            "name": node_a.get("name", concept_a),
+            "difficulty": node_a.get("difficulty", 5),
+            "subdomain": node_a.get("subdomain_id", ""),
+            "is_milestone": node_a.get("is_milestone", False),
+            "connections": len(conn_a),
+            "prerequisites": prereqs_a,
+        },
+        "concept_b": {
+            "id": concept_b,
+            "name": node_b.get("name", concept_b),
+            "difficulty": node_b.get("difficulty", 5),
+            "subdomain": node_b.get("subdomain_id", ""),
+            "is_milestone": node_b.get("is_milestone", False),
+            "connections": len(conn_b),
+            "prerequisites": prereqs_b,
+        },
+        "comparison": {
+            "directly_connected": directly_connected,
+            "shared_connections": list(shared)[:20],
+            "shared_connection_count": len(shared),
+            "shared_prerequisites": list(shared_prereqs),
+            "same_subdomain": node_a.get("subdomain_id") == node_b.get("subdomain_id"),
+            "difficulty_gap": abs(node_a.get("difficulty", 5) - node_b.get("difficulty", 5)),
+            "similarity_score": round(
+                len(shared) / max(1, len(conn_a | conn_b)) * 100, 1
+            ),
+        },
+    }
+
