@@ -78,10 +78,10 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,530 (1,058 BE + 409 FE + 61 E2E) | 2026-04-07 |
+| **测试总数** | 1,575 (1,064 BE + 449 FE + 61 E2E) | 2026-04-07 |
 | **tsc errors** | 0 | 2026-04-07 |
 | **Open Issues** | 0 | 2026-04-07 |
-| **RAG 质量** | 6,300 docs — Sprint 10 进行中 (17/80), global avg **79.9→80+** (target) | 2026-04-07 |
+| **RAG 质量** | 6,300 docs — Sprint 10 进行中 (38/80), global avg **79.9→80+** (target) | 2026-04-07 |
 
 ---
 
@@ -143,7 +143,13 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ ConceptTooltip 悬浮提示 (概念名称+状态+难度+时间+推荐标记)
 - ✅ Topology API (GET /api/graph/topology/{domain_id}: 子域统计/入口节点/终端节点/孤立节点/里程碑/连接度TOP10)
 - ✅ DomainComparison Dashboard组件 (12域规模对比柱状图+进度条)
-- 🔄 RAG Sprint 10: 底部80篇定向改写 → 目标全局avg 80.0+ (当前进度: 17/80)
+- ✅ ConceptPrerequisites面板 (前置知识+后续解锁+导航, 集成到ChatPanel idle视图)
+- ✅ ConceptMinimap (子域概念导航地图, 状态颜色+进度指示器)
+- ✅ GraphBreadcrumb (面包屑导航: 首页>域>子域>概念, chat模式显示)
+- ✅ ShareProgress (学习进度分享: 复制+推特+下载, Dashboard集成)
+- ✅ Concept Context API (GET /api/graph/concepts/{id}/context: 前置/后续/相关/子域兄弟)
+- ✅ Hub栏交流按钮 → 导航到 /community (修复TODO)
+- 🔄 RAG Sprint 10: 底部80篇定向改写 → 目标全局avg 80.0+ (当前进度: 38/80)
 
 ---
 
@@ -330,6 +336,10 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/graph/SubdomainFilter.tsx | 子域筛选下拉: 掌握度统计+高亮切换 |
 | packages/web/src/components/graph/ConceptTooltip.tsx | 节点悬浮提示: 名称/状态/难度/时间 |
 | packages/web/src/components/dashboard/DomainComparison.tsx | 域掌握度对比: 12域规模柱状图+进度条 |
+| packages/web/src/components/graph/ConceptPrerequisites.tsx | 概念前置知识+后续解锁面板 (graph edges导航) |
+| packages/web/src/components/graph/ConceptMinimap.tsx | 子域概念导航地图 (状态颜色dot grid) |
+| packages/web/src/components/graph/GraphBreadcrumb.tsx | 面包屑导航 (首页>域>子域>概念) |
+| packages/web/src/components/common/ShareProgress.tsx | 学习进度分享 (复制/推特/下载) |
 | packages/web/src/lib/api/notes-api.ts | 笔记API客户端 (CRUD + bulk sync + stats) |
 | packages/web/src/lib/hooks/useNotifications.ts | 通知提醒hook (Notification API + daily reminder) |
 | apps/api/utils/metrics.py | API指标收集器 (请求数/错误率/响应时间/per-endpoint) |
@@ -398,4 +408,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-07 | **Scope**: V2.1 graph HUD (MiniStats+Legend+SubdomainFilter+ConceptTooltip) + topology API + DomainComparison + RAG Sprint 10 in progress (17/80) | **Result**: 1,058 BE + 409 FE + 61 E2E all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-07 | **Scope**: V2.1 graph navigation (Prerequisites+Minimap+Breadcrumb+ShareProgress+ContextAPI) + Sprint 10 RAG (38/80) | **Result**: 1,064 BE + 449 FE + 61 E2E all pass, tsc: 0 errors, 0 open issues, build OK
