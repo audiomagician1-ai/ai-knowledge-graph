@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,347 (1,007 BE + 340 FE + 47 E2E) | 2026-04-07 |
+| **测试总数** | 1,447 (1,033 BE + 361 FE + 53 E2E) | 2026-04-07 |
 | **tsc errors** | 0 | 2026-04-07 |
 | **Open Issues** | 0 | 2026-04-07 |
 | **RAG 质量** | 6,300 docs — legacy 6,156 avg 79.5 + new 144 avg 84.0 → global avg 79.6 | 2026-04-07 |
@@ -101,7 +101,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 > | Sprint 6.5 | ✅ | 全量rescore完成 — 6156/6156 (100%), avg 78.4, 0 pending |
 > | Sprint 7 | ✅ | Tier-S Booster — 416/425 完成 (98%), 9 skipped (name mismatch), S:706→1096, avg 78.5→79.5 |
 > | Sprint 8 | ✅ | 6新域144篇全量升级 (ST 86.0, CB 84.1, IT 84.8, DS 83.9, SY 83.8, CT 81.5), 新域avg 84.0 |
-> | Sprint 9 | 进行中 | Legacy底部200篇targeted boost (目标: global avg 79.6→80+) |
+> | Sprint 9 | 进行中 | Legacy底部200篇targeted boost (完成~60/200, 后台运行中) |
 >
 > **目标**: 全量v2覆盖 + 均分80+ ← 当前 79.6 (Sprint 9进行中)
 > **脚本**: scripts/_batch_sprint6.py, scripts/_batch_sprint6_5.py, scripts/_batch_tier_b_parallel.py, scripts/_batch_tier_s_booster.py
@@ -314,7 +314,12 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/common/StudyGoalWidget.tsx | 学习目标组件 (SVG进度环 + 目标设置 + 周趋势) |
 | packages/web/src/pages/LearningPathPage.tsx | 学习路径页面 (/path/:domainId, 拓扑排序导学) |
 | packages/web/src/pages/LeaderboardPage.tsx | 排行榜页面 (/leaderboard, 模拟排名 + Supabase-ready) |
+| packages/web/src/pages/CommunityPage.tsx | 社区共建页面 (/community, 建议提交/投票/浏览) |
+| packages/web/src/lib/api/notes-api.ts | 笔记API客户端 (CRUD + bulk sync + stats) |
+| packages/web/src/lib/hooks/useNotifications.ts | 通知提醒hook (Notification API + daily reminder) |
 | apps/api/utils/metrics.py | API指标收集器 (请求数/错误率/响应时间/per-endpoint) |
+| apps/api/routers/notes.py | 概念笔记CRUD + bulk sync + stats API |
+| apps/api/routers/community.py | 社区建议API (suggestions/voting/stats) |
 | workers/src/ | Cloudflare Workers代理后端 |
 
 ---
@@ -360,15 +365,19 @@ python scripts/build_exe.py  # 输出到 release/
 
 ### V2.0 社区与交互增强 Sprint (2026-04-07, 进行中)
 - ✅ 语音输入 (Web Speech API): useSpeechRecognition hook + LearnPage麦克风按钮 (zh-CN)
+- ✅ 语音多语言切换 (7种语言: zh-CN/en-US/ja-JP/ko-KR/de-DE/fr-FR/es-ES + 连续模式)
 - ✅ 学习目标系统: useStudyGoal hook + StudyGoalWidget (SVG进度环 + 7天趋势 + 达标连续)
+- ✅ 学习目标通知: useNotifications hook + 设置页通知开关 + 提醒时间选择 + 每日学习提醒
 - ✅ 学习路径页面 (/path/:domainId): 拓扑排序导学 + 分组展开 + 推荐标记 + 掌握度进度条
 - ✅ 排行榜页面 (/leaderboard): 模拟全站排名 + 个人成绩卡 + Supabase-ready
-- ✅ 首页浮动导航栏: 分析/排行/设置快捷入口
+- ✅ 概念笔记系统: useConceptNotes (localStorage+后端双写) + notes-api.ts + 15 BE测试
+- ✅ 笔记后端同步: debounced双向同步 (localStorage↔/api/notes) + bulk sync + pull-on-mount
+- ✅ 社区共建图谱: community.py API (suggestions/voting/stats) + CommunityPage + 11 BE测试
+- ✅ 首页浮动导航栏: 分析/排行/笔记/社区/设置快捷入口
 - ✅ 图谱页Hub栏: 新增"路径"按钮
-- ⬜ 社区共建图谱 (Supabase Edge Functions)
-- ⬜ 语音输入完善 (多语言切换 + 连续模式)
-- ⬜ 学习目标通知 (Notification API)
+- ⬜ 社区审核工作流 (管理员审批/拒绝建议)
+- ⬜ 语音输入连续对话模式 (基于对话上下文的自动语言检测)
 
 ## Last Review
 
-**Date**: 2026-04-07 | **Scope**: V2.0 Sprint — voice input + study goals + learning path + leaderboard + home quick-nav + hub '路径' button + legacy RAG booster (running) | **Result**: 1,007 BE + 340 FE + 47 E2E all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-07 | **Scope**: V2.0 Sprint — notes backend sync + notifications + multi-lang voice (7 langs) + community suggestions (API+UI) + legacy RAG boost (running) | **Result**: 1,033 BE + 361 FE + 53 E2E all pass, tsc: 0 errors, 0 open issues, build OK
