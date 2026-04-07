@@ -69,12 +69,17 @@
     "software-engineering/build-systems/se-gradle.md",
     "software-engineering/build-systems/se-incremental-build.md",
     "software-engineering/build-systems/se-ubt.md",
-    "software-engineering/ci-cd/se-game-ci.md"
+    "software-engineering/ci-cd/se-game-ci.md",
+    "software-engineering/ci-cd/se-monitoring-ci.md",
+    "software-engineering/code-review/se-cr-automation.md",
+    "software-engineering/ecs-architecture/se-entt.md",
+    "software-engineering/memory-management/se-mem-intro.md",
+    "software-engineering/memory-management/se-move-semantics.md"
   ],
   "errors": [],
   "stats": {
-    "total": 70,
-    "success": 70,
+    "total": 75,
+    "success": 75,
     "error": 0,
     "skipped": 0
   }

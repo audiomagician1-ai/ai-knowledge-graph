@@ -78,10 +78,10 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,587 (1,064 BE + 462 FE + 61 E2E) | 2026-04-07 |
+| **测试总数** | 1,643 (1,084 BE + 498 FE + 61 E2E) | 2026-04-07 |
 | **tsc errors** | 0 | 2026-04-07 |
 | **Open Issues** | 0 | 2026-04-07 |
-| **RAG 质量** | 6,300 docs — Sprint 10 进行中 (47/80), global avg **79.9→80+** (target) | 2026-04-07 |
+| **RAG 质量** | 6,300 docs — Sprint 10 进行中 (70/80), global avg **79.9→80+** (target) | 2026-04-07 |
 
 ---
 
@@ -151,7 +151,19 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ Hub栏交流按钮 → 导航到 /community (修复TODO)
 - ✅ SmartNextSteps智能推荐 (分析图谱+进度推荐下一步: 继续学习/解锁新概念/里程碑接近/复习)
 - ✅ useGraphKeyNav键盘导航 (ArrowKeys箭头键在连接节点间导航, Enter学习, Esc取消)
-- 🔄 RAG Sprint 10: 底部80篇定向改写 → 目标全局avg 80.0+ (当前进度: 47/80)
+- 🔄 RAG Sprint 10: 底部80篇定向改写 → 目标全局avg 80.0+ (当前进度: 70/80)
+
+### V2.1 分析与智能增强 Sprint (2026-04-07, 进行中)
+- ✅ AI自动审核 (POST /community/suggestions/{id}/auto-moderate: 启发式质量评分+垃圾检测+批量审核)
+- ✅ 周报分析 (GET /analytics/weekly-report: WoW对比+增量百分比+总览)
+- ✅ 学习习惯分析 (GET /analytics/study-patterns: 24h分布+周分布+一致性评分+峰值时段)
+- ✅ WeeklyReport Dashboard组件 (WoW指标卡+增量badge+总体统计)
+- ✅ StudyPatterns Dashboard组件 (24h热力图+周柱状图+峰值badge)
+- ✅ 笔记导出 (GET /notes/export/markdown + /notes/export/json: 全量导出+备份)
+- ✅ Graph LOD系统 (graph-lod.ts: 子域聚类+节点优先级+大域性能优化)
+- ✅ 概念书签 (useBookmarks: localStorage持久化+100上限+toggle+桶导出)
+- ✅ Streak里程碑奖励 (StreakRewards: 7个里程碑badge+进度条+compact/full模式)
+- ✅ 笔记页Markdown导出按钮 (NotesPage: 同步后端→导出.md文件)
 
 ---
 
@@ -343,12 +355,17 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/graph/GraphBreadcrumb.tsx | 面包屑导航 (首页>域>子域>概念) |
 | packages/web/src/components/common/ShareProgress.tsx | 学习进度分享 (复制/推特/下载) |
 | packages/web/src/components/common/SmartNextSteps.tsx | 智能下一步推荐 (graph分析+优先级建议) |
+| packages/web/src/components/dashboard/WeeklyReport.tsx | 周报组件 (WoW对比卡+增量badge+总览) |
+| packages/web/src/components/dashboard/StudyPatterns.tsx | 学习习惯 (24h/周分布+峰值+一致性) |
+| packages/web/src/components/common/StreakRewards.tsx | Streak里程碑奖励 (7级badge+进度条) |
+| packages/web/src/lib/utils/graph-lod.ts | Graph LOD (子域聚类+节点优先级+大域性能优化) |
+| packages/web/src/lib/hooks/useBookmarks.ts | 概念书签hook (localStorage+toggle+上限100) |
 | packages/web/src/lib/api/notes-api.ts | 笔记API客户端 (CRUD + bulk sync + stats) |
 | packages/web/src/lib/hooks/useNotifications.ts | 通知提醒hook (Notification API + daily reminder) |
 | apps/api/utils/metrics.py | API指标收集器 (请求数/错误率/响应时间/per-endpoint) |
 | apps/api/routers/notes.py | 概念笔记CRUD + bulk sync + stats API |
 | apps/api/routers/analytics.py | 学习分析API (difficulty-map/domain-heatmap/learning-velocity/content-quality-signals) |
-| apps/api/routers/community.py | 社区建议API (suggestions/voting/moderation/feedback-aggregation) |
+| apps/api/routers/community.py | 社区建议API (suggestions/voting/moderation/feedback-aggregation/auto-moderate/batch-moderate) |
 | workers/src/ | Cloudflare Workers代理后端 |
 
 ---
@@ -411,4 +428,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-07 | **Scope**: V2.1 graph navigation sprint (Prerequisites+Minimap+Breadcrumb+ShareProgress+ContextAPI+SmartNextSteps+KeyNav) + Sprint 10 RAG (47/80) | **Result**: 1,064 BE + 462 FE + 61 E2E all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-07 | **Scope**: V2.1 analytics+moderation sprint (AI auto-moderate + weekly-report + study-patterns + notes-export + graph-LOD + bookmarks + streak-rewards) + Sprint 10 RAG (70/80) | **Result**: 1,084 BE + 498 FE + 61 E2E all pass, tsc: 0 errors, 0 open issues, build OK
