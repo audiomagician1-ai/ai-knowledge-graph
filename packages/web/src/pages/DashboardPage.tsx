@@ -22,6 +22,7 @@ const DifficultyHeatmap = lazy(() => import('@/components/dashboard/DifficultyHe
 const MilestoneTracker = lazy(() => import('@/components/dashboard/MilestoneTracker').then(m => ({ default: m.MilestoneTracker })));
 const ReviewQueue = lazy(() => import('@/components/dashboard/ReviewQueue').then(m => ({ default: m.ReviewQueue })));
 const AdaptivePathWidget = lazy(() => import('@/components/dashboard/AdaptivePathWidget').then(m => ({ default: m.AdaptivePathWidget })));
+const StudyTimeChart = lazy(() => import('@/components/dashboard/StudyTimeChart').then(m => ({ default: m.StudyTimeChart })));
 
 export function DashboardPage() {
   const navigate = useNavigate();
@@ -117,6 +118,7 @@ export function DashboardPage() {
         <Suspense fallback={<WidgetSkeleton />}><MilestoneTracker /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><AdaptivePathWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><ReviewQueue /></Suspense>
+        <Suspense fallback={<WidgetSkeleton />}><StudyTimeChart days={14} /></Suspense>
 
         {/* Domain Progress */}
         <section>

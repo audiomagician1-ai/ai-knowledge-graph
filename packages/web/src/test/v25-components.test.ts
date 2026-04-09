@@ -45,3 +45,19 @@ describe('V2.5 ChatIdleView Integration', () => {
     expect(typeof mod.ChatIdleView).toBe('function');
   });
 });
+
+describe('V2.5 StudyTimeChart', () => {
+  it('should export StudyTimeChart component', async () => {
+    const mod = await import('@/components/dashboard/StudyTimeChart');
+    expect(mod.StudyTimeChart).toBeDefined();
+    expect(typeof mod.StudyTimeChart).toBe('function');
+  });
+});
+
+describe('V2.5 DashboardPage Integration', () => {
+  it('should lazy-import StudyTimeChart in DashboardPage', async () => {
+    const mod = await import('@/pages/DashboardPage');
+    expect(mod.DashboardPage).toBeDefined();
+    expect(typeof mod.DashboardPage).toBe('function');
+  });
+});
