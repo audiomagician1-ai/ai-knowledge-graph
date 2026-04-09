@@ -175,3 +175,62 @@ async def test_study_time_daily_schema():
             assert "concepts_touched" in entry
             assert isinstance(entry["minutes"], (int, float))
             assert isinstance(entry["concepts_touched"], int)
+
+
+# ── Streak Insights ──────────────────────────────────────
+
+
+@pytest.mark.asyncio
+async def test_streak_insights_structure():
+    """Streak insights should return all expected top-level fields."""
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        response = await client.get("/api/analytics/streak-insights")
+        assert response.status_code == 200
+        data = response.json()
+        assert "current_streak" in data
+        assert "longest_streak" in data
+        assert "habit_score" in data
+        assert "activity_rate_90d" in data
+        assert "weekly_consistency" in data
+        assert "recent" in data
+        assert "best_day" in data
+        assert "weekday_distribution" in data
+        assert "all_streaks" in data
+
+
+@pytest.mark.asyncio
+async def test_streak_insights_habit_score_range():
+    """Habit score should be between 0 and 100."""
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        response = await client.get("/api/analytics/streak-insights")
+        data = response.json()
+        assert 0 <= data["habit_score"] <= 100
+
+
+@pytest.mark.asyncio
+async def test_streak_insights_weekly_consistency():
+    """Weekly consistency should have consistent_weeks, total_weeks, rate."""
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        response = await client.get("/api/analytics/streak-insights")
+        data = response.json()
+        wc = data["weekly_consistency"]
+        assert "consistent_weeks" in wc
+        assert "total_weeks" in wc
+        assert "rate" in wc
+        assert wc["total_weeks"] > 0
+
+
+@pytest.mark.asyncio
+async def test_streak_insights_weekday_distribution():
+    """Weekday distribution should have all 7 days."""
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        response = await client.get("/api/analytics/streak-insights")
+        data = response.json()
+        wd = data["weekday_distribution"]
+        expected_days = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+        for day in expected_days:
+            assert day in wd, f"Missing day: {day}"

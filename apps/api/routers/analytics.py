@@ -625,3 +625,112 @@ async def study_time_report(days: int = Query(30, ge=1, le=365)):
             "minutes_per_concept": productivity,
         },
     }
+
+
+# ── V2.5: Streak Insights & Consistency Analysis ────────
+
+
+@router.get("/analytics/streak-insights")
+async def streak_insights():
+    """Advanced streak analysis: consistency score, best/worst periods, and habit formation.
+
+    Helps users understand their learning consistency patterns
+    and provides actionable insights for habit building.
+    """
+    history = get_history(limit=10000)
+    streak_data = get_streak()
+    now = time.time()
+
+    # Collect active dates (last 90 days)
+    active_dates: set[str] = set()
+    for entry in history:
+        ts = entry.get("timestamp", 0)
+        if now - ts < 90 * 86400:
+            active_dates.add(time.strftime("%Y-%m-%d", time.localtime(ts)))
+
+    # Build 90-day activity array
+    days_90 = []
+    for i in range(90):
+        day_ts = now - (i * 86400)
+        day = time.strftime("%Y-%m-%d", time.localtime(day_ts))
+        days_90.append({"date": day, "active": day in active_dates})
+    days_90.reverse()
+
+    # Find all streaks (consecutive active days)
+    streaks = []
+    current_len = 0
+    streak_start = ""
+    for d in days_90:
+        if d["active"]:
+            if current_len == 0:
+                streak_start = d["date"]
+            current_len += 1
+        else:
+            if current_len > 0:
+                streaks.append({"start": streak_start, "length": current_len})
+            current_len = 0
+    if current_len > 0:
+        streaks.append({"start": streak_start, "length": current_len})
+
+    # Best streak
+    best_streak = max(streaks, key=lambda s: s["length"]) if streaks else {"start": "", "length": 0}
+
+    # Weekly consistency (how many weeks had >= 3 active days)
+    weekly_active: dict[int, int] = {}  # week_num -> active_days
+    for i, d in enumerate(days_90):
+        week = i // 7
+        if d["active"]:
+            weekly_active[week] = weekly_active.get(week, 0) + 1
+    total_weeks = max(1, 90 // 7)
+    consistent_weeks = sum(1 for v in weekly_active.values() if v >= 3)
+
+    # Activity rate
+    total_active = len(active_dates)
+    activity_rate = round(total_active / 90 * 100, 1)
+
+    # Weekday distribution
+    weekday_counts = [0] * 7  # Mon=0
+    for entry in history:
+        ts = entry.get("timestamp", 0)
+        if now - ts < 90 * 86400:
+            lt = time.localtime(ts)
+            weekday_counts[lt.tm_wday] += 1
+    weekday_names = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+    best_day_idx = weekday_counts.index(max(weekday_counts)) if any(weekday_counts) else 0
+
+    # Habit formation score (0-100)
+    # Based on: current streak weight + consistency + recent activity
+    recent_7 = sum(1 for d in days_90[-7:] if d["active"])
+    recent_30 = sum(1 for d in days_90[-30:] if d["active"])
+    current_streak = streak_data.get("current", 0) if isinstance(streak_data, dict) else 0
+
+    habit_score = min(100, round(
+        (current_streak / 30 * 30) +  # streak contribution (max 30)
+        (recent_7 / 7 * 25) +          # recent week (max 25)
+        (recent_30 / 30 * 25) +         # recent month (max 25)
+        (consistent_weeks / total_weeks * 20)  # weekly consistency (max 20)
+    ))
+
+    return {
+        "current_streak": current_streak,
+        "longest_streak": streak_data.get("longest", 0) if isinstance(streak_data, dict) else 0,
+        "best_streak_90d": best_streak,
+        "total_active_days_90d": total_active,
+        "activity_rate_90d": activity_rate,
+        "habit_score": habit_score,
+        "weekly_consistency": {
+            "consistent_weeks": consistent_weeks,
+            "total_weeks": total_weeks,
+            "rate": round(consistent_weeks / total_weeks * 100, 1),
+        },
+        "recent": {
+            "last_7_days": recent_7,
+            "last_30_days": recent_30,
+        },
+        "best_day": {
+            "name": weekday_names[best_day_idx],
+            "activity_count": weekday_counts[best_day_idx],
+        },
+        "weekday_distribution": dict(zip(weekday_names, weekday_counts)),
+        "all_streaks": sorted(streaks, key=lambda s: s["length"], reverse=True)[:5],
+    }

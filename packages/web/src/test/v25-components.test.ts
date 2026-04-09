@@ -61,3 +61,11 @@ describe('V2.5 DashboardPage Integration', () => {
     expect(typeof mod.DashboardPage).toBe('function');
   });
 });
+
+describe('V2.5 StreakInsights', () => {
+  it('should export StreakInsights component', async () => {
+    const mod = await import('@/components/dashboard/StreakInsights');
+    expect(mod.StreakInsights).toBeDefined();
+    expect(typeof mod.StreakInsights).toBe('function');
+  });
+});
