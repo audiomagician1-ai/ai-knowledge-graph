@@ -604,3 +604,127 @@ async def relationship_strength(domain_id: str):
         ),
     }
 
+
+# ── V3.1: Concept Cluster Analysis ────────────────────────
+
+
+@router.get("/concept-clusters/{domain_id}")
+async def concept_clusters(
+    domain_id: str,
+    min_cluster_size: int = Query(2, ge=2, le=20),
+):
+    """Detect concept clusters (tightly connected groups) within a domain.
+
+    Uses connected component analysis on the undirected graph, then computes
+    per-cluster statistics: internal edge density, avg difficulty, subdomain
+    composition, and gateway concepts (external connections).
+
+    Useful for identifying natural learning modules and study groups.
+    """
+    seed = _load_seed(domain_id)
+    concepts = seed.get("concepts", [])
+    edges = seed.get("edges", [])
+
+    if not concepts:
+        raise HTTPException(404, f"Domain '{domain_id}' has no concepts")
+
+    concept_map = {c["id"]: c for c in concepts}
+    cid_set = set(concept_map.keys())
+
+    # Build undirected adjacency
+    adj: dict[str, set[str]] = {c["id"]: set() for c in concepts}
+    for e in edges:
+        src = e.get("source_id") or e.get("source", "")
+        tgt = e.get("target_id") or e.get("target", "")
+        if src in adj and tgt in adj:
+            adj[src].add(tgt)
+            adj[tgt].add(src)
+
+    # BFS connected components
+    visited: set[str] = set()
+    components: list[set[str]] = []
+    for cid in adj:
+        if cid in visited:
+            continue
+        queue = [cid]
+        comp: set[str] = set()
+        while queue:
+            node = queue.pop()
+            if node in visited:
+                continue
+            visited.add(node)
+            comp.add(node)
+            for nb in adj[node]:
+                if nb not in visited:
+                    queue.append(nb)
+        if len(comp) >= min_cluster_size:
+            components.append(comp)
+
+    # Build cluster details
+    clusters = []
+    for idx, comp in enumerate(sorted(components, key=len, reverse=True)):
+        members = list(comp)
+        # Internal edges
+        internal_edges = 0
+        for e in edges:
+            src = e.get("source_id") or e.get("source", "")
+            tgt = e.get("target_id") or e.get("target", "")
+            if src in comp and tgt in comp:
+                internal_edges += 1
+        n = len(comp)
+        max_edges = n * (n - 1) / 2 if n > 1 else 1
+        density = round(internal_edges / max_edges, 3) if max_edges > 0 else 0
+
+        # Difficulty stats
+        diffs = [concept_map[m].get("difficulty", 5) for m in members]
+        avg_diff = round(sum(diffs) / len(diffs), 1)
+        min_diff = min(diffs)
+        max_diff = max(diffs)
+
+        # Subdomain composition
+        sub_counts: dict[str, int] = {}
+        for m in members:
+            sid = concept_map[m].get("subdomain_id", "other")
+            sub_counts[sid] = sub_counts.get(sid, 0) + 1
+        primary_subdomain = max(sub_counts, key=sub_counts.get)
+
+        # Gateway concepts: have edges to concepts outside this cluster
+        gateways = []
+        for m in members:
+            external = adj[m] - comp
+            if external:
+                gateways.append({
+                    "id": m,
+                    "name": concept_map[m].get("name", m),
+                    "external_connections": len(external),
+                })
+        gateways.sort(key=lambda g: g["external_connections"], reverse=True)
+
+        clusters.append({
+            "cluster_id": idx,
+            "size": n,
+            "internal_edges": internal_edges,
+            "density": density,
+            "avg_difficulty": avg_diff,
+            "difficulty_range": [min_diff, max_diff],
+            "primary_subdomain": primary_subdomain,
+            "subdomain_composition": sub_counts,
+            "gateways": gateways[:5],
+            "concepts": [
+                {
+                    "id": m,
+                    "name": concept_map[m].get("name", m),
+                    "difficulty": concept_map[m].get("difficulty", 5),
+                    "subdomain_id": concept_map[m].get("subdomain_id", ""),
+                }
+                for m in sorted(members)
+            ],
+        })
+
+    return {
+        "domain_id": domain_id,
+        "total_clusters": len(clusters),
+        "total_concepts_in_clusters": sum(c["size"] for c in clusters),
+        "clusters": clusters,
+    }
+

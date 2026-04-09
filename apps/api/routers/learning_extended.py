@@ -16,7 +16,7 @@ import time
 
 from typing import Optional
 
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel, Field
 from utils.logger import get_logger
 
@@ -341,5 +341,136 @@ async def get_knowledge_gaps(
             for g in gaps
         ],
         "total_gaps": len(gaps),
+    }
+
+
+# ════════════════════════════════════════════
+# V3.1 Prerequisite Readiness Check
+# ════════════════════════════════════════════
+
+
+@router.get("/prerequisite-check/{concept_id}")
+async def prerequisite_check(
+    concept_id: str,
+    progress: Optional[str] = Query(None, description="JSON: {concept_id: {status, mastery}}"),
+):
+    """Check readiness to learn a specific concept based on prerequisite mastery.
+
+    Analyses the concept's direct prerequisites and returns:
+    - Overall readiness score (0-100)
+    - Per-prerequisite status (mastered/learning/not_started)
+    - Recommendation: ready / partially_ready / not_ready
+    - Suggested prerequisites to study first
+
+    This powers the pre-learning readiness check widget.
+    """
+    import json as _json
+    from routers.graph import _load_seed, _load_domains
+
+    # Find which domain this concept belongs to
+    all_domains = _load_domains()
+    target_domain = None
+    seed = None
+
+    for d in all_domains:
+        did = d.get("id", "")
+        try:
+            s = _load_seed(did)
+            cids = {c["id"] for c in s.get("concepts", [])}
+            if concept_id in cids:
+                target_domain = did
+                seed = s
+                break
+        except Exception:
+            continue
+
+    if not seed:
+        raise HTTPException(404, f"Concept '{concept_id}' not found in any domain")
+
+    concepts = seed.get("concepts", [])
+    edges = seed.get("edges", [])
+    concept_map = {c["id"]: c for c in concepts}
+
+    # Find direct prerequisites (edges where target = concept_id)
+    prereq_ids: list[str] = []
+    for e in edges:
+        tgt = e.get("target_id") or e.get("target", "")
+        src = e.get("source_id") or e.get("source", "")
+        if tgt == concept_id and src in concept_map:
+            prereq_ids.append(src)
+
+    # Parse user progress
+    user_progress: dict[str, dict] = {}
+    if progress:
+        try:
+            user_progress = _json.loads(progress)
+        except (ValueError, TypeError):
+            pass
+
+    if not user_progress:
+        all_db = get_all_progress()
+        for p in all_db:
+            user_progress[p["concept_id"]] = {
+                "status": p.get("status", "not_started"),
+                "mastery": p.get("mastery_score", 0),
+            }
+
+    # Evaluate each prerequisite
+    prereq_details = []
+    mastered_count = 0
+    learning_count = 0
+    total_mastery = 0.0
+
+    for pid in prereq_ids:
+        pc = concept_map.get(pid, {})
+        up = user_progress.get(pid, {})
+        status = up.get("status", "not_started")
+        mastery = float(up.get("mastery", up.get("mastery_score", 0)))
+        if status == "mastered":
+            mastered_count += 1
+        elif status == "learning":
+            learning_count += 1
+        total_mastery += mastery
+
+        prereq_details.append({
+            "concept_id": pid,
+            "name": pc.get("name", pid),
+            "difficulty": pc.get("difficulty", 5),
+            "status": status,
+            "mastery": round(mastery, 1),
+        })
+
+    n = len(prereq_ids)
+    if n == 0:
+        readiness = 100.0
+        recommendation = "ready"
+    else:
+        readiness = round(total_mastery / n, 1)
+        if mastered_count == n:
+            recommendation = "ready"
+        elif mastered_count + learning_count >= n * 0.5:
+            recommendation = "partially_ready"
+        else:
+            recommendation = "not_ready"
+
+    # Suggest which prereqs to study first (unmastered, sorted by difficulty)
+    suggested = sorted(
+        [p for p in prereq_details if p["status"] != "mastered"],
+        key=lambda x: x["difficulty"],
+    )
+
+    target_concept = concept_map.get(concept_id, {})
+
+    return {
+        "concept_id": concept_id,
+        "concept_name": target_concept.get("name", concept_id),
+        "domain_id": target_domain,
+        "readiness_score": readiness,
+        "recommendation": recommendation,
+        "total_prerequisites": n,
+        "mastered_prerequisites": mastered_count,
+        "learning_prerequisites": learning_count,
+        "prerequisites": prereq_details,
+        "suggested_next": suggested[:5],
     }
 

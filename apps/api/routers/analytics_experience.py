@@ -362,3 +362,119 @@ async def streak_insights():
         "weekday_distribution": dict(zip(weekday_names, weekday_counts)),
         "all_streaks": sorted(streaks, key=lambda s: s["length"], reverse=True)[:5],
     }
+
+
+# ── V3.1: Session Summary (current session aggregate) ────
+
+
+@router.get("/analytics/session-summary")
+async def session_summary(
+    hours: int = Query(24, ge=1, le=168, description="Lookback window in hours"),
+):
+    """Aggregate summary of recent learning activity (session-style snapshot).
+
+    Returns a compact snapshot of the user's recent learning session:
+    - Total concepts touched, assessments completed, new masteries
+    - Domain breakdown of activity
+    - Best score and weakest concept in the window
+    - Active minutes estimate
+
+    Useful for a "session recap" or "today's learning" dashboard widget.
+    """
+    from routers.analytics_utils import load_seed_metadata
+
+    now = time.time()
+    cutoff = now - hours * 3600
+
+    history = get_history(limit=10000)
+    progress = get_all_progress()
+    streak = get_streak()
+
+    # Filter to recent window
+    recent = [h for h in history if h.get("timestamp", 0) >= cutoff]
+
+    if not recent:
+        return {
+            "hours": hours,
+            "total_events": 0,
+            "concepts_touched": 0,
+            "assessments": 0,
+            "new_masteries": 0,
+            "best_score": None,
+            "weakest": None,
+            "domain_breakdown": [],
+            "active_minutes": 0,
+            "current_streak": streak.get("current", 0) if isinstance(streak, dict) else 0,
+        }
+
+    concept_domain_map, concept_info, domain_map = load_seed_metadata()
+
+    # Aggregate
+    concepts_seen: set[str] = set()
+    assessments = 0
+    new_masteries = 0
+    best_score = -1.0
+    best_concept = ""
+    worst_score = 101.0
+    worst_concept = ""
+    domain_counts: dict[str, int] = {}
+    timestamps: list[float] = []
+
+    for h in recent:
+        cid = h.get("concept_id", "")
+        concepts_seen.add(cid)
+        score = float(h.get("score", 0))
+        timestamps.append(h.get("timestamp", 0))
+
+        action = h.get("action", "assessment")
+        if action in ("assessment", "assess"):
+            assessments += 1
+        if h.get("mastered"):
+            new_masteries += 1
+        if score > best_score:
+            best_score = score
+            best_concept = cid
+        if score < worst_score and score > 0:
+            worst_score = score
+            worst_concept = cid
+
+        did = concept_domain_map.get(cid, "unknown")
+        domain_counts[did] = domain_counts.get(did, 0) + 1
+
+    # Estimate active minutes (gaps > 10min = idle)
+    timestamps.sort()
+    active_sec = 0.0
+    for i in range(1, len(timestamps)):
+        gap = timestamps[i] - timestamps[i - 1]
+        if gap < 600:  # 10 minutes idle threshold
+            active_sec += gap
+
+    domain_breakdown = []
+    for did, count in sorted(domain_counts.items(), key=lambda x: -x[1]):
+        dinfo = domain_map.get(did, {})
+        domain_breakdown.append({
+            "domain_id": did,
+            "domain_name": dinfo.get("name", did),
+            "events": count,
+        })
+
+    return {
+        "hours": hours,
+        "total_events": len(recent),
+        "concepts_touched": len(concepts_seen),
+        "assessments": assessments,
+        "new_masteries": new_masteries,
+        "best_score": {
+            "score": round(best_score, 1),
+            "concept_id": best_concept,
+            "concept_name": concept_info.get(best_concept, {}).get("name", best_concept),
+        } if best_score >= 0 else None,
+        "weakest": {
+            "score": round(worst_score, 1),
+            "concept_id": worst_concept,
+            "concept_name": concept_info.get(worst_concept, {}).get("name", worst_concept),
+        } if worst_score <= 100 else None,
+        "domain_breakdown": domain_breakdown,
+        "active_minutes": round(active_sec / 60, 1),
+        "current_streak": streak.get("current", 0) if isinstance(streak, dict) else 0,
+    }

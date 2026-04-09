@@ -34,6 +34,9 @@ const ContentSearchWidget = lazy(() => import('@/components/dashboard/ContentSea
 const ContentHealthWidget = lazy(() => import('@/components/dashboard/ContentHealthWidget').then(m => ({ default: m.ContentHealthWidget })));
 const OnboardingRecommendWidget = lazy(() => import('@/components/dashboard/OnboardingRecommendWidget').then(m => ({ default: m.OnboardingRecommendWidget })));
 const GraphTopologyWidget = lazy(() => import('@/components/dashboard/GraphTopologyWidget').then(m => ({ default: m.GraphTopologyWidget })));
+const PrerequisiteCheckWidget = lazy(() => import('@/components/dashboard/PrerequisiteCheckWidget').then(m => ({ default: m.PrerequisiteCheckWidget })));
+const ConceptClusterWidget = lazy(() => import('@/components/dashboard/ConceptClusterWidget').then(m => ({ default: m.ConceptClusterWidget })));
+const SessionSummaryWidget = lazy(() => import('@/components/dashboard/SessionSummaryWidget').then(m => ({ default: m.SessionSummaryWidget })));
 
 export function DashboardPage() {
   const navigate = useNavigate();
@@ -141,6 +144,9 @@ export function DashboardPage() {
         <Suspense fallback={<WidgetSkeleton />}><ContentHealthWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><OnboardingRecommendWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><GraphTopologyWidget /></Suspense>
+        <Suspense fallback={<WidgetSkeleton />}><PrerequisiteCheckWidget /></Suspense>
+        <Suspense fallback={<WidgetSkeleton />}><ConceptClusterWidget /></Suspense>
+        <Suspense fallback={<WidgetSkeleton />}><SessionSummaryWidget hours={24} /></Suspense>
 
         {/* Domain Progress */}
         <section>

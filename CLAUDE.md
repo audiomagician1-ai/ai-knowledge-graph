@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,988 (1,253 BE + 674 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 2,015 (1,275 BE + 679 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -310,6 +310,15 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ create_notification() 编程式帮助函数 (可从其他路由器调用)
 - ✅ 内容反馈自动触发通知 (提交反馈后自动创建通知)
 - ✅ 13 BE tests (notifications) + 10 BE tests (content-feedback) + 11 FE tests = 34 new tests
+
+### V3.1 Prerequisite Intelligence & Learning Flow Sprint (2026-04-10, 完成)
+- ✅ GET /api/learning/prerequisite-check/{concept_id}: 前置知识就绪检查 (就绪分数+推荐等级ready/partial/not_ready+未掌握前置列表+建议优先学习)
+- ✅ GET /api/graph/concept-clusters/{domain_id}: 概念模块聚类分析 (BFS连通分量+密度+难度范围+入口概念+子域组成)
+- ✅ GET /api/analytics/session-summary: 学习小结 (时间窗口内活动聚合+领域分布+最佳/最弱分数+活跃时长估算)
+- ✅ PrerequisiteCheckWidget Dashboard组件: 前置知识就绪检查 (就绪进度条+前置状态列表+建议, lazy-load)
+- ✅ ConceptClusterWidget Dashboard组件: 概念模块分组展示 (可折叠集群+密度+入口概念, lazy-load)
+- ✅ SessionSummaryWidget Dashboard组件: 学习小结卡片 (统计网格+领域标签+最佳分数, lazy-load)
+- ✅ 27 new tests (22 BE: 8 prerequisite-check + 8 concept-clusters + 6 session-summary + 5 FE)
 
 ### V3.0 Onboarding Intelligence & Graph Topology Sprint (2026-04-10, 完成)
 - ✅ Seed metadata memory cache (TTL 300s): analytics_utils.py — 4 call sites no longer re-read 36 JSON files per request
@@ -612,6 +621,9 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/dashboard/ContentHealthWidget.tsx | 内容健康度 (V2.11: 反馈统计+待处理+概念健康分+lazy-load) |
 | apps/api/routers/onboarding.py | 新用户入门推荐API (V3.0: recommended-start + domain-preview) |
 | packages/web/src/lib/api/onboarding-api.ts | 入门推荐FE API客户端 (V3.0: fetchRecommendedStart + fetchDomainPreview) |
+| packages/web/src/components/dashboard/PrerequisiteCheckWidget.tsx | 前置知识就绪检查 (V3.1: 就绪分数+前置状态+建议, lazy-load) |
+| packages/web/src/components/dashboard/ConceptClusterWidget.tsx | 概念模块分组 (V3.1: 连通分量+密度+入口概念, lazy-load) |
+| packages/web/src/components/dashboard/SessionSummaryWidget.tsx | 学习小结 (V3.1: 活动聚合+领域分布+最佳分数, lazy-load) |
 | packages/web/src/components/dashboard/OnboardingRecommendWidget.tsx | 推荐起点组件 (V3.0: 推荐卡片+域预览弹窗, lazy-load) |
 | packages/web/src/components/dashboard/GraphTopologyWidget.tsx | 图谱拓扑分析 (V3.0: 枢纽/桥接/孤立概念+子域密度, lazy-load) |
 | workers/src/ | Cloudflare Workers代理后端 |
@@ -676,4 +688,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V3.0 Onboarding Intelligence & Graph Topology — seed cache, 2 onboarding APIs, relationship-strength API, 2 Dashboard widgets, onboarding-api.ts, 38 tests | **Result**: 1,253 BE + 674 FE + 61 E2E = 1,988 all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V3.1 Prerequisite Intelligence & Learning Flow — prerequisite-check API, concept-clusters API, session-summary API, 3 Dashboard widgets, 27 tests | **Result**: 1,275 BE + 679 FE + 61 E2E = 2,015 all pass, tsc: 0 errors, 0 open issues, build OK
