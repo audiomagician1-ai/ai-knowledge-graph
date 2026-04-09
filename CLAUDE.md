@@ -280,6 +280,15 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ HomePage浮动导航新增"报告"按钮 (FileText图标 → /report)
 - ✅ 14 BE tests + 9 FE tests = 23 new tests
 
+### V2.10 Backend Scalability Sprint (2026-04-10, 完成)
+- ✅ Split analytics.py (1,205L → 402L) — extracted analytics_experience.py (364L, V2.5) + analytics_planning.py (444L, V2.6)
+- ✅ Split analytics_insights.py (1,007L → 335L) — extracted analytics_social.py (192L, V2.8) + analytics_search.py (460L, V2.9)
+- ✅ Created analytics_utils.py (54L) — shared load_seed_metadata() helper, DRY across 4 routers
+- ✅ All 7 analytics routers registered in main.py (analytics + experience + planning + insights + social + search)
+- ✅ All router files now under 800-line Python limit (max: 460L analytics_search.py)
+- ✅ Fixed test_analytics_v28.py peer-comparison assertion (comparison_labels → summary, mastery_speed → learn_speed_per_week)
+- ✅ 1,192 BE tests pass, 641 FE tests pass, tsc 0 errors, pnpm build success
+
 ---（生效中的架构决策）
 
 | ID | 决策 | 理由 |
@@ -519,7 +528,12 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/dashboard/GlobalLeaderboard.tsx | 社交排行榜 (V2.8: 4种排序+排名图标+连续火焰+lazy-load) |
 | packages/web/src/components/dashboard/PeerComparisonCard.tsx | 同伴对比 (V2.8: 4维度百分位条形图+前X%标签) |
 | packages/web/src/components/community/ConceptDiscussionPanel.tsx | 概念讨论面板 (V2.8: 发帖+回复+投票+展开+类型过滤, ChatIdleView集成) |
-| apps/api/routers/analytics_insights.py | V2.7+V2.8+V2.9分析API (V2.9拆分: 弱点检测/效率/难度/排行/同伴/相似/搜索/报告) |
+| apps/api/routers/analytics_insights.py | V2.7分析API (V2.10拆分: 弱点检测/效率/难度校准) |
+| apps/api/routers/analytics_experience.py | V2.5分析API (V2.10拆分: 会话历史/掌握度时间线/学习时间/习惯分析) |
+| apps/api/routers/analytics_planning.py | V2.6分析API (V2.10拆分: 域推荐/学习计划/学习旅程) |
+| apps/api/routers/analytics_social.py | V2.8社交API (V2.10拆分: 排行榜/同伴对比) |
+| apps/api/routers/analytics_search.py | V2.9搜索API (V2.10拆分: 概念相似度/学习报告/内容搜索) |
+| apps/api/routers/analytics_utils.py | 分析API共享工具 (V2.10: load_seed_metadata DRY helper) |
 | packages/web/src/pages/LearningReportPage.tsx | 综合学习报告 (V2.9: /report, 可打印+JSON导出+概览/领域/优劣势/建议) |
 | packages/web/src/components/dashboard/ContentSearchWidget.tsx | 知识内容搜索 (V2.9: RAG全文搜索+片段预览+去抖+导航) |
 | packages/web/src/components/graph/ConceptSimilarityPanel.tsx | 相似概念面板 (V2.9: 拓扑+标签+跨域相似度+原因标签, ChatIdleView集成) |

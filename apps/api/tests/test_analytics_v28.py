@@ -81,12 +81,12 @@ class TestPeerComparison:
         data = r.json()
         assert "user" in data
         assert "percentiles" in data
-        assert "comparison_labels" in data
+        assert "summary" in data
         for key, val in data["percentiles"].items():
             assert 1 <= val <= 99, f"{key} percentile out of range: {val}"
         assert "mastered" in data["user"]
         assert "avg_score" in data["user"]
-        assert "mastery_speed" in data["user"]
+        assert "learn_speed_per_week" in data["user"]
 
     def test_peer_count(self, client):
         """Peer comparison includes peer count."""
