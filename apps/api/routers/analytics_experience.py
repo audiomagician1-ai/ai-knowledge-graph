@@ -1,13 +1,4 @@
-"""Analytics Experience API — V2.5 session history, mastery timeline, study time, and streak insights.
-
-Extracted from analytics.py (V2.10 code health) to keep router files under 800 lines.
-
-Provides:
-- Session history timeline with filtering & pagination (V2.5)
-- Per-concept mastery timeline (V2.5)
-- Study time report with productivity metrics (V2.5)
-- Streak insights & consistency analysis (V2.5)
-"""
+"""Analytics Experience API — V2.5 session/mastery/time analytics + V3.7 profile + V3.8 journey/heatmap."""
 
 import math
 import time
@@ -595,5 +586,207 @@ async def learning_profile():
         "review_status": {
             "due_count": due_count,
             "overdue_count": overdue_count,
+        },
+    }
+
+
+# ── V3.8: Concept Journey ────────────────────────────────
+
+@router.get("/analytics/concept-journey/{concept_id}")
+async def concept_journey(concept_id: str):
+    """Full learning journey for a single concept — every assessment, score change, and milestone.
+
+    Returns a rich timeline including:
+    - Chronological assessment events with scores and deltas
+    - Current status and mastery info
+    - Journey stats (total attempts, time span, improvement rate)
+    - Domain context (which domain, difficulty, subdomain)
+    """
+    from routers.analytics_utils import load_seed_metadata
+
+    history = get_history(10000)
+    progress = get_all_progress()
+
+    concept_domain_map, concept_info, domain_map = load_seed_metadata()
+
+    # Filter history for this concept
+    events = [h for h in history if h.get("concept_id") == concept_id]
+    events.sort(key=lambda e: e.get("timestamp", 0))
+
+    # Current progress
+    progress_map = {p["concept_id"]: p for p in progress}
+    current = progress_map.get(concept_id, {})
+    info = concept_info.get(concept_id, {})
+    did = concept_domain_map.get(concept_id, "")
+
+    if not events and not current:
+        return {
+            "concept_id": concept_id,
+            "found": False,
+            "events": [],
+            "stats": {},
+        }
+
+    # Build timeline
+    timeline = []
+    prev_score = 0
+    best_score = 0
+    mastery_step = None
+
+    for i, ev in enumerate(events):
+        score = ev.get("score", 0)
+        delta = score - prev_score if i > 0 else 0
+        is_mastered = ev.get("mastered", False)
+
+        entry = {
+            "step": i + 1,
+            "score": score,
+            "delta": round(delta, 1),
+            "mastered": is_mastered,
+            "timestamp": ev.get("timestamp", 0),
+            "concept_name": ev.get("concept_name", concept_id),
+        }
+        timeline.append(entry)
+
+        if score > best_score:
+            best_score = score
+        if is_mastered and mastery_step is None:
+            mastery_step = i + 1
+        prev_score = score
+
+    # Calculate stats
+    scores = [e["score"] for e in timeline]
+    time_span_days = 0
+    if len(events) >= 2:
+        first_ts = events[0].get("timestamp", 0)
+        last_ts = events[-1].get("timestamp", 0)
+        time_span_days = round((last_ts - first_ts) / 86400, 1) if last_ts > first_ts else 0
+
+    improvement = scores[-1] - scores[0] if len(scores) >= 2 else 0
+
+    return {
+        "concept_id": concept_id,
+        "found": True,
+        "concept_name": info.get("name", current.get("concept_name", concept_id)),
+        "domain_id": did,
+        "domain_name": domain_map.get(did, {}).get("name", did),
+        "difficulty": info.get("difficulty", current.get("difficulty", 5)),
+        "subdomain_id": info.get("subdomain_id", ""),
+        "current_status": current.get("status", "not_started"),
+        "current_score": current.get("mastery_score", 0),
+        "events": timeline,
+        "stats": {
+            "total_attempts": len(timeline),
+            "best_score": best_score,
+            "first_score": scores[0] if scores else 0,
+            "latest_score": scores[-1] if scores else 0,
+            "improvement": round(improvement, 1),
+            "mastered_at_step": mastery_step,
+            "time_span_days": time_span_days,
+            "avg_score": round(sum(scores) / len(scores), 1) if scores else 0,
+        },
+    }
+
+
+# ── V3.8: Learning Heatmap ───────────────────────────────
+
+@router.get("/analytics/learning-heatmap/{domain_id}")
+async def learning_heatmap(domain_id: str):
+    """Domain learning activity heatmap — concept-level engagement intensity.
+
+    Groups concepts by subdomain and shows per-concept activity intensity
+    (sessions, score, status) as a 2D heatmap data structure.
+
+    Returns:
+    - Per-subdomain rows with concept cells
+    - Each cell: concept_id, name, sessions, score, status, intensity (0-1)
+    - Domain-level summary stats
+    """
+    import json as _json, os, sys
+
+    progress = get_all_progress()
+    progress_map = {p["concept_id"]: p for p in progress}
+
+    if getattr(sys, "frozen", False):
+        data_root = os.path.join(sys._MEIPASS, "seed_data")
+    else:
+        data_root = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))),
+            "data", "seed",
+        )
+
+    seed_path = os.path.join(data_root, domain_id, "seed_graph.json")
+    if not os.path.isfile(seed_path):
+        return {"domain_id": domain_id, "error": "Domain not found", "subdomains": []}
+
+    with open(seed_path, "r", encoding="utf-8") as f:
+        seed = _json.load(f)
+
+    concepts = seed.get("concepts", [])
+    if not concepts:
+        return {"domain_id": domain_id, "subdomains": [], "summary": {}}
+
+    # Group by subdomain
+    from collections import defaultdict
+    subdomain_groups: dict[str, list[dict]] = defaultdict(list)
+
+    max_sessions = 1  # For normalization
+    for c in concepts:
+        cid = c["id"]
+        p = progress_map.get(cid, {})
+        sessions = p.get("sessions", 0)
+        if sessions > max_sessions:
+            max_sessions = sessions
+
+        cell = {
+            "concept_id": cid,
+            "name": c.get("name", cid),
+            "difficulty": c.get("difficulty", 5),
+            "status": p.get("status", "not_started"),
+            "sessions": sessions,
+            "score": p.get("mastery_score", 0),
+        }
+        sid = c.get("subdomain_id", "other")
+        subdomain_groups[sid].append(cell)
+
+    # Add intensity (0-1 normalized)
+    subdomains = []
+    total_active = 0
+    total_mastered = 0
+    total_concepts = len(concepts)
+
+    for sid in sorted(subdomain_groups.keys()):
+        cells = subdomain_groups[sid]
+        for cell in cells:
+            # Intensity: composite of sessions + score
+            session_intensity = min(1.0, cell["sessions"] / max(1, max_sessions))
+            score_intensity = cell["score"] / 100.0
+            cell["intensity"] = round(session_intensity * 0.4 + score_intensity * 0.6, 2)
+            if cell["sessions"] > 0:
+                total_active += 1
+            if cell["status"] == "mastered":
+                total_mastered += 1
+
+        # Sort by difficulty within subdomain
+        cells.sort(key=lambda x: x["difficulty"])
+
+        avg_intensity = sum(c["intensity"] for c in cells) / len(cells) if cells else 0
+        subdomains.append({
+            "subdomain_id": sid,
+            "concepts": cells,
+            "count": len(cells),
+            "avg_intensity": round(avg_intensity, 2),
+            "mastered_count": sum(1 for c in cells if c["status"] == "mastered"),
+        })
+
+    return {
+        "domain_id": domain_id,
+        "subdomains": subdomains,
+        "summary": {
+            "total_concepts": total_concepts,
+            "active_concepts": total_active,
+            "mastered_concepts": total_mastered,
+            "coverage_pct": round(total_active / max(1, total_concepts) * 100, 1),
+            "mastery_pct": round(total_mastered / max(1, total_concepts) * 100, 1),
         },
     }

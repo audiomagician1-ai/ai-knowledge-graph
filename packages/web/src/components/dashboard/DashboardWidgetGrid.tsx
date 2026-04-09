@@ -38,6 +38,7 @@ const GraphTopologyWidget = lazy(() => import('./GraphTopologyWidget').then(m =>
 const ConceptClusterWidget = lazy(() => import('./ConceptClusterWidget').then(m => ({ default: m.ConceptClusterWidget })));
 const DifficultyAccuracyWidget = lazy(() => import('./DifficultyAccuracyWidget').then(m => ({ default: m.DifficultyAccuracyWidget })));
 const DomainOverviewBatchWidget = lazy(() => import('./DomainOverviewBatchWidget').then(m => ({ default: m.DomainOverviewBatchWidget })));
+const LearningHeatmapWidget = lazy(() => import('./LearningHeatmapWidget'));
 
 // ── Social & Community ──
 const GlobalLeaderboard = lazy(() => import('./GlobalLeaderboard').then(m => ({ default: m.GlobalLeaderboard })));
@@ -47,6 +48,7 @@ const PeerComparisonCard = lazy(() => import('./PeerComparisonCard').then(m => (
 const ContentSearchWidget = lazy(() => import('./ContentSearchWidget').then(m => ({ default: m.ContentSearchWidget })));
 const ContentHealthWidget = lazy(() => import('./ContentHealthWidget').then(m => ({ default: m.ContentHealthWidget })));
 const OnboardingRecommendWidget = lazy(() => import('./OnboardingRecommendWidget').then(m => ({ default: m.OnboardingRecommendWidget })));
+const ConceptJourneyWidget = lazy(() => import('./ConceptJourneyWidget'));
 const SearchSuggestionsWidget = lazy(() => import('./SearchSuggestionsWidget'));
 const ProgressSnapshotWidget = lazy(() => import('./ProgressSnapshotWidget'));
 
@@ -109,6 +111,7 @@ export function DashboardWidgetGrid() {
         <Suspense fallback={<WidgetSkeleton />}><ConceptClusterWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><DifficultyAccuracyWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><DomainOverviewBatchWidget /></Suspense>
+        <Suspense fallback={<WidgetSkeleton />}><LearningHeatmapWidget /></Suspense>
       </CollapsibleSection>
 
       <CollapsibleSection title="社交互动" icon={<Users size={14} className="opacity-40" />} defaultOpen={false}>
@@ -121,6 +124,7 @@ export function DashboardWidgetGrid() {
         <Suspense fallback={<WidgetSkeleton />}><ContentSearchWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><ContentHealthWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><OnboardingRecommendWidget /></Suspense>
+        <Suspense fallback={<WidgetSkeleton />}><ConceptJourneyWidget /></Suspense>
       </CollapsibleSection>
     </div>
   );

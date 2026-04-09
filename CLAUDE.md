@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 2,129 (1,362 BE + 706 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 2,159 (1,385 BE + 713 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -311,7 +311,18 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ 内容反馈自动触发通知 (提交反馈后自动创建通知)
 - ✅ 13 BE tests (notifications) + 10 BE tests (content-feedback) + 11 FE tests = 34 new tests
 
-### V3.7 Unified Learning Profile + Batch Optimization Sprint (2026-04-10, 完成)
+### V3.8 Code Health + Concept Journey + Learning Heatmap Sprint (2026-04-10, 完成)
+- ✅ Split learning_extended.py (708L→480L) — extracted learning_intelligence.py (253L: V3.2 review-priority + V3.5 session-replay)
+- ✅ Split analytics_insights.py (703L→337L) — extracted analytics_forecast.py (389L: V3.2 mastery-forecast + V3.6 fsrs-insights + goal-recommendations)
+- ✅ analytics_experience.py docstring compacted (801→792L) after adding new V3.8 endpoints
+- ✅ GET /api/analytics/concept-journey/{concept_id}: 概念完整学习旅程 (评估时间线+分数趋势+里程碑+域上下文+统计)
+- ✅ GET /api/analytics/learning-heatmap/{domain_id}: 域学习热力图 (子域×概念2D活动强度+覆盖率+掌握率)
+- ✅ ConceptJourneyWidget Dashboard组件: 概念旅程查询 (搜索+分数柱状图+统计网格+状态, lazy-load, 125L)
+- ✅ LearningHeatmapWidget Dashboard组件: 学习热力图 (子域行+概念格+强度色阶+域选择器, lazy-load, 123L)
+- ✅ DashboardWidgetGrid updated: 37→39 lazy-loaded widgets (added ConceptJourneyWidget + LearningHeatmapWidget)
+- ✅ All 24 BE routers under 800-line limit (max: 792L analytics_experience.py)
+- ✅ 30 new tests (23 BE: 9 split-verify + 4 concept-journey + 5 heatmap + 5 regression + 7 FE)
+
 - ✅ GET /api/analytics/learning-profile: 统一学习档案 (进度总览+连续天数+7日活动+域进度+BKT强弱项+FSRS复习状态, 单API替代5+调用)
 - ✅ GET /api/graph/domain-overview-batch: 全域批量概览 (36域一次返回: 概念数/边数/子域/难度/进度/里程碑+聚合统计)
 - ✅ LearningProfileWidget Dashboard组件: 统一档案卡 (进度条+活动摘要+域网格+强弱项, lazy-load, 128L)
@@ -696,6 +707,10 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/dashboard/GoalRecommendWidget.tsx | 智能目标建议 (V3.6: 日/周目标+学习时间+专注领域, lazy-load) |
 | packages/web/src/components/dashboard/LearningProfileWidget.tsx | 统一学习档案 (V3.7: 进度+连续+7日活动+域进度+强弱项+复习, lazy-load) |
 | packages/web/src/components/dashboard/DomainOverviewBatchWidget.tsx | 全域概览网格 (V3.7: 36域批量+进度条+难度+展开, lazy-load) |
+| apps/api/routers/learning_intelligence.py | 学习智能API (V3.8拆分: review-priority/session-replay, 253L) |
+| apps/api/routers/analytics_forecast.py | 预测分析API (V3.8拆分: mastery-forecast/fsrs-insights/goal-recommendations, 389L) |
+| packages/web/src/components/dashboard/ConceptJourneyWidget.tsx | 概念学习旅程 (V3.8: 搜索+分数柱状图+统计网格+状态, lazy-load, 125L) |
+| packages/web/src/components/dashboard/LearningHeatmapWidget.tsx | 学习热力图 (V3.8: 子域行×概念格+强度色阶+域选择, lazy-load, 123L) |
 | workers/src/ | Cloudflare Workers代理后端 |
 
 ---
@@ -758,4 +773,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V3.7 Unified Learning Profile + Batch Optimization — learning-profile API (single comprehensive endpoint), domain-overview-batch API (36 domains in 1 call), 2 Dashboard widgets, 18 tests | **Result**: 1,362 BE + 706 FE + 61 E2E = 2,129 all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V3.8 Code Health + Concept Journey + Learning Heatmap — learning_extended split (708→480L), analytics_insights split (703→337L), 2 new APIs (concept-journey + learning-heatmap), 2 Dashboard widgets, 39 lazy-load widgets, 30 tests | **Result**: 1,385 BE + 713 FE + 61 E2E = 2,159 all pass, tsc: 0 errors, 0 open issues, build OK
