@@ -24,6 +24,8 @@ const ReviewQueue = lazy(() => import('@/components/dashboard/ReviewQueue').then
 const AdaptivePathWidget = lazy(() => import('@/components/dashboard/AdaptivePathWidget').then(m => ({ default: m.AdaptivePathWidget })));
 const StudyTimeChart = lazy(() => import('@/components/dashboard/StudyTimeChart').then(m => ({ default: m.StudyTimeChart })));
 const StreakInsights = lazy(() => import('@/components/dashboard/StreakInsights').then(m => ({ default: m.StreakInsights })));
+const DomainRecommendWidget = lazy(() => import('@/components/dashboard/DomainRecommendWidget').then(m => ({ default: m.DomainRecommendWidget })));
+const StudyPlanWidget = lazy(() => import('@/components/dashboard/StudyPlanWidget').then(m => ({ default: m.StudyPlanWidget })));
 
 export function DashboardPage() {
   const navigate = useNavigate();
@@ -121,6 +123,8 @@ export function DashboardPage() {
         <Suspense fallback={<WidgetSkeleton />}><ReviewQueue /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><StudyTimeChart days={14} /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><StreakInsights /></Suspense>
+        <Suspense fallback={<WidgetSkeleton />}><DomainRecommendWidget limit={4} /></Suspense>
+        <Suspense fallback={<WidgetSkeleton />}><StudyPlanWidget days={3} dailyMinutes={30} /></Suspense>
 
         {/* Domain Progress */}
         <section>
