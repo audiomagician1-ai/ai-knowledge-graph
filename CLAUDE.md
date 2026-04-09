@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,754 (1,113 BE + 580 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 1,757 (1,113 BE + 583 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -204,6 +204,11 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ Split SettingsContent.tsx: 478→155 lines (extracted SettingsLLMConfig 214L + SettingsDataIO 140L)
 - ✅ Split CommunityPage.tsx: 408→146 lines (extracted SuggestionCard 122L + SuggestionForm 61L)
 - ✅ 9 new FE tests (learn-components 5 + settings-components 2 + community-components 2)
+
+### V2.4 Code Health Phase 5 — LoginPage + ReviewPage splits (2026-04-10, 完成)
+- ✅ Split LoginPage.tsx: 362→289 lines (extracted LoginOAuthButtons 70L — OAuth buttons + Google/GitHub SVG icons)
+- ✅ Split ReviewPage.tsx: 346→238 lines (extracted ReviewFlashcard 109L — progress bar + flashcard + FSRS rating buttons)
+- ✅ 3 new FE tests (auth + review component exports + RATINGS validation)
 
 ---（生效中的架构决策）
 
@@ -389,6 +394,8 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/settings/SettingsDataIO.tsx | 数据导入导出+关于+安全信息 (140行, V2.4 从SettingsContent.tsx拆出) |
 | packages/web/src/components/community/SuggestionCard.tsx | 社区建议卡片: 投票/审核/删除 (122行, V2.4 从CommunityPage.tsx拆出) |
 | packages/web/src/components/community/SuggestionForm.tsx | 新建议提交表单 (61行, V2.4 从CommunityPage.tsx拆出) |
+| packages/web/src/components/auth/LoginOAuthButtons.tsx | OAuth登录按钮: Google/GitHub SVG图标+按钮 (70行, V2.4 从LoginPage.tsx拆出) |
+| packages/web/src/components/review/ReviewFlashcard.tsx | FSRS复习闪卡: 进度条+概念卡+评分按钮 (109行, V2.4 从ReviewPage.tsx拆出) |
 | packages/web/src/components/common/WelcomeGuide.tsx | 首访引导层 (价值主张+推荐域) |
 | packages/web/src/components/common/ReviewBanner.tsx | FSRS复习提示+学习进度 |
 | packages/web/src/components/common/DailyRecommendation.tsx | 每日推荐概念 (30概念日轮) |
@@ -495,4 +502,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V2.4 Code Health Phase 4 (LearnPage+SettingsContent+CommunityPage splits + 9 FE tests) | **Result**: 1,113 BE + 580 FE + 61 E2E = 1,754 all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V2.4 Code Health Phase 5 (LoginPage+ReviewPage splits + 3 FE tests) | **Result**: 1,113 BE + 583 FE + 61 E2E = 1,757 all pass, tsc: 0 errors, 0 open issues, build OK
