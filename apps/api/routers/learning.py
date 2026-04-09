@@ -904,3 +904,159 @@ async def import_data(req: ImportDataRequest):
         "imported_achievements": imported_achievements,
     }
 
+
+# ════════════════════════════════════════════
+# V2.3 Adaptive Learning Intelligence
+# ════════════════════════════════════════════
+
+@router.get("/adaptive-path/{domain_id}")
+async def get_adaptive_path(
+    domain_id: str,
+    limit: int = Query(10, ge=1, le=30),
+    progress: Optional[str] = Query(None, description="JSON: {concept_id: {status, mastery}}"),
+):
+    """Get personalized adaptive learning path for a domain.
+
+    Fuses three signal sources into a unified priority queue:
+    1. **FSRS reviews**: overdue spaced-repetition items (highest priority)
+    2. **Knowledge gaps**: unmastered prereqs blocking downstream progress
+    3. **Frontier learning**: new concepts on the optimal next-step frontier
+
+    Returns an ordered list of steps, each with action type and reasons.
+    """
+    import json as _json
+    from routers.graph import _load_seed, _load_cross_links
+    from engines.graph.pathfinder import Pathfinder, UserProgress as PFUserProgress
+    from db.sqlite_client import get_due_concepts
+
+    seed = _load_seed(domain_id)
+    pf = Pathfinder(seed["concepts"], seed["edges"], _load_cross_links())
+
+    # Parse user progress
+    user_progress: dict[str, PFUserProgress] = {}
+    if progress:
+        try:
+            raw = _json.loads(progress)
+            for cid, data in raw.items():
+                if isinstance(data, dict):
+                    user_progress[cid] = PFUserProgress(
+                        concept_id=cid,
+                        status=data.get("status", "not_started"),
+                        mastery=float(data.get("mastery", 0.0)),
+                    )
+        except (ValueError, TypeError):
+            pass
+
+    # Also load DB progress if no query param provided
+    if not user_progress:
+        all_db_progress = get_all_progress()
+        for p in all_db_progress:
+            cid = p["concept_id"]
+            user_progress[cid] = PFUserProgress(
+                concept_id=cid,
+                status=p.get("status", "not_started"),
+                mastery=p.get("mastery_score", 0) / 100.0,
+            )
+
+    # Get FSRS due concepts
+    now = time.time()
+    due_items = get_due_concepts(before=now + 86400, limit=200)
+    domain_cids = {c["id"] for c in seed["concepts"]}
+    fsrs_due = {
+        d["concept_id"]: d["fsrs_due"]
+        for d in due_items
+        if d["concept_id"] in domain_cids and d["fsrs_due"] > 0
+    }
+
+    steps = pf.adaptive_path(
+        user_progress,
+        domain_id=domain_id,
+        fsrs_due=fsrs_due,
+        limit=limit,
+    )
+
+    concept_map = {c["id"]: c for c in seed["concepts"]}
+    return {
+        "domain_id": domain_id,
+        "steps": [
+            {
+                "concept_id": s.concept_id,
+                "name": s.name,
+                "action": s.action,
+                "priority": round(s.priority, 1),
+                "reasons": s.reasons,
+                "estimated_minutes": s.estimated_minutes,
+                "difficulty": s.difficulty,
+                "subdomain_id": s.subdomain_id,
+            }
+            for s in steps
+        ],
+        "total_steps": len(steps),
+        "review_count": sum(1 for s in steps if s.action == "review"),
+        "gap_count": sum(1 for s in steps if s.action == "fill_gap"),
+        "learn_count": sum(1 for s in steps if s.action == "learn"),
+    }
+
+
+@router.get("/knowledge-gaps/{domain_id}")
+async def get_knowledge_gaps(
+    domain_id: str,
+    limit: int = Query(10, ge=1, le=50),
+    progress: Optional[str] = Query(None, description="JSON: {concept_id: {status, mastery}}"),
+):
+    """Detect knowledge gaps: unmastered prerequisites blocking downstream progress.
+
+    A gap is a concept that is not yet mastered but is required by one or more
+    downstream concepts. Gaps are ranked by how many concepts they unblock.
+
+    Use this to identify the highest-leverage concepts to study next.
+    """
+    import json as _json
+    from routers.graph import _load_seed, _load_cross_links
+    from engines.graph.pathfinder import Pathfinder, UserProgress as PFUserProgress
+
+    seed = _load_seed(domain_id)
+    pf = Pathfinder(seed["concepts"], seed["edges"], _load_cross_links())
+
+    user_progress: dict[str, PFUserProgress] = {}
+    if progress:
+        try:
+            raw = _json.loads(progress)
+            for cid, data in raw.items():
+                if isinstance(data, dict):
+                    user_progress[cid] = PFUserProgress(
+                        concept_id=cid,
+                        status=data.get("status", "not_started"),
+                        mastery=float(data.get("mastery", 0.0)),
+                    )
+        except (ValueError, TypeError):
+            pass
+
+    if not user_progress:
+        all_db_progress = get_all_progress()
+        for p in all_db_progress:
+            cid = p["concept_id"]
+            user_progress[cid] = PFUserProgress(
+                concept_id=cid,
+                status=p.get("status", "not_started"),
+                mastery=p.get("mastery_score", 0) / 100.0,
+            )
+
+    gaps = pf.knowledge_gaps(user_progress, domain_id=domain_id, limit=limit)
+
+    return {
+        "domain_id": domain_id,
+        "gaps": [
+            {
+                "concept_id": g.concept_id,
+                "name": g.name,
+                "blocked_count": g.blocked_count,
+                "blocked_concepts": g.blocked_concepts,
+                "difficulty": g.difficulty,
+                "status": g.status,
+            }
+            for g in gaps
+        ],
+        "total_gaps": len(gaps),
+    }
+

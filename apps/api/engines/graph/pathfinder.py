@@ -58,6 +58,30 @@ class RecommendResult:
     reasons: list[str] = field(default_factory=list)
 
 
+@dataclass
+class AdaptiveStep:
+    """A single step in an adaptive learning path."""
+    concept_id: str
+    name: str
+    priority: float
+    action: str  # "learn" | "review" | "fill_gap"
+    reasons: list[str] = field(default_factory=list)
+    estimated_minutes: int = 20
+    difficulty: int = 1
+    subdomain_id: str = ""
+
+
+@dataclass
+class KnowledgeGap:
+    """An unmastered prerequisite blocking downstream progress."""
+    concept_id: str
+    name: str
+    blocked_count: int  # how many downstream concepts are blocked
+    blocked_concepts: list[str] = field(default_factory=list)
+    difficulty: int = 1
+    status: str = "not_started"
+
+
 class Pathfinder:
     """学习路径推荐引擎 — operates on in-memory graph data (JSON seed)."""
 
@@ -380,6 +404,185 @@ class Pathfinder:
             "completion_pct": round(mastered / total * 100, 1) if total else 0,
             "avg_mastery": round(avg_mastery, 3),
         }
+
+    # ── Adaptive Learning Path ──────────────────────────────
+
+    def adaptive_path(
+        self,
+        progress: dict[str, UserProgress],
+        domain_id: str | None = None,
+        fsrs_due: dict[str, float] | None = None,
+        limit: int = 10,
+    ) -> list[AdaptiveStep]:
+        """Build a personalized learning path fusing topology + mastery + FSRS.
+
+        The path interleaves three action types:
+        1. **review**: FSRS-due concepts (overdue reviews get highest priority)
+        2. **fill_gap**: unmastered prerequisites blocking frontier progress
+        3. **learn**: new concepts on the optimal frontier
+
+        Args:
+            progress: concept_id → UserProgress
+            domain_id: filter to a domain
+            fsrs_due: concept_id → due timestamp (epoch s); concepts past now are due
+            limit: max steps to return
+
+        Returns:
+            Ordered list of AdaptiveStep with action, priority, and reasons.
+        """
+        import time as _time
+        now = _time.time()
+        fsrs_due = fsrs_due or {}
+
+        cids = self._filter_concepts(domain_id, None)
+        mastered_ids = {
+            cid for cid, p in progress.items()
+            if p.status == "mastered" and cid in cids
+        }
+
+        steps: list[AdaptiveStep] = []
+
+        # ── Phase 1: FSRS reviews (highest priority) ──
+        for cid in cids:
+            if cid not in fsrs_due:
+                continue
+            due_ts = fsrs_due[cid]
+            if due_ts > now:
+                continue  # not due yet
+            if cid not in self._concepts:
+                continue
+            c = self._concepts[cid]
+            overdue_days = max(0, (now - due_ts) / 86400)
+            priority = 100.0 + min(overdue_days * 5.0, 50.0)
+            reasons = ["📅 复习到期"]
+            if overdue_days >= 3:
+                reasons.append(f"逾期 {overdue_days:.0f} 天")
+            steps.append(AdaptiveStep(
+                concept_id=cid,
+                name=c.name,
+                priority=priority,
+                action="review",
+                reasons=reasons,
+                estimated_minutes=max(5, c.estimated_minutes // 2),
+                difficulty=c.difficulty,
+                subdomain_id=c.subdomain_id,
+            ))
+
+        # ── Phase 2: Knowledge gaps (prerequisites blocking frontier) ──
+        gaps = self.knowledge_gaps(progress, domain_id, limit=limit)
+        gap_ids_added: set[str] = set()
+        for gap in gaps:
+            if gap.concept_id in mastered_ids:
+                continue
+            if gap.concept_id in {s.concept_id for s in steps}:
+                continue
+            c = self._concepts.get(gap.concept_id)
+            if not c:
+                continue
+            priority = 60.0 + min(gap.blocked_count * 5.0, 30.0)
+            reasons = [f"🔓 解锁 {gap.blocked_count} 个后续概念"]
+            steps.append(AdaptiveStep(
+                concept_id=gap.concept_id,
+                name=c.name,
+                priority=priority,
+                action="fill_gap",
+                reasons=reasons,
+                estimated_minutes=c.estimated_minutes,
+                difficulty=c.difficulty,
+                subdomain_id=c.subdomain_id,
+            ))
+            gap_ids_added.add(gap.concept_id)
+
+        # ── Phase 3: New frontier concepts ──
+        recs = self.recommend(progress, domain_id=domain_id, limit=limit * 2)
+        for rec in recs:
+            if rec.concept_id in {s.concept_id for s in steps}:
+                continue
+            c = self._concepts.get(rec.concept_id)
+            if not c:
+                continue
+            priority = min(rec.score, 55.0)
+            reasons = list(rec.reasons)
+            action = "learn"
+            # Boost in-progress concepts
+            p = progress.get(rec.concept_id)
+            if p and p.status == "learning":
+                priority += 10.0
+                action = "learn"
+            steps.append(AdaptiveStep(
+                concept_id=rec.concept_id,
+                name=c.name,
+                priority=priority,
+                action=action,
+                reasons=reasons,
+                estimated_minutes=c.estimated_minutes,
+                difficulty=c.difficulty,
+                subdomain_id=c.subdomain_id,
+            ))
+
+        # Sort by priority descending, take top limit
+        steps.sort(key=lambda s: s.priority, reverse=True)
+        return steps[:limit]
+
+    # ── Knowledge Gap Detection ───────────────────────────
+
+    def knowledge_gaps(
+        self,
+        progress: dict[str, UserProgress],
+        domain_id: str | None = None,
+        limit: int = 10,
+    ) -> list[KnowledgeGap]:
+        """Find unmastered prerequisites that block the most downstream concepts.
+
+        A gap is a concept that:
+        1. Is NOT mastered
+        2. IS a prerequisite for at least one other concept whose OTHER prereqs are met
+
+        Gaps are ranked by how many downstream concepts they unblock.
+        """
+        cids = self._filter_concepts(domain_id, None)
+        mastered_ids = {
+            cid for cid, p in progress.items()
+            if p.status == "mastered" and cid in cids
+        }
+
+        # For each non-mastered concept, check if it blocks downstream concepts
+        gap_scores: dict[str, list[str]] = defaultdict(list)
+
+        for cid in cids:
+            if cid in mastered_ids:
+                continue
+            # Check all concepts that depend on cid
+            for dependent in self._dependents.get(cid, []):
+                if dependent not in cids or dependent in mastered_ids:
+                    continue
+                # Check if cid is the only/one of few unmet prereqs for dependent
+                prereqs_of_dep = self._prereqs.get(dependent, [])
+                unmet = [
+                    p for p in prereqs_of_dep
+                    if p in cids and p not in mastered_ids
+                ]
+                if cid in unmet:
+                    gap_scores[cid].append(dependent)
+
+        gaps: list[KnowledgeGap] = []
+        for gid, blocked in gap_scores.items():
+            c = self._concepts.get(gid)
+            if not c:
+                continue
+            p = progress.get(gid, UserProgress(gid))
+            gaps.append(KnowledgeGap(
+                concept_id=gid,
+                name=c.name,
+                blocked_count=len(blocked),
+                blocked_concepts=blocked[:5],
+                difficulty=c.difficulty,
+                status=p.status,
+            ))
+
+        # Sort by blocked_count descending
+        gaps.sort(key=lambda g: g.blocked_count, reverse=True)
+        return gaps[:limit]
 
     # ── Internal Helpers ─────────────────────────────────────
 
