@@ -284,8 +284,9 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ Split analytics.py (1,205L → 402L) — extracted analytics_experience.py (364L, V2.5) + analytics_planning.py (444L, V2.6)
 - ✅ Split analytics_insights.py (1,007L → 335L) — extracted analytics_social.py (192L, V2.8) + analytics_search.py (460L, V2.9)
 - ✅ Created analytics_utils.py (54L) — shared load_seed_metadata() helper, DRY across 4 routers
-- ✅ All 7 analytics routers registered in main.py (analytics + experience + planning + insights + social + search)
-- ✅ All router files now under 800-line Python limit (max: 460L analytics_search.py)
+- ✅ Split graph.py (1,102L → 696L) — extracted graph_advanced.py (487L, V2.1+: topology/context/compare/cross-domain/global-stats)
+- ✅ Split learning.py (1,062L → 752L) — extracted learning_extended.py (345L: export/import/adaptive-path/knowledge-gaps)
+- ✅ All 16 BE routers now under 800-line Python limit (max: 752L learning.py)
 - ✅ Fixed test_analytics_v28.py peer-comparison assertion (comparison_labels → summary, mastery_speed → learn_speed_per_week)
 - ✅ 1,192 BE tests pass, 641 FE tests pass, tsc 0 errors, pnpm build success
 
@@ -445,6 +446,8 @@ python scripts/build_exe.py  # 输出到 release/
 | pps/api/engines/graph/builder.py | 图谱构建器: ZPD子图+实体对齐+学习区域摘要 |
 | pps/api/engines/graph/rag.py | RAG检索模块: 精确匹配+模糊fallback+搜索 |
 | pps/api/routers/ | graph/dialogue/learning API |
+| pps/api/routers/graph_advanced.py | V2.1+图谱高级API (V2.10拆分: 拓扑分析/概念上下文/对比/跨域桥接/全局统计) |
+| pps/api/routers/learning_extended.py | 学习引擎扩展API (V2.10拆分: 数据导入导出/自适应路径/知识缺口) |
 | pps/api/llm/router.py | LLM路由器 (SSRF/retry/tier) |
 | pps/api/rate_limiter.py | 请求频率限制器 |
 | packages/web/src/lib/store/ | Zustand stores (dialogue/learning/domain/graph) |
