@@ -190,6 +190,8 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ useDashboardBatch hook: module-level cache, concurrent request dedup, WeeklyReport + StudyPatterns integrated
 - ✅ 4 new BE tests (batch endpoint schema validation)
 - ✅ Three-way sync test updated for new file structure (direct-llm-prompts.ts)
+- ✅ Split ChatPanel.tsx God File: 687→324 lines (extracted ChatHistoryView 87L + ChatIdleView 172L + InlineAssessmentCard 102L)
+- ✅ Split HomePage.tsx God File: 651→278 lines (extracted home-canvas-utils.ts 218L: DEMO_DOMAINS + constants + hex grid + drawBubble)
 
 ---（生效中的架构决策）
 
@@ -352,6 +354,10 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/lib/store/ | Zustand stores (dialogue/learning/domain/graph) |
 | packages/web/src/lib/direct-llm.ts | 前端直连LLM (549行, 含validateAssessment) |
 | packages/web/src/lib/direct-llm-prompts.ts | LLM提示词模板+域评估补充 (554行, V2.4 从direct-llm.ts拆出) |
+| packages/web/src/lib/utils/home-canvas-utils.ts | HomePage蜂窝Canvas: DEMO_DOMAINS+常量+hex grid+drawBubble (218行, V2.4 从HomePage.tsx拆出) |
+| packages/web/src/components/chat/ChatHistoryView.tsx | 对话历史视图 (87行, V2.4 从ChatPanel.tsx拆出) |
+| packages/web/src/components/chat/ChatIdleView.tsx | 概念空闲视图: 掌握度卡片+前置知识+小地图 (172行, V2.4 从ChatPanel.tsx拆出) |
+| packages/web/src/components/chat/InlineAssessmentCard.tsx | 评估结果卡片: 动画分数+维度条 (102行, V2.4 从ChatPanel.tsx拆出) |
 | packages/web/src/components/common/WelcomeGuide.tsx | 首访引导层 (价值主张+推荐域) |
 | packages/web/src/components/common/ReviewBanner.tsx | FSRS复习提示+学习进度 |
 | packages/web/src/components/common/DailyRecommendation.tsx | 每日推荐概念 (30概念日轮) |
@@ -458,4 +464,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V2.4 Performance & Code Health (God File split + lazy widgets + batch API) | **Result**: 1,113 BE + 529 FE + 61 E2E all pass, tsc: 0 errors, 0 open issues, build OK, DashboardPage -47% chunk size
+**Date**: 2026-04-10 | **Scope**: V2.4 Code Health Phase 2 (ChatPanel 687→324 + HomePage 651→278 God File splits) | **Result**: 1,113 BE + 529 FE + 61 E2E all pass, tsc: 0 errors, 0 open issues, build OK
