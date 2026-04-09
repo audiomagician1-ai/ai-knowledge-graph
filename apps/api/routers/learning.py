@@ -94,6 +94,9 @@ async def record_assessment_result(req: RecordAssessmentRequest):
 
     progress = record_assessment(req.concept_id, req.concept_name, req.score, req.mastered)
 
+    # Emit notifications for learning events (non-blocking)
+    _emit_learning_notifications(req.concept_id, req.concept_name or "", req.mastered, req.score)
+
     # ── BKT Update ──
     tracker = KnowledgeTracker()
 
@@ -133,6 +136,43 @@ async def record_assessment_result(req: RecordAssessmentRequest):
         },
         "achievements_unlocked": _check_and_unlock_achievements(),
     }
+
+
+def _emit_learning_notifications(concept_id: str, concept_name: str, mastered: bool, score: int):
+    """Emit notifications for learning events (mastery, milestones).
+
+    Called after assessment recording. Failures are silently ignored
+    to avoid disrupting core learning flow.
+    """
+    try:
+        from routers.notifications import create_notification, NotificationType
+
+        if mastered:
+            create_notification(
+                NotificationType.mastery,
+                "概念已掌握!",
+                f"你已掌握 '{concept_name or concept_id}' — 继续保持!",
+                None,
+                {"concept_id": concept_id, "score": score},
+            )
+
+        # Check streak milestones
+        streak_data = get_streak()
+        current_streak = streak_data.get("current", 0)
+        milestones = [7, 14, 30, 60, 90, 180, 365]
+        for ms in milestones:
+            if current_streak == ms:
+                create_notification(
+                    NotificationType.streak,
+                    f"连续学习 {ms} 天!",
+                    f"太棒了! 你已连续学习 {ms} 天，保持这个势头!",
+                    "/dashboard",
+                    {"streak_days": ms},
+                )
+                break
+
+    except Exception as e:
+        logger.debug("Notification emit failed (non-critical): %s", e)
 
 
 @router.get("/history")

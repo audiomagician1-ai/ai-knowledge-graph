@@ -15,7 +15,7 @@ def client():
 @pytest.fixture(autouse=True)
 def _clear_store():
     """Clear content feedback store between tests."""
-    from routers.community import _content_feedback
+    from routers.community_content import _content_feedback
     _content_feedback.clear()
     yield
     _content_feedback.clear()
