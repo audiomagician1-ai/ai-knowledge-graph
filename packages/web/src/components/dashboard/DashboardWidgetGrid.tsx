@@ -17,6 +17,7 @@ const NextMilestonesWidget = lazy(() => import('./NextMilestonesWidget').then(m 
 const SessionReplayWidget = lazy(() => import('./SessionReplayWidget').then(m => ({ default: m.SessionReplayWidget })));
 const FSRSInsightsWidget = lazy(() => import('./FSRSInsightsWidget').then(m => ({ default: m.FSRSInsightsWidget })));
 const GoalRecommendWidget = lazy(() => import('./GoalRecommendWidget').then(m => ({ default: m.GoalRecommendWidget })));
+const LearningProfileWidget = lazy(() => import('./LearningProfileWidget').then(m => ({ default: m.LearningProfileWidget })));
 
 // ── Analytics & Insights ──
 const WeeklyReport = lazy(() => import('./WeeklyReport').then(m => ({ default: m.WeeklyReport })));
@@ -36,6 +37,7 @@ const DomainRecommendWidget = lazy(() => import('./DomainRecommendWidget').then(
 const GraphTopologyWidget = lazy(() => import('./GraphTopologyWidget').then(m => ({ default: m.GraphTopologyWidget })));
 const ConceptClusterWidget = lazy(() => import('./ConceptClusterWidget').then(m => ({ default: m.ConceptClusterWidget })));
 const DifficultyAccuracyWidget = lazy(() => import('./DifficultyAccuracyWidget').then(m => ({ default: m.DifficultyAccuracyWidget })));
+const DomainOverviewBatchWidget = lazy(() => import('./DomainOverviewBatchWidget').then(m => ({ default: m.DomainOverviewBatchWidget })));
 
 // ── Social & Community ──
 const GlobalLeaderboard = lazy(() => import('./GlobalLeaderboard').then(m => ({ default: m.GlobalLeaderboard })));
@@ -73,6 +75,7 @@ export function DashboardWidgetGrid() {
   return (
     <div className="space-y-8">
       <CollapsibleSection title="学习与复习" icon={<Brain size={14} className="opacity-40" />}>
+        <Suspense fallback={<WidgetSkeleton />}><LearningProfileWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><SessionSummaryWidget hours={24} /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><AdaptivePathWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><ReviewQueue /></Suspense>
@@ -105,6 +108,7 @@ export function DashboardWidgetGrid() {
         <Suspense fallback={<WidgetSkeleton />}><GraphTopologyWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><ConceptClusterWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><DifficultyAccuracyWidget /></Suspense>
+        <Suspense fallback={<WidgetSkeleton />}><DomainOverviewBatchWidget /></Suspense>
       </CollapsibleSection>
 
       <CollapsibleSection title="社交互动" icon={<Users size={14} className="opacity-40" />} defaultOpen={false}>

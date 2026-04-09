@@ -487,3 +487,86 @@ async def get_global_stats():
 
 
 # -- V3.0+ endpoints moved to graph_topology.py (V3.4 split) --
+
+
+# ── V3.7: Domain Overview Batch ──────────────────────────
+
+@router.get("/domain-overview-batch")
+async def domain_overview_batch():
+    """Batch overview of all 36 domains in a single API call.
+
+    Returns per-domain: concept count, edge count, difficulty stats,
+    subdomain count, user progress, and milestone count.
+    Replaces N individual domain calls with 1 batch.
+    """
+    from db.sqlite_client import get_all_progress
+
+    domain_list = _load_domains()
+    if not domain_list:
+        return {"domains": [], "total": 0, "aggregate": {"total_concepts": 0, "total_edges": 0, "domains_started": 0}}
+
+    # Get all user progress at once
+    all_progress = get_all_progress()
+    progress_map = {}
+    for p in all_progress:
+        progress_map[p["concept_id"]] = p
+
+    results = []
+    total_concepts = 0
+    total_edges = 0
+
+    for d in domain_list:
+        did = d["id"]
+        try:
+            seed = _load_seed(did)
+        except Exception:
+            continue
+
+        concepts = seed.get("concepts", [])
+        edges = seed.get("edges", [])
+        subdomains = set(c.get("subdomain_id", "") for c in concepts if c.get("subdomain_id"))
+        milestones = sum(1 for c in concepts if c.get("is_milestone"))
+
+        # Difficulty stats
+        diffs = [c["difficulty"] for c in concepts if "difficulty" in c]
+        avg_diff = round(sum(diffs) / max(1, len(diffs)), 1) if diffs else 0
+        min_diff = min(diffs) if diffs else 0
+        max_diff = max(diffs) if diffs else 0
+
+        # User progress for this domain
+        concept_ids = {c["id"] for c in concepts}
+        mastered = sum(1 for cid in concept_ids if progress_map.get(cid, {}).get("status") == "mastered")
+        learning = sum(1 for cid in concept_ids if progress_map.get(cid, {}).get("status") == "learning")
+
+        total_concepts += len(concepts)
+        total_edges += len(edges)
+
+        results.append({
+            "domain_id": did,
+            "name": d.get("name", did),
+            "icon": d.get("icon", ""),
+            "color": d.get("color", "#888"),
+            "concepts": len(concepts),
+            "edges": len(edges),
+            "subdomains": len(subdomains),
+            "milestones": milestones,
+            "difficulty": {"avg": avg_diff, "min": min_diff, "max": max_diff},
+            "progress": {
+                "mastered": mastered,
+                "learning": learning,
+                "not_started": len(concepts) - mastered - learning,
+                "pct": round(mastered / max(1, len(concepts)) * 100, 1),
+            },
+        })
+
+    results.sort(key=lambda r: r["progress"]["pct"], reverse=True)
+
+    return {
+        "domains": results,
+        "total": len(results),
+        "aggregate": {
+            "total_concepts": total_concepts,
+            "total_edges": total_edges,
+            "domains_started": sum(1 for r in results if r["progress"]["mastered"] > 0 or r["progress"]["learning"] > 0),
+        },
+    }

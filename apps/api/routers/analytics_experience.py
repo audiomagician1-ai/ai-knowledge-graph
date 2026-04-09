@@ -478,3 +478,122 @@ async def session_summary(
         "active_minutes": round(active_sec / 60, 1),
         "current_streak": streak.get("current", 0) if isinstance(streak, dict) else 0,
     }
+
+
+# ── V3.7: Unified Learning Profile ──────────────────────
+
+@router.get("/analytics/learning-profile")
+async def learning_profile():
+    """Comprehensive user learning profile — single API call replacing 5+ separate calls.
+
+    Aggregates: progress overview, streak, recent activity, domain breakdown,
+    strengths/weaknesses, and current goals into one payload.
+    """
+    from routers.analytics_utils import load_seed_metadata
+    from db.sqlite_client import get_all_bkt_states, get_due_concepts
+    from collections import defaultdict
+
+    all_progress = get_all_progress()
+    history = get_history(500)
+    streak_data = get_streak()
+    concept_domain_map, concept_info, domain_map = load_seed_metadata()
+    now = time.time()
+
+    # ── Progress Overview ──
+    mastered = [p for p in all_progress if p["status"] == "mastered"]
+    learning = [p for p in all_progress if p["status"] == "learning"]
+    total_concepts = len(concept_info)
+    mastered_count = len(mastered)
+    learning_count = len(learning)
+
+    # ── Streak ──
+    current_streak = streak_data.get("current", 0) if isinstance(streak_data, dict) else 0
+    longest_streak = streak_data.get("longest", 0) if isinstance(streak_data, dict) else 0
+
+    # ── Recent Activity (7 days) ──
+    week_ago = now - 7 * 86400
+    recent = [h for h in history if h.get("timestamp", 0) >= week_ago]
+    recent_mastered = sum(1 for h in recent if h.get("mastered"))
+    recent_events = len(recent)
+    recent_avg_score = round(
+        sum(h.get("score", 0) for h in recent) / max(1, recent_events), 1
+    ) if recent_events else 0
+
+    # ── Domain Breakdown (active domains only) ──
+    domain_stats: dict[str, dict] = defaultdict(lambda: {"mastered": 0, "learning": 0, "total": 0})
+    for cid, did in concept_domain_map.items():
+        domain_stats[did]["total"] += 1
+    for p in all_progress:
+        did = concept_domain_map.get(p["concept_id"])
+        if did:
+            domain_stats[did][p["status"]] = domain_stats[did].get(p["status"], 0) + 1
+
+    active_domains = []
+    for did, ds in domain_stats.items():
+        if ds.get("mastered", 0) > 0 or ds.get("learning", 0) > 0:
+            meta = domain_map.get(did, {})
+            total = ds["total"]
+            m = ds.get("mastered", 0)
+            active_domains.append({
+                "domain_id": did,
+                "name": meta.get("name", did),
+                "mastered": m,
+                "learning": ds.get("learning", 0),
+                "total": total,
+                "progress_pct": round(m / max(1, total) * 100, 1),
+            })
+    active_domains.sort(key=lambda d: d["mastered"], reverse=True)
+
+    # ── Strengths & Weaknesses (from BKT) ──
+    bkt_states = get_all_bkt_states()
+    strengths = []
+    weaknesses = []
+    for bkt in sorted(bkt_states, key=lambda b: b["bkt_mastery"], reverse=True):
+        info = concept_info.get(bkt["concept_id"], {})
+        entry = {
+            "concept_id": bkt["concept_id"],
+            "name": info.get("name", bkt["concept_id"]),
+            "p_mastery": round(bkt["bkt_mastery"], 3),
+            "observations": bkt["bkt_observations"],
+        }
+        if bkt["bkt_mastery"] >= 0.8 and len(strengths) < 5:
+            strengths.append(entry)
+        elif bkt["bkt_mastery"] < 0.4 and bkt["bkt_observations"] >= 2 and len(weaknesses) < 5:
+            weaknesses.append(entry)
+
+    # ── FSRS Review Status ──
+    due_items = get_due_concepts(before=now, limit=100)
+    due_count = len(due_items)
+    overdue_count = sum(1 for d in due_items if (now - d["fsrs_due"]) > 86400)
+
+    # ── Level Estimate ──
+    mastered_diffs = [concept_info.get(p["concept_id"], {}).get("difficulty", 3)
+                      for p in mastered if p["concept_id"] in concept_info]
+    avg_difficulty = round(sum(mastered_diffs) / max(1, len(mastered_diffs)), 1) if mastered_diffs else 0
+
+    return {
+        "overview": {
+            "total_concepts": total_concepts,
+            "mastered": mastered_count,
+            "learning": learning_count,
+            "not_started": total_concepts - mastered_count - learning_count,
+            "completion_pct": round(mastered_count / max(1, total_concepts) * 100, 1),
+            "avg_mastered_difficulty": avg_difficulty,
+        },
+        "streak": {
+            "current": current_streak,
+            "longest": longest_streak,
+        },
+        "recent_7d": {
+            "events": recent_events,
+            "mastered": recent_mastered,
+            "avg_score": recent_avg_score,
+        },
+        "domains": active_domains[:12],
+        "strengths": strengths,
+        "weaknesses": weaknesses,
+        "review_status": {
+            "due_count": due_count,
+            "overdue_count": overdue_count,
+        },
+    }

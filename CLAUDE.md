@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 2,111 (1,349 BE + 701 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 2,129 (1,362 BE + 706 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -310,6 +310,14 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ create_notification() 编程式帮助函数 (可从其他路由器调用)
 - ✅ 内容反馈自动触发通知 (提交反馈后自动创建通知)
 - ✅ 13 BE tests (notifications) + 10 BE tests (content-feedback) + 11 FE tests = 34 new tests
+
+### V3.7 Unified Learning Profile + Batch Optimization Sprint (2026-04-10, 完成)
+- ✅ GET /api/analytics/learning-profile: 统一学习档案 (进度总览+连续天数+7日活动+域进度+BKT强弱项+FSRS复习状态, 单API替代5+调用)
+- ✅ GET /api/graph/domain-overview-batch: 全域批量概览 (36域一次返回: 概念数/边数/子域/难度/进度/里程碑+聚合统计)
+- ✅ LearningProfileWidget Dashboard组件: 统一档案卡 (进度条+活动摘要+域网格+强弱项, lazy-load, 128L)
+- ✅ DomainOverviewBatchWidget Dashboard组件: 全域网格 (进度条+难度+展开收起, lazy-load, 90L)
+- ✅ DashboardWidgetGrid updated: 35→37 lazy-loaded widgets (added LearningProfileWidget + DomainOverviewBatchWidget)
+- ✅ 18 new tests (13 BE: 7 learning-profile + 6 domain-batch + 5 FE)
 
 ### V3.6 FSRS Retention Analytics + Goal Intelligence Sprint (2026-04-10, 完成)
 - ✅ GET /api/analytics/fsrs-insights: FSRS记忆保持分析 (保持率摘要+遗忘风险分布高/中/低+复习效率+高风险概念TOP10)
@@ -686,6 +694,8 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/dashboard/ComparativeProgressWidget.tsx | 周度对比 (V3.5: WoW域级事件/掌握/均分对比+趋势, lazy-load) |
 | packages/web/src/components/dashboard/FSRSInsightsWidget.tsx | FSRS记忆分析 (V3.6: 风险分布+效率统计+高风险概念列表, lazy-load) |
 | packages/web/src/components/dashboard/GoalRecommendWidget.tsx | 智能目标建议 (V3.6: 日/周目标+学习时间+专注领域, lazy-load) |
+| packages/web/src/components/dashboard/LearningProfileWidget.tsx | 统一学习档案 (V3.7: 进度+连续+7日活动+域进度+强弱项+复习, lazy-load) |
+| packages/web/src/components/dashboard/DomainOverviewBatchWidget.tsx | 全域概览网格 (V3.7: 36域批量+进度条+难度+展开, lazy-load) |
 | workers/src/ | Cloudflare Workers代理后端 |
 
 ---
@@ -748,4 +758,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V3.6 FSRS Retention Analytics + Goal Intelligence — FSRS insights API (retention/risk/efficiency), goal recommendations API (pace-based targets), 2 Dashboard widgets, 16 tests | **Result**: 1,349 BE + 701 FE + 61 E2E = 2,111 all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V3.7 Unified Learning Profile + Batch Optimization — learning-profile API (single comprehensive endpoint), domain-overview-batch API (36 domains in 1 call), 2 Dashboard widgets, 18 tests | **Result**: 1,362 BE + 706 FE + 61 E2E = 2,129 all pass, tsc: 0 errors, 0 open issues, build OK
