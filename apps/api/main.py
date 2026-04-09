@@ -19,7 +19,7 @@ from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import FileResponse
 from starlette.middleware.base import BaseHTTPMiddleware
 
-from routers import graph, graph_advanced, dialogue, learning, learning_extended, health, notes, community, community_discussions, community_content, notifications, analytics, analytics_experience, analytics_planning, analytics_insights, analytics_social, analytics_search
+from routers import graph, graph_advanced, dialogue, learning, learning_extended, health, notes, community, community_discussions, community_content, notifications, analytics, analytics_experience, analytics_planning, analytics_insights, analytics_social, analytics_search, onboarding
 from utils.logger import configure_logging, get_logger
 
 # Initialize unified logging before anything else
@@ -165,6 +165,7 @@ app.include_router(analytics_insights.router, prefix="/api", tags=["analytics-in
 app.include_router(analytics_social.router, prefix="/api", tags=["analytics-social"])
 app.include_router(analytics_search.router, prefix="/api", tags=["analytics-search"])
 app.include_router(notifications.router, prefix="/api", tags=["notifications"])
+app.include_router(onboarding.router, prefix="/api", tags=["onboarding"])
 
 # ── Frontend SPA serving (for packaged exe mode) ──
 _frontend_dist = BASE_DIR / "web_dist"

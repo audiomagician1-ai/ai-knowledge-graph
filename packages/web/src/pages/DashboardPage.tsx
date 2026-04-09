@@ -32,6 +32,7 @@ const GlobalLeaderboard = lazy(() => import('@/components/dashboard/GlobalLeader
 const PeerComparisonCard = lazy(() => import('@/components/dashboard/PeerComparisonCard').then(m => ({ default: m.PeerComparisonCard })));
 const ContentSearchWidget = lazy(() => import('@/components/dashboard/ContentSearchWidget').then(m => ({ default: m.ContentSearchWidget })));
 const ContentHealthWidget = lazy(() => import('@/components/dashboard/ContentHealthWidget').then(m => ({ default: m.ContentHealthWidget })));
+const OnboardingRecommendWidget = lazy(() => import('@/components/dashboard/OnboardingRecommendWidget').then(m => ({ default: m.OnboardingRecommendWidget })));
 
 export function DashboardPage() {
   const navigate = useNavigate();
@@ -137,6 +138,7 @@ export function DashboardPage() {
         <Suspense fallback={<WidgetSkeleton />}><PeerComparisonCard /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><ContentSearchWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><ContentHealthWidget /></Suspense>
+        <Suspense fallback={<WidgetSkeleton />}><OnboardingRecommendWidget /></Suspense>
 
         {/* Domain Progress */}
         <section>

@@ -1,10 +1,20 @@
 """Shared analytics utilities — seed data loading helpers.
 
 Used by analytics_insights, analytics_social, and analytics_search routers.
+Includes in-memory cache (TTL 300s) to avoid re-reading 36 seed JSON files per request.
 """
 
 import os
 import sys
+import time
+from typing import Optional
+
+# ---------------------------------------------------------------------------
+# Module-level cache — seed data is static, safe to cache for 5 minutes.
+# ---------------------------------------------------------------------------
+_CACHE_TTL = 300  # seconds
+_cache_data: Optional[tuple[dict[str, str], dict[str, dict], dict[str, dict]]] = None
+_cache_ts: float = 0.0
 
 
 def _get_data_root() -> str:
@@ -17,11 +27,24 @@ def _get_data_root() -> str:
     )
 
 
+def invalidate_seed_cache() -> None:
+    """Force cache invalidation (useful after seed data updates)."""
+    global _cache_data, _cache_ts
+    _cache_data = None
+    _cache_ts = 0.0
+
+
 def load_seed_metadata() -> tuple[dict[str, str], dict[str, dict], dict[str, dict]]:
-    """Load domain/concept metadata from seed files.
+    """Load domain/concept metadata from seed files (cached, TTL 300s).
 
     Returns (concept_domain_map, concept_info, domain_map).
     """
+    global _cache_data, _cache_ts
+
+    now = time.monotonic()
+    if _cache_data is not None and (now - _cache_ts) < _CACHE_TTL:
+        return _cache_data
+
     import json as _json
 
     data_root = _get_data_root()
@@ -51,4 +74,7 @@ def load_seed_metadata() -> tuple[dict[str, str], dict[str, dict], dict[str, dic
                         "tags": c.get("tags", []),
                     }
 
-    return concept_domain_map, concept_info, domain_map
+    result = (concept_domain_map, concept_info, domain_map)
+    _cache_data = result
+    _cache_ts = now
+    return result
