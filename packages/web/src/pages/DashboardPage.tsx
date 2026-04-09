@@ -26,6 +26,8 @@ const StudyTimeChart = lazy(() => import('@/components/dashboard/StudyTimeChart'
 const StreakInsights = lazy(() => import('@/components/dashboard/StreakInsights').then(m => ({ default: m.StreakInsights })));
 const DomainRecommendWidget = lazy(() => import('@/components/dashboard/DomainRecommendWidget').then(m => ({ default: m.DomainRecommendWidget })));
 const StudyPlanWidget = lazy(() => import('@/components/dashboard/StudyPlanWidget').then(m => ({ default: m.StudyPlanWidget })));
+const WeakConceptsWidget = lazy(() => import('@/components/dashboard/WeakConceptsWidget').then(m => ({ default: m.WeakConceptsWidget })));
+const LearningEfficiencyChart = lazy(() => import('@/components/dashboard/LearningEfficiencyChart').then(m => ({ default: m.LearningEfficiencyChart })));
 
 export function DashboardPage() {
   const navigate = useNavigate();
@@ -125,6 +127,8 @@ export function DashboardPage() {
         <Suspense fallback={<WidgetSkeleton />}><StreakInsights /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><DomainRecommendWidget limit={4} /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><StudyPlanWidget days={3} dailyMinutes={30} /></Suspense>
+        <Suspense fallback={<WidgetSkeleton />}><WeakConceptsWidget limit={5} /></Suspense>
+        <Suspense fallback={<WidgetSkeleton />}><LearningEfficiencyChart maxDomains={8} /></Suspense>
 
         {/* Domain Progress */}
         <section>
