@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Clock, BarChart3 } from 'lucide-react';
 import { fetchWithRetry } from '@/lib/utils/fetch-retry';
+import { useDashboardBatch } from '@/lib/hooks/useDashboardBatch';
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
 
@@ -19,10 +20,18 @@ interface PatternData {
  * StudyPatterns — Visualize when the user studies (hour heatmap + weekday bars).
  */
 export function StudyPatterns() {
+  const batchData = useDashboardBatch('study_patterns');
   const [data, setData] = useState<PatternData | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // V2.4: Use batch data if available
+    if (batchData) {
+      setData(batchData as unknown as PatternData);
+      setLoading(false);
+      return;
+    }
+    // Fallback: individual endpoint
     const load = async () => {
       try {
         const res = await fetchWithRetry(`${API_BASE}/analytics/study-patterns`);
@@ -33,7 +42,7 @@ export function StudyPatterns() {
       finally { setLoading(false); }
     };
     load();
-  }, []);
+  }, [batchData]);
 
   if (loading || !data || data.total_events === 0) return null;
 

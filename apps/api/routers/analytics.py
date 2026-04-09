@@ -359,3 +359,32 @@ async def study_patterns(days: int = 30):
             sum(1 for d in weekday_dist if d > 0) / 7 * 100, 1
         ),
     }
+
+
+@router.get("/analytics/dashboard-batch")
+async def dashboard_batch():
+    """Batch endpoint — returns weekly-report + study-patterns + learning-velocity in one call.
+
+    V2.4 performance: reduces 3 HTTP round-trips to 1 for the Dashboard page.
+    Each sub-result matches the individual endpoint's schema exactly.
+    """
+    try:
+        wr = await weekly_report()
+    except Exception:
+        wr = None
+
+    try:
+        sp = await study_patterns(days=30)
+    except Exception:
+        sp = None
+
+    try:
+        lv = await learning_velocity(days=14)
+    except Exception:
+        lv = None
+
+    return {
+        "weekly_report": wr,
+        "study_patterns": sp,
+        "learning_velocity": lv,
+    }

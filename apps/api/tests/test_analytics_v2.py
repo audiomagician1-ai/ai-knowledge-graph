@@ -110,3 +110,56 @@ async def test_study_patterns_consistency_score_range():
         response = await client.get("/api/analytics/study-patterns")
         data = response.json()
         assert 0 <= data["consistency_score"] <= 100
+
+
+# ─── V2.4 Batch endpoint tests ───
+
+
+@pytest.mark.asyncio
+async def test_dashboard_batch_returns_all_three():
+    """Batch endpoint should return weekly_report + study_patterns + learning_velocity."""
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        response = await client.get("/api/analytics/dashboard-batch")
+        assert response.status_code == 200
+        data = response.json()
+        assert "weekly_report" in data
+        assert "study_patterns" in data
+        assert "learning_velocity" in data
+
+
+@pytest.mark.asyncio
+async def test_dashboard_batch_weekly_report_matches_individual():
+    """Batch weekly_report should match the individual endpoint's schema."""
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        batch = (await client.get("/api/analytics/dashboard-batch")).json()
+        individual = (await client.get("/api/analytics/weekly-report")).json()
+        wr = batch["weekly_report"]
+        assert wr is not None
+        # Same top-level keys
+        assert set(wr.keys()) == set(individual.keys())
+
+
+@pytest.mark.asyncio
+async def test_dashboard_batch_study_patterns_matches_individual():
+    """Batch study_patterns should match the individual endpoint's schema."""
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        batch = (await client.get("/api/analytics/dashboard-batch")).json()
+        individual = (await client.get("/api/analytics/study-patterns")).json()
+        sp = batch["study_patterns"]
+        assert sp is not None
+        assert set(sp.keys()) == set(individual.keys())
+
+
+@pytest.mark.asyncio
+async def test_dashboard_batch_velocity_matches_individual():
+    """Batch learning_velocity should match the individual endpoint's schema."""
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        batch = (await client.get("/api/analytics/dashboard-batch")).json()
+        individual = (await client.get("/api/analytics/learning-velocity?days=14")).json()
+        lv = batch["learning_velocity"]
+        assert lv is not None
+        assert set(lv.keys()) == set(individual.keys())

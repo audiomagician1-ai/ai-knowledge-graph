@@ -16,3 +16,4 @@ export { useConceptNotes } from './useConceptNotes';
 export { useNotifications } from './useNotifications';
 export { useGraphKeyNav } from './useGraphKeyNav';
 export { useBookmarks } from './useBookmarks';
+export { useDashboardBatch, invalidateDashboardBatchCache } from './useDashboardBatch';

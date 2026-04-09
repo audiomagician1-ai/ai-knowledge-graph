@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { TrendingUp, TrendingDown, Minus, Calendar, Trophy, BookOpen, Zap, Flame } from 'lucide-react';
 import { fetchWithRetry } from '@/lib/utils/fetch-retry';
+import { useDashboardBatch } from '@/lib/hooks/useDashboardBatch';
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
 
@@ -72,10 +73,18 @@ function MetricRow({
  * WeeklyReport — Shows week-over-week learning progress comparison.
  */
 export function WeeklyReport() {
+  const batchData = useDashboardBatch('weekly_report');
   const [data, setData] = useState<WeeklyData | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // V2.4: Use batch data if available
+    if (batchData) {
+      setData(batchData as unknown as WeeklyData);
+      setLoading(false);
+      return;
+    }
+    // Fallback: individual endpoint
     const load = async () => {
       try {
         const res = await fetchWithRetry(`${API_BASE}/analytics/weekly-report`);
@@ -86,7 +95,7 @@ export function WeeklyReport() {
       finally { setLoading(false); }
     };
     load();
-  }, []);
+  }, [batchData]);
 
   if (loading) {
     return (
