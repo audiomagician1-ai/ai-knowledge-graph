@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,757 (1,113 BE + 583 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 1,766 (1,113 BE + 592 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -209,6 +209,12 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ Split LoginPage.tsx: 362→289 lines (extracted LoginOAuthButtons 70L — OAuth buttons + Google/GitHub SVG icons)
 - ✅ Split ReviewPage.tsx: 346→238 lines (extracted ReviewFlashcard 109L — progress bar + flashcard + FSRS rating buttons)
 - ✅ 3 new FE tests (auth + review component exports + RATINGS validation)
+
+### V2.4 Code Health Phase 7 — LearningPath + Dashboard + Chat splits (2026-04-10, 完成)
+- ✅ Split LearningPathPage.tsx: 341→184 lines (extracted PathGroupSection 140L + KnowledgeGapsSection 52L)
+- ✅ Split DashboardContent.tsx: 325→200 lines (extracted OtherDomainCard + ActivityRow + formatTimeAgo → DashboardContentParts 100L)
+- ✅ Split ChatPanel.tsx: 323→114 lines (extracted ChatView 172L — full chat message list + input area + celebration overlay)
+- ✅ 9 new FE tests (learning-path-components 4 + dashboard-content-parts 4 + chat-view 1)
 
 ---（生效中的架构决策）
 
@@ -395,6 +401,10 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/community/SuggestionCard.tsx | 社区建议卡片: 投票/审核/删除 (122行, V2.4 从CommunityPage.tsx拆出) |
 | packages/web/src/components/community/SuggestionForm.tsx | 新建议提交表单 (61行, V2.4 从CommunityPage.tsx拆出) |
 | packages/web/src/components/auth/LoginOAuthButtons.tsx | OAuth登录按钮: Google/GitHub SVG图标+按钮 (70行, V2.4 从LoginPage.tsx拆出) |
+| packages/web/src/components/learning-path/PathGroupSection.tsx | 学习路径分组: 可折叠概念组+状态图标+推荐标记 (140行, V2.4 从LearningPathPage.tsx拆出) |
+| packages/web/src/components/learning-path/KnowledgeGapsSection.tsx | 知识缺口面板: 阻塞下游概念排序 (52行, V2.4 从LearningPathPage.tsx拆出) |
+| packages/web/src/components/panels/DashboardContentParts.tsx | OtherDomainCard+ActivityRow+formatTimeAgo (100行, V2.4 从DashboardContent.tsx拆出) |
+| packages/web/src/components/chat/ChatView.tsx | 聊天视图: 消息列表+输入区+评估覆盖+庆祝动效 (172行, V2.4 从ChatPanel.tsx拆出) |
 | packages/web/src/components/review/ReviewFlashcard.tsx | FSRS复习闪卡: 进度条+概念卡+评分按钮 (109行, V2.4 从ReviewPage.tsx拆出) |
 | packages/web/src/components/common/WelcomeGuide.tsx | 首访引导层 (价值主张+推荐域) |
 | packages/web/src/components/common/ReviewBanner.tsx | FSRS复习提示+学习进度 |
@@ -502,4 +512,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V2.4 Code Health Phase 5 (LoginPage+ReviewPage splits + 3 FE tests) | **Result**: 1,113 BE + 583 FE + 61 E2E = 1,757 all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V2.4 Code Health Phase 7 (LearningPathPage+DashboardContent+ChatPanel splits + 9 FE tests) | **Result**: 1,113 BE + 592 FE + 61 E2E = 1,766 all pass, tsc: 0 errors, 0 open issues, build OK
