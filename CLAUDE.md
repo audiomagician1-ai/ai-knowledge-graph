@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 2,049 (1,302 BE + 686 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 2,071 (1,319 BE + 691 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -311,6 +311,18 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ 内容反馈自动触发通知 (提交反馈后自动创建通知)
 - ✅ 13 BE tests (notifications) + 10 BE tests (content-feedback) + 11 FE tests = 34 new tests
 
+### V3.4 Search Enhancement + Progress Snapshot + Code Health Sprint (2026-04-10, 完成)
+- ✅ Split graph_advanced.py (815L→489L) — extracted graph_topology.py (352L: V3.0 relationship-strength + V3.1 concept-clusters + V3.3 dependency-tree)
+- ✅ Trigram fuzzy matching engine: _trigrams() + _trigram_similarity() helpers in analytics_search.py
+- ✅ Content search fuzzy enhancement: trigram fallback scoring for typo-tolerant results (fuzzy_match field)
+- ✅ GET /api/analytics/search-suggestions: autocomplete with prefix + substring + trigram fuzzy matching
+- ✅ GET /api/analytics/progress-snapshot: compact exportable progress summary (overview/streak/efficiency/top domains/recent mastery)
+- ✅ ProgressSnapshotWidget Dashboard组件: 进度快照+JSON导出+Top域进度条 (114L, lazy-load)
+- ✅ SearchSuggestionsWidget Dashboard组件: 智能模糊搜索+难度标签+点击导航 (87L, lazy-load)
+- ✅ DashboardWidgetGrid updated: 29→31 lazy-loaded widgets (added ProgressSnapshotWidget + SearchSuggestionsWidget)
+- ✅ All 20 BE routers under 800-line limit (max: 630L analytics_search.py)
+- ✅ 22 new tests (17 BE: 5 trigram + 4 suggestions + 1 fuzzy-search + 7 snapshot + 5 FE)
+
 ### V3.3 Dashboard Organization + Dependency Tree + Next Milestones Sprint (2026-04-10, 完成)
 - ✅ DashboardWidgetGrid组件抽取: 27个懒加载小组件分为5个可折叠分类 (学习复习/数据分析/领域图谱/社交互动/内容发现)
 - ✅ DashboardPage瘦身: 180L→1115L (小组件全部移入DashboardWidgetGrid)
@@ -526,7 +538,8 @@ python scripts/build_exe.py  # 输出到 release/
 | pps/api/engines/graph/builder.py | 图谱构建器: ZPD子图+实体对齐+学习区域摘要 |
 | pps/api/engines/graph/rag.py | RAG检索模块: 精确匹配+模糊fallback+搜索 |
 | pps/api/routers/ | graph/dialogue/learning API |
-| pps/api/routers/graph_advanced.py | V2.1+图谱高级API (V2.10拆分: 拓扑分析/概念上下文/对比/跨域桥接/全局统计) |
+| pps/api/routers/graph_advanced.py | V2.1+图谱高级API (V2.10拆分: 拓扑分析/概念上下文/对比/跨域桥接/全局统计, V3.4: 489L) |
+| pps/api/routers/graph_topology.py | V3.0+图谱拓扑API (V3.4拆分: relationship-strength/concept-clusters/dependency-tree, 352L) |
 | pps/api/routers/learning_extended.py | 学习引擎扩展API (V2.10拆分: 数据导入导出/自适应路径/知识缺口) |
 | pps/api/llm/router.py | LLM路由器 (SSRF/retry/tier) |
 | pps/api/rate_limiter.py | 请求频率限制器 |
@@ -647,6 +660,8 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/dashboard/SessionSummaryWidget.tsx | 学习小结 (V3.1: 活动聚合+领域分布+最佳分数, lazy-load) |
 | packages/web/src/components/dashboard/OnboardingRecommendWidget.tsx | 推荐起点组件 (V3.0: 推荐卡片+域预览弹窗, lazy-load) |
 | packages/web/src/components/dashboard/GraphTopologyWidget.tsx | 图谱拓扑分析 (V3.0: 枢纽/桥接/孤立概念+子域密度, lazy-load) |
+| packages/web/src/components/dashboard/ProgressSnapshotWidget.tsx | 进度快照导出 (V3.4: 核心指标+Top域+效率+JSON导出, lazy-load) |
+| packages/web/src/components/dashboard/SearchSuggestionsWidget.tsx | 智能模糊搜索 (V3.4: trigram+prefix+导航, lazy-load) |
 | workers/src/ | Cloudflare Workers代理后端 |
 
 ---
@@ -709,4 +724,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V3.3 Dashboard Organization + Dependency Tree + Next Milestones — DashboardWidgetGrid extraction (180→115L), dependency-tree API, next-milestones API, NextMilestonesWidget, 16 tests | **Result**: 1,302 BE + 686 FE + 61 E2E = 2,049 all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V3.4 Search Enhancement + Progress Snapshot + Code Health — graph_advanced.py split (815→489L+352L), trigram fuzzy search, search-suggestions API, progress-snapshot API, 2 Dashboard widgets, 22 tests | **Result**: 1,319 BE + 691 FE + 61 E2E = 2,071 all pass, tsc: 0 errors, 0 open issues, build OK

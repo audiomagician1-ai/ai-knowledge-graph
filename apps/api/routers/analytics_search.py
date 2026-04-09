@@ -5,7 +5,9 @@ Extracted from analytics_insights.py (V2.10 code health) to keep router files un
 Provides:
 - Concept similarity engine (V2.9)
 - Comprehensive learning report (V2.9)
-- Full-text RAG content search (V2.9)
+- Full-text RAG content search (V2.9, enhanced V3.4: trigram fuzzy)
+- Search suggestions / autocomplete (V3.4)
+- Progress snapshot export (V3.4)
 """
 
 import time
@@ -19,6 +21,27 @@ from routers.analytics_utils import load_seed_metadata
 logger = get_logger(__name__)
 
 router = APIRouter()
+
+
+# ── Fuzzy matching helpers (V3.4) ──────────────────────
+
+
+def _trigrams(s: str) -> set[str]:
+    """Generate character trigrams from a string for fuzzy matching."""
+    s = s.lower().strip()
+    if len(s) < 3:
+        return {s}
+    return {s[i:i+3] for i in range(len(s) - 2)}
+
+
+def _trigram_similarity(a: str, b: str) -> float:
+    """Trigram similarity score between 0 and 1."""
+    ta, tb = _trigrams(a), _trigrams(b)
+    if not ta or not tb:
+        return 0.0
+    intersection = len(ta & tb)
+    union = len(ta | tb)
+    return intersection / union if union > 0 else 0.0
 
 
 # ── V2.9: Concept Similarity Engine ─────────────────────
@@ -394,12 +417,18 @@ async def content_search(
             # Quick name match check first (cheap)
             name_match = query_lower in doc_name.lower() or query_lower in doc_id.lower()
 
+            # Fuzzy name match via trigram similarity (V3.4)
+            fuzzy_name_score = _trigram_similarity(query_lower, doc_name.lower())
+            fuzzy_match = fuzzy_name_score >= 0.3 and not name_match
+
             # Content match (expensive — only read files for promising candidates)
             content_snippet = ""
             content_score = 0.0
 
             if name_match:
                 content_score += 50  # Strong name match bonus
+            elif fuzzy_match:
+                content_score += fuzzy_name_score * 40  # Scaled fuzzy bonus
 
             # Read content for top candidates or all if query is specific enough
             filepath = os.path.join(rag_root, doc_file)
@@ -448,6 +477,7 @@ async def content_search(
                     "score": round(content_score, 1),
                     "snippet": content_snippet[:300] if content_snippet else "",
                     "name_match": name_match,
+                    "fuzzy_match": fuzzy_match,
                 })
 
     # Sort by score descending
@@ -457,4 +487,144 @@ async def content_search(
         "query": q,
         "results": results[:limit],
         "total": len(results),
+    }
+
+
+# ── V3.4: Search Suggestions (Autocomplete) ──────────────
+
+
+@router.get("/analytics/search-suggestions")
+async def search_suggestions(
+    q: str = Query(..., min_length=1, max_length=100),
+    limit: int = Query(8, ge=1, le=20),
+):
+    """Fast autocomplete suggestions for concept search.
+
+    Uses trigram similarity on concept names for fuzzy matching,
+    combined with prefix matching for instant results.
+    Returns lightweight suggestion objects (no content loading).
+    """
+    concept_domain_map, concept_info, domain_map = load_seed_metadata()
+    query_lower = q.lower().strip()
+    scored: list[tuple[float, str]] = []
+
+    for cid, info in concept_info.items():
+        name = info.get("name", cid)
+        name_lower = name.lower()
+
+        # Exact prefix match = highest score
+        if name_lower.startswith(query_lower):
+            scored.append((100.0, cid))
+        elif query_lower in name_lower:
+            scored.append((70.0, cid))
+        else:
+            sim = _trigram_similarity(query_lower, name_lower)
+            if sim >= 0.25:
+                scored.append((sim * 50, cid))
+
+    scored.sort(key=lambda x: -x[0])
+    suggestions = []
+    for score, cid in scored[:limit]:
+        info = concept_info.get(cid, {})
+        did = concept_domain_map.get(cid, "")
+        suggestions.append({
+            "concept_id": cid,
+            "name": info.get("name", cid),
+            "domain_id": did,
+            "domain_name": domain_map.get(did, {}).get("name", did),
+            "difficulty": info.get("difficulty", 5),
+            "relevance": round(score, 1),
+        })
+
+    return {"query": q, "suggestions": suggestions, "total": len(scored)}
+
+
+# ── V3.4: Progress Snapshot Export ────────────────────────
+
+
+@router.get("/analytics/progress-snapshot")
+async def progress_snapshot():
+    """Generate a compact progress snapshot for sharing/export.
+
+    Aggregates key metrics into a shareable summary:
+    - Overall completion stats
+    - Top domains by mastery
+    - Recent achievement highlights
+    - Learning streak and efficiency
+    """
+    progress = get_all_progress()
+    streak_data = get_streak()
+    concept_domain_map, concept_info, domain_map = load_seed_metadata()
+
+    # Core stats
+    mastered = sum(1 for p in progress if p.get("status") == "mastered")
+    learning_count = sum(1 for p in progress if p.get("status") == "learning")
+    total_concepts = len(concept_info)
+    total_sessions = sum(p.get("sessions", 0) for p in progress)
+    scores = [p.get("mastery_score", 0) for p in progress if p.get("sessions", 0) > 0]
+    avg_score = round(sum(scores) / max(1, len(scores)), 1)
+
+    current_streak = streak_data.get("current", 0) if isinstance(streak_data, dict) else 0
+    longest_streak = streak_data.get("longest", 0) if isinstance(streak_data, dict) else 0
+
+    # Domain breakdown (top 5)
+    domain_mastered: dict[str, int] = {}
+    domain_total: dict[str, int] = {}
+    for cid in concept_info:
+        did = concept_domain_map.get(cid, "unknown")
+        domain_total[did] = domain_total.get(did, 0) + 1
+    for p in progress:
+        if p.get("status") == "mastered":
+            did = concept_domain_map.get(p["concept_id"], "unknown")
+            domain_mastered[did] = domain_mastered.get(did, 0) + 1
+
+    top_domains = []
+    for did, m_count in sorted(domain_mastered.items(), key=lambda x: -x[1]):
+        total = domain_total.get(did, 1)
+        pct = round(m_count / total * 100, 1)
+        top_domains.append({
+            "domain_id": did,
+            "domain_name": domain_map.get(did, {}).get("name", did),
+            "mastered": m_count,
+            "total": total,
+            "percentage": pct,
+        })
+
+    # Recent mastery (last 10)
+    recent_mastered = []
+    mastered_items = [p for p in progress if p.get("status") == "mastered"]
+    mastered_items.sort(key=lambda p: p.get("last_attempt", 0), reverse=True)
+    for p in mastered_items[:10]:
+        cid = p["concept_id"]
+        info = concept_info.get(cid, {})
+        recent_mastered.append({
+            "concept_id": cid,
+            "name": info.get("name", cid),
+            "domain_id": concept_domain_map.get(cid, ""),
+            "score": p.get("mastery_score", 0),
+        })
+
+    # Efficiency: avg sessions to master
+    mastery_sessions = [p.get("sessions", 0) for p in progress if p.get("status") == "mastered"]
+    avg_sessions_to_master = round(sum(mastery_sessions) / max(1, len(mastery_sessions)), 1)
+
+    return {
+        "snapshot_version": "1.0",
+        "overview": {
+            "total_concepts": total_concepts,
+            "mastered": mastered,
+            "learning": learning_count,
+            "completion_pct": round(mastered / max(1, total_concepts) * 100, 1),
+            "avg_score": avg_score,
+            "total_sessions": total_sessions,
+        },
+        "streak": {"current": current_streak, "longest": longest_streak},
+        "efficiency": {
+            "avg_sessions_to_master": avg_sessions_to_master,
+            "mastery_rate": round(mastered / max(1, total_sessions) * 100, 1),
+        },
+        "top_domains": top_domains[:5],
+        "recent_mastered": recent_mastered,
+        "domains_started": len([d for d in domain_mastered if domain_mastered[d] > 0]),
+        "domains_total": len(domain_map),
     }

@@ -41,6 +41,8 @@ const PeerComparisonCard = lazy(() => import('./PeerComparisonCard').then(m => (
 const ContentSearchWidget = lazy(() => import('./ContentSearchWidget').then(m => ({ default: m.ContentSearchWidget })));
 const ContentHealthWidget = lazy(() => import('./ContentHealthWidget').then(m => ({ default: m.ContentHealthWidget })));
 const OnboardingRecommendWidget = lazy(() => import('./OnboardingRecommendWidget').then(m => ({ default: m.OnboardingRecommendWidget })));
+const SearchSuggestionsWidget = lazy(() => import('./SearchSuggestionsWidget'));
+const ProgressSnapshotWidget = lazy(() => import('./ProgressSnapshotWidget'));
 
 interface SectionProps {
   title: string;
@@ -78,6 +80,7 @@ export function DashboardWidgetGrid() {
       </CollapsibleSection>
 
       <CollapsibleSection title="数据分析" icon={<BarChart3 size={14} className="opacity-40" />}>
+        <Suspense fallback={<WidgetSkeleton />}><ProgressSnapshotWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><WeeklyReport /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><StudyPatterns /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><StudyTimeChart days={14} /></Suspense>
@@ -102,6 +105,7 @@ export function DashboardWidgetGrid() {
       </CollapsibleSection>
 
       <CollapsibleSection title="内容与发现" icon={<Search size={14} className="opacity-40" />} defaultOpen={false}>
+        <Suspense fallback={<WidgetSkeleton />}><SearchSuggestionsWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><ContentSearchWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><ContentHealthWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><OnboardingRecommendWidget /></Suspense>
