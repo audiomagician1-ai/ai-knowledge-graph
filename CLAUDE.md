@@ -78,9 +78,9 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,680 (1,092 BE + 519 FE + 61 E2E + 8 new V2.2) | 2026-04-07 |
-| **tsc errors** | 0 | 2026-04-07 |
-| **Open Issues** | 0 | 2026-04-07 |
+| **测试总数** | 1,699 (1,109 BE + 529 FE + 61 E2E) | 2026-04-10 |
+| **tsc errors** | 0 | 2026-04-10 |
+| **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
 
 ---
@@ -167,11 +167,21 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ Streak里程碑奖励 (StreakRewards: 7个里程碑badge+进度条+compact/full模式)
 - ✅ 笔记页Markdown导出按钮 (NotesPage: 同步后端→导出.md文件)
 
-### V2.2 Dashboard增强 Sprint (2026-04-07, 进行中)
+### V2.2 Dashboard增强 Sprint (2026-04-07, 完成)
 - ✅ Global Stats API (GET /api/graph/stats/global: 跨域聚合统计)
 - ✅ DomainRadar SVG雷达图 (掌握度分布: 纯SVG无依赖+8轴上限+百分比标注)
 - ✅ DifficultyHeatmap 难度热力图 (8域 per-difficulty分布, color-mix渐变)
 - ✅ MilestoneTracker 里程碑追踪 (25/50/75/100%域里程碑, 即将达成+已达成)
+
+### V2.3 Adaptive Learning Intelligence Sprint (2026-04-10, 完成)
+- ✅ Pathfinder.adaptive_path() — 融合 FSRS复习+知识缺口+前沿学习 三信号优先队列
+- ✅ Pathfinder.knowledge_gaps() — 拓扑感知前置知识缺口检测 (按解锁数排序)
+- ✅ GET /api/learning/adaptive-path/{domain} — 个性化自适应学习路径 API
+- ✅ GET /api/learning/knowledge-gaps/{domain} — 知识缺口检测 API
+- ✅ AdaptivePathWidget Dashboard组件 (智能学习路径: 复习/补缺/新学三类步骤)
+- ✅ ReviewQueue Dashboard组件 (FSRS复习队列: 逾期分级+稳定性+次数)
+- ✅ LearningPathPage知识缺口板块 (优先补齐→解锁更多内容)
+- ✅ 27 new tests (17 BE + 10 FE)
 
 ---（生效中的架构决策）
 
@@ -367,6 +377,8 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/dashboard/DomainRadar.tsx | 掌握度雷达图 (SVG radar chart, 8轴上限) |
 | packages/web/src/components/dashboard/DifficultyHeatmap.tsx | 难度分布热力图 (SVG, 8域×10难度级) |
 | packages/web/src/components/dashboard/MilestoneTracker.tsx | 学习里程碑追踪 (25/50/75/100%域进度) |
+| packages/web/src/components/dashboard/AdaptivePathWidget.tsx | 智能学习路径 (V2.3: FSRS复习+知识缺口+前沿学习三合一) |
+| packages/web/src/components/dashboard/ReviewQueue.tsx | FSRS复习队列 (V2.3: 逾期分级+稳定性+刷新) |
 | packages/web/src/lib/utils/graph-lod.ts | Graph LOD (子域聚类+节点优先级+大域性能优化) |
 | packages/web/src/lib/hooks/useBookmarks.ts | 概念书签hook (localStorage+toggle+上限100) |
 | packages/web/src/lib/api/notes-api.ts | 笔记API客户端 (CRUD + bulk sync + stats) |
@@ -437,4 +449,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-07 | **Scope**: V2.2 Dashboard sprint (Radar+Heatmap+Milestones+GlobalStats+ConceptCompare) + RAG 80.0 | **Result**: 1,092 BE + 519 FE + 61 E2E all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V2.3 Adaptive Learning Intelligence (adaptive-path + knowledge-gaps + ReviewQueue + AdaptivePathWidget) | **Result**: 1,109 BE + 529 FE + 61 E2E all pass, tsc: 0 errors, 0 open issues, build OK
