@@ -14,6 +14,7 @@ from fastapi import APIRouter, Query
 from utils.logger import get_logger
 
 from db.sqlite_client import get_all_progress, get_history, get_streak
+from routers.analytics_utils import load_seed_metadata
 
 logger = get_logger(__name__)
 
@@ -442,3 +443,87 @@ async def learning_journey():
             "current_streak": streak_data.get("current", 0) if isinstance(streak_data, dict) else 0,
         },
     }
+
+
+# ── V3.3: Next Milestones ─────────────────────────────────
+
+
+@router.get("/analytics/next-milestones")
+async def next_milestones(
+    limit: int = Query(10, ge=1, le=30),
+):
+    """Identify the closest upcoming milestones across all domains.
+
+    Milestones include:
+    - Domain completion thresholds (25%/50%/75%/100%)
+    - Total concept count milestones (every 50 mastered)
+    - Streak milestones (7/14/30/60/90/180/365 days)
+
+    Returns a list of upcoming milestones sorted by closeness.
+    """
+    progress = get_all_progress()
+    streak = get_streak()
+    concept_domain_map, concept_info, domain_map = load_seed_metadata()
+
+    domain_mastered: dict[str, int] = {}
+    domain_total: dict[str, int] = {}
+    for cid in concept_info:
+        did = concept_domain_map.get(cid, "")
+        if did:
+            domain_total[did] = domain_total.get(did, 0) + 1
+
+    for p in progress:
+        if p.get("status") == "mastered":
+            did = concept_domain_map.get(p["concept_id"], "")
+            if did:
+                domain_mastered[did] = domain_mastered.get(did, 0) + 1
+
+    milestones: list[dict] = []
+
+    # Domain percentage milestones
+    for did, total in domain_total.items():
+        mastered = domain_mastered.get(did, 0)
+        dname = domain_map.get(did, {}).get("name", did)
+        for threshold in [25, 50, 75, 100]:
+            needed = int(total * threshold / 100)
+            if needed > 0 and mastered < needed:
+                milestones.append({
+                    "type": "domain_pct",
+                    "label": f"{dname} {threshold}%",
+                    "domain_id": did,
+                    "current": mastered,
+                    "target": needed,
+                    "remaining": needed - mastered,
+                    "progress_pct": round(mastered / needed * 100, 1),
+                    "badge": "🌟" if threshold == 100 else "⭐",
+                })
+                break
+
+    # Total concept milestones
+    total_mastered = sum(domain_mastered.values())
+    next_50 = ((total_mastered // 50) + 1) * 50
+    milestones.append({
+        "type": "total_concepts",
+        "label": f"掌握 {next_50} 个概念",
+        "current": total_mastered,
+        "target": next_50,
+        "remaining": next_50 - total_mastered,
+        "progress_pct": round(total_mastered / max(1, next_50) * 100, 1),
+        "badge": "🎯",
+    })
+
+    # Streak milestones
+    cur_streak = streak.get("current", 0) if isinstance(streak, dict) else 0
+    for st in [7, 14, 30, 60, 90, 180, 365]:
+        if cur_streak < st:
+            milestones.append({
+                "type": "streak", "label": f"连续学习 {st} 天",
+                "current": cur_streak, "target": st,
+                "remaining": st - cur_streak,
+                "progress_pct": round(cur_streak / st * 100, 1),
+                "badge": "🔥",
+            })
+            break
+
+    milestones.sort(key=lambda m: m["remaining"])
+    return {"milestones": milestones[:limit], "total": len(milestones)}

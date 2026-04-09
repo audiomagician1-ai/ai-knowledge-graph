@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 2,033 (1,289 BE + 683 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 2,049 (1,302 BE + 686 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -310,6 +310,14 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ create_notification() 编程式帮助函数 (可从其他路由器调用)
 - ✅ 内容反馈自动触发通知 (提交反馈后自动创建通知)
 - ✅ 13 BE tests (notifications) + 10 BE tests (content-feedback) + 11 FE tests = 34 new tests
+
+### V3.3 Dashboard Organization + Dependency Tree + Next Milestones Sprint (2026-04-10, 完成)
+- ✅ DashboardWidgetGrid组件抽取: 27个懒加载小组件分为5个可折叠分类 (学习复习/数据分析/领域图谱/社交互动/内容发现)
+- ✅ DashboardPage瘦身: 180L→1115L (小组件全部移入DashboardWidgetGrid)
+- ✅ GET /api/graph/dependency-tree/{concept_id}: 概念依赖树 (BFS上下游遍历+深度可控+节点信息)
+- ✅ GET /api/analytics/next-milestones: 即将达成里程碑 (域%进度+总数里程碑+连续天数+按距离排序)
+- ✅ NextMilestonesWidget Dashboard组件: 即将达成卡片 (进度条+badge+剩余距离, lazy-load)
+- ✅ 16 new tests (13 BE: 7 dependency-tree + 6 next-milestones + 3 FE)
 
 ### V3.2 Learning Velocity & Domain Mastery Intelligence Sprint (2026-04-10, 完成)
 - ✅ GET /api/analytics/mastery-forecast/{domain_id}: 域掌握度预测 (学习速度历史+难度加权+子域分布+置信度)
@@ -629,6 +637,8 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/dashboard/ContentHealthWidget.tsx | 内容健康度 (V2.11: 反馈统计+待处理+概念健康分+lazy-load) |
 | apps/api/routers/onboarding.py | 新用户入门推荐API (V3.0: recommended-start + domain-preview) |
 | packages/web/src/lib/api/onboarding-api.ts | 入门推荐FE API客户端 (V3.0: fetchRecommendedStart + fetchDomainPreview) |
+| packages/web/src/components/dashboard/DashboardWidgetGrid.tsx | 仪表板分类小组件网格 (V3.3: 5分类可折叠+27懒加载小组件) |
+| packages/web/src/components/dashboard/NextMilestonesWidget.tsx | 即将达成里程碑 (V3.3: 进度条+badge+剩余距离, lazy-load) |
 | packages/web/src/components/dashboard/MasteryForecastWidget.tsx | 掌握度预测 (V3.2: 完成天数+小时预估+子域分布, lazy-load) |
 | packages/web/src/components/dashboard/ReviewPriorityWidget.tsx | 复习优先级 (V3.2: 4因子加权优先分+理由+导航, lazy-load) |
 | packages/web/src/components/dashboard/DifficultyAccuracyWidget.tsx | 难度校准 (V3.2: 难度分布+偏差概念列表, lazy-load) |
@@ -699,4 +709,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V3.2 Learning Velocity & Domain Mastery Intelligence — mastery-forecast API, review-priority API, 3 Dashboard widgets (forecast+priority+calibration), 18 tests | **Result**: 1,289 BE + 683 FE + 61 E2E = 2,033 all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V3.3 Dashboard Organization + Dependency Tree + Next Milestones — DashboardWidgetGrid extraction (180→115L), dependency-tree API, next-milestones API, NextMilestonesWidget, 16 tests | **Result**: 1,302 BE + 686 FE + 61 E2E = 2,049 all pass, tsc: 0 errors, 0 open issues, build OK

@@ -728,3 +728,88 @@ async def concept_clusters(
         "clusters": clusters,
     }
 
+
+# ── V3.3: Concept Dependency Tree ─────────────────────────
+
+
+@router.get("/dependency-tree/{concept_id}")
+async def dependency_tree(
+    concept_id: str,
+    depth: int = Query(3, ge=1, le=5),
+):
+    """Build upstream/downstream dependency tree for a concept.
+
+    Returns a directed tree showing:
+    - Upstream: all prerequisite concepts (what you need to know first)
+    - Downstream: all dependent concepts (what this concept unlocks)
+    - Depth-limited BFS traversal (max 5 levels)
+
+    Useful for understanding concept importance and learning paths.
+    """
+    domains_path = _get_domains_path()
+    if not os.path.isfile(domains_path):
+        raise HTTPException(404, "domains.json not found")
+
+    with open(domains_path, "r", encoding="utf-8") as f:
+        raw = json.load(f)
+    domain_list = raw.get("domains", raw) if isinstance(raw, dict) else raw
+
+    # Find domain containing this concept
+    target_seed = None
+    for d in domain_list:
+        did = d.get("id", "")
+        try:
+            seed = _load_seed(did)
+            if any(c["id"] == concept_id for c in seed.get("concepts", [])):
+                target_seed = seed
+                break
+        except Exception:
+            continue
+
+    if not target_seed:
+        raise HTTPException(404, f"Concept '{concept_id}' not found")
+
+    concepts = target_seed.get("concepts", [])
+    edges = target_seed.get("edges", [])
+    cmap = {c["id"]: c for c in concepts}
+
+    # Build adjacency: upstream (prereqs) and downstream (dependents)
+    upstream: dict[str, list[str]] = {}
+    downstream: dict[str, list[str]] = {}
+    for e in edges:
+        src = e.get("source_id") or e.get("source", "")
+        tgt = e.get("target_id") or e.get("target", "")
+        downstream.setdefault(src, []).append(tgt)
+        upstream.setdefault(tgt, []).append(src)
+
+    def _bfs_tree(start: str, adj: dict[str, list[str]], max_d: int) -> list[dict]:
+        visited: set[str] = {start}
+        queue: list[tuple[str, int]] = [(start, 0)]
+        nodes: list[dict] = []
+        while queue:
+            nid, d = queue.pop(0)
+            if d > max_d:
+                break
+            c = cmap.get(nid, {})
+            nodes.append({"id": nid, "name": c.get("name", nid), "depth": d,
+                          "difficulty": c.get("difficulty", 5)})
+            if d < max_d:
+                for nb in adj.get(nid, []):
+                    if nb not in visited and nb in cmap:
+                        visited.add(nb)
+                        queue.append((nb, d + 1))
+        return nodes
+
+    up_nodes = _bfs_tree(concept_id, upstream, depth)
+    down_nodes = _bfs_tree(concept_id, downstream, depth)
+    root = cmap.get(concept_id, {})
+
+    return {
+        "concept_id": concept_id,
+        "concept_name": root.get("name", concept_id),
+        "upstream": up_nodes[1:],  # exclude root
+        "downstream": down_nodes[1:],
+        "upstream_count": len(up_nodes) - 1,
+        "downstream_count": len(down_nodes) - 1,
+    }
+

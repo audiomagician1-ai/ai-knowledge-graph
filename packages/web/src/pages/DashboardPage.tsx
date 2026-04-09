@@ -1,4 +1,4 @@
-import { useEffect, useMemo, lazy, Suspense } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLearningStore } from '@/lib/store/learning';
 import { useDomainStore } from '@/lib/store/domain';
@@ -8,38 +8,14 @@ import { readLearningTime } from '@/lib/hooks/useLearningTimer';
 import { StudyGoalWidget } from '@/components/common/StudyGoalWidget';
 import { ShareProgress } from '@/components/common/ShareProgress';
 import { StreakRewards } from '@/components/common/StreakRewards';
-import { StatCard, DomainCard, WidgetSkeleton, type DomainStatEntry } from '@/components/dashboard/DashboardHelpers';
+import { StatCard, DomainCard, WidgetSkeleton } from '@/components/dashboard/DashboardHelpers';
 import { StreakCalendar } from '@/components/dashboard/StreakCalendar';
 import { VelocitySection } from '@/components/dashboard/VelocitySection';
 import { useDashboardProgress } from '@/lib/hooks/useDashboardProgress';
+import { DashboardWidgetGrid } from '@/components/dashboard/DashboardWidgetGrid';
 
 const DomainComparison = lazy(() => import('@/components/dashboard/DomainComparison').then(m => ({ default: m.DomainComparison })));
 const RecentActivity = lazy(() => import('@/components/dashboard/RecentActivity').then(m => ({ default: m.RecentActivity })));
-const WeeklyReport = lazy(() => import('@/components/dashboard/WeeklyReport').then(m => ({ default: m.WeeklyReport })));
-const StudyPatterns = lazy(() => import('@/components/dashboard/StudyPatterns').then(m => ({ default: m.StudyPatterns })));
-const DomainRadar = lazy(() => import('@/components/dashboard/DomainRadar').then(m => ({ default: m.DomainRadar })));
-const DifficultyHeatmap = lazy(() => import('@/components/dashboard/DifficultyHeatmap').then(m => ({ default: m.DifficultyHeatmap })));
-const MilestoneTracker = lazy(() => import('@/components/dashboard/MilestoneTracker').then(m => ({ default: m.MilestoneTracker })));
-const ReviewQueue = lazy(() => import('@/components/dashboard/ReviewQueue').then(m => ({ default: m.ReviewQueue })));
-const AdaptivePathWidget = lazy(() => import('@/components/dashboard/AdaptivePathWidget').then(m => ({ default: m.AdaptivePathWidget })));
-const StudyTimeChart = lazy(() => import('@/components/dashboard/StudyTimeChart').then(m => ({ default: m.StudyTimeChart })));
-const StreakInsights = lazy(() => import('@/components/dashboard/StreakInsights').then(m => ({ default: m.StreakInsights })));
-const DomainRecommendWidget = lazy(() => import('@/components/dashboard/DomainRecommendWidget').then(m => ({ default: m.DomainRecommendWidget })));
-const StudyPlanWidget = lazy(() => import('@/components/dashboard/StudyPlanWidget').then(m => ({ default: m.StudyPlanWidget })));
-const WeakConceptsWidget = lazy(() => import('@/components/dashboard/WeakConceptsWidget').then(m => ({ default: m.WeakConceptsWidget })));
-const LearningEfficiencyChart = lazy(() => import('@/components/dashboard/LearningEfficiencyChart').then(m => ({ default: m.LearningEfficiencyChart })));
-const GlobalLeaderboard = lazy(() => import('@/components/dashboard/GlobalLeaderboard').then(m => ({ default: m.GlobalLeaderboard })));
-const PeerComparisonCard = lazy(() => import('@/components/dashboard/PeerComparisonCard').then(m => ({ default: m.PeerComparisonCard })));
-const ContentSearchWidget = lazy(() => import('@/components/dashboard/ContentSearchWidget').then(m => ({ default: m.ContentSearchWidget })));
-const ContentHealthWidget = lazy(() => import('@/components/dashboard/ContentHealthWidget').then(m => ({ default: m.ContentHealthWidget })));
-const OnboardingRecommendWidget = lazy(() => import('@/components/dashboard/OnboardingRecommendWidget').then(m => ({ default: m.OnboardingRecommendWidget })));
-const GraphTopologyWidget = lazy(() => import('@/components/dashboard/GraphTopologyWidget').then(m => ({ default: m.GraphTopologyWidget })));
-const PrerequisiteCheckWidget = lazy(() => import('@/components/dashboard/PrerequisiteCheckWidget').then(m => ({ default: m.PrerequisiteCheckWidget })));
-const ConceptClusterWidget = lazy(() => import('@/components/dashboard/ConceptClusterWidget').then(m => ({ default: m.ConceptClusterWidget })));
-const SessionSummaryWidget = lazy(() => import('@/components/dashboard/SessionSummaryWidget').then(m => ({ default: m.SessionSummaryWidget })));
-const MasteryForecastWidget = lazy(() => import('@/components/dashboard/MasteryForecastWidget').then(m => ({ default: m.MasteryForecastWidget })));
-const ReviewPriorityWidget = lazy(() => import('@/components/dashboard/ReviewPriorityWidget').then(m => ({ default: m.ReviewPriorityWidget })));
-const DifficultyAccuracyWidget = lazy(() => import('@/components/dashboard/DifficultyAccuracyWidget').then(m => ({ default: m.DifficultyAccuracyWidget })));
 
 export function DashboardPage() {
   const navigate = useNavigate();
@@ -127,32 +103,8 @@ export function DashboardPage() {
           </div>
         </section>
 
-        {/* Lazy widgets */}
-        <Suspense fallback={<WidgetSkeleton />}><WeeklyReport /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><StudyPatterns /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><DomainRadar /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><DifficultyHeatmap /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><MilestoneTracker /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><AdaptivePathWidget /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><ReviewQueue /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><StudyTimeChart days={14} /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><StreakInsights /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><DomainRecommendWidget limit={4} /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><StudyPlanWidget days={3} dailyMinutes={30} /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><WeakConceptsWidget limit={5} /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><LearningEfficiencyChart maxDomains={8} /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><GlobalLeaderboard /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><PeerComparisonCard /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><ContentSearchWidget /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><ContentHealthWidget /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><OnboardingRecommendWidget /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><GraphTopologyWidget /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><PrerequisiteCheckWidget /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><ConceptClusterWidget /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><SessionSummaryWidget hours={24} /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><MasteryForecastWidget /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><ReviewPriorityWidget limit={8} /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><DifficultyAccuracyWidget /></Suspense>
+        {/* Categorized Widget Grid */}
+        <DashboardWidgetGrid />
 
         {/* Domain Progress */}
         <section>
