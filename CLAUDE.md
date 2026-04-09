@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,699 (1,109 BE + 529 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 1,703 (1,113 BE + 529 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -182,6 +182,14 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ ReviewQueue Dashboard组件 (FSRS复习队列: 逾期分级+稳定性+次数)
 - ✅ LearningPathPage知识缺口板块 (优先补齐→解锁更多内容)
 - ✅ 27 new tests (17 BE + 10 FE)
+
+### V2.4 Performance & Code Health Sprint (2026-04-10, 进行中)
+- ✅ Split direct-llm.ts God File: 1,244→549+554 lines (prompt data extracted to direct-llm-prompts.ts)
+- ✅ Lazy-load 9 dashboard widgets: DashboardPage chunk 51→27 kB (-47%), React.lazy + Suspense
+- ✅ Dashboard batch API: GET /api/analytics/dashboard-batch (3 HTTP calls → 1, 60s cache + dedup)
+- ✅ useDashboardBatch hook: module-level cache, concurrent request dedup, WeeklyReport + StudyPatterns integrated
+- ✅ 4 new BE tests (batch endpoint schema validation)
+- ✅ Three-way sync test updated for new file structure (direct-llm-prompts.ts)
 
 ---（生效中的架构决策）
 
@@ -342,7 +350,8 @@ python scripts/build_exe.py  # 输出到 release/
 | pps/api/llm/router.py | LLM路由器 (SSRF/retry/tier) |
 | pps/api/rate_limiter.py | 请求频率限制器 |
 | packages/web/src/lib/store/ | Zustand stores (dialogue/learning/domain/graph) |
-| packages/web/src/lib/direct-llm.ts | 前端直连LLM (888行, 含validateAssessment) |
+| packages/web/src/lib/direct-llm.ts | 前端直连LLM (549行, 含validateAssessment) |
+| packages/web/src/lib/direct-llm-prompts.ts | LLM提示词模板+域评估补充 (554行, V2.4 从direct-llm.ts拆出) |
 | packages/web/src/components/common/WelcomeGuide.tsx | 首访引导层 (价值主张+推荐域) |
 | packages/web/src/components/common/ReviewBanner.tsx | FSRS复习提示+学习进度 |
 | packages/web/src/components/common/DailyRecommendation.tsx | 每日推荐概念 (30概念日轮) |
@@ -351,7 +360,7 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/pages/NotFoundPage.tsx | 404 页面 (渐变标题+导航) |
 | packages/web/src/lib/utils/capacitor.ts | Capacitor平台抽象层 (storage/keyboard/lifecycle) |
 | packages/web/src/lib/utils/perf-monitor.ts | Core Web Vitals 监控 (FCP/LCP/TTFB) |
-| packages/web/src/lib/hooks/ | useAppLifecycle + useBackButton + useKeyboardHeight + useOnlineStatus + useKeyboardShortcuts + useLocalStorage + useLearningTimer + useSpeechRecognition + useStudyGoal + useGraphKeyNav (barrel: hooks/index.ts) |
+| packages/web/src/lib/hooks/ | useAppLifecycle + useBackButton + useKeyboardHeight + useOnlineStatus + useKeyboardShortcuts + useLocalStorage + useLearningTimer + useSpeechRecognition + useStudyGoal + useGraphKeyNav + useDashboardBatch (barrel: hooks/index.ts) |
 | packages/web/src/lib/utils/fetch-retry.ts | fetchWithRetry: 指数退避 + 抖动 + Retry-After + abort signal |
 | packages/web/src/components/common/OfflineIndicator.tsx | 离线状态提示横幅 (useSyncExternalStore) |
 | packages/web/src/components/common/KeyboardShortcutsHelp.tsx | 全局键盘快捷键帮助弹窗 (Shift+?) |
@@ -449,4 +458,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V2.3 Adaptive Learning Intelligence (adaptive-path + knowledge-gaps + ReviewQueue + AdaptivePathWidget) | **Result**: 1,109 BE + 529 FE + 61 E2E all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V2.4 Performance & Code Health (God File split + lazy widgets + batch API) | **Result**: 1,113 BE + 529 FE + 61 E2E all pass, tsc: 0 errors, 0 open issues, build OK, DashboardPage -47% chunk size
