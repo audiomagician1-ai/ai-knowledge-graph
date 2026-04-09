@@ -590,3 +590,119 @@ async def review_priority(
         "total": len(scored_items),
     }
 
+
+# ════════════════════════════════════════════
+# Session Replay (V3.5)
+# ════════════════════════════════════════════
+
+@router.get("/session-replay")
+async def get_session_replay(
+    concept_id: str = Query("", max_length=200),
+    domain: str = Query("", max_length=100),
+    limit: int = Query(50, ge=1, le=200),
+):
+    """Reconstruct a learning session timeline for review/replay.
+
+    Groups history entries by concept and constructs a step-by-step
+    learning journey with score progression and mastery events.
+
+    Optional filters: concept_id (single concept) or domain (all concepts in domain).
+    """
+    from routers.graph import _load_seed
+
+    history = get_history(1000)  # Get rich history
+    if not history:
+        return {"sessions": [], "total_events": 0, "summary": {}}
+
+    # Optional domain filter
+    domain_concept_ids = None
+    if domain:
+        try:
+            seed = _load_seed(domain)
+            domain_concept_ids = {c["id"] for c in seed["concepts"]}
+        except Exception:
+            pass
+
+    # Filter history
+    filtered = []
+    for h in history:
+        cid = h.get("concept_id", "")
+        if concept_id and cid != concept_id:
+            continue
+        if domain_concept_ids is not None and cid not in domain_concept_ids:
+            continue
+        filtered.append(h)
+
+    if not filtered:
+        return {"sessions": [], "total_events": 0, "summary": {}}
+
+    # Group by concept_id to build per-concept timelines
+    from collections import defaultdict
+    concept_groups: dict[str, list[dict]] = defaultdict(list)
+    for h in filtered:
+        concept_groups[h.get("concept_id", "unknown")].append(h)
+
+    sessions = []
+    total_mastered = 0
+    total_attempts = 0
+    best_score = 0
+
+    for cid, events in concept_groups.items():
+        # Sort by timestamp ascending
+        events.sort(key=lambda e: e.get("timestamp", 0))
+
+        steps = []
+        prev_score = 0
+        mastery_event = None
+
+        for i, ev in enumerate(events):
+            score = ev.get("score", 0)
+            delta = score - prev_score if i > 0 else 0
+            step = {
+                "step": i + 1,
+                "score": score,
+                "delta": round(delta, 1),
+                "mastered": ev.get("mastered", False),
+                "timestamp": ev.get("timestamp", 0),
+            }
+            steps.append(step)
+            prev_score = score
+            if ev.get("mastered") and mastery_event is None:
+                mastery_event = i + 1
+            if score > best_score:
+                best_score = score
+
+        total_attempts += len(events)
+        if mastery_event:
+            total_mastered += 1
+
+        sessions.append({
+            "concept_id": cid,
+            "concept_name": events[0].get("concept_name", cid),
+            "total_attempts": len(events),
+            "first_score": events[0].get("score", 0),
+            "best_score": max(e.get("score", 0) for e in events),
+            "latest_score": events[-1].get("score", 0),
+            "mastered": any(e.get("mastered") for e in events),
+            "mastered_at_step": mastery_event,
+            "steps": steps[:limit],  # Cap steps per concept
+        })
+
+    # Sort by most recent activity
+    sessions.sort(key=lambda s: s["steps"][-1]["timestamp"] if s["steps"] else 0, reverse=True)
+
+    return {
+        "sessions": sessions[:limit],
+        "total_events": total_attempts,
+        "summary": {
+            "concepts_practiced": len(sessions),
+            "total_attempts": total_attempts,
+            "mastered_count": total_mastered,
+            "best_score": best_score,
+            "avg_attempts_to_master": round(
+                sum(s["mastered_at_step"] for s in sessions if s["mastered_at_step"]) /
+                max(1, total_mastered), 1
+            ),
+        },
+    }
+

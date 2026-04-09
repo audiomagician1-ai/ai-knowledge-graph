@@ -14,6 +14,7 @@ const StudyPlanWidget = lazy(() => import('./StudyPlanWidget').then(m => ({ defa
 const PrerequisiteCheckWidget = lazy(() => import('./PrerequisiteCheckWidget').then(m => ({ default: m.PrerequisiteCheckWidget })));
 const MasteryForecastWidget = lazy(() => import('./MasteryForecastWidget').then(m => ({ default: m.MasteryForecastWidget })));
 const NextMilestonesWidget = lazy(() => import('./NextMilestonesWidget').then(m => ({ default: m.NextMilestonesWidget })));
+const SessionReplayWidget = lazy(() => import('./SessionReplayWidget').then(m => ({ default: m.SessionReplayWidget })));
 
 // ── Analytics & Insights ──
 const WeeklyReport = lazy(() => import('./WeeklyReport').then(m => ({ default: m.WeeklyReport })));
@@ -23,6 +24,7 @@ const StreakInsights = lazy(() => import('./StreakInsights').then(m => ({ defaul
 const SessionSummaryWidget = lazy(() => import('./SessionSummaryWidget').then(m => ({ default: m.SessionSummaryWidget })));
 const WeakConceptsWidget = lazy(() => import('./WeakConceptsWidget').then(m => ({ default: m.WeakConceptsWidget })));
 const LearningEfficiencyChart = lazy(() => import('./LearningEfficiencyChart').then(m => ({ default: m.LearningEfficiencyChart })));
+const ComparativeProgressWidget = lazy(() => import('./ComparativeProgressWidget').then(m => ({ default: m.ComparativeProgressWidget })));
 
 // ── Domain & Graph ──
 const DomainRadar = lazy(() => import('./DomainRadar').then(m => ({ default: m.DomainRadar })));
@@ -77,6 +79,7 @@ export function DashboardWidgetGrid() {
         <Suspense fallback={<WidgetSkeleton />}><PrerequisiteCheckWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><MasteryForecastWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><NextMilestonesWidget limit={5} /></Suspense>
+        <Suspense fallback={<WidgetSkeleton />}><SessionReplayWidget limit={8} /></Suspense>
       </CollapsibleSection>
 
       <CollapsibleSection title="数据分析" icon={<BarChart3 size={14} className="opacity-40" />}>
@@ -87,6 +90,7 @@ export function DashboardWidgetGrid() {
         <Suspense fallback={<WidgetSkeleton />}><StreakInsights /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><WeakConceptsWidget limit={5} /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><LearningEfficiencyChart maxDomains={8} /></Suspense>
+        <Suspense fallback={<WidgetSkeleton />}><ComparativeProgressWidget /></Suspense>
       </CollapsibleSection>
 
       <CollapsibleSection title="领域与图谱" icon={<GitBranch size={14} className="opacity-40" />}>

@@ -19,7 +19,7 @@ from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import FileResponse
 from starlette.middleware.base import BaseHTTPMiddleware
 
-from routers import graph, graph_advanced, graph_topology, dialogue, learning, learning_extended, health, notes, community, community_discussions, community_content, notifications, analytics, analytics_experience, analytics_planning, analytics_insights, analytics_social, analytics_search, onboarding
+from routers import graph, graph_advanced, graph_topology, dialogue, learning, learning_extended, learning_review, health, notes, community, community_discussions, community_content, notifications, analytics, analytics_experience, analytics_planning, analytics_insights, analytics_social, analytics_search, onboarding
 from utils.logger import configure_logging, get_logger
 
 # Initialize unified logging before anything else
@@ -155,6 +155,7 @@ app.include_router(graph_topology.router, prefix="/api/graph", tags=["graph-topo
 app.include_router(dialogue.router, prefix="/api/dialogue", tags=["dialogue"])
 app.include_router(learning.router, prefix="/api/learning", tags=["learning"])
 app.include_router(learning_extended.router, prefix="/api/learning", tags=["learning-extended"])
+app.include_router(learning_review.router, prefix="/api/learning", tags=["learning-review"])
 app.include_router(notes.router, prefix="/api", tags=["notes"])
 app.include_router(community.router, prefix="/api", tags=["community"])
 app.include_router(community_discussions.router, prefix="/api", tags=["community-discussions"])

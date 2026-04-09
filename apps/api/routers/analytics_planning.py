@@ -527,3 +527,106 @@ async def next_milestones(
 
     milestones.sort(key=lambda m: m["remaining"])
     return {"milestones": milestones[:limit], "total": len(milestones)}
+
+
+# ════════════════════════════════════════════
+# Comparative Progress (V3.5)
+# ════════════════════════════════════════════
+
+@router.get("/analytics/comparative-progress")
+async def get_comparative_progress():
+    """Week-over-week domain progress comparison.
+
+    Compares learning metrics between current week (last 7 days) and
+    previous week (8-14 days ago) to show trends.
+    """
+    import time as _time
+    from db.sqlite_client import get_all_progress, get_history
+
+    all_progress = get_all_progress()
+    history = get_history(2000)
+    now = _time.time()
+    week_ago = now - 7 * 86400
+    two_weeks_ago = now - 14 * 86400
+
+    # Split history into two windows
+    this_week = [h for h in history if h.get("timestamp", 0) >= week_ago]
+    last_week = [h for h in history if two_weeks_ago <= h.get("timestamp", 0) < week_ago]
+
+    # ── Per-domain comparison ──
+    from routers.analytics_utils import load_seed_metadata
+    concept_domain_map, concept_info, domain_map = load_seed_metadata()
+
+    # Group concepts by domain
+    from collections import defaultdict
+    domain_concepts: dict[str, set[str]] = defaultdict(set)
+    for cid, did in concept_domain_map.items():
+        domain_concepts[did].add(cid)
+
+    domain_stats = []
+    for domain_id, concept_ids in domain_concepts.items():
+        meta = domain_map.get(domain_id, {})
+
+        # Domain progress
+        domain_progress = [p for p in all_progress if p["concept_id"] in concept_ids]
+        mastered_now = sum(1 for p in domain_progress if p["status"] == "mastered")
+        total = len(concept_ids)
+
+        # Weekly events
+        tw_events = [h for h in this_week if h.get("concept_id") in concept_ids]
+        lw_events = [h for h in last_week if h.get("concept_id") in concept_ids]
+
+        tw_mastered = sum(1 for h in tw_events if h.get("mastered"))
+        lw_mastered = sum(1 for h in lw_events if h.get("mastered"))
+
+        tw_avg = round(sum(h.get("score", 0) for h in tw_events) / max(1, len(tw_events)), 1) if tw_events else 0
+        lw_avg = round(sum(h.get("score", 0) for h in lw_events) / max(1, len(lw_events)), 1) if lw_events else 0
+
+        if not tw_events and not lw_events:
+            continue  # Skip inactive domains
+
+        domain_stats.append({
+            "domain_id": domain_id,
+            "domain_name": meta.get("name", domain_id),
+            "total_concepts": total,
+            "mastered": mastered_now,
+            "progress_pct": round(mastered_now / max(1, total) * 100, 1),
+            "this_week": {
+                "events": len(tw_events),
+                "mastered": tw_mastered,
+                "avg_score": tw_avg,
+            },
+            "last_week": {
+                "events": len(lw_events),
+                "mastered": lw_mastered,
+                "avg_score": lw_avg,
+            },
+            "delta": {
+                "events": len(tw_events) - len(lw_events),
+                "mastered": tw_mastered - lw_mastered,
+                "avg_score": round(tw_avg - lw_avg, 1),
+            },
+            "trend": "up" if len(tw_events) > len(lw_events) else ("down" if len(tw_events) < len(lw_events) else "stable"),
+        })
+
+    domain_stats.sort(key=lambda d: d["this_week"]["events"], reverse=True)
+
+    # ── Global summary ──
+    tw_total_events = len(this_week)
+    lw_total_events = len(last_week)
+    tw_total_mastered = sum(1 for h in this_week if h.get("mastered"))
+    lw_total_mastered = sum(1 for h in last_week if h.get("mastered"))
+
+    return {
+        "domains": domain_stats,
+        "summary": {
+            "active_domains": len(domain_stats),
+            "this_week_events": tw_total_events,
+            "last_week_events": lw_total_events,
+            "events_delta": tw_total_events - lw_total_events,
+            "this_week_mastered": tw_total_mastered,
+            "last_week_mastered": lw_total_mastered,
+            "mastered_delta": tw_total_mastered - lw_total_mastered,
+            "overall_trend": "up" if tw_total_events > lw_total_events else ("down" if tw_total_events < lw_total_events else "stable"),
+        },
+    }

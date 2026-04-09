@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 2,071 (1,319 BE + 691 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 2,095 (1,338 BE + 696 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -310,6 +310,17 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ create_notification() 编程式帮助函数 (可从其他路由器调用)
 - ✅ 内容反馈自动触发通知 (提交反馈后自动创建通知)
 - ✅ 13 BE tests (notifications) + 10 BE tests (content-feedback) + 11 FE tests = 34 new tests
+
+### V3.5 Learning Engine Health + Session Intelligence Sprint (2026-04-10, 完成)
+- ✅ Split learning.py (793L→535L) — extracted learning_review.py (277L: FSRS /due + /review + Achievement /achievements/*)
+- ✅ check_and_unlock_achievements() shared between learning.py /assess and learning_review.py /review
+- ✅ GET /api/learning/session-replay: 学习回放 (概念级步骤时间线+分数变化+掌握事件+概念/域过滤)
+- ✅ GET /api/analytics/comparative-progress: 周度对比 (WoW域级事件/掌握/均分对比+趋势+全局汇总)
+- ✅ SessionReplayWidget Dashboard组件: 学习回放 (概念步骤条形图+分数delta+掌握统计, lazy-load, 113L)
+- ✅ ComparativeProgressWidget Dashboard组件: 周度对比 (域级趋势+delta badges+全局汇总, lazy-load, 114L)
+- ✅ DashboardWidgetGrid updated: 31→33 lazy-loaded widgets (added SessionReplayWidget + ComparativeProgressWidget)
+- ✅ All 22 BE routers under 800-line limit (max: 708L learning_extended.py)
+- ✅ 24 new tests (19 BE: 7 split-verify + 6 session-replay + 3 comparative-progress + 3 code-health + 5 FE)
 
 ### V3.4 Search Enhancement + Progress Snapshot + Code Health Sprint (2026-04-10, 完成)
 - ✅ Split graph_advanced.py (815L→489L) — extracted graph_topology.py (352L: V3.0 relationship-strength + V3.1 concept-clusters + V3.3 dependency-tree)
@@ -662,6 +673,9 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/dashboard/GraphTopologyWidget.tsx | 图谱拓扑分析 (V3.0: 枢纽/桥接/孤立概念+子域密度, lazy-load) |
 | packages/web/src/components/dashboard/ProgressSnapshotWidget.tsx | 进度快照导出 (V3.4: 核心指标+Top域+效率+JSON导出, lazy-load) |
 | packages/web/src/components/dashboard/SearchSuggestionsWidget.tsx | 智能模糊搜索 (V3.4: trigram+prefix+导航, lazy-load) |
+| apps/api/routers/learning_review.py | FSRS复习+成就系统API (V3.5拆分: /due+/review+/achievements/*, 277L) |
+| packages/web/src/components/dashboard/SessionReplayWidget.tsx | 学习回放 (V3.5: 概念步骤时间线+分数变化+掌握统计, lazy-load) |
+| packages/web/src/components/dashboard/ComparativeProgressWidget.tsx | 周度对比 (V3.5: WoW域级事件/掌握/均分对比+趋势, lazy-load) |
 | workers/src/ | Cloudflare Workers代理后端 |
 
 ---
@@ -724,4 +738,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V3.4 Search Enhancement + Progress Snapshot + Code Health — graph_advanced.py split (815→489L+352L), trigram fuzzy search, search-suggestions API, progress-snapshot API, 2 Dashboard widgets, 22 tests | **Result**: 1,319 BE + 691 FE + 61 E2E = 2,071 all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V3.5 Learning Engine Health + Session Intelligence — learning.py split (793→535L+277L), session-replay API, comparative-progress API, 2 Dashboard widgets, 24 tests | **Result**: 1,338 BE + 696 FE + 61 E2E = 2,095 all pass, tsc: 0 errors, 0 open issues, build OK
