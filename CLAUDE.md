@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,800 (1,131 BE + 608 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 1,826 (1,147 BE + 618 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -223,7 +223,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ 7 new FE tests (achievement-parts 4 + study-goal-parts 2 + domain-card 1)
 - 📊 Remaining files >200L: 9 (all <290L, already split once or near boundary)
 
-### V2.5 Learning Experience & Cross-Domain Intelligence Sprint (2026-04-10, 进行中)
+### V2.5 Learning Experience & Cross-Domain Intelligence Sprint (2026-04-10, 完成)
 - ✅ GET /api/analytics/session-history: 分页学习事件时间线 (action/concept/days过滤, 分页)
 - ✅ GET /api/analytics/mastery-timeline/{concept_id}: 概念掌握度时间线 (分数进展+改进量)
 - ✅ GET /api/analytics/study-time-report: 每日/每周学习时间报告 (会话估算+生产力指标)
@@ -236,6 +236,16 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ StreakInsights Dashboard组件: 习惯分数badge+4指标网格+周分布迷你柱状图
 - ✅ HomePage历史快捷导航按钮, App.tsx /history懒加载路由
 - ✅ 18 BE tests + 9 FE tests = 27 new tests
+
+### V2.6 Multi-Domain Intelligence Sprint (2026-04-10, 完成)
+- ✅ GET /api/analytics/domain-recommendation: 跨域推荐 (学习历史+跨球链接+难度匹配+多样性加分)
+- ✅ GET /api/analytics/study-plan: 个性化学习计划 (FSRS复习+继续学习+新概念, 每日时间预算分配)
+- ✅ GET /api/analytics/learning-journey: 跨域学习旅程时间线 (成就事件+域里程碑+进度总览)
+- ✅ DomainRecommendWidget Dashboard组件: 推荐探索领域 (跨域关联+原因+概念数+难度)
+- ✅ StudyPlanWidget Dashboard组件: 学习计划 (日程切换+复习/继续/新学三类+时间估算)
+- ✅ LearningJourneyPage (/journey): 跨域成就时间线 (域掌握度+事件过滤+里程碑徽章)
+- ✅ HomePage旅程快捷导航按钮 (Map图标 → /journey)
+- ✅ 16 BE tests + 10 FE tests = 26 new tests
 
 ---（生效中的架构决策）
 
@@ -468,6 +478,9 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/dashboard/MasteryTimeline.tsx | 概念掌握度时间线 (V2.5: SVG折线图+改进量+首次/最近日期) |
 | packages/web/src/components/graph/CrossDomainBridge.tsx | 跨域关联概念桥接 (V2.5: 跨知识球探索+域分组+理由) |
 | packages/web/src/pages/SessionHistoryPage.tsx | 学习历史时间线 (V2.5: /history, 分页+过滤+搜索) |
+| packages/web/src/pages/LearningJourneyPage.tsx | 跨域学习旅程 (V2.6: /journey, 成就时间线+域进度+里程碑) |
+| packages/web/src/components/dashboard/DomainRecommendWidget.tsx | 领域推荐 (V2.6: 跨域关联+难度匹配+原因展示) |
+| packages/web/src/components/dashboard/StudyPlanWidget.tsx | 学习计划 (V2.6: 日程切换+复习/继续/新学三类+时间预算) |
 | packages/web/src/lib/utils/graph-lod.ts | Graph LOD (子域聚类+节点优先级+大域性能优化) |
 | packages/web/src/lib/hooks/useBookmarks.ts | 概念书签hook (localStorage+toggle+上限100) |
 | packages/web/src/lib/api/notes-api.ts | 笔记API客户端 (CRUD + bulk sync + stats) |
@@ -538,4 +551,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V2.5 Learning Experience & Cross-Domain Intelligence (5 new APIs + 5 FE components + SessionHistoryPage + 27 tests) | **Result**: 1,131 BE + 608 FE + 61 E2E = 1,800 all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V2.6 Multi-Domain Intelligence (3 new APIs + 3 FE components + LearningJourneyPage + 26 tests) | **Result**: 1,147 BE + 618 FE + 61 E2E = 1,826 all pass, tsc: 0 errors, 0 open issues, build OK
