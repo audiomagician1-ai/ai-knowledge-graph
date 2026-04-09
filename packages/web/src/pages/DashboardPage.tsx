@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, useCallback } from 'react';
+import { useEffect, useMemo, useState, useCallback, lazy, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLearningStore } from '@/lib/store/learning';
 import { useDomainStore } from '@/lib/store/domain';
@@ -9,15 +9,16 @@ import { StudyGoalWidget } from '@/components/common/StudyGoalWidget';
 import { ShareProgress } from '@/components/common/ShareProgress';
 import { StreakRewards } from '@/components/common/StreakRewards';
 import { fetchWithRetry } from '@/lib/utils/fetch-retry';
-import { DomainComparison } from '@/components/dashboard/DomainComparison';
-import { RecentActivity } from '@/components/dashboard/RecentActivity';
-import { WeeklyReport } from '@/components/dashboard/WeeklyReport';
-import { StudyPatterns } from '@/components/dashboard/StudyPatterns';
-import { DomainRadar } from '@/components/dashboard/DomainRadar';
-import { DifficultyHeatmap } from '@/components/dashboard/DifficultyHeatmap';
-import { MilestoneTracker } from '@/components/dashboard/MilestoneTracker';
-import { ReviewQueue } from '@/components/dashboard/ReviewQueue';
-import { AdaptivePathWidget } from '@/components/dashboard/AdaptivePathWidget';
+// Lazy-loaded dashboard widgets (V2.4 performance: reduce initial chunk size)
+const DomainComparison = lazy(() => import('@/components/dashboard/DomainComparison').then(m => ({ default: m.DomainComparison })));
+const RecentActivity = lazy(() => import('@/components/dashboard/RecentActivity').then(m => ({ default: m.RecentActivity })));
+const WeeklyReport = lazy(() => import('@/components/dashboard/WeeklyReport').then(m => ({ default: m.WeeklyReport })));
+const StudyPatterns = lazy(() => import('@/components/dashboard/StudyPatterns').then(m => ({ default: m.StudyPatterns })));
+const DomainRadar = lazy(() => import('@/components/dashboard/DomainRadar').then(m => ({ default: m.DomainRadar })));
+const DifficultyHeatmap = lazy(() => import('@/components/dashboard/DifficultyHeatmap').then(m => ({ default: m.DifficultyHeatmap })));
+const MilestoneTracker = lazy(() => import('@/components/dashboard/MilestoneTracker').then(m => ({ default: m.MilestoneTracker })));
+const ReviewQueue = lazy(() => import('@/components/dashboard/ReviewQueue').then(m => ({ default: m.ReviewQueue })));
+const AdaptivePathWidget = lazy(() => import('@/components/dashboard/AdaptivePathWidget').then(m => ({ default: m.AdaptivePathWidget })));
 import type { Domain } from '@akg/shared';
 
 /**
@@ -232,26 +233,34 @@ export function DashboardPage() {
           </div>
         </section>
 
-        {/* Weekly Progress Report (V2.1) */}
-        <WeeklyReport />
+        {/* Lazy-loaded analysis widgets (V2.4 perf: code-split) */}
+        <Suspense fallback={<WidgetSkeleton />}>
+          <WeeklyReport />
+        </Suspense>
 
-        {/* Study Patterns (V2.1) */}
-        <StudyPatterns />
+        <Suspense fallback={<WidgetSkeleton />}>
+          <StudyPatterns />
+        </Suspense>
 
-        {/* Domain Mastery Radar (V2.2) */}
-        <DomainRadar />
+        <Suspense fallback={<WidgetSkeleton />}>
+          <DomainRadar />
+        </Suspense>
 
-        {/* Difficulty Heatmap (V2.2) */}
-        <DifficultyHeatmap />
+        <Suspense fallback={<WidgetSkeleton />}>
+          <DifficultyHeatmap />
+        </Suspense>
 
-        {/* Milestone Tracker (V2.2) */}
-        <MilestoneTracker />
+        <Suspense fallback={<WidgetSkeleton />}>
+          <MilestoneTracker />
+        </Suspense>
 
-        {/* Adaptive Learning Path (V2.3) */}
-        <AdaptivePathWidget />
+        <Suspense fallback={<WidgetSkeleton />}>
+          <AdaptivePathWidget />
+        </Suspense>
 
-        {/* Review Queue (V2.3) */}
-        <ReviewQueue />
+        <Suspense fallback={<WidgetSkeleton />}>
+          <ReviewQueue />
+        </Suspense>
 
         {/* Domain Progress Cards */}
         <section>
@@ -270,7 +279,9 @@ export function DashboardPage() {
 
         {/* Domain Comparison (V2.1) */}
         <section className="rounded-xl p-5" style={{ backgroundColor: 'var(--color-surface-1)' }}>
-          <DomainComparison maxDomains={12} />
+          <Suspense fallback={<WidgetSkeleton />}>
+            <DomainComparison maxDomains={12} />
+          </Suspense>
         </section>
 
         {/* Recent Activity (V2.1) */}
@@ -279,7 +290,9 @@ export function DashboardPage() {
             <Clock size={16} className="text-blue-500" />
             最近学习
           </h2>
-          <RecentActivity maxItems={8} />
+          <Suspense fallback={<WidgetSkeleton />}>
+            <RecentActivity maxItems={8} />
+          </Suspense>
         </section>
       </div>
     </div>
@@ -466,5 +479,15 @@ function VelocitySection() {
         })}
       </div>
     </section>
+  );
+}
+
+/** Skeleton placeholder for lazy-loaded dashboard widgets */
+function WidgetSkeleton() {
+  return (
+    <div className="rounded-xl p-5 animate-pulse" style={{ backgroundColor: 'var(--color-surface-1)' }}>
+      <div className="h-4 w-32 rounded bg-white/10 mb-4" />
+      <div className="h-24 rounded bg-white/5" />
+    </div>
   );
 }
