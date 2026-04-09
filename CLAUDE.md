@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,745 (1,113 BE + 571 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 1,754 (1,113 BE + 580 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -198,6 +198,12 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ Split KnowledgeGraph.tsx: 528→247 lines (extracted graph-visual-utils.ts 136L: GNode/GLink types + baseSize + nodeColor + labelTexture + celebration particles)
 - ✅ Split DashboardPage.tsx: 493→144 lines (extracted StreakCalendar 70L + VelocitySection 76L + DashboardHelpers 76L + useDashboardProgress hook 70L)
 - ✅ 22 new FE tests (graph-page-components 14 + graph-visual-utils 8)
+
+### V2.4 Code Health Phase 4 — God File Splits (2026-04-10, 完成)
+- ✅ Split LearnPage.tsx: 496→198 lines (extracted LearnHeader 67L + LearnMessageBubble 81L + LearnPostAssessment 84L + LearnGuideCard 61L + LearnInputArea 130L)
+- ✅ Split SettingsContent.tsx: 478→155 lines (extracted SettingsLLMConfig 214L + SettingsDataIO 140L)
+- ✅ Split CommunityPage.tsx: 408→146 lines (extracted SuggestionCard 122L + SuggestionForm 61L)
+- ✅ 9 new FE tests (learn-components 5 + settings-components 2 + community-components 2)
 
 ---（生效中的架构决策）
 
@@ -374,6 +380,15 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/chat/ChatIdleView.tsx | 概念空闲视图: 掌握度卡片+前置知识+小地图 (172行, V2.4 从ChatPanel.tsx拆出) |
 | packages/web/src/components/chat/InlineAssessmentCard.tsx | 评估结果卡片: 动画分数+维度条 (102行, V2.4 从ChatPanel.tsx拆出) |
 | packages/web/src/components/chat/LearnAssessmentCard.tsx | LearnPage评估结果卡片: 梯度边框+维度图标 (114行, V2.4 从LearnPage.tsx拆出) |
+| packages/web/src/components/learn/LearnHeader.tsx | 学习页头部: 概念名+轮次+评估按钮 (67行, V2.4 从LearnPage.tsx拆出) |
+| packages/web/src/components/learn/LearnMessageBubble.tsx | 对话气泡: 用户/AI消息渲染+反馈 (81行, V2.4 从LearnPage.tsx拆出) |
+| packages/web/src/components/learn/LearnPostAssessment.tsx | 评估后操作: 返回/重来/推荐+笔记 (84行, V2.4 从LearnPage.tsx拆出) |
+| packages/web/src/components/learn/LearnGuideCard.tsx | 学习引导卡+加载指示器 (61行, V2.4 从LearnPage.tsx拆出) |
+| packages/web/src/components/learn/LearnInputArea.tsx | 聊天输入区: 语音+选项+文本框 (130行, V2.4 从LearnPage.tsx拆出) |
+| packages/web/src/components/settings/SettingsLLMConfig.tsx | LLM配置面板: 服务商/Key/URL/模型/代理 (214行, V2.4 从SettingsContent.tsx拆出) |
+| packages/web/src/components/settings/SettingsDataIO.tsx | 数据导入导出+关于+安全信息 (140行, V2.4 从SettingsContent.tsx拆出) |
+| packages/web/src/components/community/SuggestionCard.tsx | 社区建议卡片: 投票/审核/删除 (122行, V2.4 从CommunityPage.tsx拆出) |
+| packages/web/src/components/community/SuggestionForm.tsx | 新建议提交表单 (61行, V2.4 从CommunityPage.tsx拆出) |
 | packages/web/src/components/common/WelcomeGuide.tsx | 首访引导层 (价值主张+推荐域) |
 | packages/web/src/components/common/ReviewBanner.tsx | FSRS复习提示+学习进度 |
 | packages/web/src/components/common/DailyRecommendation.tsx | 每日推荐概念 (30概念日轮) |
@@ -480,4 +495,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V2.4 Code Health Phase 3 (6 God File splits + 22 FE tests) | **Result**: 1,113 BE + 571 FE + 61 E2E = 1,745 all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V2.4 Code Health Phase 4 (LearnPage+SettingsContent+CommunityPage splits + 9 FE tests) | **Result**: 1,113 BE + 580 FE + 61 E2E = 1,754 all pass, tsc: 0 errors, 0 open issues, build OK
