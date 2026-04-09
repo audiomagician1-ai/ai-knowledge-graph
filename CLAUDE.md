@@ -183,7 +183,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ LearningPathPage知识缺口板块 (优先补齐→解锁更多内容)
 - ✅ 27 new tests (17 BE + 10 FE)
 
-### V2.4 Performance & Code Health Sprint (2026-04-10, 进行中)
+### V2.4 Performance & Code Health Sprint (2026-04-10, 完成)
 - ✅ Split direct-llm.ts God File: 1,244→549+554 lines (prompt data extracted to direct-llm-prompts.ts)
 - ✅ Lazy-load 9 dashboard widgets: DashboardPage chunk 51→27 kB (-47%), React.lazy + Suspense
 - ✅ Dashboard batch API: GET /api/analytics/dashboard-batch (3 HTTP calls → 1, 60s cache + dedup)
@@ -193,6 +193,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ Split ChatPanel.tsx God File: 687→324 lines (extracted ChatHistoryView 87L + ChatIdleView 172L + InlineAssessmentCard 102L)
 - ✅ Split HomePage.tsx God File: 651→278 lines (extracted home-canvas-utils.ts 218L: DEMO_DOMAINS + constants + hex grid + drawBubble)
 - ✅ Split LearnPage.tsx AssessmentCard: 573→459 lines (extracted LearnAssessmentCard 114L)
+- ✅ 20 new FE tests (chat-components 7 + home-canvas-utils 13)
 
 ---（生效中的架构决策）
 
