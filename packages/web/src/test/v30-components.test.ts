@@ -42,3 +42,12 @@ describe('DashboardPage V3.0 integration', () => {
     expect(typeof mod.DashboardPage).toBe('function');
   });
 });
+
+// ── GraphTopologyWidget ──
+describe('GraphTopologyWidget', () => {
+  it('exports GraphTopologyWidget component', async () => {
+    const mod = await import('../components/dashboard/GraphTopologyWidget');
+    expect(mod.GraphTopologyWidget).toBeDefined();
+    expect(typeof mod.GraphTopologyWidget).toBe('function');
+  });
+});

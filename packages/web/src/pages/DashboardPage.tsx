@@ -33,6 +33,7 @@ const PeerComparisonCard = lazy(() => import('@/components/dashboard/PeerCompari
 const ContentSearchWidget = lazy(() => import('@/components/dashboard/ContentSearchWidget').then(m => ({ default: m.ContentSearchWidget })));
 const ContentHealthWidget = lazy(() => import('@/components/dashboard/ContentHealthWidget').then(m => ({ default: m.ContentHealthWidget })));
 const OnboardingRecommendWidget = lazy(() => import('@/components/dashboard/OnboardingRecommendWidget').then(m => ({ default: m.OnboardingRecommendWidget })));
+const GraphTopologyWidget = lazy(() => import('@/components/dashboard/GraphTopologyWidget').then(m => ({ default: m.GraphTopologyWidget })));
 
 export function DashboardPage() {
   const navigate = useNavigate();
@@ -139,6 +140,7 @@ export function DashboardPage() {
         <Suspense fallback={<WidgetSkeleton />}><ContentSearchWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><ContentHealthWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><OnboardingRecommendWidget /></Suspense>
+        <Suspense fallback={<WidgetSkeleton />}><GraphTopologyWidget /></Suspense>
 
         {/* Domain Progress */}
         <section>

@@ -485,3 +485,122 @@ async def get_global_stats():
         },
     }
 
+
+# ── V3.0: Relationship Strength Analysis ──────────────────
+
+
+@router.get("/relationship-strength/{domain_id}")
+async def relationship_strength(domain_id: str):
+    """Analyze edge topology and relationship strength for a domain.
+
+    Returns: hub concepts (high connectivity), bridge concepts (cross-subdomain),
+    isolated concepts (no edges), and per-subdomain density metrics.
+    Useful for learning path intelligence and graph visualization emphasis.
+    """
+    seed = _load_seed(domain_id)
+    concepts = seed.get("concepts", [])
+    edges = seed.get("edges", [])
+
+    if not concepts:
+        raise HTTPException(404, f"Domain '{domain_id}' has no concepts")
+
+    concept_map = {c["id"]: c for c in concepts}
+
+    # Build adjacency counts
+    in_degree: dict[str, int] = {}
+    out_degree: dict[str, int] = {}
+    for e in edges:
+        src = e.get("source_id") or e.get("source", "")
+        tgt = e.get("target_id") or e.get("target", "")
+        out_degree[src] = out_degree.get(src, 0) + 1
+        in_degree[tgt] = in_degree.get(tgt, 0) + 1
+
+    # Hub concepts: highest total degree
+    degree_list = []
+    for c in concepts:
+        cid = c["id"]
+        total_deg = in_degree.get(cid, 0) + out_degree.get(cid, 0)
+        degree_list.append({
+            "id": cid,
+            "name": c.get("name", cid),
+            "subdomain": c.get("subdomain_id", ""),
+            "in_degree": in_degree.get(cid, 0),
+            "out_degree": out_degree.get(cid, 0),
+            "total_degree": total_deg,
+        })
+    degree_list.sort(key=lambda x: x["total_degree"], reverse=True)
+    hubs = degree_list[:10]
+
+    # Isolated concepts: zero edges
+    isolated = [d for d in degree_list if d["total_degree"] == 0]
+
+    # Bridge concepts: connected to multiple subdomains
+    concept_neighbors: dict[str, set[str]] = {}
+    for e in edges:
+        src = e.get("source_id") or e.get("source", "")
+        tgt = e.get("target_id") or e.get("target", "")
+        concept_neighbors.setdefault(src, set()).add(tgt)
+        concept_neighbors.setdefault(tgt, set()).add(src)
+
+    bridges = []
+    for c in concepts:
+        cid = c["id"]
+        c_sub = c.get("subdomain_id", "")
+        neighbors = concept_neighbors.get(cid, set())
+        neighbor_subs = set()
+        for nid in neighbors:
+            nc = concept_map.get(nid)
+            if nc:
+                ns = nc.get("subdomain_id", "")
+                if ns != c_sub:
+                    neighbor_subs.add(ns)
+        if neighbor_subs:
+            bridges.append({
+                "id": cid,
+                "name": c.get("name", cid),
+                "subdomain": c_sub,
+                "cross_subdomains": sorted(neighbor_subs),
+                "bridge_score": len(neighbor_subs),
+            })
+    bridges.sort(key=lambda x: x["bridge_score"], reverse=True)
+
+    # Per-subdomain density
+    sub_concepts: dict[str, int] = {}
+    sub_internal_edges: dict[str, int] = {}
+    for c in concepts:
+        sid = c.get("subdomain_id", "other")
+        sub_concepts[sid] = sub_concepts.get(sid, 0) + 1
+
+    for e in edges:
+        src = e.get("source_id") or e.get("source", "")
+        tgt = e.get("target_id") or e.get("target", "")
+        src_sub = concept_map.get(src, {}).get("subdomain_id", "other")
+        tgt_sub = concept_map.get(tgt, {}).get("subdomain_id", "other")
+        if src_sub == tgt_sub:
+            sub_internal_edges[src_sub] = sub_internal_edges.get(src_sub, 0) + 1
+
+    subdomain_density = []
+    for sid, count in sorted(sub_concepts.items(), key=lambda x: -x[1]):
+        internal = sub_internal_edges.get(sid, 0)
+        max_edges = count * (count - 1) / 2 if count > 1 else 1
+        density = round(internal / max_edges, 3) if max_edges > 0 else 0
+        subdomain_density.append({
+            "subdomain_id": sid,
+            "concepts": count,
+            "internal_edges": internal,
+            "density": density,
+        })
+
+    return {
+        "domain_id": domain_id,
+        "total_concepts": len(concepts),
+        "total_edges": len(edges),
+        "hubs": hubs,
+        "bridges": bridges[:10],
+        "isolated": isolated,
+        "subdomain_density": subdomain_density,
+        "avg_degree": round(
+            sum(d["total_degree"] for d in degree_list) / max(1, len(degree_list)), 2
+        ),
+    }
+
