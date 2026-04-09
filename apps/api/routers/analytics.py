@@ -1546,3 +1546,231 @@ async def difficulty_calibration(
         "miscalibrated_count": miscalibrated_count,
         "difficulty_summary": summary,
     }
+
+
+# ── V2.8: Social & Collaborative Learning ────────────────
+
+
+@router.get("/analytics/leaderboard")
+async def leaderboard(
+    limit: int = Query(20, ge=5, le=100),
+    sort_by: str = Query("mastered", description="Sort key: mastered | efficiency | streak | score"),
+):
+    """Real leaderboard using actual user progress data.
+
+    Aggregates learning metrics across all domains into a ranking system.
+    In single-user mode, generates context-aware mock peers based on real user stats.
+    When Supabase multi-user goes live, this endpoint reads from the shared table.
+
+    Sort options:
+    - mastered: total concepts mastered
+    - efficiency: mastery score per session (higher = faster learner)
+    - streak: current learning streak
+    - score: composite score (weighted blend of all metrics)
+    """
+    import json as _json, os, sys, hashlib
+
+    progress = get_all_progress()
+    streak_data = get_streak()
+    history = get_history(limit=10000)
+
+    # Load domain data for names
+    if getattr(sys, "frozen", False):
+        data_root = os.path.join(sys._MEIPASS, "seed_data")
+    else:
+        data_root = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))), "data", "seed")
+
+    concept_domain_map: dict[str, str] = {}
+    domain_map: dict[str, dict] = {}
+    domains_path = os.path.join(data_root, "domains.json")
+    if os.path.isfile(domains_path):
+        with open(domains_path, "r", encoding="utf-8") as f:
+            raw = _json.load(f)
+        domain_list = raw.get("domains", raw) if isinstance(raw, dict) else raw
+        domain_map = {d["id"]: d for d in domain_list}
+        for d in domain_list:
+            did = d["id"]
+            seed_path = os.path.join(data_root, did, "seed_graph.json")
+            if os.path.isfile(seed_path):
+                with open(seed_path, "r", encoding="utf-8") as f:
+                    seed = _json.load(f)
+                for c in seed.get("concepts", []):
+                    concept_domain_map[c["id"]] = did
+
+    # Calculate real user stats
+    mastered_count = sum(1 for p in progress if p.get("status") == "mastered")
+    learning_count = sum(1 for p in progress if p.get("status") == "learning")
+    total_sessions = sum(p.get("sessions", 0) for p in progress)
+    total_score = sum(p.get("mastery_score", 0) for p in progress if p.get("sessions", 0) > 0)
+    assessed_count = sum(1 for p in progress if p.get("sessions", 0) > 0)
+    avg_efficiency = round(total_score / max(1, total_sessions), 1)
+    current_streak = streak_data.get("current", 0) if isinstance(streak_data, dict) else 0
+    longest_streak = streak_data.get("longest", 0) if isinstance(streak_data, dict) else 0
+
+    # Domains started
+    user_domains: set[str] = set()
+    for p in progress:
+        did = concept_domain_map.get(p["concept_id"])
+        if did and p.get("status") in ("learning", "mastered"):
+            user_domains.add(did)
+
+    # Composite score: mastered*3 + streak*2 + efficiency*0.5 + domains*5
+    user_composite = round(mastered_count * 3 + current_streak * 2 + avg_efficiency * 0.5 + len(user_domains) * 5, 1)
+
+    user_entry = {
+        "name": "我",
+        "is_self": True,
+        "mastered": mastered_count,
+        "learning": learning_count,
+        "domains_started": len(user_domains),
+        "avg_efficiency": avg_efficiency,
+        "current_streak": current_streak,
+        "longest_streak": longest_streak,
+        "composite_score": user_composite,
+        "total_sessions": total_sessions,
+    }
+
+    # Generate context-aware mock peers (seeded by date for consistency within a day)
+    today = time.strftime("%Y-%m-%d")
+    peer_names = [
+        "知识探索者", "图谱之星", "求知若渴", "苏格拉底门徒",
+        "费曼学习法大师", "概念连接者", "知识宇宙旅人", "深度学习者",
+        "好奇心驱动", "通识达人", "交叉学科爱好者", "永不止步",
+        "逻辑推理王", "学海无涯", "知识建筑师", "认知探险家",
+        "跨域大师", "持续进步者", "系统思考者",
+    ]
+
+    peers = []
+    for i, name in enumerate(peer_names):
+        # Deterministic seed per peer per day
+        seed_str = f"{name}-{today}-{i}"
+        seed_hash = int(hashlib.md5(seed_str.encode()).hexdigest()[:8], 16)
+
+        # Scale mock stats around user's actual performance (±40%)
+        base_mastered = max(1, mastered_count)
+        peer_mastered = max(0, int(base_mastered * (0.3 + (seed_hash % 140) / 100)))
+        peer_streak = max(0, int(current_streak * (0.2 + (seed_hash % 180) / 100)))
+        peer_eff = max(5, round(avg_efficiency * (0.5 + (seed_hash % 100) / 100), 1))
+        peer_domains = max(1, int(len(user_domains) * (0.3 + (seed_hash % 150) / 100)))
+        peer_composite = round(peer_mastered * 3 + peer_streak * 2 + peer_eff * 0.5 + peer_domains * 5, 1)
+
+        peers.append({
+            "name": name,
+            "is_self": False,
+            "mastered": peer_mastered,
+            "learning": max(0, peer_mastered // 2),
+            "domains_started": peer_domains,
+            "avg_efficiency": peer_eff,
+            "current_streak": peer_streak,
+            "longest_streak": max(peer_streak, peer_streak + (seed_hash % 5)),
+            "composite_score": peer_composite,
+            "total_sessions": max(1, peer_mastered * 2 + (seed_hash % 10)),
+        })
+
+    # Combine and sort
+    all_entries = [user_entry] + peers
+    sort_key_map = {
+        "mastered": lambda x: x["mastered"],
+        "efficiency": lambda x: x["avg_efficiency"],
+        "streak": lambda x: x["current_streak"],
+        "score": lambda x: x["composite_score"],
+    }
+    sort_fn = sort_key_map.get(sort_by, sort_key_map["mastered"])
+    all_entries.sort(key=sort_fn, reverse=True)
+
+    # Assign ranks
+    for i, entry in enumerate(all_entries):
+        entry["rank"] = i + 1
+
+    user_rank = next((e["rank"] for e in all_entries if e["is_self"]), 0)
+
+    return {
+        "leaderboard": all_entries[:limit],
+        "user_rank": user_rank,
+        "total_participants": len(all_entries),
+        "sort_by": sort_by,
+        "user_stats": user_entry,
+    }
+
+
+@router.get("/analytics/peer-comparison")
+async def peer_comparison():
+    """Compare user's performance against aggregate peer metrics.
+
+    Provides percentile-based comparison across multiple dimensions:
+    - Mastery speed (concepts mastered per active day)
+    - Streak consistency
+    - Domain breadth (number of domains explored)
+    - Assessment accuracy (average score)
+
+    Useful for "How am I doing?" insights.
+    """
+    progress = get_all_progress()
+    streak_data = get_streak()
+    history = get_history(limit=10000)
+    now = time.time()
+
+    # User metrics
+    mastered = sum(1 for p in progress if p.get("status") == "mastered")
+    learning = sum(1 for p in progress if p.get("status") == "learning")
+    total_assessed = sum(1 for p in progress if p.get("sessions", 0) > 0)
+    scores = [p.get("mastery_score", 0) for p in progress if p.get("sessions", 0) > 0]
+    avg_score = round(sum(scores) / max(1, len(scores)), 1)
+    current_streak = streak_data.get("current", 0) if isinstance(streak_data, dict) else 0
+
+    # Active days (from history, last 90 days)
+    active_dates: set[str] = set()
+    for entry in history:
+        ts = entry.get("timestamp", 0)
+        if now - ts < 90 * 86400:
+            active_dates.add(time.strftime("%Y-%m-%d", time.localtime(ts)))
+    active_days = max(1, len(active_dates))
+    mastery_speed = round(mastered / active_days, 2)
+
+    # Generate simulated peer distribution for percentile calculation
+    # In multi-user mode, this would query aggregate Supabase data
+    import hashlib
+    today = time.strftime("%Y-%m-%d")
+    peer_count = 50
+
+    peer_mastery_speeds = []
+    peer_streaks = []
+    peer_scores = []
+    peer_mastered_counts = []
+
+    for i in range(peer_count):
+        seed_str = f"peer-{today}-{i}"
+        h = int(hashlib.md5(seed_str.encode()).hexdigest()[:8], 16)
+        peer_mastery_speeds.append(round(mastery_speed * (0.2 + (h % 200) / 100), 2))
+        peer_streaks.append(max(0, int(current_streak * (0.1 + (h % 200) / 100))))
+        peer_scores.append(max(20, round(avg_score * (0.4 + (h % 120) / 100), 1)))
+        peer_mastered_counts.append(max(0, int(mastered * (0.2 + (h % 180) / 100))))
+
+    def _percentile(user_val: float, peer_vals: list[float]) -> int:
+        """Calculate user percentile among peers."""
+        below = sum(1 for v in peer_vals if v < user_val)
+        return min(99, max(1, round(below / max(1, len(peer_vals)) * 100)))
+
+    return {
+        "user": {
+            "mastered": mastered,
+            "learning": learning,
+            "avg_score": avg_score,
+            "current_streak": current_streak,
+            "active_days_90d": len(active_dates),
+            "mastery_speed": mastery_speed,
+        },
+        "percentiles": {
+            "mastery_speed": _percentile(mastery_speed, peer_mastery_speeds),
+            "streak": _percentile(current_streak, peer_streaks),
+            "avg_score": _percentile(avg_score, peer_scores),
+            "total_mastered": _percentile(mastered, peer_mastered_counts),
+        },
+        "comparison_labels": {
+            "mastery_speed": "学习速度 (概念/天)",
+            "streak": "连续学习天数",
+            "avg_score": "平均评估分数",
+            "total_mastered": "已掌握概念数",
+        },
+        "peer_count": peer_count,
+    }

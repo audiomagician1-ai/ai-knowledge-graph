@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,847 (1,163 BE + 623 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 1,871 (1,178 BE + 632 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -254,6 +254,20 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ WeakConceptsWidget Dashboard组件: 薄弱概念警报 (分数趋势+原因标签+改进建议)
 - ✅ LearningEfficiencyChart Dashboard组件: 域级效率对比 (水平条形图+全局统计卡片)
 - ✅ 16 BE tests + 5 FE tests = 21 new tests
+
+### V2.8 Social & Collaborative Learning Sprint (2026-04-10, 完成)
+- ✅ GET /api/analytics/leaderboard: 真实排行榜 (4种排序: mastered/efficiency/streak/score, 上下文感知mock peers, 复合评分)
+- ✅ GET /api/analytics/peer-comparison: 同伴对比 (百分位排名: 学习速度/连续天数/评分/掌握数, 4维度可视化)
+- ✅ POST /api/community/discussions: 概念讨论帖 (提问/洞见/资源/解释 4类型, 投票+回复+解决标记)
+- ✅ GET /api/community/discussions: 讨论列表 (concept_id/domain_id过滤, recent/popular/active排序, 分页)
+- ✅ POST /api/community/discussions/{id}/reply: 讨论回复 (回复计数自动更新)
+- ✅ POST /api/community/discussions/{id}/vote: 讨论投票 (+1)
+- ✅ PATCH /api/community/discussions/{id}/resolve: 标记已解决
+- ✅ GET /api/community/discussions/concept-activity/{id}: 概念讨论活动摘要 (类型统计+回复数+未解决问题)
+- ✅ GlobalLeaderboard Dashboard组件: 社交排行榜 (排序切换+排名图标+连续天数火焰+导航, lazy-load)
+- ✅ PeerComparisonCard Dashboard组件: 同伴对比卡片 (4维度百分位条形图+前X%标签, lazy-load)
+- ✅ ConceptDiscussionPanel组件: 概念讨论面板 (发帖表单+类型选择+回复+投票+展开详情, 集成到ChatIdleView)
+- ✅ 15 BE tests + 9 FE tests = 24 new tests
 
 ---（生效中的架构决策）
 
@@ -491,6 +505,9 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/dashboard/StudyPlanWidget.tsx | 学习计划 (V2.6: 日程切换+复习/继续/新学三类+时间预算) |
 | packages/web/src/components/dashboard/WeakConceptsWidget.tsx | 薄弱概念警报 (V2.7: 多因子弱点评分+分数趋势+改进建议) |
 | packages/web/src/components/dashboard/LearningEfficiencyChart.tsx | 学习效率 (V2.7: 域级效率对比+全局统计+水平条形图) |
+| packages/web/src/components/dashboard/GlobalLeaderboard.tsx | 社交排行榜 (V2.8: 4种排序+排名图标+连续火焰+lazy-load) |
+| packages/web/src/components/dashboard/PeerComparisonCard.tsx | 同伴对比 (V2.8: 4维度百分位条形图+前X%标签) |
+| packages/web/src/components/community/ConceptDiscussionPanel.tsx | 概念讨论面板 (V2.8: 发帖+回复+投票+展开+类型过滤, ChatIdleView集成) |
 | packages/web/src/lib/utils/graph-lod.ts | Graph LOD (子域聚类+节点优先级+大域性能优化) |
 | packages/web/src/lib/hooks/useBookmarks.ts | 概念书签hook (localStorage+toggle+上限100) |
 | packages/web/src/lib/api/notes-api.ts | 笔记API客户端 (CRUD + bulk sync + stats) |
@@ -561,4 +578,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V2.7 Smart Analytics (3 new APIs + 2 FE widgets + 21 tests) | **Result**: 1,163 BE + 623 FE + 61 E2E = 1,847 all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V2.8 Social & Collaborative Learning (5 new APIs + 3 FE components + 24 tests) | **Result**: 1,178 BE + 632 FE + 61 E2E = 1,871 all pass, tsc: 0 errors, 0 open issues, build OK

@@ -5,6 +5,7 @@ import { ConceptMinimap } from '@/components/graph/ConceptMinimap';
 import { SmartNextSteps } from '@/components/common/SmartNextSteps';
 import { MasteryTimeline } from '@/components/dashboard/MasteryTimeline';
 import { CrossDomainBridge } from '@/components/graph/CrossDomainBridge';
+import { ConceptDiscussionPanel } from '@/components/community/ConceptDiscussionPanel';
 import {
   Trophy, Brain, Play, History, MessageSquare,
 } from 'lucide-react';
@@ -116,6 +117,13 @@ export function ChatIdleView({
         <CrossDomainBridge
           conceptId={conceptId}
           domainId={urlDomainId || domainId || ''}
+        />
+
+        {/* Concept Discussion (V2.8) */}
+        <ConceptDiscussionPanel
+          conceptId={conceptId}
+          domainId={urlDomainId || domainId}
+          compact
         />
 
         {/* Recent history preview (last 3) */}

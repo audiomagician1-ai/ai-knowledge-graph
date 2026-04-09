@@ -28,6 +28,8 @@ const DomainRecommendWidget = lazy(() => import('@/components/dashboard/DomainRe
 const StudyPlanWidget = lazy(() => import('@/components/dashboard/StudyPlanWidget').then(m => ({ default: m.StudyPlanWidget })));
 const WeakConceptsWidget = lazy(() => import('@/components/dashboard/WeakConceptsWidget').then(m => ({ default: m.WeakConceptsWidget })));
 const LearningEfficiencyChart = lazy(() => import('@/components/dashboard/LearningEfficiencyChart').then(m => ({ default: m.LearningEfficiencyChart })));
+const GlobalLeaderboard = lazy(() => import('@/components/dashboard/GlobalLeaderboard').then(m => ({ default: m.GlobalLeaderboard })));
+const PeerComparisonCard = lazy(() => import('@/components/dashboard/PeerComparisonCard').then(m => ({ default: m.PeerComparisonCard })));
 
 export function DashboardPage() {
   const navigate = useNavigate();
@@ -129,6 +131,8 @@ export function DashboardPage() {
         <Suspense fallback={<WidgetSkeleton />}><StudyPlanWidget days={3} dailyMinutes={30} /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><WeakConceptsWidget limit={5} /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><LearningEfficiencyChart maxDomains={8} /></Suspense>
+        <Suspense fallback={<WidgetSkeleton />}><GlobalLeaderboard /></Suspense>
+        <Suspense fallback={<WidgetSkeleton />}><PeerComparisonCard /></Suspense>
 
         {/* Domain Progress */}
         <section>
