@@ -4,10 +4,21 @@ import { useDomainStore } from '@/lib/store/domain';
 import { useGraphStore } from '@/lib/store/graph';
 import { useLearningStore } from '@/lib/store/learning';
 import { useKeyboardShortcuts } from '@/lib/hooks/useKeyboardShortcuts';
+import { fetchWithRetry } from '@/lib/utils/fetch-retry';
 import {
   ArrowLeft, Route as RouteIcon, ChevronRight, Lock, CheckCircle2,
-  BookOpen, Sparkles, Target, Zap,
+  BookOpen, Sparkles, Target, Zap, AlertTriangle,
 } from 'lucide-react';
+
+const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
+
+interface KnowledgeGap {
+  concept_id: string;
+  name: string;
+  blocked_count: number;
+  difficulty: number;
+  status: string;
+}
 
 /**
  * Learning Path Page — shows a recommended linear path through a domain.
@@ -23,6 +34,7 @@ export function LearningPathPage() {
   const progress = useLearningStore((s) => s.progress);
 
   const [expandedGroup, setExpandedGroup] = useState<string | null>(null);
+  const [gaps, setGaps] = useState<KnowledgeGap[]>([]);
 
   useKeyboardShortcuts([
     { key: 'Escape', handler: () => navigate(domainId ? `/domain/${domainId}` : '/'), description: 'Back' },
@@ -33,6 +45,22 @@ export function LearningPathPage() {
   useEffect(() => {
     if (domainId) loadGraphData(domainId);
   }, [domainId, loadGraphData]);
+
+  // Fetch knowledge gaps
+  useEffect(() => {
+    if (!domainId) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetchWithRetry(`${API_BASE}/learning/knowledge-gaps/${domainId}?limit=5`, { retries: 1 });
+        if (res.ok && !cancelled) {
+          const data = await res.json();
+          setGaps(data.gaps || []);
+        }
+      } catch { /* offline */ }
+    })();
+    return () => { cancelled = true; };
+  }, [domainId]);
 
   // Load domain-specific progress
   const domainProgress = useMemo(() => {
@@ -174,6 +202,35 @@ export function LearningPathPage() {
             />
           </div>
         </div>
+
+        {/* Knowledge Gaps (V2.3) */}
+        {gaps.length > 0 && (
+          <section className="rounded-xl p-4" style={{ backgroundColor: 'var(--color-surface-1)' }}>
+            <h3 className="text-sm font-semibold mb-2 flex items-center gap-2">
+              <AlertTriangle size={14} style={{ color: '#f59e0b' }} />
+              知识缺口
+              <span className="text-xs opacity-50 font-normal">优先补齐这些概念可解锁更多内容</span>
+            </h3>
+            <div className="space-y-1.5">
+              {gaps.map((gap) => (
+                <button
+                  key={gap.concept_id}
+                  onClick={() => navigate(`/learn/${domainId}/${gap.concept_id}`)}
+                  className="w-full flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/5 transition-colors text-left"
+                  style={{ borderLeft: '3px solid #f59e0b' }}
+                >
+                  <div className="flex-1 min-w-0">
+                    <span className="text-sm">{gap.name}</span>
+                    <span className="text-xs opacity-40 ml-2">难度 {gap.difficulty}</span>
+                  </div>
+                  <span className="text-xs px-1.5 py-0.5 rounded" style={{ backgroundColor: '#f59e0b20', color: '#f59e0b' }}>
+                    解锁 {gap.blocked_count} 个
+                  </span>
+                </button>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Learning path groups */}
         {pathGroups.map((group) => {
