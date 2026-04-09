@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,871 (1,178 BE + 632 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 1,894 (1,192 BE + 641 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -268,6 +268,17 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ PeerComparisonCard Dashboard组件: 同伴对比卡片 (4维度百分位条形图+前X%标签, lazy-load)
 - ✅ ConceptDiscussionPanel组件: 概念讨论面板 (发帖表单+类型选择+回复+投票+展开详情, 集成到ChatIdleView)
 - ✅ 15 BE tests + 9 FE tests = 24 new tests
+
+### V2.9 Advanced Search & Content Intelligence Sprint (2026-04-10, 完成)
+- ✅ Split analytics.py (1,777L → 1,205L) — extracted analytics_insights.py (1,004L) for V2.7+V2.8+V2.9 endpoints
+- ✅ GET /api/analytics/concept-similarity/{id}: 跨域概念相似度引擎 (共享前置/后续Jaccard + 标签重叠 + 子域加成 + 跨域桥接 + 难度相近)
+- ✅ GET /api/analytics/content-search: RAG全文内容搜索 (跨36域文档内容搜索 + 名称匹配加权 + 精确短语加成 + 上下文片段提取)
+- ✅ GET /api/analytics/learning-report: 综合学习报告 (全量指标聚合: 进度/领域/优势/弱点/连续/效率 + 个性化建议)
+- ✅ LearningReportPage (/report): 可打印学习报告 (概览网格 + 领域进度条 + 优势/弱点分析 + 建议 + JSON导出)
+- ✅ ContentSearchWidget Dashboard组件: 知识文档内容搜索 (去抖输入 + 结果预览 + 片段展示 + 导航)
+- ✅ ConceptSimilarityPanel组件: 相似概念面板 (跨域标记 + 原因标签 + 难度展示, ChatIdleView集成)
+- ✅ HomePage浮动导航新增"报告"按钮 (FileText图标 → /report)
+- ✅ 14 BE tests + 9 FE tests = 23 new tests
 
 ---（生效中的架构决策）
 
@@ -508,6 +519,10 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/dashboard/GlobalLeaderboard.tsx | 社交排行榜 (V2.8: 4种排序+排名图标+连续火焰+lazy-load) |
 | packages/web/src/components/dashboard/PeerComparisonCard.tsx | 同伴对比 (V2.8: 4维度百分位条形图+前X%标签) |
 | packages/web/src/components/community/ConceptDiscussionPanel.tsx | 概念讨论面板 (V2.8: 发帖+回复+投票+展开+类型过滤, ChatIdleView集成) |
+| apps/api/routers/analytics_insights.py | V2.7+V2.8+V2.9分析API (V2.9拆分: 弱点检测/效率/难度/排行/同伴/相似/搜索/报告) |
+| packages/web/src/pages/LearningReportPage.tsx | 综合学习报告 (V2.9: /report, 可打印+JSON导出+概览/领域/优劣势/建议) |
+| packages/web/src/components/dashboard/ContentSearchWidget.tsx | 知识内容搜索 (V2.9: RAG全文搜索+片段预览+去抖+导航) |
+| packages/web/src/components/graph/ConceptSimilarityPanel.tsx | 相似概念面板 (V2.9: 拓扑+标签+跨域相似度+原因标签, ChatIdleView集成) |
 | packages/web/src/lib/utils/graph-lod.ts | Graph LOD (子域聚类+节点优先级+大域性能优化) |
 | packages/web/src/lib/hooks/useBookmarks.ts | 概念书签hook (localStorage+toggle+上限100) |
 | packages/web/src/lib/api/notes-api.ts | 笔记API客户端 (CRUD + bulk sync + stats) |
@@ -578,4 +593,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V2.8 Social & Collaborative Learning (5 new APIs + 3 FE components + 24 tests) | **Result**: 1,178 BE + 632 FE + 61 E2E = 1,871 all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V2.9 Advanced Search & Content Intelligence (3 new APIs + 3 FE components + /report page + analytics split, 23 tests) | **Result**: 1,192 BE + 641 FE + 61 E2E = 1,894 all pass, tsc: 0 errors, 0 open issues, build OK

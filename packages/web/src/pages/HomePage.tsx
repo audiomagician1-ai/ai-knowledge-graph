@@ -1,7 +1,7 @@
 ﻿import { useEffect, useRef, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDomainStore } from '@/lib/store/domain';
-import { Loader, BarChart3, Trophy, Settings as SettingsIcon, StickyNote, Users, History, Map } from 'lucide-react';
+import { Loader, BarChart3, Trophy, Settings as SettingsIcon, StickyNote, Users, History, Map, FileText } from 'lucide-react';
 import { WelcomeGuide } from '@/components/common/WelcomeGuide';
 import { ReviewBanner } from '@/components/common/ReviewBanner';
 import { DailyRecommendation } from '@/components/common/DailyRecommendation';
@@ -255,6 +255,7 @@ export function HomePage() {
           <QuickNavBtn icon={<StickyNote size={18} />} label="笔记" onClick={() => nav('/notes')} />
           <QuickNavBtn icon={<History size={18} />} label="历史" onClick={() => nav('/history')} />
           <QuickNavBtn icon={<Map size={18} />} label="旅程" onClick={() => nav('/journey')} />
+          <QuickNavBtn icon={<FileText size={18} />} label="报告" onClick={() => nav('/report')} />
           <QuickNavBtn icon={<Users size={18} />} label="社区" onClick={() => nav('/community')} />
           <QuickNavBtn icon={<SettingsIcon size={18} />} label="设置" onClick={() => nav('/settings')} />
         </div>

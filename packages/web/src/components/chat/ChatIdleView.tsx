@@ -6,6 +6,7 @@ import { SmartNextSteps } from '@/components/common/SmartNextSteps';
 import { MasteryTimeline } from '@/components/dashboard/MasteryTimeline';
 import { CrossDomainBridge } from '@/components/graph/CrossDomainBridge';
 import { ConceptDiscussionPanel } from '@/components/community/ConceptDiscussionPanel';
+import { ConceptSimilarityPanel } from '@/components/graph/ConceptSimilarityPanel';
 import {
   Trophy, Brain, Play, History, MessageSquare,
 } from 'lucide-react';
@@ -125,6 +126,9 @@ export function ChatIdleView({
           domainId={urlDomainId || domainId}
           compact
         />
+
+        {/* Concept Similarity (V2.9) */}
+        <ConceptSimilarityPanel conceptId={conceptId} />
 
         {/* Recent history preview (last 3) */}
         {conversations.length > 0 && (
