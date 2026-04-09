@@ -16,6 +16,8 @@ import { StudyPatterns } from '@/components/dashboard/StudyPatterns';
 import { DomainRadar } from '@/components/dashboard/DomainRadar';
 import { DifficultyHeatmap } from '@/components/dashboard/DifficultyHeatmap';
 import { MilestoneTracker } from '@/components/dashboard/MilestoneTracker';
+import { ReviewQueue } from '@/components/dashboard/ReviewQueue';
+import { AdaptivePathWidget } from '@/components/dashboard/AdaptivePathWidget';
 import type { Domain } from '@akg/shared';
 
 /**
@@ -244,6 +246,12 @@ export function DashboardPage() {
 
         {/* Milestone Tracker (V2.2) */}
         <MilestoneTracker />
+
+        {/* Adaptive Learning Path (V2.3) */}
+        <AdaptivePathWidget />
+
+        {/* Review Queue (V2.3) */}
+        <ReviewQueue />
 
         {/* Domain Progress Cards */}
         <section>
