@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,928 (1,215 BE + 652 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 1,940 (1,221 BE + 658 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -310,6 +310,16 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ create_notification() 编程式帮助函数 (可从其他路由器调用)
 - ✅ 内容反馈自动触发通知 (提交反馈后自动创建通知)
 - ✅ 13 BE tests (notifications) + 10 BE tests (content-feedback) + 11 FE tests = 34 new tests
+
+### V2.12 Event-Driven Notifications + Code Health Sprint (2026-04-10, 完成)
+- ✅ Split community.py (788L → 437L) — extracted community_discussions.py (193L, V2.8) + community_content.py (209L, V2.11)
+- ✅ Split ConceptDiscussionPanel.tsx (295L → 130L) — extracted DiscussionForm (82L) + DiscussionListItem (118L)
+- ✅ Event-driven mastery notifications — _emit_learning_notifications() in learning.py /assess endpoint
+- ✅ Event-driven streak milestone notifications — auto-detect 7/14/30/60/90/180/365 day streaks
+- ✅ All 19 BE routers under 800-line limit (max: 792L learning.py)
+- ✅ FE >200L files reduced from 12 to 11
+- ✅ .gitignore updated for apps/api/data/*.db
+- ✅ 6 BE tests (event notifications + community split) + 6 FE tests = 12 new tests
 
 ---（生效中的架构决策）
 
@@ -568,7 +578,9 @@ python scripts/build_exe.py  # 输出到 release/
 | apps/api/utils/metrics.py | API指标收集器 (请求数/错误率/响应时间/per-endpoint) |
 | apps/api/routers/notes.py | 概念笔记CRUD + bulk sync + stats API |
 | apps/api/routers/analytics.py | 学习分析API (difficulty-map/domain-heatmap/learning-velocity/content-quality-signals) |
-| apps/api/routers/community.py | 社区建议API (suggestions/voting/moderation/feedback-aggregation/auto-moderate/batch-moderate) |
+| apps/api/routers/community.py | 社区建议API (V2.12拆分: suggestions/voting/moderation/auto-moderate/batch-moderate) |
+| apps/api/routers/community_discussions.py | 概念讨论API (V2.12拆分: 发帖/回复/投票/解决/活动摘要) |
+| apps/api/routers/community_content.py | 内容质量反馈API (V2.12拆分: 提交/列表/解决/健康总览) |
 | apps/api/routers/notifications.py | 通知中心API (V2.11: CRUD+批量已读+摘要+示例生成, create_notification()可编程接口) |
 | packages/web/src/pages/NotificationsPage.tsx | 通知中心页面 (V2.11: /notifications, 类型过滤+已读/删除+深链接导航) |
 | packages/web/src/components/notifications/NotificationCenter.tsx | 通知Bell组件 (V2.11: 未读徽章+下拉面板+60s轮询+点击外关闭) |
