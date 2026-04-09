@@ -333,3 +333,136 @@ async def difficulty_calibration(
 
 # -- V2.8 endpoints moved to analytics_social.py (V2.10 split) --
 # -- V2.9 endpoints moved to analytics_search.py (V2.10 split) --
+
+
+# ── V3.2: Domain Mastery Forecast ─────────────────────────
+
+
+@router.get("/analytics/mastery-forecast/{domain_id}")
+async def mastery_forecast(
+    domain_id: str,
+    daily_minutes: int = Query(30, ge=5, le=240, description="Expected daily study time"),
+):
+    """Forecast when a user will master a domain at their current pace.
+
+    Uses historical learning velocity (concepts mastered per hour) to project
+    completion of remaining unmastered concepts. Accounts for difficulty
+    weighting — harder concepts take proportionally longer.
+
+    Returns estimated days to completion, per-subdomain breakdown, and
+    a confidence level based on data availability.
+    """
+    import json as _json, os, sys, math
+
+    progress = get_all_progress()
+    history = get_history(limit=10000)
+    concept_domain_map, concept_info, domain_map = load_seed_metadata()
+
+    if getattr(sys, "frozen", False):
+        data_root = os.path.join(sys._MEIPASS, "seed_data")
+    else:
+        data_root = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))),
+            "data", "seed",
+        )
+
+    seed_path = os.path.join(data_root, domain_id, "seed_graph.json")
+    if not os.path.isfile(seed_path):
+        return {"domain_id": domain_id, "error": "Domain not found"}
+
+    with open(seed_path, "r", encoding="utf-8") as f:
+        seed = _json.load(f)
+
+    concepts = seed.get("concepts", [])
+    progress_map = {p["concept_id"]: p for p in progress}
+
+    # Classify concepts
+    mastered = []
+    remaining = []
+    for c in concepts:
+        cid = c["id"]
+        p = progress_map.get(cid)
+        if p and p.get("status") == "mastered":
+            mastered.append(c)
+        else:
+            remaining.append(c)
+
+    total = len(concepts)
+    mastered_count = len(mastered)
+    remaining_count = len(remaining)
+
+    if remaining_count == 0:
+        return {
+            "domain_id": domain_id,
+            "domain_name": domain_map.get(domain_id, {}).get("name", domain_id),
+            "total_concepts": total,
+            "mastered": mastered_count,
+            "remaining": 0,
+            "completion_pct": 100.0,
+            "estimated_days": 0,
+            "estimated_hours": 0,
+            "confidence": "high",
+            "subdomain_forecast": [],
+        }
+
+    # Calculate learning velocity from history
+    now = time.time()
+    recent_mastered = [
+        e for e in history
+        if e.get("mastered") and (now - e.get("timestamp", 0)) < 30 * 86400
+    ]
+
+    # Estimate minutes per concept mastery
+    if len(recent_mastered) >= 3:
+        # Use actual velocity
+        min_per_concept = daily_minutes * 30 / max(1, len(recent_mastered))
+        confidence = "high" if len(recent_mastered) >= 10 else "medium"
+    elif mastered_count > 0:
+        # Fallback: assume 15 min per concept
+        min_per_concept = 15
+        confidence = "low"
+    else:
+        # No data: assume 20 min per concept
+        min_per_concept = 20
+        confidence = "low"
+
+    # Weight by difficulty
+    total_weighted_min = 0
+    sub_forecast: dict[str, dict] = {}
+    for c in remaining:
+        diff = c.get("difficulty", 5)
+        weight = 0.5 + diff * 0.15  # difficulty 1 = 0.65x, 10 = 2.0x
+        est_min = min_per_concept * weight
+        total_weighted_min += est_min
+
+        sid = c.get("subdomain_id", "other")
+        if sid not in sub_forecast:
+            sub_forecast[sid] = {"remaining": 0, "est_minutes": 0}
+        sub_forecast[sid]["remaining"] += 1
+        sub_forecast[sid]["est_minutes"] += est_min
+
+    est_hours = round(total_weighted_min / 60, 1)
+    est_days = math.ceil(total_weighted_min / daily_minutes)
+
+    subdomain_list = []
+    for sid, sf in sorted(sub_forecast.items(), key=lambda x: -x[1]["remaining"]):
+        subdomain_list.append({
+            "subdomain_id": sid,
+            "remaining": sf["remaining"],
+            "estimated_hours": round(sf["est_minutes"] / 60, 1),
+            "estimated_days": math.ceil(sf["est_minutes"] / daily_minutes),
+        })
+
+    return {
+        "domain_id": domain_id,
+        "domain_name": domain_map.get(domain_id, {}).get("name", domain_id),
+        "total_concepts": total,
+        "mastered": mastered_count,
+        "remaining": remaining_count,
+        "completion_pct": round(mastered_count / total * 100, 1),
+        "estimated_days": est_days,
+        "estimated_hours": est_hours,
+        "daily_minutes": daily_minutes,
+        "confidence": confidence,
+        "subdomain_forecast": subdomain_list,
+    }

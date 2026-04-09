@@ -37,6 +37,9 @@ const GraphTopologyWidget = lazy(() => import('@/components/dashboard/GraphTopol
 const PrerequisiteCheckWidget = lazy(() => import('@/components/dashboard/PrerequisiteCheckWidget').then(m => ({ default: m.PrerequisiteCheckWidget })));
 const ConceptClusterWidget = lazy(() => import('@/components/dashboard/ConceptClusterWidget').then(m => ({ default: m.ConceptClusterWidget })));
 const SessionSummaryWidget = lazy(() => import('@/components/dashboard/SessionSummaryWidget').then(m => ({ default: m.SessionSummaryWidget })));
+const MasteryForecastWidget = lazy(() => import('@/components/dashboard/MasteryForecastWidget').then(m => ({ default: m.MasteryForecastWidget })));
+const ReviewPriorityWidget = lazy(() => import('@/components/dashboard/ReviewPriorityWidget').then(m => ({ default: m.ReviewPriorityWidget })));
+const DifficultyAccuracyWidget = lazy(() => import('@/components/dashboard/DifficultyAccuracyWidget').then(m => ({ default: m.DifficultyAccuracyWidget })));
 
 export function DashboardPage() {
   const navigate = useNavigate();
@@ -147,6 +150,9 @@ export function DashboardPage() {
         <Suspense fallback={<WidgetSkeleton />}><PrerequisiteCheckWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><ConceptClusterWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><SessionSummaryWidget hours={24} /></Suspense>
+        <Suspense fallback={<WidgetSkeleton />}><MasteryForecastWidget /></Suspense>
+        <Suspense fallback={<WidgetSkeleton />}><ReviewPriorityWidget limit={8} /></Suspense>
+        <Suspense fallback={<WidgetSkeleton />}><DifficultyAccuracyWidget /></Suspense>
 
         {/* Domain Progress */}
         <section>
