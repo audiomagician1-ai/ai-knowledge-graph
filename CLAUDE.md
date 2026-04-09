@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,940 (1,221 BE + 658 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 1,950 (1,221 BE + 668 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -311,7 +311,22 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ 内容反馈自动触发通知 (提交反馈后自动创建通知)
 - ✅ 13 BE tests (notifications) + 10 BE tests (content-feedback) + 11 FE tests = 34 new tests
 
-### V2.12 Event-Driven Notifications + Code Health Sprint (2026-04-10, 完成)
+### V2.13 Final FE Code Health Sprint (2026-04-10, 完成)
+- ✅ Split LoginPage.tsx: 289→89 lines (extracted BackgroundDecoration + FeaturePills + LoginEmailForm → LoginPageParts 110L)
+- ✅ Split HomePage.tsx: 281→109 lines (extracted canvas logic → useHomeCanvas hook 176L)
+- ✅ Split KnowledgeGraph.tsx: 247→136 lines (extracted 3 reactive effects → useGraphEffects hook 80L)
+- ✅ Split ReviewPage.tsx: 238→112 lines (extracted ReviewError + ReviewEmpty + ReviewComplete → ReviewStates 56L)
+- ✅ Split SessionHistoryPage.tsx: 216→182 lines (extracted HistoryItemRow + type defs + constants 50L)
+- ✅ Split LearningReportPage.tsx: 214→200 lines (extracted ReportData type + StatCard → ReportParts 42L)
+- ✅ Split SettingsLLMConfig.tsx: 214→192 lines (extracted SettingsProxyActions → SettingsProxyGuide 37L)
+- ✅ Split DomainRadar.tsx: 213→82 lines (extracted SVG rendering → RadarSVG 45L)
+- ✅ Split ConceptSearch.tsx: 210→197 lines (extracted SearchResult type → ConceptSearchTypes 7L)
+- ✅ Split NotesPage.tsx: 210→192 lines (extracted NoteCard 33L)
+- ✅ Condensed SmartNextSteps.tsx: 207→178 lines (render JSX compaction)
+- 🎯 **ALL React components now under 200 lines** — 0 files exceed the 200L limit
+- ✅ 10 new FE tests (v213-components.test.ts)
+- 📊 FE files >200L: **11 → 0** (100% compliance)
+
 - ✅ Split community.py (788L → 437L) — extracted community_discussions.py (193L, V2.8) + community_content.py (209L, V2.11)
 - ✅ Split ConceptDiscussionPanel.tsx (295L → 130L) — extracted DiscussionForm (82L) + DiscussionListItem (118L)
 - ✅ Event-driven mastery notifications — _emit_learning_notifications() in learning.py /assess endpoint
@@ -648,4 +663,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V2.9 Advanced Search & Content Intelligence (3 new APIs + 3 FE components + /report page + analytics split, 23 tests) | **Result**: 1,192 BE + 641 FE + 61 E2E = 1,894 all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V2.13 Final FE Code Health — ALL React components now under 200 lines (11 files split, 12 new extractions, 10 FE tests) | **Result**: 1,221 BE + 668 FE + 61 E2E = 1,950 all pass, tsc: 0 errors, 0 open issues, build OK
