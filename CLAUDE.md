@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,950 (1,221 BE + 668 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 1,988 (1,253 BE + 674 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -311,7 +311,16 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ 内容反馈自动触发通知 (提交反馈后自动创建通知)
 - ✅ 13 BE tests (notifications) + 10 BE tests (content-feedback) + 11 FE tests = 34 new tests
 
-### V2.13 Final FE Code Health Sprint (2026-04-10, 完成)
+### V3.0 Onboarding Intelligence & Graph Topology Sprint (2026-04-10, 完成)
+- ✅ Seed metadata memory cache (TTL 300s): analytics_utils.py — 4 call sites no longer re-read 36 JSON files per request
+- ✅ GET /api/onboarding/recommended-start: 新用户推荐起始领域 (入门友好度评分+入口概念+时间预估, 按beginner_score排序)
+- ✅ GET /api/onboarding/domain-preview/{domain_id}: 领域预览 (入口概念+难度分布+子域概览+总学习时间)
+- ✅ OnboardingRecommendWidget Dashboard组件: 推荐起点卡片列表+域预览弹窗 (lazy-load)
+- ✅ GET /api/graph/relationship-strength/{domain_id}: 图谱拓扑分析 (枢纽节点/跨域桥接/孤立概念/子域密度/平均度)
+- ✅ GraphTopologyWidget Dashboard组件: 拓扑分析卡片 (核心枢纽+跨域桥接+孤立概念警告, lazy-load)
+- ✅ onboarding-api.ts: FE API客户端 (fetchRecommendedStart + fetchDomainPreview)
+- ✅ 38 new tests (8 analytics_utils + 14 onboarding + 10 relationship-strength + 6 FE)
+
 - ✅ Split LoginPage.tsx: 289→89 lines (extracted BackgroundDecoration + FeaturePills + LoginEmailForm → LoginPageParts 110L)
 - ✅ Split HomePage.tsx: 281→109 lines (extracted canvas logic → useHomeCanvas hook 176L)
 - ✅ Split KnowledgeGraph.tsx: 247→136 lines (extracted 3 reactive effects → useGraphEffects hook 80L)
@@ -601,6 +610,10 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/notifications/NotificationCenter.tsx | 通知Bell组件 (V2.11: 未读徽章+下拉面板+60s轮询+点击外关闭) |
 | packages/web/src/components/community/ContentFeedbackButton.tsx | 内容反馈按钮 (V2.11: 展开表单+5类别+评论, ChatIdleView集成) |
 | packages/web/src/components/dashboard/ContentHealthWidget.tsx | 内容健康度 (V2.11: 反馈统计+待处理+概念健康分+lazy-load) |
+| apps/api/routers/onboarding.py | 新用户入门推荐API (V3.0: recommended-start + domain-preview) |
+| packages/web/src/lib/api/onboarding-api.ts | 入门推荐FE API客户端 (V3.0: fetchRecommendedStart + fetchDomainPreview) |
+| packages/web/src/components/dashboard/OnboardingRecommendWidget.tsx | 推荐起点组件 (V3.0: 推荐卡片+域预览弹窗, lazy-load) |
+| packages/web/src/components/dashboard/GraphTopologyWidget.tsx | 图谱拓扑分析 (V3.0: 枢纽/桥接/孤立概念+子域密度, lazy-load) |
 | workers/src/ | Cloudflare Workers代理后端 |
 
 ---
@@ -663,4 +676,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V2.13 Final FE Code Health — ALL React components now under 200 lines (11 files split, 12 new extractions, 10 FE tests) | **Result**: 1,221 BE + 668 FE + 61 E2E = 1,950 all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V3.0 Onboarding Intelligence & Graph Topology — seed cache, 2 onboarding APIs, relationship-strength API, 2 Dashboard widgets, onboarding-api.ts, 38 tests | **Result**: 1,253 BE + 674 FE + 61 E2E = 1,988 all pass, tsc: 0 errors, 0 open issues, build OK
