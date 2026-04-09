@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,723 (1,113 BE + 549 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 1,745 (1,113 BE + 571 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -194,6 +194,10 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ Split HomePage.tsx God File: 651→278 lines (extracted home-canvas-utils.ts 218L: DEMO_DOMAINS + constants + hex grid + drawBubble)
 - ✅ Split LearnPage.tsx AssessmentCard: 573→459 lines (extracted LearnAssessmentCard 114L)
 - ✅ 20 new FE tests (chat-components 7 + home-canvas-utils 13)
+- ✅ Split GraphPage.tsx God File: 565→185 lines (extracted GraphSearchOverlay 57L + GraphHubBar 199L + GraphRecommendPanel 79L + GraphConceptHeader 52L)
+- ✅ Split KnowledgeGraph.tsx: 528→247 lines (extracted graph-visual-utils.ts 136L: GNode/GLink types + baseSize + nodeColor + labelTexture + celebration particles)
+- ✅ Split DashboardPage.tsx: 493→144 lines (extracted StreakCalendar 70L + VelocitySection 76L + DashboardHelpers 76L + useDashboardProgress hook 70L)
+- ✅ 22 new FE tests (graph-page-components 14 + graph-visual-utils 8)
 
 ---（生效中的架构决策）
 
@@ -356,6 +360,15 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/lib/store/ | Zustand stores (dialogue/learning/domain/graph) |
 | packages/web/src/lib/direct-llm.ts | 前端直连LLM (549行, 含validateAssessment) |
 | packages/web/src/lib/direct-llm-prompts.ts | LLM提示词模板+域评估补充 (554行, V2.4 从direct-llm.ts拆出) |
+| packages/web/src/components/graph/GraphSearchOverlay.tsx | 图谱搜索浮层 (57行, V2.4 从GraphPage.tsx拆出) |
+| packages/web/src/components/graph/GraphHubBar.tsx | 底部Hub导航栏: 域切换+导航+推荐 (199行, V2.4 从GraphPage.tsx拆出) |
+| packages/web/src/components/graph/GraphRecommendPanel.tsx | 推荐学习路径面板 (79行, V2.4 从GraphPage.tsx拆出) |
+| packages/web/src/components/graph/GraphConceptHeader.tsx | 概念详情头部: 难度+状态+关闭 (52行, V2.4 从GraphPage.tsx拆出) |
+| packages/web/src/components/graph/graph-visual-utils.ts | 3D图谱视觉工具: 节点颜色/大小/标签纹理/庆祝粒子 (136行, V2.4 从KnowledgeGraph.tsx拆出) |
+| packages/web/src/components/dashboard/StreakCalendar.tsx | 30天学习热力图日历 (70行, V2.4 从DashboardPage.tsx拆出) |
+| packages/web/src/components/dashboard/VelocitySection.tsx | 学习节奏图表 (76行, V2.4 从DashboardPage.tsx拆出) |
+| packages/web/src/components/dashboard/DashboardHelpers.tsx | StatCard+DomainCard+WidgetSkeleton (76行, V2.4 从DashboardPage.tsx拆出) |
+| packages/web/src/lib/hooks/useDashboardProgress.ts | Dashboard进度聚合hook (70行, V2.4 从DashboardPage.tsx拆出) |
 | packages/web/src/lib/utils/home-canvas-utils.ts | HomePage蜂窝Canvas: DEMO_DOMAINS+常量+hex grid+drawBubble (218行, V2.4 从HomePage.tsx拆出) |
 | packages/web/src/components/chat/ChatHistoryView.tsx | 对话历史视图 (87行, V2.4 从ChatPanel.tsx拆出) |
 | packages/web/src/components/chat/ChatIdleView.tsx | 概念空闲视图: 掌握度卡片+前置知识+小地图 (172行, V2.4 从ChatPanel.tsx拆出) |
@@ -467,4 +480,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V2.4 Code Health Phase 2 (3 God File splits + 20 FE tests) | **Result**: 1,113 BE + 549 FE + 61 E2E = 1,723 all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V2.4 Code Health Phase 3 (6 God File splits + 22 FE tests) | **Result**: 1,113 BE + 571 FE + 61 E2E = 1,745 all pass, tsc: 0 errors, 0 open issues, build OK
