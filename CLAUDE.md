@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 2,095 (1,338 BE + 696 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 2,111 (1,349 BE + 701 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -310,6 +310,14 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ create_notification() 编程式帮助函数 (可从其他路由器调用)
 - ✅ 内容反馈自动触发通知 (提交反馈后自动创建通知)
 - ✅ 13 BE tests (notifications) + 10 BE tests (content-feedback) + 11 FE tests = 34 new tests
+
+### V3.6 FSRS Retention Analytics + Goal Intelligence Sprint (2026-04-10, 完成)
+- ✅ GET /api/analytics/fsrs-insights: FSRS记忆保持分析 (保持率摘要+遗忘风险分布高/中/低+复习效率+高风险概念TOP10)
+- ✅ GET /api/analytics/goal-recommendations: 智能目标建议 (日学习量/周掌握量/学习时间+连续天数目标+专注领域推荐, 基于7日平均+15%挑战)
+- ✅ FSRSInsightsWidget Dashboard组件: 间隔复习分析 (风险分布条+效率统计+高风险概念列表, lazy-load, 118L)
+- ✅ GoalRecommendWidget Dashboard组件: 智能目标 (上下文统计+推荐列表+专注领域, lazy-load, 107L)
+- ✅ DashboardWidgetGrid updated: 33→35 lazy-loaded widgets (added FSRSInsightsWidget + GoalRecommendWidget)
+- ✅ 16 new tests (11 BE: 6 fsrs-insights + 5 goal-recommendations + 5 FE)
 
 ### V3.5 Learning Engine Health + Session Intelligence Sprint (2026-04-10, 完成)
 - ✅ Split learning.py (793L→535L) — extracted learning_review.py (277L: FSRS /due + /review + Achievement /achievements/*)
@@ -676,6 +684,8 @@ python scripts/build_exe.py  # 输出到 release/
 | apps/api/routers/learning_review.py | FSRS复习+成就系统API (V3.5拆分: /due+/review+/achievements/*, 277L) |
 | packages/web/src/components/dashboard/SessionReplayWidget.tsx | 学习回放 (V3.5: 概念步骤时间线+分数变化+掌握统计, lazy-load) |
 | packages/web/src/components/dashboard/ComparativeProgressWidget.tsx | 周度对比 (V3.5: WoW域级事件/掌握/均分对比+趋势, lazy-load) |
+| packages/web/src/components/dashboard/FSRSInsightsWidget.tsx | FSRS记忆分析 (V3.6: 风险分布+效率统计+高风险概念列表, lazy-load) |
+| packages/web/src/components/dashboard/GoalRecommendWidget.tsx | 智能目标建议 (V3.6: 日/周目标+学习时间+专注领域, lazy-load) |
 | workers/src/ | Cloudflare Workers代理后端 |
 
 ---
@@ -738,4 +748,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V3.5 Learning Engine Health + Session Intelligence — learning.py split (793→535L+277L), session-replay API, comparative-progress API, 2 Dashboard widgets, 24 tests | **Result**: 1,338 BE + 696 FE + 61 E2E = 2,095 all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V3.6 FSRS Retention Analytics + Goal Intelligence — FSRS insights API (retention/risk/efficiency), goal recommendations API (pace-based targets), 2 Dashboard widgets, 16 tests | **Result**: 1,349 BE + 701 FE + 61 E2E = 2,111 all pass, tsc: 0 errors, 0 open issues, build OK

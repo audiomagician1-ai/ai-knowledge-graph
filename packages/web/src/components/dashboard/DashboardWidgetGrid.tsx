@@ -15,6 +15,8 @@ const PrerequisiteCheckWidget = lazy(() => import('./PrerequisiteCheckWidget').t
 const MasteryForecastWidget = lazy(() => import('./MasteryForecastWidget').then(m => ({ default: m.MasteryForecastWidget })));
 const NextMilestonesWidget = lazy(() => import('./NextMilestonesWidget').then(m => ({ default: m.NextMilestonesWidget })));
 const SessionReplayWidget = lazy(() => import('./SessionReplayWidget').then(m => ({ default: m.SessionReplayWidget })));
+const FSRSInsightsWidget = lazy(() => import('./FSRSInsightsWidget').then(m => ({ default: m.FSRSInsightsWidget })));
+const GoalRecommendWidget = lazy(() => import('./GoalRecommendWidget').then(m => ({ default: m.GoalRecommendWidget })));
 
 // ── Analytics & Insights ──
 const WeeklyReport = lazy(() => import('./WeeklyReport').then(m => ({ default: m.WeeklyReport })));
@@ -80,6 +82,8 @@ export function DashboardWidgetGrid() {
         <Suspense fallback={<WidgetSkeleton />}><MasteryForecastWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><NextMilestonesWidget limit={5} /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><SessionReplayWidget limit={8} /></Suspense>
+        <Suspense fallback={<WidgetSkeleton />}><FSRSInsightsWidget /></Suspense>
+        <Suspense fallback={<WidgetSkeleton />}><GoalRecommendWidget /></Suspense>
       </CollapsibleSection>
 
       <CollapsibleSection title="数据分析" icon={<BarChart3 size={14} className="opacity-40" />}>
