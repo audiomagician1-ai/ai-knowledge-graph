@@ -2,52 +2,10 @@ import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useKeyboardShortcuts } from '@/lib/hooks/useKeyboardShortcuts';
 import { fetchWithRetry } from '@/lib/utils/fetch-retry';
-import {
-  ArrowLeft, History, Filter, ChevronLeft, ChevronRight,
-  Award, BookOpen, Play, Search,
-} from 'lucide-react';
+import { ArrowLeft, History, Filter, ChevronLeft, ChevronRight, Search } from 'lucide-react';
+import { HistoryItemRow, ACTION_LABELS, type HistoryItem, type Pagination } from '@/components/history/HistoryItemRow';
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
-
-interface HistoryItem {
-  id: number;
-  concept_id: string;
-  concept_name: string;
-  score: number;
-  mastered: boolean;
-  action: string;
-  timestamp: number;
-  date: string;
-  time: string;
-}
-
-interface Pagination {
-  page: number;
-  per_page: number;
-  total: number;
-  total_pages: number;
-  has_next: boolean;
-  has_prev: boolean;
-}
-
-const ACTION_ICONS: Record<string, typeof Award> = {
-  mastered: Award,
-  assessment: BookOpen,
-  start: Play,
-};
-
-const ACTION_LABELS: Record<string, string> = {
-  mastered: '掌握',
-  assessment: '评估',
-  start: '开始学习',
-  all: '全部',
-};
-
-const ACTION_COLORS: Record<string, string> = {
-  mastered: 'text-yellow-400',
-  assessment: 'text-blue-400',
-  start: 'text-green-400',
-};
 
 /**
  * Session History Page — paginated learning timeline.
@@ -152,39 +110,7 @@ export function SessionHistoryPage() {
           </div>
         ) : (
           <div className="space-y-2">
-            {items.map((item) => {
-              const Icon = ACTION_ICONS[item.action] || BookOpen;
-              const color = ACTION_COLORS[item.action] || 'text-gray-400';
-              return (
-                <div
-                  key={`${item.id}-${item.timestamp}`}
-                  className="flex items-center gap-4 px-4 py-3 bg-white/[0.03] hover:bg-white/[0.06] rounded-lg border border-white/5 transition-colors cursor-pointer"
-                  onClick={() => {
-                    const parts = item.concept_id.split('/');
-                    if (parts.length >= 2) navigate(`/domain/${parts[0]}/${item.concept_id}`);
-                  }}
-                >
-                  <div className={`p-2 rounded-lg bg-white/5 ${color}`}>
-                    <Icon size={18} />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium truncate">{item.concept_name || item.concept_id}</p>
-                    <p className="text-xs text-gray-500">{ACTION_LABELS[item.action]}</p>
-                  </div>
-                  {item.score > 0 && (
-                    <div className="text-right">
-                      <p className={`text-sm font-bold ${item.mastered ? 'text-yellow-400' : 'text-blue-400'}`}>
-                        {item.score}分
-                      </p>
-                    </div>
-                  )}
-                  <div className="text-right text-xs text-gray-500 whitespace-nowrap">
-                    <p>{item.date}</p>
-                    <p>{item.time}</p>
-                  </div>
-                </div>
-              );
-            })}
+            {items.map((item) => <HistoryItemRow key={`${item.id}-${item.timestamp}`} item={item} />)}
           </div>
         )}
 

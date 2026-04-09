@@ -2,13 +2,7 @@ import { useState, useCallback, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, X } from 'lucide-react';
 import { useDomainStore } from '@/lib/store/domain';
-
-interface SearchResult {
-  conceptId: string;
-  conceptName: string;
-  domainId: string;
-  domainName: string;
-}
+import type { SearchResult } from './ConceptSearchTypes';
 
 /**
  * Global concept search overlay — triggered by Ctrl+K.
@@ -181,22 +175,15 @@ export function ConceptSearch() {
             </div>
           )}
           {results.map((r, i) => (
-            <button
-              key={`${r.domainId}-${r.conceptId}`}
-              onClick={() => handleSelect(r)}
-              className={`w-full text-left px-4 py-3 flex items-center justify-between transition-colors ${
-                i === selectedIdx ? 'bg-white/10' : 'hover:bg-white/5'
-              }`}
-            >
-              <div>
-                <div className="text-sm text-white font-medium">{r.conceptName}</div>
-                <div className="text-xs text-gray-400">{r.domainName}</div>
-              </div>
-              <span className="text-xs text-gray-500 ml-2 flex-shrink-0">
-                Enter
-              </span>
-            </button>
-          ))}
+          <button key={`${r.domainId}-${r.conceptId}`} onClick={() => handleSelect(r)}
+            className={`w-full text-left px-4 py-3 flex items-center justify-between transition-colors ${i === selectedIdx ? 'bg-white/10' : 'hover:bg-white/5'}`}>
+            <div>
+              <div className="text-sm text-white font-medium">{r.conceptName}</div>
+              <div className="text-xs text-gray-400">{r.domainName}</div>
+            </div>
+            <span className="text-xs text-gray-500 ml-2 flex-shrink-0">Enter</span>
+          </button>
+        ))}
         </div>
 
         {/* Footer hint */}

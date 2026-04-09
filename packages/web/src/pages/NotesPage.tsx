@@ -3,10 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useConceptNotes } from '@/lib/hooks/useConceptNotes';
 import { useKeyboardShortcuts } from '@/lib/hooks/useKeyboardShortcuts';
 import { fetchWithRetry } from '@/lib/utils/fetch-retry';
-import {
-  ArrowLeft, StickyNote, Trash2, Download, Upload,
-  Search, BookOpen, RefreshCw, FileText,
-} from 'lucide-react';
+import { ArrowLeft, StickyNote, Download, Upload, Search, BookOpen, RefreshCw, FileText } from 'lucide-react';
+import { NoteCard } from '@/components/notes/NoteCard';
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
 
@@ -173,34 +171,8 @@ export function NotesPage() {
         ) : (
           <div className="space-y-3">
             {filtered.map((note) => (
-              <div
-                key={note.conceptId}
-                className="rounded-xl p-4 hover:ring-1 transition-all cursor-pointer"
-                style={{ backgroundColor: 'var(--color-surface-1)' }}
-                onClick={() => {
-                  // Try to navigate to the concept
-                  navigate(`/`);
-                }}
-              >
-                <div className="flex items-start justify-between gap-3 mb-2">
-                  <h3 className="text-sm font-semibold">{note.conceptId}</h3>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      deleteNote(note.conceptId);
-                    }}
-                    className="p-1 rounded hover:bg-red-500/10 transition-colors shrink-0"
-                    title="删除笔记"
-                  >
-                    <Trash2 size={14} style={{ color: '#ef4444' }} />
-                  </button>
-                </div>
-                <p className="text-sm opacity-70 whitespace-pre-wrap line-clamp-3">{note.content}</p>
-                <div className="flex gap-4 mt-2 text-[10px] opacity-30">
-                  <span>创建: {new Date(note.createdAt).toLocaleDateString('zh-CN')}</span>
-                  <span>更新: {new Date(note.updatedAt).toLocaleDateString('zh-CN')}</span>
-                </div>
-              </div>
+              <NoteCard key={note.conceptId} conceptId={note.conceptId} content={note.content}
+                createdAt={note.createdAt} updatedAt={note.updatedAt} onDelete={deleteNote} />
             ))}
           </div>
         )}
