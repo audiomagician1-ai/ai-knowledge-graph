@@ -192,6 +192,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ Three-way sync test updated for new file structure (direct-llm-prompts.ts)
 - ✅ Split ChatPanel.tsx God File: 687→324 lines (extracted ChatHistoryView 87L + ChatIdleView 172L + InlineAssessmentCard 102L)
 - ✅ Split HomePage.tsx God File: 651→278 lines (extracted home-canvas-utils.ts 218L: DEMO_DOMAINS + constants + hex grid + drawBubble)
+- ✅ Split LearnPage.tsx AssessmentCard: 573→459 lines (extracted LearnAssessmentCard 114L)
 
 ---（生效中的架构决策）
 
@@ -358,6 +359,7 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/chat/ChatHistoryView.tsx | 对话历史视图 (87行, V2.4 从ChatPanel.tsx拆出) |
 | packages/web/src/components/chat/ChatIdleView.tsx | 概念空闲视图: 掌握度卡片+前置知识+小地图 (172行, V2.4 从ChatPanel.tsx拆出) |
 | packages/web/src/components/chat/InlineAssessmentCard.tsx | 评估结果卡片: 动画分数+维度条 (102行, V2.4 从ChatPanel.tsx拆出) |
+| packages/web/src/components/chat/LearnAssessmentCard.tsx | LearnPage评估结果卡片: 梯度边框+维度图标 (114行, V2.4 从LearnPage.tsx拆出) |
 | packages/web/src/components/common/WelcomeGuide.tsx | 首访引导层 (价值主张+推荐域) |
 | packages/web/src/components/common/ReviewBanner.tsx | FSRS复习提示+学习进度 |
 | packages/web/src/components/common/DailyRecommendation.tsx | 每日推荐概念 (30概念日轮) |
