@@ -31,6 +31,7 @@ const LearningEfficiencyChart = lazy(() => import('@/components/dashboard/Learni
 const GlobalLeaderboard = lazy(() => import('@/components/dashboard/GlobalLeaderboard').then(m => ({ default: m.GlobalLeaderboard })));
 const PeerComparisonCard = lazy(() => import('@/components/dashboard/PeerComparisonCard').then(m => ({ default: m.PeerComparisonCard })));
 const ContentSearchWidget = lazy(() => import('@/components/dashboard/ContentSearchWidget').then(m => ({ default: m.ContentSearchWidget })));
+const ContentHealthWidget = lazy(() => import('@/components/dashboard/ContentHealthWidget').then(m => ({ default: m.ContentHealthWidget })));
 
 export function DashboardPage() {
   const navigate = useNavigate();
@@ -135,6 +136,7 @@ export function DashboardPage() {
         <Suspense fallback={<WidgetSkeleton />}><GlobalLeaderboard /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><PeerComparisonCard /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><ContentSearchWidget /></Suspense>
+        <Suspense fallback={<WidgetSkeleton />}><ContentHealthWidget /></Suspense>
 
         {/* Domain Progress */}
         <section>

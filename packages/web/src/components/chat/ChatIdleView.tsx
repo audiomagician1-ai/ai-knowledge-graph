@@ -7,6 +7,7 @@ import { MasteryTimeline } from '@/components/dashboard/MasteryTimeline';
 import { CrossDomainBridge } from '@/components/graph/CrossDomainBridge';
 import { ConceptDiscussionPanel } from '@/components/community/ConceptDiscussionPanel';
 import { ConceptSimilarityPanel } from '@/components/graph/ConceptSimilarityPanel';
+import { ContentFeedbackButton } from '@/components/community/ContentFeedbackButton';
 import {
   Trophy, Brain, Play, History, MessageSquare,
 } from 'lucide-react';
@@ -190,6 +191,9 @@ export function ChatIdleView({
         <p className="text-sm mt-4 text-center" style={{ color: 'var(--color-text-tertiary)' }}>
           AI 将根据你的掌握程度讲解并提问
         </p>
+        <div className="mt-3 flex justify-center">
+          <ContentFeedbackButton conceptId={conceptId} domainId={domainId || urlDomainId} />
+        </div>
       </div>
     </div>
   );
