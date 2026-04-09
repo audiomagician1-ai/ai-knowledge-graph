@@ -1494,9 +1494,9 @@ def _extract_ts_map_keys(content: str, map_name: str) -> set:
     """
     import re
 
-    # Locate the block:  const MAP_NAME: Record<string, string> = { ... };
+    # Locate the block:  [export] const MAP_NAME: Record<string, string> = { ... };
     pattern = re.compile(
-        rf"const\s+{re.escape(map_name)}\s*:\s*Record<string,\s*string>\s*=\s*\{{(.*?)\}};",
+        rf"(?:export\s+)?const\s+{re.escape(map_name)}\s*:\s*Record<string,\s*string>\s*=\s*\{{(.*?)\}};",
         re.DOTALL,
     )
     m = pattern.search(content)
@@ -1523,9 +1523,9 @@ def test_domain_supplements_three_way_sync():
     from engines.dialogue.prompts.feynman_system import DOMAIN_SUPPLEMENTS
     be_keys = set(DOMAIN_SUPPLEMENTS.keys())
 
-    # FE: parse direct-llm.ts DOMAIN_SUPPLEMENTS map block
-    fe_file = os.path.join(project_root, "packages", "web", "src", "lib", "direct-llm.ts")
-    assert os.path.exists(fe_file), f"FE direct-llm.ts not found: {fe_file}"
+    # FE: parse direct-llm-prompts.ts DOMAIN_SUPPLEMENTS map block (extracted from direct-llm.ts in V2.4)
+    fe_file = os.path.join(project_root, "packages", "web", "src", "lib", "direct-llm-prompts.ts")
+    assert os.path.exists(fe_file), f"FE direct-llm-prompts.ts not found: {fe_file}"
     fe_content = open(fe_file, encoding="utf-8").read()
     fe_keys = _extract_ts_map_keys(fe_content, "DOMAIN_SUPPLEMENTS")
 
@@ -1560,8 +1560,8 @@ def test_assessment_supplements_three_way_sync():
     from engines.dialogue.prompts.feynman_system import ASSESSMENT_SUPPLEMENTS
     be_keys = set(ASSESSMENT_SUPPLEMENTS.keys())
 
-    # FE: parse ASSESSMENT_SUPPLEMENTS map block in direct-llm.ts
-    fe_file = os.path.join(project_root, "packages", "web", "src", "lib", "direct-llm.ts")
+    # FE: parse ASSESSMENT_SUPPLEMENTS map block in direct-llm-prompts.ts (extracted from direct-llm.ts in V2.4)
+    fe_file = os.path.join(project_root, "packages", "web", "src", "lib", "direct-llm-prompts.ts")
     fe_content = open(fe_file, encoding="utf-8").read()
     fe_keys = _extract_ts_map_keys(fe_content, "ASSESSMENT_SUPPLEMENTS")
 
