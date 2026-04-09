@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,766 (1,113 BE + 592 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 1,773 (1,113 BE + 599 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -215,6 +215,13 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ Split DashboardContent.tsx: 325→200 lines (extracted OtherDomainCard + ActivityRow + formatTimeAgo → DashboardContentParts 100L)
 - ✅ Split ChatPanel.tsx: 323→114 lines (extracted ChatView 172L — full chat message list + input area + celebration overlay)
 - ✅ 9 new FE tests (learning-path-components 4 + dashboard-content-parts 4 + chat-view 1)
+
+### V2.4 Code Health Phase 8 — Achievement + StudyGoal + DomainOverview splits (2026-04-10, 完成)
+- ✅ Split AchievementPanel.tsx: 259→139 lines (extracted AchievementCard + TIER_COLORS/LABELS + CATEGORY_META → AchievementParts 72L)
+- ✅ Split StudyGoalWidget.tsx: 254→78 lines (extracted ProgressRing + GoalSettings → StudyGoalParts 91L)
+- ✅ Split DomainOverview.tsx: 222→101 lines (extracted DomainCard 69L)
+- ✅ 7 new FE tests (achievement-parts 4 + study-goal-parts 2 + domain-card 1)
+- 📊 Remaining files >200L: 9 (all <290L, already split once or near boundary)
 
 ---（生效中的架构决策）
 
@@ -512,4 +519,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V2.4 Code Health Phase 7 (LearningPathPage+DashboardContent+ChatPanel splits + 9 FE tests) | **Result**: 1,113 BE + 592 FE + 61 E2E = 1,766 all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V2.4 Code Health Phase 8 (Achievement+StudyGoal+DomainOverview splits + 7 FE tests) | **Result**: 1,113 BE + 599 FE + 61 E2E = 1,773 all pass, tsc: 0 errors, 0 open issues, build OK
