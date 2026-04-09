@@ -38,3 +38,13 @@ describe('study-goal-parts', () => {
     expect(typeof mod.GoalSettings).toBe('function');
   });
 });
+
+import { describe, it, expect } from 'vitest';
+
+describe('domain-card', () => {
+  it('should export DomainCard from DomainCard.tsx', async () => {
+    const mod = await import('@/components/panels/DomainCard');
+    expect(mod.DomainCard).toBeDefined();
+    expect(typeof mod.DomainCard).toBe('function');
+  });
+});
