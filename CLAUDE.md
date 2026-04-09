@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,826 (1,147 BE + 618 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 1,847 (1,163 BE + 623 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -246,6 +246,14 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ LearningJourneyPage (/journey): 跨域成就时间线 (域掌握度+事件过滤+里程碑徽章)
 - ✅ HomePage旅程快捷导航按钮 (Map图标 → /journey)
 - ✅ 16 BE tests + 10 FE tests = 26 new tests
+
+### V2.7 Smart Analytics & Engagement Sprint (2026-04-10, 完成)
+- ✅ GET /api/analytics/weak-concepts: 薄弱概念检测 (多因子弱点评分: 多次未过/分数下降/停滞/低分+可行建议)
+- ✅ GET /api/analytics/learning-efficiency: 学习效率分析 (概念级效率=分数/次数+域级汇总+全局统计+掌握时间)
+- ✅ GET /api/analytics/difficulty-calibration: 难度校准 (种子难度vs实际表现差异+误标概念检测+难度分布摘要)
+- ✅ WeakConceptsWidget Dashboard组件: 薄弱概念警报 (分数趋势+原因标签+改进建议)
+- ✅ LearningEfficiencyChart Dashboard组件: 域级效率对比 (水平条形图+全局统计卡片)
+- ✅ 16 BE tests + 5 FE tests = 21 new tests
 
 ---（生效中的架构决策）
 
@@ -481,6 +489,8 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/pages/LearningJourneyPage.tsx | 跨域学习旅程 (V2.6: /journey, 成就时间线+域进度+里程碑) |
 | packages/web/src/components/dashboard/DomainRecommendWidget.tsx | 领域推荐 (V2.6: 跨域关联+难度匹配+原因展示) |
 | packages/web/src/components/dashboard/StudyPlanWidget.tsx | 学习计划 (V2.6: 日程切换+复习/继续/新学三类+时间预算) |
+| packages/web/src/components/dashboard/WeakConceptsWidget.tsx | 薄弱概念警报 (V2.7: 多因子弱点评分+分数趋势+改进建议) |
+| packages/web/src/components/dashboard/LearningEfficiencyChart.tsx | 学习效率 (V2.7: 域级效率对比+全局统计+水平条形图) |
 | packages/web/src/lib/utils/graph-lod.ts | Graph LOD (子域聚类+节点优先级+大域性能优化) |
 | packages/web/src/lib/hooks/useBookmarks.ts | 概念书签hook (localStorage+toggle+上限100) |
 | packages/web/src/lib/api/notes-api.ts | 笔记API客户端 (CRUD + bulk sync + stats) |
@@ -551,4 +561,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V2.6 Multi-Domain Intelligence (3 new APIs + 3 FE components + LearningJourneyPage + 26 tests) | **Result**: 1,147 BE + 618 FE + 61 E2E = 1,826 all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V2.7 Smart Analytics (3 new APIs + 2 FE widgets + 21 tests) | **Result**: 1,163 BE + 623 FE + 61 E2E = 1,847 all pass, tsc: 0 errors, 0 open issues, build OK
