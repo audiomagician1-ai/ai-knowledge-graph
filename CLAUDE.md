@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 1,894 (1,192 BE + 641 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 1,928 (1,215 BE + 652 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -289,6 +289,27 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ All 16 BE routers now under 800-line Python limit (max: 752L learning.py)
 - ✅ Fixed test_analytics_v28.py peer-comparison assertion (comparison_labels → summary, mastery_speed → learn_speed_per_week)
 - ✅ 1,192 BE tests pass, 641 FE tests pass, tsc 0 errors, pnpm build success
+
+### V2.11 Notification Center & Content Quality Feedback Sprint (2026-04-10, 完成)
+- ✅ GET /api/notifications: 通知列表 (未读过滤+类型过滤+分页+时间倒序)
+- ✅ POST /api/notifications/{id}/read: 标记单条已读
+- ✅ POST /api/notifications/read-all: 全部标记已读
+- ✅ DELETE /api/notifications/{id}: 删除通知
+- ✅ GET /api/notifications/summary: 通知摘要 (按类型统计+未读数)
+- ✅ POST /api/notifications/generate: 生成示例通知 (6种类型: mastery/streak/review_due/milestone/weekly_report/recommendation)
+- ✅ POST /api/community/content-feedback: 内容质量反馈 (5类: 不准确/已过时/不清楚/不完整/很棒)
+- ✅ GET /api/community/content-feedback: 反馈列表 (concept/domain/category/unresolved过滤)
+- ✅ PATCH /api/community/content-feedback/{id}/resolve: 管理员解决反馈
+- ✅ GET /api/community/content-health: 内容健康总览 (概念级反馈聚合+健康分+紧迫度排序)
+- ✅ NotificationsPage (/notifications): 全页通知中心 (类型过滤+已读/删除+深链接导航)
+- ✅ NotificationCenter组件: Bell图标+未读徽章+下拉通知面板 (60s轮询+点击外关闭)
+- ✅ ContentFeedbackButton组件: 内联内容反馈按钮 (展开表单+5类别选择+可选评论, ChatIdleView集成)
+- ✅ ContentHealthWidget Dashboard组件: 内容健康总览 (反馈统计+待处理+健康分+概念列表, lazy-load)
+- ✅ HomePage浮动导航新增"通知"快捷按钮 (Bell图标 → /notifications)
+- ✅ App.tsx注册 /notifications 懒加载路由
+- ✅ create_notification() 编程式帮助函数 (可从其他路由器调用)
+- ✅ 内容反馈自动触发通知 (提交反馈后自动创建通知)
+- ✅ 13 BE tests (notifications) + 10 BE tests (content-feedback) + 11 FE tests = 34 new tests
 
 ---（生效中的架构决策）
 
@@ -548,6 +569,11 @@ python scripts/build_exe.py  # 输出到 release/
 | apps/api/routers/notes.py | 概念笔记CRUD + bulk sync + stats API |
 | apps/api/routers/analytics.py | 学习分析API (difficulty-map/domain-heatmap/learning-velocity/content-quality-signals) |
 | apps/api/routers/community.py | 社区建议API (suggestions/voting/moderation/feedback-aggregation/auto-moderate/batch-moderate) |
+| apps/api/routers/notifications.py | 通知中心API (V2.11: CRUD+批量已读+摘要+示例生成, create_notification()可编程接口) |
+| packages/web/src/pages/NotificationsPage.tsx | 通知中心页面 (V2.11: /notifications, 类型过滤+已读/删除+深链接导航) |
+| packages/web/src/components/notifications/NotificationCenter.tsx | 通知Bell组件 (V2.11: 未读徽章+下拉面板+60s轮询+点击外关闭) |
+| packages/web/src/components/community/ContentFeedbackButton.tsx | 内容反馈按钮 (V2.11: 展开表单+5类别+评论, ChatIdleView集成) |
+| packages/web/src/components/dashboard/ContentHealthWidget.tsx | 内容健康度 (V2.11: 反馈统计+待处理+概念健康分+lazy-load) |
 | workers/src/ | Cloudflare Workers代理后端 |
 
 ---
