@@ -39,8 +39,6 @@ describe('study-goal-parts', () => {
   });
 });
 
-import { describe, it, expect } from 'vitest';
-
 describe('domain-card', () => {
   it('should export DomainCard from DomainCard.tsx', async () => {
     const mod = await import('@/components/panels/DomainCard');

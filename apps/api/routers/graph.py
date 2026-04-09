@@ -935,6 +935,107 @@ async def compare_concepts(
     }
 
 
+# ── V2.5: Cross-Domain Bridge ───────────────────────────
+
+
+@router.get("/cross-domain-bridge/{concept_id}")
+async def cross_domain_bridge(
+    concept_id: str,
+    domain: str = Query(DEFAULT_DOMAIN),
+):
+    """Find related concepts in OTHER domains via cross-sphere links.
+
+    For a given concept, returns concepts from other knowledge spheres
+    that are connected — enabling cross-domain exploration.
+    """
+    cross_links = _load_cross_links()
+
+    # Find all cross-links involving this concept
+    bridges = []
+    for lk in cross_links:
+        src_id = lk.get("source_id", "")
+        tgt_id = lk.get("target_id", "")
+        src_domain = lk.get("source_domain", "")
+        tgt_domain = lk.get("target_domain", "")
+        relation = lk.get("relation_type", lk.get("type", "related"))
+        rationale = lk.get("rationale", lk.get("description", ""))
+
+        matched_side = None
+        other_concept_id = ""
+        other_domain_id = ""
+
+        if src_id == concept_id:
+            matched_side = "source"
+            other_concept_id = tgt_id
+            other_domain_id = tgt_domain
+        elif tgt_id == concept_id:
+            matched_side = "target"
+            other_concept_id = src_id
+            other_domain_id = src_domain
+
+        if not matched_side:
+            continue
+
+        # Try to load the other concept's metadata
+        other_name = other_concept_id
+        other_difficulty = 5
+        other_subdomain = ""
+        try:
+            other_seed = _load_seed(other_domain_id)
+            for c in other_seed.get("concepts", []):
+                if c["id"] == other_concept_id:
+                    other_name = c.get("name", other_concept_id)
+                    other_difficulty = c.get("difficulty", 5)
+                    other_subdomain = c.get("subdomain_id", "")
+                    break
+        except Exception:
+            pass
+
+        # Get the other domain's display name
+        other_domain_name = other_domain_id.replace("-", " ").title()
+        try:
+            domains_path = _get_domains_path()
+            with open(domains_path, "r", encoding="utf-8") as f:
+                raw = json.load(f)
+            dl = raw.get("domains", raw) if isinstance(raw, dict) else raw
+            for d in dl:
+                if d.get("id") == other_domain_id:
+                    other_domain_name = d.get("name", other_domain_name)
+                    break
+        except Exception:
+            pass
+
+        bridges.append({
+            "concept_id": other_concept_id,
+            "concept_name": other_name,
+            "domain_id": other_domain_id,
+            "domain_name": other_domain_name,
+            "subdomain_id": other_subdomain,
+            "difficulty": other_difficulty,
+            "relation_type": relation,
+            "rationale": rationale,
+            "direction": "outgoing" if matched_side == "source" else "incoming",
+        })
+
+    # Sort by domain for grouping
+    bridges.sort(key=lambda b: (b["domain_id"], b["concept_name"]))
+
+    # Group by domain
+    domain_groups: dict[str, list] = {}
+    for b in bridges:
+        did = b["domain_id"]
+        if did not in domain_groups:
+            domain_groups[did] = []
+        domain_groups[did].append(b)
+
+    return {
+        "concept_id": concept_id,
+        "source_domain": domain,
+        "bridges": bridges,
+        "total": len(bridges),
+        "domains_connected": list(domain_groups.keys()),
+        "by_domain": domain_groups,
+    }
 @router.get("/stats/global")
 async def get_global_stats():
     """Aggregated cross-domain statistics for Dashboard radar/overview."""

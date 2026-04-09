@@ -3,6 +3,8 @@ import type { ConceptProgress } from '@/lib/store/learning';
 import { ConceptPrerequisites } from '@/components/graph/ConceptPrerequisites';
 import { ConceptMinimap } from '@/components/graph/ConceptMinimap';
 import { SmartNextSteps } from '@/components/common/SmartNextSteps';
+import { MasteryTimeline } from '@/components/dashboard/MasteryTimeline';
+import { CrossDomainBridge } from '@/components/graph/CrossDomainBridge';
 import {
   Trophy, Brain, Play, History, MessageSquare,
 } from 'lucide-react';
@@ -104,6 +106,17 @@ export function ChatIdleView({
 
         {/* Smart Next Steps */}
         <SmartNextSteps />
+
+        {/* Mastery Timeline (V2.5) */}
+        {nodeProgress && nodeProgress.sessions > 0 && (
+          <MasteryTimeline conceptId={conceptId} />
+        )}
+
+        {/* Cross-Domain Bridge (V2.5) */}
+        <CrossDomainBridge
+          conceptId={conceptId}
+          domainId={urlDomainId || domainId || ''}
+        />
 
         {/* Recent history preview (last 3) */}
         {conversations.length > 0 && (
