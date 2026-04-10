@@ -365,12 +365,21 @@ def _yesterday_str() -> str:
 
 
 def get_streak() -> dict:
-    """Get current streak data."""
+    """Get current streak data.
+
+    Returns dict with both canonical keys (current_streak, longest_streak)
+    and short aliases (current, longest) for backward compatibility.
+    """
     with get_db() as conn:
         row = conn.execute("SELECT * FROM streak WHERE id = 1").fetchone()
         if row:
-            return dict(row)
-        return {'current_streak': 0, 'longest_streak': 0, 'last_date': ''}
+            d = dict(row)
+        else:
+            d = {'current_streak': 0, 'longest_streak': 0, 'last_date': ''}
+    # Add short aliases so callers using .get("current", 0) also work (#53)
+    d.setdefault("current", d.get("current_streak", 0))
+    d.setdefault("longest", d.get("longest_streak", 0))
+    return d
 
 
 def update_streak() -> dict:

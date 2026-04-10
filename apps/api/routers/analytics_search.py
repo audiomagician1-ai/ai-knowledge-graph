@@ -392,12 +392,17 @@ async def content_search(
     query_lower = q.lower()
     query_terms = query_lower.split()
     results: list[dict] = []
+    _MAX_FILE_READS = limit * 5  # Read at most 5x desired results to bound cost
+    _file_reads = 0
 
     # Scan RAG indices for all domains
     if not os.path.isdir(rag_root):
         return {"query": q, "results": [], "total": 0}
 
+    _stop_scan = False
     for domain_dir in os.listdir(rag_root):
+        if _stop_scan:
+            break
         domain_path = os.path.join(rag_root, domain_dir)
         if not os.path.isdir(domain_path):
             continue
@@ -432,7 +437,8 @@ async def content_search(
 
             # Read content for top candidates or all if query is specific enough
             filepath = os.path.join(rag_root, doc_file)
-            if os.path.isfile(filepath):
+            if os.path.isfile(filepath) and _file_reads < _MAX_FILE_READS:
+                _file_reads += 1
                 try:
                     with open(filepath, "r", encoding="utf-8") as f:
                         content = f.read(8000)  # Read first 8KB
@@ -479,6 +485,11 @@ async def content_search(
                     "name_match": name_match,
                     "fuzzy_match": fuzzy_match,
                 })
+
+            # Early termination: stop scanning if we hit file-read budget (#58)
+            if _file_reads >= _MAX_FILE_READS:
+                _stop_scan = True
+                break
 
     # Sort by score descending
     results.sort(key=lambda x: x["score"], reverse=True)

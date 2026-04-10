@@ -238,6 +238,10 @@ async def difficulty_calibration(
     """
     import json as _json, os, sys
 
+    from routers.analytics_utils import validate_domain_id
+    if not validate_domain_id(domain_id):
+        return {"domain_id": domain_id, "calibration": [], "summary": {}}
+
     progress = get_all_progress()
     progress_map = {p["concept_id"]: p for p in progress}
 

@@ -40,6 +40,7 @@ class NotificationCreate(BaseModel):
 
 # In-memory notification store (keyed by notification ID)
 _notifications: dict[str, dict] = {}
+_MAX_NOTIFICATIONS = 500  # FIFO eviction when exceeded (#59)
 
 
 def create_notification(
@@ -64,6 +65,10 @@ def create_notification(
         "read_at": None,
     }
     _notifications[nid] = notif
+    # Evict oldest if over capacity (#59)
+    if len(_notifications) > _MAX_NOTIFICATIONS:
+        oldest_id = min(_notifications, key=lambda k: _notifications[k]["created_at"])
+        del _notifications[oldest_id]
     logger.info("Notification created", extra={"id": nid, "type": ntype, "title": title})
     return notif
 

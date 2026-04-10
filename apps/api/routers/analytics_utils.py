@@ -5,6 +5,7 @@ Includes in-memory cache (TTL 300s) to avoid re-reading 36 seed JSON files per r
 """
 
 import os
+import re
 import sys
 import time
 from typing import Optional
@@ -78,3 +79,27 @@ def load_seed_metadata() -> tuple[dict[str, str], dict[str, dict], dict[str, dic
     _cache_data = result
     _cache_ts = now
     return result
+
+
+# ---------------------------------------------------------------------------
+# Domain ID validation — prevents path traversal (#54)
+# ---------------------------------------------------------------------------
+_DOMAIN_ID_RE = re.compile(r"^[a-z0-9][a-z0-9_-]{0,63}$")
+
+
+def validate_domain_id(domain_id: str) -> bool:
+    """Check that domain_id is safe for filesystem path construction.
+
+    Returns True if the domain_id matches allowed pattern AND exists in
+    the seed domains.json whitelist.  Returns False otherwise.
+    """
+    if not domain_id or not _DOMAIN_ID_RE.match(domain_id):
+        return False
+    # Check against whitelist (uses cached seed data)
+    _, _, domain_map = load_seed_metadata()
+    return domain_id in domain_map
+
+
+def get_data_root() -> str:
+    """Public accessor for seed data root directory."""
+    return _get_data_root()

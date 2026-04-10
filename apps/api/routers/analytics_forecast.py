@@ -41,6 +41,10 @@ async def mastery_forecast(
     """
     import json as _json, os, sys, math
 
+    from routers.analytics_utils import validate_domain_id
+    if not validate_domain_id(domain_id):
+        return {"domain_id": domain_id, "error": "Invalid domain_id"}
+
     progress = get_all_progress()
     history = get_history(limit=10000)
     concept_domain_map, concept_info, domain_map = load_seed_metadata()

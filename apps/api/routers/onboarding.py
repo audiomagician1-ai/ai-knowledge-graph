@@ -52,6 +52,10 @@ def _load_domains() -> list[dict]:
 def _load_seed(domain_id: str) -> dict:
     if domain_id in _seed_cache:
         return _seed_cache[domain_id]
+    # Validate domain_id to prevent path traversal (#54)
+    import re
+    if not re.match(r"^[a-z0-9][a-z0-9_-]{0,63}$", domain_id):
+        return {}
     path = os.path.join(_data_root(), domain_id, "seed_graph.json")
     if not os.path.isfile(path):
         return {}

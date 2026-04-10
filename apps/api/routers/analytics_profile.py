@@ -215,6 +215,10 @@ async def learning_heatmap(domain_id: str):
     """Domain learning activity heatmap — concept-level engagement intensity."""
     import json as _json, os, sys
 
+    from routers.analytics_utils import validate_domain_id
+    if not validate_domain_id(domain_id):
+        return {"domain_id": domain_id, "error": "Invalid domain_id", "subdomains": []}
+
     progress = get_all_progress()
     progress_map = {p["concept_id"]: p for p in progress}
 
@@ -314,8 +318,17 @@ async def daily_summary():
     today_mastered = 0
     today_domains: set = set()
     for h in history:
-        ts = str(h.get("timestamp", ""))
-        if ts and len(ts) >= 10 and ts[:10] == today:
+        ts = h.get("timestamp", "")
+        ts_date = ""
+        if isinstance(ts, (int, float)):
+            try:
+                ts_date = datetime.fromtimestamp(ts).date().isoformat()
+            except (OSError, ValueError, OverflowError):
+                pass
+        else:
+            ts_str = str(ts)
+            ts_date = ts_str[:10] if len(ts_str) >= 10 else ""
+        if ts_date == today:
             today_events += 1
             if h.get("action") == "mastered" or (h.get("action") == "assessment" and h.get("score", 0) >= 75):
                 today_mastered += 1
