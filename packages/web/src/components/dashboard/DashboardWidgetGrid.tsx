@@ -5,6 +5,8 @@
 import { lazy, Suspense, useState } from 'react';
 import { ChevronDown, ChevronUp, Brain, BarChart3, Users, Search, Compass, GitBranch } from 'lucide-react';
 import { WidgetSkeleton } from '@/components/dashboard/DashboardHelpers';
+import { useDashboardPrefs } from '@/hooks/useDashboardPrefs';
+import { DashboardCustomizer } from './DashboardCustomizer';
 
 // ── Learning & Review ──
 const AdaptivePathWidget = lazy(() => import('./AdaptivePathWidget').then(m => ({ default: m.AdaptivePathWidget })));
@@ -75,10 +77,11 @@ function CollapsibleSection({ title, icon, defaultOpen = true, children }: Secti
   );
 }
 
-export function DashboardWidgetGrid() {
-  return (
-    <div className="space-y-8">
-      <CollapsibleSection title="学习与复习" icon={<Brain size={14} className="opacity-40" />}>
+// Section id → renderable content map (order controlled by prefs)
+const SECTION_MAP: Record<string, { title: string; icon: React.ReactNode; defaultOpen: boolean; content: React.ReactNode }> = {
+  learning: {
+    title: '学习与复习', icon: <Brain size={14} className="opacity-40" />, defaultOpen: true,
+    content: (<>
         <Suspense fallback={<WidgetSkeleton />}><LearningProfileWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><SessionSummaryWidget hours={24} /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><AdaptivePathWidget /></Suspense>
@@ -91,9 +94,11 @@ export function DashboardWidgetGrid() {
         <Suspense fallback={<WidgetSkeleton />}><SessionReplayWidget limit={8} /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><FSRSInsightsWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><GoalRecommendWidget /></Suspense>
-      </CollapsibleSection>
-
-      <CollapsibleSection title="数据分析" icon={<BarChart3 size={14} className="opacity-40" />}>
+    </>),
+  },
+  analytics: {
+    title: '数据分析', icon: <BarChart3 size={14} className="opacity-40" />, defaultOpen: true,
+    content: (<>
         <Suspense fallback={<WidgetSkeleton />}><ProgressSnapshotWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><WeeklyReport /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><StudyPatterns /></Suspense>
@@ -103,9 +108,11 @@ export function DashboardWidgetGrid() {
         <Suspense fallback={<WidgetSkeleton />}><LearningEfficiencyChart maxDomains={8} /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><ComparativeProgressWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><LearningStyleWidget /></Suspense>
-      </CollapsibleSection>
-
-      <CollapsibleSection title="领域与图谱" icon={<GitBranch size={14} className="opacity-40" />}>
+    </>),
+  },
+  domains: {
+    title: '领域与图谱', icon: <GitBranch size={14} className="opacity-40" />, defaultOpen: true,
+    content: (<>
         <Suspense fallback={<WidgetSkeleton />}><DomainRadar /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><DifficultyHeatmap /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><MilestoneTracker /></Suspense>
@@ -116,20 +123,42 @@ export function DashboardWidgetGrid() {
         <Suspense fallback={<WidgetSkeleton />}><DomainOverviewBatchWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><LearningHeatmapWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><CrossDomainInsightsWidget /></Suspense>
-      </CollapsibleSection>
-
-      <CollapsibleSection title="社交互动" icon={<Users size={14} className="opacity-40" />} defaultOpen={false}>
+    </>),
+  },
+  social: {
+    title: '社交互动', icon: <Users size={14} className="opacity-40" />, defaultOpen: false,
+    content: (<>
         <Suspense fallback={<WidgetSkeleton />}><GlobalLeaderboard /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><PeerComparisonCard /></Suspense>
-      </CollapsibleSection>
-
-      <CollapsibleSection title="内容与发现" icon={<Search size={14} className="opacity-40" />} defaultOpen={false}>
+    </>),
+  },
+  content: {
+    title: '内容与发现', icon: <Search size={14} className="opacity-40" />, defaultOpen: false,
+    content: (<>
         <Suspense fallback={<WidgetSkeleton />}><SearchSuggestionsWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><ContentSearchWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><ContentHealthWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><OnboardingRecommendWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><ConceptJourneyWidget /></Suspense>
-      </CollapsibleSection>
+    </>),
+  },
+};
+
+export function DashboardWidgetGrid() {
+  const { sections } = useDashboardPrefs();
+
+  return (
+    <div className="space-y-8">
+      <DashboardCustomizer />
+      {sections.filter(s => s.visible).map(sec => {
+        const cfg = SECTION_MAP[sec.id];
+        if (!cfg) return null;
+        return (
+          <CollapsibleSection key={sec.id} title={cfg.title} icon={cfg.icon} defaultOpen={cfg.defaultOpen}>
+            {cfg.content}
+          </CollapsibleSection>
+        );
+      })}
     </div>
   );
 }

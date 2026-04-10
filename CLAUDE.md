@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 2,184 (1,403 BE + 720 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 2,145 (1,419 BE + 726 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -310,6 +310,15 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ create_notification() 编程式帮助函数 (可从其他路由器调用)
 - ✅ 内容反馈自动触发通知 (提交反馈后自动创建通知)
 - ✅ 13 BE tests (notifications) + 10 BE tests (content-feedback) + 11 FE tests = 34 new tests
+
+### V4.0 Dashboard Customization + API Catalog + Code Health Sprint (2026-04-10, 完成)
+- ✅ Split analytics_planning.py (800L→625L) — extracted analytics_advanced.py (187L: V3.9 cross-domain-insights + learning-style)
+- ✅ GET /api/health/api-catalog: API目录端点 (枚举所有注册路由+方法/路径/名称/标签, 按tag分组)
+- ✅ useDashboardPrefs hook: Dashboard布局偏好持久化 (显示/隐藏/排序section, localStorage, useSyncExternalStore)
+- ✅ DashboardCustomizer组件: Dashboard自定义面板 (眼睛toggle+上下移动+重置默认, 82L)
+- ✅ DashboardWidgetGrid重构: 静态section → SECTION_MAP + prefs驱动渲染 (136→165L)
+- ✅ All 26 BE routers under 800-line limit (max: 696L graph.py)
+- ✅ 16 BE tests + 6 FE tests = 22 new tests
 
 ### V3.9 Code Health + Cross-Domain Insights + Learning Style Sprint (2026-04-10, 完成)
 - ✅ Split analytics_experience.py (792L→474L) — extracted analytics_profile.py (284L: V3.7 learning-profile + V3.8 concept-journey + learning-heatmap)
@@ -724,6 +733,9 @@ python scripts/build_exe.py  # 输出到 release/
 | apps/api/routers/analytics_profile.py | 学习档案API (V3.9拆分: learning-profile/concept-journey/learning-heatmap, 284L) |
 | packages/web/src/components/dashboard/CrossDomainInsightsWidget.tsx | 跨域知识关联 (V3.9: 域对链接+协同推荐+迁移分数, lazy-load, 93L) |
 | packages/web/src/components/dashboard/LearningStyleWidget.tsx | 学习风格 (V3.9: 风格标签+特质chips+时间分布+指标, lazy-load, 112L) |
+| apps/api/routers/analytics_advanced.py | 高级分析API (V4.0拆分: cross-domain-insights/learning-style, 187L) |
+| packages/web/src/hooks/useDashboardPrefs.ts | Dashboard布局偏好hook (V4.0: 显示/隐藏/排序section, localStorage+useSyncExternalStore) |
+| packages/web/src/components/dashboard/DashboardCustomizer.tsx | Dashboard自定义面板 (V4.0: toggle+reorder+reset, 82L) |
 | workers/src/ | Cloudflare Workers代理后端 |
 
 ---
@@ -786,4 +798,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V3.9 Code Health + Cross-Domain Insights + Learning Style — analytics_experience split (792→474L + analytics_profile 284L), 2 new APIs (cross-domain-insights + learning-style), 2 Dashboard widgets, 41 lazy-load widgets, 25 tests | **Result**: 1,403 BE + 720 FE + 61 E2E = 2,184 all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V4.0 Dashboard Customization + API Catalog + Code Health — analytics_planning split (800→625L + analytics_advanced 187L), api-catalog endpoint, useDashboardPrefs + DashboardCustomizer, 22 tests | **Result**: 1,419 BE + 726 FE + 61 E2E = 2,145 all pass, tsc: 0 errors, 0 open issues, build OK

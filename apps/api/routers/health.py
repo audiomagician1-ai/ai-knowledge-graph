@@ -177,3 +177,54 @@ async def project_stats():
         stats["rag_coverage_pct"] = round(stats["rag_files"] / stats["concepts"] * 100, 1)
 
     return stats
+
+
+@router.get("/health/api-catalog")
+async def api_catalog():
+    """Enumerate all registered API endpoints with metadata.
+
+    Returns a list of all routes, organized by tag/module, with method, path,
+    summary, and module source. Useful for API documentation and monitoring.
+    """
+    from fastapi import Request
+    from main import app as _app
+
+    routes_by_tag: dict[str, list[dict]] = {}
+    total = 0
+
+    for route in _app.routes:
+        if not hasattr(route, "methods") or not hasattr(route, "path"):
+            continue
+        path = route.path
+        # Skip internal/docs routes
+        if path in ("/openapi.json", "/docs", "/redoc", "/docs/oauth2-redirect"):
+            continue
+        methods = sorted(route.methods - {"HEAD", "OPTIONS"}) if route.methods else []
+        if not methods:
+            continue
+
+        summary = getattr(route, "summary", "") or ""
+        name = getattr(route, "name", "") or ""
+        tags = list(getattr(route, "tags", []) or [])
+        tag = tags[0] if tags else "other"
+
+        for method in methods:
+            entry = {
+                "method": method,
+                "path": path,
+                "name": name,
+                "summary": summary,
+            }
+            routes_by_tag.setdefault(tag, []).append(entry)
+            total += 1
+
+    # Sort within each tag
+    for tag in routes_by_tag:
+        routes_by_tag[tag].sort(key=lambda r: (r["path"], r["method"]))
+
+    return {
+        "total_endpoints": total,
+        "total_tags": len(routes_by_tag),
+        "tags": {tag: {"count": len(routes), "endpoints": routes}
+                 for tag, routes in sorted(routes_by_tag.items())},
+    }
