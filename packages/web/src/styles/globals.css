@@ -146,8 +146,8 @@ h1, h2, h3, h4 {
   background: var(--color-accent-warm);
   color: #ffffff;
 }
-.btn-primary:active { opacity: 0.85; }
-.btn-primary:disabled { opacity: 0.35; cursor: not-allowed; }
+.btn-primary:active { transform: scale(0.97); opacity: 0.85; }
+.btn-primary:disabled { opacity: 0.35; cursor: not-allowed; filter: grayscale(0.2); }
 
 .btn-ghost {
   background: var(--color-surface-2);
@@ -165,6 +165,8 @@ h1, h2, h3, h4 {
   background: var(--color-surface-3);
   color: var(--color-text-primary);
 }
+.btn-ghost:active { transform: scale(0.97); }
+.btn-ghost:disabled { opacity: 0.35; cursor: not-allowed; }
 
 /* ── Tabular numbers for score animations ── */
 .tabular-nums { font-variant-numeric: tabular-nums; }

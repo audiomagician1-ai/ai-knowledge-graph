@@ -85,16 +85,14 @@ export function ReviewPage() {
   return (
     <div className="flex flex-col h-dvh" style={{ backgroundColor: 'var(--color-surface-0)' }}>
       <header className="flex items-center gap-4 px-6 shrink-0 border-b" style={{ height: 64, backgroundColor: 'var(--color-surface-1)', borderColor: 'var(--color-border)' }}>
-        <button onClick={goBack} className="flex items-center justify-center w-9 h-9 rounded-md transition-colors" style={{ color: 'var(--color-text-secondary)' }}
-          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--color-surface-3)')} onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}>
+        <button onClick={goBack} className="flex items-center justify-center w-9 h-9 rounded-md transition-colors hover:bg-[var(--color-surface-3)] text-[var(--color-text-secondary)]">
           <ArrowLeft size={18} />
         </button>
         <div className="flex-1 min-w-0">
           <h1 className="text-[15px] font-bold" style={{ color: 'var(--color-text-primary)' }}>间隔复习</h1>
           <p className="text-[12px]" style={{ color: 'var(--color-text-tertiary)' }}>{totalDue > 0 ? `${completedCount} / ${totalDue} 完成` : '无待复习'}</p>
         </div>
-        <button onClick={loadDue} className="flex items-center justify-center w-9 h-9 rounded-md transition-colors" style={{ color: 'var(--color-text-secondary)' }}
-          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--color-surface-3)')} onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}>
+        <button onClick={loadDue} className="flex items-center justify-center w-9 h-9 rounded-md transition-colors hover:bg-[var(--color-surface-3)] text-[var(--color-text-secondary)]">
           <RefreshCw size={16} />
         </button>
       </header>

@@ -154,7 +154,7 @@ export function ChatView({
         <div className="absolute inset-0 z-50 flex items-center justify-center pointer-events-none animate-fade-in">
           <div className="rounded-lg px-8 py-6 text-center pointer-events-auto"
             style={{ backgroundColor: 'var(--color-surface-2)', border: '1px solid rgba(138,173,122,0.2)' }}>
-            <div className="text-2xl mb-2" style={{ fontFamily: '"Noto Serif SC", Georgia, serif' }}>✔</div>
+            <div className="text-2xl mb-2">✔</div>
             <div className="text-lg font-bold mb-1" style={{ color: 'var(--color-accent-emerald)' }}>概念已掌握！</div>
             <div className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>{conceptName} 节点已点亮</div>
             {newlyUnlockedIds.length > 0 && (

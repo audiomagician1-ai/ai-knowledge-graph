@@ -85,7 +85,7 @@ export function AchievementPanel() {
       {categoryOrder.map(cat => {
         const items = grouped[cat];
         if (!items || items.length === 0) return null;
-        const meta = CATEGORY_META[cat] || { label: cat, icon: '📋' };
+        const meta = CATEGORY_META[cat] || { label: cat, icon: null };
         const unlockedInCat = items.filter(a => a.unlocked).length;
 
         return (
@@ -96,7 +96,7 @@ export function AchievementPanel() {
               gap: 8,
               marginBottom: 10,
             }}>
-              <span style={{ fontSize: 16 }}>{meta.icon}</span>
+              <span style={{ fontSize: 16 }} className="text-[var(--color-text-tertiary)]">{meta.icon}</span>
               <span style={{
                 fontSize: 13,
                 fontWeight: 600,

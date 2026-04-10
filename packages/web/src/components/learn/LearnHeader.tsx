@@ -31,10 +31,7 @@ export function LearnHeader({
     >
       <button
         onClick={() => navigate(domainId ? `/domain/${domainId}/${conceptId}` : '/')}
-        className="flex items-center justify-center w-9 h-9 rounded-md transition-colors"
-        style={{ color: 'var(--color-text-secondary)' }}
-        onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--color-surface-3)')}
-        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
+        className="flex items-center justify-center w-9 h-9 rounded-md transition-colors hover:bg-[var(--color-surface-3)] text-[var(--color-text-secondary)]"
       >
         <ArrowLeft size={18} />
       </button>

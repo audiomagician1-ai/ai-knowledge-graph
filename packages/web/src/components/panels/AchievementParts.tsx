@@ -1,4 +1,5 @@
 ﻿import type { Achievement } from '@/lib/api/learning-api';
+import { BookOpen, Flame, Globe, ClipboardCheck, RefreshCw, Star } from 'lucide-react';
 
 export const TIER_COLORS: Record<string, string> = {
   bronze:   'var(--color-accent-bronze)',
@@ -14,13 +15,13 @@ export const TIER_LABELS: Record<string, string> = {
   platinum: '铂金',
 };
 
-export const CATEGORY_META: Record<string, { label: string; icon: string }> = {
-  learning:   { label: '学习里程碑', icon: '📖' },
-  streak:     { label: '连续学习',   icon: '🔥' },
-  domain:     { label: '领域深度',   icon: '🌐' },
-  assessment: { label: '评估表现',   icon: '📝' },
-  review:     { label: '间隔复习',   icon: '🔄' },
-  special:    { label: '特殊成就',   icon: '⭐' },
+export const CATEGORY_META: Record<string, { label: string; icon: React.ReactNode }> = {
+  learning:   { label: '学习里程碑', icon: <BookOpen size={16} /> },
+  streak:     { label: '连续学习',   icon: <Flame size={16} /> },
+  domain:     { label: '领域深度',   icon: <Globe size={16} /> },
+  assessment: { label: '评估表现',   icon: <ClipboardCheck size={16} /> },
+  review:     { label: '间隔复习',   icon: <RefreshCw size={16} /> },
+  special:    { label: '特殊成就',   icon: <Star size={16} /> },
 };
 
 /**

@@ -40,10 +40,8 @@ export function GraphSearchOverlay({ graphData, onNodeClick }: GraphSearchOverla
           }}>
             {searchResults.map((node) => (
               <button key={node.id} onClick={() => { onNodeClick(node); setSearchQuery(''); }}
-                className="w-full text-left flex items-center transition-colors"
-                style={{ gap: 10, padding: '12px 16px', borderRadius: 10, fontSize: 14 }}
-                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.04)')}
-                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}>
+                className="w-full text-left flex items-center rounded-xl cursor-pointer transition-colors hover:bg-black/5"
+                style={{ gap: 10, padding: '12px 16px', fontSize: 14 }}>
                 {node.is_milestone && <Star size={13} fill="var(--color-accent-primary)" style={{ color: 'var(--color-accent-primary)' }} />}
                 <span className="flex-1 truncate" style={{ color: 'var(--color-text-primary)' }}>{node.label}</span>
                 <ChevronRight size={13} style={{ color: 'var(--color-text-tertiary)' }} />
