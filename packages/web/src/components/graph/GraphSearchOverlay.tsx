@@ -36,7 +36,7 @@ export function GraphSearchOverlay({ graphData, onNodeClick }: GraphSearchOverla
         {searchResults.length > 0 && (
           <div className="absolute top-full left-0 right-0 animate-fade-in-scale" style={{
             marginTop: 8, borderRadius: 16, padding: 8, maxHeight: 320, overflowY: 'auto', background: 'rgba(245,245,242,0.96)', backdropFilter: 'blur(16px)',
-            border: '1px solid rgba(0,0,0,0.10)', boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
+            border: '1px solid rgba(0,0,0,0.10)', boxShadow: '0 8px 32px rgba(0,0,0,0.06)',
           }}>
             {searchResults.map((node) => (
               <button key={node.id} onClick={() => { onNodeClick(node); setSearchQuery(''); }}

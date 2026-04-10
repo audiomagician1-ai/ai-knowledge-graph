@@ -66,7 +66,7 @@ export function DailyRecommendation() {
     >
       <button
         onClick={() => nav(`/domain/${today.domain}`)}
-        className="flex items-center gap-3 px-5 py-3 rounded-2xl shadow-lg
+        className="flex items-center gap-3 px-5 py-3 rounded-xl shadow-md
                    border border-gray-200/60 backdrop-blur-md
                    hover:shadow-xl hover:scale-[1.02] transition-all group"
         style={{

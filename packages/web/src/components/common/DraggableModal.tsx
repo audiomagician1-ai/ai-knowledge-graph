@@ -70,7 +70,7 @@ export function DraggableModal({ open, onClose, title, width = 560, height = 520
           background: 'var(--color-surface-1)',
           border: '1px solid rgba(0,0,0,0.1)',
           borderRadius: 16,
-          boxShadow: '0 24px 80px rgba(0,0,0,0.12), 0 0 0 0.5px rgba(0,0,0,0.04)',
+          boxShadow: '0 24px 80px rgba(0,0,0,0.06), 0 0 0 0.5px rgba(0,0,0,0.04)',
           overflow: 'hidden',
         }}
       >

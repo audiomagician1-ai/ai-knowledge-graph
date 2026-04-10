@@ -136,7 +136,7 @@ export function ConceptSearch() {
       aria-label="搜索概念"
     >
       <div
-        className="bg-[#1e293b] rounded-xl border border-white/10 shadow-2xl w-[90vw] max-w-lg mx-4 overflow-hidden"
+        className="bg-[#1e293b] rounded-xl border border-white/10 shadow-md w-[90vw] max-w-lg mx-4 overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search input */}

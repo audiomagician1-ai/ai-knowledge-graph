@@ -155,7 +155,7 @@ export function GraphHubBar(props: GraphHubBarProps) {
         <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 animate-fade-in-scale" style={{ width: 320 }}>
           <div style={{
             borderRadius: 16, overflow: 'hidden', background: 'rgba(245,245,242,0.96)', backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(0,0,0,0.10)', boxShadow: '0 12px 48px rgba(0,0,0,0.1)',
+            border: '1px solid rgba(0,0,0,0.10)', boxShadow: '0 12px 48px rgba(0,0,0,0.06)',
           }}>
             <div className="flex items-center justify-between" style={{ padding: '14px 20px', borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
               <div className="flex items-center gap-2">

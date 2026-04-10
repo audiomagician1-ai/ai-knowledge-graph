@@ -145,7 +145,7 @@ export function SettingsLLMConfig({ llmConfig, setLLMConfig, clearApiKey, onColl
             <div style={{
               width: 20, height: 20, borderRadius: '50%', backgroundColor: 'var(--color-text-on-accent)',
               transform: llmConfig.useProxy ? 'translateX(20px)' : 'translateX(0)',
-              transition: 'transform 0.2s', boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
+              transition: 'transform 0.2s', boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
             }} />
           </button>
         </div>

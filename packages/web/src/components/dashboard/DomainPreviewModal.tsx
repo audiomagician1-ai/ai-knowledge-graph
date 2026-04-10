@@ -21,7 +21,7 @@ export function DomainPreviewModal({ domainId, preview, color, onClose, onStart 
       onClick={onClose}
     >
       <div
-        className="rounded-2xl p-5 max-w-md w-full max-h-[80vh] overflow-y-auto"
+        className="rounded-xl p-5 max-w-md w-full max-h-[80vh] overflow-y-auto"
         style={{ backgroundColor: 'var(--color-surface-1)' }}
         onClick={(e) => e.stopPropagation()}
       >

@@ -161,7 +161,7 @@ export function ApiExplorerPage() {
 
       {/* Try-it result panel */}
       {tryResult && (
-        <div className="fixed bottom-4 right-4 left-4 md:left-auto md:w-[500px] max-h-[40vh] overflow-auto rounded-2xl p-4 shadow-2xl z-50"
+        <div className="fixed bottom-4 right-4 left-4 md:left-auto md:w-[500px] max-h-[40vh] overflow-auto rounded-xl p-4 shadow-md z-50"
           style={{ backgroundColor: 'var(--color-surface-1)', border: '1px solid rgba(255,255,255,0.1)' }}>
           <div className="flex items-center justify-between mb-2">
             <div className="text-xs font-mono opacity-60">{tryResult.path}</div>

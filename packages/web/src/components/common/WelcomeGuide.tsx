@@ -43,7 +43,7 @@ export function WelcomeGuide() {
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm"
          onClick={(e) => { if (e.target === e.currentTarget) dismiss(); }}>
-      <div className="relative w-[90vw] max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden"
+      <div className="relative w-[90vw] max-w-md bg-white rounded-xl shadow-md overflow-hidden"
            style={{ animation: 'fadeInScale 0.3s ease-out' }}>
         {/* Close button */}
         <button onClick={dismiss}

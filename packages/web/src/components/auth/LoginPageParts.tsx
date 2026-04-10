@@ -90,9 +90,9 @@ export function LoginEmailForm({
       )}
       <button type="submit" disabled={loading}
         className="w-full rounded-xl text-sm font-semibold transition-all disabled:opacity-50 flex items-center justify-center gap-2"
-        style={{ marginTop: 12, padding: '14px 0', background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', color: 'var(--color-text-on-accent)', boxShadow: '0 2px 8px rgba(16,185,129,0.3)' }}
-        onMouseEnter={(e) => { if (!loading) e.currentTarget.style.boxShadow = '0 4px 16px rgba(16,185,129,0.4)'; }}
-        onMouseLeave={(e) => { e.currentTarget.style.boxShadow = '0 2px 8px rgba(16,185,129,0.3)'; }}
+        style={{ marginTop: 12, padding: '14px 0', background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', color: 'var(--color-text-on-accent)', boxShadow: '0 2px 8px rgba(16,185,129,0.08)' }}
+        onMouseEnter={(e) => { if (!loading) e.currentTarget.style.boxShadow = '0 4px 16px rgba(16,185,129,0.12)'; }}
+        onMouseLeave={(e) => { e.currentTarget.style.boxShadow = '0 2px 8px rgba(16,185,129,0.08)'; }}
       >
         {loading && <Loader2 size={14} className="animate-spin" />}
         {loading ? 'Processing...' : mode === 'login' ? 'Sign in with Email' : 'Create Account'}

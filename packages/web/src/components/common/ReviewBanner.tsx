@@ -64,7 +64,7 @@ export function ReviewBanner() {
   return (
     <div className="absolute left-4 right-4 bottom-6 z-20"
          style={{ animation: 'slideUp 0.4s ease-out' }}>
-      <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-lg border border-gray-100
+      <div className="bg-white/95 backdrop-blur-md rounded-xl shadow-md border border-gray-100
                       px-4 py-3 flex items-center gap-3">
         {/* Left: Stats */}
         <div className="flex-1 min-w-0">

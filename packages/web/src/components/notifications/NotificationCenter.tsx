@@ -119,7 +119,7 @@ export function NotificationCenter() {
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-2 w-80 max-h-[70vh] rounded-xl shadow-2xl border overflow-hidden z-50 flex flex-col"
+        <div className="absolute right-0 top-full mt-2 w-80 max-h-[70vh] rounded-xl shadow-md border overflow-hidden z-50 flex flex-col"
           style={{ backgroundColor: 'var(--color-surface-1)', borderColor: 'var(--color-border)' }}>
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 border-b" style={{ borderColor: 'var(--color-border)' }}>
