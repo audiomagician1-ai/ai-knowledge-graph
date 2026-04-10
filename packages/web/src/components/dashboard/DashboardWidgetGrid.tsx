@@ -2,11 +2,21 @@
  * DashboardWidgetGrid — Categorized lazy-loaded widget sections for the Dashboard.
  * V3.3: Extracted from DashboardPage.tsx to maintain <200L limit + add section grouping.
  */
-import { lazy, Suspense, useState } from 'react';
-import { ChevronDown, ChevronUp, Brain, BarChart3, Users, Search, Compass, GitBranch } from 'lucide-react';
+import { lazy, Suspense, useState, type ReactNode } from 'react';
+import { ChevronDown, ChevronUp, Brain, BarChart3, Users, Search, GitBranch } from 'lucide-react';
 import { WidgetSkeleton } from '@/components/dashboard/DashboardHelpers';
+import { WidgetErrorBoundary } from './WidgetErrorBoundary';
 import { useDashboardPrefs } from '@/hooks/useDashboardPrefs';
 import { DashboardCustomizer } from './DashboardCustomizer';
+
+/** Wrap a widget in error boundary + suspense */
+function W({ name, children }: { name: string; children: ReactNode }) {
+  return (
+    <WidgetErrorBoundary name={name}>
+      <Suspense fallback={<WidgetSkeleton />}>{children}</Suspense>
+    </WidgetErrorBoundary>
+  );
+}
 
 // ── Learning & Review ──
 const AdaptivePathWidget = lazy(() => import('./AdaptivePathWidget').then(m => ({ default: m.AdaptivePathWidget })));
@@ -23,6 +33,7 @@ const LearningProfileWidget = lazy(() => import('./LearningProfileWidget').then(
 
 // ── Analytics & Insights ──
 const WeeklyReport = lazy(() => import('./WeeklyReport').then(m => ({ default: m.WeeklyReport })));
+const ApiHealthWidget = lazy(() => import('./ApiHealthWidget').then(m => ({ default: m.ApiHealthWidget })));
 const StudyPatterns = lazy(() => import('./StudyPatterns').then(m => ({ default: m.StudyPatterns })));
 const StudyTimeChart = lazy(() => import('./StudyTimeChart').then(m => ({ default: m.StudyTimeChart })));
 const StreakInsights = lazy(() => import('./StreakInsights').then(m => ({ default: m.StreakInsights })));
@@ -82,64 +93,65 @@ const SECTION_MAP: Record<string, { title: string; icon: React.ReactNode; defaul
   learning: {
     title: '学习与复习', icon: <Brain size={14} className="opacity-40" />, defaultOpen: true,
     content: (<>
-        <Suspense fallback={<WidgetSkeleton />}><LearningProfileWidget /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><SessionSummaryWidget hours={24} /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><AdaptivePathWidget /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><ReviewQueue /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><ReviewPriorityWidget limit={8} /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><StudyPlanWidget days={3} dailyMinutes={30} /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><PrerequisiteCheckWidget /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><MasteryForecastWidget /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><NextMilestonesWidget limit={5} /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><SessionReplayWidget limit={8} /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><FSRSInsightsWidget /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><GoalRecommendWidget /></Suspense>
+        <W name="学习档案"><LearningProfileWidget /></W>
+        <W name="学习小结"><SessionSummaryWidget hours={24} /></W>
+        <W name="智能路径"><AdaptivePathWidget /></W>
+        <W name="复习队列"><ReviewQueue /></W>
+        <W name="复习优先级"><ReviewPriorityWidget limit={8} /></W>
+        <W name="学习计划"><StudyPlanWidget days={3} dailyMinutes={30} /></W>
+        <W name="前置检查"><PrerequisiteCheckWidget /></W>
+        <W name="掌握预测"><MasteryForecastWidget /></W>
+        <W name="里程碑"><NextMilestonesWidget limit={5} /></W>
+        <W name="学习回放"><SessionReplayWidget limit={8} /></W>
+        <W name="FSRS分析"><FSRSInsightsWidget /></W>
+        <W name="目标建议"><GoalRecommendWidget /></W>
     </>),
   },
   analytics: {
     title: '数据分析', icon: <BarChart3 size={14} className="opacity-40" />, defaultOpen: true,
     content: (<>
-        <Suspense fallback={<WidgetSkeleton />}><ProgressSnapshotWidget /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><WeeklyReport /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><StudyPatterns /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><StudyTimeChart days={14} /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><StreakInsights /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><WeakConceptsWidget limit={5} /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><LearningEfficiencyChart maxDomains={8} /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><ComparativeProgressWidget /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><LearningStyleWidget /></Suspense>
+        <W name="进度快照"><ProgressSnapshotWidget /></W>
+        <W name="周报"><WeeklyReport /></W>
+        <W name="学习模式"><StudyPatterns /></W>
+        <W name="学习时间"><StudyTimeChart days={14} /></W>
+        <W name="连续洞察"><StreakInsights /></W>
+        <W name="薄弱概念"><WeakConceptsWidget limit={5} /></W>
+        <W name="学习效率"><LearningEfficiencyChart maxDomains={8} /></W>
+        <W name="周对比"><ComparativeProgressWidget /></W>
+        <W name="学习风格"><LearningStyleWidget /></W>
+        <W name="API健康"><ApiHealthWidget /></W>
     </>),
   },
   domains: {
     title: '领域与图谱', icon: <GitBranch size={14} className="opacity-40" />, defaultOpen: true,
     content: (<>
-        <Suspense fallback={<WidgetSkeleton />}><DomainRadar /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><DifficultyHeatmap /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><MilestoneTracker /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><DomainRecommendWidget limit={4} /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><GraphTopologyWidget /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><ConceptClusterWidget /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><DifficultyAccuracyWidget /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><DomainOverviewBatchWidget /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><LearningHeatmapWidget /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><CrossDomainInsightsWidget /></Suspense>
+        <W name="掌握度雷达"><DomainRadar /></W>
+        <W name="难度热力图"><DifficultyHeatmap /></W>
+        <W name="里程碑追踪"><MilestoneTracker /></W>
+        <W name="域推荐"><DomainRecommendWidget limit={4} /></W>
+        <W name="图谱拓扑"><GraphTopologyWidget /></W>
+        <W name="概念聚类"><ConceptClusterWidget /></W>
+        <W name="难度校准"><DifficultyAccuracyWidget /></W>
+        <W name="全域概览"><DomainOverviewBatchWidget /></W>
+        <W name="学习热力图"><LearningHeatmapWidget /></W>
+        <W name="跨域洞察"><CrossDomainInsightsWidget /></W>
     </>),
   },
   social: {
     title: '社交互动', icon: <Users size={14} className="opacity-40" />, defaultOpen: false,
     content: (<>
-        <Suspense fallback={<WidgetSkeleton />}><GlobalLeaderboard /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><PeerComparisonCard /></Suspense>
+        <W name="排行榜"><GlobalLeaderboard /></W>
+        <W name="同伴对比"><PeerComparisonCard /></W>
     </>),
   },
   content: {
     title: '内容与发现', icon: <Search size={14} className="opacity-40" />, defaultOpen: false,
     content: (<>
-        <Suspense fallback={<WidgetSkeleton />}><SearchSuggestionsWidget /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><ContentSearchWidget /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><ContentHealthWidget /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><OnboardingRecommendWidget /></Suspense>
-        <Suspense fallback={<WidgetSkeleton />}><ConceptJourneyWidget /></Suspense>
+        <W name="搜索建议"><SearchSuggestionsWidget /></W>
+        <W name="内容搜索"><ContentSearchWidget /></W>
+        <W name="内容健康"><ContentHealthWidget /></W>
+        <W name="入门推荐"><OnboardingRecommendWidget /></W>
+        <W name="概念旅程"><ConceptJourneyWidget /></W>
     </>),
   },
 };

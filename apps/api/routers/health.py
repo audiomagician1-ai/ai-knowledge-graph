@@ -228,3 +228,43 @@ async def api_catalog():
         "tags": {tag: {"count": len(routes), "endpoints": routes}
                  for tag, routes in sorted(routes_by_tag.items())},
     }
+
+
+@router.get("/health/latency-report")
+async def latency_report():
+    """Aggregated API latency and error report from in-memory metrics.
+
+    Returns per-endpoint performance data sorted by avg latency (slowest first),
+    plus global summary and endpoints with high error rates.
+    """
+    from utils.metrics import metrics as mc
+
+    summary = mc.get_summary()
+    endpoints = summary.get("endpoints", {})
+
+    # Build latency-sorted list
+    latency_list = []
+    high_error = []
+    for path, data in endpoints.items():
+        entry = {"path": path, **data}
+        latency_list.append(entry)
+        err_pct = float(data.get("error_rate", "0%").rstrip("%"))
+        if err_pct > 5 and data["requests"] >= 3:
+            high_error.append(entry)
+
+    latency_list.sort(key=lambda x: x["avg_ms"], reverse=True)
+    high_error.sort(key=lambda x: float(x["error_rate"].rstrip("%")), reverse=True)
+
+    # Compute global aggregates
+    total_req = summary.get("total_requests", 0)
+    all_avg = [e["avg_ms"] for e in latency_list if e["requests"] > 0]
+
+    return {
+        "uptime_seconds": summary.get("uptime_seconds", 0),
+        "total_requests": total_req,
+        "global_error_rate": summary.get("global_error_rate", "0%"),
+        "global_avg_ms": round(sum(all_avg) / max(1, len(all_avg)), 1) if all_avg else 0,
+        "slowest_endpoints": latency_list[:10],
+        "high_error_endpoints": high_error[:5],
+        "total_tracked": len(latency_list),
+    }

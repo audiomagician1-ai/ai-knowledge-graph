@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 2,145 (1,419 BE + 726 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 2,219 (1,426 BE + 732 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -310,6 +310,14 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ create_notification() 编程式帮助函数 (可从其他路由器调用)
 - ✅ 内容反馈自动触发通知 (提交反馈后自动创建通知)
 - ✅ 13 BE tests (notifications) + 10 BE tests (content-feedback) + 11 FE tests = 34 new tests
+
+### V4.1 Error Resilience + Latency Monitoring + API Health Sprint (2026-04-10, 完成)
+- ✅ WidgetErrorBoundary: 每个Dashboard widget独立错误隔离 (crash→compact错误卡+重试按钮, 不影响其他widget)
+- ✅ DashboardWidgetGrid重构: Suspense→W helper (ErrorBoundary+Suspense双层包裹, 41个widget全覆盖, 174→176L)
+- ✅ GET /api/health/latency-report: API延迟报告 (慢端点TOP10+高错误率端点+全局统计, 基于metrics collector)
+- ✅ ApiHealthWidget Dashboard组件: API系统健康 (端点数/请求数/延迟/错误率+慢端点列表+错误警报, lazy-load, 107L)
+- ✅ DashboardWidgetGrid: 41→42 lazy-loaded widgets (added ApiHealthWidget to analytics section)
+- ✅ 7 BE tests + 6 FE tests = 13 new tests
 
 ### V4.0 Dashboard Customization + API Catalog + Code Health Sprint (2026-04-10, 完成)
 - ✅ Split analytics_planning.py (800L→625L) — extracted analytics_advanced.py (187L: V3.9 cross-domain-insights + learning-style)
@@ -736,6 +744,8 @@ python scripts/build_exe.py  # 输出到 release/
 | apps/api/routers/analytics_advanced.py | 高级分析API (V4.0拆分: cross-domain-insights/learning-style, 187L) |
 | packages/web/src/hooks/useDashboardPrefs.ts | Dashboard布局偏好hook (V4.0: 显示/隐藏/排序section, localStorage+useSyncExternalStore) |
 | packages/web/src/components/dashboard/DashboardCustomizer.tsx | Dashboard自定义面板 (V4.0: toggle+reorder+reset, 82L) |
+| packages/web/src/components/dashboard/WidgetErrorBoundary.tsx | Widget错误隔离 (V4.1: crash→错误卡+重试, class component) |
+| packages/web/src/components/dashboard/ApiHealthWidget.tsx | API系统健康 (V4.1: 端点数/延迟/错误率+慢端点TOP3, lazy-load, 107L) |
 | workers/src/ | Cloudflare Workers代理后端 |
 
 ---
@@ -798,4 +808,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V4.0 Dashboard Customization + API Catalog + Code Health — analytics_planning split (800→625L + analytics_advanced 187L), api-catalog endpoint, useDashboardPrefs + DashboardCustomizer, 22 tests | **Result**: 1,419 BE + 726 FE + 61 E2E = 2,145 all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V4.1 Error Resilience + Latency Monitoring + API Health — WidgetErrorBoundary (41 widgets isolated), latency-report API, ApiHealthWidget, W helper refactor, 13 tests | **Result**: 1,426 BE + 732 FE + 61 E2E = 2,219 all pass, tsc: 0 errors, 0 open issues, build OK
