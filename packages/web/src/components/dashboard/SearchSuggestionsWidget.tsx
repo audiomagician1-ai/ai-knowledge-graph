@@ -13,7 +13,7 @@ interface Suggestion {
 
 const API = import.meta.env.VITE_API_URL || '';
 
-export default function SearchSuggestionsWidget() {
+export function SearchSuggestionsWidget() {
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [loading, setLoading] = useState(false);

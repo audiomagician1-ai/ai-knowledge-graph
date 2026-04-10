@@ -4,10 +4,10 @@
 import { describe, it, expect } from 'vitest';
 
 describe('V3.8 FE: ConceptJourneyWidget', () => {
-  it('exports default component', async () => {
+  it('exports named component', async () => {
     const mod = await import('../components/dashboard/ConceptJourneyWidget');
-    expect(mod.default).toBeDefined();
-    expect(typeof mod.default).toBe('function');
+    expect(mod.ConceptJourneyWidget).toBeDefined();
+    expect(typeof mod.ConceptJourneyWidget).toBe('function');
   });
 
   it('file is under 200 lines', async () => {
@@ -19,10 +19,10 @@ describe('V3.8 FE: ConceptJourneyWidget', () => {
 });
 
 describe('V3.8 FE: LearningHeatmapWidget', () => {
-  it('exports default component', async () => {
+  it('exports named component', async () => {
     const mod = await import('../components/dashboard/LearningHeatmapWidget');
-    expect(mod.default).toBeDefined();
-    expect(typeof mod.default).toBe('function');
+    expect(mod.LearningHeatmapWidget).toBeDefined();
+    expect(typeof mod.LearningHeatmapWidget).toBe('function');
   });
 
   it('file is under 200 lines', async () => {

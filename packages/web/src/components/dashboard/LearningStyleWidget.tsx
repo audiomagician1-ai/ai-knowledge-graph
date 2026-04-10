@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { User, Clock, BarChart3 } from 'lucide-react';
 
 interface Trait {
@@ -29,7 +29,7 @@ interface StyleData {
   };
 }
 
-export default function LearningStyleWidget() {
+export function LearningStyleWidget() {
   const [data, setData] = useState<StyleData | null>(null);
 
   useEffect(() => {

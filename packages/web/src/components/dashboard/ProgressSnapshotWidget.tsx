@@ -21,7 +21,7 @@ interface SnapshotData {
 
 const API = import.meta.env.VITE_API_URL || '';
 
-export default function ProgressSnapshotWidget() {
+export function ProgressSnapshotWidget() {
   const [data, setData] = useState<SnapshotData | null>(null);
   const [loading, setLoading] = useState(true);
 

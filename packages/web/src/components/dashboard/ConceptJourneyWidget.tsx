@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { BookOpen, TrendingUp, Target, Clock } from 'lucide-react';
 
 interface JourneyEvent {
@@ -28,7 +28,7 @@ interface JourneyData {
   };
 }
 
-export default function ConceptJourneyWidget() {
+export function ConceptJourneyWidget() {
   const [data, setData] = useState<JourneyData | null>(null);
   const [conceptId, setConceptId] = useState('');
   const [searched, setSearched] = useState(false);

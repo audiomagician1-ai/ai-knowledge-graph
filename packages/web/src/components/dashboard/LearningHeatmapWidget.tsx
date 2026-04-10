@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Grid3X3, Flame } from 'lucide-react';
 
 interface HeatmapCell {
@@ -39,7 +39,7 @@ function intensityColor(v: number): string {
   return 'bg-white/5';
 }
 
-export default function LearningHeatmapWidget() {
+export function LearningHeatmapWidget() {
   const [data, setData] = useState<HeatmapData | null>(null);
   const [domain, setDomain] = useState('ai-engineering');
   const [expanded, setExpanded] = useState(false);

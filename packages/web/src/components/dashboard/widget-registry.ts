@@ -31,7 +31,7 @@ export const SessionSummaryWidget = lazy(() => import('./SessionSummaryWidget').
 export const WeakConceptsWidget = lazy(() => import('./WeakConceptsWidget').then(m => ({ default: m.WeakConceptsWidget })));
 export const LearningEfficiencyChart = lazy(() => import('./LearningEfficiencyChart').then(m => ({ default: m.LearningEfficiencyChart })));
 export const ComparativeProgressWidget = lazy(() => import('./ComparativeProgressWidget').then(m => ({ default: m.ComparativeProgressWidget })));
-export const LearningStyleWidget = lazy(() => import('./LearningStyleWidget'));
+export const LearningStyleWidget = lazy(() => import('./LearningStyleWidget').then(m => ({ default: m.LearningStyleWidget })));
 export const LearningCalendarWidget = lazy(() => import('./LearningCalendarWidget').then(m => ({ default: m.LearningCalendarWidget })));
 
 // ── Domain & Graph ──
@@ -43,8 +43,8 @@ export const GraphTopologyWidget = lazy(() => import('./GraphTopologyWidget').th
 export const ConceptClusterWidget = lazy(() => import('./ConceptClusterWidget').then(m => ({ default: m.ConceptClusterWidget })));
 export const DifficultyAccuracyWidget = lazy(() => import('./DifficultyAccuracyWidget').then(m => ({ default: m.DifficultyAccuracyWidget })));
 export const DomainOverviewBatchWidget = lazy(() => import('./DomainOverviewBatchWidget').then(m => ({ default: m.DomainOverviewBatchWidget })));
-export const LearningHeatmapWidget = lazy(() => import('./LearningHeatmapWidget'));
-export const CrossDomainInsightsWidget = lazy(() => import('./CrossDomainInsightsWidget'));
+export const LearningHeatmapWidget = lazy(() => import('./LearningHeatmapWidget').then(m => ({ default: m.LearningHeatmapWidget })));
+export const CrossDomainInsightsWidget = lazy(() => import('./CrossDomainInsightsWidget').then(m => ({ default: m.CrossDomainInsightsWidget })));
 export const DifficultyTunerWidget = lazy(() => import('./DifficultyTunerWidget').then(m => ({ default: m.DifficultyTunerWidget })));
 export const KnowledgeMapWidget = lazy(() => import('./KnowledgeMapWidget').then(m => ({ default: m.KnowledgeMapWidget })));
 
@@ -56,6 +56,6 @@ export const PeerComparisonCard = lazy(() => import('./PeerComparisonCard').then
 export const ContentSearchWidget = lazy(() => import('./ContentSearchWidget').then(m => ({ default: m.ContentSearchWidget })));
 export const ContentHealthWidget = lazy(() => import('./ContentHealthWidget').then(m => ({ default: m.ContentHealthWidget })));
 export const OnboardingRecommendWidget = lazy(() => import('./OnboardingRecommendWidget').then(m => ({ default: m.OnboardingRecommendWidget })));
-export const ConceptJourneyWidget = lazy(() => import('./ConceptJourneyWidget'));
-export const SearchSuggestionsWidget = lazy(() => import('./SearchSuggestionsWidget'));
-export const ProgressSnapshotWidget = lazy(() => import('./ProgressSnapshotWidget'));
+export const ConceptJourneyWidget = lazy(() => import('./ConceptJourneyWidget').then(m => ({ default: m.ConceptJourneyWidget })));
+export const SearchSuggestionsWidget = lazy(() => import('./SearchSuggestionsWidget').then(m => ({ default: m.SearchSuggestionsWidget })));
+export const ProgressSnapshotWidget = lazy(() => import('./ProgressSnapshotWidget').then(m => ({ default: m.ProgressSnapshotWidget })));

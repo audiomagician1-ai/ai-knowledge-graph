@@ -4,7 +4,7 @@
  * V2.11
  */
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { MessageSquareWarning, Check, X, ThumbsUp, AlertTriangle, Clock, HelpCircle, FileQuestion } from 'lucide-react';
 
 interface ContentFeedbackButtonProps {
@@ -29,6 +29,10 @@ export function ContentFeedbackButton({ conceptId, domainId, compact = false }: 
   const [comment, setComment] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const resetTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+
+  // Cleanup timeout on unmount (#64)
+  useEffect(() => () => { clearTimeout(resetTimerRef.current); }, []);
 
   const handleSubmit = async () => {
     if (!category) return;
@@ -45,7 +49,7 @@ export function ContentFeedbackButton({ conceptId, domainId, compact = false }: 
         }),
       });
       setSubmitted(true);
-      setTimeout(() => {
+      resetTimerRef.current = setTimeout(() => {
         setExpanded(false);
         setSubmitted(false);
         setCategory('');

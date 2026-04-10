@@ -17,3 +17,4 @@ export { useNotifications } from './useNotifications';
 export { useGraphKeyNav } from './useGraphKeyNav';
 export { useBookmarks } from './useBookmarks';
 export { useDashboardBatch, invalidateDashboardBatchCache } from './useDashboardBatch';
+export { useFetchWidget } from './useFetchWidget';

@@ -20,13 +20,16 @@ export function QuickActionsBar() {
   const [data, setData] = useState<ActionData | null>(null);
 
   useEffect(() => {
+    const controller = new AbortController();
+    const { signal } = controller;
     const base = import.meta.env.VITE_API_URL || '';
     // Fetch data for smart actions
     Promise.all([
-      fetch(`${base}/api/learning/due?limit=1`).then(r => r.ok ? r.json() : null).catch(() => null),
-      fetch(`${base}/api/analytics/study-plan?daily_minutes=30&days=1`).then(r => r.ok ? r.json() : null).catch(() => null),
-      fetch(`${base}/api/analytics/domain-recommendation?limit=1`).then(r => r.ok ? r.json() : null).catch(() => null),
+      fetch(`${base}/api/learning/due?limit=1`, { signal }).then(r => r.ok ? r.json() : null).catch(() => null),
+      fetch(`${base}/api/analytics/study-plan?daily_minutes=30&days=1`, { signal }).then(r => r.ok ? r.json() : null).catch(() => null),
+      fetch(`${base}/api/analytics/domain-recommendation?limit=1`, { signal }).then(r => r.ok ? r.json() : null).catch(() => null),
     ]).then(([due, plan, rec]) => {
+      if (signal.aborted) return;
       const reviewDue = due?.concepts?.length ?? due?.due_count ?? 0;
 
       // Find first "continue" item from study plan
@@ -42,6 +45,7 @@ export function QuickActionsBar() {
 
       setData({ reviewDue, continueId, continueName, continueDomain, exploreDomain, exploreName });
     });
+    return () => controller.abort();
   }, []);
 
   if (!data) return null;

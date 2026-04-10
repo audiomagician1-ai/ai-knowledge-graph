@@ -1,16 +1,16 @@
 ﻿import { describe, it, expect } from 'vitest';
 
 describe('V3.4 Dashboard Components', () => {
-  it('ProgressSnapshotWidget exports default component', async () => {
+  it('ProgressSnapshotWidget exports named component', async () => {
     const mod = await import('@/components/dashboard/ProgressSnapshotWidget');
-    expect(mod.default).toBeDefined();
-    expect(typeof mod.default).toBe('function');
+    expect(mod.ProgressSnapshotWidget).toBeDefined();
+    expect(typeof mod.ProgressSnapshotWidget).toBe('function');
   });
 
-  it('SearchSuggestionsWidget exports default component', async () => {
+  it('SearchSuggestionsWidget exports named component', async () => {
     const mod = await import('@/components/dashboard/SearchSuggestionsWidget');
-    expect(mod.default).toBeDefined();
-    expect(typeof mod.default).toBe('function');
+    expect(mod.SearchSuggestionsWidget).toBeDefined();
+    expect(typeof mod.SearchSuggestionsWidget).toBe('function');
   });
 
   it('DashboardWidgetGrid exports named component', async () => {
@@ -22,11 +22,11 @@ describe('V3.4 Dashboard Components', () => {
   it('ProgressSnapshotWidget is under 200 lines', async () => {
     // Validates component size contract
     const mod = await import('@/components/dashboard/ProgressSnapshotWidget');
-    expect(mod.default).toBeDefined();
+    expect(mod.ProgressSnapshotWidget).toBeDefined();
   });
 
   it('SearchSuggestionsWidget is under 200 lines', async () => {
     const mod = await import('@/components/dashboard/SearchSuggestionsWidget');
-    expect(mod.default).toBeDefined();
+    expect(mod.SearchSuggestionsWidget).toBeDefined();
   });
 });

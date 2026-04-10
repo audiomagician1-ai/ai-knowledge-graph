@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { GitBranch, ArrowRight } from 'lucide-react';
 
 interface DomainPair {
@@ -24,7 +24,7 @@ interface InsightsData {
   suggested_next: Suggestion[];
 }
 
-export default function CrossDomainInsightsWidget() {
+export function CrossDomainInsightsWidget() {
   const [data, setData] = useState<InsightsData | null>(null);
 
   useEffect(() => {

@@ -4,10 +4,10 @@
 import { describe, it, expect } from 'vitest';
 
 describe('V3.9 FE: CrossDomainInsightsWidget', () => {
-  it('exports default component', async () => {
+  it('exports named component', async () => {
     const mod = await import('../components/dashboard/CrossDomainInsightsWidget');
-    expect(mod.default).toBeDefined();
-    expect(typeof mod.default).toBe('function');
+    expect(mod.CrossDomainInsightsWidget).toBeDefined();
+    expect(typeof mod.CrossDomainInsightsWidget).toBe('function');
   });
 
   it('file is under 200 lines', async () => {
@@ -18,10 +18,10 @@ describe('V3.9 FE: CrossDomainInsightsWidget', () => {
 });
 
 describe('V3.9 FE: LearningStyleWidget', () => {
-  it('exports default component', async () => {
+  it('exports named component', async () => {
     const mod = await import('../components/dashboard/LearningStyleWidget');
-    expect(mod.default).toBeDefined();
-    expect(typeof mod.default).toBe('function');
+    expect(mod.LearningStyleWidget).toBeDefined();
+    expect(typeof mod.LearningStyleWidget).toBe('function');
   });
 
   it('file is under 200 lines', async () => {
