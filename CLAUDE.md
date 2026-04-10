@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 2,330 (1,481 BE + 788 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 2,351 (1,490 BE + 800 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -310,6 +310,16 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ create_notification() 编程式帮助函数 (可从其他路由器调用)
 - ✅ 内容反馈自动触发通知 (提交反馈后自动创建通知)
 - ✅ 13 BE tests (notifications) + 10 BE tests (content-feedback) + 11 FE tests = 34 new tests
+
+### V4.6 Dashboard Scalability + API Explorer + Code Health Sprint (2026-04-10, 完成)
+  - ✅ Extracted widget-registry.ts: 45 lazy imports moved from DashboardWidgetGrid.tsx (189→135L) to centralized registry (61L)
+  - ✅ Split OnboardingRecommendWidget.tsx (200→96L): extracted DomainPreviewModal.tsx (92L)
+  - ✅ ApiExplorerPage (/api-explorer): 交互式API文档浏览器 (搜索/过滤/分组展开/Try-it一键测试GET端点+响应面板+耗时, 180L)
+  - ✅ App.tsx集成: 新增/api-explorer lazy路由
+  - ✅ ApiHealthWidget增强: 新增"API Explorer"导航链接 (117L)
+  - ✅ Fixed 10 stale tests (v35/v43/v44/v45): lazy-import checks updated to reference widget-registry.ts instead of DashboardWidgetGrid.tsx
+  - ✅ All 26 BE routers under 800L, all FE components under 200L
+  - ✅ 9 BE tests + 12 FE tests = 21 new tests
 
 ### V4.5 Daily Summary + Achievement Showcase Sprint (2026-04-10, 完成)
 - ✅ GET /api/analytics/daily-summary: "今天做什么?"单API聚合 (连续天数+今日活动+FSRS到期+进度+推荐行动+激励语句, 替代多次调用)
@@ -746,7 +756,9 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/dashboard/ContentHealthWidget.tsx | 内容健康度 (V2.11: 反馈统计+待处理+概念健康分+lazy-load) |
 | apps/api/routers/onboarding.py | 新用户入门推荐API (V3.0: recommended-start + domain-preview) |
 | packages/web/src/lib/api/onboarding-api.ts | 入门推荐FE API客户端 (V3.0: fetchRecommendedStart + fetchDomainPreview) |
-| packages/web/src/components/dashboard/DashboardWidgetGrid.tsx | 仪表板分类小组件网格 (V3.3: 5分类可折叠+27懒加载小组件) |
+| packages/web/src/components/dashboard/DashboardWidgetGrid.tsx | 仪表板分类小组件网格 (V4.6: 5分类可折叠+widget-registry.ts集中管理45个懒加载组件) |
+| packages/web/src/components/dashboard/widget-registry.ts | Widget懒加载注册表 (V4.6: 45个Dashboard组件集中import) |
+| packages/web/src/pages/ApiExplorerPage.tsx | API Explorer页面 (V4.6: 交互式API目录+搜索+Try-it, /api-explorer) |
 | packages/web/src/components/dashboard/NextMilestonesWidget.tsx | 即将达成里程碑 (V3.3: 进度条+badge+剩余距离, lazy-load) |
 | packages/web/src/components/dashboard/MasteryForecastWidget.tsx | 掌握度预测 (V3.2: 完成天数+小时预估+子域分布, lazy-load) |
 | packages/web/src/components/dashboard/ReviewPriorityWidget.tsx | 复习优先级 (V3.2: 4因子加权优先分+理由+导航, lazy-load) |
@@ -846,4 +858,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V4.5 Daily Summary + Achievement Showcase — daily-summary API (single-call today aggregation with motivation), DailySummaryWidget (99L), AchievementShowcaseWidget (108L), 45 Dashboard widgets, 31 tests | **Result**: 1,481 BE + 788 FE + 61 E2E = 2,330 all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V4.6 Dashboard Scalability + API Explorer — widget-registry extraction (DashboardWidgetGrid 189→135L), OnboardingRecommendWidget split (200→96L), ApiExplorerPage (/api-explorer, 180L), 10 stale test fixes, 21 tests | **Result**: 1,490 BE + 800 FE + 61 E2E = 2,351 all pass, tsc: 0 errors, 0 open issues, build OK

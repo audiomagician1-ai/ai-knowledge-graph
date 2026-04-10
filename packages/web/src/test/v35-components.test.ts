@@ -17,11 +17,12 @@ describe('V3.5 Dashboard Widgets', () => {
   });
 
   it('DashboardWidgetGrid includes V3.5 new widgets', async () => {
-    const src = await import('../components/dashboard/DashboardWidgetGrid?raw');
-    expect(src.default).toContain('SessionReplayWidget');
-    expect(src.default).toContain('ComparativeProgressWidget');
-    // At least 30 lazy-loaded widgets (some use default export shorthand)
-    const lazyCount = (src.default.match(/lazy\(/g) || []).length;
+    // V4.6: lazy imports moved to widget-registry.ts; grid references via W_.xxx
+    const grid = await import('../components/dashboard/DashboardWidgetGrid?raw');
+    expect(grid.default).toContain('SessionReplayWidget');
+    expect(grid.default).toContain('ComparativeProgressWidget');
+    const reg = await import('../components/dashboard/widget-registry?raw');
+    const lazyCount = (reg.default.match(/lazy\(/g) || []).length;
     expect(lazyCount).toBeGreaterThanOrEqual(30);
   });
 

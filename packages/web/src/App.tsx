@@ -31,6 +31,7 @@ const SessionHistoryPage = lazy(() => import('./pages/SessionHistoryPage').then(
 const LearningJourneyPage = lazy(() => import('./pages/LearningJourneyPage').then(m => ({ default: m.LearningJourneyPage })));
 const LearningReportPage = lazy(() => import('./pages/LearningReportPage').then(m => ({ default: m.LearningReportPage })));
 const NotificationsPage = lazy(() => import('./pages/NotificationsPage').then(m => ({ default: m.NotificationsPage })));
+const ApiExplorerPage = lazy(() => import('./pages/ApiExplorerPage').then(m => ({ default: m.ApiExplorerPage })));
 
 /** Minimal loading spinner for lazy routes */
 function RouteLoader() {
@@ -93,8 +94,10 @@ export function App() {
               <Route path="/journey" element={<LearningJourneyPage />} />
               {/* Learning Report — comprehensive printable summary (lazy, V2.9) */}
               <Route path="/report" element={<LearningReportPage />} />
-              {/* Notifications — notification center (lazy, V2.11) */}
-              <Route path="/notifications" element={<NotificationsPage />} />
+            {/* Notifications — notification center (lazy, V2.11) */}
+            <Route path="/notifications" element={<NotificationsPage />} />
+            {/* API Explorer — interactive API documentation (lazy, V4.6) */}
+            <Route path="/api-explorer" element={<ApiExplorerPage />} />
               {/* Settings — LLM config + data export/import (lazy) */}
               <Route path="/settings" element={<SettingsPage />} />
               {/* Legacy fallback — redirect old /learn/:conceptId to home */}

@@ -69,22 +69,23 @@ describe('V4.3 PortfolioExportWidget', () => {
 });
 
 describe('V4.3 DashboardWidgetGrid integration', () => {
-  const src = read('DashboardWidgetGrid.tsx');
+  const gridSrc = read('DashboardWidgetGrid.tsx');
+  const regSrc = read('widget-registry.ts');
 
   it('lazy-loads DifficultyTunerWidget', () => {
-    expect(src).toContain("DifficultyTunerWidget");
-    expect(src).toContain("import('./DifficultyTunerWidget')");
+    expect(gridSrc).toContain("DifficultyTunerWidget");
+    expect(regSrc).toContain("import('./DifficultyTunerWidget')");
   });
   it('lazy-loads PortfolioExportWidget', () => {
-    expect(src).toContain("PortfolioExportWidget");
-    expect(src).toContain("import('./PortfolioExportWidget')");
+    expect(gridSrc).toContain("PortfolioExportWidget");
+    expect(regSrc).toContain("import('./PortfolioExportWidget')");
   });
   it('has 41+ lazy imports (39 previous + 2 new)', () => {
-    const lazyCount = (src.match(/lazy\(/g) || []).length;
+    const lazyCount = (regSrc.match(/lazy\(/g) || []).length;
     expect(lazyCount).toBeGreaterThanOrEqual(41);
   });
   it('stays under 200 lines', () => {
-    const lines = src.split('\n').length;
+    const lines = gridSrc.split('\n').length;
     expect(lines).toBeLessThanOrEqual(200);
   });
 });

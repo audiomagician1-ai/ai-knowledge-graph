@@ -68,21 +68,22 @@ describe('V4.4 KnowledgeMapWidget', () => {
 });
 
 describe('V4.4 DashboardWidgetGrid integration', () => {
-  const src = read('DashboardWidgetGrid.tsx');
+  const gridSrc = read('DashboardWidgetGrid.tsx');
+  const regSrc = read('widget-registry.ts');
 
   it('lazy-loads LearningCalendarWidget', () => {
-    expect(src).toContain("LearningCalendarWidget");
-    expect(src).toContain("import('./LearningCalendarWidget')");
+    expect(gridSrc).toContain("LearningCalendarWidget");
+    expect(regSrc).toContain("import('./LearningCalendarWidget')");
   });
   it('lazy-loads KnowledgeMapWidget', () => {
-    expect(src).toContain("KnowledgeMapWidget");
-    expect(src).toContain("import('./KnowledgeMapWidget')");
+    expect(gridSrc).toContain("KnowledgeMapWidget");
+    expect(regSrc).toContain("import('./KnowledgeMapWidget')");
   });
   it('has 43+ lazy imports', () => {
-    const lazyCount = (src.match(/lazy\(/g) || []).length;
+    const lazyCount = (regSrc.match(/lazy\(/g) || []).length;
     expect(lazyCount).toBeGreaterThanOrEqual(43);
   });
   it('stays under 200 lines', () => {
-    expect(src.split('\n').length).toBeLessThanOrEqual(200);
+    expect(gridSrc.split('\n').length).toBeLessThanOrEqual(200);
   });
 });

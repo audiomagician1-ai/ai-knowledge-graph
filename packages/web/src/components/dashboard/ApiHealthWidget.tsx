@@ -3,7 +3,8 @@
  * V4.1: Provides at-a-glance system health for the Dashboard.
  */
 import { useState, useEffect } from 'react';
-import { Activity, AlertTriangle, Clock, Server } from 'lucide-react';
+import { Activity, AlertTriangle, Clock, Server, ExternalLink } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface LatencyReport {
   uptime_seconds: number;
@@ -21,6 +22,7 @@ interface CatalogSummary {
 }
 
 export function ApiHealthWidget() {
+  const navigate = useNavigate();
   const [latency, setLatency] = useState<LatencyReport | null>(null);
   const [catalog, setCatalog] = useState<CatalogSummary | null>(null);
   const [error, setError] = useState('');
@@ -86,6 +88,15 @@ export function ApiHealthWidget() {
           ))}
         </div>
       )}
+
+      {/* API Explorer link */}
+      <button
+        onClick={() => navigate('/api-explorer')}
+        className="w-full flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-[10px] font-medium transition-colors hover:bg-white/5"
+        style={{ color: 'var(--color-accent)' }}
+      >
+        <ExternalLink size={10} /> API Explorer
+      </button>
 
       {/* Error alerts */}
       {latency.high_error_endpoints.length > 0 && (

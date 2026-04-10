@@ -71,21 +71,22 @@ describe('V4.5 AchievementShowcaseWidget', () => {
 });
 
 describe('V4.5 DashboardWidgetGrid integration', () => {
-  const src = read('DashboardWidgetGrid.tsx');
+  const gridSrc = read('DashboardWidgetGrid.tsx');
+  const regSrc = read('widget-registry.ts');
 
   it('lazy-loads DailySummaryWidget', () => {
-    expect(src).toContain("DailySummaryWidget");
-    expect(src).toContain("import('./DailySummaryWidget')");
+    expect(gridSrc).toContain("DailySummaryWidget");
+    expect(regSrc).toContain("import('./DailySummaryWidget')");
   });
   it('lazy-loads AchievementShowcaseWidget', () => {
-    expect(src).toContain("AchievementShowcaseWidget");
-    expect(src).toContain("import('./AchievementShowcaseWidget')");
+    expect(gridSrc).toContain("AchievementShowcaseWidget");
+    expect(regSrc).toContain("import('./AchievementShowcaseWidget')");
   });
   it('has 45+ lazy imports', () => {
-    const lazyCount = (src.match(/lazy\(/g) || []).length;
+    const lazyCount = (regSrc.match(/lazy\(/g) || []).length;
     expect(lazyCount).toBeGreaterThanOrEqual(45);
   });
   it('stays under 200 lines', () => {
-    expect(src.split('\n').length).toBeLessThanOrEqual(200);
+    expect(gridSrc.split('\n').length).toBeLessThanOrEqual(200);
   });
 });
