@@ -30,6 +30,7 @@ const SessionReplayWidget = lazy(() => import('./SessionReplayWidget').then(m =>
 const FSRSInsightsWidget = lazy(() => import('./FSRSInsightsWidget').then(m => ({ default: m.FSRSInsightsWidget })));
 const GoalRecommendWidget = lazy(() => import('./GoalRecommendWidget').then(m => ({ default: m.GoalRecommendWidget })));
 const LearningProfileWidget = lazy(() => import('./LearningProfileWidget').then(m => ({ default: m.LearningProfileWidget })));
+const PortfolioExportWidget = lazy(() => import('./PortfolioExportWidget').then(m => ({ default: m.PortfolioExportWidget })));
 
 // ── Analytics & Insights ──
 const WeeklyReport = lazy(() => import('./WeeklyReport').then(m => ({ default: m.WeeklyReport })));
@@ -54,6 +55,7 @@ const DifficultyAccuracyWidget = lazy(() => import('./DifficultyAccuracyWidget')
 const DomainOverviewBatchWidget = lazy(() => import('./DomainOverviewBatchWidget').then(m => ({ default: m.DomainOverviewBatchWidget })));
 const LearningHeatmapWidget = lazy(() => import('./LearningHeatmapWidget'));
 const CrossDomainInsightsWidget = lazy(() => import('./CrossDomainInsightsWidget'));
+const DifficultyTunerWidget = lazy(() => import('./DifficultyTunerWidget').then(m => ({ default: m.DifficultyTunerWidget })));
 
 // ── Social & Community ──
 const GlobalLeaderboard = lazy(() => import('./GlobalLeaderboard').then(m => ({ default: m.GlobalLeaderboard })));
@@ -105,6 +107,7 @@ const SECTION_MAP: Record<string, { title: string; icon: React.ReactNode; defaul
         <W name="学习回放"><SessionReplayWidget limit={8} /></W>
         <W name="FSRS分析"><FSRSInsightsWidget /></W>
         <W name="目标建议"><GoalRecommendWidget /></W>
+        <W name="学习档案导出"><PortfolioExportWidget /></W>
     </>),
   },
   analytics: {
@@ -135,6 +138,7 @@ const SECTION_MAP: Record<string, { title: string; icon: React.ReactNode; defaul
         <W name="全域概览"><DomainOverviewBatchWidget /></W>
         <W name="学习热力图"><LearningHeatmapWidget /></W>
         <W name="跨域洞察"><CrossDomainInsightsWidget /></W>
+        <W name="难度调优"><DifficultyTunerWidget limit={10} /></W>
     </>),
   },
   social: {
