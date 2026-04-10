@@ -28,6 +28,7 @@ const SessionSummaryWidget = lazy(() => import('./SessionSummaryWidget').then(m 
 const WeakConceptsWidget = lazy(() => import('./WeakConceptsWidget').then(m => ({ default: m.WeakConceptsWidget })));
 const LearningEfficiencyChart = lazy(() => import('./LearningEfficiencyChart').then(m => ({ default: m.LearningEfficiencyChart })));
 const ComparativeProgressWidget = lazy(() => import('./ComparativeProgressWidget').then(m => ({ default: m.ComparativeProgressWidget })));
+const LearningStyleWidget = lazy(() => import('./LearningStyleWidget'));
 
 // ── Domain & Graph ──
 const DomainRadar = lazy(() => import('./DomainRadar').then(m => ({ default: m.DomainRadar })));
@@ -39,6 +40,7 @@ const ConceptClusterWidget = lazy(() => import('./ConceptClusterWidget').then(m 
 const DifficultyAccuracyWidget = lazy(() => import('./DifficultyAccuracyWidget').then(m => ({ default: m.DifficultyAccuracyWidget })));
 const DomainOverviewBatchWidget = lazy(() => import('./DomainOverviewBatchWidget').then(m => ({ default: m.DomainOverviewBatchWidget })));
 const LearningHeatmapWidget = lazy(() => import('./LearningHeatmapWidget'));
+const CrossDomainInsightsWidget = lazy(() => import('./CrossDomainInsightsWidget'));
 
 // ── Social & Community ──
 const GlobalLeaderboard = lazy(() => import('./GlobalLeaderboard').then(m => ({ default: m.GlobalLeaderboard })));
@@ -100,6 +102,7 @@ export function DashboardWidgetGrid() {
         <Suspense fallback={<WidgetSkeleton />}><WeakConceptsWidget limit={5} /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><LearningEfficiencyChart maxDomains={8} /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><ComparativeProgressWidget /></Suspense>
+        <Suspense fallback={<WidgetSkeleton />}><LearningStyleWidget /></Suspense>
       </CollapsibleSection>
 
       <CollapsibleSection title="领域与图谱" icon={<GitBranch size={14} className="opacity-40" />}>
@@ -112,6 +115,7 @@ export function DashboardWidgetGrid() {
         <Suspense fallback={<WidgetSkeleton />}><DifficultyAccuracyWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><DomainOverviewBatchWidget /></Suspense>
         <Suspense fallback={<WidgetSkeleton />}><LearningHeatmapWidget /></Suspense>
+        <Suspense fallback={<WidgetSkeleton />}><CrossDomainInsightsWidget /></Suspense>
       </CollapsibleSection>
 
       <CollapsibleSection title="社交互动" icon={<Users size={14} className="opacity-40" />} defaultOpen={false}>

@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 2,159 (1,385 BE + 713 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 2,184 (1,403 BE + 720 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -311,7 +311,17 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ 内容反馈自动触发通知 (提交反馈后自动创建通知)
 - ✅ 13 BE tests (notifications) + 10 BE tests (content-feedback) + 11 FE tests = 34 new tests
 
-### V3.8 Code Health + Concept Journey + Learning Heatmap Sprint (2026-04-10, 完成)
+### V3.9 Code Health + Cross-Domain Insights + Learning Style Sprint (2026-04-10, 完成)
+- ✅ Split analytics_experience.py (792L→474L) — extracted analytics_profile.py (284L: V3.7 learning-profile + V3.8 concept-journey + learning-heatmap)
+- ✅ analytics_planning.py docstring compacted + V3.9 endpoints added (633→799L)
+- ✅ GET /api/analytics/cross-domain-insights: 跨域知识迁移分析 (域对共享链接+迁移分数+协同推荐+下一步建议)
+- ✅ GET /api/analytics/learning-style: 学习风格检测 (速度/深度+时间偏好+域广度+一致性+风格标签+特质分析)
+- ✅ CrossDomainInsightsWidget Dashboard组件: 跨域关联 (域对链接条+协同推荐+链接计数, lazy-load, 93L)
+- ✅ LearningStyleWidget Dashboard组件: 学习风格 (风格标签+特质chips+时间分布柱图+指标网格, lazy-load, 112L)
+- ✅ DashboardWidgetGrid updated: 39→41 lazy-loaded widgets (added CrossDomainInsightsWidget + LearningStyleWidget)
+- ✅ All 25 BE routers under 800-line limit (max: 799L analytics_planning.py)
+- ✅ 25 new tests (18 BE: 6 split-verify + 3 profile-regression + 4 cross-domain + 5 learning-style + 7 FE)
+
 - ✅ Split learning_extended.py (708L→480L) — extracted learning_intelligence.py (253L: V3.2 review-priority + V3.5 session-replay)
 - ✅ Split analytics_insights.py (703L→337L) — extracted analytics_forecast.py (389L: V3.2 mastery-forecast + V3.6 fsrs-insights + goal-recommendations)
 - ✅ analytics_experience.py docstring compacted (801→792L) after adding new V3.8 endpoints
@@ -711,6 +721,9 @@ python scripts/build_exe.py  # 输出到 release/
 | apps/api/routers/analytics_forecast.py | 预测分析API (V3.8拆分: mastery-forecast/fsrs-insights/goal-recommendations, 389L) |
 | packages/web/src/components/dashboard/ConceptJourneyWidget.tsx | 概念学习旅程 (V3.8: 搜索+分数柱状图+统计网格+状态, lazy-load, 125L) |
 | packages/web/src/components/dashboard/LearningHeatmapWidget.tsx | 学习热力图 (V3.8: 子域行×概念格+强度色阶+域选择, lazy-load, 123L) |
+| apps/api/routers/analytics_profile.py | 学习档案API (V3.9拆分: learning-profile/concept-journey/learning-heatmap, 284L) |
+| packages/web/src/components/dashboard/CrossDomainInsightsWidget.tsx | 跨域知识关联 (V3.9: 域对链接+协同推荐+迁移分数, lazy-load, 93L) |
+| packages/web/src/components/dashboard/LearningStyleWidget.tsx | 学习风格 (V3.9: 风格标签+特质chips+时间分布+指标, lazy-load, 112L) |
 | workers/src/ | Cloudflare Workers代理后端 |
 
 ---
@@ -773,4 +786,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V3.8 Code Health + Concept Journey + Learning Heatmap — learning_extended split (708→480L), analytics_insights split (703→337L), 2 new APIs (concept-journey + learning-heatmap), 2 Dashboard widgets, 39 lazy-load widgets, 30 tests | **Result**: 1,385 BE + 713 FE + 61 E2E = 2,159 all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V3.9 Code Health + Cross-Domain Insights + Learning Style — analytics_experience split (792→474L + analytics_profile 284L), 2 new APIs (cross-domain-insights + learning-style), 2 Dashboard widgets, 41 lazy-load widgets, 25 tests | **Result**: 1,403 BE + 720 FE + 61 E2E = 2,184 all pass, tsc: 0 errors, 0 open issues, build OK
