@@ -472,3 +472,135 @@ async def session_summary(
 
 # -- V3.7 learning-profile moved to analytics_profile.py (V3.9 split) --
 # -- V3.8 concept-journey + learning-heatmap moved to analytics_profile.py (V3.9 split) --
+
+
+# ── V4.4: Learning Calendar ───────────────────────
+
+
+@router.get("/analytics/learning-calendar")
+async def learning_calendar(
+    months: int = Query(3, ge=1, le=12, description="Number of months to include"),
+):
+    """Monthly learning calendar with daily activity + FSRS due projections.
+
+    Combines past activity data (from history) with future FSRS review schedule
+    to create a unified calendar view. Each day cell contains:
+    - events_count: number of learning events that day
+    - mastered_count: concepts mastered that day
+    - reviews_due: FSRS reviews scheduled for that day (future projection)
+    - intensity: activity level 0-4 (GitHub-style)
+    """
+    from datetime import datetime, timedelta
+
+    from routers.analytics_utils import load_seed_metadata
+
+    history = get_history(limit=10000)
+    progress = get_all_progress()
+    concept_domain_map, concept_info, _ = load_seed_metadata()
+
+    today = datetime.now().date()
+    start_date = today.replace(day=1) - timedelta(days=(months - 1) * 30)
+    start_date = start_date.replace(day=1)
+
+    # ── Past activity aggregation ──
+    daily: dict[str, dict] = {}
+    for h in history:
+        ts = h.get("timestamp", "")
+        if not ts:
+            continue
+        try:
+            day_str = ts[:10]
+            d = datetime.fromisoformat(day_str).date()
+        except (ValueError, TypeError):
+            continue
+        if d < start_date:
+            continue
+        key = day_str
+        if key not in daily:
+            daily[key] = {"events": 0, "mastered": 0, "domains": set()}
+        daily[key]["events"] += 1
+        action = h.get("action", "")
+        if action == "mastered" or (action == "assessment" and h.get("score", 0) >= 75):
+            daily[key]["mastered"] += 1
+        cid = h.get("concept_id", "")
+        did = concept_domain_map.get(cid, "")
+        if did:
+            daily[key]["domains"].add(did)
+
+    # ── FSRS due projection (next 30 days) ──
+    future_due: dict[str, int] = {}
+    for p in progress:
+        next_review = p.get("next_review")
+        if not next_review:
+            continue
+        try:
+            nr_date = datetime.fromisoformat(str(next_review)[:10]).date()
+        except (ValueError, TypeError):
+            continue
+        if nr_date < today:
+            key = today.isoformat()
+        elif nr_date <= today + timedelta(days=30):
+            key = nr_date.isoformat()
+        else:
+            continue
+        future_due[key] = future_due.get(key, 0) + 1
+
+    # ── Build calendar months ──
+    max_events = max((d["events"] for d in daily.values()), default=1) or 1
+    calendar_months = []
+    current = start_date
+    while current <= today + timedelta(days=30):
+        month_key = current.strftime("%Y-%m")
+        month_days = []
+        d = current
+        while d.strftime("%Y-%m") == month_key:
+            key = d.isoformat()
+            day_data = daily.get(key, {})
+            events = day_data.get("events", 0) if isinstance(day_data, dict) else 0
+            mastered = day_data.get("mastered", 0) if isinstance(day_data, dict) else 0
+            domains_set = day_data.get("domains", set()) if isinstance(day_data, dict) else set()
+            reviews = future_due.get(key, 0)
+            # Intensity 0-4 (GitHub-style)
+            intensity = 0
+            if events > 0:
+                ratio = events / max_events
+                intensity = 1 if ratio < 0.25 else 2 if ratio < 0.5 else 3 if ratio < 0.75 else 4
+            month_days.append({
+                "date": key,
+                "events_count": events,
+                "mastered_count": mastered,
+                "reviews_due": reviews,
+                "domains_active": len(domains_set),
+                "intensity": intensity,
+                "is_future": d > today,
+            })
+            d += timedelta(days=1)
+        calendar_months.append({
+            "month": month_key,
+            "label": current.strftime("%Y年%m月"),
+            "days": month_days,
+            "total_events": sum(dd["events_count"] for dd in month_days),
+            "total_mastered": sum(dd["mastered_count"] for dd in month_days),
+        })
+        # Move to next month
+        if current.month == 12:
+            current = current.replace(year=current.year + 1, month=1, day=1)
+        else:
+            current = current.replace(month=current.month + 1, day=1)
+
+    # Summary
+    total_active_days = sum(1 for d in daily.values() if isinstance(d, dict) and d.get("events", 0) > 0)
+    total_reviews_upcoming = sum(future_due.values())
+
+    return {
+        "months": calendar_months,
+        "summary": {
+            "total_active_days": total_active_days,
+            "total_events": sum(d.get("events", 0) for d in daily.values() if isinstance(d, dict)),
+            "total_mastered": sum(d.get("mastered", 0) for d in daily.values() if isinstance(d, dict)),
+            "upcoming_reviews": total_reviews_upcoming,
+            "period_start": start_date.isoformat(),
+            "period_end": (today + timedelta(days=30)).isoformat(),
+        },
+    }
+

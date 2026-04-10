@@ -623,3 +623,94 @@ async def get_comparative_progress():
         },
     }
 
+
+# ── V4.4: Knowledge Map Stats ───────────────────────
+
+
+@router.get("/analytics/knowledge-map-stats")
+async def knowledge_map_stats():
+    """Comprehensive knowledge map traversal statistics.
+
+    Provides gamification-friendly stats about the user's graph exploration:
+    - Coverage: % of total knowledge graph explored
+    - Per-difficulty breakdown of mastered concepts
+    - Domain unlock progress (domains with any activity)
+    - Exploration breadth vs depth metrics
+    """
+    progress = get_all_progress()
+    concept_domain_map, concept_info, domain_map = load_seed_metadata()
+
+    total_concepts = len(concept_info)
+    started = 0
+    mastered = 0
+    learning = 0
+    domains_active: dict[str, dict] = {}
+    difficulty_dist: dict[int, dict] = {}
+
+    for p in progress:
+        cid = p["concept_id"]
+        info = concept_info.get(cid)
+        if not info:
+            continue
+        status = p.get("status", "not_started")
+        did = concept_domain_map.get(cid, "")
+        diff = info.get("difficulty", 5)
+
+        if status in ("learning", "mastered"):
+            started += 1
+        if status == "mastered":
+            mastered += 1
+        elif status == "learning":
+            learning += 1
+
+        # Domain aggregation
+        if did and status != "not_started":
+            if did not in domains_active:
+                domains_active[did] = {"mastered": 0, "learning": 0, "name": domain_map.get(did, {}).get("name", did)}
+            if status == "mastered":
+                domains_active[did]["mastered"] += 1
+            elif status == "learning":
+                domains_active[did]["learning"] += 1
+
+        # Difficulty breakdown
+        if status == "mastered":
+            diff_key = min(max(diff, 1), 10)
+            if diff_key not in difficulty_dist:
+                difficulty_dist[diff_key] = {"difficulty": diff_key, "mastered": 0}
+            difficulty_dist[diff_key]["mastered"] += 1
+
+    coverage_pct = round(started / max(1, total_concepts) * 100, 1)
+    mastery_pct = round(mastered / max(1, total_concepts) * 100, 1)
+    total_domains = len(domain_map)
+    domains_explored = len(domains_active)
+
+    # Depth vs breadth
+    depth_score = round(mastered / max(1, started) * 100, 1) if started > 0 else 0
+    breadth_score = round(domains_explored / max(1, total_domains) * 100, 1)
+
+    # Top domains by mastery
+    top_domains = sorted(domains_active.items(), key=lambda x: -x[1]["mastered"])[:8]
+
+    return {
+        "coverage": {
+            "total_concepts": total_concepts,
+            "started": started,
+            "mastered": mastered,
+            "learning": learning,
+            "coverage_pct": coverage_pct,
+            "mastery_pct": mastery_pct,
+        },
+        "domains": {
+            "total": total_domains,
+            "explored": domains_explored,
+            "exploration_pct": round(domains_explored / max(1, total_domains) * 100, 1),
+            "top": [{"domain_id": did, **info} for did, info in top_domains],
+        },
+        "difficulty_breakdown": sorted(difficulty_dist.values(), key=lambda x: x["difficulty"]),
+        "exploration_profile": {
+            "depth_score": depth_score,
+            "breadth_score": breadth_score,
+            "style": "深度型" if depth_score > breadth_score + 20 else "广度型" if breadth_score > depth_score + 20 else "均衡型",
+        },
+    }
+

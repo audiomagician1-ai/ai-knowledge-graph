@@ -43,6 +43,7 @@ const WeakConceptsWidget = lazy(() => import('./WeakConceptsWidget').then(m => (
 const LearningEfficiencyChart = lazy(() => import('./LearningEfficiencyChart').then(m => ({ default: m.LearningEfficiencyChart })));
 const ComparativeProgressWidget = lazy(() => import('./ComparativeProgressWidget').then(m => ({ default: m.ComparativeProgressWidget })));
 const LearningStyleWidget = lazy(() => import('./LearningStyleWidget'));
+const LearningCalendarWidget = lazy(() => import('./LearningCalendarWidget').then(m => ({ default: m.LearningCalendarWidget })));
 
 // ── Domain & Graph ──
 const DomainRadar = lazy(() => import('./DomainRadar').then(m => ({ default: m.DomainRadar })));
@@ -56,6 +57,7 @@ const DomainOverviewBatchWidget = lazy(() => import('./DomainOverviewBatchWidget
 const LearningHeatmapWidget = lazy(() => import('./LearningHeatmapWidget'));
 const CrossDomainInsightsWidget = lazy(() => import('./CrossDomainInsightsWidget'));
 const DifficultyTunerWidget = lazy(() => import('./DifficultyTunerWidget').then(m => ({ default: m.DifficultyTunerWidget })));
+const KnowledgeMapWidget = lazy(() => import('./KnowledgeMapWidget').then(m => ({ default: m.KnowledgeMapWidget })));
 
 // ── Social & Community ──
 const GlobalLeaderboard = lazy(() => import('./GlobalLeaderboard').then(m => ({ default: m.GlobalLeaderboard })));
@@ -122,6 +124,7 @@ const SECTION_MAP: Record<string, { title: string; icon: React.ReactNode; defaul
         <W name="学习效率"><LearningEfficiencyChart maxDomains={8} /></W>
         <W name="周对比"><ComparativeProgressWidget /></W>
         <W name="学习风格"><LearningStyleWidget /></W>
+        <W name="学习日历"><LearningCalendarWidget months={3} /></W>
         <W name="API健康"><ApiHealthWidget /></W>
     </>),
   },
@@ -139,6 +142,7 @@ const SECTION_MAP: Record<string, { title: string; icon: React.ReactNode; defaul
         <W name="学习热力图"><LearningHeatmapWidget /></W>
         <W name="跨域洞察"><CrossDomainInsightsWidget /></W>
         <W name="难度调优"><DifficultyTunerWidget limit={10} /></W>
+        <W name="知识图谱探索"><KnowledgeMapWidget /></W>
     </>),
   },
   social: {

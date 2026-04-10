@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 2,268 (1,455 BE + 752 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 2,299 (1,468 BE + 770 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -310,6 +310,15 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ create_notification() 编程式帮助函数 (可从其他路由器调用)
 - ✅ 内容反馈自动触发通知 (提交反馈后自动创建通知)
 - ✅ 13 BE tests (notifications) + 10 BE tests (content-feedback) + 11 FE tests = 34 new tests
+
+### V4.4 Learning Calendar + Knowledge Map Exploration Sprint (2026-04-10, 完成)
+- ✅ GET /api/analytics/learning-calendar: 月度学习日历 (每日活动+掌握+FSRS复习投影+GitHub-style强度0-4+未来30天复习预测)
+- ✅ GET /api/analytics/knowledge-map-stats: 知识图谱探索统计 (覆盖率+掌握率+领域探索度+难度分布+深度/广度得分+探索风格检测)
+- ✅ LearningCalendarWidget Dashboard组件: 学习日历 (月度色阶网格+hover工具提示+事件/掌握/复习统计+图例, lazy-load, 133L)
+- ✅ KnowledgeMapWidget Dashboard组件: 知识图谱探索 (渐变覆盖率进度条+统计网格+Top域列表+难度分布迷你柱图+探索风格标签, lazy-load, 120L)
+- ✅ DashboardWidgetGrid集成: 43 lazy-loaded widgets (新增LearningCalendarWidget到analytics区, KnowledgeMapWidget到domains区, 184L)
+- ✅ Fixed stale V3.9 size-check test (analytics_experience 500→800L universal limit)
+- ✅ 13 BE tests + 18 FE tests = 31 new tests
 
 ### V4.3 Difficulty Tuner Widget + Portfolio Export Widget Sprint (2026-04-10, 完成)
 - ✅ DifficultyTunerWidget Dashboard组件: 难度校准建议可视化 (偏简单/偏困难方向箭头+难度变化值+置信度百分比+高置信警告+概念导航, lazy-load, 89L)
@@ -763,6 +772,8 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/dashboard/QuickActionsBar.tsx | 快捷操作栏 (V4.2: 复习/继续/探索, 上下文感知, 100L) |
 | packages/web/src/components/dashboard/DifficultyTunerWidget.tsx | 难度校准建议 (V4.3: 偏简单/偏困难箭头+置信度+导航, lazy-load, 89L) |
 | packages/web/src/components/dashboard/PortfolioExportWidget.tsx | 学习档案导出 (V4.3: 技能雷达+Markdown/JSON导出+强项/成长, lazy-load, 155L) |
+| packages/web/src/components/dashboard/LearningCalendarWidget.tsx | 学习日历 (V4.4: 月度活动色阶+FSRS复习投影+hover工具提示+图例, lazy-load, 133L) |
+| packages/web/src/components/dashboard/KnowledgeMapWidget.tsx | 知识图谱探索 (V4.4: 覆盖率进度条+难度分布+深度/广度风格, lazy-load, 120L) |
 | workers/src/ | Cloudflare Workers代理后端 |
 
 ---
@@ -825,4 +836,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V4.3 Difficulty Tuner Widget + Portfolio Export Widget — DifficultyTunerWidget (auto-calibration visualization, 89L), PortfolioExportWidget (skills radar + Markdown/JSON export, 155L), DashboardWidgetGrid 43 widgets, 32 tests | **Result**: 1,455 BE + 752 FE + 61 E2E = 2,268 all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V4.4 Learning Calendar + Knowledge Map Exploration — learning-calendar API (monthly activity + FSRS projection), knowledge-map-stats API (coverage + depth/breadth + exploration style), 2 Dashboard widgets, 31 tests | **Result**: 1,468 BE + 770 FE + 61 E2E = 2,299 all pass, tsc: 0 errors, 0 open issues, build OK
