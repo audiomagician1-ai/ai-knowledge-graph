@@ -236,22 +236,16 @@ async def difficulty_calibration(
     - Easy concepts (low difficulty) have low mastery scores
     - Hard concepts (high difficulty) have high mastery rates
     """
-    import json as _json, os, sys
+    import json as _json, os
 
-    from routers.analytics_utils import validate_domain_id
+    from routers.analytics_utils import validate_domain_id, get_data_root
     if not validate_domain_id(domain_id):
         return {"domain_id": domain_id, "calibration": [], "summary": {}}
 
     progress = get_all_progress()
     progress_map = {p["concept_id"]: p for p in progress}
 
-    if getattr(sys, "frozen", False):
-        data_root = os.path.join(sys._MEIPASS, "seed_data")
-    else:
-        data_root = os.path.join(
-            os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))),
-            "data", "seed",
-        )
+    data_root = get_data_root()
 
     seed_path = os.path.join(data_root, domain_id, "seed_graph.json")
     if not os.path.isfile(seed_path):

@@ -810,6 +810,7 @@ python scripts/build_exe.py  # 输出到 release/
 - NPM audit: 6漏洞(4moderate+2high)均属workers>wrangler dev依赖, 不影响生产
 - data/scripts/ 目录含已完成脚本 data/seed/programming/, 保留供参考
 - Vite warning: learning.ts 循环依赖+未用import (不影响运行), cosmetic
+- ⚠️ **In-memory stores**: notifications, discussions, content-feedback are in-memory dicts — **data lost on server restart**. Acceptable for MVP/demo. Migration to Supabase tables planned (schemas commented as "Supabase-ready"). (#61)
 
 ### V1.3 Performance & Mobile Sprint ✅ (2026-04-07)
 - ✅ 路由级代码分割 (React.lazy 7个lazy页面, 初始bundle减60%)

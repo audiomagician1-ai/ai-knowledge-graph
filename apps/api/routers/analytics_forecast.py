@@ -39,9 +39,9 @@ async def mastery_forecast(
     Returns estimated days to completion, per-subdomain breakdown, and
     a confidence level based on data availability.
     """
-    import json as _json, os, sys, math
+    import json as _json, os, math
 
-    from routers.analytics_utils import validate_domain_id
+    from routers.analytics_utils import validate_domain_id, get_data_root
     if not validate_domain_id(domain_id):
         return {"domain_id": domain_id, "error": "Invalid domain_id"}
 
@@ -49,13 +49,7 @@ async def mastery_forecast(
     history = get_history(limit=10000)
     concept_domain_map, concept_info, domain_map = load_seed_metadata()
 
-    if getattr(sys, "frozen", False):
-        data_root = os.path.join(sys._MEIPASS, "seed_data")
-    else:
-        data_root = os.path.join(
-            os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))),
-            "data", "seed",
-        )
+    data_root = get_data_root()
 
     seed_path = os.path.join(data_root, domain_id, "seed_graph.json")
     if not os.path.isfile(seed_path):

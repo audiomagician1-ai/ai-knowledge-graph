@@ -163,7 +163,7 @@ class TestDiscussions:
         assert len(disc_r.json()["replies"]) == 1
 
     def test_vote(self, client):
-        """Vote on a discussion."""
+        """Vote on a discussion — dedup by voter_token (#60)."""
         create_r = client.post("/api/community/discussions", json={
             "concept_id": "test-vote",
             "title": "投票测试讨论",
@@ -171,12 +171,18 @@ class TestDiscussions:
         })
         disc_id = create_r.json()["id"]
 
-        r = client.post(f"/api/community/discussions/{disc_id}/vote")
+        r = client.post(f"/api/community/discussions/{disc_id}/vote?voter_token=user1")
         assert r.status_code == 200
         assert r.json()["votes"] == 1
 
-        r2 = client.post(f"/api/community/discussions/{disc_id}/vote")
-        assert r2.json()["votes"] == 2
+        # Same voter — should not increment
+        r2 = client.post(f"/api/community/discussions/{disc_id}/vote?voter_token=user1")
+        assert r2.json()["votes"] == 1
+        assert r2.json()["already_voted"] is True
+
+        # Different voter — should increment
+        r3 = client.post(f"/api/community/discussions/{disc_id}/vote?voter_token=user2")
+        assert r3.json()["votes"] == 2
 
     def test_resolve(self, client):
         """Mark a discussion as resolved."""

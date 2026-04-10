@@ -40,6 +40,7 @@ class ReplyCreate(BaseModel):
 # In-memory discussion store (Supabase-ready)
 _discussions: dict[str, dict] = {}
 _replies: dict[str, list[dict]] = {}  # discussion_id -> [replies]
+_vote_tracking: dict[str, set] = {}  # discussion_id -> set of voter tokens (#60)
 
 
 @router.post("/community/discussions")
@@ -153,12 +154,16 @@ async def reply_to_discussion(discussion_id: str, req: ReplyCreate):
 
 
 @router.post("/community/discussions/{discussion_id}/vote")
-async def vote_discussion(discussion_id: str):
-    """Upvote a discussion (+1)."""
+async def vote_discussion(discussion_id: str, voter_token: str = Query("anon", max_length=100)):
+    """Upvote a discussion (+1). Deduplicates by voter_token (#60)."""
     if discussion_id not in _discussions:
         raise HTTPException(status_code=404, detail="Discussion not found")
+    voters = _vote_tracking.setdefault(discussion_id, set())
+    if voter_token in voters:
+        return {"id": discussion_id, "votes": _discussions[discussion_id]["votes"], "already_voted": True}
+    voters.add(voter_token)
     _discussions[discussion_id]["votes"] += 1
-    return {"id": discussion_id, "votes": _discussions[discussion_id]["votes"]}
+    return {"id": discussion_id, "votes": _discussions[discussion_id]["votes"], "already_voted": False}
 
 
 @router.patch("/community/discussions/{discussion_id}/resolve")

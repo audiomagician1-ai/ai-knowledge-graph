@@ -56,14 +56,9 @@ async def review_priority(
     downstream_counts: dict[str, int] = {}
     for did in domain_map:
         try:
-            import json as _json, os as _os, sys as _sys
-            if getattr(_sys, "frozen", False):
-                sp = _os.path.join(_sys._MEIPASS, "seed_data", did, "seed_graph.json")
-            else:
-                sp = _os.path.join(
-                    _os.path.dirname(_os.path.dirname(_os.path.dirname(_os.path.dirname(__file__)))),
-                    "data", "seed", did, "seed_graph.json",
-                )
+            from routers.analytics_utils import get_data_root
+            import json as _json, os as _os
+            sp = _os.path.join(get_data_root(), did, "seed_graph.json")
             if _os.path.isfile(sp):
                 with open(sp, "r", encoding="utf-8") as f:
                     seed = _json.load(f)

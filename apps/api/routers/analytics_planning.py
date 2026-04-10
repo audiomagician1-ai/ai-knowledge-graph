@@ -21,15 +21,10 @@ def _load_seed_data():
 
     Returns (concept_domain_map, concept_info, domain_map, domain_concept_sets, domain_concept_counts).
     """
-    import json as _json, os, sys
+    import json as _json, os
 
-    if getattr(sys, "frozen", False):
-        data_root = os.path.join(sys._MEIPASS, "seed_data")
-    else:
-        data_root = os.path.join(
-            os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))),
-            "data", "seed",
-        )
+    from routers.analytics_utils import get_data_root
+    data_root = get_data_root()
 
     concept_domain_map: dict[str, str] = {}
     concept_info: dict[str, dict] = {}

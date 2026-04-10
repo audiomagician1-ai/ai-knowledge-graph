@@ -17,19 +17,15 @@ router = APIRouter()
 @router.get("/analytics/cross-domain-insights")
 async def cross_domain_insights():
     """Analyze knowledge transfer patterns across domains — pairs, synergy, suggestions."""
-    import json as _json, os, sys
+    import json as _json, os
+
+    from routers.analytics_utils import get_data_root
 
     all_progress = get_all_progress()
     concept_domain_map, concept_info, domain_map = load_seed_metadata()
 
     # Load cross-sphere links
-    if getattr(sys, "frozen", False):
-        links_path = os.path.join(sys._MEIPASS, "seed_data", "cross_sphere_links.json")
-    else:
-        links_path = os.path.join(
-            os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))),
-            "data", "seed", "cross_sphere_links.json",
-        )
+    links_path = os.path.join(get_data_root(), "cross_sphere_links.json")
     cross_links = []
     if os.path.isfile(links_path):
         with open(links_path, "r", encoding="utf-8") as f:
