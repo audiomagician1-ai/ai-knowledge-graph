@@ -8,6 +8,7 @@ import { readLearningTime } from '@/lib/hooks/useLearningTimer';
 import { StudyGoalWidget } from '@/components/common/StudyGoalWidget';
 import { ShareProgress } from '@/components/common/ShareProgress';
 import { StreakRewards } from '@/components/common/StreakRewards';
+import { QuickActionsBar } from '@/components/dashboard/QuickActionsBar';
 import { StatCard, DomainCard, WidgetSkeleton } from '@/components/dashboard/DashboardHelpers';
 import { StreakCalendar } from '@/components/dashboard/StreakCalendar';
 import { VelocitySection } from '@/components/dashboard/VelocitySection';
@@ -52,6 +53,9 @@ export function DashboardPage() {
           <StatCard icon={<Trophy size={20} />} label="已探索领域" value={globalStats.domainsStarted} sub={`/ ${domains.length}`} color="#f59e0b" />
           <StatCard icon={<Flame size={20} />} label="连续学习" value={streak.current} sub="天" color="#ef4444" />
         </div>
+
+        {/* Quick Actions */}
+        <QuickActionsBar />
 
         {/* Learning Time */}
         {(() => {

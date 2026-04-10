@@ -333,5 +333,123 @@ async def difficulty_calibration(
 
 # -- V2.8 endpoints moved to analytics_social.py (V2.10 split) --
 # -- V2.9 endpoints moved to analytics_search.py (V2.10 split) --
+
+
+# ═══════════════════════════════════════════
+# V4.2: Difficulty Tuner — Auto-calibration suggestions
+# ═══════════════════════════════════════════
+
+@router.get("/analytics/difficulty-tuner")
+async def difficulty_tuner(
+    threshold: float = Query(2.0, ge=0.5, le=5.0, description="Minimum deviation to flag"),
+    limit: int = Query(20, ge=1, le=100),
+):
+    """Suggest difficulty re-calibrations based on user performance data.
+
+    Compares seed difficulty (1-10) vs actual performance:
+    - If avg score > 85 and difficulty >= 7 → suggest lowering
+    - If avg score < 50 and difficulty <= 4 → suggest raising
+    - Deviation = |expected_difficulty - observed_difficulty| where observed is inferred from scores
+
+    Returns actionable suggestions sorted by confidence.
+    """
+    from routers.analytics_utils import load_seed_metadata
+
+    progress = get_all_progress()
+    concept_domain_map, concept_info, domain_map = load_seed_metadata()
+
+    if not progress:
+        return {"suggestions": [], "summary": {"total_flagged": 0, "too_easy": 0, "too_hard": 0}}
+
+    # Build concept performance map
+    concept_perf: dict[str, dict] = {}
+    for p in progress:
+        cid = p["concept_id"]
+        info = concept_info.get(cid)
+        if not info:
+            continue
+        score = p.get("mastery_score") or p.get("best_score", 0)
+        sessions = p.get("sessions", 1) or 1
+        status = p.get("status", "not_started")
+        concept_perf[cid] = {
+            "score": score,
+            "sessions": sessions,
+            "status": status,
+            "seed_difficulty": info.get("difficulty", 5),
+            "name": info.get("name", cid),
+            "domain_id": concept_domain_map.get(cid, ""),
+        }
+
+    suggestions = []
+    too_easy = 0
+    too_hard = 0
+
+    for cid, perf in concept_perf.items():
+        seed_diff = perf["seed_difficulty"]
+        score = perf["score"]
+        sessions = perf["sessions"]
+
+        # Infer observed difficulty (inverse of score: high score → low difficulty)
+        if score > 0:
+            observed_diff = round(10 - (score / 100) * 9, 1)  # score 100→diff 1, score 0→diff 10
+        else:
+            continue
+
+        deviation = abs(seed_diff - observed_diff)
+        if deviation < threshold:
+            continue
+
+        direction = ""
+        confidence = min(1.0, deviation / 5.0)  # Higher deviation → higher confidence
+        # Boost confidence with more sessions
+        confidence = min(1.0, confidence * (1 + min(sessions, 5) / 10))
+
+        if score >= 85 and seed_diff >= 7:
+            direction = "too_easy"
+            reason = f"平均{score}分但标记为难度{seed_diff}"
+            too_easy += 1
+        elif score <= 50 and seed_diff <= 4:
+            direction = "too_hard"
+            reason = f"平均{score}分但标记为难度{seed_diff}"
+            too_hard += 1
+        elif observed_diff < seed_diff - threshold:
+            direction = "too_easy"
+            reason = f"表现(≈难度{observed_diff})优于标记(难度{seed_diff})"
+            too_easy += 1
+        elif observed_diff > seed_diff + threshold:
+            direction = "too_hard"
+            reason = f"表现(≈难度{observed_diff})低于标记(难度{seed_diff})"
+            too_hard += 1
+        else:
+            continue
+
+        dname = domain_map.get(perf["domain_id"], {}).get("name", perf["domain_id"])
+        suggestions.append({
+            "concept_id": cid,
+            "concept_name": perf["name"],
+            "domain_id": perf["domain_id"],
+            "domain_name": dname,
+            "seed_difficulty": seed_diff,
+            "observed_difficulty": observed_diff,
+            "deviation": round(deviation, 1),
+            "direction": direction,
+            "suggested_difficulty": round(observed_diff),
+            "reason": reason,
+            "confidence": round(confidence, 2),
+            "sessions": sessions,
+            "avg_score": score,
+        })
+
+    suggestions.sort(key=lambda s: s["confidence"], reverse=True)
+
+    return {
+        "suggestions": suggestions[:limit],
+        "summary": {
+            "total_analyzed": len(concept_perf),
+            "total_flagged": len(suggestions),
+            "too_easy": too_easy,
+            "too_hard": too_hard,
+        },
+    }
 # -- V3.2 mastery-forecast moved to analytics_forecast.py (V3.8 split) --
 # -- V3.6 fsrs-insights + goal-recommendations moved to analytics_forecast.py (V3.8 split) --

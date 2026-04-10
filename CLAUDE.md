@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 2,219 (1,426 BE + 732 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 2,236 (1,440 BE + 735 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -310,6 +310,14 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ create_notification() 编程式帮助函数 (可从其他路由器调用)
 - ✅ 内容反馈自动触发通知 (提交反馈后自动创建通知)
 - ✅ 13 BE tests (notifications) + 10 BE tests (content-feedback) + 11 FE tests = 34 new tests
+
+### V4.2 Quick Actions + Learning Portfolio + Difficulty Tuner Sprint (2026-04-10, 完成)
+- ✅ QuickActionsBar组件: Dashboard顶部智能快捷操作 (复习/继续学习/探索新域, 基于study-plan+due+recommendation API上下文感知, 100L)
+- ✅ GET /api/learning/portfolio: 综合学习档案导出 (技能雷达+成就里程碑+强弱项+学习时间线+总览统计, 可用于简历/分享)
+- ✅ GET /api/analytics/difficulty-tuner: 难度自动校准建议 (seed难度vs实际表现偏差检测+方向/置信度+建议新难度值)
+- ✅ DashboardPage集成QuickActionsBar (Global Stats下方, 136L)
+- ✅ Fixed V3.8 stale size-check tests (learning_extended/analytics_insights limits → 800L universal)
+- ✅ 14 BE tests + 3 FE tests = 17 new tests
 
 ### V4.1 Error Resilience + Latency Monitoring + API Health Sprint (2026-04-10, 完成)
 - ✅ WidgetErrorBoundary: 每个Dashboard widget独立错误隔离 (crash→compact错误卡+重试按钮, 不影响其他widget)
@@ -746,6 +754,7 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/dashboard/DashboardCustomizer.tsx | Dashboard自定义面板 (V4.0: toggle+reorder+reset, 82L) |
 | packages/web/src/components/dashboard/WidgetErrorBoundary.tsx | Widget错误隔离 (V4.1: crash→错误卡+重试, class component) |
 | packages/web/src/components/dashboard/ApiHealthWidget.tsx | API系统健康 (V4.1: 端点数/延迟/错误率+慢端点TOP3, lazy-load, 107L) |
+| packages/web/src/components/dashboard/QuickActionsBar.tsx | 快捷操作栏 (V4.2: 复习/继续/探索, 上下文感知, 100L) |
 | workers/src/ | Cloudflare Workers代理后端 |
 
 ---
@@ -808,4 +817,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V4.1 Error Resilience + Latency Monitoring + API Health — WidgetErrorBoundary (41 widgets isolated), latency-report API, ApiHealthWidget, W helper refactor, 13 tests | **Result**: 1,426 BE + 732 FE + 61 E2E = 2,219 all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V4.2 Quick Actions + Learning Portfolio + Difficulty Tuner — QuickActionsBar (context-aware shortcuts), portfolio API (skills radar + milestones + timeline), difficulty-tuner API (auto-calibration suggestions), 17 tests | **Result**: 1,440 BE + 735 FE + 61 E2E = 2,236 all pass, tsc: 0 errors, 0 open issues, build OK

@@ -478,3 +478,127 @@ async def prerequisite_check(
 # -- V3.2 review-priority moved to learning_intelligence.py (V3.8 split) --
 # -- V3.5 session-replay moved to learning_intelligence.py (V3.8 split) --
 
+
+# ═══════════════════════════════════════════
+# V4.2: Learning Portfolio
+# ═══════════════════════════════════════════
+
+@router.get("/portfolio")
+async def learning_portfolio():
+    """Comprehensive exportable learning portfolio.
+
+    Aggregates all user learning data into a structured portfolio suitable for
+    export, sharing, or resume inclusion. Includes:
+    - Skills radar (per-domain mastery percentages)
+    - Achievement highlights
+    - Learning timeline (first/last activity, milestones)
+    - Knowledge graph stats
+    - Strengths and growth areas
+    """
+    from routers.analytics_utils import load_seed_metadata
+
+    progress = get_all_progress()
+    history = get_history(limit=5000)
+    streak_data = get_streak()
+
+    concept_domain_map, concept_info, domain_map = load_seed_metadata()
+
+    # ── Per-domain mastery ──
+    domain_mastered: dict[str, int] = {}
+    domain_total: dict[str, int] = {}
+    domain_scores: dict[str, list[int]] = {}
+
+    for cid in concept_info:
+        did = concept_domain_map.get(cid, "")
+        if did:
+            domain_total[did] = domain_total.get(did, 0) + 1
+
+    for p in progress:
+        cid = p["concept_id"]
+        did = concept_domain_map.get(cid, "")
+        if not did:
+            continue
+        if p.get("status") == "mastered":
+            domain_mastered[did] = domain_mastered.get(did, 0) + 1
+        score = p.get("mastery_score") or p.get("best_score", 0)
+        if score:
+            domain_scores.setdefault(did, []).append(score)
+
+    # Build skills radar
+    skills_radar = []
+    for did, total in sorted(domain_total.items(), key=lambda x: -x[1]):
+        mastered = domain_mastered.get(did, 0)
+        scores = domain_scores.get(did, [])
+        avg_score = round(sum(scores) / len(scores), 1) if scores else 0
+        pct = round(mastered / max(1, total) * 100, 1)
+        if mastered > 0 or scores:
+            skills_radar.append({
+                "domain_id": did,
+                "domain_name": domain_map.get(did, {}).get("name", did),
+                "icon": domain_map.get(did, {}).get("icon", ""),
+                "mastered": mastered,
+                "total": total,
+                "mastery_pct": pct,
+                "avg_score": avg_score,
+            })
+    skills_radar.sort(key=lambda x: x["mastery_pct"], reverse=True)
+
+    # ── Overall stats ──
+    total_mastered = sum(domain_mastered.values())
+    total_concepts = sum(domain_total.values())
+    domains_started = len([d for d in domain_mastered if domain_mastered[d] > 0])
+    all_scores = [s for ss in domain_scores.values() for s in ss]
+    overall_avg = round(sum(all_scores) / len(all_scores), 1) if all_scores else 0
+
+    # ── Timeline ──
+    timestamps = [h.get("timestamp", 0) for h in history if h.get("timestamp", 0) > 0]
+    first_activity = min(timestamps) if timestamps else 0
+    last_activity = max(timestamps) if timestamps else 0
+    total_days = max(1, int((last_activity - first_activity) / 86400)) if timestamps else 0
+
+    # ── Strengths & Growth ──
+    strengths = [s for s in skills_radar if s["mastery_pct"] >= 50][:5]
+    growth_areas = [s for s in skills_radar if 0 < s["mastery_pct"] < 30][:5]
+
+    # ── Achievement highlights ──
+    milestones_hit = []
+    for did, mastered in domain_mastered.items():
+        total = domain_total.get(did, 0)
+        if total > 0:
+            pct = mastered / total * 100
+            dname = domain_map.get(did, {}).get("name", did)
+            if pct >= 100:
+                milestones_hit.append({"domain": dname, "badge": "🌟", "label": "100% 完成"})
+            elif pct >= 75:
+                milestones_hit.append({"domain": dname, "badge": "⭐", "label": f"{round(pct)}% 掌握"})
+
+    cur_streak = streak_data.get("current", 0) if isinstance(streak_data, dict) else 0
+    longest = streak_data.get("longest", 0) if isinstance(streak_data, dict) else 0
+
+    return {
+        "portfolio": {
+            "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+            "overview": {
+                "total_mastered": total_mastered,
+                "total_concepts": total_concepts,
+                "mastery_pct": round(total_mastered / max(1, total_concepts) * 100, 1),
+                "domains_explored": domains_started,
+                "total_domains": len(domain_total),
+                "avg_score": overall_avg,
+                "current_streak": cur_streak,
+                "longest_streak": longest,
+                "learning_days": total_days,
+            },
+            "skills_radar": skills_radar,
+            "strengths": [{"domain": s["domain_name"], "mastery_pct": s["mastery_pct"]} for s in strengths],
+            "growth_areas": [{"domain": g["domain_name"], "mastery_pct": g["mastery_pct"]} for g in growth_areas],
+            "milestones": milestones_hit,
+            "timeline": {
+                "first_activity": first_activity,
+                "last_activity": last_activity,
+                "total_days": total_days,
+                "total_sessions": len(history),
+            },
+        },
+    }
+
