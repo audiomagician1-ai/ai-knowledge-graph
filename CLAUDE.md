@@ -80,7 +80,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
 | **测试总数** | 2,364 (1,503 BE + 800 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
-| **Open Issues** | 0 (all 14 CR issues fixed) | 2026-04-10 |
+| **Open Issues** | 0 (14 CR + 13 design issues fixed) | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
 
 ---
@@ -867,3 +867,10 @@ python scripts/build_exe.py  # 输出到 release/
 - Round 2: #55 P2 inline imports cleanup + #56 P2 DRY get_data_root() + #57 P2 loop imports + #60 P2 vote dedup + #61 P1 in-memory docs
 - Round 3: #62 P2 AbortController + #63 P2 consistent named exports + #64 P2 setTimeout cleanup + #65 P2 useFetchWidget hook
 - 📊 1,503 BE + 800 FE + 61 E2E = 2,364 total tests, tsc 0 errors, build ✅
+
+### Design Fix Sprint (2026-04-10, 完成)
+- ✅ All 13 design issues (#66-#78) fixed in 4 rounds
+- Round 1 (P0): #66 type scale + #74 inline→Tailwind migration + #78 CSS color tokens (15+ semantic vars, .form-label/.form-input utils, 80+ inline styles migrated)
+- Round 2 (P1): #67 all 36 #fff/#ffffff→semantic vars + #76 Chat/Learn bg→var(--color-surface-1)
+- Round 3 (P2): #69 border-radius→rounded-xl + #70 heading -0.02em + #71 shadow≤0.08
+- Round 4 (P2+P3): #68 4px grid documented + #72 fontFamily cleanup + #73 JS hover→CSS + #75 btn 4-state + #77 emoji→Lucide SVG
