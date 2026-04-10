@@ -29,10 +29,7 @@ export function OtherDomainCard({ domain, onClick }: { domain: Domain; onClick: 
   return (
     <button
       onClick={onClick}
-      className="w-full text-left rounded-lg transition-all"
-      style={{ padding: '10px 12px', backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)', cursor: 'pointer' }}
-      onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--color-surface-3)'; }}
-      onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'var(--color-surface-2)'; }}
+      className="w-full text-left rounded-lg transition-all p-2.5 bg-[var(--color-surface-2)] border border-[var(--color-border)] cursor-pointer hover:bg-[var(--color-surface-3)]"
     >
       <div className="flex items-center gap-2.5">
         <span className="flex items-center justify-center shrink-0 rounded-md text-base"
@@ -40,10 +37,10 @@ export function OtherDomainCard({ domain, onClick }: { domain: Domain; onClick: 
           {domain.icon}
         </span>
         <div className="flex-1 min-w-0">
-          <div className="truncate" style={{ fontSize: 13, fontWeight: 600, color: 'var(--color-text-primary)' }}>{domain.name}</div>
+          <div className="truncate text-sm font-semibold text-[var(--color-text-primary)]">{domain.name}</div>
           <div className="flex items-center gap-2 mt-0.5">
-            <span style={{ fontSize: 10, color: 'var(--color-text-tertiary)' }}>{conceptCount} 概念</span>
-            {progress.mastered > 0 && <span style={{ fontSize: 10, color: 'var(--color-accent-emerald)' }}>{progress.mastered} ✓</span>}
+            <span className="text-[10px] text-[var(--color-text-tertiary)]">{conceptCount} 概念</span>
+            {progress.mastered > 0 && <span className="text-[10px] text-[var(--color-accent-emerald)]">{progress.mastered} ✓</span>}
           </div>
         </div>
       </div>
@@ -52,10 +49,10 @@ export function OtherDomainCard({ domain, onClick }: { domain: Domain; onClick: 
           <div className="flex-1 rounded-full overflow-hidden" style={{ height: 3, backgroundColor: 'var(--color-surface-4)' }}>
             <div style={{ height: '100%', borderRadius: 999, width: `${pct}%`, backgroundColor: domain.color, minWidth: pct > 0 ? 2 : 0, transition: 'width 0.4s ease' }} />
           </div>
-          <span style={{ fontSize: 10, color: 'var(--color-text-tertiary)', minWidth: 22, textAlign: 'right' }} className="font-mono">{pct}%</span>
+          <span className="text-[10px] text-[var(--color-text-tertiary)] min-w-[22px] text-right font-mono">{pct}%</span>
         </div>
       )}
-      {timeAgo && <div style={{ fontSize: 10, color: 'var(--color-text-tertiary)', marginTop: 4 }}>{timeAgo}</div>}
+      {timeAgo && <div className="text-[10px] text-[var(--color-text-tertiary)] mt-1">{timeAgo}</div>}
     </button>
   );
 }
@@ -76,23 +73,20 @@ export function ActivityRow({ item, nameMap, onNavigate }: { item: ConceptProgre
     <button
       onClick={() => onNavigate?.(item.concept_id)}
       disabled={!clickable}
-      className="w-full flex items-center transition-all group"
-      style={{ gap: 10, borderRadius: 8, padding: '8px 12px', backgroundColor: 'transparent', border: 'none', cursor: clickable ? 'pointer' : 'default', textAlign: 'left' }}
-      onMouseEnter={(e) => { if (clickable) e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.04)'; }}
-      onMouseLeave={(e) => { if (clickable) e.currentTarget.style.backgroundColor = 'transparent'; }}
+      className="w-full flex items-center gap-2.5 rounded-lg py-2 px-3 bg-transparent border-none text-left transition-all group hover:bg-black/5" style={{ cursor: clickable ? 'pointer' : 'default' }}
     >
-      <div className="flex items-center justify-center shrink-0"
-        style={{ width: 28, height: 28, borderRadius: 7, backgroundColor: isMastered ? 'rgba(16,185,129,0.1)' : 'rgba(245,158,11,0.1)', color: isMastered ? 'var(--color-accent-emerald)' : 'var(--color-accent-amber)' }}>
+      <div className="flex items-center justify-center shrink-0 w-7 h-7 rounded-lg"
+        style={{ backgroundColor: isMastered ? 'var(--color-tint-emerald)' : 'var(--color-tint-amber)', color: isMastered ? 'var(--color-accent-emerald)' : 'var(--color-accent-amber)' }}>
         {isMastered ? <Zap size={12} /> : <BookOpen size={12} />}
       </div>
       <div className="flex-1 min-w-0">
-        <div className="truncate" style={{ fontSize: 13 }}>{displayName}</div>
-        <div className="font-mono" style={{ fontSize: 11, marginTop: 2, color: 'var(--color-text-tertiary)' }}>{timeStr}</div>
+        <div className="truncate text-sm">{displayName}</div>
+        <div className="font-mono text-[11px] mt-0.5 text-[var(--color-text-tertiary)]">{timeStr}</div>
       </div>
       {hasScore ? (
-        <span className="font-bold font-mono" style={{ fontSize: 14, color: scoreColor }}>{item.mastery_score}</span>
+        <span className="font-bold font-mono text-sm" style={{ color: scoreColor }}>{item.mastery_score}</span>
       ) : (
-        <span style={{ fontSize: 11, color: 'var(--color-accent-amber)' }}>学习中</span>
+        <span className="text-[11px] text-[var(--color-accent-amber)]">学习中</span>
       )}
       {clickable && <ArrowRight size={13} className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0" style={{ color: 'var(--color-text-tertiary)' }} />}
     </button>

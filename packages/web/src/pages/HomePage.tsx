@@ -65,19 +65,19 @@ export function HomePage() {
     <div className="h-dvh w-full relative overflow-hidden" style={{ backgroundColor: BG }}>
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ touchAction: 'none' }} />
       <div className="absolute left-0 right-0 text-center pointer-events-none select-none" style={{ top: 32, zIndex: 10 }}>
-        <h1 style={{ fontSize: 20, fontWeight: 600, color: '#1a1a1a', letterSpacing: '0.04em', marginBottom: 6, fontFamily: '-apple-system,"SF Pro Display","Helvetica Neue","PingFang SC",sans-serif', textShadow: '0 1px 12px rgba(240,240,236,0.95)' }}>选择你的知识领域</h1>
-        <p style={{ fontSize: 12, color: '#999', letterSpacing: '0.06em', fontFamily: '-apple-system,"SF Pro Text","PingFang SC",sans-serif', textShadow: '0 1px 8px rgba(240,240,236,0.9)' }}>拖动浏览 · 点击进入 3D 知识图谱</p>
+        <h1 className="text-xl font-semibold text-[var(--color-text-primary)] tracking-wide mb-1.5" style={{ textShadow: '0 1px 12px rgba(240,240,236,0.95)' }}>选择你的知识领域</h1>
+        <p className="text-xs text-[var(--color-text-tertiary)] tracking-widest" style={{ textShadow: '0 1px 8px rgba(240,240,236,0.9)' }}>拖动浏览 · 点击进入 3D 知识图谱</p>
       </div>
       {loading && active.length === 0 && (
         <div className="absolute inset-0 flex items-center justify-center" style={{ zIndex: 20 }}>
-          <Loader size={28} className="animate-spin" style={{ color: '#888' }} />
+          <Loader size={28} className="animate-spin text-[var(--color-text-tertiary)]" />
         </div>
       )}
       <ReviewBanner />
       <DailyRecommendation />
       <WelcomeGuide />
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 pointer-events-auto" style={{ zIndex: 15 }}>
-        <div className="flex items-center gap-2 px-3 py-2 rounded-2xl" style={{ backgroundColor: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(16px)', boxShadow: '0 4px 24px rgba(0,0,0,0.08)', border: '1px solid rgba(0,0,0,0.06)' }}>
+        <div className="flex items-center gap-2 px-3 py-2 rounded-2xl glass-heavy">
           <QuickNavBtn icon={<BarChart3 size={18} />} label="分析" onClick={() => nav('/dashboard')} />
           <QuickNavBtn icon={<Trophy size={18} />} label="排行" onClick={() => nav('/leaderboard')} />
           <QuickNavBtn icon={<StickyNote size={18} />} label="笔记" onClick={() => nav('/notes')} />
@@ -101,9 +101,9 @@ export function HomePage() {
 
 function QuickNavBtn({ icon, label, onClick }: { icon: React.ReactNode; label: string; onClick: () => void }) {
   return (
-    <button onClick={onClick} className="flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-xl transition-colors hover:bg-black/5" style={{ minWidth: 48 }}>
-      <span style={{ color: '#555' }}>{icon}</span>
-      <span style={{ fontSize: 10, color: '#888', fontWeight: 500 }}>{label}</span>
+    <button onClick={onClick} className="flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-xl transition-colors hover:bg-black/5 min-w-12">
+      <span className="text-[var(--color-text-secondary)]">{icon}</span>
+      <span className="text-[10px] text-[var(--color-text-tertiary)] font-medium">{label}</span>
     </button>
   );
 }

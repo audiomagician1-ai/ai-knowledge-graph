@@ -26,7 +26,7 @@ export function SettingsDataIO() {
       <div style={{ borderRadius: 10, padding: '16px 20px', backgroundColor: 'var(--color-surface-2)' }}>
         <div className="flex items-center gap-2" style={{ marginBottom: 12 }}>
           <Info size={13} style={{ color: 'var(--color-accent-primary)' }} />
-          <span style={{ fontSize: 13, fontWeight: 600 }}>关于</span>
+          <span className="text-sm font-semibold">关于</span>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {[
@@ -63,11 +63,11 @@ export function SettingsDataIO() {
           const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
           const url = URL.createObjectURL(blob); const a = document.createElement('a');
           a.href = url; a.download = `akg-data-${new Date().toISOString().slice(0, 10)}.json`; a.click(); setTimeout(() => URL.revokeObjectURL(url), 10_000);
-        }} className="btn-ghost flex-1 flex items-center justify-center gap-2" style={{ borderRadius: 10, padding: '12px 0', fontSize: 13 }}>
+        }} className="btn-ghost flex-1 flex items-center justify-center gap-2 rounded-xl py-3 text-sm">
           <Download size={14} /> 导出
         </button>
         <button onClick={() => fileInputRef.current?.click()}
-          className="btn-ghost flex-1 flex items-center justify-center gap-2" style={{ borderRadius: 10, padding: '12px 0', fontSize: 13 }}>
+          className="btn-ghost flex-1 flex items-center justify-center gap-2 rounded-xl py-3 text-sm">
           <Upload size={14} /> 导入
         </button>
         <input ref={fileInputRef} type="file" accept=".json" style={{ display: 'none' }} onChange={(e) => {
@@ -122,7 +122,7 @@ export function SettingsDataIO() {
       {/* Security */}
       <div className="flex items-start gap-3" style={{ borderRadius: 10, padding: '14px 18px', backgroundColor: 'var(--color-tint-emerald)' }}>
         <Shield size={13} className="shrink-0" style={{ marginTop: 1, color: 'var(--color-accent-emerald)' }} />
-        <p style={{ fontSize: 12, lineHeight: 1.6, color: 'var(--color-text-tertiary)' }}>
+        <p className="text-xs leading-relaxed text-[var(--color-text-tertiary)]">
           {isUsingDefault
             ? '免费服务由服务器代理调用，你的浏览器不会接触 API Key。'
             : `Key 仅存在浏览器本地。${llmConfig.useProxy ? '本地代理模式下，请求通过本机代理转发，不经过任何外部服务器。' : '直连模式下，请求直接从浏览器发往 LLM API。'}`}
@@ -131,7 +131,7 @@ export function SettingsDataIO() {
 
       {/* Build Info */}
       <div className="text-center" style={{ paddingTop: 8 }}>
-        <p style={{ fontSize: 11, color: 'var(--color-text-quaternary, #6b7280)' }}>
+        <p className="text-[11px] text-[var(--color-text-quaternary)]">
           AI知识图谱 v0.1.0 · Build {typeof __BUILD_HASH__ !== 'undefined' ? __BUILD_HASH__ : 'dev'}
         </p>
       </div>

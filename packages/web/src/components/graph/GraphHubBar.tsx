@@ -40,16 +40,13 @@ interface GraphHubBarProps {
 function HubButton({ icon: Icon, label, active, onClick }: { icon: typeof BarChart3; label: string; active: boolean; onClick: () => void }) {
   return (
     <button onClick={onClick}
-      className="flex flex-col items-center justify-center rounded-xl transition-all whitespace-nowrap"
+      className="flex flex-col items-center justify-center rounded-xl transition-all whitespace-nowrap w-14 h-12 hover:bg-black/5"
       style={{
-        width: 56, height: 48,
         backgroundColor: active ? 'rgba(0,0,0,0.06)' : 'transparent',
         color: active ? 'var(--color-text-primary)' : 'var(--color-text-tertiary)',
-      }}
-      onMouseEnter={(e) => { if (!active) e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.04)'; }}
-      onMouseLeave={(e) => { if (!active) e.currentTarget.style.backgroundColor = 'transparent'; }}>
+      }}>
       <Icon size={18} strokeWidth={active ? 2.5 : 2} />
-      <span style={{ fontSize: 10, fontWeight: 500, marginTop: 2, lineHeight: 1 }}>{label}</span>
+      <span className="text-[10px] font-medium mt-0.5 leading-none">{label}</span>
     </button>
   );
 }
@@ -113,7 +110,7 @@ export function GraphHubBar(props: GraphHubBarProps) {
         <button onClick={onToggleRecommend} className="flex items-center gap-2 rounded-2xl transition-all font-semibold whitespace-nowrap" style={{
           padding: '8px 20px', height: 48,
           backgroundColor: showRecommend ? 'var(--color-accent-primary)' : 'rgba(16,185,129,0.1)',
-          color: showRecommend ? '#ffffff' : 'var(--color-accent-primary)', fontSize: 14,
+          color: showRecommend ? 'var(--color-text-on-accent)' : 'var(--color-accent-primary)', fontSize: 14,
         }}>
           <Compass size={18} />
           <span>推荐</span>

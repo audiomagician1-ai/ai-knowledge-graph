@@ -1,9 +1,9 @@
 ﻿import type { Achievement } from '@/lib/api/learning-api';
 
 export const TIER_COLORS: Record<string, string> = {
-  bronze:   '#CD7F32',
-  silver:   '#C0C0C0',
-  gold:     '#FFD700',
+  bronze:   'var(--color-accent-bronze)',
+  silver:   'var(--color-accent-slate)',
+  gold:     'var(--color-accent-gold)',
   platinum: '#E5E4E2',
 };
 
@@ -27,7 +27,7 @@ export const CATEGORY_META: Record<string, { label: string; icon: string }> = {
  * Single achievement card — icon, name, tier badge, description, progress bar, unlock status.
  */
 export function AchievementCard({ achievement }: { achievement: Achievement }) {
-  const tierColor = TIER_COLORS[achievement.tier] || '#888';
+  const tierColor = TIER_COLORS[achievement.tier] || 'var(--color-text-tertiary)';
   const isUnlocked = achievement.unlocked;
 
   return (
@@ -40,17 +40,17 @@ export function AchievementCard({ achievement }: { achievement: Achievement }) {
         opacity: isUnlocked ? 1 : 0.75, transition: 'all 0.2s ease',
       }}
     >
-      <span style={{ fontSize: 28, flexShrink: 0, filter: isUnlocked ? 'none' : 'grayscale(0.6)' }}>
+      <span className="text-[28px] shrink-0" style={{ filter: isUnlocked ? 'none' : 'grayscale(0.6)' }}>
         {achievement.icon}
       </span>
       <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 2 }}>
-          <span style={{ fontWeight: 600, fontSize: 14, color: 'var(--color-text-primary)' }}>{achievement.name}</span>
-          <span style={{ fontSize: 11, fontWeight: 600, padding: '1px 6px', borderRadius: 4, color: '#fff', backgroundColor: tierColor, lineHeight: '16px' }}>
+        <div className="flex items-center gap-2 mb-0.5">
+          <span className="font-semibold text-sm text-[var(--color-text-primary)]">{achievement.name}</span>
+          <span className="text-[11px] font-semibold px-1.5 py-px rounded text-[var(--color-text-on-accent)] leading-4" style={{ backgroundColor: tierColor }}>
             {TIER_LABELS[achievement.tier] || achievement.tier}
           </span>
         </div>
-        <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', margin: '2px 0 6px 0', lineHeight: 1.4 }}>
+        <p className="text-xs text-[var(--color-text-tertiary)] my-0.5 mb-1.5 leading-snug">
           {achievement.description}
         </p>
         <div style={{ width: '100%', height: 6, borderRadius: 3, backgroundColor: 'var(--color-surface-3)', overflow: 'hidden' }}>
@@ -59,7 +59,7 @@ export function AchievementCard({ achievement }: { achievement: Achievement }) {
             backgroundColor: isUnlocked ? 'var(--color-accent-emerald)' : 'var(--color-accent-amber)', transition: 'width 0.5s ease',
           }} />
         </div>
-        <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginTop: 3, display: 'flex', justifyContent: 'space-between' }}>
+        <div className="text-[11px] text-[var(--color-text-tertiary)] mt-1 flex justify-between">
           <span>
             {isUnlocked
               ? `✅ 已解锁${achievement.unlocked_at ? ' · ' + new Date(achievement.unlocked_at * 1000).toLocaleDateString('zh-CN') : ''}`

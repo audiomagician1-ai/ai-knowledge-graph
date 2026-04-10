@@ -83,8 +83,8 @@ export function DashboardContent({ onNavigate, onDomainSwitch }: DashboardConten
               {domainInfo.icon}
             </span>
             <div>
-              <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--color-text-primary)' }}>{domainInfo.name}</div>
-              <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginTop: 1 }}>当前学习</div>
+              <div className="text-base font-bold" style={{ color: 'var(--color-text-primary)' }}>{domainInfo.name}</div>
+              <div className="text-[11px] mt-px text-[var(--color-text-tertiary)]">当前学习</div>
             </div>
           </div>
         )}
@@ -99,8 +99,8 @@ export function DashboardContent({ onNavigate, onDomainSwitch }: DashboardConten
           ].map(({ label, value, color, icon: Icon }) => (
             <div key={label} style={{ borderRadius: 10, padding: '12px 8px', textAlign: 'center', backgroundColor: 'var(--color-surface-2)' }}>
               <Icon size={14} style={{ color, margin: '0 auto 6px' }} />
-              <div className="font-bold font-mono" style={{ fontSize: 18, color }}>{value}</div>
-              <div style={{ fontSize: 10, marginTop: 6, color: 'var(--color-text-tertiary)' }}>{label}</div>
+              <div className="font-bold font-mono text-lg" style={{ color }}>{value}</div>
+              <div className="text-[10px] mt-1.5 text-[var(--color-text-tertiary)]">{label}</div>
             </div>
           ))}
         </div>
@@ -108,13 +108,13 @@ export function DashboardContent({ onNavigate, onDomainSwitch }: DashboardConten
         {/* Progress bar */}
         <div style={{ borderRadius: 10, padding: '14px 16px', backgroundColor: 'var(--color-surface-2)', marginBottom: 16 }}>
           <div className="flex items-center justify-between" style={{ marginBottom: 8 }}>
-            <span style={{ fontSize: 12, fontWeight: 600 }}>掌握进度</span>
-            <span className="font-mono font-bold" style={{ fontSize: 14, color: 'var(--color-accent-primary)' }}>{progressPct}%</span>
+            <span className="text-xs font-semibold">掌握进度</span>
+            <span className="font-mono font-bold text-sm text-[var(--color-accent-primary)]">{progressPct}%</span>
           </div>
           <div style={{ height: 8, borderRadius: 999, overflow: 'hidden', backgroundColor: 'var(--color-surface-4)' }}>
             <div style={{ height: '100%', borderRadius: 999, transition: 'all 0.7s', width: `${progressPct}%`, backgroundColor: 'var(--color-accent-emerald)', minWidth: progressPct > 0 ? 4 : 0 }} />
           </div>
-          <div style={{ fontSize: 11, marginTop: 8, color: 'var(--color-text-tertiary)' }}>
+          <div className="text-[11px] mt-2 text-[var(--color-text-tertiary)]">
             {masteredNodes.length} / {totalNodes} 概念
           </div>
         </div>
@@ -123,10 +123,10 @@ export function DashboardContent({ onNavigate, onDomainSwitch }: DashboardConten
         <div style={{ marginBottom: 16 }}>
           <div className="flex items-center gap-2" style={{ marginBottom: 10 }}>
             <Clock size={13} style={{ color: 'var(--color-text-tertiary)' }} />
-            <span style={{ fontSize: 13, fontWeight: 600 }}>最近学习</span>
+            <span className="text-sm font-semibold">最近学习</span>
           </div>
           {recentActivity.length === 0 ? (
-            <p style={{ fontSize: 13, textAlign: 'center', padding: '28px 0', color: 'var(--color-text-tertiary)' }}>还没有学习记录</p>
+            <p className="text-sm text-center py-7 text-[var(--color-text-tertiary)]">还没有学习记录</p>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
               {recentActivity.map((item) => (
@@ -141,8 +141,8 @@ export function DashboardContent({ onNavigate, onDomainSwitch }: DashboardConten
           <div>
             <div className="flex items-center gap-2" style={{ marginBottom: 10 }}>
               <Target size={12} style={{ color: 'var(--color-accent-emerald)' }} />
-              <span style={{ fontSize: 13, fontWeight: 600 }}>已掌握</span>
-              <span className="font-mono" style={{ fontSize: 10, padding: '1px 7px', borderRadius: 6, backgroundColor: 'rgba(138,173,122,0.1)', color: 'var(--color-accent-emerald)' }}>
+              <span className="text-sm font-semibold">已掌握</span>
+              <span className="font-mono text-[10px] px-1.5 py-px rounded-md bg-[var(--color-tint-emerald)] text-[var(--color-accent-emerald)]">
                 {masteredNodes.length}
               </span>
             </div>
@@ -151,7 +151,7 @@ export function DashboardContent({ onNavigate, onDomainSwitch }: DashboardConten
                 <button
                   key={p.concept_id}
                   onClick={() => onNavigate?.(p.concept_id)}
-                  style={{ borderRadius: 7, padding: '5px 12px', fontSize: 11, backgroundColor: 'rgba(138,173,122,0.06)', color: 'var(--color-accent-emerald)', border: 'none', cursor: onNavigate ? 'pointer' : 'default' }}
+                  className="rounded-lg py-1 px-3 text-[11px] bg-[var(--color-tint-emerald)] text-[var(--color-accent-emerald)] border-none" style={{ cursor: onNavigate ? 'pointer' : 'default' }}
                 >
                   {nameMap[p.concept_id] || p.concept_id.replace(/-/g, ' ')}
                 </button>
@@ -168,11 +168,11 @@ export function DashboardContent({ onNavigate, onDomainSwitch }: DashboardConten
       <div style={{ width: 240, flexShrink: 0, padding: '20px 16px', overflowY: 'auto' }}>
         <div className="flex items-center gap-2" style={{ marginBottom: 14 }}>
           <Globe size={13} style={{ color: 'var(--color-text-tertiary)' }} />
-          <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--color-text-primary)' }}>其他星系</span>
+          <span className="text-sm font-semibold text-[var(--color-text-primary)]">其他星系</span>
         </div>
 
         {otherDomains.length === 0 ? (
-          <p style={{ fontSize: 12, textAlign: 'center', padding: '24px 0', color: 'var(--color-text-tertiary)' }}>暂无其他星系</p>
+          <p className="text-xs text-center py-6 text-[var(--color-text-tertiary)]">暂无其他星系</p>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             {otherDomains.map((domain) => (

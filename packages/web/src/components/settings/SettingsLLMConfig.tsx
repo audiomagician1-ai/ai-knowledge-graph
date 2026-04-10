@@ -69,39 +69,33 @@ export function SettingsLLMConfig({ llmConfig, setLLMConfig, clearApiKey, onColl
     <>
       {/* Provider */}
       <div>
-        <label className="flex items-center gap-2" style={{ color: 'var(--color-text-tertiary)', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 8, display: 'flex' }}>
+        <label className="form-label">
           <Server size={12} /> 服务商
         </label>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8 }}>
+        <div className="grid grid-cols-4 gap-2">
           {PROVIDERS.map((p) => {
             const pInfo = PROVIDER_INFO[p];
             const isActive = llmConfig.provider === p;
             return (
               <button key={p} onClick={() => setLLMConfig({ provider: p })}
-                style={{
-                  borderRadius: 10, padding: '10px 8px', textAlign: 'center', fontSize: 13, fontWeight: 500,
-                  backgroundColor: isActive ? 'var(--color-surface-3)' : 'var(--color-surface-2)',
-                  border: isActive ? '1.5px solid var(--color-accent-primary)' : '1px solid transparent',
-                  color: isActive ? 'var(--color-accent-primary)' : 'var(--color-text-secondary)',
-                  cursor: 'pointer', transition: 'all 0.15s',
-                }}>
+                className={`rounded-xl py-2.5 px-2 text-center text-sm font-medium cursor-pointer transition-all ${isActive ? 'bg-[var(--color-surface-3)] border-[1.5px] border-[var(--color-accent-primary)] text-[var(--color-accent-primary)]' : 'bg-[var(--color-surface-2)] border border-transparent text-[var(--color-text-secondary)]'}`}>
                 {pInfo.name}
               </button>
             );
           })}
         </div>
-        <p style={{ color: 'var(--color-text-tertiary)', fontSize: 12, marginTop: 8, lineHeight: 1.5 }}>{info.hint}</p>
+        <p className="text-xs mt-2 leading-normal text-[var(--color-text-tertiary)]">{info.hint}</p>
       </div>
 
       {/* API Key */}
       <div>
-        <label className="flex items-center gap-2" style={{ color: 'var(--color-text-tertiary)', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 8, display: 'flex' }}>
+        <label className="form-label">
           <Key size={12} /> API Key
         </label>
-        <div className="flex items-center overflow-hidden" style={{ borderRadius: 10, backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)' }}>
+        <div className="flex items-center overflow-hidden rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)]">
           <input type={showKey ? 'text' : 'password'} value={llmConfig.apiKey}
             onChange={(e) => setLLMConfig({ apiKey: e.target.value })} placeholder={info.placeholder}
-            className="flex-1 bg-transparent outline-none font-mono" style={{ padding: '12px 16px', fontSize: 13, color: 'var(--color-text-primary)', border: 'none' }} />
+            className="flex-1 bg-transparent outline-none font-mono py-3 px-4 text-sm text-[var(--color-text-primary)] border-none" />
           <button onClick={() => setShowKey(!showKey)} style={{ padding: '0 14px', flexShrink: 0, color: 'var(--color-text-tertiary)', cursor: 'pointer', background: 'none', border: 'none' }}>
             {showKey ? <EyeOff size={15} /> : <Eye size={15} />}
           </button>
@@ -111,37 +105,35 @@ export function SettingsLLMConfig({ llmConfig, setLLMConfig, clearApiKey, onColl
 
       {/* Base URL */}
       <div>
-        <label className="flex items-center gap-2" style={{ color: 'var(--color-text-tertiary)', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 8, display: 'flex' }}>
+        <label className="form-label">
           <Globe size={12} /> API Base URL
         </label>
         <input type="text" value={llmConfig.baseUrl || ''} onChange={(e) => setLLMConfig({ baseUrl: e.target.value })}
           placeholder={info.defaultBase || 'https://your-api.example.com/v1'}
-          className="w-full outline-none font-mono"
-          style={{ borderRadius: 10, padding: '12px 16px', fontSize: 13, backgroundColor: 'var(--color-surface-2)', color: 'var(--color-text-primary)', border: '1px solid var(--color-border)' }} />
+          className="form-input font-mono" />
       </div>
 
       {/* Model */}
       <div>
-        <label className="flex items-center gap-2" style={{ color: 'var(--color-text-tertiary)', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 8, display: 'flex' }}>
+        <label className="form-label">
           <Box size={12} /> 模型名称
         </label>
         <input type="text" value={llmConfig.model || ''}
           onChange={(e) => setLLMConfig({ model: e.target.value })}
           placeholder={llmConfig.provider === 'openrouter' ? 'openai/gpt-4o' : llmConfig.provider === 'openai' ? 'gpt-4o' : llmConfig.provider === 'deepseek' ? 'deepseek-chat' : 'model-name'}
-          className="w-full outline-none font-mono"
-          style={{ borderRadius: 10, padding: '12px 16px', fontSize: 13, backgroundColor: 'var(--color-surface-2)', color: 'var(--color-text-primary)', border: '1px solid var(--color-border)' }} />
+          className="form-input font-mono" />
         {info.modelHint && (
-          <p style={{ color: 'var(--color-text-tertiary)', fontSize: 11, marginTop: 6, lineHeight: 1.5 }}>{info.modelHint}</p>
+          <p className="text-[11px] mt-1.5 leading-normal text-[var(--color-text-tertiary)]">{info.modelHint}</p>
         )}
         {(() => { const warn = validateModelId(llmConfig.provider, llmConfig.model || ''); return warn ? (
-          <p style={{ color: 'var(--color-accent-rose)', fontSize: 11, marginTop: 4, lineHeight: 1.5 }}>⚠️ {warn}</p>
+          <p className="text-[11px] mt-1 leading-normal text-[var(--color-accent-rose)]">⚠️ {warn}</p>
         ) : null; })()}
       </div>
 
       {/* Local Proxy Toggle */}
       <div style={{ borderRadius: 10, padding: '14px 18px', backgroundColor: 'var(--color-surface-2)', border: llmConfig.useProxy ? '1.5px solid var(--color-accent-primary)' : '1px solid var(--color-border)' }}>
         <div className="flex items-center justify-between" style={{ marginBottom: 8 }}>
-          <label className="flex items-center gap-2" style={{ color: 'var(--color-text-tertiary)', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', display: 'flex' }}>
+          <label className="form-label">
             <MonitorDown size={12} /> 本地代理模式
           </label>
           <button onClick={() => setLLMConfig({ useProxy: !llmConfig.useProxy })}
@@ -151,13 +143,13 @@ export function SettingsLLMConfig({ llmConfig, setLLMConfig, clearApiKey, onColl
               transition: 'background-color 0.2s', position: 'relative',
             }}>
             <div style={{
-              width: 20, height: 20, borderRadius: '50%', backgroundColor: '#fff',
+              width: 20, height: 20, borderRadius: '50%', backgroundColor: 'var(--color-text-on-accent)',
               transform: llmConfig.useProxy ? 'translateX(20px)' : 'translateX(0)',
               transition: 'transform 0.2s', boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
             }} />
           </button>
         </div>
-        <p style={{ color: 'var(--color-text-tertiary)', fontSize: 12, lineHeight: 1.6 }}>
+        <p className="text-xs leading-relaxed text-[var(--color-text-tertiary)]">
           {llmConfig.useProxy
             ? '✅ 已开启 — 通过本地代理绕过 CORS 限制，适合内网/私有 API'
             : '关闭时浏览器直接调用 API。如果遇到 CORS 错误，请开启并下载代理脚本。'}
@@ -168,13 +160,13 @@ export function SettingsLLMConfig({ llmConfig, setLLMConfig, clearApiKey, onColl
       </div>
 
       {/* Actions */}
-      <div style={{ display: 'flex', gap: 10 }}>
-        <button onClick={handleSave} className="btn-primary flex-1 flex items-center justify-center gap-2" style={{ borderRadius: 10, padding: '12px 0', fontSize: 14 }}>
+      <div className="flex gap-2.5">
+        <button onClick={handleSave} className="btn-primary flex-1 flex items-center justify-center gap-2 rounded-xl py-3 text-sm">
           {saved ? <><Check size={14} /> 已保存</> : '保存配置'}
         </button>
         {llmConfig.apiKey && (
           <button onClick={handleTestConnection} disabled={testStatus === 'testing'}
-            className="btn-ghost flex items-center gap-1.5" style={{ borderRadius: 10, padding: '12px 16px', fontSize: 13, color: testStatus === 'success' ? 'var(--color-accent-emerald)' : testStatus === 'error' ? 'var(--color-accent-rose)' : undefined }}>
+            className="btn-ghost flex items-center gap-1.5 rounded-xl py-3 px-4 text-sm" style={{ color: testStatus === 'success' ? 'var(--color-accent-emerald)' : testStatus === 'error' ? 'var(--color-accent-rose)' : undefined }}>
             {testStatus === 'testing' ? <Loader2 size={13} className="animate-spin" /> : testStatus === 'success' ? <Wifi size={13} /> : testStatus === 'error' ? <WifiOff size={13} /> : <Wifi size={13} />}
             {testStatus === 'testing' ? '测试...' : testStatus === 'success' ? '可用' : testStatus === 'error' ? '失败' : '测试'}
           </button>
