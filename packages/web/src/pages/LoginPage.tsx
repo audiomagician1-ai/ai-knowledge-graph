@@ -60,7 +60,7 @@ export function LoginPage() {
         <div className="text-center" style={{ marginBottom: 40 }}>
           <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto"
             style={{ marginBottom: 20, background: 'linear-gradient(135deg, #10b981 0%, #34d399 100%)', boxShadow: '0 4px 16px rgba(16,185,129,0.3)' }}>
-            <BookOpen size={28} style={{ color: '#fff' }} strokeWidth={1.8} />
+            <BookOpen size={28} style={{ color: 'var(--color-text-on-accent)' }} strokeWidth={1.8} />
           </div>
           <h1 className="text-2xl font-bold" style={{ marginBottom: 10, fontFamily: 'var(--font-heading)', color: 'var(--color-text-primary)' }}>AI Knowledge Graph</h1>
           <p className="text-sm" style={{ marginBottom: 20, color: 'var(--color-text-tertiary)', lineHeight: 1.6 }}>Sign in to sync your learning progress across devices</p>

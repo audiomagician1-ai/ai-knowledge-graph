@@ -64,7 +64,7 @@ export function ConceptPrerequisites({ conceptId, onConceptClick }: ConceptPrere
     <div
       className="rounded-xl"
       style={{
-        backgroundColor: '#ffffff',
+        backgroundColor: 'var(--color-surface-1)',
         border: '1px solid rgba(0,0,0,0.08)',
         boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
         padding: '20px 24px',

@@ -41,7 +41,7 @@ export function LearnAssessmentCard({ result, conceptName }: { result: Assessmen
                     : 'var(--color-accent-primary)',
                 }}
               >
-                {result.mastered ? <Trophy size={18} style={{ color: '#ffffff' }} /> : <BarChart3 size={18} style={{ color: '#ffffff' }} />}
+                {result.mastered ? <Trophy size={18} style={{ color: 'var(--color-text-on-accent)' }} /> : <BarChart3 size={18} style={{ color: 'var(--color-text-on-accent)' }} />}
               </div>
               <div>
                 <h3 className="text-[15px] font-bold" style={{ color: 'var(--color-text-primary)' }}>

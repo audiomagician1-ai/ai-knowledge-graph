@@ -91,7 +91,7 @@ export function ConceptNoteEditor({ conceptId, conceptName, compact = false }: C
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors"
               style={{
                 backgroundColor: saved ? '#22c55e' : 'var(--color-accent-primary)',
-                color: '#fff',
+                color: 'var(--color-text-on-accent)',
                 opacity: text.trim() ? 1 : 0.4,
               }}
             >

@@ -150,7 +150,7 @@ export function LearningJourneyPage() {
                 className="px-3 py-1 rounded-full text-xs transition-all"
                 style={{
                   backgroundColor: filter === f.key ? 'var(--color-accent)' : 'var(--color-surface-2)',
-                  color: filter === f.key ? '#fff' : 'inherit',
+                  color: filter === f.key ? 'var(--color-text-on-accent)' : 'inherit',
                   opacity: filter === f.key ? 1 : 0.6,
                 }}>
                 {f.label}

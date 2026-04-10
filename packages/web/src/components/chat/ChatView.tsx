@@ -52,7 +52,7 @@ export function ChatView({
     <div className="flex flex-col h-full relative">
       {/* Chat header */}
       <div className="flex items-center gap-3 shrink-0"
-        style={{ padding: '16px 24px', borderBottom: '1px solid rgba(0,0,0,0.08)', backgroundColor: '#ffffff' }}>
+        style={{ padding: '16px 24px', borderBottom: '1px solid var(--color-border)', backgroundColor: 'var(--color-surface-1)' }}>
         <Brain size={18} style={{ color: 'var(--color-accent-primary)' }} />
         <span className="text-base font-bold flex-1 truncate" style={{ color: 'var(--color-text-primary)' }}>{conceptName}</span>
         <span className="text-sm" style={{ color: 'var(--color-text-tertiary)' }}>第 {userTurns} 轮</span>
@@ -73,7 +73,7 @@ export function ChatView({
         <div style={{ padding: '24px 24px', display: 'flex', flexDirection: 'column', gap: 20 }}>
           {isInitializing && (
             <div className="flex justify-start animate-fade-in">
-              <div style={{ borderRadius: '16px 16px 16px 4px', padding: '20px 24px', backgroundColor: '#ffffff', color: 'var(--color-text-primary)', border: '1px solid rgba(0,0,0,0.1)', boxShadow: '0 1px 3px rgba(0,0,0,0.08)' }}>
+              <div style={{ borderRadius: '16px 16px 16px 4px', padding: '20px 24px', backgroundColor: 'var(--color-surface-1)', color: 'var(--color-text-primary)', border: '1px solid var(--color-border)', boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}>
                 <div className="flex items-center gap-3">
                   <div className="flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ backgroundColor: 'var(--color-accent-primary)', animationDelay: '0ms', animationDuration: '1.2s' }} />
@@ -92,8 +92,8 @@ export function ChatView({
                 borderRadius: msg.role === 'user' ? '16px 16px 4px 16px' : '16px 16px 16px 4px',
                 padding: '20px 24px', fontSize: 20, lineHeight: 1.85,
                 ...(msg.role === 'user'
-                  ? { backgroundColor: '#d4edda', color: 'var(--color-text-primary)', border: '1px solid rgba(16,185,129,0.25)' }
-                  : { backgroundColor: '#ffffff', color: 'var(--color-text-primary)', border: '1px solid rgba(0,0,0,0.1)', boxShadow: '0 1px 3px rgba(0,0,0,0.08)' }),
+                    ? { backgroundColor: '#d4edda', color: 'var(--color-text-primary)', border: '1px solid rgba(16,185,129,0.25)' }
+                    : { backgroundColor: 'var(--color-surface-1)', color: 'var(--color-text-primary)', border: '1px solid var(--color-border)', boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }),
               }}>
                 {msg.role === 'assistant' ? (
                   msg.content ? <MarkdownRenderer content={stripChoicesBlock(msg.content)} /> :
@@ -114,7 +114,7 @@ export function ChatView({
       </div>
 
       {/* Input area */}
-      <div className="shrink-0" style={{ padding: '20px 24px', borderTop: '1px solid rgba(0,0,0,0.08)', backgroundColor: '#ffffff' }}>
+      <div className="shrink-0" style={{ padding: '20px 24px', borderTop: '1px solid var(--color-border)', backgroundColor: 'var(--color-surface-1)' }}>
         {assessment ? (
           <div className="flex gap-3">
             <button onClick={onBack} className="btn-ghost flex-1 flex items-center justify-center gap-2 py-3 text-base">返回</button>
@@ -127,7 +127,7 @@ export function ChatView({
             {currentChoices && currentChoices.length > 0 && !isBusy && (
               <ChoiceButtons choices={currentChoices} onSelect={onSelectChoice} disabled={isBusy} dimmed={isUserTyping} />
             )}
-            <div className="flex items-end gap-3 rounded-xl px-5 py-4" style={{ backgroundColor: '#f5f5f3', border: '1px solid rgba(0,0,0,0.1)' }}>
+            <div className="flex items-end gap-3 rounded-xl px-5 py-4" style={{ backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)' }}>
               <textarea
                 value={input}
                 onChange={(e) => { onInputChange(e.target.value); e.target.style.height = 'auto'; e.target.style.height = Math.min(e.target.scrollHeight, 150) + 'px'; }}
@@ -140,7 +140,7 @@ export function ChatView({
               />
               <button onClick={onSend} disabled={isBusy || !input.trim() || !conversationId}
                 className="shrink-0 w-10 h-10 rounded-md flex items-center justify-center transition-all"
-                style={{ background: !input.trim() || isBusy ? 'var(--color-surface-4)' : 'var(--color-accent-primary)', color: '#ffffff', opacity: !input.trim() || isBusy ? 0.4 : 1 }}>
+                style={{ background: !input.trim() || isBusy ? 'var(--color-surface-4)' : 'var(--color-accent-primary)', color: 'var(--color-text-on-accent)', opacity: !input.trim() || isBusy ? 0.4 : 1 }}>
                 <Send size={18} />
               </button>
             </div>

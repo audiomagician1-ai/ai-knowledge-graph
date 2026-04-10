@@ -45,10 +45,10 @@ export function LearnMessageBubble({ msg, idx, isStreaming, conceptId, domainId 
                 border: '1px solid rgba(16, 185, 129, 0.25)',
               }
             : {
-                backgroundColor: '#ffffff',
+                backgroundColor: 'var(--color-surface-1)',
                 color: 'var(--color-text-primary)',
-                border: '1px solid rgba(0, 0, 0, 0.1)',
-                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.08)',
+                border: '1px solid var(--color-border)',
+                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.06)',
               }),
         }}
       >

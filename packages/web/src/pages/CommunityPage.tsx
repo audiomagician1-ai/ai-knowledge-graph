@@ -89,7 +89,7 @@ export function CommunityPage() {
           <Shield size={16} style={{ color: adminMode ? '#f59e0b' : 'var(--color-text-tertiary)' }} />
         </button>
         <button onClick={() => setShowForm(!showForm)} className="ml-3 px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1.5"
-          style={{ backgroundColor: 'var(--color-accent-primary)', color: '#fff' }}>
+          style={{ backgroundColor: 'var(--color-accent-primary)', color: 'var(--color-text-on-accent)' }}>
           <Plus size={14} /> 提议
         </button>
       </header>

@@ -86,7 +86,7 @@ export class ErrorBoundary extends Component<Props, State> {
                 <button
                   onClick={this.handleRetry}
                   className="rounded-xl px-6 py-2.5 text-sm font-medium transition-colors hover:opacity-90"
-                  style={{ backgroundColor: '#3b82f6', color: '#ffffff' }}
+                  style={{ backgroundColor: '#3b82f6', color: 'var(--color-text-on-accent)' }}
                 >
                   重试 {retryCount > 0 ? `(${retryCount}/3)` : ''}
                 </button>
@@ -94,7 +94,7 @@ export class ErrorBoundary extends Component<Props, State> {
               <button
                 onClick={() => window.location.reload()}
                 className="rounded-xl px-6 py-2.5 text-sm font-medium transition-colors hover:opacity-90"
-                style={{ backgroundColor: '#10b981', color: '#ffffff' }}
+                style={{ backgroundColor: '#10b981', color: 'var(--color-text-on-accent)' }}
               >
                 刷新页面
               </button>
@@ -102,7 +102,7 @@ export class ErrorBoundary extends Component<Props, State> {
                 <button
                   onClick={this.handleGoHome}
                   className="rounded-xl px-6 py-2.5 text-sm font-medium transition-colors hover:opacity-90"
-                  style={{ backgroundColor: '#6b7280', color: '#ffffff' }}
+                  style={{ backgroundColor: '#6b7280', color: 'var(--color-text-on-accent)' }}
                 >
                   返回首页
                 </button>

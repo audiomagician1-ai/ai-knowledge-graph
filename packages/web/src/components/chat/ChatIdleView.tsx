@@ -36,7 +36,7 @@ export function ChatIdleView({
         {/* Per-node mastery card */}
         <div
           className="rounded-xl"
-          style={{ backgroundColor: '#ffffff', padding: 24, border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}
+          style={{ backgroundColor: 'var(--color-surface-1)', padding: 24, border: '1px solid var(--color-border)', boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}
         >
           <div className="flex items-center gap-4 mb-6">
             <div
@@ -48,8 +48,8 @@ export function ChatIdleView({
               }}
             >
               {nodeProgress?.status === 'mastered'
-                ? <Trophy size={18} style={{ color: '#ffffff' }} />
-                : <Brain size={18} style={{ color: '#ffffff' }} />
+                ? <Trophy size={18} style={{ color: 'var(--color-text-on-accent)' }} />
+                : <Brain size={18} style={{ color: 'var(--color-text-on-accent)' }} />
               }
             </div>
             <div className="flex-1 min-w-0">
@@ -133,7 +133,7 @@ export function ChatIdleView({
 
         {/* Recent history preview (last 3) */}
         {conversations.length > 0 && (
-          <div className="rounded-xl" style={{ backgroundColor: '#ffffff', border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 1px 3px rgba(0,0,0,0.06)', padding: '20px 24px' }}>
+          <div className="rounded-xl" style={{ backgroundColor: 'var(--color-surface-1)', border: '1px solid var(--color-border)', boxShadow: '0 1px 3px rgba(0,0,0,0.06)', padding: '20px 24px' }}>
             <div className="flex items-center justify-between" style={{ marginBottom: 16 }}>
               <span className="text-sm font-bold" style={{ color: 'var(--color-text-secondary)' }}>
                 最近对话
@@ -180,7 +180,7 @@ export function ChatIdleView({
       </div>
 
       {/* Start learning button */}
-      <div className="shrink-0" style={{ padding: '20px 24px', borderTop: '1px solid rgba(0,0,0,0.08)', backgroundColor: '#ffffff' }}>
+      <div className="shrink-0" style={{ padding: '20px 24px', borderTop: '1px solid var(--color-border)', backgroundColor: 'var(--color-surface-1)' }}>
         <button
           onClick={onStartLearning}
           className="btn-primary w-full flex items-center justify-center gap-3 py-4 text-lg font-bold"

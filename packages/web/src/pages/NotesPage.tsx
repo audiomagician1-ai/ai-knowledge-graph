@@ -155,7 +155,7 @@ export function NotesPage() {
               onClick={handleImport}
               disabled={!importText.trim()}
               className="px-4 py-2 rounded-lg text-sm font-medium"
-              style={{ backgroundColor: 'var(--color-accent-primary)', color: '#fff', opacity: importText.trim() ? 1 : 0.4 }}
+              style={{ backgroundColor: 'var(--color-accent-primary)', color: 'var(--color-text-on-accent)', opacity: importText.trim() ? 1 : 0.4 }}
             >
               导入合并
             </button>

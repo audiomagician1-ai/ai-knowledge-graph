@@ -11,7 +11,7 @@ export function LearnGuideCard() {
           className="w-9 h-9 rounded-md flex items-center justify-center shrink-0"
           style={{ backgroundColor: 'var(--color-accent-primary)' }}
         >
-          <Lightbulb size={16} style={{ color: '#ffffff' }} />
+          <Lightbulb size={16} style={{ color: 'var(--color-text-on-accent)' }} />
         </div>
         <div>
           <h3 className="text-sm font-bold mb-1" style={{ color: 'var(--color-text-primary)' }}>
@@ -39,10 +39,10 @@ export function LearnLoadingIndicator() {
         style={{
           borderRadius: '16px 16px 16px 4px',
           padding: '20px 24px',
-          backgroundColor: '#ffffff',
+          backgroundColor: 'var(--color-surface-1)',
           color: 'var(--color-text-primary)',
-          border: '1px solid rgba(0, 0, 0, 0.1)',
-          boxShadow: '0 1px 3px rgba(0, 0, 0, 0.08)',
+          border: '1px solid var(--color-border)',
+          boxShadow: '0 1px 3px rgba(0, 0, 0, 0.06)',
         }}
       >
         <div className="flex items-center gap-3">

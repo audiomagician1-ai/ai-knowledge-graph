@@ -98,7 +98,7 @@ export function LearnInputArea({
                 className="shrink-0 w-9 h-9 rounded-md flex items-center justify-center transition-all"
                 style={{
                   background: voice.isListening ? '#ef4444' : 'var(--color-surface-3)',
-                  color: voice.isListening ? '#ffffff' : 'var(--color-text-secondary)',
+                  color: voice.isListening ? 'var(--color-text-on-accent)' : 'var(--color-text-secondary)',
                   opacity: isBusy ? 0.4 : 1,
                   animation: voice.isListening ? 'pulse 1.5s ease-in-out infinite' : 'none',
                 }}
@@ -114,7 +114,7 @@ export function LearnInputArea({
             className="shrink-0 w-9 h-9 rounded-md flex items-center justify-center transition-all"
             style={{
               background: !input.trim() || isBusy ? 'var(--color-surface-3)' : 'var(--color-accent-primary)',
-              color: '#ffffff',
+              color: 'var(--color-text-on-accent)',
               opacity: !input.trim() || isBusy ? 0.4 : 1,
             }}
           >

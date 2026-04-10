@@ -98,7 +98,7 @@ export function NotificationsPage() {
         <Bell size={24} style={{ color: 'var(--color-accent)' }} />
         <h1 className="text-xl font-bold">通知中心</h1>
         {unreadCount > 0 && (
-          <span className="ml-2 px-2 py-0.5 text-xs font-bold rounded-full" style={{ backgroundColor: '#ef4444', color: '#fff' }}>
+          <span className="ml-2 px-2 py-0.5 text-xs font-bold rounded-full" style={{ backgroundColor: 'var(--color-status-danger)', color: 'var(--color-text-on-accent)' }}>
             {unreadCount} 未读
           </span>
         )}

@@ -122,7 +122,7 @@ export function ContentFeedbackButton({ conceptId, domainId, compact = false }: 
             onClick={handleSubmit}
             disabled={submitting}
             className="w-full text-xs font-medium py-2 rounded-lg transition-colors"
-            style={{ backgroundColor: 'var(--color-accent)', color: '#fff', opacity: submitting ? 0.6 : 1 }}
+            style={{ backgroundColor: 'var(--color-accent)', color: 'var(--color-text-on-accent)', opacity: submitting ? 0.6 : 1 }}
           >
             {submitting ? '提交中...' : '提交反馈'}
           </button>

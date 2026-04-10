@@ -57,7 +57,7 @@ export function GraphRecommendPanel({ recommendations, loading, chatOpen, graphD
                 onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.03)')}
                 onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}>
                 <div className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold"
-                  style={{ backgroundColor: 'var(--color-accent-primary)', color: '#ffffff' }}>{idx + 1}</div>
+                  style={{ backgroundColor: 'var(--color-accent-primary)', color: 'var(--color-text-on-accent)' }}>{idx + 1}</div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-1.5 mb-0.5">
                     {rec.is_milestone && <Star size={11} fill="var(--color-accent-primary)" style={{ color: 'var(--color-accent-primary)' }} />}

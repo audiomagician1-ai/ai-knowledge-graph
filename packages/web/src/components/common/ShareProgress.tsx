@@ -113,8 +113,8 @@ export function ShareProgress({ domainName }: ShareProgressProps) {
     <div
       className="rounded-xl animate-fade-in"
       style={{
-        backgroundColor: '#ffffff',
-        border: '1px solid rgba(0,0,0,0.08)',
+        backgroundColor: 'var(--color-surface-1)',
+        border: '1px solid var(--color-border)',
         boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
         padding: '20px 24px',
       }}

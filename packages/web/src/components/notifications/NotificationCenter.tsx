@@ -112,7 +112,7 @@ export function NotificationCenter() {
         <Bell size={20} />
         {unreadCount > 0 && (
           <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] flex items-center justify-center text-[10px] font-bold rounded-full px-1"
-            style={{ backgroundColor: '#ef4444', color: '#fff' }}>
+            style={{ backgroundColor: 'var(--color-status-danger)', color: 'var(--color-text-on-accent)' }}>
             {unreadCount > 99 ? '99+' : unreadCount}
           </span>
         )}

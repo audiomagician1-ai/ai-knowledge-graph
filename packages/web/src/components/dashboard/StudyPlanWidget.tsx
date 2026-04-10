@@ -80,7 +80,7 @@ export function StudyPlanWidget({ days = 3, dailyMinutes = 30 }: { days?: number
             className="px-3 py-1 rounded-full text-xs font-medium transition-all shrink-0"
             style={{
               backgroundColor: activeDay === i ? 'var(--color-accent)' : 'var(--color-surface-2)',
-              color: activeDay === i ? '#fff' : 'inherit',
+              color: activeDay === i ? 'var(--color-text-on-accent)' : 'inherit',
               opacity: activeDay === i ? 1 : 0.7,
             }}
           >

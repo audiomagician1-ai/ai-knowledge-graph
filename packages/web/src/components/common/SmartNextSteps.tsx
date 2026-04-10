@@ -148,7 +148,7 @@ export function SmartNextSteps() {
   if (steps.length === 0) return null;
 
   return (
-    <div className="rounded-xl" style={{ backgroundColor: '#ffffff', border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 1px 3px rgba(0,0,0,0.06)', padding: '20px 24px' }}>
+    <div className="rounded-xl" style={{ backgroundColor: 'var(--color-surface-1)', border: '1px solid var(--color-border)', boxShadow: '0 1px 3px rgba(0,0,0,0.06)', padding: '20px 24px' }}>
       <h3 className="text-sm font-bold flex items-center gap-2" style={{ color: 'var(--color-text-primary)', marginBottom: 16 }}>
         <Zap size={14} style={{ color: '#10b981' }} />
         推荐下一步

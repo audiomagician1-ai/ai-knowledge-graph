@@ -87,7 +87,7 @@ export function GraphHubBar(props: GraphHubBarProps) {
               position: 'absolute', top: 2, right: 4,
               width: 16, height: 16, borderRadius: '50%',
               backgroundColor: 'var(--color-accent-rose)',
-              color: '#fff', fontSize: 10, fontWeight: 700,
+              color: 'var(--color-text-on-accent)', fontSize: 10, fontWeight: 700,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               lineHeight: 1,
             }}>{achievementBadge > 9 ? '9+' : achievementBadge}</span>
@@ -100,7 +100,7 @@ export function GraphHubBar(props: GraphHubBarProps) {
               position: 'absolute', top: 2, right: 4,
               minWidth: 16, height: 16, borderRadius: '50%',
               backgroundColor: 'var(--color-accent-amber)',
-              color: '#fff', fontSize: 10, fontWeight: 700,
+              color: 'var(--color-text-on-accent)', fontSize: 10, fontWeight: 700,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               lineHeight: 1, padding: '0 3px',
             }}>{dueReviewCount > 99 ? '99+' : dueReviewCount}</span>

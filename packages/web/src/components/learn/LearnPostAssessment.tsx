@@ -71,7 +71,7 @@ export function LearnPostAssessment({
             className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-[14px] font-semibold transition-all"
             style={{
               background: 'var(--color-accent-primary)',
-              color: '#ffffff',
+              color: 'var(--color-text-on-accent)',
             }}
           >
             <ChevronRight size={16} />

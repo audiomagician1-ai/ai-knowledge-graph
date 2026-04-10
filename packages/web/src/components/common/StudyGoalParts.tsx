@@ -59,7 +59,7 @@ export function GoalSettings({
           {[1, 3, 5, 10].map((v) => (
             <button key={v} onClick={() => onUpdate({ dailyConceptTarget: v })}
               className="px-3 py-1.5 rounded-lg text-sm transition-colors"
-              style={{ backgroundColor: goal.dailyConceptTarget === v ? 'var(--color-accent-primary)' : 'var(--color-surface-3)', color: goal.dailyConceptTarget === v ? '#fff' : 'var(--color-text-primary)' }}>
+              style={{ backgroundColor: goal.dailyConceptTarget === v ? 'var(--color-accent-primary)' : 'var(--color-surface-3)', color: goal.dailyConceptTarget === v ? 'var(--color-text-on-accent)' : 'var(--color-text-primary)' }}>
               {v} 个
             </button>
           ))}
@@ -71,7 +71,7 @@ export function GoalSettings({
           {[5, 15, 30, 60].map((v) => (
             <button key={v} onClick={() => onUpdate({ dailyTimeTarget: v })}
               className="px-3 py-1.5 rounded-lg text-sm transition-colors"
-              style={{ backgroundColor: goal.dailyTimeTarget === v ? 'var(--color-accent-primary)' : 'var(--color-surface-3)', color: goal.dailyTimeTarget === v ? '#fff' : 'var(--color-text-primary)' }}>
+              style={{ backgroundColor: goal.dailyTimeTarget === v ? 'var(--color-accent-primary)' : 'var(--color-surface-3)', color: goal.dailyTimeTarget === v ? 'var(--color-text-on-accent)' : 'var(--color-text-primary)' }}>
               {v} 分钟
             </button>
           ))}
