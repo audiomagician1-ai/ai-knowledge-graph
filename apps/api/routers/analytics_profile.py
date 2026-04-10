@@ -282,3 +282,99 @@ async def learning_heatmap(domain_id: str):
             "mastery_pct": round(total_mastered / max(1, total_concepts) * 100, 1),
         },
     }
+
+
+# ── V4.5: Daily Summary ───────────────────────
+
+
+@router.get("/analytics/daily-summary")
+async def daily_summary():
+    """Consolidated 'What should I do today?' single-call summary.
+
+    Aggregates: streak status, FSRS due count, today's activity,
+    recommended next action, motivation message — all in one request.
+    """
+    from datetime import datetime
+
+    from routers.analytics_utils import load_seed_metadata
+
+    progress = get_all_progress()
+    history = get_history(limit=500)
+    streak = get_streak()
+    concept_domain_map, concept_info, _ = load_seed_metadata()
+
+    today = datetime.now().date().isoformat()
+
+    # ── Streak ──
+    current_streak = streak.get("current", 0) if isinstance(streak, dict) else 0
+    longest_streak = streak.get("longest", 0) if isinstance(streak, dict) else 0
+
+    # ── Today's activity ──
+    today_events = 0
+    today_mastered = 0
+    today_domains: set = set()
+    for h in history:
+        ts = str(h.get("timestamp", ""))
+        if ts and len(ts) >= 10 and ts[:10] == today:
+            today_events += 1
+            if h.get("action") == "mastered" or (h.get("action") == "assessment" and h.get("score", 0) >= 75):
+                today_mastered += 1
+            did = concept_domain_map.get(h.get("concept_id", ""), "")
+            if did:
+                today_domains.add(did)
+
+    # ── FSRS Due ──
+    due_count = 0
+    overdue_count = 0
+    for p in progress:
+        nr = p.get("next_review")
+        if not nr:
+            continue
+        try:
+            nr_date = datetime.fromisoformat(str(nr)[:10]).date()
+            today_date = datetime.now().date()
+            if nr_date <= today_date:
+                due_count += 1
+                if nr_date < today_date:
+                    overdue_count += 1
+        except (ValueError, TypeError):
+            continue
+
+    # ── Progress ──
+    total_mastered = sum(1 for p in progress if p.get("status") == "mastered")
+    total_learning = sum(1 for p in progress if p.get("status") == "learning")
+
+    # ── Recommended action ──
+    if due_count > 0:
+        action = {"type": "review", "label": f"复习 {due_count} 个到期概念", "priority": "high", "route": "/review"}
+    elif total_learning > 0:
+        lc = next((p for p in progress if p.get("status") == "learning"), None)
+        cid = lc["concept_id"] if lc else ""
+        did = concept_domain_map.get(cid, "")
+        cname = concept_info.get(cid, {}).get("name", cid)
+        action = {"type": "continue", "label": f"继续学习: {cname}", "priority": "medium",
+                  "route": f"/graph?domain={did}&concept={cid}" if did else "/"}
+    else:
+        action = {"type": "explore", "label": "开始你的学习之旅" if total_mastered == 0 else "探索新领域",
+                  "priority": "low", "route": "/"}
+
+    # ── Motivation ──
+    if current_streak >= 7:
+        motivation = f"🔥 连续学习 {current_streak} 天！坚持住！"
+    elif current_streak >= 3:
+        motivation = f"🌟 连续 {current_streak} 天，再接再厉！"
+    elif today_events > 0:
+        motivation = "👍 今天已经开始学习了，继续保持！"
+    else:
+        motivation = "📚 新的一天，从一个概念开始吧！"
+
+    return {
+        "date": today,
+        "streak": {"current": current_streak, "longest": longest_streak},
+        "today": {"events": today_events, "mastered": today_mastered, "domains_active": len(today_domains)},
+        "reviews": {"due": due_count, "overdue": overdue_count},
+        "progress": {"total_mastered": total_mastered, "total_learning": total_learning,
+                     "total_concepts": len(concept_info)},
+        "recommended_action": action,
+        "motivation": motivation,
+    }

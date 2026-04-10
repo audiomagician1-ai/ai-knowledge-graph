@@ -31,6 +31,8 @@ const FSRSInsightsWidget = lazy(() => import('./FSRSInsightsWidget').then(m => (
 const GoalRecommendWidget = lazy(() => import('./GoalRecommendWidget').then(m => ({ default: m.GoalRecommendWidget })));
 const LearningProfileWidget = lazy(() => import('./LearningProfileWidget').then(m => ({ default: m.LearningProfileWidget })));
 const PortfolioExportWidget = lazy(() => import('./PortfolioExportWidget').then(m => ({ default: m.PortfolioExportWidget })));
+const DailySummaryWidget = lazy(() => import('./DailySummaryWidget').then(m => ({ default: m.DailySummaryWidget })));
+const AchievementShowcaseWidget = lazy(() => import('./AchievementShowcaseWidget').then(m => ({ default: m.AchievementShowcaseWidget })));
 
 // ── Analytics & Insights ──
 const WeeklyReport = lazy(() => import('./WeeklyReport').then(m => ({ default: m.WeeklyReport })));
@@ -97,6 +99,7 @@ const SECTION_MAP: Record<string, { title: string; icon: React.ReactNode; defaul
   learning: {
     title: '学习与复习', icon: <Brain size={14} className="opacity-40" />, defaultOpen: true,
     content: (<>
+        <W name="今日概览"><DailySummaryWidget /></W>
         <W name="学习档案"><LearningProfileWidget /></W>
         <W name="学习小结"><SessionSummaryWidget hours={24} /></W>
         <W name="智能路径"><AdaptivePathWidget /></W>
@@ -110,6 +113,7 @@ const SECTION_MAP: Record<string, { title: string; icon: React.ReactNode; defaul
         <W name="FSRS分析"><FSRSInsightsWidget /></W>
         <W name="目标建议"><GoalRecommendWidget /></W>
         <W name="学习档案导出"><PortfolioExportWidget /></W>
+        <W name="成就展示"><AchievementShowcaseWidget /></W>
     </>),
   },
   analytics: {

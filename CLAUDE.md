@@ -78,7 +78,7 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 2,299 (1,468 BE + 770 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 2,330 (1,481 BE + 788 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
 | **Open Issues** | 0 | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
@@ -310,6 +310,14 @@ data/rag/          — RAG知识文档 (6,300篇)
 - ✅ create_notification() 编程式帮助函数 (可从其他路由器调用)
 - ✅ 内容反馈自动触发通知 (提交反馈后自动创建通知)
 - ✅ 13 BE tests (notifications) + 10 BE tests (content-feedback) + 11 FE tests = 34 new tests
+
+### V4.5 Daily Summary + Achievement Showcase Sprint (2026-04-10, 完成)
+- ✅ GET /api/analytics/daily-summary: "今天做什么?"单API聚合 (连续天数+今日活动+FSRS到期+进度+推荐行动+激励语句, 替代多次调用)
+- ✅ DailySummaryWidget Dashboard组件: 今日概览卡 (渐变背景+激励语+三统计网格+推荐行动按钮+进度注脚, lazy-load, 99L)
+- ✅ AchievementShowcaseWidget Dashboard组件: 成就展示 (进度条+6类别badge+解锁成就列表+即将解锁预览+等级颜色, lazy-load, 108L)
+- ✅ DashboardWidgetGrid集成: 45 lazy-loaded widgets (新增DailySummaryWidget到learning区顶部, AchievementShowcaseWidget到learning区底部, 188L)
+- ✅ Fixed float timestamp crash in daily-summary (str() defensive cast for non-string timestamps in history)
+- ✅ 13 BE tests + 18 FE tests = 31 new tests
 
 ### V4.4 Learning Calendar + Knowledge Map Exploration Sprint (2026-04-10, 完成)
 - ✅ GET /api/analytics/learning-calendar: 月度学习日历 (每日活动+掌握+FSRS复习投影+GitHub-style强度0-4+未来30天复习预测)
@@ -774,6 +782,8 @@ python scripts/build_exe.py  # 输出到 release/
 | packages/web/src/components/dashboard/PortfolioExportWidget.tsx | 学习档案导出 (V4.3: 技能雷达+Markdown/JSON导出+强项/成长, lazy-load, 155L) |
 | packages/web/src/components/dashboard/LearningCalendarWidget.tsx | 学习日历 (V4.4: 月度活动色阶+FSRS复习投影+hover工具提示+图例, lazy-load, 133L) |
 | packages/web/src/components/dashboard/KnowledgeMapWidget.tsx | 知识图谱探索 (V4.4: 覆盖率进度条+难度分布+深度/广度风格, lazy-load, 120L) |
+| packages/web/src/components/dashboard/DailySummaryWidget.tsx | 今日概览 (V4.5: 激励语+统计+推荐行动+连续天数, lazy-load, 99L) |
+| packages/web/src/components/dashboard/AchievementShowcaseWidget.tsx | 成就展示 (V4.5: 等级badge+分类进度+解锁列表+即将解锁, lazy-load, 108L) |
 | workers/src/ | Cloudflare Workers代理后端 |
 
 ---
@@ -836,4 +846,4 @@ python scripts/build_exe.py  # 输出到 release/
 
 ## Last Review
 
-**Date**: 2026-04-10 | **Scope**: V4.4 Learning Calendar + Knowledge Map Exploration — learning-calendar API (monthly activity + FSRS projection), knowledge-map-stats API (coverage + depth/breadth + exploration style), 2 Dashboard widgets, 31 tests | **Result**: 1,468 BE + 770 FE + 61 E2E = 2,299 all pass, tsc: 0 errors, 0 open issues, build OK
+**Date**: 2026-04-10 | **Scope**: V4.5 Daily Summary + Achievement Showcase — daily-summary API (single-call today aggregation with motivation), DailySummaryWidget (99L), AchievementShowcaseWidget (108L), 45 Dashboard widgets, 31 tests | **Result**: 1,481 BE + 788 FE + 61 E2E = 2,330 all pass, tsc: 0 errors, 0 open issues, build OK
