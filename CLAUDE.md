@@ -78,9 +78,9 @@ data/rag/          — RAG知识文档 (6,300篇)
 | **边** | 7,167 | 2026-04-07 |
 | **跨球链接** | 633 (0 断引用) | 2026-04-07 |
 | **RAG 覆盖** | 6,300 (100% 覆盖) | 2026-04-07 |
-| **测试总数** | 2,351 (1,490 BE + 800 FE + 61 E2E) | 2026-04-10 |
+| **测试总数** | 2,364 (1,503 BE + 800 FE + 61 E2E) | 2026-04-10 |
 | **tsc errors** | 0 | 2026-04-10 |
-| **Open Issues** | 14 (CR: 2P0+4P1+8P2) | 2026-04-10 |
+| **Open Issues** | 0 (all 14 CR issues fixed) | 2026-04-10 |
 | **RAG 质量** | 6,300 docs — Sprint 10 ✅ (90/80), global avg **80.0** ✅ (S:1298 A:5002 B/C:0) | 2026-04-07 |
 
 ---
@@ -860,3 +860,10 @@ python scripts/build_exe.py  # 输出到 release/
 ## Last Review
 
 **Date**: 2026-04-10 | **Scope**: Code Review V2.7~V4.6 (57 commits, 6 rounds) — BE routers (analytics_advanced/forecast/profile, learning_intelligence/review, analytics_social/search, graph_topology, notifications, community splits, health), FE (DashboardWidgetGrid, widget-registry, ErrorBoundary, Customizer, QuickActionsBar, ApiExplorerPage, 45 dashboard widgets, NotificationsPage), God File governance | **Result**: 14 issues filed (#52-#65): 2 P0 (streak key mismatch, daily_summary timestamp bug), 4 P1 (path traversal, content-search DoS, notifications memory, in-memory data loss), 8 P2 (DRY, import style, vote abuse, cleanup patterns). All BE routers <800L, all FE components <200L — 100% compliance.
+
+### CR Fix Sprint (2026-04-10, 完成)
+- ✅ All 14 CR issues (#52-#65) fixed in 3 rounds
+- Round 1: #52 P0 daily_summary timestamp + #53 P0 streak key aliases + #54 P1 path traversal validation + #58 P1 content-search early termination + #59 P1 notification FIFO cap (13 new BE tests)
+- Round 2: #55 P2 inline imports cleanup + #56 P2 DRY get_data_root() + #57 P2 loop imports + #60 P2 vote dedup + #61 P1 in-memory docs
+- Round 3: #62 P2 AbortController + #63 P2 consistent named exports + #64 P2 setTimeout cleanup + #65 P2 useFetchWidget hook
+- 📊 1,503 BE + 800 FE + 61 E2E = 2,364 total tests, tsc 0 errors, build ✅
