@@ -70,7 +70,7 @@ function tokenLimitParam(model: string, tokens: number): Record<string, number> 
 }
 
 /** Default free-tier model (matches FastAPI config.py defaults) */
-const DEFAULT_FREE_MODEL = 'stepfun/step-3.5-flash:free';
+const DEFAULT_FREE_MODEL = 'google/gemma-4-31b-it:free';
 
 /** Get the configured model for a given tier, falling back to free default */
 function getModelForTier(env: Env, tier: 'dialogue' | 'assessment' | 'simple'): string {

@@ -30,9 +30,9 @@ class Settings(BaseSettings):
     deepseek_api_key: str = ""
 
     # 默认 LLM 模型 (free tier via OpenRouter)
-    llm_model_dialogue: str = "stepfun/step-3.5-flash:free"
-    llm_model_assessment: str = "stepfun/step-3.5-flash:free"
-    llm_model_simple: str = "stepfun/step-3.5-flash:free"
+    llm_model_dialogue: str = "google/gemma-4-31b-it:free"
+    llm_model_assessment: str = "google/gemma-4-31b-it:free"
+    llm_model_simple: str = "google/gemma-4-31b-it:free"
 
 
 settings = Settings()

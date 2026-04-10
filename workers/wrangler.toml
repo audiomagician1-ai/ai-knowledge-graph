@@ -12,6 +12,6 @@ database_id = "c1b6586e-9df5-4152-89e5-3708ce5bbd33"
 
 # Environment variables (set via wrangler secret or dashboard)
 # OPENROUTER_API_KEY = "..." (optional server-side key for default free LLM)
-# LLM_MODEL_DIALOGUE = "stepfun/step-3.5-flash:free"   (default)
-# LLM_MODEL_ASSESSMENT = "stepfun/step-3.5-flash:free"  (default)
-# LLM_MODEL_SIMPLE = "stepfun/step-3.5-flash:free"      (default)
+# LLM_MODEL_DIALOGUE = "google/gemma-4-31b-it:free"   (default)
+# LLM_MODEL_ASSESSMENT = "google/gemma-4-31b-it:free"  (default)
+# LLM_MODEL_SIMPLE = "google/gemma-4-31b-it:free"      (default)
